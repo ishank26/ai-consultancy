@@ -1,0 +1,47 @@
+[
+ {
+  "claim": "Friedman v. Martinez, 242 N.J. 449 (2020): 'the New Jersey Supreme Court allowed intrusion-upon-seclusion claims to proceed on circumstantial proof that employees were in a place where a hidden camera was installed, without proof their images were captured' (listed confirmed: true).",
+  "problem": "The rule is right but the disposition is backwards. The slip opinion (A-37/81-18, decided 16 June 2020) does hold that an intrusion occurs when someone uses a private space where a spying device was concealed and that no direct proof of capture is needed, but the Court REVERSED the Appellate Division and REINSTATED the trial court's summary judgment against the dismissed plaintiffs because the 2014 record did not support an inference that they had used a bathroom containing a camera. No claim was 'allowed to proceed' on that proof in the Supreme Court's judgment. The case also concerned a commercial office-building restroom used by tenants' employees, not a dining room, so the stated 'practical implication' is an unlabelled inference.",
+  "fix": "Rewrite as: the Court held that (i) proof that images were actually captured is not required and circumstantial evidence suffices, but (ii) a plaintiff must still show, directly or by reasonable inference, that she used the monitored private space while the device was concealed, and on that basis it reinstated summary judgment against the plaintiffs who could not. Drop or explicitly label as inference the extension to 'employee-only areas in a restaurant', and cite the slip opinion URL (already cited) plus, if wanted, the reporter cite 242 N.J. 449."
+ },
+ {
+  "claim": "Tabletop study cited as 'study_type: peer-reviewed', 'year: 2019 (working paper 2017)'.",
+  "problem": "The publication is Management Science vol. 66, no. 10 (2020), pp. 4496-4515; it appeared online in 2019. The numbers quoted (2.91% / 9.74% / 10.77%) come from the 2017 submitted working-paper PDF that is cited, which the brief itself concedes is not the published version. Tagging the working paper as 'peer-reviewed' overstates what the cited document is.",
+  "fix": "Label the source as 'working paper 2017; published in Management Science 2020 (first online 2019), published version not read', and either drop 'peer-reviewed' or mark the strength as 'High (on the published version, not the copy cited)'."
+ },
+ {
+  "claim": "'A field study of 94,404 restaurant visits' and sample '94,404 restaurant visits' (JOM 2018).",
+  "problem": "The paper says '94,404 customers visiting a popular Indian restaurant during a 12 month period' and '94,404 groups of customers' (in Bangalore). The figure is right, the unit is customers/groups, not visits.",
+  "fix": "Change to '94,404 customer groups' or '94,404 customers'."
+ },
+ {
+  "claim": "Video in restrooms / locker rooms / staff changing areas: 'Dining rooms are fine; restrooms and staff areas are an absolute exclusion...' (confirmed: true).",
+  "problem": "The cited RCFP guide supports the N.J.S.A. 2C:14-9 elements (intimate parts / sexual act where there is a reasonable expectation of privacy, and that the law does not criminalise recording in areas open to the public). It does not state anything about staff or employee-only areas; that extension is an inference presented inside a confirmed item.",
+  "fix": "Split: keep the statute as confirmed; move 'staff areas are excluded' to an explicit inference with its reasoning (employees have a reasonable expectation of privacy in changing/break areas), or cite a source that supports it."
+ },
+ {
+  "claim": "GC 23-02 'applied to non-union workplaces too'. Also: 'the NLRB's own GC memo index lists GC 25-05 dated 02/14/2025'.",
+  "problem": "The memo text never says non-union; it is a correct inference from NLRA Section 7 scope but is presented as a document fact. The memo-index claim is not supported by the cited URL, which is a law-firm summary (apslaw.com); that summary does confirm GC 25-05 was issued 14 Feb 2025 and rescinded GC 23-02 in full.",
+  "fix": "Label non-union coverage as inference from Section 7's scope, and either drop the 'NLRB's own index' attribution or add the nLrb.gov GC memo index URL actually consulted."
+ },
+ {
+  "claim": "FTC Policy Statement on Biometric Information dated 'May 18, 2023'.",
+  "problem": "The PDF text I opened contains no date; the substantive points (facial images/recordings fall inside 'biometric information', unsubstantiated accuracy claims addressed) are supported, but the date is not stated in the cited document.",
+  "fix": "Cite the FTC press release or the ftc.gov policy-statement landing page that carries the 18 May 2023 date, or drop the specific date."
+ },
+ {
+  "claim": "Qwen2.5-VL-3B 'Technical report documents absolute-coordinate grounding and object counting'; Cactus offers 'an OpenAI-compatible API'.",
+  "problem": "The Qwen model card documents visual localisation via bounding boxes or points, not 'absolute-coordinate grounding' or counting; the Cactus repo README (read in full) describes local text/speech/vision inference and tool calling but nowhere an OpenAI-compatible API.",
+  "fix": "Trim to what the pages say ('returns bounding boxes/points for objects'), and either find a Cactus page that states the OpenAI-compatible endpoint or describe it as a local inference runtime without that claim."
+ },
+ {
+  "claim": "Frigate description ('runs object detection on RTSP cameras and fires events when a tracked object enters a polygon zone') cited to the hardware page.",
+  "problem": "The hardware page only covers recommended cameras and servers (Beelink EQ13, dual NICs); the zones/events description is not on that page, although the Frigate+ page and docs elsewhere describe MOTION/object detection generally.",
+  "fix": "Cite https://docs.frigate.video/configuration/zones/ (or the main docs landing page) for the zones/events behaviour."
+ },
+ {
+  "claim": "Frigate+ subscription 'price not shown on the Frigate+ page I read'.",
+  "problem": "Minor: the page does state a per-unit add-on price ('Additional fine tunings can be purchased for $5 if needed') even though the annual subscription price is not printed. The 12-fine-tunes-per-year figure is correct.",
+  "fix": "Change to 'annual subscription price not shown on the page; additional fine-tunings are $5 each'."
+ }
+]

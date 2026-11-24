@@ -1,0 +1,483 @@
+{
+ "business": "RCP Management Company",
+ "opportunity": "Resident inquiry triage and callback agent for front desk and after-hours (audit.md opportunity #1)",
+ "problem": {
+  "summary": "Every homeowner contact route at RCP is staff-mediated and time-boxed: phone numbers and mailboxes on a static contact directory, a web maintenance form, and a manual owner-portal approval queue, with offices open Monday-Friday 9-5 and closed weekends, so evenings and weekends fall to an emergency line staffed by a manager and supervisor rather than a triage process. The most repeated public complaint is that calls are never returned and callers reach voicemail, which is the visible failure for a firm whose marketing sells personal service; ratings diverge by platform (Yelp 1.5 across 23 reviews versus Google 3.9 across 206), so this is a concentrated queue problem rather than firm-wide collapse, but it is the complaint a board or prospective client is most likely to find. The work itself is repetitive: identify the association and unit, classify the request, check the community's own rules and fee schedule, draft a reply, and open a ticket or callback in Vantaca or BuildingLink. Volumes are not published anywhere; the audit's 10-20 staff hours a week per community is an inference from the onsite-administrator role description, which is largely phone answering plus follow-up.",
+  "current_tools": [
+   {
+    "tool": "Phone and email intake via a static contact directory (HQ 609-683-7980, regional offices, info@ mailbox)",
+    "evidence": "Contact page is a directory of phone numbers and mailboxes with no self-serve booking, chat or ticket status lookup",
+    "source_url": "https://rcpmanagement.com/contact/"
+   },
+   {
+    "tool": "Vantaca owner portal (portal.rcpmanagement.com / home.rcpmanagement.com) with manual new-account review and a 2-business-day reply promise",
+    "evidence": "Portal login page states a team member will review each sign-up request and reply within 2 business days",
+    "source_url": "https://home.rcpmanagement.com/Home_v2/Login"
+   },
+   {
+    "tool": "Website maintenance request web form (WordPress site)",
+    "evidence": "Homepage promises documentation and follow-up on all maintenance requests and homeowner inquiries by an administrative support team; the form itself is a plain web form with no described routing or status visibility",
+    "source_url": "https://rcpmanagement.com/maintenance-request/"
+   },
+   {
+    "tool": "BuildingLink for property-level resident records plus separate work-order systems and manual owner back-charging",
+    "evidence": "RCP's own onsite administrator posting lists preparing and entering work orders, back-charging owner accounts and maintaining BuildingLink resident information",
+    "source_url": "https://hoa-jobs.com/onsite-administrator-part-time"
+   },
+   {
+    "tool": "Zego (formerly PayLease) for owner payments inside the portal; billing and statement questions route back to staff",
+    "evidence": "Payments page describes third-party processing into each association's operating account",
+    "source_url": "https://rcpmanagement.com/payments/"
+   },
+   {
+    "tool": "After-hours emergency line staffed by a manager and supervisor (answering service or call center not visible anywhere)",
+    "evidence": "Site advertises 24/7 emergency service with no described call center; office hours listed as Mon-Fri 9-5",
+    "source_url": "https://rcpmanagement.com/"
+   }
+  ]
+ },
+ "solution": {
+  "approach": "build-on-platform",
+  "design": "One intake layer across the three channels RCP already advertises (email, web form, phone), writing into the systems RCP already runs. Email and web-form submissions arrive in one queue: the agent identifies the association and unit, classifies intent (maintenance, assessment/billing, violation, amenity or move-in/out, board matter, sales inquiry), pulls the community's own rule, fee or emergency text, drafts a reply with the citation, and creates a ticket or callback task tagged to the association in Vantaca (and in BuildingLink where that community keeps resident records there). Phone uses carrier-agnostic forwarding: the association's existing number overflows or forwards after hours to a Twilio number, the call is recorded with a spoken disclosure, transcribed, summarised, and turned into the same ticket plus a callback task. A separate callback queue books a promised time window, sends a confirmation, chases no-shows, and escalates anything past its promised window to the community manager. Everything is logged append-only per association so a board can inspect a first-response and callback-kept report. Human gates: any reply that commits money, waives a fee, discusses a violation, lien or collections, or touches legal or board-confidential matters is drafted-for-approval only; after-hours emergencies always reach the on-call manager, and the agent never dispatches a vendor on its own. Deliberate design choice: no AI outbound voice calls in the pilot. Callbacks are made by a person from a queue, or confirmed by SMS only to callers who opted in at intake, because the FCC treats AI-generated voices as artificial or prerecorded voice under the TCPA and outbound AI voice would require prior express consent.",
+  "components": [
+   {
+    "component": "Voice intake, recording and call control",
+    "tool": "Twilio Programmable Voice",
+    "why": "Carrier-agnostic; the pilot forwards or overflows the association's existing number to a Twilio number, so no PBX or phone-system integration is needed. Published inbound US local rate $0.0085/min, recording $0.0025/min, number $1.15/mo.",
+    "source_url": "https://www.twilio.com/en-us/voice/pricing/us"
+   },
+   {
+    "component": "Speech-to-text for calls",
+    "tool": "Deepgram Nova-3",
+    "why": "Cheap per-second billing, no block rounding; pre-recorded $0.0043/min, streaming $0.0077/min pay-as-you-go.",
+    "source_url": "https://deepgram.com/pricing"
+   },
+   {
+    "component": "Classification, drafting and policy grounding",
+    "tool": "Gemini Developer API (paid tier)",
+    "why": "Long context for per-association rule and fee text plus cheap drafting; published paid tier $2.00 per 1M input tokens and $10.00 per 1M output tokens through November 30, 2026.",
+    "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+   },
+   {
+    "component": "Email intake and reply drafting",
+    "tool": "Gmail API (or Microsoft Graph mail if RCP runs Outlook/M365)",
+    "why": "Reads and drafts inside the mailbox RCP already uses; no new email system for staff to learn.",
+    "source_url": "https://developers.google.com/workspace/gmail/api/guides"
+   },
+   {
+    "component": "Tickets, records and association tagging",
+    "tool": "Vantaca standard API via Vantaca partner program",
+    "why": "Writes land in RCP's actual system of record rather than a bolt-on inbox; Vantaca runs a formal partner program with a named technical contact, NDA and integration support, and API access is vendor-provisioned, not self-serve.",
+    "source_url": "https://www.vantaca.com/become-a-vantaca-partner-vantaca-partner-program"
+   },
+   {
+    "component": "Property-level resident records and work orders at BuildingLink communities",
+    "tool": "BuildingLink (integration via their integration team)",
+    "why": "RCP's onsite staff already maintain BuildingLink records; BuildingLink publishes no developer docs, only an integration contact, so the pilot must confirm scope with them before promising writes.",
+    "source_url": "https://help-staff.buildinglink.com/en/support/solutions/articles/42000099790-contact-information-and-training-requests"
+   },
+   {
+    "component": "Human approval queue, callback scheduler and per-community SLA dashboard",
+    "tool": "Custom self-hosted web app (Postgres) on DigitalOcean",
+    "why": "The approval gate, callback clock and board-facing report are exactly what packaged receptions do not provide; small droplet from $6.00/mo.",
+    "source_url": "https://www.digitalocean.com/pricing/droplets"
+   },
+   {
+    "component": "Opt-in SMS confirmations to callers",
+    "tool": "Twilio Programmable Messaging with A2P 10DLC registration",
+    "why": "Carriers require Brand and Campaign registration for any application-to-person SMS to US numbers, including a single-inbox assistant; registration and carrier review take lead time, so it must start in week 1.",
+    "source_url": "https://www.twilio.com/docs/messaging/compliance/a2p-10dlc"
+   }
+  ],
+  "integrations": [
+   {
+    "system": "Twilio Programmable Voice",
+    "method": "REST API, webhooks and SIP/PSTN forwarding from the existing number",
+    "confirmed_in_docs": true,
+    "cost": "$0.0085/min inbound US local; $0.0025/min recording; $1.15/mo per number (published rates)",
+    "source_url": "https://www.twilio.com/en-us/voice/pricing/us"
+   },
+   {
+    "system": "Deepgram speech-to-text",
+    "method": "REST/streaming API",
+    "confirmed_in_docs": true,
+    "cost": "$0.0043/min pre-recorded Nova-3, $0.0077/min streaming, pay-as-you-go",
+    "source_url": "https://deepgram.com/pricing"
+   },
+   {
+    "system": "Gemini API",
+    "method": "REST API, paid tier",
+    "confirmed_in_docs": true,
+    "cost": "$2.00 per 1M input tokens and $10.00 per 1M output tokens through 2026-11-30",
+    "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+   },
+   {
+    "system": "Vantaca (association management platform)",
+    "method": "Vendor-provisioned API credentials under the Vantaca partner program; partner application, NDA and partnership terms precede technical integration",
+    "confirmed_in_docs": true,
+    "cost": "Not public. Vantaca's own published AI product, HOAi, is listed at $0.54 per door per month, but that is a different product from API access and must not be read as the integration price.",
+    "source_url": "https://www.vantaca.com/become-a-vantaca-partner-vantaca-partner-program"
+   },
+   {
+    "system": "BuildingLink",
+    "method": "No public API documentation; integration requested through BuildingLink's integration team (Integration@BuildingLink.com)",
+    "confirmed_in_docs": true,
+    "cost": "Not public",
+    "source_url": "https://help-staff.buildinglink.com/en/support/solutions/articles/42000099790-contact-information-and-training-requests"
+   },
+   {
+    "system": "Gmail / Google Workspace mailbox",
+    "method": "Gmail API (send, read, draft scopes)",
+    "confirmed_in_docs": true,
+    "cost": "API use included with Workspace; Workspace seat pricing not confirmed in this research",
+    "source_url": "https://developers.google.com/workspace/gmail/api/guides"
+   },
+   {
+    "system": "Microsoft Outlook / Microsoft 365 mailbox",
+    "method": "Microsoft Graph mail API",
+    "confirmed_in_docs": true,
+    "cost": "API use included with the M365 licence RCP already holds; seat price not confirmed in this research",
+    "source_url": "https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview"
+   },
+   {
+    "system": "Twilio SMS (A2P 10DLC)",
+    "method": "Registered Brand + Campaign + Messaging Service before any resident SMS",
+    "confirmed_in_docs": true,
+    "cost": "Registration and monthly campaign fees apply per Twilio's fee page; exact figures not confirmed first-hand (page is JavaScript-rendered)",
+    "source_url": "https://www.twilio.com/docs/messaging/compliance/a2p-10dlc"
+   }
+  ],
+  "human_in_the_loop": "Three hard gates. (1) Money and status: any reply that states a balance, quotes a fee, waives or imposes a charge, discusses a violation, lien or collections, or answers a legal question is drafted for manager approval and cannot be sent by the agent. (2) Emergencies: after-hours life-safety or property-damage calls always page the on-call manager; the agent summarises and routes, it never dispatches a vendor, closes a pool or promises a repair time. (3) Board and confidential matters: board-member calls and anything referencing executive session are routed to the community manager with a summary, not answered. A named manager also reviews a sample of sent replies weekly for the first month, and every agent action is logged with the source rule or document it relied on."
+ },
+ "build_plan": {
+  "phases": [
+   {
+    "phase": "0. Discovery, access and baseline design",
+    "steps": [
+     "Confirm the actual phone system and carrier per office and per community (unknown today), whether lines can be forwarded or overflowed, and whether an answering service already exists after hours",
+     "Ask directly whether RCP has HOAi Voice live or planned on its Vantaca instance, since that changes the scope of this pilot",
+     "Request Vantaca API credentials through RCP's vendor support / partner onboarding and open a conversation with BuildingLink's integration team",
+     "Map the email and web-form inboxes, who currently owns replies, and where tickets are created per community",
+     "Agree the baseline measurement: 2 weeks of manual inquiry logging plus phone-system reports plus a 50-inquiry sample audit"
+    ],
+    "founder_days": "2",
+    "client_provides": "One operations sponsor (COO or a regional manager), confirmed phone carrier details, Vantaca admin contact, inbox list, 3-5 candidate communities"
+   },
+   {
+    "phase": "1. Baseline capture and per-community knowledge",
+    "steps": [
+     "Run 2 weeks of baseline logging with a simple shared form so volume, channel mix and response times are measured, not assumed",
+     "Collect each pilot community's rules, fee schedule, amenity and move-in/out procedures, vendor list and emergency protocol; write approved answer templates with the source clause noted",
+     "Build the escalation matrix (what pages a manager, what waits, what is never answered by the agent)"
+    ],
+    "founder_days": "3",
+    "client_provides": "Community documents and fee schedules, emergency protocols, named approver per community, access to 2 weeks of historical inquiry email"
+   },
+   {
+    "phase": "2. Email and web-form triage with approval queue",
+    "steps": [
+     "Connect the mailbox(es) read-only, then draft-only",
+     "Ship classification, association/unit identification, policy-grounded draft replies and the approval queue",
+     "Create tickets in Vantaca via API; queue BuildingLink writes in an export file until integration scope is confirmed",
+     "Build the append-only audit log keyed by association"
+    ],
+    "founder_days": "5",
+    "client_provides": "Mailbox credentials or app authorisation, Vantaca sandbox or test association, one approver available daily"
+   },
+   {
+    "phase": "3. Phone pilot: after-hours and overflow",
+    "steps": [
+     "Provision Twilio numbers, record a disclosure greeting, forward or overflow one community's line after hours first",
+     "Transcribe and summarise calls, create ticket plus callback task, page on-call manager for emergency keywords",
+     "Register A2P 10DLC Brand and Campaign if SMS confirmations are used"
+    ],
+    "founder_days": "5",
+    "client_provides": "Written authorisation to forward the line, on-call rota, consent to record with disclosure, carrier account access"
+   },
+   {
+    "phase": "4. Callback queue and SLA dashboard",
+    "steps": [
+     "Promise-window scheduler, confirmation message, no-show chase, escalation on breach",
+     "One-page per-community report: first response, callback kept, reopen rate, draft approval rate"
+    ],
+    "founder_days": "3",
+    "client_provides": "The response-time promise RCP wants to make to boards, and who owns breaches"
+   },
+   {
+    "phase": "5. Pilot operation, tuning and readout",
+    "steps": [
+     "Weekly 30-minute review with the approver, tighten templates, fix misclassifications",
+     "Compare pilot communities against the baseline and a control group of non-piloted communities",
+     "Deliver a written readout with the numbers and a recommendation on extension"
+    ],
+    "founder_days": "5",
+    "client_provides": "Weekly review attendance, control-group data, decision on extension"
+   }
+  ],
+  "pilot": {
+   "scope": "3-5 communities, one region, 4 weeks. Channels: email and web-form triage live behind human approval from week 2, phone after-hours/overflow on one or two communities from week 3, callback queue and one-page per-community SLA report for all pilot communities. Systems: Vantaca ticket creation via API; BuildingLink writes only if that vendor confirms scope. Explicitly out of scope: outbound AI voice calls, anything touching balances, liens or violations without approval, and any change to the emergency dispatch process.",
+   "weeks": "5-6 weeks elapsed to a running pilot (about 23 founder-days including build), then 4 weeks of pilot operation; a working demo on a single community is achievable in week 3",
+   "success_metrics": [
+    "Median first response time on email and web-form inquiries versus baseline (target: within one business day, measured per community)",
+    "Share of inquiries answered inside RCP's own promised window",
+    "Callback-kept rate: callbacks made in the promised window as a share of callbacks promised",
+    "Share of tickets created by the agent with no manual re-keying, and share correctly tagged to the right association and unit",
+    "Share of drafted replies approved with no or minor edits (a proxy for answer quality)",
+    "Escalation accuracy: emergency and money/legal items correctly routed, with zero unauthorised financial or legal replies sent",
+    "Approver time per day spent in the queue (must be a net saving, not a new burden)",
+    "No increase in resident complaints reaching managers during the pilot"
+   ],
+   "baseline_method": "Two weeks of manual inquiry logging by the pilot communities before any agent is live: channel, timestamp received, timestamp first replied, whether a callback was promised and kept, and who handled it. Supplemented by phone-system reports if the carrier provides them and by a 50-inquiry sample audit of the previous month's mailbox. Three non-piloted communities form a control group so seasonal swings are not mistaken for gains. Where logging was incomplete, the baseline is stated as a range rather than a point estimate.",
+   "exit_criteria": "Convert if: drafted replies reach at least 60% approval with no or minor edits, median first response on email/web-form improves versus baseline in at least three pilot communities, at least 90% of tickets are correctly association-tagged with no re-keying, zero financial or legal replies are sent without approval, and the named approver says the queue saves more time than it costs. Stop or re-scope if: Vantaca API access is refused or cannot be provisioned inside 3 weeks, BuildingLink cannot support the writes and RCP insists on BuildingLink parity, the approver load exceeds the time saved for two consecutive weeks, or RCP confirms HOAi Voice is already covering phone intake and only wants a phone robot."
+  }
+ },
+ "competitors": [
+  {
+   "vendor": "Vantaca",
+   "product": "HOAi / HOAi Voice (AI that answers resident calls and texts, creates work orders, connects to Vantaca)",
+   "fit_for_this_business": "The most direct substitute and the most serious one: RCP already runs Vantaca, and HOAi Voice answers calls around the clock, takes texts, and can create service requests inside the same platform with full association context. It is the buy-and-configure option RCP's own vendor will pitch.",
+   "price": "$0.54 per door per month (Vantaca's own published figure for HOAi), i.e. about $6.48 per door per year; roughly $65/month for a 120-door association, roughly $8,100/month across 15,000 doors",
+   "source_type": "vendor page",
+   "source_url": "https://www.vantaca.com/blog/how-to-grow-your-hoa-management-business-without-adding-staff"
+  },
+  {
+   "vendor": "Agent on Call",
+   "product": "24/7 AI receptionist configured for HOA and condominium management",
+   "fit_for_this_business": "Answers the main line, collects community and unit, urgency and request type, and sends a text and email summary to a designated contact; explicitly does not interpret governing documents, approve access or waive fees. Cheap and fast to switch on, but it hands off a summary rather than creating records in Vantaca or BuildingLink and does not run a callback queue or per-community SLA report.",
+   "price": "$99 flat per month, unlimited standard inbound calls and minutes, no per-call billing; no setup fee shown",
+   "source_type": "vendor pricing page",
+   "source_url": "https://agentoncall.com/industries/hoa-condominium-management.html"
+  },
+  {
+   "vendor": "InsertChat",
+   "product": "HOA answering service and AI receptionist (phone, chat, SMS, email)",
+   "fit_for_this_business": "Very close on HOA knowledge (dues, amenities, architectural requests, after-hours escalation) and can split assistants per community, but InsertChat itself states it does not connect to association management or accounting software, so it cannot look up balances or work orders and every request lands in a shared inbox for re-keying. That gap is precisely where an integrated build differentiates.",
+   "price": "Pro $98 per month (one phone number, monthly credits, three seats, three AI assistants); Growth $198 per month (up to 20 assistants); Scale quoted. Calls billed by the whole minute with a one-minute minimum.",
+   "source_type": "vendor pricing page",
+   "source_url": "https://insertchat.com/industries/hoa-management"
+  },
+  {
+   "vendor": "Smith.ai",
+   "product": "Human-staffed virtual receptionist (AI-first and hybrid tiers also offered)",
+   "fit_for_this_business": "Trained live humans answer and screen calls with real judgment, which suits board and money conversations the agent should not handle. Per-call economics get expensive at RCP's volume and it still delivers messages, not records in the association systems.",
+   "price": "Starter $300 per month for 30 calls, overage $11.50 per call; Basic $810 per month for 90 calls, overage $10.50 per call; Pro $2,100 per month for 300 calls, overage $8.50 per call; Enterprise custom",
+   "source_type": "vendor pricing page",
+   "source_url": "https://smith.ai/pricing/receptionists"
+  },
+  {
+   "vendor": "Ruby",
+   "product": "Live virtual receptionist and chat",
+   "fit_for_this_business": "Best-quality human answering of the pure-answering options, and the most common alternative for a management firm that wants a friendly human voice on the line; minutes-based pricing punishes the long, emotional calls typical of HOA disputes, and there is no association-system integration.",
+   "price": "$250 per month for 50 minutes; $395 per month for 100 minutes; $720 per month for 200 minutes; $1,725 per month for 500 minutes (monthly, no setup fee stated)",
+   "source_type": "vendor pricing page",
+   "source_url": "https://www.ruby.com/plans-and-pricing/"
+  },
+  {
+   "vendor": "Anchor Co AI",
+   "product": "Full Office (website, chatbot, missed-call text-back and a 24/7 AI phone receptionist)",
+   "fit_for_this_business": "A small-business bundle rather than an association tool: its AI receptionist takes messages after hours and transfers hot leads to a mobile. Relevant only as evidence of what a bundled 'AI receptionist' costs a small firm, not a fit for 125 associations with per-community rules.",
+   "price": "Full Office $1,497 per month (includes 24/7 AI phone receptionist, activated within first 30 days); self-serve chatbot plans from $29 to $199 per month; 'Done for you' chatbot set-up $349 per month",
+   "source_type": "vendor pricing page",
+   "source_url": "https://www.anchorcoai.com/pricing"
+  },
+  {
+   "vendor": "EliseAI",
+   "product": "VoiceAI / LeasingAI (AI voice and messaging for property management)",
+   "fit_for_this_business": "A well-funded AI voice product that can answer calls 24/7 and use property-specific knowledge, but its centre of gravity is multifamily leasing and resident operations, not community-association governance, and it does not appear to integrate with Vantaca or BuildingLink. Worth mentioning as the 'enterprise AI vendor' option a board might hear about.",
+   "price": "Not public (quote-based; no published per-unit or per-community rate found)",
+   "source_type": "third-party",
+   "source_url": "https://www.reallyo.com/blog/eliseai-alternatives"
+  },
+  {
+   "vendor": "Hire a person",
+   "product": "Part-time onsite administrator / receptionist at the community",
+   "fit_for_this_business": "The incumbent solution and the honest benchmark: a person at the desk answers, greets, prepares and enters work orders, back-charges owners and keeps BuildingLink up to date, and handles the awkward conversations no agent should. RCP already posts this role at $26/hour in Princeton, which is well above the NJ receptionist median and reflects the admin-plus-tools scope.",
+   "price": "RCP's own posting: $26.00 per hour for a part-time onsite administrator. NJ median for Receptionists and Information Clerks (BLS 2025 data via O*NET): $41,650 per year, $20.02 per hour; Trenton-Princeton metro median $40,550 per year",
+   "source_type": "government data",
+   "source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ"
+  }
+ ],
+ "running_costs": [
+  {
+   "item": "Inbound voice minutes (Twilio)",
+   "cost": "$0.0085 per minute",
+   "basis": "Published US inbound local rate. Pilot assumption: about 900 call minutes per community per month (300 calls x 3 minutes) x 3 communities = 2,700 minutes, about $23 per month. Inference on volume; no RCP call data exists publicly.",
+   "source_url": "https://www.twilio.com/en-us/voice/pricing/us"
+  },
+  {
+   "item": "Phone numbers (Twilio)",
+   "cost": "$1.15 per number per month",
+   "basis": "One number per pilot community or one shared number with per-community routing: $1.15-$3.45 per month",
+   "source_url": "https://www.twilio.com/en-us/voice/pricing/us"
+  },
+  {
+   "item": "Call recording (Twilio)",
+   "cost": "$0.0025 per minute",
+   "basis": "2,700 recorded minutes, about $6.75 per month",
+   "source_url": "https://www.twilio.com/en-us/voice/pricing/us"
+  },
+  {
+   "item": "Speech-to-text (Deepgram Nova-3)",
+   "cost": "$0.0043 per minute pre-recorded, $0.0077 per minute streaming (pay-as-you-go)",
+   "basis": "2,700 minutes pre-recorded, about $11.60 per month",
+   "source_url": "https://deepgram.com/pricing"
+  },
+  {
+   "item": "Model tokens (Gemini paid tier)",
+   "cost": "$2.00 per 1M input tokens, $10.00 per 1M output tokens through 2026-11-30",
+   "basis": "Inference: about 600 inquiries per month x roughly 8k input tokens of per-association context and 500 output tokens, plus classification calls, about $25 per month. Token volume is an estimate, not a measured figure.",
+   "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+  },
+  {
+   "item": "Hosting for the approval queue, callback scheduler and dashboard",
+   "cost": "From $6.00 per month (1 GiB droplet); $12.00 per month for 2 GiB",
+   "basis": "Self-hosted Postgres plus app on one small droplet; backups and monitoring extra",
+   "source_url": "https://www.digitalocean.com/pricing/droplets"
+  },
+  {
+   "item": "Email integration (Gmail API or Microsoft Graph)",
+   "cost": "No additional API charge; uses RCP's existing mailbox licences",
+   "basis": "Both APIs are documented and included with the underlying mailbox platform. Workspace or M365 seat pricing was not confirmed in this research, so no seat cost is claimed.",
+   "source_url": "https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview"
+  },
+  {
+   "item": "SMS confirmations (Twilio A2P 10DLC)",
+   "cost": "Registration and per-campaign monthly fees apply; exact figures not confirmed first-hand",
+   "basis": "Brand and Campaign registration is mandatory before any application-to-person SMS; per-message and carrier fees are separate. Excluded from the pilot cost total because the pilot can run without SMS.",
+   "source_url": "https://www.twilio.com/docs/messaging/compliance/a2p-10dlc"
+  },
+  {
+   "item": "Estimated total infrastructure for a 3-community pilot",
+   "cost": "About $70-$80 per month",
+   "basis": "Inference: sum of the lines above at the assumed volumes, excluding SMS registration and excluding any Vantaca or BuildingLink integration fee, which is not public. The real monthly cost of running this is founder care time, not infrastructure.",
+   "source_url": "https://www.twilio.com/en-us/voice/pricing/us"
+  }
+ ],
+ "suggested_pricing": {
+  "pilot_fee": "$3,500 for a 4-week, 3-community pilot (about 6 founder-days of build and support). Inference: roughly $580 per founder-day, deliberately below a full agency day rate because it buys the reference case and the reusable core. Offer to credit 50% toward the set-up fee if RCP converts.",
+  "setup_fee": "$6,000 one-time on conversion (Vantaca API integration, BuildingLink path, per-community knowledge base for 3-5 associations, approval workflow, callback queue, SLA dashboard and staff training). Inference: about 10-12 founder-days at roughly $500-$600 per day.",
+  "monthly_fee": "$750 per month for 3 communities (about $250 per community per month), with additional communities at $150-$200 per month each; includes monitoring, template and rule updates, a monthly SLA report and a monthly review call. Inference.",
+  "reasoning": "Inference, reasoned against four anchors. (1) Value: the audit puts recoverable staff time at roughly $2,535-$10,140 per community per year; $250 per community per month is about $3,000 a year, i.e. 30-120% of the low-to-high value band, so it only makes sense to the client if the pilot proves the upper half of that range or the retention/board-reporting benefit. If the low end is the real number, the honest price is $150 per community. (2) Competitor floors: commodity AI answering is $98-$99 per month per line (Agent on Call, InsertChat) and $0.54 per door for Vantaca's own HOAi, so a per-community fee cannot be defended on answering alone; it has to be defended on writing into Vantaca and BuildingLink, per-association rule grounding, the approval gates and the callback-kept report a board can read. (3) Human alternatives: Ruby is $720 per month for 200 minutes and Smith.ai $810 for 90 calls, so $750 per month for three communities of unlimited email plus after-hours phone is priced below human coverage but above commodity bots, which is the defensible middle. (4) Cost: infrastructure is only about $70-$80 per month, so price is set by value and by founding risk, not by cost. Structure note: if RCP turns on HOAi Voice for phone answering, drop the offer to the callback-queue-plus-email layer at $400-$500 per month and re-scope, rather than pretending to compete with the platform RCP already pays."
+ },
+ "leverage": [
+  {
+   "point": "The same core repeats across every community and every HOA manager: one triage-and-callback engine, per-association configuration files, sold again to other New Jersey community association managers and potentially to RCP's roll-up parent's future acquisitions. The consultant builds the template once on RCP's portfolio and reuses it.",
+   "source_url": "https://rcpmanagement.com/prime-management-and-rcp-management-announce-strategic-partnership-and-merger-by-end-of-2023"
+  },
+  {
+   "point": "The whole stack is commodity and self-hostable: Twilio voice at fractions of a cent per minute, Deepgram transcription at $0.0043-$0.0077 per minute, a hosted model API at $2-$10 per million tokens, and a $6-$12 droplet for the app. No vendor licence blocks reuse, and the same code can run on open-weight models on the consultant's own hardware where a client demands it.",
+   "source_url": "https://deepgram.com/pricing"
+  },
+  {
+   "point": "Vantaca runs a formal partner program with technical support and co-marketing, which is a route to distribution beyond RCP: an approved integration is a credential other Vantaca management companies can be sold against.",
+   "source_url": "https://www.vantaca.com/become-a-vantaca-partner-vantaca-partner-program"
+  },
+  {
+   "point": "RCP already invests in marketing (about 48 town-level pages, continued additions through 2026) and sells personal service, so a per-community SLA report is a marketing asset it can hand to boards and prospects - the consultancy can package the report as part of the retainer rather than build a separate product.",
+   "source_url": "https://rcpmanagement.com/wp-sitemap-posts-areaweserve-1.xml"
+  },
+  {
+   "point": "Local presence: Cranbury is roughly 15 minutes from Milltown, so on-site discovery, board-meeting walkthroughs and same-day fixes are practical in a way they are not for a national AI vendor or a call centre. That is the one advantage price cannot erase.",
+   "source_url": "https://rcpmanagement.com/contact/"
+  }
+ ],
+ "edge_vs_competitors": "Edge: (1) Integration depth. The commodity HOA receptionists are honest that they do not connect to association management software - InsertChat says so on its own page - and Agent on Call hands off a text and email summary. A build that actually creates the ticket in Vantaca, keeps BuildingLink records in step and logs every action per association is doing work the $98-$250 products cannot. (2) The callback queue and the per-community SLA report. Competitors answer calls; the complaint about RCP is unreturned calls, which is a queue and accountability problem, not an answering problem. Nobody sells that as a per-community board-facing report. (3) Local presence and a small paid pilot with no platform migration, since it wraps the systems RCP already pays for. (4) Per-association rule grounding with citations, which matters because a wrong answer about a fee or a violation becomes a manager's dispute to unwind. Where there is no edge: price and speed to switch on against Agent on Call at $99 flat or InsertChat at $98; and against Vantaca itself, which already owns the data, already sells HOAi at $0.54 per door and can bundle voice into a contract RCP has signed. A one-founder side business also has no reference clients in community association management and cannot promise 24/7 human backup, so it should not bid for the emergency line.",
+ "risks_compliance": [
+  {
+   "issue": "Outbound AI voice calls (callback confirmations, reminders, follow-ups) using a synthetic or cloned voice are robocalls under the TCPA and need prior express consent",
+   "rule_or_source": "FCC Declaratory Ruling FCC 24-17 (Feb 8, 2024): the TCPA's restrictions on 'artificial or prerecorded voice' encompass AI-generated human voices, so such calls require prior express consent absent an emergency purpose or exemption, plus identification and disclosure requirements",
+   "confirmed": true,
+   "mitigation": "No AI outbound voice in the pilot. Callbacks are human-initiated from a queue. If outbound AI voice is ever added, capture consent at intake, disclose the AI and the business identity at the start of the message, offer opt-out, and keep a consent log per number.",
+   "source_url": "https://docs.fcc.gov/public/attachments/FCC-24-17A1.pdf"
+  },
+  {
+   "issue": "Call recording consent: recording homeowner calls on RCP's behalf, where a caller may be in a two-party-consent state",
+   "rule_or_source": "N.J.S.A. 2A:156A-4 permits interception by a party to the communication or with one party's prior consent, so New Jersey is effectively one-party consent for a participant recording; the exception does not cover recordings made for an injurious purpose",
+   "confirmed": true,
+   "mitigation": "Play a recorded-line disclosure at the start of every agent-answered call regardless of the one-party rule, keep recordings in RCP's control with a retention schedule, and never record calls the consultant's system is not a party to. Ask RCP's counsel before recording board-member calls.",
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239"
+  },
+  {
+   "issue": "Resident SMS: confirmations and reminders to US mobile numbers sent from an application",
+   "rule_or_source": "Twilio's A2P 10DLC documentation: anyone sending SMS/MMS over a 10DLC number from an application to US end users must register a Brand and a Campaign, and unregistered traffic attracts additional carrier fees",
+   "confirmed": true,
+   "mitigation": "Register Brand and Campaign in week 1 before any resident text, collect opt-in at intake, honour STOP, and keep the pilot SMS-free until registration clears.",
+   "source_url": "https://www.twilio.com/docs/messaging/compliance/a2p-10dlc"
+  },
+  {
+   "issue": "Homeowner personal data (unit, address, balances, phone numbers) processed across client associations, with a duty to keep each association's data separate",
+   "rule_or_source": "New Jersey Data Privacy Act, P.L. 2023 c.266: applies to controllers processing personal data of at least 100,000 consumers in a calendar year, or 25,000 plus data-sale revenue. A 3-5 community pilot (roughly 360-600 doors) sits far below those thresholds, so the Act's substantive duties are unlikely to bind the pilot.",
+   "confirmed": true,
+   "mitigation": "Do not rely on being below the threshold: use a written data processing agreement with RCP, hard per-association tenant separation in the database, role-based access, encryption at rest, retention limits, and a deletion path at pilot exit. Note that this is a statutory threshold reading, not legal advice.",
+   "source_url": "https://pub.njleg.gov/Bills/2022/PL23/266_.HTM"
+  },
+  {
+   "issue": "Who is allowed to do community association management work, and whether an AI service crosses into it",
+   "rule_or_source": "CAI's 2025 state manager-licensing review: New Jersey has no dedicated community association manager licence (a bill has been introduced in the 2026-27 session but is not law), so there is no licence for the consultant to hold or violate on the software side",
+   "confirmed": true,
+   "mitigation": "Keep the agent firmly in intake and drafting, with a named RCP manager approving anything that states policy, money or enforcement. Confirm with RCP's counsel if any output could be read as managing the association rather than supporting its manager.",
+   "source_url": "https://advocacy.caionline.org/manager-licensing-outcomes25/"
+  },
+  {
+   "issue": "Wrong or confident answers on fees, violations, liens and governing documents, which create owner disputes and, in the collections context, potential FDCPA-style exposure",
+   "rule_or_source": "Not confirmed by a specific statute in this research: whether RCP or its agent is a 'debt collector' for assessment collections depends on facts about who owns the debt and how collection is done. Treated as an inference and flagged as unconfirmed.",
+   "confirmed": false,
+   "mitigation": "Hard refusal categories (no balances, no lien or collection discussion, no violation findings, no legal advice), citations required on every policy answer, and manager approval before anything about money or enforcement is sent. Ask RCP counsel to confirm the collections position before scope expands.",
+   "source_url": "https://rcpmanagement.com/services/"
+  },
+  {
+   "issue": "Concentration risk in the vendor: the platform RCP already runs sells a competing AI product",
+   "rule_or_source": "Vantaca publishes HOAi at $0.54 per door per month and markets HOAi Voice as answering resident calls around the clock and creating work orders inside Vantaca",
+   "confirmed": true,
+   "mitigation": "Raise it in the first call rather than discovering it later. Scope the pilot to what HOAi does not cover (email and web-form queue, callback accountability, BuildingLink communities, board-facing SLA reporting), ask for a written statement of what RCP has already bought, and keep the build portable so it is not worthless if RCP standardises on HOAi.",
+   "source_url": "https://www.vantaca.com/hoai-voice"
+  },
+  {
+   "issue": "Emergency misrouting: an after-hours life-safety call answered by software",
+   "rule_or_source": "RCP advertises 24/7 emergency service staffed by a manager and supervisor, with no described triage or call centre; a missed or mis-routed emergency is the highest-severity failure mode for the design",
+   "confirmed": true,
+   "mitigation": "Emergency keyword detection pages the on-call manager immediately and the agent never dispatches, closes an amenity or promises a repair time; run a live test of the emergency path with the on-call rota before go-live, and keep the existing emergency number as a fallback that is never removed.",
+   "source_url": "https://rcpmanagement.com/"
+  }
+ ],
+ "feasibility": {
+  "technical_1_5": 4,
+  "commercial_1_5": 3,
+  "weeks_to_pilot": "5-6 weeks elapsed to a running pilot on 3 communities (about 23 founder-days including build); a single-community working demo in about 3 weeks",
+  "verdict": "Go with conditions",
+  "reasoning": "Technically this is a well-trodden build: Twilio forwarding plus recording, Deepgram transcription, a hosted model for classification and drafting, and a small self-hosted approval app, all with published prices and documented APIs, at roughly $70-$80 a month of infrastructure. The uncertainty is integration, not intelligence - Vantaca provisions API access through a partner programme rather than self-serve, and BuildingLink publishes no developer documentation at all, only an integration contact - so the pilot must be allowed to start with email and web-form only, with Vantaca ticket creation, and treat BuildingLink as phase two. Commercially three things cap the score. First, RCP's own platform vendor sells an overlapping AI product at $0.54 per door per month, which means part of this opportunity may already be bought, and that must be settled in the first conversation. Second, the price anchors are brutal: $98-$99 a month for HOA-specific AI answering, $250 for 50 human minutes, against a value estimate of only $2,535-$10,140 per community per year that is itself an inference with no published call volumes behind it. Third, the buyer is the President and Managing Partner of a 51-200 person firm with an investment-company parent and boards to answer to, so a five-figure commitment needs a sponsor and probably board awareness; a one-founder side business with no HOA reference clients can realistically win a small paid pilot here, and nothing larger. Conditions for GO: (1) confirm in the first call whether HOAi Voice is live or planned, and re-scope to email, callback queue and SLA reporting if it is; (2) get Vantaca API access agreed in principle before quoting a set-up fee; (3) price the pilot at $3,500 and refuse to promise emergency-line coverage; (4) build the engine multi-tenant from day one so the same core can be sold to the next management company, which is where this becomes a business rather than a favour."
+ },
+ "discovery_questions": [
+  "What phone system and carrier do the Cranbury, Bloomfield and Manahawkin offices and each community use, and can a line be forwarded or overflowed after hours without changing the published number?",
+  "Is HOAi or HOAi Voice already live on your Vantaca instance, or on the roadmap? If it is live, which channels does it answer today - calls, texts, email, portal messages - and what does it still hand to staff?",
+  "Roughly how many homeowner inquiries a week does one community generate, and what share is phone versus email versus the website maintenance form?",
+  "Where do tickets actually get created for each community - Vantaca, BuildingLink, both, or email folders - and who re-keys them today?",
+  "What response time do you promise boards, and is it written anywhere a board has seen?",
+  "Who approves a reply that mentions a fee, a balance, a violation or a fine, and how long does that approval usually take?",
+  "What is the current after-hours emergency protocol, who is on call, and what must never be handled without a human?",
+  "Which communities would be candidates for a 3-5 community pilot, and do any of their boards need to consent to a vendor touching resident data?",
+  "Who is the operations sponsor and the day-to-day approver for a pilot, and what would they need to see in four weeks to say yes to a monthly retainer?",
+  "Does RCP have a standard data processing agreement or vendor security review we would need to complete, and who runs it?"
+ ],
+ "caveats": [
+  "No call, email or ticket volume data is published anywhere. Every saving figure in the audit and in this plan rests on an assumed 10-20 hours a week of inquiry handling per community, which is an inference from the onsite administrator job description, not a measurement.",
+  "The audit's per-community value range ($2,535-$10,140 a year) is based on a $26/hour posting rate loaded 1.25x for benefits, and the NBER benchmark it cites (14% average, 34% for newer support agents) is a working paper about customer support, not community association management.",
+  "Prices for Twilio, Deepgram, Gemini, DigitalOcean, Smith.ai, Ruby, InsertChat, Agent on Call, AnchorCo and Vantaca's HOAi were read from vendor pages on 2026-11-12 and can change; several are dated or promotional in the vendor's own wording.",
+  "Review evidence about unreturned calls comes from aggregator snippets (Yelp via Yahoo Local, Google rating via a third-party comparison site); the underlying platforms returned 403 to direct fetches, so exact review counts, dates and full text were not verified first-hand.",
+  "This plan assumes a build-on-platform approach with the consultant owning the code. It would look materially different if RCP simply buys HOAi Voice or a $99/month AI receptionist.",
+  "Suggested prices are inferences from competitor anchors and an unverified value estimate, not quotes. Nothing here has been tested with the client."
+ ],
+ "data_gaps": [
+  "RCP's actual phone system, carrier, extensions and any existing answering service are unknown; only published numbers and 9-5 office hours are confirmed.",
+  "Call, email and web-form volumes per community are unknown, as is the current first-response and callback-kept performance.",
+  "Vantaca API scope, rate limits, write permissions for work orders and tickets, and any partner or integration fee are not public; API access is vendor-provisioned and the standard API reference link surfaced in search returned HTTP 404 when opened.",
+  "BuildingLink publishes no developer documentation and no pricing; only an integration contact address is confirmed, so any BuildingLink write path is unverified.",
+  "HOAi Voice's price for RCP specifically is not public. The $0.54 per door per month figure is Vantaca's published HOAi rate, and it is not confirmed whether Voice is included, extra, or usage-billed.",
+  "Whether RCP has already deployed any AI intake, and whether HOAi Voice is live on its Vantaca instance, is unknown.",
+  "No board consent, procurement or vendor-security requirements are published; whether individual associations must approve a vendor touching resident data is unknown.",
+  "Workspace or Microsoft 365 seat pricing, and which of the two RCP actually runs, were not confirmed; the plan therefore claims no email licence cost.",
+  "Exact Twilio A2P 10DLC registration and campaign fees could not be read from the vendor page (JavaScript-rendered), so SMS costs are excluded rather than estimated.",
+  "Whether RCP or its agent would be treated as a debt collector for assessment collections was not confirmed by any source opened; treated as an open legal question for RCP's counsel.",
+  "No RCP financials or revenue figures were found, so ability to pay a five-figure programme is judged only from portfolio size, headcount and the merger release."
+ ]
+}

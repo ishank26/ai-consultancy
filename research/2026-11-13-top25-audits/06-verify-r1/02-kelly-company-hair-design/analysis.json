@@ -1,0 +1,86 @@
+{
+  "business": "Kelly & Company Hair Design",
+  "industry": "hair-salon",
+  "town": "Milltown",
+  "opportunities": [
+    {
+      "title": "Front-door repair: a storefront customers and AI assistants can actually read, quote and act on",
+      "capability": "G",
+      "problem": "Before any agent could help, the shop's front door is broken. The home page ships an empty <title> and no meta description, there is no LocalBusiness/HairSalon structured data, the header/footer logo returns 404, five footer links point at dead .html paths, and the rebuild's placeholder 'Hello world!' post is still live with a template heading and an image hotlinked from another domain. The 4.8-star Google rating is never shown on the site and the profile still offers 'Claim this business'. Triage scored the business 1/5 findable and 2/5 answerable.",
+      "evidence": [
+        "Booking page relies on a contact form and states 'we'll confirm your appointment by phone'; no live availability and no prices anywhere on the page. https://kellyhairdesign.com/booking/",
+        "The nine-service menu page lists no prices and no durations on any service. https://kellyhairdesign.com/services/",
+        "Empty home-page <title>, no meta description, and JSON-LD limited to WebPage/BreadcrumbList/WebSite - no LocalBusiness or HairSalon entity with address, phone or hours. https://kellyhairdesign.com/",
+        "11 of 11 images on /booking/ and 3 of 3 on /contact-us/ failed to load in a browser check, including the logo; https://kellyhairdesign.com/about.html returns HTTP 404 and so do the .html footer links. https://kellyhairdesign.com/booking/",
+        "Google Business Profile shows 4.8 stars, 'Hair salon', the suite number and hours, but also a 'Claim this business' prompt (appears unclaimed). https://www.google.com/maps/search/Kelly+%26+Company+Hair+Design+89+N+Main+St+Milltown+NJ",
+        "Triage agent-readiness scores: findable 1, answerable 2, bookable 1 (from triage.json, verified on the live site)."
+      ],
+      "agent_design": "A repair sprint plus a small standing agent. (1) Technician fixes the asset and link breakage, deletes the placeholder post, writes a real title/description per page, and generates HairSalon + Service JSON-LD (name, '89 N Main St Suite 3', phone, Tue-Fri 10-8 / Sat 9-4 hours, service list) from one source-of-truth file so pages cannot drift. (2) A consistency agent reads that file weekly, diffs it against the rendered site and the Google Business Profile (hours, suite number, services, phone), and opens a ticket with the exact patch when they disagree. (3) An owner-approved 'answer block' - price ranges, durations, what a glaze vs a colour vs a blowout is, parking/stairs to Suite 3 - published as plain text so search snippets, map answers and assistants have something quotable. Every change to prices or hours is proposed by the agent and published only after the owner's approval.",
+      "why_not_DIY": "A chatbot subscription cannot fix a 404 logo, an empty <title> or a missing schema graph, and it cannot reconcile a listing with a website. This needs theme-template and asset work, valid structured data across pages, and then a recurring diff-and-patch loop. The salon already paid a vendor (TrueKonnects) for an August 2026 rebuild that shipped all of these defects, so the failure is QA and maintenance, not the existence of a website.",
+      "impact_estimate": {
+        "range": "$1,000-$3,100/yr of front-desk time returned (1-3 hrs/week of 'what do you charge / where are you / are you open' calls at the NJ median receptionist wage of $20.02/hr). No revenue is modelled: the effect is that the 4.8 rating, the prices and the hours become visible and quotable. Repair effort is roughly 1-2 days.",
+        "assumptions": "Assumes 1-3 staff hours a week currently go to price/address/hours questions. No booking volume, ticket price or traffic data is published, so no booking uplift or conversion gain is claimed; a sourced benchmark exists only for the labour rate.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ"
+      },
+      "complexity": "Low",
+      "pilot_scope": "Two weeks: fixed titles and meta, valid HairSalon/Service JSON-LD, logo and five footer links repaired, placeholder post removed, a services page carrying price ranges and durations the owner approves, Google Business Profile claimed and completed (services, photos, hours, suite), plus a before/after snapshot of what Maps and an assistant currently answer versus what they answer afterwards.",
+      "walk_in_checks": []
+    },
+    {
+      "title": "AI receptionist that answers, quotes and books - and stops losing Sunday-to-Tuesday enquiries",
+      "capability": "A",
+      "problem": "There are exactly two ways in: the phone, and a Contact Form 7 'appointment request' that promises a callback. The shop publishes no prices and no live availability, so every price question and every booking becomes a staff callback. It is closed Sunday and Monday, so anything arriving then waits until Tuesday opening. Intake is not segmented either - booking requests land in the same WordPress inbox as the general 'Send a Message' form, so the front desk re-qualifies each one.",
+      "evidence": [
+        "Booking page: 'Tell us what you're after and we'll confirm your appointment by phone', with hours listed as Tue-Fri 10-8, Sat 9-4, Sun-Mon closed. https://kellyhairdesign.com/booking/",
+        "No prices or durations on the nine-item service menu, so price questions have no self-serve answer. https://kellyhairdesign.com/services/",
+        "Tech footprint shows Contact Form 7 6.1.7 with Akismet as the booking engine - no scheduling platform (Booksy/Fresha/Vagaro/Square/GlossGenius), no chat or SMS widget, no CRM. https://kellyhairdesign.com/",
+        "No staff names, specialties or stylist availability are published, so a caller cannot pre-select a stylist from the web. https://kellyhairdesign.com/about-us/",
+        "Triage 'bookable' score is 1/5: labelled request form, no live booking (triage.json, verified on the live site)."
+      ],
+      "agent_design": "A voice + SMS + web-chat intake agent on the salon's existing number, handling after-hours calls, overflow while stylists are with clients, and the website form. It answers only from an owner-approved knowledge file (services, price ranges, durations, stylist specialties, stairs/suite directions, cancellation policy) and never invents a price - if a question falls outside the file it says so and takes a callback number. It checks real calendar availability, books, reschedules and cancels, sends a confirming SMS with an optional deposit link, collects the intake detail the salon needs (service, length/colour goal, occasion date, preferred stylist) and tags the enquiry by service so nail and lash requests stop landing in the general inbox. Escalations - bridal or up-do parties, colour corrections from another salon, complaints, lash patch-test questions - go to a person with the transcript. Each Tuesday the agent sends a digest and, with human-approved templates, offers cancelled slots (Zenoti's 2025 salon data puts cancellations at 8% and no-shows at 3%) to a waitlist; staff approve every outbound offer.",
+      "why_not_DIY": "This is telephony, calendar write-access, SMS deliverability and a guardrail layer in one system. A website chatbot cannot answer a phone on a Monday when the shop is closed, cannot write to a calendar, and a booking widget alone still leaves the price conversation and the callback promise in place. Reliability and refusing to quote a invented price are the product; the salon's current stack has no CRM, no scheduling platform and no analytics to build on.",
+      "impact_estimate": {
+        "range": "$4,000-$10,000/yr of front-desk time (4-10 hrs/week at the NJ median receptionist wage of $20.02/hr). Recovered Sunday/Monday and after-hours enquiries are real but not dollar-modelled, because neither booking volume nor menu prices are published.",
+        "assumptions": "Assumes 4-10 hours a week currently go to answering the phone and calling requesters back, and that the owner keeps a phone-based workflow. Only labour time is quantified. If cancelled slots are refilled via the waitlist, the value per slot cannot be priced from public data; Zenoti's 3% no-show / 8% cancellation rates (2025 Beauty and Wellness Benchmark Report, 2024 platform data) are used only to size the opportunity, not to claim revenue.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "Three weeks on one tracked number plus the website form: after-hours and overflow answering, the top 20 questions answered from an owner-approved sheet, live bookings into the owner's calendar, SMS confirmations, and a human-approval queue for exceptions. Deliverable is a weekly report of calls handled, questions answered without a callback, bookings captured, and escalations - the baseline the owner needs to decide whether to keep the number.",
+      "walk_in_checks": []
+    },
+    {
+      "title": "Client-history and consultation agent: colour formulas, service notes and pre-visit expectation setting",
+      "capability": "C",
+      "problem": "The site advertises a 'hair analysis' consult before every treatment, but nothing captures the result: no CRM, no client-record system and no staff bios were detected, and at least two stylists work the chair (a named stylist plus a long-tenured lead referred to in reviews). The only visible negative review is precisely a records and expectation failure - a client says the stylist did her own thing, leaving the wrong colour and too much length removed - and no client can pre-confirm what they are asking for because the site names no stylist and shows no service detail beyond a label.",
+      "evidence": [
+        "'Before every hair treatment, we conduct proper hair analysis session for our client... and only then we recommend the treatment' - a consult with no documented output. https://kellyhairdesign.com/services/",
+        "No CRM, no scheduling platform and no chat/SMS tool in the page source; the stack is WordPress, Contact Form 7, Yoast and a Facebook embed. https://kellyhairdesign.com/",
+        "One visible Yelp review (via Bing's map card) complains of the wrong colour and too much length removed, i.e. an expectation-setting failure rather than speed or billing. https://www.bing.com/maps?q=Kelly+%26+Company+Hair+Design+89+N+Main+St+Milltown+NJ",
+        "Reviewers refer to 'Tracie and her staff' and a July 2026 Facebook post credits stylist Nicole, so work is shared across more than one pair of hands. https://www.facebook.com/pages/category/Hair-Salon/Kelly-Company-Hair-Design-526115087918408/",
+        "Zenoti's 2025 salon benchmark puts 24-hour rebooking at 10% average versus 30% for top performers - the pre-visit flow has a documented gap to close. https://zenoti.relayto.com/e/the-2025-beauty-and-wellness-benchmark-report-3p25j2xfpamji/i299Zy2T15"
+      ],
+      "agent_design": "A knowledge agent over the salon's own client records, wrapped in a small internal tool (D-flavoured build): after each appointment a stylist dictates or types three fields - formula and processing time, service performed, preferences or sensitivities - plus an optional photo, kept against the client's number with access limited to staff. The agent then answers, by voice or chat in under a minute, 'what did we use on this client last time and who did it', and can list who is due for a colour refresh. Before a colour, glaze or up-do booking it drafts a short consult message to the client ('here is the length and shade we agreed, reply to confirm or send a photo') that the stylist approves before it sends; the client's reply is stored with the record. On any health, allergy or patch-test question the agent stops and routes to a person - it gives no clinical advice. Every record and every outgoing message has a staff approval step.",
+      "why_not_DIY": "A generic chatbot cannot hold structured per-client records under access control, cannot ground an answer in a specific formula without hallucinating one, and cannot close the loop with the client before the appointment. The hard parts are data capture at the chair (a workflow problem, not a prompt problem), retrieval that refuses to answer when no record exists, and privacy of client notes - none of which a website assistant subscription provides.",
+      "impact_estimate": {
+        "range": "Directional, not dollar-heavy: roughly $450-$1,500/yr of stylist time at the NJ median hairdresser wage ($17.38/hr) if 10-30 minutes a week across the team stops going to re-deriving past formulas and preferences, plus avoided redo appointments (not priced - the salon publishes no menu prices) and part of Zenoti's 10%-to-30% 24-hour rebooking gap if the pre-visit message prompts the next booking.",
+        "assumptions": "Assumes 2-5 stylists and 10-30 minutes a week of look-up time; headcount, appointment volume and ticket prices are all unpublished, so redo and rebooking value are stated as directional only. The one visible complaint about colour and length is treated as a signal, not a measured redo rate.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/39-5012.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "Three to four weeks: digitise the last ~60 days of existing client cards (owner supplies them), stand up the record tool and retrieval agent, run the staff-approval pre-visit consult message for colour, glaze and up-do bookings, and report questions answered without digging through paper, consult messages confirmed, and any redos or complaints versus the baseline weeks.",
+      "walk_in_checks": []
+    }
+  ],
+  "lead_score": {
+    "pain": 24,
+    "fit": 16,
+    "ability_to_pay": 11,
+    "ease": 11,
+    "strategic": 12,
+    "total": 74,
+    "rationale": "Pain (24/30): the front-door failure is verified on live pages, not inferred - empty title, 404 logo, five dead footer links, 11 of 11 broken booking-page images, an unclaimed 4.8-star profile and a callback-only booking promise. The operational pain (callbacks, after-hours loss) is an inference from the same infrastructure: no review anywhere mentions missed calls or no-shows, so it earns strong-not-maximum marks. Fit (16/20): G, A and C all sit inside the consultancy's capabilities with no hardware and no data-sensitivity obstacle; there is no avenue to build an E (physical/edge) opportunity - no avenues.json was supplied, the footprint is a single suite with styling and pedicure stations, no docks, fleet, kitchen or shop floor, no complaint themes about stock, temperature or safety, and a camera or sensor stack at this size would not pay back (anything security-adjacent would also require a licensed NJ alarm business to survey and install under N.J.S.A. 45:5A-2). Ability to pay (11/20): an established single-location salon with 47 open hours a week and a 4.8 rating that just paid a vendor for an August 2026 website, which shows willingness to spend on web work - but ticket size is small, no menu prices are published, no headcount or revenue is visible, and the owner or manager is not named anywhere. Ease (11/15): one site, one WordPress install, one decision to make, and the front-door work is days not months; the drag is that the decision maker is unknown and the existing vendor relationship may complicate ownership of the site. Strategic (12/15): independent salons and small beauty businesses are an enormous, near-identical segment - the front-door repair plus AI receptionist package is repeatable with almost no re-engineering, and the colour-history agent is a differentiator other salons in the same segment would want. Total 74/100: pursue on a walk-in, lead with the broken storefront (visible, undisputed, cheap to prove), and use the receptionist pilot as the paid next step. Evidence is not thin on the front door; it is thin on volumes, prices and the decision maker, which is why the score stops short of the high 80s."
+  },
+  "best_evidence_signal": "The booking page promises 'we'll confirm your appointment by phone' while the Maps profile still shows 'Claim this business' - a 4.8-star salon whose own front door cannot take a booking or be claimed: https://www.google.com/maps/search/Kelly+%26+Company+Hair+Design+89+N+Main+St+Milltown+NJ",
+  "suggested_channel": "walk-in",
+  "evidence_thin": false
+}

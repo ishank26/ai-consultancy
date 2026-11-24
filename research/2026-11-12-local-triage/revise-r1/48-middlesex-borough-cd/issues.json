@@ -1,0 +1,62 @@
+[
+ {
+  "claim": "Bomar Crystal Co, 201 Blackford Ave, Middlesex",
+  "problem": "The company's own contact page gives 117 William St, P.O. Box 10, Middlesex NJ 08846. 201 Blackford Ave is an old printed-directory address; even the mapper's own Loc8NearMe source shows 117 William Street",
+  "fix": "Change address to 117 William St, Middlesex NJ 08846; add phone (732) 356-7787"
+ },
+ {
+  "claim": "NutraBio Labs Inc., 600 Lincoln Blvd, Middlesex",
+  "problem": "The company's own contact page gives 564 Lincoln Boulevard, Middlesex NJ 08846; 600 Lincoln Blvd comes from a job-posting/directory trail",
+  "fix": "Change address to 564 Lincoln Blvd, Middlesex NJ 08846"
+ },
+ {
+  "claim": "PuroClean of Middlesex, 432 Lincoln Blvd",
+  "problem": "PuroClean is a national franchise brand and the brief excludes chains and franchises; the mapper listed it knowingly as a 'triage decision' item",
+  "fix": "Remove the entry rather than pass it downstream"
+ },
+ {
+  "claim": "D & B Auto Supply (NAPA), 320 Lincoln Blvd",
+  "problem": "NAPA is a national banner programme; the entry is a banner-affiliated parts jobber, adjacent to the excluded-chain rule, and the mapper flagged it as such",
+  "fix": "Remove, or keep only if the owners confirm no NAPA banner relationship"
+ },
+ {
+  "claim": "Middlesex Presbyterian Preschool, 1190 Mountain Ave",
+  "problem": "Church-affiliated preschool (worship/school types are excluded) sourced only from an undated hospital childcare PDF; no current evidence it still operates",
+  "fix": "Remove unless a current source shows an operating independent business"
+ },
+ {
+  "claim": "Coverage in groups C and D for Middlesex Borough",
+  "problem": "Own searches across 9 categories found 26 eligible in-borough businesses, only 14 of which are listed (54%, below the 70% bar). Gaps concentrate in machine shops, commercial printing, landscaping and secondary roofers",
+  "fix": "Add the businesses in coverage.missing, then re-run the coverage check"
+ },
+ {
+  "claim": "Food edge cases kept in the list (A & G Fine Foods Inc, Flavor & Food Ingredients Inc)",
+  "problem": "Both are food businesses and the brief excludes 'food'; they are B2B ingredient manufacturers/wholesalers rather than restaurants, so the exclusion is ambiguous rather than clear-cut",
+  "fix": "Get an explicit ruling from the orchestrator on whether B2B food manufacturers count as excluded 'food'"
+ },
+ {
+  "claim": "Driving schools and child-care centres in group D (Accurate Driving School, JR Driving School, Big Hugs, Little Miracles, Young Learners, Middlesex Baby Spa)",
+  "problem": "Licensed child-care centres and driving schools are commercial businesses, but a strict reading of 'schools' would exclude them; the mapper did not flag the ambiguity",
+  "fix": "Confirm the scope ruling for education-adjacent businesses before triage"
+ },
+ {
+  "claim": "American Legion Catering Hall, 707 Legion Place",
+  "problem": "A nonprofit veterans' post hall; not on the exclusion list but a poor fit for commercial outreach, and it is sourced from a caterer's page rather than the post's own",
+  "fix": "Drop, or re-source from the post's own page"
+ },
+ {
+  "claim": "HomeCraft Paving & Masonry (no street address)",
+  "problem": "Own site says 'based in Middlesex, NJ' but the page carries placeholder testimonials ('replace with real client quotes') and generic copy typical of lead-generation sites; no borough street address anywhere",
+  "fix": "Treat as unverified until an address or state registration is found"
+ },
+ {
+  "claim": "Two suggested additions have doubtful addresses (Genesis Landscape Contractors, 165 Union Ave; Rubicon Roofing Systems, 207 Lincoln Blvd)",
+  "problem": "165 Union Ave is also the address Arrow Sewer & Drain uses on its own Middlesex page, and 207 Lincoln Blvd appears only in a roof.info directory snippet - both may be directory artefacts",
+  "fix": "Verify addresses before adding them"
+ },
+ {
+  "claim": "Many group D manufacturing entries rest on a single NJ Business Directory row (Fram Trak, Trio Packaging, Soneko IR, Koba, Jema American, Whitemarsh, Thern-type rows)",
+  "problem": "Not individually falsified here, but each has one bulk-directory source and the mapper's own caveat admits some may be inactive or holding companies",
+  "fix": "Spot-check a sample against the NJ business-entity registry before triage"
+ }
+]

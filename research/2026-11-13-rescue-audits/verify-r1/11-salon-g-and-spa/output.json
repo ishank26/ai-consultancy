@@ -1,0 +1,118 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "founder_md, Open questions: 'Birdeye and Salon Lookup show (732) 305-6557'.",
+      "problem": "The Birdeye page for this business shows no phone number at all. Opening https://reviews.birdeye.com/salon-g-and-spa-169813247044904 in Chrome returns rating, 117 reviews, hours, address and 'Claim this profile'; searching the page source finds neither 305-6557 nor 410-7951. The (732) 305-6557 number is attributed to Birdeye without support. The rest of that sentence (Google profile shows (732) 410-7951) is correct.",
+      "fix": "Reword to what the sources show, e.g. 'the profile shows (732) 410-7951, while Salon Lookup and other directories show (732) 305-6557; Birdeye lists no phone'. No change needed in audit_md."
+    },
+    {
+      "claim": "audit_md: '4.5 from 117 reviews' presented as one Google profile fact.",
+      "problem": "The 4.5 rating is confirmed on the Google place page, but Google served a 'limited view' with no review count, so 117 is not visible there. 117 appears on the Birdeye mirror of the same business, which shows 4.7 stars with 117 reviews - rating and count come from two sources with different averages.",
+      "fix": "Either drop the count ('4.5-star rated') or say '117 reviews, per the Birdeye mirror (4.7 there)'. Nothing else in the report depends on the number."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Google Business Profile: name 'SALON G AND SPA', 1727 US-130, North Brunswick Township, NJ 08902, hair salon, 4.5 stars, open closing 7 PM, websites hairbarnyc.com and mysalongandspa.com, phone (732) 410-7951.",
+      "source_url": "https://www.google.com/maps/place/SALON+G+AND+SPA/@40.443065,-74.4732439,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The profile's 'Book online' button points at the salon's Square booking page (app.squareup.com/appointments/book/vrvtrhybp21hn9/LPVEQBTCPBEVB/start).",
+      "source_url": "https://www.google.com/maps/place/SALON+G+AND+SPA/@40.443065,-74.4732439,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The profile's first website field resolves to book.hairbarnyc.com; the second is http://mysalongandspa.com.",
+      "source_url": "https://www.google.com/maps/place/SALON+G+AND+SPA/@40.443065,-74.4732439,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "mysalongandspa.com shows no salon content today; in Chrome it loads and is replaced by an ad page on cf.triorook.site that renders blank (no text, no images) at desktop and phone width.",
+      "source_url": "http://mysalongandspa.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A scripted HTTPS request to mysalongandspa.com fails certificate verification ('unable to get local issuer certificate').",
+      "source_url": "https://mysalongandspa.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The HTML served for http://mysalongandspa.com/ is a ParkLogic ad-routing script carrying this domain name and tenant 'oleksandr'.",
+      "source_url": "http://mysalongandspa.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP mysalongandspa.com: registered 2026-04-20, expires 2027-04-20, last changed 2026-06-20, registrar Name SRS AB (IANA 638), NS1/NS2.653.PARKLOGIC.COM, status active.",
+      "source_url": "https://rdap.org/domain/mysalongandspa.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP hairbarnyc.com: registered 2013-03-08, expires 2027-03-08, last changed 2026-03-09, registrar IONOS SE (IANA 83), Cloudflare nameservers, clientTransferProhibited.",
+      "source_url": "https://rdap.org/domain/hairbarnyc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "hairbarnyc.com/locations/ lists nine salons - five in New York (3rd Avenue, Cedarhurst, Lexington, Midtown, SoHo) and four in Florida (Boca Raton, Delray Beach, Palm Beach Gardens, Parkland) - and no New Jersey location.",
+      "source_url": "https://hairbarnyc.com/locations/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Hair Bar NYC booking flow offers the same New York and Florida locations and no New Jersey salon.",
+      "source_url": "https://book.hairbarnyc.com/webstoreNew/services",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Square booking page works, is headed 'Salon G and spa l' at 1727 Route 130, N Brunswick NJ, and lists Women's Haircut ($30 or $50, price varies, 30 min), Color touch up (1 hr 40 min), Men's Haircut (30 min) and Women Haircut & Blowout ($50, 1 hr).",
+      "source_url": "https://book.squareup.com/appointments/vrvtrhybp21hn9/location/LPVEQBTCPBEVB/services",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback captures of mysalongandspa.com return HTTP 200 from 16 April 2025 through 18 January 2026.",
+      "source_url": "https://web.archive.org/cdx/search/cdx?url=mysalongandspa.com&output=text&fl=timestamp,original,statuscode,digest&collapse=digest&limit=60",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The last archived page was a Square Online site (meta generator 'Square Online') with site title 'Salon G and spa l' and custom domain www.mysalongandspa.com.",
+      "source_url": "https://web.archive.org/web/20260118094405id_/https://www.mysalongandspa.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye mirror shows 4.7, 117 reviews, hours and an unclaimed profile.",
+      "source_url": "https://reviews.birdeye.com/salon-g-and-spa-169813247044904",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye also shows the phone (732) 305-6557.",
+      "source_url": "https://reviews.birdeye.com/salon-g-and-spa-169813247044904",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Giftly listing exists with hours, an unclaimed listing and staff names in the gift tips.",
+      "source_url": "https://www.giftly.com/gift-card/salon-g-and-spa-north-brunswick-2",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Salon Lookup listing shows 4.5 with 20 reviews.",
+      "source_url": "https://salonlookup.com/business/salon-g-and-spa-north-brunswick-township-nj",
+      "result": "not found"
+    },
+    {
+      "claim": "Salon Lookup shows phone (732) 305-6557 and a services blurb.",
+      "source_url": "https://salonlookup.com/business/salon-g-and-spa-north-brunswick-township-nj",
+      "result": "could not open"
+    },
+    {
+      "claim": "Google shows 117 reviews on this profile.",
+      "source_url": "https://www.google.com/maps/place/SALON+G+AND+SPA/@40.443065,-74.4732439,17z",
+      "result": "not found"
+    },
+    {
+      "claim": "Cause ('lapsed and re-registered') is labelled an inference, names no one, and audit_md states no cause at all.",
+      "source_url": "https://rdap.org/domain/mysalongandspa.com",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

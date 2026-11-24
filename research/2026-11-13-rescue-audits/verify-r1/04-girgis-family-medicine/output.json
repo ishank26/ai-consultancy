@@ -1,0 +1,98 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "founder_md: \"**Email draft (3 sentences)**\"",
+      "problem": "The draft actually contains four sentences (greeting, observation, screenshot offer, reply invitation). Minor labelling slip; no false statement about the business.",
+      "fix": "Change the label to \"Email draft (4 sentences)\" or merge the last two sentences."
+    },
+    {
+      "claim": "domains[travelclinicsofamerica.com].result: \"The domain root also returns HTTP 404.\"",
+      "problem": "True over https:// (root returns the plain 404 page) but the http:// and http://www. roots return IIS \"403.14 Forbidden\" (no default document). The claim is not wrong today, only incomplete about scheme dependence.",
+      "fix": "Optional: note that the 404 is over https and the http root returns a 403.14 directory-listing error, so a later re-check does not contradict the note."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "girgismd.com redirects through eyesonolympia.com to penn-medaltoona.com and shows an Indonesian slot-gambling (PRAGMATIC88) page; no practice name, address or phone on it",
+      "source_url": "https://girgismd.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Exact redirect chain: girgismd.com -> https://www.eyesonolympia.com/ -> https://penn-medaltoona.com/home-care/ (301, 301, 200)",
+      "source_url": "https://api.hackertarget.com/httpheaders/?q=https://girgismd.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The 'Website' button on the Dr Linda Girgis Google profile points to https://girgismd.com/, and the Dr Moris Girgis profile's points to http://www.travelclinicsofamerica.com/profiles/mgirgis.html",
+      "source_url": "https://www.google.com/maps/search/Girgis+Family+Medicine+South+River+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "travelclinicsofamerica.com/profiles/mgirgis.html returns 404",
+      "source_url": "http://www.travelclinicsofamerica.com/profiles/mgirgis.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback 2024-04-07 capture is the practice's own site: 'Girgis Family Medicine', 123 Main Street South River NJ 08882, phone (732) 254-9494, services list, both physicians, 'Create An Appointment' button",
+      "source_url": "https://web.archive.org/web/20240407002718/https://girgismd.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The practice site is last archived in April 2024 (Wayback captures span 28 Jan 2011 - 07 Apr 2024, no later capture)",
+      "source_url": "https://web.archive.org/web/20240407002718/https://girgismd.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2021-12-05 capture is a hosting default page (meta refresh to 'defaultsite')",
+      "source_url": "https://web.archive.org/web/20211205191305/https://girgismd.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 2023-01-31, expires 2027-01-31, last changed 2026-04-20, registrar GoDaddy.com LLC (IANA ID 146), nameservers MCKENZIE.NS.CLOUDFLARE.COM and NICO.NS.CLOUDFLARE.COM, registrant not published",
+      "source_url": "https://rdap.org/domain/girgismd.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Two live Google profiles for the same office and phone (732) 254-9494 at 123 Main St: 'Girgis Family Medicine - Dr Linda Girgis' rated 4.3 and 'Girgis Family Medicine - Dr Moris Girgis' rated 4.1, each with its own Website button; both show current opening hours (practice operating, not closed)",
+      "source_url": "https://www.google.com/maps/search/Girgis+Family+Medicine+South+River+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Saint Peter's HealthCare System physician page gives 171 Main Street, Suite 4, South River NJ 08882, (732) 254-9494, with no website field (address discrepancy with 123 Main St is disclosed in caveats)",
+      "source_url": "https://www.saintpetershcs.com/physician/moris-girgis",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Same address/phone on the Linda Girgis Saint Peter's page",
+      "source_url": "https://www.saintpetershcs.com/physician/linda-girgis",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ccphp.net page describes the practice as operating in South River, NJ (two physicians, husband and wife) - independent practice, not a chain",
+      "source_url": "https://ccphp.net/girgis",
+      "result": "confirmed"
+    },
+    {
+      "claim": "drlinda-md.com loads normally as a WordPress blog ('Dr. Linda - Just a family doctor speaking up from the frontlines of medicine') with no practice address, hours, services, appointment path or girgismd.com link on the home page",
+      "source_url": "https://drlinda-md.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cause of the domain problem is stated only as an inference (inference: true), and no person or the registrar is accused",
+      "source_url": "https://rdap.org/domain/girgismd.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "audit_md body is at most 300 words (~282 including headings), in plain English, with no prices and fix steps in a sensible order",
+      "source_url": "rescue.json (audit_md field, counted locally)",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Referenced screenshot files (shot-girgismd-desktop.png, shot-girgismd-mobile390.png, shot-travelclinics-404.png, shot-gmaps-desktop-2.png) exist",
+      "source_url": "rescue.json (screenshot_files fields) - files are not in this verification folder",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

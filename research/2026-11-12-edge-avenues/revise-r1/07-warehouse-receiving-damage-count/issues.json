@@ -1,0 +1,52 @@
+[
+ {
+  "claim": "CargoLens pricing: 'Per-site subscription, unlimited users; the exact price was not shown on the page I opened - Unknown', repeated in data_gaps as 'the CargoLens page showed a per-site/unlimited-user model but not the dollar figure.'",
+  "problem": "Contradicted by the cited page. The CargoLens page I re-opened states: Free 50 inspections/month and 2 users; Pro $599 per site per month billed annually ($749 month-to-month) with unlimited users; $499/site/month billed annually from the sixth site; one-site 30-day pilot $2,500 credited to year one. The brief reports a published price as unpublished, which also weakens the price-cluster benchmark used to size the pilot ($595/mo PalletVision, $599/mo CargoLens).",
+  "fix": "Replace with: '$599/site/month billed annually ($749 month-to-month), unlimited users; free tier 50 inspections/month; $2,500 30-day pilot; $499/site/month from the sixth site' and cite https://www.cargolens.app/receiving-inspection-app. Remove CargoLens from data_gaps."
+ },
+ {
+  "claim": "Peer-reviewed receiving-error study year: '2019-2021 (article; exact year not confirmed on the abstract page)', with data_gaps noting the year was not verified.",
+  "problem": "Year is misstated. The article is Destro et al., Production v.33 e20220077, 2023 (received June 2022, accepted Dec 2022). The 1%-10% range and the 3.50% TYP value are confirmed in Table 1, but they are model inputs drawn from WERC's 2019 DC Measures report, not a 2019-2021 publication.",
+  "fix": "Change year to '2023 (inputs from WERC DC Measures 2019)' and drop the 'exact year not confirmed' caveat."
+ },
+ {
+  "claim": "Neovia Logistics / Octave Coda: 'claims reduced by 40% ... 2024-2025 (case study date not confirmed)'.",
+  "problem": "Date contradicted. The case study says the solution was deployed in December 2025 and the 40% reduction (370+ claims disputed) was measured in 'the first four months after deploying'; the document carries a 2026 copyright. The 40% figure itself is confirmed, but 2024-2025 is the wrong period.",
+  "fix": "Change year to 'deployed December 2025; results over the following four months (2026)'."
+ },
+ {
+  "claim": "NJ LWD QCEW county report 'published 2025' (Middlesex 1,305 establishments, 49,911 employees, 13.3% vs 6.4%, +26.1% 2018-2024).",
+  "problem": "All four numbers are confirmed on the PDF, but the report is dated February 2026, not 2025.",
+  "fix": "Change the year note to '2024 QCEW, report dated February 2026'."
+ },
+ {
+  "claim": "4MP PoE turret/bullet camera at '$105-$168 per camera at a US reseller' (used in pilot cost range and assumptions: '~$105-168 each').",
+  "problem": "Not found. The cited page (usacompua.com/collections/4mp) returned only company boilerplate in my fetch; no product prices appeared, so the range cannot be sourced from the cited URL.",
+  "fix": "Either cite a page that displays those prices (product listing with visible prices) or mark the per-camera cost as an unsourced allowance/inference, consistent with how the PoE switch and cabling are already handled."
+ },
+ {
+  "claim": "NVIDIA Jetson Orin Nano Super Developer Kit at $399 (hardware line and pilot hardware list).",
+  "problem": "Could not open. The cited marketplace URL aborted/timed out on repeated attempts; the nvidia.com product page describes the kit but shows no price. A search index asserts $399 but I could not verify it on a page I opened.",
+  "fix": "Re-verify on a distributor page that displays the price (or NVIDIA store) and cite that URL; otherwise label $399 as unconfirmed, as was done for the Coral price."
+ },
+ {
+  "claim": "Hand freight/stock laborers in the NY-Newark-Jersey City metro averaged $20.66/hour and $42,970/year across 130,180 jobs, cited to https://www.bls.gov/oes/2023/may/oes435071.htm.",
+  "problem": "Numbers are correct but the citation is wrong. oes435071.htm (Shipping, Receiving, and Inventory Clerks) contains none of those figures; they appear on the Laborers and Freight, Stock, and Material Movers, Hand page, oes537062.htm.",
+  "fix": "Add the second source URL (https://www.bls.gov/oes/2023/may/oes537062.htm) or split the fact into two sourced entries."
+ },
+ {
+  "claim": "Arvist AI 'uses dock cameras plus WMS/TMS data to build visual evidence for freight and OS&D claims and to detect fraudulent or mis-timed claims.'",
+  "problem": "Partly not found. The cited page confirms dock/packing-station capture, WMS/TMS linkage, inbound and outbound claims, triage and drafted dispute letters, but says nothing about detecting fraudulent or mis-timed claims.",
+  "fix": "Drop 'fraudulent or mis-timed claims' or re-source it to a page that states it."
+ },
+ {
+  "claim": "PatchCore 99.1% image-level AUROC on MVTec AD, cited to the openaccess.thecvf.com HTML paper page.",
+  "problem": "The figure is correct (Table 1, PatchCore-25% = 99.1 AUROC; the abstract phrases it as 'up to 99.6%'), but the cited URL returns HTTP 404. Only the PDF works.",
+  "fix": "Point the URL at .../Roth_Towards_Total_Recall_in_Industrial_Anomaly_Detection_CVPR_2022_paper.pdf and state '99.1% at the 25% coreset setting (abstract: up to 99.6%)'."
+ },
+ {
+  "claim": "fit_score legal_risk_low = 12/20 while the legal section documents NJ wiretap criminal exposure for audio (2A:156A-3/-4(d)), required notice practice, mandatory bargaining at unionized sites and NLRB GC 23-02's presumption of unlawfulness.",
+  "problem": "Sub-scores are within range and sum correctly (15+12+10+14+12+8 = 71), but legal_risk_low at 60% of maximum sits high against a section that documents a third-degree crime threshold, a mandatory-bargaining obligation and a GC memo presuming always-on surveillance unlawful; the rationale itself concedes 'real friction'.",
+  "fix": "Lower legal_risk_low to about 9-10 and redistribute (e.g. +1 demand, +1 technical_feasibility) so the total still reflects the evidence, or state explicitly that 12 assumes audio disabled, no face recognition and no unionized site."
+ }
+]

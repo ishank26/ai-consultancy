@@ -1,0 +1,158 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Colorful Creations Photography, 2 American Way, Unit 3, Monroe Township (listed as a Monroe Township business)",
+      "problem": "Wrong town. The business's own contact page gives '2 American Way Unit 3, Spotswood, NJ 08884'. The list entry carries no website, so the municipal mismatch was never caught.",
+      "fix": "Drop the row, or re-label it Spotswood and move it out of this zone (mapper's own rule excludes out-of-municipality addresses)."
+    },
+    {
+      "claim": "Viaane Jewelry, 7 Nelson Dr, Monroe Township",
+      "problem": "Wrong town per the company's own site: its return/refund page gives '7 Nelson Dr, Cranbury, NJ 08512' and its about page describes the brand as based in Cranbury. This is exactly the Cranbury-address pattern the mapper says it removed elsewhere (e.g. Ankur International).",
+      "fix": "Apply the same rule used for Ankur International: remove the row (or verify the municipality from a tax record before any outreach)."
+    },
+    {
+      "claim": "Micalizzi Furniture Restoration, 28 Harrison Ave, Monroe Township",
+      "problem": "Municipality unclear. The business's own listings and several directories (Superpages, loc8nearme, Nextdoor, Birdeye) place it at 28 Harrison Ave, Englishtown NJ 07726, and Diversified Machine LLC is listed at the same street address under Monroe Township - so the row may be mixing two towns.",
+      "fix": "Confirm the municipality from the property record; if Englishtown borough, remove (separate municipality, same rule as Jamesburg)."
+    },
+    {
+      "claim": "Mataari, 1601 Perrineville Rd, #7530, Monroe Township - 'Small jewelry retailer, Monroe Crossing', evidence 'map listing with rating and hours'",
+      "problem": "Framing is wrong: mataari.com is an online Indian-jewelry retailer whose Monroe Township address is a PO Box / shipping address ('#7530' reads as a box number, not a mall unit). No storefront at Monroe Crossing could be evidenced.",
+      "fix": "Re-label as online-only/mail-order with a Monroe mailing address, and downgrade 'map listing' to unverified rather than storefront evidence."
+    },
+    {
+      "claim": "AATMA Performing Arts, 211 Applegarth Rd, Unit 104, Monroe Township, with aatmaperformingarts.com cited as evidence",
+      "problem": "The cited website does not support the address or the town: the homepage is titled 'Bollywood Dance Classes | Morganville', and /contact and /school show only a phone (212-464-8006) and no street address. The Monroe/Gables Plaza address rests on map/directory listings alone.",
+      "fix": "Keep the business but re-source the address (Gables Plaza tenant list or map listing URL); do not cite the own site as address evidence."
+    },
+    {
+      "claim": "Absolute Moving System, 944 Route 33, phone (732) 757-4504, per absolutemoving.net",
+      "problem": "Neither page opened on absolutemoving.net (homepage and /movers/monroe-nj/) shows the Route 33 address or the phone number; both show only licence numbers. The entry's claim that the 'site footer gives 944 Rt. 33 ... phone 732-757-4504' could not be reproduced.",
+      "fix": "Add a source URL that actually displays the 944 Route 33 address and phone (contact page or footer capture), or downgrade the address/phone confidence."
+    },
+    {
+      "claim": "Coverage of independent dance schools in Monroe Township",
+      "problem": "Absolute Dance Center (365 Spotswood-Englishtown Rd, Monroe Township, 732-251-5444) has a live own website with a 2026-27 schedule and appears in multiple directories, yet it is absent from the list - even though three other tenants of the same 365 Spotswood-Englishtown Rd building (Shivalay, Garden State Driving School) are included.",
+      "fix": "Add Absolute Dance Center."
+    },
+    {
+      "claim": "Coverage of independent custom-framing / picture-framing retail in Monroe Township",
+      "problem": "Cranbury Station Gallery (93 Halsey Reed Rd, Monroe Township, 609-495-5641) does custom framing by appointment, has a live own site and is a PPFA member, but is not in the list. The list has no framing category at all.",
+      "fix": "Add Cranbury Station Gallery (appointment-only, so note that)."
+    },
+    {
+      "claim": "Smaller eligible Monroe businesses surfaced by my own searches but not listed",
+      "problem": "Apple Dry Cleaners (355 Applegarth Rd, Suite 7, 609-655-2888 - Waze/Cylex, yet the caveats say it was dropped as aggregator-only), Dance On Q (357 Applegarth Rd, Suite 12), FaynMusic (245 Nighthawk Dr) and Launch Footwear / shoe repair (100 Middlesex Center Blvd, Suite 3) all appear in directories for Monroe Township and are missing. Each rests on directory evidence only, so confidence is limited.",
+      "fix": "Spot-check Apple Dry Cleaners and Dance On Q (multi-source: Waze + Cylex/Superpages) and add them if confirmed; treat FaynMusic and Launch Footwear as low confidence."
+    },
+    {
+      "claim": "categories_thin: 'no conventional independent hardware store exists inside the township'",
+      "problem": "Superpages lists 'Hardware Garden 33' at 943 State Route 33 W, Monroe Township, (609) 336-7499 as a hardware/building-materials store - the same street address as Burroughs Hardwoods. Either a real hardware retailer is missing from the list, or this is a stale/duplicate name for Burroughs.",
+      "fix": "Check who trades at 943 Route 33 W now; if Hardware Garden 33 is operating, add it and soften the categories_thin note. If it is the same building as Burroughs, note it as a duplicate to avoid a cold-call clash."
+    },
+    {
+      "claim": "The Social & Co. - Monroe (1 Rossmoor Dr, Bldg 2) filed as an 'independent specialty retailer'",
+      "problem": "thesocialandco.com lists the Monroe store alongside Jersey City / Woodbridge / Rahway locations - a small multi-store New Jersey operator, not clearly independent - and the product line is hemp/THC/CBD plus tobacco. The chain exclusion was applied to national franchisors only, so this is a judgement call, not a proven violation.",
+      "fix": "Confirm the client's chain threshold; if multi-location retail counts as a chain, drop it. Its own site's core products (hemp-derived) should also be checked against the exclusion list."
+    },
+    {
+      "claim": "Ellie's Academy of Monroe filed as an in-scope private preschool/child care",
+      "problem": "elliesacademy.com runs a /locations/ structure (a multi-site New Jersey preschool group) and the site is a licensed child-care centre covered by the NJ DCF centre list - similar in kind to the Kiddie Academy / Goddard / Childtime chains the mapper excluded. The rationale is documented but inconsistent.",
+      "fix": "Apply one rule to all preschools: either keep all private child-care centres or drop all multi-site brands."
+    },
+    {
+      "claim": "La Ritz Cleaners, 306 Applegarth Rd",
+      "problem": "Directories list 306 Applegarth Rd as 'S La Ritt Cleaners' (609-860-0660); 'La Ritz' appears to be a spelling variant of the same shop, so the row is probably right but the name will not match anything a caller sees.",
+      "fix": "Record the trading name as it appears on the sign/directories (S La Ritt) with 'La Ritz' as an alias."
+    },
+    {
+      "claim": "F&M Upholstery, 440 Schoolhouse Rd, no website",
+      "problem": "The business has a live own site, fandmupholstery.com, giving 440 Schoolhouse Road, Monroe Township NJ 08831, 732-521-5657, appointment-only hours and the owner's name (Frank Azzinaro). The website field is empty.",
+      "fix": "Fill in https://fandmupholstery.com/ - a warm-intro angle exists (single-owner artisan shop)."
+    },
+    {
+      "claim": "ShyamShop, 209 Applegarth Rd, phone (732) 631-4566, evidence 'map listing with rating'",
+      "problem": "The only trace I could find is a localitybiz directory entry (5 stars, 2 reviews); other sources place a pharmacy (Monroe Care Pharmacy) at 209 Applegarth Rd, and Gables Plaza tenant evidence is not cited for this row. Operating status is not established.",
+      "fix": "Mark as unverified like the other directory-only rows, or drop."
+    },
+    {
+      "claim": "Several rows carry internally disclosed weak evidence (Applegarth Flowers & Gifts, Voula's World, Terry's Cards & Gifts, Best Trophies & Awards, Bob's Signs, Copy Dynamics, Alfred's Auctions, Brunswick Tree Farm)",
+      "problem": "These rest on undated Yellow Pages / whereorg / state-directory listings with no live page, and the mapper says so in the notes - honest, but they will waste outreach time if not filtered.",
+      "fix": "Keep them but tag them 'needs live check' in triage rather than mixing them with the website-confirmed rows."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "NJ Office Furniture Depot is at 957 Route 33 West, Monroe NJ 08831, phone 732-641-2791, with showroom hours", "source_url": "https://njofficefurnituredepot.com/contact-us/", "result": "confirmed"},
+    {"claim": "Cosmos Furniture is at 16 Abeel Rd, Monroe Township NJ 08831, phone 732-658-6500", "source_url": "https://cosmosfurniture.com/contact-us", "result": "confirmed"},
+    {"claim": "Monroe Jewelers is a Monroe Township jeweler, phone (609) 409-3600, family-run since 1974", "source_url": "https://monroejewelersnj.com/", "result": "confirmed"},
+    {"claim": "Absolute Moving System's site shows 944 Route 33 and 732-757-4504", "source_url": "https://absolutemoving.net/", "result": "not found"},
+    {"claim": "Pop's Farm Market & Garden Center is at 238 Cranbury Station Road, Monroe Township, 609-655-4175, open March-December", "source_url": "https://popsfarmmarketandgardencenter.com/", "result": "confirmed"},
+    {"claim": "CountryView Farm Nursery is at 601 Buckelew Ave (GPS note 'use 601'), phone 732-675-3865, with seasonal hours", "source_url": "https://countryviewfarmnursery.com/contact-info/", "result": "confirmed"},
+    {"claim": "Twin Ponds Nursery is at 194 Federal Road, Monroe Twp, office 732-446-8700", "source_url": "https://www.twinpondsnurseries.com/", "result": "confirmed"},
+    {"claim": "Gasko's Family Farm is on Federal Road in Monroe Township with 112 as the street number", "source_url": "https://gaskosfamilyfarm.com/directions-2/", "result": "not found"},
+    {"claim": "Burroughs Hardwoods is at 943 State Highway 33, Monroe Township, operating since 1983 as a family business owned by Carl Burroughs", "source_url": "https://www.burroughshardwoods.com/about/about.html", "result": "confirmed"},
+    {"claim": "Championship Awards Group's own site lists NJ main 732-251-6262 and NJ sales 732-251-1527 and 'In Business Over 30 Years'", "source_url": "https://championshipawardsgroup.com/", "result": "confirmed"},
+    {"claim": "Artist People's Monroe studio is at 209 Applegarth Rd #102, 609-651-4311", "source_url": "https://www.artist-people.com/monroe-township", "result": "confirmed"},
+    {"claim": "MAARS Academy is a child-care centre 'situated in Monroe, NJ'", "source_url": "https://www.maarsacademy.com/", "result": "confirmed"},
+    {"claim": "Tarana Dance Academy's studio is located in Monroe Township", "source_url": "https://www.tdanj.com/the-studio", "result": "confirmed"},
+    {"claim": "Dance Stop's site covers a Monroe studio at 355 Buckelew Ave", "source_url": "https://www.dancestopnj.com/", "result": "not found"},
+    {"claim": "AATMA Performing Arts is at 211 Applegarth Rd, Unit 104, Monroe Township per its own site", "source_url": "https://www.aatmaperformingarts.com/contact", "result": "not found"},
+    {"claim": "Dot Designing is at 837 Route 33 West, Monroe Twp NJ 08831, phone 732-656-1100", "source_url": "https://dotdesigning.com/", "result": "confirmed"},
+    {"claim": "A Plus Driving School lists 1 Rossmoor Dr, Monroe Township and 848-388-9030", "source_url": "https://aplusdriving.school/", "result": "confirmed"},
+    {"claim": "monroedrivingschool.com shows a hosting 'account suspended' page rather than a live site", "source_url": "https://monroedrivingschool.com/", "result": "confirmed"},
+    {"claim": "Ellie's Academy Monroe is at 893 Cranbury South River Road, 732-521-3433", "source_url": "https://elliesacademy.com/locations/monroe-township/", "result": "confirmed"},
+    {"claim": "F&M Upholstery is at 440 Schoolhouse Road, Monroe Township NJ 08831, 732-521-5657", "source_url": "https://fandmupholstery.com/", "result": "confirmed"},
+    {"claim": "Colorful Creations Photography is at 2 American Way, Unit 3, Monroe Township", "source_url": "https://www.colorfulcreationsphotography.com/contact", "result": "contradicted"},
+    {"claim": "Viaane Jewelry is at 7 Nelson Dr, Monroe Township", "source_url": "https://www.viaane.com/policies/refund-policy", "result": "contradicted"},
+    {"claim": "Micalizzi Furniture Restoration is at 28 Harrison Ave, Monroe Township", "source_url": "https://www.superpages.com/englishtown-nj/bpp/micalizzi-furniture-restoration-upholstery-469073412", "result": "could not open"},
+    {"claim": "The Social & Co. - Monroe is at 1 Rossmoor Drive, Building 2, 609-722-1555", "source_url": "https://thesocialandco.com/pages/contact-us", "result": "confirmed"},
+    {"claim": "Mataari is a Monroe Crossing jewelry storefront", "source_url": "https://mataari.com/", "result": "contradicted"},
+    {"claim": "Fourth Dimension Aquatics is a Monroe, NJ aquarium business", "source_url": "https://www.4daqua.com/", "result": "confirmed"},
+    {"claim": "A.N.T. Nursery Inc. is at 1439 Perrineville Road, Monroe Twp, phone 609-448-1425", "source_url": "https://www.nj.gov/cgi-bin/agriculture/jerseygrown/gcnsearch.pl?county1=middlesex", "result": "confirmed"},
+    {"claim": "Arbe Gardens & Gifts is at 1900 Englishtown Rd, Monroe Twp, 732-521-9700", "source_url": "https://www.nj.gov/cgi-bin/agriculture/jerseygrown/gcnsearch.pl?county1=middlesex", "result": "confirmed"},
+    {"claim": "Baker's Nursery & Landscape is at 458 Spotswood-Englishtown Rd, Monroe Twp, 732-251-3377", "source_url": "https://www.nj.gov/cgi-bin/agriculture/jerseygrown/gcnsearch.pl?county1=middlesex", "result": "confirmed"},
+    {"claim": "Belotti Nursery is at 439 Buckelew Ave, Monroe Twp, 732-521-2192", "source_url": "https://www.nj.gov/cgi-bin/agriculture/jerseygrown/gcnsearch.pl?county1=middlesex", "result": "confirmed"},
+    {"claim": "Farmer Al's Market & Greenhouses is at 387 Buckelew Ave, Monroe Twp, 732-521-1888, website www.farmerals.com", "source_url": "https://www.nj.gov/cgi-bin/agriculture/jerseygrown/gcnsearch.pl?county1=middlesex", "result": "confirmed"},
+    {"claim": "Tidbury Creek Farms is at 313 Spotswood-Gravel Hill Rd, Monroe Twp, 732-521-0832", "source_url": "https://www.nj.gov/cgi-bin/agriculture/jerseygrown/gcnsearch.pl?county1=middlesex", "result": "confirmed"},
+    {"claim": "Twin Sweet Farm Market is at 589 Englishtown Rd, Monroe Twp, 732-792-1101", "source_url": "https://www.nj.gov/cgi-bin/agriculture/jerseygrown/gcnsearch.pl?county1=middlesex", "result": "confirmed"},
+    {"claim": "Brunswick Tree Farm appears in the state certified-nursery list at 657 Spotswood-Englishtown Rd with 732-446-8586", "source_url": "https://www.nj.gov/agriculture/divisions/pi/pdf/Certified%20Nurseries%20List.pdf", "result": "could not open"},
+    {"claim": "Absolute Dance Center is a dance school at 365 Spotswood-Englishtown Road, Monroe Township", "source_url": "https://absolutedancecenter.com/", "result": "confirmed"},
+    {"claim": "Cranbury Station Gallery does custom framing for Monroe Township clients, by appointment, 609-495-5641", "source_url": "https://cranburystationgallery.com/custom-framing/", "result": "confirmed"},
+    {"claim": "A Stroke of Creativity is a paint-your-own-pottery studio at 557 Englishtown Road, Franklin Plaza, 732-446-4268", "source_url": "https://unilocal.net/united-states/monroe-township/a-stroke-of-creativity", "result": "confirmed"},
+    {"claim": "Especially for You Florist, 302 Spotswood-Englishtown Rd, is a current Monroe Township florist", "source_url": "https://www.especiallyforyouflorist.net/about-us", "result": "contradicted"}
+  ],
+  "coverage": {
+    "searches": [
+      "jewelry store Monroe Township NJ 08831 independent",
+      "florist Monroe Township NJ 08831 Englishtown Road",
+      "dry cleaner Monroe Township NJ Applegarth Road",
+      "pet grooming Monroe Township NJ 08831 salon",
+      "picture framing shop Monroe Township NJ",
+      "tailor alterations Monroe Township NJ",
+      "dance studio Monroe Township NJ 08831 classes",
+      "sign company print shop Monroe Township NJ Route 33",
+      "bike shop Monroe Township NJ 08831",
+      "music lessons school Monroe Township NJ 08831",
+      "shoe repair Monroe Township NJ 08831",
+      "hardware store Monroe Township NJ 08831 independent",
+      "furniture store Monroe Township NJ Route 33 independent",
+      "garden center nursery Monroe Township NJ Buckelew Avenue",
+      "art studio paint your own pottery Monroe Township NJ",
+      "trophy awards engraving Monroe Township NJ",
+      "moving company Monroe Township NJ local movers",
+      "upholstery furniture restoration Monroe Township NJ"
+    ],
+    "eligible_found": 32,
+    "already_listed": 26,
+    "missing": [
+      {"name": "Absolute Dance Center", "town": "Monroe Township", "source_url": "https://absolutedancecenter.com/"},
+      {"name": "Cranbury Station Gallery", "town": "Monroe Township", "source_url": "https://cranburystationgallery.com/custom-framing/"},
+      {"name": "Apple Dry Cleaners", "town": "Monroe Township", "source_url": "https://www.cylex.us.com/monroe-township/dry-cleaners-laundry-service/"},
+      {"name": "Dance On Q", "town": "Monroe Township", "source_url": "https://www.superpages.com/monroe-twp-nj/dancing-instruction"},
+      {"name": "FaynMusic", "town": "Monroe Township", "source_url": "https://www.yellowpages.com/monroe-twp-nj/music-schools"},
+      {"name": "Launch Footwear (shoe repair)", "town": "Monroe Township", "source_url": "https://www.yellowpages.com/monroe-nj/shoe-repair"}
+    ]
+  },
+  "confidence": "Medium"
+}

@@ -1,0 +1,218 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Machine shops (NAICS 33271) recorded a total recordable injury/illness rate of 2.6 per 100 FTE and an amputation rate of 0.3 per 10,000 FTE (BLS, 2023) [problem.evidence and prospecting_signals.public]",
+      "problem": "The cited BLS Table 1 does not contain an amputation column. In that table 33271 reads 2.6 total recordable / 1.2 DART / 0.9 days-away / 0.3 job-transfer-or-restriction / 1.4 other, all per 100 FTE. The 0.3 was taken from the job transfer or restriction column and relabeled as amputations per 10,000 FTE - a contradicted number and a changed denominator.",
+      "fix": "Rewrite as: 2.6 total recordable cases and 1.2 DART cases per 100 FTE (BLS SOII Table 1, 2023). Either delete the amputation figure or source it to a BLS amputation-specific table with the correct unit."
+    },
+    {
+      "claim": "In plastics product manufacturing, inspectors/testers are 5.17% of industry employment - 'the second-highest concentration of any industry'",
+      "problem": "On the cited BLS page, plastics is 2nd by employment level (31,320) but 4th by concentration: Apparel Knitting Mills 6.44%, Fabric Mills 5.96%, Foundries 5.67%, Plastics 5.17%. The two rankings were conflated.",
+      "fix": "Say 'second-largest block of inspectors (31,320 jobs) and fourth-highest concentration (5.17%) of any industry', or cite only the employment-level rank."
+    },
+    {
+      "claim": "New Jersey courts have recognized intrusion-upon-seclusion claims over hidden cameras in restrooms and a locker room",
+      "problem": "The cited RCFP New Jersey page states N.J.S.A. 2C:14-9 (hidden camera law) and the criminal penalties, but contains no reference to intrusion upon seclusion or to any restroom/locker-room case. The case-law element is unsupported by the cited source.",
+      "fix": "Delete the case-law sentence, or cite the specific New Jersey decisions; the statutory point (2C:14-9, third-degree crime) is fully supported and sufficient."
+    },
+    {
+      "claim": "Amazon Lookout for Vision: new customers lost access 10 Oct 2024 and the service shut down 31 Oct 2025",
+      "problem": "The cited AWS page confirms only 'Amazon Lookout for Vision - October 31, 2025' as the end-of-support date. The 10 Oct 2024 new-customer cut-off is not on that page.",
+      "fix": "Keep the 31 Oct 2025 date with this citation; source the 10 Oct 2024 cut-off to the AWS announcement post or drop it."
+    },
+    {
+      "claim": "Qwen2.5-VL 'report lists CC-OCR 74.5 for 3B, 77.8 for 7B'",
+      "problem": "The cited Hugging Face collection page lists model cards and links the technical report; it shows no CC-OCR benchmark table, so the two figures could not be verified there. I could only open the arXiv abstract (2502.13923), which does not carry the table either.",
+      "fix": "Cite the technical report page/table that prints CC-OCR 74.5 and 77.8, or remove the two numbers and describe the VLM role qualitatively."
+    },
+    {
+      "claim": "Basler ace 2 5 MP GigE camera '~$599-$689 list (some 5 MP variants listed around $364 at distributors)'",
+      "problem": "The cited URL is a Basler 'learning' article about high-sensitivity cameras, not a price list; it returned HTTP 406 and could not be opened. Independent listings I did see for Basler 5 MP cameras range from about $347 (ace 2 GigE a2A2590-22gcBAS, distributor listing) to $819-$1,010 (ace U acA2440-20gm), so the $599-$689 band is not anchored to any source in the brief.",
+      "fix": "Point the citation at a specific distributor/model listing (e.g. a named ace 2 5 MP GigE part number) with the price you actually saw, or change to a range and label it as an estimate."
+    },
+    {
+      "claim": "Cognex reseller listings 'from ~$2,295 (legacy In-Sight 3000, MSRP $3,900) to ~$14,999 for an In-Sight 2800 AI camera'",
+      "problem": "The cited visionex product page returned HTTP 403 for me. I could confirm the $14,999 figure only indirectly (visionex collection listing for IS2802M-24520-SA, with other IS2802M configurations at $4,999-$5,999). The $2,295 / MSRP $3,900 In-Sight 3000 figure was not found anywhere.",
+      "fix": "Keep $14,999 with the collection-page citation; delete the $2,295/$3,900 item or replace it with a listing you can link and date."
+    },
+    {
+      "claim": "'About 27,599 sites were certified to the 9100 series worldwide as of April 2024' (buyers, aerospace segment)",
+      "problem": "No source_url is attached to this number anywhere in the brief. The figure is plausible and appears in secondary reporting (simpleQuE summary of IAQG OASIS, April 2024: 27,599 sites, US 11,268), but as presented it is an uncited statistic.",
+      "fix": "Add the source URL (e.g. the simpleQuE summary of IAQG OASIS, April 2024) next to the number, and label it as third-party aggregation of OASIS data."
+    },
+    {
+      "claim": "Total quality costs ... in a survey of 63 manufacturing and quality professionals",
+      "problem": "The figures (2.6-4% of sales, 8-10% of manufacturing expense, failure costs 70-80%) check out, but the underlying study (Rodchua 2009) is described in the secondary literature as a study of 63 manufacturing organizations, not 63 individuals.",
+      "fix": "Change to '63 manufacturing organizations (Rodchua, 2009)'."
+    },
+    {
+      "claim": "EfficientAD ... '2.2 ms latency, 614 images/s ... proof that this class of model runs on modest edge hardware'",
+      "problem": "The 2.2 ms / 614 img/s numbers are correct, but they were measured on an NVIDIA RTX A6000 (data-centre GPU), not edge hardware. Calling this 'proof' for modest edge hardware is an unlabeled inference that the source does not support.",
+      "fix": "Label it as an inference ('vendor-independent GPUs are shown in Fig. 6; Jetson-class timing is not measured here') or cite an actual Jetson benchmark."
+    },
+    {
+      "claim": "PatchCore (99.1% AUROC) and EfficientAD (98.8%) measured outcomes rated strength 'High'",
+      "problem": "Both are single peer-reviewed benchmark papers on the curated MVTec AD dataset with no field deployment, i.e. lab reproducibility, not observed shop-floor outcomes. Under the rating rule (a single study is not High for an outcome claim) these should not be High.",
+      "fix": "Downgrade to 'Medium' and note 'benchmark-only, no field deployment'; the caveats section already concedes real floors perform worse."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Inspectors/testers: 584,630 employed nationally, mean $23.68/hr ($49,260/yr), median $45,850; NY-Newark-Jersey City metro 17,640 employed at $24.60/hr ($51,160/yr)",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes519061.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Plastics product manufacturing: inspectors are 5.17% of industry employment, 31,320 jobs, mean $20.49/hr ($42,620), described as second-highest concentration",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes519061.htm",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Middlesex County 2023: NAICS 332710 = 33 establishments (employment suppressed); 3327 = 34 establishments / 177 employees; 326199 = 18 establishments / 2,288 employees / average annual pay $65,098",
+      "source_url": "https://data.bls.gov/cew/data/api/2023/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Human inspection error rates of 20% to 30% are frequently quoted; minimum error about 1 in 1,000 (Swain & Guttmann 1983); 100% inspection still misses defects; review covers 212 documents, 1950s onward (2012)",
+      "source_url": "https://www.osti.gov/servlets/purl/1055636/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ISO 9001 itself does not require FAI; AS9100 clause 8.5.1.3 (production process validation) adds it",
+      "source_url": "https://advisera.com/9100academy/blog/2020/10/28/first-article-inspection/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ISO 9001:2015 clause 8.6 requires retained documented information showing acceptance criteria were met and traceability to the person authorizing release",
+      "source_url": "https://ipc11.dip.go.th/files/article/attachments/ipc11/2a5458cc6b38553834457b0f88607459.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "AS9102 uses three forms, ballooned drawings mapped to recorded data, re-accomplishment triggers; AS9102C is the current revision dated June 2023; first-pass FAIR acceptance rate and findings-per-submission are the key measures",
+      "source_url": "https://sp-i.org/downloads/spi-09.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Machine shops 33271: 2.6 recordable rate per 100 FTE and 0.3 amputation rate per 10,000 FTE (2023)",
+      "source_url": "https://www.bls.gov/iif/nonfatal-injuries-and-illnesses-tables/table-1-injury-and-illness-rates-by-industry-2023-national.htm",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Total quality costs 2.6-4% of sales (8-10% of manufacturing expense), failure costs 70-80% of total, survey of 63 manufacturing and quality professionals (2009)",
+      "source_url": "https://www.tandfonline.com/doi/abs/10.1080/10686967.2009.11918225",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey has roughly 11,000 manufacturers, many under-75-employee businesses NJMEP supports (2024)",
+      "source_url": "https://www.roi-nj.com/2024/11/27/industry/manufacturing-drive-meps-connolly-talks-supply-chain-tariffs-re-shoring-and-what-it-all-means-for-sector-in-the-state/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Documented SME machine-vision barriers: upfront cost, in-house expertise shortage, high-mix/low-volume production, insufficient training data (2025 review)",
+      "source_url": "https://link.springer.com/article/10.1007/s42452-025-06923-4",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PatchCore: 99.1% image AUROC on MVTec AD, 42 of 1,725 test images misclassified at F1-optimal threshold, 98.1% pixel AUROC, trained on nominal images only (2022)",
+      "source_url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Roth_Towards_Total_Recall_in_Industrial_Anomaly_Detection_CVPR_2022_paper.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "EfficientAD-S 98.8% image AUROC on MVTec AD (M 99.1%), 95.4% mean across MVTec AD/VisA/LOCO, 2.2 ms latency, 614 images/s (2024)",
+      "source_url": "https://www.mvtec.com/fileadmin/Redaktion/mvtec.com/05_research_teaching/Batzner_EfficientAD_Accurate_Visual_Anomaly_Detection_at_Millisecond-Level_Latencies_WACV_2024_paper.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "WinCLIP zero-shot 91.8% image AUROC and 85.1% pixel AUROC on MVTec-AD (CVPR 2023)",
+      "source_url": "https://openaccess.thecvf.com/content/CVPR2023/html/Jeong_WinCLIP_Zero-Few-Shot_Anomaly_Classification_and_Segmentation_CVPR_2023_paper.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Overview.ai unit prices $4,450 (OV10i), $9,450 (OV20i), $13,450 (OV80i), no required software subscription",
+      "source_url": "https://www.overview.ai/company/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Roboflow: Free $0 with 10 credits/month; Core $39/mo (20 credits) up to $1,399/mo (500 credits); Enterprise custom; self-hosted Inference included on all plans",
+      "source_url": "https://roboflow.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Landing AI free tier $0, 1,000 credits/month, 3 users, model download for noncommercial use; Enterprise quote-only",
+      "source_url": "https://landinglens.docs.landing.ai/plans",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NVIDIA Jetson Orin Nano Super Developer Kit at $249",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Installed single-camera machine-vision station $15,000-$60,000, with lighting/mounting/engineering more than half the cost",
+      "source_url": "https://rellingsystems.com/resources/blog/machine-vision-system-cost",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cognex reseller listings from ~$2,295 (legacy In-Sight 3000, MSRP $3,900) to ~$14,999 for an In-Sight 2800 AI camera",
+      "source_url": "https://visionex.tech/products/cognex-camera-is2802m-all-tools-edge-learning-ai-vision-is2800-series-rgbw",
+      "result": "could not open"
+    },
+    {
+      "claim": "Basler ace 2 5 MP GigE camera ~$599-$689 list, some variants around $364 at distributors",
+      "source_url": "https://www.baslerweb.com/en-us/learning/high-sensitivity-image-processing-cameras/",
+      "result": "could not open"
+    },
+    {
+      "claim": "Mitutoyo 959149 (1 m) and 959150 (2 m) SPC cables with data switch for Digimatic calipers",
+      "source_url": "https://www.mitutoyo.com/webfoo/wp-content/uploads/D_section.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey Wiretapping Act requires one-party consent (N.J.S.A. 2A:156A-2, -3, -4); criminal/tortious purpose exception; third-degree crime; civil recovery of greater of actual damages, $100/day or $1,000",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9 criminalizes recording intimate parts / sexual acts where there is a reasonable expectation of privacy",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey courts have recognized intrusion-upon-seclusion claims over hidden cameras in restrooms and a locker room",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "not found"
+    },
+    {
+      "claim": "NLRB GC 23-02 (31 Oct 2022) was a guidance memo, not a Board ruling, and was rescinded 14 Feb 2025 by GC 25-05",
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ bill A3929 (2026-27) would make unnotified biometric surveillance of consumers at business premises an unlawful practice, with 30-day cure and a ban on profiting from the data; enactment not confirmed",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2026/A4000/3929_T1.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC 'Operation AI Comply' (Sept 2024) enforcement sweep; FTC statement that there is 'no AI exemption from the laws on the books'",
+      "source_url": "https://search.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Amazon Lookout for Vision shut down 31 Oct 2025; new customers cut off 10 Oct 2024",
+      "source_url": "https://docs.aws.amazon.com/general/latest/gr/full_shutdown_services.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO is AGPL-3.0 and commercial/embedded deployment generally requires an enterprise license",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fit_score sub-scores add to the stated total",
+      "source_url": "avenue.json (internal arithmetic check)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

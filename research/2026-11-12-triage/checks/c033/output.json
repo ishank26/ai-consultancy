@@ -1,0 +1,146 @@
+{
+  "results": [
+    {
+      "ref": "B00753",
+      "name": "Back To Wellness Chiropractic",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No schema.org markup at all (0 JSON-LD scripts) on the site / 'JSON-LD count is 0' in the top opportunity evidence",
+          "what_is_true": "The site ships three JSON-LD blocks: a MedicalClinic node (street address, telephone 732-545-3300, geo, sameAs to Facebook/Instagram, openingHoursSpecification Mon-Fri 09:00-17:00) and a WebSite node on the home page, plus a MedicalBusiness node with a full openingHoursSpecification table on the contact page. The 403 in the browser hid the markup from the earlier reviewer, but it is in the served HTML.",
+          "source_url": "https://www.bwchiro.com/"
+        },
+        {
+          "claim": "agent_readiness notes: 'there is no JSON-LD (0 nodes), hours are not on the home page'",
+          "what_is_true": "Hours are published twice: the home page JSON-LD lists Mon-Fri 09:00-17:00, and the Contact page carries an 'Office Hours' table (Mon-Fri 10:00-19:00, Sat 10:00-13:00). Those two sets of hours contradict each other, which is a genuine issue, but the hours are not missing.",
+          "source_url": "https://www.bwchiro.com/contact"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 3,
+        "ease": 3,
+        "evidence": 2
+      },
+      "notes": "Status and business identity re-confirmed (525 Milltown Rd, North Brunswick; Dr. Lucien Eid; Zalka, Lebanon satellite). Re-checked in Chrome: /, /index.html, /robots.txt and /contact all return '403 Unauthorized' to this browser while a plain HTTP fetch returns the pages, so the 403 behaviour is real; because it applies to every path including robots.txt it looks like edge/IP filtering rather than a browser-only block (inference). robots.txt explicitly allows GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, PerplexityBot, Googlebot and Google-Extended - claim holds. /contact-us.html and /appointment-request.html both return HTTP 404 (confirmed), but there is a working contact form on /contact (smbleads embed, 'CONTACT US TODAY') and an /online-forms.html page, so 'no form could be verified' understates what is there. No scheduling calendar anywhere - confirmed. Gap lowered from 4 to 3 because schema and hours exist; the real fix is making the two hours datasets agree, not adding markup from scratch."
+    },
+    {
+      "ref": "B01096",
+      "name": "John VR. Strong, Jr., Attorney at Law",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Top issue: 'No visible structured data and no hours or fee policy - little for an AI answer to quote besides marketing copy'",
+          "what_is_true": "The home page serves a LocalBusiness JSON-LD node (name, telephone 732-979-2166, email, priceRange 'Call for pricing options', full street address, geo, sameAs to the Lawyers.com and Martindale profiles) plus a WebSite node. Structured data exists; what is missing from it is openingHours and any real price/fee field.",
+          "source_url": "https://www.stronglawoffice.com/"
+        },
+        {
+          "claim": "Top opportunity 1 evidence: 'No JSON-LD on the contact page; a 403 blocked our browser entirely' presented as the search gap",
+          "what_is_true": "The contact page genuinely has no JSON-LD, but the home page does, so the practice is not invisible to schema-aware assistants. The gap is hours, fee/service detail and location/service-area structure, not the absence of markup.",
+          "source_url": "https://www.stronglawoffice.com/contact-us/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 3,
+        "ease": 3,
+        "evidence": 2
+      },
+      "notes": "Identity and contact details confirmed on the site: 303 George Street, Suite 408, New Brunswick; click-to-call 732-979-2166 in header, sticky bar, mobile bar and footer; 'Free Consultation | Se Habla Espanol'; NGage chat widget loads. The contact form is real - labelled fields (name, contact details, 'Reason you would like to be contacted' textarea), a required disclaimer checkbox and a Submit button - so 'no scheduling, generic contact form only' holds. Site also 403s this Chrome on every path, consistent with the earlier record. External corroboration: Lawyers.com shows 4.7 from 6 reviews and the BV Distinguished peer badge, matching the record; that profile lists a different number (848-379-2184) and a phone 732-653-1997, so more than one number is in circulation (minor, not flagged in the record). Gap lowered 4 to 3 because LocalBusiness schema is already present."
+    },
+    {
+      "ref": "B00239",
+      "name": "East Brunswick New Image Dental",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Top issue: 'No schema markup on the home page' and agent_readiness 'no LocalBusiness/Dentist JSON-LD (0 ld+json scripts on the home page)'",
+          "what_is_true": "The home page serves two JSON-LD blocks: a MedicalBusiness node with telephone (732) 432-8388, email, street address 444 Ryders Lane, geo, sameAs and an openingHoursSpecification matching the published schedule (Mon/Wed/Thu 09:30-19:00, Fri 10:00-17:00, Sat 09:00-16:00), plus a WebSite node.",
+          "source_url": "https://www.eastbrunswicknewimagedental.com/"
+        },
+        {
+          "claim": "Top opportunity 2 evidence: 'Zero JSON-LD on the home page; ... site phone differs from Google phone'",
+          "what_is_true": "The JSON-LD count is 2, not zero, and it already carries the hours and the (732) 432-8388 number. The stale content and the phone mismatch stand, but 'add schema' is not the gap.",
+          "source_url": "https://www.eastbrunswicknewimagedental.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 3,
+        "ease": 3,
+        "evidence": 2
+      },
+      "notes": "Operating practice confirmed; hours on the appointment page match the record exactly (Tue and Sun closed). Site returns '403 Unauthorized' to this Chrome on /, matching the earlier note. Appointment page still promises a scheduling coordinator will confirm - no live availability, confirmed. New-patients page still points to a downloadable new-patient-forms.pdf and asks patients to print and complete it - confirmed. Latest featured article is the April 2022 newsletter, so the staleness claim holds. The alternate (848) 233-3773 number appears on a third-party Waze listing rather than a page I could verify as the Google Business Profile, so 'on Google' is unverified. Evidence lowered 3 to 2 because the reviewer's markup claim could not have come from looking at the served HTML."
+    },
+    {
+      "ref": "B00402",
+      "name": "Anne Lieber, LCSW",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Top issue: 'Primary CTA on the directory is email only - no phone or form' (repeated in the operations signal and in the 'add a click-to-call CTA' opportunity evidence)",
+          "what_is_true": "The Psychology Today profile shows a click-to-call number, (732) 561-5032, in three places next to the 'Email Me' button, along with 'Available both in-person and online' and the three accepted insurers. There is no phone on a website of her own (she has none), but the directory listing is not email-only.",
+          "source_url": "https://www.psychologytoday.com/us/therapists/anne-lieber-east-brunswick-nj/1213414"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 2,
+        "ease": 4,
+        "evidence": 2
+      },
+      "notes": "Operating and correctly attributed: the Life Psychotherapy team page lists Anne B. Lieber LCSW, Lic. # 44SC06496700, with a group bio page (/anne-b-lieber-lsw), so the 'clinician inside a group' description holds. Psychology Today shows licence 44SC06496700 / 2025 plus an older 44SL06830500 entry flagged 'Expired', which supports the trust-signal issue; no fee is published ('Check fees...'). Practice address 6 Auer Court STE D, East Brunswick. No personal website found in any source. Gap lowered 4 to 3 because the listing does provide a usable call path."
+    },
+    {
+      "ref": "B00464",
+      "name": "Earle Asphalt",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "website_review: 'click_to_call: true'",
+          "what_is_true": "No tel: links exist on the home page or the contact page at either 1280 px or 390 px; the number is printed as plain text (+1 732 308 1113) in the contact block, so a phone tap does not dial.",
+          "source_url": "https://earleco.com/contact/"
+        },
+        {
+          "claim": "Top opportunity 2 evidence: nothing East Brunswick-specific exists, so an 'East Brunswick / Route 18 area page' should be added",
+          "what_is_true": "They do publish a dedicated Route 18 East Brunswick project page describing the NJDOT grading and pavement rehabilitation job (July 2022 - November 2026). There is still no East Brunswick entry on the locations page, but the content gap is much narrower than 'no East Brunswick page'.",
+          "source_url": "https://earleco.com/project/route-18-east-brunswick-grading-and-pavement-rehabilitation/"
+        }
+      ],
+      "notes": "Everything else checked out. robots.txt: User-agent * Allow, Crawl-delay 10, Yoast sitemap - as recorded. Contact page carries a JSON-LD @graph (WebPage/Organization level) and a Gravity Form with a 'Topic of interest' select offering General Inquiry / Request a Quote / Employment plus a manual spam-check field - both claims hold. Locations page lists six sites (Wall office, Runnemede, Burlington, Morrisville PA, Jackson, Collingswood/Mt Ephraim) and none in East Brunswick. The township Route 18 page names 'NJDOT and its contractor, Earle Asphalt' with Brian Cooper at 1800 Route 34, Wall - confirming the NJDOT contractor signal. The record's own hedge that the East Brunswick address is not a published location looks right; a search snippet for an OSHA establishment record places an Earle Asphalt site at Route 18 at Arthur Street, East Brunswick (snippet only, not opened), which is consistent with a plant/yard. Scores left unchanged: the corrections are cosmetic for a business this large. Google star ratings (HQ 2.3) could not be re-checked."
+    },
+    {
+      "ref": "B00495",
+      "name": "Springview Landscaping",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "'every page title starts with a stray emoji'",
+          "what_is_true": "The served HTML titles are clean: 'Spring View Landscaping' on the home page and '<Page> | Spring View Landscaping' on inner pages. The emoji prefix comes from the browser tool used for the earlier review (it prepends a marker to document.title on every site, including example.com), not from the site.",
+          "source_url": "https://springview-landscaping.com/"
+        },
+        {
+          "claim": "Top issue: 'Form fields have visible text but no real <label> elements'",
+          "what_is_true": "The Contact page has six real <label> elements (Your Name, Phone Number, Email Address, Service Interested In, Tell Us About Your Project, Upload a Photo). What is missing is the programmatic association - the labels have no for= attribute and the inputs have no id or name - so the accessibility/autofill criticism holds, but the 'no labels' wording is wrong.",
+          "source_url": "https://springview-landscaping.com/Contact"
+        }
+      ],
+      "notes": "Rest confirmed on the live site: the nav/footer exposes a public /Admin link (plus /AdminInquiries and /AdminMedia pages) on a Base44 build; meta description is the builder boilerplate ('A modern and interactive website for...'); no town name in any title; JSON-LD is WebSite + Organization only, no LocalBusiness and no address; robots.txt allows all and points at a sitemap; 732-299-3033 and 908-616-1621 both live; homepage counters 9+ years / 500+ projects / 5.0 / 100%; 'Serving Central NJ Since 2015'; contact page gives Monroe Township NJ base, 'Serving all of Middlesex County', 'We reply within 24 hours', omar...@yahoo.com and an estimate form with service dropdown and optional photo upload. Scores unchanged (gap 3 / pay 2 / ease 4 / evidence 3) - the corrections do not move the case, but the East Brunswick tie still rests on the county-level service claim."
+    },
+    {
+      "ref": "B00906",
+      "name": "MCG Contracting Inc",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked: the only record I could open is the same Contractor Union directory entry, which gives 623 Georges Road, North Brunswick NJ 08902, category General Contractor and international phone +1.732.418.0300 - matching the record. Searches for 'MCG Contracting' North Brunswick return no company website, no reviews and no project history; similarly named firms come up in Pennsylvania and Florida (the record says PA and Canada - Canada not seen, trivial). No Google Business Profile could be resolved from this browser, so the 'Maps returns unrelated MCG firms' claim is plausible but not independently re-verified. Scores (5 / 2 / 3 / 1) look right for a company with a single uncorroborated directory listing."
+    }
+  ],
+  "data_gaps": [
+    "Google Business Profile data (star ratings, review counts, alternate phone numbers) could not be re-read logged-out: Maps views were limited and several business sites return HTTP 403 to this browser. Ratings of 4.9 (Back To Wellness), 4.9 (New Image Dental), 5.0 (Springview) and 2.3 (Earle HQ) are therefore carried over unverified.",
+    "Back To Wellness, John VR. Strong and New Image Dental all return '403 Unauthorized' to this Chrome on every path including robots.txt, so their mobile (390 px) layouts could not be rendered or screenshotted. The 403s look like edge/IP filtering rather than a site-specific browser block (inference from the fact that a plain HTTP client gets the same pages).",
+    "robots.txt for stronglawoffice.com and eastbrunswicknewimagedental.com could not be fetched (403 to the browser; the plain fetch was blocked at the same edge), so the record's 'robots.txt not captured' gap remains open for both.",
+    "New Image Dental's (848) 233-3773 number was seen on a third-party Waze listing, not on a page confirmed as the Google Business Profile.",
+    "Earle's East Brunswick presence is inferred only; the batch address itself was not in items.json, and the OSHA record placing an Earle Asphalt site on Route 18 at Arthur Street, East Brunswick was seen as a search snippet and not opened.",
+    "Anne Lieber's Psychology Today page shows a phone CTA; whether her group listing or insurer directories carry anything further was not checked."
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Emporium Sweets, 1 Lincoln Ave (group D, category 'Candy and gift retail (exclusion candidate)')",
+      "problem": "Excluded type still in the list. It is a candy/food retailer (candy, fudge, specialty chocolates) per the Patch story the entry itself cites, and the entry's own notes concede it 'probably falls under the food-retail exclusion'. Any excluded type remaining fails the zone.",
+      "fix": "Delete the entry (keep the fact in categories_thin/caveats if useful for context). It is not a prospect."
+    },
+    {
+      "claim": "Fuel4, 621 Middlesex Ave (group C, 'Auto fuel / service station')",
+      "problem": "Second borderline exclusion: a fuel/service station is fuel-and-convenience retail, which sits inside the mapper's own 'convenience/fuel-retail exclusion'. It is kept deliberately 'so triage can decide', which pushes the scope decision downstream instead of resolving it.",
+      "fix": "Resolve now: if the fuel-retail exclusion applies, remove it; if it is kept, state the reason explicitly (independent operator, repair work) so triage does not have to relitigate."
+    },
+    {
+      "claim": "Coverage of auto glass / windshield shops in Metuchen",
+      "problem": "A whole sub-category is missing. Two Metuchen-address auto glass shops surfaced immediately (7 Days Auto Glass, 481 Memorial Pkwy; Steadfast Auto Glass, 913 Middlesex Ave - the same yard already in the list). The list has zero auto glass entries and the caveats never mention the category.",
+      "fix": "Add both (subject to phone confirmation) and note that the 913 Middlesex Ave yard now has a fifth possible tenant."
+    },
+    {
+      "claim": "Coverage of roofing, landscaping and masonry",
+      "problem": "My searches returned several Metuchen-addressed businesses that are absent: Above-All Roofing & Construction (195 Central Ave), A1 Dependable NJ Roofing/Chimney & Gutter (Metuchen listing), Speedy's Landscaping, by Design Landscape (104 Norcross Ave), ROR Contractor LLC. None appear in the list or in categories_thin.",
+      "fix": "Add them as leads (marked 'directory-only, confirm by phone') or record them in categories_thin with the reason they were dropped."
+    },
+    {
+      "claim": "Lock Sharp US - address 'Unknown (Metuchen service area)', note 'likely a mobile locksmith with no Metuchen storefront'",
+      "problem": "Contradicted by the page the entry cites: it states 'located at 406 Main St 3rd Floor, Ste 25, Metuchen, NJ, 08840'. So it is a Metuchen office-suite business, not an address-less mobile operator.",
+      "fix": "Fill the address as 406 Main St, 3rd Floor, Ste 25 and replace the 'likely mobile' note."
+    },
+    {
+      "claim": "Innovative Exteriors - note says the Metuchen base is 'unconfirmed (inference from an earlier search summary only)'",
+      "problem": "The cited page does confirm it: 'Innovative Exteriors operates from our Metuchen, NJ office and holds all necessary licensing (NJ HICL #13VH13098400)'. The note understates the evidence.",
+      "fix": "Upgrade the note to confirmed-by-own-site and keep the licence number."
+    },
+    {
+      "claim": "Websites left blank for businesses that have their own site",
+      "problem": "Supercars Garage (188 Main St) has its own site (supercarsgarage.com contact page), and the Costello-Runyon Downtown Metuchen page links costello-runyon.com; both entries carry an empty website field. Not wrong, but it costs the team the best outreach channel.",
+      "fix": "Populate those two website fields and spot-check the remaining blanks against the source pages."
+    },
+    {
+      "claim": "Entries resting only on one bulk directory (AG Electrical, Industrial Cooling, Protocal, Wesco Oxygen, East Coast Ship Supply, Schundler, Graphic Equipment, Brazill Brothers, Peerless Business Forms, Creative Print, plus Sterling Key & Lock, Always Affordable Moving, Jersey Pro Painters, Strongmile Movers)",
+      "problem": "I could re-open the directory pages and see the listings, but nothing independently shows these are still trading, and several have no phone at all. They are honest 'leads', not verified businesses - roughly a dozen entries of uncertain value to the team.",
+      "fix": "Keep, but mark them clearly as unverified and put them behind the confirmed entries in triage; do not count them toward the zone's prospect total."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "KB Kitchens Bath & Beyond, 407 Main St Suite 208, Metuchen, 732-326-2515, kitchensbathandbeyond.com", "source_url": "https://www.downtownmetuchen.org/directory/home-garden/", "result": "confirmed"},
+    {"claim": "NJ's Finest Home Improvement LLC, 505 Main St, Metuchen, 732-768-6236", "source_url": "https://www.downtownmetuchen.org/directory/home-garden/", "result": "confirmed"},
+    {"claim": "Hay & Co, 334 Main St; Gardenias Floral, 182 Main St; See More Appliances, 551 Middlesex Ave; Adamer Interiors, 472 Main St; FK Living, 416 Main St", "source_url": "https://www.downtownmetuchen.org/directory/home-garden/", "result": "confirmed"},
+    {"claim": "Book Store (used), 467 Main St; Dante Zeller Tuxedo, 24 New St; Leonardo Jewelers, 665 Middlesex Ave #125; Newmarket, 19 New St; Optique Unique, 406 Main St; Ragingeek, 385 Main St Suite 1A", "source_url": "https://www.downtownmetuchen.org/directory/shopping/", "result": "confirmed"},
+    {"claim": "Friends of the Family Child Center, 30 Hillside Ave, 732-248-4142; Gelman Music Center, 385 Main St with musicacademymetuchen.com; Logos Tutoring, 10 Station Place Ste 14; Thorro Learning, 402 Main St, 318-745-5456; Tiger Workshops, 280 Amboy Ave C; WiseMind, 20 Highland Ave; Woodbridge Academy of Music, 351 Main St", "source_url": "https://www.downtownmetuchen.org/directory/education/", "result": "confirmed"},
+    {"claim": "Acting Out, 418 Main St; Basecamp Studio & Gallery, 315 Main St; Bowery Art Collective, 335 Main St; Creative Twist Events, 10 Pearl St; LMNTs Dance Collective, 15 Highland Ave; Lore Ceramics, 434 Main St; Maria Manjelo Photography, 312 Main St; Metuchen Dance Centre, 395 Main St; Miss Sara's Play Place, 438 Main St; Picture Perfect Studios, 507 Middlesex Ave; Suite Metuchen, 406 Main St; The Greenhouse Music Co., 460 Main St Suite B", "source_url": "https://www.downtownmetuchen.org/directory/arts-entertainment/", "result": "confirmed"},
+    {"claim": "Kicks Are For Kids, 23 New St, 732-205-9797, kicksareforkids.com (listed under Community & Government as the entry says)", "source_url": "https://www.downtownmetuchen.org/directory/community-government/", "result": "confirmed"},
+    {"claim": "Blue Parachute, 402 Main St Suite 209, 732-767-1320, bluechute.com; JSK Logistics, 4 Wernik Pl, 732-318-6963; Karkun Inc, 267 Amboy Ave, 732-662-4761; Metuchen Taxi, 5 Pennsylvania Ave, 732-549-7777; Vaticano Shoe Repair, 7 Pennsylvania Ave, 732-635-2002", "source_url": "https://www.downtownmetuchen.org/directory/business-professional-services/", "result": "confirmed"},
+    {"claim": "Pearl St Automotive, 12 Pearl St, 732-603-9000; Precision Motorsports, 330 Lake Ave, 732-548-7772; Fuel4, 621 Middlesex Ave, 732-548-8342", "source_url": "https://www.downtownmetuchen.org/directory/automotive/", "result": "confirmed"},
+    {"claim": "Costello-Runyon Funeral Homes, 568 Middlesex Ave, 732-548-0149, family owned (not a chain)", "source_url": "https://www.downtownmetuchen.org/business/costello-runyon-funeral-homes/", "result": "confirmed"},
+    {"claim": "AKL Paving, 387 Durham Ave; Unique Construction Enterprises, 160-2 Liberty St; Gandalf Restorations, 18 Henry St; IDEAL CDR Inc, 48 Liberty St; PK Construction, 69 Spear St; Ideal Contracting Inc, 2A Linsley Pl; Tri-Form Construction, 125 Liberty St", "source_url": "https://www.bestprosintown.com/nj/metuchen/contractors/", "result": "confirmed"},
+    {"claim": "First Choice Plumbing/Heating/AC/Electrical at 87 Forrest St; Mattco at 160 Liberty St; Drip Dry Plumbing, 149 Wall St; Mennuti Plumbing, 300 High St; Polo A Plumbing, 120 Liberty St", "source_url": "https://www.bestprosintown.com/nj/metuchen/plumbers/", "result": "confirmed"},
+    {"claim": "Bayshore Roofing, 37 Highland Ave Apt 4; 1 All American Roofing, 215 Main St", "source_url": "https://www.bestprosintown.com/nj/metuchen/roofing/", "result": "confirmed"},
+    {"claim": "Mattco Plumbing & Heating LLC, 160 Liberty St; AG Electrical Contractors Inc, 222 Harvard Ave; O'Ryan's Heating and Cooling, 1-A Linsley Pl; Phoenix Autoworks, 2 Prospect St; Amec Electric, 125 Liberty St; Pereira Electric, 205 Liberty St; Bill Leary AC & Heating, 6 Green St; John Burton Plumbing & Heating, 104 Norcross Ave Unit B; Top Notch Climate Control, 335 High St; Supercars Garage, 188 Main St", "source_url": "https://njbusinessdirectory.org/listing-region/metuchen/", "result": "confirmed"},
+    {"claim": "Petits Enfants Nursery-School, 17 Oak Ave; Protocal, 203 Norcross Ave; Wesco Oxygen, 108 Liberty St; Industrial Cooling Corp, 70 Liberty St; East Coast Ship Supply, 212 Durham Ave; Schundler Co, 150 Whitman Ave; Graphic Equipment Corp, 55 Wester Ave; Brazill Brothers, 260 Liberty St; Peerless Business Forms, 328 Amboy Ave #F; Creative Print Svc, 450 Main St #2; Crop & Shop, 267 Amboy Ave", "source_url": "https://njbusinessdirectory.org/listing-region/metuchen/page/2/", "result": "confirmed"},
+    {"claim": "Ideal Contracting Inc is a Metuchen-based remodeler, phone 732-803-0526 (matches the entry)", "source_url": "https://www.idealcontractinginc.com/", "result": "confirmed"},
+    {"claim": "PK Construction LLC is a Central Jersey general contractor (the site itself does not state a Metuchen address; the address comes from BestProsInTown)", "source_url": "https://www.pkconstructionllc.com/", "result": "confirmed"},
+    {"claim": "Innovative Exteriors states it 'operates from our Metuchen, NJ office' (NJ HICL #13VH13098400)", "source_url": "https://www.innovativenj.com/siding", "result": "confirmed"},
+    {"claim": "John Muho USA Home Improvement is a Metuchen, NJ remodeling contractor", "source_url": "https://www.johnusahomeimprovement.com/", "result": "confirmed"},
+    {"claim": "Runner's High, 454 Main St, Metuchen, 732-549-9440 (plus a Freehold store)", "source_url": "https://runnershighnj.com/content/contact-us", "result": "confirmed"},
+    {"claim": "V & F Auto Body, 20 Prospect St, Metuchen, 732-321-6919 (plus a Keyport shop)", "source_url": "https://vfautobodynj.com/contact-us", "result": "confirmed"},
+    {"claim": "All Pest Solutions, 402 Main St Suite 100-289, Metuchen, 732-640-5551", "source_url": "https://www.all-pestsolutions.com/contact-us", "result": "confirmed"},
+    {"claim": "Dirtbusters NJ carpet cleaning, Metuchen/Edison area, 732-421-8837 (no street address on the contact page)", "source_url": "https://www.dirtbustersnj.com/contact", "result": "confirmed"},
+    {"claim": "Moosewood Tree Service site exists; its contact page shows hours only, no Metuchen street address", "source_url": "https://moosewoodtreeservice.com/contact", "result": "confirmed"},
+    {"claim": "Chamber 43, 406 Main St, Metuchen, 732-434-8840, buys and sells by appointment (founded 2017)", "source_url": "https://www.chamber43.com/contact", "result": "confirmed"},
+    {"claim": "Metuchen Veterinary Hospital (metuchenvet.com) is an operating practice", "source_url": "http://metuchenvet.com/", "result": "confirmed"},
+    {"claim": "Strongmile Movers lists Metuchen only among the towns it serves; no Metuchen address or phone visible on its home or contact page", "source_url": "https://www.strongmilemovers.com/contact", "result": "not found"},
+    {"claim": "Metuchen Driving School website exists but its contact page shows no address or phone; the 407 Main St #216B address and 732-808-7997 number are not visible on the site pages opened", "source_url": "https://www.metuchendrivingschool.com/contact/", "result": "not found"},
+    {"claim": "Lock Sharp US page gives 406 Main St 3rd Floor Ste 25, Metuchen - contradicts the entry's 'Unknown / likely mobile, no storefront'", "source_url": "https://locksharpus.com/services/security-consultation-with-high-security-lock-fitting", "result": "contradicted"},
+    {"claim": "Emporium Sweets is an old-school candy store at 1 Lincoln Ave (candy, fudge, specialty chocolates, toys)", "source_url": "https://patch.com/new-jersey/edison-metuchen/old-school-candy-store-opens-downtown-metuchen", "result": "confirmed"},
+    {"claim": "Supercars Garage is at 188 Main St, Metuchen, 732-494-0585, and has its own site", "source_url": "https://www.supercarsgarage.com/contact-us", "result": "confirmed"},
+    {"claim": "Turn Key Auto Repair, 209 Central Ave, Metuchen, 732-318-6141", "source_url": "https://www.waze.com/live-map/directions/us/nj/metuchen/turn-key-auto-repair?to=place.ChIJocmvlB-3w4kRgOJlDI3R0nU", "result": "confirmed"},
+    {"claim": "Bill's Ineffable Auto Rehab, 33 Jersey Ave, Metuchen, 732-548-4666", "source_url": "https://www.waze.com/live-map/directions/us/nj/metuchen/bills-ineffable-auto-rehab?to=place.ChIJR-Hwh823w4kRiwfCt6D4T8A", "result": "confirmed"},
+    {"claim": "Carpet Maven II at 137 Main St, Metuchen, 732-372-7599 (2025 local magazine listing)", "source_url": "https://media-com.website-us-east-1.linodeobjects.com/wp-content/uploads/sites/9/2025/10/MMCMAG2025_10_01_ONLINE.pdf", "result": "confirmed"},
+    {"claim": "Boro Ace Hardware & Paint Co., 655 Middlesex Ave, 732-548-3974", "source_url": "https://www.yellowpages.com/metuchen-nj/mip/boro-ace-hardware-10297608", "result": "confirmed"},
+    {"claim": "FK Living is still open at 416 Main St (the 'popular downtown store closes' story is about Papillon & Company, not FK Living)", "source_url": "https://www.fkliving.com/", "result": "confirmed"},
+    {"claim": "Don Coleman Painting LLC sits at 16 Pearl St / operates in Metuchen (BBB profile)", "source_url": "https://www.bbb.org/us/nj/metuchen/profile/painting-contractors/don-coleman-painting-llc-0221-90111791", "result": "could not open"},
+    {"claim": "Sterling Key & Lock Works, 16 Pearl St, Metuchen (Manta listing)", "source_url": "https://www.manta.com/c/m1h7ptx/sterling-key-lock-works", "result": "could not open"}
+  ],
+  "coverage": {
+    "searches": [
+      "electrician Metuchen NJ",
+      "landscaping contractor Metuchen NJ",
+      "auto glass shop Metuchen NJ",
+      "dry cleaners tailor Metuchen NJ Main Street",
+      "hardware store Metuchen NJ",
+      "sign shop printing Metuchen NJ",
+      "roofing contractor Metuchen NJ",
+      "pest control Metuchen NJ",
+      "masonry concrete contractor Metuchen NJ",
+      "HVAC heating cooling company Metuchen NJ",
+      "flooring carpet store Metuchen NJ Main Street",
+      "gift shop boutique Metuchen NJ Main Street",
+      "\"FK Living Metuchen closed Main Street store\"",
+      "\"7 Days Auto Glass\" Memorial Parkway Metuchen",
+      "\"by Design Landscape\" 104 Norcross Ave Metuchen"
+    ],
+    "eligible_found": 27,
+    "already_listed": 19,
+    "missing": [
+      {"name": "Metuchen Electric Inc.", "town": "Metuchen", "source_url": "https://www.buildzoom.com/contractor/metuchen-electric-inc"},
+      {"name": "7 Days Auto Glass", "town": "Metuchen", "source_url": "https://www.yellowpages.com/metuchen-nj/safelite-autoglass"},
+      {"name": "Steadfast Auto Glass", "town": "Metuchen", "source_url": "https://www.yellowpages.com/metuchen-nj/safelite-autoglass"},
+      {"name": "A1 Dependable NJ Roofing, Chimney & Gutter", "town": "Metuchen", "source_url": "https://reviews.birdeye.com/a1-dependable-nj-roofing-chimney-gutter-masonery-165459031050566"},
+      {"name": "Above-All Roofing & Construction", "town": "Metuchen", "source_url": "https://www.roof.info/roofing-contractors/new-jersey/metuchen/"},
+      {"name": "ROR Contractor LLC", "town": "Metuchen", "source_url": "https://www.yellowpages.com/metuchen-nj/mip/ror-contractor-llc-498929951"},
+      {"name": "Speedy's Landscaping", "town": "Metuchen", "source_url": "https://www.yellowpages.com/metuchen-nj/landscape-contractors"},
+      {"name": "by Design Landscape", "town": "Metuchen", "source_url": "https://www.superpages.com/metuchen-nj/landscaping"}
+    ]
+  },
+  "confidence": "Medium"
+}

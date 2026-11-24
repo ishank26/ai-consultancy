@@ -1,0 +1,84 @@
+{
+  "business": "Cloud Guardian LLC",
+  "industry": "software-it",
+  "town": "North Brunswick",
+  "opportunities": [
+    {
+      "title": "Quote-assembly agent for inbound MSP/MSSP intake",
+      "capability": "A",
+      "problem": "Every inbound path — the quoted-pricing form, the free assessment booking, the discovery meeting — terminates in a person reading the submission and hand-writing a quote the same business day. For an owner-operated shop with no tiered help desk and no careers page, that is senior engineer time spent on per-user licensing math, scope notes and proposal drafting instead of delivery.",
+      "evidence": [
+        "Pricing page quotes per-user tiers ($25–$225/user/mo) plus $150/hour out-of-scope billing, promises a same-business-day written quote, and states a person (not a bot) reads each submission — i.e. manual quoting and scoping is the intake bottleneck (https://cloud-guardian.com/pricing/).",
+        "Intake form fields are structured (business name, user counts, email platform, existing services), so the data needed to price a deal already arrives machine-readable (https://cloud-guardian.com/pricing/).",
+        "Inbound inquiries may already be processed by third-party AI to draft replies, summarize and route them, so they are comfortable with AI in the sales path (https://cloud-guardian.com/privacy/).",
+        "No leadership or team page exists and no hiring is advertised, consistent with a lean team where sales engineering and delivery draw on the same people (https://cloud-guardian.com/sitemap.xml).",
+        "Wage anchor: Network and Computer Systems Administrators (15-1244) NJ median $116,420 (May 2025 OEWS via O*NET) (https://www.onetonline.org/link/localwages/15-1244.00?st=NJ)."
+      ],
+      "agent_design": "Event-triggered on each pricing-form or assessment submission: the agent enriches the lead (domain, employee count, tech signals), classifies fit against their published tiers, drafts the per-user quote line items, scope-of-work notes, onboarding checklist and a first-pass risk list (e.g. no MFA, no backup), and writes it into a draft proposal record. Triggers on form submit, plus a scheduled 3-touch follow-up sequence until the prospect answers. Systems touched: the intake form/webhook, their Guardian Console/PSA record, email drafting, a pricing-rules table. Human approval: the engineer reviews and sends every quote; only draft creation, enrichment and follow-up reminders are autonomous.",
+      "why_not_DIY": "A chatbot subscription cannot price a deal: it needs the pricing rules encoded, lead enrichment, per-tenant CRM/PSA writes, and a draft artifact the engineer can sign. The reliability bar is contractual — a mis-scoped quote is a $100–$225/user/mo commitment — so the system needs rules-as-code with deterministic pricing and an audit trail, plus the ISO/IEC 42001-style logging they already advertise.",
+      "impact_estimate": {
+        "range": "$9,000–$20,000/yr of reclaimed senior engineering time",
+        "assumptions": "6–10 inbound quote requests per week (small lean MSP, not measured); 45–90 min of engineer time per quote for licensing math, scope notes and proposal drafting, plus 20–40 min of follow-up; ~390–550 engineer-hours/yr; 35–50% of that prep time removed by drafting, enrichment and automated follow-up; loaded hourly cost ~$73 (NJ sysadmin median $116,420 × ~1.3 for benefits/overhead). Excludes any revenue effect from faster same-day turnaround, which is the larger but unquantified upside.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/15-1244.00?st=NJ"
+      },
+      "complexity": "Low",
+      "pilot_scope": "4 weeks: encode their published tier/pricing rules and out-of-scope rate into a deterministic pricing table, wire the intake form to a drafting agent, generate 20 draft quotes from real historical submissions and grade them against what the engineer actually sent, then run 2 weeks live with human-send-only. Deliverable: draft-quote agent, follow-up sequence, accuracy report and a pricing-rules admin doc."
+    },
+    {
+      "title": "NJ Cyber JIF control-evidence agent for public-sector accounts",
+      "capability": "C",
+      "problem": "Their Cyber JIF practice maps a fund's ten published cyber controls to remediation and an annual attestation evidence pack, one document set per control per entity, refreshed before every attestation and repeated for each borough, authority or municipal client. That is high-volume, template-driven document assembly across many small public entities — exactly the workload a lean team cannot scale linearly.",
+      "evidence": [
+        "Dedicated NJ Cyber JIF readiness practice mapping the fund's ten published cyber controls to remediation and an annual attestation evidence pack, with per-county JIF landing pages and three engagement tiers (https://cloud-guardian.com/services/cyber-jif/).",
+        "Their own page describes assembling one document per control per entity, refreshing evidence before every annual attestation, and repeating the cycle for each borough or authority (https://cloud-guardian.com/services/cyber-jif/).",
+        "The public-sector vertical is a stated growth push with county-level pages, implying a growing entity count per cycle (https://cloud-guardian.com/services/cyber-jif/).",
+        "Wage anchor: Computer Systems Analysts (15-1211) NJ median $122,890 (May 2025 OEWS via O*NET) (https://www.onetonline.org/link/localwages/15-1211.00?st=NJ).",
+        "Evidence that document/status work is a broad LLM-exposed task class: Eloundou et al. estimate ~80% of US workers could have ≥10% of tasks affected by LLMs (academic working paper, arXiv 2303.10130) (https://arxiv.org/abs/2303.10130)."
+      ],
+      "agent_design": "A per-entity evidence agent instantiated for each municipal client. Triggered by (a) a scheduled pre-attestation window and (b) changes detected in connected sources (MFA/conditional-access config, EDR coverage, backup job results, patch status, policy document revisions). It pulls the control-to-evidence map, retrieves the current artifact for each of the ten controls from the client's tenant or documentation store, generates the dated evidence page with a control-level gap note, refreshes the pack, and produces a remediation task list with owners. Systems touched: M365/Entra/Intune and EDR/backup consoles (read-only), the documentation store, the PSA ticket queue for gaps. Human approval: an engineer signs off each evidence item and the final attestation pack; the agent never attests and never writes to client tenants.",
+      "why_not_DIY": "It needs read-only API access to each entity's tenant plus per-client data isolation in one documentation store — the multi-tenant segregation problem the industry brief flags — and every artifact must be reproducible and dated for an auditor. A general chatbot cannot produce a versioned, dated evidence record per control, and a wrong artifact is a compliance failure for a public entity, not a bad answer.",
+      "impact_estimate": {
+        "range": "$6,000–$25,000/yr of analyst time at 10–20 public entities",
+        "assumptions": "6–15 analyst-hours per entity per attestation cycle (10 controls × 40–90 min of gathering, formatting and gap write-up), 1–2 cycles per year, 10–20 entities as the practice scales from its current base (entity count not disclosed); ~$77 loaded hourly cost (NJ computer systems analyst median $122,890 × ~1.25); 50–70% of gathering/formatting time removed, with review retained. Excludes revenue from bidding more entities per cycle, which is the strategic upside.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/15-1211.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "3–4 weeks: build the control-to-evidence map for 2–3 real JIF clients, automate read-only collection for the controls that are queryable via API (MFA/conditional access, endpoint coverage, backup status, patch state), template the dated evidence pages, and hand-collect the rest. Deliverable: two refreshed evidence packs produced with the agent, a reconciliation against the manually built prior pack, and a gap register."
+    },
+    {
+      "title": "After-hours alert enrichment and escalation agent across tenants",
+      "capability": "A",
+      "problem": "The firm sells 24/7/365 coverage with a live engineer on emergency calls, but a lean shop does not staff a night SOC — the night-time control in their own agreement is automated quarantine/isolation plus on-call staff. That means after-hours alert enrichment, per-client context lookup, ticket documentation and paging decisions fall on an on-call engineer who is also the one waking up to fix it.",
+      "evidence": [
+        "Services agreement states AI is used in endpoint detection, email security, monitoring, log correlation, alert triage, ticket summarization and routing, and that some protective actions (quarantine, endpoint isolation, session disable) are taken automatically without a human in the loop (https://cloud-guardian.com/agreement/).",
+        "24/7/365 coverage is advertised with a live engineer answering emergency calls, alongside a two-hour onsite minimum and next-business-day critical response within 50 miles (https://cloud-guardian.com/contact/, https://cloud-guardian.com/agreement/).",
+        "Their selling point is having no tiered help desk — no L1 triage layer between the customer and the engineer who fixes the problem (https://cloud-guardian.com/pricing/).",
+        "Client portal for ticket history, asset inventory and documentation is still rolling out, so per-client context lookup is partly manual today (https://cloud-guardian.com/support/).",
+        "Wage anchor: Network and Computer Systems Administrators (15-1244) NJ median $116,420; help desk (15-1232) NJ median $64,470 (May 2025 OEWS via O*NET) (https://www.onetonline.org/link/localwages/15-1244.00?st=NJ).",
+        "Productivity analogue: staggered rollout of a generative-AI assistant to 5,179 support agents raised issues resolved per hour by 14% on average (34% for novice/low-skilled agents) — NBER working paper 31161, later published in the Quarterly Journal of Economics (2025) (https://www.nber.org/papers/w31161).",
+        "Human-gate support: 45% of AI-generated code samples failed security tests and introduced OWASP Top 10 vulnerabilities in a vendor evaluation of 100+ LLMs (Veracode 2025, vendor research, low strength) (https://www.veracode.com/blog/genai-code-security-report/)."
+      ],
+      "agent_design": "Event-driven on every RMM/EDR/MDR alert across all tenants. The agent resolves the alert to a client and asset, pulls that client's runbook, asset inventory, prior tickets and change history, correlates related alerts into one incident, drafts the timeline and a recommended action, and decides page vs. queue. Low-risk read-only steps (enrichment, correlation, documentation, client-status post) run autonomously; containment write actions (isolate host, revoke session, block sender) require one-click engineer approval, extending their existing auto-containment with a policy engine, per-tenant scoping and a full audit log. Systems touched: RMM/EDR/MDR consoles, PSA ticketing, documentation store, on-call paging. Human approval: every write action and every client-facing message.",
+      "why_not_DIY": "It has to act inside client networks through privileged RMM/EDR tooling, enforce per-tenant data isolation, and hold a defensible audit trail — their own agreement already promises automatic containment, so the failure mode is a wrongly isolated client server, not a bad paragraph. That requires integration work, a policy/approval layer and reliability engineering a chat subscription cannot supply; the Veracode finding that 45% of generated code samples failed security tests is a further reason to keep a human gate on write actions.",
+      "impact_estimate": {
+        "range": "$15,000–$35,000/yr of on-call engineer time, plus faster MTTR",
+        "assumptions": "15–40 after-hours alerts per week across the client base (not disclosed), 25–50 min of manual enrichment, context lookup and ticket documentation per non-trivial alert, ~400–800 engineer-hours/yr; 40–55% of that removed or moved to autonomous documentation; loaded hourly cost ~$73 (NJ sysadmin median $116,420 × ~1.3). No IT-specific measured time savings were available in the industry brief, so the 40–55% figure is an inference grounded in the contact-center working paper (14% average uplift, 34% for novices) and adjusted upward for a task mix weighted toward context lookup and documentation rather than judgement. Should be validated in shadow mode before quoting a number.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/15-1244.00?st=NJ"
+      },
+      "complexity": "High",
+      "pilot_scope": "4 weeks, shadow mode only: connect 2–4 client tenants to alert feeds, run the agent in observe-only mode to enrich, correlate and draft incident timelines without paging anyone, then replay 100 historical after-hours alerts and score its page/no-page and recommended-action calls against what the engineer did. Deliverable: shadow-mode incident agent, accuracy/regression report, an approval-workflow spec for write actions, and the audit-log schema they need for ISO/IEC 42001 evidence."
+    }
+  ],
+  "lead_score": {
+    "pain": 20,
+    "fit": 17,
+    "ability_to_pay": 10,
+    "ease": 10,
+    "strategic": 13,
+    "total": 70,
+    "rationale": "Pain (20/30): the operational bottlenecks are stated by the firm itself — human-quoted intake, per-entity JIF evidence assembly, a portal still rolling out, and on-call after-hours coverage — and those signals are consistent across pricing, support, agreement and JIF pages. But everything is vendor-published: no third-party reviews, no headcount, no revenue, no case studies, so pain volume is inferred, not measured. Fit (17/20): unusually high — they already run AI in triage, summarization and containment and publish an ISO/IEC 42001 practice, so agents slot into their stack and audit requirements rather than needing education. Ability to pay (10/20): flat per-user pricing at $25–$225 with no seat minimum and a stated strategy of undercutting legacy MSPs on labour cost point to a small, price-sensitive operator; no financials verifiable. Ease (10/15): technically easy to pilot (documented stack, API-friendly tooling, real historical data to grade against) but commercially awkward — they are partly a competitor who sells an AI Support Agent, so expect an in-house-first objection, and no decision-maker name is published. Strategic (13/15): MSP/MSSP is a highly repeatable vertical — the same quoting, JIF-style evidence and after-hours triage patterns resell to thousands of small MSPs, and one win becomes a referenceable AgentOps case study. Channel: no published email address or decision-maker name was found, and their marketing leans on live human phone answers, so a phone call reaches the owner faster than a web form."
+  },
+  "best_evidence_signal": "Every intake path (pricing form, free assessment, discovery meeting) terminates in a human-written same-day quote, so sales is the visible labour bottleneck inside a shop that already automates triage and containment — https://cloud-guardian.com/pricing/",
+  "suggested_channel": "phone",
+  "evidence_thin": true
+}

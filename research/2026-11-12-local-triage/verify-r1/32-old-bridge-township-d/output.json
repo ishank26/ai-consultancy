@@ -1,0 +1,142 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Five listed businesses are presented as Old Bridge Township addresses but sit in Sayreville Borough: Carmen F. Spezzi Funeral Home (15 Cherry Lane, Parlin), Paul's Toy Room (3322 Washington Road, Parlin), Priscilla Jewelry (3225 Washington Road, Parlin), Kidzland Child Care Center (777 Washington Road, Parlin), The Peace Rose Montessori School (3079 Bordentown Avenue, Parlin).",
+      "problem": "Out of zone. The US Census Geocoder returns county subdivision 'Sayreville borough' for all five addresses, and OpenStreetMap address points agree (15 Cherry Ln, 3322 and 777 Washington Rd, 3079 Bordentown Ave all tag 'Sayreville'). Sayreville is a separate municipality from Old Bridge Township, so these are not zone-D prospects for this town. The zone file's own caveat already conceded Washington Road 'is generally Sayreville' and kept the entries anyway.",
+      "fix": "Remove all five from this zone file (or move them to a Sayreville/Parlin zone). For comparison, 3008 and 3018 Bordentown Avenue in the same file DO geocode to Old Bridge township, so the municipal line on that road falls between the low 3000s and 3079."
+    },
+    {
+      "claim": "Happy Home Appliances, 1071 US Highway 9, Old Bridge, (732) 952-5260.",
+      "problem": "One of the mapper's own cited sources contradicts the location: the NJTGO Old Bridge directory entry states 'Location under review: official website lists Sayreville, not the Old Bridge shopping plaza.' No opened source shows this dealer at 1071 Route 9.",
+      "fix": "Verify the storefront directly (or drop). If the official site says Sayreville, treat as out of zone."
+    },
+    {
+      "claim": "Old Bridge Chemicals Inc (Old Bridge Minerals), 554 Waterworks Road, website https://oldbridgeminerals.com/.",
+      "problem": "Address is fine (Census Geocoder: 554 Water Works Rd = Old Bridge township), but the website attribution is unverified. oldbridgeminerals.com brands itself 'Old Bridge Minerals', carries no address or corporate identification on the pages opened, and never names 'Old Bridge Chemicals Inc'. The chemical maker at 554 Waterworks Road is separately documented (EPA label listing, DOJ references to it as a predecessor at the CPS/Madison site) without any website.",
+      "fix": "Either cite a page that ties the domain to the 554 Waterworks Road entity, or set website to blank/Unknown for Old Bridge Chemicals."
+    },
+    {
+      "claim": "Ink'd Greetings, 1183 Englishtown Road, Old Bridge, phone (480) 672-2262, evidence 'map listing (no reviews yet)'.",
+      "problem": "The only cited source is a Google Maps search URL, which is not a business page and cannot be re-opened as evidence. No directory, site or listing returned by my searches shows this shop at that address, and the phone is an Arizona area code. Appears to be an unverifiable or home-based listing.",
+      "fix": "Drop unless a real business page (own site, chamber, licence or current directory profile) is found."
+    },
+    {
+      "claim": "Forman Industries, Old Bridge, no address, no phone, sources Nextdoor page plus a Yellow Pages record.",
+      "problem": "No address, phone, website or trade is established; it cannot be confirmed as an operating business in the zone, and an entry with no address cannot be triaged or contacted.",
+      "fix": "Drop, or hold in a 'needs identification' bucket until an address and trade are found."
+    },
+    {
+      "claim": "Best Home Furnishings, 1038 US Highway 9, Old Bridge, (732) 721-5401.",
+      "problem": "The mapper's own primary source (NJTGO Old Bridge directory) lists 1038 Route 9 as the Dollar Tree store. The only evidence for this entry is one iBegin category page; no furniture retailer at 1038 Route 9 could be confirmed on any opened page.",
+      "fix": "Drop unless a current listing or storefront evidence shows a furniture store at that address."
+    },
+    {
+      "claim": "Circle Motor Lodge (1 Victory Court) and Desi Inn (39 Thomas Street) as independent Old Bridge lodging.",
+      "problem": "Both rest on a single Yellow Pages category page; Desi Inn appears only inside a bed-and-breakfast category list and no site, review set or booking page confirms it operates. Both addresses are correctly in Old Bridge township, but current activity is unproven.",
+      "fix": "Keep only if a current listing with hours/reviews or a working phone confirms operation; otherwise drop from the outreach list."
+    },
+    {
+      "claim": "Old Bridge Columbian Club, 61 Pine Street, 'event / hall rental'.",
+      "problem": "It is the Knights of Columbus hall - a Catholic fraternal organisation renting its hall - and the site's newest promoted events are 2021 (pro wrestling) and a February 2024 dinner, so current activity is unproven. Borderline against the worship / religious-organization exclusion.",
+      "fix": "Verify it is still booking events before including; if kept, label it explicitly as a fraternal-org hall so triage can make the exclusion call knowingly."
+    },
+    {
+      "claim": "Good Shepherd Children's Center, 3139 County Road 516 (church-linked preschool).",
+      "problem": "Licensed and operating (NJDCF list of 11/1/2026: capacity 150, ages 2.5-13, phone matches), but the site links to its parent church (gs4nj.org), i.e. it is a church-run program. Not a church itself, so probably eligible, but the exclusion call should be made explicitly.",
+      "fix": "Keep as a child-care business but record the church affiliation in notes."
+    },
+    {
+      "claim": "Chain / franchise exposure: PetCenter Old Bridge and Old Bridge Cardsmart.",
+      "problem": "PetCenter is a multi-store New Jersey pet chain (the file itself calls it 'a locally owned small NJ pet-store group') and Cardsmart & Gift describes itself as having grown from its first corporate store - both are small regional chains rather than one-shop independents.",
+      "fix": "Decide explicitly whether the chain rule means national brands only; if so, keep both but tag them 'regional chain' so scoring is consistent across zones."
+    },
+    {
+      "claim": "Coverage of independent retail and services.",
+      "problem": "Coverage clears the 70% bar but leaves obvious independents in categories the file already covers: Academy of Music in Old Bridge (3883 Highway 516) alongside the single music school listed; Evergreen Production (4970 Bordentown Ave) and Aarius Studios (4420 Bordentown Ave) in photography; and the independent pharmacy cluster on Route 516/Route 9 (Southwood Pharmacy, ACE-Rx Specialty Pharmacy, Woodlane Pharmacy, Old Bridge Drugs & Surgicals, Wellness Center Pharmacy) is absent entirely.",
+      "fix": "Add the music school and the two photography/video studios (verify first); confirm whether independent pharmacies belong to group D and, if so, add the Route 516/Route 9 independents."
+    },
+    {
+      "claim": "Contact-data completeness on otherwise sound entries.",
+      "problem": "Several confirmed entries omit published contact data: Mervat's Bridal shows 732-696-2816 on its own contact page while the file says 'Unknown'; Eye Atelier Eyewear has its own site (eyeatelier.com) while the file leaves website blank; MuSen Photography's listed URL is only its booking subdomain (main site musenphotos.com); Grooming by Jessie has groomingbyjessie.com while the file leaves website blank.",
+      "fix": "Fill these in from the businesses' own pages - this directly affects outreach readiness."
+    },
+    {
+      "claim": "Judgement calls in the file that checked out (recorded so they are not re-litigated).",
+      "problem": "Nothing wrong: Route 34 addresses here really are Old Bridge Township despite Matawan mailing addresses (Census Geocoder puts 419, 432 and 443 State Route 34 in 'Old Bridge township'), so Old Bridge School of Dance, Matawan Montessori Academy and BridgeLife Thrift are correctly in zone; Tots & Blocks, Good Shepherd, Mae Field, Parents Choice, Happy Days and Garden Friends all match the state licensed-centre list exactly; A1A and All Over driving schools match the 2025 MVC list including licence numbers.",
+      "fix": "No action."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Flower Cart Florist, 2350 Route 9 South, Old Bridge, (732) 607-3777", "source_url": "https://www.flowercartnj.com/contact-us.html", "result": "confirmed"},
+    {"claim": "Old Bridge Jewelers, 2705 County Rd 516 #A, (732) 679-0102, closed Sun-Mon", "source_url": "https://oldbridgejewelers.com/contact/", "result": "confirmed"},
+    {"claim": "BridgeLife Thrift, 443 Route 34, Old Bridge; 10-6 Mon-Sat", "source_url": "https://bridgelifethrift.org/", "result": "confirmed"},
+    {"claim": "BridgeLife Thrift 443 Route 34 is inside Old Bridge township", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=443+Route+34%2C+Matawan%2C+NJ+07747&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "confirmed"},
+    {"claim": "Mervat's Bridal, 3817 US-9, Old Bridge; phone listed as Unknown", "source_url": "https://mervatsbridal.com/contact/", "result": "confirmed"},
+    {"claim": "Studio 4 Threads, 151 Texas Road, Old Bridge, (732) 401-6404", "source_url": "https://studio4threads.com/pages/contact-us", "result": "confirmed"},
+    {"claim": "Good Shepherd Children's Center, 3139 County Rd 516 Old Bridge, (732) 679-8887, capacity 150, ages 2.5-13", "source_url": "https://www.nj.gov/dcf/documents/about/divisions/ol/NJDCF-Licensed-Child-Care-Centers.pdf", "result": "confirmed"},
+    {"claim": "Good Shepherd Children's Center is church-linked (site links to gs4nj.org)", "source_url": "https://obgscc.com/", "result": "confirmed"},
+    {"claim": "Tots & Blocks Academy, 2500 Route 9 Old Bridge, capacity 167", "source_url": "https://www.nj.gov/dcf/documents/about/divisions/ol/NJDCF-Licensed-Child-Care-Centers.pdf", "result": "confirmed"},
+    {"claim": "Tots & Blocks Nursery School, 2 Worth Place Old Bridge, capacity 97", "source_url": "https://www.nj.gov/dcf/documents/about/divisions/ol/NJDCF-Licensed-Child-Care-Centers.pdf", "result": "confirmed"},
+    {"claim": "Mae Field Nursery School, 411 Cindy Street Old Bridge, capacity 30", "source_url": "https://www.nj.gov/dcf/documents/about/divisions/ol/NJDCF-Licensed-Child-Care-Centers.pdf", "result": "confirmed"},
+    {"claim": "Parents Choice Day Care, 79 Route 516 Old Bridge, capacity 28", "source_url": "https://www.nj.gov/dcf/documents/about/divisions/ol/NJDCF-Licensed-Child-Care-Centers.pdf", "result": "confirmed"},
+    {"claim": "Happy Days Preschool and Summer Camp, 1308 Englishtown Road, capacity 104", "source_url": "https://www.nj.gov/dcf/documents/about/divisions/ol/NJDCF-Licensed-Child-Care-Centers.pdf", "result": "confirmed"},
+    {"claim": "Garden Friends, 3018 Bordentown Avenue Parlin, capacity 107", "source_url": "https://www.nj.gov/dcf/documents/about/divisions/ol/NJDCF-Licensed-Child-Care-Centers.pdf", "result": "confirmed"},
+    {"claim": "The Peace Rose Montessori School, 3079 Bordentown Avenue Parlin, capacity 120, (646) 825-1330", "source_url": "https://www.nj.gov/dcf/documents/about/divisions/ol/NJDCF-Licensed-Child-Care-Centers.pdf", "result": "confirmed"},
+    {"claim": "The Peace Rose Montessori School is in Old Bridge Township", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3079+Bordentown+Avenue%2C+Parlin%2C+NJ+08859&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "contradicted"},
+    {"claim": "Kidzland Child Care Center, 777 Washington Road Parlin, capacity 43", "source_url": "https://www.nj.gov/dcf/documents/about/divisions/ol/NJDCF-Licensed-Child-Care-Centers.pdf", "result": "confirmed"},
+    {"claim": "Kidzland, 777 Washington Road Parlin, is in Old Bridge Township", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=777+Washington+Road%2C+Parlin%2C+NJ+08859&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "contradicted"},
+    {"claim": "Matawan Montessori Academy, 432 Route 34, capacity 121, (732) 970-4670", "source_url": "https://www.nj.gov/dcf/documents/about/divisions/ol/NJDCF-Licensed-Child-Care-Centers.pdf", "result": "confirmed"},
+    {"claim": "Matawan Montessori Academy, 432 Route 34, is in Old Bridge township despite the 07747 Matawan ZIP", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=432+Route+34%2C+Matawan%2C+NJ+07747&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "confirmed"},
+    {"claim": "A1A Driving School, 9 West Avenue Old Bridge, licence DRS000123", "source_url": "https://www.nj.gov/mvc/pdf/license/DRS_2025.pdf", "result": "confirmed"},
+    {"claim": "All Over Driving School LLC, 2698 Hwy 516 Suite F 2nd floor Old Bridge, licence DRS000166", "source_url": "https://www.nj.gov/mvc/pdf/license/DRS_2025.pdf", "result": "confirmed"},
+    {"claim": "Old Bridge School of Dance, 419 Route 34, (732) 566-6774 - own site publishes '419 Route 34, Matawan NJ'", "source_url": "https://obdance.com/rules-and-fees", "result": "confirmed"},
+    {"claim": "Old Bridge School of Dance, 419 Route 34, is in Old Bridge township (not Matawan borough)", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=419+Route+34%2C+Matawan%2C+NJ+07747&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "confirmed"},
+    {"claim": "Renaissance Design Center, 3663 US Highway 9, (732) 970-9500", "source_url": "https://njtgo.com/towns/O/Old_Bridge/Business%20and%20Shopping/Old_Bridge_Business_and_Shopping.html", "result": "confirmed"},
+    {"claim": "Eye Atelier Eyewear, 3849 US-9, (732) 696-8933", "source_url": "https://njtgo.com/towns/O/Old_Bridge/Business%20and%20Shopping/Old_Bridge_Business_and_Shopping.html", "result": "confirmed"},
+    {"claim": "Inspirations Thrift Store, 1030 Route 9, (732) 952-3933", "source_url": "https://njtgo.com/towns/O/Old_Bridge/Business%20and%20Shopping/Old_Bridge_Business_and_Shopping.html", "result": "confirmed"},
+    {"claim": "Tots & Blocks Academy at 2500 US-9 South (Route 9 Plaza)", "source_url": "https://njtgo.com/towns/O/Old_Bridge/Business%20and%20Shopping/Old_Bridge_Business_and_Shopping.html", "result": "confirmed"},
+    {"claim": "Happy Home Appliances at 1071 US Highway 9, Old Bridge", "source_url": "https://njtgo.com/towns/O/Old_Bridge/Business%20and%20Shopping/Old_Bridge_Business_and_Shopping.html", "result": "contradicted"},
+    {"claim": "Old Bridge Funeral Home, 2350 Route 516, (732) 607-9500, part of Jersey Memorial Group", "source_url": "https://jerseymemorial.com/our-locations/old-bridge-funeral-home/", "result": "confirmed"},
+    {"claim": "PetCenter Old Bridge, 3833 US-9, runs puppy and dog training classes", "source_url": "https://petcenternj.com/puppy-training/", "result": "confirmed"},
+    {"claim": "Grand Marquis, 1550 Route 9 South, Old Bridge - banquet venue at that address", "source_url": "https://grandmarquiscaterers.com/contact-us/", "result": "not found"},
+    {"claim": "Old Bridge Columbian Club, 61 Pine Street - Knights of Columbus hall rental", "source_url": "https://oldbridgecolumbianclub.com/", "result": "confirmed"},
+    {"claim": "Carmen F. Spezzi Funeral Home, 15 Cherry Lane Parlin, is in Old Bridge Township", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=15+Cherry+Lane%2C+Parlin%2C+NJ+08859&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "contradicted"},
+    {"claim": "Paul's Toy Room, 3322 Washington Road Parlin, is in Old Bridge Township", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3322+Washington+Road%2C+Parlin%2C+NJ+08859&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "contradicted"},
+    {"claim": "Priscilla Jewelry, 3225 Washington Road Parlin, is in Old Bridge Township", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3225+Washington+Road%2C+Parlin%2C+NJ+08859&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "contradicted"},
+    {"claim": "Priscilla Jewelry is at 3225 Washington Road, Parlin, and trading", "source_url": "https://priscillajewelry.shop/pages/priscilla-jewelry-about-us", "result": "confirmed"},
+    {"claim": "Ivy Masters Learning Center has an Old Bridge office and does SAT/ACT prep", "source_url": "https://www.ivymasters.com/services/standardized-testing-sat-act-instruction/", "result": "confirmed"},
+    {"claim": "Black Tie Cleaners, Parlin, (732) 525-5391, offers alterations", "source_url": "https://blacktiecleanersnj.com/Alterations-and-Restorations", "result": "confirmed"},
+    {"claim": "Black Tie Cleaners, 3008 Bordentown Avenue Parlin, is in Old Bridge township", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=3008+Bordentown+Avenue%2C+Parlin%2C+NJ+08859&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "confirmed"},
+    {"claim": "Susie Q's Grooming is in Old Bridge, (732) 251-0500, and offers grooming and boarding", "source_url": "https://www.susieqsgrooming.com/", "result": "confirmed"},
+    {"claim": "Old Bridge Chemicals Inc sits at 554 Waterworks Road", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=554+Waterworks+Road%2C+Old+Bridge%2C+NJ+08857&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "confirmed"},
+    {"claim": "oldbridgeminerals.com is the website of Old Bridge Chemicals Inc", "source_url": "https://oldbridgeminerals.com/about-us/", "result": "not found"},
+    {"claim": "Jocama Construction Corp is an Old Bridge NJ firm", "source_url": "https://www.jocamaconstruction.com/", "result": "confirmed"},
+    {"claim": "Tackle U.S., 273 Laurence Parkway, is in Old Bridge township", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=273+Laurence+Parkway%2C+Laurence+Harbor%2C+NJ+08879&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "confirmed"},
+    {"claim": "Ink'd Greetings, 1183 Englishtown Road, Old Bridge", "source_url": "https://www.google.com/maps/search/gift+shop+Old+Bridge+NJ", "result": "could not open"}
+  ],
+  "coverage": {
+    "searches": [
+      "florist shop Old Bridge NJ 08857",
+      "pet grooming Old Bridge NJ 08857",
+      "thrift store Old Bridge NJ consignment",
+      "tutoring center Old Bridge NJ SAT ACT",
+      "dance studio Old Bridge NJ",
+      "jewelry store Route 9 Old Bridge NJ independent",
+      "funeral home Old Bridge NJ Parlin",
+      "photographer studio Old Bridge NJ 08857",
+      "furniture store Old Bridge NJ Route 9",
+      "music school lessons Old Bridge NJ",
+      "independent pharmacy Old Bridge NJ Route 516"
+    ],
+    "eligible_found": 21,
+    "already_listed": 17,
+    "missing": [
+      {"name": "Academy of Music in Old Bridge (3883 Highway 516)", "town": "Old Bridge", "source_url": "https://www.yellowbot.com/tags/fineartsschools/Old%20Bridge%20Township%2C%20NJ/page1.html"},
+      {"name": "Evergreen Production (photography/videography, 4970 Bordentown Ave)", "town": "Old Bridge", "source_url": "https://www.yellowpages.com/old-bridge-nj/photography-videography"},
+      {"name": "Southwood Pharmacy (15 Route 516)", "town": "Old Bridge", "source_url": "https://www.southwoodpharmacy.com/pharmacy-contact-us"},
+      {"name": "ACE-Rx Specialty Pharmacy (2628 County Road 516)", "town": "Old Bridge", "source_url": "https://www.acerxpharmacy.com/"}
+    ]
+  },
+  "confidence": "High"
+}

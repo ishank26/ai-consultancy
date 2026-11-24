@@ -1,0 +1,131 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Multi-office branded dental groups retained as if independent: Tender Smiles 4 Kids (1330 How Ln), Garden State Smiles (1612 NJ-27), Brighter Dental (960 Shoppes Blvd)",
+      "problem": "All three are single-brand regional chains. Tender Smiles 4 Kids lists six NJ offices (Freehold, North Brunswick, Edison, Linden, Ocean, Old Bridge) on tendersmiles4kids.com; Garden State Smiles lists five (North Brunswick, Hamilton, Matawan, Brick, Toms River); Brighter Dental lists five (Delran, Freehold, North Brunswick, Princeton, Robbinsville). The mapper's own exclusion list removed Great Clips, Hand & Stone, Twin Boro PT and JAG PT for exactly this reason, so retaining these three is inconsistent with the stated rules. The entries themselves are accurate; only their eligibility is wrong.",
+      "fix": "Drop Tender Smiles 4 Kids, Garden State Smiles and Brighter Dental, or apply one explicit rule ('branded group with 3+ offices = chain, excluded') across the whole list and re-run the exclusions."
+    },
+    {
+      "claim": "Two Advocare practices retained: Advocare North Brunswick Medical Associates (986 Shoppes Blvd) and Advocare North Brunswick Pediatrics (1950 NJ-27)",
+      "problem": "Both are offices of Advocare, which states it has more than 900 physicians/providers across NJ, PA and DE (advocaredoctors.com), i.e. a large network, not a local independent practice. The mapper flagged this in notes but included them anyway. Both entries are factually correct.",
+      "fix": "Decide whether network-affiliated primary-care offices are in scope. If not, remove both; if yes, say so in the zone rules so other zones treat Advocare/Summit/Vanguard offices the same way."
+    },
+    {
+      "claim": "New Horizons Physical Therapy & Lymphedema Care - address '20 Towne Center Dr'",
+      "problem": "The practice's own contact page gives 620 Towne Center Dr, North Brunswick, NJ 08902 (phone 732-658-1896 matches). '20 Towne Center Dr' appears to be a typo and is a different, non-existent street number.",
+      "fix": "Change address to 620 Towne Center Dr."
+    },
+    {
+      "claim": "Entry named 'MARTIAL ARTS DOJANG' at 990 Shoppes Blvd, (732) 944-0183",
+      "problem": "The business is real and at that address, but 'MARTIAL ARTS DOJANG' is a map-listing artifact; the operator brands itself Martial Arts Academy of NJ (MAANJ), maanj.com. Same problem as 'Fresh style barbersho1 Only Page' for Fresh Style Barbershop (2244 US-130) - the mapper noted that one but not this one.",
+      "fix": "Rename to 'Martial Arts Academy of NJ (MAANJ)' and add website https://maanj.com/."
+    },
+    {
+      "claim": "Caveat: 'Barbers: only two independent barbershops surfaced'",
+      "problem": "Four more independent barbershops are listed on the same directory the mapper used for other categories (bestprosintown.com/nj/north-brunswick/barbers/): North Side Haircutters (662 Georges Rd), VIP Barber Shop (676 Georges Rd), Fusion Barber Studio (1825 US-130) and EVIECUTS (Hermann Road). The stated thinness of this category is not supported.",
+      "fix": "Add the three with full addresses and correct the 'categories_thin' note for barbers."
+    },
+    {
+      "claim": "Nail salons: 5 entries listed, caveat implies the category is covered",
+      "problem": "Only 2 of 6 independent nail salons found are on the list. Missing: Nail Fever & Spa (1825 US-130), Nail Studio 2 (512 Georges Rd), Splendor Nails (676 Georges Rd), Evey's Beauty & Spa (1610 US-130). No caveat mentions nails as thin.",
+      "fix": "Add the four missing salons and add nails to categories_thin or explain the omission."
+    },
+    {
+      "claim": "Missing dentists: Always Smile Dental Care (2000 NJ-27), AmeriDental (1553 Ruth Rd #3), Dental Cosmetic Center of North Brunswick, Dr. Meetu Soni (746 Livingston Ave Ste 2)",
+      "problem": "All four are ranked in the same 24-clinic North Brunswick Township dentist ranking that the mapper relied on for other entrants, and none is in businesses.json. Always Smile Dental Care is the #4 ranked clinic in town (4.9 stars, 167 reviews) - a notable omission for a dentist-heavy zone.",
+      "fix": "Add these four dentist entries with addresses and phones before outreach."
+    },
+    {
+      "claim": "Sources: most entries cite only a Bing Maps query URL (e.g. https://www.bing.com/maps?q=dentist+north+brunswick+nj)",
+      "problem": "A Bing Maps search URL is not a stable per-business citation - it returns a different result set on each run and cannot be re-checked. About 60 of ~85 entries rely on it alone. This is a source-quality problem, not a factual error: I was able to re-verify nearly all of them through other pages.",
+      "fix": "For future zones, cite the individual listing page, the practice's own site, or a stable directory profile per business."
+    },
+    {
+      "claim": "Duplicate-person risk: 'Brunswick Chiropractic Center of New Jersey' (908-753-5454) and 'Dr. Neil Kosin, Chiropractor' (732-409-7774), both 1594 US-130",
+      "problem": "Neil I. Kosin, DC is listed as the chiropractor at Brunswick Chiropractic Center at that address, and both phone numbers appear on the practice's own site/listings. These are probably one office counted twice, which would inflate the list and cause two cold approaches to one practice.",
+      "fix": "Merge into one entry ('Brunswick Chiropractic Center of New Jersey - Neil Kosin, DC') or confirm they are separate practices in the building."
+    },
+    {
+      "claim": "Duplicate-person risk: 'Robin Deiner, Counselor' and 'Helene Steinhauer, Counselor', both 343 Old Georges Rd Suite 201 with the identical phone (848) 893-1932",
+      "problem": "Identical address and phone on two separate entries suggests a shared front-desk number for a group practice rather than two independently reachable clinicians. The number cannot belong to both individually.",
+      "fix": "Verify each clinician has a direct contact before listing both; otherwise keep one entry for the group practice."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "North Brunswick Family Dental & Orthodontics is at 825 Georges Rd and northbrunswickfamilydental.com is its site", "source_url": "https://northbrunswickfamilydental.com/locations/", "result": "confirmed"},
+    {"claim": "Dental Health Associates, P.A. is at 977 Livingston Ave, North Brunswick, (732) 418-9800", "source_url": "https://njdha.com/locations/north-brunswick/", "result": "confirmed"},
+    {"claim": "Community Dental of North Brunswick is at 566 Milltown Rd, (732) 543-1184", "source_url": "https://www.communitydentalnj.com/north-brunswick", "result": "confirmed"},
+    {"claim": "Hidden Lake Dental Associates is at 402 Towne Center Dr, (732) 821-5500", "source_url": "https://www.hiddenlakedental.org/", "result": "confirmed"},
+    {"claim": "Antoinette Tauk DDS is at 2050 NJ-27, (732) 940-0092", "source_url": "https://www.taukdental.com/", "result": "confirmed"},
+    {"claim": "Delicate Dental of North Brunswick is at 2003 US-130 Suite C (phone listed as Unknown; CareCredit shows 732-297-0549)", "source_url": "https://www.carecredit.com/doctor-locator/north-brunswick-nj/delicate-dental-787cdp/", "result": "confirmed"},
+    {"claim": "Magic Smile of NJ is at 622 Georges Rd", "source_url": "https://www.magicsmileofnj.com/", "result": "confirmed"},
+    {"claim": "Tender Smiles 4 Kids is at 1330 How Lane, (732) 249-1010", "source_url": "https://www.tendersmiles4kids.com/contact-us/contact-us-north-brunswick/", "result": "confirmed"},
+    {"claim": "Cornerstone Orthodontics is at 2208 US-130, (732) 359-5667", "source_url": "https://cornerstoneorthonj.com/contact/", "result": "confirmed"},
+    {"claim": "Charschan Chiropractic & Sports Injury Associates is at 490 Georges Rd and backfixer1.com is its site", "source_url": "https://www.backfixer1.com/about-us/about-our-office/north-brunswick/", "result": "confirmed"},
+    {"claim": "Sellari Chiropractic Center is at 1594 US-130, (732) 821-5900, sellarichiropractic.com", "source_url": "https://www.sellarichiropractic.com/contact-us", "result": "confirmed"},
+    {"claim": "Brunswick Chiropractic Center of New Jersey is at 1594 Route 130, phone (908) 753-5454, brunswickchironj.com", "source_url": "https://brunswickchironj.com/", "result": "confirmed"},
+    {"claim": "New Horizons Physical Therapy & Lymphedema Care is at 20 Towne Center Dr", "source_url": "https://www.newhorizonsptl.com/contact-us", "result": "contradicted"},
+    {"claim": "Park Physical Therapy - North Brunswick is at 1584 US-130, (732) 821-7878", "source_url": "https://parkphysicaltherapy.net/", "result": "confirmed"},
+    {"claim": "Inspire Physical Therapy North Brunswick is at 980 Shoppes Blvd, (848) 202-1439", "source_url": "https://theinspirept.com/contactus/", "result": "confirmed"},
+    {"claim": "Princeton Dermatology Associates has a North Brunswick office at 1950 NJ-27 Suite A, (732) 297-8866", "source_url": "https://princetonderm.com/contact-us/north-brunswick-office/", "result": "confirmed"},
+    {"claim": "Fields of Vision - Dr. Marshall Field is at 1626 US-130 Suite 303, (732) 422-8200", "source_url": "https://www.marshallfieldod.com/contact-us/", "result": "confirmed"},
+    {"claim": "Somerset Eye Care is at 2090 NJ-27 Suite 105, (732) 658-6765", "source_url": "https://somerseteyecare.com/dr-arlene-abreu/", "result": "confirmed"},
+    {"claim": "Family Eye Care & Contact Lens (Alma Jacobsen, OD) is at 464 Renaissance Blvd, (732) 297-1743", "source_url": "https://almajacobsenod.com/", "result": "confirmed"},
+    {"claim": "Advocare North Brunswick Pediatrics is at 1950 NJ-27, (732) 940-5511", "source_url": "https://www.advocarenbpediatrics.com/North-Brunswick-Office", "result": "confirmed"},
+    {"claim": "Advocare North Brunswick Medical Associates is at 986 Shoppes Blvd, (732) 497-5000", "source_url": "https://www.advocarenbma.com/North-Brunswick-Location", "result": "confirmed"},
+    {"claim": "Faith Veterinary Clinic is at 2202 US-130, (732) 658-6777", "source_url": "https://faithvetclinic.com/contact/", "result": "confirmed"},
+    {"claim": "Brighter Dental has a North Brunswick office at 960 Shoppes Blvd Suite A1 (phone 732-258-8700 matches)", "source_url": "https://brighterdental.com/locations/northbrunswick/", "result": "confirmed"},
+    {"claim": "Brilliant Smiles of North Brunswick is at 2229 US Highway 1 (listed phone is Unknown; the practice's site shows 732-940-0222)", "source_url": "https://www.brilliantsmilesofnorthbrunswick.com/contact", "result": "confirmed"},
+    {"claim": "Garden State Smiles has a North Brunswick office at 1612 NJ-27, (732) 846-6767", "source_url": "https://gardenstatesmilesnb.com/", "result": "confirmed"},
+    {"claim": "Diesel Gym is at 1485 Livingston Ave, (732) 940-0997", "source_url": "https://www.dieselgymnj.com/", "result": "confirmed"},
+    {"claim": "Jordan Psychotherapy Group is at 688 Nassau St, (732) 718-0586", "source_url": "https://www.jordantherapygroup.com/contact-us", "result": "confirmed"},
+    {"claim": "MARTIAL ARTS DOJANG at 990 Shoppes Blvd is the name the operator uses", "source_url": "https://maanj.com/contact/", "result": "contradicted"},
+    {"claim": "WEAR ME HAIR STUDIO is at 914 Livingston Ave, (848) 218-9444", "source_url": "https://www.salonlookup.com/business/wear-me-hair-studio-north-brunswick-township-nj", "result": "confirmed"},
+    {"claim": "Zoyce Beauty Salone is at 1000 Aaron Rd", "source_url": "https://www.loc8nearme.com/new-jersey/north-brunswick/zoyce-beauty-salone/4152993/", "result": "confirmed"},
+    {"claim": "Salon G and Spa is at 1727 US-130", "source_url": "https://www.bestprosintown.com/nj/north-brunswick/salon-g-and-spa-/", "result": "confirmed"},
+    {"claim": "F&Y Chic Unisex Salon is at 788 Livingston Ave", "source_url": "https://tmgweb.wixsite.com/salonorthbruns", "result": "confirmed"},
+    {"claim": "D'Clase Doobie Salon is at 900 Livingston Ave", "source_url": "https://www.bestprosintown.com/nj/north-brunswick/hair-salons/", "result": "confirmed"},
+    {"claim": "Lily Beauty Salon is at 1014 Livingston Ave", "source_url": "https://www.loc8nearme.com/new-jersey/north-brunswick/lily-beauty-salon/3968440/", "result": "confirmed"},
+    {"claim": "Nice Cuts Barbershop is at 570 Georges Rd", "source_url": "https://www.bestprosintown.com/nj/north-brunswick/barbers/", "result": "confirmed"},
+    {"claim": "Fresh Style Barbershop is at 2244 US-130", "source_url": "https://www.bestprosintown.com/nj/north-brunswick/barbers/", "result": "confirmed"},
+    {"claim": "Revive Spa is at 2140 US-130 Unit 2", "source_url": "https://www.bestprosintown.com/nj/north-brunswick/nail-salons/", "result": "confirmed"},
+    {"claim": "Golden Nail & Spa is at 2176 US-130", "source_url": "https://www.bestprosintown.com/nj/north-brunswick/nail-salons/", "result": "confirmed"},
+    {"claim": "Ocean Spring Spa is at 1892 US-130 (own site shows 1894 US-130)", "source_url": "https://www.oceanspringspa.com/", "result": "confirmed"},
+    {"claim": "Lakeside Massage Spa is at 1562 US-130, (732) 305-6120", "source_url": "https://www.lakesidespamassage.com/", "result": "confirmed"},
+    {"claim": "Brunswick's Martial Arts Academy has a web presence and an active 2232 US-130 location (mapper marked it map-listing-only, unconfirmed)", "source_url": "https://www.brunswicksmaa.com/", "result": "confirmed"}
+  ],
+  "coverage": {
+    "searches": [
+      "dentist North Brunswick NJ 08902 - https://www.dentistsranked.com/dentists/north-brunswick-township-nj",
+      "hair salon North Brunswick NJ 08902 - https://www.bestprosintown.com/nj/north-brunswick/hair-salons/",
+      "nail salon North Brunswick NJ - https://www.bestprosintown.com/nj/north-brunswick/nail-salons/",
+      "barber shop North Brunswick NJ Georges Rd - https://www.bestprosintown.com/nj/north-brunswick/barbers/",
+      "chiropractor North Brunswick NJ - https://www.chiropractordirectories.com/new-jersey/north-brunswick-township",
+      "physical therapy clinic North Brunswick NJ 08902",
+      "optometrist eye doctor North Brunswick NJ - https://www.healthgrades.com/optometry-directory/nj-new-jersey/north-brunswick",
+      "massage spa North Brunswick NJ 08902",
+      "martial arts school North Brunswick NJ - https://themartialartsatlas.com/new-jersey/north-brunswick/",
+      "yoga studio pilates North Brunswick NJ",
+      "beauty salon North Brunswick NJ Livingston Ave"
+    ],
+    "eligible_found": 52,
+    "already_listed": 36,
+    "missing": [
+      {"name": "Always Smile Dental Care", "town": "North Brunswick", "source_url": "https://www.dentistsranked.com/dentists/north-brunswick-township-nj"},
+      {"name": "AmeriDental", "town": "North Brunswick", "source_url": "https://www.dentistsranked.com/dentists/north-brunswick-township-nj"},
+      {"name": "Dental Cosmetic Center of North Brunswick", "town": "North Brunswick", "source_url": "https://www.dentistsranked.com/dentists/north-brunswick-township-nj"},
+      {"name": "Dr. Meetu Soni (746 Livingston Ave Ste 2)", "town": "North Brunswick", "source_url": "https://www.dentistsranked.com/dentists/north-brunswick-township-nj"},
+      {"name": "Nail Fever & Spa (1825 US-130)", "town": "North Brunswick", "source_url": "https://www.bestprosintown.com/nj/north-brunswick/nail-salons/"},
+      {"name": "Nail Studio 2 (512 Georges Rd)", "town": "North Brunswick", "source_url": "https://www.bestprosintown.com/nj/north-brunswick/nail-salons/"},
+      {"name": "Splendor Nails (676 Georges Rd)", "town": "North Brunswick", "source_url": "https://www.bestprosintown.com/nj/north-brunswick/nail-salons/"},
+      {"name": "Evey's Beauty & Spa (1610 US-130)", "town": "North Brunswick", "source_url": "https://www.atly.com/location/Evey%27s-Beauty-Spa"},
+      {"name": "North Side Haircutters (662 Georges Rd)", "town": "North Brunswick", "source_url": "https://www.bestprosintown.com/nj/north-brunswick/barbers/"},
+      {"name": "VIP Barber Shop (676 Georges Rd)", "town": "North Brunswick", "source_url": "https://www.bestprosintown.com/nj/north-brunswick/barbers/"},
+      {"name": "Fusion Barber Studio (1825 US-130)", "town": "North Brunswick", "source_url": "https://www.bestprosintown.com/nj/north-brunswick/barbers/"},
+      {"name": "Advanced Chiropractic & Health Center - Kevin J. Lynch, DC (1440 How Ln Ste 2A)", "town": "North Brunswick", "source_url": "https://www.bestprosintown.com/nj/north-brunswick/advanced-chiropractic-health-center-kevin-j-lynch-dc-/"},
+      {"name": "Valora Fitness (772 Carolier Ln)", "town": "North Brunswick", "source_url": "https://www.valorafitness.com/our-studios"}
+    ]
+  },
+  "confidence": "Medium"
+}

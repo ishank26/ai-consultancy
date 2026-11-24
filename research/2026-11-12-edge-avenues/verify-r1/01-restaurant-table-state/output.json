@@ -1,0 +1,238 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "LFM2-VL entry: \"Note: the brief's 'LFM2.5-VL' does not appear to exist; the shipping family is LFM2-VL.\"",
+      "problem": "Contradicted. Liquid AI's own site documents LFM2.5-VL-450M, LFM2.5-VL-1.6B and LFM2.5-VL-3B (LFM2.5-VL-3B blog post; Hugging Face LiquidAI/LFM2.5-VL-3B). The note is an inference from the single (now deprecated) LFM2-VL page cited, and it is false as written.",
+      "fix": "Delete the 'does not exist' note or rewrite it as: LFM2-VL-450M/1.6B (2025) and LFM2.5-VL-450M/1.6B/3B (2026) both ship. Cite https://www.liquid.ai/blog/lfm2-5-vl-3b for LFM2.5-VL and https://www.liquid.ai/blog/lfm2-vl-3b-a-new-efficient-vision-language-for-the-edge for the LFM2-VL-3B member of the 450M/1.6B/3B family, since the cited lfm2-vl blog page lists only 450M and 1.6B."
+    },
+    {
+      "claim": "A3929: \"Reported as passed by the Assembly 56-16-1 on 2026-03-23 and referred to the Senate Law and Public Safety Committee\" (confirmed: true)",
+      "problem": "The cited source (3929_I1.PDF) is only the introduced bill text with sponsorship updated 2/19/2026; it contains no vote tally, no March 23, 2026 date and no committee referral. The legislative-status claim is presented as confirmed but is not supported by the URL given. (The underlying facts do check out against the NJ Legislature bill status page, which is a different source.)",
+      "fix": "Add the bill status URL (https://njleg.state.nj.us/bill-search/2026/A3929) as the source for the passage/referral sentence, or mark the status as unverified. Keep 3929_I1.PDF only for the bill's text and penalty amounts."
+    },
+    {
+      "claim": "fit_score: legal_risk_low = 10",
+      "problem": "Sub-scores add to 63 correctly (13+11+8+15+10+6) and all sit inside plausible ranges, but a maximum legal score contradicts the brief's own legal section, which lists live exposure: wiretap exposure from audio, an absolute restroom/staff-area exclusion under 2C:14-9, the Friedman v. Martinez intrusion tort, a pending NJ biometric-surveillance bill, and unconfirmed notice/retention rules. Two of ten legal items are recorded as 'could not confirm'.",
+      "fix": "Drop legal_risk_low to about 7-8 (or state explicitly that 10 means 'risk manageable by design, not absence of exposure') and re-balance the total, so the score reflects that the risk is avoidable rather than nil."
+    },
+    {
+      "claim": "published version reports approximately +1% per check, -10% duration, +11% sales per minute",
+      "problem": "The cited URL is the 2017 working paper, which reports 2.91% / 9.74% / 10.77%. It does not contain the +1% figure. The published (Management Science/2019) numbers are corroborated only by secondary trade coverage (Restaurant Dive, Aug 2019), not by anything in the document cited.",
+      "fix": "Cite the published article (or the trade summary) for the +1% figure, or drop the parenthetical and quote the working paper's 2.91% / 9.74% / 10.77% only."
+    },
+    {
+      "claim": "Restaurant industry net margin between 1% and 7%, \"which is the paper's own stated reason technology investment is hard to justify in this sector\"",
+      "problem": "The 1%-7% figure is verbatim in the paper, but the paper does not argue that low margins make technology investment hard to justify; it argues the opposite - that a 2.91% sales lift is practically significant 'given the low-margin nature of the casual dining business'. The framing inverts the source's point.",
+      "fix": "Rephrase: the paper cites 1%-7% margins as the reason a ~3% sales lift is economically meaningful, not as a reason investment is hard to justify."
+    },
+    {
+      "claim": "NLRB GC 23-02 'announced intent to ... route such cases to the Division of Advice'",
+      "problem": "The cited NLRB news page confirms the Oct 31, 2022 memo, its intent to urge a new Section 7 framework and an interagency approach, but does not mention routing cases to the Division of Advice; that language is in the memo itself, not the page cited.",
+      "fix": "Cite GC 23-02 directly (apps.nlrb.gov document) for the Division of Advice routing, or drop that clause."
+    },
+    {
+      "claim": "NJ data-privacy law excludes employment-context data (source: njconsumeraffairs.gov FAQ)",
+      "problem": "That page returned only a stub (~550 characters) and its content did not substantiate the employment-exclusion statement, so the citation does not carry the claim it is attached to.",
+      "fix": "Replace with the statutory text (N.J.S.A. 56:8-166 or the Act's definitional scope) or the Attorney General FAQ text that actually addresses employment data; the item is already marked confirmed:false, so label it as unverified."
+    },
+    {
+      "claim": "Kimes 2004: 100-seat restaurant, $20 average check, 60->50 minutes, 400->480 covers, +20% revenue",
+      "problem": "The cited Cornell PDF would not open for me (HTTP 405/429 across several attempts); the numbers were corroborated only from search excerpts quoting that PDF. Not a contradiction - a source-access gap that should be closed before quoting.",
+      "fix": "Re-fetch the ecommons PDF (or the published Cornell Hotel and Restaurant Administration Quarterly version) and confirm the 400/480 example verbatim, or attach the quote used."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Middlesex County NJ, private (own_code 5), NAICS 722511, 2024: 587 establishments, 9,110 annual average employees, $287,793,815 total annual wages, $31,591 average annual pay (~15.5 employees per establishment)",
+      "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Full-service respondents: salaries and wages incl. benefits = median 36.5% of sales in 2024, ~33% in the 2010/2013/2016 editions; survey base >900 operators",
+      "source_url": "https://www.restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-labor-costs-are-well-above-historical-averages/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Restaurant industry profit margins are only 1% to 7% (paper's own statement)",
+      "source_url": "https://faculty.wharton.upenn.edu/wp-content/uploads/2017/09/2017.9.10_Tabletop_For_Submission_WithNames.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Tabletop devices: average sales per check +2.91%, meal duration -9.74%, sales per minute ~+10.77%",
+      "source_url": "https://faculty.wharton.upenn.edu/wp-content/uploads/2017/09/2017.9.10_Tabletop_For_Submission_WithNames.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sample: slightly over 2.6 million check-level observations with staggered rollout and difference-in-differences",
+      "source_url": "https://faculty.wharton.upenn.edu/wp-content/uploads/2017/09/2017.9.10_Tabletop_For_Submission_WithNames.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Published version reports approximately +1% per check and +11% sales per minute (4,000/2.6M transaction base)",
+      "source_url": "https://culinaryvisions.org/clips/restaurantdive_aug2019.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "De Vries/Roy/de Koster 2018: 94,404 customers at one restaurant over 12 months; longer wait relates to reneging, longer time to return, shorter dining duration",
+      "source_url": "https://pure.eur.nl/ws/portalfiles/portal/47914467/1-s2.0-S0272696318300214-main.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "In restaurant services the service-entry (host-stand) wait has the largest influence on service evaluation (IJBG 2015, Vol.14 No.2, restaurants/assessment/dental, Netherlands)",
+      "source_url": "https://www.inderscience.com/info/e_inarticle.php?artid=67435",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PreciTaste vision system: about $2,000 to install per location, then $399/month (2025 trade press)",
+      "source_url": "https://www.restaurantbusinessonline.com/technology/restaurants-take-closer-look-computer-vision",
+      "result": "confirmed"
+    },
+    {
+      "claim": "IP cameras fell to 'a couple hundred bucks' from several thousand dollars five years earlier",
+      "source_url": "https://www.restaurantbusinessonline.com/technology/restaurants-take-closer-look-computer-vision",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'A dominant use case for computer vision has not emerged yet'; restaurants still at proof-of-concept; Presto dropped its vision product to focus solely on AI voice",
+      "source_url": "https://www.restaurantbusinessonline.com/technology/restaurants-take-closer-look-computer-vision",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Presto Vision placed cameras in lobbies and dining areas, alerted on long waits and guest bounce rates, piloted at Outback Steakhouse franchisee Evergreen Restaurant Group",
+      "source_url": "https://presto.com/presto-launches-computer-vision-product-for-real-time-restaurant-operations-insights-2/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Maître'd: cameras feed a back-office computer producing per-table state, shadow mode first, delegation in pilot, 'installation takes an afternoon', no public price",
+      "source_url": "https://www.maitred.restaurant/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wobot runs 100+ use cases on existing security cameras, incl. detecting a waiting customer with no employee present",
+      "source_url": "https://www.restaurantbusinessonline.com/technology/restaurants-take-closer-look-computer-vision",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Resy: Platform $289/month, Platform 360 $459/month",
+      "source_url": "https://resy.com/join/plans-pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SevenRooms publishes no price (page has plan/feature content, no dollar figures)",
+      "source_url": "https://sevenrooms.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey minimum wage rises $0.43 to $15.92/hour for most employees effective January 1, 2026",
+      "source_url": "https://www.nj.gov/labor/lwdhome/press/2025/20251001_Minimum_Wage.shtml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Wiretap Act requires consent of at least one party before recording an in-person conversation with a reasonable expectation of no recording (N.J.S.A. 2A:156A-2, -3, -4)",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9 makes it a third-degree crime to record intimate parts/sexual acts where privacy is expected; law does not criminalize recording in public areas with no reasonable expectation of privacy",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Friedman v. Martinez, 242 N.J. 449 (2020): intrusion-upon-seclusion claim can proceed without proof the plaintiff's image was captured; placement of a hidden camera in a private space is the intrusion",
+      "source_url": "https://www.njcourts.gov/system/files/court-opinions/2020/a_37_81_18.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No New Jersey statute or regulation specifically governs employer use of video recording devices in the workplace; constraint comes from common-law intrusion and the Wiretap Act",
+      "source_url": "https://www.bracheichler.com/insights/use-of-cameras-in-nj-based-ambulatory-surgery-centers/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC Memorandum 23-02 dated October 31, 2022, targets intrusive/abusive electronic surveillance and algorithmic management as interference with Section 7 rights",
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC Policy Statement on Biometric Information treats facial/video biometric data as sensitive and unsubstantiated accuracy/bias claims as Section 5 deception",
+      "source_url": "https://search.ftc.gov/system/files/ftc_gov/pdf/p225402biometricpolicystatement.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A3929: unlawful Consumer Fraud Act practice to use a 'biometric surveillance system' on consumers without clear and conspicuous notice (perimeter sign suffices); written explanation before denial/removal; no selling/sharing; penalties up to $10,000 first / $20,000 subsequent plus punitive and treble damages",
+      "source_url": "https://pub.njleg.gov/Bills/2026/A4000/3929_I1.PDF",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A3929 passed the Assembly 56-16-1 on 2026-03-23 and was referred to the Senate Law and Public Safety Committee; not enacted",
+      "source_url": "https://pub.njleg.gov/Bills/2026/A4000/3929_I1.PDF",
+      "result": "not found"
+    },
+    {
+      "claim": "Practitioner blog: 22-table pizzeria, 5.8 min 'guests left' to 'table ready', ~$2,600/week estimated lost covers across Fri-Sat peak; 8-week pilot with YOLOv8m on 1,400 CVAT images; cleanup 5.8 -> 1.9 min, turnover 31 -> 27 min, ~$1,350/week extra; $4,800 install, $380/month",
+      "source_url": "https://data-metrics.pro/en/blog/computer-vision-restaurante-mesas-dodo-pizza/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Practitioner blog: 92-96% F1 production accuracy, 4-8% false positives/negatives, ~800 labeled images as the floor, 5 consecutive frames over 10s debounce, 50-60% accuracy without fine-tuning, 5-8 table rooms do not pay back, ignored alerts decay within two weeks",
+      "source_url": "https://data-metrics.pro/en/blog/computer-vision-restaurante-mesas-dodo-pizza/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Guler & Musa 2025: YOLOv8 custom table model mAP@0.5 = 0.997 and mAP@0.5:0.95 = 0.985 for the 'table' class; 90/10 split; authors warn models trained on one restaurant's camera angles and lighting may need recalibration and retraining elsewhere",
+      "source_url": "https://dergipark.org.tr/en/download/article-file/4495676",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jetson Orin Nano Super Developer Kit: $249 at launch, 67 INT8 TOPS, up to four cameras (Dec 2024)",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate's current hardware recommendation is the Beelink EQ13 (N100, dual NICs for an isolated camera network)",
+      "source_url": "https://docs.frigate.video/frigate/hardware/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate+ subscription allows up to 12 fine-tuned models per year on your own uploaded/annotated frames",
+      "source_url": "https://frigate.video/plus/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO is AGPL-3.0; commercial/closed-source or embedded deployment requires an Enterprise license",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2-VL ships 450M and 1.6B variants (and LFM2-VL-3B exists); 450M GGUF runs under llama.cpp",
+      "source_url": "https://www.liquid.ai/blog/lfm2-vl-efficient-vision-language-models",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL does not exist / is not a shipping family",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Qwen2.5-VL-3B-Instruct performs visual localization returning bounding boxes/points with structured coordinate output",
+      "source_url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Aldente Vision does camera-based table occupancy, queue and staff-presence analytics on existing cameras",
+      "source_url": "https://aldenteai.com/analytics",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kimes 2004 worked example: 100 seats, $20 check, 60 -> 50 minute meal cycle, 400 -> 480 covers, +20% revenue, arithmetic ceiling not a measured result",
+      "source_url": "https://ecommons.cornell.edu/bitstream/handle/1813/71185/Kimes_2004_Restaurant_revenue.pdf",
+      "result": "could not open"
+    },
+    {
+      "claim": "fit_score sub-scores (13, 11, 8, 15, 10, 6) sum to the stated total of 63",
+      "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "Medium"
+}

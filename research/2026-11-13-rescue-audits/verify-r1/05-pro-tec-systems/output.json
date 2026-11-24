@@ -1,0 +1,133 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "audit_md: \"The home and feedback pages carry about 118 unrelated links (handbags, 'instagram followers', chatgpt) pushed off-screen by an injected script.\" rescue.json: \"a block of about 118 unrelated 'prada / gucci / instagram followers / chatgpt' anchors\".",
+      "problem": "The number is wrong and ambiguous. Measured in the page DOM: the home page spam block holds 110 links (page total 119), and the feedback page block holds 87 links (page total 91), so the two pages together carry about 197 injected links. The figure 118 matches neither block; it is closest to the home page's total anchor count (119), which includes the site's own navigation, mailto links and footer. An owner who counts will find the number does not add up.",
+      "fix": "Replace with a measured figure, e.g. \"about 110 unrelated links on the home page and about 90 on the feedback page\", or drop the count and say \"a block of unrelated handbag, 'instagram followers' and chatgpt links\"."
+    },
+    {
+      "claim": "founder_md: \"I have screenshots at desktop and phone width showing exactly what a customer sees today\" and \"Screenshots in this folder: screenshot-protecsystems-https-privacy-error.png, screenshot-protecsystems-desktop.png, screenshot-protecsystems-mobile-390.png, screenshot-protecsystems-org-coming-soon-desktop.png, screenshot-google-maps-listing.png\".",
+      "problem": "None of those image files exist in this folder (only rescue.json, brief.md, log.jsonl, session/ and stderr.txt are present), so the promise of screenshots cannot be verified here. The email would refer the owner to files they may not receive.",
+      "fix": "Confirm the PNGs exist and are attached to the deliverable before the email or call is used; if they are missing, retake them (private-error interstitial, http home at desktop and 390 px, protecsystems.org holding page, Maps panel) or remove the screenshot sentence."
+    },
+    {
+      "claim": "audit_md body length.",
+      "problem": "Body runs to roughly 300-305 words depending on whether headings and the closing line are counted, so it sits at or just over the 300-word limit.",
+      "fix": "Trim one bullet by about 15 words (the first bullet's address/phone detail can be shortened) to leave clear headroom."
+    },
+    {
+      "claim": "audit_md: \"Google lists Pro-Tec Systems Inc ... rated 5.0\".",
+      "problem": "The 5.0 rating is confirmed in the Maps panel, but no review count is shown there, so a reader may assume a body of reviews. The caveat says this, the customer-facing text does not.",
+      "fix": "Optional: write \"rated 5.0 (no review count shown in this view)\" or leave the rating out of the first bullet."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "http://www.protecsystems.net/ still serves the 2008 FrontPage site (FrontPage 5.0 generator, 'since 1988' paragraph, vendor logos, 732-828-7756, PO Box 6114 Somerset NJ 08875, four mailto addresses at @protecsystems.net, Under Construction graphic).",
+      "source_url": "http://www.protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "https://www.protecsystems.net/ stops Chrome with 'Your connection is not private', NET::ERR_CERT_COMMON_NAME_INVALID, certificate from *.hostingplatform.com.",
+      "source_url": "https://www.protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Footer: 'Copyright 2008 PRO-TEC SYSTEMS, Inc', 'Last modified: 03/25/08', contact webmaster@protecsystems.org.",
+      "source_url": "http://www.protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "robots.txt returns 404.",
+      "source_url": "http://www.protecsystems.net/robots.txt",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No viewport meta tag, so there is no mobile layout.",
+      "source_url": "http://www.protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Feedback form posts to FrontPage's _derived/nortbots.htm and cannot deliver a message.",
+      "source_url": "http://www.protecsystems.net/_derived/nortbots.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Home page spam block sits off-screen via an injected style (position:fixed, top:-4011px).",
+      "source_url": "https://web.archive.org/web/20241105032156/http://protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Home page spam block holds about 118 links.",
+      "source_url": "https://web.archive.org/web/20241105032156/http://protecsystems.net/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Home and feedback pages together carry about 118 unrelated links.",
+      "source_url": "https://web.archive.org/web/20240416013802/http://protecsystems.net/feedback.htm",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Home page has 119 links in total.",
+      "source_url": "https://web.archive.org/web/20241105032156/http://protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "protecsystems.org serves a Squarespace 'Coming Soon' holding page ('We're under construction') with a robots noindex tag.",
+      "source_url": "https://protecsystems.org/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP protecsystems.net: registered 2008-01-29, expires 2027-01-29, last changed 2025-11-30, registrar Network Solutions, LLC.",
+      "source_url": "https://rdap.org/domain/protecsystems.net",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP protecsystems.org: registered 2026-10-21, expires 2029-10-21, last changed 2026-10-26, registrar Squarespace Domains LLC.",
+      "source_url": "https://rdap.org/domain/protecsystems.org",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile: Pro-Tec Systems Inc, 607 Georges Rd, North Brunswick Township NJ 08902, (732) 828-7756, rated 5.0, category General contractor, 'Claim this business', 'Add hours', website field http://www.protecsystems.net/.",
+      "source_url": "https://www.google.com/maps?q=Pro-Tec+Systems+Inc,+607+Georges+Rd,+North+Brunswick,+NJ+08902&hl=en",
+      "result": "confirmed"
+    },
+    {
+      "claim": "MacRae's Blue Book listing shows the same address and phone and 'Website:' linking to http://protecsystems.net/.",
+      "source_url": "https://www.macraesbluebook.com/search/company.cfm?company=586220",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ DCA fire protection contractor list (1 October 2026) shows PRO-TEC SYSTEMS INC, qualifier Granick, Joseph, C4 Fire Alarm System, permit P00814, lapse 04/30/2028, address BOX 6114 SOMERSET NJ 08875.",
+      "source_url": "https://www.nj.gov/dca/dfs/pdf/Cont%20Cert%20Lists/Report%20Fire%20Protection%20Contractors%20October%202026.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback 2023-01-29 capture has no spam block; 2024-11-05 capture has the block and the off-screen style script.",
+      "source_url": "https://web.archive.org/web/20230129055239/http://protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Spam-block injection is offered as an inference ('hacked'), not as a sourced fact, and no person or company is accused.",
+      "source_url": "https://rdap.org/domain/protecsystems.net",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Screenshots named in rescue.json and founder_md exist in the folder.",
+      "source_url": "founder_md screenshot file list",
+      "result": "not found"
+    },
+    {
+      "claim": "Fix steps are in a sensible order with realistic effort and no prices.",
+      "source_url": "https://rdap.org/domain/protecsystems.net",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business is operating, is the North Brunswick Pro-Tec Systems Inc (not a chain or franchise), and is the same company as the Somerset PO Box and the DCA permit holder.",
+      "source_url": "https://www.google.com/maps?q=Pro-Tec+Systems+Inc,+607+Georges+Rd,+North+Brunswick,+NJ+08902&hl=en",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,63 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"the attorney's name and ID (021041994) appear on New Jersey's administrative ineligibility lists in 2024, 2025 and the current list to 9 November 2026\"",
+      "problem": "The 2024 element has no source URL anywhere in the audit's Sources list (only the 2026 Client Protection Fund list and the 2025 IOLTA list are cited). The statement is true - I found 'HUGHES MARK FABIAN III 021041994' on the 2024 IOLTA ineligible list at https://www.njcourts.gov/sites/default/files/notices/2024/09/n240910a.pdf - but as delivered it is not traceable to a cited page. Note also that the same name/ID appears on the 2018 IOLTA list (https://www.njcourts.gov/sites/default/files/notices/2018/10/n181023e.pdf), so '2024, 2025' understates a longer pattern.",
+      "fix": "Add the 2024 IOLTA list URL to Sources and, optionally, phrase it as 'listed on NJ administrative ineligibility lists repeatedly since 2018, including 2024, 2025 and the list running to 9 November 2026'."
+    },
+    {
+      "claim": "https://www.njcourts.gov/host/attyapps/GoodStandingStatusDefinitions.pdf is cited for 'a listed attorney cannot currently practice'",
+      "problem": "The cited URL returns HTTP 404. I could not open it. The claim itself is correct and still verifiable, in the current NJ Courts document 'Definitions and Explanations for Attorney Status' (library.njcourts.gov): administrative ineligibility 'is not the result of discipline, but attorneys who are administratively ineligible are not allowed to practice New Jersey law.'",
+      "fix": "Replace the dead link with https://library.njcourts.gov/files/automated-trial-court-services/attorney-applications/good-standing-status-definitions.pdf"
+    },
+    {
+      "claim": "Intake has \"no hours, no voicemail-to-email, no form and no scheduler\"",
+      "problem": "'No voicemail-to-email' is a claim about the firm's telephone system, which no public source can establish; I could not verify it (the site, Lawyers.com and Martindale show nothing about voicemail). As written it may be wrong and would undercut credibility if the attorney has voicemail forwarding.",
+      "fix": "Limit it to what is observable: 'no published hours, no form, no booking and no after-hours option on the site'."
+    },
+    {
+      "claim": "Document title: \"Law Office of Mark F. Hughes III\"",
+      "problem": "No source I opened uses this firm name. The site brands him 'MARK F HUGHES III Attorney-at-Law'; Martindale says 'Member at Mark F. Hughes III, Esquire'; Lawyers.com lists the firm as 'Mark F. Hughes III, Esquire'.",
+      "fix": "Use the name the directories use ('Mark F. Hughes III, Esquire') or note it as the practice of Mark F. Hughes III."
+    },
+    {
+      "claim": "Founder email: \"a deadline register covering the state filings that show up on the ineligibility lists\"",
+      "problem": "Tone risk rather than a factual error: the sentence gestures at his ineligibility without naming it, which can read as a veiled hint to a lawyer who knows exactly what those lists mean.",
+      "fix": "Say it plainly and neutrally, e.g. 'the annual filings (assessment, IOLTA, CLE) that, if missed, put an attorney on the state's ineligible lists - a register keeps them on schedule'."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "The site is a single page last modified 21 May 2015", "source_url": "https://hugheslaw.weebly.com/sitemap.xml", "result": "confirmed"},
+    {"claim": "Site is a Weebly page on a free subdomain ('free Weebly page')", "source_url": "https://hugheslaw.weebly.com/", "result": "confirmed"},
+    {"claim": "Hero 'CALL NOW (732) 766-5703' button is an anchor with href=\"javascript:;\" and does nothing", "source_url": "https://hugheslaw.weebly.com/", "result": "confirmed"},
+    {"claim": "No tel: link, no form, no email address, no hours and no booking anywhere on the page", "source_url": "https://hugheslaw.weebly.com/", "result": "confirmed"},
+    {"claim": "Nothing structured for search assistants (no JSON-LD/schema, no meta description)", "source_url": "https://hugheslaw.weebly.com/", "result": "confirmed"},
+    {"claim": "The printed number is the only way in; it appears four times on the page", "source_url": "https://hugheslaw.weebly.com/", "result": "confirmed"},
+    {"claim": "Practice is DWI and refusal work offered from suites in East Brunswick and Little Silver", "source_url": "https://hugheslaw.weebly.com/", "result": "confirmed"},
+    {"claim": "Lawyers.com profile shows no client reviews, no hours and only a directory contact form", "source_url": "https://www.lawyers.com/east-brunswick/new-jersey/mark-f-hughes-iii-esquire-17009746-f/", "result": "confirmed"},
+    {"claim": "Martindale lists one attorney (admitted 1994) and no staff", "source_url": "https://www.martindale.com/attorney/mark-fabian-hughes-iii-159927509/", "result": "confirmed"},
+    {"claim": "Name and attorney ID 021041994 appear on the 2026 Client Protection Fund list for the period ending 9 November 2026", "source_url": "https://www.njcourts.gov/sites/default/files/attorneys/new-jersey-lawyers-fund-client-protection/ineliglist.pdf", "result": "confirmed"},
+    {"claim": "Same name and ID appear on the IOLTA 2025 ineligible list effective 9 September 2025", "source_url": "https://www.njcourts.gov/sites/default/files/notices/2025/09/n250910a.pdf", "result": "confirmed"},
+    {"claim": "Appeared on an NJ administrative ineligibility list in 2024", "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/09/n240910a.pdf", "result": "confirmed"},
+    {"claim": "The same attorney was already on the 2018 IOLTA ineligible list", "source_url": "https://www.njcourts.gov/sites/default/files/notices/2018/10/n181023e.pdf", "result": "confirmed"},
+    {"claim": "These are administrative compliance lists, not misconduct findings", "source_url": "https://library.njcourts.gov/files/automated-trial-court-services/attorney-applications/good-standing-status-definitions.pdf", "result": "confirmed"},
+    {"claim": "A listed attorney 'cannot practise'", "source_url": "https://library.njcourts.gov/files/automated-trial-court-services/attorney-applications/good-standing-status-definitions.pdf", "result": "confirmed"},
+    {"claim": "Audit's cited good-standing definitions URL (njcourts.gov/host/attyapps/GoodStandingStatusDefinitions.pdf) resolves", "source_url": "https://www.njcourts.gov/host/attyapps/GoodStandingStatusDefinitions.pdf", "result": "could not open"},
+    {"claim": "Legal-secretary median hourly wage, NJ, 2025 = $30.33 (BLS 2025)", "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ", "result": "confirmed"},
+    {"claim": "Lawyer median hourly wage, NJ, 2025 = $77.61 (BLS 2025)", "source_url": "https://www.onetonline.org/link/localwages/23-1011.00?st=NJ", "result": "confirmed"},
+    {"claim": "$37.91/hour = $30.33 x 1.25 for benefits", "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ", "result": "confirmed"},
+    {"claim": "$97.01/hour = $77.61 x 1.25 for benefits", "source_url": "https://www.onetonline.org/link/localwages/23-1011.00?st=NJ", "result": "confirmed"},
+    {"claim": "Opportunity 1 arithmetic: 52 weeks x 2-4 hrs = 104-208 hrs; x $37.91 = $3,942-$7,885", "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ", "result": "confirmed"},
+    {"claim": "Opportunity 2 arithmetic: 40 items x 0.4-1.0 hrs = 16-40 hrs; x $37.91 = $606-$1,516", "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ", "result": "confirmed"},
+    {"claim": "Opportunity 3 arithmetic: 12 months x 5-15 hrs = 60-180 hrs; x $97.01 = $5,820-$17,461", "source_url": "https://www.onetonline.org/link/localwages/23-1011.00?st=NJ", "result": "confirmed"},
+    {"claim": "Impact ranges are labelled as assumptions ('our assumption'), not measured figures", "source_url": "audit.md", "result": "confirmed"},
+    {"claim": "Email: 'one page from 2015' and the call button 'doesn't do anything, so a client has to memorise the number'", "source_url": "https://hugheslaw.weebly.com/", "result": "confirmed"},
+    {"claim": "Email: 'the state filings that show up on the ineligibility lists' (assessment, IOLTA, CLE triggers)", "source_url": "https://library.njcourts.gov/files/automated-trial-court-services/attorney-applications/good-standing-status-definitions.pdf", "result": "confirmed"},
+    {"claim": "Walk-in opener: 'the call button doesn't work'", "source_url": "https://hugheslaw.weebly.com/", "result": "confirmed"},
+    {"claim": "Intake has no voicemail-to-email", "source_url": "https://hugheslaw.weebly.com/", "result": "not found"},
+    {"claim": "Business name is 'Law Office of Mark F. Hughes III'", "source_url": "https://www.martindale.com/attorney/mark-fabian-hughes-iii-159927509/", "result": "not found"},
+    {"claim": "Audit body (excluding the founder section) is at most ~450 words", "source_url": "audit.md", "result": "confirmed"}
+  ],
+  "confidence": "High"
+}

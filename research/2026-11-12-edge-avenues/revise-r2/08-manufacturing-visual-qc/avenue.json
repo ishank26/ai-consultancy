@@ -1,0 +1,402 @@
+{
+ "avenue": "manufacturing-visual-qc",
+ "one_line": "Camera-and-small-model inspection stations (surface defects, gauge/dimension capture, first-article photo records) built and serviced for 5-200 person job shops, fabricators, plastics and packaging plants in Middlesex County, NJ.",
+ "problem": {
+  "summary": "Small manufacturers inspect by eye and by clipboard. Human visual inspection is measurably unreliable (20-30% error rates are commonly reported in the inspection literature, and 100% inspection still misses defects), yet the alternative - an inspector - costs roughly $46-51k a year in this region and is the role shops struggle most to staff. At the same time customers demand documented evidence: ISO 9001 clause 8.6 requires retained records of acceptance criteria and who authorized release, and aerospace customers flow down AS9102 first-article reports with ballooned drawings and three forms. Small shops answer this with paper travelers, phone photos and one over-loaded inspector, which produces rejected FAIRs, sorting/containment cost and occasional escapes. Machine-vision hardware exists but is sold as a camera plus license, leaving the shop to do fixturing, lighting, model building, record-keeping and integration - exactly the skills a 10-person shop does not have.",
+  "evidence": [
+   {
+    "fact": "Human inspectors are imperfect: error rates of 20% to 30% are 'frequently quoted in the inspection literature' (citing Drury & Fox, 1975), the minimum error rate for simple accept/reject tasks is about 1 in 1,000 (Swain & Guttmann, 1983), and 'even under 100% inspection, not all of the defects will be detected'.",
+    "year": "2012",
+    "source_url": "https://www.osti.gov/servlets/purl/1055636/"
+   },
+   {
+    "fact": "Inspectors, testers, sorters, samplers and weighers: 584,630 employed nationally, mean wage $23.68/hr ($49,260/yr), median $45,850/yr; in the New York-Newark-Jersey City metro area 17,640 employed at a mean $24.60/hr ($51,160/yr). (Inference: Middlesex County sits inside that metro area.)",
+    "year": "2023",
+    "source_url": "https://www.bls.gov/oes/2023/may/oes519061.htm"
+   },
+   {
+    "fact": "Plastics product manufacturing is the second-largest industry block of inspectors/testers by employment (31,320 jobs) and the fourth-highest by concentration (5.17% of industry employment), at a mean $20.49/hr ($42,620/yr); above it on concentration sit apparel knitting mills 6.44%, fabric mills 5.96% and foundries 5.67%. Inspection is therefore a large, low-paid, hard-to-retain headcount block.",
+    "year": "2023",
+    "source_url": "https://www.bls.gov/oes/2023/may/oes519061.htm"
+   },
+   {
+    "fact": "Middlesex County, NJ private-sector counts: NAICS 332710 machine shops = 33 establishments (employment suppressed by BLS disclosure rules); the parent group 3327 (machine shops, turned product, screw/nut/bolt) = 34 establishments and 177 employees; NAICS 326199 other plastics product manufacturing = 18 establishments and 2,288 employees at average annual pay $65,098. (Inference: the 177-employee total for 3327 looks low for a county this size and may reflect QCEW coverage or disclosure limits, so average shop size derived from it is unreliable.)",
+    "year": "2023",
+    "source_url": "https://data.bls.gov/cew/data/api/2023/a/area/34023.csv"
+   },
+   {
+    "fact": "New Jersey has roughly 11,000 manufacturers, many of them under-75-employee businesses of the type NJMEP supports.",
+    "year": "2024",
+    "source_url": "https://www.roi-nj.com/2024/11/27/industry/manufacturing-drive-meps-connolly-talks-supply-chain-tariffs-re-shoring-and-what-it-all-means-for-sector-in-the-state/"
+   },
+   {
+    "fact": "ISO 9001 itself does not specifically require first-article inspection; AS9100 (clause 8.5.1.3, production process validation) adds it, so the FAI/photo-record burden arrives with aerospace, defense and larger-industrial customers rather than with ISO 9001 alone.",
+    "year": "2020",
+    "source_url": "https://advisera.com/9100academy/blog/2020/10/28/first-article-inspection/"
+   },
+   {
+    "fact": "ISO 9001:2015 clause 8.6 requires the organization to retain documented information on release of products showing acceptance criteria were met and traceability to the person authorizing release - i.e. a searchable inspection record is a compliance artifact, not a nicety.",
+    "year": "2015",
+    "source_url": "https://ipc11.dip.go.th/files/article/attachments/ipc11/2a5458cc6b38553834457b0f88607459.pdf"
+   },
+   {
+    "fact": "AS9102 first-article work is document-heavy and error-prone: three forms (part number accountability, product accountability, characteristic accountability), ballooned drawings correlated to recorded data, and defined triggers for re-accomplishment; guidance stresses first-pass FAIR acceptance rate and findings-per-submission as the key process measures.",
+    "year": "2026",
+    "source_url": "https://sp-i.org/downloads/spi-09.pdf"
+   },
+   {
+    "fact": "Machine shops (NAICS 33271) recorded 2.6 total recordable injury/illness cases and 1.2 DART (days away, restricted or transferred) cases per 100 full-time-equivalent workers in 2023; the parent group 3327 recorded 2.8 total recordable and 1.4 DART.",
+    "year": "2023",
+    "source_url": "https://www.bls.gov/iif/nonfatal-injuries-and-illnesses-tables/table-1-injury-and-illness-rates-by-industry-2023-national.htm"
+   },
+   {
+    "fact": "Total quality costs averaged 2.6-4% of sales revenue (8-10% of manufacturing expense) in a study of 63 manufacturing organizations, with failure costs 70-80% of that total - scrap, rework and escapes dominate the quality bill.",
+    "year": "2009",
+    "source_url": "https://www.homeinnovation.com/documents/Insights/Reports/2010/BA-Appendix-A-Economics-of-Quality.pdf"
+   },
+   {
+    "fact": "The documented barriers to machine vision at small and medium manufacturers are upfront cost, shortage of in-house expertise, high-mix/low-volume production and insufficient training data - a services gap as much as a technology gap.",
+    "year": "2025",
+    "source_url": "https://link.springer.com/article/10.1007/s42452-025-06923-4"
+   }
+  ]
+ },
+ "buyers": [
+  {
+   "business_type": "Precision machine shops / CNC job shops serving aerospace, defense, medical and industrial OEMs",
+   "naics": "332710",
+   "size_where_it_matters": "10-200 staff; pain starts when a dedicated inspector or QA manager is needed on first shift and when a customer requires AS9102 FAIRs (inference)",
+   "why": "Every new part number or process change triggers first-article paperwork with ballooned drawings and measured characteristics; escapes hit PPM scorecards and can cost the account."
+  },
+  {
+   "business_type": "Sheet metal fabrication and stamping shops",
+   "naics": "332322",
+   "size_where_it_matters": "15-200 staff; matters once there are two or more shifts and a customer scorecard (inference)",
+   "why": "Cosmetic and dimensional defects (bends, burrs, scratches, hole position) are checked visually at the brake and at final; sorting and containment on a rejected lot is expensive."
+  },
+  {
+   "business_type": "Other fabricated metal / machining-intensive suppliers (welded assemblies, hardware, springs, screw machine products)",
+   "naics": "332999 / 332721",
+   "size_where_it_matters": "10-150 staff",
+   "why": "High-mix, low-volume work with frequent changeovers means inspector setup time per part dominates, which is where a repeatable photo/vision station pays back first."
+  },
+  {
+   "business_type": "Plastics product manufacturers (injection molding, profile, components)",
+   "naics": "326199",
+   "size_where_it_matters": "20-200 staff; inspectors/testers are 5.17% of industry headcount nationally (BLS, 2023), so the labor case is strongest here",
+   "why": "Short shots, flash, sinks, splay, color and dimensional drift are visible defects; 18 establishments and 2,288 employees in Middlesex County alone (BLS QCEW, 2023)."
+  },
+  {
+   "business_type": "Plastics packaging film, sheet and bag plants",
+   "naics": "326112",
+   "size_where_it_matters": "20-200 staff, web/roll processes running continuously",
+   "why": "Web inspection is a classic camera problem (gels, streaks, wrinkles, print registration) but continuous-line installations are capital-heavy; better first sale is offline sample inspection and roll photo records (inference)."
+  },
+  {
+   "business_type": "Aerospace parts and precision sub-assembly suppliers (AS9100 certified)",
+   "naics": "336413",
+   "size_where_it_matters": "20-200 staff, any AS9100 certificate holder",
+   "why": "AS9102 FAIRs, characteristic accountability and re-accomplishment triggers create a permanent, audit-driven demand for organized photo and measurement evidence. Certification base: 27,599 sites were certified to the AS9100/9110/9120 series worldwide as of 16 Apr 2024 (US 11,268), per a third-party aggregation of the IAQG OASIS Certified Supplier Directory - simpleQuE, https://www.simpleque.com/as9100-as9110-and-as9120-aerospace-certifications-worldwide-as-of-april-2024/"
+  },
+  {
+   "business_type": "Machine tool accessory, cutting tool and small instrument makers",
+   "naics": "333515 / 334515",
+   "size_where_it_matters": "10-100 staff",
+   "why": "Edge chipping, coating defects and laser-mark/OCR legibility are small-feature visual problems well suited to fixed-fixture cameras (inference)."
+  }
+ ],
+ "existing_solutions": [
+  {
+   "vendor": "Cognex",
+   "product": "In-Sight 2800 series smart camera (ViDi EL edge-learning tools); VisionPro Deep Learning",
+   "what_it_does": "Self-contained 1.6 MP vision system combining deep-learning tools trainable on as few as five to ten images per class with rule-based vision tools; covers OK/NG defect detection, multi-class sorting, presence/absence and classic measurement tools, configured in the EasyBuilder interface and typically set up by an integrator.",
+   "pricing": "Unknown - no list price in the vendor datasheet; Cognex sells through distributors and quote requests, and no public list price could be confirmed here",
+   "source_url": "https://partner.cognex.com/FileLibrary/5a534a2e0341458bb41f5df6ede81031/IS2800_Datasheet.pdf"
+  },
+  {
+   "vendor": "Overview.ai",
+   "product": "OV80i / OV20i / OV10i AI vision systems",
+   "what_it_does": "Self-contained AI vision systems for visual inspection, cosmetic checks, counting, measurement, anomaly detection and assembly verification; the OV10i is classification-only (pass/fail) on a 1.6 MP sensor with on-device NVIDIA Xavier NX processing and no software subscription required (per vendor).",
+   "pricing": "Public: $13,450.00 per unit for the OV80i on the vendor's shop page; prices for the OV10i and OV20i were not shown on the pages opened here",
+   "source_url": "https://www.overview.ai/shop/"
+  },
+  {
+   "vendor": "KEYENCE",
+   "product": "CV-X intuitive vision system; IM-8000 image dimension measurement system",
+   "what_it_does": "Vision systems for presence/absence, defect and dimensional measurement, and a separate image-based dimensional measurement platform for first-article and gauge work; strong local sales-engineering model.",
+   "pricing": "Unknown - quote only ('request a quote from your local sales engineer'); no public list price",
+   "source_url": "https://www.keyence.com/products/measure-sys/image-measure/im-8000/get-pricing/?model=im-8020"
+  },
+  {
+   "vendor": "Landing AI",
+   "product": "LandingLens + LandingEdge",
+   "what_it_does": "Cloud labeling and training of visual inspection models with downloadable ONNX models deployed on edge devices, no code.",
+   "pricing": "Free tier ($0, 1,000 credits/month, 3 users, noncommercial model downloads); Enterprise is quote-only",
+   "source_url": "https://landinglens.docs.landing.ai/plans"
+  },
+  {
+   "vendor": "Roboflow",
+   "product": "Roboflow platform + self-hosted Inference on Jetson/Raspberry Pi",
+   "what_it_does": "Dataset management, labeling, training of detectors (RF-DETR, YOLO family) and edge deployment; commercial model license included for hosted models, self-host inference free on all plans.",
+   "pricing": "Public: Free $0 (10 credits/mo); Core from $39/mo (20 credits) up to $1,399/mo (500 credits); Enterprise custom",
+   "source_url": "https://roboflow.com/pricing"
+  },
+  {
+   "vendor": "MVTec",
+   "product": "HALCON (machine vision library) and MERLIC",
+   "what_it_does": "The standard industrial vision programming library: calibrated metrology, blob/shape matching, plus deep-learning anomaly detection and classification operators; what most integrators actually build on.",
+   "pricing": "Unknown - quote only; subscription (Progress) or perpetual (Steady) editions, 30-day evaluation",
+   "source_url": "https://www.mvtec.com/products/halcon/editions-licensing/get-a-license"
+  },
+  {
+   "vendor": "Intel open-edge-platform",
+   "product": "Anomalib (Apache-2.0 open source)",
+   "what_it_does": "Library of ready-made anomaly detection algorithms (PatchCore, EfficientAD, PaDiM and others) with training, benchmarking and OpenVINO edge export - the free baseline any local installer would start from.",
+   "pricing": "Free (Apache License 2.0)",
+   "source_url": "https://github.com/open-edge-platform/anomalib/"
+  },
+  {
+   "vendor": "Amazon Web Services",
+   "product": "Amazon Lookout for Vision (discontinued)",
+   "what_it_does": "Was a managed few-shot visual anomaly detection service; the service was shut down on 31 Oct 2025, leaving customers to rebuild on SageMaker or partner tools.",
+   "pricing": "Service discontinued",
+   "source_url": "https://docs.aws.amazon.com/general/latest/gr/full_shutdown_services.html"
+  }
+ ],
+ "gap_for_local_installer": "The hardware and the algorithms are commodities; the missing piece for a 10-100 person shop is a named local party who will (a) fixture and light the part so a camera can see it repeatably, (b) build and maintain a small model per part family without needing labels for every defect, (c) wire the output into the shop's actual workflow - traveler, QMS folder, first-article photo package, ERP job number - and (d) answer the phone when a customer rejects a lot. Vendors sell cameras and licenses; national integrators chase $100k+ lines; open-source stacks are free but require an ML engineer the shop does not have. A second gap is the 'evidence' product rather than the 'inspection' product: shops will pay sooner for a first-article photo/measurement record that survives an audit and shortens FAIR review than for a defect detector that changes a process. A third gap is trust: AWS exited the category and Cognex/Keyence pricing is opaque, so a fixed-scope, fixed-price pilot with a written accuracy number is itself the differentiator.",
+ "technical_approach": {
+  "established_pattern": "Fixed-mount industrial camera(s) + controlled LED lighting + mechanical fixture holding the part in a repeatable pose, triggered by a foot pedal, PLC or barcode scan. Two model families run side by side: (1) unsupervised/semi-supervised anomaly detection trained only on images of good parts (PatchCore-style memory bank or EfficientAD-style student-teacher) for 'is this part different from known-good', with a pixel-level heat map the operator can see; (2) a small supervised detector/segmenter (YOLO-family or RF-DETR) once the shop has labeled examples of the specific defect classes it cares about. Dimensional and gauge reading is done with classical calibrated metrology (pixel-to-mm calibration with a calibration target, edge/line fitting, telecentric lens where possible) rather than with a neural net, and wherever the shop already owns digital calipers or height gauges the reading is taken from the instrument's data output instead of photographing the display. A small VLM (Qwen2.5-VL 3B or LFM2-VL) is the exception handler - reading a stamped or laser-marked part number, interpreting a drawing callout, or summarizing what the operator is looking at - not the primary measurement path. Every inspection writes an image plus metadata (part number, lot, serial, operator, timestamp, pass/fail, model version) so the station doubles as the first-article and release record required by ISO 9001 clause 8.6.",
+  "models_and_tools": [
+   {
+    "name": "PatchCore (Roth et al., CVPR 2022)",
+    "role": "Normal-only anomaly detection with a coreset-reduced patch memory bank; the default cold-start model - needs only good-part images, no defect labels.",
+    "source_url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Roth_Towards_Total_Recall_in_Industrial_Anomaly_Detection_CVPR_2022_paper.pdf"
+   },
+   {
+    "name": "EfficientAD (Batzner et al., WACV 2024)",
+    "role": "Lightweight student-teacher anomaly detector plus autoencoder for logical anomalies. The paper reports 2.2 ms/image and 614 images/s on an NVIDIA RTX A6000, a data-centre GPU; it does not report Jetson-class timings, so throughput on a $249 edge box is unmeasured (inference: expect far lower).",
+    "source_url": "https://www.mvtec.com/fileadmin/Redaktion/mvtec.com/05_research_teaching/Batzner_EfficientAD_Accurate_Visual_Anomaly_Detection_at_Millisecond-Level_Latencies_WACV_2024_paper.pdf"
+   },
+   {
+    "name": "Anomalib (Apache-2.0)",
+    "role": "Implementation and benchmarking harness for PatchCore/EfficientAD/PaDiM etc., with OpenVINO export for Intel edge hardware; the practical build substrate.",
+    "source_url": "https://github.com/open-edge-platform/anomalib/"
+   },
+   {
+    "name": "Ultralytics YOLO family",
+    "role": "Supervised detector/segmenter once the shop has 20-50 labeled examples per defect class; note AGPL-3.0 - a commercial deployment generally needs an Ultralytics enterprise license.",
+    "source_url": "https://www.ultralytics.com/license"
+   },
+   {
+    "name": "Qwen2.5-VL 3B / 7B",
+    "role": "Small open-weights vision-language models (listed as 4B and 8B total parameters on the model collection) for OCR and label/drawing interpretation - use to read marks and summarize, then verify against a deterministic check. Specific benchmark scores were not verified in this research, so none are quoted.",
+    "source_url": "https://huggingface.co/collections/Qwen/qwen25-vl"
+   },
+   {
+    "name": "Liquid AI LFM2-VL 450M / 1.6B (and newer LFM2.5-VL)",
+    "role": "Very small vision-language models with GGUF builds for llama.cpp, aimed at on-device image understanding where a full VLM will not fit.",
+    "source_url": "https://huggingface.co/collections/LiquidAI/lfm2-vl"
+   },
+   {
+    "name": "Roboflow (platform + self-hosted Inference)",
+    "role": "Labeling, training and Jetson/Raspberry Pi deployment for the supervised half; also a fast way to prototype before committing to a stack.",
+    "source_url": "https://roboflow.com/pricing"
+   },
+   {
+    "name": "Mitutoyo Digimatic SPC output (e.g. cable 959149/959150)",
+    "role": "Direct digital read-out from calipers and height gauges into the record, avoiding OCR of a display; the cheapest accuracy win in most shops.",
+    "source_url": "https://www.mitutoyo.com/webfoo/wp-content/uploads/D_section.pdf"
+   }
+  ],
+  "hardware": [
+   {
+    "item": "Basler ace 2 a2A2590-22gcBAS 5 MP colour GigE industrial camera (2592 x 1944, 22 fps)",
+    "approx_cost": "$319.00 at one distributor listing (Wilco Imaging); a single observed price point, not a manufacturer list price",
+    "source_url": "https://wilcoimaging.com/collections/basler/products/a2a2590-22gcbas"
+   },
+   {
+    "item": "NVIDIA Jetson Orin Nano Super Developer Kit (edge inference for PatchCore/EfficientAD or a small VLM)",
+    "approx_cost": "$249",
+    "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/"
+   },
+   {
+    "item": "Overview.ai OV80i AI vision system (commercial turnkey alternative to building a stack)",
+    "approx_cost": "$13,450.00 per unit (vendor shop page)",
+    "source_url": "https://www.overview.ai/shop/"
+   },
+   {
+    "item": "Machine-vision lighting, lens, fixture and enclosure",
+    "approx_cost": "Unknown - no public price verified; integrator commentary puts lighting/mounting/engineering at more than half of a $15,000-$60,000 installed single-camera station",
+    "source_url": "https://rellingsystems.com/resources/blog/machine-vision-system-cost"
+   }
+  ],
+  "fine_tuning_needed": "Usually not for the first product. Anomaly detection (PatchCore/EfficientAD) is trained on normal images only - typically 30-100 good-part images per view/fixture - so no defect labels and no fine-tuning are required to get a working 'different from known-good' screen. Fine-tuning or supervised training becomes worthwhile only when the shop wants defect-type classification or named defect categories (then 20-50 labeled examples per class, and a YOLO/RF-DETR model). The VLM component should be used zero-shot or lightly prompted; fine-tuning a VLM for gauge reading is a poor use of effort compared with taking the digital output from the gauge or calibrating a classical metrology measurement.",
+  "data_needed": "Per part/view: 30-100 images of good parts covering normal variation (material lot, tool wear, lighting drift); 10-30 images of each known defect type if classification is wanted; a calibration target image for any dimensional measurement; ground-truth dimensions from calipers/CMM for at least 20-30 parts to validate measurement uncertainty against the drawing tolerance; and the existing first-article drawing/traveler to define what 'in spec' means. Also needed: a stable fixture and lighting design, since most field failures are optical, not model, failures.",
+  "difficulty": "Medium"
+ },
+ "measured_outcomes": [
+  {
+   "finding": "PatchCore reached a mean image-level AUROC of 99.1% on MVTec AD (15 product/texture categories, 5,354 images) with only 42 of 1,725 test images misclassified at the F1-optimal threshold, and pixel-level AUROC of 98.1% - trained on nominal images only. Benchmark-only: curated dataset, no field deployment.",
+   "year": "2022",
+   "sample": "15 MVTec AD categories; 5,354 images (1,725 test)",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Roth_Towards_Total_Recall_in_Industrial_Anomaly_Detection_CVPR_2022_paper.pdf"
+  },
+  {
+   "finding": "EfficientAD-S scored 98.8% image AUROC on MVTec AD (EfficientAD-M 99.1%) and 95.4% averaged across MVTec AD, VisA and MVTec LOCO, at 2.2 ms latency and 614 images/s on an NVIDIA RTX A6000 data-centre GPU - the paper does not measure Jetson-class hardware, so edge throughput is untested (inference: a $249 edge box will be far slower). Benchmark-only: no field deployment.",
+   "year": "2024",
+   "sample": "32 scenarios across MVTec AD, VisA, MVTec LOCO; 5 runs per configuration",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://www.mvtec.com/fileadmin/Redaktion/mvtec.com/05_research_teaching/Batzner_EfficientAD_Accurate_Visual_Anomaly_Detection_at_Millisecond-Level_Latencies_WACV_2024_paper.pdf"
+  },
+  {
+   "finding": "Zero-shot WinCLIP, which needs no part-specific training images, reached 91.8% image-level AUROC and 85.1% pixel-level AUROC on MVTec-AD - useful as a 'day one, before any data' baseline, but roughly 7 points behind trained normal-only methods.",
+   "year": "2023",
+   "sample": "MVTec AD (15 categories); benchmark comparison, no field deployment",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://doi.org/10.1109/CVPR52729.2023.01878"
+  },
+  {
+   "finding": "Review of 212 visual-inspection studies: 20-30% inspector error rates are commonly cited, minimum error for simple accept/reject is about 1 in 1,000, and 100% inspection does not eliminate escapes; defect rate, pacing, lighting and multiple inspections all move the error rate materially.",
+   "year": "2012",
+   "sample": "212 documents, 1958-2012",
+   "study_type": "government",
+   "strength": "High",
+   "source_url": "https://www.osti.gov/servlets/purl/1055636/"
+  },
+  {
+   "finding": "Total quality costs averaged 2.6-4% of sales (8-10% of manufacturing expense), with failure costs (scrap, rework, warranty) 70-80% of the total - the pool any inspection investment has to draw from. Reported from a secondary review that summarizes Rodchua (2009); the primary survey is paywalled and was not read.",
+   "year": "2009",
+   "sample": "63 manufacturing organizations (Rodchua, 2009, as summarized in a 2010 NAHB Research Center review)",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://www.homeinnovation.com/documents/Insights/Reports/2010/BA-Appendix-A-Economics-of-Quality.pdf"
+  }
+ ],
+ "legal_privacy": [
+  {
+   "issue": "Recording audio in the shop",
+   "rule_or_precedent": "New Jersey's Wiretapping Act requires the consent of at least one party to a conversation (N.J.S.A. 2A:156A-2, -3, -4); recording for a criminal or tortious purpose is illegal regardless of consent, and violations carry third-degree criminal exposure plus civil damages of the greater of actual damages, $100/day or $1,000. Practical rule for this product: no microphones, video only.",
+   "confirmed": true,
+   "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/"
+  },
+  {
+   "issue": "Employee notice for video-only workplace cameras",
+   "rule_or_precedent": "We could not confirm any New Jersey statute requiring private employers to post notice before ordinary video-only cameras in work areas. Absence of a notice duty is not authorization: placement still has to survive a privacy claim, and notice/policy is evidence of expectations. Treat notice + written policy as a contractual and practical requirement even though we could not cite a statutory mandate.",
+   "confirmed": false,
+   "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/"
+  },
+  {
+   "issue": "Cameras in restrooms, locker rooms, changing areas",
+   "rule_or_precedent": "New Jersey criminalizes recording a person's intimate parts or sexual acts where there is a reasonable expectation of privacy (N.J.S.A. 2C:14-9), a third-degree crime under the statute as described by the cited guide. Scope any installation to the inspection bench and never to these areas. We did not verify New Jersey civil case law on intrusion-upon-seclusion claims for this revision, so only the statute is stated.",
+   "confirmed": true,
+   "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/"
+  },
+  {
+   "issue": "Facial recognition / biometric identification of workers",
+   "rule_or_precedent": "No comprehensive New Jersey biometric-privacy statute is confirmed in force. Bill A3929 (2026-27) would make it an unlawful practice to run a 'biometric surveillance system' on consumers at a business's physical premises without clear and conspicuous notice, with a 30-day cure and a bar on profiting from the data; the bill text is confirmed but we could not confirm enactment. Recommendation: do not put face recognition in an inspection station at all - it adds risk and no inspection value.",
+   "confirmed": true,
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2026/A4000/3929_T1.HTM"
+  },
+  {
+   "issue": "Algorithmic monitoring of workers and concerted activity",
+   "rule_or_precedent": "NLRB General Counsel Memorandum GC 23-02 (31 Oct 2022) set out an enforcement theory that electronic monitoring and algorithmic management can interfere with Section 7 rights; it was a guidance memo, not a Board ruling, and was rescinded on 14 Feb 2025 by GC 25-05. Risk is therefore lower than in 2022-2024 but the underlying NLRA Section 7 right is unchanged.",
+   "confirmed": true,
+   "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and"
+  },
+  {
+   "issue": "Marketing claims about accuracy",
+   "rule_or_precedent": "The FTC's September 2024 'Operation AI Comply' sweep confirmed that AI product claims are subject to the same consumer-protection standards as any other claim - no 'AI exemption'. Any accuracy, defect-detection or ROI number a consultancy puts in a proposal needs substantiation from the client's own validation run.",
+   "confirmed": true,
+   "source_url": "https://search.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes"
+  },
+  {
+   "issue": "Records the client is legally/contractually obliged to keep",
+   "rule_or_precedent": "ISO 9001:2015 clause 8.6 requires retained documented information showing acceptance criteria were met and who authorized release; AS9102C (current revision June 2023) defines the FAI forms and re-accomplishment triggers when aerospace customers flow it down. A photo/measurement archive with operator identity and timestamps maps directly onto both.",
+   "confirmed": true,
+   "source_url": "https://sp-i.org/downloads/spi-09.pdf"
+  },
+  {
+   "issue": "Retention period and data-subject rights",
+   "rule_or_precedent": "We could not confirm a New Jersey statute setting a retention period for workplace inspection images; ISO 9001 sets no fixed period either. Retention should be set in the client's quality manual/contract (typical practice 3-7 years, or per customer flow-down) - that specific period is an inference, not a sourced rule.",
+   "confirmed": false,
+   "source_url": "https://ipc11.dip.go.th/files/article/attachments/ipc11/2a5458cc6b38553834457b0f88607459.pdf"
+  },
+  {
+   "issue": "Product liability if the system misses a defect",
+   "rule_or_precedent": "No specific statute found; general tort exposure applies if a client substitutes an automated check for human inspection and a defective part injures someone downstream. Design implication (inference): keep the station assistive - a human signs the release, the system flags and archives evidence - and put the accuracy limits in writing.",
+   "confirmed": false,
+   "source_url": "https://sp-i.org/downloads/spi-09.pdf"
+  }
+ ],
+ "prospecting_signals": {
+  "public": [
+   "IAF CertSearch listing (public database) showing a valid ISO 9001 certificate - confirms they must keep release records and are audited",
+   "IAQG OASIS listing showing AS9100 certification - confirms AS9102 FAIR flow-down, the strongest photo-record buyer",
+   "Job postings for 'quality inspector', 'CMM operator', 'first article inspection' or 'PPAP' in Middlesex County - a shop hiring its second or third inspector is at the pain threshold",
+   "OSHA Injury Tracking Application establishment data (public) for the site, compared against the industry baseline of 2.6 total recordable cases per 100 FTE for machine shops (BLS, 2023)",
+   "Company website language: 'ISO 9001:2015 certified', 'AS9100D', 'ITAR registered', 'prototype through production', 'CMM', 'Keyence', 'in-house inspection'",
+   "Number of CNC machines / square footage / 'since 19xx' on the site or in a job post - a proxy for headcount and for whether inspection is still one person with calipers (inference)",
+   "Google/Maps reviews that mention late deliveries, rework or 'quality issues' - rare in B2B but high-signal when present",
+   "NJMEP membership/affiliate listings and county manufacturer directories - a pre-qualified list of ~11,000 NJ manufacturers",
+   "Trade-show and association rosters (NTMA, PMA, local chambers) - chapter membership usually correlates with 20-200 staff"
+  ],
+  "walk_in": [
+   "Clipboards, paper travelers and handwritten dimension sheets at the inspection bench; look for a stack of AS9102 Form 3s",
+   "One height gauge / caliper set and a single CMM in a corner, with a queue of parts waiting",
+   "Parts photographed on a bench with a phone, or no photo record at all - ask how a first article is documented today",
+   "Scrap and rework bins near the bench, or a sorting table set up for a customer containment",
+   "Customer scorecards or PPM charts taped to the wall - tells you which customer is pressuring them",
+   "Lighting: mixed fluorescent with glare and shadows on the bench; a vision station would need its own light and shroud, which is a scope and cost item",
+   "Existing security cameras that are not used for inspection - an easy 'we already have cameras' objection to pre-empt",
+   "Ask three questions: how many hours a week go into first-article paperwork; when was the last customer rejection and what did it cost; how long does it take to find the inspection photos for lot X"
+  ]
+ },
+ "pilot": {
+  "scope": "One inspection bench, one or two part numbers from one customer family. Two workstreams in 3-4 weeks: (1) Evidence - a fixed camera and light over the bench that captures a standardized photo set per part with part number, lot/serial, operator and timestamp, stored in a folder structure or the shop's existing QMS/ERP share, searchable by part/lot in under 10 seconds, replacing the phone-photo-and-clipboard process; (2) Screening - a normal-only anomaly model (PatchCore/EfficientAD) trained on 30-100 good-part images per view, flagging surface anomalies (burrs, scratches, tool marks, flash, splay, missing features) with a heat map the inspector reviews. Explicitly out of scope: full dimensional metrology certification, PLC/line integration, multi-camera lines, and any audio capture or face recognition.",
+  "hardware": "One 5 MP GigE industrial camera (~$319 for the Basler a2A2590-22gcBAS at one distributor listing), lens and LED bar/ring light (price unverified), a simple machined or 3D-printed nest/fixture, a Jetson Orin Nano Super ($249) or small x86 box for inference, a foot pedal or barcode scanner as trigger, and a network drop to the shop file server. Roughly $1,500-$5,000 in parts (estimate) depending on lens/lighting choice, plus spares.",
+  "success_metric": "Two numbers agreed before start. (1) Screening: on a blind 200-piece validation run against known-good and seeded/known-bad parts, >=90% recall on the defect classes in scope with <=5% false rejects, measured against the shop's own inspector as baseline in week 1. (2) Evidence: 100% of parts run through the station have an archived photo record with part number/lot/operator/time, and any record can be retrieved in under 10 seconds - versus the measured baseline retrieval time. Secondary: inspector time per first-article package before vs after.",
+  "cost_range": "$7,000-$18,000 for the pilot. Assumptions: hardware $1,500-$5,000 (one cited camera price and the Jetson price plus an unverified lighting/fixture allowance); 50-100 engineering hours at an assumed $100-$150/hr for fixture design, data capture, model build, integration and the validation run; client supplies parts, one inspector's time for baseline and labeling, and a network share. For context, integrator commentary puts a full single-camera inspection station at $15,000-$60,000 installed, so a pilot that reuses an existing bench should land well below that.",
+  "assumptions": "Single shift, single site, one part family, parts can be presented to a fixed camera by hand; shop has ethernet/Wi-Fi and a Windows share or QMS folder; no PLC integration, no 21 CFR Part 11 validation, no ITAR-controlled drawings handled on the pilot hardware; defect definitions exist or can be written in week 1; client accepts a human sign-off on every release (the system is assistive, not autonomous)."
+ },
+ "fit_score": {
+  "demand": 15,
+  "local_buyers": 10,
+  "ability_to_pay": 8,
+  "technical_feasibility": 13,
+  "legal_risk_low": 13,
+  "defensibility": 8,
+  "total": 67,
+  "rationale": "Demand is real and permanent (audit-driven records, inspector turnover, measurable human inspection error) but shops tolerate it, so urgency is moderate. Local buyer count is decent but thin - 33 machine-shop establishments and 18 plastics establishments with 2,288 employees in Middlesex County, plus fabricators and aerospace suppliers - and the county QCEW total of 177 employees across 34 establishments in NAICS 3327 is low enough to be unreliable, so average shop size and deal size cannot be pinned down. Ability to pay is the weak spot: average annual pay in county plastics is about $65k and capex is scrutinized, so a $7-18k pilot is near the top of discretionary spend. Technical feasibility is good for surface anomaly detection (PatchCore/EfficientAD need no defect labels and run in milliseconds on a data-centre GPU) but the edge-hardware performance of these models is unmeasured in the literature, and dimensional metrology and high-mix fixturing remain genuinely hard - which is where projects overrun. Legal risk is low if the design stays video-only, no biometrics, no audio, bench-scoped and human-signed. Defensibility is modest: the stack is open source and any integrator can copy it; the moat is local service, fixtures already built, QMS/ERP integration and a track record of customer-accepted validation numbers."
+ },
+ "risks": [
+  "High-mix, low-volume reality: every new part family may need a new fixture and a new normal-image set, which can cost more than the inspection labor it saves (the classic reason automated inspection fails to pay back on low-volume lines).",
+  "Optical failure modes dominate: glare on machined aluminum, oil mist, vibration and ambient light changes cause false rejects that destroy operator trust within weeks.",
+  "False rejects are more damaging than misses in the short term - an inspector who is told good parts are bad will switch the station off.",
+  "Dimensional measurement is a metrology problem, not a machine-learning problem; over-promising 'the camera measures the print' against a 0.0005 in tolerance will fail.",
+  "Small-shop capex ceilings and owner-operator decision-making lengthen sales cycles and cap contract value.",
+  "Incumbent vendors (Cognex, Keyence) bundle hardware plus local sales engineering and can undercut on a single station; open-source stacks invite DIY by a customer's own engineer.",
+  "Liability exposure if a client treats the system as a substitute for inspection and a defective part escapes - mitigate with assistive design and written accuracy limits.",
+  "Model and vendor churn: AWS already exited this category (Lookout for Vision shut down 31 Oct 2025), so avoid architectures locked to a single cloud service.",
+  "Data handling: customer drawings and part photos may be ITAR/EAR-controlled or customer-confidential; on-premises processing and a written data-handling clause are required, and cloud labeling tools may be unacceptable.",
+  "Licensing traps: Ultralytics YOLO is AGPL-3.0 and commercially deploying it generally needs an enterprise license; Roboflow adds a separate commercial model license for some self-hosted models."
+ ],
+ "caveats": "All accuracy figures quoted (PatchCore 99.1%, EfficientAD 98.8%, WinCLIP 91.8% image AUROC on MVTec AD) are benchmark results on curated academic datasets with clean, centered, well-lit objects and no field deployment - they are rated Medium at best, and real shop floors with oil, chips, glare and part-to-part variation will perform worse; no public study quantifies the drop for New Jersey job shops. The EfficientAD latency numbers were measured on an RTX A6000 data-centre GPU, not on Jetson-class edge hardware, so the edge throughput of a $249 box is an untested inference. Most public dollar-level case studies for AI visual inspection are vendor marketing content and were excluded; the hard cost numbers here are wage, injury and quality-cost statistics plus component prices. Cognex, Keyence and MVTec do not publish list prices, and the Cognex reseller page encountered in this research returned HTTP 403, so Cognex cost is recorded as Unknown rather than estimated; the single camera price is one distributor listing for one part number. The Rodchua cost-of-quality figures are reported from a secondary review because the primary article is paywalled. Middlesex County machine-shop employment is suppressed in BLS QCEW, so local shop size is estimated from the parent industry group (177 employees across 34 establishments in NAICS 3327) - a figure that looks implausibly low and should not be used to size deals. Middlesex County's membership in the New York-Newark-Jersey City MSA is stated as an inference, not a sourced fact.",
+ "data_gaps": [
+  "No public data on how many inspection labor hours a typical 10-50 person Middlesex County shop spends per week, or its scrap/rework rate - the ROI case needs client data.",
+  "BLS QCEW suppresses machine-shop (332710) employment at county level; establishment counts are available but headcount is not, and the parent-group total (177 employees) looks too low to be a reliable size proxy.",
+  "No independent (non-vendor) US field study with dollar outcomes for visual inspection at small job shops was found; published deployments are either academic benchmarks or vendor case studies with unverifiable numbers.",
+  "Cognex, Keyence and MVTec list prices are not public; the Cognex reseller product page returned HTTP 403, so no Cognex price is reported at all. Only one distributor price for one Basler camera part number was confirmed.",
+  "Lighting, lens, fixture and enclosure costs could not be verified from a primary source.",
+  "Overview.ai prices for the OV10i and OV20i were not displayed on the product or shop pages opened here; only the OV80i price ($13,450) was confirmed.",
+  "Qwen2.5-VL benchmark scores (including CC-OCR) could not be verified: the Hugging Face collection page lists model cards and links the technical report but prints no benchmark table, and the arXiv abstract carries no table either, so no VLM benchmark figure is quoted.",
+  "Could not open the New Jersey Legislature bill-status pages (JS-rendered) to confirm the current enactment status of A3929 / S4075 / A2726; only the bill text of A3929 and search-result status summaries were obtained.",
+  "Could not confirm whether any New Jersey statute requires employer notice for video-only workplace cameras; the negative finding is reported as unconfirmed.",
+  "No New Jersey civil case law on intrusion-upon-seclusion or hidden cameras in restrooms/locker rooms was verified in this research; only the criminal statute (N.J.S.A. 2C:14-9) is cited.",
+  "LFM2.5-VL specifics (parameter counts, benchmarks, license) were not verified beyond the vendor's model listing; only the older LFM2-VL 450M/1.6B cards were reviewed.",
+  "AS9102C is a copyrighted standard and was not read directly; FAI requirements are described from a third-party guidebook (SPI-09, 2026), so exact clause wording is unverified."
+ ]
+}

@@ -1,0 +1,27 @@
+[
+ {
+  "claim": "Running cost item \"Domain, TLS, transactional email, backups\" = \"$0 incremental\", basis \"backups stored on the same plan (inference - a paid backup add-on is optional...)\", and design promises \"encrypted backups\" on a $6 droplet.",
+  "problem": "Contradicted by DigitalOcean's own documentation: droplet backups are a paid add-on at 20% of the droplet cost per month (weekly) or 30% (daily), or $0.04/GiB/month on usage-based backup plans. Backups are not \"stored on the same plan\" at no cost, so this price claim is misstated. The shortfall is small (~$1.20/month on a $6 droplet) but it is a price the plan asserts as $0.",
+  "fix": "Either price DigitalOcean weekly backups (~$1.20/month, giving ~$61/month total running cost) or specify a self-managed nightly pg_dump to storage the firm already pays for, and restate the item and the running-cost total accordingly."
+ },
+ {
+  "claim": "\"the intake service runs on the consultancy's own droplet with encrypted backups and no model training on firm data\" (solution.design), repeated in leverage/edge as \"no model training\"; risks_compliance row 10 marks vendor data handling confirmed with \"data used for training only not at all for enterprise MSA customers\".",
+  "problem": "The Retell security/compliance page says no-training applies only \"If you're an enterprise customer with a Master Services Agreement (MSA)\". A pay-as-you-go account (which this design buys, at $0.055-0.149/minute) carries no such commitment. The design presents an MSA-only guarantee as a property of the pilot deployment, which is exactly the kind of statement a partner would rely on for the RPC 1.6 confidentially analysis. The risk-register row states the conditional correctly, so the plan contradicts itself.",
+  "fix": "Change the design/edge wording to: retention window, PII exclusion and storage opt-out apply on the PAYG account; no-training applies only if the firm is put on an enterprise MSA (price it, or drop the claim). Do not put \"no model training\" in a client-facing security summary unless an MSA is signed."
+ },
+ {
+  "claim": "Risks row: \"RPC 7.1 prohibits false or misleading communications, including unjustified expectations about results; the New Jersey AI guidelines note that AI use 'likely will affect lawyer billing practices and advertising' (RPC 1.5, 7.2)\", marked confirmed: true against the Jan 24, 2024 guidelines PDF.",
+  "problem": "The quoted guidelines sentence and its (RPC 1.5, 7.2) parenthetical are verbatim correct, but the notice never mentions RPC 7.1 anywhere (I read all six pages). The RPC 7.1 proposition is standard rule knowledge, not something this source states, so the confirmed flag is stronger than the source supports.",
+  "fix": "Either cite the NJ RPC 7.1 text directly for the false/misleading-communications proposition, or label it as general rule knowledge and keep the guidelines PDF as the source only for the billing/advertising sentence."
+ },
+ {
+  "claim": "Pilot scope: \"weeks: 4 (2 weeks build, 3 weeks shadow/live overlap)\" versus founder_days summing to 17.5 days (~3.5 weeks) and setup_fee described as \"about 11 founder-days of the 17.5-day build\".",
+  "problem": "Internal arithmetic inconsistency: a 17.5-day solo build cannot fit in the \"2 weeks build\" allowance, and 2 weeks build plus 3 weeks shadow exceed a 4-week pilot unless the phases run in parallel. Nothing in the phases says phase 3-4 work happens during the shadow period.",
+  "fix": "Reconcile the schedule in one place: e.g. \"6 weeks: 3 weeks build (17.5 founder-days), 3 weeks shadow/live overlap\", or keep 4 weeks and state explicitly which phases run concurrently in the shadow window."
+ },
+ {
+  "claim": "Ruby competitor price: \"Chat bundles: $143/mo for 10 chats, $335/mo for 30, $520/mo for 50.\"",
+  "problem": "Those figures match Ruby's standalone chat-plan prices, but the same page shows chat added to a receptionist plan at 20% off: $115 for 10, $268 for 30, $416 for 50. Calling the full-price figures \"bundles\" overstates Ruby's chat cost for the comparison being made.",
+  "fix": "Relabel as \"standalone chat plans: $143 / $335 / $520\" or cite the bundled rates ($115 / $268 / $416 at 20% off with a receptionist plan)."
+ }
+]

@@ -1,0 +1,123 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "audit_md: \"RDAP: registered 2011-05-13, expires 2031-05-13\" (and founder_md sources: \"registration 2011-05-13, expiry 2031-05-13\", cited to rdap.org)",
+      "problem": "Not what the cited URL shows. https://rdap.org/domain/goochie-pooch.com redirects to the registry record at rdap.verisign.com, which reads registration 2011-05-14T00:55:19Z and expiration 2031-05-14T00:55:19Z. The 13 May dates appear only on GoDaddy's own RDAP view (rdap.godaddy.com, 2011-05-13T19:55:19Z), which renders the timestamp about five hours off UTC. Anyone who opens the cited link in the report sees a different day from the one printed, so the citation and the number do not match.",
+      "fix": "Print the date as the cited source shows it - registered 14 May 2011, expires 14 May 2031 (UTC) - or, if the local date is preferred, write \"13 May 2011 local time (RDAP shows 2011-05-14T00:55:19Z)\" and cite rdap.godaddy.com for the Godaddy-rendered date. Update the same figure in the fix step 5 reminder and in founder_md's source list."
+    },
+    {
+      "claim": "audit_md: Google's website link \"stops at a Cloudflare \\\"verify you are human\\\" wall\"",
+      "problem": "Quoted as if it were the page's wording, but the page does not say that. In a real Chrome the tab title is \"Just a moment...\" and the visible text is \"Performing security verification\" / \"this website verifies you are not a bot\", and it was still on that screen after 15 seconds. The substance (a Cloudflare check that stalls) is right; the quoted phrase is not.",
+      "fix": "Drop the quotation marks and describe it: \"stops on a Cloudflare security-verification page ('Performing security verification') that did not clear for us\". Use the same wording in founder_md's opener so the phrase the owner hears matches the screenshot."
+    },
+    {
+      "claim": "audit_md: \"goochie-pooch.com, the salon's domain registered in 2011\" (also founder_md: \"your domain goochie-pooch.com\")",
+      "problem": "States present-day ownership as fact, while rescue.json's own caveat says who holds the domain is unknown because the registrant record is redacted. The domain was the salon's site until 2020-11-30; that it is still theirs today is not supported by any source I could open.",
+      "fix": "Say \"the domain the salon used for its website until 2020\" in audit_md, and in the email draft use \"the domain that used to be your website\" until the owner confirms they still hold the GoDaddy account. Keep the ownership question in the open questions."
+    },
+    {
+      "claim": "audit_md: \"A name search can land on a parking page offering the domain for sale instead of services, hours or booking.\"",
+      "problem": "An inference presented as fact. The page states only \"parked free, courtesy of GoDaddy.com\" plus a \"Get This Domain\" button; nothing on it states a sale, price or listing, and GoDaddy uses that button on parked domains generally. Since the owner is being told their own domain may be for sale, this reads as an accusation of sorts without a source.",
+      "fix": "Describe what is on the page and let the reader draw the conclusion: \"a GoDaddy parking page with a 'Get This Domain' button, so a name search can look as if the domain is up for grabs instead of leading to services, hours or booking\"."
+    },
+    {
+      "claim": "audit_md and founder_md reference saved screenshots: goochie-pooch-desktop.png, goochie-pooch-mobile390.png, tpaw-gmb-website-destination.png, google-profile.png",
+      "problem": "Those files are not in the handover folder alongside rescue.json, so neither the claims nor the offer to \"show you the two screenshots\" can be backed from the record as delivered. I re-took the desktop and 390 px views myself and the parking page looks the same at both widths, so the claim itself holds; only the evidence files are missing.",
+      "fix": "Attach the four files to rescue.json (or to a screenshots/ subfolder) before the report or the email goes out, and fix the mobile file name to whatever is actually saved."
+    },
+    {
+      "claim": "audit_md tone: \"RDAP: ... registrant redacted\" / \"nameservers\" in the fix steps",
+      "problem": "Minor readability, not accuracy: \"RDAP\", \"registrant\" and \"nameservers\" are unexplained technical words in a report written for a groomer. Everything else in the body is plain English, contains no fear language, and comes to about 272 words of body text (about 290 with the footer line), inside the 300-word limit.",
+      "fix": "Gloss them once in plain words: \"the public domain record (RDAP) shows it was registered in 2011 and paid up to 2031; the owner's name and email are hidden\"."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "goochie-pooch.com (www and root) loads a GoDaddy page reading \"parked free, courtesy of GoDaddy.com\" with a \"Get This Domain\" button and related-search ad links naming the salon",
+      "source_url": "https://goochie-pooch.com/lander",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The parking page looks the same at 390 px (mobile) width",
+      "source_url": "https://goochie-pooch.com/lander",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Google Business Profile's website field points to https://tpaw.net/explore/goochie-pooch-cats-too/",
+      "source_url": "https://www.google.com/maps/place/Goochie+Pooch+%26+Cats+Too/@40.4272818,-74.3826089,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "tpaw.net redirects off-domain to pet.ecomify.net and stops at a Cloudflare verification check",
+      "source_url": "https://tpaw.net/explore/goochie-pooch-cats-too/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google listing: 4.5 stars, Pet groomer, 737 NJ-18 East Brunswick NJ 08816, (732) 432-9191, Friday 9 AM-4 PM, open on the day of the check",
+      "source_url": "https://www.google.com/maps/place/Goochie+Pooch+%26+Cats+Too/@40.4272818,-74.3826089,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nextdoor page shows \"Claim page\", lists goochie-pooch.com as the website, hours Mon-Fri 9:00 AM-5:00 PM with Sat/Sun closed",
+      "source_url": "https://nextdoor.com/pages/goochie-pooch-cats-too-east-brunswick-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nextdoor story says the salon was founded in East Brunswick in 1994, most recent recommendation 21 Apr 2025, Fave Awards 2023 and 2024",
+      "source_url": "https://nextdoor.com/pages/goochie-pooch-cats-too-east-brunswick-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 2011-05-13, expires 2031-05-13",
+      "source_url": "https://rdap.org/domain/goochie-pooch.com",
+      "result": "contradicted"
+    },
+    {
+      "claim": "RDAP: registrar GoDaddy.com, LLC (IANA 146), registrant redacted for privacy, record last changed 2026-06-12, nameservers ns59/ns60.domaincontrol.com",
+      "source_url": "https://rdap.org/domain/goochie-pooch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Registrant name, organisation, street and email are redacted (registrant is an individual)",
+      "source_url": "https://rdap.godaddy.com/v1/domain/GOOCHIE-POOCH.COM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback Machine captures run 2013-03-28 to 2020-11-30 with none from 2021 onward",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=goochie-pooch.com&output=json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The last archived capture is the salon's own site, meta description \"Goochie Pooch & Cats Too - Grooming Salon\"",
+      "source_url": "https://web.archive.org/web/20201130012033id_/http://www.goochie-pooch.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "GroomerJob: 4.5 from 92 reviews, Tue-Sat 9:00 AM-4:00 PM, 737 NJ-18, (732) 432-9191",
+      "source_url": "https://groomerjob.com/goochie-pooch-cats-too",
+      "result": "confirmed"
+    },
+    {
+      "claim": "dogdog.org: \"84 people rated this\", 4.5 rating, Tue-Sat 9 AM-4 PM, no website link on the page",
+      "source_url": "https://www.dogdog.org/pet-groomer/goochie-pooch-cats-too-east-brunswick",
+      "result": "confirmed"
+    },
+    {
+      "claim": "catgroomingdirectory.com: 4.5 from 93 reviews, address shown as North Brunswick Township",
+      "source_url": "https://www.catgroomingdirectory.com/groomer/28670-goochie-pooch-and-cats-too",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business identity: Goochie Pooch & Cats Too, East Brunswick NJ pet groomer at 737 NJ-18, (732) 432-9191 - right business, not a chain, not closed (Google listing open and closing at 4 PM on the check day)",
+      "source_url": "https://www.google.com/maps/place/Goochie+Pooch+%26+Cats+Too/@40.4272818,-74.3826089,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Likely cause is labelled as inference and names no one; the parking/hosting explanation is consistent with the domain being registered and paid through 2031 at GoDaddy",
+      "source_url": "https://rdap.org/domain/goochie-pooch.com",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

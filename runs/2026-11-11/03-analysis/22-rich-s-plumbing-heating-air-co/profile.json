@@ -1,0 +1,79 @@
+{
+  "business": "Rich's Plumbing Heating & Air Conditioning, Inc.",
+  "website": "https://www.richsplumbing.com/",
+  "town": "East Brunswick",
+  "industry": "home-services",
+  "summary": "Rich's Plumbing Heating & Air Conditioning is a family-owned residential plumbing and HVAC contractor operating since 1989 out of East Brunswick, NJ, with additional offices in Elizabeth and Bayville. It sells repairs, replacements, maintenance plans and 24/7 emergency service to homeowners across roughly a dozen central/Northern NJ and Ocean County towns, promoted through heavy local SEO content, coupons and Synchrony financing. Intake is phone-first and form-based with no real-time online booking, so one small office staff appears to carry dispatch, scheduling, estimates and follow-up across three locations.",
+  "facts": [
+    {"fact": "Family-owned and operated, serving New Jersey since 1989 (schema foundingDate 1989).", "source_url": "https://www.richsplumbing.com/about-us/"},
+    {"fact": "Runs three offices: 366 Cranbury Rd., East Brunswick; 459 Fulton St., Elizabeth; 91 Shorewood Drive, Bayville — all sharing one phone number, (732) 257-1663.", "source_url": "https://www.richsplumbing.com/about-us/"},
+    {"fact": "Holds NJ master licenses NJMPL:11239 (plumbing) and NJMHVACL:116 (HVAC), and is described as licensed, bonded and insured.", "source_url": "https://www.richsplumbing.com/"},
+    {"fact": "Advertises 24/7 emergency service and states a 60-minute emergency response time, with the caveat that timing varies by conditions and call location.", "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/"},
+    {"fact": "Displays a 4.7 Google rating for East Brunswick (as of Oct 19, 2026) and a review/job map covering 624 jobs updated 2026-11-11.", "source_url": "https://www.richsplumbing.com/"},
+    {"fact": "Service area covers East Brunswick, Edison, Elizabeth, Highland Park, New Brunswick, Old Bridge, South Plainfield, South River, Woodbridge, Toms River, Belle Mead and Morganville.", "source_url": "https://www.richsplumbing.com/contact-us/"},
+    {"fact": "Offers flexible financing through Synchrony and publishes six online coupons (e.g., $50 off plumbing repair, $189 tune-up, $500 off boiler installation).", "source_url": "https://www.richsplumbing.com/"},
+    {"fact": "Sells a paid maintenance plan featuring seasonal check-ups, priority emergency scheduling, discounts and record-keeping of equipment serial numbers and service history.", "source_url": "https://www.richsplumbing.com/hvac-services/maintenance-plan/"},
+    {"fact": "Blog published roughly eight posts in November 2026 alone, including competitor-comparison pieces (Gold Medal, Harris Plumbing, Horizon Services).", "source_url": "https://www.richsplumbing.com/blog/2026/november/"},
+    {"fact": "Technicians are described as uniformed with 10 to 15 years of training, and the company offers estimates for most services with a 100% satisfaction guarantee.", "source_url": "https://www.richsplumbing.com/about-us/"}
+  ],
+  "operations_signals": [
+    "Phone-first intake: every page pushes a single number, (732) 257-1663, to 'speak directly with our friendly, knowledgeable office staff' — no self-serve booking path (https://www.richsplumbing.com/contact-us/)",
+    "Lead capture is a two-step web form (phone + name, then property address, job comments, optional SMS consent) posting to an /api/lead endpoint; there is no calendar or time-slot picker visible (https://www.richsplumbing.com/contact-us/)",
+    "Emergency page says 'online scheduling is available for service requests' but directs active emergencies to call, so the web path is a request/callback rather than real-time dispatch (https://www.richsplumbing.com/plumbing/emergency-plumbing/)",
+    "All three offices (East Brunswick, Elizabeth, Bayville) publish the same phone number, implying one centralized intake/dispatch point rather than location-specific lines (https://www.richsplumbing.com/about-us/)",
+    "24/7 emergency coverage advertised site-wide alongside a stated 60-minute response target (https://www.richsplumbing.com/plumbing/emergency-plumbing/)",
+    "Pre-call information gathering is manual: staff are expected to ask where the leak/backup is, whether water is still flowing, whether the shutoff was closed and whether electrical hazards exist (https://www.richsplumbing.com/plumbing/emergency-plumbing/)",
+    "Estimates for most services, done on site and then discussed with the homeowner, per the emergency 'what to expect' flow (https://www.richsplumbing.com/plumbing/emergency-plumbing/)",
+    "Maintenance-plan customers get 'top priority regular and emergency scheduling' plus stored records of equipment, serial numbers, prior techs and warranties — a manual record-keeping burden (https://www.richsplumbing.com/hvac-services/maintenance-plan/)",
+    "Office staff make outbound heads-up calls when a technician is en route, a step customers explicitly praise (https://www.richsplumbing.com/)"
+  ],
+  "hiring_signals": [
+    "No careers/employment page exists in the published sitemap (160+ URLs checked); the main nav has Services, Service Areas, Reviews, About, Coupons, Financing, Blog only (https://www.richsplumbing.com/sitemap-0.xml)",
+    "Job-board listings could not be verified: Indeed, LinkedIn, Yelp, Angi and BBB returned HTTP 403 or JavaScript-only pages, and keyword aggregator results (Talent.com, SimplyHired) were generic plumbing ads not attributable to this company (https://www.talent.com/jobs?k=Rich%27s+Plumbing+Heating+Air+Conditioning&l=East+Brunswick%2C+NJ)"
+  ],
+  "review_themes": [
+    "Speed and same/next-day availability dominate: customers repeatedly describe quick arrival and 'job was done' in one visit (https://www.richsplumbing.com/reviews/)",
+    "Communication is a recurring positive — office calls ahead of arrival, techs explaining findings and next steps, follow-up after the job (https://www.richsplumbing.com/)",
+    "Technician courtesy and cleanup are praised by name for specific techs, suggesting reviews are tech-specific and reputation rides on individuals (https://www.richsplumbing.com/reviews/)",
+    "Pricing is described as fair but 'not cheap' / 'a little high' by some reviewers, with transparency credited to on-site explanation of costs (https://www.richsplumbing.com/reviews/)",
+    "Repeat/long-tenure customers are common ('customers for 20 years', third-time callers), pointing to a maintenance-driven base (https://www.richsplumbing.com/reviews/)",
+    "Caveat: these are reviews collected and displayed by the company via a RealWorkLabs widget plus curated testimonials, so negative themes are likely under-represented (https://www.richsplumbing.com/reviews/)"
+  ],
+  "tech_footprint": [
+    "Website rebuilt on Astro (static output, /_astro assets, JSON-LD HomeAndConstructionBusiness with three department locations) — modern but no booking engine (https://www.richsplumbing.com/contact-us/)",
+    "Custom lead form posting to /api/lead with Cloudflare Turnstile bot protection and a TCPA-style SMS consent checkbox (https://www.richsplumbing.com/contact-us/)",
+    "Review/job-map widget powered by RealWorkLabs, showing 624 geo-pinned jobs with Google reviews merged (https://www.richsplumbing.com/reviews/)",
+    "Synchrony financing application link embedded in header, product pages and financing page (https://www.richsplumbing.com/contact-us/)",
+    "Google Business Profile (cid-linked) and a Facebook page are the only social profiles listed in schema; no Instagram/YouTube channel in sameAs (https://www.richsplumbing.com/contact-us/)",
+    "No live chat, SMS chatbot, or online scheduler detected on any page reviewed; contact paths are phone + form only (https://www.richsplumbing.com/contact-us/)",
+    "High-volume content operation: near-daily blog posts with cost guides, comparison pages and town-specific landing pages (https://www.richsplumbing.com/blog/2026/november/)",
+    "Coupon codes (RICH50, TUNE189, WATER50, BOILER500, DRAIN75, HVAC300) are claimed through a URL parameter on the coupons page, a trackable but manual redemption path (https://www.richsplumbing.com/)"
+  ],
+  "growth_signals": [
+    "Three physical offices including Bayville in Ocean County, well outside the original East Brunswick base, alongside Toms River service pages — southward geographic expansion (https://www.richsplumbing.com/about-us/)",
+    "Town-specific landing pages for 12+ municipalities, each with its own plumbing/heating/cooling variants in Elizabeth and Toms River (https://www.richsplumbing.com/sitemap-0.xml)",
+    "Aggressive SEO content cadence — about eight posts in the first ten days of November 2026, including head-to-head comparisons against Gold Medal, Harris Plumbing and Horizon Services (https://www.richsplumbing.com/blog/2026/november/)",
+    "Review volume is high and current: Google-sourced reviews dated within days of the site's 2026-11-11 update, spanning towns from Freehold to Toms River (https://www.richsplumbing.com/reviews/)",
+    "Added recurring-revenue offer (paid maintenance/Comfort Plan) and consumer financing, both typical of a company scaling ticket size and retention (https://www.richsplumbing.com/hvac-services/maintenance-plan/)",
+    "Licensing footprint spans plumbing and HVAC (two separate NJ license numbers), letting one company sell whole-home jobs rather than single-trade work (https://www.richsplumbing.com/)"
+  ],
+  "decision_maker": "Unknown — no owner/GM name or title appears on the company's About, Contact, or any page checked; site speaks only as 'our family' and 'our team'. A customer testimonial mentions a crew member called 'Rich', which is suggestive but not a verified ownership statement.",
+  "inferences": [
+    {"inference": "A small office team handles intake, dispatch and scheduling for all three locations from one phone number.", "reasoning": "The same (732) 257-1663 number is published for East Brunswick, Elizabeth and Bayville, and the site tells callers they will reach 'our friendly, knowledgeable office staff' rather than a location desk."},
+    {"inference": "Phone volume is the operational bottleneck, and missed or queued calls translate directly to lost jobs.", "reasoning": "No online scheduler, chat or self-serve booking exists; every page funnels to a phone call, while marketing (near-daily blog, 12+ town pages, coupons) is designed to generate large inbound demand."},
+    {"inference": "After-hours emergency coverage likely relies on staff or an answering service triaging calls into a shared on-call rotation across three offices.", "reasoning": "24/7 emergency service with a 60-minute response promise is advertised, yet the web form is not a dispatch tool and the site says emergencies must call; no portal or automation is visible."},
+    {"inference": "Maintenance-plan administration (equipment records, serial numbers, warranty dates, seasonal reminders) is manual and error-prone.", "reasoning": "The maintenance-plan page markets 'we can even keep all records and schedule maintenance of our customers on file' as a manual service benefit, implying a spreadsheet- or paper-based process rather than customer-facing software."},
+    {"inference": "Estimating and follow-up on quotes are likely a labor drag and a leakage point.", "reasoning": "Estimates are done on site for most services, with no published price list, no online quote calculator and no visible CRM or e-signature tooling."},
+    {"inference": "Hiring probably runs through informal channels and aggregators rather than a structured recruiting funnel.", "reasoning": "No careers page or application form exists anywhere in the sitemap despite three locations and a stated 10-15 year technician training model."},
+    {"inference": "The company is investing in marketing capacity faster than in customer-facing automation.", "reasoning": "Content output is near-daily with dedicated competitor-comparison pages, while contact technology is limited to a form plus turnstile and a phone number."}
+  ],
+  "data_gaps": [
+    "No owner, GM or management names found on the business's own pages; decision_maker remains Unknown.",
+    "No verified current job postings: Indeed, LinkedIn, ZipRecruiter, Glassdoor, Yelp, Angi, YellowPages, BBB and ChamberofCommerce returned 403/JS-only responses; the site has no careers page.",
+    "Web search provider was rate-limited/unavailable during this run (Exa and OpenAI quota errors), and Bing/DDG/Yahoo returned captchas or irrelevant results, so third-party review pages and local news could not be searched by keyword.",
+    "Google Business Profile rating count and Yelp/BBB ratings could not be verified first-hand; the 4.7 figure is the company's own displayed number for East Brunswick only.",
+    "Employee count, revenue and fleet size are not published anywhere reviewed.",
+    "No evidence found of a formal CRM, dispatch software (e.g., ServiceTitan/Jobber) or call-tracking platform; the tech stack notes reflect only what the public site exposes.",
+    "Hours of operation are not stated — schema carries an empty openingHoursSpecification, so '24/7 emergency' is the only timing information available."
+  ]
+}

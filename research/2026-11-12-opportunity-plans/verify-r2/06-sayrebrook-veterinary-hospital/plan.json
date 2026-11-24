@@ -1,0 +1,481 @@
+{
+ "business": "Sayrebrook Veterinary Hospital (1400 Main St, Sayreville, NJ; owner Dr. Joseph R. Chiosi)",
+ "opportunity": "24/7 intake, urgency-triage and booking agent for phone, web form and email",
+ "problem": {
+  "summary": "Sayrebrook advertises 24-hour emergency care to its main number, (732) 727-1303, while the building is staffed Mon-Thu 8-7, Fri-Sat 8-5 and Sun 8-2. Staff headcount is not published on the site, so the 'roughly a dozen people' figure carried in earlier research is an unverified inference (desk research, not re-confirmed this session) rather than a sourced fact. Published booking is not self-serve: the web appointment-request form collects full pet and visit details, then the page states a team member will contact the client to confirm availability and scheduling. Same-day and urgent slots are described as availability dependent, with clients told to call early or ask about a cancellation list. Intake also splits across a general Gmail address, LifeLearn-hosted new-client and patient-history forms, and printable pages, and no live chat, SMS or online-booking widget was observed. The result is that a small front-desk/technician team is the single funnel for routine calls, urgent calls, after-hours emergency calls and new-client forms, seven days a week, and after-hours demand is answered by whatever forwarding arrangement is in place rather than a staffed ER (that arrangement is not public).",
+  "current_tools": [
+   {
+    "tool": "Single main phone line used for both routine calls and advertised 24-hour emergency care",
+    "evidence": "Practice page: open Monday-Thursday 8am-7pm, Friday & Saturday 8am-5pm, Sunday 8am-2pm, then 'We are available 24 hours a day for emergency care. If you have an after-hours emergency, please call (732)727-1303.'",
+    "source_url": "https://sayrebrookvet.com/about-our-clinic/"
+   },
+   {
+    "tool": "WordPress appointment-request web form with mandatory staff call-back confirmation",
+    "evidence": "Form asks name, email, phone, pet's name, species (canine, feline, ferret, avian, rabbit, pocket pet, reptile, other), breed, age/date of birth, requested day, time requested, reason for visit; page states 'A hospital team member will then contact you to confirm availability and scheduling of your appointment.'",
+    "source_url": "https://sayrebrookvet.com/about-our-clinic/appointment-request/"
+   },
+   {
+    "tool": "General Gmail address (SayrebrookVet@gmail.com) as the published client email channel",
+    "evidence": "Profile research: team page publishes a general Gmail address rather than a branded mailbox; no chat or booking widget on the homepage (carried from profile.json, not re-opened this session).",
+    "source_url": "https://sayrebrookvet.com/about-our-clinic/our-team/"
+   },
+   {
+    "tool": "LifeLearn-hosted new-client and patient-history forms plus printable pages",
+    "evidence": "Profile research: client forms and the Pet Health Checker are hosted on web5q.lifelearn.com rather than the main domain, alongside printable patient-history pages; no practice-management-system vendor is identifiable publicly (carried from profile.json).",
+    "source_url": "https://sayrebrookvet.com/locations/sayrebrook-veterinary-hospital/"
+   },
+   {
+    "tool": "No online scheduler, portal, SMS or live chat observed",
+    "evidence": "Profile research on the homepage and FAQ: booking runs through phone plus the request form, with a cancellation list handled by staff (carried from profile.json, not re-opened this session).",
+    "source_url": "https://sayrebrookvet.com/faqs/"
+   }
+  ]
+ },
+ "solution": {
+  "approach": "build-on-platform",
+  "design": "Put one agent in front of the three channels the practice already advertises - the main phone number, the WordPress appointment-request form and the published Gmail address - and keep every write to the system of record behind a staff click. Concretely: (1) the main number keeps ringing at the desk during posted hours and rolls to the agent on no-answer/overflow and outside posted hours, so the advertised 24-hour line is finally answered at 3am; that routing happens on the practice's own phone system or carrier (forward the line, or point its SIP dial plan at the agent platform), because the agent platform only sees the calls handed to it and its own fallback is for concurrency, not for desk no-answer; (2) the agent greets in English or Spanish, discloses it is an automated assistant and that the call is recorded, collects owner, pet, species, breed, age, reason for visit and requested window using the same fields the current form uses, and answers only hours, location, services, payment options and 'what to bring' questions from a closed knowledge base built from the practice's own pages; (3) it screens urgency with a written red-flag script the practice's veterinarians sign and version - anything matching a red flag is not advised on, it is escalated immediately by warm transfer to the on-call technician with a spoken summary, and if no one answers within a set ring window it gives the caller the practice's own emergency instruction and pages again; (4) routine requests become a proposed slot that staff confirm, so phase one never writes to the practice-management system; (5) form and email submissions are parsed into the same queue, incomplete submissions are flagged back, and duplicates are matched on owner phone/email; (6) every call and message lands in an append-only log with transcript, outcome, escalation and reviewer fields, reviewed daily by the lead technician from an exception queue. The founder owns the plumbing and the audit loop; the practice owns the clinical script and every approval. Deliberately NOT in scope: dosing or diagnosis, fee negotiation, prognosis, prescription approvals, and any outbound AI voice calling.",
+  "components": [
+   {
+    "component": "Inbound voice agent and telephony (overflow + after-hours answering, warm transfer to on-call)",
+    "tool": "Retell AI (imported/existing number or SIP from the practice's carrier, conversation flow with call-transfer node) - Vapi as the alternate",
+    "why": "Documents binding agents to Retell-managed or imported numbers and receiving calls over SIP from the practice's own carrier, which is how the existing main line gets to the agent; the call-transfer node documents warm transfer with human detection, a private whisper message to the receiving technician and a configurable ring duration - the exact handoff this practice needs for red flags.",
+    "source_url": "https://docs.retellai.com/build/conversation-flow/call-transfer-node"
+   },
+   {
+    "component": "Model, speech and knowledge base",
+    "tool": "Retell built-in STT/TTS/LLM options plus a Retell knowledge base, or self-hosted open-source stack (Pipecat) if the practice later wants no third-party model vendor",
+    "why": "Model and voice choice are priced per minute and can be kept on a cheap tier for routine calls (Retell publishes per-component prices); Pipecat (BSD 2-Clause) is an open-source alternative if the practice insists on a private deployment or the founder wants to avoid per-minute platform fees at scale.",
+    "source_url": "https://github.com/pipecat-ai/pipecat/blob/main/LICENSE"
+   },
+   {
+    "component": "SMS/acknowledgement and callback channel (one-way confirmations, no marketing)",
+    "tool": "Retell SMS (or a Twilio number if the practice prefers to own the carrier relationship)",
+    "why": "Retell publishes a monthly SMS number fee and a per-message price, so the cost of confirmation texts is explicit; SMS keeps clients off the phone for 'did you get my form' questions.",
+    "source_url": "https://www.retellai.com/pricing"
+   },
+   {
+    "component": "Intake queue and approval screen (one screen the front desk actually uses)",
+    "tool": "Small custom app hosted on a DigitalOcean Droplet; WordPress REST API or the form's email notification as the form intake path",
+    "why": "The practice's urgent pain is that a request sits in a form until someone phones back; a single approve/reject queue with the agent's proposed slot and a 'call client' button converts that into one click. Basic Droplet plans start at $4.00/month, WordPress exposes a REST API, and WordPress core is GPLv2, so the form side needs no plugin rewrite and no licence purchase.",
+    "source_url": "https://www.digitalocean.com/pricing/droplets"
+   },
+   {
+    "component": "Email intake from the published Gmail address",
+    "tool": "Gmail API with the narrowest scope (or a Workspace-side forward into a mailbox the agent owns)",
+    "why": "Reading Gmail from a third-party app uses restricted scopes, and Google requires an annual third-party security assessment for apps that access restricted-scope data from or through a server; Google lists an 'internal use only' exception for apps used only inside one Workspace organization, which a single-client deployment may or may not qualify for, so the exception must be confirmed with Google rather than assumed.",
+    "source_url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification"
+   },
+   {
+    "component": "Clinical triage script and red-flag list (the actual safety device)",
+    "tool": "Practice-authored, version-controlled protocol document that the agent quotes; veterinarian signs each version",
+    "why": "Triage judgment is licensed veterinary judgment; the agent must only route against a written protocol the practice owns, never improvise. New Jersey's telemedicine rule makes the licensee decide, before each encounter, whether remote care can meet the in-person standard of care - so clinical guidance of any kind is the practice's call, and the protocol is the client's artifact, not the consultant's.",
+    "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-44-4A-4"
+   },
+   {
+    "component": "Audit log and exception review",
+    "tool": "Append-only transcript store with reviewer fields; retention set to at least 5 years to match the practice's record rules",
+    "why": "New Jersey requires veterinary records to be retained five years from the patient's last visit, and requires identifying information and dated entries; transcripts that feed intake should be governed on the same clock rather than deleted on a 14-day default.",
+    "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-44-4-9"
+   }
+  ],
+  "integrations": [
+   {
+    "system": "Existing main phone number (732) 727-1303 / carrier or VoIP handoff",
+    "method": "Keep the number at the practice's carrier and hand calls to the agent over SIP, or import/forward the line into Retell; Retell documents binding an inbound agent to Retell-managed and imported numbers, routing inbound SIP from the practice's own carrier to sip.retellai.com, and a per-number fallback destination plus 'Backup mode' that sends calls to a staffed line when AI handling must stop",
+    "confirmed_in_docs": true,
+    "cost": "Retell phone number $2.00/month (no charge for custom phone numbers); Retell telephony call rate $0.015/min, 'No Charge for Sip Trunking/Custom Telephony'",
+    "source_url": "https://www.retellai.com/pricing"
+   },
+   {
+    "system": "On-call technician / veterinarian pager or mobile",
+    "method": "Call-transfer node to an E.164 number or SIP URI, with warm transfer, human detection, private whisper message, configurable transfer ring duration and a pre-populated failure edge when the transfer fails",
+    "confirmed_in_docs": true,
+    "cost": "No separate transfer fee; agent billing continues during hold and handoff and stops when the agent leaves the call, while telephony continues for the transferred leg at the destination's per-minute rate (Retell's own example: $0.015/min, so 3 further minutes = $0.045)",
+    "source_url": "https://docs.retellai.com/build/conversation-flow/call-transfer-node"
+   },
+   {
+    "system": "WordPress appointment-request form",
+    "method": "Read submissions via the WordPress REST API or by parsing the form's notification email into the intake queue (no plugin change to the public form)",
+    "confirmed_in_docs": true,
+    "cost": "$0 - inference, not a figure the cited pages state: WordPress core is released under GPLv2, so no licence fee applies, and the REST API handbook publishes no per-call price; hosting is unchanged",
+    "source_url": "https://wordpress.org/about/license/"
+   },
+   {
+    "system": "Published Gmail mailbox (SayrebrookVet@gmail.com)",
+    "method": "Gmail API with the narrowest workable scope; restricted scopes require Google OAuth verification and, for apps accessing restricted-scope data from or through a server, an annual security assessment by a Google-empanelled assessor, repeated at least every 12 months",
+    "confirmed_in_docs": true,
+    "cost": "$0 API usage - inference, since Google publishes verification and assessment obligations on this page but no price for either",
+    "source_url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification"
+   },
+   {
+    "system": "Practice-management system for appointments and records",
+    "method": "Not integrated in phase one - staff confirm every proposed slot in the review screen. Phase two depends on a vendor that is still unidentified: Covetrus states that the Covetrus Connect API, through its Technology Integration Partner Program, is 'the only authenticated and supported way to integrate with Covetrus practice management software', and that new integration requests are currently paused. No claim is made here about IDEXX APIs, because that documentation could not be opened this session.",
+    "confirmed_in_docs": false,
+    "cost": "Not public - partner/API access terms are not published; phase one assumes $0",
+    "source_url": "https://covetrus.com/about/partner-with-us/"
+   },
+   {
+    "system": "SMS confirmations to clients",
+    "method": "Retell SMS number and message send (available from SMS-enabled Retell or imported numbers), one-way transactional only",
+    "confirmed_in_docs": true,
+    "cost": "Retell SMS $20.00/month; $0.01/Msg",
+    "source_url": "https://www.retellai.com/pricing"
+   }
+  ],
+  "human_in_the_loop": "Hard human gates: (1) any red-flag match must reach a live on-call human by warm transfer, and the agent never gives clinical advice beyond the practice's own written instruction; (2) no appointment is written to the practice-management system without a staff click; (3) no fee, prognosis, dosing or prescription question is answered at all - it is queued for a person; (4) new-client and surgical/dental bookings are confirmed by staff only; (5) the lead technician reviews the exception queue daily and the founder reviews a weekly sample of transcripts with Dr. Chiosi or the practice manager, who alone approve changes to the red-flag list; (6) a documented kill switch - Retell's per-number fallback destination and Backup mode, or the carrier's own forward-back - returns the number to the desk/voicemail immediately."
+ },
+ "build_plan": {
+  "phases": [
+   {
+    "phase": "0. Discovery and baseline (week 1)",
+    "steps": [
+     "Interview Dr. Chiosi and the lead technician; confirm whether the 24-hour emergency claim is still the intent and who currently answers after 18:00/19:00",
+     "Pull 4 weeks of call-detail records from the carrier plus the front desk's own missed-call and voicemail tally to size after-hours and overflow volume",
+     "Identify the practice-management system, version and whether any API/export exists",
+     "Map the form-to-callback and Gmail handling steps, timing a sample of 20 requests from submission to confirmation"
+    ],
+    "founder_days": "3 (inference)",
+    "client_provides": "Carrier call records or portal access, front-desk missed-call log, PMS name/version, 20 recent form submissions, 30 minutes with the practice manager"
+   },
+   {
+    "phase": "1. Clinical script and knowledge base (weeks 1-2)",
+    "steps": [
+     "Draft a red-flag triage script in the practice's own words (species-aware, including exotics they treat) for veterinarian review and signature",
+     "Build a closed knowledge base from the practice's hours, services, payment options, housecall/boarding rules and FAQ pages; mark every topic that must escalate instead of answer",
+     "Agree the Spanish wording with a staff reviewer rather than machine translation alone",
+     "Version both documents and record who approved which version and when"
+    ],
+    "founder_days": "4 (inference)",
+    "client_provides": "Signed red-flag protocol, service/price list they are willing to have stated, after-hours emergency instruction text, Spanish-speaking reviewer, approved tone"
+   },
+   {
+    "phase": "2. Build and wire (weeks 2-3)",
+    "steps": [
+     "Configure the voice agent, greeting, recording/AI disclosure, knowledge base and escalation paths in a staging number",
+     "Set up after-hours schedule and overflow trigger on the main line; test warm transfer to the real on-call roster including the no-answer failure branch and the fallback/backup route back to the desk",
+     "Build the intake queue screen (approve/decline, proposed slot, call-back button, duplicate flag) and the append-only transcript log with 5-year retention",
+     "Wire the WordPress form and Gmail mailbox into the queue; keep the public forms unchanged"
+    ],
+    "founder_days": "5 (inference)",
+    "client_provides": "On-call roster and numbers, carrier/IT approval to forward or port, a test client account, brand voice, one staff member for usability feedback"
+   },
+   {
+    "phase": "3. Simulation and staff sign-off (week 4)",
+    "steps": [
+     "Run 40-60 scripted test calls including deliberately ambiguous and red-flag cases, scored blind by the lead technician",
+     "Fix misclassifications, tune escalation thresholds and tighten the 'must escalate' list",
+     "Train two front-desk staff on the queue, the exception review and the kill switch; write a one-page runbook",
+     "Go/no-go review with Dr. Chiosi against the success metrics below"
+    ],
+    "founder_days": "3 (inference)",
+    "client_provides": "Lead technician time for blind scoring (about 3 hours), two staff for a 45-minute training, written go/no-go"
+   },
+   {
+    "phase": "4. Pilot operation, after-hours and overflow only (weeks 5-8)",
+    "steps": [
+     "Run live with the desk taking all in-hours calls that it answers within the ring limit; agent handles everything else plus all after-hours calls",
+     "Daily 15-minute exception review with the lead technician; weekly transcript sample with the owner",
+     "Track answered rate, escalation latency, staff minutes saved, and every client complaint, in one sheet",
+     "Weekly written status note to the owner, including anything the agent got wrong"
+    ],
+    "founder_days": "1 per week, 4 total (inference)",
+    "client_provides": "15 minutes/day of lead-technician review, access to complaints, agreement not to change the protocol silently mid-pilot"
+   },
+   {
+    "phase": "5. Review, decide, and (if yes) extend (week 9)",
+    "steps": [
+     "Compare pilot weeks against the pre-pilot baseline on the same measures",
+     "Price the extension (in-hours overflow, boarding/housecall queue, cancellation-list work) or hand back cleanly",
+     "If continuing, convert the pilot build into a maintained service with a monthly care agreement and a documented change process"
+    ],
+    "founder_days": "2 (inference)",
+    "client_provides": "Decision meeting, named operational owner, signed care agreement if continuing"
+   }
+  ],
+  "pilot": {
+   "scope": "One number, after-hours and overflow only, plus automatic acknowledgement and queueing of the WordPress appointment-request form and the Gmail mailbox. The agent collects intake, answers only non-clinical questions from the closed knowledge base, escalates red flags by warm transfer to the on-call technician, and proposes slots that staff confirm. No practice-management-system write access, no billing messages, no outbound AI voice calls, no clinical advice, no change to the public forms.",
+   "weeks": "4 (weeks 5-8 of the build, after the week-1 baseline)",
+   "success_metrics": [
+    "Share of after-hours calls answered by a live or automated voice instead of voicemail: target 100% answered, versus the measured baseline",
+    "Red-flag triage agreement with the lead technician's blind review of a weekly 20-call sample: target 90% or better, with zero missed true emergencies",
+    "Median time from red-flag detection to a human on the line: under 2 minutes",
+    "Front-desk/technician minutes per intake request, form plus phone, before versus after: target 25% reduction on the sampled work",
+    "Every form or email submission acknowledged within 5 minutes and visible in the queue the same day",
+    "Client complaints attributable to the agent: zero unresolved at pilot end",
+    "Zero clinical advice, dosing or fee commitments in the audited transcripts"
+   ],
+   "baseline_method": "In week 1 of the build, with the agent not yet live: (a) pull four weeks of carrier call-detail records to count inbound calls by hour and day and identify calls that ended in voicemail or under 20 seconds; (b) have the front desk tally missed calls, callback attempts and form requests on a paper sheet for that week; (c) time 20 form submissions from arrival to confirmed appointment; (d) snapshot the current voicemail greeting and after-hours instruction. The same four measures are repeated in weeks 7-8 of the pilot (pilot runs weeks 5-8) so the comparison is like-for-like, and the founder does not choose which calls get audited.",
+   "exit_criteria": "Stop or pause immediately if any of the following occurs: a red-flag case is not escalated to a human; triage agreement falls below 80% on any weekly sample; the on-call transfer fails twice in a week; the practice reports a client harm or serious complaint tied to the agent. Do not continue past the pilot if measured staff time returned is under 1.5 hours per open day, or if the practice cannot name a person who owns the daily exception review."
+  }
+ },
+ "competitors": [
+  {
+   "vendor": "VetRec",
+   "product": "AI Receptionist (Starter / Plus), plus standalone online booking",
+   "fit_for_this_business": "Closest off-the-shelf fit: AI call answering, appointment booking through supported PIMS integrations, one shared dashboard, conversation summaries and reporting. Weak point here is that booking value depends on a PMS integration into a system whose vendor is not publicly known, and there is no published clinical triage protocol workflow with on-call warm transfer.",
+   "price": "'AI Receptionist Starter' $299/month ('Up to 500 interactions per month'); 'AI Receptionist Plus' $499/month ('Up to 1,000 interactions per month'); 'Additional interactions: $0.65 per interaction beyond your plan's monthly allowance'; 'Online Booking $99/month'. Business-hours, after-hours or 24/7 coverage is a plan setting, not a separate price; no annual term is shown on the page.",
+   "source_type": "vendor pricing page",
+   "source_url": "https://vetrec.io/platform/ai-receptionist/pricing"
+  },
+  {
+   "vendor": "24PetLine",
+   "product": "AI receptionist for veterinary clinics (Starter / Growth / Enterprise)",
+   "fit_for_this_business": "Advertises 24/7 answering, booking, emergency routing to on-call, English/Spanish, and PIMS integrations for ezyVet, Cornerstone, AVImark and Shepherd (Impromed and Digitail 'Coming Soon'). That is most of this plan minus the practice-specific red-flag script, the staff approval queue and the form/email consolidation.",
+   "price": "'PIMS integration is included in the Growth plan ($449/mo)'; 'Additional minutes: $0.30/min'; '14-day free trial'; month-to-month billing with no long-term contracts. The Starter plan's price was not rendered in the page text (its feature list shows '500 minutes included'; Growth shows '1,200 minutes included').",
+   "source_type": "vendor pricing page",
+   "source_url": "https://www.24petline.com/"
+  },
+  {
+   "vendor": "Virtual Reception",
+   "product": "AI answering service for veterinarians",
+   "fit_for_this_business": "Books exams and vaccines, routes urgent calls to an on-call vet or gives the emergency hospital's details after hours, takes refill/callback requests. Cheap entry point, but appointments, integrations and call transfers sit on the middle and upper tiers, and there is no clinical red-flag protocol the practice signs.",
+   "price": "Plan cards show annual billing: 'Billed as $490 per year' (Answering Service, 'Up to 250 Minutes'), 'Billed as $1,490 per year' (Business, 'Up to 1,000 Minutes', includes 'Book Appointments', 'Integrations', 'Call Transfers'), 'Billed as $2,990 per year' (Growth, 'Up to 2,000 Minutes', 'Outbound Calls'). The page headline also reads 'Plans from $49/month'; the monthly figure on each card was not rendered in the page text.",
+   "source_type": "vendor pricing page",
+   "source_url": "https://virtualreception.ai/ai-reception/book-appointments-for-veterinarians"
+  },
+  {
+   "vendor": "Klugon",
+   "product": "Veterinary AI receptionist (voice + WhatsApp/website-chat tiers)",
+   "fit_for_this_business": "Publishes a cheap small-practice entry tier with 1,000 voice minutes, enough for after-hours-plus-overflow on a one-to-two-vet clinic. Notably, its own vet page states plainly that Klugon cannot transfer a call and that the assistant must give out an emergency number instead - exactly the gap this plan's warm-transfer design is built around. Useful as the price floor the founder must beat on value, not on price.",
+   "price": "Voice (phone) plans: '$99/mo, 1,000 min' (Starter), '$299/mo, 3,600 min' (Business), '$499/mo, 6,000 min' (Scale). 'Yearly billing takes 20% off'; 'A phone number is $9 a month'; 'Extra voice minutes are $15 per started 100 minutes.'",
+   "source_type": "vendor pricing page",
+   "source_url": "https://klugon.ai/for/vets"
+  },
+  {
+   "vendor": "Otto (Televet)",
+   "product": "Otto Flow / Otto Phones communications platform with AI features",
+   "fit_for_this_business": "A veterinary communications platform that already integrates with Cornerstone, Neo, AVImark, Pulse/eVet, ezyVet and Impromed, so it is the natural 'buy the whole phone system' alternative if the practice would rather replace the phone stack than add an agent. Sold by quote only.",
+   "price": "Not public - no price is published on the plans page; the page carries only 'One Price' marketing copy about a single bundled platform and a 'Ready to get your quote?' request form.",
+   "source_type": "vendor page",
+   "source_url": "https://otto.vet/otto-plans/"
+  },
+  {
+   "vendor": "GuardianVets",
+   "product": "After-hours answering and triage staffed by Credentialed Veterinary Technicians, with PIMS integration",
+   "fit_for_this_business": "The strongest human alternative and the answer to 'should a person just answer?'. Live CVTs triage against the practice's workflows and document into the PIMS, which is clinically safer than an AI but costs a monthly service fee and does not consolidate the web form or email inbox.",
+   "price": "Not public - no price appears on the site; onboarding starts with 'Book a Demo' and a call audit, and the site says coverage can go live 'in as little as 7 days'.",
+   "source_type": "vendor page",
+   "source_url": "https://www.guardianvets.com/"
+  },
+  {
+   "vendor": "VetWise",
+   "product": "After-hours veterinary answering and triage by licensed veterinary technicians with a veterinarian on shift",
+   "fit_for_this_business": "A licensed-team service for the after-hours slice only, billed per case. Their own pricing page is the best public compilation of what this category costs, which is why it is cited for the market ranges as well as being a competitor.",
+   "price": "Not public for their own service ('VetWise does not publish a price list'; billed per case, month-to-month, no setup fee, PIMS integration an add-on with its own one-time fee). Their published market summary: 'a plan with about 100 minutes included runs roughly $159 to $395 a month, and time past the plan bills at about $1.35 to $2.30 a minute'; 'Vendors that bill per call charge roughly $8.50 to $11.50 a call'; 'Veterinary-specific answering services start around $175 a month'; '$119 to $419 a month for a veterinary phone suite'; '$15 to $75 per user a month for a general system'.",
+   "source_type": "vendor pricing page",
+   "source_url": "https://www.getvetwise.com/pricing"
+  },
+  {
+   "vendor": "PetDesk (owner of the Vetstoria booking product, sold as 'PetDesk Booking (Formerly Vetstoria)')",
+   "product": "Client engagement app plus real-time online booking",
+   "fit_for_this_business": "Attacks the same root cause from the other side: let clients book themselves so the call-back loop disappears. Strong for routine wellness bookings; does nothing for after-hours urgent calls, Spanish phone triage or the fragmented form/email inbox.",
+   "price": "Not public - the FAQ says only 'That depends on what you want! Reach out to our sales team to discuss the best package for your practice.' No price appears on PetDesk's FAQ page or on the Vetstoria pricing page; PetDesk sells the booking product as 'PetDesk Booking (Formerly Vetstoria)' in its own product one-pager. FAQ terms: month-to-month agreements with 30-day notice.",
+   "source_type": "vendor page",
+   "source_url": "https://petdesk.com/frequently-asked-questions"
+  },
+  {
+   "vendor": "Hire a person (front-desk receptionist or veterinary technician)",
+   "product": "Second receptionist/technician shift covering evenings and weekends",
+   "fit_for_this_business": "The only option that covers clinical judgment, empathy and counter work in one body, and it scales beyond answering. It also adds payroll, benefits, recruiting and scheduling to a practice that already keeps a continuous application pipeline and screens for holiday availability.",
+   "price": "Receptionists and information clerks, New Jersey: $19.07 mean hourly, $39,670 mean annual (May 2023 OEWS; 47,910 employed in the state). Inference at a x1.25 benefits load: about $23.84/hour, roughly $49,600/year for one full-time equivalent at 2,080 hours - before any shift premium. The audit's technician benchmark, carried unchanged, is $22.66/hour NJ median and $28.32 loaded.",
+   "source_type": "government data",
+   "source_url": "https://www.bls.gov/oes/2023/may/oes434171.htm"
+  }
+ ],
+ "running_costs": [
+  {
+   "item": "Voice agent minutes (platform + speech + model + knowledge-base add-on)",
+   "cost": "$0.081/min lean ($0.055 voice infra + $0.015 platform TTS + $0.0064 GPT 5.4 nano + $0.005 knowledge-base add-on) and $0.099/min standard (same build with GPT 5.4 mini at $0.024/min); Retell publishes $0.07-$0.31/minute all-in. Inference at 900-1,500 minutes/month: about $73-$149/month.",
+   "basis": "Retell published per-component and per-minute prices; call volume is the founder's assumption, not measured",
+   "source_url": "https://www.retellai.com/pricing"
+  },
+  {
+   "item": "Telephony on the agent line",
+   "cost": "$0.015/min at Retell's published call rate, with 'No Charge for Sip Trunking/Custom Telephony'. Inference: about $13.50-$22.50/month at 900-1,500 minutes.",
+   "basis": "Retell published per-minute telephony price; minute volume assumed",
+   "source_url": "https://www.retellai.com/pricing"
+  },
+  {
+   "item": "Phone number",
+   "cost": "$2.00/month per Retell phone number; 'No Charge for custom phone numbers'",
+   "basis": "Retell published monthly number price",
+   "source_url": "https://www.retellai.com/pricing"
+  },
+  {
+   "item": "SMS confirmations",
+   "cost": "$20.00/month SMS number + $0.01/Msg. Inference: 150-300 transactional messages/month = $1.50-$3.00, so about $21.50-$23.00/month total.",
+   "basis": "Retell published SMS number and per-message prices; message volume assumed",
+   "source_url": "https://www.retellai.com/pricing"
+  },
+  {
+   "item": "Knowledge base",
+   "cost": "$8.00/Knowledge Base/month (prorated), inside a published '$80/month free value (10 KBs)' for call agents, plus a '+$0.005/minute' call-agent add-on. Inference: a single knowledge base falls inside the free value, so the monthly line is $0 and the per-minute add-on is already carried in the voice-minutes item.",
+   "basis": "Retell published knowledge base price and add-on; the 'one KB is free' reading is inference from the $80 free-value note",
+   "source_url": "https://www.retellai.com/pricing"
+  },
+  {
+   "item": "Intake queue, log and small app hosting",
+   "cost": "$4.00/month for the entry Basic Droplet (512 MiB / 1 vCPU / 10 GiB); $6.00-$12.00 tiers exist on the same page. Inference: a $4-$12 tier is enough for one clinic.",
+   "basis": "DigitalOcean published Droplet prices; tier choice is the founder's judgment",
+   "source_url": "https://www.digitalocean.com/pricing/droplets"
+  },
+  {
+   "item": "Email and form intake",
+   "cost": "$0 - inference, not a published price: no per-call or per-message fee is published for the Gmail API or the WordPress REST API, and WordPress core is GPLv2",
+   "basis": "Google OAuth verification page (obligations, no price) and the WordPress licence page (GPLv2)",
+   "source_url": "https://wordpress.org/about/license/"
+  },
+  {
+   "item": "Alternate build: platform hosting + pass-through models (Vapi)",
+   "cost": "'Pre-paid, $0.05/min Vapi hosting' with 'Models pass-through at cost'; Core success package $29/month; Vapi's own calculator shows an 'Estimated Total' of $82-$129/mo for 1,000 minutes with Deepgram, OpenAI and ElevenLabs selected",
+   "basis": "Vapi published hosting price, package price and worked estimate for 1,000 min/month",
+   "source_url": "https://vapi.ai/pricing"
+  },
+  {
+   "item": "Pilot configuration total",
+   "cost": "Inference, arithmetic on the unit prices above: about $116/month at 900 minutes on the lean model mix, about $200/month at 1,500 minutes on the standard mix, and roughly $517/month if a premium voice/model mix at the top of Retell's published $0.31/minute is used at 1,500 minutes. Not a quote.",
+   "basis": "Sum of the published unit prices in this table with assumed volume (900-1,500 minutes) and a $4 Droplet",
+   "source_url": "https://www.retellai.com/pricing"
+  }
+ ],
+ "suggested_pricing": {
+  "pilot_fee": "$1,500 flat for the 4-week after-hours/overflow pilot, credited in full against the set-up fee if the practice continues (inference)",
+  "setup_fee": "$3,500 one-time for discovery and baseline, red-flag protocol workshop and sign-off, knowledge base, telephony and escalation wiring, intake queue and audit log, simulation testing, staff training and runbook (inference)",
+  "monthly_fee": "$550/month for run-and-care: agent operation, daily exception support, weekly transcript audit and written status note, protocol versioning, model and minute costs up to 1,500 minutes (overage passed through at cost), plus a quarterly review (inference)",
+  "reasoning": "Inference, reasoned from three anchors, and the competitor comparisons are the published list prices quoted in this file. (1) Position on price: $550/month sits about 10% above VetRec's $499/month Plus tier, about 22% above 24PetLine's $449/mo Growth tier, roughly 1.8x Klugon's $299/mo Business tier and about 5.5x its $99/mo Starter tier; licensed human after-hours triage is quote-only and per case, with third-party market ranges of roughly $159-$395/month for about 100 included minutes. That is the intent: above the software tiers, below a licensed night service at any real volume, because this is software with a human gate. (2) Cost coverage: the recomputed running cost of this design is about $116-$200/month at 900-1,500 minutes, so $550/month leaves roughly $350-$434/month before the founder's own support time - enough to fund a daily exception check and a weekly audit, not a staffed service. (3) Buyer's maths: the audit's impact estimate for this opportunity is $9,260-$20,616/year of recovered staff time against a year-one price of about $10,100 ($1,500 pilot + $2,000 remaining set-up after the credit + $6,600 of monthly fees), so the buyer is not asked to believe a return larger than the audit claims. The founder is one person with no reference client, so the pilot fee is deliberately small and fully credited: it buys the reference case and the measured baseline rather than revenue. If the practice only wants cheap telephone answering, the honest answer is to buy Klugon, VetRec or 24PetLine instead - and this price only holds if the practice values the signed protocol, the staff approval queue and the audit trail rather than only the answering."
+ },
+ "leverage": [
+  {
+   "point": "Open-source voice agent framework (Pipecat, BSD 2-Clause): the founder can rebuild the same agent as a self-hosted deployment without per-minute platform fees if a practice rejects third-party model vendors, and can reuse the same code across clinics.",
+   "source_url": "https://github.com/pipecat-ai/pipecat/blob/main/LICENSE"
+  },
+  {
+   "point": "Retell's documented call-transfer node - warm transfer, human detection, private whisper message, configurable ring duration and a pre-populated failure edge - is the reusable escalation primitive: it is the same configuration for every after-hours veterinary, dental or physical-therapy client, only the roster and the protocol change.",
+   "source_url": "https://docs.retellai.com/build/conversation-flow/call-transfer-node"
+  },
+  {
+   "point": "Retell's documented per-number fallback destination and 'Backup mode' are a reusable kill switch: new inbound calls can be routed straight to a staffed line before the agent is selected, which turns a service incident into a routing change rather than a rebuild.",
+   "source_url": "https://docs.retellai.com/deploy/inbound-call"
+  },
+  {
+   "point": "The practice's existing stack is the demo environment: WordPress with a REST API and a form whose fields (species, breed, age, requested window, reason for visit) are already a complete intake schema, so no new public form has to be designed or hosted, and WordPress core is GPLv2 rather than a licensed product.",
+   "source_url": "https://wordpress.org/about/license/"
+  },
+  {
+   "point": "The public site itself yields a reusable knowledge base skeleton for any WebDVM/LifeLearn small-animal practice - hours, services, payment options, what-to-bring, same-day policy - which is the same content set across hundreds of independent clinics; that template is the product, not the prompt.",
+   "source_url": "https://sayrebrookvet.com/about-our-clinic/appointment-request/"
+  },
+  {
+   "point": "Vendor-side PIMS fragmentation is documented at Covetrus: the Covetrus Connect API through its Technology Integration Partner Program is 'the only authenticated and supported way to integrate with Covetrus practice management software', and new integration requests are currently paused. That de-risks the 'no PMS write in phase one' design and makes any phase-two integration a separately scoped, separately priced project rather than a launch dependency.",
+   "source_url": "https://covetrus.com/about/partner-with-us/"
+  },
+  {
+   "point": "Cost floor: the same build runs on $4.00/month hosting plus $2.00/month numbers and per-minute model fees, so a shared core can be offered to a second and third practice without a per-client platform licence.",
+   "source_url": "https://www.digitalocean.com/pricing/droplets"
+  }
+ ],
+ "edge_vs_competitors": "Real but narrow. Against the AI receptionist vendors ($99-$499/month) the founder has no price advantage and no product maturity: VetRec, 24PetLine and Virtual Reception already ship booking, dashboards and multiple PIMS integrations, and 24PetLine and Otto both connect to Cornerstone/AVImark/ezyVet. What those products do not advertise is the piece this practice's problem actually turns on: a written red-flag script that its own veterinarians sign and version, a guaranteed warm transfer to a named on-call technician with a failure branch - Klugon's own vet page states that Klugon cannot transfer a call at all - Spanish wording a staff member approved, consolidation of the WordPress form and the Gmail inbox into one queue staff approve, and an audit log kept on the practice's five-year record clock. Against GuardianVets and VetWise the founder cannot compete on clinical judgment at all - those are credentialed technicians and this is software - so the pitch has to be overflow and routine capture plus a hard handoff, not triage by AI. The genuine advantages are local: Sayrebrook is a short drive from Milltown, the founder can stand at the counter during a busy Monday, train the two people who will use the queue, and adjust the same week; and the deployment can be kept private and self-hosted, which matters to an owner-operated practice being sold cloud AI by national vendors. Where there is no edge: 24/7 human coverage, clinical liability, brand trust, and any practice that simply wants to stop thinking about phones - for those, the honest recommendation is to buy a $299-$449 product or a licensed after-hours service.",
+ "risks_compliance": [
+  {
+   "issue": "The agent must not practise veterinary medicine: triage judgment and any recommendation beyond the practice's own written instruction belong to a licensed veterinarian, and New Jersey conditions telemedicine on a licensee-client-patient relationship the licensee establishes.",
+   "rule_or_source": "N.J.A.C. 13:44-4A.4(a)-(b): before providing services through telemedicine or telehealth the licensee must identify client and patient, disclose and validate licensure, review history, and determine before each unique patient encounter whether remote care can meet the same standard of care as in person.",
+   "confirmed": true,
+   "mitigation": "The agent never diagnoses, doses or advises; it routes against a protocol the practice's veterinarians author and sign, and any red flag goes to a live human. Script language is reviewed by the practice, and by the founder with counsel, before go-live; no telehealth service is offered or advertised, so the rule is a boundary on scope rather than a licensing path the consultancy takes on.",
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-44-4A-4"
+  },
+  {
+   "issue": "Call recording and transcript retention: New Jersey is a one-party-consent state, so the practice itself can consent, but the recording must not be used for an unlawful purpose and clients should still be told.",
+   "rule_or_source": "N.J.S.A. 2A:156A-3 and -4 as summarized by the Reporters Committee: consent of at least one party is required to record a telephone or electronic communication, and recordings made 'for the purpose of committing any criminal or tortious act' are illegal regardless of consent.",
+   "confirmed": true,
+   "mitigation": "Recorded-call and automated-assistant disclosure in the greeting, written consent language approved by the practice, retention limits set with the practice, transcripts stored in an account the practice owns with role-based access, and no reuse of recordings for marketing.",
+   "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/"
+  },
+  {
+   "issue": "Outbound AI voice calls and texts: AI-generated voices count as artificial or prerecorded voices under the TCPA, so cancellation-list or recall calls made by the agent would need prior express consent.",
+   "rule_or_source": "FCC document FCC-CIRC2408-02 records that 'On February 8, 2024, the Commission released a Declaratory Ruling confirming that the TCPA's restrictions on the use of artificial or prerecorded voice messages encompass current AI technologies that generate human voices', so such calls require prior express consent absent an emergency purpose or exemption; the same document notes that 'the TCPA's requirements do not extend to technologies used to answer inbound calls'.",
+   "confirmed": true,
+   "mitigation": "Design excludes outbound AI voice calling entirely in the pilot, which also keeps the work on the inbound side of the rule. Cancellation-list and recall outreach stays with staff, or runs as staff-approved one-to-one texts to clients who opted in, with the opt-out logged. Revisit only with written consent capture and counsel review.",
+   "source_url": "https://docs.fcc.gov/public/attachments/DOC-404036A1.pdf"
+  },
+  {
+   "issue": "Medical-record and retention duties attach to the intake data: New Jersey prescribes what a patient record must contain and how long it must be kept, and requires confidentiality.",
+   "rule_or_source": "N.J.A.C. 13:44-4.9(a) lists required record content (facility name on every page, identity of the licensee or agent making the entry and the date, owner name/address/phone, patient identity, history, signs, tests, conclusions, treatment, consent forms); 13:44-4.9(e) requires records and radiographs be kept five years from the patient's last visit (three years where the record reflects the patient's decease); 13:44-4.9(b) requires confidentiality.",
+   "confirmed": true,
+   "mitigation": "Transcripts and intake notes carry facility name, author (agent plus reviewing staff), date and the reviewer's initials; retention set to at least five years; nothing is written to the medical record without a staff action; access restricted and logged.",
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-44-4-9"
+  },
+  {
+   "issue": "Third-party access to the practice's Gmail: reading that mailbox from an external app uses Google restricted scopes, which triggers verification and, for apps that access data from or through a server, an annual security assessment.",
+   "rule_or_source": "Google documents restricted-scope verification and states that apps with the ability to access restricted-scope data from or through a server must complete a security assessment by a Google-empanelled assessor and be re-verified at least every 12 months; it also lists an 'internal use only' exception for apps used only by people inside one Workspace organization.",
+   "confirmed": true,
+   "mitigation": "Keep this a single-tenant deployment with the narrowest scope, prefer a dedicated mailbox the practice owns (forwarded from the published Gmail address) over broad mailbox access, confirm with Google whether the internal-use exception applies before relying on it, and put a written data-handling note in the contract. If the practice later wants a public app, budget verification and assessment time before promising a launch date.",
+   "source_url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification"
+  },
+  {
+   "issue": "Clinical safety failure: a missed red flag is a patient-harm and reputational event, and an agent that sounds confident makes it more likely.",
+   "rule_or_source": "No rule replaces judgment here; the practice's own standard of care is the benchmark (see the standard-of-care determination in N.J.A.C. 13:44-4A.4(b)2).",
+   "confirmed": true,
+   "mitigation": "Bias every ambiguous case to a human; require an after-hours ring-and-page fallback that never ends in silence; blind weekly audit of a fixed sample; documented kill switch (per-number fallback and Backup mode); pilot exit criteria that stop the pilot on the first missed escalation.",
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-44-4A-4"
+  },
+  {
+   "issue": "Vendor and continuity risk: the practice's number, transcripts and knowledge base must not become hostage to a platform, and the platform must not silently change models or pricing.",
+   "rule_or_source": "Retell's published pricing is pay-as-you-go per minute with a documented range and per-component prices (voice infrastructure, TTS, per-model LLM rates, knowledge-base add-on); Vapi prices hosting separately from pass-through models. Both are usage-priced and can change.",
+   "confirmed": true,
+   "mitigation": "Practice owns the number, the domain-level mail account and the data store; the build is documented so it can move to a self-hosted Pipecat stack; monthly fee is fixed with minutes at cost so a model or price change is visible rather than absorbed silently.",
+   "source_url": "https://www.retellai.com/pricing"
+  },
+  {
+   "issue": "Client acceptance: pet owners in an emergency may react badly to an automated voice, and the practice may lose goodwill it cannot measure.",
+   "rule_or_source": "No New Jersey rule requiring disclosure that a caller is speaking to an AI assistant in a veterinary setting was found in this session (unconfirmed, not disproven).",
+   "confirmed": false,
+   "mitigation": "Immediate 'press 0 / say agent' escape to a human, disclosure in the greeting, after-hours instruction text approved by the practice, and complaints tracked as a pilot metric rather than dismissed.",
+   "source_url": "https://sayrebrookvet.com/about-our-clinic/"
+  }
+ ],
+ "feasibility": {
+  "technical_1_5": 3,
+  "commercial_1_5": 3,
+  "weeks_to_pilot": "4 weeks to go-live (weeks 1-4: discovery and baseline, protocol and knowledge base, build, simulation), then a 4-week pilot in weeks 5-8 and a review in week 9; about 21 founder-days across build and pilot support (inference, from the phase estimates)",
+  "verdict": "Go with conditions",
+  "reasoning": "Technical 3/5: telephony into an existing number, warm transfer with human detection, a per-number fallback/backup route and a staff approval queue are all documented, cheap and within one founder's reach; the hard parts are the practice-signed red-flag protocol, reliable escalation to a real on-call human at 2am, Spanish that staff accept, and the unknown practice-management system - which is why phase one writes nothing to it. Commercial 3/5: the pain is well evidenced for a small business (an advertised 24-hour emergency line over an 8-7 building, mandatory call-back on every booking, a cancellation list, multi-channel intake fragmentation) and the audit puts $9,260-$20,616/year of staff time at stake against a $10,100 year-one price and about $116-$200/month of running cost, but the buyer is a single independent owner who can substitute a $299-$499 product or a licensed after-hours service, and there is no measured call volume to prove the return. Conditions that make this a go rather than a hold: (1) discovery confirms that after-hours calls actually reach voicemail or an unanswered cell, not a staffed arrangement; (2) the practice names one person who owns the daily exception review; (3) Dr. Chiosi signs a written red-flag protocol before any live call; (4) the pilot stays after-hours and overflow only, with no PMS write and no outbound AI voice; (5) the founder builds it on a platform with published per-minute pricing rather than inventing a stack, and prices the pilot small enough that a 'no' at week 9 costs the practice almost nothing."
+ },
+ "discovery_questions": [
+  "Does the practice still intend to advertise 24-hour emergency care, and who actually answers (732) 727-1303 after 7pm, after 5pm Friday and Saturday, and on Sunday afternoon - a forwarded cell, voicemail, an answering service, or nobody?",
+  "How many inbound calls do you receive per week in total, how many arrive outside posted hours, and how many go unanswered or to voicemail? Can we pull carrier call-detail records for the last four weeks?",
+  "Which practice-management system and version do you run, who is your vendor contact, and have you ever exported appointments or client records from it?",
+  "Who is on the after-hours on-call roster, how are they paged today, and what is the acceptable ring time before the caller is told to go to an emergency hospital - and which hospital?",
+  "Do you have a written triage or red-flag protocol now? Who wrote it, who signs changes, and which symptoms must always reach a person immediately?",
+  "Which questions must the agent never answer - fees, estimates, prognosis, medication doses, euthanasia decisions - and who decides when a new one appears?",
+  "What share of your clients prefer Spanish, and who on staff will approve the Spanish wording with us?",
+  "How many appointment-request form submissions and Gmail enquiries arrive per week, and what is your current target response time?",
+  "What has already been tried - an answering service, a phone tree, a virtual receptionist - and why did it stop?",
+  "Who signs off on a paid pilot, and are there any IT, insurer or corporate-policy constraints on putting client data through a third-party service?"
+ ],
+ "caveats": [
+  "No call-volume, missed-call, voicemail or abandonment data exists publicly, so every minute-volume and running-cost figure here is built on assumed volumes (900-1,500 voice minutes/month) and is labelled inference; the pilot baseline is designed to replace those assumptions with measured numbers.",
+  "The running-cost total (~$116-$200/month typical, ~$517/month at the top of Retell's published per-minute range) is arithmetic on published unit prices plus assumed volume, not a quote, and excludes the founder's labour, insurance and any paid Twilio/carrier leg.",
+  "The audit's impact range ($9,260-$20,616/year) is an inference from staff hours times a BLS wage, not a measured saving; pricing is anchored to it but the number should be re-derived in discovery.",
+  "Wage benchmarks are May 2023 BLS OEWS data; the New Jersey receptionist means ($19.07/hour, $39,670/year) were read from the BLS occupation page this session, while the veterinary-technician median ($22.66/hour) and loaded rate ($28.32/hour) are carried from the input audit and were not re-extracted. Wage levels in Middlesex County in 2026 are likely higher, which would raise the value case rather than lower it.",
+  "Staff headcount at the practice is not published on its site; the 'roughly a dozen people' figure used in earlier drafts came from desk research (a LinkedIn employee count) and is treated here as an inference, not a verified fact.",
+  "Whether the practice's 24-hour emergency claim reflects a real on-call arrangement or a stale web page is unresolved and is the single fact most likely to change the plan; both the audit and this plan treat it as a gap to confirm, not a proven failure.",
+  "Competitor prices are the published list figures as rendered on 12 November 2026 and several vendors change them without notice; four of the most relevant (Otto, GuardianVets, VetWise's own service, PetDesk/Vetstoria) publish no price at all.",
+  "Several competitor pages did not render every figure in extractable text (Virtual Reception's monthly amounts, 24PetLine's Starter tier), so the annual or partial figures are quoted exactly as shown rather than converted or guessed.",
+  "No third-party review content for Sayrebrook was retrievable in earlier research, so client sentiment about phones or waiting is unverified; the plan does not assume a complaint pattern.",
+  "The practice-management system is unidentified. The IDEXX Data Services documentation could not be opened this session, so no claim is made about IDEXX APIs; the only PIMS integration statement kept here is Covetrus's own, and it describes a partner program with new requests paused - i.e. a contingency, not an available capability.",
+  "AI triage accuracy on this practice's own cases is unknown; the 90% agreement target is a pilot threshold chosen by the founder, not an industry benchmark.",
+  "Retell documents a knowledge base as both a monthly item ($8.00/Knowledge Base/month, prorated, inside a published $80/month free value) and a '+$0.005/minute' call-agent add-on; the reading that one knowledge base is effectively free per month is inference from the free-value note."
+ ],
+ "data_gaps": [
+  "No call-detail records, voicemail counts, abandonment rate or after-hours call volume for Sayrebrook - the core sizing inputs are missing.",
+  "No confirmation of the after-hours answering arrangement (forwarded cell, answering service, voicemail) or of the on-call technician roster.",
+  "Practice-management system vendor and version unknown; no public evidence of API or export availability for this specific practice, and IDEXX's developer documentation could not be retrieved this session.",
+  "No published pricing for Otto/Televet, GuardianVets, VetWise's own service or PetDesk/U.S. Vetstoria booking - all quote-only.",
+  "No New Jersey rule found requiring disclosure that a caller is speaking to an AI assistant in a veterinary setting; not confirmed either way.",
+  "Assumption that HIPAA does not apply to veterinary records was not verified against HHS guidance in this session.",
+  "No published New Jersey guidance specific to AI-assisted intake in veterinary practice (as opposed to veterinarian telemedicine) was located.",
+  "New Jersey Data Privacy Act applicability thresholds were not checked against this practice's size, so the state privacy-law analysis is incomplete.",
+  "The veterinary-technician wage figures used in the loaded rate ($22.66/hour median, $28.32/hour loaded) could not be re-extracted from the BLS state table this session and are carried from the input audit.",
+  "Staff headcount at the practice is not publicly stated; the earlier twelve-person figure is unverified."
+ ]
+}

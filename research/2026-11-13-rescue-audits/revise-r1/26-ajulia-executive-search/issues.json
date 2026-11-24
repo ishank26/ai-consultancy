@@ -1,0 +1,32 @@
+[
+ {
+  "claim": "Fix step 4 and audit context: \"the state filing lists 51 West Prospect Street, Suite 204, East Brunswick\" (stated as the address on file).",
+  "problem": "No state filing is cited, and the source_url attached to that fix step is the Google Maps search, which does not contain this address. The only state source I could find giving that address is the NJDOL release of 13 May 2025, and it names \"Ajulia Executive Payroll L.L.C.\" as the employer, not Ajulia Executive Search. As written the claim is unsupported and attributes another entity's recorded work location to this business.",
+  "fix": "Cite the NJDOL page (https://www.nj.gov/labor/lwdhome/press/2025/20250513_Stop_Work.shtml) and say plainly that the labor department's May 2025 notice lists 51 West Prospect Street, Suite 204, East Brunswick for Ajulia Executive Payroll L.L.C., which appears to be an affiliated entity; or drop the address comparison from the fix steps. Also note that ClearlyRated and Birdeye both list 1440 How Lane, New Brunswick, so the address picture is not a simple two-way difference."
+ },
+ {
+  "claim": "likely_cause reasoning: the jobs subdomain shows \"the pattern of a hosting account with no site configured and a missing certificate\".",
+  "problem": "The certificate is not missing. When I opened https://jobs.ajuliaexecutivesearch.com/ Chrome reported NET::ERR_CERT_COMMON_NAME_INVALID and stated the certificate presented is issued to airbase1.com. jobs.ajuliaexecutivesearch.com resolves to 69.167.165.235, i.e. it is served by the same host as the Airbase1 site. That is a mismatched/foreign certificate, not an absent one, and it points more strongly at repointed hosting than the audit's wording suggests.",
+  "fix": "Reword to \"the jobs subdomain presents a certificate issued to airbase1.com and fails its name check\", and keep the inference label. This detail appears only in the internal reasoning, so it does not need to change audit_md, but the internal record should be accurate."
+ },
+ {
+  "claim": "founder_md: \"I saved phone and desktop screenshots\" and the screenshot list \"Screenshots in this folder: screenshot_ajulia_desktop_1440.png, screenshot_ajulia_mobile_390.png, screenshot_google_maps_listing_1440.png, screenshot_jobs_subdomain_cert_error_1440.png, screenshot_retainedsearch_login_390.png\".",
+  "problem": "None of those five PNG files exist in the delivered folder, which contains only rescue.json, brief.md, log.jsonl, session/ and stderr.txt. The audit also lists screenshot_files for each domain. The owner is being invited to send files I cannot find.",
+  "fix": "Attach the actual screenshot files to the delivery, or remove the screenshot promise from founder_md and the screenshot_files fields until the files exist. Do not offer to send screenshots that are not saved."
+ },
+ {
+  "claim": "audit_md length (requirement: body at most 300 words).",
+  "problem": "The body of audit_md is about 337 words including headings, and still about 307 words with the headings and the Airbase1 URL removed. It exceeds the 300-word limit either way.",
+  "fix": "Cut roughly 40-50 words: the closing \"After the fix\" paragraph repeats the 2.5 average already given above, and the five numbered steps repeat detail that is already in rescue.json. Keep the four observations, the customer-impact paragraph and a shorter numbered list."
+ },
+ {
+  "claim": "founder_md sources: \"NJDOL stop-work order, 13 May 2025\".",
+  "problem": "13 May 2025 is the press-release date; the order itself was issued 21 April 2025, as the audit's own caveats correctly say. The two statements in the same document disagree, and a reader could take 13 May as the order date.",
+  "fix": "Relabel to \"NJDOL stop-work order issued 21 April 2025 (announced 13 May 2025)\" so the sources list and the caveats agree."
+ },
+ {
+  "claim": "links_to_broken_domain lists a single place (the Google Business Profile).",
+  "problem": "The audit found and lists only one place that still points at the broken domain, yet founder_md offers the owner a count of \"which places still point at that domain\". The directory pages the audit says it checked (ClearlyRated, Birdeye) do not show a website link to the domain in what is publicly visible, so the list of affected links is thin evidence for the \"High\" severity and for the outreach promise.",
+  "fix": "Either check two or three more directories/profiles for a visible website link and record what each shows, or soften founder_md to \"the Google listing is the one place I confirmed links to it\". Note the pages that could not be read (LinkedIn, BBB, Indeed, YellowPages) as blocked checks, as the audit already does in data_gaps."
+ }
+]

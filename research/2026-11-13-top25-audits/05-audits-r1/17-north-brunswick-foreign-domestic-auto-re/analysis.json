@@ -1,0 +1,85 @@
+{
+  "business": "North Brunswick Foreign & Domestic Auto Repairs",
+  "industry": "auto-repair",
+  "town": "North Brunswick",
+  "opportunities": [
+    {
+      "title": "Owned, AI-readable front door: one page + claimed and corrected listings with tap-to-call, quote and booking",
+      "capability": "G",
+      "problem": "The shop has no owned web presence at all. Google shows the phone number, hours and an 'Add website' prompt, with no website link, no booking, quote or messaging action, so anyone who will not phone between 9-6 Mon-Sat (or on Sunday) has no way to reach or evaluate the shop, and maps or AI assistants have no first-party service or price text to read and act on.",
+      "evidence": [
+        "Google profile has no website link and displays an 'Add website' prompt under missing information; no booking, quote or messaging link anywhere on the listing (https://www.google.com/maps/search/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs+590+Georges+Rd)",
+        "Birdeye's profile is unclaimed ('not been claimed by the business owner or representative'), so the business controls none of the text customers see there (https://reviews.birdeye.com/north-brunswick-foreign-domestic-auto-repairs-166108021407986)",
+        "SureCritic flags 'Last 30 Day Trend: Inactive Business' and shows a different rating/review count (4.7 from 16) than Google (4.5 from 47) - aggregator copies are drifting unmanaged (https://www.surecritic.com/reviews/north-brunswick-foreign-domestic)",
+        "Triage review of the site and listing: loads=false, https=false, click_to_call=false, contact_form=false, online_booking_or_quote='none', agent readiness findable 2 / answerable 1 / bookable 0 (triage.json, sources https://www.google.com/maps/search/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs+590+Georges+Road)",
+        "Hours are 9-6 weekdays, 8-2 Saturday, closed Sunday, with no after-hours drop-off or channel published (https://reviews.birdeye.com/north-brunswick-foreign-domestic-auto-repairs-166108021407986)"
+      ],
+      "agent_design": "A static one-page site (services and makes covered, hours, languages, service area, pricing policy, tap-to-call button) generated and kept current by an agent, plus a quote/appointment form that posts into the same intake queue used in opportunity 2, plus AutoRepair structured data so maps and AI assistants can read services, hours and a booking action. A monitoring agent re-checks the Google profile, Birdeye, SureCritic and Loc8NearMe copies every month for hours, phone, rating and review-count drift and drafts corrections; the owner approves every line of customer-facing copy and the claim/link changes before anything goes live.",
+      "why_not_DIY": "A template page and a contact form are commodities. The work is the machine-readable service and hours data an assistant can act on, the form wired into a real calendar and intake queue, and the monthly re-check of four directory copies that already disagree with each other. A stock builder also leaves the form as an inbox nobody watches mid-repair.",
+      "impact_estimate": {
+        "range": "~3-14 hours/month of counter or technician time moved back to billable work (about $80-$400/month at the cited NJ mean wage); jobs recovered from searchers who never phone are real but deliberately not counted in dollars",
+        "assumptions": "Assumes roughly 5-15 inbound calls per weekday (inference: one phone line, six-day week, single named mechanic), that 40-60% of them are price, availability or status questions, 3-5 minutes each, valued at the New Jersey OES 2023 mean hourly wage for automotive service technicians and mechanics of $27.80 as the cost of interrupted bay time. No revenue uplift is claimed because no source measures this shop's lost search or after-hours demand.",
+        "benchmark_source_url": "https://www.nj.gov/labor/labormarketinformation/assets/PDFs/employ/oeswageweb/PDFs/nj_all.pdf"
+      },
+      "complexity": "Low",
+      "pilot_scope": "2-3 weeks: one live page with services, makes, hours, languages and tap-to-call; quote/appointment form wired to the intake queue with an automatic text-back acknowledgement; Google website field filled and the Birdeye profile claimed; a wrong-hours/wrong-phone audit of the four directory copies with corrections drafted for approval.",
+      "walk_in_checks": []
+    },
+    {
+      "title": "Front-desk agent that answers, quotes and books so the bay phone stops ringing",
+      "capability": "A",
+      "problem": "Every price question, booking and status check arrives on the single (732) 846-8122 line during shop hours and is answered by whoever is at the counter or under a hood. Pricing is the dominant inbound topic, so the shop's most interruptible resource is spending its day on low-value price conversations and missing the calls that arrive while a job is in the bay.",
+      "evidence": [
+        "No website, booking widget, chat tool, quote form or messaging option exists in the visible customer journey; the Google profile's only action is the phone number (https://www.google.com/maps/search/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs+590+Georges+Rd)",
+        "Google review topic tags put pricing at 12 reviews and 'fair pricing' at 6 - price is the question customers arrive with (https://www.google.com/maps/search/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs+590+Georges+Rd)",
+        "Google labels the business 'Appointments recommended', so work is scheduled, but the only scheduling channel is the phone or the counter (https://www.google.com/maps/search/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs+590+Georges+Rd)",
+        "Google lists 'Language assistance' as a service option, implying non-English-speaking customers, but no language is named anywhere the business controls (https://www.google.com/maps/search/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs+590+Georges+Rd)",
+        "Recent reviews praise being kept updated about the vehicle and being 'squeezed in' same day, i.e. customers actively expect status and slot information by some channel (https://www.loc8nearme.com/new-jersey/north-brunswick/north-brunswick-foreign-and-domestic-auto-repairs/4445902/)"
+      ],
+      "agent_design": "SMS and web chat first, voice second. Trigger on an inbound text, form submission or missed call: the agent captures year/make/model and the symptom, classifies the job (oil change, brakes, tires, no-start, diagnostic, other), answers only from an owner-approved price-and-duration menu, offers open slots from a bay-aware calendar and books one. At job start it sends a drop-off/keys acknowledgement, mid-job a status note, and at completion a ready-for-pickup message; seasonal maintenance reminders go out from the same queue, in the languages the owner confirms. Anything off-menu - an unknown noise, a warranty dispute, an angry customer, the $2,000-repair complaint thread - is escalated to the owner with the transcript and a drafted reply, and nothing is sent to that customer until the owner approves. Every conversation is appended to the vehicle record.",
+      "why_not_DIY": "It has to touch a live calendar and the job record, hold a price menu the owner will actually stand behind, respect real bay capacity, and escalate cleanly and quietly. A generic chat widget that invents a brake price or double-books a bay costs the shop the trust its reviews are built on; SMS plus voice plus booking plus escalation plus an audit trail is integration and reliability work, not a subscription.",
+      "impact_estimate": {
+        "range": "~4-16 hours/month of interrupted bay and counter time (about $110-$450/month at the cited NJ mean wage), plus bookings captured outside 9-6 Mon-Sat and on Sundays that today reach a closed line or no answer",
+        "assumptions": "Assumes 3-10 inquiries per day, 3-5 minutes of human time each, of which 30-60% are answerable from a fixed menu, at $27.80/hour (New Jersey OES 2023 mean hourly wage, automotive service technicians and mechanics). Contra: some owners value the personal phone call as a trust signal, so a share of conversations would be kept human by choice; the low end of the range allows for that. Recovered revenue is not counted because no source measures this shop's missed-call volume.",
+        "benchmark_source_url": "https://www.nj.gov/labor/labormarketinformation/assets/PDFs/employ/oeswageweb/PDFs/nj_all.pdf"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "3-4 weeks: a one-page price and duration menu the owner signs off on; SMS/web agent live on the new page and answering the Google profile; one bay-aware calendar with capacity limits; an escalation inbox with drafted replies; 20-50 real conversations handled and reviewed weekly; a before/after tally of calls and questions answered so the owner can see what was deflected and what was escalated.",
+      "walk_in_checks": []
+    },
+    {
+      "title": "Agent-built job file: ticket-to-invoice record that also runs the review and follow-up loop",
+      "capability": "D",
+      "problem": "Payments are taken in person only and there is no invoice portal, no job record the shop can query and no systematic post-service follow-up: 47 Google reviews accumulated slowly, Birdeye is unclaimed, SureCritic reports the listing inactive in the last 30 days, and a single severe 1-star review about a $2,000 repair that left the car unable to start stands with no owned channel or claimed profile from which to answer it.",
+      "evidence": [
+        "Payment is card/debit/NFC at the shop; no online deposit, invoice portal or customer account is mentioned anywhere (https://www.google.com/maps/search/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs+590+Georges+Rd)",
+        "Reputation tooling is not managed by the business: Birdeye unclaimed, SureCritic listing marked inactive in the last 30 days (https://www.surecritic.com/reviews/north-brunswick-foreign-domestic)",
+        "Review volume is thin relative to tenure: 47 Google reviews, with aggregator copies at 45/51/53/16 - consistent with no systematic post-service request (https://reviews.birdeye.com/north-brunswick-foreign-domestic-auto-repairs-166108021407986)",
+        "One 1-star review says a bill over $2,000 left the car not starting; it is the visible counterweight to the trust narrative and nothing shows a public response (https://www.google.com/maps/search/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs+590+Georges+Rd)",
+        "No bay count, lift count, equipment list or staff count is published, and no owner-supplied shop photos are visible - job records are not in any system a source can see (https://www.google.com/maps/search/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs+590+Georges+Rd)"
+      ],
+      "agent_design": "A small internal tool the agents build around the shop's actual workflow: intake -> diagnostic note -> estimate with parts and labour lines -> customer approval by SMS link (optional deposit only if the owner enables it) -> invoice -> payment recorded -> automatic review request 1-2 days after pickup -> thank-you and next-service reminder. Because every job lands in one record, a second agent answers counter questions from it - what was done to this vehicle last time, what is still under our own warranty, what did we quote - and drafts replies to new and existing reviews, including the $2,000 complaint, for the owner to approve. The payment link uses the shop's existing processor; no card data is stored and the tool runs with access control and a retention period because it holds customer contact details and vehicle history.",
+      "why_not_DIY": "The value is not the form, it is that the record is created by the agent at intake instead of typed twice, and that it joins calendar, SMS, payment link and review platform into one trail. That is a data model plus four integrations plus an approval history; a spreadsheet or a $30/month invoicing app leaves the follow-up, the history lookup and the review loop exactly as manual as they are now.",
+      "impact_estimate": {
+        "range": "~2-8 hours/month of owner admin (about $55-$220/month at the cited NJ mean wage) plus a documented approval trail behind disputed bills; the measured pilot goal is review and follow-up throughput (baseline: 47 Google reviews accumulated over years), not revenue",
+        "assumptions": "Assumes 0.5-2 hours per week currently spent on writing up tickets, chasing approvals and thinking about reviews (inference: owner-operator with no front-desk role), valued at $27.80/hour (New Jersey OES 2023 mean hourly wage, automotive service technicians and mechanics). Review-response and follow-up gains are stated as counts, not dollars, because no source measures this shop's review-to-revenue relationship.",
+        "benchmark_source_url": "https://www.nj.gov/labor/labormarketinformation/assets/PDFs/employ/oeswageweb/PDFs/nj_all.pdf"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: one-page SMS approval link, invoice with payment link, automatic review request at job close, vehicle-history lookup at the counter, and drafted responses to the existing negative review; success measured on Google review count and owner admin minutes before and after.",
+      "walk_in_checks": []
+    }
+  ],
+  "lead_score": {
+    "pain": 22,
+    "fit": 15,
+    "ability_to_pay": 7,
+    "ease": 12,
+    "strategic": 13,
+    "total": 69,
+    "rationale": "Pain evidence is strong but structural: the absence of an owned front door is directly observed and confirmed three ways (Google 'Add website' prompt, unclaimed Birdeye, SureCritic inactive), while the operational pain - missed calls, interrupted bay time - is inference from a one-line, six-day, owner-operator shop. That caps pain at 22. Fit is good for G, A and D with no legacy systems to fight, but a two-person shop will not absorb much software, so 15. Ability to pay is the weak leg: single bay inside a bp station, no published staff, revenue unknown, thin margins - 7. Ease of pilot is high, since the owner is the decision maker and there is nothing to migrate - 12. Strategic value is high and repeatable: the no-website, phone-only independent repair shop is a very common pattern across NJ, and the front-door-plus-intake package is reusable - 13. Capability E was considered and rejected for this business: no avenues.json was supplied, there is no evidence of parts inventory, a dock, a fleet or a shop floor large enough to justify cameras, the owner-operator scale argues against hardware capex, and any security-flavoured camera work would need a licensed alarm or electrical contractor under N.J.S.A. 45:5A-2 anyway. Front door first, per triage: an agent on top of a shop with no page, no claimed profile and no booking path would have nothing to work with."
+  },
+  "best_evidence_signal": "Google profile has no website link at all - it shows an 'Add website' prompt and no booking, quote or messaging action, while Birdeye shows the profile unclaimed: https://www.google.com/maps/search/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs+590+Georges+Rd",
+  "suggested_channel": "walk-in",
+  "evidence_thin": false
+}

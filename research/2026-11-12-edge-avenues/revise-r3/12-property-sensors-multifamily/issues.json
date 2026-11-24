@@ -1,0 +1,22 @@
+[
+ {
+  "claim": "Mercy Housing's Decatur Place (106 units, Denver) installed toilet-leak detectors, baseboard flood sensors and a continuous main-meter monitor; water consumption fell by over 30% and savings were expected to exceed $10,000 a year. Stated to come from 'a 2023 industry compilation that restates the DOE report'.",
+  "problem": "The cited source_url (the SIPS-hosted DOE 'Better Buildings Progress Report 2023' PDF) does not contain this claim. I read the full document and searched it for 'Decatur', 'Mercy', 'water use', 'toilet', 'gallons saved' and 'sensor' - the only water-related case in it is Neema Hospitality (hotel, low-flow fixtures). So the stated provenance is wrong: the cited compilation neither restates the DOE case study nor carries the 30% / $10,000 figures. The primary DOE page (betterbuildingssolutioncenter.energy.gov/solutions-at-a-glance/mercy-housing-water-leak-detection-and-real-time-monitoring) exists per search results but failed to fetch for me, and mercyhousing.org's own March 2023 post confirms only that Sensor Industries installed toilet leak sensors, flood sensors and real-time water-meter monitoring at Decatur Place - it gives no percentage and no dollar figure. A secondary summary in search results attributes '32% within a month' to the DOE page, not 'over 30%' over an unspecified period.",
+  "fix": "Either (a) drop the 30% and $10,000 figures and keep only the verifiable qualitative fact ('Decatur Place, 106 units, Denver - toilet-leak sensors, flood sensors and main-meter monitoring installed by Sensor Industries, partially grant-funded', cited to https://www.mercyhousing.org/2023/03/sustainable-upgrades/), or (b) get the DOE case-study page to load, quote its exact wording and period (e.g. 'water use fell 32% within a month'), cite that URL, and correct the '2023 industry compilation' sentence. Do not attribute this figure to the SIPS PDF."
+ },
+ {
+  "claim": "fit_score legal_risk_low = 11 of 15, justified as 'legal risk is moderate but manageable'.",
+  "problem": "The sub-score is inside its range and the arithmetic is correct (15+11+10+17+11+9 = 73), but 11/15 reads as low risk while the legal section itself lists five items marked confirmed:false, an in-force statute (NJDPA, effective Jan 15 2025) that requires consent before processing biometric data usable to identify a person, and an in-unit access route that depends on lease language plus one-day notice that a tenant can dispute. That is real, live risk, and the score does not reflect it.",
+  "fix": "Reduce legal_risk_low to ~8-9/15 and re-total (73 -> ~70-71), or move the two mitigations that genuinely reduce risk into the rationale: NJDPA's applicability threshold is 100,000 consumers (or 25,000 plus data-sale revenue), so a 100-unit landlord is almost certainly out of scope - a point the file currently marks 'not confirmed' even though it is in the enacted text at section 2, C.56:8-166.5."
+ },
+ {
+  "claim": "legal_privacy, audio: 'N.J.S.A. 2A:156A-4(d) permits interception of an oral communication by a party to it or with one party's prior consent.'",
+  "problem": "Accurate but omits the statutory carve-out I read on the page: the one-party exception does not apply where the communication is intercepted or used 'for the purpose of committing any criminal or tortious act ... or for the purpose of committing any other injurious act.' As written, a reader could conclude one-party consent is unconditional.",
+  "fix": "Add the 'unless ... any other injurious act' qualifier; the operational conclusion (ship cameras with audio disabled) already stands, so only the sentence needs amending."
+ },
+ {
+  "claim": "measured_outcomes/legal_privacy attribution: Sensor Industries '$115,000 cost'.",
+  "problem": "Minor precision loss, not an error: the vendor page says the $115,000 covers 'SI product and 5 years of monitoring'. The file states the cost without saying it is a five-year bundled figure, which overstates the hardware-only comparison against a $790,000 annual saving.",
+  "fix": "Write '$115,000 for product plus five years of monitoring'."
+ }
+]

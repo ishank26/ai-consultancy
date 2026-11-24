@@ -1,0 +1,146 @@
+{
+  "results": [
+    {
+      "ref": "B00019",
+      "name": "Sapiro Gottlieb & Kroll (SGK Legal)",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Intake is run on downloadable PDF questionnaires, so the top opportunity is to 'convert the PDF intake questionnaires into a web intake flow'",
+          "what_is_true": "The site already hosts a linked multi-field 'New Client Intake Form' page (Forminator) collecting name, address, phones, emails and case details, in addition to the downloadable PDFs on the 'Download SGK Forms' page. The PDF-to-web project premise is therefore wrong; only document upload, e-sign and reminders are genuinely missing.",
+          "source_url": "https://www.sgklegal.com/new-client-intake-form/"
+        },
+        {
+          "claim": "The contact form is a 13-field form",
+          "what_is_true": "The contact form has four visible fields (name, email, phone, message) plus one consent checkbox; the other nine are hidden WordPress/Contact Form 7 fields (nonce, unit tag, reCAPTCHA token).",
+          "source_url": "https://www.sgklegal.com/contactus/"
+        },
+        {
+          "claim": "Office phone is (732) 613-8003",
+          "what_is_true": "The contact page states Phone (732) 242-7924 and Fax (732) 613-8005 while the malformed tel: hrefs point at (732) 613-8003 and (732) 613-8000; the site publishes more than one number, so the record's number is only one of them and may be stale.",
+          "source_url": "https://www.sgklegal.com/contactus/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 4
+      },
+      "notes": "Confirmed live: title 'Home - SGK Legal' with no meta description, no LocalBusiness/Attorney JSON-LD (only WebPage/ImageObject/BreadcrumbList/WebSite/Organization), tel: hrefs malformed (e.g. 'tel:(732)%20613-8003'), blank hero band at 390 px above the 'Request Consultation' block with the placeholder line 'Grow organically the holistic world view', no footer copyright, reCAPTCHA on the contact form, no online booking/calendar. Score change: evidence 5->4 because the intake-form claim is wrong; gap 4 still stands on the broken mobile hero, broken tel links and missing schema."
+    },
+    {
+      "ref": "B00022",
+      "name": "Law Office of Mark F. Hughes III",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Weebly one-pager re-checked at 390 px: title is a run-on of name/titles/phone; no meta description; zero forms; no tel: link (only '/', 'javascript:;' and a Weebly signup link), so the number is text only and repeated four times; no JSON-LD; two addresses (Little Silver and 4G Auer Court, East Brunswick) with no hours; 'POWERED BY WEEBLY' footer. robots.txt is the Weebly default blocking only /ajax/ and /apps/. Lawyers.com review count could not be opened (directory blocks automated access), so the zero-review claim is unverified rather than contradicted. Original scores reasonable."
+    },
+    {
+      "ref": "B00037",
+      "name": "Rudikh & Associates, LLC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "A CAPTCHA script is present on the contact form, so an agent cannot reliably complete an intake",
+          "what_is_true": "No reCAPTCHA/Turnstile/hCaptcha script or widget loads on the contact page; only a WPForms config string mentions reCAPTCHA. The form is a plain four-field WPForms form with no visible or hidden CAPTCHA element.",
+          "source_url": "https://www.rudikhlaw.com/contact/"
+        },
+        {
+          "claim": "The contact page offers a six-field form",
+          "what_is_true": "The form shows four fields: Name, Email, Phone Number and Message (plus hidden page-title, page-url and referrer fields).",
+          "source_url": "https://www.rudikhlaw.com/contact/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 5,
+        "ease": 4,
+        "evidence": 4
+      },
+      "notes": "Confirmed: 4.9/777 Google reviews, women-owned, 14 Woodward Dr Old Bridge; zero tel: links on home and contact pages; no hours published anywhere on the site; JSON-LD only WebPage/ImageObject/BreadcrumbList/WebSite/Organization; robots.txt open with sitemap; contact page carries hidden page_title/page_url/url_referer fields. Minor: the site now lists four locations (Old Bridge, Freehold, Newark and Jersey City, the last two by appointment), not three. Evidence 5->4 for the CAPTCHA claim; bookable could fairly be 3 rather than 2 since the form has no barrier."
+    },
+    {
+      "ref": "B00039",
+      "name": "Ramatowski, Spilka & Schwartz",
+      "verdict": "wrong business or closed",
+      "wrong_claims": [
+        {
+          "claim": "Status is 'operating', with Cheryl M. Spilka listed as the firm's attorney",
+          "what_is_true": "Both named attorneys now appear on Rozin | Golinder Law's current team pages at 197 Route 18 South, East Brunswick (Spilka and Jean Ramatowski), the firm's only domain fails DNS, and the Google listing is unclaimed with no website and no reviews. Inference: the practice has wound down even though the old Google listing still shows 'Open'.",
+          "source_url": "https://www.rgfamilylaw.com/our-team/cheryl-m-spilka/"
+        },
+        {
+          "claim": "Only Jean Ramatowski has moved on, treated as a 'former partner' at another firm",
+          "what_is_true": "Jean Ramatowski is also listed as a current attorney at Rozin | Golinder Law, so both named partners have left rather than one.",
+          "source_url": "https://www.rgfamilylaw.com/our-team/jean-ramatowski/"
+        }
+      ],
+      "notes": "Google Maps still returns 'Ramatowski & Schwartz', Family law attorney, 758 NJ-18 Ste 105, (732) 613-8300, 'Open · Closes 5 PM', 'Claim this business', 'Add website' — so the listing is live but looks stale; closure is an inference from both partners' current firm pages and the dead domain, not a published closure notice (a call would confirm). No website: eastbrunswickfamilylaw.com redirects to ramatowskischwartzfamilylaw.com which fails DNS. Recommend dropping from the ranking until a going concern is confirmed. No corrected scores given because the business itself is in doubt."
+    },
+    {
+      "ref": "B00044",
+      "name": "Hoffman & Hoffman",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Home page does not say what the firm does above the fold",
+          "what_is_true": "On the 390 px first screen the hero lists four practice areas (Bankruptcy and Mortgage Modification, Estate Planning/Probate, Elder Law and Guardianship, Divorce and Family Law) before the 'Whatever Legal Challenges You Are Facing' line. What is missing above the fold is the East Brunswick location and phone number, not the practice description.",
+          "source_url": "https://hoffman-hoffman.net/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 4,
+        "ease": 5,
+        "evidence": 4
+      },
+      "notes": "Confirmed: GBP unclaimed ('Claim this business'), 5.0 from 4 reviews, 530 NJ-18 East Brunswick; mobile header shows only logo, search and menu (no phone); footer '© 2023'; H1 is a single practice area; Attorney JSON-LD present with null priceRange and image; tel: links work; contact form with name/email/phone/'How can we help' radios and no CAPTCHA; robots.txt fully open. Extra issue not in the record: the contact page gives the East Brunswick address as '530 Route 18, East Brunswick, NJ 07735' (Keyport's ZIP). Gap 4->3 because the hero does communicate the practice mix; remaining gaps are the unclaimed profile, no mobile call button and no booking."
+    },
+    {
+      "ref": "B00046",
+      "name": "Mayo & Russ Attorneys-At-Law",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "On a 390px phone the hero headline is invisible (white text on white) and the first screen is essentially blank",
+          "what_is_true": "At 390 px the hero renders white text over a dark wood-panelled photo: logo, '888 MAYOLAW', the H1 'Middlesex County Personal Injury Lawyer', the 'NO FEE UNLESS WE WIN!' line, the 'REQUEST A FREE CONSULTATION' button and the start of the contact form are all visible.",
+          "source_url": "https://mayolaw.com/"
+        },
+        {
+          "claim": "'Request a Free Consultation' opens a page with no form, and there is no case-intake questionnaire anywhere",
+          "what_is_true": "Both the home hero and the CTA page embed a JotForm contact form ('Mayo Law Contact Page Form') with name, email, phone and message fields and a reCAPTCHA; the form is an iframe, so a DOM query for <form> returns zero.",
+          "source_url": "https://mayolaw.com/free-legal-help-now/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 2,
+        "ability_to_pay": 5,
+        "ease": 4,
+        "evidence": 2
+      },
+      "notes": "Confirmed: claimed Google profile 4.8, 743 NJ-18 East Brunswick, veteran-owned; tel: links work (tel:8886296529, tel:17326133100); title/meta name Middlesex County personal-injury law; Person/Organization JSON-LD; no booking calendar or scheduling anywhere. Two of the three top issues are wrong, so gap drops from 4 to 2 (what remains is the lack of scheduling/booking and thin structured data) and evidence from 4 to 2. Still a strong-fit prospect on budget (contingency PI, 30 years)."
+    },
+    {
+      "ref": "B00052",
+      "name": "Foley Eileen M., Lawyer (E. Foley Firm)",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked: https://www.efoleyfirm.com fails with ERR_CERT_AUTHORITY_INVALID and http is blocked by the browser (ERR_BLOCKED_BY_CLIENT), so the site only reads via a direct HTTP fetch. Home and contact HTML: empty meta description, no form anywhere, mailto links only (header uses the misspelled 'efole@efoleyfirm.com'), no tel: link, fax 732-353-6879, address 330 Milltown Road W21, blog post from 2017, commented-out template slider code, jQuery 1.7.2, no JSON-LD. robots.txt returns a plain 404. Google profile: 'Eileen M. Foley, Esq.', Family law attorney, 330 Milltown Rd W21, open, claimed, zero reviews, no photos. All top issues and opportunities hold; scores reasonable."
+    },
+    {
+      "ref": "B00054",
+      "name": "David A. Miller, Attorney (NJ Realty Lawyer)",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked: title 'David Miller', no meta description, no viewport meta tag, zero forms, zero tel: links, no JSON-LD, 'Located in Manalapan, NJ' on home, contact and footer, 'David A. Miller Law Firm Copyright 2023', aol.com email, fixed 781px table layout. Google: 'Miller David A', 3.0 from 4 reviews, 'Claim this business', 77 Milltown Rd C-7 East Brunswick, (732) 238-5699, website njrealtylawyer.com. All top issues and opportunities hold; scores reasonable."
+    }
+  ],
+  "data_gaps": [
+    "BBB profile for SGK Legal (A+ / 0 complaints) could not be opened: bbb.org returned HTTP 403 to automated access.",
+    "Lawyers.com review pages (Hughes, Hoffman) blocked automated access, so their review counts are unverified.",
+    "Google Maps does not show a Google Business Profile for Mark F. Hughes III at either office, so his practice could only be confirmed from his live website, not a map listing.",
+    "Ramatowski Spilka & Schwartz: the Google listing is still live and marked open; closure is inferred from both named attorneys now being listed at Rozin | Golinder Law and the dead domain, not from a published closure notice.",
+    "SGK Legal publishes two different phone numbers (footer/contact page 732-242-7924; tel links 732-613-8003 and 732-613-8000), which could not be reconciled from public sources."
+  ]
+}

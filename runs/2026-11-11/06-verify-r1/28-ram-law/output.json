@@ -1,0 +1,163 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Audit 1, Impact: \"about 12–30 staff hours a week, roughly $19,000–$47,000 a year ... assuming 150–400 inquiries a month of 6–10 minutes.\"",
+      "problem": "The numbers are not derivable from the audit's own assumptions and are roughly twice the maximum they allow. 150–400 inquiries a month at 6–10 minutes is 900–4,000 minutes a month, i.e. 3.5–15.4 staff hours a week and at most 800 hours a year; the audit claims 12–30 hours a week (624–1,560 hours a year). The dollar range is internally consistent with the hours ($47,000 ≈ 1,560 h × $30.33) but those hours do not exist under the stated volume. analysis.json also assumed only 40–60% of intake work is recoverable, which the audit body drops, so even the honest gross range would be about 1.4–9 hours a week. As written, the headline saving is inflated.",
+      "fix": "Re-derive from the stated assumptions and state the recoverable share: \"about 3–15 staff hours a week of intake entry and callback chasing, 40–60% of it recoverable (roughly 1.5–9 hours), about $2,500–$14,000 a year at $30/hour\" — or, if 12–30 hours is the intended figure, raise the assumed volume to roughly 300–900 inquiries a month and say so."
+    },
+    {
+      "claim": "Audit 2, Impact: \"roughly 450–1,500 staff hours a year ... assuming 150–400 matters at 3–6 chase hours each.\"",
+      "problem": "Those assumptions give 450–2,400 hours of gross work, and analysis.json applies a 30–60% automatable share to it. The audit presents 450 hours as a saving, which implies 100% removal of all chase work at the lowest volume, and 1,500 hours is 62.5% of the top volume, above the stated 60% ceiling. The low end is therefore overstated (a 30% share of 450 hours is about 135).",
+      "fix": "Apply the share explicitly: \"roughly 150–1,400 staff hours a year (30–60% of 450–2,400), about $5,000–$48,000 at $34/hour, plan on $15,000–$30,000\" — and keep the existing assumption sentence so the reader can reproduce it."
+    },
+    {
+      "claim": "For-the-founder email: \"its published office hours stop at 8pm on weekdays\".",
+      "problem": "Only the Manalapan page publishes hours; the New Brunswick and Somerville pages were opened and publish none, which the audit body itself notes. The email states it firm-wide without that qualifier, so a careful reader at the firm could call it inaccurate.",
+      "fix": "Say \"its Manalapan office publishes 8pm weekday hours and no weekend hours\" or \"the hours it publishes stop at 8pm\"."
+    },
+    {
+      "claim": "Audit 3, Now: \"with no status lookup, every update question is a weekday call\".",
+      "problem": "This is an inference (from the absence of a portal) stated as fact with an absolute \"every\", and it is odd next to the firm's 24/7 intake line — an after-hours status question reaches whoever answers the phone, not necessarily a weekday paralegal call.",
+      "fix": "Frame it as inference: \"with no status lookup, status questions land on calls to staff during office hours (inference from the absence of any portal or FAQ lookup)\", and drop \"every\"."
+    },
+    {
+      "claim": "Audit 2, Now: \"...work businesses like yours often absorb into existing paralegals\"; Audit 3, Now: \"businesses like yours often find that costs per call, not scale\".",
+      "problem": "Unsourced generalisations about how comparable firms operate, presented as fact rather than as the consultancy's own observation. Nothing in the sources establishes what peer firms do.",
+      "fix": "Mark them plainly: \"in our experience at firms this size, paralegals absorb this work\" — or cut them; they add length without evidence."
+    },
+    {
+      "claim": "Audit body sourcing generally.",
+      "problem": "No claim in the body carries an inline pointer to the source list, so a reader cannot tell which of the eight listed URLs supports which statement, and the wage-derived figures cannot be checked without redoing the arithmetic.",
+      "fix": "Add short inline tags (e.g. \"[manalapan]\", \"[contact]\", \"[O*NET paralegal]\") against each factual sentence, and show the hour→dollar conversion once (e.g. \"1,000 h × $34/hr\")."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Firm advertises eleven certified civil trial attorneys",
+      "source_url": "https://ramlawnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Firm advertises $170M+ recovered in ten years",
+      "source_url": "https://ramlawnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site advertises 24/7 phone intake and bilingual (English/Spanish) service",
+      "source_url": "https://ramlawnj.com/manalapan-new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Manalapan publishes Monday–Friday 8:00 AM–8:00 PM, Saturday and Sunday closed, and 'Phone Intake Hours 24/7'",
+      "source_url": "https://ramlawnj.com/manalapan-new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The other two offices publish no office hours",
+      "source_url": "https://ramlawnj.com/new-brunswick-new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Somerville location page publishes no office hours",
+      "source_url": "https://ramlawnj.com/somerville-new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No online scheduling or client portal is offered; contacts run through the web form and phone",
+      "source_url": "https://ramlawnj.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "One shared email, contact@ram.law, is published for all three offices with no location segmentation",
+      "source_url": "https://ramlawnj.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Truck-crash service list includes organising medical bills, insurance company interaction and identifying medical specialists",
+      "source_url": "https://ramlawnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No records or billing role is named on the firm's staff pages (team described only as associates, counsel attorneys and paralegals)",
+      "source_url": "https://ramlawnj.com/attorney-profile/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Only two non-attorney profiles exist in the staff directory (COO and Marketing Director), no records/billing role",
+      "source_url": "https://ramlawnj.com/staff-profile-sitemap.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "COO profile confirms an operations leadership role rather than a records or billing function",
+      "source_url": "https://ramlawnj.com/staff-profile/elyssa-goldstein/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Testimonials praise staff returning calls and keeping clients updated",
+      "source_url": "https://ramlawnj.com/what-our-clients-say/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The site has a full Spanish-language version",
+      "source_url": "https://ramlawnj.com/es/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey paralegal median wage is about $34/hour (used for audits 2 and 3)",
+      "source_url": "https://www.onetonline.org/link/localwages/23-2011.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey legal-secretary (support-staff) median wage is about $30/hour (used for audit 1)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit 1 says $19,000–$47,000 a year, which equals 624–1,560 hours at $30.33/hour",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Audit 1 says 12–30 staff hours a week follow from 150–400 inquiries a month at 6–10 minutes",
+      "source_url": "https://ramlawnj.com/manalapan-new-jersey/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Audit 2's 450-hour low end follows from 150–400 matters at 3–6 chase hours each with a 30–60% automatable share",
+      "source_url": "https://ramlawnj.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Audit 3's 500–1,100 paralegal hours and $17,000–$38,000 reproduce from 100–250 clients × 2–4 contacts × 6–10 minutes × 40–60% at $34/hour (range sits inside the feasible band of 96–1,200 hours)",
+      "source_url": "https://www.onetonline.org/link/localwages/23-2011.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email addressee is a named partner of the firm (Edward J. Rebenack, Co-Founder and Partner)",
+      "source_url": "https://ramlawnj.com/attorney-profile/edward-j-rebenack/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Response time claim in email: RAM advertises 24/7 phone intake while published hours stop at 8pm weekdays",
+      "source_url": "https://ramlawnj.com/manalapan-new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Firm operates three offices (New Brunswick, Somerville, Manalapan), as referenced in the email",
+      "source_url": "https://ramlawnj.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body length is at most ~450 words",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No personal data on private individuals appears in the audit or the founder email",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,2 @@
+INPUT: question = How should a one-person AI and automation consultancy protect itself in New Jersey and the US: professional liability (E&O) and cyber insurance (typical coverage and cost), contract clauses for AI work (limitation of liability, data processing, AI output disclaimers, acceptable use), moonlighting and IP risks for founders with a day job, and lessons from AI service failures.
+Today is 2026-11-12. Research it per your role. Use "question": "risk-legal-insurance". Write the JSON to output.json.

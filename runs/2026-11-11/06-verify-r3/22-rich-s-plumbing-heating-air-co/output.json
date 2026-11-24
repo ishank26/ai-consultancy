@@ -1,0 +1,133 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Email/agent copy: \"...ask the same safety questions your emergency page lists, and pass hazardous calls to the on-call technician without quoting prices.\"",
+      "problem": "Presupposes an on-call technician/on-call rotation exists. Nothing on the site states after-hours staffing or an on-call scheme (the audit itself asks \"how nights are covered\", and schema carries no opening hours), so this is an unverified presupposition sitting in client-facing copy.",
+      "fix": "Rephrase so it does not assert staffing: \"...and route hazardous calls straight to whoever is on call.\" The audit body already handles this correctly by asking how nights are covered, so only the email needs the change."
+    },
+    {
+      "claim": "\"some reviews call pricing fair but 'a little high'\"",
+      "problem": "The quoted fragment \"a little high\" is verbatim (Jim W. testimonial on /reviews/, \"Price a little high but...\"), but that reviewer did not call pricing \"fair\"; the \"fair/reasonable rate... not cheap\" wording is a different testimonial (Johnny D.). Merging them slightly overstates the pattern.",
+      "fix": "Write it as two beats: \"reviews describe pricing as reasonable overall, with one calling it 'a little high'.\""
+    },
+    {
+      "claim": "Section 2 impact range \"about $1,150–$34,560 a year in gross profit\"",
+      "problem": "Arithmetic is correct and the max/max combination is legitimate, but the top end ($34.6k) is well above the $6k–$28k range carried in analysis.json for the same opportunity, so the two documents will read inconsistently if sent together. Not a sourcing error.",
+      "fix": "Either reconcile the audit to analysis.json or add a half-sentence noting the top end assumes best case on all three inputs (estimate volume, recovery rate, ticket)."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Family-owned, serving New Jersey since 1989",
+      "source_url": "https://www.richsplumbing.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Three offices, all sharing one phone number",
+      "source_url": "https://www.richsplumbing.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "24/7 emergency service advertised with a 60-minute response",
+      "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Emergency page says the 60-minute time can vary (audit omits the caveat but calls it \"advertised\", which is accurate)",
+      "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Emergency page lists the safety questions staff ask (leak location, water still flowing, shutoff closed, electrical hazard)",
+      "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Page states \"online scheduling is available for service requests\" but directs active emergencies to call - basis for the audit's open question",
+      "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Estimates are discussed on site / for most services (basis for \"estimates discussed in person, with nothing visible after\")",
+      "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Booking or request path is a two-step form (\"Step 1 of 2 · Your info\", \"Step 2 of 2 · Your property\") with no calendar or time-slot picker; submit button reads \"Request My Estimate\"",
+      "source_url": "https://www.richsplumbing.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No booking/scheduling page exists anywhere in the published sitemap (supports \"not a pickable time slot\")",
+      "source_url": "https://www.richsplumbing.com/sitemap-0.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Form carries an SMS consent checkbox (TCPA-style wording, STOP opt-out)",
+      "source_url": "https://www.richsplumbing.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Financing exists (Synchrony application link in header and home page)",
+      "source_url": "https://www.richsplumbing.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Coupons exist ($50 plumbing repair, $189 tune-up, $500 boiler, $300 HVAC, $75 sewer line, $50 water heater)",
+      "source_url": "https://www.richsplumbing.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Maintenance plan promises seasonal check-ups, priority regular and emergency scheduling, and keeping equipment/serial/warranty/service records",
+      "source_url": "https://www.richsplumbing.com/hvac-services/maintenance-plan/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"some reviews call pricing fair but 'a little high'\"",
+      "source_url": "https://www.richsplumbing.com/reviews/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Dispatchers (43-5032) median $54,590/yr and $26.25/hr, BLS 2025 wage data",
+      "source_url": "https://www.onetonline.org/link/localwages/43-5032.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Underlying BLS API series OEUS340000000000043503213 = $54,590 (cross-check)",
+      "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000043503213",
+      "result": "could not open"
+    },
+    {
+      "claim": "$26.25/hr x 1.25 benefits load = $32.81/hr, and 2,080 x 2.0-3.5 seats x 20% = 832-1,456 hours = $27,297-$47,771; 52 x 3-6 hrs = 156-312 hrs = $5,118-$10,236; 40-120 x 2-5% = 0.8-6 jobs/mo (9.6-72/yr) x $400-$1,200 x 30-40% = $1,150-$34,560",
+      "source_url": "https://www.onetonline.org/link/localwages/43-5032.00?st=NJ (wage input); arithmetic re-computed by verifier",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Assumptions behind the hours and margin figures are labelled as \"our assumptions\"/\"our assumption\" rather than presented as measured",
+      "source_url": "audit.md (local)",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body is at most ~450 words (counted from title through the \"Prepared from publicly available information\" line, excluding the \"For the founder\" block and Sources: ~420-435 words)",
+      "source_url": "audit.md (local)",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business name, town, service mix implied by the audit (plumbing, heating, AC, maintenance plans, 24/7 emergency) match the legalName and service catalogue published in the site's structured data",
+      "source_url": "https://www.richsplumbing.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Walk-in opener: three offices share one number and the scheduling path is a request form",
+      "source_url": "https://www.richsplumbing.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No personal data on private individuals, no reviewer names, no improper access; sources are all public business pages",
+      "source_url": "https://www.richsplumbing.com/reviews/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,118 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "likely_cause.cause = \"lapsed and re-registered\"",
+      "problem": "Minor internal wording inconsistency: the label asserts a specific history, while the auditor's own reasoning says the 2018 creation date is unchanged, so the record was not freshly created after a drop, and that the practice may have sold the name, let it lapse or lost it another way. It is flagged inference:true and never appears in audit_md or founder_md, so nothing wrong reaches the business or the owner, but the label itself is not supported.",
+      "fix": "Relabel the cause as \"unknown - name now held by a domain reseller\" and keep the reasoning and owner-confirmation caveat as they are."
+    },
+    {
+      "claim": "Desktop and 390 px phone visits both stopped on Cloudflare's verification screen (screenshots saved: crystalsmilesnj-desktop.png, crystalsmilesnj-phone390.png)",
+      "problem": "The two named screenshot files are not present in the verification folder, so the evidence itself could not be inspected. The underlying observation is true: I reproduced it myself in Chrome at 500 px and at a 390 x 844 phone viewport, and a plain fetch returned 403.",
+      "fix": "Deliver the two screenshot files with the audit so the claim can be checked against the images, or state in audit_md where they are stored."
+    },
+    {
+      "claim": "\"RDAP: registered 27 Sep 2018 ... registrar TurnCommerce/NameBright.\"",
+      "problem": "Tone nit only: \"RDAP\" is jargon for a dentist reading the report. The facts behind it are correct.",
+      "fix": "Write it as \"the public domain records (RDAP)\" on first use, or drop the acronym and keep the dates."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "crystalsmilesnj.com still redirects to a HugeDomains domain-profile page",
+      "source_url": "https://crystalsmilesnj.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "At a 390 px phone viewport the visit also stops on Cloudflare's verification screen",
+      "source_url": "https://www.hugedomains.com/domain_profile.cfm?d=crystalsmilesnj.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A plain HTTP fetch of the domain returns 403",
+      "source_url": "https://crystalsmilesnj.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 27 Sep 2018",
+      "source_url": "https://rdap.org/domain/crystalsmilesnj.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: expires 27 Sep 2027",
+      "source_url": "https://rdap.org/domain/crystalsmilesnj.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: last changed 28 Sep 2026",
+      "source_url": "https://rdap.org/domain/crystalsmilesnj.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registrar TurnCommerce, Inc. DBA NameBright.com (IANA ID 1441)",
+      "source_url": "https://rdap.org/domain/crystalsmilesnj.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback shows the practice's own WordPress site on the domain from Oct 2020 to Jun 2023",
+      "source_url": "http://web.archive.org/web/20230607220355/https://crystalsmilesnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A July 2025 capture already returns a 302 redirect to HugeDomains",
+      "source_url": "http://web.archive.org/web/20250711032406/http://crystalsmilesnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The archived 2023 site's \"Book an Appointment\" button opened a contact page, not a scheduling tool",
+      "source_url": "http://web.archive.org/web/20230607220355/https://crystalsmilesnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The archived site lists cleanings, implants, crowns, root canals, cosmetic work, Invisalign, whitening and oral surgery",
+      "source_url": "http://web.archive.org/web/20230607220355/https://crystalsmilesnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile shows 4.8 stars, 65 Rues Ln, (732) 257-4444, and \"Add website\" (no website)",
+      "source_url": "https://www.google.com/maps/place/Crystal+Smiles+LLC/@40.4203647,-74.3791392,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Google profile carries phone and hours but no website or booking link",
+      "source_url": "https://www.google.com/maps/place/Crystal+Smiles+LLC/@40.4203647,-74.3791392,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BizArchive still publishes www.crystalsmilesnj.com as the practice's website and links to it",
+      "source_url": "https://www.bizarchive.com/business/crystal-smiles-llc",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BizArchive hours: Mon 9-7, Tue-Wed 9-6, Thu 9-7, Fri 9-6, Sat 9-2 (as stated in the caveats)",
+      "source_url": "https://www.bizarchive.com/business/crystal-smiles-llc",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nextdoor page exists and neighbours were recommending the office in May 2025",
+      "source_url": "https://nextdoor.com/pages/crystal-smiles-llc-formerly-no-tears-dental/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "dentistsranked.com serves a security checkpoint, so its listing could not be read",
+      "source_url": "https://www.dentistsranked.com/dental-clinic/east-brunswick-nj/crystal-smiles-llc",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Identity: Crystal Smiles LLC at 65 Rues Ln, East Brunswick NJ 08816, (732) 257-4444, Dr. Tejal Darji DMD as the practice's dentist and authorized official; record active",
+      "source_url": "https://npiregistry.cms.hhs.gov/api/?number=1609352012&version=2.1",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Practice is operating, not permanently closed",
+      "source_url": "https://www.google.com/maps/place/Crystal+Smiles+LLC/@40.4203647,-74.3791392,17z",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,81 @@
+{
+  "business": "Albany County Fasteners (Raw Products Corp)",
+  "industry": "ecommerce-retail",
+  "town": "Edison, NJ",
+  "opportunities": [
+    {
+      "title": "Quote-desk agent: RFQ intake to priced, documented quote for B2B and custom/off-catalog requests",
+      "capability": "A",
+      "problem": "Every B2B quote is assembled by hand by a small salaried sales team. The company advertises quotes for both listed and unlisted products, USA sourcing, custom manufacturing, blanket release and stock-and-lock programs, plus C of C / MTR / shop-drawing packets - each quote means catalog lookup, tier-price math (piece/pack/bulk), stock check and document assembly. With purchasing, fulfillment, QC and marketing each sitting on one family member, quote turnaround competes directly with order and warehouse work.",
+      "evidence": [
+        "B2B services listed as custom quotes for listed and unlisted products, USA sourcing, custom manufacturing, C of C/MTR/shop drawings, blanket release, stock-and-lock, and an online NET 30 application (https://www.albanycountyfasteners.com/B2B/Request-A-Quote/)",
+        "Quote and documentation requests are routed to a human sales team; company is 'over 20 employees' with family members each owning one function (https://www.albanycountyfasteners.com/blog/about-albany-county-fasteners/)",
+        "Tiered piece/pack/bulk pricing is configured in the Shopware 6 platform, so pricing logic exists but is applied manually per inquiry (https://www.albanycountyfasteners.com/B2B/Request-A-Quote/)",
+        "Industry hotspot: order clerks key order/quote details and re-check them against prior information before release (https://www.onetonline.org/link/summary/43-4151.00)"
+      ],
+      "agent_design": "Trigger on the site RFQ form, quote@ email, Tawk.to chat transcript, or a rep-entered request. The agent parses line items (thread size/pitch, length, grade/material, finish, quantity), searches the Shopware catalog and the WMS for stock and lead time, applies the customer's pricing tier and freight estimate, and drafts a quote PDF plus any requested C of C/MTR packet using existing spec sheets. It posts the draft to the rep's queue for one-click approval and writes the quote back to the CRM/portal; nothing is sent to a customer without a human release. Unlisted, custom-manufactured and blanket-release items are auto-flagged as exceptions with the sourcing questions already drafted for Peter Cominos (Purchasing).",
+      "why_not_DIY": "A chatbot subscription cannot read the Shopware catalog and WMS stock, cannot apply tiered pack/bulk pricing, cannot generate a document packet, and cannot write an approved quote back to the store. Correctness is commercially binding: a wrong alloy/grade or a stale price on a 40M-piece catalog is a costing and liability error, so the build needs retrieval over product data, deterministic price math, and an approval gate rather than free-text generation.",
+      "impact_estimate": {
+        "range": "$18,000–$34,000/yr of clerical time reallocated, plus faster quote turnaround (win-rate effect not quantified)",
+        "assumptions": "INFERENCE: 10–20 quote/document requests per business day, 20–40 min of human handling each including document assembly (roughly 0.5–1.0 FTE at current volume), and a 40–60% reduction in handling time once the draft is pre-built. Loaded cost uses the NJ Order Clerk median $46,270/yr (https://www.onetonline.org/link/localwages/43-4151.00?st=NJ) with ~25% payroll burden assumed. Excludes any revenue gain from faster response, which is plausible but unmeasured.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4151.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2–4 weeks: ingest the public catalog plus a supplied price-tier sheet, build the line-item parser and the draft-quote/C-of-C generator, run it shadow-mode against live RFQs for two weeks, and report measured minutes-per-quote before vs after on a rep-approved sample. Deliverables: working draft-quote agent behind the rep queue, exception rules for unlisted/custom items, and a scored accuracy log on 100+ real quote lines."
+    },
+    {
+      "title": "Front-door and service-recovery agent: after-hours inquiry capture, WISMO, order edits and packaging/damage claims",
+      "capability": "A",
+      "problem": "Support exists only Monday–Friday 8:00–5:00 EST while the company markets nationwide shipping, so evening and weekend inquiries from B2B buyers and consumers wait until the next business day. The FAQ pushes people who need quantity changes or order edits to 'contact the team', and the recurring complaints in public reviews are not about product quality but about packaging and unresolved order problems - exactly the low-judgment but time-sensitive volume a small team handles manually.",
+      "evidence": [
+        "No weekend or after-hours coverage published; hours are Mon–Fri 8:00AM–5:00PM EST (https://www.albanycountyfasteners.com/Customer-Service/About-Us/)",
+        "The FAQ routes order edits and immediate issues to staff, and order status only via portal or shipment email (https://www.albanycountyfasteners.com/Customer-Service/FAQs)",
+        "Review complaints concentrate on packaging and service recovery - a long-time customer says management would not make good, and a forum thread describes no response to a paid order (https://local.yahoo.com/info-195846697-albany-county-fasteners-edison/)",
+        "Ratings diverge: 4.6 stars over 429 reviews on Birdeye vs 2.5 stars over 21 on Yelp, so unresolved older-channel complaints are dragging a visible rating (https://reviews.birdeye.com/albany-county-fasteners-171344557997627)",
+        "Industry hotspot: WISMO/complaint handling, refunds, exchanges and billing adjustments, including confirming a promised fix was actually applied (https://www.onetonline.org/link/summary/43-4051.00)"
+      ],
+      "agent_design": "One agent spanning Tawk.to chat, the contact-form email queue and after-hours voicemail-to-text. It authenticates lightly against order number + email/zip, pulls tracking and order state from Shopware/WMS/carrier API, and handles the four highest-volume intents: where-is-my-order, change/cancel-and-reorder, address fix before dispatch, and damage/short-shipment claim intake with photo capture. Low-risk answers and status replies go out autonomously within policy; anything touching money - refunds, credit memos, reships, NET 30 terms - is drafted and queued for CS/AR approval. It logs every claim with photos and resolution status and re-checks 72 hours later that the promised fix was actually applied, closing the loop that public reviews say is missing.",
+      "why_not_DIY": "The agent must read live order and tracking state across Shopware, the WMS and carrier APIs, respect NET 30 account context, and open a durable claim record that survives to resolution. Off-the-shelf chat widgets have no order data, no refund authority boundary and no follow-up ledger. PCI DSS also constrains what a bot may read or say about payments, so scoped, redacted tool calls matter more than chat fluency.",
+      "impact_estimate": {
+        "range": "$10,000–$25,000/yr equivalent of support time, plus after-hours lead capture and a measurable reduction in unresolved-claim reviews (both unquantified)",
+        "assumptions": "INFERENCE: 40–80 inquiries/day across chat/email/phone at a ~20-person distributor, of which 50–60% are status, edit or claim types; 1.5 FTE of CSR time at NJ median $47,740/yr loaded ~25% ≈ $90,000. Public evidence (NBER Working Paper 31161, a working paper, not peer-reviewed) shows +14% issues resolved per hour on average and +34% for novice agents, so 14–34% is applied to the automatable share only, giving a wide conservative band. No revenue modelled for captured after-hours inquiries.",
+        "benchmark_source_url": "https://www.nber.org/papers/w31161"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2–4 weeks: deploy on Tawk.to plus the email queue with guardrails, covering WISMO, address/quantity edits pre-dispatch and damage-claim intake with photo upload; all refunds and credits go to human approval. Deliverable: live agent on one channel set, an exception/escalation dashboard, claim follow-up automation, and a before/after log of first-response time, containment rate and reopened complaints."
+    },
+    {
+      "title": "Catalog and cross-channel data-integrity agent plus order-audit tooling for Shopware, WMS and the Amazon storefront",
+      "capability": "D",
+      "problem": "A 40M+ piece catalog spanning many grades, materials, finishes and piece/pack/bulk price tiers is maintained by a very small team across two sales channels (Shopware 6 store plus an Amazon storefront) with no PIM layer in evidence, and no integration work is described between storefront, WMS and marketplace. The company publishes a self-imposed order error rate target below 0.5% of shipped orders per quarter, and just replatformed its site and added racking and line expansions - both multiply SKU/attribute drift and mis-pick risk.",
+      "evidence": [
+        "Quality policy sets objectives of 95%+ satisfaction and an order error rate below 0.5% of shipped orders per quarter (https://www.albanycountyfasteners.com/Customer-Service/About-Us/)",
+        "40M+ pieces stocking nuts, bolts, screws, washers, rivets and anchors in piece, pack or bulk with tiered volume pricing (https://www.albanycountyfasteners.com/Customer-Service/About-Us/)",
+        "Storefront is Shopware 6 with a separately maintained Amazon storefront as a second sales channel - two catalogs to keep in sync (https://www.amazon.com/stores/AlbanyCountyFasteners/page/7B1D54CC-242B-4E4F-A20A-CE6E32705A64)",
+        "Ongoing expansion: new larger racking for more inventory and line expansions, plus poly-bagging and kitting equipment added (https://www.youtube.com/watch?v=FAyagUQ6bBU)",
+        "Industry hotspot: reconciling received/returned merchandise against requisitions and invoices, and keeping stock records matched to physical movement (https://www.onetonline.org/link/summary/43-5071.00)"
+      ],
+      "agent_design": "A scheduled and event-driven agent set: (1) a catalog auditor that crawls Shopware product records and the Amazon listing feed, checks attribute consistency (thread size, length, grade/material, finish, quantity per pack), compares piece/pack/bulk price ladders, flags missing or contradictory spec/photo/certification data, and writes a ranked exception worklist with a proposed corrected value; (2) a daily order-audit agent that samples shipped orders and matches storefront line item -> WMS pick -> invoice, surfacing mismatches and feeding a quality-metric dashboard to support the <0.5% error objective; (3) shop-drawing/spec-sheet ingestion so new supplier documents update SKU attributes rather than being re-typed. Human approval of all writes to the live catalog and marketplace feed sits with Peter Cominos (Purchasing) and Francesca Cominos (Fulfillment).",
+      "why_not_DIY": "This is integration and data plumbing, not chat: it needs authenticated read/write access to the Shopware admin API, the WMS and the Amazon listing feed, plus an attribute normaliser that understands fastener nomenclature (e.g. 1/4-20 x 3/4 hex cap screw grade 8 zinc). A chat subscription cannot touch those systems, and a generic marketplace tool will not police pack-quantity and grade consistency across two catalogs. Errors here are silent and expensive - wrong pack quantity or finish ships the wrong part at the wrong price.",
+      "impact_estimate": {
+        "range": "$8,000–$20,000/yr of catalog/purchasing admin time, plus reduced mis-pick and return-handling cost (not quantified without order volumes)",
+        "assumptions": "INFERENCE: 10–20 hours/week currently spent by purchasing/catalog staff on attribute fixes, listing mismatches and spec-sheet re-entry across two channels; 50–70% of that recovered. Loaded cost at the NJ Customer Service Representative median $47,740/yr (https://www.onetonline.org/link/localwages/43-4051.00?st=NJ). Savings from avoided error shipments are excluded from the range because order volume is not public.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ"
+      },
+      "complexity": "High",
+      "pilot_scope": "2–4 weeks: read-only integration to Shopware and the Amazon feed over a scoped slice (e.g. 500–2,000 active SKUs in one product family), run the attribute and price-ladder audit, and deliver a scored exception report with proposed corrections plus a before/after sample of order-line-to-pick matching. No automated writes in the pilot; catalog changes stay human-approved."
+    }
+  ],
+  "lead_score": {
+    "pain": 22,
+    "fit": 18,
+    "ability_to_pay": 13,
+    "ease": 13,
+    "strategic": 12,
+    "total": 78,
+    "rationale": "Pain (22/30): manual B2B quote and document assembly, a hard 8-5 support window against nationwide marketing, and public complaints about packaging and unresolved order issues all point to specific automatable work, and the company itself publishes an error-rate target that implies measurement discipline. Held below 30 because complaint evidence rests largely on Yelp excerpts syndicated through Yahoo Local (Yelp/BBB/Indeed returned 403) and no internal workflow complaint is public. Fit (18/20): Shopware 6 with an admin API, a claimed AI-powered WMS, an Amazon channel, Tawk.to chat and visible appetite for automation (replatform, poly-bagging, in-house IT/SEO role) make integration work realistic. Ability to pay (13/20): self-described 'multi-million dollar' business with 20+ staff and 25,000 sq ft of warehouse, but revenue, headcount and margin are unverified, so spend capacity is inferred. Ease (13/15): one location, one owner-decision-maker (Bob Cominos) reachable directly, no procurement layer or enterprise IT gatekeeping observed. Strategic (12/15): fastener/B2B-industrial distributors with a web shop and Amazon channel are a large, near-identical segment - the quote desk and catalog-integrity agents would resell with pricing and taxonomy changes, though the domain-specific fastener attribute work is less productised than the support agent."
+  },
+  "best_evidence_signal": "The company markets quotes for unlisted products, custom manufacturing, C of C/MTR packets and stock-and-lock programs - all assembled by a salaried sales team inside a ~20-person family firm - while support is staffed only Mon-Fri 8-5 EST (https://www.albanycountyfasteners.com/B2B/Request-A-Quote/)",
+  "suggested_channel": "email",
+  "evidence_thin": false
+}

@@ -1,0 +1,85 @@
+{
+  "business": "Expressway USA Freightlines, Inc.",
+  "industry": "trucking-freight",
+  "town": "Carteret",
+  "opportunities": [
+    {
+      "title": "Pier appointment and dispatch-plan orchestration agent",
+      "capability": "A",
+      "problem": "One dispatcher sits at the 5:30am shift and personally books terminal appointments on APM Terminals and Port Liberty Bayonne systems, builds the run plan around vessel arrivals, schedules customer delivery appointments and does order entry for a 40-50 truck fleet, working out of Excel/Google Docs. The posting frames the job around avoiding 'additional charges and or delays', i.e. per-diem/demurrage and missed-window exposure that a single person cannot watch across every container and free-time clock.",
+      "evidence": [
+        "Dispatcher posting lists dispatching 40-50 trucks to NY/NJ piers, booking appointments on APM and Port Liberty Bayonne systems, planning the weekly schedule around vessel arrivals, scheduling customer delivery appointments, email/phone and order entry, at $55,000-$65,000/yr — https://www.simplyhired.com/job/Ro1x_D-aKhga04w20KTIySLm4IcTvAEAairM7nHz8x9igplYyOeV4Q",
+        "Same posting stresses avoiding 'additional charges and or delays' and lists Excel/Google Docs as required tools, with Port Pro TMS only a plus — so the system of record is uncertain and part of the plan likely lives in spreadsheets — https://www.simplyhired.com/job/Ro1x_D-aKhga04w20KTIySLm4IcTvAEAairM7nHz8x9igplYyOeV4Q",
+        "USDOT-published detention study: drivers were detained beyond the 2-hour free time on about 1 in 10 stops for an average of 1.4 extra hours (3.4 hours total at the facility), and for-hire truckload carriers were detained roughly four times as often as private carriers — https://doi.org/10.21949/1502646",
+        "Peer-reviewed simulation of an adaptive port truck-appointment system on real-world container-port data: only 7.8% of arrivals needed rescheduling and maximum queue length fell ~62% versus baselines (a simulation, not a carrier deployment) — https://doi.org/10.3390/su17135740",
+        "FMCSA snapshot (data as of 11/09/2026): 38 power units and 32 drivers, so the dispatch desk spans nearly every driver the company has — https://safer.fmcsa.dot.gov/query.asp?query_type=queryCarrierSnapshot&query_param=USDOT&query_string=188718",
+        "Public site has three pages and no booking, tracking or portal function; dispatch coordination has no customer- or driver-facing digital surface at all — https://expresswayusa.com/sitemap.website.xml"
+      ],
+      "agent_design": "Runs before the shift: at ~4:30-5:00am the agent assembles container availability and free-time clocks from terminal data, open customer delivery windows from the shared inbox and TMS/spreadsheet, and the vessel arrival schedule, then produces a ranked plan for the 40-50 truck morning: container, terminal slot, driver, customer delivery window, with per-diem risk flagged per container. It drafts terminal appointment bookings and customer appointment requests as prepared actions; the dispatcher batch-approves on one screen before anything is submitted. Mid-day exception loop re-proposes slots when a gate is closed, queue length spikes or a vessel is delayed. Hard human gates: anything reefer/cold-chain, hazmat, or an SLA escalation to a named BCO/3PL goes to a person, and the agent never changes a committed customer appointment on its own. Writes back to the spreadsheet/TMS and logs the source status/document behind every proposed action.",
+      "why_not_DIY": "Requires authenticated sessions into two third-party terminal portals plus tolerance for undocumented page changes, write-back into spreadsheets/TMS, and a scheduling state machine over dozens of trucks x containers x free-time clocks. A chatbot subscription has no access to terminal data and no write path. Errors here carry a per-container dollar cost (per diem, chassis, missed window) and the work must be auditable after the fact.",
+      "impact_estimate": {
+        "range": "~10-16 dispatcher hours/week returned (about $16k-$26k/yr), plus a conservatively assumed 1-3% reduction in per-diem/demurrage and missed-window charges that is stated qualitatively because no public per-container per-diem rate exists for this carrier or these terminals.",
+        "assumptions": "NJ dispatcher mean wage $26.64/hr ($55,410/yr) plus ~25% payroll overhead = ~$33/hr loaded, x 50 worked weeks. 25-40% of a 40-hour dispatcher week is assumed to be appointment booking, replanning and order entry — an inference from the posted duty list, not a measured time study. Chassis/per-diem dollar exposure is excluded from the range rather than guessed.",
+        "benchmark_source_url": "https://web.archive.org/web/20250318091039/https://www.bls.gov/oes/current/oes_nj.htm"
+      },
+      "complexity": "High",
+      "pilot_scope": "2-4 weeks, one shift, read-and-prepare only. Deliver: (1) a daily auto-generated morning dispatch plan with per-container per-diem/free-time flags, (2) a single batch-approval screen so the dispatcher accepts or edits proposed slots, (3) a measured accuracy report comparing agent-proposed appointments to what the dispatcher actually booked. No automated submission into terminal portals during the pilot."
+    },
+    {
+      "title": "Inbound status, order-entry and after-hours triage agent",
+      "capability": "A",
+      "problem": "Dispatch starts at 5:30am but the office is only staffed 8:00am-5:00pm Monday-Friday (Saturday by appointment), and the site offers no tracking, quote, booking or login function, so every status and paperwork request lands in email or a phone call. The company publicly promises that the President and Vice President personally return each email and call, which does not scale against BCO/3PL customers who expect status updates and confirmed delivery windows.",
+      "evidence": [
+        "Posted office hours Monday-Friday 8:00am-5:00pm, Saturday by appointment, Sunday closed, and the contact page has only a store-hours widget — no quote request, booking or tracking — https://expresswayusa.com/contact-us",
+        "Dispatcher posting makes answering emails/phone calls and order entry core duties of the same person who runs 40-50 trucks — https://www.simplyhired.com/job/Ro1x_D-aKhga04w20KTIySLm4IcTvAEAairM7nHz8x9igplYyOeV4Q",
+        "Gap between 5:30am dispatch start and 8:00am office opening implies early driver and pier issues are handled outside staffed coverage — https://expresswayusa.com/contact-us and https://www.simplyhired.com/job/Ro1x_D-aKhga04w20KTIySLm4IcTvAEAairM7nHz8x9igplYyOeV4Q",
+        "Named customers are large beneficial cargo owners and 3PLs (UPS Supply Chain Solutions, Costco, Kuehne+Nagel, Kraft, Ace Hardware, BJ's, Vanguard Logistics), an SLA-driven status-request population — https://expresswayusa.com/about-us",
+        "The site's three-page sitemap contains no customer portal or tracking, so status must be answered by hand — https://expresswayusa.com/sitemap.website.xml",
+        "NJ wage benchmark for the answering layer: Cargo and Freight Agents mean $28.54/hr ($59,360/yr); Shipping/Receiving/Inventory Clerks mean $21.46/hr — https://web.archive.org/web/20250318091039/https://www.bls.gov/oes/current/oes_nj.htm"
+      ],
+      "agent_design": "An agent on the shared inbox plus a voice front end on the dispatch line. Inbound traffic is classified (container status, appointment request, POD/document resend, invoice question, driver question, new business) and answered from live container status, appointment records and the company's own SOPs, terminal rules and rate sheets. Order entry is pre-filled from the email into the TMS/spreadsheet for dispatcher confirmation. Auto-send is limited to low-risk, per-customer-allowlisted replies (status of an already-dispatched container, hours, document resend); anything commercial — charges, claims, new bookings, reefer temperature deviations, anything from a customer not on the allowlist — is routed to Steve/Alexis Fleischer or the dispatcher with a summary and the underlying documents. The 5:30-8:00am and post-5:00pm windows are covered by voice/keyboard triage of driver questions (gate, terminal, lumper, paperwork) with escalation to the on-call dispatcher when a pickup is at risk.",
+      "why_not_DIY": "It needs live container and appointment data rather than public web content, per-customer data isolation so one BCO never sees another's shipments, an immutable trail for anything that becomes an order, and English/Spanish handling (the posting lists bilingual as a plus). A generic chatbot answering from a marketing site would invent status, which is a direct commercial risk with UPS, Costco or Kuehne+Nagel.",
+      "impact_estimate": {
+        "range": "~6-12 hours/week of status and order-entry handling returned (about $11k-$22k/yr), plus earlier same-day response to after-hours inquiries, which is not monetized here.",
+        "assumptions": "Assumes 20-35% of inbound email/phone volume is repetitive status, paperwork and driver-question traffic (inference from the posted duty mix; no call-volume data is public). Costed at the NJ cargo-and-freight-agent mean $28.54/hr plus ~25% overhead = ~$36/hr, x 50 weeks. Revenue effect of faster quote/booking response is deliberately excluded.",
+        "benchmark_source_url": "https://web.archive.org/web/20250318091039/https://www.bls.gov/oes/current/oes_nj.htm"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "3 weeks: draft-only mode over one customer cohort's status requests on the shared inbox, plus after-hours voice triage for the 5:30-8:00am window. Deliver: auto-resolve rate and escalation log, a knowledge base of the top ~50 recurring questions built from the company's own replies, and a Spanish-language test set of driver questions."
+    },
+    {
+      "title": "Accessorial and detention invoice audit agent",
+      "capability": "A",
+      "problem": "Drayage margin leaks where charges are billed late, billed wrong or missed entirely — per diem, chassis, detention, terminal fees, transload/CFS labor — because order entry is manual, the system of record may be spreadsheets, and the dispatch desk's stated objective is avoiding extra charges rather than reconciling them afterwards. Rate confirmations, BOLs, PODs and terminal charges sit across email, Excel and terminal portals with no matching layer.",
+      "evidence": [
+        "Dispatcher posting's stated objective is avoiding 'additional charges and or delays', with Excel/Google Docs required and Port Pro TMS only optional — the reconciliation layer is manual and possibly spreadsheet-based — https://www.simplyhired.com/job/Ro1x_D-aKhga04w20KTIySLm4IcTvAEAairM7nHz8x9igplYyOeV4Q",
+        "O*NET Cargo and Freight Agents: estimate freight rates, record shipment costs and weights, prepare bills of lading, invoices and other shipping documents — https://www.onetonline.org/link/summary/43-5011.00",
+        "O*NET Heavy Truck Drivers: check load documents for completeness and accuracy; read bills of lading and reconcile against assignment/rate details — https://www.onetonline.org/link/summary/53-3032.00",
+        "USDOT-published detention study: detention occurred on about 1 in 10 stops for an average 1.4 hours beyond free time, which is exactly the event that produces a billable or written-off accessorial — https://doi.org/10.21949/1502646",
+        "NJ wage benchmark for the manual reconciliation layer: Billing and Posting Clerks mean $24.01/hr ($49,930/yr) — https://web.archive.org/web/20250318091039/https://www.bls.gov/oes/current/oes_nj.htm",
+        "Working paper (arXiv preprint, not peer-reviewed) on an LLM-augmented freight broker over 115,125 negotiations: keeping pricing in a deterministic formula and using the LLM only as a language layer matched a 20B-parameter unconstrained LLM broker with auditable decisions — supports the split used here, where rules compute money and the model only extracts and explains — https://arxiv.org/abs/2604.20732"
+      ],
+      "agent_design": "Weekly agent pulls terminal/per-diem statements and charge emails, rate confirmations, BOLs and PODs, and matches each container move to its contract rate plus expected accessorials. It flags three classes: charges that do not match the contract or free-time rules, detention/per-diem events whose timestamps look disputable, and missed billables (waiting time, chassis, transload labor). Output is a dispute packet draft (chronology plus the supporting documents attached) and a billing exception report for the controller. The rate table is deterministic — the model extracts fields from scans/PDFs and writes the narrative, it never computes or sets a price. A human approves every dispute before it leaves the building and every invoice before it posts; no auto-send to customers or terminals.",
+      "why_not_DIY": "Multi-document extraction from scans and PDFs, matching against a contractual rate table, and durable exportable records (49 CFR Part 371 recordkeeping; rate and accessorial terms are commercially confidential between carrier and BCO). A wrong dispute against a 38-year customer costs more than the recovered charge, so every output must cite the source document and be human-approved, which requires private deployment and tenant-isolated data rather than a public chatbot endpoint.",
+      "impact_estimate": {
+        "range": "~2-5 hours/week of reconciliation returned (about $3k-$8k/yr), plus recovery of an assumed 0.5-2% of accessorial/detention spend. The spend baseline is not public, so no dollar recovery figure is claimed.",
+        "assumptions": "NJ billing-clerk mean $24.01/hr ($49,930/yr) plus ~25% overhead = ~$30/hr, x 50 weeks, x 2-5 hours. The 0.5-2% recovery rate is an inference from the dispatch/detention evidence and is deliberately modest; it must be validated against 6-12 months of actual terminal invoices during the pilot before any ROI promise is made. Excludes the larger, unquantified prize of re-billing customer-caused detention.",
+        "benchmark_source_url": "https://web.archive.org/web/20250318091039/https://www.bls.gov/oes/current/oes_nj.htm"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "3 weeks on one month of historical terminal invoices and per-diem statements covering 20-40 containers: deliver a matched-charge exception report, a ranked list of disputable detention events with the supporting timestamps/documents, a measured extraction-accuracy figure against a hand-checked sample, and a go/no-go read on whether the recovered dollars justify a retainer."
+    }
+  ],
+  "lead_score": {
+    "pain": 24,
+    "fit": 18,
+    "ability_to_pay": 13,
+    "ease": 9,
+    "strategic": 13,
+    "total": 77,
+    "rationale": "Pain evidence is unusually specific for a company this size: a current job posting that enumerates the exact manual duties (booking on two terminal systems, vessel-arrival planning, customer appointment scheduling, order entry, phone/email) for a 40-50 truck fleet, a posted-hours/dispatch-hours mismatch, and a three-page site with no tracking or booking. It loses points because customer satisfaction, per-diem spend, revenue and container volume are all unverified, and review sources were blocked. Fit is near-maximal: the bottleneck is dispatch coordination and pier-appointment work that in-house systems cannot reach, with a natural expansion path from operations (A) into systems integration (D) and then a retainer (F). Ability to pay is capped by size — 38 power units and 32 drivers on the FMCSA snapshot, family-owned, no published revenue — though a $55-65k dispatcher salary signals real clerical budget to redirect. Ease is the weakest sub-score: the pilot depends on authenticated access to two third-party terminal portals, and the TMS question (Port Pro listed only as a plus) means integration discovery is part of the sale. Strategic value is high because every NY/NJ drayage and CFS operator books on the same terminal systems, so the appointment-orchestration build is repeatable across the segment; the family ownership also means two decision-makers, not a procurement process."
+  },
+  "best_evidence_signal": "A live Port Dispatcher posting pays $55-65k for one person to book APM and Port Liberty Bayonne appointments, plan around vessel arrivals, schedule customer deliveries and do order entry for 40-50 trucks while avoiding 'additional charges and or delays' — https://www.simplyhired.com/job/Ro1x_D-aKhga04w20KTIySLm4IcTvAEAairM7nHz8x9igplYyOeV4Q",
+  "suggested_channel": "phone",
+  "evidence_thin": false
+}

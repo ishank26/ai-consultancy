@@ -1,0 +1,89 @@
+{
+  "business": "Central Jersey Pediatric Dentistry & Orthodontics",
+  "industry": "healthcare",
+  "town": "East Brunswick, NJ",
+  "opportunities": [
+    {
+      "title": "Front-desk intake agent: 24/7 call answering, emergency triage and web-request-to-booking",
+      "capability": "A",
+      "problem": "The front desk is the practice's bottleneck. The practice is hiring a full-time Front Desk Receptionist/Insurance Coordinator (30-35 hrs/week) whose duties are answering a busy phone line, making appointments and collecting payments, and new patients can only submit a web request form rather than book a real slot. After-hours calls go through phone prompts to an answering service with a stated one-hour callback expectation, so evening and Saturday inquiries and pain/trauma triage wait on a human callback. Evening capacity exists only on Wednesday (to 6:30 PM) and Saturday closes at 1:00 PM, concentrating demand into weekday mornings and one late day.",
+      "evidence": [
+        "Open 30-35 hr/week front-desk role explicitly covers 'answering busy phones', 'making appointments', 'collecting payments' — https://www.wayup.com/i-j-Dental-Front-Desk-Receptionist-Central-Jersey-Pediatric-Dentistry-Orthodontics-006887046316004/",
+        "New patients are asked to submit an appointment request form; the contact page directs people to call or e-mail during office hours only, and no online booking engine or patient portal appears in the page markup — https://kiddent.com/appointment-request/ and https://kiddent.com/contact-us/",
+        "After-hours emergencies are routed by phone menu to an answering service, with a one-hour callback expectation — https://kiddent.com/contact-us/",
+        "Hours: only Wednesday runs to 6:30 PM, Saturday ends 1:00 PM, with alternating Monday and Saturday coverage — https://kiddent.com/appointment-request/",
+        "Service area spans East Brunswick plus Old Bridge, Sayreville, Monroe and Spotswood, so new-patient calls arrive from five townships — https://kiddent.com/about-us/",
+        "Published research on reminder/reschedule texting: model-driven reminders reduced no-shows (1 RCT, median RR 0.91, high certainty) and a 720-patient pilot RCT in pediatric/family medicine raised completed rescheduled visits by 2.83 percentage points (OR 1.86) — https://pubmed.ncbi.nlm.nih.gov/36508503/ and https://pubmed.ncbi.nlm.nih.gov/38852906/"
+      ],
+      "agent_design": "An event-driven voice + messaging agent sitting on the practice's main phone line for after-hours and overflow, plus a same-day responder for web-form requests. Triggers: inbound call, web form submission, unanswered call after N rings, after-hours period. Flow: (1) identify patient of record or new patient; (2) run a doctor-approved triage script for dental emergencies (avulsed tooth, facial swelling, uncontrolled bleeding, trauma) and escalate immediately to the on-call doctor with a structured summary; (3) for non-urgent requests, read open slots from the practice-management calendar and book only within templated rules per appointment type (new-patient exam, recall/hygiene, ortho adjustment, Invisalign consult), honoring the alternating Monday/Saturday pattern; (4) collect intake and insurance details and write a summary note to the practice-management system and a handoff note to the answering service; (5) text/email the family concrete slot options when a form arrives outside hours. Systems touched: phone system/answering service, practice-management scheduling calendar, website forms, SMS gateway. Human approval: the two doctors co-sign the triage protocol and any new template; the front desk reviews a daily exceptions queue before confirming new-patient and ortho-case bookings and any appointment outside template rules; every escalation is logged with the recorded call reference.",
+      "why_not_DIY": "It has to answer a real telephone line, write into the practice-management calendar, enforce different booking rules per appointment type, hold a stateful conversation with a parent of a scared child, and hand off to an on-call doctor within seconds. That requires telephony, calendar/system integration, a HIPAA-compliant voice stack under a business associate agreement, and 24/7 reliability. A chatbot subscription or a form autoresponder does none of the three things the practice actually needs: answer, triage, book.",
+      "impact_estimate": {
+        "range": "6-12 front-desk hours/week returned (after-hours handling, overflow calls, form callbacks), roughly $7,000-$14,000/year in labor; plus an unquantified number of after-hours new-patient inquiries converted instead of lost. No revenue figure is asserted because the practice publishes no fees, payer mix or patient volume.",
+        "assumptions": "Assumes the front desk spends 40-50% of a 30-35 hour week on the phone/scheduling/intake (inference from the posted duty list: phones, appointments, payments, claims); the agent absorbs roughly half of that volume with human review of exceptions. Valued at the NJ dental assistant median of $22.50/hr as a proxy for front-desk administrative labor, since the brief carries no front-desk/receptionist benchmark. Excludes clinical time, no-show loss, and any new-patient revenue, all of which are unmeasured here.",
+        "benchmark_source_url": "https://www.bls.gov/oes/2023/may/oes_nj.htm"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: after-hours and overflow answering on the main line for two full weeks, including both the Wednesday-evening and Saturday windows; a triage protocol co-signed by Dr. Backhaus with hard escalation rules; templated booking for three appointment types wired to the live calendar; web-form requests answered same day with real slots; daily transcript spot-checks with the front desk; final scorecard of calls handled, appointments booked, emergencies escalated and callbacks avoided, plus a measured before/after log of front-desk phone minutes."
+    },
+    {
+      "title": "Insurance eligibility, claim-status and appeal-drafting agent for the front office",
+      "capability": "A",
+      "problem": "Insurance administration is bundled into the same 30-35 hr/week vacancy as the phones, and the posting lists claim submission and appeals as required skills rather than occasional duties, which usually signals volume and rework. Pediatric practices also carry heavy eligibility churn because coverage changes with a child's age, plan year and state program, so benefits are re-verified constantly. Each of those steps is a portal login, a status check and a document assembly job performed by a person at the front desk while the phone rings.",
+      "evidence": [
+        "The front-desk/insurance coordinator role names insurance claim submission and appeals among its duties, alongside phones, scheduling and payments — https://www.wayup.com/i-j-Dental-Front-Desk-Receptionist-Central-Jersey-Pediatric-Dentistry-Orthodontics-006887046316004/",
+        "O*NET lists 'complete insurance forms' and billing among the manual task set for Dental Assistants (SOC 31-9091), the clerical load this role absorbs — https://www.onetonline.org/link/summary/31-9091.00",
+        "Any agent generating or consuming claims/eligibility traffic must conform to CMS HIPAA standard electronic transactions and code sets, so this is a compliance-bound integration rather than a text task — https://www.cms.gov/priorities/key-initiatives/burden-reduction/administrative-simplification",
+        "NIST SP 800-66 Rev. 2 is the implementation resource for the HIPAA Security Rule, implying vendor BAAs, access control and audit logging for any tool touching patient records — https://csrc.nist.gov/pubs/sp/800/66/r2/final"
+      ],
+      "agent_design": "A back-office agent with three jobs. (1) Pre-visit eligibility: each evening, pull the next 2-3 days of appointments, verify active coverage and benefit specifics (frequency limits, ortho lifetime maximum, deductible) through payer portals, and flag mismatches to the front desk before the family arrives. (2) Claim status: reconcile submitted claims against clearinghouse/payer reports daily and produce a short worklist of denials with the reason code and the missing item. (3) Appeal drafting: assemble an appeal letter from the chart note, the EOB and the plan's own language, attach the supporting documentation, and place it in a queue. Human approval is required on every appeal before submission, on every eligibility exception that changes a patient's expected payment, and on any adjustment or write-off; the coordinator remains the system of record for what actually gets sent. Systems touched: practice-management/billing module, clearinghouse, payer portals, document storage.",
+      "why_not_DIY": "Payer portals offer no consumer-friendly API and require credentialed, audited access; claims and eligibility traffic must conform to X12/code-set standards; and the agent needs read/write access to the billing system plus a signing human. The failure mode is also asymmetric — a wrong eligibility answer at the desk becomes a surprised parent at checkout, and a bad appeal goes out under the practice's name. This needs BAA-covered infrastructure, audit logging and a review queue, not a subscription chatbot.",
+      "impact_estimate": {
+        "range": "3-6 coordinator hours/week removed from status checks, eligibility calls and appeal assembly, about $3,500-$7,000/year in labor, with faster first-pass resolution on denials (dollar recovery not estimated).",
+        "assumptions": "Assumes 1-2 hours/day currently go to claims, eligibility and appeals (inference from the posted duty list; no time study exists); the agent removes roughly 40% of that. Valued at the NJ dental assistant median of $22.50/hr as a proxy for administrative billing labor. Deliberately excludes recovered-denial revenue because denial rate, average claim value and payer mix are not public and would otherwise be invented.",
+        "benchmark_source_url": "https://www.bls.gov/oes/2023/may/oes_nj.htm"
+      },
+      "complexity": "High",
+      "pilot_scope": "2-4 weeks: read-only eligibility verification on the next-day schedule with a daily exception list; a claim-status digest replacing manual portal checks; ten appeal letters drafted from real denied claims for the coordinator to review, edit and send herself; and a time log comparing before/after hours spent on eligibility and appeals."
+    },
+    {
+      "title": "Practice knowledge agent for aftercare, plan rules and special-needs visit prep",
+      "capability": "C",
+      "problem": "The practice covers an unusually wide surface for two doctors: infants through teens plus special-needs patients, nitrous, oral sedation, in-office IV or hospital general anesthesia at Robert Wood Johnson, laser frenectomy, braces and Invisalign. Each of those carries its own aftercare and pre-visit instructions. The new front-desk hire must already have two years of dental experience and ortho treatment-coordinator experience is a plus, which means plan rules, prep instructions and aftercare answers currently live in individual staff members' heads rather than in something a new hire or a parent at 8 PM can query.",
+      "evidence": [
+        "Service list spans preventive care, nitrous, oral sedation, in-office IV/hospital general anesthesia, laser frenectomy, braces and Invisalign — https://kiddent.com/dental-services/",
+        "Practice treats infants, children, teens and patients with special needs across five townships — https://kiddent.com/about-us/",
+        "Front-desk posting requires 2+ years of dental front-office experience and prefers orthodontic treatment-coordinator experience, i.e. the role is expected to arrive pre-trained — https://www.wayup.com/i-j-Dental-Front-Desk-Receptionist-Central-Jersey-Pediatric-Dentistry-Orthodontics-006887046316004/",
+        "No patient portal or live chat exists on the site; contact is phone/e-mail during office hours or a request form, so parents have no self-serve channel for routine questions — https://kiddent.com/contact-us/",
+        "Reviews surfaced by the practice repeatedly praise staff and doctors for explaining treatment to children and calming anxious or first-time patients (curated five-star sample, June-November 2025) — https://kiddent.com/"
+      ],
+      "agent_design": "A retrieval agent over the practice's own documents — aftercare sheets (extraction, frenectomy, sedation/GA recovery, braces/Invisalign care), insurance and plan policies the practice actually follows, special-needs pre-visit guidance, and the dental FAQ already on the site. Two surfaces: a staff-side assistant at the front desk and in the operatories for 'what do we tell a parent about X' and 'what does this plan cover', and a parent-facing SMS/web answer channel restricted to the top routine questions. Every answer cites the document and version it came from; anything about symptoms, pain, bleeding, swelling or medication is blocked and escalated to a doctor or the after-hours line. Human approval: only documents signed off by Dr. Backhaus or Dr. Overcash enter the index, changes require re-sign-off, and a weekly unanswered-question report drives the doctors' documentation backlog.",
+      "why_not_DIY": "The value is entirely in the practice's own approved wording and plan rules, which no general model has. It also has to be version-controlled, cite sources, refuse clinical advice, log interactions against PHI rules and serve both staff and parents. A generic chatbot answering 'my child's gum is bleeding after the frenectomy' with invented reassurance is a clinical-liability event, not a convenience feature.",
+      "impact_estimate": {
+        "range": "About $2,000-$7,000/year in recovered staff time (1.5-3 hours/week of repeated questions answered from approved documents), plus faster onboarding of the new front-desk coordinator (not dollar-quantified).",
+        "assumptions": "Assumes 5-10 repeat routine questions per day at roughly 3-5 minutes each and a 50-60% deflection rate (inference — the practice publishes no call logs or question volumes). Valued between the NJ dental assistant median $22.50/hr and the NJ dental hygienist median $47.76/hr, the latter used as a conservative floor for clinical staff time because the brief carries no dentist wage benchmark. Excludes any effect on patient satisfaction or retention, which is unmeasured.",
+        "benchmark_source_url": "https://www.bls.gov/oes/2023/may/oes_nj.htm"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: ingest 20-30 doctor-approved documents, stand up the staff-side Q&A at the front desk, launch parent-facing answers for the top 10 aftercare and insurance questions with hard escalation on anything clinical, and hand over a weekly unanswered-question report that becomes the practice's documentation to-do list."
+    }
+  ],
+  "lead_score": {
+    "pain": 23,
+    "fit": 17,
+    "ability_to_pay": 12,
+    "ease": 11,
+    "strategic": 13,
+    "total": 76,
+    "rationale": "Pain (23/30): unusually direct evidence for a practice this size — the practice is paying to add 30-35 hours/week of front-desk capacity, the posting itself names phones, scheduling, payments, claim submission and appeals, there is no real-time booking, and after-hours calls depend on an answering service with a one-hour callback promise. Held below 30 because no call volume, denial rate, patient count or payer mix is public, and all review themes come from the practice's own curated five-star widget. Fit (17/20): capabilities A, C and D map cleanly onto documented gaps, and no hardware is needed; nothing here requires clinical AI, which is where the evidence base is weakest and liability highest. Ability to pay (12/20): a two-doctor, single-location, non-DSO practice with roughly 8-12 staff (estimate) that offers 401(k) match and profit sharing, so there is real margin but a small budget and no IT function; engagements must be priced to a small-practice P&L. Ease (11/15): two owner-dentists decide, both are visible and reachable, and a pilot can run through existing phone lines and forms — but the practice-management system is unidentified, a HIPAA BAA and security review are unavoidable, and the contact e-mail is a consumer mailbox, which hints at thin back-office infrastructure. Strategic (13/15): the same intake, insurance and knowledge-agent pattern repeats across thousands of independent pediatric dental and ortho practices, and this one is a credible reference given Dr. Backhaus's presidency of the New Jersey Academy of Pediatric Dentistry. Overall: a good first target with a fast path to a small paid pilot; scoring below 80 because the business-side numbers are unverified and the buyer is small.",
+    "sub_score_notes": {
+      "pain": "Documented by the practice's own hiring post, contact page and hours; unquantified volumes.",
+      "fit": "A, C, D all applicable; no clinical/imaging scope required.",
+      "ability_to_pay": "Profitable small practice (401k match, profit sharing) but single site, no IT staff.",
+      "ease": "Two decision makers and a 2-4 week pilot path; offset by unknown PM system, BAA and security review.",
+      "strategic": "Highly repeatable pattern across independent pediatric dental/ortho; owner has state-association reach."
+    }
+  },
+  "best_evidence_signal": "The practice is hiring a 30-35 hr/week Front Desk Receptionist/Insurance Coordinator whose listed duties are a busy phone line, appointment making, payment collection, insurance claim submission and appeals — a single posting that names all four bottlenecks — https://www.wayup.com/i-j-Dental-Front-Desk-Receptionist-Central-Jersey-Pediatric-Dentistry-Orthodontics-006887046316004/",
+  "suggested_channel": "phone",
+  "evidence_thin": false
+}

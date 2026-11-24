@@ -1,0 +1,128 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "status: \"operating\" in rescue.json, and the audit_md/founder_md premise that this is a live business to contact",
+      "problem": "A public bankruptcy record lists a Chapter 7 (liquidation) petition filed 31 July 2026 by \"Molnar Roofing, Inc.\" in the US Bankruptcy Court for the District of New Jersey, case 26-18658, trustee Daniel E. Straffi, docket entries 31 Jul - 17 Aug 2026 (https://whofiledbankruptcy.com/case/njb/26-18658/, and the same entry in that site's NJ index: https://whofiledbankruptcy.com/court/njb/). The page does not print the debtor's address, so I could not confirm the 513 3rd Ave entity by address, and CourtListener/Justia/PACER could not be opened from here (CAPTCHA/403/per-page login) to check the official docket. Even unconfirmed, the exact company name in the same state makes this a closure signal the audit never looked for: rescue.json's data_gaps mention Yelp, YellowPages, BuildZoom and Google, but not bankruptcy or state registration, and the audit still set status \"operating\". The timing also fits - the site came off the domain between Nov 2025 and Jul 2026, and no review newer than 2019 was found anywhere. Sending the \"Hi Steve ... your website link shows an error\" email or the walk-in opener to a company in Chapter 7 liquidation would be a real error.",
+      "fix": "Before any outreach: check case 3:26-bk-18658 on PACER (or ask a court runner), and check the NJ business entity record for Molnar Roofing Inc, to confirm whether the debtor is the 513 3rd Ave roofer. If it is, mark the business closed, drop it from the rescue list, keep the audit internal, and do not contact. If it is not, record that check with its URL in data_gaps and only then treat status as operating."
+    },
+    {
+      "claim": "audit_md: \"Same result at desktop and 390 px phone width (screenshots taken)\"; rescue.json lists shot-desktop-molnarroofinginc.png and shot-mobile390-molnarroofinginc.png; founder_md offers to show the screenshots",
+      "problem": "Neither image file exists in this task folder (only brief.md, log.jsonl, rescue.json, session/, stderr.txt), so the screenshots cannot be inspected and the claim that they were taken is unsupported as delivered. The outreach draft promises the owner \"I saved screenshots ... would a short call suit you\", so this is not cosmetic.",
+      "fix": "Write both PNGs into the task folder and reference them from rescue.json, or delete the parenthetical and the screenshot offer from founder_md. I re-tested the live state myself and it matches, so only the evidence files are missing."
+    },
+    {
+      "claim": "audit_md: a GoDaddy parking page \"passes visitors to a third-party ad page\"",
+      "problem": "What a visitor actually lands on is a third-party article page (dot-services.org, psystem=PW) that returns \"Access Denied\", so no advertisement was ever displayed to the auditor. Calling it an \"ad page\" is an inference stated as observed fact (rescue.json hedges to \"article/ad page\"; audit_md does not).",
+      "fix": "Say \"a third-party article page that returns 'Access Denied'\", or add \"(looks like an ad page, but it would not load)\"."
+    },
+    {
+      "claim": "audit_md: \"The registration is paid to 6 August 2027\"",
+      "problem": "RDAP gives an expiration date, not a payment record. \"Paid to\" overstates the source (the audit's own inference block correctly says only \"expires\").",
+      "fix": "\"The domain is registered through 6 August 2027 (expiry date on the public registry record)\"."
+    },
+    {
+      "claim": "founder_md: \"Hi Steve,\" and open questions about what \"Steve\" wants; walk-in opener",
+      "problem": "The only source for the name is a Dec 2019 BestProsInTown review that refers to the roofer as Steve; nothing on the Google profile, Birdeye, CLAD or the archived site confirms he is the current owner or still there. It is an unlabelled inference used in a first-contact message.",
+      "fix": "Add to open questions that the name is unconfirmed (from a 2019 review) and use \"Hello\" / \"Hi there\" in the draft until the owner is confirmed."
+    },
+    {
+      "claim": "fix step 2: the archived copy's text is \"theirs to reuse\"",
+      "problem": "Reasonable but not stated by any source - ownership of the archived text is assumed, not shown, and the archive is a third-party copy.",
+      "fix": "Hedge it (\"use the archived copy as a reference for their own wording\") or have them write fresh copy and treat the archive as a prompt."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "molnarroofinginc.com root serves a small GoDaddy parking stub whose script sends the browser to /lander",
+      "source_url": "https://molnarroofinginc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "It ends on the exact final_url recorded (dot-services.org article, psystem=PW, trafficTarget=gd) with title \"Access Denied\"",
+      "source_url": "https://www.dot-services.org/articles/choosing-roofing-supplies-and-contractors.html?psystem=PW&domain=molnarroofinginc.com&oref=https%3A%2F%2Fmolnarroofinginc.com%2F&trafficTarget=gd",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No certificate warning appears, so HTTPS is not the failure",
+      "source_url": "https://molnarroofinginc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 2008-08-06, expires 2027-08-06, last changed 2022-09-12, registrar GoDaddy.com, LLC",
+      "source_url": "https://rdap.org/domain/molnarroofinginc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nameservers NS21/NS22.DOMAINCONTROL.COM and client delete/renew/transfer prohibitions in place",
+      "source_url": "https://rdap.org/domain/molnarroofinginc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile lists molnarroofinginc.com, 513 3rd Ave North Brunswick Township NJ 08902, (732) 846-0466, 5.0 rating, \"Add hours\" (no hours)",
+      "source_url": "https://www.google.com/maps/place/Molnar+Roofing+Inc/@40.4683503,-74.4479622,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67c201ffef9:0x358a52857264f48!8m2!3d40.4683503!4d-74.4479622!16s%2Fg%2F1tdrg9f9",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CLAD Siding listing links molnarroofinginc.com and the same North Brunswick address and phone",
+      "source_url": "https://www.cladsiding.com/contractors/new-jersey/north-brunswick-township/molnar-roofing-inc/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye profile is unclaimed and shows 4.8 from 5 reviews",
+      "source_url": "https://reviews.birdeye.com/molnar-roofing-inc-165459006575678",
+      "result": "confirmed"
+    },
+    {
+      "claim": "An archived copy shows the real GoDaddy Website Builder site live on 13 November 2025",
+      "source_url": "https://web.archive.org/web/20251113060336/https://www.molnarroofinginc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The domain was a GoDaddy parking lander (LANDER_SYSTEM=PW, parking-lander scripts) by 17 July 2026",
+      "source_url": "https://web.archive.org/web/20260717115842/https://molnarroofinginc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BestProsInTown shows reviews from Dec 2019 and Jun 2017 only",
+      "source_url": "https://www.bestprosintown.com/nj/north-brunswick/molnar-roofing-inc-/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Identity: local North Brunswick roofer, not a chain - archived site says over 30 years serving Central New Jersey; the similar molnarroofing.com is Wm. Molnar Roofing of Brownstown, Michigan, a different firm",
+      "source_url": "https://molnarroofing.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Status \"operating\" (current trading)",
+      "source_url": "https://whofiledbankruptcy.com/case/njb/26-18658/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Official docket for case 26-18658 could be read to confirm the debtor's address",
+      "source_url": "https://www.courtlistener.com/?q=%22Molnar+Roofing%22&type=r",
+      "result": "could not open"
+    },
+    {
+      "claim": "Screenshot files shot-desktop-molnarroofinginc.png and shot-mobile390-molnarroofinginc.png exist in the task folder",
+      "source_url": "file://shot-desktop-molnarroofinginc.png",
+      "result": "not found"
+    },
+    {
+      "claim": "The redirect destination is an advertisement page",
+      "source_url": "https://www.dot-services.org/articles/choosing-roofing-supplies-and-contractors.html?psystem=PW&domain=molnarroofinginc.com&oref=https%3A%2F%2Fmolnarroofinginc.com%2F&trafficTarget=gd",
+      "result": "not found"
+    },
+    {
+      "claim": "\"Steve\" is the owner/contact to name in outreach",
+      "source_url": "https://www.bestprosintown.com/nj/north-brunswick/molnar-roofing-inc-/",
+      "result": "not found"
+    },
+    {
+      "claim": "audit_md body is at most 300 words (counted 295 including headings) and contains no prices, no accusation, and the cause is labelled an inference",
+      "source_url": "rescue.json",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "Medium"
+}

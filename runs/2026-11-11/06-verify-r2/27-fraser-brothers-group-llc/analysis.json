@@ -1,0 +1,90 @@
+{
+  "business": "Fraser Brothers Group, LLC",
+  "industry": "insurance (independent multi-line agency)",
+  "town": "Edison, NJ",
+  "opportunities": [
+    {
+      "title": "24/7 intake and quote-request triage agent across the three agency brands",
+      "capability": "A",
+      "problem": "Every inbound lead channel is human-gated and weekday-only. Quote requests arrive through embedded Agency Revolution web forms (separate personal and commercial form IDs) or by phone; there is no online booking, no instant quote and no chat widget anywhere on the site, and all three offices close between 4:15 PM and 5:00 PM on weekdays. A request submitted at 6 PM Friday is not acknowledged until Monday, and because Edison, Belford (DeLaurier) and Tinton Falls (Kennedy & Ward) run separate names, phone numbers and hours, someone has to decide manually which office and which producer owns each lead.",
+      "evidence": [
+        "Site offers only 'Request a Quote' web forms plus a generic contact form, with no booking, scheduling or instant-quote tool; forms are embedded Agency Revolution scripts with separate personal and commercial form IDs — https://www.fraserbrothers.com/",
+        "Office hours are weekday-only and differ by location: Edison Mon-Fri 8:15 AM-4:15 PM, Belford 9:00 AM-5:00 PM, Tinton Falls 8:30 AM-4:30 PM — https://www.fraserbrothers.com/contact",
+        "Three offices operate under three separate agency brand names with separate phone and fax lines, implying duplicated intake and manual routing across locations — https://www.fraserbrothers.com/contact",
+        "Product scope spans personal lines, ~10 commercial niches and life/health/Medicare, i.e. an inbound request needs line-of-business classification before it can be routed — https://www.fraserbrothers.com/services",
+        "Profile inference: quote intake is human-gated and likely a bottleneck for after-hours and peak demand, since leads arriving evenings or weekends wait until the next business day — https://www.fraserbrothers.com/contact"
+      ],
+      "agent_design": "Event-driven agent triggered by (a) webhook from the Agency Revolution personal and commercial form submissions, (b) missed-call/voicemail-to-text on the three published office numbers, and (c) inbound email to the office addresses. It normalizes each contact into a lead record, runs a short clarifying exchange by email/SMS (3-5 questions: address, effective date, current carrier, driver/property or business details), classifies line of business and niche (e.g. contractor vs restaurant vs personal auto), scores urgency and likely fit, proposes the owning office/brand and producer, drafts a carrier-appetite shortlist from a curated appetite matrix the agency signs off on, and offers a callback or meeting slot from the office calendar. Systems touched: Agency Revolution form webhooks, the office calendar, email/SMS, and the agency management system/CRM as the system of record. Human approval gate: the agent never quotes a price, binds coverage or gives coverage advice; it queues a ready-to-work lead plus a drafted reply for a producer to approve and send during business hours, and a daily exception queue catches anything it could not classify or that named a claim."
+      ,
+      "why_not_DIY": "This is not a website chatbot. It needs multi-turn clarification by email and SMS, write-back into a CRM/AMS of record, calendar availability logic per office, per-brand routing rules, and a full audit trail on nonpublic personal information (life/health inquiries can carry medical detail). GLBA Safeguards expectations (designated Qualified Individual, encryption, MFA, service-provider oversight) apply to the vendor handling that data. A chatbot subscription can draft text but cannot open, update and reconcile records across three brands without silent failures — and silent failures here are lost commissions."
+      ,
+      "impact_estimate": {
+        "range": "$20,000-$50,000 per year of redeployed intake and administrative time, plus reduced lead decay that is not counted here",
+        "assumptions": "Assumes 0.4-1.0 FTE-equivalent of current intake/triage work is handled or pre-packaged by the agent, priced at the NJ median for Customer Service Representatives of $47,740/yr (10th pct $35,520, 90th pct $72,040), loaded at 1.2-1.3x for benefits and overhead. No conversion-lift or revenue figure is claimed because no call-volume or close-rate data is public; the 14% average productivity gain in the customer-support study is treated as an analogue ceiling, not a forecast, and that study is an NBER working paper (revised Nov 2023, later published in QJE 140(2), 2025) covering 5,179 support agents, not insurance agencies.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "4 weeks: connect the Agency Revolution personal and commercial forms plus one office phone line (Edison) for one line of business (personal auto/home); deliver 24/7 acknowledgement, 3-5 question qualification, brand/office routing, calendar callback offers and a human-approval queue; dashboard reporting after-hours volume, time-to-first-response and classification accuracy against a producer-reviewed sample of 50 leads."
+    },
+    {
+      "title": "Commercial-lines document agent for certificates of insurance, endorsements, renewals and carrier submissions",
+      "capability": "A",
+      "problem": "Seventeen staff service roughly 40 carrier markets across personal, commercial and life/health, including niche commercial programs (auto dealers, contractors, restaurants, liquor liability, bonds, cyber, E&O, workers comp). The only client 'self-service' is a generic secure upload link on a third-party CRM portal, which still requires a person to open each file, identify what it is, extract the details and route it. Commercial work in those niches needs per-carrier applications, supplementary forms and certificates, so per-account paperwork is high relative to headcount.",
+      "evidence": [
+        "Secure document intake runs through a third-party CRM upload portal (crm.bridge.insure) rather than an agency-branded portal, so files land without structured metadata and must be read and routed by hand — https://www.fraserbrothers.com/",
+        "Agency represents about 40 carriers including Travelers, Hartford, Chubb, AIG, CNA, Liberty Mutual, Nationwide, Progressive, Selective, Philadelphia, Zurich, MetLife, Mutual of Omaha and Aflac — https://www.fraserbrothers.com/companies-we-represent",
+        "Commercial appetite covers auto dealers, contractors, restaurants, liquor liability, bonds, cyber liability and E&O, each with distinct applications, supplemental forms and certificates — https://www.fraserbrothers.com/services",
+        "Team page lists 17 named staff across the three offices (9 Edison, 6 Tinton Falls, 2 Belford) serving that book — https://www.fraserbrothers.com/meet-the-team",
+        "O*NET lists 'prepare claim forms and policy documents and review them for completeness, contacting insureds to obtain missing information', 'enter and re-key insurance and claims data', and 'modify, update or process existing policies for changes in coverage' among core tasks of Claims and Policy Processing Clerks (43-9041) — https://www.onetonline.org/link/summary/43-9041.00",
+        "Profile inference: COI, renewal and endorsement requests probably consume a large share of staff time, because the only self-service mechanism is a generic upload portal that still requires a human to read and route each file — https://www.fraserbrothers.com/"
+      ],
+      "agent_design": "Agent watches the Bridge CRM upload folder/notification email and the shared service inbox, classifies each attachment (COI request, loss run, endorsement request, renewal application, ACORD form, cancellation notice), extracts named insured, policy numbers, limits, effective dates and requested changes, then: drafts the certificate in the agency/carrier template, assembles a renewal submission packet mapped to each carrier's requirement list, and sends a templated request to the client for any missing field. It writes a structured record and status into the agency management system and runs SLA timers with escalation to the assigned account manager. Human approval gate: every certificate and every coverage determination or endorsement is reviewed and released by a licensed staff member; any extraction below a confidence threshold goes straight to a person rather than being guessed."
+      ,
+      "why_not_DIY": "Heterogeneous ACORD and carrier-specific forms do not parse reliably with off-the-shelf tools, and the agent must write back to an AMS and respect per-carrier submission rules. Coverage determinations and certificates are the tasks most exposed to errors-and-omissions claims, so the design requires a human release step plus a defensible audit trail — and life/health and commercial financial files bring GLBA and medical-data handling requirements that a consumer AI subscription cannot satisfy. Carrier appetite rules also mean answers must be retrieval-grounded in filed guidelines, not free-form generation."
+      ,
+      "impact_estimate": {
+        "range": "$25,000-$60,000 per year of document-handling time, with error and rework reduction left uncounted",
+        "assumptions": "Assumes 0.4-1.0 FTE-equivalent of document intake, extraction and chasing is absorbed, priced at the NJ median for Insurance Claims and Policy Processing Clerks of $59,810/yr (10th pct $47,070, 90th pct $77,130), loaded 1.2-1.3x. Assumes (inference, unverified) that 30-50% of that role's time at an agency of this size is document intake/triage rather than client conversation. No E&O loss or carrier-commission-accuracy savings are included. Note that claim payout research (InsClaimBench, an arXiv preprint, not peer-reviewed) shows high atomic-rule accuracy alongside much lower joint decision-plus-amount accuracy, which is why this design keeps a human release step and claims no straight-through automation.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-9041.00?st=NJ"
+      },
+      "complexity": "High",
+      "pilot_scope": "4 weeks: one document class only (incoming certificate-of-insurance requests) for one office, fed from the Bridge upload portal and the shared inbox; deliver classification, field extraction, a drafted certificate and a reviewer queue, with accuracy measured on a 100-document labelled set and minutes-per-request measured before and after. AMS write-back and multi-carrier submission packets are explicitly out of pilot scope."
+    },
+    {
+      "title": "Carrier-guideline and agency-SOP knowledge agent for the 17-person service team",
+      "capability": "C",
+      "problem": "Coverage explanation and policy comparison is the core daily task of the staff, and it is spread thin: 17 people across three offices and three brand names, ~40 carrier appointments, and distinct programs from personal flood and umbrella through restaurant, liquor liability, bonds, cyber and Medicare supplement. The agency's own site effectively outsources 'who do I call' to a published carrier directory because staff and clients constantly need carrier-specific claims and service numbers, and claims intake is phone-first during office hours. Coverage interpretation is also the agency's highest E&O exposure, so answers must trace to a specific form or carrier guideline rather than to a model's memory.",
+      "evidence": [
+        "Agency publishes each of its ~40 carriers' claims and service phone numbers as a standing reference page, indicating frequent carrier-specific lookup — https://www.fraserbrothers.com/companies-we-represent",
+        "Claims page directs clients to call the office during regular business hours, with carrier 24-hour lines as the after-hours fallback — https://www.fraserbrothers.com/claims-center",
+        "O*NET lists 'explain policy features, advantages and disadvantages and compare coverage options for each client' as a core task of Insurance Sales Agents (41-3021) — https://www.onetonline.org/link/summary/41-3021.00",
+        "O*NET lists 'review policy terms to determine whether a loss is covered' and 'log every interaction' among core CSR tasks (43-4051) — https://www.onetonline.org/link/summary/43-4051.00",
+        "Product scope runs from personal auto/home/flood/umbrella to commercial auto dealers, contractors, restaurant, liquor liability, bonds, cyber, E&O and life/health/Medicare, i.e. many distinct form sets held by a small team — https://www.fraserbrothers.com/services",
+        "Industry brief constraint: quoting and binding must follow each carrier's filed rules, so automation must be retrieval-grounded in carrier guidelines rather than free-form generation — https://arxiv.org/abs/2511.07794"
+      ],
+      "agent_design": "Retrieval agent over an ingested corpus the agency controls: its own SOPs and coverage-checkup procedures, top carrier appointment/appetite guides, policy form jackets, and the published carrier claims/service directory. Staff ask in plain language ('does this homeowner form cover a detached garage used for a home business?', 'who handles a flood claim for [carrier] after 4 PM?') and get an answer with the form/guide citation, a confidence flag and the exact carrier contact. It also drafts the client-facing plain-English coverage explanation for staff to send. Role-based access so benefits/life files are visible only to benefits staff. Human approval gate: the agent never issues a final coverage determination to a client — every client-facing coverage answer is reviewed by a licensed producer, and low-confidence questions are escalated to the carrier or a senior producer with a pre-written question."
+      ,
+      "why_not_DIY": "A generic assistant has no access to the agency's carrier guides, forms or SOPs, will hallucinate coverage language, and creates E&O exposure on every wrong answer. Doing this properly means permissioned retrieval over the agency's own documents, citation-level answers, role-based access to medical and financial data, contractual no-training-on-client-data terms and vendor security review under GLBA Safeguards — plus a workflow that routes unresolved questions to carriers instead of guessing. The insurance-domain benchmark literature (CUFEInse, an arXiv preprint) finds general models weak on compliance adaptation and business adaptation even when they know domain terminology."
+      ,
+      "impact_estimate": {
+        "range": "$12,000-$35,000 per year in reduced lookup and research time, plus faster claim routing that is not priced",
+        "assumptions": "Assumes 15-25% of CSR lookup/research time is recovered across 0.75-1.5 FTE-equivalent of service capacity, priced at the NJ median for Customer Service Representatives of $47,740/yr, loaded 1.2-1.3x. Escalation cost is bounded by the NJ median for Insurance Underwriters ($96,220) to show why avoiding senior-staff interruptions matters; no reduction in escalations is assumed in year one. Research support for this magnitude is indirect: the NBER working paper on generative AI in customer support (14% average, 34% for novices, later published in QJE 140(2), 2025) measured support resolution rates, not insurance coverage research, and is used only as a directional analogue.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "3 weeks: ingest the agency's own SOPs, the carrier service directory and the appointment guides or form jackets for its top 10-15 carriers; build a 150-200 question gold set with two staff members; staff-only access (no client logins) in Teams or the agency intranet; report answer accuracy, citation correctness and median time-to-answer versus the current lookup process."
+    }
+  ],
+  "lead_score": {
+    "pain": 21,
+    "fit": 18,
+    "ability_to_pay": 13,
+    "ease": 12,
+    "strategic": 14,
+    "total": 78,
+    "rationale": "Pain evidence (21/30): the pain signals are concrete and self-published — no online booking or instant quote, weekday-only hours closing as early as 4:15 PM, phone-first claims intake, three brands with three phone lines, and document intake that lands unstructured in a third-party upload portal — but none of it is quantified: no review text, job postings, call volume, revenue or premium figures could be verified, so the size of the pain is inferred from operating choices rather than measured. Fit (18/20): all three opportunities land squarely in capabilities A, C and D, using integration points the business demonstrably already runs (Agency Revolution forms, Bridge CRM uploads, FMG Suite site). Ability to pay (13/20): a 17-person, three-office agency with ~40 carrier appointments has real budget for tooling and a clear headcount-cost rationale, but no revenue, premium volume or IT staff is public, and principal-level sign-off is the whole buying committee. Ease (12/15): one named principal, no procurement layer, a modern cloud web stack and no evidence of a locked-down on-prem system make a short pilot feasible; the main unknown is which agency management system holds the book, which could delay system-of-record integration. Strategic (14/15): the pattern — multi-brand independent agency, ~40 markets, thin service team, hours-bound intake, generic vendor content — repeats across thousands of independent agencies in NJ and nationally, so a working build here is a repeatable product rather than a one-off."
+  },
+  "best_evidence_signal": "Claims intake is phone-first during weekday-only office hours and the site offers no online booking or instant quoting anywhere, so evening and weekend demand waits for the next business day — https://www.fraserbrothers.com/claims-center",
+  "suggested_channel": "email",
+  "evidence_thin": true
+}

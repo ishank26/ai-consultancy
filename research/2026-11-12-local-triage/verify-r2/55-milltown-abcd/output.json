@@ -1,0 +1,110 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Diamond Electrical Services (group C, town = Milltown, address Unknown, phone 732-310-6239)",
+      "problem": "Contradicted on town: the only listing I could open places it at 34 Hardenburg Ln, East Brunswick NJ with the same phone (732-310-6239); its own site confirms the phone but publishes no street address. Hardenburg Ln is outside the borough, so this is most likely an out-of-zone service-area contractor the mapper itself flagged as unconfirmed.",
+      "fix": "Drop the entry, or re-record it as East Brunswick / out-of-zone unless an in-borough address is confirmed."
+    },
+    {
+      "claim": "SEKA Moving and Storage NJ (group C, address Unknown)",
+      "problem": "Probable excluded brand operation rather than a local independent: sekamoving.com markets the same brand across New Jersey, New York and Pennsylvania with a separate phone number per state, i.e. the Milltown entry looks like one branch of a multi-location company. Its only cited evidence is a moveBuddha lead-generation review page, which is weak for an in-zone business.",
+      "fix": "Verify local ownership; if it is a branch of the multi-state SEKA brand, remove it under the chain/brand exclusion like Home Depot and Kessler were removed."
+    },
+    {
+      "claim": "Bell & Stockton Real Estate, phone 732-789-9935",
+      "problem": "The agency's own contact page gives (732) 317-4805, not the recorded 732-789-9935 (which matches the NJTGO directory instead). Address 171 N Main St, Milltown is confirmed.",
+      "fix": "Use the number published on bellstockton.com, or record both with a note."
+    },
+    {
+      "claim": "Hair Studio 21 at 21 Ford Ave; Sam's Salon at 118 Ryders Ln; Rose Colored Salon at 11 Cottage Ave (all group B)",
+      "problem": "The cited BestProsInTown pages load and show reviews and hours, but none of them publishes a street address, so the recorded addresses are unverifiable from the cited source. 'Hair Studio 21' at '21 Ford Ave' in particular reads like the number in the shop name was matched to an address (inference, not evidence).",
+      "fix": "Confirm each address from a page that actually prints it (map listing, owner site) before the address is used; downgrade to 'Unknown' if it cannot be sourced."
+    },
+    {
+      "claim": "Paul A. Mezzo & Co., PC website https://www.paulamezzocpa.com/",
+      "problem": "The website could not be loaded (fetch failed) and the site is not among the entry's cited source_urls, so the firm's existence rests on the TaxBuzz page and the 4th of July sponsor page. Address/phone 440 S Main St Suite 9, 732-227-1700 are corroborated by a CPA directory listing.",
+      "fix": "Treat the firm as a directory-backed lead, or drop the website field until the site responds."
+    },
+    {
+      "claim": "Four entries rest on a single thin directory with nothing else: CSI NA (66 N Main St), Vanguard Communications (100 Ryders Ln #139), Hollosi Home Improvement (no address), Temperature Masters (192 Riva Ave, NJTGO only)",
+      "problem": "Only one low-quality directory page (LocationsNear, NJ Business Directory, Manta, NJTGO) supports each; I could not find any second source for them, and Temperature Masters did not appear in an HVAC sweep that did surface other Milltown HVAC firms. Risk of stale or non-trading businesses.",
+      "fix": "Verify trade status by phone before any outreach, or park these four in a low-confidence bucket rather than the working list."
+    },
+    {
+      "claim": "Coverage gaps",
+      "problem": "Five in-borough eligible businesses surfaced in my own searches are absent from the list: Village Nail Salon (100 Ryders Ln #9, nail salon), Sunflower Spa (100 Ryders Ln, massage/wellness), Even Flow Gutter Systems (184 S Main St, gutters/roofing), Law Offices of Leon Matchin (86 Washington Ave, law firm), New Vision Electric LLC (40 Albert Ave, electrical). Coverage still clears the 70% bar (16 of 21 eligible found were already listed), so this is a completeness gap, not a failure.",
+      "fix": "Add the five, starting with the two personal-care and two contractor entries that already have directory addresses, and check whether 86 Washington Ave hosts more than the two law firms already recorded."
+    },
+    {
+      "claim": "Continental Pools (group C) notes flag it as a 'possible branch of a regional operator'",
+      "problem": "Checked and resolved the other way: continentalpoolsnj.com describes Continental Pools LLC as a family business serving greater Middlesex/Monmouth/Mercer/Somerset/Union counties, with no branch list. It looks like a local independent with a residential/office address, so the exclusion worry is unfounded.",
+      "fix": "Replace the 'may be a chain' caveat with 'family-owned NJ pool service, keep'."
+    },
+    {
+      "claim": "Private preschool entries: Montessori Children's House, Good Day Preschool & Kindergarten, Buds Playschool",
+      "problem": "These are private childcare/school businesses. I read them as in-scope small businesses (same logic as the dance and martial-arts schools kept), not the excluded 'schools' category, but the call is a judgement one and the mapper did not state it.",
+      "fix": "State the interpretation in caveats so the exclusion rule is applied consistently; drop them if 'schools' is meant to cover preschools."
+    },
+    {
+      "claim": "Nonprofit entries: Karma Cat Rescue Society, Rescued By Lacey",
+      "problem": "Both are animal-rescue nonprofits (one with a Milltown storefront, one with no address and only a Facebook page plus the sponsor list). They are not excluded types, but they are weak commercial prospects and the second has no in-borough address evidence.",
+      "fix": "Keep only if the owner wants nonprofit coverage; otherwise deprioritise."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Volk Insurance Group LLC, independent insurance agency, Milltown (440 S Main St, 732-257-2212)", "source_url": "https://www.njtgo.com/towns/M/Milltown/Business%20and%20Shopping/Milltown_Business_and_Shopping.html", "result": "confirmed"},
+    {"claim": "volkinsurance.com is Volk Insurance Group's own website", "source_url": "https://volkinsurance.com/", "result": "could not open"},
+    {"claim": "Bell & Stockton Real Estate, 171 N Main St, Milltown, website bellstockton.com", "source_url": "https://bellstockton.com/contact/", "result": "confirmed"},
+    {"claim": "Law Office of James M. Curran, Milltown office at 86 Washington Ave, 732-241-0994", "source_url": "https://www.currantriallaw.com/contact-us/", "result": "confirmed"},
+    {"claim": "SN Family Dental at 180 N Main St, Milltown NJ 08850, 732-247-3684, own website snfamilydental.com/milltown", "source_url": "https://www.snfamilydental.com/milltown", "result": "confirmed"},
+    {"claim": "Charles A. Lynn Jr., DDS / Lynn Family Dentistry is a Milltown dental practice with site clynndds.com", "source_url": "https://clynndds.com/", "result": "confirmed"},
+    {"claim": "M/M Hair Design salon at 84 N Main St, Milltown 08850, site mmhairdesignnj.com", "source_url": "https://www.mmhairdesignnj.com/", "result": "confirmed"},
+    {"claim": "Kelly & Company Hair Design at 89 N Main St, Milltown, 732-246-1818, site kellyhairdesign.com", "source_url": "https://kellyhairdesign.com/contact-us/", "result": "confirmed"},
+    {"claim": "Ruth Pearl Hair Studio at 63 N Main St, Milltown, 848-244-3695, site ruthpearlhairstudio.org", "source_url": "https://www.ruthpearlhairstudio.org/inquire", "result": "confirmed"},
+    {"claim": "Macor's Barbershop, 37 S Main St, Milltown, 732-253-7043, site macorsbarbershop.com", "source_url": "https://www.njtgo.com/towns/M/Milltown/Business%20and%20Shopping/Milltown_Business_and_Shopping.html", "result": "confirmed"},
+    {"claim": "The Muscle Mill is an operating Milltown gym with site musclemill.co (40th-year banner, owner named)", "source_url": "https://www.musclemill.co/", "result": "confirmed"},
+    {"claim": "Phoenix Fitness Personal Training Studio is in Milltown, site phx.fitness, owner Ken Racioppi", "source_url": "https://phx.fitness/", "result": "confirmed"},
+    {"claim": "Flow Yoga at 30 N Main St, Milltown 08850, 732-319-0215, site flowyogamilltown.com", "source_url": "https://gymsnj.com/business/flow-yoga/", "result": "confirmed"},
+    {"claim": "Core Spine & Wellness (Dr. Frank Spano, DC), 15 N Main St, Milltown, 732-253-5450, site corespineandwellness.com", "source_url": "https://www.corespineandwellness.com/", "result": "confirmed"},
+    {"claim": "Navarro Family Roofing operates in/from Milltown at 260 Ryders Ln, 551-310-2400", "source_url": "https://navarrofamilyroofing.com/milltown-nj/", "result": "confirmed"},
+    {"claim": "Sam's Kitchen & Bath has a Milltown NJ showroom, site samskitchenbath.com", "source_url": "https://www.samskitchenbath.com/", "result": "confirmed"},
+    {"claim": "Bronson & McNamara Memorial Home at 152 North Main Street, Milltown, 732-828-0151", "source_url": "https://bronsonandmcnamaramemorial.com/contact-us", "result": "confirmed"},
+    {"claim": "Good Day Preschool & Kindergarten at 7 W. Lakewood Ave, Milltown, 732-246-2352", "source_url": "https://www.gooddaypreschool.com/contact/", "result": "confirmed"},
+    {"claim": "Crabiel Home for Funerals is a Milltown funeral home at 170 N Main St, 732-828-1331", "source_url": "http://www.crabiel.com/", "result": "confirmed"},
+    {"claim": "Dee's Flowers & Gifts is a Milltown NJ flower shop, site deesflowersandgift.com", "source_url": "https://www.deesflowersandgift.com/", "result": "confirmed"},
+    {"claim": "Berg Insurance Agency at 214 S Main St, Milltown, 732-846-7161", "source_url": "https://www.njtgo.com/towns/M/Milltown/Business%20and%20Shopping/Milltown_Business_and_Shopping.html", "result": "confirmed"},
+    {"claim": "Spak Joseph C CPA at 133 S Main St, Milltown, 732-545-3622", "source_url": "https://www.njtgo.com/towns/M/Milltown/Business%20and%20Shopping/Milltown_Business_and_Shopping.html", "result": "confirmed"},
+    {"claim": "Temperature Masters at 192 Riva Ave, Milltown, 908-202-9535", "source_url": "https://www.njtgo.com/towns/M/Milltown/Business%20and%20Shopping/Milltown_Business_and_Shopping.html", "result": "confirmed"},
+    {"claim": "Hua Kang Health Center is an operating massage center in Milltown (40 reviews)", "source_url": "https://www.bestprosintown.com/nj/milltown/hua-kang-health-center-/", "result": "confirmed"},
+    {"claim": "Embodied Wellness is an operating Milltown bodywork studio at 77 N Main St Suite 2", "source_url": "https://www.bestprosintown.com/nj/milltown/embodied-wellness-/", "result": "confirmed"},
+    {"claim": "Hair Studio 21 is at 21 Ford Ave, Milltown", "source_url": "https://www.bestprosintown.com/nj/milltown/hair-studio-21-/", "result": "not found"},
+    {"claim": "Rose Colored Salon is at 11 Cottage Ave, Milltown", "source_url": "https://www.bestprosintown.com/nj/milltown/rose-colored-salon-/", "result": "not found"},
+    {"claim": "Mill Electric Inc. is at 69 Van Liew Ave, Milltown", "source_url": "https://www.bestprosintown.com/nj/milltown/electricians/", "result": "contradicted"},
+    {"claim": "Diamond Electrical Services is a Milltown (08850) business", "source_url": "https://www.bestprosintown.com/nj/milltown/electricians/", "result": "contradicted"},
+    {"claim": "Continental Pools at 26 Highland Dr, Milltown is an independent (not a chain branch) pool company", "source_url": "https://continentalpoolsnj.com/", "result": "confirmed"},
+    {"claim": "SEKA Moving and Storage NJ is a Milltown-based moving company", "source_url": "https://www.movebuddha.com/movers/nj/seka-moving-and-storage-nj-363902/", "result": "confirmed"},
+    {"claim": "LGH Electric, LLC at 18 Pershing Ave, Milltown", "source_url": "https://www.bestprosintown.com/nj/milltown/electricians/", "result": "confirmed"}
+  ],
+  "coverage": {
+    "searches": [
+      "roofing contractor Milltown NJ 08850",
+      "dentist Milltown NJ 08850",
+      "hair salon Milltown NJ",
+      "electrician Milltown NJ 08850",
+      "HVAC contractor Milltown NJ",
+      "attorney law office Milltown NJ Washington Ave",
+      "massage spa nail salon Milltown NJ Ryders Lane"
+    ],
+    "eligible_found": 21,
+    "already_listed": 16,
+    "missing": [
+      {"name": "Village Nail Salon", "town": "Milltown", "source_url": "https://www.fresha.com/lvp/village-nail-salon-ryders-lane-milltown-kq7LNn"},
+      {"name": "Sunflower Spa", "town": "Milltown", "source_url": "https://reviews.birdeye.com/sunflower-spa-170073174462443"},
+      {"name": "Even Flow Gutter Systems", "town": "Milltown", "source_url": "https://www.roof.info/roofing-contractors/new-jersey/milltown/"},
+      {"name": "Law Offices of Leon Matchin, LLC", "town": "Milltown", "source_url": "https://www.bbb.org/us/nj/milltown/profile/lawyers/law-offices-of-leon-matchin-0221-90096533"},
+      {"name": "New Vision Electric, LLC", "town": "Milltown", "source_url": "https://www.yellowpages.com/milltown-nj/electricians"}
+    ]
+  },
+  "confidence": "Medium"
+}

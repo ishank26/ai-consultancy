@@ -1,0 +1,458 @@
+{
+  "business": "Rich's Plumbing Heating & Air Conditioning, Inc.",
+  "opportunity": "24/7 intake and emergency-triage voice agent on the single main line, with web-form instant response",
+  "problem": {
+    "summary": "Every path to Rich's funnels into one phone number, (732) 257-1663, published identically for the East Brunswick, Elizabeth and Bayville offices, and the site offers only a two-step request form posting to /api/lead - no scheduler, chat or slot picker. Someone in a small office has to answer, triage, book and follow up for three locations, while the company advertises 24/7 emergency service with a stated 60-minute response and publishes the safety questions staff must ask (where the leak or backup is, is water still flowing, was the shutoff closed, is there an electrical hazard). After hours that same small staff or an unknown answering service has to run those questions before anyone decides to roll a truck, and the 'tech is on the way' courtesy calls customers praise are also manual. The gap is not lead generation - a near-daily blog, 12+ town pages and coupons supply demand - it is low-cost, always-on intake that can triage a burst pipe or gas smell safely, capture the job and hand hazards to a human.",
+    "current_tools": [
+      {
+        "tool": "Single published phone line (732) 257-1663 for all three offices, staffed by office personnel",
+        "evidence": "Same number listed for East Brunswick, Elizabeth and Bayville; pages say callers reach 'our friendly, knowledgeable office staff'. No per-location lines.",
+        "source_url": "https://www.richsplumbing.com/contact-us/"
+      },
+      {
+        "tool": "Two-step web lead form posting to /api/lead, Cloudflare Turnstile, optional SMS-consent checkbox - no calendar or time-slot picker",
+        "evidence": "Form asks phone + name, then property address, job comments and SMS consent; emergency page says online scheduling is for 'service requests' and directs active emergencies to call.",
+        "source_url": "https://www.richsplumbing.com/contact-us/"
+      },
+      {
+        "tool": "Manual emergency triage script described on the emergency page (leak location, water still flowing, shutoff closed, electrical hazard)",
+        "evidence": "The page lists what staff ask callers before dispatching, alongside a 60-minute emergency response claim qualified by conditions and location.",
+        "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/"
+      },
+      {
+        "tool": "No live chat, SMS bot or online scheduler anywhere on the site",
+        "evidence": "Review of the published site found only phone plus form as contact paths; no booking engine on a modern Astro site.",
+        "source_url": "https://www.richsplumbing.com/contact-us/"
+      },
+      {
+        "tool": "Manual outbound 'technician en route' calls made by office staff",
+        "evidence": "Customers praise office staff calling ahead of arrival, indicating that notification workflow is human-driven and high-touch.",
+        "source_url": "https://www.richsplumbing.com/"
+      }
+    ]
+  },
+  "solution": {
+    "approach": "build-on-platform",
+    "design": "Put a managed voice-AI agent in front of the main line only for the windows staff cannot cover: after hours, weekends/holidays, and peak overflow (ring-no-answer or busy forwarding from the existing carrier, so nothing about the current number or phone menu changes). The agent runs Rich's own published safety questions in a fixed order, escalates four hard-stop cases immediately (gas smell/CO, water still flowing with no shutoff, sewage backup, electrical hazard near water), classifies the call as emergency / same-day / routine, captures address, access notes, equipment type and age, and then either books against whatever calendar we are given or promises a callback window and texts the caller a confirmation. Hazardous calls are warm-transferred with a spoken summary to the on-call technician's mobile; if the transfer fails it falls back to the previous answering path rather than dropping the call. It never quotes prices, never diagnoses, never promises the 60-minute arrival figure. Every call produces a transcript, a structured record pushed to the business's existing /api/lead endpoint plus a side store, and an exception queue item for any low-confidence classification, which staff clear daily. Triage logic, escalation rules, safety copy and the log schema live in the founder's own thin layer (Python) so the same core can be pointed at another platform, or moved to self-hosted LiveKit Agents if the client later wants a private deployment.",
+    "components": [
+      {
+        "component": "Voice agent platform (telephony, STT/LLM/TTS orchestration, transfer, transcripts) - pilot build",
+        "tool": "Vapi (Core success package + pay-as-you-go minutes)",
+        "why": "Managed telephony and models remove SIP/latency work from a one-founder build; pricing page publishes hosting at $0.05/min plus model pass-through and shows an all-in estimate of $82-$129/mo at 1,000 minutes; Core at $29/mo adds 30-day raw data retention and 10 concurrent calls, which the 14-day pay-as-you-go tier does not.",
+        "source_url": "https://vapi.ai/pricing"
+      },
+      {
+        "component": "Alternative managed platform (priced per minute all-in, HIPAA-ready, SMS add-on)",
+        "tool": "Retell AI pay-as-you-go",
+        "why": "Publishes $0.07-$0.31/min all-in, $2/month per phone number, $0.01 per SMS, no charge for SIP trunking/custom telephony - useful as a second quote or fallback if Vapi's model latency or transfer behaviour disappoints on test calls.",
+        "source_url": "https://www.retellai.com/pricing"
+      },
+      {
+        "component": "Warm transfer of hazardous calls to the on-call technician",
+        "tool": "Vapi Transfer Call tool (phone number in E.164 or SIP URI, with warm-transfer modes)",
+        "why": "Officially documented mechanic for routing an active call to a human or an external phone system, with warm-transfer modes that tell the destination who is calling; this is the safety-critical piece of the design.",
+        "source_url": "https://docs.vapi.ai/tools/transfer-call"
+      },
+      {
+        "component": "Gas / CO hard-stop script",
+        "tool": "Written policy based on PSE&G gas-leak guidance",
+        "why": "PSE&G instructs people who smell gas to leave immediately, move at least 350 feet away, avoid switches/phones inside, and call 911 or 1-800-880-7734. The agent must say exactly that and end the call, never troubleshoot - this is a script requirement, not a conversation.",
+        "source_url": "https://nj.pseg.com/outageandgasleaks/ismellgas"
+      },
+      {
+        "component": "Lead write-back into the business's existing intake",
+        "tool": "Rich's existing /api/lead endpoint on the Astro site",
+        "why": "The site is already a modern static Astro build posting JSON to /api/lead, so the agent can feed the same pipeline they already read instead of creating a second inbox.",
+        "source_url": "https://www.richsplumbing.com/contact-us/"
+      },
+      {
+        "component": "Booking / availability check (interim, if no dispatch software is exposed)",
+        "tool": "Google Calendar API",
+        "why": "REST API with events and free/busy, usable to check technician slots and create a booking without buying new software; standard usage is free under the published quota (charges for usage above quota are announced for later in 2026 with 90 days' notice).",
+        "source_url": "https://developers.google.com/workspace/calendar/api/guides/quota"
+      },
+      {
+        "component": "Caller SMS confirmation and 'tech en route' text",
+        "tool": "Twilio Programmable Messaging (or the client's existing SMS path)",
+        "why": "US SMS is $0.0083 per 160-character segment plus carrier fees (AT&T $0.0035, T-Mobile $0.0045 outbound), published on Twilio's current pricing page; the site already collects SMS consent, so the confirmation text is transactional and tied to the caller's own request.",
+        "source_url": "https://www.twilio.com/en-us/sms/pricing/us"
+      },
+      {
+        "component": "Call log, transcripts and audit trail",
+        "tool": "Platform transcripts plus a founder-hosted Postgres/SQLite store (nightly export)",
+        "why": "Pilot success is judged on escalation accuracy, so every hazardous call needs transcript + classification + transfer outcome in one place the client can read; retention rules sit in the client's own store, not the vendor dashboard.",
+        "source_url": "https://vapi.ai/pricing"
+      },
+      {
+        "component": "Reusable core for later private/self-hosted deployment",
+        "tool": "LiveKit Agents (Apache-2.0) with SIP telephony and the open-source 'frontdesk' example",
+        "why": "Open-source framework that can run the whole stack on the consultancy's own servers, includes a receptionist example with a calendar API and a built-in test/simulation harness - the escape hatch if a client refuses cloud voice processing or the monthly platform fee becomes the objection.",
+        "source_url": "https://github.com/livekit/agents"
+      }
+    ],
+    "integrations": [
+      {
+        "system": "Existing main line (732) 257-1663 / client phone system",
+        "method": "Carrier-level conditional forwarding (after-hours schedule + ring-no-answer/busy overflow) to the agent's number; alternative is a SIP trunk into the platform. Nothing is ported, so rollback is one setting.",
+        "confirmed_in_docs": false,
+        "cost": "No platform charge: Retell lists 'No charge for SIP trunking/custom telephony'; Vapi counts a Vapi-provisioned number inside its Core package. The client's own carrier forwarding cost is unknown.",
+        "source_url": "https://www.retellai.com/pricing"
+      },
+      {
+        "system": "On-call technician mobile (emergency escalation)",
+        "method": "Transfer Call tool: destination in E.164 or SIP URI, warm-transfer mode so the tech hears a summary before connecting",
+        "confirmed_in_docs": true,
+        "cost": "Included in the per-minute usage; Vapi's estimate lists a transport fee of $0 for Vapi telephony/SIP",
+        "source_url": "https://docs.vapi.ai/tools/transfer-call"
+      },
+      {
+        "system": "Rich's website intake (/api/lead)",
+        "method": "Server-side POST of the structured call record; endpoint is observable in the public form but its payload schema is undocumented",
+        "confirmed_in_docs": false,
+        "cost": "No licence cost (client-owned endpoint)",
+        "source_url": "https://www.richsplumbing.com/contact-us/"
+      },
+      {
+        "system": "Technician availability / calendar",
+        "method": "Google Calendar API events + free/busy queries, or the dispatch system's API if one exists at discovery (ServiceTitan/Housecall Pro/Jobber all publish APIs but the portal pages blocked automated reads, so nothing is assumed)",
+        "confirmed_in_docs": true,
+        "cost": "Free under the standard Calendar API quota; charges above quota announced for later in 2026",
+        "source_url": "https://developers.google.com/workspace/calendar/api/guides/quota"
+      },
+      {
+        "system": "Caller SMS confirmation",
+        "method": "Programmable Messaging send to the number that just called (transactional), with the consent language already on the form",
+        "confirmed_in_docs": true,
+        "cost": "$0.0083 per outbound US segment + carrier fees ($0.0035 AT&T, $0.0045 T-Mobile); A2P 10DLC registration fees apply and are set out separately by Twilio",
+        "source_url": "https://www.twilio.com/en-us/sms/pricing/us"
+      },
+      {
+        "system": "Transcript/record export",
+        "method": "Platform API/webhook to the founder's store; platform retains 30 days raw on the Core package",
+        "confirmed_in_docs": true,
+        "cost": "Included in $29/month Core package",
+        "source_url": "https://vapi.ai/pricing"
+      }
+    ],
+    "human_in_the_loop": "Four hard gates: (1) any gas smell, CO alarm, or electrical hazard near water - the agent says the PSE&G exit/911 instruction, then transfers to the on-call tech or tells the caller to hang up and dial 911, and it never troubleshoots; (2) any call the agent classifies as emergency - warm transfer to the on-call technician, no autonomous dispatch commitment; (3) any low-confidence or out-of-script call - transfer to the previous path and an exception-queue item cleared by staff the same morning; (4) pricing, diagnosis, warranty and refund questions - the agent captures the request and books a visit, never quotes. Staff also approve the script wording, the escalation matrix and every SMS template before the pilot goes live, and review 100% of emergency-flagged transcripts during week one."
+  },
+  "build_plan": {
+    "phases": [
+      {
+        "phase": "1. Discovery and line audit",
+        "steps": [
+          "Map the real call flow for all three offices: who answers today, what happens after hours, which carrier/PBX is in use, what the on-call rotation is",
+          "Pull 30-60 days of call detail records and the missed-call/abandon log to size after-hours and overflow volume",
+          "Identify the dispatch/scheduling system of record and whether it exposes an API, a calendar feed, or only a screen",
+          "Confirm which of Rich's published emergency questions are mandatory and get written sign-off on the wording"
+        ],
+        "founder_days": "2 (inference)",
+        "client_provides": "Carrier/PBX access or a forwarding change, admin access to the dispatch tool, 30-60 days of call records, on-call rotation and hours, a named approver"
+      },
+      {
+        "phase": "2. Safety policy and triage script",
+        "steps": [
+          "Write the decision tree: gas/CO, active water, sewage, electrical hazard, no-heat in freezing weather, everything else",
+          "Write the hard-stop gas/CO script against PSE&G's exit-350ft-call-911 guidance and get the client to sign it",
+          "Define transfer targets, timeouts, fallback, and what the caller hears if the transfer fails",
+          "Draft the disclosure line (recording + AI) and the no-price/no-diagnosis/no-60-minute rule set"
+        ],
+        "founder_days": "2 (inference)",
+        "client_provides": "Emergency-question list, on-call numbers, holiday and hours calendar, approval of safety copy in writing"
+      },
+      {
+        "phase": "3. Agent build on the platform",
+        "steps": [
+          "Configure assistant, voices, models, latency budget and interruption handling",
+          "Implement tools: transfer-to-oncall, SMS confirmation, POST to /api/lead, calendar free/busy and booking",
+          "Load service-area and service-list knowledge (towns, trades, plan customers treated as priority) with no price data at all",
+          "Instrument logging: transcript, classification, confidence, transfer outcome, exception flag"
+        ],
+        "founder_days": "4 (inference)",
+        "client_provides": "Service area list, service categories, SMS wording approval, /api/lead destination details, test phone numbers"
+      },
+      {
+        "phase": "4. Telephony, escalation and failover wiring",
+        "steps": [
+          "Set after-hours/weekend forwarding and overflow rules with the carrier, keeping the existing number",
+          "Wire the on-call rotation so the transfer rings the right tech by day and time",
+          "Build failover to the prior answering path and a watchdog that alerts the founder if the agent is unreachable",
+          "Test with real handsets on the real carrier, including a failed-transfer rehearsal"
+        ],
+        "founder_days": "2 (inference)",
+        "client_provides": "Carrier account access or the carrier's ticket, on-call schedule file, permission to change forwarding"
+      },
+      {
+        "phase": "5. Simulation and adversarial testing",
+        "steps": [
+          "Run 60-100 scripted test calls (burst pipe, gas smell, angry caller, caller demanding a price, thick accent, background noise, Spanish-speaking caller)",
+          "Score escalation accuracy and containment; fix the top failures",
+          "Have two office staff listen to 20 calls and sign off on tone and question order"
+        ],
+        "founder_days": "2 (inference)",
+        "client_provides": "Two staff for a 90-minute review session, decision on Spanish coverage"
+      },
+      {
+        "phase": "6. Pilot operation, tuning and report",
+        "steps": [
+          "Go live on after-hours and overflow only; daily 15-minute transcript review in week one, then twice weekly",
+          "Tune prompts, transfer wording and confidence thresholds from real calls",
+          "Deliver the containment report: calls handled end-to-end, escalations, booked/callback counts, misses, accuracy audit"
+        ],
+        "founder_days": "4 over 4 weeks (inference)",
+        "client_provides": "A staff reviewer for 15 min/day in week one, one decision-maker for the go/no-go call"
+      }
+    ],
+    "pilot": {
+      "scope": "One number, one city desk, after-hours and overflow only: 4 weeks on (732) 257-1663 covering nights, weekends and overflow rings, with Rich's four published safety questions, a gas/CO hard-stop, emergency warm transfer to the on-call technician, SMS confirmation, booking-or-callback capture, daily exception queue and full transcripts. Daytime in-hours calls, dispatch software, the phone menu and all pricing conversations stay exactly as they are. No outbound marketing, no price quotes, no warranty advice.",
+      "weeks": "4 weeks of operation after ~3 weeks of build (5-6 weeks from agreement to report; inference)",
+      "success_metrics": [
+        "Escalation accuracy: 100% of gas/CO, active-water and electrical-hazard calls escalated or scripted to 911 - audited by staff against transcripts, zero tolerance",
+        "Containment: 60%+ of after-hours/overflow calls fully handled without a staff call back (target from Vapi/NBER-style throughput reasoning is not transferable, so this is a pilot target, inference)",
+        "Capture: every answered call produces a structured record; 95%+ land in /api/lead or the side store with address and job type",
+        "No unanswered after-hours calls during the pilot window; failed transfers fall back rather than drop",
+        "Booked-or-callback count vs baseline, and time-to-first-contact on web form requests under 5 minutes during staffed hours",
+        "Staff load: 5+ hours/week of after-hours and overflow answering removed (baseline minus pilot weeks)",
+        "Caller experience: zero complaints attributable to the agent in the first four weeks; average call duration and hang-up rate no worse than the baseline sample"
+      ],
+      "baseline_method": "Four weeks before go-live, measured from the carrier's call detail records plus a one-page tally the office completes at the end of each shift (calls received outside hours, who answered, time to answer, how many went to voicemail or were missed, how many booked). Plus a reference set of 20 recent calls staff rate for what a good triage sounds like. No transcript archive exists today, so the baseline is counts and staff estimates, not conversations - that limitation gets stated in the report.",
+      "exit_criteria": "Continue to paid deployment only if, at week 4: (a) zero safety misroutes and at least 90% of flagged emergencies transferred correctly on audit; (b) containment at or above 60%; (c) no dropped calls caused by the agent; (d) office staff confirm at least 5 hours/week recovered; (e) the owner agrees the tone is good enough to answer customers on the main line. Otherwise the pilot is stopped, the client keeps the transcript archive and the triage script, and no monthly fee starts."
+    }
+  },
+  "competitors": [
+    {
+      "vendor": "Sameday AI",
+      "product": "AI CSR - Launch / Scale plans",
+      "fit_for_this_business": "Closest vertical fit among the AI options: answers after-hours and weekend calls, includes 3 locations, English/Spanish, and advertises pro scheduling with ServiceTitan; contract and customisation depth are demo-gated.",
+      "price": "Launch: $449 per month, starts with 500 minutes. Scale: $789 per month, starts with 1,000 minutes. Enterprise: custom. Overage billed at the plan's per-minute or per-message rate.",
+      "source_type": "vendor pricing page",
+      "source_url": "https://sameday.ai/pricing"
+    },
+    {
+      "vendor": "Marlie AI",
+      "product": "AI receptionist - Basic / Standard / Pro / Premium",
+      "fit_for_this_business": "Cheapest credible AI option for a small office: calendar booking and call transfer start on the $99 tier, which is roughly what this pilot needs; transfer to only one number on Standard, which is thin for a three-office on-call rotation.",
+      "price": "Basic $49/month (250 min, then $0.35/min, no call transfer); Standard $99/month (500 min, then $0.35/min, transfer to 1 number); Pro $199/month (1,000 min, then $0.30/min); Premium $399/month (2,000 min, then $0.25/min). 14-day free trial, cancel anytime.",
+      "source_type": "vendor pricing page",
+      "source_url": "https://www.marlie.ai/pricing"
+    },
+    {
+      "vendor": "Ruby",
+      "product": "Virtual receptionist (human) plus optional AI enhancements",
+      "fit_for_this_business": "Human warmth and 24/7 live answering, custom scripts and FAQ capture; but they are not plumbers, cannot triage a gas smell to a technician's mobile on their own authority, and minutes are expensive at plumbing call lengths.",
+      "price": "$250/month for 50 minutes; $395/month for 100 minutes; $720/month for 200 minutes; $1,725/month for 500 minutes. Chat: $143/month for 10 chats.",
+      "source_type": "vendor pricing page",
+      "source_url": "https://www.ruby.com/pricing/"
+    },
+    {
+      "vendor": "AnswerConnect",
+      "product": "24/7 live answering service",
+      "fit_for_this_business": "Real people answering after hours with customisable scripting and CRM integrations - a solid 'keep a human' answer, but triage quality depends on the agent on shift and there is no self-improving script.",
+      "price": "200 minutes $350/month + $49.99 setup fee, $2.50 per additional minute; 300 minutes $395/month, no setup fee, $1.85 per additional minute; 400 minutes $575/month + $49.99 setup, $1.85 per additional minute.",
+      "source_type": "vendor pricing page",
+      "source_url": "https://www.answerconnect.com/plans-direct"
+    },
+    {
+      "vendor": "MAP Communications",
+      "product": "Answering service - Pay As You Go / Business / Enterprise / Premium",
+      "fit_for_this_business": "Lowest published entry point for live after-hours answering and a realistic budget benchmark; no dispatch integration or plumbing-specific safety triage beyond the script the client writes.",
+      "price": "Pay As You Go $49/month + $1.37 per additional minute; Business $179/month with 125 minutes, $1.30/min over; Enterprise $339/month with 250 minutes, $1.28/min over; Premium $649/month with 500 minutes, $1.28/min over. 24/7 coverage, no long-term contract.",
+      "source_type": "vendor pricing page",
+      "source_url": "https://www.mapcommunications.com/pricing/"
+    },
+    {
+      "vendor": "Avoca",
+      "product": "AI CSR for home services (plumbing, HVAC, electrical)",
+      "fit_for_this_business": "Purpose-built AI receptionist for the trades with a ServiceTitan integration mentioned on the vendor site; nothing published to compare on price, so it cannot be benchmarked until a quote is requested - and requesting a quote is outside this research's read-only limit.",
+      "price": "Not public - quote only (vendor site checked 2026-10-21 by a third-party directory)",
+      "source_type": "third-party",
+      "source_url": "https://receptionistratings.com/tools/avoca"
+    },
+    {
+      "vendor": "Hire a part-time dispatcher (the do-it-with-a-person option)",
+      "product": "Employee or part-timer covering evenings and overflow",
+      "fit_for_this_business": "The real alternative the company already lives with: a person can triage safely, sell, and know the customers, but cannot be in two places, costs a full wage for partial coverage, and is exactly the seat the audit says is overloaded.",
+      "price": "New Jersey dispatchers (SOC 43-5032): median $54,590/year, average $26.25/hour, 10th percentile $39,730/year, 90th percentile $79,890/year (BLS May 2025 wage data via O*NET). Employer benefit costs are 30.0% of total compensation for private industry (BLS ECEC, June 2026), implying roughly a 1.43x load on wages - so an after-hours-only hire is a five-figure annual commitment before any scheduling headache.",
+      "source_type": "government data",
+      "source_url": "https://www.onetonline.org/link/localwages/43-5032.00?st=NJ"
+    }
+  ],
+  "running_costs": [
+    {
+      "item": "Voice platform usage (STT + LLM + TTS + telephony) for after-hours and overflow",
+      "cost": "roughly $30-$97/month at 360-750 minutes; Vapi's own calculator shows $82-$129/month total at 1,000 minutes",
+      "basis": "Scaling Vapi's published 1,000-minute estimate ($50 hosting at $0.05/min + $10 Deepgram + $8-$45 OpenAI + $15-$24 ElevenLabs) down to a 120-250 calls/month x 3-minute assumption (inference: volumes unpublished)",
+      "source_url": "https://vapi.ai/pricing"
+    },
+    {
+      "item": "Platform success package",
+      "cost": "$29/month",
+      "basis": "Vapi Core: 10 concurrent calls, 5 numbers, 30-day raw data retention, email support with 2-business-day SLA - needed because the free tier retains raw data only 14 days, too short for a 4-week audit",
+      "source_url": "https://vapi.ai/pricing"
+    },
+    {
+      "item": "Phone number / telephony transport",
+      "cost": "$0 incremental in the Core package (Vapi telephony/SIP transport fee shown as $0); $2/month per number if a Retell number is used instead",
+      "basis": "The client keeps its existing number and forwards to the agent, so no new line is marketed; published platform pricing",
+      "source_url": "https://vapi.ai/pricing"
+    },
+    {
+      "item": "Caller SMS confirmations",
+      "cost": "about $2.50-$5/month at 200-400 one-segment messages",
+      "basis": "$0.0083 per outbound US segment plus carrier fees of $0.0035 (AT&T) to $0.0045 (T-Mobile) per message; message volume is an assumption (inference)",
+      "source_url": "https://www.twilio.com/en-us/sms/pricing/us"
+    },
+    {
+      "item": "SMS registration (A2P 10DLC brand/campaign)",
+      "cost": "Not verified - Twilio states A2P 10DLC senders are subject to carrier registration onboarding fees but the fee table could not be read",
+      "basis": "Gap to close with the client's carrier or Twilio before go-live; kept out of the fee model rather than guessed",
+      "source_url": "https://www.twilio.com/en-us/sms/pricing/us"
+    },
+    {
+      "item": "Booking/calendar API",
+      "cost": "$0 under the standard quota (charges above quota planned for later in 2026, with 90 days' notice)",
+      "basis": "Google Calendar API usage limits page",
+      "source_url": "https://developers.google.com/workspace/calendar/api/guides/quota"
+    },
+    {
+      "item": "Log store and monitoring",
+      "cost": "$0 assumed incremental (founder's existing small VPS plus platform transcripts)",
+      "basis": "Inference: the consultancy already self-hosts; no new licence. Not researched as a line item",
+      "source_url": "https://vapi.ai/pricing"
+    },
+    {
+      "item": "Founder care time (not cash)",
+      "cost": "2-3 hours/month for transcript review, tuning and client check-in",
+      "basis": "Inference from pilot workload; priced into the monthly fee below rather than billed separately",
+      "source_url": "https://vapi.ai/pricing"
+    }
+  ],
+  "suggested_pricing": {
+    "pilot_fee": "$1,200 for the 4-week pilot (after-hours and overflow only, up to 600 minutes included), credited in full against the setup fee if the client continues. Inference, reasoned as: below half of the audit's low-end annual labour figure ($27,297), roughly 2.7 months of Sameday AI's Launch plan ($449/mo), and high enough that the client assigns a reviewer and a forwarding change instead of treating it as a demo. This consultancy has no client results to point to, so the pilot is priced as paid discovery with a deliverable report, not as a free trial.",
+    "setup_fee": "$2,400 one-time on continuation: safety script and sign-off, telephony forwarding and failover, on-call escalation matrix, /api/lead and calendar integration, SMS templates, simulation suite, staff training and the transcript archive. Inference from ~15 founder-days at a deliberately sub-market day rate for a side business; benchmark: AnswerConnect charges only $49.99 setup for a scripted human service, Sameday publishes no setup fee and gates everything behind a demo - a visible setup fee is defensible only because the work is custom to Rich's triage and its own systems.",
+    "monthly_fee": "$450/month including 500 minutes, then $0.30/minute overage, month-to-month with 30 days' notice; a $299/month 250-minute tier as a fallback if the pilot shows low after-hours volume. Inference, benchmarked against Sameday Launch ($449/mo, 500 min, 3 locations), Marlie Standard ($99/mo, 500 min, one transfer number), AnswerConnect ($350/mo, 200 min), Ruby ($720/mo, 200 min) and MAP ($179/mo, 125 min). Cash cost to run is roughly $60-$130/month at pilot volumes, so the fee covers margin plus 2-3 hours of founder care; against the audit's $27,297-$47,771/year labour estimate, year-one cost (pilot credited + setup + 12 months = about $6,600) is 4-7x below the low end of the benefit, which is the number to put in front of the owner.",
+    "reasoning": "Labeled inference throughout: no Rich's-specific volumes, call counts or close rates are published, so fees are anchored to published competitor prices and to the audit's labour estimate rather than to measured savings. All three numbers are deliberately below the human-answering-service ceiling (Ruby at $720/month for 200 minutes) and at or below the closest AI competitor (Sameday at $449/month for 500 minutes), because a one-founder consultancy cannot win on brand or 24/7 support and has to win on price, customisation to Rich's own safety questions, and staying month-to-month."
+  },
+  "leverage": [
+    {
+      "point": "Open-source voice stack that can be self-hosted later: LiveKit Agents is Apache-2.0, ships SIP telephony integration, a test/simulation harness and a 'frontdesk' receptionist example with a calendar API - the same core could be deployed privately for any client who objects to cloud voice processing.",
+      "source_url": "https://github.com/livekit/agents"
+    },
+    {
+      "point": "The transfer-to-human mechanic is a documented platform feature, not bespoke engineering: Vapi's Transfer Call tool routes to a phone number or SIP URI with warm-transfer modes, so the risky part of the build is script design, not plumbing.",
+      "source_url": "https://docs.vapi.ai/tools/transfer-call"
+    },
+    {
+      "point": "Cheap, per-minute platform economics mean one build can be replicated across other NJ plumbing/HVAC contractors: the same triage script (water, gas, sewage, electrical, no-heat), the same escalation matrix and the same log schema become a vertical product at $0.07-$0.31/minute all-in on Retell, or $0.05/minute hosting plus model pass-through on Vapi.",
+      "source_url": "https://www.retellai.com/pricing"
+    },
+    {
+      "point": "Rich's own stack is unusually integration-friendly for a contractor: an Astro static site with a JSON /api/lead endpoint and an existing SMS-consent checkbox, so the agent plugs into intake rather than replacing it.",
+      "source_url": "https://www.richsplumbing.com/contact-us/"
+    },
+    {
+      "point": "Recurring, reusable ROI arithmetic: BLS O*NET NJ dispatcher wages (median $54,590/yr) plus BLS ECEC benefit share (30.0% of total compensation) give a defensible loaded-hour figure for every contractor pitch in this vertical, and the loaded cost is higher than the audit assumed (1.43x vs 1.25x), which makes the savings case conservative.",
+      "source_url": "https://www.bls.gov/news.release/ecec.nr0.htm"
+    },
+    {
+      "point": "Free booking layer: Google Calendar API standard usage costs nothing under the published quota, so a pilot can book real slots without buying dispatch software or waiting on a ServiceTitan integration.",
+      "source_url": "https://developers.google.com/workspace/calendar/api/guides/quota"
+    }
+  ],
+  "edge_vs_competitors": "Real but narrow. Against AI competitors (Sameday $449/mo, Marlie $99-$399/mo) the edge is customisation and integration: the agent is built around Rich's own four published safety questions, a PSE&G-aligned gas/CO hard-stop, a three-office on-call rotation and their actual /api/lead endpoint - and it stays month-to-month with month-one tuning included. Against human answering services (Ruby $250-$1,725/mo, AnswerConnect $350+/mo, MAP $179+/mo) the edge is unbounded 24/7 capacity at a flat fee and a complete transcript audit trail for every emergency call, which no answering service hands back in structured form. There is also a local edge: Milltown to East Brunswick is a short drive, so a walk-in, an on-site script review and a same-week fix are possible in a way a national vendor's support queue is not. Where it has no edge: brand trust, SOC 2-style assurances, a real uptime SLA (Vapi's 99% SLA starts at the $999/month Pro tier, not the plan proposed here), 24/7 human support, and any proof of results - this would be the consultancy's first engagement of this type and must be sold as such. A one-founder side business also cannot credibly promise 'we answer when your agent breaks at 2am' without a fallback to the client's existing path.",
+  "risks_compliance": [
+    {
+      "issue": "Recording and AI disclosure on inbound calls",
+      "rule_or_source": "New Jersey is a one-party-consent state: N.J.S.A. 2A:156A-4(d) permits interception when the person is a party to the communication or one party has given prior consent, subject to exceptions for criminal/tortious purpose.",
+      "confirmed": true,
+      "mitigation": "Greeting states that the call is handled by an AI assistant and may be recorded; keep consent language identical to the site's existing SMS consent; 90-day default transcript retention with client-controlled deletion; never record payment card data.",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239"
+    },
+    {
+      "issue": "AI voice and TCPA exposure",
+      "rule_or_source": "FCC Declaratory Ruling FCC 24-17 (Feb 8, 2024) confirmed AI-generated human voices count as an 'artificial or prerecorded voice' under the TCPA, so consent and caller-ID rules apply to AI-voiced calls.",
+      "confirmed": true,
+      "mitigation": "Scope the pilot to inbound calls only and no outbound marketing or cold calling; the only outbound contact is a transactional reply to a caller who just called and left a number. Keep an opt-out (STOP) on every text and a suppression list. No autodialed campaigns from this system.",
+      "source_url": "https://docs.fcc.gov/public/attachments/DOC-404036A1.pdf"
+    },
+    {
+      "issue": "Gas leak / CO emergency handling by a non-technician",
+      "rule_or_source": "PSE&G's public guidance: exit the building, move at least 350 feet away, do not use switches or phones inside, then call 911 or PSE&G's 24-hour gas emergency line 1-800-880-7734; do not try to find or fix the leak.",
+      "confirmed": true,
+      "mitigation": "Hard-coded script branch that recites the exit/911 instruction and ends the call; the agent never troubleshoots, never advises a shutoff for gas, and never books a gas call as routine. Client signs the script in writing; 100% of gas/CO calls audited during the pilot.",
+      "source_url": "https://nj.pseg.com/outageandgasleaks/ismellgas"
+    },
+    {
+      "issue": "SMS consent and A2P registration for the confirmation texts",
+      "rule_or_source": "Twilio's published pricing page states that US A2P 10DLC and RCS senders are subject to carrier registration onboarding fees, on top of $0.0083 per outbound segment and per-carrier fees.",
+      "confirmed": true,
+      "mitigation": "Register a 10DLC brand/campaign (or send from the client's already-registered number) before any text goes out; only text the number that just called; include business name and opt-out; the site already carries an SMS-consent checkbox to align with.",
+      "source_url": "https://www.twilio.com/en-us/sms/pricing/us"
+    },
+    {
+      "issue": "Homeowner personal data (address, property access notes, call recordings)",
+      "rule_or_source": "New Jersey's comprehensive privacy law (P.L.2023, c.266) applies only to controllers processing personal data of at least 100,000 consumers a year, or 25,000 consumers plus revenue from selling data - a contractor of this size is almost certainly below both thresholds.",
+      "confirmed": true,
+      "mitigation": "Even though the law likely does not apply, treat the data contractually: written DPA with the client, minimum necessary fields, transcripts in the client's own store, no use of client call data to train any model, no sharing with third parties beyond the voice platform and SMS provider.",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2022/AL23/266_.HTM"
+    },
+    {
+      "issue": "Promising the advertised 60-minute emergency response",
+      "rule_or_source": "Rich's own emergency page states a 60-minute response while qualifying that timing varies with conditions and call location - the agent inherits that claim if it repeats it.",
+      "confirmed": true,
+      "mitigation": "Script forbids any arrival-time promise; the agent says a dispatcher will confirm a window and that hazardous calls are being escalated now. Any language about response times is reviewed by the client before go-live.",
+      "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/"
+    },
+    {
+      "issue": "Reliability: a dropped call during a burst pipe is a reputational event on Google",
+      "rule_or_source": "Vapi's pricing page shows a 99% uptime SLA only from the $999/month Pro tier; the proposed Core/pay-as-you-go plans carry response-time SLAs but no uptime SLA.",
+      "confirmed": true,
+      "mitigation": "Ring-no-answer forwarding stays configured as failover to the existing path; watchdog alert to the founder if the agent is unreachable; weekly synthetic test call; during the pilot the client agrees a named human backup for nights the agent fails. Do not sign a 24/7 availability commitment the consultancy cannot staff.",
+      "source_url": "https://vapi.ai/pricing"
+    },
+    {
+      "issue": "Liability if the agent gives wrong safety or warranty information",
+      "rule_or_source": "Could not confirm a specific NJ rule assigning liability for AI-assisted triage; this is a contract question, not a statute found in this research.",
+      "confirmed": false,
+      "mitigation": "Written scope limiting the agent to information capture and escalation, client-owned script approval, professional liability cover for the consultancy, and an indemnity/limitation clause reviewed by a lawyer before the first invoice. Flagged as unverified.",
+      "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/"
+    }
+  ],
+  "feasibility": {
+    "technical_1_5": 4,
+    "commercial_1_5": 3,
+    "weeks_to_pilot": "5-6 weeks from signed pilot agreement to live after-hours coverage (about 3 weeks of build at ~15 founder-days, then 4 weeks of operation; inference). A cut-down 'overflow only, no booking' version could be live in 3 weeks.",
+    "verdict": "Go with conditions",
+    "reasoning": "Technically this is a well-trodden shape: managed voice platform, documented transfer-to-human, SMS and a JSON endpoint that already exists - the hard parts are script design and failover, both of which the founder controls. Commercially the audit's $27,297-$47,771/year labour estimate is large against a $6,600 first-year price, and the closest AI competitor charges $449/month with no customisation to Rich's own safety questions. The conditions are real though: the phone system, dispatch software, after-hours coverage and call volume are all unknown, there is no named decision-maker, the owner is described by reviews as price-sensitive, and a one-founder side business is taking on a 24/7-adjacent promise. So: go, but only after a discovery call that confirms (a) who answers the phone at 9pm today, (b) which carrier/PBX can do conditional forwarding, (c) where bookings are written, and (d) that the client accepts a pilot limited to after-hours and overflow with no price quoting and no arrival-time promises. If after-hours coverage turns out to be a mature answering service with a contract, reframe as overflow-only and price at the $299 tier."
+  },
+  "discovery_questions": [
+    "Who answers the main line after hours and at weekends right now - staff, an answering service, or voicemail? Is there a contract and when does it renew?",
+    "Which phone system or carrier runs (732) 257-1663, and can it do time-of-day and ring-no-answer forwarding to another number without porting?",
+    "What software holds bookings and customer history - ServiceTitan, Housecall Pro, Jobber, a calendar, or paper? Does it have an API or an export?",
+    "How many calls come in per week, how many arrive outside office hours, and how many are missed or abandoned? Can you share 60 days of call records?",
+    "What is the on-call rotation across the three offices, and which mobile should a gas or burst-pipe call reach at 2am?",
+    "Which of the safety questions on your emergency page are mandatory, and would you sign the exact wording the agent will use, including the gas instruction?",
+    "Are there calls the agent must never handle - commercial accounts, warranty claims, plan members, Spanish speakers, angry repeat callers?",
+    "Who owns the 60-minute emergency response promise, and what may the agent say about arrival time?",
+    "What does the /api/lead endpoint accept, and who reads those leads today?",
+    "Who signs off on customer-facing wording, and who would be the named approver during the pilot?"
+  ],
+  "caveats": [
+    "Rich's call volumes, after-hours coverage and ticket sizes are unpublished; every figure derived from them is labelled an inference.",
+    "The audit's labour figure uses a 1.25x benefits load; BLS ECEC data for June 2026 shows benefits at 30.0% of total compensation for private industry (about 1.43x on wages), so the audit's number is conservative - savings may be larger, not smaller.",
+    "No client references, published case studies or audited accuracy figures exist for this consultancy; competitor performance claims (Sameday, Marlie, Avoca, Ruby) are vendor or third-party claims and were not tested.",
+    "Prices were checked on the vendors' own pages in this research session and can change without notice; Vapi's model list and per-minute estimates in particular move often.",
+    "The pilot fee assumes the client's carrier can forward conditionally without porting the number. If it cannot, timelines and price change, and a separate tracking number may be needed.",
+    "Nothing here is legal advice; the recording, contract and liability positions need a lawyer's review before the first invoice."
+  ],
+  "data_gaps": [
+    "No verified information on Rich's phone system, carrier, after-hours answering arrangement, dispatch software or call volume - all blocked behind a discovery call; several vendor portals (Jobber developer docs, ServiceTitan developer portal, Jobber help centre) refused automated reads, so no dispatch-software API is claimed as available.",
+    "No owner or GM name is public, so the buyer and the approval path are unconfirmed.",
+    "Avoca publishes no price (quote-only, confirmed via a third-party directory); ServiceTitan's AI receptionist and Netic also publish no price; PATLive's pricing table is loaded dynamically and could not be read, so PATLive is omitted rather than guessed.",
+    "Twilio's A2P 10DLC registration fee table is JavaScript-rendered and could not be opened; the fees are excluded from the running-cost model instead of estimated.",
+    "The ServiceTitan JPM API reference page could not be extracted, so the integration is listed as conditional on discovery rather than confirmed.",
+    "No source found assigning liability for AI-assisted emergency triage in New Jersey; treated as a contract and insurance question, marked unconfirmed.",
+    "Vapi's page publishes no SMS rate, so SMS is priced from Twilio's own US pricing page; a single-vendor bill may differ.",
+    "Employee count, revenue and fleet size remain unpublished, so ability to pay is inferred only from three offices, consumer financing, a paid maintenance plan and near-daily content production."
+  ]
+}

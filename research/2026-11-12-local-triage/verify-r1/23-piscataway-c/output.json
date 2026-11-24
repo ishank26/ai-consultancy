@@ -1,0 +1,135 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Binsky Home — 281 Centennial Ave, Suite C, Piscataway (HVAC/plumbing/electrical)",
+      "problem": "Wrong town/address. The company's own contact page lists its addresses as 22 Worlds Fair Drive, Suite E, Somerset NJ 08873 and 2000 Cabot Blvd W, Langhorne PA — no Piscataway location. 281 Centennial Ave appears to belong to Binsky & Snyder, the commercial mechanical arm, not the residential 'Binsky Home' entity in this list.",
+      "fix": "Either re-attribute the entry to Binsky & Snyder (commercial mechanical, Piscataway) or drop it; if kept, change address to Somerset and re-test against the zone's base-in-town rule."
+    },
+    {
+      "claim": "Olympus Construction, LLC. — 54 Powers St, Piscataway, phone (732) 418-7111",
+      "problem": "Wrong town. 54 Powers St is in New Brunswick, NJ 08901 (BBB profile is filed under New Brunswick, and Olympus' own site is a New Jersey-wide construction company with no Piscataway address).",
+      "fix": "Remove from the Piscataway zone or move to the New Brunswick zone."
+    },
+    {
+      "claim": "Aura Home Exteriors — 180 Talmadge Rd, Suite 447, Piscataway",
+      "problem": "Wrong town. Talmadge Road is in Edison: BBB files the company at 180 Talmadge Road, Unit 447, Edison NJ 08817. The firm only lists Piscataway among towns it serves.",
+      "fix": "Reclassify as an Edison/out-of-town business serving Piscataway, or drop per the mapper's own rule excluding firms with no Piscataway base."
+    },
+    {
+      "claim": "Greysi and Sons Solutions — general contractor, Piscataway",
+      "problem": "No Piscataway connection found. The only cited source (greysiandsons.com) says it works 'throughout New Jersey' and lists no address, no town and no Piscataway service page. The entry's town is unsupported.",
+      "fix": "Drop, or downgrade to 'NJ-wide, town unknown' until a Piscataway base or Piscataway-specific evidence is found."
+    },
+    {
+      "claim": "Katamount Construction Company — 495 Union Ave, Suite 2C, Piscataway",
+      "problem": "Address unverified. katamountnj.com/contact shows no address at all, and directories (GAF contractor record, company site) place the firm in Middlesex rather than at 495 Union Ave. Only a Google Maps result asserted the Piscataway suite.",
+      "fix": "Verify 495 Union Ave directly (call/city permit record) or move the entry to the Middlesex zone; keep phone (908) 373-1244, which is confirmed."
+    },
+    {
+      "claim": "Excluded types — chain/franchise scan",
+      "problem": "Two entries look like branches of larger multi-location brands rather than Piscataway independents: 'Precision Painting Plus of Edison' (Precision Painting Plus runs at least six NJ offices, including a Piscataway office at 30 Knightsbridge Rd, and markets under one brand) and 'Sciens Building Solutions / Absolute Protective Systems' (its own page states it is 'part of the Sciens Building Solutions network', a multi-state fire/security platform). Both plausibly breach the chains/franchises exclusion.",
+      "fix": "Confirm ownership (franchise/company-owned/corporate branch) and drop both if they are brand branches; keep Absolute Protective Systems only if it is being targeted as the local operating brand with local decision-making."
+    },
+    {
+      "claim": "Precision Painting Plus of Edison — 'Angi profile with 852 reviews'",
+      "problem": "Review volume/scale is consistent with a multi-crew regional brand, not the owner-operator profile the zone is being built for; the entry was already self-flagged 'may be a franchise-style operation'.",
+      "fix": "Treat as out-of-scope unless triage specifically wants multi-location brands; do not spend verification time on it before that decision."
+    },
+    {
+      "claim": "Double D Construction — website/address",
+      "problem": "Minor: the homepage never states the Piscataway address; the 480 Sidney Road address is only confirmed on GAF's contractor record and the company's Piscataway service-area page.",
+      "fix": "Cite the Piscataway service-area page (doubledconstructionnj.com/areas-we-serve/piscataway-nj/) instead of the kitchen/bath page as the primary source."
+    },
+    {
+      "claim": "Kunal Electrical, Inc. — 33 Crestwood St, Piscataway",
+      "problem": "Minor street-suffix error: BBB gives 33 Crestwood Dr, Piscataway 08854 (and a phone of 732-748-9690, which the list omits). Town is correct.",
+      "fix": "Change 'St' to 'Dr'; add phone 732-748-9690 if still current."
+    },
+    {
+      "claim": "Azmo Mechanical Inc. — address 'Unknown'",
+      "problem": "Not an error, just incomplete: the company site places it at 447 S. Washington Ave, Piscataway NJ 08854.",
+      "fix": "Fill in the address."
+    },
+    {
+      "claim": "SevaServe LLC — 'trade unconfirmed'",
+      "problem": "Resolvable: its Birdeye profile describes a Piscataway home-improvement contractor (renovations, additions, kitchens/baths, roofing, handyman) at 1606 W 7th St with phone 908-462-2260.",
+      "fix": "Set category to 'Home improvement / remodeling contractor' and add the phone; 112 reviews, not 114."
+    },
+    {
+      "claim": "Coverage of simple trades",
+      "problem": "Several Piscataway-based eligible businesses surfaced immediately in my own searches and are absent from the list (see coverage.missing), notably a Piscataway-offices commercial roofer and two tree-services with Piscataway offices.",
+      "fix": "Add the missing entries listed in coverage.missing; they add genuine local, owner-operated trade businesses that fit the zone."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Always Comfy LLC is an HVAC contractor at 371 Hoes Ln, Suite 200, Piscataway, phone (908) 488-5559", "source_url": "https://www.alwayscomfy.com/about/contact-us/", "result": "confirmed"},
+    {"claim": "Binsky Home is located at 281 Centennial Ave, Suite C, Piscataway", "source_url": "https://www.binskyhome.com/contact/", "result": "contradicted"},
+    {"claim": "Bullock's Plumbing & Heating is a Piscataway plumbing contractor", "source_url": "https://bphservice.com/", "result": "confirmed"},
+    {"claim": "Azmo Mechanical Inc. is a Piscataway plumbing/backflow firm and backflownj.com is its site (447 S Washington Ave)", "source_url": "https://www.backflownj.com/", "result": "confirmed"},
+    {"claim": "SevaServe LLC is a Piscataway home-improvement contractor at 1606 W 7th St", "source_url": "https://reviews.birdeye.com/sevaserve-llc-168990526281094", "result": "confirmed"},
+    {"claim": "CJ Scotti Services is a Piscataway roofing/siding/gutter contractor, phone (732) 424-0454", "source_url": "https://www.cjscottiservices.com/", "result": "confirmed"},
+    {"claim": "Double D Construction is at 480 Sidney Rd, Piscataway, phone (732) 981-0800", "source_url": "https://doubledconstructionnj.com/areas-we-serve/piscataway-nj/", "result": "confirmed"},
+    {"claim": "A & S General Construction LLC is a Piscataway general contractor, phone (908) 222-0901", "source_url": "https://asgcnj.com/areas-of-service/piscataway-general-contractor/", "result": "confirmed"},
+    {"claim": "Stelton Cabinet & Supply Co. is a Piscataway cabinet/kitchen-bath firm", "source_url": "https://www.steltoncabinet.com/", "result": "confirmed"},
+    {"claim": "star22home / 5daybath is a Piscataway kitchen and bath remodeler", "source_url": "https://star22home.com/", "result": "confirmed"},
+    {"claim": "Tyler Painting & Contractor is a Piscataway painting contractor", "source_url": "https://tylerpaintingcontractor.com/", "result": "confirmed"},
+    {"claim": "SPS Painting LLC is a Piscataway painting contractor", "source_url": "https://www.spspaint.com/", "result": "confirmed"},
+    {"claim": "Landmark Pools & Spa services pools in Piscataway Township", "source_url": "https://www.landmarkpoolsspa.com/pool-services", "result": "confirmed"},
+    {"claim": "Four Seasons Snow & Landscape is Piscataway-based (326 Fitzrandolph Rd), phone (908) 757-4550", "source_url": "https://www.fourseasonssnowandlandscape.com/", "result": "confirmed"},
+    {"claim": "Piscataway Locksmith Corp is a Piscataway locksmith (mobile service)", "source_url": "https://www.piscatawaylocksmithcorp.com/", "result": "confirmed"},
+    {"claim": "Kunal Electrical, Inc. is a Piscataway electrical contractor at 33 Crestwood St", "source_url": "https://kunalelectric.com/", "result": "confirmed"},
+    {"claim": "Greysi and Sons Solutions is a Piscataway-based general contractor", "source_url": "https://www.greysiandsons.com/", "result": "not found"},
+    {"claim": "Smith Fresh & Clean provides house cleaning in Piscataway", "source_url": "https://www.smithfreshclean.com/service-areas/piscataway-nj/", "result": "confirmed"},
+    {"claim": "J.G. ProWash LLC is a Piscataway pressure-washing company", "source_url": "https://www.jgprowash.com/", "result": "confirmed"},
+    {"claim": "B-C Tire & Complete Auto Service is a Piscataway tire/auto shop, phone (732) 985-6100", "source_url": "https://www.bctire.net/", "result": "confirmed"},
+    {"claim": "Bridge Auto Service is at 1036 Stelton Rd, Piscataway, phone (732) 981-0502", "source_url": "https://www.bridgeautopiscataway.com/autobody.html", "result": "confirmed"},
+    {"claim": "Bernard's Honest Sweep LLC serves Piscataway (chimney sweeping)", "source_url": "https://www.bernardshonestsweep.com/", "result": "confirmed"},
+    {"claim": "Community Auto Service is a Piscataway auto repair/towing shop, phone (732) 752-1131", "source_url": "https://www.communityautoserviceincnj.com/towing-service", "result": "confirmed"},
+    {"claim": "J&S Disposal is a Piscataway junk removal/dumpster rental firm at 31 Stelton Rd", "source_url": "https://jsdisposalnj.com/", "result": "confirmed"},
+    {"claim": "RDC Restoration operates a Piscataway hub, phone (908) 253-9000", "source_url": "https://rdcrestoration.com/", "result": "confirmed"},
+    {"claim": "Blue Pools Corp provides pool service in Piscataway, phone (732) 408-3359", "source_url": "https://www.poolsb.com/contact-2/", "result": "confirmed"},
+    {"claim": "Garden State Roofing Piscataway is at 21 Brandywine Cir, Piscataway", "source_url": "https://www.roofingdirect.com/contractors/garden-state-roofing-piscataway/", "result": "confirmed"},
+    {"claim": "Olympus Construction, LLC. is at 54 Powers St, Piscataway, phone (732) 418-7111", "source_url": "https://olympusenterprisesllc.com/", "result": "contradicted"},
+    {"claim": "Aura Home Exteriors is Piscataway-based at 180 Talmadge Rd, Suite 447", "source_url": "https://www.auraroof.com/contact", "result": "contradicted"},
+    {"claim": "Katamount Construction Company is at 495 Union Ave, Suite 2C, Piscataway", "source_url": "https://katamountnj.com/contact/", "result": "not found"},
+    {"claim": "Precision Painting Plus of Edison is a single local Piscataway painting business", "source_url": "https://www.precisionpaintingplus.net/locations/new-jersey-painters/", "result": "contradicted"},
+    {"claim": "Sciens Building Solutions / Absolute Protective Systems (51 Suttons Ln) is an independent local security installer", "source_url": "https://www.sciensusa.com/service-area/piscataway-nj/", "result": "contradicted"}
+  ],
+  "coverage": {
+    "searches": [
+      "roofing contractor Piscataway NJ",
+      "electrician Piscataway NJ",
+      "landscaping company Piscataway NJ",
+      "plumber Piscataway NJ",
+      "pest control Piscataway NJ",
+      "appliance repair Piscataway NJ",
+      "tree service Piscataway NJ",
+      "house cleaning service Piscataway NJ",
+      "auto repair shop Piscataway NJ",
+      "masonry contractor Piscataway NJ",
+      "flooring contractor Piscataway NJ",
+      "garage door repair Piscataway NJ"
+    ],
+    "eligible_found": 39,
+    "already_listed": 32,
+    "missing": [
+      {"name": "Badger Roofing Company", "town": "Piscataway (600 Prospect Ave, Building B)", "source_url": "https://badgerroofing.com/contact-us/"},
+      {"name": "Disch Tree Experts", "town": "Piscataway (Piscataway office, Middlesex/Somerset/Union service area)", "source_url": "https://dischtreeexperts.com/"},
+      {"name": "New Beginnings Landscaping & Property Maintenance", "town": "Piscataway (382 S. Washington Ave, 908-309-1430)", "source_url": "https://www.superpages.com/piscataway-nj/landscaping"},
+      {"name": "Dial A Maid", "town": "Piscataway (24 Martin Ln, 732-463-1317)", "source_url": "https://www.yellowpages.com/piscataway-nj/maid-butler-services"},
+      {"name": "J. Murray Plumbing, Heating & Construction", "town": "Piscataway (47 Dunbar Ave, 732-947-7559)", "source_url": "https://www.jmurrayphc.com/"},
+      {"name": "EzRME Repair LLC", "town": "Piscataway (100 Academy St, 201-878-8426)", "source_url": "https://www.angi.com/companylist/us/nj/piscataway/ezrme-repair-llc-reviews-131683942.htm"},
+      {"name": "Blue Mountain Landscaping", "town": "Piscataway (665 South Ave, 732-940-0590) — note BBB also carries a Milltown profile for the same firm, so base town needs one call", "source_url": "https://www.bbb.org/us/nj/piscataway/profile/landscape-contractors/blue-mountain-landscaping-0221-90160922/addressId/147929"}
+    ]
+  },
+  "confidence": "High",
+  "data_gaps": [
+    "Only ~32 of ~160 entries were opened or checked against a live page/search result; roughly 30 entries carry no street address and ~25 no phone, so those are guesses by the mapper and untested here.",
+    "BBB, Yellow Pages, Superpages, Angi, HomeAdvisor, BuildZoom and some company sites (alwayscomfy.com, backflownj.com, dailycleaningserv.com) returned HTTP 403 to direct fetch; for those, evidence came from search results quoting the page, which is weaker than an opened page.",
+    "Olympus Construction's New Brunswick address was confirmed only from search-result data (BBB and company site); the BBB profile itself was blocked, so a 30-second call or city permit lookup should confirm it before deletion.",
+    "Birdeye, Porch, Thumbtack, CARFAX, Nextdoor and Procore profiles were not opened directly; entries resting on them (e.g. Vinci Plumbing, RAS Electric, FAME Construction, JRJ Fence, All Jersey Moving) remain unverified by me.",
+    "Lead-generation-style brand names (Piscataway Towing, Garage Door Repair Piscataway, Auto Glass & Windshield Replacement of Piscataway, Provision Garage Door Repair Piscataway, Piscataway Locksmith Corp) were not individually resolved to a real local owner; the mapper flagged them and I could neither confirm nor refute.",
+    "No NJ Division of Consumer Affairs license lookup was performed (interactive form), so home-improvement contractor registration status is unverified for every entry."
+  ]
+}

@@ -1,0 +1,22 @@
+[
+ {
+  "claim": "\"repairs with a supplement averaged 13.2 days versus 8.8 days for those without\" (problem.summary) and \"13.2 days versus 8.8 days for those without (2020 comparison)\" (measured_outcomes[0])",
+  "problem": "Misread number. In the CCC data as reported by Auto Insurance Report (July 28, 2025), 13.2 days is the 2024 average for repairs WITH a supplement and 7.7 days is the 2024 average for repairs WITHOUT one (the gap is the stated +5.5 days). 8.8 days is the 2020 average for repairs WITH a supplement (2020 without-supplement was 5.4). The brief presents 8.8 as the no-supplement figure, which the source does not say for either year.",
+  "fix": "Rewrite as: repairs with a supplement averaged 13.2 days in 2024 versus 7.7 days without (a 5.5-day gap), and the with-supplement average was 8.8 days in 2020. Drop \"8.8 days for those without\" everywhere."
+ },
+ {
+  "claim": "\"Older dealer reports cite $3,000-$5,500/month per gate (dated)\" for UVeye (existing_solutions[0].pricing, source_url = autobodynews.com pre-scan article)",
+  "problem": "The cited URL contains no such figure. I re-read the whole article: the only UVeye pricing in it is Yaron Saghiv's \"mid to high four figures\" installation \"with similar monthly costs for SaaS use.\" $3,000-$5,500 per month appears nowhere, so this is a price with no supporting source at the cited URL.",
+  "fix": "Either cite the actual dealer report that contains $3,000-$5,500/month, or delete the figures and keep only the article's \"mid to high four figures\" install-plus-monthly statement."
+ },
+ {
+  "claim": "\"enterprise hardware (UVeye, BayWatch at $1,900-$7,000/month)\" (gap_for_local_installer)",
+  "problem": "$7,000/month is not in any cited source. The article's numbers are BayWatch $1,900 entry / $3,300 fully loaded, and UVeye \"mid to high four figures\" installation with similar monthly SaaS cost. The upper bound is a synthesised number presented as fact.",
+  "fix": "State the sourced figures (BayWatch $1,900-$3,300/month; UVeye \"mid-to-high four figures\" install plus a similar monthly fee) or explicitly label the composite range as an inference with its arithmetic."
+ },
+ {
+  "claim": "\"Frigate NVR ... MIT-licensed open source\" (technical_approach.models_and_tools[0], source_url = Frigate LPR docs page)",
+  "problem": "The statement is true (verified at the Frigate repository LICENSE file), but the cited docs page does not state the licence, so the citation does not support the claim. Minor sourcing defect, not a factual error.",
+  "fix": "Cite https://github.com/blakeblackshear/frigate (LICENSE) for the MIT licence, keeping the docs page only for the LPR/offline behaviour."
+ }
+]

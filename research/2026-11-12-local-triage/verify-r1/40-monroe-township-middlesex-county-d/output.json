@@ -1,0 +1,134 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Katie's Pet Depot, 416 Renaissance Rd, Monroe Township",
+      "problem": "Wrong municipality. Every source places this store at 416 Renaissance Blvd, North Brunswick, NJ 08902 (same phone 732-422-0056). It is not a Monroe Township business.",
+      "fix": "Delete the entry, or move it to a North Brunswick zone file."
+    },
+    {
+      "claim": "All Brunswick Moving & Storage, 182 Ridge Rd, Unit J, Monroe Township",
+      "problem": "Wrong municipality. All Brunswick Van Lines / Moving & Storage lists 182 J Ridge Road, Dayton, NJ 08810, phone 732-274-1881 (same phone as the list).",
+      "fix": "Delete or re-file under Dayton/South Brunswick; do not count toward Monroe."
+    },
+    {
+      "claim": "RKS Plastics, 1075 Cranbury - South River Rd, Monroe Township",
+      "problem": "Company's own contact page gives 1075 Cranbury South River Rd, Unit 5, Jamesburg, NJ 08831 - Jamesburg, which the mapper's own caveats say was excluded.",
+      "fix": "Delete, or re-label town as Jamesburg if the municipality rule is relaxed."
+    },
+    {
+      "claim": "Shima Seiki USA Inc, 22 Abeel Rd, Monroe Township",
+      "problem": "Contradicted/stale: trade press reports Shima Seiki closed its New Jersey office at the end of December 2021 and the 22 Abeel Rd building was sold in 2022 (reported buyer Aplomb Technologies). Not an operating business in the zone.",
+      "fix": "Remove the entry; do not use old state-directory listings as active evidence."
+    },
+    {
+      "claim": "Iron Cycles Inc, 225 Forsgate Dr, Monroe Township",
+      "problem": "Listing platforms place 225 Forsgate Dr in Jamesburg, NJ 08831, not Monroe Township (the road straddles the line). Mapper's own rule excluded Jamesburg addresses.",
+      "fix": "Verify municipality against the township tax/property record; delete if Jamesburg."
+    },
+    {
+      "claim": "PALS Learning Center, 209 Applegarth Rd - notes say 'Small NJ tutoring chain - independent, not a national franchise'",
+      "problem": "Contradicted: palslc.com is a franchise site ('PALS Learning Center Franchise') listing the Monroe location. Franchises/chains are an excluded type.",
+      "fix": "Remove or escalate for an explicit franchise decision; correct the note."
+    },
+    {
+      "claim": "Preschool/day-care entries: Ellie's Academy of Monroe, Hop to It Preschool, MAARS Academy",
+      "problem": "These are child-care/preschool operators, i.e. a 'schools' category the rules exclude. They are otherwise accurate and active.",
+      "fix": "Confirm with the client whether private preschools/day cares are in scope; if 'schools' means K-12 public, keep them, otherwise delete all three."
+    },
+    {
+      "claim": "NJ Office Furniture Depot - source_urls includes https://www.njofficefurnituredepot.com/showroom/",
+      "problem": "That URL returns HTTP 404; only the homepage loads, and the homepage does not display the street address, so the address is supported only by search listings.",
+      "fix": "Replace the dead source with a live page (contact/location or a directory listing) and re-confirm 957 Route 33 W."
+    },
+    {
+      "claim": "Cosmos Furniture (website \"\") and Monroe Jewelers (website \"\")",
+      "problem": "Both businesses operate live websites that were missed: cosmosfurniture.com (contact page shows 16 Abeel Rd, Monroe Township, 732-658-6500) and monroejewelersnj.com (1600 Perrineville Rd, Concordia).",
+      "fix": "Add the website fields."
+    },
+    {
+      "claim": "Absolute Moving System phone (732) 545-8758",
+      "problem": "The company's own contact page lists 732-757-4504 for appointments; the listed number is not shown on the site. Address 944 Rt 33, Monroe is confirmed.",
+      "fix": "Update to the published number or mark as a secondary line."
+    },
+    {
+      "claim": "Coverage of nursery / garden-center category",
+      "problem": "None of the five in-zone garden centers returned by search (Pop's Farm Market & Garden Center, CountryView Farm Nursery, Twin Ponds Nursery, A.N.T. Nursery, Gasko's Family Farm) appear in the list, while the list's nursery rows come from a single bulk directory. This is the weakest category in the file.",
+      "fix": "Add the operating garden centers (at minimum Pop's and CountryView, which are well inside the radius) and drop directory-only nursery shells that cannot be confirmed."
+    },
+    {
+      "claim": "Coverage of pet grooming and driving-school categories",
+      "problem": "Searches returned A Diamond in the Ruff Grooming Parlour (16 Sarah Ln), Pawsitive Reflections (1 Rossmoor Dr) and A Plus Driving School (1 Rossmoor Dr), none of which are listed, while directory-only rows such as Canine Creations and United Driving School are listed unconfirmed.",
+      "fix": "Add the three active businesses and re-verify or remove the directory-only rows."
+    },
+    {
+      "claim": "Roughly 25 entries rest on a single us-business.info page ('one bulk directory only - confirm')",
+      "problem": "That source is a scraped aggregator with evident stale data (e.g. Shima Seiki, Voula's World, Baker's Nursery). Entries from it are not evidence of current operation.",
+      "fix": "Triage each one against a live page or the township's licensed-business records before any outreach; drop the ones that fail."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "NJ Office Furniture Depot is at 957 Route 33 W, Monroe Township, and njofficefurnituredepot.com is its site", "source_url": "https://www.njofficefurnituredepot.com/", "result": "confirmed"},
+    {"claim": "The cited showroom page exists", "source_url": "https://www.njofficefurnituredepot.com/showroom/", "result": "not found"},
+    {"claim": "Cosmos Furniture is at 16 Abeel Rd, Monroe Township, 732-658-6500", "source_url": "https://cosmosfurniture.com/contact-us", "result": "confirmed"},
+    {"claim": "Monroe Jewelers is at 1600 Perrineville Rd, Concordia Shopping Center, Monroe Township", "source_url": "https://www.monroejewelersnj.com/", "result": "confirmed"},
+    {"claim": "Katie's Pet Depot, 416 Renaissance Rd, is in Monroe Township", "source_url": "https://frommfamily.com/r/3048", "result": "contradicted"},
+    {"claim": "Fourth Dimension Aquatics operates in Monroe Township", "source_url": "https://www.4daqua.com/pages/contact", "result": "could not open"},
+    {"claim": "M David DeMarco Funeral Home is at 205 Rhode Hall Rd, Monroe Township", "source_url": "https://demarcofuneralhome.funeraltechweb.com/10/Map---Directions.html", "result": "confirmed"},
+    {"claim": "Sycamore Acres, 454 Spotswood-Englishtown Rd, is an operating grooming/boarding kennel", "source_url": "https://www.vetlookup.org/business/sycamore-acres-monroe-township-nj", "result": "confirmed"},
+    {"claim": "Absolute Moving System is at 944 Route 33, Monroe Township", "source_url": "https://absolutemoving.net/contact-us/", "result": "confirmed"},
+    {"claim": "Best Trophies & Awards is at 31 Avenue G, Monroe Township, 732-521-7710", "source_url": "https://www.yellowpages.com/monroe-twp-nj/trophies-plaques-medals", "result": "confirmed"},
+    {"claim": "Championship Awards Inc is at 399 Spotswood-Englishtown Rd, Monroe Township", "source_url": "https://www.yellowbot.com/championship-awards-inc-monroe-twp-nj.html", "result": "confirmed"},
+    {"claim": "Ocean Power Technologies is at 28 Engelhard Dr, Monroe Township", "source_url": "https://www.sec.gov/Archives/edgar/data/1378140/000149315226050261/0001493152-26-050261-index.htm", "result": "confirmed"},
+    {"claim": "Shima Seiki USA operates at 22 Abeel Rd, Monroe Township", "source_url": "https://www.knittingtradejournal.com/2021/12/13/shima-seiki-to-relocate-new-jersey-operations/", "result": "contradicted"},
+    {"claim": "Hop to It Preschool is at 1 Michael Ln, Monroe Township", "source_url": "https://www.waze.com/live-map/directions/united-states/new-jersey/monroe-township/hop-to-it-preschool?to=place.ChIJ5xJTDzQw4kRfcVFlcQOCmI", "result": "confirmed"},
+    {"claim": "PALS Learning Center is at 209 Applegarth Rd and is not a franchise", "source_url": "https://palslc.com/locations", "result": "contradicted"},
+    {"claim": "R & M Manufacturing is at 20 Abeel Rd, Monroe Township", "source_url": "https://cisleads.com/company/details/12435/r-and-m-manufacturing-inc", "result": "confirmed"},
+    {"claim": "Monroe Machine & Design is at 566 Buckelew Ave, Monroe Township", "source_url": "https://www.yellowpages.com/monroe-township-nj/mip/monroe-machine-design-inc-4737848", "result": "confirmed"},
+    {"claim": "RKS Plastics is at 1075 Cranbury South River Rd, Monroe Township", "source_url": "https://rksplastics.com/pages/contact-us", "result": "contradicted"},
+    {"claim": "All Brunswick Moving & Storage is at 182 Ridge Rd, Unit J, Monroe Township", "source_url": "https://www.wheatonworldwide.com/find-a-local-agent/agents/all-brunswick-van-lines-inc/", "result": "contradicted"},
+    {"claim": "Iron Cycles Inc is at 225 Forsgate Dr, Monroe Township", "source_url": "https://www.waze.com/live-map/directions/us/nj/jamesburg/iron-cycles-inc?to=place.ChIJg5Xq1Pbaw4kRZW69mS9Omog", "result": "contradicted"},
+    {"claim": "Artist People has a Monroe Township studio at 209 Applegarth Rd #102", "source_url": "https://www.artist-people.com/monroe-township", "result": "confirmed"},
+    {"claim": "Dot Designing is at 837 Route 33, Monroe Township", "source_url": "https://dotdesigning.com/", "result": "confirmed"},
+    {"claim": "New Jersey Dance Force is at 891 Cranbury South River Rd, Monroe Township", "source_url": "https://www.njdanceforce.com/", "result": "confirmed"},
+    {"claim": "Dance Stop operates a Monroe studio", "source_url": "https://www.dancestopnj.com/", "result": "confirmed"},
+    {"claim": "Tarana Dance Academy is in Monroe Township", "source_url": "https://www.tdanj.com/the-studio", "result": "confirmed"},
+    {"claim": "MAARS Academy is located in Monroe, NJ", "source_url": "https://www.maarsacademy.com/", "result": "confirmed"},
+    {"claim": "The Social & Co. - Monroe is at 1 Rossmoor Dr, Bldg 2, Monroe Township", "source_url": "https://thesocialandco.com/", "result": "confirmed"},
+    {"claim": "Shivalay Dance Academy is at 365 Spotswood Englishtown Rd, Monroe Township", "source_url": "https://www.shivalaydanceacademy.com/contact", "result": "could not open"},
+    {"claim": "Forsgate Country Club is in Monroe Township and its site is live", "source_url": "https://www.forsgatecc.com/contact", "result": "confirmed"},
+    {"claim": "Brunswick Tree Farm is at 657 Spotswood-Englishtown Rd, Monroe Township", "source_url": "https://www.nj.gov/agriculture/divisions/pi/pdf/Certified%20Nurseries%20List.pdf", "result": "confirmed"},
+    {"claim": "Tom Iadevaia & Son Nursery is at 230 Rhode Hall Rd, Monroe Township", "source_url": "https://www.yellowpages.com/monroe-twp-nj/nursery-wholesale-growers", "result": "confirmed"}
+  ],
+  "coverage": {
+    "searches": [
+      "florist Monroe Township NJ 08831 flower shop",
+      "dry cleaner Monroe Township NJ 08831",
+      "jewelry store Monroe Township NJ 08831",
+      "pet grooming Monroe Township NJ 08831",
+      "driving school Monroe Township NJ 08831",
+      "garden center nursery Monroe Township NJ 08831",
+      "furniture store Monroe Township NJ 08831",
+      "sign shop printing Monroe Township NJ 08831",
+      "dance studio Monroe Township NJ",
+      "dentist Monroe Township NJ 08831 (other group)",
+      "roofing contractor Monroe Township NJ (other group)"
+    ],
+    "eligible_found": 30,
+    "already_listed": 18,
+    "missing": [
+      {"name": "Pop's Farm Market & Garden Center", "town": "Monroe Township", "source_url": "https://popsfarmmarketandgardencenter.com/garden-center"},
+      {"name": "CountryView Farm Nursery", "town": "Monroe Township", "source_url": "https://countryviewfarmnursery.com/contact-info/"},
+      {"name": "A.N.T. Nursery", "town": "Monroe Township", "source_url": "https://nj.gov/cgi-bin/agriculture/jerseygrown/gcnsearch.pl"},
+      {"name": "Twin Ponds Nursery", "town": "Monroe Township", "source_url": "https://www.twinpondsnurseries.com/"},
+      {"name": "A Diamond in the Ruff Grooming Parlour (16 Sarah Ln)", "town": "Monroe Township", "source_url": "https://localitybiz.com/new-jersey/dog-grooming-services-in-monroe-township"},
+      {"name": "Pawsitive Reflections Dog Grooming (1 Rossmoor Dr)", "town": "Monroe Township", "source_url": "https://www.vetlookup.org/city/monroe-township-nj"},
+      {"name": "A Plus Driving School (1 Rossmoor Dr)", "town": "Monroe Township", "source_url": "https://aplusdriving.school/"},
+      {"name": "Creative Tees & Graphics", "town": "Monroe Township", "source_url": "https://www.yellowpages.com/monroe-township-nj/mip/creative-tees-graphics-454342683"},
+      {"name": "Oak Furniture Depot (2094 Englishtown Rd)", "town": "Monroe Township", "source_url": "https://www.yellowpages.com/monroe-township-nj/mip/oak-furniture-depot-inc-9116772"},
+      {"name": "Stella's Petals", "town": "Monroe Township", "source_url": "https://stellaspetals.com/"},
+      {"name": "Absolute Dance Center (365 Spotswood Englishtown Rd)", "town": "Monroe Township", "source_url": "https://www.cylex.us.com/company/absolute-dance-co-3729210.html"}
+    ]
+  },
+  "confidence": "Medium"
+}

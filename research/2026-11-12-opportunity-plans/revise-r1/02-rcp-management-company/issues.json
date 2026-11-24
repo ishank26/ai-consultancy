@@ -1,0 +1,22 @@
+[
+ {
+  "claim": "Vantaca integration: \"partner application, NDA and partnership terms precede technical integration\" (solution.integrations[].method for Vantaca, confirmed_in_docs: true)",
+  "problem": "The cited page (vantaca.com/become-a-vantaca-partner-vantaca-partner-program) says partners get \"a dedicated point of contact, technical integration support, and a structured onboarding process\" and that the team does not \"hand you API docs and disappear\", which supports vendor-provisioned API access. It does not mention a partner application form, an NDA, or partnership terms, and a search of vantaca.com found no public partner application or public API reference. The existence of partner-gated API access is supported; the NDA/application specifics are not.",
+  "fix": "Rewrite method as \"vendor-provisioned API access through Vantaca's partner program, which advertises a dedicated point of contact, technical integration support and structured onboarding; no public API reference or fee\" and drop \"partner application, NDA\" or mark them as inference to be confirmed in discovery (phase 0 already asks for this)."
+ },
+ {
+  "claim": "Manager-licensing risk: \"CAI's 2025 state manager-licensing review: New Jersey has no dedicated community association manager licence (a bill has been introduced in the 2026-27 session but is not law)\" (risks_compliance, confirmed: true)",
+  "problem": "The cited CAI page supports the main point (NJ is not among the licensed states: Alaska, Connecticut, Florida, Georgia, Illinois, Nevada, Virginia) but describes the NJ bill as A 2450 in the 2024-2025 session, which \"did not pass\". It says nothing about a 2026-27 session bill, and the 2026-session NJ A 2450 is an unrelated motor-vehicle bill. The parenthetical is unsupported by the source and contradicted by a search of the NJ Legislature's own bill pages.",
+  "fix": "Replace the parenthetical with what the source says: \"NJ A 2450 (2024-25 session), which would have required licensure of community management entities, did not pass\", or cite a primary NJ Legislature source for any 2026-27 bill before asserting one exists."
+ },
+ {
+  "claim": "After-hours gap: \"office hours listed as Mon-Fri 9-5\" (problem.current_tools evidence, source https://rcpmanagement.com/) and an \"info@ mailbox\" on the contact directory (source https://rcpmanagement.com/contact/)",
+  "problem": "I opened both pages. The homepage advertises \"24/7 emergency services for your community, including a manager and supervisor\" and \"documentation and follow-up on all maintenance requests and homeowner inquiries\", but publishes no office hours. The contact page lists the Cranbury HQ number, the Bloomfield and Manahawkin regional offices, kmunson@ and careers@ addresses only - no info@ mailbox and no hours. Both details are load-bearing for the after-hours story and are attributed to pages that do not show them.",
+  "fix": "Either cite a page that actually states the hours and the general mailbox, or restate the gap as \"office hours are not published; the site advertises only 24/7 emergency service staffed by a manager and supervisor, and the contact page lists named mailboxes only\" - which is enough to justify the discovery questions."
+ },
+ {
+  "claim": "Competitor row \"Hire a person\": $26.00/hour RCP posting presented with source_type \"government data\" and source_url https://www.onetonline.org/link/localwages/43-4171.00?st=NJ",
+  "problem": "The $26/hour figure is real, but it comes from RCP's own job posting (hoa-jobs.com/onsite-administrator-part-time, Princeton, part-time onsite administrator), not from O*NET. O*NET supports only the BLS medians in the same row. A job-posting rate cited under a government URL risks being read as a government figure.",
+  "fix": "Point this row's source_url at https://hoa-jobs.com/onsite-administrator-part-time for the $26/hour posting and keep the O*NET URL attached to the BLS median figures (or split the row into two competitors)."
+ }
+]

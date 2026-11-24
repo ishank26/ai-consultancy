@@ -1,0 +1,37 @@
+[
+ {
+  "claim": "Audit intro and email/opener: \"all of that demand still arrives through one phone number and a callback form \u2014 with no online booking anywhere on the site\"; email \"no online booking\"; walk-in opener \"there's no way to book online\".",
+  "problem": "Contradicted by a page the audit itself cites. The company's emergency page states: \"Online scheduling is available for service requests, but homeowners facing an active emergency should call us directly.\" There is no calendar/slot picker on the site (contact form posts to /api/lead, sitemap has no booking page), so \"no real-time scheduler\" is defensible, but \"no online booking anywhere\" / \"no way to book online\" is stated as fact and is wrong on the company's own wording. Said to the founder's face, this is the first thing they will correct, which undermines the rest of the audit.",
+  "fix": "Reword to what is verifiable: \"no online scheduler or time-slot picker \u2014 requests still come by phone or a two-step callback/estimate form\" (intro), email: \"...with no way to pick a time online \u2014 it's a phone number and a callback form\", opener: \"...and the web form is a request, not a slot you can pick \u2014 is the after-hours phone the part that's hardest to keep up with?\" Optionally note the site's own \"online scheduling\" wording and that it resolves to the form."
+ },
+ {
+  "claim": "Audit body length.",
+  "problem": "Over the ~450-word limit. Counted from the opening paragraph through \"Suggested first step\": roughly 630 words; sections 1-3 alone are roughly 475 words. This is roughly 40% over.",
+  "fix": "Cut to ~450 words by trimming the three \"What's happening now\" paragraphs (each currently 60-80 words) and shortening \"Why this works\" to three one-line bullets; drop repeated restatements of the 60-minute promise (it appears in the intro and section 1)."
+ },
+ {
+  "claim": "Section 3: \"Long-tenure customers in your reviews mean those histories run years deep, and right now that knowledge lives with whoever can find it.\"",
+  "problem": "The long-tenure reviews are sourced; \"that knowledge lives with whoever can find it\" is an assertion about internal record systems with no source. The maintenance-plan page says the opposite on its face (\"we can even keep all records and schedule maintenance of our customers on file\"). Presented as fact about how the business currently operates.",
+  "fix": "Frame as inference from outside: \"we can't tell from the outside whether those records sit in software, spreadsheets or paper \u2014 if it's spreadsheets, the knowledge is only as findable as the person who built them.\""
+ },
+ {
+  "claim": "Section 1: \"Businesses like yours often find that same 60-minute promise strains a small office team overnight.\"",
+  "problem": "Unsourced generalisation dressed as a finding (\"often find\"). No study, survey or comparable-business source is cited anywhere in the audit or the source list to support it.",
+  "fix": "Make it a question rather than a claim \u2014 \"a 60-minute promise is a hard thing to hold overnight with a small office team \u2014 is that where it bites?\" \u2014 or drop the sentence and let the sourced facts carry it."
+ },
+ {
+  "claim": "Section 1 agent design: \"anything hazardous is transferred straight to your on-call technician\" (also in email: \"hand real emergencies straight to the on-call tech\").",
+  "problem": "\"Your on-call technician\" assumes an existing on-call rotation. The site advertises 24/7 emergency service but does not state how after-hours coverage is staffed (schema openingHoursSpecification is empty). Inference stated as fact about the business.",
+  "fix": "Use \"whichever technician is on call\" or \"your after-hours contact, whoever that is today\" \u2014 it is a design choice, not a claim about their staffing."
+ },
+ {
+  "claim": "Section 2: \"Estimates are given on site and explained in person \u2014 and for most jobs that appears to be the only conversation.\"",
+  "problem": "First half is supported (on-site estimate and explanation of findings, plus a testimonial describing an on-site estimate). Second half is a hedged inference (\"appears\") but reads as a finding about their sales process; nothing in the sources shows whether a follow-up call or email already happens.",
+  "fix": "Label it explicitly: \"...and as far as the public site shows, that conversation is the only documented step.\" Keeps the point without asserting internal process."
+ },
+ {
+  "claim": "Intro: \"an advertised 60-minute emergency response\".",
+  "problem": "Accurate as advertising, but the source carries a qualifier the audit drops: \"we state a fast 60-minute response time, although timing can vary by conditions and call location.\" A founder may read the unqualified version as a misquote.",
+  "fix": "Either add \"(timing varies by conditions and location, as your page notes)\" once, or keep the qualifier in section 1 where the promise is discussed."
+ }
+]

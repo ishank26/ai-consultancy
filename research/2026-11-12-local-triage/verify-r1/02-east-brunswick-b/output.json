@@ -1,0 +1,129 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Brunswick Hills OB/GYN of East Brunswick and OB/GYN of East Brunswick (both listed, both on axiawh.com)",
+      "problem": "Excluded type still in the list: both are locations of Axia Women's Health, a multi-state corporate physician group whose own locations directory lists 150+ offices across NJ, PA, IN and KY (including three 'OB/GYN of East Brunswick' sites and 'Brunswick Hills OB/GYN - East Brunswick'). The mapper already flagged them for exclusion review; the review resolves against inclusion.",
+      "fix": "Remove both entries, or keep only if the team explicitly accepts large-group practices; do not count them toward the zone's independent-business total."
+    },
+    {
+      "claim": "Coverage of independent podiatry in East Brunswick",
+      "problem": "AZNO Foot and Ankle Specialist (172 Summerhill Rd, Suite 2) is a large, active East Brunswick practice (4.8, ~1,323 reviews on Birdeye) and is completely absent from the list; so are Dr. Arnold Horowitz's East Brunswick Foot and Ankle Care Center (ebfootcare.com) and Dr. Anshini Dalal (Complete Foot and Ankle Specialty, G12 Brier Hill Ct). Only 1 of 4 podiatry practices found by search is listed.",
+      "fix": "Add AZNO Foot and Ankle Specialist, East Brunswick Foot and Ankle Care Center and Complete Foot and Ankle Specialty with addresses."
+    },
+    {
+      "claim": "Coverage of optometry",
+      "problem": "Only Logos Vision from my optometry search is listed; Eye Health Group of East Brunswick (Dr. Matthew Lauletti, 326 Route 18 N) and SEE MORE Eye Care (Dr. Mikhail Vairona, 561 Cranbury Rd Suite E) are missing. (Eyexam Group inside LensCrafters was treated as chain-affiliated and excluded.)",
+      "fix": "Add the two independent optometry practices; verify whether Eyexam Group is corporate-run before adding."
+    },
+    {
+      "claim": "Coverage of dental, acupuncture, dermatology and therapy categories",
+      "problem": "Missing independent practices: The Family & Cosmetic Dental Group (East Brunswick, familycosmeticdentalgroup.com), Oriental Natural Health Center (77 Milltown Rd Suite C2, 4.7/23 reviews), Dr. James Chang LAc (160 Tices Ln), Dr. Patricia Iannotta, dermatologist (6 Auer Ct Suite E), and four Psychology Today therapists in East Brunswick (Anne Lieber, Michelle Porter, Stacy Paul, Araceli Fernandez) where the list holds only 5 therapists total.",
+      "fix": "Add these practices in a follow-up pass; the therapist sweep in particular looks under-sampled versus the Psychology Today directory."
+    },
+    {
+      "claim": "Seesaw Vision Center phone '(732) 247-2847'",
+      "problem": "The practice's own East Brunswick location page gives (848) 308-7504 at 190 NJ-18, Suite 302; the listed number is not the one the business publishes.",
+      "fix": "Replace with (848) 308-7504."
+    },
+    {
+      "claim": "Dr. Daniel Belli, VMD (44 Arthur Street) and East Brunswick Animal Hospital (address 'Unknown')",
+      "problem": "Duplicate entry: East Brunswick Animal Hospital's own staff page lists Daniel Belli, VMD as one of its veterinarians, and 44 Arthur Street is that hospital's address, so the two rows describe one practice, not two prospects. The hospital's address was left Unknown while the doctor's row carries it.",
+      "fix": "Merge into one entry: East Brunswick Animal Hospital, 44 Arthur St, with Dr. Belli noted as a staff veterinarian."
+    },
+    {
+      "claim": "~35 entries with address 'Unknown' (all of the DentistsRanked-derived rows, East Brunswick Animal Hospital, Elevate PT, LBS Nutrition, etc.)",
+      "problem": "These rows can be verified as existing but cannot be routed or prioritised without a street address; two of them (Elevate PT) are actually inside another listed venue (CrossFit Barbending) and one is a duplicate of another row.",
+      "fix": "Fill addresses from each practice's own site before triage; where the only source is an aggregator snippet, mark the row as unaddressed and deprioritise it."
+    },
+    {
+      "claim": "Website field left blank for businesses that clearly run their own site",
+      "problem": "Several listed businesses have an active own-website that was not captured (e.g. Wadie's Salon wadieshairsalon.com, Drama Salon dramasalon.com, New Image Hair Salon mynewimagehairsalon.com, Ellan Laser MedSpa ellanlaser.com, Alliance Orthopedics allianceortho.com is present but phone blank). Blank websites understate how contactable these prospects are.",
+      "fix": "Backfill website (and phone) fields from the practice sites; a blank website should mean 'none found', not 'not looked for'."
+    },
+    {
+      "claim": "Elevate Physical Therapy and Rehab address 'Unknown'",
+      "problem": "Its own site states the clinic is located inside CrossFit Barbending in East Brunswick, which the list separately records at 3 Joanna Court, Suite E.",
+      "fix": "Set address to 3 Joanna Court, Suite E (inside CrossFit Barbending) and cross-reference the two entries so the team does not treat them as separate buildings."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Trinity Dental Services is an East Brunswick dental practice at 63 W Prospect St; trinitydentalservice.com is its site", "source_url": "https://trinitydentalservice.com/about-us/", "result": "confirmed"},
+    {"claim": "Clarity Dental is a locally owned East Brunswick NJ practice and claritydentalnj.com is its site", "source_url": "https://claritydentalnj.com/", "result": "confirmed"},
+    {"claim": "Mint Family Dental is an East Brunswick NJ dental practice and mintfamilydentalnj.com is its site", "source_url": "https://www.mintfamilydentalnj.com/", "result": "confirmed"},
+    {"claim": "Dr. Jeffrey S. Karlin Orthodontics has an East Brunswick office and drkarlin.com is its site", "source_url": "https://www.drkarlin.com/", "result": "confirmed"},
+    {"claim": "Leizer Orthodontics has an East Brunswick office at C-4 Cornwall Drive, (732) 238-4422", "source_url": "https://www.leizerorthodontics.com/east-brunswick-location", "result": "confirmed"},
+    {"claim": "Corrective Care Group, P.C. is an East Brunswick chiropractic and physical therapy practice founded by Dr. Alan Wolkoff", "source_url": "https://www.eastbrunswickwellness.com/", "result": "confirmed"},
+    {"claim": "Saumin Patel, PT/DPT practices at the Corrective Care Group East Brunswick office", "source_url": "https://www.eastbrunswickwellness.com/", "result": "confirmed"},
+    {"claim": "Spineck Physical Therapy operates at 646 Route 18 North, East Brunswick", "source_url": "https://www.spineckpt.com/location/", "result": "confirmed"},
+    {"claim": "East Brunswick Physical Therapy operates at 3 Auer Court, Suite A, East Brunswick, (732) 353-6335", "source_url": "https://www.eastbrunswickpt.com/contact-us/", "result": "confirmed"},
+    {"claim": "Elevate Physical Therapy and Rehab operates a clinic in East Brunswick", "source_url": "https://www.elevateptr.com/", "result": "confirmed"},
+    {"claim": "Mana Physical Therapy has an East Brunswick NJ clinic", "source_url": "https://manaphysicaltherapynj.com/physical-therapy-clinic/east-brunswick-nj/", "result": "confirmed"},
+    {"claim": "Seesaw Vision Center is at 190 Route 18, Suite 302, East Brunswick", "source_url": "https://www.seesawvisioncenter.com/hours-location/east-brunswick/", "result": "confirmed"},
+    {"claim": "Seesaw Vision Center phone is (732) 247-2847", "source_url": "https://www.seesawvisioncenter.com/hours-location/east-brunswick/", "result": "contradicted"},
+    {"claim": "Logos Vision is at 545 Route 18, East Brunswick and logos-vision.com is its site", "source_url": "https://www.logos-vision.com/", "result": "confirmed"},
+    {"claim": "NJ Eye Care is at 290 Route 18 North, East Brunswick, inside the Walmart Vision Center", "source_url": "https://njeyecareoffice.com/", "result": "confirmed"},
+    {"claim": "Ophthalmic Consultants of NJ is an East Brunswick ophthalmology practice and oc-nj.com is its site", "source_url": "https://www.oc-nj.com/", "result": "confirmed"},
+    {"claim": "Jeremy Rothfleisch, MD, PA dermatology is at 603 Cranbury Rd, Suite 1, East Brunswick, (732) 545-5366", "source_url": "https://www.dermnj.com/", "result": "confirmed"},
+    {"claim": "Adult and Pediatric Dermatology (Dr. Alexander Shraga) is at 385 Route 18, Suite E, East Brunswick and is an independent practice", "source_url": "https://www.pennmedicine.org/practices/access-dermatology", "result": "confirmed"},
+    {"claim": "Vital Balance Acupuncture is at G 11 Brier Hill Court, East Brunswick, (732) 983-2823", "source_url": "https://www.vitalbalanceacupuncture.net/", "result": "confirmed"},
+    {"claim": "Dr. Joel R. Kates, DPM podiatry is at A2 Brier Hill Court, Suite 2, East Brunswick, (732) 545-7078", "source_url": "https://www.eastbrunswickpodiatrist.com/", "result": "confirmed"},
+    {"claim": "Gibbons Foot and Ankle Group is at 281 Summerhill Rd, East Brunswick, (732) 254-2609", "source_url": "https://www.gibbonsfootandankle.com/office", "result": "confirmed"},
+    {"claim": "Wadie's Hair Salon is a family-owned East Brunswick salon on Route 18", "source_url": "https://www.wadieshairsalon.com/", "result": "confirmed"},
+    {"claim": "Drama Salon is an East Brunswick salon owned by Steven Camins", "source_url": "https://www.dramasalon.com/about-us/", "result": "confirmed"},
+    {"claim": "New Image Hair Salon is at 6 Edgeboro Road, Suite 300, East Brunswick, (732) 698-9801", "source_url": "https://mynewimagehairsalon.com/contact-us/", "result": "confirmed"},
+    {"claim": "Nuage Beauty Place LLC is at 575 Cranbury Road, B3A, East Brunswick", "source_url": "https://nuage-beauty-place-llc.square.site/", "result": "confirmed"},
+    {"claim": "Connect to Communicate is a pediatric speech therapy practice serving East Brunswick", "source_url": "https://www.connect2communicateslp.com/", "result": "confirmed"},
+    {"claim": "Dr. Daniel Belli, VMD is a separate East Brunswick veterinary practice at 44 Arthur Street", "source_url": "https://www.eastbrunswickanimalhospital.com/staff", "result": "contradicted"},
+    {"claim": "East Brunswick Animal Hospital is an independent, family owned East Brunswick practice", "source_url": "https://www.eastbrunswickanimalhospital.com/", "result": "confirmed"},
+    {"claim": "Alliance Orthopedics has an East Brunswick office at 150 Tices Lane", "source_url": "https://allianceortho.com/location/nj/east-brunswick/", "result": "confirmed"},
+    {"claim": "Brunswick Hills OB/GYN of East Brunswick is a separate independent practice", "source_url": "https://axiawh.com/locations/brunswick-hills-ob-gyn-of-east-brunswick/", "result": "contradicted"},
+    {"claim": "OB/GYN of East Brunswick at 172 Summerhill Road is a separate independent practice", "source_url": "https://axiawh.com/locations/obgyn-of-east-brunswick/", "result": "contradicted"},
+    {"claim": "Axia Women's Health is a multi-state group with 150+ locations (basis for excluding its two East Brunswick practices)", "source_url": "https://axiawh.com/locations/", "result": "confirmed"},
+    {"claim": "East Brunswick Foot and Ankle Care Center (Dr. Arnold Horowitz) is an East Brunswick podiatry practice", "source_url": "https://ebfootcare.com/", "result": "confirmed"},
+    {"claim": "The Family & Cosmetic Dental Group is an East Brunswick dental practice", "source_url": "https://www.familycosmeticdentalgroup.com/", "result": "confirmed"},
+    {"claim": "AZNO Foot and Ankle Specialist operates at 172 Summerhill Rd, Suite 2, East Brunswick (missing from list)", "source_url": "https://reviews.birdeye.com/azno-foot-and-ankle-specialist-169841797763534", "result": "confirmed"},
+    {"claim": "Oriental Natural Health Center operates at 77 Milltown Rd, Suite C2, East Brunswick (missing from list)", "source_url": "https://reviews.birdeye.com/oriental-natural-health-center-157252558913767", "result": "confirmed"},
+    {"claim": "Moxie Salon & Beauty Bar has an East Brunswick location at 111 Main Street", "source_url": "https://moxiesalonandbeautybar.com/locations", "result": "confirmed"},
+    {"claim": "Dental Magik has an East Brunswick office at E7 Brier Hill Ct", "source_url": "https://dentalmagik.com/", "result": "confirmed"},
+    {"claim": "Garden State Dental has an East Brunswick office at 422 Route 18 North", "source_url": "https://gardenstatedental.com/dentist-office/east-brunswick-nj-08816/about-our-practice", "result": "confirmed"}
+  ],
+  "coverage": {
+    "searches": [
+      "dentist East Brunswick NJ family dentistry",
+      "chiropractor East Brunswick NJ office",
+      "med spa East Brunswick NJ botox",
+      "hair salon East Brunswick NJ independent",
+      "acupuncturist East Brunswick NJ clinic",
+      "optometrist East Brunswick NJ eye doctor",
+      "podiatrist East Brunswick NJ foot ankle",
+      "veterinarian East Brunswick NJ animal hospital",
+      "yoga studio East Brunswick NJ classes",
+      "personal training gym East Brunswick NJ studio",
+      "nutritionist dietitian East Brunswick NJ practice",
+      "massage therapy East Brunswick NJ studio",
+      "therapist counseling practice East Brunswick NJ LCSW",
+      "nail salon East Brunswick NJ reviews",
+      "dermatologist East Brunswick NJ practice"
+    ],
+    "eligible_found": 45,
+    "already_listed": 32,
+    "missing": [
+      {"name": "AZNO Foot and Ankle Specialist (Dr. Nadia Shah, DPM)", "town": "East Brunswick", "source_url": "https://reviews.birdeye.com/azno-foot-and-ankle-specialist-169841797763534"},
+      {"name": "Oriental Natural Health Center", "town": "East Brunswick", "source_url": "https://reviews.birdeye.com/oriental-natural-health-center-157252558913767"},
+      {"name": "East Brunswick Foot and Ankle Care Center (Dr. Arnold Horowitz, DPM)", "town": "East Brunswick", "source_url": "https://ebfootcare.com/"},
+      {"name": "Complete Foot and Ankle Specialty (Dr. Anshini U. Dalal, DPM)", "town": "East Brunswick", "source_url": "https://www.getcare.hackensackmeridianhealth.org/provider/anshini-u-dalal/2684419"},
+      {"name": "The Family & Cosmetic Dental Group", "town": "East Brunswick", "source_url": "https://www.familycosmeticdentalgroup.com/"},
+      {"name": "Dr. Patricia Iannotta, MD (dermatology)", "town": "East Brunswick", "source_url": "https://doctor.webmd.com/doctor/patricia-iannotta-e7abb1bb-32eb-4092-8362-05d9453c5b1e-overview"},
+      {"name": "Eye Health Group of East Brunswick (Dr. Matthew Lauletti, OD)", "town": "East Brunswick", "source_url": "https://www.zocdoc.com/practice/eye-health-group-of-east-brunswick-85906"},
+      {"name": "SEE MORE Eye Care (Dr. Mikhail Vairona, OD)", "town": "East Brunswick", "source_url": "https://www.healthgrades.com/providers/mikhail-vairona-3jc32"},
+      {"name": "James Chang, LAc (acupuncture)", "town": "East Brunswick", "source_url": "https://www.healthgrades.com/providers/james-chang-2yf6l"},
+      {"name": "Simply Hair by Mare (Phenix Salon Suites)", "town": "East Brunswick", "source_url": "https://simplyhairbymare.com/"},
+      {"name": "Anne Lieber, LCSW", "town": "East Brunswick", "source_url": "https://www.psychologytoday.com/us/therapists/anne-lieber-east-brunswick-nj/1213414"},
+      {"name": "Michelle Porter, LCSW", "town": "East Brunswick", "source_url": "https://www.psychologytoday.com/us/therapists/michelle-porter-east-brunswick-nj/1836901"},
+      {"name": "Stacy Paul, LCSW", "town": "East Brunswick", "source_url": "https://www.psychologytoday.com/us/therapists/stacy-paul-east-brunswick-nj/783819"},
+      {"name": "Araceli Fernandez, LCSW", "town": "East Brunswick", "source_url": "https://www.psychologytoday.com/us/therapists/nj/east-brunswick"}
+    ]
+  },
+  "confidence": "Medium"
+}

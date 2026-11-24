@@ -1,0 +1,22 @@
+[
+ {
+  "claim": "Audit intro and section 2: \"one long survey form that sends no reply\"; \"posting to quote.php with no acknowledgement and no CRM behind it\"; and in the founder email \"a 70-field 'Customer Survey' that sends no confirmation\".",
+  "problem": "The page evidence supports only what is observable: the form is a plain method=\"post\" form with no action attribute (so it posts back to quote.php), no client-side confirmation handler, and script.js contains no success/alert handling (SweetAlert2 is loaded but unused in the visible scripts). What the server returns, and whether a human reply or a CRM sits behind it, cannot be observed without submitting the form, which is out of scope. \"Sends no reply\" and \"no CRM behind it\" are therefore assertions about behaviour and internal systems with no source, and they are the hook of the outreach email - if the company does send a confirmation the opener damages credibility.",
+  "fix": "Restrict to the observable: \"a ~70-field form headed 'Customer Survey' that posts back to quote.php with no confirmation screen, no reference number and no auto-reply visible anywhere on the site\". Drop \"no CRM behind it\" from the audit, or add \"(our inference - no CRM or acknowledgement is visible on the site)\"."
+ },
+ {
+  "claim": "Founder email: \"the only quote path is a 70-field 'Customer Survey'\".",
+  "problem": "Not accurate as written: the main line (732) 422-4090 is a second quote path, and the audit's own opening paragraph names it (a phone number hidden on phones). \"Only\" also contradicts the audit body's framing of a phone-first front door.",
+  "fix": "Say \"the only online quote path\" or \"the only quote form\"; keeps it true and still makes the point."
+ },
+ {
+  "claim": "Section 3: \"against 15-day and 10-working-day filing clocks\".",
+  "problem": "The CBP page does say entry documents must be filed within 15 calendar days of arrival and the entry summary plus estimated duty within 10 working days of entry/release - but those duties fall on the importer of record or its broker, not on a bonded warehouse. Stated next to the company's lack of an upload route, it reads as if the clocks are the company's own, which is an unlabelled inference.",
+  "fix": "Attribute and label it: \"the clocks your importer clients work to (CBP: entry documents within 15 calendar days of arrival, entry summary within 10 working days of entry)\", or mark the link to Federation's own paperwork as an inference."
+ },
+ {
+  "claim": "Audit body length.",
+  "problem": "Body (title through the \"Prepared from publicly available information\" line, excluding the sources list) counts to roughly 470 words, a little over the ~450 limit; the sources block adds about 45 more.",
+  "fix": "Trim about 25 words - e.g. shorten the section-1 and section-3 \"what's happening now\" lines - or move the sources list into an appendix."
+ }
+]

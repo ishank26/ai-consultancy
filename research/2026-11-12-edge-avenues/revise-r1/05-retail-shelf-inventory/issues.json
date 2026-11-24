@@ -1,0 +1,47 @@
+[
+ {
+  "claim": "Cactus provides on-device inference 'with React Native, Flutter and Kotlin bindings' (existing_solutions / models_and_tools, source https://github.com/cactus-compute/cactus/)",
+  "problem": "Not supported by the cited page. The repo README and the linked runtime page (huggingface.co/Cactus-Compute/cactus) list native C/C++ runtimes and static libs for macOS, Linux, Windows, Android, iOS, tvOS, watchOS, WASM, plus Python wheels. No React Native, Flutter or Kotlin binding is mentioned anywhere I could open.",
+  "fix": "Either cite a page that actually documents those bindings, or restate as 'C/C++ runtime with Android/iOS/WASM targets and a Python package'."
+ },
+ {
+  "claim": "'1.6B ships as ONNX (~1.5 GB FP16-encoder/Q4-decoder) for on-prem boxes', cited to https://huggingface.co/LiquidAI/LFM2.5-VL-3B/raw/main/README.md",
+  "problem": "The cited 3B README never mentions the 1.6B model, and the 1.6B card (opened separately) confirms an ONNX variant exists but gives no ~1.5 GB / FP16-encoder / Q4-decoder figure. The size number is unsourced and the citation points at the wrong card.",
+  "fix": "Re-source to https://huggingface.co/LiquidAI/LFM2.5-VL-1.6B (or the -ONNX repo) and either verify the footprint there or drop the '~1.5 GB' detail."
+ },
+ {
+  "claim": "Wakefern/Simbe customer story dated '2025-2026 (undated customer story)'",
+  "problem": "The cited page is dated September 16, 2024 and discloses store counts in the text (Inserra 23 ShopRite stores; SRS 37 locations). Both the year and the 'exact store count not disclosed' sample note are wrong.",
+  "fix": "Change year to 2024 and sample to 'Inserra 23 stores and SRS 37 locations within the Wakefern co-op'."
+ },
+ {
+  "claim": "Peer-reviewed OOS paper 'beating product-detection-based baselines (which scored only ~56-64% AP on the normal class)'",
+  "problem": "The 56.9 / 61.4 / 63.8% figures in the cited paper are Chen et al.'s classical empty-shelf detectors (Canny, SVM, colour histogram), not product-detection-based baselines. The paper's own direct-detection baselines (Jha et al. YOLOv5/YOLOv7/EfficientDet) score 77-83% AP.",
+  "fix": "Describe them as 'earlier non-deep-learning and prior OOS-detection methods (56.9-63.8% AP)' and keep the 77-83% prior deep-learning baseline separate so the gain is not overstated."
+ },
+ {
+  "claim": "Reolink 4K PoE cameras '$39-$200 each ... listed range on Reolink's 4K PoE page: $39-$199.99'",
+  "problem": "The cited category page shows current prices from $23.99 (refurbished 5MP) to $899.40 and original/list prices from $39.99 to $1,499. $199.99 appears only as a struck-through original price; typical 4K models run $47.99-$149.99 current. The quoted '$39-$199.99 listed range' mixes list and street prices and omits outliers visible on the same page.",
+  "fix": "Restate as 'roughly $50-$150 street for 4K models, list $80-$250', or cite a single product page for the exact model used in the pilot budget."
+ },
+ {
+  "claim": "Focal Systems pricing mechanism cited to https://focal.systems/insights/",
+  "problem": "The cited insights page contains no pricing content. The set-up-fee-plus-monthly / AI-as-a-Service / cameras-not-sold-separately wording is only on https://focal.systems/faqs/. The claim is true but the citation does not support it.",
+  "fix": "Point the Focal pricing line at focal.systems/faqs/ and keep the insights page for the product description."
+ },
+ {
+  "claim": "Zippedi reports 'overhead stock up to ~7 m', cited to https://robot-distribution.com/en/brands/zippedi",
+  "problem": "The cited brand page has no specifications and no 7 m figure. The 7 m overhead-camera spec is on https://home.zippedi.com/zippy/ (and the robot-distribution product page), not the cited URL.",
+  "fix": "Cite home.zippedi.com/zippy/ for the 7 m / RFID / price-tag specs; use the brand page only for the quote/RaaS acquisition terms."
+ },
+ {
+  "claim": "NJ A3929 biometric-surveillance bill marked 'confirmed: true'",
+  "problem": "The bill text and 30-day cure are accurately quoted, but the same entry says enactment could not be confirmed. Marking it confirmed invites the orchestrator to treat a pending bill as law.",
+  "fix": "Set confirmed to false (or add a status field 'introduced, not enacted') and keep the bill URL as the source for the text only."
+ },
+ {
+  "claim": "Frigate described as the ingest layer for IP camera streams plus zone rules and custom label maps",
+  "problem": "OpenVINO/ONNX/TensorRT/EdgeTPU and custom label-map configuration are confirmed on the cited page, but that page documents detectors only; camera ingest and zone rules come from other Frigate docs and are not in the cited URL.",
+  "fix": "Add the Frigate camera/zone docs URL alongside the object-detector URL so each described capability has a citation."
+ }
+]

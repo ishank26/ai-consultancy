@@ -1,0 +1,82 @@
+{
+  "business": "Katie's Pet Depot",
+  "industry": "ecommerce-retail",
+  "town": "North Brunswick",
+  "opportunities": [
+    {
+      "title": "Grooming booking & quote agent (phone, SMS and web)",
+      "capability": "A",
+      "problem": "Every grooming quote and appointment is routed to one store phone number. The grooming page publishes tiered pricing ($54 bath package, $69 with haircut) that invites follow-up questions, directs customers to 'call for a quote and appointment', and exposes no online booking widget or intake form anywhere on the site.",
+      "evidence": [
+        "Grooming page asks customers to call for a quote and appointment and states appointments are typically scheduled; no booking widget found on site (https://katiesnj.com/pages/grooming-1)",
+        "No online grooming booking, intake form or appointment calendar observed; the only path is the phone number (https://katiesnj.com/pages/grooming-1)",
+        "Store hours Mon-Sat 10-7, Sun 10-6 with no after-hours channel published - calls outside those hours or during grooming sessions are simply lost (https://katiesnj.com/apps/pages/locations)",
+        "Reviews single out a long-tenured groomer as a loyalty anchor, so grooming demand is not discretionary and lost calls mean lost bookings (https://www.loc8nearme.com/new-jersey/north-brunswick/katies-pet-depot/2900021/)",
+        "Retail salespersons in NJ median $17.56/hr and customer service reps $22.95/hr - the cost of the staff time currently absorbed by phone booking (https://www.onetonline.org/link/localwages/41-2031.00?st=NJ; https://www.onetonline.org/link/localwages/43-4051.00?st=NJ)"
+      ],
+      "agent_design": "A voice/chat agent answers the grooming line and the site's contact form: it walks the caller through breed, size, coat condition and service tier, produces a quote from the published package grid, offers open slots from the groomer's calendar, captures pet and vaccination details, and books. Triggers: inbound call, web form, SMS reply, and a 24-hour reminder job. Systems touched: telephony/VoIP, the booking calendar, Shopify customer records (order history, contact details), and the store's email/SMS provider. Human approval: any quote outside the published grid (matted coats, giant breeds, medical or anxious pets), any reschedule inside 24 hours, and any discount request is queued to staff in a review inbox rather than auto-confirmed. The agent never takes card details; deposits, if wanted, go through a payment link.",
+      "why_not_DIY": "A chatbot subscription cannot answer a ringing phone, hold a calendar, apply a multi-variable price grid, or write back to Shopify customer records. Getting this right needs telephony integration, calendar conflict logic, a quote policy the staff will defend, and graceful handoff when the groomer is mid-appointment - plus reliability during Saturday peak when the store is busiest.",
+      "impact_estimate": {
+        "range": "$3,700-$8,000/yr of staff time recovered, plus unquantified recovered bookings",
+        "assumptions": "Assumes 4-8 staff hours/week currently go to grooming calls, quotes and reschedules (a planning assumption, not measured), valued at the NJ median of $17.56-$22.95/hr across 52 weeks. Deliberately excludes incremental bookings from after-hours and missed calls, which are likely larger but unmeasured.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: an after-hours + overflow voice/chat agent on the grooming line with the published price grid, calendar read/write for one groomer, SMS/email confirmations and reminders, and a staff review queue for out-of-grid quotes. Deliverable includes a log of every call handled, quotes given and bookings made, so the store can see conversion before committing."
+    },
+    {
+      "title": "Local delivery dispatch and 'where is my order' agent",
+      "capability": "A",
+      "problem": "Delivery runs on a free-text cart 'Notes' field and a 48-hour promise across 80+ ZIP codes from a single store, so route batching, cutoff decisions and address/instruction parsing are done by hand - the exact place where a small team makes silent errors.",
+      "evidence": [
+        "Orders are delivered within 48 hours, free over $49 within 10 miles, with a published list of ~80+ ZIP codes across Middlesex, Union, Somerset, Monmouth and Staten Island (https://katiesnj.com/pages/local-delivery)",
+        "Local delivery depends on free-text instructions typed into the shopping cart 'Notes' field rather than a scheduling or delivery-window tool (https://katiesnj.com/pages/local-delivery)",
+        "Service area is broad for a single store: 80+ ZIPs from one location, so routing and cutoff decisions are made by staff rather than software (https://katiesnj.com/pages/local-delivery)",
+        "O*NET lists expediting and tracing shipments and updating customers on delays as core order-clerk work; NJ order clerks median $46,270/yr and shipping/receiving clerks $45,440/yr (https://www.onetonline.org/link/summary/43-4151.00; https://www.onetonline.org/link/localwages/43-5071.00?st=NJ)",
+        "GenAI support assistance raised issues resolved per hour by 14% across 5,179 agents at a large software vendor's support desk (NBER working paper w31161 - a working paper, not peer-reviewed, and not a retailer) (https://www.nber.org/papers/w31161)"
+      ],
+      "agent_design": "An event-driven agent fires on each new Shopify order flagged for local delivery. It parses and normalises the free-text notes, geocodes the address and checks it against the published ZIP/10-mile rule, flags orders under the $49 threshold, groups orders into day-and-direction batches, and drafts the driver run sheet. It then sends the customer a delivery-window message and answers inbound 'where is my order' email/form/SMS replies from live order and route status. Systems touched: Shopify Admin API, a geocoding service, the route sheet (spreadsheet or lightweight dashboard), email/SMS. Human approval: every run sheet is reviewed and released by staff before the driver leaves; address exceptions, notes that imply access problems, and any refund/redelivery promise escalate to a person.",
+      "why_not_DIY": "This is not a chat window: it needs order-webhook triggers, address normalisation, geofence and radius checks, route batching, and outbound messaging that stays consistent with what the driver is actually doing. A wrong radius call or a missed note means a wasted trip and a refund, which is exactly the failure mode a general-purpose bot cannot be trusted with.",
+      "impact_estimate": {
+        "range": "$3,600-$7,200/yr of coordination time plus a modest reduction in failed or repeat deliveries",
+        "assumptions": "Assumes 3-6 staff hours/week on route planning, note triage and delivery-status replies (planning assumption), valued at the NJ customer service median of $22.95/hr over 52 weeks. The avoided-redelivery saving is real but not costed, because no public figure exists for this store's delivery volume or failure rate.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: Shopify order webhook intake, automatic ZIP/radius and $49-threshold validation, a daily drafted run sheet reviewed by staff, customer delivery-window notifications, and an auto-drafted reply to status enquiries with human send on the first 50. Success metric: hours of dispatch admin per week and count of orders caught before dispatch with bad addresses or out-of-area ZIPs."
+    },
+    {
+      "title": "Subscription and vendor-rebate knowledge agent",
+      "capability": "C",
+      "problem": "The store runs a 5% Subscribe & Save program with skip/freeze/cancel self-service plus a monthly-refreshed page of roughly a dozen manufacturer rebate offers with different validity windows. Every 'can I skip this month', 'is this coupon still valid' and 'why did my price change' question lands on staff by phone or the contact form.",
+      "evidence": [
+        "Subscription ordering on all food and treats with 5% savings, plus self-service cancel/skip/freeze and order history in the account area (https://katiesnj.com/pages/subscribe-and-save)",
+        "Offers page lists about a dozen manufacturer promotions (Stella & Chewy's, Fussie Cat, Natural Balance, Icelandic+, Dr. Marty's, Wholesomes, Dave's) with validity windows through Nov-Dec 2026 (https://katiesnj.com/apps/pages/offers)",
+        "Vendor promotions are delivered through Astro Loyalty, a rebate/loyalty platform common among independent pet retailers, so offer rules live in a third-party system staff must interpret for customers (https://katiesnj.com/apps/pages/offers)",
+        "Contact options are phone and an email form only; no live chat or SMS widget observed, so recurring questions queue up as callbacks (https://katiesnj.com/apps/pages/locations)",
+        "GenAI support assistance improved issues resolved per hour by 14% overall and 34% for novice agents (NBER working paper w31161), while an Alibaba after-sales field study found gains concentrated in lower performers and possible disruption for top performers - both are working papers/preprints, so treat the effect size as directional (https://www.nber.org/papers/w31161; https://arxiv.org/abs/2603.29888)"
+      ],
+      "agent_design": "A knowledge agent grounded only in the store's own documents - subscription policy, the current offers page, manufacturer rebate terms, delivery and returns rules - answers email-form and chat questions and drafts replies for staff. It performs approved actions in Shopify: skip a delivery, shift the next charge date, pause a subscription, or send a cancellation-save offer, with the customer's confirmation captured first. A scheduled job watches offer expiry dates and pings staff a week before a rebate lapses so the offers page never advertises a dead deal. Systems touched: Shopify subscriptions and customer records, Astro Loyalty offer data (read), the store's email/form inbox, and a small SOP/FAQ corpus. Human approval: refunds, price disputes, subscription cancellations that request a refund, and anything touching a customer's account in a way not on the approved action list.",
+      "why_not_DIY": "The answer has to be correct on live rebate terms and store policy, and some answers require changing a real subscription record. That means retrieval over the store's own documents, scoped write access to Shopify, an audit trail per action, and PII handling consistent with the NJ Data Privacy Law - none of which a generic chatbot subscription offers, and all of which a wrong answer turns into a billing complaint.",
+      "impact_estimate": {
+        "range": "$2,400-$6,000/yr of staff time, plus fewer avoidable subscription cancellations",
+        "assumptions": "Assumes 2-5 staff hours/week on subscription changes and coupon/rebate questions (planning assumption), valued at the NJ customer service median of $22.95/hr across 52 weeks. Retention benefit from faster skip/freeze handling is not costed because the store publishes no subscriber count or churn rate.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ"
+      },
+      "complexity": "Low",
+      "pilot_scope": "2-4 weeks: an email/form-triage agent that classifies incoming questions, drafts policy-grounded replies for staff approval, executes skip/pause/date-shift on a small set of opted-in subscriptions, and ships an offer-expiry watchlist. Success metric: share of incoming questions answered without staff editing, and hours saved per week."
+    }
+  ],
+  "lead_score": {
+    "pain": 20,
+    "fit": 17,
+    "ability_to_pay": 9,
+    "ease": 10,
+    "strategic": 11,
+    "total": 67,
+    "rationale": "Pain evidence is structural rather than voiced: phone-only grooming booking, free-text delivery notes across an 80+ ZIP service area, and stale pages (404 careers link, past-year event dates) all point to a small team doing manual coordination, but only three recent reviews were readable and none complains about missed calls or billing errors, so the pain is inferred from how the store is built, not from customers saying it hurts. Fit is strong: Shopify with native subscriptions, a monthly Astro Loyalty rebate calendar and a published grooming price grid give an agent clean systems and bounded policies to work against. Ability to pay is the weak point - one storefront, unknown headcount and revenue, no named owner or GM, and a labour-substitution case sized in the low thousands per year against an NJ wage floor of $15.92/hr. Ease of pilot is decent (public site, Shopify APIs, no hardware) but slowed by the missing decision-maker and a phone-first culture. Strategic value is good: independent pet retail is a repeatable vertical because Astro Loyalty, Shopify subscriptions and phone-only grooming are common across the segment, so the same three agents resell."
+  },
+  "best_evidence_signal": "The grooming page sends every quote and appointment to a single phone number with no online booking or intake form anywhere on the site - https://katiesnj.com/pages/grooming-1",
+  "suggested_channel": "walk-in",
+  "evidence_thin": true
+}

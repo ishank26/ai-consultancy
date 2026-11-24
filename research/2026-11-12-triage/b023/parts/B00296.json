@@ -1,0 +1,65 @@
+{
+    "name": "The Witlin Center for Advanced Eye Care",
+    "town": "East Brunswick",
+    "ref": "B00296",
+    "status": "operating",
+    "website": "https://www.witlineyecare.com/",
+    "what_they_do": "Specialty ophthalmology practice under Dr. Richard S. Witlin, MD, FACS, covering cataract surgery, cornea, glaucoma, retina, LASIK/laser vision correction, dry eye, medical eye care and cosmetic oculoplastics. Runs two offices, East Brunswick (385 NJ-18 Suite H) and Toms River, and describes itself as an affiliate of Eye Centers of America.",
+    "customers": "Patients seeking specialty and surgical eye care (cataract, LASIK, glaucoma, retina) plus general medical eye exams; referral-driven as well as direct.",
+    "size_signals": [
+      {"signal": "Two locations (East Brunswick and Toms River) with separate addresses and hours", "source_url": "https://www.witlineyecare.com/locations"},
+      {"signal": "Named ophthalmologists: Dr. Richard S. Witlin, Dr. Revathi P. Naadimuthu, Dr. Rajen Desai", "source_url": "https://www.witlineyecare.com/doctors"},
+      {"signal": "Nine service lines including LASIK and cosmetic oculoplastics, i.e. surgical revenue", "source_url": "https://www.witlineyecare.com/"}
+    ],
+    "listing": {"platform": "Google (rating reported via Birdeye aggregator)", "rating": "4.0", "reviews": "104", "source_url": "https://reviews.birdeye.com/witlin-center-for-advanced-eye-care-155742783581742"},
+    "website_review": {
+      "loads": true,
+      "https": true,
+      "phone_layout": "usable",
+      "clear_offer": true,
+      "primary_cta": "Book Appointment (Beam Health scheduler) plus a 'Call Witlin' item inside the mobile menu",
+      "click_to_call": true,
+      "contact_form": false,
+      "online_booking_or_quote": "Yes - Beam Health intake scheduler (ecoa-intake.beam.health/witlineye) with location, new/existing, visit reason, age and live time slots; no CAPTCHA seen",
+      "trust_signals": "Named surgeons with credentials, 'Accepting New Patients' badge, procedure-specific service pages, blog, patient forms and referral pages",
+      "out_of_date_signs": "No robots.txt at all (/robots.txt returns the HTML page); site is a client-side-rendered single-page app so the HTML source is ~2 KB with only the title in it",
+      "search_basics": "Title and meta description name the practice and both towns, and each service (cataracts, LASIK, glaucoma, retina, cornea, dry eye) has its own URL, but the H1 is a generic slogan rather than 'Ophthalmologist East Brunswick NJ'",
+      "top_issues": [
+        "Whole site is client-rendered: crawlers and AI agents that do not execute JavaScript see a 41-character page with no phone, hours or services",
+        "No schema.org LocalBusiness/Physician JSON-LD anywhere",
+        "Hero headline and body copy render in pale grey over a light photo on mobile - close to unreadable",
+        "No contact form on the site; the only query path is the external scheduler",
+        "Mobile header has no visible click-to-call number, only a hamburger menu"
+      ]
+    },
+    "agent_readiness": {
+      "findable": 2,
+      "answerable": 0,
+      "bookable": 3,
+      "notes": "Findable: https, branded domain, real review presence, but /robots.txt does not exist and there is no sitemap or structured data. Answerable: 0 - raw HTML body text is 41 characters ('The Witlin Center for Advanced Eye Care'), with no phone, hours, services or address in the source; everything appears only after JavaScript runs, so an agent fetching the page gets nothing to cite. Bookable: strong - the Beam Health scheduler exposes location, patient type, visit reason and live slots with no CAPTCHA and no phone call, though it is off-site and unlinked from any form."
+    },
+    "operations_signals": [
+      {"signal": "Aggregated Google reviews complain about not getting callbacks on prescriptions and about long waits - inference: phone/message follow-up is a bottleneck", "source_url": "https://reviews.birdeye.com/witlin-center-for-advanced-eye-care-155742783581742"},
+      {"signal": "Patient paperwork is still handled through a separate Forms page and an external intake platform rather than one flow", "source_url": "https://www.witlineyecare.com/forms"},
+      {"signal": "Surgical practice with nine procedure lines and two offices - inference: high volume of consult requests and pre/post-op scheduling to coordinate", "source_url": "https://www.witlineyecare.com/"}
+    ],
+    "top_opportunities": [
+      {"opportunity": "Make the site machine-readable: server-side render or prerender the pages so phone, hours, address and services exist in HTML, add LocalBusiness/Physician JSON-LD, and ship a robots.txt plus sitemap", "type": "agent readiness", "evidence": "Raw HTML is 2,135 bytes with 41 characters of text, zero JSON-LD, no tel: link and /robots.txt returns the SPA instead of a file", "effort": "M"},
+      {"opportunity": "Put an AI-agent-friendly front door on the practice: a labelled contact/consult-request form on-site and plain-text answers to the questions callers ask most (insurance, LASIK/cataract consult process, wait times), so agents can triage before a human calls", "type": "operations", "evidence": "No on-site form anywhere; the scheduler's only visit reason is 'Consultation (Medical Eye Exam Only - No Glasses or Contact Lens Exam)'; reviews cite missed callbacks", "effort": "S"},
+      {"opportunity": "Fix mobile readability and conversion basics: darker hero text, a persistent click-to-call bar, and a one-line 'what we do / where' above the fold", "type": "website", "evidence": "390 px screenshot shows the headline in pale grey over a pale surgical photo, and the header carries only a logo and hamburger with no phone number", "effort": "S"}
+    ],
+    "scores": {
+      "gap_size": 4,
+      "ability_to_pay": 4,
+      "ease": 3,
+      "evidence": 4,
+      "reasons": "Gap: large and concrete - a JS-only site that agents cannot read, no schema, no robots.txt, no form. Pay: surgical ophthalmology across two offices (LASIK, cataracts), so high ticket values and real budget. Ease: the fixes are clear but prerendering a SPA plus schema and form work is a couple of weeks, not days. Evidence: I confirmed the empty HTML, the missing robots.txt, the booking flow and the mobile rendering directly."
+    },
+    "sources": [
+      "https://www.witlineyecare.com/",
+      "https://www.witlineyecare.com/locations",
+      "https://www.witlineyecare.com/doctors",
+      "https://ecoa-intake.beam.health/witlineye",
+      "https://reviews.birdeye.com/witlin-center-for-advanced-eye-care-155742783581742"
+    ]
+}

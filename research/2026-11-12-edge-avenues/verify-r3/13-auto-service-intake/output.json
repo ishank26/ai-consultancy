@@ -1,0 +1,198 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "DPPA item: 'So a plate read may be used to match an existing customer record; it may not be used to pull an owner's identity for marketing or curiosity' (marked \"confirmed\": true).",
+      "problem": "The statutory text of 18 U.S.C. 2721(b)(3) is quoted accurately, but the operational conclusion drawn from it is the brief's own reading, not something the cited page says. (b)(3) permits use only 'to verify the accuracy of personal information submitted by the individual'; whether a plate-to-customer-record match falls inside that is an interpretation, so the second sentence should not sit under confirmed: true without a label.",
+      "fix": "Split the item: keep the statute quotation as confirmed, and mark the 'may be used to match an existing customer record' sentence as an inference / to be checked with counsel (or soften to 'may be defensible where the read is used only to confirm a record the customer supplied')."
+    },
+    {
+      "claim": "Price point: gap_for_local_installer says nobody sells a Middlesex independent a \"$3,000-$6,000 installed package\", while pilot.cost_range says \"$4,000-$9,000 for hardware, installation and calibration at one site\".",
+      "problem": "Internal inconsistency. If delivery cost (hardware, install, calibration) is $4-9k, a $3-6k installed price sits below cost; the two numbers describe the same single-site package and cannot both stand.",
+      "fix": "Reconcile: either state the $4-9k as delivery cost and set the quoted price above it, or lower the pilot cost envelope. Both figures are already labelled as estimates/assumptions, so no source is contradicted."
+    },
+    {
+      "claim": "Problem statement: 'the state's Consumer Fraud Act makes paperwork errors expensive (treble damages plus mandatory fee awards)'.",
+      "problem": "Sylince confirms treble damages and counsel fees are mandatory once unlawful conduct and an ascertainable loss are proven, in a case about an extended-service-contract misrepresentation, not about intake paperwork. The link to intake-documentation errors is the brief's own reasoning.",
+      "fix": "Add '(inference)' or note the CFA/treble exposure arises only where an ascertainable loss is proven, rather than implying paperwork defects alone trigger treble damages."
+    },
+    {
+      "claim": "legal_risk_low: 10/15.",
+      "problem": "Ranges and arithmetic are fine and the rationale matches the legal section, but 10/15 is at the optimistic end given the brief itself flags DPPA limits, audio exposure and false-accusation harm. Not an error, only a judgement call worth the orchestrator's eye.",
+      "fix": "None required; optionally restate as 8-10/15 with the caveat that the score assumes audio-off, on-prem, human-confirmed design."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "67% of repairs carry at least one supplement, up from 57% in 2019; supplements are about 22.5% of total repair cost (18% in 2019, 10% in 2009) - CCC data (2024 data, reported July 2025)",
+      "source_url": "https://df9fd9b6ab64495ad759-f14ba961ae89374e6d5a8ee602c09059.ssl.cf5.rackcdn.com/2001.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Repairs with a supplement averaged 13.2 days in 2024 vs 7.7 days without (5.5-day gap); with-supplement average 8.8 days in 2020 (5.4 without, 3.4-day gap)",
+      "source_url": "https://df9fd9b6ab64495ad759-f14ba961ae89374e6d5a8ee602c09059.ssl.cf5.rackcdn.com/2001.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Repairs over $10,000 with a supplement averaged 29.3 days, 13.3 days longer than those without",
+      "source_url": "https://df9fd9b6ab64495ad759-f14ba961ae89374e6d5a8ee602c09059.ssl.cf5.rackcdn.com/2001.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "US keys-to-keys cycle time averaged 19.5 days for BEVs vs 16.5 days for ICE, year to date (Mitchell Q3 2024 Plugged-In)",
+      "source_url": "https://www.mitchell.com/print/pdf/node/28526",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 13:45A-26C.2 requires signed written authorization stating nature of repair and odometer reading (or documented oral authorization with date/time/name/phone for after-hours drop-off), a written estimate in one of five forms, consent before exceeding the estimate, itemized invoice, posted customer-rights sign",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-45A-26C-2",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Division of Consumer Affairs received 1,244 'Motor Vehicle' complaints in 2014 (number-two category), ~24% auto repair, and issued notices of violation to nine auto repair shops seeking $20,797",
+      "source_url": "https://www.nj.gov/oag/newsreleases15/pr20150304a.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Division tells consumers to call and ask whether a shop has been the subject of complaints",
+      "source_url": "https://www.nj.gov/oag/newsreleases15/pr20150304a.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sylince v. Thrift Auto Sales (App. Div.): once unlawful conduct and an ascertainable loss are proven, 'treble damages and counsel fees under N.J.S.A. 56:8-19 are mandatory'; the trial court has 'no discretion'",
+      "source_url": "https://www.njcourts.gov/system/files/court-opinions/2015/a5891-13.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "AG Law Enforcement Directive 2022-12 effective January 23, 2023; scans limited to plates exposed to public view; 3-year retention; non-alert data access limited to three purposes; private entities may provide ALPR data to NJ agencies but cannot receive law-enforcement-owned data",
+      "source_url": "https://www.nj.gov/oag/dcj/agguide/directives/ag-Directive-2022-12_Updated-Directive-Regulating-Use-of-Automated-License-Plate-Recognition-%28ALPR%29-Technology.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "P.L. 2026, c.4 (C.52:4CC-1 et al.) bars a government entity from selling/sharing/transferring ALPR information except to another government entity, by judicial order/warrant, or to another jurisdiction's law enforcement for a criminal investigation; knowing violations expose the entity to injunctive relief and civil damages",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2026/PL26/4_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "18 U.S.C. 2721(b)(3): legitimate business may use DMV information only to verify accuracy of information the individual submitted, and to correct it only to prevent fraud, pursue legal remedies, or recover a debt or security interest",
+      "source_url": "https://www.govinfo.gov/content/pkg/USCODE-2021-title18/html/USCODE-2021-title18-partI-chap123-sec2721.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey is a one-party-consent state under N.J.S.A. 2A:156A-3 and -4; recording a conversation you are not a party to risks criminal and civil liability",
+      "source_url": "https://www.dmlp.org/legal-guide/new-jersey/new-jersey-recording-law",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ consumer privacy law effective January 15, 2025; thresholds 100,000+ consumers annually (or 25,000+ plus revenue from selling data); penalties up to $10,000 per violation, $20,000 for repeats; 30-day cure period ending July 15, 2026",
+      "source_url": "https://www.dataguidance.com/sites/default/files/DG-new-jersey-consumer-privacy-act-act-infographic.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Division of Consumer Affairs data-privacy FAQ was bot-blocked on retrieval",
+      "source_url": "https://www.njconsumeraffairs.gov/ocp/Pages/NJ-Data-Privacy-Law-FAQ.aspx",
+      "result": "could not open"
+    },
+    {
+      "claim": "NJ MVC auto body license is issued per place of business (separate application for each location) and a full-service license requires eligible garage liability or equivalent CGL of at least $300,000 and garage keepers' liability of at least $50,000",
+      "source_url": "https://www.nj.gov/mvc/business/autobodylic.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BayWatch: free installation; $1,900/month entry level, $3,300/month fully loaded; ~3-foot IR scan, dents to ~3 mm (vendor claim), does not see under the vehicle, exports to CCC/Tractable or any format; ~250 dealership sites plus a rental company",
+      "source_url": "https://www.autobodynews.com/regional/midwest-regional-news/promise-potential-ai-pre-scan-products-finally-starting-to-show-up-in-body-shops",
+      "result": "confirmed"
+    },
+    {
+      "claim": "UVeye: installation in the mid-to-high four figures with similar monthly SaaS costs; about 100 cars/month 'isn't enough'; system needs under 14 feet in any direction",
+      "source_url": "https://www.autobodynews.com/regional/midwest-regional-news/promise-potential-ai-pre-scan-products-finally-starting-to-show-up-in-body-shops",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Tractable: $299/month entry interface, $499/month 'workhorse'; a 15-employee Ontario shop (City Centre Collision) pays $500/month; quote produced within 30 seconds; can be white-labeled",
+      "source_url": "https://www.autobodynews.com/regional/midwest-regional-news/promise-potential-ai-pre-scan-products-finally-starting-to-show-up-in-body-shops",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Tom Wood Group: 29.3% of vehicles through the scan lane had something owners did not know about; the same article notes the AI system did not at the time find some ADAS sensor damage; BayWatch had 500 units on order pre-tariff turmoil",
+      "source_url": "https://www.autobodynews.com/regional/midwest-regional-news/promise-potential-ai-pre-scan-products-finally-starting-to-show-up-in-body-shops",
+      "result": "confirmed"
+    },
+    {
+      "claim": "UVeye says it identifies 96% of vehicle defects vs 24% for manual inspections; the arch uses more than 20 high-resolution high-speed cameras and images are processed on cloud servers",
+      "source_url": "https://www.vision-systems.com/cameras-accessories/news/55306984/from-clipboards-to-cameras-hertz-deploys-ai-powered-inspection-system-for-rental-vehicles",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Shopmonkey published tiers at $239, $399 and $499 per month (annual pricing lower), with digital vehicle inspections, e-signature and QuickBooks integration",
+      "source_url": "https://shopmonkey.io/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Plate Recognizer Stream at $45 per camera per month, a $35/month 3-camera one-month option, Snapshot lookups from $50/month, and $500 per professional-services session",
+      "source_url": "https://platerecognizer.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate is MIT-licensed, LPR is disabled by default and must be enabled, requires >=4GB RAM, and runs fully offline once detection/OCR models are cached",
+      "source_url": "https://docs.frigate.video/configuration/license_plate_recognition/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate recommends Hailo-8/Hailo-8L m.2 modules or an Intel iGPU with OpenVINO, and states the Google Coral is no longer recommended for new installs",
+      "source_url": "https://docs.frigate.video/frigate/hardware/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO is AGPL-3.0 by default and commercial/embedded/SaaS deployment requires an enterprise licence",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2-VL: 450M for highly constrained devices, 1.6B more capable; LFM Open License v1.0; English only; not intended for safety-critical decisions; vendor recommends fine-tuning on narrow use cases",
+      "source_url": "https://huggingface.co/LiquidAI/LFM2-VL-450M",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen2.5-VL-3B can localise objects as bounding boxes or points and produce stable JSON for coordinates, and supports structured outputs for invoices/forms",
+      "source_url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CarDD: best model 57.0 mask AP / 60.6 box AP overall (77.7 / 78.8 at IoU 0.50); per-class box AP 39.2 dent, 36.6 scratch, 30.6 crack, 91.2 glass shatter, 86.4 tire flat; 4,000 images, 9,000+ annotations, six classes; IEEE T-ITS 2023",
+      "source_url": "https://cardd-ustc.github.io/docs/CarDD.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "UFPR-ALPR: proposed system 64.89% all-correct single frame / 78.33% with redundancy; commercial systems 47.39% and 50.94% single frame, 56.67% and 70.00% with redundancy; SSIG 85.45% single frame / 93.53% with redundancy; 150 videos, 4,500 frames; SSIG 2,000 frames, 101 vehicles, static camera",
+      "source_url": "https://web.inf.ufpr.vri/wp-content/uploads/sites/7/2019/08/laroca2018robust.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business Insider / Forrester: 71% of Flock Safety alerts to Roseville, CA police over two years were misreads",
+      "source_url": "https://www.forrester.com/blogs/rules-of-the-road-what-flocks-71-misread-rate-teaches-us-about-third-party-ai-risk/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "IMR survey of 500 US independent shops (fielded December 2023): 56% cited finding qualified technicians, 27.2% retaining them; shops with 8+ bays put retention at 43.2%, their second-largest concern",
+      "source_url": "https://www.automotivebenefits.org/industry-education-articles/2024/7/19/top-5-challenges-for-independent-repair-shops-in-2024",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County 2024 QCEW: 8111 386 estab/2,358 emp/$58,380; 811111 233/1,114/$58,096; 811121 58/479/$68,235; 811192 46/416/$41,811; 811191 12/108/$46,636",
+      "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Amcrest IP5M-B1186EW listed at $79.99 and out of stock at retrieval",
+      "source_url": "https://www.amcrest.com/products/5mp-poe-camera-bullet-ip5m-b1186ew-28mm.js",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jetson Orin Nano Super Developer Kit at $249 (down from $499) with 67 INT8 TOPS",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,57 @@
+[
+ {
+  "claim": "price_ranges.mid_market: \"$80-$250 per location per month (about $10-$25 per monitored unit plus a $29-$150 platform/hub fee), often plus $50-$115 per sensor of installation or configuration\"",
+  "problem": "Unit misstatement on the upper bound of the install band. The $49.99-$69.99 figures from Standard Merchant Services are genuinely per sensor, but the $115 from Kitchen Brains is a one-time configuration fee attached to the TMS subscription, not a per-sensor charge. Presenting the band as \"per sensor\" overstates it. The same error is repeated in one_line (\"often plus $50-$115 per-sensor install\").",
+  "fix": "Rewrite as \"plus roughly $50-$70 per sensor of onboarding/installation (Standard Merchant Services $69.99/$59.99/$49.99 per sensor), with separate one-time configuration fees on top (e.g. Kitchen Brains $115 configuration, ChirpDat $495 per zone)\". Correct one_line to match."
+ },
+ {
+  "claim": "price_ranges.low_cost_self_serve: \"$0-$45 per month, or $149-$300 one-time hardware, equivalent to roughly $5-$15 per sensor per month\"",
+  "problem": "The $300 hardware endpoint does not follow from any price in offerings or buyer_reported_costs. Confirmed one-time hardware there tops out at $219.70 (Sensor Easy Starter Kit); TemperatureWise adds $200/sensor and gateways of $100/$250/$450; Kitchen Brains is $529 gateway + $184 sensor (not a self-serve low-cost option).",
+  "fix": "Change to \"$149-$250 one-time hardware\" (Temp Stick $149; TemperatureWise $200 sensor / $250 gateway; Sensor Easy $219.70 kit), or delete the $300 endpoint."
+ },
+ {
+  "claim": "price_ranges.mid_market: \"about $10-$25 per monitored unit\"",
+  "problem": "The $25 monitored-unit endpoint has no source inside offerings. Highest confirmed recurring per-unit price there is TemperatureWise at $250 per sensor per year, i.e. about $21/month. The only $25-per-sensor figures seen ($25/site/year in the school bid; Crafted Coolers' $25/sensor/month) are either a different unit or appear only in caveats.",
+  "fix": "Change to \"about $10-$21 per monitored unit\", or add the specific source for a $25 per-unit month and re-label it as coming from outside the offerings set."
+ },
+ {
+  "claim": "buyer_reported_costs: \"Sensitii advertises $79 per location per month including two sensors, with additional sensors at $7/month each\" cited to https://sensitii.com/pricing/",
+  "problem": "The cited page does not contain these numbers. On re-fetch the live pricing page is quote-only (\"we quote in writing after seeing your kitchen\", \"Core is available today\", no figures). The $79 + $7 figures only appear in a search-indexed summary of that URL. Source_url therefore does not support the number, even though the finding itself flags it as an older rate.",
+  "fix": "Either drop the row, or re-label the source as a search-indexed/cached version of the vendor pricing page with a note that the live page no longer shows it, and keep the existing caveat. Do not present it under the live pricing-page URL."
+ },
+ {
+  "claim": "caveats: \"TemperatureWise's $250/sensor/year and Sensitii's $79/location were only visible in search-indexed versions of the vendor pages\"",
+  "problem": "Contradicted on the TemperatureWise half. The live page at renyergytech.com/temperaturewise states \"$250 per sensor per year, about $21 a month\", plus the three restaurant examples ($175 up front/$750 a year; $1,050 up front/$1,000 a year; $2,500 up front/$2,300 a year), and says prices were checked 18 October 2026 against a 1 September 2026 price list. The same caveat sentence also lists TemperatureWise among pages that \"rendered prices on fetch\", so it contradicts itself. Only the Sensitii half is true.",
+  "fix": "Delete TemperatureWise from that caveat and state instead that its price list is live and dated 1 Sep 2026 (checked 18 Oct 2026). Optionally add the hardware prices the live page now publishes: $200/sensor, $25 Bluetooth sensor, gateway $100/$250/$450, cellular $125 once + $50/year."
+ },
+ {
+  "claim": "implications_for_consultancy #1: \"roughly $99-$199 per location per month ... because that sits below ConnectedFresh's own typical $190-$210/month for a 4-6 unit restaurant\"",
+  "problem": "Internal inconsistency: $199 is not below $190. At 4-6 units the ConnectedFresh equivalent is $190-$210, so the top of the proposed band overlaps rather than sits below it. Inference label is present, but the comparison as written is wrong.",
+  "fix": "Either narrow the band (e.g. $99-$189) or restate the comparison as \"at or below ConnectedFresh's $190-$210/month for 4-6 units, and clearly below it at 7-8 units where ConnectedFresh would price near $230-$250\"."
+ },
+ {
+  "claim": "implications_for_consultancy #3: \"Every serious competitor bundles unlimited users (ThermoWorks Business tiers, Standard Merchant Services 12-month, Sensitii, ConnectedFresh)\"",
+  "problem": "The ConnectedFresh citation does not support it: its cost article says nothing about user counts. The other three are supported (ThermoWorks Business Pro/Business Pro Plus \"Unlimited Users\"; SMS 12-month \"Unlimited Users\"; Sensitii \"never per seat\" / unlimited users).",
+  "fix": "Replace ConnectedFresh with SmartSense (how-to-buy lists \"Unlimited users\" among included items), which is verifiable, or drop ConnectedFresh from the list."
+ },
+ {
+  "claim": "implications_for_consultancy #5 and #8: \"Sensor Easy 30-day guarantee, Senso/SmartSense style pilots\" and \"SmartSense, ComplianceMate and SensoScientific all hide prices behind quotes\"",
+  "problem": "Unsupported vendor references. \"Senso\" appears nowhere else in the brief and has no cited source; SensoScientific is never cited to a URL, only asserted in caveats/data_gaps. \"SmartSense style pilots\" is also unsourced: the only SmartSense trial language found is nothing at all on how-to-buy (the 45-day trial is Monnit's, not SmartSense's).",
+  "fix": "Delete the Senso reference and the \"SmartSense style pilots\" phrase, or cite a page. For the quote-only claim, restrict it to the vendors with cited sources (SmartSense how-to-buy, ComplianceMate/Ladle FAQ) and either cite SensoScientific or remove it."
+ },
+ {
+  "claim": "offerings/Ideal Sciences: \"Sensor plus unlimited data logging, 24/7 monitoring and alerts for the life of the sensor\"",
+  "problem": "\"For the life of the sensor\" is not stated on tempstick.com/common-questions. The page says \"no fees or subscriptions\", \"all accounts are free\", \"unlimited history\" and \"continuous monitoring and alert notifications all year round without paying a monthly fee or subscription charge\". The lifetime wording is an inference presented as included-feature fact.",
+  "fix": "Reword to what the page says (no fees or subscriptions, unlimited history, continuous monitoring and alerts) or label the lifetime framing as an inference."
+ },
+ {
+  "claim": "buyer_reported_costs: ComplianceMate estimate labelled year \"2026\"",
+  "problem": "Minor dating error. The cited page (ustechautomations / US Tech Automations comparison) is titled as the 2027 edition, not 2026, although the URL slug says 2026. The prices themselves check out exactly (Year 1 $5,000-$10,500; Year 2+ $1,200-$3,000 per location).",
+  "fix": "Label the year as \"2027 edition, retrieved 2026-11-12\" so the reader can judge freshness."
+ },
+ {
+  "claim": "buyer_reported_costs: school-district bid \"monitoring at $25 per site per year\" and \"installation at $450 per address\" attributed to SmartSense",
+  "problem": "The document does contain \"$25/site per year\" and \"$450 installation per address\", and now that it has been opened the $175/sensor-with-display and $400/gateway figures are visible in the SmartSense column. But the table flattens on extraction, so the $450/address cell cannot be tied to the SmartSense column with confidence; it may belong to another bidder's column. The brief's own context note (\"summary not opened directly\") is now outdated.",
+  "fix": "Keep the figures but add a caution that column-to-price mapping in the bid table could not be confirmed, or limit the quoted numbers to the ones clearly inside the SmartSense column ($175/sensor with display, $400/gateway)."
+ }
+]

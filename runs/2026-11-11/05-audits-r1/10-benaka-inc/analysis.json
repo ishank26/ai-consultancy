@@ -1,0 +1,82 @@
+{
+  "business": "Benaka, Inc.",
+  "industry": "construction",
+  "town": "New Brunswick, NJ",
+  "opportunities": [
+    {
+      "title": "Federal QC documentation agent: daily reports, three-phase control and RFI drafts",
+      "capability": "A",
+      "problem": "The one field role Benaka is publicly recruiting is a Quality Control Manager whose duties are almost entirely structured document production - managing the three phases of control and all associated report forms, preparatory meetings, initial inspections, QC/production meeting minutes, RFIs written with the PM, purchase orders before material orders, and daily production reports - while reporting spans government QCS/RMS plus Word, Excel, Outlook and Project. Benaka is hiring that role externally at $100K-$140K and has also advertised a combined 'QC Manager/Project Superintendent' posting, which points to thin field staffing carrying a heavy paperwork load.",
+      "evidence": [
+        "QC Manager posting lists three-phase control forms, meeting minutes, RFI drafting, purchase orders, daily production reports as core duties - https://www.benakainc.com/careers.html",
+        "Same posting asks for QCS/RMS familiarity alongside Microsoft Office/Project and web-based programs, i.e. re-keying between disconnected systems - https://www.benakainc.com/careers.html",
+        "Live posting advertises $100,000-$140,000 for a QC Manager/Superintendent who must commute daily to the federal site - https://www.simplyhired.com/job/m2NUtDE885oLWMoDsU45Bi_gsBQWD8D19S_eYPt48YmnNXahaaHWWQ",
+        "Work is inside fully occupied government facilities with concurrent multi-discipline projects, so inspection and phasing documentation is continuous - https://www.benakainc.com/about-us.html",
+        "Company-published commendation letters single out submittal comment responses and document handling as the visible quality differentiator - https://www.benakainc.com/commendations.html"
+      ],
+      "agent_design": "Event-driven agents that sit beside, not inside, the government systems. Triggers: a new site photo/voice note or field email lands in a project mailbox; a submittal or RFI arrives from the government; a daily 4pm cron. Agents (1) transcribe field notes and photos into a draft daily production report in the project's existing template, (2) maintain a submittal register and flag overdue reviews, (3) draft RFIs and preparatory-meeting minutes for the QC manager to edit, (4) pre-fill three-phase control checklists and flag missing evidence before an inspection. Everything is written as a draft in Word/Excel or the project's Procore-style tool; nothing is transmitted to QCS/RMS or to the contracting officer without the QC manager or PM pressing send. Human approval point: QC manager signs every daily report, RFI and submittal transmittal; the agent never classifies a defect or a safety condition.",
+      "why_not_DIY": "A chat subscription cannot read a project mailbox, hold a persistent submittal register across a 12-month task order, reconcile field photos to a specific spec section, or store draft reports next to CUI-adjacent federal project data. This needs mailbox and file-store integration, per-project retrieval over submittals/specs, an audit trail a contracting officer can accept, and deployment terms appropriate for federal project documents - plus reliability checks so a hallucinated line never reaches a QC record.",
+      "impact_estimate": {
+        "range": "$12,000-$30,000 per active federal project per year in QC/superintendent drafting time (roughly 6-10 hours/week), before any reduction in submittal turnaround",
+        "assumptions": "Assumes QC documentation consumes 6-10 hours/week of a $100K-$140K role that is a large share of a 40-hour week; loaded cost estimated at ~$55-$70/hour by grossing the NJ median salary up 25-35% for benefits and overhead (inference); 45 productive weeks per year; only the drafting/reconciling share of the task is automated and a human still reviews every document, so no headcount is removed. Does not assume any reduction in change orders or claims, because no credible quantified figure exists.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/11-9021.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "Four weeks on one active federal task order: an indexed library of that project's submittals, specs and prior daily reports; a working daily-report and meeting-minutes drafter from field notes/photos; a submittal register with overdue alerts; 20 back-tested RFIs and 20 daily reports compared against the QC manager's own versions, with a measured edit time per document."
+    },
+    {
+      "title": "Bid-desk agent: solicitation triage, compliance matrix and past-performance assembly",
+      "capability": "B",
+      "problem": "Benaka bids into several federal vehicles at once - an Air Force MACC at JBMDL, a 2026 USACE New England small-business MATOC, JOC/IDIQ and M&R work - and the underlying Air Force solicitation drew 28 offers while the Corps MATOC drew nine, so each pursuit is a competitive, document-heavy submission. The company publishes its project and client history as static web pages rather than structured data, so pulling past performance and client references for each proposal is manual, and the About page says this work sits with a small in-house group of estimators, contract specialists and finance staff.",
+      "evidence": [
+        "Air Force MACC solicitation drew 28 offers, indicating high-volume competitive proposal preparation - https://www.fpds.gov/ezsearch/FEEDS/ATOM?FEEDNAME=PUBLIC&templateName=1.5.3&q=Benaka+SIGNED_DATE%3A%5B2023%2F01%2F01%2C2026%2F12%2F31%5D",
+        "Added in 2026 to the USACE New England District MATOC pool with a shared $90M ceiling and orders typically $500K-$10M; nine bids received - https://www.highergov.com/news/benaka-joins-90-million-army-corps-small-business-6490041",
+        "Project and client galleries are static pages, not structured data, so past-performance retrieval for proposals is manual - https://www.benakainc.com/sitemap.xml",
+        "In-house Estimators, Contract Specialists and Finance professionals support the PM team from the corporate office - https://www.benakainc.com/about-us.html",
+        "Company publishes Navy/Army/Air Force commendation letters that are exactly the material proposals need, but only as a flat web page - https://www.benakainc.com/commendations.html"
+      ],
+      "agent_design": "Two agents. (1) A discovery agent polls SAM.gov and the firm's vehicle portals daily for task-order RFPs matching its NAICS/set-aside/geography, scores fit against a structured index of Benaka's project history, and produces a one-page bid/no-bid sheet with deadlines, bonding and key personnel requirements. (2) An assembly agent parses the solicitation into a compliance matrix (Section L/M items, forms, page limits), retrieves the three closest past-performance projects and matching commendation quotes from the indexed library, and drafts the non-price narrative sections and SF form cover data. Estimators own all pricing; the PM or contract specialist approves every submission. The human decides go/no-go.",
+      "why_not_DIY": "Winning this requires a persistent, structured index of 30 years of project history joined to solicitation requirements, tracked deadlines across several government portals, and forms filled from a company record - not a prompt in a browser tab. Bid documents and unit-price build-ups are commercially sensitive, so the deployment needs an environment the firm controls, and a missed Section L requirement is a disqualification, which demands citations back to the solicitation page rather than free-text generation.",
+      "impact_estimate": {
+        "range": "$10,000-$30,000 per year in estimator/contract-specialist time, plus capacity to submit more pursuits with the same staff",
+        "assumptions": "Assumes 15-30 hours per bid on compliance matrices, past-performance write-ups and form assembly, and 10-20 federal pursuits or task-order responses per year at a loaded estimator cost of ~$45-$55/hour (NJ median $80,570 grossed up 25-35%, inference); assumes 15-25% of assembly time is currently rework caused by retrieval from web pages and email. The capacity upside (extra bids submitted) is an inference, not a measured revenue figure; no win-rate improvement is claimed, because the only quantified takeoff time-savings found are vendor self-reports (Trimble) and a single-drawing vendor test (Togal), neither generalizable.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/13-1051.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "Three to four weeks: a structured past-performance and key-personnel library built from the public project, client and commendation pages; a SAM.gov/vehicle monitor with a daily fit-scored shortlist; and one live pursuit run end to end - compliance matrix plus drafted past-performance sections - measured against the firm's last comparable submission for hours and omissions."
+    },
+    {
+      "title": "Subcontractor prequalification and certified-payroll evidence agent",
+      "capability": "A",
+      "problem": "Subcontractors and vendors are told to email their details and expertise to the general inbox - there is no prequalification form, vendor portal or structured record, so sorting, checking and following up falls on office staff. On the compliance side, NJ public work requires a Public Works Contractor Registration certificate before bidding or working, and since August 2024 certified payrolls must be filed online through NJ Wage Hub (with hard-copy filing to the contracting body per the industry brief); Benaka's client list includes NJ municipal agencies alongside its federal work, so it carries that dual filing and certificate-chasing load across many subs.",
+      "evidence": [
+        "Interested subcontractors are asked to email their details and expertise, with no vendor portal or prequalification form - https://www.benakainc.com/subcontractors.html",
+        "New Jersey requires certified payrolls for public works projects to be submitted online via NJ Wage Hub, under P.L. 2023 c.138 - https://www.nj.gov/labor/wageandhour/prevailing-rates/njwagehub.shtml",
+        "Industry brief records the NJ Prevailing Wage Act dual filing duty (online plus hard copy since Aug 15 2024), a $500/year or $750/2-year PWCR fee and a penalty up to $2,500 for a first violation (NJ DOL, 2024; constraint carried from the industry research file)",
+        "Client list includes NJ and NY municipal agencies alongside federal agencies, so NJ public-work rules apply to part of the book - https://www.benakainc.com/clients.html",
+        "Inbound contact is phone, fax, email or a basic contact form only - no portal, booking or bid intake - https://www.benakainc.com/contact-us.html"
+      ],
+      "agent_design": "An intake agent watches the benaka@ mailbox and a new online prequalification form, extracts company details, trades, COI/W-9 and PWCR certificate data, checks the certificate against NJDOL's published registered-contractor and debarment lists, and writes a structured vendor record with expiry reminders. A second agent assembles the weekly certified-payroll pack from timecards and payroll exports: classifies workers, checks wage rates against the applicable prevailing-wage determination, flags missing or expired certificates and late payrolls, and queues the NJ Wage Hub upload file and the hard-copy packet. Office staff or finance approves each filing; the agent never submits a certified payroll or signs a subcontract itself.",
+      "why_not_DIY": "Wage records contain SSNs, I-9 data and deduction details, so they cannot go through a consumer chatbot, and the workflow needs scheduled runs against a live vendor database, document parsing of uploaded certificates, and a checkable link between a sub, a project and a wage determination. A missed weekly filing is a statutory violation with a published database behind it, which requires logging and exception handling rather than best-effort generation.",
+      "impact_estimate": {
+        "range": "$6,000-$15,000 per year in payroll/office clerical time, plus avoided PWCR and filing penalties",
+        "assumptions": "Assumes 4-8 hours/week of payroll-clerk or office-admin time on certified payroll preparation, certificate chasing and sub onboarding, at ~$32-$40/hour loaded (NJ payroll clerk median $60,750 grossed up 25-30%, inference), 45 weeks a year; assumes the penalty exposure (up to $2,500 for a first PWCR violation) is avoided rather than incurred, which is a risk-reduction argument, not a cash saving. Assumes the NJ portion of the book is large enough to justify weekly runs - the split between NJ public work and federal work is not disclosed, so this is the weakest of the three estimates.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-3051.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "Three weeks: a working prequalification form and vendor record schema, parsing and expiry tracking for COI/W-9/PWCR uploads against the NJDOL registered-contractor list, and one month of certified payrolls assembled and reconciled side by side with the current manual process to measure hours and errors."
+    }
+  ],
+  "lead_score": {
+    "pain": 25,
+    "fit": 18,
+    "ability_to_pay": 13,
+    "ease": 9,
+    "strategic": 12,
+    "total": 77,
+    "rationale": "Pain evidence is unusually concrete for a firm this size: a public QC Manager job description that is essentially a list of automatable documents, a $100K-$140K salary attached to it, and an explicit admission that reporting runs across QCS/RMS plus Word/Excel/Project. Fit is high because three of the six capabilities (operational, knowledge, integration) apply directly to federal construction paperwork. Ability to pay is moderate: a $134M-ceiling Air Force IDIQ and a $90M-ceiling Corps MATOC give real contract value, but third-party estimates put revenue near $22.5M with ~98 staff, margins on federal construction are thin, and no budget or decision-maker is published (the owner/president is unnamed on the site and LinkedIn page). Ease of pilot is the weak spot: outreach must go to a general inbox, federal project documents and required security clearances constrain where data can live, and the QC workflow touches government systems the firm does not control, so the pilot has to be a draft-only shadow mode. Strategic value is good - a QC/proposal documentation agent for small federal general contractors is a repeatable product across a large set of 8(a)/SDVOSB firms with the same USACE reporting regime. Evidence is thin only on the human side: no customer or employee reviews were retrievable (BBB, Glassdoor, Indeed, Google all blocked or empty), so pain is inferred from the firm's own hiring and process descriptions rather than from complaints."
+  },
+  "best_evidence_signal": "Benaka's own QC Manager posting bundles three-phase control forms, daily production reports, RFI drafting and QCS/RMS-plus-Excel reporting into one $100K-$140K role - https://www.benakainc.com/careers.html",
+  "suggested_channel": "email",
+  "evidence_thin": false
+}

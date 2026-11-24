@@ -1,0 +1,122 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "All Brands Furniture, 605 New Brunswick Ave, town \"Unknown (Sayreville area)\"",
+      "problem": "Wrong town: the store's own contact page lists 605 New Brunswick Ave as Perth Amboy, NJ 08861, outside Sayreville/Parlin. It is also a four-location NJ furniture chain (Perth Amboy, Greenbrook, South Plainfield, Lawrenceville), which the brief's rules on chains discourage.",
+      "fix": "Remove the entry, or re-classify it as Perth Amboy and out of zone."
+    },
+    {
+      "claim": "Elwir's Furniture, 224 Smith St, town \"Unknown (Sayreville area)\"",
+      "problem": "Wrong town: BBB and Loc8NearMe both place 224 Smith St in Perth Amboy, NJ 08861, not Sayreville. The entry only exists because a Google Maps search centred on Sayreville returned neighbouring-town results.",
+      "fix": "Remove the entry; do not rely on radius-based map searches for zone membership without confirming the municipal address."
+    },
+    {
+      "claim": "Roberts Cleaners, 881 Main St, Sayreville, currently operating",
+      "problem": "News 12 reported (17 May 2024) that the shop closed after a car struck the building on 25 March 2024, with only Saturday 9am-1pm pickup hours for customers to collect clothing and no confirmed reopening. No source found showing it reopened.",
+      "fix": "Move to a 'closed/uncertain' list or drop it; replace with Sayreville Plaza Dry Cleaners & Laundromat (960 US Hwy 9), which is missing."
+    },
+    {
+      "claim": "Debra Lippmann Collection, 250 Kennedy Dr, Sayreville, contemporary furniture showroom",
+      "problem": "No source other than the bulk Yellow Pages-derived directory could be found; no website, no directory profile, no mention in any other listing. Cannot be confirmed as an operating business in the zone.",
+      "fix": "Verify by phone before use, or drop; bulk-directory-only entries should not be in the verified list."
+    },
+    {
+      "claim": "Circle Motor Lodge, \"Highway 35 & 9\", Sayreville",
+      "problem": "The motel's own directions page gives 1 Victory Plaza, South Amboy, NJ 08879. Sayreville borough records do list it among licensed motels, so zone membership is ambiguous rather than proven.",
+      "fix": "Keep only with a note that the postal town is South Amboy and municipal boundary is unconfirmed."
+    },
+    {
+      "claim": "A Step In Time Dance Center, source_urls includes https://wrasse-cod-sczh.squarespace.com/new-page",
+      "problem": "The cited page is a Squarespace staging/alias domain, not the studio's own domain. The live site is asitdance.com; citing an internal staging host is fragile and will break.",
+      "fix": "Replace with https://www.asitdance.com/new-page (same contact content: 388 Washington Rd, rear entrance off Ridge Ave, 732-727-5995)."
+    },
+    {
+      "claim": "Numerous entries carry address \"Unknown\" where public data exists",
+      "problem": "GKB Garden Center (300 Hartle St, 732-234-3731 per the South Amboy-Sayreville Times), Saltywater Tackle (286 Washington Rd per its own contact page), ShareGood Thrift Shoppe (406 Main St, 732-679-7499), Atlantic Belt & Industrial and N&T Pawlidays Inn were all left without a street address, which weakens the record for outreach.",
+      "fix": "Backfill addresses from the sources already named in active_evidence."
+    },
+    {
+      "claim": "Town labels for Parlin-zip (08859) addresses",
+      "problem": "Inconsistent town assignment: Paul's Toy Room (3322 Washington Rd), Avantika Creations (80 Cleveland Ave) and several Washington Rd / Bordentown Ave addresses are in the Parlin 08859 zip (some are labelled Parlin on their own sites) but are listed as Sayreville or as 'Unknown'.",
+      "fix": "Apply one rule for 08859 addresses and note the Sayreville/Old Bridge boundary caveat per row."
+    },
+    {
+      "claim": "Thin/borderline entries: Tech Train (4000 Bordentown Ave), Furniture & Bathroom Depot (4000 Bordentown Ave), Fiona's Find (1000 US Hwy 9), Furniture to Go (95 Main St), Childrenswear Centre (2909 Washington Rd)",
+      "problem": "Each rests on a single stale directory; Tech Train's directory entry suggests it may have closed, and Fiona's Find is reported by Manta at 1010 US Hwy 9, Old Bridge with a different phone. These are probably-benign but unverified pipeline risk.",
+      "fix": "Cold-verify or demote to a 'needs verification' tier before any outreach."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Total Hardware & Garden Supply, 5 Fisher St, Sayreville; website sayrevillehardware.com is that business", "source_url": "https://www.sayrevillehardware.com/", "result": "confirmed"},
+    {"claim": "Kuchta Garden Center, 380 Washington Rd, Sayreville, 732-254-7637", "source_url": "https://www.nj.gov/cgi-bin/agriculture/jerseygrown/gcnsearch.pl", "result": "confirmed"},
+    {"claim": "Sayreville Lawn & Garden Supply, 258 Main St, Sayreville, 732-390-0900", "source_url": "https://www.yellowpages.com/sayreville-nj/mip/sayreville-lawn-garden-supply-13937303", "result": "confirmed"},
+    {"claim": "GKB Garden Center is a garden center in Sayreville (address unknown in list)", "source_url": "https://www.thesatimes.com/SATAugust2025_compressed.pdf", "result": "confirmed"},
+    {"claim": "Sayrewoods Floral & Event Design is a florist business (985 US Hwy 9 not shown on fetched page)", "source_url": "https://sayrewoodsflorist.com/", "result": "confirmed"},
+    {"claim": "Priscilla Jewelry, 3225 Washington Rd, Parlin, 732-952-5977; priscillajewelry.shop is that business", "source_url": "https://priscillajewelry.shop/pages/priscilla-jewelry-about-us", "result": "confirmed"},
+    {"claim": "All Brands Furniture at 605 New Brunswick Ave operates in the Sayreville zone", "source_url": "https://allbrandsfurniture.net/pages/contact", "result": "contradicted"},
+    {"claim": "Elwir's Furniture, 224 Smith St, operates in the Sayreville zone", "source_url": "https://www.bbb.org/us/nj/perth-amboy/profile/furniture-stores/elwir-furniture-0221-90197423", "result": "contradicted"},
+    {"claim": "Nation BMX, 118 Main St, Sayreville, 732-416-6840", "source_url": "https://www.yellowpages.com/sayreville-nj/bicycle-shops", "result": "confirmed"},
+    {"claim": "Sayreville Sportsman, 52 Washington Rd, Sayreville (sporting goods / bicycle)", "source_url": "https://www.henryusa.com/dealer-location/sayreville-sportsman/", "result": "confirmed"},
+    {"claim": "Saltywater Tackle operates in Sayreville (address unknown in list)", "source_url": "https://www.saltywatertackle.com/contact-us/", "result": "confirmed"},
+    {"claim": "A Step In Time Dance Center, 388 Washington Rd, Sayreville, 732-727-5995", "source_url": "https://www.asitdance.com/new-page", "result": "confirmed"},
+    {"claim": "Faith & Trade, 388 Washington Rd, Sayreville, Christian bookstore", "source_url": "https://us-business.info/directory/sayreville-nj/", "result": "confirmed"},
+    {"claim": "Four Seasons Flower & Gift Shop, 139 Main St, Sayreville, 732-257-3270", "source_url": "https://www.yellowpages.com/sayreville-nj/mip/four-seasons-flower-gift-shop-5642449", "result": "confirmed"},
+    {"claim": "Miklos Flower Shop, 215 Washington Rd, Sayreville, 732-257-2444", "source_url": "https://local.yahoo.com/retail-shopping/florists/nj/sayreville/", "result": "confirmed"},
+    {"claim": "Little Things Favors, 137 Main St, Sayreville, 732-654-5262 (party favors)", "source_url": "https://www.yellowpages.com/sayreville-nj/mip/little-things-favors-475073418", "result": "confirmed"},
+    {"claim": "Furniture & Bathroom Depot, 4000 Bordentown Ave, Sayreville", "source_url": "https://www.openingtimes.co/new_jersey/sayreville_08872/shops", "result": "confirmed"},
+    {"claim": "Furniture to Go, 95 Main St, Sayreville, 732-238-3787", "source_url": "https://www.localsolution.com/c/sayreville-nj/furniture", "result": "confirmed"},
+    {"claim": "Today's Furniture, 1030 US Highway 9, Parlin, 732-721-4500", "source_url": "https://www.yellowpages.com/parlin-nj/furniture-stores", "result": "confirmed"},
+    {"claim": "Fiona's Find, 1000 US Highway 9, Parlin, 732-613-6132", "source_url": "https://www.manta.com/c/mkg9cl9/fiona-s-find", "result": "not found"},
+    {"claim": "Childrenswear Centre, 2909 Washington Rd, Sayreville, 732-727-6911", "source_url": "https://www.yellowbot.com/childrenswear-centre-sayreville-nj.html", "result": "confirmed"},
+    {"claim": "Avantika Creations, 80 Cleveland Ave; avantika-creations.ueniweb.com is that business", "source_url": "https://avantika-creations.ueniweb.com/", "result": "confirmed"},
+    {"claim": "Sareniti, 999 US Highway 9 N, Parlin", "source_url": "https://www.globuya.com/US/Parlin/109455322045712/Sareniti", "result": "confirmed"},
+    {"claim": "Paul's Toy Room, 3322 Washington Rd (listed as Sayreville; site data shows Parlin 08859)", "source_url": "https://www.keepupcards.com/shop/pauls-toy-room-toys-collectables-gaming-warhammer-hobby-supplies-sayreville-nj", "result": "confirmed"},
+    {"claim": "Happy Home Appliances, 388 Washington Rd, Sayreville, 732-952-5260", "source_url": "https://www.happyhomeappliance.com/index.html", "result": "confirmed"},
+    {"claim": "The Cool Venue, 426 Raritan St, Sayreville, up to ~100 guests", "source_url": "https://thecoolvenue.com/sayreville-venue-details", "result": "confirmed"},
+    {"claim": "Khichdi Junction Banquet Hall, 520 Ernston Rd Suite 4, Parlin, hall rental up to ~120", "source_url": "https://khichadijunction.com/banquet.html", "result": "confirmed"},
+    {"claim": "Sayreville VFW Post 4699 banquet hall, 575 Jernee Mill Rd, up to ~330 guests", "source_url": "https://www.vfwsayreville.com/banquet-hall", "result": "confirmed"},
+    {"claim": "Kroshka Day Care is an independent Sayreville daycare (ages ~2.5-6)", "source_url": "https://russiandaycarecentersayreville.com/", "result": "confirmed"},
+    {"claim": "Garden Friends on Main, 172 Main St, Sayreville, 732-307-2500", "source_url": "https://www.gardenfriendsonmain.com/", "result": "confirmed"},
+    {"claim": "Black Tie Cleaners, 3008 Bordentown Ave, Parlin, 732-525-5391, does alterations", "source_url": "https://blacktiecleanersnj.com/Alterations-and-Restorations", "result": "confirmed"},
+    {"claim": "Roberts Cleaners, 881 Main St, Sayreville, is an operating dry cleaner", "source_url": "https://longisland.news12.com/2024/05/17/roberts-cleaners-sayreville-nj-returning-customers-clothing-after-car-crash-closes-business/7lj1RouPAtGhg6uIZIrf8l", "result": "contradicted"},
+    {"claim": "Garden Signs, 231 Washington Rd, Sayreville; 231signs.com is that business", "source_url": "https://231signs.com/contact/", "result": "confirmed"},
+    {"claim": "Grafix Solutions Inc., 201 Hartle St, Sayreville, 732-432-0171", "source_url": "https://www.yellowpages.com/sayreville-nj/mip/grafix-solutions-inc-29968", "result": "confirmed"},
+    {"claim": "Broadway Computer Repair, 3322 Washington Rd, 732-619-6762", "source_url": "https://www.bestprosintown.com/nj/sayreville/it-services-and-computer-repair/", "result": "confirmed"},
+    {"claim": "Middlesex Self Storage, 5249 Bordentown Ave, Sayreville, 732-238-3588", "source_url": "https://middlesexselfstoragenj.com/", "result": "confirmed"},
+    {"claim": "Integrity TestLabs LLC, 703 Hartle St, Sayreville, 732-851-6890", "source_url": "https://integritytestlabsllc.com/contact/", "result": "confirmed"},
+    {"claim": "Bridge To Life Clinical Consultants, 811 Washington Rd (listed Sayreville)", "source_url": "https://www.btlcc.org/contact-us/", "result": "confirmed"},
+    {"claim": "Debra Lippmann Collection, 250 Kennedy Dr, Sayreville, furniture showroom", "source_url": "https://us-business.info/directory/sayreville-nj/", "result": "not found"},
+    {"claim": "Tech Train (Tech-Train Computer Training Inc.), 4000 Bordentown Ave, Sayreville, currently operating", "source_url": "https://njbusinessdirectory.org/listing-region/sayreville/", "result": "not found"},
+    {"claim": "Circle Motor Lodge is at Highway 35 & 9, Sayreville", "source_url": "https://circlemotorlodge.us/directions", "result": "contradicted"},
+    {"claim": "BollyMoves Dance Academy is a Parlin/Sayreville Bollywood dance school", "source_url": "https://www.bollymovesdance.com/", "result": "confirmed"},
+    {"claim": "ShareGood Thrift Shoppe operates in Sayreville", "source_url": "https://thriftshopatlas.com/new-jersey/sayreville/", "result": "confirmed"}
+  ],
+  "coverage": {
+    "searches": [
+      "picture framing shop Sayreville NJ custom frames",
+      "dry cleaners Parlin NJ",
+      "pet grooming Sayreville NJ groomer",
+      "bicycle shop Sayreville NJ bike store",
+      "thrift store consignment shop Sayreville NJ",
+      "furniture store Parlin NJ Route 9",
+      "self storage Sayreville NJ storage units facility",
+      "banquet hall party venue Parlin Sayreville NJ rentals",
+      "hardware store lumber yard Sayreville NJ",
+      "appliance store Sayreville NJ independent",
+      "tailor alterations Parlin Sayreville NJ",
+      "sign shop printing Sayreville NJ banners",
+      "musical instrument store Sayreville NJ guitar shop",
+      "computer repair shop Sayreville NJ",
+      "jewelry store Parlin Sayreville NJ"
+    ],
+    "eligible_found": 24,
+    "already_listed": 21,
+    "missing": [
+      {"name": "Sayreville Plaza Dry Cleaners & Laundromat", "town": "Parlin", "source_url": "https://www.yellowpages.com/parlin-nj/sayreville-plaza-dry-cleaners-laundromat"},
+      {"name": "200 Dollar & Below Access Furniture", "town": "Parlin", "source_url": "https://www.yellowpages.com/parlin-nj/furniture-stores"},
+      {"name": "SC Action Sports (bicycle shop)", "town": "Sayreville", "source_url": "https://www.levyelectric.com/shop/sayreville/sc-action-sports-bicycle-shop"}
+    ]
+  },
+  "confidence": "Medium"
+}

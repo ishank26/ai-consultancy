@@ -1,0 +1,84 @@
+{
+  "results": [
+    {
+      "ref": "B00713",
+      "name": "Providence Abstract LLC",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-opened at desktop and 390px. Title tag reads 'Providence Abstract | A Full-service Title Agency in NJ | South Brunswick Township' and the LocalBusiness JSON-LD (one of two ld+json blocks) carries addressLocality 'South Brunswick Township' and postalCode 08824, while the contact page and GBP both give 2050 Route 27 Unit/Ste 209, North Brunswick 08902 - the schema/title error is real. Mobile first screen is a street-junction photo plus a three-item nav, no headline or CTA, as recorded. Contact page has one Wix form (name/email/subject/message), five tel: links and orders@providenceabstract.com as the only published order address; robots.txt allows '*' with the standard Wix disallows and a sitemap. GBP (logged-out Maps) shows 4.7, title company, open/closes 5 PM, website and phone. Minor: the photos claim could not be confirmed - the limited Maps view showed a Photos section with only an 'Add photos & videos' prompt and no count, which is consistent with no photos but not proof; and the GBP address is already correct North Brunswick, so the 'fix the address everywhere including GBP' framing overstates by one channel. Scores left as recorded: gap 4, pay 4, ease 4, evidence 4 are reasonable for a statewide agency with a self-serve $5.95 product and same-week schema/NAP work."
+    },
+    {
+      "ref": "B00729",
+      "name": "North Brunswick Family Dental & Orthodontics",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Everything checked holds. The single ld+json block is an Organization + LocalBusiness graph; LocalBusiness gives streetAddress '529 Milltown Road', telephone inside PostalAddress and openingHours 'Mo,Tu,We,Th 09:00-17:00' plus 'Sa 09:00-17:00'. The page header and /locations/ give 825 Georges Rd Suite 5 and Mon-Wed 8:30-5:00, Thu closed, Fri 8:30-2:00, 1st Sat only - so both the address and hours contradictions are real. Appointment form has one form with seven controls; every field is placeholder-only with no label element and the date control is type=text ('Select a Date'), as recorded. robots.txt is exactly 'User-agent: * / Allow: /'. At 390px the cookie banner sits over the bottom ~40% of the first screen with Accept All / Manage buttons, so the overlay finding is fair. Doctors Maryam Abbasi DMD, Glen Atlas MD (anaesthesiologist) and Vipin Palukuri DMD are all on the home page, and per-service pages (/services/all-on-x/, /services/invisalign/) exist. Listing: the cited directory page shows 4.9 with 936 reviews at 825 Georges Road, endorsing the ~900 claim. Scores gap 3 / pay 5 / ease 4 / evidence 4 are reasonable; the site is current and high-ticket, so the gap really is structural rather than cosmetic. Note the aggregator itself lists yet another hours set (Mon-Thu 9-6), which strengthens rather than weakens the NAP-consistency finding."
+    },
+    {
+      "ref": "B00735",
+      "name": "Delicate Dental of North Brunswick",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No appointment request form, no booking anywhere; 'BOOK ONLINE' equivalent does not exist (top_issue 3 and opportunity 3 'Put a simple online scheduler ... in place')",
+          "what_is_true": "Every page carries a 'BOOK ONLINE' link to an Archy patient-portal self-booking page (patient.portal.archy.com/.../self-booking), plus a 'REQUEST AN APPOINTMENT' link to /contact-us/. The booking page currently returns 'Sorry, something went wrong. Please try again shortly.' on two loads, so the real issue is a broken booking path, not a missing one.",
+          "source_url": "https://patient.portal.archy.com/p/efaeade8-1319-4849-86cb-98853e464169/self-booking"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 5,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Most of the record holds: title is literally 'Precise Care with a Gentle Touch', there is no meta description and zero ld+json on home, about, contact and services pages; the home page renders about 312 characters of crawlable text with content burned into images; footer says (c) 2025; robots.txt disallows only /wp-admin with a sitemap; /contact-us/ has one Contact Form 7 form (name, email, subject, optional message) and the page itself warns the form 'may not load' and to call instead; no hours appear in text on home or contact. The material error is the booking claim - an Archy self-booking link exists sitewide but dead-ends in an error, so the fix is 'repair/replace the booking link' rather than 'add a scheduler', which is cheaper and should be the first recommendation. Gap stays 5 (dead booking plus image-only content plus no schema), pay 3 for a solo practice, ease 4, and evidence down to 3 because a sitewide CTA was missed."
+    },
+    {
+      "ref": "B00736",
+      "name": "Antoinette Tauk DDS",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Live checks match the record: the home page and /content/contact-us-1 contain zero tel: links, zero forms, zero ld+json blocks and no H1 element (the logo/phone are plain text). The contact page says 'please feel free to contact us directly at 732-940-0092', and the footer address is 2050 State Route 27, Suite 207, North Brunswick. /content/office-hours carries the hours only as one sentence (Mon-Fri 9-5, Sat 9-3) with the caveat about administrative days, and the same page routes emergencies to an automated answering service - so both the hours-format and after-hours findings hold. robots.txt was unchecked in the record; I checked it: it is a stock Drupal file, 'User-agent: *' with Crawl-delay 10 and only CMS/support paths disallowed, so OAI-SearchBot and PerplexityBot are not blocked. That supports findable 2. Scores gap 4 / pay 3 / ease 5 / evidence 4 are reasonable - the fixes are genuinely small and the practice is solo."
+    },
+    {
+      "ref": "B00743",
+      "name": "North Brunswick Dental Group",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "All top issues reproduce. Home page title is 'Cosmetic Dentistry | Nbdgnj.com | United States'; the only structured data is a WebSite node (name 'nbdgnj.com') with no LocalBusiness/Dentist; crawlable text measures 683 characters; footer reads '(c)2019 by North Brunswick Dental Group. Proudly created with Wix.com'; there is one Wix contact form (name/email/subject/message) and one tel: link but no appointment fields and no scheduler. At 390px the pill nav buttons sit on top of 'Cosmetic and General Dentistry / 985 Patton Street' and the third item is clipped off the right edge, so the broken-mobile finding is exactly right. /forms lists five documents to 'print and fill' - personal/insurance info, medical history, HIPAA, consent and a COVID questionnaire - as recorded. robots.txt (labelled 'not checked' in the record) actually allows all agents with only a lightbox/gallery disallow plus a sitemap, so findable 1 is fair on the schema/NAP grounds rather than on being blocked. Birdeye confirms 1.0 from 3 reviews at 985 Patton St. Scores gap 5 / pay 2 / ease 5 / evidence 4 are reasonable; pay 2 is an inference from the thin review base and stale site, which is the right way to read it."
+    },
+    {
+      "ref": "B00750",
+      "name": "Dubin Orthodontics",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Top issue: 'Heavy images; no visible reviews on site'",
+          "what_is_true": "The home page carries a 'Read Our Reviews' panel linking to /testimonials, which displays attributed patient quotes (e.g. signed 'Mark', 'Michele'). What is missing is a star rating or Google/Facebook review count on site, not testimonials themselves - the same record lists 'testimonials' among trust signals.",
+          "source_url": "https://www.dubinorthodontics.com/testimonials"
+        }
+      ],
+      "notes": "Everything else checks out. Zero ld+json on the home page and on /appointment-request (0 nodes each). Appointment form has real labels (Office Location Preference select with the three offices, Name, Email, Phone, Comment) and the page states a scheduling coordinator will confirm - a callback, not a calendar; cancellations are redirected to the practice. robots.txt only disallows /ckeditor, /ckfinder, /domains and /site_template, so crawlers are fine. All three addresses (1648 US-130, 85 Raritan Ave #130, 1600 Perrineville Rd) are in the footer. GBP logged-out view shows 4.9, Orthodontist, 'Book online' button, phone and 'Closes 5 PM', matching the record. /patient-forms offers Adult and Child registration PDFs plus HIPAA in English and Spanish, and although the page text mentions an 'online patient form' no such link exists, so the PDF-intake finding stands. Scores gap 3 / pay 5 / ease 4 / evidence 4 are reasonable; no score change, only the reviews wording needs fixing."
+    },
+    {
+      "ref": "B00763",
+      "name": "Park Physical Therapy - North Brunswick",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Verified live: page titles are literally 'Home', 'Contact Us', 'New Patients', 'New Patients Info'; no meta description anywhere checked; zero ld+json; zero form elements and zero tel: links on the home, contact and new-patient pages; footer is 'Copyright (c) All Rights Reserved' with no year; the Twitter icon points to twitter.com/hswebsites (the developer). /new-patients-info is a stub containing only a submenu, and 'Make an Appointment' exists only inside that submenu, linking to /contact-us which says to call or visit - so the dead-end CTA finding is true, just less prominent than 'primary CTA' implies. Hours for both offices are full readable text on the home page, matching the record. robots.txt is 'User-agent: * / Allow: /' with a sitemap. New finding worth passing on: the Google Business Profile for 'Park Physical Therapy- North Brunswick' (4.9, physical therapist, 1584 US-130, 732-821-7878) lists its website as parkphysicaltherapy.com, and that domain refuses the connection (net::ERR_CONNECTION_REFUSED) - the live site is the .net domain. That dead GBP link is a more urgent fix than anything in the record and supports the gap-5 score. Scores gap 5 / pay 3 / ease 4 / evidence 4 remain reasonable."
+    },
+    {
+      "ref": "B00783",
+      "name": "A-List Hair Studio",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "All checked claims hold. Structured data is a single Yoast graph of WebPage / ImageObject / BreadcrumbList / WebSite - no LocalBusiness or HairSalon node; there is no H1; the header phone '(732) 658-3838' is plain text with zero tel: links on any page; robots.txt is 'User-agent: * / Disallow:' with a sitemap. At 390px the hero is a large washed-out image with the headline 'Exceptional Service' pushed below the fold, and the only control above it is the hamburger, confirming the mobile finding. The 'BOOK AN APPOINTMENT' links to the Boulevard widget, which resolved to joinblvd.com/b/a-list-hair-studio/widget and offered Individual, Group, Packages and Gift Card with no CAPTCHA - bookable 3 is fair. /contact/ has one form (name, email, phone, message) with the SMS-consent line, address 2140 US-130 and explicit hours Tue-Thu 8:30-9, Fri 9-5, Sat 8:30-2:30, Sun by appointment, Mon closed; Birdeye shows 4.7 with 241 reviews but Fri 8:30-5, Sat 9-3, Sun 9-3 - the hours conflict is real. /services/ carries Full Foil, balayage, keratin and prices (195 and 425 present) on one page with no child service pages. Scores gap 3 / pay 5 / ease 4 / evidence 4 are reasonable."
+    }
+  ],
+  "data_gaps": [
+    "Google Maps logged-out limited view did not display a photo count for Providence Abstract, so 'no photos on the Google profile' could not be independently confirmed.",
+    "Google review counts could not be read directly from Google for the dental practices; ratings/counts were taken from the directory pages the records cite.",
+    "Delicate Dental's Archy self-booking portal returned a generic error on two loads today, so I could not see whether slots are actually offered.",
+    "Park Physical Therapy: the Google Business Profile links to parkphysicaltherapy.com, which refused the connection; I could not determine whether that domain ever served this practice's site."
+  ]
+}

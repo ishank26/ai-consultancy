@@ -1,0 +1,158 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"A name search lands on a GoDaddy parking page with a 'Get This Domain' button, so it can look as if the domain is up for grabs...\" (audit_md, What it means for customers)",
+      "problem": "Unsupported assertion about search results. No SERP screenshot or citation is given, and nothing in the record shows the domain appearing for a name search. When I tried brand searches myself, the results I could reach returned directories and the Google listing (yellowpages, nextdoor, groomerjob, dogdog, bbb), not goochie-pooch.com; Google, DuckDuckGo and Bing SERPs were blocked or unusable from this network, so the claim can be neither confirmed nor refuted, only flagged as unsourced. The verified paths to the parking page are the Nextdoor site link and typing the old address, not a name search.",
+      "fix": "Replace with the paths that were actually verified, e.g. \"Anyone who follows the website link on the salon's Nextdoor page, or types the old address, lands on a GoDaddy parking page with a 'Get This Domain' button, so it can look as if the domain is up for grabs.\" If a search-results claim is kept, add a dated SERP screenshot or citation for it."
+    },
+    {
+      "claim": "\"Hours differ: Nextdoor Mon-Fri 9-5, Google Friday 9-4, GroomerJob/dogdog.org Tue-Sat 9-4\" and \"hours disagree across Google, Nextdoor, GroomerJob and dogdog.org\"",
+      "problem": "Each per-source figure is correct, but the framing overstates the disagreement. GroomerJob and dogdog.org list identical hours (Tue-Sat 9-4, Monday closed), so hours do not \"disagree across\" those two, and Google's Friday 9-4 matches them. The only hours conflict I could confirm is Nextdoor's Mon-Fri 9-5 against the 9-4 listings; Google's other six days were not visible in the limited Maps view, so a Google-vs-directory conflict on other days is unproven.",
+      "fix": "Name the single confirmed conflict: \"Nextdoor says Mon-Fri 9-5; Google's Friday hours and the two grooming directories say 9-4, and the directories close on Monday.\" Drop \"disagree across\" phrasing."
+    },
+    {
+      "claim": "\"goochie-pooch.com, the domain the salon used until 2020\"",
+      "problem": "Stated as fact, but the archive only shows the salon's own site captured on that domain from 2013-03-28 to 2020-11-30; nothing proves it was abandoned on that date (the record's own caveats say the parking start date cannot be established). Minor, but it is an inference presented flatly.",
+      "fix": "Say \"the domain that carried the salon's old site, last archived in November 2020\" or add \"(as far as the Internet Archive shows)\"."
+    },
+    {
+      "claim": "Body length of audit_md (limit 300 words)",
+      "problem": "Counting the body text (headings excluded) comes to roughly 305-315 words, just over the brief's limit.",
+      "fix": "Trim about 15 words, e.g. shorten the customer-impact paragraph once issue 1 is fixed."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "goochie-pooch.com loads a GoDaddy page reading 'parked free, courtesy of GoDaddy.com' with a 'Get This Domain' button and ad links naming the salon",
+      "source_url": "https://goochie-pooch.com/lander",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The domain root redirects to /lander and loads over HTTPS without an error or certificate warning",
+      "source_url": "https://goochie-pooch.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ad links on the parking page include 'Goochie Pooch East Brunswick' and 'Goochie Pooch & Cats Too'",
+      "source_url": "https://goochie-pooch.com/lander",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP registration 2011-05-14T00:55:19Z",
+      "source_url": "https://rdap.org/domain/goochie-pooch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP expiration 2031-05-14T00:55:19Z",
+      "source_url": "https://rdap.org/domain/goochie-pooch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP last changed 2026-06-12T20:35:05Z",
+      "source_url": "https://rdap.org/domain/goochie-pooch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Registrar GoDaddy.com, LLC (IANA 146)",
+      "source_url": "https://rdap.org/domain/goochie-pooch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nameservers NS59/NS60.DOMAINCONTROL.COM with client delete, renew, transfer and update locks",
+      "source_url": "https://rdap.org/domain/goochie-pooch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Registrant record redacted for privacy: individual, name, organisation, street, city, postal code and email hidden, country US",
+      "source_url": "https://rdap.godaddy.com/v1/domain/GOOCHIE-POOCH.COM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "GoDaddy's own RDAP view renders the same moments as 2011-05-13T19:55:19Z and 2031-05-13T19:55:19Z (about five hours off the UTC registry values)",
+      "source_url": "https://rdap.godaddy.com/v1/domain/GOOCHIE-POOCH.COM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback captures run from 2013-03-28 to 2020-11-30 with none from 2021 onward",
+      "source_url": "https://web.archive.org/cdx/search/cdx?url=goochie-pooch.com&output=json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Last archived page has title 'goochie-pooch' and meta description 'Goochie Pooch & Cats Too -=* Grooming Salon *=-'",
+      "source_url": "https://web.archive.org/web/20201130012033id_/http://www.goochie-pooch.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile: 4.5 stars, Pet groomer, 737 NJ-18 East Brunswick NJ 08816, (732) 432-9191, website field 'tpaw.net', shown as closed with 'Opens 9 AM Sat'",
+      "source_url": "https://www.google.com/maps/place/Goochie+Pooch+%26+Cats+Too/@40.4272818,-74.3826089,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google's expanded hours row shows Friday 9 AM-4 PM",
+      "source_url": "https://www.google.com/maps/place/Goochie+Pooch+%26+Cats+Too/@40.4272818,-74.3826089,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google's website link target is https://tpaw.net/explore/goochie-pooch-cats-too/",
+      "source_url": "https://www.google.com/maps/place/Goochie+Pooch+%26+Cats+Too/@40.4272818,-74.3826089,17z",
+      "result": "could not open"
+    },
+    {
+      "claim": "tpaw.net/explore/goochie-pooch-cats-too/ redirects off-domain to pet.ecomify.net and stops on a Cloudflare security-verification page ('Just a moment...', 'Performing security verification')",
+      "source_url": "https://tpaw.net/explore/goochie-pooch-cats-too/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nextdoor shows 'Claim page', lists goochie-pooch.com as the website, and gives Mon-Fri 9:00 AM-5:00 PM with Sat/Sun closed",
+      "source_url": "https://nextdoor.com/pages/goochie-pooch-cats-too-east-brunswick-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nextdoor recommendations dated 21 Apr 25 and 9 Nov 21; Neighborhood Fave 2023 and 2024; story says founded in East Brunswick in 1994",
+      "source_url": "https://nextdoor.com/pages/goochie-pooch-cats-too-east-brunswick-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "GroomerJob: 4.5 from 92 reviews, Tue-Sat 9:00 AM-4:00 PM, Monday closed, no website link on the page",
+      "source_url": "https://groomerjob.com/goochie-pooch-cats-too",
+      "result": "confirmed"
+    },
+    {
+      "claim": "dogdog.org: Tue-Sat 9 AM-4 PM, Monday closed, no website link on the page",
+      "source_url": "https://www.dogdog.org/pet-groomer/goochie-pooch-cats-too-east-brunswick",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No working website anywhere in the customer path (domain parked, Google link to a stalled third-party page, Nextdoor lists the parked domain, directories list no site)",
+      "source_url": "https://nextdoor.com/pages/goochie-pooch-cats-too-east-brunswick-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The salon is operating and not closed, and no alternative live website or closure notice was found",
+      "source_url": "https://www.google.com/maps/place/Goochie+Pooch+%26+Cats+Too/@40.4272818,-74.3826089,17z",
+      "result": "not found"
+    },
+    {
+      "claim": "Identity: right business (Goochie Pooch & Cats Too, single East Brunswick location), town East Brunswick NJ, phone (732) 432-9191, not a chain or franchise",
+      "source_url": "https://groomerjob.com/goochie-pooch-cats-too",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Parked-domain cause is labelled an inference and no one is accused; ownership of the GoDaddy account stated as unknown",
+      "source_url": "https://rdap.org/domain/goochie-pooch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Screenshots cited in founder_md exist in the folder (desktop, mobile, Google profile, tpaw destination)",
+      "source_url": "https://goochie-pooch.com/lander",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A name search lands on the GoDaddy parking page",
+      "source_url": "https://www.google.com/maps/place/Goochie+Pooch+%26+Cats+Too/@40.4272818,-74.3826089,17z",
+      "result": "not found"
+    }
+  ],
+  "confidence": "High"
+}

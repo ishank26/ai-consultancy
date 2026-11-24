@@ -1,0 +1,248 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "\"vendor claims of 28-50% incident reductions are unattributed to a specific deployment with a control group\" (measured_outcomes, last row, citing the Smartvid.io PRNewswire release)",
+      "problem": "The cited release only supports the 50% figure (\"cut incident rates by as much as 50 percent for some of the world's largest construction companies\"). The 28% end of the range does not appear on the cited page; it circulates in vendor/case-study material elsewhere (e.g. a Smartvid/Newmetrix claim of a 28% recordable-rate reduction) and is not sourced in this row.",
+      "fix": "Either cite the specific source for the 28% figure, or narrow the row to \"vendor claims of up to ~50% reductions (e.g. Smartvid.io PRNewswire, Dec 2020)\"."
+    },
+    {
+      "claim": "The NIBRS construction-theft study (ETSUniversity Pure record, \"An Exploratory Look at Thefts from Construction Sites\") is labeled study_type \"peer-reviewed\" in both problem.evidence and measured_outcomes.",
+      "problem": "The record shows the item as a conference paper presented at the Annual Associated Schools of Construction International Conference (10 April 2019), i.e. conference proceedings, not a peer-reviewed journal article. The numbers themselves ($6,000 average, $42,000 trucks, 55% truck recovery, under 7% overall recovery, 15,000+ incidents) are all confirmed on the page.",
+      "fix": "Relabel study_type as \"conference proceedings\" (strength can stay Medium)."
+    },
+    {
+      "claim": "Efficient-YOLOv5 harness detector dated \"2022\" (measured_outcomes row 2, DOI 10.1049/ipr2.12696).",
+      "problem": "Wiley/DOAJ record the article as Xu, IET Image Processing, 2023 (some citing papers give 2022 for the online version). The metrics (97.7% precision, 89.3% recall, 94% mAP, dataset of 3,300 images) are confirmed, but the year is ambiguous.",
+      "fix": "Write \"2022/2023 (online 2022, IET Image Processing 17)\" or use 2023."
+    },
+    {
+      "claim": "\"Evercam $500/month software service per camera\" (gap_for_local_installer).",
+      "problem": "The Evercam price list shows $500/month for the Software Service (TLC Package) as a package price, plus $500/month for each \"Additional Fixed Position Camera\" and $800/month for an additional PTZ. \"Per camera\" is an inference about effective cost, not the page's wording.",
+      "fix": "Say \"$500/month software service, plus $500/month for each additional fixed camera\", or label the per-camera framing as an inference."
+    },
+    {
+      "claim": "TrueLook jobsite-security survey dated \"2020\" (739 respondents, 78% reported theft).",
+      "problem": "The article page carries no publication date; the 2020 attribution appears only in the embedded report image alt text (\"TrueLook Jobsite Security Report 2020\") and the page is hosted under a 2026 upload path. Respondent count and 78% are confirmed.",
+      "fix": "Note \"survey report dated 2020 per the report artwork; article page undated\"."
+    },
+    {
+      "claim": "Discrepancy note between the two BLS releases mentions only the count (421 vs 423).",
+      "problem": "The TED page also states 38.5% of construction deaths were falls, slips and trips, while the CFOI release says 39.2% (421). The count note is correct but incomplete; a reader comparing the two pages will also meet the percentage gap.",
+      "fix": "Extend the note to mention 38.5% (TED) vs 39.2% (CFOI) so the 39.2% figure used in fit_score is not read as inconsistent."
+    },
+    {
+      "claim": "Caveats say the 29 CFR 1904.1 small-employer exemption and 1904.39 reporting deadlines \"were not read at source\" (osha.gov 403).",
+      "problem": "Both rules are readable and accurate at a non-OSHA copy (law.cornell.edu/cfr/text/29/1904.1 and 1904.39): exemption is company-wide 10-or-fewer in the prior calendar year, reporting duties survive, and 8-hour fatality / 24-hour in-patient-hospitalization, amputation or eye-loss deadlines are exactly as stated. This is a sourcing understatement, not an error.",
+      "fix": "Upgrade both to confirmed with the LII/eCFR mirror as the citation."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "1,075 of 5,283 U.S. work fatalities in 2023 were in construction; falls, slips and trips were 39.2% (421) of construction fatalities",
+      "source_url": "https://www.bls.gov/news.release/archives/cfoi_12192024.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Construction was 47.8% of all fatal falls, slips and trips in 2023; roofing 26.0% (110 deaths) and residential building 14.7% (62 deaths) of construction fall deaths",
+      "source_url": "https://www.bls.gov/opub/ted/2025/fatal-falls-in-the-construction-industry-in-2023.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Other 2023 construction fall deaths: painting 29, framing 27, electrical 27, plumbing/HVAC 24, commercial/institutional 18, drywall 13, masonry 12; TED shows 423 construction fall deaths vs CFOI's 421",
+      "source_url": "https://www.bls.gov/opub/ted/2025/fatal-falls-in-the-construction-industry-in-2023.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "29 CFR 1926.501 was the most-cited standard in calendar 2024 with 8,797 citations and $53.8M in current penalties, per a third-party analysis of the DOL enforcement dataset",
+      "source_url": "https://safetyrecord.org/analysis/osha-top-10-most-cited-standards",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Federal OSHA maximum penalties rose to $16,550 (serious/other-than-serious) and $165,514 (willful/repeated), from $16,131 and $161,323, effective 15 January 2025",
+      "source_url": "https://www.govinfo.gov/content/pkg/FR-2025-01-10/pdf/2024-31602.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey's State Plan covers only state and local government employees, so private contractors fall under federal OSHA; NJ is listed among the six such states in the 2025 penalty rule",
+      "source_url": "https://www.govinfo.gov/content/pkg/FR-2025-01-10/pdf/2024-31602.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Construction-site theft study of 15,000+ NIBRS incidents: ~$6,000 average loss, ~$42,000 for trucks, 55% truck recovery, under 7% recovery across all targets",
+      "source_url": "https://etsu.elsevierpure.com/en/publications/an-exploratory-look-at-thefts-from-construction-sites/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NICB/NER estimate heavy construction equipment theft at $300 million to $1 billion per year, excluding tool theft and damage during theft",
+      "source_url": "https://usassure.com/resources/articles/tracking-high-value-construction-equipment/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vendor survey of 739 construction managers/supervisors/tradesmen found 78% said their organization had items stolen from a jobsite",
+      "source_url": "https://www.truelook.com/blog/construction-site-security/key-findings-from-truelooks-jobsite-security-survey",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CompanyCam pricing: Core $79/mo (1-2 users), Crew $149/mo (3 users), Scale $299/mo, additional users $34/mo",
+      "source_url": "https://help.companycam.com/en/articles/14477655-companycam-plans-explained",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Evercam published list: software service $500/mo, additional fixed camera $500/mo, additional PTZ $800/mo, PPE detection software $750/mo, 4K fixed kit $3,700/mo, installed 4K mains $4,850/mo, gate-report ANPR installed $10,750/mo",
+      "source_url": "https://www.evercam.com/pricing-list",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ARSA self-hosted Safety Guard $576/camera/year ($48/mo), billed annually, minimum four cameras, customer-supplied Ubuntu 24.04 + AI GPU server, software from $35/camera/mo; AI Box Mini A $5,020 one-time or $2,260 hardware + $45/camera/mo",
+      "source_url": "https://arsa.technology/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ARSA benchmark: 98.2% of hard-hat decisions correct, 0.5% of helmet wearers wrongly flagged (SHWD), system decides for 68% of heads (so declines on 32%), 94.1% hard-hat decisions correct on SH17; SHWD 667 images/2,221 heads, SH17 1,620 images/2,457 heads; model AR-PPE-v23 tested 11 Nov 2026",
+      "source_url": "https://arsa.technology/benchmarks/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Silarius: $8.00/camera/mo PPE add-on on top of the $16.00/camera/mo Advanced AI Package, with a Silarius Cloud plan from $6.99/camera/mo (~$31/camera/mo all-in as listed)",
+      "source_url": "https://silariussecurity.com/use-cases/hard-hat-detection",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NationCam: platform from $79/camera/mo, camera rent from $39/mo fixed, from $89/mo PTZ, from $139/mo panoramic, cellular from $60/mo per site, installation quoted",
+      "source_url": "https://nationcam.com/construction",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NVIDIA Jetson Orin Nano Super Developer Kit at $249, down from $499",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Raspberry Pi AI Kit (Hailo-8L + M.2 HAT+) launched at $70",
+      "source_url": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Third-party 2026 cost guide: outdoor IP camera $60-$250; solar-plus-cellular $300-$900 plus $15-$40/mo SIM; proprietary camera services $130-$600+/camera/mo plus hardware (TrueLook, OxBlue, EarthCam)",
+      "source_url": "https://www.sitewatch.com/guides/construction-camera-cost",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate sizing guidance: CPU with AVX+AVX2; 4GB RAM basic minimum with a dedicated detector, 8GB minimum for enrichments, 16GB recommended; ONNX/YOLO/OpenVINO/Hailo/NVIDIA backends supported",
+      "source_url": "https://docs.frigate.video/frigate/planning_setup/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Harness-detection study: 80% precision / 98% recall for the harness CNN, worker detection at 99% precision / 95% recall (Automation in Construction, 2018)",
+      "source_url": "https://doi.org/10.1016/j.autcon.2018.02.018",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Efficient-YOLOv5 harness study: 97.7% precision, 89.3% recall, 94% mAP on a newly created dataset of 3,300 images",
+      "source_url": "https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/ipr2.12696",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PPE detection on surveillance footage: 92.36% mAP on Test Set I vs 66.70% on Test Set II (different camera/environment)",
+      "source_url": "https://ieeexplore.ieee.org/abstract/document/10654263",
+      "result": "confirmed"
+    },
+    {
+      "claim": "YOLACT + DeepSORT framework: mAP@50 66.4 and 91.3% accuracy on worker PPE-wearing status",
+      "source_url": "https://academic.oup.com/jcde/article/10/2/905/7069329",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Drone + deep learning work-at-height study: 90% overall accuracy, 97.2% precision, 90.2% recall, ~12 seconds average violation-detection time (Journal of Safety Research vol. 83, Dec 2022)",
+      "source_url": "https://khazna.ku.ac.ae/en/publications/real-time-monitoring-of-work-at-height-safety-hazards-in-construc/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CCTV meta-analysis: 80 evaluations reviewed, 76 meta-analysed, ~13% overall crime reduction; 8 car-park evaluations with ~37% reduction; prior Welsh & Farrington review (44 evaluations) found 16% overall driven by 51% in car parks",
+      "source_url": "https://www.steyningpc.gov.uk/wp-content/uploads/2026/02/2.-Public-Area-CCTV-and-Crime-Prevention-An-updated-Systematic-Review-and-Meta-Analysis.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Smartvid.io/Suffolk: model predicted 20% of incidents at ~80% accuracy on three years of unseen data; customer estimated $1.4M-$3.6M in annual savings across a 50-project portfolio",
+      "source_url": "https://www.casestudies.com/company/smartvidio/case-study/how-suffolk-smartvidio-learned-to-predict-and-prevent-construction-incidents",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vendor claim of \"as much as 50 percent\" incident-rate reduction (basis for the 28-50% range)",
+      "source_url": "https://www.prnewswire.com/news-releases/smartvidio-raises-5m-from-sony-innovation-fund-ia-capital-and-others-to-sharply-reduce-accidents-on-architecture-engineering--construction-jobsites-301189031.html",
+      "result": "not found"
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d) permits interception only where a party consents, with civil liability under 2A:156A-24 for unlawful interception",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9 makes recording a person in circumstances where they would not expect observation a 3rd/4th degree crime, with prior notice plus lawful purpose as an affirmative defense (subsection d)",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/2785/2918",
+      "result": "confirmed"
+    },
+    {
+      "claim": "P.L. 2021, c.449 requires written notice before an employer uses a tracking device in a vehicle used by an employee (penalties up to $1,000 first / $2,500 subsequent)",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ biometric/workplace-monitoring bills: A4981 (and Senate companion S4075) pending, A3929 passed the Assembly in March 2026 and was referred to a Senate committee; no enacted employer biometric statute found",
+      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A4981/bill-text",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 7 of the NLRA protects concerted activity; employers may not surveil or create the impression of surveillance of protected activity",
+      "source_url": "https://www.nlrb.gov/about-nlrb/rights-we-protect/the-law/employees/concerted-activity-0",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OSHA's 10-or-fewer-employee recordkeeping exemption, and reporting duties surviving it",
+      "source_url": "https://www.law.cornell.edu/cfr/text/29/1904.1",
+      "result": "confirmed"
+    },
+    {
+      "claim": "29 CFR 1904.39: report fatalities within 8 hours, in-patient hospitalizations/amputations/eye loss within 24 hours",
+      "source_url": "https://www.law.cornell.edu/cfr/text/29/1904.39",
+      "result": "confirmed"
+    },
+    {
+      "claim": "EarthCam ConstructionCam feature set (preset live views, daily 360-degree panoramas, automated time-lapse, day/night, 4G LTE, solar/battery, 31x optical zoom) with no price shown",
+      "source_url": "https://www.earthcam.net/products-solutions/constructioncam/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OpenSpace pricing is based on annual construction volume and Core/Enterprise tier with no dollar figure on the page",
+      "source_url": "https://www.openspace.ai/smb-talk-to-sales/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Samsara SG1-G site gateway overlays AI on third-party IP camera streams with hybrid-cloud recording and clip saving",
+      "source_url": "https://www.samsara.com/products/cameras/site-visibility",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Triax Spot-r: wearable clip detecting slips/trips/falls with worker alarms over an on-site 900 MHz mesh, zone location and EquipTag equipment tracking",
+      "source_url": "https://docs.lib.purdue.edu/ectfs/236/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen3-VL family includes dense 2B/4B/8B/32B variants (arXiv 2511.21631)",
+      "source_url": "https://arxiv.org/abs/2511.21631",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-3B with 1.6B and 450M siblings, day-one llama.cpp/MLX/vLLM support",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fit_score sub-scores (15+12+10+14+7+8) sum to the stated total of 66 and the legal_risk_low score (7) is consistent with the \"moderate, not low\" legal narrative and the explicit risk list",
+      "source_url": "avenue.json (internal arithmetic/consistency check)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,111 @@
+{
+ "ref": "B00220",
+ "name": "Falco Design",
+ "town": "East Brunswick",
+ "category": "Website designer (Google Maps category); graphic and web design studio",
+ "status": "operating",
+ "domains": [
+  {
+   "domain": "falcodesign.com",
+   "role": "listed on Google",
+   "final_url": "https://tr.l-bahiscasino-l.cam/index.php",
+   "result": "Chrome navigation from https://falcodesign.com/ left the business domain and ended on tr.l-bahiscasino-l.cam, which shows a Cloudflare 'Error code 522 / Connection timed out' page (page timestamp 2026-11-13 19:59 UTC). A direct request to https://falcodesign.com/ with browser-like headers returned HTTP 500 with a WordPress 'There has been a critical error on this website.' page, and a plain fetch returned the same WordPress error page, so the redirect to the gambling domain is applied to browser visits rather than to every request (inference: a server-side rule on the site). No certificate warning appeared.",
+   "screenshot_files": [
+    "falcodesign_desktop.png",
+    "falcodesign_mobile390.png",
+    "gmaps_place.png"
+   ],
+   "checked_at": "2026-11-13T19:59Z",
+   "source_url": "https://www.google.com/maps/place/Falco+Design/@40.4070959,-74.5390155,11z"
+  }
+ ],
+ "links_to_broken_domain": [
+  {
+   "place": "Google Maps / Google Business Profile - website field points to http://www.falcodesign.com/ (confirmed from the page's link element)",
+   "url": "https://www.google.com/maps/place/Falco+Design/@40.4070959,-74.5390155,11z"
+  },
+  {
+   "place": "Instagram profile @falco_design - bio link goes to falcodesign.com",
+   "url": "https://www.instagram.com/falco_design/"
+  },
+  {
+   "place": "about.me profile 'Falco Design' - 'View my portfolio' link goes to http://falcodesign.com/web-design/",
+   "url": "https://about.me/falcodesign"
+  }
+ ],
+ "rdap": [
+  {
+   "domain": "falcodesign.com",
+   "registered": "1997-02-15",
+   "expires": "2028-02-16",
+   "last_changed": "2025-12-18",
+   "registrar": "Network Solutions, LLC",
+   "source_url": "https://rdap.org/domain/falcodesign.com"
+  }
+ ],
+ "likely_cause": {
+  "cause": "hacked",
+  "reasoning": "The domain is not lapsed: RDAP shows it registered in 1997, paid to 2028-02-16, registrar Network Solutions, status clientTransferProhibited, nameservers at HostGator (so it is hosted, not parked). The Wayback Machine has a normal business homepage ('Home - Falco Design', canonical https://falcodesign.com/) captured on 2025-09-26, with no casino or redirect strings in the archived HTML. Today the same domain serves a WordPress 'critical error' page (HTTP 500) to direct requests and sends Chrome visitors to tr.l-bahiscasino-l.cam, a gambling domain. A live WordPress site that suddenly redirects browsers to gambling spam while returning errors to direct requests is the usual pattern of an injected redirect on a compromised install (inference - no source states the business was hacked). The HTTP 500 also points to a WordPress or hosting fault, which may be part of the same incident or separate.",
+  "inference": true
+ },
+ "fix_steps": [
+  {
+   "step": "Log in to the Network Solutions registrar account and the HostGator hosting account, confirm both are still under the studio's control, enable two-factor authentication and confirm the 2028 renewal and current nameservers.",
+   "who": "Owner",
+   "effort_hours": "1-2",
+   "source_url": "https://rdap.org/domain/falcodesign.com"
+  },
+  {
+   "step": "Take the broken WordPress install offline (or restore from a backup made before October 2025), then change every hosting, WordPress admin, FTP/SFTP, database and mailbox password and reinstall core, theme and plugins from clean copies.",
+   "who": "Web developer / hosting provider",
+   "effort_hours": "3-8",
+   "source_url": "https://web.archive.org/web/20250926094258/https://falcodesign.com/"
+  },
+  {
+   "step": "After cleanup, re-test the homepage in a browser and by direct request to confirm no redirect remains, ask the host to run a malware scan, and request a review in Google Search Console if the domain is verified there.",
+   "who": "Web developer",
+   "effort_hours": "1-2",
+   "source_url": "https://falcodesign.com/"
+  },
+  {
+   "step": "While the site is down, change or remove the website link on the Google Business Profile (and the Instagram bio and about.me profile) so customers are not sent to the gambling domain.",
+   "who": "Owner",
+   "effort_hours": "0.5-1",
+   "source_url": "https://www.google.com/maps/place/Falco+Design/@40.4070959,-74.5390155,11z"
+  },
+  {
+   "step": "Rebuild or restore a short, clean site - services, a few portfolio pieces, contact details, a tap-to-call button and a quote form - before re-linking it from Google, Instagram and about.me.",
+   "who": "Designer / web developer",
+   "effort_hours": "8-20",
+   "source_url": ""
+  },
+  {
+   "step": "Add basic monitoring: uptime checks, weekly backups, automatic WordPress updates and an SSL/malware alert so a repeat failure is noticed quickly.",
+   "who": "Web developer",
+   "effort_hours": "1-2",
+   "source_url": ""
+  }
+ ],
+ "after_fix": {
+  "opportunity": "Complete and maintain the Google Business Profile: Maps still offers 'Add missing information' and 'Add a photo', shows no street address, and the rating is 3.7, so the profile itself is a second, smaller gap once the website works.",
+  "evidence": "The Maps place panel for 'Falco Design' shows category 'Website designer', rating 3.7, 'Open - Closes 5 PM', the falcodesign.com link, phone (732) 390-0099, plus 'Add missing information' and 'Add a photo' prompts and a 'Suggest an edit' button (screenshot gmaps_place.png, 2026-11-13).",
+  "source_url": "https://www.google.com/maps/place/Falco+Design/@40.4070959,-74.5390155,11z"
+ },
+ "severity": "High",
+ "severity_reason": "The website link on the Google profile, Instagram bio and about.me profile all lead visitors to an unrelated gambling domain instead of the studio's work.",
+ "audit_md": "# Website Health Check: Falco Design\n\n## What we saw on 13 November 2026\n- The Google Business Profile lists falcodesign.com as the website, phone (732) 390-0099, category \"Website designer\", rating 3.7.\n- In Chrome, falcodesign.com left the studio's site and landed on tr.l-bahiscasino-l.cam, an unrelated gambling domain that itself shows a Cloudflare 522 timeout (screenshots at desktop and 390 px).\n- A direct request to the same domain returned HTTP 500 with a WordPress \"critical error\" page, so the redirect is added for browser visits rather than every request (inference).\n- The domain is paid up (registered 1997, expires 16 Feb 2028, Network Solutions, HostGator nameservers); the last archived copy of the real homepage is 26 Sep 2025.\n\n## What it means for customers\nAnyone clicking the website link on Google, Instagram or about.me gets an error page for a gambling site instead of examples of the studio's work. Until it is fixed, the phone number on the Google profile is the dependable way to reach Falco Design.\n\n## How to fix it\n1. Check the Network Solutions registrar and HostGator hosting accounts, enable two-factor authentication and confirm renewals. Owner, 1-2 hours.\n2. Take the WordPress install offline or restore a backup from before October 2025, then change all hosting, WordPress, database and mailbox passwords. Developer or host, 3-8 hours.\n3. Re-test for redirects in a browser and by direct request, ask the host for a malware scan and request a Search Console review. Developer, 1-2 hours.\n4. Meanwhile, remove or repoint the website link on Google, Instagram and about.me. Owner, 0.5-1 hour.\n5. Rebuild a short clean site with services, portfolio, tap-to-call and a quote form, then re-link it. Designer or developer, 8-20 hours.\n\n## After the fix\nMaps still offers \"Add missing information\" and \"Add a photo\", shows no street address, and the rating is 3.7. Completing the profile and asking recent clients for reviews is a small follow-up that helps in local search.\n\nPrepared from publicly available information on 13 November 2026. We did not log in to or change anything.",
+ "founder_md": "## Outreach email draft\n\nSubject: falcodesign.com is sending visitors to a casino site\n\nHi,\n\nI'm with a small consultancy in Milltown, and while looking at design studios in East Brunswick I noticed that falcodesign.com currently sends visitors to an unrelated gambling domain, while the website link on your Google profile and Instagram still points there.\n\nI have screenshots from 13 November at desktop and phone width, and I'm happy to send them over so you can see what a customer sees.\n\nIf it's useful I can also walk through what the public domain record and the web archive show about when it changed; whether you'd like help fixing it or just the screenshots is entirely up to you.\n\nBest regards,\n[Name], [Consultancy]\n\n## Walk-in / phone opener\n\n\"Hi - do you look after falcodesign.com? When I opened it today it sent me to a casino site, and I have screenshots if you'd like to see them.\"\n\n## Sources\n- Google Maps place page (name, category, 3.7 rating, hours, phone, website field): https://www.google.com/maps/place/Falco+Design/@40.4070959,-74.5390155,11z\n- Live site test (HTTP 500 WordPress error page, redirect to tr.l-bahiscasino-l.cam): https://falcodesign.com/ - screenshots falcodesign_desktop.png, falcodesign_mobile390.png, gmaps_place.png\n- RDAP record (registration 1997-02-15, expiry 2028-02-16, last changed 2025-12-18, Network Solutions, HostGator nameservers): https://rdap.org/domain/falcodesign.com\n- Wayback Machine snapshot, 2025-09-26 homepage: https://web.archive.org/web/20250926094258/https://falcodesign.com/\n- Wayback snapshot index for falcodesign.com: http://web.archive.org/cdx/search/cdx?url=falcodesign.com&output=json&from=20240101\n- Instagram profile with falcodesign.com bio link: https://www.instagram.com/falco_design/ - screenshot instagram_profile.png\n- about.me profile linking to falcodesign.com/web-design/: https://about.me/falcodesign\n\n## Open questions\n- Who holds the Network Solutions registrar login, and who holds the HostGator hosting or cPanel login?\n- Is there a clean backup of the WordPress site from before October 2025, and who looks after updates?\n- When did the studio last see the site working, and is the falcodesign.com email address still in use?\n- Did anyone receive a notice from the host or from Google about the site in the past year?\n- Which social and directory profiles does the studio still control? Instagram is public; the LinkedIn page could not be opened.",
+ "caveats": [
+  "Effort hours are our rough estimates, not quotes or commitments; no prices are stated because no source gave any.",
+  "The cause is an inference from public records (RDAP, Wayback, live test). No source states that the site was hacked, and we did not inspect server logs or files.",
+  "The redirect appears in a real Chrome browser but not in plain HTTP requests, which suggests a conditional server-side rule; the mechanism could not be confirmed without access to the site.",
+  "Google Maps showed 'You're seeing a limited view of Google Maps' without sign-in, so review text and dates were not readable."
+ ],
+ "data_gaps": [
+  "LinkedIn company page (linkedin.com/company/falco-design-inc-) returned a Cloudflare bot check in the browser and HTTP 403 to fetches, so its website link was not verified.",
+  "Yellow Pages, D&B, bizstanding and SignalHire returned HTTP 403, so their displayed website links could not be confirmed.",
+  "Google Business Profile review count and review dates were behind the signed-out limited view.",
+  "No Facebook page could be confirmed or opened.",
+  "The exact redirect mechanism (htaccess rule, PHP injection or plugin) is unknown; the site's files and logs are not public."
+ ]
+}

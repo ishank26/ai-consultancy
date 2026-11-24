@@ -1,0 +1,86 @@
+{
+  "business": "CME Associates (now Artheon)",
+  "industry": "b2b-services (engineering / surveying)",
+  "town": "East Brunswick",
+  "opportunities": [
+    {
+      "title": "Fix the front door: a working inquiry intake plus a matching CME-to-Artheon entity cleanup",
+      "capability": "G",
+      "problem": "A prospective client who reaches artheon.com today cannot send the firm a project description. The contact page is city names and phone numbers only - no form, no email, no street address, no hours - it is orphaned (no link to /contact/ anywhere on the home page, whose only prominent button is Careers), it still serves lorem-ipsum sample posts and placeholder comments, and every legacy CME URL (including the old /contact/) dead-ends on the new home page. The Google profile a searcher actually finds still says 'CME Associates' and points its website field at the retired cmeusa1.com.",
+      "evidence": [
+        "Contact page lists seven offices as city plus phone only (Neptune, Camden, East Brunswick, Barnegat, NYC, Cape May Court House, Berlin) with no form, no email address, no street addresses and no hours - https://artheon.com/contact/",
+        "No anchor on the home page points to /contact/; the only prominent header CTA is Careers - https://artheon.com/",
+        "Old CME contact URL lands on the Artheon home page rather than the new contact page, so links in old proposals and municipal records dead-end - https://cmeusa1.com/contact/",
+        "Google Business Profile is still named CME Associates, category Engineering consultant, 3.9 rating, website field still cmeusa1.com - https://www.google.com/maps/search/CME+Associates+1+Tower+Center+Blvd+East+Brunswick+NJ",
+        "Schema on the contact page is WebPage/Organization only: no LocalBusiness, no address, telephone, hours or service-area data, so assistants cannot answer or book - https://artheon.com/contact/",
+        "Contact page credibility is undermined by placeholder content live on the page: five 'Lorem ipsum' sample posts, sample comments and a December 2025 archive - https://artheon.com/contact/"
+      ],
+      "agent_design": "Two layers. (1) Rebuild the front door: one intake form that captures project type, agency or municipality, site location, deadline and budget band, then routes to the correct of seven offices; publish email, street addresses and hours; emit LocalBusiness JSON-LD per office; map the legacy cmeusa1.com URL tree to the matching Artheon pages with 301s. (2) Put an intake agent behind it: on submission it classifies the enquiry against the firm's service lines, checks for missing information and asks one clarifying follow-up, opens a record in the pursuit log, assigns an owner by office and service, drafts an acknowledgement for the responsible engineer or VP to approve, and escalates stale enquiries (no reply in 2 business days) to the office lead. Human approval sits between the draft and anything sent to a client; the agent never quotes fees. Separately, a weekly check compares the Google profile name, domain and service list against the site so the two identities stay in sync.",
+      "why_not_DIY": "A contact-form plugin cannot route on service line plus geography, cannot write into the pursuit log or CRM, and cannot reconcile a rebrand across seven locations, a Google profile and a decade of retired URLs. The redirect mapping alone needs a crawl of the old domain and a QA pass, and the entity data has to stay consistent between the Google listing, schema and on-page text or AI assistants keep returning the old name.",
+      "impact_estimate": {
+        "range": "No sourced dollar figure exists for the pipeline being lost, so this is not scored as revenue. The defensible near-term benefit is recovered staff time on inbound triage: roughly 20-60 hours a month of receptionist and senior-engineer phone screening, or about $9,000-$30,000 a year, plus the removal of a credibility defect on a page that currently shows sample comments.",
+        "assumptions": "Assumes the seven office numbers now take a mix of sales, vendor and client calls that staff screen and forward manually, and that a form plus routing removes most of the 'who handles this' step; time figures are inferred from the phone-only design of the contact page, not measured. Wage midpoint from NJ customer service representative and civil engineer medians. Any win-rate benefit is excluded as unverifiable.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ"
+      },
+      "complexity": "Low",
+      "pilot_scope": "Two weeks: one intake form live and routed to all seven offices, published email/addresses/hours, LocalBusiness schema for the seven locations, a 301 map for the top legacy URLs, Google profile renamed and re-pointed to artheon.com with services and hours filled, and a two-week agent log of every enquiry with classification, owner and response time. Removes the placeholder posts.",
+      "walk_in_checks": []
+    },
+    {
+      "title": "Pursuit agent: public-bid discovery and RFP response assembly for the proposal team",
+      "capability": "B",
+      "problem": "The firm is running three Proposal Coordinator searches at once, and the posted duties are almost entirely mechanical: review RFQs/RFPs and bid documents for submission requirements, build proposal schedules and compliance matrices and checklists, format resumes and project profiles, and maintain pursuit logs. In a 720-person firm serving dozens of appointing authorities, that is a permanent, deadline-driven document factory, and the go/no-go decision on which public bids to chase is made on the same manual sweep of portals.",
+      "evidence": [
+        "Three Proposal Coordinator openings covering RFQ/RFP review, compliance matrices, proposal schedules, resume and project-profile formatting, and pursuit logs - https://trilongroup.pinpointhq.com/en/postings/14880147-d369-4c77-b261-3e27e0224e31",
+        "94 open jobs across at least eight locations, including two Estimator roles, indicating a large volume of parallel pursuits - https://trilongroup.pinpointhq.com/art-internal-jobs",
+        "Municipal work arrives as formal per-client procurement: East Brunswick awarded its 2026 Township Engineer contract by resolution at a not-to-exceed hourly rate - https://www.eastbrunswick.org/DocumentCenter/View/10719/Notice-of-Professional-Services-for-the-Year-2026",
+        "Artheon is a Trilon platform company formed from four firms in 2026, so the past-performance and resume library spans CME, Churchill, Naik and Laberge and has to be searched as one corpus - https://artheon.com/about/",
+        "ACEC Research Institute 2025 (industry survey, self-reported, not measured): AI use is most common in marketing and sales (81%) versus design/project delivery (36%), with AI-assisted proposal development named as a common application - https://www.acec.org/resource/new-acec-research-institute-report-finds-ai-is-transforming-engineering-by-accelerating-human-talent/"
+      ],
+      "agent_design": "A discovery agent sweeps the firm's target portals (NJ municipal and county sites, state procurement, authority and NY agency listings) on a schedule, scores each notice against the firm's service lines, prequalifications and current office geography, and posts a one-page go/no-go brief with deadline, required forms and a named owner. On a go decision, a second agent parses the RFP into a compliance matrix and checklist, pulls matching past proposals, project profiles and resumes from the firm's own library, drafts the non-technical sections and the schedule, and flags every requirement it cannot satisfy from existing material. BD director and Proposal Coordinator approve go/no-go, edit, and remain the only people who submit; a licensed engineer still owns and seals all technical content.",
+      "why_not_DIY": "Off-the-shelf proposal chatbots have no access to the firm's own past submissions, resume bank or per-agency prequalification rules, and no ability to monitor portals or write into the pursuit log. Getting a compliance matrix that is actually complete requires retrieval over years of documents plus deterministic checks, and the pricing and client-confidentiality exposure means the corpus has to sit in a controlled, ideally private, index with per-client access - not a public chat subscription.",
+      "impact_estimate": {
+        "range": "Roughly $30,000-$65,000 a year of proposal-production labour, before any win-rate effect (excluded as unverifiable).",
+        "assumptions": "Three coordinator-equivalent roles at the NJ median for sales representatives of services ($79,200; ~$38/hour), with 20-35% of their year spent on response production that the agent drafts or assembles; a 40% ceiling on writing-task time from the peer-reviewed Science experiment (453 professionals, simulated 20-30 minute writing tasks) was discounted heavily because live bid work has review loops the experiment did not. Also assumes portal monitoring is currently manual and repeated per pursuit. No measured figure exists for time saved per bid in AEC, so this is a transfer estimate.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/41-3091.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "Three to four weeks: monitor two to three live public portals for two target counties plus NY, deliver a weekly scored bid digest with go/no-go briefs, and run the agent end to end on two real RFQ responses - compliance matrix, schedule, first draft from the existing library, and a gap list. Success means the coordinators would reuse the matrix and draft rather than rebuild them next time.",
+      "walk_in_checks": []
+    },
+    {
+      "title": "Office Engineer agent for RFI, submittal and daily-report control across construction-phase projects",
+      "capability": "A",
+      "problem": "Six of the firm's open roles are Office Engineers whose entire posted job is record and document control - maintaining project records, correspondence and logs, reviewing and tracking RFIs, submittals and shop drawings, preparing daily, weekly and monthly reports, tracking approvals and minutes - backed by seven Resident Engineer and six Construction Inspector - Transportation postings that generate the daily field paperwork feeding those logs. This is high-volume, low-judgement tracking work duplicated per project, and every missed approval date is a schedule and payment risk on a public contract.",
+      "evidence": [
+        "Office Engineer posting: duties are project records, correspondence and logs, RFI/submittal/shop-drawing tracking, daily/weekly/monthly reports, approval and meeting-minutes tracking; tools named are Excel/Word/Outlook with Bluebeam, Primavera P6 and Procore preferred - https://trilongroup.pinpointhq.com/en/postings/f465fe26-bc79-416f-a1a4-8c288736f296",
+        "Six Office Engineer, seven Resident Engineer and six Construction Inspector - Transportation openings, i.e. continuous jobsite coordination and reporting load - https://trilongroup.pinpointhq.com/art-internal-jobs",
+        "The firm's work is jobsite-based (NYC project locations, NJDOT/NJTA jobsites, survey crews, bridge inspectors), so document volume scales with active projects rather than with office headcount - https://trilongroup.pinpointhq.com/en/postings/f465fe26-bc79-416f-a1a4-8c288736f296",
+        "BLS/O*NET: 'check figures, postings and documents for correct entry, mathematical accuracy and proper codes' scores 92/100 importance and 'reconcile or note and report discrepancies' 82/100 in the closest clerical occupation to this role - https://www.onetonline.org/link/details/43-3031.00",
+        "Peer-reviewed measured analogue for a support desk: staggered rollout of a generative-AI assistant to 5,172 agents raised issues resolved per hour by 15% on average, with larger gains for less-experienced staff - https://academic.oup.com/qje/article/140/2/889/7990658"
+      ],
+      "agent_design": "An event-driven agent sits on the project mailbox and the Procore/Primavera record: when an RFI, submittal, shop drawing or field report arrives it logs it against the project register, extracts the required information, checks for missing attachments or incomplete data, drafts the transmittal and the weekly or monthly report, and tracks every ball-in-court date. Overdue items generate an escalation to the Office Engineer and Resident Engineer rather than to the contractor. The Office Engineer approves every outgoing transmittal and every report; the agent's log is the audit trail for agency review, and no document is issued or signed automatically because only the responsible licensee can seal project deliverables. Read-only access to Procore and P6 in the pilot, with writes staged for approval.",
+      "why_not_DIY": "This is not a chat window: it has to authenticate into Procore and a shared P6 schedule, parse PDF submittals and email threads, hold a consistent per-project register, and survive an agency audit trail requirement. Confidentiality matters too - client pricing, contractor claims and municipal correspondence cannot be pushed through a public consumer assistant, so a private deployment with client-scoped retrieval is the realistic path.",
+      "impact_estimate": {
+        "range": "About $45,000-$95,000 a year of clerical and reporting time across the office-engineering function, with schedule risk reduction not monetised.",
+        "assumptions": "Six Office Engineering positions at a $58,300-$85,000 band (NJ bookkeeping/auditing clerk median $58,300 as the clerical proxy, civil engineer median $104,660 as the upper bound for the engineering side of the role), with 15-25% of their hours on log upkeep, transmittal drafting and periodic reports. The 15% productivity figure from the peer-reviewed QJE support-desk study is used as a ceiling rather than a forecast, since that setting was a call centre with a single system and no document registers. P6/Procore licence costs and integration effort are excluded from the range.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-3031.00?st=NJ"
+      },
+      "complexity": "High",
+      "pilot_scope": "Four weeks on one or two active construction-administration projects: read-only connection to the project mailbox and one record system, automated RFI/submittal logging with missing-information flags, draft weekly report for both projects compared against the human version, and a ball-in-court dashboard with overdue escalations. Success is measured as hours the Office Engineer did not spend rebuilding logs.",
+      "walk_in_checks": []
+    }
+  ],
+  "lead_score": {
+    "pain": 25,
+    "fit": 18,
+    "ability_to_pay": 17,
+    "ease": 10,
+    "strategic": 14,
+    "total": 84,
+    "rationale": "Pain evidence is strong and directly observed, not inferred: an orphaned, form-less, address-less contact page serving lorem-ipsum placeholder posts, a legacy domain whose every URL dead-ends, and a Google listing still named CME Associates pointing at the dead domain - all confirmed twice (profile and triage, with triage's two wrong robot/emoji claims discarded). Fit is high because the hiring record maps almost one-to-one onto A, B and G: six Office Engineer roles defined as document control and three Proposal Coordinator roles defined as RFP compliance and proposal production. Ability to pay is strong (720+ staff, seven offices, Trilon-backed, municipal appointments at up to $200/hour) but not certain, since AEC procurement runs through IT and risk review and 2026 is consumed by a four-firm merger. Ease is the weakest sub-score: pilot 2 and 3 need access to Procore, P6 and project mailboxes, plus confidentiality terms for municipal client data. Strategic value is high - the same Procore/P6/Bluebeam/Microsoft stack and the same annual public-bid cycle repeat at every NJ/NY engineering and construction-management firm, so all three offerings are reusable. No physical/edge opportunity is included: no avenues.json brief was supplied, and the profile shows no sensor-addressable process (offices plus jobsites, no inventory, shop floor or dock), so an E play would be speculation rather than evidence. Channel note: the firm publishes no email address and no contact form anywhere on its site, so the first contact is a walk-in at 1 Tower Center Blvd reception or LinkedIn to the VP, Central Jersey, not a contact-form submission."
+  },
+  "best_evidence_signal": "94 open roles, including six Office Engineer postings whose duties are RFI/submittal/log and report tracking and three Proposal Coordinator postings defined by RFP compliance matrices and pursuit logs - https://trilongroup.pinpointhq.com/art-internal-jobs",
+  "suggested_channel": "walk-in",
+  "evidence_thin": false
+}

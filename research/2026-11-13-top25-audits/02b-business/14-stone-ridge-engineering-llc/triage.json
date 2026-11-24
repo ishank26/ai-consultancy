@@ -1,0 +1,124 @@
+{
+ "name": "Stone Ridge Engineering, LLC",
+ "town": "North Brunswick",
+ "ref": "B00703",
+ "status": "operating",
+ "website": "https://stoneridgeeng.com/",
+ "what_they_do": "Consulting engineering firm providing mechanical, electrical, plumbing and fire-protection (MEP/FP) design plus due diligence reports, feasibility studies, peer reviews and design/build project management. Also holds a NJ electrical contractor licence, bridging design and installation.",
+ "customers": "Architects, building owners, tenants, developers and real estate brokers; sectors include pharmaceutical, retail, higher education, data centers, science and technology.",
+ "size_signals": [
+  {
+   "signal": "Robert Cioffi named as President and Senior Electrical Engineer; describes a 'fully licensed staff' without giving headcount (inference: small, principal-led firm)",
+   "source_url": "https://stoneridgeeng.com/about.html"
+  },
+  {
+   "signal": "Client/project logos on the about page (Munich RE, Advaxis, Sabert, National Business Parks, Freshii)",
+   "source_url": "https://stoneridgeeng.com/about.html"
+  },
+  {
+   "signal": "Single office at 1583 Livingston Ave, Suite 4, North Brunswick",
+   "source_url": "https://stoneridgeeng.com/contact.html"
+  }
+ ],
+ "listing": {
+  "platform": "Google Business Profile",
+  "rating": "5.0",
+  "reviews": "No review count shown on the Maps panel",
+  "source_url": "https://www.google.com/maps/search/Stone+Ridge+Engineering+North+Brunswick+NJ"
+ },
+ "website_review": {
+  "loads": true,
+  "https": true,
+  "phone_layout": "usable",
+  "clear_offer": true,
+  "primary_cta": "'Contact us today' text link low on the page; no button above the fold",
+  "click_to_call": false,
+  "contact_form": true,
+  "online_booking_or_quote": "Simple contact form (name, address, phone, email, comments); no quote or scheduling flow",
+  "trust_signals": "Client logos, PE and licensed electrical contractor credentials, service-specific pages, 12+ years experience cited",
+  "out_of_date_signs": "Hand-coded static site with no copyright line; a broken/empty image placeholder renders on the contact page",
+  "search_basics": "Titles are page names only ('Home | StoneRidge Engineering, LLC.'); no meta description; no town or service in titles; however MEP Engineering, Due Diligence and Feasibility Studies each have their own page",
+  "top_issues": [
+   "Google Business Profile is unclaimed \u2014 Maps shows 'Claim this business', 'Add hours' and 'Add photos'",
+   "No meta descriptions and no LocalBusiness JSON-LD; titles omit service and town",
+   "Phone number is plain text, not a tel: link, on desktop and mobile",
+   "Broken image placeholder on the contact page and no CTA button above the fold"
+  ]
+ },
+ "agent_readiness": {
+  "findable": 1,
+  "answerable": 2,
+  "bookable": 1,
+  "notes": "Google Maps shows an unclaimed listing ('Claim this business', 'Add hours', no photos, no review count). robots.txt returns a 404, so nothing is blocked \u2014 Googlebot, OAI-SearchBot and PerplexityBot are all permitted by default. Zero JSON-LD. Services and the address are real text; business hours are missing entirely. Contact form fields are labelled, but there is no agent-followable path after submit."
+ },
+ "operations_signals": [
+  {
+   "signal": "Enquiries funnel into a 5-field comments form promising 'a representative will be in contact' \u2014 manual triage and follow-up (inference)",
+   "source_url": "https://stoneridgeeng.com/contact.html"
+  },
+  {
+   "signal": "Only one principal engineer named, with staff; proposal and due-diligence report writing likely sits with him (inference from the about page)",
+   "source_url": "https://stoneridgeeng.com/about.html"
+  }
+ ],
+ "top_opportunities": [
+  {
+   "opportunity": "Claim and complete the Google Business Profile: hours, services, photos and a review-request loop",
+   "type": "search",
+   "evidence": "Google Maps panel shows 'Claim this business', 'Add hours', 'Add photos' for Stoneridge Engineering, LLC",
+   "effort": "S"
+  },
+  {
+   "opportunity": "Add ProfessionalService/LocalBusiness JSON-LD plus titles and meta descriptions naming MEP engineering and North Brunswick; make the phone number click-to-call",
+   "type": "agent readiness",
+   "evidence": "Zero JSON-LD blocks, empty meta description, titles are page names only, no tel: links",
+   "effort": "S"
+  },
+  {
+   "opportunity": "Qualifying intake agent for RFPs and due-diligence requests that captures building type, square footage, scope and deadline before it reaches the principal",
+   "type": "AI agent",
+   "evidence": "Only intake is a free-text comments form, while the site markets due diligence and feasibility studies where scope varies widely",
+   "effort": "M"
+  }
+ ],
+ "scores": {
+  "gap_size": 4,
+  "ability_to_pay": 3,
+  "ease": 5,
+  "evidence": 5,
+  "reasons": "Gap: unclaimed GBP, no schema, no meta descriptions, no click-to-call, broken image on contact page. Ability: single-principal firm, but commercial MEP fees are high-ticket. Ease: GBP claim plus on-page markup and titles is days of effort. Evidence: live site, contact page and Google Maps panel all inspected."
+ },
+ "sources": [
+  "https://stoneridgeeng.com/index.html",
+  "https://stoneridgeeng.com/about.html",
+  "https://stoneridgeeng.com/contact.html",
+  "https://stoneridgeeng.com/robots.txt",
+  "https://www.google.com/maps/search/Stone+Ridge+Engineering+North+Brunswick+NJ"
+ ],
+ "batch": "b040",
+ "rank": 14,
+ "check": "corrected",
+ "wrong_claims": [
+  {
+   "claim": "contact form works / 'Simple contact form (name, address, phone, email, comments)' as the live intake path",
+   "what_is_true": "The five fields and Submit button are present but the form is inert: jQuery core is loaded over plain http://code.jquery.com/jquery-1.11.3.js on an https page, the request is blocked (responseStatus 0), and typeof jQuery is undefined - so jquery.validate, jquery.form.js and the $.ajax handler that posts to contact-submit.php never initialise. Submitting does nothing.",
+   "source_url": "https://stoneridgeeng.com/contact.html"
+  },
+  {
+   "claim": "phone_layout: usable on mobile",
+   "what_is_true": "Body text is readable at 390px, but the hamburger menu does nothing (jquery.mmenu depends on the same blocked jQuery), so mobile visitors cannot navigate past the home page; the 390px home page also has a large blank band under the tagline.",
+   "source_url": "https://stoneridgeeng.com/index.html"
+  },
+  {
+   "claim": "A 'broken/empty image placeholder' renders on the contact page",
+   "what_is_true": "No broken image element exists - both images (logo, footer logo) load. What is there is roughly 550px of empty white space where hero content would sit, above the contact heading.",
+   "source_url": "https://stoneridgeeng.com/contact.html"
+  }
+ ],
+ "checked_scores": {
+  "gap_size": 5,
+  "ability_to_pay": 3,
+  "ease": 5,
+  "evidence": 4
+ }
+}

@@ -1,0 +1,166 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Trinity Rehab, 656 Middlesex Ave (group B, physical therapy)",
+      "problem": "Excluded type left in the list. It is a regional chain: its own site lists 24 New Jersey clinic locations including Metuchen. The mapper flagged 'regional PT group' in notes but kept the entry.",
+      "fix": "Remove Trinity Rehab from the lead list (or move to an explicitly excluded-chains file)."
+    },
+    {
+      "claim": "Hackensack Meridian Physical Therapy & Rehabilitation at Metuchen, 481 Memorial Pkwy",
+      "problem": "Excluded type (hospital system) left in the list; the entry's own note says 'LIKELY EXCLUDE - part of a large hospital system' and the health-system location page confirms it.",
+      "fix": "Delete the entry before triage."
+    },
+    {
+      "claim": "Kessler Rehabilitation Center - Metuchen, 265 Amboy Ave",
+      "problem": "Excluded type (multi-state rehabilitation chain) left in the list; the entry's own note says 'LIKELY EXCLUDE - regional rehab chain'. I could not open the Kessler page (HTTP 403) so chain status is from the brand/domain and the mapper's note, not a page I read.",
+      "fix": "Delete the entry before triage."
+    },
+    {
+      "claim": "Computer Troubleshooters, 266 Lake Ave",
+      "problem": "Franchise brand (the entry's own note says 'Branded IT franchise'), i.e. an excluded type kept in the list; existence at that address is only from one aggregator directory.",
+      "fix": "Remove, or verify the local franchisee is genuinely independent before any outreach."
+    },
+    {
+      "claim": "LenoyMED (med spa), Metuchen location",
+      "problem": "Multi-location branded provider: its own site lists three NJ locations (Belleville, Elizabeth, Metuchen at 326 Main St). Chain-adjacent; address was recorded as Unknown and 326 Main St is also in the list as Vella, Singer and Martinez.",
+      "fix": "Decide chain policy explicitly; if kept, correct the address to 326 Main St and note the multi-site brand."
+    },
+    {
+      "claim": "Self Image Solutions, 283 Main St, website http://www.selfimagesolutions.com/",
+      "problem": "The listed website does not resolve (DNS: host not found), so the only support is one chamber-directory listing and the business's nature is unknown. Effectively a dead/unverifiable record.",
+      "fix": "Drop the website field or drop the entry unless a current source is found."
+    },
+    {
+      "claim": "Platinum Property Management, 569 Middlesex Ave, source_url https://www.yellowpages.com/metuchen-nj/absolute-property-management-llc",
+      "problem": "The cited source URL is a Yellow Pages page for a different business (Absolute Property Management LLC), so it does not support this entry. The phone 732-576-2085 at 569 Middlesex Ave appears only in an RPA/Middlesex-Greenway small-business appendix, and the name may actually be 'Platinum Property Management' under a different URL.",
+      "fix": "Re-source the entry (company site or a page naming Platinum Property Management at 569 Middlesex Ave) or remove it."
+    },
+    {
+      "claim": "Chipcom Systems, 351 Main St",
+      "problem": "Address is stale: Chipcom's own website lists 340 Amboy Ave, Suite E (same phone 732-898-2447). Directory entry is outdated.",
+      "fix": "Update address to 340 Amboy Ave Suite E, or mark the downtown listing as outdated."
+    },
+    {
+      "claim": "Star Accounting Services (address 'Unknown', no website)",
+      "problem": "Data is thinner than what is publicly available: the firm's own site lists 48 Bridge St, Building A and phone 732-662-5170. Address 'Unknown' is not wrong but is an avoidable gap, and no website was recorded.",
+      "fix": "Fill address/website/phone from staraccounting.net (and reconcile the 732-372-7925 directory number)."
+    },
+    {
+      "claim": "Bridgepointe Family Dentistry (address Unknown, from dentistsranked)",
+      "problem": "Name/address do not match the actual practice: the Metuchen practice is 'Bridgepointe Dental Studio' at 230 Bridge St, with its own site and phone. Risk of a misnamed duplicate.",
+      "fix": "Replace with Bridgepointe Dental Studio, 230 Bridge St, (732) 494-7877."
+    },
+    {
+      "claim": "Metuchen Pediatric Dentistry (address Unknown)",
+      "problem": "Address is published on the practice's own site: 236 Bridge Street, Building F, phone (732) 334-7171. Recorded as Unknown.",
+      "fix": "Fill in address and phone."
+    },
+    {
+      "claim": "Elderology, 61 Pearl St, category 'Aging life care / elder care consulting'",
+      "problem": "Category is contradicted by its own site: Elderology provides psychological/behavioral healthcare (evaluations, individual and group psychotherapy) in assisted-living and long-term-care settings.",
+      "fix": "Recategorize as behavioral health / psychotherapy practice."
+    },
+    {
+      "claim": "'Office of Brian Atienza', 'Office of Daren Hughes', 'Office of Julie Mulk' (406 Main St)",
+      "problem": "These are individual names in a shared suite with no business name, specialty, phone or website - they are not identifiable client-facing businesses, so they will waste triage time even though the chamber directory does list them.",
+      "fix": "Verify each occupant's business before keeping; otherwise move to a low-priority/unqualified list."
+    },
+    {
+      "claim": "Metuchen Modern Design Workshop",
+      "problem": "Only evidence is a 2020 downtown-alliance annual report (and it reads as a home-based individual design practice); no current listing, address, phone or site.",
+      "fix": "Drop unless a current source is found."
+    },
+    {
+      "claim": "Duplicate risk at shared addresses",
+      "problem": "Several addresses carry multiple entries: 406 Main St (Diamond Realty, Gawronski, Studio27, RNR, DiNi, Beauty Anthologie, Blue Parachute, Body Mechanics, IZM/OM, Kylyuk, offices of Atienza/Hughes/Mulk), 267 Amboy Ave (Mehta, Petronella, Hernandez, Digestive Disease, Family Choice, Karkun, Janet Travis), 276 Main St (Brause, Iacona, MR of Edison, Stivers-not-listed), 61 Pearl St (Barrett & Pavluk, Fried, Hamersky, Don Pedro, Licensed Arbiter, Elderology).",
+      "fix": "Do not merge automatically - these are separate tenant businesses - but tag shared-suite addresses so outreach does not double-contact the same receptionist."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Downtown Metuchen legal directory lists the 24 law-office entries in the list (Armour, Barrett & Pavluk, Brause, Busch, Convery, Berger, Boccippio, Johnson, Sachs, McColley, Iacona, Silber, Mongelli, Mundy, Fried, Eichert, Kleiner, Tanenbaum, Weiss, Sharlow, Vella Singer, Colavito, Wolfe Ossa)", "source_url": "https://www.downtownmetuchen.org/directory/legal/", "result": "confirmed"},
+    {"claim": "Armour Law Firm, 407 Main St, armourlawfirm.com", "source_url": "http://armourlawfirm.com/", "result": "confirmed"},
+    {"claim": "Busch Law Group, Metuchen NJ, buschlawgroup.com", "source_url": "http://www.buschlawgroup.com/", "result": "confirmed"},
+    {"claim": "Johnson & Associates, 280 Amboy Ave, johnsonlegalpc.com (foreclosure-defense practice, phone 848-229-2254)", "source_url": "http://johnsonlegalpc.com/", "result": "confirmed"},
+    {"claim": "Mongelli Law Group, 441 Main St, mongellilaw.com", "source_url": "http://www.mongellilaw.com/", "result": "confirmed"},
+    {"claim": "Wolfe Ossa Law, 475 Main St, wolfeossalaw.com (elder law, Metuchen NJ)", "source_url": "http://www.wolfeossalaw.com/", "result": "confirmed"},
+    {"claim": "Barrett & Pavluk, 61 Pearl St Metuchen, bpnjlaw.com", "source_url": "http://bpnjlaw.com/", "result": "confirmed"},
+    {"claim": "Caballero & Associates CPAs, caballerocpas.com", "source_url": "https://www.caballerocpas.com/", "result": "confirmed"},
+    {"claim": "Hronich & Company, 505 Main St, hronich.com", "source_url": "https://www.hronich.com/", "result": "could not open"},
+    {"claim": "The Schenck Agency Inc, 495 Main St Metuchen, schenckagency.com", "source_url": "https://schenckagency.com/", "result": "confirmed"},
+    {"claim": "River Edge Title Agency, riveredgetitle.com, family-owned title agency", "source_url": "https://riveredgetitle.com/", "result": "confirmed"},
+    {"claim": "Diamond Realty Associates, 406 Main St, diamondnj.com, independent local brokerage", "source_url": "http://www.diamondnj.com/", "result": "confirmed"},
+    {"claim": "Wade Appraisal LLC, wadeappraisalllc.com (Gary M. Wade, MAI)", "source_url": "https://wadeappraisalllc.com/", "result": "confirmed"},
+    {"claim": "Landmark Surveys, 51 Bridge St, lmspls.com, 732-548-8782", "source_url": "https://lmspls.com/contact.html", "result": "confirmed"},
+    {"claim": "The Chalfin Group, Metuchen NJ, chalfin.com (business valuation/consulting)", "source_url": "https://www.chalfin.com/", "result": "confirmed"},
+    {"claim": "Don Pedro Financial, Metuchen, father-and-son accounting firm", "source_url": "https://donpedrofinancial.com/about-us/", "result": "confirmed"},
+    {"claim": "Zenith Energy, 1 Highland Ave, zenithem.com", "source_url": "http://www.zenithem.com/", "result": "confirmed"},
+    {"claim": "Blue Parachute Print & Promo, 402 Main St, bluechute.com", "source_url": "http://www.bluechute.com/", "result": "confirmed"},
+    {"claim": "Koderzlab, 406 Main St, koderzlab.com", "source_url": "http://www.koderzlab.com/", "result": "confirmed"},
+    {"claim": "Revision Technologies, 10 Station Pl, revisiontek.com", "source_url": "http://www.revisiontek.com/", "result": "confirmed"},
+    {"claim": "Self Image Solutions website http://www.selfimagesolutions.com/", "source_url": "http://www.selfimagesolutions.com/", "result": "not found"},
+    {"claim": "Chipcom Systems at 351 Main St", "source_url": "https://chipcomsystems.com/home.html", "result": "contradicted"},
+    {"claim": "Platinum Property Management cited to https://www.yellowpages.com/metuchen-nj/absolute-property-management-llc", "source_url": "https://www.yellowpages.com/metuchen-nj/absolute-property-management-llc", "result": "could not open"},
+    {"claim": "Arch2, Inc., 495 Main St, arch2inc.com", "source_url": "http://www.arch2inc.com/", "result": "could not open"},
+    {"claim": "Metuchen Dental Group, 26 Bridge St, (732) 321-1151", "source_url": "https://metuchendental.com/", "result": "confirmed"},
+    {"claim": "T-Dental, 450 Main St Metuchen, tdentalnj.com", "source_url": "https://www.tdentalnj.com/", "result": "confirmed"},
+    {"claim": "Jenny Rong, DDS orthodontics, Metuchen NJ, 732-321-3390", "source_url": "https://www.jennyrongdds.com/", "result": "confirmed"},
+    {"claim": "Dr. Arthur Calvani Orthodontics, 223 Bridge St Building E, High Tech Braces", "source_url": "https://www.hightechbraces.com/office-location", "result": "confirmed"},
+    {"claim": "Metuchen Vision, 43 Bridge St, metuchenvision.com", "source_url": "https://www.metuchenvision.com/contact", "result": "confirmed"},
+    {"claim": "Amboy Avenue Animal Hospital, Metuchen, amboyanimal.com", "source_url": "https://www.amboyanimal.com/", "result": "confirmed"},
+    {"claim": "WeCARE Physical Therapy, Metuchen, wecareptnj.com", "source_url": "https://wecareptnj.com/", "result": "confirmed"},
+    {"claim": "Hands On NJ Physical Therapy, Metuchen (Bridge Pointe complex), handsonnj-pt.com", "source_url": "https://handsonnj-pt.com/contact/", "result": "confirmed"},
+    {"claim": "Tri-Pro Physical Therapy, 160 Durham Ave Suite 103 Metuchen", "source_url": "https://tripropt.com/services/", "result": "confirmed"},
+    {"claim": "Kalinowski Chiropractic, 15 Amboy Ave Metuchen, 732-548-2001", "source_url": "https://www.drkalinowski.com/contact/", "result": "confirmed"},
+    {"claim": "The Hair Loft at The Corner, 476 Main St, 732-738-3770", "source_url": "https://www.hairloftnj.com/contact", "result": "confirmed"},
+    {"claim": "Sentirsi Pilates Studio, Metuchen, sentirsistudio.com", "source_url": "https://www.sentirsistudio.com/", "result": "confirmed"},
+    {"claim": "King Strength and Performance, Metuchen, kingstrengthperformance.com", "source_url": "https://www.kingstrengthperformance.com/", "result": "confirmed"},
+    {"claim": "Elderology, 61 Pearl St, elderology.net - nature of business", "source_url": "http://www.elderology.net/", "result": "contradicted"},
+    {"claim": "Key Home Care, 267 Amboy Ave, keyhomecare.net, home care agency serving Middlesex County", "source_url": "http://keyhomecare.net/", "result": "confirmed"},
+    {"claim": "Xonyx Accounting Solutions at 8 Sheffield Pl, Metuchen", "source_url": "https://reviews.birdeye.com/d/accountants/metuchen-nj/", "result": "confirmed"},
+    {"claim": "Metuchen Pediatric Dentistry is a Metuchen practice (address 236 Bridge St Bldg F)", "source_url": "https://www.metuchenpediatricdentistry.com/contact", "result": "confirmed"},
+    {"claim": "Management Recruiters of Edison at 276 Main St 2nd Floor Metuchen, 732-767-1025", "source_url": "https://www.clearlyrated.com/staffing/nj-usa/metuchen-nj/management-recruiters-of-edison-metuchen-nj", "result": "confirmed"},
+    {"claim": "Friendly Computers at 50 Newman St Metuchen, 732-899-9979", "source_url": "https://nj.allpages.com/metuchen/shopping-shopping-services/computers-electronics/", "result": "confirmed"},
+    {"claim": "Star Accounting Services is a Metuchen accounting firm", "source_url": "https://staraccounting.net/contact_us.html", "result": "confirmed"},
+    {"claim": "Trinity Rehab Metuchen is one of 24 NJ clinics (chain)", "source_url": "https://trinity-rehab.com/location-county/new-jersey/", "result": "confirmed"},
+    {"claim": "Hackensack Meridian Physical Therapy & Rehabilitation at Metuchen is a health-system location", "source_url": "https://www.hackensackmeridianhealth.org/en/locations/hackensack-meridian-rehabilitation-at-metuchen", "result": "confirmed"},
+    {"claim": "Kessler Rehabilitation Center - Metuchen entry", "source_url": "https://www.kesslerrehabilitationcenter.com/contact/find-a-location/nj/metuchen/metuchen/", "result": "could not open"},
+    {"claim": "LenoyMED has three NJ locations including Metuchen 326 Main St", "source_url": "https://medspa.lenoymed.com/en/faqs", "result": "confirmed"},
+    {"claim": "Downtown directory pages for health-medicine, beauty-personal-care, insurance-finance, real-estate, business-professional-services match the list's addresses/phones (and correctly show Massage Envy, Supercuts, Merle Norman, Chase, Wells Fargo, Provident, Amboy Bank, Edward Jones, UPS Store as separate chain entries that were excluded)", "source_url": "https://www.downtownmetuchen.org/directory/", "result": "confirmed"}
+  ],
+  "coverage": {
+    "searches": [
+      "chiropractor Metuchen NJ",
+      "hair salon Metuchen NJ Main Street",
+      "accounting firm CPA Metuchen NJ",
+      "IT managed services company Metuchen NJ",
+      "dentist Metuchen NJ Bridge Street office",
+      "physical therapy clinic Metuchen NJ",
+      "architect Metuchen NJ firm",
+      "insurance agency Metuchen NJ independent agent",
+      "\"Metuchen Dental Group\" 26 Bridge St / \"Platinum Property Management\" / \"Computer Troubleshooters\" / \"Star Accounting Services\" (spot checks)",
+      "\"Xonyx Accounting\" / \"Metuchen Pediatric Dentistry\" / LenoyMED locations / Trinity Rehab locations (spot checks)",
+      "\"Edward Stivers\" DC 276 Main St / Bridgepointe Dental Studio / JW CPA LLC / Benefits Tower (gap checks)",
+      "\"Management Recruiters of Edison\" / \"Friendly Computers\" / \"Metuchen Modern Design Workshop\" / Edison Technologies (spot checks)"
+    ],
+    "eligible_found": 26,
+    "already_listed": 20,
+    "missing": [
+      {"name": "Edward C. Stivers, DC (chiropractor)", "town": "Metuchen", "source_url": "https://doctor.webmd.com/doctor/edward-stivers-eeac87f1-23ed-4f1b-ac1f-277f21702bad-overview"},
+      {"name": "JW CPA LLC", "town": "Metuchen", "source_url": "https://www.jiawucpa.com/"},
+      {"name": "Bridgepointe Dental Studio (currently listed only as 'Bridgepointe Family Dentistry' with no address)", "town": "Metuchen", "source_url": "https://bridgepointedentistry.com/contact/"},
+      {"name": "Benefits Tower Brokers, LLC (independent insurance brokerage)", "town": "Metuchen", "source_url": "https://www.benefitstower.com/"},
+      {"name": "John Riggio, RA Architect (172 Main St, Suite 33)", "town": "Metuchen", "source_url": "https://www.johnriggio.com/contact.html"},
+      {"name": "OM Pharmacy (63 Pearl St) - appears on the same downtown directory page used for the list; pharmacy scope is a judgment call", "town": "Metuchen", "source_url": "https://www.downtownmetuchen.org/directory/health-medicine/"}
+    ]
+  },
+  "confidence": "Medium",
+  "coverage_note": "20 of 26 eligible businesses surfaced by my own searches were already listed (77%, above the 70% bar). The FAIL rests on excluded types still in the list (Trinity Rehab, Hackensack Meridian PT, Kessler, Computer Troubleshooters, LenoyMED) plus several data-quality defects. Not counted as eligible: service-area pages for out-of-town MSPs (Lifeline, BMT, Rekall, KRS), and chains/banks/hospital departments the mapper correctly excluded.",
+  "data_gaps": [
+    "Yellow Pages, Cylex, BestProsInTown, Birdeye and Kessler pages returned 403 or blocked fetching, so entries sourced only to those aggregators (Friendly Computers, Star Accounting, Edison Technologies, Xonyx, BlueWater Marketing, Business Machine-type listings) could not be re-read directly.",
+    "hronich.com, arch2inc.com, rnrsoftware.com, chipcomsystems.com and selfimagesolutions.com would not load from this environment (403/failure/DNS), so those entries are marked 'could not open' or 'not found' rather than confirmed.",
+    "The 'Metuchen small businesses within 1 mile' PDF (RPA/Middlesex Greenway appendix) appeared in results for Platinum Property Management and Edison Technologies but I did not open it, so those addresses rest on search snippets.",
+    "Directory-only entries with no street address in the source (several dentists, therapists and psychologists) could not be independently placed in Metuchen; they are neither confirmed nor refuted.",
+    "No OSM/registry cross-check: Metuchen publishes no business licence list, so coverage is a lower bound."
+  ]
+}

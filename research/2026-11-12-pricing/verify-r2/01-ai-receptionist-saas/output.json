@@ -1,0 +1,68 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "price_ranges.full_service_or_custom: \"$350-$1,500+/month, plus $499-$1,999 one-time setup at managed vendors: Sarah 24/7 from $350 ... ZAVYANS $249-$799/month plus $499-$1,999 setup ...\"",
+      "problem": "The band's floor does not follow from the brief's own sourced prices. The list inside the \"$350-$1,500+\" band includes ZAVYANS at $249/month, which is below the floor, and the managed providers priced below $350 are handled inconsistently: Lithium ($179/month, managed AI answering, no setup fee) is a managed offer that is excluded from this band. One_line and inference_note repeat the same floor (\"managed offers ... start at $350\").",
+      "fix": "Restate the band from the prices actually sourced, e.g. \"$179-$1,500+/month for managed/done-for-you offers: Lithium $179, ZAVYANS from $249 (+$499 setup), UpNewLevel $299/$599, Sarah 24/7 from $350 + $0.35/min, Slang.ai from $399/$599 per location, Fusion Calling Enterprise $497 (+$1,250 setup), Smith.ai Enterprise $500, Dialzara Done for You! from $1,500+\", and change one_line and inference_note so the managed floor is $179-$249 rather than $350."
+    },
+    {
+      "claim": "one_line and price_ranges: managed pricing is \"$350-$1,500+/month plus $499-$1,999 setup\"",
+      "problem": "Setup fees are generalised to the whole managed band when only two vendors in the set publish them. Fusion Calling publishes $799 (Pro) / $1,250 (Enterprise) and ZAVYANS $499/$999/$1,999, but Sarah 24/7 publishes Setup $0, Lithium publishes \"no setup fee\", and UpNewLevel includes custom setup in the plan. The implication that a managed buyer in this band should expect a $499-$1,999 fee overstates the sourced evidence.",
+      "fix": "Say \"one-time setup observed only at ZAVYANS ($499/$999/$1,999) and Fusion Calling ($799/$1,250); Sarah 24/7, Lithium and UpNewLevel publish no separate setup fee\" in one_line and in the range, keeping the inference label."
+    },
+    {
+      "claim": "price_ranges.inference_note: \"Ranges are the low and high published list prices observed on the vendor pages\"",
+      "problem": "Contradicted by the band construction above: the $350 low end of the full-service band is not the lowest observed managed price ($179 Lithium, $249 ZAVYANS), so the ranges are a grouping choice, not simply the observed low/high. As written the note asserts a derivation the numbers do not support.",
+      "fix": "Either widen the band to the observed low managed price ($179) or reword the note to say these are hand-drawn bands per price segment, not observed minima/maxima, and list which prices anchor each boundary."
+    },
+    {
+      "claim": "data_gaps: \"Dialzara's Business Plus tier is listed at $199/month with the same feature checks as Pro; the vendor does not distinguish the two beyond included minutes.\"",
+      "problem": "Contradicted by the Dialzara pricing page's own comparison table, which shows Plus adding multi-agent/multi-location support, priority support (Pro: standard), unlimited knowledge-base uploads (Pro: 10), Advanced CRM via Make/Zapier/API and after-hours escalation is on both. Plus also has a 500-minute allowance vs Pro's 220.",
+      "fix": "Replace with: \"Dialzara distinguishes Plus from Pro by included minutes (500 vs 220), multi-agent/multi-location, priority support and unlimited knowledge-base uploads; only the plan card checklists look identical.\""
+    },
+    {
+      "claim": "Goodcall contract_terms: \"free demo agent with no card and payment only when a number is connected\"",
+      "problem": "The pricing page confirms a free demo agent and paying only when a number is connected, but does not state that no card is required (Upfirst's page does say no card; Goodcall's does not).",
+      "fix": "Drop \"with no card\" or attribute it only where the vendor says it: \"free demo agent, pay only when a number is connected; no card requirement not stated\"."
+    },
+    {
+      "claim": "buyer_reported_costs: Reddit findings — plans \"around $29-$199 a month\" with managed setups \"around $500 a month or more\", and law-firm buyers calling per-call billing \"sketchy or steep at $7-$9 per call\"",
+      "problem": "Both cited Reddit threads could not be opened (reddit.com and old.reddit.com both failed to return readable content), so neither the figures nor the stated \"2026\" year could be confirmed. The $29-$199 band is broadly consistent with vendor pages re-checked here (Dialzara $29, Upfirst $24.95, Rosie $49, Upfirst Premium $59.95, Smith.ai Pro $150), but the $7-$9 per call figure has no support in any source I could open.",
+      "fix": "Label both as unverified secondary reports, drop the year unless the thread date is confirmed, and either remove the $7-$9 per-call figure or replace it with a sourced per-call price (e.g. Smith.ai $1.67-$3.00 per call) clearly marked as list price rather than buyer report."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Smith.ai Free is $0/mo for 25 calls, $3.00 per call after; includes 25 test calls and 50 simulated calls/mo", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai Pro is $150/mo at $2.00/call for 75 calls; 150-call option shows $1.80/call with -10%; 300-call option shows $1.67/call with -17%; extra calls $2.50/$2.30/$2.17", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai Enterprise is $500/mo at $1.67/call for 300 calls, with 500-call option at $1.60/call and 1,000+ marked custom; extra calls $2.17 at 300 and $2.10 at 500", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai is month-to-month, 30 days' notice to cancel, plan changes bill the next month, separate 6-month plan offered", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai AI-first plan includes escalation to a live North America-based receptionist any time, per its FAQ", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Goodcall Starter $79/mo for 100 unique customers (about 150 calls), Growth $129 for 500 (about 750 calls), Scale $299 for 2,000 (about 3,000 calls), overage 79c/26c/15c with no penalty rate", "source_url": "https://www.goodcall.com/pricing", "result": "confirmed"},
+    {"claim": "Goodcall tier limits: 5/10/20 workers, 1/5/15 external tools, 1/5/10 team members, 30/90/unlimited call history, $5 test-run top-ups, local number included, transfers and hang-ups never count", "source_url": "https://www.goodcall.com/pricing", "result": "confirmed"},
+    {"claim": "Goodcall states a live answering service runs about $1.50-$1.90/min vs about 13c/min on Starter at four-minute calls", "source_url": "https://www.goodcall.com/pricing", "result": "confirmed"},
+    {"claim": "Rosie is $49/$149/$299 per month for 250/1,000/2,000 minutes, 7-day free trial, 'Pay Annually, 2 months free'", "source_url": "https://heyrosie.com/pricing", "result": "confirmed"},
+    {"claim": "Rosie website texting add-on is $50/mo with 25 conversations included and $1 per additional; website chat free with all plans; Rosie publishes no voice overage rate (FAQ answers did not render)", "source_url": "https://heyrosie.com/pricing", "result": "confirmed"},
+    {"claim": "Dialzara is $29/$99/$199/$349 per month for 60/220/500/1,000 minutes with overage $0.48/$0.45/$0.40/$0.35 per minute, no setup fees, no contract, 7-day trial, unused purchased minutes carry forward", "source_url": "https://dialzara.com/pricing", "result": "confirmed"},
+    {"claim": "Dialzara Done for You! is $1,500+ per month with included minutes 'inquire'; phone numbers $3/mo US-Canada local and $5/mo US toll-free; SMS $19/mo + $0.05/message with $0.0083/segment carrier fees; chatbot $39/mo standalone or free with voice plans at 100 sessions/$0.15 each; outbound $750/$1,000/$1,500", "source_url": "https://dialzara.com/pricing", "result": "confirmed"},
+    {"claim": "My AI Front Desk Business-in-a-Box is $99/mo or $79/mo billed annually (20% off) with 200 voice minutes, 100 chatbot conversations, 400 SMS, 300 form submissions, 500 email drafts and 20 outbound calls/day", "source_url": "https://www.myaifrontdesk.com/tutorials/how-does-billing-pricing-work-for-my-ai-front-desk", "result": "confirmed"},
+    {"claim": "My AI Front Desk overage is 25 credits ($0.25) per voice minute, 5 credits per chatbot conversation, 4 per SMS; included 1,000 credits = $10 (about 40 extra voice minutes); auto-reload $10 per 1,000 and purchased credits never expire; Partner voice from 7 credits/min ($0.07/min)", "source_url": "https://www.myaifrontdesk.com/tutorials/how-does-billing-pricing-work-for-my-ai-front-desk", "result": "confirmed"},
+    {"claim": "Upfirst is $24.95/$59.95/$159.95/$299 billed monthly, $20/$48/$128/$240 billed annually, for 30/90/300/600 calls, overage $1.50/$1/75c/70c; 14-day or 100-call trial with no card; 20% annual discount", "source_url": "https://upfirst.ai/pricing", "result": "confirmed"},
+    {"claim": "Upfirst includes CRM API and Zapier on every plan, calendars (Google, Outlook, Calendly, Acuity, Square, Clio), free 30-minute onboarding call, additional agent $9.95/month, team-set integration setup on Scale/Enterprise", "source_url": "https://upfirst.ai/pricing", "result": "confirmed"},
+    {"claim": "Upfirst testimonial: attorney Thomas Davenport says he paid $1,000-$2,500 a month for an answering service", "source_url": "https://upfirst.ai/pricing", "result": "confirmed"},
+    {"claim": "Upfirst testimonial: AFL-CIO Community Services program director says the next human option was $400 a month", "source_url": "https://upfirst.ai/pricing", "result": "confirmed"},
+    {"claim": "Slang.ai Core is 'Starting at $399 *per location', Premium 'Starting at $599 *per location', Enterprise custom, every plan routing to 'Get a quote'; page also carries CAD $399/$599 and AUD $399/$599 variants", "source_url": "https://www.slang.ai/pricing", "result": "confirmed"},
+    {"claim": "Fusion Calling Starter $149/mo (500 min, no setup), Pro $249/mo (1,050 min, $799 setup), Enterprise $497/mo (2,100 min, $1,250 setup), overage $0.30/$0.25/$0.20, month-to-month, 14-day money-back, 80%/95% usage alerts, annual toggle 'Save 10%'", "source_url": "https://www.fusioncalling.com/pricing", "result": "confirmed"},
+    {"claim": "Sarah 24/7 is from $350/month for one channel plus 35c/min of conversation, $100/month per additional channel, $0 setup, no contract, monthly billing, cancel from dashboard effective end of paid period, 7-day refund request window, no free plan", "source_url": "https://sarah247.ai/pricing/", "result": "confirmed"},
+    {"claim": "ZAVYANS Starter from $249/mo + $499 setup, Growth from $449 + $999, Pro from $799 + $1,999; platform usage billed separately at cost; prices exclude taxes; quoted after a proposal call", "source_url": "https://zavyans.com/locations/usa/new-jersey/ai-calling-agents/", "result": "confirmed"},
+    {"claim": "UpNewLevel Basic is $299/month and Pro $599/month, no contract, month-to-month, cancel from dashboard, 30-day money-back, custom setup in 24-48 hours, English/Spanish/Russian, Google Calendar and Cal.com", "source_url": "https://upnewlevel.com/", "result": "confirmed"},
+    {"claim": "Lithium's managed AI reception is $179 a month with no setup fee and no contract, cancel anytime; no minute allowance or overage rate published", "source_url": "https://lithiumseo.com/north-jersey-ai-systems/", "result": "confirmed"},
+    {"claim": "Fortify case study: five dental offices, 573 calls, $66,342 production and $8,554 AI cost in one month", "source_url": "https://fortifypractice.com/ai-dental-receptionist-roi-case-study/", "result": "confirmed"},
+    {"claim": "Seashore IT case study: client cut call handling from $4,500/month with a human receptionist service to under $500/month", "source_url": "https://www.seashoreit.com/how-an-ai-receptionist-saved-one-small-business-4000-month-on-call-handling/", "result": "confirmed"},
+    {"claim": "Fusion Calling analysis covers 55 user reports (42 Reddit, 9 Trustpilot, 4 App Store), collected September 16, 2026, including a near-$60/month voicemail-access complaint and a nine-month refund wait", "source_url": "https://www.fusioncalling.com/blog/ai-receptionist-complaints", "result": "confirmed"},
+    {"claim": "buyer_complaints: hangups with no trace, loops/misunderstanding of off-script requests, usage/credit billing surprises, booking errors and double-bookings, demo-vs-reality gap with upsell pitches", "source_url": "https://www.fusioncalling.com/blog/ai-receptionist-complaints", "result": "confirmed"},
+    {"claim": "buyer_reported_costs: Reddit r/AIReceptionists thread reports plans around $29-$199/month with managed setups around $500+", "source_url": "https://www.reddit.com/r/AIReceptionists/comments/1sjh808/do_anyone_really_making_any_money/", "result": "could not open"},
+    {"claim": "buyer_complaints: law-firm buyers call per-call billing sketchy or steep at $7-$9 per call", "source_url": "https://www.reddit.com/r/LawFirm/comments/1ly4nu2/answering_service/", "result": "could not open"}
+  ],
+  "confidence": "High"
+}

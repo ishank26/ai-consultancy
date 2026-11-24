@@ -1,0 +1,220 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Party Fair of Kendall Park, 3562 NJ-27 (group D)",
+      "problem": "Excluded type remains in the list: 'Party Fair' is a franchised party-supplies retail brand, and the entry itself flags this ('may be an excluded franchise store'). No evidence of independent ownership was found; the store is also published with phone (732) 422-7300 and Suite 126, which the entry leaves as 'Unknown'.",
+      "fix": "Remove the entry, or find explicit evidence that this store is independently owned before keeping it; if kept, fill phone/suite from the directory listing."
+    },
+    {
+      "claim": "Coverage of the zone",
+      "problem": "Seven of the 21 eligible businesses surfaced by nine independent category searches are absent, i.e. 14/21 = 66.7% listed, below the 70% threshold. The gaps are concentrated in group B/C (dentists, salons, nail salons, auto repair), which the mapper added this revision but did not sweep completely.",
+      "fix": "Add the missing entries listed under coverage.missing (United Dental Group of Brunswick, Smiles By Dr. Levine, D'Bella Salon, Liberty Nails, New Star Nails & Spa, EG Auto Center, Neighborhood Roofing Co.) or explicitly hand groups B/C back to their owning mapper instead of half-covering them."
+    },
+    {
+      "claim": "Srishti, 485 Georges Rd #112, Dayton",
+      "problem": "Not found. The cited website srishtiusa.com is the storefront of an online Indian-handicrafts retailer with no street address anywhere in the page text, and no searched source places a business called Srishti at 485 Georges Rd (that plaza's Indian grocery is Apna Bazaar at Suite 107). The address appears to come from an aggregator listing alone.",
+      "fix": "Confirm the storefront in person/phone (not possible under read-only rules) or drop the entry as an online-only retailer."
+    },
+    {
+      "claim": "American Alpha Inc, 45 Stouts Ln #8, Monmouth Junction - 'Wholesale distributor (electrical equipment)'",
+      "problem": "Website is genuinely this company (phone 732-438-0420 matches) but it is an amusement/skill-game and fish-table distributor, not an electrical-equipment supplier. Category is wrong.",
+      "fix": "Re-categorise as amusement game distribution/wholesale; keep the entry."
+    },
+    {
+      "claim": "Swaradhika School of Carnatic Music - website https://swaradhika.org/",
+      "problem": "The cited website failed to load on two separate fetch attempts (connection failure), and the entry's address/phone appear only in directory data (Cylex, localitybiz). Existence is plausible but not confirmed by a first-party page.",
+      "fix": "Blank the website field until it resolves, and mark the entry as directory-only pending a phone check."
+    },
+    {
+      "claim": "Four entries rest on a single aggregator listing with no other support: Montessori Children's World (12 Stults Rd), Little Learners Pre-School (1 New Rd), Home Appliance Repair Kendall Park (3616 NJ-27), Artists In Motion Dance (3562 NJ-27)",
+      "problem": "None could be confirmed as currently trading. Montessori Children's World does not appear under that name in the NJ DCF licensed child-care centre list; Little Learners still appears only in an apartment-community directory; 'Home Appliance Repair Kendall Park' reads like a keyword-styled lead listing; Artists In Motion is confirmed only by a third-party Waze/bio reference that another search result confuses with a Cherry Hill studio.",
+      "fix": "Keep flagged as unverified (as the mapper did) and do not spend triage time on them until a phone check is allowed; consider dropping Home Appliance Repair and Artists In Motion, which are the weakest."
+    },
+    {
+      "claim": "Two dance studios at Town Place: The Dance Collective NJ (3570 NJ-27) and Artists In Motion (3562 NJ-27 Suite 123)",
+      "problem": "The landlord's 2026 leasing flyer markets a vacant 'former dance studio' unit in the same centre, so at least one of the two dance entries is probably no longer a tenant. The mapper flagged this for The Dance Collective but then also listed a second Kendall Park dance studio in the same complex.",
+      "fix": "Verify by phone which studio occupies/occupied the unit; most likely only one is current."
+    },
+    {
+      "claim": "Licensing of multiple pare-school entries (Village Microschool, Sand Hills Christian Preschool, Sapling School, Kids First Montessori, Promissory, Montessori Connections, Milestones, ABC 123)",
+      "problem": "Under a literal reading of the mapper's exclusion list ('schools'), private microschools, preschools and music/tutoring schools are borderline exclusions; the mapper treats them as group D eligible without stating the rule. Not a data error, but the exclusion rule needs confirming.",
+      "fix": "Orchestrator to confirm that 'schools' means K-12 public/private schools and school districts, not preschools, daycares and enrichment schools; otherwise these entries fall out."
+    },
+    {
+      "claim": "Suite-level details for Town Place tenants (Innovative Physical Therapy, American Dentistry, Nail Spa, Fit Kicks Martial Arts)",
+      "problem": "The only source is the broker flyer, which lists co-tenant names with no suite numbers or phones, and it uses the centre address 3570 Route 27 while several entries give 3562 NJ-27 for the same tenants. The complex appears dual-numbered, so this is not a contradiction, but suite detail is unverified.",
+      "fix": "Leave suite fields blank/Unknown rather than mixing 3562 and 3570 addresses; note that the centre is dual-numbered on Route 27."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "The Sapling School (Kendall Park) is at 3080 NJ-27, Kendall Park, phone (732) 297-8400",
+      "source_url": "https://thesaplingschool.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Milestones Montessori of Dayton is at 364 Georges Rd, Dayton, NJ 08810",
+      "source_url": "https://milestonesmontessori.us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Promissory Montessori Dayton campus is at 485 Georges Rd #119 (plus a Somerset campus)",
+      "source_url": "https://thepromissory.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "American Math Academy is at 642 Ridge Rd, Monmouth Junction, phone (973) 510-1264",
+      "source_url": "https://www.americanmathacademy.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kalanjali School of Dance is at Hershey Plaza, 3146 State Route 27, Suite 101, Kendall Park",
+      "source_url": "https://www.kalanjalischoolofdance.org/contactus.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Rita Dance Academy runs its NJ studio at Riya Plaza, 3000 Route 27, Suite 4, Kendall Park, with a current class schedule",
+      "source_url": "https://www.ritadanceacademy.com/about_locations.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Strato, Inc. has its office at 49 Stouts Lane, Suite 7, Monmouth Junction, phone (732) 981-1515",
+      "source_url": "https://www.stratoinc.com/content/contact-strato-inc",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Amato's Nursery & Landscape Company is at 47 Deans Rhode Hall Rd (at Route 130), South Brunswick, phone 732-297-6790",
+      "source_url": "https://www.nj.gov/cgi-bin/agriculture/jerseygrown/gcnsearch.pl?county1=middlesex",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Crossroads Nursery is at 981 Georges Rd (Georges Rd & Route 130 South), phone 732-297-8110",
+      "source_url": "https://www.nj.gov/cgi-bin/agriculture/jerseygrown/gcnsearch.pl?county1=middlesex",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Carkhuff's Patio and Garden Center is at 3790 U.S. Highway 1, South Brunswick, phone (732) 297-2626",
+      "source_url": "https://www.nj.gov/cgi-bin/agriculture/jerseygrown/gcnsearch.pl?county1=middlesex",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Town Cleaners is at 3562 Route 27, Kendall Park, phone (732) 297-7030",
+      "source_url": "https://towncleanerskendallpark.mwebiz.com/contact.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Midway Dry Cleaners & Laundromat is at 3128 NJ-27, Kendall Park, phone (732) 297-7420",
+      "source_url": "https://midwaylaundromat.weebly.com/contact.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Town Place (3570 Route 27) co-tenants include Innovative Physical Therapy, Fit Kicks Martial Arts, Nail Spa, American Dentistry, Town Cleaners, Better Home Appliances and Benjamin Moore",
+      "source_url": "https://s3.us-east-2.amazonaws.com/media.myelisting.com/listings/9/278274/kendallparknjtownplace-3570route27marketingpack-jGy.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Village Microschool is at 57 Sand Hills Road, Kendall Park, and is currently enrolling",
+      "source_url": "https://www.villagemicroschool.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Whee Zone is operating with current hours (indoor playground/party venue, Kendall Park)",
+      "source_url": "https://wheezone.com/hours-and-pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "American Alpha Inc at 45 Stouts Ln is an electrical-equipment wholesale distributor",
+      "source_url": "https://americanalphainc.com/contact-us/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Srishti is a retail storefront at 485 Georges Rd #112, Dayton",
+      "source_url": "https://srishtiusa.com/",
+      "result": "not found"
+    },
+    {
+      "claim": "Swaradhika School of Carnatic Music's own website is at swaradhika.org and shows this Kendall Park location",
+      "source_url": "https://swaradhika.org/",
+      "result": "could not open"
+    },
+    {
+      "claim": "Montessori Children's World (12 Stults Rd #137, Dayton) is currently operating",
+      "source_url": "https://www.privateschoolreview.com/montessori-childrens-world-profile/08810",
+      "result": "not found"
+    },
+    {
+      "claim": "Party Fair of Kendall Park trades at 3562 NJ-27 with a published phone line",
+      "source_url": "https://www.yellowpages.com/south-brunswick-township-nj/mip/party-fair-of-kendall-park-11511165",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Smiles By Dr. Levine is a dental practice at 3084 NJ-27, Kendall Park (not in the list)",
+      "source_url": "https://reviews.birdeye.com/smiles-by-dr-levine-kendall-park-168862651317881",
+      "result": "not found"
+    },
+    {
+      "claim": "New Star Nails & Spa is a Kendall Park, NJ 08824 nail salon (not in the list)",
+      "source_url": "https://newstarnailkendallpark.com/about",
+      "result": "confirmed"
+    },
+    {
+      "claim": "EG Auto Center is a family-owned auto repair shop in Dayton, NJ (not in the list)",
+      "source_url": "https://www.egautocenter.com/",
+      "result": "confirmed"
+    }
+  ],
+  "coverage": {
+    "searches": [
+      "dentist Kendall Park NJ",
+      "roofing contractor Monmouth Junction NJ",
+      "hair salon Kendall Park NJ",
+      "auto repair shop Dayton NJ",
+      "garden center nursery Monmouth Junction NJ",
+      "printing company Monmouth Junction NJ",
+      "nail salon Kendall Park NJ 08824",
+      "dry cleaner Kendall Park NJ",
+      "landscaping contractor Dayton NJ"
+    ],
+    "eligible_found": 21,
+    "already_listed": 14,
+    "missing": [
+      {
+        "name": "United Dental Group of Brunswick",
+        "town": "Kendall Park",
+        "source_url": "https://dentistnearmelist.com/dentists/new-jersey/kendall-park"
+      },
+      {
+        "name": "Smiles By Dr. Levine (3084 NJ-27 #2)",
+        "town": "Kendall Park",
+        "source_url": "https://reviews.birdeye.com/smiles-by-dr-levine-kendall-park-168862651317881"
+      },
+      {
+        "name": "D'Bella Salon",
+        "town": "Kendall Park",
+        "source_url": "https://www.bestprosintown.com/nj/south-brunswick/dbella-salon/"
+      },
+      {
+        "name": "Liberty Nails (3110 NJ-27, Suite 3)",
+        "town": "Kendall Park",
+        "source_url": "https://www.yellowpages.com/kendall-park-nj/mip/liberty-nails-16254717"
+      },
+      {
+        "name": "New Star Nails & Spa (3110 NJ-27)",
+        "town": "Kendall Park",
+        "source_url": "https://newstarnailkendallpark.com/about"
+      },
+      {
+        "name": "EG Auto Center (2276 US-130)",
+        "town": "Dayton",
+        "source_url": "https://www.egautocenter.com/"
+      },
+      {
+        "name": "Neighborhood Roofing Co. (461 Ridge Rd, Suite 2)",
+        "town": "Monmouth Junction",
+        "source_url": "https://find-open.com/monmouth-junction/roofing-contractors"
+      }
+    ]
+  },
+  "confidence": "Medium"
+}

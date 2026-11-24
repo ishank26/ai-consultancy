@@ -1,0 +1,223 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "[SELF-STORAGE] \"Public Storage same-store 2025 results of about $21.50 revenue ... per rentable square foot per year\" (evidence array, ability-to-pay anchor)",
+      "problem": "The cited source does not say $21.50. The Public Storage 2025 Annual Report (SEC ARS) prints same-store REVPAF of $20.74 for 2025 ($20.72 in 2024, $20.85 in 2023). Neither 21.50 nor 16.15 appears anywhere in the document. The figure is therefore misstated against its own citation, and the downstream $1.0M revenue line in the same item is built on it.",
+      "fix": "Replace $21.50 with the printed $20.74 same-store REVPAF for 2025 (and note realized annual rental income per occupied square foot of $22.54 if that is the intended metric), then re-run the 50,000 sq ft arithmetic (about $1.04M revenue) or state which alternative metric produced $21.50 and cite the page that prints it."
+    },
+    {
+      "claim": "[SELF-STORAGE] \"... and $16.15 net operating income per rentable square foot per year\" attributed to the same 2025 filing",
+      "problem": "No NOI-per-square-foot dollar figure is printed in the cited annual report; it states only qualitatively that Public Storage had the highest same-store revenue and NOI per square foot among peers. $16.15 is an unlabelled derivation (2025 same-store NOI divided by same-store square footage, roughly $16.14). The item labels only the 50,000 sq ft step as inference, so a computed figure is presented as a stated source result.",
+      "fix": "Either delete the $16.15 line, or keep it and label it explicitly as arithmetic (2025 same-store NOI divided by same-store rentable square feet), with a citation to the NOI and square-footage line items used."
+    },
+    {
+      "claim": "fit_score legal_risk_low = 12/15",
+      "problem": "Sub-scores are in range and the total is arithmetically correct (16+11+12+15+12+8 = 74), but 12/15 is high relative to a legal section that documents a live consent duty for biometric data (NJDPA sensitive data), the FTC v. Rite Aid five-year facial-recognition ban, and a pending NJ monitoring-notice bill that would add a 60-day notice duty. The score is only defensible if the no-audio, no-face-recognition design is treated as a hard product constraint.",
+      "fix": "Drop to about 10/15, or keep 12 but state in the rationale that the score assumes the brief's own prohibition on audio and face recognition is contractually enforced at every install."
+    },
+    {
+      "claim": "[SELF-STORAGE] \"One Memphis facility generated 146 reported burglary claims in 44 months ... over $255,000 in claims payouts\" and the 67-100% decrease",
+      "problem": "Verified and accurate, but the brief cites the same vendor page for 2022 results without noting that the claims administrator (Xercor) is a commercial counterparty to the vendor relationship, which is why Low strength is right. No correction needed to the numbers; recorded here so the orchestrator does not use the figures as independent.",
+      "fix": "No change to numbers. Keep the Low rating and the 'claims data from the tenant-insurance administrator' caveat wherever these figures are reused."
+    },
+    {
+      "claim": "[LAUNDROMATS] 29,500 U.S. coin laundries / nearly $5 billion; [GYMS] fitness visit averages; [COUNTING] fisheye error reduction figures",
+      "problem": "Three numeric claims could not be re-opened from the cited URL by this check: the CLA industry-overview page returned HTTP 403 again, the ebs.publicnow syndication returned HTTP 403, and the ScienceDirect paper returned HTTP 403. The laundromat figures remain search-index only, as the brief itself discloses; the gym figures were confirmed from the underlying Health & Fitness Association page instead.",
+      "fix": "For the CLA figures, cite the association's rendered page or the survey PDF that prints the store count, or keep the explicit 'search index only' flag. For gym visits, cite the Health & Fitness Association article rather than the publicnow syndication that blocks fetches."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "~58,000 U.S. self-storage facilities and about 2.7 billion rentable square feet (2025 Self Storage Almanac, cited in a public REIT's SEC filing)",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1585389/000119312526170672/d63368dars.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "18,564 self-storage employer establishments, 48,382 paid employees in 2023, 91.4% with fewer than five employees",
+      "source_url": "https://mmcganalytics.com/articles/self-storage-demand-analysis/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "~99% of surveyed facilities use cameras; ~54% extremely concerned; 32% saw crime increase (from 37%); 89% say crime hurts the sector image",
+      "source_url": "https://www.modernstoragemedia.com/msm-exclusives/crime-crackdown-msm-survey-reveals-fewer-incidents-more-security?hs_amp=true",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'Hotel rule' described by a retired police officer (20 units at one facility treated as a single burglary) and scarcity of reliable self-storage crime data",
+      "source_url": "https://www.modernstoragemedia.com/msm-exclusives/crime-crackdown-msm-survey-reveals-fewer-incidents-more-security?hs_amp=true",
+      "result": "confirmed"
+    },
+    {
+      "claim": "146 burglary claims in 44 months (~3.3/month), over $255,000 in payouts at one Memphis facility",
+      "source_url": "https://opentechalliance.com/blog/devon-self-storage-sees-67-100-decrease-in-burglary-claims-with-insomniac-smarteye/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Four Devon facilities saw a 67-100% decrease in burglary claims; two saved over $4,000/month",
+      "source_url": "https://opentechalliance.com/blog/devon-self-storage-sees-67-100-decrease-in-burglary-claims-with-insomniac-smarteye/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Self-storage cost benchmarks: $300-$400/camera installed, $7,700-$30,000 access control, $8,500-$35,000 gate, $50-$250/door, $95-$150/month software",
+      "source_url": "https://www.insideselfstorage.com/security/planning-your-self-storage-security-budget",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Public Storage 2025 same-store revenue of about $21.50 per rentable square foot",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1393311/000119312526129096/d49333dars.pdf",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Public Storage 2025 same-store NOI of $16.15 per rentable square foot",
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1393311/000119312526129096/d49333dars.pdf",
+      "result": "not found"
+    },
+    {
+      "claim": "43 self-storage establishments in Middlesex County, 2023 (secondary page citing Census CBP)",
+      "source_url": "https://feasibility-study-company.com/states/new-jersey/middlesex-county/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "U.S. fitness members averaged 81 visits in 2023, 72 in 2021, 119 in 2019",
+      "source_url": "https://ebs.publicnow.com/view/7D452B9FB54426FF9ABC479313A6ED69FBD8340D",
+      "result": "could not open"
+    },
+    {
+      "claim": "1,726 new members; mean attendance fell from 7.48 visits in month one to 0.92 in month twelve; paper reports attendance not cancellation",
+      "source_url": "https://eprints.whiterose.ac.uk/id/eprint/164212/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2024 CLA/Readex survey: 377 usable responses, April-June 2024 fielding, +/-4.9 pts, 2023 store year, median gross revenue $335,000 (mean $334,000), 26% mean / 27% median operating net profit",
+      "source_url": "https://member.laundryassociation.org/hubfs/IndustrySurvey24.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "10% attended for none of their hours, 42% some, 49% all; 18% open 24 hours; median 16 hours; median 2,740 sq ft and 62 machines",
+      "source_url": "https://member.laundryassociation.org/hubfs/IndustrySurvey24.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "~29,500 U.S. coin laundries and nearly $5 billion in annual gross revenue (CLA industry overview)",
+      "source_url": "https://laundryassociation.org/for-investors/industry-overview/",
+      "result": "could not open"
+    },
+    {
+      "claim": "Barnegat Township code requires an attendant at all times the premises are in operation and bars operation before 6am or after midnight",
+      "source_url": "https://www.barnegat.net/GeneralCodes/LaundriesSelfService.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey minimum wage rose to $15.92/hour for most employees on January 1, 2026",
+      "source_url": "https://nj.gov/labor/lwdhome/press/2025/20251001_Minimum_Wage.shtml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Wiretap Act permits interception only where the interceptor is a party or a party has given prior consent, with limits where the purpose is criminal or injurious",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239?f=templates&fn=document-frameset.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9 has two prongs (a. observing without an exposure element; b. photographing/filming), d. prior notice plus lawful purpose is an affirmative defence, e. retail fitting-room access way with conspicuous notice, f. private dressing stall barred",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/2785/2918?f=templates&fn=document-frameset.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDPA defines biometric data to include facial geometry/templates, excludes ordinary photos and A/V unless used to identify, lists biometric data as sensitive data, requires consent and a data protection assessment",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2022/AL23/266_.PDF",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC v. Rite Aid banned facial recognition use for five years, false positives more likely in plurality-Black and Asian communities, order requires deleting biometric data",
+      "source_url": "https://search.ftc.gov/news-events/news/press-releases/2023/12/rite-aid-banned-using-ai-facial-recognition-after-ftc-says-retailer-deployed-technology-without",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NIST FRVT Part 3 (NISTIR 8280, Dec 2019) tested nearly 200 algorithms on more than 18 million images",
+      "source_url": "https://www.nist.gov/publications/face-recognition-vendor-test-part-3-demographic-effects",
+      "result": "confirmed"
+    },
+    {
+      "claim": "S-4075 (2026 session, introduced bill) requires at least 60 days' written notice (section 6), bars monitoring of employees in bathrooms, locker rooms, dressing rooms and break rooms (section 2.c), effective 18 months after enactment (section 22)",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2026/S4500/4075_I1.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OpenTech INSOMNIAC SmartEye from $279/month, used at 350+ facilities, Select tier = core overnight monitoring on four cameras, onboarding fees apply",
+      "source_url": "https://opentechalliance.com/blog/new-ai-security-monitoring-tiers/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Rhombus R120 $399 + $149 licence = $548 all-in; dome/bullet/fisheye span $548-$1,948 all-in; R600 about $3,948 with $649 licence",
+      "source_url": "https://www.rhombus.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Surveillant $49/$149/$449/$1,499 monthly for 1/2/6/20 cameras; yearly $24/$74/$224/$749; ~$37 per camera per month on multi-camera plans is arithmetic",
+      "source_url": "https://surveillant.ai/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CountPort plans from $29 per camera per month; one entrance plus two floor cameras = $117/month on Pro, $96/month billed yearly; no facial recognition, video analysed in store",
+      "source_url": "https://countport.com/industries/gyms-fitness",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PayRange $0.99-$1.50 per machine per week plus $35 one-time activation per new device",
+      "source_url": "https://payrange.com/payrange-pricing-plans/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Laundry Boss MIBs at $5 per machine per month",
+      "source_url": "https://thelaundryboss.com/products/mibs/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "V-Count US$299-US$599 per sensor one-time plus BoostBI US$9-US$49 per sensor per month (pricing checked 19 Sept 2026)",
+      "source_url": "https://v-count.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Agentinosaurus $9 per camera per month, local Station plus customer's own AI provider key",
+      "source_url": "https://www.agentinosaurus.com/en/industries/self-storage",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate Hailo integration defaults to YOLOv6n with roughly 7 ms (Hailo-8) and ~11 ms (Hailo-8L) inference; Coral no longer recommended for new installs",
+      "source_url": "https://docs.frigate.video/frigate/hardware/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Beelink EQi13 list price $539.00, shown marked down from $689.00",
+      "source_url": "https://us.bee-link.com/products/beelink-eqi13",
+      "result": "confirmed"
+    },
+    {
+      "claim": "StorQuest (260+ locations, ~25 unstaffed 24/7 Express sites) reports 30% fewer break-ins, ~90% faster response and over 50% fewer maintenance visits",
+      "source_url": "https://www.rhombus.com/case-studies/william-warren-group-storquest/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2024 review: a single camera in a large classroom was off by about 6 people on average, exact in 46-55% of frames, within 10 people in 76-79%",
+      "source_url": "https://www.frontiersin.org/journals/imaging/articles/10.3389/fimag.2024.1387543/full",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Multi-camera overhead fisheye counting cut counting-error metrics by 54-83% versus comparison methods in a 2,000 sq ft space",
+      "source_url": "https://www.sciencedirect.com/science/article/pii/S0378778824000525",
+      "result": "could not open"
+    },
+    {
+      "claim": "Embedded tailgating detection prototype reported 90.8% accuracy at 320x240 and 7 fps",
+      "source_url": "https://www.researchgate.net/publication/261054766_Embedded_based_tailgatingpiggybacking_detection_security_system",
+      "result": "could not open"
+    },
+    {
+      "claim": "YOLOv11 averaged 84.02% counting accuracy versus 77.15% for YOLOv8, with mean absolute error 7.22 vs 10.67 visitors per video across nine videos at five sites",
+      "source_url": "https://ejournal.nusamandiri.ac.id/index.php/jitk/article/download/7759/1756/33981",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

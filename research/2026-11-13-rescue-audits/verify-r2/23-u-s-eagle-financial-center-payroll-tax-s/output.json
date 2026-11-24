@@ -1,0 +1,103 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "founder_md Sources: \"Archived 2023 capture (redirects to 2 October 2023; this one does carry a Calendly reference)\" - https://web.archive.org/web/20230128021619/https://www.1040taxless.com/index.html",
+      "problem": "The cited URL does open and does redirect to a 2 October 2023 capture, but I searched the whole served document (about 90 KB) and its rendered text and found no occurrence of 'calendly', or even the substring 'calen'. The parenthetical is unsupported by the URL it cites. It is internal-only (the email draft and audit_md do not repeat it), but it is still a factual statement with no traceable source.",
+      "fix": "Delete the Calendly parenthetical, or cite the capture and page where a Calendly link actually appears, or change it to 'no Calendly link in the March 2025 page markup' (which I confirmed)."
+    },
+    {
+      "claim": "audit_md body length (limit: 300 words)",
+      "problem": "Counted from the markdown with the title line excluded and headings and the numbered list included, the body is about 302-307 words depending on how standalone punctuation is counted - over the limit either way.",
+      "fix": "Trim roughly 5-10 words, e.g. shorten the archive-capture bullet or the 'After the fix' paragraph."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "1040taxless.com now shows a Network Solutions 'This Page Is Under Construction ? Coming Soon!' page with auto-generated 'Related Searches' ad links and no name, phone or hours",
+      "source_url": "https://1040taxless.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The page title is a single horse emoji, the ad links sit in a third-party frame, and the titles differ between loads (the five recorded in rescue.json match the auditor's own mobile screenshot; my load showed a different mix)",
+      "source_url": "https://1040taxless.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "www.1040taxless.com shows the same page, no redirect to the apex, no certificate warning",
+      "source_url": "https://www.1040taxless.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Domain still registered: created 27 Jan 2017, expires 27 Jan 2027, last changed 2026-01-19, registrar 'Domain.com - Network Solutions, LLC' IANA 886, nameservers NS1/NS2.IPAGE.COM",
+      "source_url": "https://rdap.org/domain/1040taxless.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "useagletax.com is a working site titled 'U.S. Eagle Tax | Expert Tax Consulting Services | IRS Representation & Tax Resolution | Freehold NJ', offering IRS and state representation, audit defense, tax compliance, a Client Portal Login, video call and phone call links, serving Freehold, Monmouth County and New Jersey",
+      "source_url": "https://useagletax.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "useagletax.com contains no reference to 1040taxless.com",
+      "source_url": "https://useagletax.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "31 March 2025 archive capture shows a real U.S. Eagle Tax site on 1040taxless.com with payroll, tax and bookkeeping pages, appointment forms, a Video Call link and a Client Portal Login",
+      "source_url": "https://web.archive.org/web/20250331130652/https://1040taxless.com/index.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The March 2025 capture has no Calendly link in the page markup",
+      "source_url": "https://web.archive.org/web/20250331130652/https://1040taxless.com/index.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The 2023 capture redirects to 2 October 2023 and carries a Calendly reference",
+      "source_url": "https://web.archive.org/web/20230128021619/https://www.1040taxless.com/index.html",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Google Maps search for the East Brunswick name returns only 'U.S. Eagle Tax', tax consultant, 5.0, 98 Village Center Dr, Freehold, NJ 07728, (833) 833-1831, useagletax.com and a calendly.com link, 'Open - Closes 6:30 PM'",
+      "source_url": "https://www.google.com/maps/search/U.S.+Eagle+Financial+Center+Payroll+Tax+East+Brunswick",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BestProsInTown lists the long East Brunswick LLC name at 98 Village Center Drive with the city shown as Bayonne and ZIP 07728, and its website field now points to useagletax.com with no link to 1040taxless.com (consistent with an empty links_to_broken_domain)",
+      "source_url": "https://www.bestprosintown.com/nj/bayonne/u-s-eagle-financial-center-payroll-and-tax-services-llc-/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nextdoor page whose URL carries the East Brunswick name now describes 'U.S. Eagle Tax LLC ... located in Freehold, New Jersey'",
+      "source_url": "https://nextdoor.com/pages/us-eagle-financial-center-payroll-tax-services-east-brunswick-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Chamber directory lists Mina Garas at 98 Village Center Drive, Freehold 07728, phone 201-515-0600",
+      "source_url": "https://www.mcrcc.org/business-directory/wpbdp_category/accountants/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "TaxScout profile places the firm in Freehold and lists an Enrolled Agent credential from the IRS preparer directory",
+      "source_url": "https://taxscout.ai/cpa/us-eagle-financial-center-llc-freehold-nj",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Identity: this is the independent U.S. Eagle Financial Center / U.S. Eagle Tax practice (East Brunswick and Bayonne per its own archived site, Freehold today), still operating, not a chain",
+      "source_url": "https://web.archive.org/web/20250331130652/https://1040taxless.com/index.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Some directory pages (LocalityBiz, Manta) could not be read, so their website field is not used",
+      "source_url": "https://localitybiz.com/new-jersey/tax-preparation-and-planning-in-bayonne",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The 'hosting / unpublished site' cause is labelled an inference, cites no business statement and accuses no one",
+      "source_url": "https://rdap.org/domain/1040taxless.com",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

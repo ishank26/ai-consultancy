@@ -1,0 +1,228 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Shrink was reported at 1.6% of sales, or $112.1 billion industry-wide for FY2022 (measured_outcomes, source_url nrf.com/blog/the-misperception-of-shrink-and-its-impact-on-organized-retail-crime)",
+      "problem": "The cited NRF blog page does not contain either figure (searched for '1.6', '112', 'billion' - no match). It only says NRF ceased publishing an industry shrink figure in 2023. The 1.6% / $112.1B FY2022 numbers are real but live on a different NRF page (NRF National Retail Security Survey 2023 / the 'Shrink accounted for over $112 billion' press release), so the citation does not support the number.",
+      "fix": "Re-point the source_url to https://nrf.com/research/national-retail-security-survey-2023 (or the Nov 2023 press release) and keep the existing caveat that it should not be treated as current."
+    },
+    {
+      "claim": "measured_outcomes entry on Rite Aid: 'An unmanaged AI flagging system generated thousands of false-positive matches... produced more false positives in plurality-Black and Asian communities', strength 'High', study_type 'government'",
+      "problem": "These are the FTC's allegations in a complaint resolved by a stipulated order, not adjudicated findings, and the brief restates them as established fact and grades the entry High. It is a single enforcement case against one retailer, not a study; the FTC press release itself attributes every finding to 'the complaint says/charges'. A single case is not High-strength evidence under the brief's own ranking logic.",
+      "fix": "Reframe as 'the FTC alleged' throughout, set strength to Low (or Medium at most), and drop 'study_type: government' in favour of 'enforcement complaint/consent order'."
+    },
+    {
+      "claim": "Rite Aid 'year: 2023 (complaint/order), 2024 (modified order)' (repeated in problem summary as 'Dec 2023, modified 2024')",
+      "problem": "Partly misstated. The facial-recognition stipulated order was entered by the district court in 2024; the FTC's March 5, 2024 'modified order' is a modification of the separate 2010 administrative data-security order, not a modification of the facial-recognition order. As written the brief implies the FRT order itself was modified in 2024.",
+      "fix": "Write '2023 complaint; stipulated order entered 2024; separate 2010 order modified March 2024' and keep the two proceedings distinct."
+    },
+    {
+      "claim": "fit_score.legal_risk_low = 10 (out of 15), total 70",
+      "problem": "Arithmetic checks out (13+13+8+17+10+9 = 70 and every sub-score is inside its range), but the score is inconsistent with the evidence in the same document: the legal section records an unresolved contractor-licensing gate that the brief itself calls 'a hard gate', an unverified criminal-statute design surface (2C:14-9, wiretap), and UPL exposure. 10/15 sits above the midpoint of a 15-point 'legal risk is low' scale, which reads as low-to-moderate legal risk despite three open legal questions.",
+      "fix": "Drop legal_risk_low to roughly 6-7 and reduce the total to about 66-67, or resolve the licensing question before scoring it that high."
+    },
+    {
+      "claim": "Rhombus 'R120: $399 hardware + $149 one-year Professional licence = $548 first year'",
+      "problem": "Hardware $399, licence $149 and total $548 (MSRP) are all confirmed on the pricing page, as is the 10-year warranty and the exclusion of AI features/cloud archiving from the Professional licence. But the page never states that the $149 licence is a one-year term - it only says cameras 'require an ongoing license' and products are available through resellers with 'flexible payment options'. 'One-year' is an unlabelled inference.",
+      "fix": "Either label the one-year term an inference or write '$149 per-camera licence (term not stated on the pricing page)'."
+    },
+    {
+      "claim": "Google Coral USB Accelerator '$59.99 USD (listed)', source_url https://www.coral.withgoogle.com/products/accelerator/",
+      "problem": "The cited product page now resolves to a Coral developer landing page (coral.ai) with no product price at all. The $59.99 figure only appears in search-result listings and third-party resellers, so the cited URL no longer supports the number.",
+      "fix": "Cite a page that currently shows the price (e.g. a reseller listing) or note that the official product page no longer lists a price."
+    },
+    {
+      "claim": "Risks bullet: 'a county that is 36.4% foreign-born and 48.2% non-English-speaking-at-home'",
+      "problem": "The 36.4% foreign-born figure matches the Middlesex County labour-market report, but 48.2% is '% of Language Other Than English Spoken at Home', which is not the same as 'non-English-speaking at home'. The bullet also carries no citation even though the county report (2024 ACS 1-year estimates) is the source.",
+      "fix": "Reword to '48.2% speak a language other than English at home' and cite the Middlesex County report."
+    },
+    {
+      "claim": "legal_privacy signage item: retail food establishments must post the placard and 'keep the inspection report on premises for two years (N.J.A.C. 8:24-8.12/-8.13)', source_url = the 2C:14-9 statute page",
+      "problem": "The rule exists (8:24-8.12 requires conspicuous posting of the evaluation placard near the public entrance), but the attached source_url is the hidden-camera statute, which says nothing about food-establishment placards; the 'two years' element was not confirmed on any page opened here.",
+      "fix": "Attach the N.J.A.C. 8:24 source (e.g. law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-12) and confirm or drop the two-year retention detail."
+    },
+    {
+      "claim": "measured_outcomes shoplifting-detection study: 83.6% accuracy / 82.5% precision / 84.6% recall, 2025, peer-reviewed (Wiley, 10.1155/int/1947582)",
+      "problem": "The cited Wiley page returns HTTP 403 and could not be opened, so the numbers could not be verified at the source. A search summary of the same article reports 83.59% accuracy, 82.46% precision and 84.62% recall on the UCF shoplifting dataset, which is consistent, but that is not a direct read of the paper.",
+      "fix": "Verify against an accessible copy (preprint/repository) or keep it flagged as unverified in data_gaps; the Low strength rating is appropriate either way."
+    },
+    {
+      "claim": "Risks bullet: 'NJ has pending biometric-surveillance notice bills (A1494/S3182 in 2024-25, reintroduced as A3929/S1464 in 2026-27)'",
+      "problem": "Bill numbers are given with no source URL. They do check out (A1494 and S3182 were 2024-25 companions requiring conspicuous notice of biometric surveillance; A3929/S1464 are the 2026-27 successors), but the brief presents them without any citation.",
+      "fix": "Add the njleg.state.nj.us bill-search URLs for A3929/S1464 (and A1494) so the claim is traceable."
+    },
+    {
+      "claim": "gap_for_local_installer: 'New Jersey licenses alarm/security businesses, and the state's advisory committee FAQ indicates installing or servicing CCTV falls under that licensing framework'",
+      "problem": "The Division of Consumer Affairs FAQ page still cannot be rendered (extraction fails), so this remains unverified. The brief flags it in data_gaps and marks the legal_privacy entry confirmed:false, but the gap section states the licensing premise as fact before the hedge.",
+      "fix": "Soften to 'New Jersey is reported to license alarm/security businesses; scope for CCTV is unverified' and make the licence question a precondition of the pilot rather than a footnote."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d): interception lawful only if a party or with one party's prior consent, and not for a criminal/tortious/other injurious purpose; being the telephone subscriber is not consent for conversations they are not on",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239?f=templates&fn=document-frameset.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Illegal recording of an in-person conversation is a third-degree crime (3-5 years, up to $15,000) and civil recovery is the greater of actual damages, $100/day or $1,000 plus punitive damages, fees and costs (2A:156A-24)",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9: third degree for recording exposed intimate parts/sexual act where a reasonable person would not expect observation, fourth degree for undergarment-clad intimate parts; 2C:14-9(e) fitting-room access-way observation lawful only with conspicuous posted notice at the entrance; recording in a private dressing stall prohibited outright",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/2785/2918",
+      "result": "confirmed"
+    },
+    {
+      "claim": "P.L. 2021, c.449 (N.J.S.A. 34:6B-22), approved Jan 18, 2022: written notice before an employer knowingly uses a tracking device in a vehicle used by an employee; up to $1,000 first violation, up to $2,500 each subsequent, collectible by the Commissioner of Labor and Workforce Development",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC v. Rite Aid: 2012-2020 AI facial-recognition deployment, thousands of false-positive matches, employees followed/searched/ejected/publicly accused wrongly flagged customers, higher false positives in plurality-Black and Asian communities; five-year FR ban, notice, written complaint response, biometric deletion within five years",
+      "source_url": "https://search.ftc.gov/news-events/news/press-releases/2023/12/rite-aid-banned-using-ai-facial-recognition-after-ftc-says-retailer-deployed-technology-without",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC biometric policy statement (May 18, 2023) treats undisclosed/unavoidable biometric collection as potentially unfair under Section 5 and unsubstantiated accuracy/fairness/real-world-performance claims - including claimed reductions in theft - as deceptive",
+      "source_url": "https://search.ftc.gov/system/files/ftc_gov/pdf/p225402biometricpolicystatement.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC's Fall 2025 (October 2025) regulatory agenda proposes rescinding the 2023 biometric policy statement",
+      "source_url": "https://www.reginfo.gov/public/jsp/eAgenda/StaticContent/202510/Statement_3084_FTC.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DCR January 2025 guidance: LAD applies to algorithmic discrimination in employment, housing, public accommodation, credit and contracting; covered entity may be liable for a third-party tool it did not develop; guidance creates no new requirements and is not enforced as a substitute for the LAD",
+      "source_url": "https://www.nj.gov/oag/newsreleases25/2025-0108_DCR-Guidance-on-Algorithmic-Discrimination.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DCR guidance cites a Rutgers survey finding 63% of surveyed NJ employers use one or more AI hiring tools and 47% agreed such tools might lead to unfair outcomes",
+      "source_url": "https://www.nj.gov/oag/newsreleases25/2025-0108_DCR-Guidance-on-Algorithmic-Discrimination.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "P.L. 2023, c.266 (NJDPA) 'biometric data' excludes ordinary photographs and audio/video recordings unless generated to identify a specific individual; sensitive data includes biometric data processed to uniquely identify; applies only to controllers processing 100,000+ consumers (or 25,000+ with data-sale revenue); 'consumer' excludes persons acting in a commercial or employment context",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retail trade had 306 fatal work injuries in 2023, 123 from violent acts, 94 homicides (~30% of sector fatalities); accommodation and food services had 84 violent-act fatalities",
+      "source_url": "https://www.bls.gov/news.release/archives/cfoi_12192024.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County 2024: 2,282 retail trade establishments (37,019 employees), 1,752 accommodation/food services (24,124), 5,036 health care and social assistance (57,733)",
+      "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County 2018-2024 employment growth: transportation and warehousing fastest at +26.1%",
+      "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CCTV meta-analysis: 76 studies pooled, OR 1.141 (p<0.001) = about 13% crime reduction vs control areas, strongest in car parks/residential, larger effects with active monitoring and with multiple interventions, authors warn against stand-alone use",
+      "source_url": "https://www.crim.cam.ac.uk/sites/default/files/cctv18.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NIST FRVT Part 3 (NISTIR 8280): 189 algorithms from 99 developers; one-to-one false positives for Asian and African American faces often 10-100x higher than Caucasian; elevated one-to-many false positives for African American women; results vary widely by algorithm",
+      "source_url": "https://www.nist.gov/news-events/news/2019/12/nist-study-evaluates-effects-race-age-sex-face-recognition-software",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Rhombus R120 dome: $399 hardware, $149 Professional licence, $548 total (MSRP); AI features and cloud archiving not included in the Professional licence; 10-year camera warranty; N100 Relay $2,999 with up to 10 cameras",
+      "source_url": "https://www.rhombus.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ubiquiti G5 Flex: $129.00 list, $151.00 with surcharges",
+      "source_url": "https://store.ui.com/us/en/products/uvc-g5-flex",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Verkada pricing page publishes hardware MSRP only (TD33 intercom $1,699; AL54 locks $1,399-$1,799; alarm sensors $99-$199) and states an additional camera licence is required without publishing its price",
+      "source_url": "https://www.verkada.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 17:30-9.10 requires cannabis licensees to install Commission-approved video surveillance monitoring all critical control activities, provide remote viewing access to the Commission, keep a 30-day archive, and have alarm and video systems continuously monitored 24/7",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-17-30-9-10",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics: AGPL-3.0 covers open-source use; commercial products/services and proprietary or closed-source deployment require an Enterprise licence, quoted per engagement",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate 0.16 adds face recognition as an optional feature (off by default); technical_approach correctly treats it as disabled for NJ deployments",
+      "source_url": "https://github.com/blakeblackshear/frigate/releases/tag/v0.16.0",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate semantic search requires a minimum of 8 GB RAM (16 GB+ and a GPU recommended)",
+      "source_url": "https://docs.frigate.video/configuration/semantic_search/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen3-VL ships 2B and 4B variants",
+      "source_url": "https://github.com/QwenLM/Qwen3-VL",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-3B (Liquid AI) is an edge VLM built on an LFM2.5 backbone with a SigLIP2 vision encoder, used for grounding and short captions",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cactus is an on-device inference engine for consumer/phone-class hardware",
+      "source_url": "https://github.com/cactus-compute/cactus",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC 23-02 (Oct 31, 2022) argued for a presumptive violation for surveillance/algorithmic management tending to chill Section 7 activity; rescinded by GC 25-05 on Feb 14, 2025",
+      "source_url": "https://www.nlrb.gov/guidance/memos-research/general-counsel-memos",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No NJ statute requires written notice or signage for ordinary video-only workplace cameras; the vehicle-tracking notice law (34:6B-22) covers only tracking devices in employee-used vehicles",
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-8.12 requires retail food establishments to post the most recent health evaluation placard conspicuously near the public entrance",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-12",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Shrink was 1.6% of sales / $112.1 billion for FY2022 and NRF stopped publishing an industry-wide shrink rate",
+      "source_url": "https://nrf.com/blog/the-misperception-of-shrink-and-its-impact-on-organized-retail-crime",
+      "result": "not found"
+    },
+    {
+      "claim": "Google Coral USB Accelerator listed at $59.99 with stock shortages noted",
+      "source_url": "https://www.coral.withgoogle.com/products/accelerator/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Shoplifting anomaly-detection framework reported ~83.6% accuracy, 82.5% precision, 84.6% recall",
+      "source_url": "https://onlinelibrary.wiley.com/doi/full/10.1155/int/1947582",
+      "result": "could not open"
+    },
+    {
+      "claim": "NJ Division of Consumer Affairs advisory committee FAQ shows CCTV/electronic security installation falls under the alarm/security licensing framework",
+      "source_url": "https://www.njconsumeraffairs.gov/fbl/Pages/FAQ.aspx",
+      "result": "could not open"
+    },
+    {
+      "claim": "fit_score sub-scores are inside their ranges and sum to the stated total (13/20 + 13/15 + 8/15 + 17/20 + 10/15 + 9/15 = 70)",
+      "source_url": "local file avenue.json",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

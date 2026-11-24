@@ -1,0 +1,116 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Alpha Omega Dental Care, 219 Half Acre Rd - website blank, notes say 'map listing only; no independent confirmation found'",
+      "problem": "The practice has its own active website, alphaomegadentalcare.com, showing 219 Half Acre Rd, Monroe Township NJ 08831 and (609) 655-7400 with office hours. The entry itself is correct; only the website field and the 'unconfirmed' caveat are wrong.",
+      "fix": "Set website to https://alphaomegadentalcare.com/ and drop the 'verify before outreach' note."
+    },
+    {
+      "claim": "Monroe Orthodontics LLC, 2 Centre Dr Suite 300 - website blank, notes say 'no website seen'",
+      "problem": "The practice runs an active site, monroeorthollc.com, naming Dr. Susan Leiva at the Monroe Township office with free consultations. Address/phone in the list are consistent; only the website field is stale.",
+      "fix": "Set website to https://monroeorthollc.com/ ."
+    },
+    {
+      "claim": "Monroe Periodontics and Implants (Dr. Jill H. Menker-Kern), 1600 Perrineville Rd - phone 'Unknown', website blank, 'one directory only'",
+      "problem": "The practice's own site (monroeperiodontics.com) lists 1600 Perrineville Road, Monroe Twp 08831 and 609-409-9700, and names both Drs. Bruce Kern and Jill Menker-Kern. It is no longer directory-only.",
+      "fix": "Set website to https://www.monroeperiodontics.com/ and phone to (609) 409-9700; active_evidence should reference the practice site."
+    },
+    {
+      "claim": "Brunswick Brazilian Jiu-Jitsu, 891 Cranbury South River Rd - 'No own website seen'",
+      "problem": "The school has its own website, brunswickjiujitsu.home.blog, whose contact page gives exactly 891 Cranbury South River Rd, Monroe Township NJ 08831 and (732) 605-0255.",
+      "fix": "Add website https://brunswickjiujitsu.home.blog/ ."
+    },
+    {
+      "claim": "Joe's Gym, 311 Spotswood Englishtown Rd - phone 'Unknown'",
+      "problem": "A phone number appears with this exact address in indexed sources: (732) 251-5224. Not read on the gym's own site, so it needs a call to confirm.",
+      "fix": "Record (732) 251-5224 as unverified rather than 'Unknown'."
+    },
+    {
+      "claim": "Johnson Chiropractic Center replaced 'Mancuso Chiropractic Center' at 315 Forsgate Dr, because the Mancuso name was 'attached to this address and phone in error'",
+      "problem": "Medicare provider records still list 'Mancuso Chiropractic Center' at 315 Forsgate Dr (associated with a Dr. Philip J. Mancuso), i.e. a second practice name at the same address, not simply an error. This may be the same office renamed or two practices sharing a building - unresolved.",
+      "fix": "Keep Johnson Chiropractic Center, but reword the note to 'Mancuso Chiropractic Center also appears at this address; likely a former/alternate name - verify on the call' rather than asserting the listing was wrong."
+    },
+    {
+      "claim": "Missing dentist: Monroe Dental Studio (Dr. Falguni Patel, DDS)",
+      "problem": "Own website and multiple listings give 7 Centre Dr, Suite 2, Monroe Township NJ 08831, (609) 409-7878 - a separate practice from the other 7 Centre Dr entries and absent from the list.",
+      "fix": "Add as a Dentist entry (group B) with source monroedentalstudio.com and set active_evidence to 'own website'."
+    },
+    {
+      "claim": "Missing physical therapy clinic: Innovative Physical Therapy - Monroe",
+      "problem": "The practice's own locations page lists a Monroe clinic at 627 Spotswood Englishtown Road, Ste 4, Monroe Township NJ 08831, with a weekday schedule. It is a five-office NJ group, i.e. the same size band as Atlantic Physical Therapy Center, which the list keeps.",
+      "fix": "Add to Physical therapy, or record explicitly why it is excluded as multi-office."
+    },
+    {
+      "claim": "Missing nail salon: Nails Together",
+      "problem": "Listed at 365 Spotswood Englishtown Rd, Suite B, Monroe Township NJ 08831, (732) 723-1600 on Fresha/ClassPass/Birdeye and in the same directories used for other nail entries.",
+      "fix": "Add as a Nail salon entry; confirm the suite since 365 Spotswood-Englishtown Rd already hosts three listed businesses."
+    },
+    {
+      "claim": "Missing acupuncturist: Leonid Belenitsky, L.Ac. (Acupuncture KYI), 1989 Englishtown Rd Suite 2, (908) 492-1457",
+      "problem": "The mapper acknowledged this practitioner in categories_thin but did not add it, so the acupuncture sub-category is under-filled by one known Monroe address.",
+      "fix": "Either add the entry or state in the notes why an NPI/Healthgrades-only listing was left out."
+    },
+    {
+      "claim": "Coverage scope assumption: the zone brief's 'group B' was read as the health / dental / beauty / wellness / fitness category block",
+      "problem": "A roofing search for the same town returned Monroe-based contractors (e.g. Scotchwood Construction, Biondo Contracting) that are absent from the list. If group B is geographic rather than category-based, coverage of trades is empty. (Inference, based on the list containing only health/personal-care/fitness businesses.)",
+      "fix": "Confirm the category scope of group B; if trades are in scope, this list needs a second pass before it can be marked complete."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Monroe Dental Group exists in Monroe Township and monroedental.net is its own site (Dr. Adam Klein)", "source_url": "https://monroedental.net/", "result": "confirmed"},
+    {"claim": "Pearl Dental Monroe operates in Monroe Township and pearldentalmonroe.com is its own site", "source_url": "https://www.pearldentalmonroe.com/", "result": "confirmed"},
+    {"claim": "Advanced Dental of Monroe (Nyman Aydin, DMD) is a Monroe Township practice and advanceddentalofmonroe.com is its site", "source_url": "https://www.advanceddentalofmonroe.com/", "result": "confirmed"},
+    {"claim": "Monroe Pediatric Dentistry is at 18 Centre Dr Suite 204, Monroe Township, (609) 409-0499", "source_url": "https://monroepediatricdentistry.com/contact-us/", "result": "confirmed"},
+    {"claim": "Jersey Brothers Dental is a real practice with an accepting-new-patients page on its own site", "source_url": "https://jerseybrothersdental.com/accepting-new-patients/", "result": "confirmed"},
+    {"claim": "Elite Dental Care of Monroe is at 557 Englishtown Road, Suite 13, (732) 446-6533, and drlambrinos.com is its own site", "source_url": "https://drlambrinos.com/", "result": "confirmed"},
+    {"claim": "Monroe Family Medicine is at 323 Spotswood Englishtown Road, Monroe Township, and monroefamilymedicine.com is its site", "source_url": "https://monroefamilymedicine.com/", "result": "confirmed"},
+    {"claim": "Monroe Internal Medicine is a Monroe Township practice (Concordia Shopping Center, Dr. Keith Sherrow) with its own site", "source_url": "https://monroemedicine.com/", "result": "confirmed"},
+    {"claim": "Johnson Chiropractic Center is at 315 Forsgate Dr, Monroe, (732) 521-0679, Dr. Adam Johnson", "source_url": "https://johnsonchirocenter.com/", "result": "confirmed"},
+    {"claim": "Monroe Parke Veterinary Hospital operates in Monroe Township (Dr. Brian Fertitta; 627 Spotswood Englishtown Rd, (908) 936-1226 per its contact page and listings)", "source_url": "https://monroeparkevet.com/contact/", "result": "confirmed"},
+    {"claim": "Vetmetis Veterinary Urgent Care is at 211 Applegarth Road, Suite 102, Monroe, (609) 235-4313", "source_url": "https://vetmetis.com/contact/", "result": "confirmed"},
+    {"claim": "Monroe Eye Care is at 1600 Perrineville Rd, Suite 55, Monroe Township, (609) 235-9770", "source_url": "https://monroeeyecarenj.com/", "result": "confirmed"},
+    {"claim": "JoBella Hair Salon is at 623 Spotswood Englishtown Rd, Monroe Township, 732-234-0004", "source_url": "https://jobellahairsalon.com/", "result": "confirmed"},
+    {"claim": "Joe's Gym is a Monroe Township gym at 311 Spotswood Englishtown Rd", "source_url": "https://joesgym.com/", "result": "confirmed"},
+    {"claim": "Master Lim's Happy Martial Arts is at 1600 Perrineville Road, Suite 30, Monroe Township, (609) 655-8222", "source_url": "https://happymartialarts.com/", "result": "confirmed"},
+    {"claim": "Monroe Orthodontics LLC (Dr. Susan Leiva) occupies 2 Centre Dr Suite 300 and runs monroeorthollc.com", "source_url": "https://monroeorthollc.com/contact-us/", "result": "confirmed"},
+    {"claim": "Alpha Omega Dental Care is at 219 Half Acre Rd, Monroe Township, (609) 655-7400, and has its own website", "source_url": "https://alphaomegadentalcare.com/contact/", "result": "confirmed"},
+    {"claim": "Monroe Periodontics (Drs. Kern and Menker-Kern) is at 1600 Perrineville Road, 609-409-9700, with its own website", "source_url": "https://www.monroeperiodontics.com/", "result": "confirmed"},
+    {"claim": "The Country Animal Clinic is at 557 Englishtown Rd, Suite 8, Monroe Township, (732) 446-5446", "source_url": "https://www.geniusvets.com/pet-care/find/new-jersey/monroe-township/veterinarians/country-animal-clinic-22050", "result": "confirmed"},
+    {"claim": "Brunswick Brazilian Jiu-Jitsu is at 891 Cranbury South River Rd, Monroe Township, (732) 605-0255, and has its own website", "source_url": "https://brunswickjiujitsu.home.blog/contact/", "result": "confirmed"},
+    {"claim": "Hiraya Medical Spa & Wellness operates in Monroe Township (physician-led, Dr. Cristina Ignacio) with its own site", "source_url": "https://www.hirayamedicalspa.com/", "result": "confirmed"},
+    {"claim": "Medical Esthetics of Monroe is at 294 Applegarth Road, Suite F, Monroe Township", "source_url": "https://www.medicalaestheticsofmonroe.com/contact-us/", "result": "confirmed"},
+    {"claim": "M A Mushnick & Associates is a dentist at 100 Overlook Dr, Monroe Township, (609) 655-8660", "source_url": "https://www.dentalplans.com/dentists/new-jersey/monroe-township/08831/dr-michael-mushnick-937/", "result": "confirmed"},
+    {"claim": "Tooth Buds Pediatric Dentistry still appears only in NPI-type directories at 170 Overlook Dr, (732) 641-4241", "source_url": "https://npiprofile.com/npi/1851283030", "result": "confirmed"},
+    {"claim": "Salon 527 exists at 1989 Englishtown Rd, Monroe Township, and salon527nj.com no longer resolves", "source_url": "https://www.salon527nj.com/", "result": "could not open"},
+    {"claim": "Spa Zara is at 557 Englishtown Rd, Monroe Township, (732) 521-5600 (single Yellow Pages listing)", "source_url": "https://www.yellowpages.com/monroe-township-nj/mip/spa-zara-521798819", "result": "could not open"},
+    {"claim": "Monroe Dental Studio is a separate Monroe Township dental practice at 7 Centre Dr, Suite 2, (609) 409-7878, and is absent from the list", "source_url": "https://www.monroedentalstudio.com/", "result": "confirmed"},
+    {"claim": "Innovative Physical Therapy runs a Monroe Township clinic at 627 Spotswood Englishtown Road, Ste 4, and is absent from the list", "source_url": "https://www.iptclinics.com/contact-us/", "result": "confirmed"}
+  ],
+  "coverage": {
+    "searches": [
+      "dentist Monroe Township NJ 08831",
+      "orthodontist Monroe Township NJ 08831",
+      "chiropractor Monroe Township NJ 08831",
+      "physical therapy Monroe Township NJ 08831",
+      "nail salon Monroe Township NJ 08831",
+      "veterinarian Monroe Township NJ 08831",
+      "med spa Monroe Township NJ 08831",
+      "podiatrist Monroe Township NJ 08831",
+      "dermatologist Monroe Township NJ 08831",
+      "hair salon Monroe Township NJ 08831",
+      "acupuncture Monroe Township NJ 08831",
+      "primary care doctor family practice Monroe Township NJ 08831",
+      "roofing contractor Monroe Township NJ (outside the list's apparent category scope; used to test the group-B boundary)"
+    ],
+    "eligible_found": 41,
+    "already_listed": 37,
+    "missing": [
+      {"name": "Monroe Dental Studio (Dr. Falguni Patel, DDS)", "town": "Monroe Township", "source_url": "https://www.monroedentalstudio.com/"},
+      {"name": "Innovative Physical Therapy - Monroe", "town": "Monroe Township", "source_url": "https://www.iptclinics.com/contact-us/"},
+      {"name": "Nails Together", "town": "Monroe Township", "source_url": "https://classpass.com/studios/nails-together-monroe-township"},
+      {"name": "Leonid Belenitsky, L.Ac. (Acupuncture KYI)", "town": "Monroe Township", "source_url": "https://www.healthgrades.com/providers/leonid-belenitsky-gb6px"}
+    ]
+  },
+  "confidence": "High"
+}

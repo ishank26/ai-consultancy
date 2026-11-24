@@ -1,0 +1,32 @@
+[
+ {
+  "claim": "Audit body, Opportunity 3 'Now': 'Public records show 81 H-1B applications, 9 prevailing-wage requests and 5 PERM filings'. Founder email: 'public records list 81 H-1B applications'.",
+  "problem": "Double factual error. (a) The 81 figure is the count of H-1B *labor condition applications* (LCAs) on permtracker, not H-1B applications/petitions; an LCA is a pre-filing wage/working-condition attestation, so calling it an 'H-1B application' misstates the record to the founder. (b) The audit's own second source, ellis.com, reports '34 total' LCAs for the same company. The audit cites both 81 and 34 without noting the discrepancy, so a reader cannot tell which is right and the email asserts the larger number as plain fact.",
+  "fix": "Say 'public records show 81 H-1B labor condition applications (LCAs), 9 prevailing-wage requests, 5 PERM filings' and add one clause reconciling the two sources (e.g. counts differ by source and by which fiscal years' DOL disclosure files a site loaded), or quote only the ellis figure you can see case by case. Apply the same correction to the email draft."
+ },
+ {
+  "claim": "Audit body, Opportunity 2 'Now': 'r\u00e9sum\u00e9s arrive by email'; founder email subject line and body: 'your r\u00e9sum\u00e9 inbox'. Audit source list: archived careers page 'r\u00e9sum\u00e9s to HR by email or post'.",
+  "problem": "Not supported by the cited page. Both archived careers-page captures I opened (Nov 2024 and Mar 2023) instruct candidates to 'Send Resume to HR Dept., Adway Services, Inc., 77 Milltown Road, Suite C-5, East Brunswick, NJ 08816' \u2014 i.e. post/deliver to the office \u2014 with no email instruction anywhere on the page. The only email on the site is the generic contact@adwaytech.com in the footer. So 'r\u00e9sum\u00e9s arrive by email' is presented as fact and a whole opportunity plus the email's subject line is built on it.",
+  "fix": "Either write it as an inference with its reasoning ('the site only tells candidates to post r\u00e9sum\u00e9s to the HR Dept. at the office; with no ATS and a generic contact@ address, applications most likely land in a shared mailbox \u2014 confirm on the first call'), or reframe the opportunity around 'r\u00e9sum\u00e9 intake by post or general email, no ATS' and change the email subject to something supportable, e.g. 'your website and your hiring paperwork'."
+ },
+ {
+  "claim": "Audit body, Opportunity 1 'Now': '0 of 3 readiness checks passed (findable, answerable, bookable)'. Repeated in the analysis brief's best_evidence_signal.",
+  "problem": "Contradicted by the input the audit is built on: analysis.json states 'agent readiness scores findable 1, answerable 0, bookable 0'. On those numbers one of three checks is recorded as passing, not zero. Either the analysis figure or the audit sentence is wrong, and the audit currently asserts a score its own evidence file contradicts.",
+  "fix": "Drop the numeric score and state the verifiable fact instead: 'no page on the domain returns readable content, so nothing on the site can be found, read or actioned by an assistant'. If a score is wanted, use '1 of 3 (findable only, and that only marginally)'. Fix the same line in analysis.json."
+ },
+ {
+  "claim": "Audit opener: 'You run a 14-person IT staffing and consulting firm in East Brunswick.'",
+  "problem": "Traceable to permtracker.app ('Employees 14') and accurately quoted from it, but the same file's own data cuts the other way: LinkedIn search summaries show a '2-10 employees' band, and SBA PPP data on the same permtracker page shows 6 jobs reported in 2021. Stating headcount unqualified to the founder is the one sentence most likely to be contradicted out loud in the first ten seconds.",
+  "fix": "Attribute and hedge: 'You run a small IT staffing and consulting firm in East Brunswick (public records put headcount around 14).'"
+ },
+ {
+  "claim": "Audit 'Numbers behind the ranges' note: 'The O*NET local-wage pages we cite did not state a survey year in the copy we read; confirm the year before quoting a client.'",
+  "problem": "Contradicted by both cited pages as they render today: each shows 'Source: Bureau of Labor Statistics 2025 wage data' with a link to bls.gov/oes, and 'Site updated October 6, 2026'. The survey year is stated on the page.",
+  "fix": "Replace the note with: 'Both O*NET pages cite BLS 2025 wage data (page updated 6 Oct 2026); 2025 OEWS, occupation-level, not industry-level.'"
+ },
+ {
+  "claim": "Walk-in opener: 'adwaytech.com has been returning an error page while your Google listing still links to it'.",
+  "problem": "'Has been returning' asserts an unbroken period of failure. The evidence in this file is point-in-time checks on 13 November 2026 (four URLs plus a fresh fetch); no earlier or later attempt is recorded, so duration is not established.",
+  "fix": "Say 'is returning an error page on every page I tried this week' \u2014 present tense, which is what was actually observed."
+ }
+]

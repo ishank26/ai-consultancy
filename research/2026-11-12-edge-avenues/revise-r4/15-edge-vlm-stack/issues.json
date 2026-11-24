@@ -1,0 +1,27 @@
+[
+ {
+  "claim": "measured_outcomes, 'Vendor benchmarks' entry: 'Qwen3-VL-2B reaches ~180 tok/s generation on NVIDIA's TensorRT Edge-LLM reference setup' (cited to https://www.liquid.ai/blog/lfm2-5-vl-3b).",
+  "problem": "The cited source does not contain this number - I re-opened the Liquid AI blog and it reports only LFM2.5-VL-3B figures plus an H100 vLLM comparison; there is no Qwen3-VL-2B TensorRT Edge-LLM throughput anywhere on the page. Checking NVIDIA's actual TensorRT Edge-LLM benchmark page, Qwen3-VL-2B-Instruct decodes at about 151 tok/s on Jetson AGX Thor (BS=1, INT4 AWQ/FP16), ~150 on DGX Spark, ~98.9 on AGX Orin and ~58.5 on Orin NX; the ~180.8 tok/s figure appears only in the older v0.4.0 NVFP4 results. So the number is both unsourced at the citation given and stale relative to the current benchmark. This is a number attached to a source that does not support it.",
+  "fix": "Either delete the Qwen3-VL-2B clause, or cite https://nvidia.github.io/TensorRT-Edge-LLM/user_guide/performance/performance-benchmarks.html and state the device-specific current figure (e.g. 'Qwen3-VL-2B-Instruct decodes at ~151 tok/s on Jetson AGX Thor, batch size 1, INT4 AWQ') with the caveat that ~180 tok/s comes from older v0.4.0 NVFP4 results. Split the LFM2.5-VL and Qwen3-VL numbers into separate entries so each carries the URL that actually states it."
+ },
+ {
+  "claim": "fit_score rationale: legal_risk_low 9/15 is described as 'deliberately kept in the lower half'.",
+  "problem": "Arithmetic is fine (15+13+9+13+9+9 = 68 of 100, and the /20 and /15 ceilings quoted in the rationale match the sub-scores), but 9/15 is 60%, i.e. above the midpoint of its own scale, so the 'lower half' description contradicts the score. Minor: the score itself is defensible against the legal section (criminal exposure under N.J.S.A. 2C:14-9, an unverified negative finding on notice, a rescinded NLRB GC memo).",
+  "fix": "Reword to 'kept below the level the other sub-scores suggest' and/or drop legal_risk_low to 7 (total 66), rather than claiming it sits in the lower half."
+ },
+ {
+  "claim": "data_gaps: 'EmpireTech product URL 404'd' for the Dahua IPC-T54IR-AS-S3.",
+  "problem": "The same URL loaded for me and is also the source_url for the hardware line, which correctly says 'specs confirmed on the vendor page; no price shown there'. The 404 statement is inconsistent with the body and with what the page actually does (it serves full specs; only the price is absent).",
+  "fix": "Change the data_gap to 'vendor page loads and confirms specs, but shows no price; retailer price pages returned 403/404'."
+ },
+ {
+  "claim": "measured_outcomes, 'Detector latencies' entry: 'Coral ~10 ms with the default model (Frigate caps a Coral at 1000/inference-ms fps)'.",
+  "problem": "The Frigate hardware page states the 1000/inference-ms cap, but the '~10 ms' is the page's own worked example ('With an inference speed of 10, your Coral will top out at 100 frames per second'), not a benchmarked Coral latency - the table carries no Coral ms column. Presented as a measured latency it overstates the source.",
+  "fix": "Say 'Frigate's docs use an inference speed of 10 ms for a Coral as their worked example (cap = 1000/inference-ms fps)' or drop the figure and keep the cap rule."
+ },
+ {
+  "claim": "measured_outcomes, CAPTURE entry: strength 'High'.",
+  "problem": "Confirmed as a peer-reviewed ICCV 2025 benchmark (GPT-4o 14.75% error on real occluded images, Molmo 32.49%, humans near-zero), so High is defensible for a benchmark; but it is still a single study and is being used to argue a market-level caution. Flagging only so the orchestrator applies the 'single small study is not High' rule knowingly.",
+  "fix": "Either keep High and add 'one benchmark, peer-reviewed' to the finding, or downgrade to Medium. No number change needed."
+ }
+]

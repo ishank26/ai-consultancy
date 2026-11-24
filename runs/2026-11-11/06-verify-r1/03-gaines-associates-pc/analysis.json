@@ -1,0 +1,82 @@
+{
+  "business": "Gaines & Associates, PC (formerly Gaines, Goldenfarb & Associates)",
+  "industry": "accounting",
+  "town": "Edison",
+  "opportunities": [
+    {
+      "title": "Multi-client month-end close and reconciliation exception agent",
+      "capability": "A (with D integration work)",
+      "problem": "The firm sells recurring outsourced accounting, AP/AR, payroll, reconciliations and month-end close as manual monthly services, and is right now hiring a Senior Accounting Manager whose core duty is to own month-end close and reporting for multiple clients at once. Each client sits on a different stack (QBO, Bill.com, Reach Reporting, NetSuite, CCH ProSystem, Power BI/Tableau), so the same reconcile-and-review work is redone per client with no single standardized pipeline. That is capacity the firm must hire for instead of billing for.",
+      "evidence": [
+        "Senior Accounting Manager posting: role owns month-end close and reporting for multiple clients plus onboarding, process improvement and tooling; names QBO, Bill.com, Reach Reporting, NetSuite, CCH ProSystem and Power BI/Tableau as the expected landscape - https://www.linkedin.com/jobs/view/senior-accounting-manager-at-gaines-associates-pc-4488398710",
+        "Firm's own service page lists payroll, commission tracking, AP/AR, reconciliations and month-end close as manual recurring back-office services - https://www.gainescpacfo.com/outsourced-accounting-and-bookkeeping.htm",
+        "O*NET rates 'review accounts for discrepancies and reconcile differences' and 'prepare adjusting journal entries' as core accountant tasks - https://www.onetonline.org/link/summary/13-2011.00",
+        "Bookkeeping/accounting/auditing clerks, NJ median $58,300 and NY-Newark-Jersey City metro median $60,640 (May 2025 OEWS) - the cost of the labor the agent displaces - https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000043303113",
+        "Stanford working paper (not peer-reviewed) on AI in accounting: field data from 79 small and mid-sized firms shows a 7.5-day reduction in monthly close time and about 8.5% of accountant time reallocated from routine data entry to higher-value work - https://www.gsb.stanford.edu/faculty-research/working-papers/human-ai-accounting-early-evidence-field"
+      ],
+      "agent_design": "One orchestrated close pipeline per client, triggered on a calendar (T-5 days before close) and on new bank/AP feed events. Steps: pull bank, card and Bill.com transactions via API; auto-match against ledger; rank unmatched items into an exception queue with a proposed resolution and supporting documents; draft adjusting journal entries with GL code and backup attached; chase missing client documents through the firm's existing ProtectedXchange link; assemble the reporting package and KPI deltas. Every journal entry is posted only after a human reviewer approves it in a queue, and anything above a firm-set dollar or confidence threshold is routed to a manager rather than proposed. Systems touched: QuickBooks Online, Bill.com, NetSuite, CCH ProSystem exports, and a shared exception dashboard. Firm-authored close checklists and prior-month workpapers are loaded as the standard of review.",
+      "why_not_DIY": "This needs authenticated write access to several client accounting systems, idempotent posting with a full audit trail, per-client data isolation, and a reviewer sign-off step that a subscription chatbot cannot provide. A wrong auto-posted entry propagates into client financials and tax returns, so the failure mode is a restatement, not a bad answer. Per-client OAuth, rate limits and schema differences across QBO/NetSuite/Bill.com also require real integration engineering, and the FTC Safeguards Rule makes the firm responsible for the vendor's controls.",
+      "impact_estimate": {
+        "range": "$15,000-$35,000 per year of recovered professional capacity, plus a 1.5-3 hour reduction per client close",
+        "assumptions": "Assumes 25-40 client books closed monthly, 1.5-3 hours saved per close once the exception queue is tuned (roughly the low end of the working paper's close-time finding, discounted heavily for a 5-50 person firm on varied stacks), and value at the accountant benchmark of about $48/hour rather than a billed rate. Excludes any revenue from closing faster or taking on additional clients.",
+        "benchmark_source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000043303113"
+      },
+      "complexity": "High",
+      "pilot_scope": "2-4 week pilot on 3-5 client books: live bank/AP ingestion, an automated exception queue with proposed resolutions, and a reviewer approval screen. Deliver a measured before/after on hours per close for those clients plus a per-client close checklist the firm can reuse."
+    },
+    {
+      "title": "After-hours lead qualification and consult-booking agent",
+      "capability": "A",
+      "problem": "The only ways in are a single main phone line during 9-5 Monday-Friday or a generic web form with no calendar and no qualification questions. The firm advertises a free initial consultation as its sales step and sells nationwide, so an inbound CFO or advisory lead that arrives after hours or during a close queue waits, and no one captures what the prospect's revenue, entity type or pain actually is before a partner spends time on the call.",
+      "evidence": [
+        "Consultation page is a plain web form (name, phone, email, company, free text, reCAPTCHA) with no self-scheduling or calendar link - https://www.gainescpacfo.com/consultation.htm",
+        "Google Business hours are Monday-Friday 9 AM-5 PM, closed weekends, with no after-hours line stated - https://www.google.com/maps/search/Gaines+Goldenfarb+%26+Associates+Edison+NJ",
+        "Free initial consultation is the standard sales step, with engagement scope built into a custom package afterward - https://www.gainescpacfo.com/our-accounting-services.htm",
+        "Firm describes itself as fast-growing with clients nationwide while hiring two senior roles at once, meaning partner and manager time is the constraint on sales conversations - https://www.gainescpacfo.com/careers.htm"
+      ],
+      "agent_design": "An inbound agent that answers the web form submission and missed calls within minutes, asks a short structured qualifier (entity type, revenue band, current bookkeeping setup, service interest, timeframe), checks the answers against the firm's ideal-client criteria for outsourced accounting vs. fractional CFO vs. tax-only work, then either books a consult into a partner's calendar or routes it as low-fit to a self-serve resource. It writes a one-page brief per lead into the CRM (HubSpot is already in the firm's stated stack), creates a follow-up sequence, and escalates anything urgent or high-value to a human immediately. Human approval: all bookings land as approvals-free calendar holds the partner can decline; any pricing or scope statement is drafted, never sent automatically.",
+      "why_not_DIY": "A website chatbot can collect a name and email but cannot hold calendar state across partners, avoid double-booking, write structured records into the CRM, follow up on a schedule, or reconcile a phone channel with a form channel. Reliable lead capture also means missed-call handling and deduplication, and the qualifier has to reflect the firm's actual service economics, which change as the advisory mix grows.",
+      "impact_estimate": {
+        "range": "$6,000-$15,000 per year in recovered partner/admin time, with an unquantified pipeline effect",
+        "assumptions": "Assumes 3-6 hours per week currently spent on phone triage, callbacks and unqualified consult calls, valued at the accountant benchmark of roughly $48/hour (New Jersey median $100,830 annual, about $48/hour unloaded). Deliberately excludes new-revenue estimates because the firm publishes no engagement pricing and consult-to-close conversion is unknown. Treated as inference: faster first response should improve conversion for CFO-style leads.",
+        "benchmark_source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000013201113"
+      },
+      "complexity": "Low",
+      "pilot_scope": "2-3 week pilot: web-form and missed-call agent with a 10-question qualifier, calendar booking into one partner's availability, and a templated lead brief written to HubSpot or a shared sheet. Deliver a log of every lead, response time, and booked consult versus the current baseline."
+    },
+    {
+      "title": "Private-deployment tax and advisory knowledge agent with citation-first review",
+      "capability": "C (with E for private/on-prem hosting)",
+      "problem": "The firm is building a new tax practice from scratch under a new Tax Director whose mandate explicitly includes designing workflow standards, quality control and 'the adoption of technology and workflow tools.' At the same time the work is seasonal and accuracy-critical: tax preparation compresses into January-April, and the same review-and-tie-out judgment is repeated across every return. A new tax director plus a thin bench cannot absorb both the build-out and the review volume without standardizing how answers get found and how work gets checked.",
+      "evidence": [
+        "Tax Director posting: firm is 'building a next-generation tax practice' and the role owns workflow standards, quality control and oversight of technology and workflow tool adoption - https://www.linkedin.com/jobs/view/tax-director-at-gaines-associates-pc-4478121016",
+        "Firm's stack already includes CCH ProSystem fx, QBO, NetSuite and Power BI, so source documents and prior workpapers exist digitally for retrieval - https://www.linkedin.com/jobs/view/senior-accounting-manager-at-gaines-associates-pc-4488398710",
+        "O*NET work context for tax preparers: 55% report seasonal work schedules and 38% face time pressure every day - https://www.onetonline.org/link/summary/13-2082.00",
+        "Tax preparers, NJ median $43,420 annual (May 2025 OEWS) - the benchmark for time reallocated away from mechanical review - https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000013208213",
+        "IRC Sec. 7216 makes disclosure or out-of-scope use of return-preparation information a misdemeanor, and the FTC Safeguards Rule treats tax preparation firms as financial institutions requiring service-provider oversight - so client tax data cannot go to an unvetted public model",
+        "NBER working paper w31161 (not peer-reviewed): staggered rollout of a generative assistant to 5,179 support agents raised issues resolved per hour 14% overall and 34% for novice workers, with minimal effect for experienced staff - adjacent evidence for drafting-and-lookup tasks - https://www.nber.org/papers/w31161"
+      ],
+      "agent_design": "A retrieval agent over the firm's own corpus: tax research memos, prior-year returns and workpapers, engagement letters, internal SOPs, client permanent files. Two jobs: (1) answer staff and client questions with a citation to the specific document and page, refusing when nothing supports an answer; (2) run preparer output through a tie-out and consistency check, flagging figures that disagree with prior year, with source documents, or with stated positions. Runs in a private tenancy or on-prem with no client data leaving the firm's boundary, logged per matter, with a retention and deletion policy attached to each client engagement. Licensed preparers review and sign every flagged item and every client-facing draft; nothing is filed or sent without human sign-off.",
+      "why_not_DIY": "Return information is legally restricted under 7216 and covered by the Safeguards Rule, which rules out pasting client documents into a consumer chatbot or an uncontracted API. Getting value also requires ingesting the firm's formats (ProSystem exports, scanned workpapers, engagement letters) and enforcing per-client access boundaries so one client's file never surfaces in another's answer. Citation-grounded refusal behavior and an audit log are reliability requirements no off-the-shelf chatbot meets.",
+      "impact_estimate": {
+        "range": "$8,000-$25,000 per filing season in recovered professional hours",
+        "assumptions": "Assumes 1,500-2,500 seasonal professional hours across roughly 3-5 staff, and a 10-20% reduction in time spent on lookup, tie-out and internal Q&A. This is a steep discount on the single-firm self-report of 30-60% review-time savings (Pease Bell, no control group) and on the working paper's 14% throughput gain, because the firm's volume is small and the agent has to earn trust before it saves anything. Valued at the tax preparer to accountant benchmark band of roughly $21-$48/hour. Excludes any effect on tax positions or penalty exposure.",
+        "benchmark_source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000013208213"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "3-4 weeks: index one season's workpapers plus the firm's SOPs and engagement letters into a private deployment, ship a staff-facing Q&A interface with citations, and run the tie-out checker against 10-20 already-completed returns to measure how many real discrepancies it catches and how many false positives it raises."
+    }
+  ],
+  "lead_score": {
+    "pain": 20,
+    "fit": 18,
+    "ability_to_pay": 14,
+    "ease": 11,
+    "strategic": 14,
+    "total": 77,
+    "rationale": "Pain (20/30): evidenced indirectly but consistently - two simultaneous senior hires, a posting that spells out multi-client close ownership and a fragmented tool stack, a form-only intake with no calendar, and a self-described 'new phase of growth.' No client complaint data exists to strengthen it (six Google reviews, all positive, none about responsiveness), so this is inference from hiring and site structure rather than direct pain signals. Fit (18/20): the firm already runs QBO, Bill.com, NetSuite and CCH ProSystem, so integrations are feasible, and the 7216/Safeguards constraints push toward exactly the private-deployment work we sell under E. Ability to pay (14/20): 11-50 employees, Middlesex County accounting cluster averages $149,231 annual pay, hiring for senior roles, but revenue and client count are not public and a small firm will price-sensitively. Ease (11/15): one Edison office and an owner-operator who publishes a personal inbox make a pilot easy to start, but the decision-maker's name and title are not published anywhere on the site, so the first obstacle is identifying who signs. Strategic (14/15): multi-client close and reconciliation orchestration is the same problem at all 4,396 New Jersey accounting establishments, making the pilot a reusable product rather than a one-off."
+  },
+  "best_evidence_signal": "The Senior Accounting Manager job posting states the role owns month-end close and reporting for multiple clients and names the firm's spread of tools (QBO, Bill.com, Reach Reporting, NetSuite, CCH ProSystem, Power BI/Tableau) - a firm buying labor to hold together a fragmented multi-client close, not a firm that has standardized it - https://www.linkedin.com/jobs/view/senior-accounting-manager-at-gaines-associates-pc-4488398710",
+  "suggested_channel": "email",
+  "evidence_thin": false
+}

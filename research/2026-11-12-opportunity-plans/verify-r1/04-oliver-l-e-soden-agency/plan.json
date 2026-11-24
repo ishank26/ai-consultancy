@@ -1,0 +1,500 @@
+{
+ "business": "Oliver L.E. Soden Agency (independent P&C agency, 60 W Railroad Ave, Jamesburg, NJ; Little Silver office; John B. Wright division, Manasquan)",
+ "opportunity": "Certificate & policy-change service desk agent: read each certificate request, draft the standard ACORD 25 from live policy data, route exceptions, licensed producer approves and it is delivered and logged (audit.md opportunity #1)",
+ "problem": {
+  "summary": "The agency's own commercial-lines job description defines the daily work of its account managers as processing policy change requests, issuing certificates and evidence of insurance, re-verifying contact details on every customer contact, and documenting the result in the agency management system - and the entire Account Management department sits in the Jamesburg office while serving three locations and two brands (Soden and the John B. Wright division). Certificate traffic arrives through several uncoordinated front doors (a CSR24 client portal, a service inbox, a web form), and each request is handled by hand: open the AMS, find the policy, check limits are current, fill the ACORD 25, re-read it, email the holder, log the activity. The same commercial-lines CSR/account-manager role has been re-posted repeatedly across Jamesburg, Little Silver and Monroe at bands from $30K-$35K up to $60K-$90K, always requiring prior commercial-lines experience, which suggests ongoing turnover or unfilled capacity in exactly this work. The audit sizes the standard, template-driven share of that work at 315-1,134 staff hours a year, worth roughly $11,300-$40,700 at $35.95/hour loaded (NJ clerk median x1.25) - both the hour share and the 2-4 staff multiplier are our assumptions, not the agency's numbers.",
+  "current_tools": [
+   {
+    "tool": "Applied CSR24 client portal (hosted at portald23.csr24.com) for certificate and service requests",
+    "evidence": "Agency's request-a-quote page routes certificate/service requests to a CSR24 client portal",
+    "source_url": "https://sodeninsurance.com/request-a-quote/"
+   },
+   {
+    "tool": "Applied Epic Service Portal - the product Applied now says is the former Applied CSR24, which generates certificates from live account data, supports account-level reissue rules, attaches a QR verification link and logs every certificate action",
+    "evidence": "Applied's Epic client-servicing page states the Service Portal is the product formerly known as Applied CSR24 and describes certificate generation from live account coverage with logged actions",
+    "source_url": "https://www1.appliedsystems.com/en-us/platform/applied-epic/client-servicing/"
+   },
+   {
+    "tool": "Agency management system: AMS360 in an older posting, Applied Epic preferred in newer postings (possible migration, unconfirmed)",
+    "evidence": "Job posting duties include documenting every customer contact in AMS360; a newer posting prefers Applied Epic experience",
+    "source_url": "https://dashboard.idealtraits.com/career/oliver-l-e-soden-agency/15664765844ind"
+   },
+   {
+    "tool": "Commercial lines account manager / CSR role (the labour that does certificates and policy changes today)",
+    "evidence": "Job copy lists processing policy changes, issuing certificates and evidence of insurance, verifying contact details and documenting in the AMS as core duties",
+    "source_url": "https://app.idealtraits.com/career/Oliver-L-E-Soden-Agency/270618IND"
+   },
+   {
+    "tool": "Phone (732.521.0001), a still-published fax line (732.521.4945) and email as the service channels; Mon-Fri 9am-5pm hours on the contact page",
+    "evidence": "Contact page publishes both office numbers, the fax number and Mon-Fri 9am-5pm hours",
+    "source_url": "https://sodeninsurance.com/contact-us/"
+   },
+   {
+    "tool": "Single embedded third-party quote form on go.sodeninsurance.com (WordPress + Contact Form 7 elsewhere on the site)",
+    "evidence": "Quote intake is one embedded iframe form with no upload step or rater visible from outside",
+    "source_url": "https://sodeninsurance.com/request-a-quote/"
+   }
+  ]
+ },
+ "solution": {
+  "approach": "build-on-platform",
+  "design": "An email-and-portal-first service desk, not a chatbot. Requests arriving in the service inbox or forwarded from the CSR24 notification queue are parsed into a structured object: insured, certificate holder and address, project/job description, coverage lines, required wording, additional-insured and waiver-of-subrogation flags, deadline. The agent matches the request to the account and policy, pulls live coverage and limits from the agency management system, and classifies the request as standard or exception. Standard certificates are rendered deterministically from the agency's own ACORD 25 templates and the live policy record - no language model writes a limit, date or policy number - and queued in a one-click approval screen for a named licensed producer, who approves, edits or rejects. On approval the certificate is emailed from the agency's own mailbox, the activity and the PDF are written back to the account, and an SLA timer starts (escalate at 4 business hours). Exceptions - manuscript wording, additional insured requiring a carrier endorsement, limit or coverage changes, cancellation/reinstatement, anything that could bind or alter coverage - are stopped and routed to a human with a drafted carrier submission and a plain reason code. The model is used only where it earns its place: reading messy request emails and attachments, and classifying exception reasons. Everything is logged with who approved what and when, for E&O defence and the agency's five-year recordkeeping duty. The pilot deliberately starts on marine/marina certificates in the John B. Wright book, where certificates are the most standardised.",
+  "components": [
+   {
+    "component": "Intake - service inbox and CSR24 notification mail",
+    "tool": "Microsoft Graph Outlook mail API against the agency's existing mailbox, plus Postmark inbound for any non-Microsoft routing",
+    "why": "No new system for staff to learn; the shared service inbox is already the real queue. Graph reads and sends as the agency's own address so delivery looks normal to holders.",
+    "source_url": "https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview"
+   },
+   {
+    "component": "Document extraction - request emails, attachments, ACORD apps, prior certificates",
+    "tool": "Docling (open source, MIT) for layout/table extraction, with a vision model for photographed or scanned requests",
+    "why": "Self-hostable, no per-page SaaS meter, keeps client documents inside the consultancy's own or the agency's infrastructure.",
+    "source_url": "https://github.com/docling-project/docling"
+   },
+   {
+    "component": "Policy and coverage data",
+    "tool": "AMS360 Web Service API (WSAPI), provisioned by the agency's AMS360 administrator; Applied Epic REST APIs if/when the agency is on Epic",
+    "why": "The value is in reading the actual current policy record, not the last certificate someone emailed. Vertafore states the WSAPI is provided at no additional charge and the agency grants vendor access.",
+    "source_url": "https://help.vertafore.com/AMS360/content/contextsensitive/download-integration/cswebserviceapisetup.htm"
+   },
+   {
+    "component": "Rules and classification layer",
+    "tool": "Python rules engine (coverage line, limits vs holder requirement, endorsement presence, holder type) with an LLM only for exception-reason classification",
+    "why": "Deterministic where a wrong number is expensive; the model never composes coverage facts.",
+    "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+   },
+   {
+    "component": "Certificate drafting",
+    "tool": "The agency's own ACORD 25 template PDFs filled with pdf-lib (open-source PDF form library) from the structured policy object",
+    "why": "Stays inside the agency's existing ACORD end-user licence and their approved wording; output is byte-stable and diffable, which is what E&O reviewers want.",
+    "source_url": "https://github.com/cantoo-scribe/pdf-lib"
+   },
+   {
+    "component": "Orchestration and retries",
+    "tool": "LangGraph (open source, MIT) or a small plain-Python state machine",
+    "why": "Explicit states (received, matched, drafted, awaiting approval, sent, logged, escalated) are auditable and debuggable; a solo founder needs readable traces, not magic.",
+    "source_url": "https://github.com/langchain-ai/langgraph"
+   },
+   {
+    "component": "Model access",
+    "tool": "Gemini 3.8 Flash for extraction/classification ($0.75 per 1M input and $3.75 per 1M output tokens through 31 Dec 2026, doubling on 1 Jan 2027) or Claude Haiku 5.5 ($0.10/$0.50 per MTok for prompts up to 100k tokens), paid tier only",
+    "why": "Both publish no-training terms on the paid tier; Gemini's free tier states content is used to improve products, so free tier is disqualified for client data.",
+    "source_url": "https://docs.claude.com/en/docs/about-claude/pricing"
+   },
+   {
+    "component": "Approval screen, audit log and metrics",
+    "tool": "Small Next.js app with role-based login, Postgres, object storage for issued PDFs, hosted on a Hetzner cloud server (from EUR 5.49/month excl. VAT)",
+    "why": "One screen: certificate preview beside the policy facts it came from, an approve/edit/reject button, a reason box, a timestamped log. Private deployment keeps GLBA customer information off third-party SaaS.",
+    "source_url": "https://www.hetzner.com/cloud/"
+   },
+   {
+    "component": "Delivery and write-back",
+    "tool": "Graph/Postmark send from the agency domain; AMS360 WSAPI activity insert plus PDF filed to the account; daily database backup",
+    "why": "The file has to be complete without anyone updating it, and New Jersey requires client files to be retained at least five years after coverage terminates.",
+    "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17C-2-5"
+   }
+  ],
+  "integrations": [
+   {
+    "system": "Vertafore AMS360 Web Service API (WSAPI)",
+    "method": "REST/SOAP entity operations (retrieve, insert, update) using a vendor login the agency's administrator provisions under Web Service API Setup, scoped by employee/business-unit or entity-only security; developers need the separate Web Service SDK",
+    "confirmed_in_docs": true,
+    "cost": "No additional charge (Vertafore FAQ: 'The Web Service API is provided at no additional charge'); the SDK and authorization come from Vertafore/agency admin",
+    "source_url": "https://help.vertafore.com/AMS360/content/contextsensitive/download-integration/cswebserviceapisetup.htm"
+   },
+   {
+    "system": "Applied Epic REST APIs (if the agency is on or migrating to Epic)",
+    "method": "RESTful APIs documented at the Applied Dev Center; test credentials are self-service, but a production application needs approval and requires organisation name, enterprise ID and Epic database name",
+    "confirmed_in_docs": true,
+    "cost": "Not public - no published API fee; requires an approval step and an existing Epic tenancy",
+    "source_url": "https://devcenter.myappliedproducts.com/docs/overview"
+   },
+   {
+    "system": "Applied CSR24 / Epic Service Portal",
+    "method": "No public developer API or documented endpoint was found; plan is to ingest the portal's notification emails into the same service inbox and never scrape or bot the portal",
+    "confirmed_in_docs": false,
+    "cost": "Included in the agency's existing portal subscription; price not public",
+    "source_url": "https://www1.appliedsystems.com/en-us/platform/applied-epic/client-servicing/"
+   },
+   {
+    "system": "Microsoft 365 / Outlook mailbox (service inbox)",
+    "method": "Microsoft Graph Outlook mail REST API (read, send, move, attachments) with application permissions granted by the agency's tenant admin",
+    "confirmed_in_docs": true,
+    "cost": "No separate API fee; requires the agency's existing Microsoft 365 mailbox (licence price not verified)",
+    "source_url": "https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview"
+   },
+   {
+    "system": "Postmark (fallback inbound/outbound email)",
+    "method": "Inbound email processing plus transactional send",
+    "confirmed_in_docs": true,
+    "cost": "$16.50/month Pro plan starting at 10,000 emails/month, extra $1.30/1,000; inbound processing included",
+    "source_url": "https://postmarkapp.com/pricing"
+   },
+   {
+    "system": "Gemini API / Claude API",
+    "method": "HTTPS JSON API calls for extraction and classification only",
+    "confirmed_in_docs": true,
+    "cost": "Gemini 3.8 Flash $0.75 per 1M input and $3.75 per 1M output tokens (through 31 Dec 2026; $1.50/$7.50 from 1 Jan 2027); Claude Haiku 5.5 $0.10 input / $0.50 output per MTok up to 100k-token prompts",
+    "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+   },
+   {
+    "system": "Hetzner Cloud (hosting)",
+    "method": "Single cloud server plus volume for the approval app, Postgres and PDF archive",
+    "confirmed_in_docs": true,
+    "cost": "From EUR 5.49/month excl. VAT for Regular Performance shared cloud",
+    "source_url": "https://www.hetzner.com/cloud/"
+   }
+  ],
+  "human_in_the_loop": "A named licensed producer approves every certificate before it leaves, because New Jersey treats 'authorizing the issuance or delivery of certificates of insurance' as selling/soliciting/negotiating, which requires a producer licence (N.J.A.C. 11:17A-1.4(b)(13)) - so an unlicensed CSR or the agent itself cannot be the approver. The agent never binds, never alters coverage, never answers coverage questions, and never sends an exception: manuscript wording, additional-insured endorsement requests, limit changes, cancellations, reinstatements and anything ambiguous stop in a human queue with a drafted carrier packet and a reason code. Each approval is logged with user, timestamp, template version and the policy snapshot it was generated from."
+ },
+ "build_plan": {
+  "phases": [
+   {
+    "phase": "0. Discovery and baseline (before any code)",
+    "steps": [
+     "20-minute walkthrough with Hal Soden, Sr., then a working session with the account-management lead",
+     "Count certificate volume for the last 12 months from AMS360 activity history and the CSR24 queue",
+     "Time 20 real certificates end to end with a stopwatch log (open request, AMS lookup, fill, check, send, log) to fix the baseline",
+     "Collect the certificate template set and the wording library per holder type; agree the exception list and who the licensed approver is",
+     "Confirm with the agency's E&O carrier or compliance contact what they want to see before go-live"
+    ],
+    "founder_days": "2",
+    "client_provides": "Access to one account manager for 2 hours; 12 months of certificate counts; the template and wording files; names of the licensed approvers; E&O carrier contact"
+   },
+   {
+    "phase": "1. Data access and certificate rendering",
+    "steps": [
+     "Agency AMS360 administrator creates a scoped WSAPI login and grants the needed entities; obtain the Web Service SDK",
+     "Build the policy read: insured, policy numbers, effective dates, coverage lines, limits, endorsements, additional-insured wording",
+     "Fill the agency's ACORD 25 templates from that object; regenerate 20 historical certificates and diff each field against what was actually issued",
+     "Define the mapping table (field, source entity, fallback, never-auto rule)"
+    ],
+    "founder_days": "5",
+    "client_provides": "AMS administrator time (1-2 hours), 20 historical requests with the certificates that were issued, confirmation of the ACORD end-user licence covering the templates"
+   },
+   {
+    "phase": "2. Intake, extraction and classification",
+    "steps": [
+     "Connect the service inbox and a forwarding rule for CSR24 notifications",
+     "Parse email body and attachments; extract holder, project, limits required and flags",
+     "Implement match-to-policy with confidence scoring; anything below threshold goes to a human 'unmatched' queue",
+     "Implement the standard/exception classifier with reason codes, tuned on the 20 historical requests plus the first live week"
+    ],
+    "founder_days": "4",
+    "client_provides": "Mailbox access consent from the tenant admin; a 30-minute review of the exception list; sample of the messiest real requests"
+   },
+   {
+    "phase": "3. Approval, delivery, write-back",
+    "steps": [
+     "Build the one-click approval screen (certificate preview side by side with the policy facts, edit, reject with reason)",
+     "Send from the agency mailbox, attach the certificate, write activity and PDF back to the account, start the 4-business-hour SLA timer",
+     "Add role-based login, full audit log and 5-year PDF archive with daily backups",
+     "Dry run: 10 live requests in draft-only mode with the approver changing nothing except where the agent was wrong"
+    ],
+    "founder_days": "5",
+    "client_provides": "Approver availability during the dry run; sign-off on the email template and sender address; confirmation of the activity/document write-back fields"
+   },
+   {
+    "phase": "4. Pilot operations and measurement",
+    "steps": [
+     "Run live on marine/marina certificates for 4 weeks",
+     "Weekly 30-minute review of every exception and every edit; feed fixes into rules and prompts",
+     "QA audit: 100% of week-1 certificates checked by a second person, then a 25% random sample",
+     "Weekly one-page report: volume, minutes per certificate vs baseline, first-pass approval rate, exception rate, SLA breaches"
+    ],
+    "founder_days": "4 (spread over 4 weeks)",
+    "client_provides": "Approver time (estimated 15-30 minutes/day), QA reviewer for the sample, and the decision on whether to extend"
+   },
+   {
+    "phase": "5. Handover or expand",
+    "steps": [
+     "Document the runbook (templates, exception reasons, escalation, rollback to manual)",
+     "Decide: expand to all commercial lines, add policy-change intake, or stop",
+     "If expanding, repeat the mapping work per line of business from the reusable core"
+    ],
+    "founder_days": "1",
+    "client_provides": "Named owner for the tool inside the agency; go/no-go decision"
+   }
+  ],
+  "pilot": {
+   "scope": "Marine/marina certificates in the John B. Wright division book (plus any Soden marine accounts): email and CSR24-notification intake, automatic policy match, deterministic ACORD 25 draft, one-click licensed-producer approval, delivery from the agency mailbox, activity/PDF write-back, exception queue with reason codes. Excluded: policy changes/endorsements, binding, coverage advice, carrier submissions, phone/voice, personal lines.",
+   "weeks": "4 weeks of live pilot, start to finish 8-10 weeks part-time (about 4-5 weeks if worked full time) including phases 0-3",
+   "success_metrics": [
+    "Median staff minutes per certificate vs the pre-pilot stopwatch baseline (target: at least 40% reduction)",
+    "First-pass approval rate: share of drafts approved with no field edit (target at least 60% by week 4)",
+    "Exception rate and top five exception reasons (a stable, explainable rate is the goal; a rising rate means the classifier is wrong)",
+    "Median request-to-delivery time and number of SLA breaches at 4 business hours",
+    "Material error rate in the QA sample: zero wrong limits, wrong named insured, wrong holder or unsupported additional-insured wording",
+    "Unmatched-request rate (requests the agent could not tie to a policy)"
+   ],
+   "baseline_method": "Two-week stopwatch log of 20 certificates before go-live, recording minutes and steps per certificate, cross-checked against 12 months of AMS360 activity counts for certificate issuance (volume, not time). Both the time baseline and the volume baseline are recorded by the agency, not by us, so the comparison is defensible.",
+   "exit_criteria": "Proceed only if, at the end of week 4: zero material errors in the audited sample; at least 40% reduction in median handling minutes; at least 60% first-pass approval; the named approver says the screen is faster than the current workflow; and the agency's E&O/compliance reviewer signs off on the audit log and recordkeeping. Stop if any material certificate error reaches a holder, if exception rate stays above 50% (meaning the work is not standard enough), or if write-back to the AMS cannot be made reliable."
+  }
+ },
+ "competitors": [
+  {
+   "vendor": "Applied Systems",
+   "product": "Applied Epic Service Portal (formerly Applied CSR24) - certificate module the agency already pays for",
+   "fit_for_this_business": "Highest structural fit: it is already their portal, generates certificates from live account data on current ACORD forms or agency templates, supports account-level reissue rules, attaches a QR verification link and logs every certificate action. What it does not do is read a messy request email, decide which holder wording applies, detect a missing endorsement, or chase the requester - which is most of the staff time.",
+   "price": "Not public - sold with Applied Epic / portal subscription",
+   "source_type": "vendor page",
+   "source_url": "https://www1.appliedsystems.com/en-us/platform/applied-epic/client-servicing/"
+  },
+  {
+   "vendor": "Salience Solutions",
+   "product": "Cert Desk",
+   "fit_for_this_business": "Closest direct substitute: prepares certificates and ACORD 25s from the policy in AMS360 or Applied Epic, agency approves each one. Integrations list AMS360, Applied Epic, HawkSoft and NowCerts. Narrow: commercial property and general liability only, which is fine for the non-marine part of the book but not obviously the marine/marina certificates we would pilot on.",
+   "price": "USD 499 per month for 150 certificates (about USD 3.33 each), first 25 certificates free; described as a holiday rate for agencies signing up by 31 Dec 2026, held for the first 6 months of billing",
+   "source_type": "third-party",
+   "source_url": "https://www.insurtechlist.com/solutions/salience-solutions--cert-desk/"
+  },
+  {
+   "vendor": "Native Base",
+   "product": "Managed COI automation for insurance agencies",
+   "fit_for_this_business": "The most direct strategic competitor: sits on top of the AMS (explicitly AMS360 and Applied Epic), parses request emails, generates ACORD 25s from live AMS data, rule-checks limits and missing endorsements before send, delivers, writes the activity back, and reissues recurring holders at renewal. Agency keeps its workflow; humans approve. Almost identical scope to this plan, sold as a service.",
+   "price": "USD 2,499 one-time for the first automation (charged only if live by day 14), then USD 2,499/month flat; USD 4,499/month for two build lanes; month to month, no per-certificate charge",
+   "source_type": "vendor pricing page",
+   "source_url": "https://www.nativebase.ai/services/coi-automation/"
+  },
+  {
+   "vendor": "Certificate Hero",
+   "product": "Certificate Hero (agency-side COI platform)",
+   "fit_for_this_business": "Strong feature match for the drafting half: realtime AMS sync (auto-syncs every four hours), data-driven templates that update when coverage changes, live ACORD editor with validation, endorsement library, full action logging, insured self-service portal and an open API. Weakest on intake - it does not ingest endorsements and cannot track which certificates included which endorsement, so the judgment work still sits with staff.",
+   "price": "Not public - quoted case by case based on certificate type and level of customisation",
+   "source_type": "vendor page",
+   "source_url": "https://support.certificatehero.com/faqs"
+  },
+  {
+   "vendor": "HawkSoft",
+   "product": "Self-service Certificates",
+   "fit_for_this_business": "Cheap and simple - insureds self-generate and self-send certificates from published templates, unlimited volume, no login. But it is a HawkSoft-only feature, and this agency's management system is AMS360 (possibly migrating to Applied Epic), so it is not available without switching AMS; it also puts certificate issuance in the insured's hands rather than drafting for a licensed approver.",
+   "price": "Flat USD 49 per month per agency, no per-certificate fees",
+   "source_type": "vendor pricing page",
+   "source_url": "https://www.hawksoft.com/self-service-certificates/"
+  },
+  {
+   "vendor": "ReSource Pro",
+   "product": "Certs Center (white-labelled outsourced certificate processing)",
+   "fit_for_this_business": "The 'hire people instead of building software' option and probably the agency's most natural alternative: a trained back-office team issues certificates inside the agency's existing AMS and certificate system, with published turnaround of two to four hours for standard on-demand certificates and about two hours for rush. Trades software cost for headcount cost and keeps the judgment with experienced insurance staff.",
+   "price": "Not public - production-based pricing (per certificate or per renewal account), quoted by volume",
+   "source_type": "vendor page",
+   "source_url": "https://www.resourcepro.com/resources/simplify-certificate-of-insurance-management-and-issuance/"
+  },
+  {
+   "vendor": "Direct hire (the agency's own posting band)",
+   "product": "Commercial Lines Account Manager / CSR doing certificates and policy changes in-house",
+   "fit_for_this_business": "The status quo and the benchmark every automation must beat. It buys judgment, phone coverage and carrier relationships, not just throughput, and it is what the agency has been repeatedly hiring for. It also scales linearly and is hard to backfill, which is why the role keeps being re-posted.",
+   "price": "USD 50,000-60,000/year posted for the CSR/Assistant Account Manager role (USD 60,000-90,000 for Commercial Lines Account Manager)",
+   "source_type": "third-party",
+   "source_url": "https://www.glassdoor.com/job-listing/commercial-lines-account-manager-oliver-le-soden-agency-JV_KO0,32_KE33,55.htm?jl=1010021607512"
+  },
+  {
+   "vendor": "US Bureau of Labor Statistics / O*NET (wage benchmark for the hire option)",
+   "product": "Insurance Claims and Policy Processing Clerks, New Jersey, 2025 wage data",
+   "fit_for_this_business": "The market price of the task: NJ median USD 59,810/year and average USD 28.76/hour (10th percentile USD 22.63/hour). Loaded at 1.25x for benefits (our assumption) that is the USD 35.95/hour used in the audit to value the released hours.",
+   "price": "NJ median USD 59,810/year; average USD 28.76/hour (2025 BLS wage data)",
+   "source_type": "government data",
+   "source_url": "https://www.onetonline.org/link/localwages/43-9041.00?st=NJ"
+  }
+ ],
+ "running_costs": [
+  {
+   "item": "Application hosting (approval app, Postgres, PDF archive)",
+   "cost": "about USD 6-20/month",
+   "basis": "Hetzner Regular Performance shared cloud from EUR 5.49/month excl. VAT; a 4GB instance with a volume for the archive lands higher - size is an inference, the EUR 5.49 floor is published",
+   "source_url": "https://www.hetzner.com/cloud/"
+  },
+  {
+   "item": "Email (inbound processing and sending)",
+   "cost": "USD 16.50/month",
+   "basis": "Postmark Pro, 10,000 emails/month included, USD 1.30 per extra 1,000; $0 if routed entirely through the agency's Microsoft 365 mailbox",
+   "source_url": "https://postmarkapp.com/pricing"
+  },
+  {
+   "item": "Model usage (extraction and classification)",
+   "cost": "about USD 5-20/month at 400 certificates/month",
+   "basis": "Inference: roughly 5,000 input and 2,000 output tokens per certificate at Gemini 3.8 Flash $0.75/$3.75 per 1M tokens is about USD 0.011 per certificate, so about USD 4.50 for 400; add vision passes on scanned requests and a fallback model and it stays under USD 20. Note Flash prices double on 1 Jan 2027",
+   "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+  },
+  {
+   "item": "Model usage, alternative vendor",
+   "cost": "under USD 5/month at 400 certificates/month",
+   "basis": "Claude Haiku 5.5 at USD 0.10 input / USD 0.50 output per MTok for prompts up to 100k tokens; inference on the same token assumptions",
+   "source_url": "https://docs.claude.com/en/docs/about-claude/pricing"
+  },
+  {
+   "item": "AMS360 Web Service API (policy read, activity write-back)",
+   "cost": "USD 0",
+   "basis": "Vertafore: 'The Web Service API is provided at no additional charge'; the agency's administrator provisions the login and the developer needs the Web Service SDK",
+   "source_url": "https://help.vertafore.com/AMS360/content/contextsensitive/download-integration/cswebserviceapisetup.htm"
+  },
+  {
+   "item": "Applied Epic REST API (only if the agency is on Epic)",
+   "cost": "Not public",
+   "basis": "No published fee; production credentials require an approved application against the agency's Epic database",
+   "source_url": "https://devcenter.myappliedproducts.com/docs/overview"
+  },
+  {
+   "item": "Software licences for the stack",
+   "cost": "USD 0",
+   "basis": "Docling (MIT) and LangGraph (MIT) are open source; the PDF library is an open-source pdf-lib fork; no per-seat or per-certificate SaaS meter",
+   "source_url": "https://github.com/docling-project/docling"
+  },
+  {
+   "item": "Backups and off-site copy",
+   "cost": "about USD 5/month",
+   "basis": "Inference (Hetzner storage box or object storage); required because New Jersey recordkeeping rules require daily backups and off-site copies at least every 30 days for electronically stored client records",
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17C-2-5"
+  },
+  {
+   "item": "Estimated total",
+   "cost": "about USD 30-60/month",
+   "basis": "Sum of the lines above at pilot volume (about 400 certificates/month), excluding founder time, insurance and any Applied/Vertafore fees",
+   "source_url": "https://www.hetzner.com/cloud/"
+  }
+ ],
+ "suggested_pricing": {
+  "pilot_fee": "USD 1,500 fixed for the 4-week marine pilot, credited in full against the set-up fee if the agency proceeds",
+  "setup_fee": "USD 3,500 one-time (AMS provisioning support, policy read, template and wording mapping, approval screen, write-back, audit log, runbook)",
+  "monthly_fee": "USD 750/month for months 1-3, then USD 850/month, month-to-month after a 3-month minimum; includes up to 400 certificates/month and USD 0.60 per certificate above that",
+  "reasoning": "Inference, reasoned against the anchors above. (1) Competitor floor: Salience Cert Desk is USD 499/month for 150 certificates with AMS360 and Applied Epic integrations - it undercuts us on price and would be the obvious counter-offer in the room, so we cannot price as if we were the only option. (2) Competitor ceiling: Native Base sells an almost identical managed service at USD 2,499 one-time plus USD 2,499/month - about USD 30,000 in year one - which shows the market will pay for the done-for-you version. (3) The hire option is USD 50,000-60,000/year posted, and the BLS/O*NET NJ median for the task is USD 59,810 (USD 28.76/hour, USD 35.95 loaded) - so a first-year total of roughly USD 12,500 (3,500 set-up + 12 x 750) is about a fifth of one hire. (4) The audit's own benefit estimate is USD 11,300-40,700/year of released capacity; USD 12,500 in year one sits at the bottom of that range and only about 46% of the midpoint (about USD 26,000), which leaves the agency most of the upside and survives the low case if certificate volume turns out smaller than assumed. (5) Build economics: the plan is about 21 founder-days, of which roughly two-thirds is a reusable core for other AMS360/Epic agencies, so the USD 3,500 set-up is deliberately a product-investment price rather than a full-cost price - the founder is buying a reference customer and a tested codebase, and should say so internally. (6) Fallback if the agency balks at USD 750: a draft-only tier at USD 450/month with no write-back and no SLA reporting, still above Cert Desk but under Native Base, and a path to upsell once the first-pass approval rate is proven."
+ },
+ "leverage": [
+  {
+   "point": "The integration that matters is free: AMS360's Web Service API is provided at no additional charge and the agency itself provisions a scoped vendor login, so the per-client integration cost is founder time, not licence fees.",
+   "source_url": "https://help.vertafore.com/AMS360/content/contextsensitive/download-integration/cswebserviceapisetup.htm"
+  },
+  {
+   "point": "The drafting engine is a template problem, not a model problem: open-source PDF form filling plus the agency's own ACORD templates means the same code serves any commercial line by swapping a template and a field map.",
+   "source_url": "https://github.com/cantoo-scribe/pdf-lib"
+  },
+  {
+   "point": "Document extraction is self-hostable and MIT-licensed, so the founder can run the same pipeline for another agency without a per-page SaaS bill eating the margin.",
+   "source_url": "https://github.com/docling-project/docling"
+  },
+  {
+   "point": "Orchestration is MIT-licensed and explicit: the same received/matched/drafted/approved/sent/escalated state machine becomes the shared core sold to other independent agencies.",
+   "source_url": "https://github.com/langchain-ai/langgraph"
+  },
+  {
+   "point": "Inference costs are trivial at agency volumes - about a cent per certificate on a mid-tier Flash model - so gross margin on a monthly care fee is dominated by the founder's attention, not by token spend.",
+   "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+  },
+  {
+   "point": "The same client, and thousands of agencies like it, already run the portal product that does half the job (live-data certificates, reissue rules, QR verification, action logging) - so the build can lean on Applied for issuance plumbing instead of rebuilding it.",
+   "source_url": "https://www1.appliedsystems.com/en-us/platform/applied-epic/client-servicing/"
+  },
+  {
+   "point": "If/when the agency moves to Applied Epic, the same request-extraction and approval layer can rebind to the Epic REST APIs, which have a documented developer path and a production-approval process - the product is not stranded by their AMS migration.",
+   "source_url": "https://devcenter.myappliedproducts.com/docs/overview"
+  }
+ ],
+ "edge_vs_competitors": "Modest and specific, not structural. Real advantages: (1) integration depth beyond a point tool - the design reads the actual policy record, checks limits and endorsement presence, and writes the activity and PDF back, which is what Native Base sells and what Cert Desk only partly does; (2) exception handling with reason codes and an SLA timer, which is the part the agency's staff actually struggle with, and which neither the portal nor a cheap drafting tool covers; (3) private deployment and no training on client files, which is easier to defend to an E&O carrier than a multi-tenant SaaS; (4) local presence - Milltown to Jamesburg is a short drive, and this is a family agency with a named principal, a 5.0 review profile and a habit of buying from people it trusts, so a walk-in and a face-to-face pilot review beat a national vendor's demo; (5) price flexibility - we can run a narrow marine-only pilot for USD 1,500 that no vendor with a sales team will match. Where there is no edge: price (Cert Desk at USD 499/month for 150 certificates and HawkSoft at USD 49/month flat), breadth (Certificate Hero has years of ACORD form validation and an endorsement library), and credibility - the founder has no insurance references, no E&O review history and no SOC 2, while Native Base publishes named agency clients. The honest positioning is not 'cheaper software' but 'the one person who will sit in your Jamesburg office on a Tuesday and fix the exception queue with your approver'.",
+ "risks_compliance": [
+  {
+   "issue": "An unlicensed person (or an automated agent) authorising certificate issuance would be unlicensed producer activity.",
+   "rule_or_source": "N.J.A.C. 11:17A-1.4(a) and (b)(13): selling/soliciting/negotiating includes 'authorizing the issuance or delivery of certificates of insurance'; (b)(14) also puts coverage-advice responses with a licensed producer.",
+   "confirmed": true,
+   "mitigation": "Only a named licensed producer can approve or send; the agent has no send credential of its own; coverage questions are auto-routed to a licensed human with a scripted holding reply; the audit log records approver identity and licence role for every certificate.",
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17A-1-4"
+  },
+  {
+   "issue": "ACORD forms are licensed material; rendering ACORD 25s in custom software can fall outside the agency's existing licence.",
+   "rule_or_source": "ACORD requires all users of ACORD forms, including independent agents, to obtain an ACORD Forms End User License regardless of how the forms are accessed.",
+   "confirmed": true,
+   "mitigation": "Use the agency's own licensed templates and confirm in writing with ACORD (or via their PIA/Big I member licence) that the intended automated use is covered; do not redistribute form files; keep the licence reference in the runbook.",
+   "source_url": "https://www.pianational.org/protect/agency-operations/acord-forms-licenses"
+  },
+  {
+   "issue": "Client files contain nonpublic personal information; the tool creates a new copy of it on a new server.",
+   "rule_or_source": "N.J.A.C. 11:1-44 (standards for safeguarding customer information, adopted under GLBA sections 501/505(b)/507) applies to all 'licensees' as defined.",
+   "confirmed": true,
+   "mitigation": "Written safeguards plan before go-live: least-privilege WSAPI login scoped to needed entities, encryption at rest and in transit, per-user login with MFA on the approval app, no client data in model prompts beyond the single request, vendor/DPA terms, deletion schedule, documented incident response; agency's compliance contact reviews it.",
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-1-44-1"
+  },
+  {
+   "issue": "Wrong limits, wrong named insured or unsupported additional-insured wording on a certificate is a live E&O exposure, not a data-quality nit.",
+   "rule_or_source": "Big 'I' E&O statistics summarised by IIABA: about 1 in 25 agency E&O claims involves a certificate, with over half arising from a CSR error or omission; the two main sources are additional-insured failures and misrepresenting coverage.",
+   "confirmed": true,
+   "mitigation": "Deterministic field mapping from the policy record (no model-written limits or dates), template-only wording, 100% human approval, 100% QA of week-1 output then 25% sampling, full audit trail, immediate correction-and-notify procedure, and a written heads-up to the agency's E&O carrier before the pilot starts.",
+   "source_url": "https://www.independentagent.com/wp-content/uploads/2024/04/IIABACOI.pdf"
+  },
+  {
+   "issue": "Recordkeeping: certificates, requests, approvals and correspondence are client-file records with a retention and backup duty.",
+   "rule_or_source": "N.J.A.C. 11:17C-2.5 requires a client/customer file retained at least five years after coverage terminates, including relevant correspondence.",
+   "confirmed": true,
+   "mitigation": "Store every request, draft, approval, issued PDF and delivery receipt for at least five years with daily backups and off-site copies; make the archive exportable so the agency is never dependent on the vendor to answer a DOBI or E&O request.",
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17C-2-5"
+  },
+  {
+   "issue": "New Jersey's AI bulletin is often assumed to cover agencies; it is addressed to insurers and does not directly regulate this agency's use of AI.",
+   "rule_or_source": "DOBI Bulletin No. 25-03 (11 Feb 2025) is addressed 'TO: ALL INSURERS AUTHORIZED OR ADMITTED IN NEW JERSEY' and sets expectations on AI governance, unfair trade practices and unfair discrimination for insurers.",
+   "confirmed": true,
+   "mitigation": "Do not claim regulatory AI compliance to the agency; instead offer the governance artefacts carriers may later ask for (model inventory, human-approval evidence, logging, no automated consumer decisioning) since carrier and MGA vendor reviews can flow these expectations down to agencies.",
+   "source_url": "https://www.nj.gov/dobi/bulletins/blt25_03.pdf"
+  },
+  {
+   "issue": "Free-tier model usage would let the vendor train on client data.",
+   "rule_or_source": "Google's Gemini API pricing page marks the free tier as 'Content used to improve our products: Yes' and the paid tier as 'No'.",
+   "confirmed": true,
+   "mitigation": "Paid tier only, US-only inference where offered (1.1x price multiplier), zero-retention settings where available, and a written no-training clause; no client documents sent to consumer chat products.",
+   "source_url": "https://ai.google.dev/gemini-api/docs/pricing"
+  },
+  {
+   "issue": "Whether the agency's carrier appointments, E&O policy or AMS360 agreement permit a third-party vendor to read and write policy data - and whether the WSAPI exposes the specific entities needed (certificate/activity/document attach).",
+   "rule_or_source": "Vertafore documents vendor authorisation and entity-level grants but the public page does not enumerate which entities exist in each WSAPI version.",
+   "confirmed": false,
+   "mitigation": "Phase 0 asks the agency to check its E&O policy and carrier agreements; ask Vertafore/agency admin to confirm the entity list before promising write-back; keep a manual-attach fallback if document write-back is not exposed.",
+   "source_url": "https://help.vertafore.com/AMS360/content/contextsensitive/download-integration/cswebserviceapisetup.htm"
+  },
+  {
+   "issue": "CSR24 / Epic Service Portal has no public API, so any attempt to automate it directly means scraping or browser bots against a licensed portal.",
+   "rule_or_source": "Applied documents its portal as a product feature set, and its developer portal documents Epic REST APIs, not CSR24 endpoints; no public CSR24 API documentation was found.",
+   "confirmed": false,
+   "mitigation": "Integrate only through the portal's email notifications and the shared service inbox; get written permission before any deeper integration; never store CSR24 credentials.",
+   "source_url": "https://devcenter.myappliedproducts.com/docs/overview"
+  }
+ ],
+ "feasibility": {
+  "technical_1_5": 3,
+  "commercial_1_5": 3,
+  "weeks_to_pilot": "8-10 weeks part-time (about 4-5 weeks full-time) to a live 4-week marine pilot; 21 founder-days of build and run",
+  "verdict": "Go with conditions",
+  "reasoning": "Technically this is a medium build with one genuine unknown: the AMS360 Web Service API exists, is free and is agency-provisioned, but the public documentation does not confirm that certificate-relevant entities and document attach are exposed in every version - so policy read plus activity write-back is the safe core and the certificate itself is rendered by us, which sidesteps the risk. The rest (inbox intake, extraction, deterministic ACORD fill, approval screen, audit log) is well-trodden open-source and cheap inference, and the per-certificate model cost is about a cent, so there is no margin risk in the build. Commercially it is a 3, not higher, for three reasons: the buyer is a conservative family agency with a 5.0 reputation to protect and will not accept a single wrong certificate, the market already contains a USD 499/month point solution with the same AMS integrations and a USD 2,499/month managed competitor with named agency clients, and the consultancy has no insurance references. What makes it a Go is the unusually well-documented pain in the agency's own job postings, the licensed-approver requirement that favours a workflow tool over a self-service portal, the tiny running cost, and the reuse value - the same received-to-sent state machine and template pipeline resells to any AMS360 or Applied Epic agency. Conditions: (a) start narrow on marine/marina certificates in the John B. Wright book rather than all commercial lines; (b) get E&O carrier and AMS/Vertafore sign-off in phase 0 before writing code; (c) confirm the licensed approver by name and never let the agent send; (d) treat the USD 3,500 set-up as product investment and measure first-pass approval rate weekly, because that number is what the renewal conversation hangs on; (e) walk away if exception rate stays above 50% - that would mean this book is not standardised enough for the design."
+ },
+ "discovery_questions": [
+  "How many certificate requests do you handle in a week, and how many of those are the same holder needing the same wording again at renewal?",
+  "Of those, roughly what share is truly standard versus manuscript wording, additional-insured endorsements or a limit that has to change?",
+  "Who signs off on a certificate today, and is that person a licensed producer under your procedures?",
+  "Are you on AMS360, Applied Epic, or mid-migration - and when does the move happen? That decides which API we build on.",
+  "Would your AMS360 administrator be willing to provision a scoped Web Service API login for a vendor, and has Vertafore ever scoped one for you before?",
+  "What does your E&O carrier or compliance contact want to see before a tool touches certificates - and may we brief them before the pilot?",
+  "How many certificate templates and holder-wording variations exist, and who is allowed to change them?",
+  "What is the current turnaround promise to holders, and where does it break today (after 5pm, on Fridays, during renewal season)?",
+  "Is your ACORD forms licence current, and does it cover automated generation from your own templates?",
+  "What would a win look like in 90 days - fewer hours, no new hire, faster turnaround, or fewer E&O near-misses?",
+  "If this worked on marine certificates, what would you want automated next - policy changes and endorsements, or the after-hours billing/payment/claims routing?"
+ ],
+ "caveats": [
+  "The 315-1,134 hour and USD 11,300-40,700 benefit ranges are the audit's estimates, built on our own assumptions about headcount, share of time on certificates and the template-standard share. No time study of this agency exists.",
+  "Pilot fee, set-up fee and monthly fee are inference. They are reasoned against published competitor prices and the audit's benefit range, not against what this agency has said it will pay.",
+  "The consultancy has no insurance-agency clients or references. Nothing in this plan should be presented to the agency as proven results.",
+  "The design assumes a licensed producer will accept a one-click approval workflow; if the agency's culture requires a second review of every certificate, the time saving shrinks materially.",
+  "Pricing for Applied Epic REST API access, CSR24 and ReSource Pro is not public; no estimate has been made up for them.",
+  "Model prices used are the published rates as of 12 Nov 2026 and at least one of them (Gemini Flash) is scheduled to double on 1 Jan 2027.",
+  "The competitor count of seven excludes certificate-tracking products sold to certificate holders (myCOI/illumend, Certificial, TrustLayer), which solve a different problem and are not substitutes for this opportunity."
+ ],
+ "data_gaps": [
+  "No public figures for this agency's certificate volume, exception rate, staff count in account management, revenue or premium volume - all sizing rests on the audit's assumptions.",
+  "Could not confirm whether the agency is currently on AMS360 or Applied Epic; postings disagree and no migration is announced.",
+  "Could not confirm which entities AMS360's Web Service API exposes for certificate/activity/document operations in the agency's version; the Vertafore public page describes provisioning and entity-level rights but does not enumerate them, and the SDK documentation requires a Vertafore agreement.",
+  "No public API documentation found for Applied CSR24 / Epic Service Portal; a third-party FAQ suggested a vendor integration does not connect to CSR24, but the page body could not be read, so this remains unconfirmed.",
+  "Could not find any published price for Applied Epic Service Portal/CSR24, Certificate Hero, ReSource Pro Certs Center, or Applied Epic REST API access.",
+  "Certificate Hero's pricing page/quote basis was only available as 'custom quote'; no per-certificate or per-user figure is published.",
+  "Salience Cert Desk's price comes from a third-party directory (InsurTech List), not from the vendor's own pricing page, and is described as a holiday rate expiring 31 Dec 2026 - it may not be the standard price.",
+  "No confirmed NJ-specific authoritative statement on COI wording limits beyond the ACORD form disclaimer itself; state-level certificate legislation was not reviewed.",
+  "The Big 'I' certificate E&O statistics (about 1 in 25 claims) are cited from an IIABA PDF whose collection period is not stated on the page, so they should be described as directional, not current.",
+  "Could not verify the licence terms of the pdf-lib fork used for PDF filling from its repository page; it is used here as an open-source library, and licence should be checked before commercial deployment."
+ ]
+}

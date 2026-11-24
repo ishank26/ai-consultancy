@@ -1,0 +1,85 @@
+{
+  "results": [
+    {
+      "ref": "B00432",
+      "name": "Neighborhood Roofing East Brunswick",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked 2026-11-12. The domain named on the Google listing returns HTTP 500 on apex, www, https and http, and so does /robots.txt and an inner page (/contractor-east-brunswick-nj/). Opened in the browser it renders 'Database Error / Error establishing a database connection', exactly as the record says. Google Maps shows 'Neighborhood Roofing East Brunswick', roofing contractor, 5.0, 139 Rues Ln, 'Open - Closes 8 PM', site neighborhoodroofingllc.com, phone (732) 656-8985 - so the business is still listed and the listing still points at the dead domain. Separate Google listings for the East Brunswick location and the Perth Amboy profile (Birdeye: 5.0, 66 reviews, 313 State St #602, unclaimed) both exist. Two caveats: the cited audit page stormrage.nyc/local-seo-audit/neighborhood-roofing-east-brunswick/ now returns HTTP 410, so the '44 reviews' figure could not be re-verified, and Maps' limited view shows no review count. The two listings look like two town locations rather than duplicates, so 'duplicate-listing confusion' is an inference. Scores reasonable: gap 5 is right (whole site down); evidence 4 is fair and could even be 5; ability to pay 4 is the soft number since there is no headcount or revenue evidence, only review volume - 3 would also be defensible."
+    },
+    {
+      "ref": "B00434",
+      "name": "BSG Group LLC / BSG Roofing",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked 2026-11-12 on the live site. Confirmed: title is 'Home | My Site 3' (and 'Contact Us | My Site 3' on the contact page); no meta description; zero tel: links (both numbers are plain text); zero application/ld+json blocks; no H1; at 390 px the layout stays ~984 px wide with the logo clipped on the left and nav running off screen; the contact page has one form with labelled fields (first/last name, tel, email, address, message, 'what do you need' checkboxes) and a 'SUBMIT REQUEST' button; 'Book Now' links back to that same contact page. Google Maps shows two separate listings - 'Bsg Group LLc' (5.0, 368 Ryders Ln, 732-421-3500) and 'BSG Roofing, LLC' (No reviews, 732-257-6640) - so the duplicate-listing issue is real. robots.txt was fetched this time: it exists and allows all crawlers with a sitemap, so the 'assumed permissive, unverified' note can be upgraded to verified. One factual slip in an operations signal, not in a top issue: the contact page lists Saturday 8am-4pm as well as Mon-Fri 8am-4pm, so 'Monday-Friday only' understates the hours. Scores reasonable; all four fixes are contained on a small Wix site."
+    },
+    {
+      "ref": "B00440",
+      "name": "Sticks & Bricks",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "website_review: https false (implying no working TLS on the Google-linked domain)",
+          "what_is_true": "sticksbricksllc.com serves HTTPS with a certificate that validates; the failure is application-level. It returns HTTP 500 and the page reads 'WordPress > Error - There has been a critical error on this website.'",
+          "source_url": "https://sticksbricksllc.com/"
+        }
+      ],
+      "notes": "Everything material holds. Browser load of https://sticksbricksllc.com/ shows the WordPress critical-error page at HTTP 500 (the record said 'critical error' - correct). The old domain http://sticksandbrickscommercialroofing.com/ serves a Hostinger 'Your domain is expired' parking page and its HTTPS handshake fails with a TLS alert, as described. Google Maps still shows 'STICKS & BRICKS', 5.0, roofing contractor, sticksbricksllc.com, (551) 486-3613, 'Open 24 hours', the four ownership self-identifications, and an owner post 6 days old about a Bronxville NY roof restoration. Review count is still not displayed in the limited Maps view. Only correction: the site's TLS is fine (the record's 'https: false' implies otherwise); the opportunity set and scores stand - gap 5, pay 3, ease 5, evidence 4 all fit a one-page rebuild plus profile repair."
+    },
+    {
+      "ref": "B00675",
+      "name": "Narula Financial Group LLC",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked 2026-11-12. Chrome returns net::ERR_CERT_AUTHORITY_INVALID for both https://narulaquotes.com/ and https://www.narulaquotes.com/, so the TLS claim is exactly right. With the cert bypassed the page itself matches the record: the <title> element is empty (just a stray emoji), there is no meta description, zero tel: links in the entire document, zero JSON-LD, two forms with actions 'php/sendmail.php' and '#' (the 'Get Appointment' widget posts nowhere), template leftovers 'contact@straight.com' and '+(123) 456 7890' still live, spam-free but typo-ridden service copy, and the 'text Hello to 1-844-601-0600' hero CTA. Service links use the URL-encoded filenames (Home%20Owner.php, Business%20Owner.php) as stated. Google Maps: 'Narula Financial Group', 4.8, insurance agency, narulaquotes.com, (732) 940-0600, open. Travelers agent locator lists 'Narula Financial Group LLC' at 1463 Finnegan Ln with the same phone and independent-agent framing. One addition rather than a contradiction: http://www.narulaquotes.com/robots.txt returns the full home-page HTML (no robots file, soft-404 to index). Scores reasonable: gap 5, pay 4, ease 4, evidence 4."
+    },
+    {
+      "ref": "B00787",
+      "name": "Genesis Salon and Spa",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked 2026-11-12. Home page is essentially wordless (brand, three nav items, street address, DaySmart footer credit) with no services, prices, hours, booking, tel: links or forms, and no JSON-LD; the 'Manage Site'/'Options' item at /Options redirects to account.daysmartsalon.com/Session/Login, the DaySmart staff login, confirming the broken-nav issue. Contact page carries hours (closed Sun-Mon, Tue 12-6, Wed-Fri 10-8, Sat 9-6), the amenities list, a plain-text 'CALL NOW (732) 246-9358' with no tel: link, and a blank e-mail line. robots.txt is 'User-agent: * / Disallow:' i.e. fully open, as the record says. Google Maps: 'Genesis Salon and Spa', 4.5, hair salon, genesissalonspa.info, same phone, open - review count not displayed in the limited view. Minor detail: the home page's meta description does name North Brunswick (the record said only the contact page does), so the SEO situation is marginally better than described but the opportunity is unchanged. Ease 5 is slightly optimistic for a DaySmart-hosted site because page edits go through DaySmart's editor, but the fixes are still contained. No score change proposed."
+    },
+    {
+      "ref": "B00892",
+      "name": "High Quality Affordable Painters",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked 2026-11-12. Google Maps: 'High Quality Painters', 5.0, category Painter, 500 Adams Ln, 'Open - Closes 7 PM', website field 'instagram.com', phone (732) 585-8384, and it offers 'Suggest an edit' rather than 'Claim this business', which supports the claimed-profile inference. The linked Instagram (@highquality_painters) is titled 'High Quality Affordable Painters', bio 'Affordable-Dependable-Experienced / Exterior and Interior Painting Services', and its own metadata reads '19 Followers, 0 Following, 0 Posts' - the dormant-link claim is exact. highqualityaffordablepainters.com does not resolve (DNS NXDOMAIN), so there is genuinely no website. Birdeye mirror: 5.0 with 266 reviews, Mon-Sat 7:00-19:00, Sunday closed, matching the record's hours and review count. Google's own review counter was not visible in the limited Maps view. Scores reasonable: gap 5, pay 3, ease 5, evidence 4."
+    },
+    {
+      "ref": "B00895",
+      "name": "Ridge Construction Corp",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked 2026-11-12. Verified: title 'General Contractors | Ridge Construction Corp | New York City' (NJ town absent); meta description names no town; zero tel: links sitewide; two JSON-LD blocks (LocalBusiness with 280 Towne Center Drive, North Brunswick NJ 08902, +1 732-398-9677, plus a WebSite block); no H1 on the home page; placeholder testimonial 'FIRST LAST, COMPANY NAME' and leftover 'REPAIRS / General Repairs, Specialist Repairs & Vintage Parts' copy; copyright 2025. /contact-us says 'Fill out the below form' but renders 0 forms, 0 inputs and two empty iframes, phone only as text - the dead inquiry path is real. At 390 px the logo dominates the viewport, 'ABOUT US' is clipped at the right edge and no headline, phone or CTA appears above the fold. robots.txt allows all crawlers. Google Maps: 'Ridge Construction Corp.', 2.9, general contractor, 'Claim this business', 'Add hours', no photos, same phone and domain. Scores reasonable: gap 4, ability to pay 5, ease 3, evidence 5."
+    },
+    {
+      "ref": "B00934",
+      "name": "Pro-Tec Systems",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "HTTPS certificate fails with ERR_CERT_COMMON_NAME_INVALID (name mismatch)",
+          "what_is_true": "The certificate does fail, but with an incomplete chain ('unable to get local issuer certificate'), not a name mismatch; the hostname on the cert is fine, the intermediate issuer is missing.",
+          "source_url": "https://www.protecsystems.net/"
+        },
+        {
+          "claim": "dozens of injected spam links are hidden on every page",
+          "what_is_true": "The injected prada/gucci/'instagram followers'/chatgpt anchors are rendered visibly - 16px inline links with non-zero bounding boxes on the home and feedback pages (119 anchors on the home page) - not hidden. The compromise and link-farm risk still stands, and it is arguably worse because visitors see it.",
+          "source_url": "http://www.protecsystems.net/feedback.htm"
+        }
+      ],
+      "notes": "Everything else holds. Home page title is just 'Home', no meta description, no viewport meta tag (so no mobile layout at all), zero tel: links, zero JSON-LD, table-era FrontPage markup, visible 'Copyright 2008' era footer, and the phone 732-828-7756 as plain text. /feedback.htm still posts to _derived/nortbots.htm with a FrontPage-era field set (comments, category, contact block), so the form cannot deliver. robots.txt returns HTTP 404, as stated. Google Maps: 'Pro-Tec Systems Inc', 5.0, mis-categorised as 'General contractor', 'Claim this business', 'Add hours', no photos, same phone and protecsystems.net domain. Two wording corrections above; the findings, opportunities and scores stand. One small calibration note: findable 0 is harsh for a listing that does exist with the right address, phone and domain - 1 would be fairer - but that is an internal sub-score, not one of the four ranking scores."
+    }
+  ],
+  "data_gaps": [
+    "Google Maps consistently served a 'limited view' with no review count, so review totals for B00432 (East Brunswick), B00434, B00440, B00675, B00787, B00895 and B00934 could not be re-verified from Google directly; counts quoted in records come from Birdeye mirrors where those exist.",
+    "B00432: the cited audit page stormrage.nyc/local-seo-audit/neighborhood-roofing-east-brunswick/ now returns HTTP 410 and no Birdeye profile for the East Brunswick location was found, so the '44 reviews' figure and the duplicate-listing interpretation could not be re-verified.",
+    "B00434: the BBB claim that George Angelevski is the owner was not re-checked (BBB profile not opened in this pass).",
+    "B00934 and B00675: both sites have certificate problems; Pro-Tec and Narula pages were read with Chrome certificate errors ignored, which is what a visitor sees only after clicking through a warning.",
+    "B00892: Instagram is login-walled beyond public metadata; the 0-posts / 19-followers figures come from the profile's own public meta tags.",
+    "No page required a login, form submission or account creation; nothing was submitted anywhere."
+  ]
+}

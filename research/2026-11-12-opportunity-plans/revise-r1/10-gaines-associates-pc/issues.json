@@ -1,0 +1,37 @@
+[
+ {
+  "claim": "Postmark transactional email: 'Basic, $15/month for 10,000 emails' with 'inbound reply parsing and per-thread tracking', and phase 4 'reply parser'",
+  "problem": "The price is right but the tier is wrong for the design. Postmark's pricing page lists 'Inbound email processing' only on Pro ($16.50/mo) and Platform ($18.00/mo); the $15 Basic plan's feature list does not include it. The document-chase module as designed (reply parser, tracked thread) cannot run on the quoted tier.",
+  "fix": "Change the cost line to Postmark Pro at $16.50/month for 10,000 emails (extra $1.80/1,000 is Basic only; Pro's overage is $1.30/1,000), or drop the inbound reply parser and describe reply handling as manual/forwarding."
+ },
+ {
+  "claim": "suggested_pricing.reasoning: 'Year one for the firm is about $11,600 ($2,000 pilot + $4,500 set-up + 9 x $550)'",
+  "problem": "The arithmetic does not give that total. $2,000 + $4,500 + (9 x $550 = $4,950) = $11,450, not ~$11,600.",
+  "fix": "Restate as 'about $11,450 a year one ($2,000 + $4,500 + 9 x $550)', and check the derived ratio against the $13,600 low end (it is 0.84x, not 0.85x)."
+ },
+ {
+  "claim": "monthly_fee: '$550 per month covering up to 5 books, plus $75 per additional book per month (about $18 per book at 25 books)'",
+  "problem": "The per-book figure is wrong by roughly 4.5x. At 25 books the fee is $550 + (20 x $75) = $2,050/month, i.e. about $82 per book, not $18. No combination of the quoted rates produces $18/book at 25 books.",
+  "fix": "Either correct to 'about $82 per book at 25 books', or re-price the add-on step (for example $20-25 per additional book) if $18/book at scale is the intended target."
+ },
+ {
+  "claim": "suggested_pricing.reasoning: 'Botkeeper would be about $447-$745/month for 3-5 client licenses'",
+  "problem": "Botkeeper's own volume bands break at 5 licenses: 1-4 licenses are $149/monthly-billed, 5-9 are $109. So 3-5 licenses costs $447 (3 x $149), $596 (4 x $149) or $545 (5 x $109) - a range of $447-$596, not up to $745. The $745 figure silently applies the 1-4 band rate to 5 licenses.",
+  "fix": "Replace with '$447-$596/month for 3-5 licenses at monthly billing ($149 each for 3-4, $109 each at 5), i.e. about $447-$596 before configuration'."
+ },
+ {
+  "claim": "current_tools: the Senior Accounting Manager posting 'lists these as the expected tool landscape' (Bill.com, NetSuite, CCH ProSystem fx, Reach Reporting, Power BI/Tableau, HubSpot), and leverage: 'Bill.com is in its named tool landscape, so the pilot needs no new software on the client side'",
+  "problem": "The cited LinkedIn job page (4488398710) opens only as a shell for me - title and 'Edison, NJ' confirmed, but the description body is not retrievable, so the tool list cannot be verified from that source. Secondary search results quoting the firm's posting describe NetSuite, Bill.com and CCH ProSystem as nice-to-have tools, and name QBO and Reach Reporting as the tools actually used. Plan wording ('expected tool landscape', 'clients pay bills in Bill.com') is stronger than that evidence supports.",
+  "fix": "Downgrade to 'named in the posting as nice-to-have tools' and make Bill.com client usage an explicit discovery question/exit condition; do not treat Bill.com as a confirmed client-side integration surface until a pilot book is confirmed to use it."
+ },
+ {
+  "claim": "'it has two senior roles open' / 'two senior roles open at once'",
+  "problem": "Only one Senior Accounting Manager opening could be located (LinkedIn job pages 4488398710 and 4458639021, same title, Edison NJ); the firm's careers.htm page failed to fetch. The 'two roles' figure is not supported by anything I could open.",
+  "fix": "Either cite the second posting explicitly or soften to 'a senior accounting manager role is open'."
+ },
+ {
+  "claim": "running_costs model inference at gpt-5.4-mini list rates, with 'the account can be configured for ... US data residency'",
+  "problem": "Price per token is correct, but OpenAI's data-residency documentation states that data-residency endpoints carry a 10% uplift for models released on or after 5 March 2026, which the running-cost line does not mention. The $40-90/month band absorbs it, so this is a note rather than a contradiction.",
+  "fix": "Add a half-sentence: 'add 10% if US data residency is enabled on the project'."
+ }
+]

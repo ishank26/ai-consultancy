@@ -1,0 +1,228 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Measured outcome: 2015 on-board video study (158 systems, 7 sites, ~237,000 trigger events, RR 0.47 p<0.001 vs control RR 0.93 p=0.44) is labelled study_type \"peer-reviewed\".",
+      "problem": "The numbers are correct, but the cited CDC Stacks record for this item explicitly lists \"Peer Reviewed: False\" and is a two-page conference abstract (NIOSH NOIRS 2015, pp. 62-63), not a peer-reviewed paper.",
+      "fix": "Change study_type to \"conference abstract\" (or \"industry/academic abstract\") and keep strength at Low/Medium; do not describe it as peer-reviewed."
+    },
+    {
+      "claim": "Measured outcome: Kodiak/Drivewyze/Texas DPS enhanced-inspection findings (1,000+ assets, 525+ defects, 95% on trailers, 59% vs 70% pass rates) are rated strength \"Medium\".",
+      "problem": "The figures are confirmed verbatim, but this is a vendor self-report on its own blog about its own pilot - a vendor outcome claim. Per the review rule, vendor outcome claims must be rated Low.",
+      "fix": "Downgrade strength to Low, keep the numbers, and note it is Kodiak's own account (no independent audit or peer review)."
+    },
+    {
+      "claim": "Samsara pricing \"roughly $40-60/vehicle/month for an AI dash-cam bundle\"; Lytx \"about $36/vehicle/month on a 36-month lease\"; Motive \"about $40/vehicle/month camera plus about $37.50/month gateway\".",
+      "problem": "None of these figures appear on the cited source_urls (samsara.com DVIR page, lytx.com home, gomotive.com driver-experience page); all three pages are quote-based with no prices. The numbers are hedged as Low confidence but are still attached to a link that does not support them, and data_gaps already states no public price exists.",
+      "fix": "Drop the numeric estimates or cite the specific third-party listing each figure came from (with its own URL and date); otherwise replace with \"Unknown - quote-based\"."
+    },
+    {
+      "claim": "Legal item \"Biometric identifiers and facial recognition\" is marked confirmed:true and asserts \"New Jersey has no standalone biometric privacy statute in force\".",
+      "problem": "The cited source is the introduced text of A1488, which says nothing about whether a statute is or is not in force. An absence claim presented as confirmed without a source that supports it.",
+      "fix": "Keep the A1488 content (correct, including \"introduced, not enacted\"), but move the \"no standalone statute in force\" sentence to an explicit inference/unverified note or support it with a source that states it."
+    },
+    {
+      "claim": "\"Exempt only for carriers operating a single CMV, driveaway-towaway and private motor carriers of passengers\" (49 CFR 396.11), and DVIR as a report required every day on every vehicle.",
+      "problem": "49 CFR 396.11 as fetched also excludes intermodal equipment tendered by an intermodal equipment provider from the daily driver report (a(1), with parallel IEP duties in (b)), and (a)(2)(i) states drivers are not required to prepare a report if no defect or deficiency is discovered. \"Exempt only\" and the blanket every-day-on-every-vehicle framing overstate the rule, which matters because the demand thesis rests on nightly DVIRs.",
+      "fix": "Add the intermodal-equipment exclusion and the no-defect carve-out, and describe the requirement as a report covering 11 parts/accessories at completion of each day's work, with no report required where no defect is found."
+    },
+    {
+      "claim": "fit_score legal_risk_low = 11 (of an implied 20).",
+      "problem": "The legal section itself lists four live constraints - NJ written-notice statute with per-violation penalties, Wiretap Act one-party-consent limits on audio, Illinois BIPA settlement exposure via in-cab cameras, and a pending biometric bill carrying a criminal penalty - while the rationale calls legal risk \"moderate but manageable\". 11/20 reads more like \"low-moderate\" than the section supports; the sub-scores otherwise add correctly (15+13+8+12+11+8 = 67).",
+      "fix": "Consider 7-9 for legal_risk_low (total 63-65) or state explicitly in the rationale which of the four constraints is considered immaterial to the pilot scope."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "DVIR required at completion of each day's work on each vehicle operated, covering 11 named systems, driver signature, repair certification, driver review certification, three-month retention; may be electronic under 49 CFR 390.32; amended at 91 FR 7896 (Feb. 19, 2026).",
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/396.11",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Before driving, driver must be satisfied the vehicle is safe, review the prior DVIR and sign to acknowledge defects and repairs certified (49 CFR 396.13).",
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/396.13",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cargo and securement inspected within first 50 miles, re-examined at duty-status change, 3 hours or 150 miles, whichever first; exception for sealed vehicle ordered not to be opened (49 CFR 392.9(b)).",
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/392.9",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2025 Roadcheck: 56,178 inspections May 13-15, 13,553 vehicle OOS violations, 10,148 vehicles placed out of service, 18.1% vehicle OOS rate.",
+      "source_url": "https://www.fleetmaintenance.com/equipment/safety-and-technology/article/55325215/cvsa-releases-2025-international-roadcheck-results",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Brake systems plus 20%-defective brakes = 41.1% of vehicle OOS violations; tires 21.4% (2,899 violations).",
+      "source_url": "https://www.fleetmaintenance.com/equipment/safety-and-technology/article/55325215/cvsa-releases-2025-international-roadcheck-results",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Lights 12.8% and cargo securement 11.4% of vehicle OOS violations (ranks 4 and 5).",
+      "source_url": "https://www.freightwaves.com/news/cvsas-2025-international-roadcheck-puts-fleets-under-the-microscope",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kodiak/Drivewyze/Texas DPS pilot from April 2023: over 1,000 assets inspected, over 525 defects, 95% of defects on trailers, 59% of partner trailers passed enhanced inspection vs 70% passing a traditional DVIR.",
+      "source_url": "https://kodiak.ai/news/enhanced-inspections",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kodiak findings are an independent (non-vendor) outcome and are rated strength Medium.",
+      "source_url": "https://kodiak.ai/news/enhanced-inspections",
+      "result": "contradicted"
+    },
+    {
+      "claim": "ATRI 2025: average operating cost $2.260/mile (2024), non-fuel marginal cost up 3.6% to $1.779/mile (record), truckload operating margin -2.3%, empty miles 16.7%.",
+      "source_url": "https://truckingresearch.org/2025/07/new-atri-report-shows-trucking-profitability-severly-squeezed-by-high-costs-low-rates/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cargo theft 2024: 3,625 incidents, +27% versus 2023, average reported value $202,364 (up from $187,895), trailer burglaries/full trailer theft elevated in NYC among other metros.",
+      "source_url": "https://www.cargonet.com/news-and-events/cargonet-in-the-media/2024-theft-trends/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BLS median pay for heavy and tractor-trailer drivers $58,640/year ($28.19/hour), May 2025, 2,221,200 jobs.",
+      "source_url": "https://www.bls.gov/ooh/transportation-and-material-moving/heavy-and-tractor-trailer-truck-drivers.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey: all heavy-duty diesel vehicles 18,000 lb GVWR or more need annual smoke-opacity inspection at a licensed Diesel Private Inspection Facility within 90 days of registration or renewal.",
+      "source_url": "https://www.nj.gov/mvc/inspection/dieselemission.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Whip Around: Standard (Inspect) $5 per asset/month billed annually, Pro (Maintain) $10 per asset/month billed annually, free Basic plan for one asset.",
+      "source_url": "https://help.whiparound.com/en/articles/6925626-how-whip-around-s-plans-work",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Fleetio: $4 / $7 / $10 per vehicle/month (Essential/Professional/Premium) at the 5-asset annual band, with FMCSA-approved inspection templates.",
+      "source_url": "https://www.fleetio.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Samsara AI DVIR verifies photos are of actual vehicle components, that the driver is near the vehicle, and checks submission duration; findings flow into maintenance.",
+      "source_url": "https://www.samsara.com/products/telematics/dvir",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Samsara pricing roughly $40-60 per vehicle per month for an AI dash-cam bundle.",
+      "source_url": "https://www.samsara.com/products/telematics/dvir",
+      "result": "not found"
+    },
+    {
+      "claim": "Lytx DriveCam pricing about $36 per vehicle per month on a 36-month lease.",
+      "source_url": "https://www.lytx.com/",
+      "result": "not found"
+    },
+    {
+      "claim": "Motive public-agency quote of about $40/vehicle/month camera plus about $37.50/month gateway.",
+      "source_url": "https://gomotive.com/products/driver-experience/",
+      "result": "not found"
+    },
+    {
+      "claim": "BlackBerry Radar H2 is sold on AWS Marketplace only as a 36-month per-unit bundle including connectivity and cloud, with no per-unit figure visible on the page.",
+      "source_url": "https://aws.amazon.com/marketplace/pp/prodview-qjtlfrnlgqxme",
+      "result": "confirmed"
+    },
+    {
+      "claim": "UVeye states 1,200+ systems deployed worldwide.",
+      "source_url": "https://www.uveye.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "TruckX 4-Channel AI Dashcam page shows per-month add-on pricing labels without a visible base rate.",
+      "source_url": "https://truckx.com/4-channel-ai-dashcam/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NVIDIA Jetson Orin Nano Super Developer Kit at $249, 67 INT8 TOPS, 8GB SoM, supports up to four cameras.",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ubiquiti UniFi G5 Bullet 2K PoE camera at $129 single unit and $359 for a 3-pack.",
+      "source_url": "https://store.ui.com/us/en/products/uvc-g5-bullet",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO repository is licensed AGPL-3.0.",
+      "source_url": "https://raw.githubusercontent.com/ultralytics/ultralytics/main/LICENSE",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-1.6B is a 1.6B vision-language model with 32,768-token context, improved OCR and multi-image handling, and a GGUF build for llama.cpp/CPU inference.",
+      "source_url": "https://huggingface.co/LiquidAI/LFM2.5-VL-1.6B",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen3-VL-2B-Instruct exists as a small VLM option.",
+      "source_url": "https://huggingface.co/Qwen/Qwen3-VL-2B-Instruct",
+      "result": "confirmed"
+    },
+    {
+      "claim": "MMAD benchmark (ICLR 2025): 39,672 questions over 8,366 industrial images; best commercial model averaged 74.9%, which the authors call far short of industrial requirements.",
+      "source_url": "https://arxiv.org/abs/2410.09453",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ATRI 2023: driver approval of driver-facing cameras 2.24 on a 0-10 scale among 650 current users, rising 87% when carriers used footage for proactive safety measures; insurers/attorneys preferred event-based recording.",
+      "source_url": "https://truckingresearch.org/2023/04/new-atri-research-identifies-strategies-for-improving-driver-facing-camera-approval-and-utilization/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2015 on-board video study: 158 systems at 7 sites over 17 months, ~237,000 usable trigger events, intervention RR 0.47 (p<0.001), control RR 0.93 (p=0.44).",
+      "source_url": "https://stacks.cdc.gov/view/cdc/181664",
+      "result": "confirmed"
+    },
+    {
+      "claim": "That 2015 study is peer-reviewed.",
+      "source_url": "https://stacks.cdc.gov/view/cdc/181664",
+      "result": "contradicted"
+    },
+    {
+      "claim": "N.J.S.A. 34:6B-22 (P.L. 2021, c.449, approved January 2022): employer must give written notice before using a tracking device in an employee's vehicle; civil penalty up to $1,000 first violation, $2,500 each subsequent; \"tracking device\" defined as a device used for the sole purpose of tracking movement.",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d) permits a party (or one with one party's prior consent) to intercept an oral communication unless used to commit a criminal/tortious or other injurious act.",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A1488 (2024-2025, Karabinchak and Lopez, both Middlesex districts) would require clear notice at every common entryway for biometric collection, with $5,000 first-offense and $10,000 subsequent civil penalties and a fourth-degree crime for a pattern; text is the introduced version.",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2024/A1500/1488_I1.PDF",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey has no standalone biometric privacy statute in force.",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2024/A1500/1488_I1.PDF",
+      "result": "not found"
+    },
+    {
+      "claim": "Lewis v. Lytx BIPA settlement: $4,250,000 fund for people who operated a Lytx DriveCam in Illinois between October 12, 2016 and January 1, 2025 where MV+AI was used to predict distracted driving; Lytx denies wrongdoing.",
+      "source_url": "https://www.lytxsettlement.com/faqs/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey: 49,887 active carriers; 51.7% report a single power unit; 44.3% are private carriers; 2-50 power-unit band sums to about 18,600 (13,980 + 2,610 + 2,031 = 18,621).",
+      "source_url": "https://biz.statnorth.us/carriers/nj",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County has more than 1,300 warehousing/distribution buildings (NJTPA freight profile built on a 2010 baseline).",
+      "source_url": "https://njtpa.org/wp-content/uploads/2026/01/Freight-Profile-Middlesex-County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fit_score sub-scores sum to the stated total (15+13+8+12+11+8 = 67).",
+      "source_url": "https://biz.statnorth.us/carriers/nj",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

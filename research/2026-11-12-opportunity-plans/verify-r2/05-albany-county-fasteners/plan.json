@@ -1,0 +1,460 @@
+{
+ "business": "Albany County Fasteners (Raw Products Corp), Edison, NJ",
+ "opportunity": "Quote-desk agent: RFQ intake to priced, documented quote for B2B and custom/off-catalog requests (audit.md opportunity #1)",
+ "problem": {
+  "summary": "B2B quote requests at Albany County Fasteners are assembled by hand. The company advertises quotes for listed and unlisted products, USA sourcing, custom manufacturing, blanket release and stock-and-lock programs, plus C of C / MTR / shop-drawing packets, and sells in piece, pack and bulk tiers with no order minimum (https://www.albanycountyfasteners.com/B2B/Request-A-Quote/). The company's own blog states that the family business has grown to 'over 20 employees' and names the family roles - Bob Cominos as president and owner, Anna as vice president, Peter as purchasing manager, Francesca as warehouse fulfillment manager and Victoria as brand, marketing and HR manager (https://www.albanycountyfasteners.com/blog/about-albany-county-fasteners/); that is the company's own description, not an independently verified headcount. INFERENCE: the claim that quote turnaround competes with order and warehouse work follows from each quote plausibly needing a catalog lookup, tier-price math, a stock check and document assembly in a firm that modest in size - it is not stated in any source. Request volume and minutes per quote are not public and remain the audit's assumptions.",
+  "current_tools": [
+   {
+    "tool": "Shopware 6 storefront with tiered piece/pack/bulk pricing and a customer account portal",
+    "evidence": "The storefront HTML carries Shopware theme asset paths and CMS element markup; profile tech footprint records Shopware 6 with bulk pricing configured in the platform and order history in the account portal.",
+    "source_url": "https://www.albanycountyfasteners.com/"
+   },
+   {
+    "tool": "B2B Request-A-Quote web form (listed and unlisted parts, C of C/MTR/shop drawings, blanket release, stock-and-lock)",
+    "evidence": "The B2B page lists custom quotes for listed and unlisted products, documentation on request, and an online NET 30 credit application; requests are handled by the in-house sales team.",
+    "source_url": "https://www.albanycountyfasteners.com/B2B/Request-A-Quote/"
+   },
+   {
+    "tool": "Tawk.to live chat widget on the storefront",
+    "evidence": "The served storefront HTML contains a desktop header icon calling Tawk_API.toggle() and a 'Live chat' link using the same call in the mobile header strip. No footer toggle or business-hours gating appears in the HTML reviewed.",
+    "source_url": "https://www.albanycountyfasteners.com/"
+   },
+   {
+    "tool": "Phone line 866-573-0445 and email, staffed Monday-Friday 8:00AM-5:00PM EST",
+    "evidence": "Contact page publishes the toll-free number, email and Edison address; About page publishes weekday 8-5 EST hours with no after-hours coverage.",
+    "source_url": "https://www.albanycountyfasteners.com/Contact-Us/"
+   },
+   {
+    "tool": "Unnamed 'AI-powered Warehouse Management System' for real-time inventory and fulfillment",
+    "evidence": "About page says the company uses a smart, AI-powered WMS for real-time inventory and automated workflows; the product is not named publicly, so its API is unknown.",
+    "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/"
+   },
+   {
+    "tool": "Amazon storefront as a second sales channel",
+    "evidence": "Profile records an Amazon storefront alongside the own store, meaning two catalogs and two price surfaces to keep aligned.",
+    "source_url": "https://www.amazon.com/stores/AlbanyCountyFasteners/page/7B1D54CC-242B-4E4F-A20A-CE6E32705A64"
+   }
+  ]
+ },
+ "solution": {
+  "approach": "build-on-platform",
+  "design": "A private quote-desk service that sits beside the existing Shopware 6 store and the sales inbox. Inbound RFQs arrive by web form, email or PDF; a parser turns each into structured line items (thread size/pitch, length, grade/material, finish, quantity, unit of measure). A retrieval step matches each line against the live Shopware catalog (product number, attributes, pack quantity) and reads the applicable price for the customer group and quantity scale. Deterministic code, not the model, does the arithmetic: extension, tier selection, minimums, freight table. The model drafts the quote document and, where requested, assembles a C of C / MTR packet from the client's existing spec sheets, citing the catalog row behind every price. The draft lands in a rep queue as an editable PDF preview plus a line-level source table. Nothing is emailed to a customer by the agent: a rep approves, edits or rejects, and the approved document is sent from the rep's own mailbox and logged. Unlisted, custom-manufactured, blanket-release and stock-and-lock requests are routed as exceptions with the sourcing questions pre-drafted for the purchasing manager. Every draft, edit and approval is logged for later measurement and for the company's own sub-0.5% order-error objective. Deliberate exclusions in v1: no payment data, no credit decisions, no autonomous sending, no Amazon catalog writes, no chat channel.",
+  "components": [
+   {
+    "component": "RFQ intake and document parsing (email, PDF, form, photos of a parts list)",
+    "tool": "Postmark inbound email webhook + custom Python parser calling an OpenAI multimodal model",
+    "why": "Postmark gives each inbound server a unique hash mailbox and POSTs the parsed mail, including attachments as base64 in the JSON body, to a webhook URL the client controls, so the service needs no mailbox credentials; the model handles messy buyer formats that rule-based parsing misses.",
+    "source_url": "https://postmarkapp.com/developer/user-guide/inbound/parse-an-email"
+   },
+   {
+    "component": "Catalog and price retrieval",
+    "tool": "Shopware 6 Admin API (OAuth client-credentials integration token, POST /api/search/{entity})",
+    "why": "Official backend API for products, orders and customers, authenticated with an integration access key pair created under Settings > System > Integrations, so the agent runs on a machine account rather than a human login.",
+    "source_url": "https://developer.shopware.com/docs/guides/development/integrations-api/"
+   },
+   {
+    "component": "Line-item reasoning and draft generation",
+    "tool": "OpenAI API, low-cost tier model (gpt-5.6-luna list price $0.20 input / $1.20 output / $0.02 cached input per 1M tokens, standard, short context)",
+    "why": "At the modeled volume inference computes to about USD 2.80/month on list prices. OpenAI's API data-controls documentation states that, as of March 1, 2023, data sent to the API is not used to train or improve models unless the customer explicitly opts in, and that abuse-monitoring logs are retained for up to 30 days by default - so a no-training, limited-retention posture is documented rather than assumed. A self-hosted open-weight model stays the fallback if the client objects to any third-party processing.",
+    "source_url": "https://platform.openai.com/docs/pricing"
+   },
+   {
+    "component": "Quote and certificate PDF rendering",
+    "tool": "WeasyPrint (open source, HTML/CSS to PDF)",
+    "why": "Renders the client's existing quote layout and merges C of C/MTR pages without a per-document licence; runs on the same small server.",
+    "source_url": "https://weasyprint.org/"
+   },
+   {
+    "component": "Rep approval queue and audit log",
+    "tool": "Baserow (free cloud plan) or the same tables self-hosted",
+    "why": "Gives the reps a filterable queue with a status column and row-change history; the free tier's 3,000 rows per workspace covers a pilot's quote queue and log, and paid plans start at US$10 per user per month if the log outgrows it.",
+    "source_url": "https://baserow.io/pricing"
+   },
+   {
+    "component": "Hosting",
+    "tool": "DigitalOcean Basic Droplet, 2 GiB / 1 vCPU / 50 GiB SSD at $12.00 per month",
+    "why": "One small VM runs the parser, the renderer and the queue sync; the monthly cap keeps cost predictable and the data in a single region.",
+    "source_url": "https://www.digitalocean.com/pricing/droplets"
+   }
+  ],
+  "integrations": [
+   {
+    "system": "Shopware 6 Admin API (products, price data, customers, orders)",
+    "method": "OAuth client-credentials token from an integration created under Settings > System > Integrations (access key id = client_id, secret = client_secret), then Bearer-authenticated POST /api/search/{entity} on the /api/* base path. The docs describe an 'Administrator' toggle for enabling integration permissions; fine-grained read-only scoping is a design choice that must be verified against the client's instance rather than assumed from the quick start.",
+    "confirmed_in_docs": true,
+    "cost": "No separate API fee; Shopware Community Edition is EUR 0 per month (commercial plans start at EUR 600/month)",
+    "source_url": "https://developer.shopware.com/docs/guides/development/integrations-api/"
+   },
+   {
+    "system": "Shopware advanced/prices by customer group and piece-pack-bulk quantity scales",
+    "method": "Shopware documents advanced pricing as prices based on Rule Builder rules, with the sales price, list price and 'scaled prices' held per quantity scale, and customer groups deciding gross or net display. The service reads that price data from the product record through the Admin API; the exact mapping of this client's tiers to live price records must be checked on one real product before any build.",
+    "confirmed_in_docs": true,
+    "cost": "Included in the existing platform",
+    "source_url": "https://docs.shopware.com/en/shopware-6-en/catalogues/products"
+   },
+   {
+    "system": "Inbound email (quote mailbox)",
+    "method": "Email forwarding from the quote mailbox to the inbound hash address Postmark issues for the server (or via Postmark inbound domain forwarding); Postmark then POSTs the parsed message as JSON, with attachments, to the service webhook URL and retries failed deliveries.",
+    "confirmed_in_docs": true,
+    "cost": "Postmark Pro US$16.50/month starting at 10,000 emails/month with inbound email processing included (not on Basic); extra emails US$1.30 per 1,000 (pricing: https://postmarkapp.com/pricing)",
+    "source_url": "https://postmarkapp.com/developer/user-guide/inbound/parse-an-email"
+   },
+   {
+    "system": "OpenAI API",
+    "method": "HTTPS JSON requests with a project-scoped key; structured output for line items and citations; optional prompt caching at the cached-input price",
+    "confirmed_in_docs": true,
+    "cost": "Usage-based; gpt-5.6-luna US$0.20 input / US$1.20 output / US$0.02 cached input per 1M tokens",
+    "source_url": "https://platform.openai.com/docs/pricing"
+   },
+   {
+    "system": "Warehouse Management System (unnamed 'AI-powered WMS')",
+    "method": "Unknown. Plan A reads stock from Shopware; Plan B asks the client for a WMS export or API. Not assumed in the pilot.",
+    "confirmed_in_docs": false,
+    "cost": "Unknown",
+    "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/"
+   },
+   {
+    "system": "Tawk.to chat transcripts",
+    "method": "Optional later channel. The storefront shows only a Tawk_API.toggle() launcher; no API, webhook or transcript-export behaviour was verified in this research, so chat is out of v1 scope.",
+    "confirmed_in_docs": false,
+    "cost": "Unknown",
+    "source_url": "https://www.albanycountyfasteners.com/"
+   }
+  ],
+  "human_in_the_loop": "A named rep is the only sender. The agent produces a draft quote PDF plus a line-level source table (catalog row, price rule, stock snapshot, exception flags). The rep approves, edits or rejects each draft in the queue; unlisted, custom-manufactured, blanket-release, stock-and-lock, government/DFARS and any line with an unresolved part match are mandatory exceptions that cannot be auto-approved. Refusals in v1: no autonomous customer email, no price overrides, no credit terms, no refunds, no catalog writes. The approval event (user, timestamp, diff) is written to an append-only log so the client can audit any quote that leaves the building."
+ },
+ "build_plan": {
+  "phases": [
+   {
+    "phase": "Phase 1 - Access and discovery",
+    "steps": [
+     "Collect read-only Shopware integration credentials, a catalog export, the price-tier rules and two or three representative customer price agreements",
+     "Collect 50-100 recent RFQs and the quotes actually sent in reply, plus blank and completed C of C/MTR samples",
+     "Walk the quote desk in Edison with the sales lead and time 20 live requests end to end"
+    ],
+    "founder_days": "3-4 (inference)",
+    "client_provides": "API credentials, price rules, historical RFQs and sent quotes, document templates, one approver and one purchasing contact, two hours of walkthrough time"
+   },
+   {
+    "phase": "Phase 2 - Catalog and price index",
+    "steps": [
+     "Pull the active catalog and normalize fastener attributes (thread, length, grade, material, finish, drive, pack quantity) into a searchable index",
+     "Extract the piece/pack/bulk scales and any customer-group prices; build a test set of 200 SKUs with known correct prices",
+     "Verify one real quote's arithmetic against the index before writing any generation code"
+    ],
+    "founder_days": "6-8 (inference)",
+    "client_provides": "Confirmation of tier logic and any unpublished customer-specific overrides; a 30-minute review of the price test set"
+   },
+   {
+    "phase": "Phase 3 - RFQ parser and matcher",
+    "steps": [
+     "Parse email bodies, PDFs and form submissions into structured line items with units",
+     "Match lines to catalog products, return candidates with confidence and flag ambiguous or unlisted items",
+     "Score the parser against the historical RFQs; iterate on the worst 20 failures"
+    ],
+    "founder_days": "5-7 (inference)",
+    "client_provides": "Answers on 20 sample lines where the buyer's meaning is ambiguous; a list of common misspellings and shorthand buyers use"
+   },
+   {
+    "phase": "Phase 4 - Draft quote, certificate packet and approval queue",
+    "steps": [
+     "Render the quote in the client's layout with per-line source citations",
+     "Assemble C of C/MTR packet pages from existing spec sheets, with the lot/cert reference left for the rep",
+     "Build the approval queue, exception rules and append-only approval log",
+     "Add guardrails: no send capability, scoped API keys, redaction of any payment fields, prompt-injection handling for attachments"
+    ],
+    "founder_days": "5-7 (inference)",
+    "client_provides": "Branded quote template, approved boilerplate terms, certificate templates, list of who may approve"
+   },
+   {
+    "phase": "Phase 5 - Shadow pilot",
+    "steps": [
+     "Run the agent in shadow mode on live listed-part RFQs for four weeks while reps work normally",
+     "Compare each draft to the quote the rep actually sent; log line matches, price differences, edit reasons and minutes",
+     "Weekly 30-minute review with the sales lead; tune exceptions and retrieval"
+    ],
+    "founder_days": "8-10 (inference, part-time over four weeks)",
+    "client_provides": "A rep to approve and score drafts, roughly 15 minutes a day, and access to the sent-quote record"
+   },
+   {
+    "phase": "Phase 6 - Handover and care",
+    "steps": [
+     "Deliver runbook, escalation rules, monitoring and a monthly accuracy report template",
+     "Hand over credentials, repository and a restore-tested backup; agree the monthly care scope"
+    ],
+    "founder_days": "2-3 (inference)",
+    "client_provides": "A named internal owner for the tool and a decision on the monthly care plan"
+   }
+  ],
+  "pilot": {
+   "scope": "One workflow, one channel set, listed parts only: web RFQ form plus the quote email inbox. The agent drafts the quote and the C of C/MTR packet in shadow mode; the rep compares each draft to the real quote and approves. Unlisted, custom-manufactured, blanket release and stock-and-lock requests are captured but routed to a human without a draft, so the pilot does not touch the hardest sourcing work.",
+   "weeks": "4 weeks of shadow running (plus 4-6 weeks of build before it, both inference)",
+   "success_metrics": [
+    "Line identification accuracy on listed parts: at least 85% of lines matched to the correct SKU without rep correction",
+    "Price traceability: 100% of quoted lines show a catalog row and price rule, with zero unexplained prices",
+    "Draft usefulness: at least 50% of drafts approved with no change to line items or prices",
+    "Handling time: median minutes per quote reduced by at least 40% versus the timed baseline (inference thresholds)",
+    "Exceptions: at least 95% of unlisted/custom lines correctly flagged and kept away from auto-draft",
+    "Safety: zero customer-facing documents sent by the agent; zero price overrides without a logged rep approval"
+   ],
+   "baseline_method": "Before build, the sales lead times 20 live requests end to end with a stopwatch and logs each step (lookup, price math, document assembly, review). The same 20 requests are then replayed through the agent, and the pilot compares each live draft to the quote the rep actually sent from the sent-quote archive. Minutes are compared as medians, not averages, so one unusually large RFQ does not distort the result.",
+   "exit_criteria": "Proceed to production if line accuracy is at least 85%, price traceability is 100%, median handling time falls at least 40%, and no unapproved document reached a customer. Stop and refund the unused pilot fee if accuracy stays below 70% after two tuning rounds, if the client cannot supply price rules or historical quotes, or if the WMS/stock source cannot be read reliably enough to avoid stale stock claims."
+  }
+ },
+ "competitors": [
+  {
+   "vendor": "Qotora",
+   "product": "AI quoting software for distributors (Counter / Team / Network plans)",
+   "fit_for_this_business": "Closest direct substitute: reads requests in email, PDF, Excel, photo, voice or text, connects read-only to one database (or imports a catalogue, stock and prices), reproduces the quote template, cites the source row for every price and requires a human to approve before anything is sent. It does not advertise C of C/MTR packet assembly or a Shopware integration, and the vendor describes non-Odoo connections as set up per client rather than certified integrations.",
+   "price": "Counter US$49 first month, then US$149 per month for up to 150 quotes sent per month; Team US$349 per month (up to 500 quotes sent); Network US$799 per month (up to 2,000 quotes sent); optional yearly billing US$1,490 / US$3,490 / US$7,990 (equals ten monthly payments); setup included, unlimited users, monthly, cancel anytime",
+   "source_type": "vendor pricing page",
+   "source_url": "https://app.qotora.com/en/pricing"
+  },
+  {
+   "vendor": "AY Automate",
+   "product": "AI quoting and bidding automation partnership for distributors and manufacturers",
+   "fit_for_this_business": "Human-led service that reads RFQs from email, PDF or portal, prices from the client's own price lists and past quotes, flags unclear part numbers and writes the approved quote back to ERP or CRM, with the estimator approving. Closest match to the consultancy's own offer, but positioned as an ongoing partnership and the vendor itself states it does not claim a quoting build in its client list.",
+   "price": "From $3K a month, cancel anytime, 90-day replacement guarantee",
+   "source_type": "vendor page",
+   "source_url": "https://www.ayautomate.com/services/ai-quoting-bidding-automation"
+  },
+  {
+   "vendor": "Conexiom",
+   "product": "B2B quote automation (and order automation) for manufacturers and distributors",
+   "fit_for_this_business": "Enterprise-grade RFQ extraction and ERP-integrated quote generation; strong on customer-specific pricing and business rules. Heavier and more sales-led than this distributor is likely to want, and no public evidence of Shopware support.",
+   "price": "Not public - no pricing published on the vendor page reviewed; sold through a sales process",
+   "source_type": "vendor page",
+   "source_url": "https://conexiom.com/glossary/what-is-b2b-quote-automation"
+  },
+  {
+   "vendor": "QuoteWerks",
+   "product": "QuoteWerks Desktop (Standard / Professional / Corporate)",
+   "fit_for_this_business": "Traditional on-premise CPQ: builds quotes from product data sources and contacts, with ODBC links in the Professional edition. It is a quote authoring tool, not an intake-and-drafting agent, so a rep still reads the RFQ and keys the lines.",
+   "price": "Desktop Standard US$15 billed monthly, Professional US$21, Corporate US$30 (licences based on concurrent usage); one-time upfront purchase options also offered; Accelerated Implementation Service US$299 per session",
+   "source_type": "vendor pricing page",
+   "source_url": "https://desktop.quotewerks.com/pricelist.asp"
+  },
+  {
+   "vendor": "Shopware",
+   "product": "Evolve plan with B2B Components, including quote management and purchasing approvals",
+   "fit_for_this_business": "Native quote objects inside the store the client already runs, so approved quotes could become orders without a third-party tool. But it manages quotes the buyer builds in the storefront; it does not parse an emailed RFQ, price an unlisted part or assemble a C of C/MTR packet. Also a large platform-price jump for a company that may be on Community Edition.",
+   "price": "Community Edition EUR 0; Rise from EUR 600 per month excl. VAT; Evolve from EUR 2,400 per month excl. VAT (adds B2B components such as quotes and purchasing approvals); Beyond custom, contact sales",
+   "source_type": "vendor pricing page",
+   "source_url": "https://www.shopware.com/en/pricing/"
+  },
+  {
+   "vendor": "Hire a person (local labour market)",
+   "product": "Order clerk / quote coordinator, Edison NJ area",
+   "fit_for_this_business": "The status-quo option: add or free up a clerk to key quotes. Fully flexible and handles unlisted parts, but adds recurring salary, hiring time and training, and does not solve turnaround outside 8-5 or the key-person concentration the company already has (inference).",
+   "price": "New Jersey order-clerk median $46,270 per year and average $22.25 per hour (BLS 2025 OEWS wage data via O*NET); loaded at the audit's 25% burden assumption that is $57,837.50 per year, about $27.81 per hour",
+   "source_type": "government data",
+   "source_url": "https://www.onetonline.org/link/localwages/43-4151.00?st=NJ"
+  },
+  {
+   "vendor": "Do it yourself with existing staff and templates",
+   "product": "Email templates, spreadsheet price lists, existing Shopware catalog",
+   "fit_for_this_business": "Zero software cost and the team already knows the products, but this is essentially what they do today: a template does not read the RFQ or apply tiers.",
+   "price": "USD 0 software",
+   "source_type": "vendor page",
+   "source_url": "https://www.albanycountyfasteners.com/B2B/Request-A-Quote/"
+  }
+ ],
+ "running_costs": [
+  {
+   "item": "Model inference (OpenAI low-cost tier)",
+   "cost": "About USD 2.80 per month computed; budget USD 5-20 per month",
+   "basis": "INFERENCE: 50-100 RFQs/week from the audit, taken as ~325/month; ~25k input and ~3k output tokens per request. Computed base: 325 x 25,000 = 8.125M input tokens at USD 0.20/1M = USD 1.63, plus 325 x 3,000 = 0.975M output tokens at USD 1.20/1M = USD 1.17, total USD 2.80 (prompt caching at the USD 0.02/1M cached-input price would lower it). The USD 5-20 figure is a padded envelope, roughly 2x to 7x the computed base, covering retries, photo/PDF OCR passes and weekly eval runs.",
+   "source_url": "https://platform.openai.com/docs/pricing"
+  },
+  {
+   "item": "Hosting (application server)",
+   "cost": "USD 12.00 per month",
+   "basis": "DigitalOcean Basic Droplet, 2 GiB memory / 1 vCPU / 50 GiB SSD / 2,000 GiB transfer, listed monthly price",
+   "source_url": "https://www.digitalocean.com/pricing/droplets"
+  },
+  {
+   "item": "Inbound and outbound email",
+   "cost": "USD 16.50 per month",
+   "basis": "Postmark Pro, starting at 10,000 emails per month including inbound email processing; extra emails USD 1.30 per 1,000",
+   "source_url": "https://postmarkapp.com/pricing"
+  },
+  {
+   "item": "Approval queue / audit table",
+   "cost": "USD 0",
+   "basis": "Baserow free plan, 3,000 rows per workspace, enough for a pilot quote queue and log; paid plans from USD 10 per user per month if needed",
+   "source_url": "https://baserow.io/pricing"
+  },
+  {
+   "item": "PDF rendering and orchestration",
+   "cost": "USD 0 licence",
+   "basis": "WeasyPrint is free and open source software and runs on the same droplet; the custom Python service has no per-seat licence",
+   "source_url": "https://weasyprint.org/"
+  },
+  {
+   "item": "Phone minutes",
+   "cost": "USD 0",
+   "basis": "Opportunity #1 is text-first (form, email); no voice or telephony component is in scope. A voicemail-to-text channel would add telephony costs in a later phase.",
+   "source_url": "https://www.albanycountyfasteners.com/Contact-Us/"
+  },
+  {
+   "item": "Shopware platform",
+   "cost": "USD 0 additional (existing)",
+   "basis": "Admin API access carries no separate fee; Community Edition is EUR 0 per month, so no new platform spend is assumed. Any paid plan is already sunk cost.",
+   "source_url": "https://www.shopware.com/en/pricing/"
+  }
+ ],
+ "suggested_pricing": {
+  "pilot_fee": "USD 2,500 for the 4-week shadow pilot (credited in full against the set-up fee if the client proceeds)",
+  "setup_fee": "USD 5,000 one-time for catalog/price indexing, RFQ parser, quote and certificate templates, approval queue, guardrails and handover",
+  "monthly_fee": "USD 750 per month for care (monitoring, accuracy reporting, exception tuning, one small change per month, business-hours support)",
+  "reasoning": "INFERENCE, anchored on published competitor prices and the BLS wage rather than on any track record, which does not exist yet. (1) Running cost: about USD 31/month on the computed base (USD 2.80 inference + USD 12 hosting + USD 16.50 email) and up to about USD 49/month at the padded token ceiling, so the fee is not cost-plus; it prices the build and the care. (2) Price floor, and the honest problem: Qotora's Team plan is US$349 per month with setup included, so a year at Team costs about USD 4,188, while this offer's year one is USD 14,000 (5,000 set-up + 9,000 of care, with the 2,500 pilot credited). At roughly 3.3x Qotora, the offer cannot be defended on price and should not be pitched to a buyer whose only requirement is email-to-quote drafting. (3) Price ceiling: AY Automate starts at USD 3,000 per month as an ongoing partnership (about USD 36,000 a year) and Shopware's own Evolve plan with B2B quotes starts at EUR 2,400 per month excl. VAT (about EUR 28,800 a year), so a USD 14,000 first year and USD 9,000 a year after sits clearly between the SaaS floor and those two. (4) Labour anchor: a loaded NJ order clerk is 46,270 x 1.25 = USD 57,837.50 a year, about USD 4,820 a month, so USD 750 is roughly one-sixth of a hire. (5) Value anchor: the audit's USD 13,900-41,700 a year of clerical time is USD 1,158-3,475 a month, so USD 750 is about 65% of the low-end monthly benefit and about 22% of the high-end, and pilot-plus-set-up (USD 7,500) is about 54% of one year's low-end benefit and about 18% of the high-end; that is only defensible because the pilot is measured against a timed baseline rather than the audit's assumptions. (6) The premium over Qotora buys the certificate-packet assembly, a single-tenant deployment and local delivery, none of which Qotora advertises. If the client benchmarks on Qotora and those three do not matter, the right advice is to buy Qotora."
+ },
+ "leverage": [
+  {
+   "point": "The Shopware 6 Admin API pattern (integration token, then POST /api/search/{entity}) is reusable across every Shopware B2B distributor, so the same connector can be sold again with configuration rather than new code.",
+   "source_url": "https://developer.shopware.com/docs/guides/development/integrations-api/"
+  },
+  {
+   "point": "Shopware's advanced-pricing model (Rule Builder rules plus quantity scales, with customer groups) is a documented, stable place to read tier prices from, so a fastener-agnostic price resolver can be reused on other Shopware merchants with scaled pricing.",
+   "source_url": "https://docs.shopware.com/en/shopware-6-en/catalogues/products"
+  },
+  {
+   "point": "The open-source stack (WeasyPrint rendering, a small Python service, Baserow tables) has no per-seat or per-document licence, so a second and third client can be served from the same codebase at near-zero marginal software cost.",
+   "source_url": "https://weasyprint.org/"
+  },
+  {
+   "point": "Qotora's published plans show a real, priced market for distributor quote automation from US$149 to US$799 per month and confirm the human-approval, price-traceability pattern, which validates a shared core and gives a reference price for future pitches.",
+   "source_url": "https://app.qotora.com/en/pricing"
+  },
+  {
+   "point": "Fastener attribute normalization (thread, grade, finish, pack quantity) is the reusable domain asset: the same normalizer applies to any fastener, industrial or MRO distributor. INFERENCE - the client's catalog is not public in structured form, so the claim rests on the catalog's breadth as described on the company's About page.",
+   "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/"
+  },
+  {
+   "point": "The client's existing tools do not need replacing - Shopware stays the system of record and the reps keep their mailbox - so there is no migration to sell, and the same sidecar pattern fits other Shopware merchants.",
+   "source_url": "https://developer.shopware.com/docs/guides/development/integrations-api/"
+  },
+  {
+   "point": "Local presence: the consultancy is in Milltown and the warehouse is in Edison, published at 100 Newfield Ave, Suite D, so on-site walkthroughs, in-person document handover and same-day drop-ins are practical in a way they are not for a remote SaaS vendor.",
+   "source_url": "https://www.albanycountyfasteners.com/Contact-Us/"
+  }
+ ],
+ "edge_vs_competitors": "Real but narrow. The edge is (a) reading the client's actual Shopware catalog and rule-based quantity price scales instead of a generic ERP/database connector, (b) C of C/MTR document assembly tied line-by-line to the quote, which Qotora does not advertise and Shopware's own quote objects do not attempt, (c) a private single-tenant deployment on a server the client controls with no per-quote metering, and (d) local, in-person delivery with a fixed-price measured pilot. The consultancy has no edge on price against Qotora (US$149-799 per month with setup included, against this offer's USD 14,000 first year), no edge on brand or references, no 24/7 support organisation, no fastener-industry case studies and no ERP breadth. A buyer who only wants email-to-quote drafting will rationally pick Qotora or AY Automate; the pitch has to be the certificate packet, the private deployment and the willingness to sit in the Edison office.",
+ "risks_compliance": [
+  {
+   "issue": "Quote accuracy and certificate integrity. A wrong grade, alloy, finish or pack quantity on a quote, or an inaccurate C of C/MTR, is not a cosmetic error - the Fastener Quality Act makes it a violation to knowingly falsify or misrepresent the record of conformance, the characteristics or markings of the lot, or the manufacturer's insignia.",
+   "rule_or_source": "Fastener Quality Act, 15 U.S.C. 5401 et seq.; NIST compliance FAQ on misrepresentation and the record of conformance",
+   "confirmed": true,
+   "mitigation": "Deterministic price math, per-line catalog citation in every draft, mandatory rep approval before any customer-facing document, and a hard rule that certificate pages are assembled only from the client's own spec sheets with lot/cert references filled by a person.",
+   "source_url": "https://www.nist.gov/standardsgov/compliance-faqs-fastener-quality-act-fqa"
+  },
+  {
+   "issue": "Government/defense quotes: fasteners containing specialty metals must be melted or produced in the US, its outlying areas or a qualifying country under DFARS flowdowns, and the commercially-available off-the-shelf exception does not automatically cover fasteners - COTS fasteners incorporated into COTS end items, subsystems, assemblies or components are excluded from it.",
+   "rule_or_source": "DFARS 252.225-7009, Restriction on Acquisition of Certain Articles Containing Specialty Metals (JAN 2023), paragraphs (b) and (c)(2)(i)(D)",
+   "confirmed": true,
+   "mitigation": "Flag any government end-use or flowdown clause at intake, never let the agent assert domestic-melt status, and route those lines to purchasing for certification before the quote leaves.",
+   "source_url": "https://www.acquisition.gov/dfars/252.225-7009-restriction-acquisition-certain-articles-containing-specialty-metals."
+  },
+  {
+   "issue": "ITAR-controlled drawings or technical data. Any person in the US in the business of manufacturing or exporting or temporarily importing defense articles, or furnishing defense services, must register with DDTC - engaging in that business requires only one occasion - and work on controlled drawings for a custom part can put a firm in that business.",
+   "rule_or_source": "22 CFR 122.1(a), registration requirement (with the 122.1(b) exemptions, including businesses confined to unclassified technical data only)",
+   "confirmed": true,
+   "mitigation": "Explicit intake rule that ITAR/export-controlled drawings are refused by the agent and escalated to a person; no third-party model processing of such files; self-hosted model option if the client has any controlled work; a lawyer's review of the registration question before any defense work is accepted.",
+   "source_url": "https://www.law.cornell.edu/cfr/text/22/122.1"
+  },
+  {
+   "issue": "Deemed export through the model API. Sending technical data to a third-party model provider could be a release to a foreign person, which ITAR treats as an export to every country in which that person holds citizenship or residency - a separate doctrine from the registration rule above.",
+   "rule_or_source": "22 CFR 120.50(a)(2) and 120.50(b), 'Export' and deemed export",
+   "confirmed": true,
+   "mitigation": "Document what the client sends to the model provider, exclude controlled technical data by rule, and offer a self-hosted open-weight model where the client has any export-controlled work.",
+   "source_url": "https://www.law.cornell.edu/cfr/text/22/120.50"
+  },
+  {
+   "issue": "Prompt injection and tool abuse through inbound RFQ emails and PDF attachments (instructions hidden in a document trying to make the agent change prices, email someone, or leak data).",
+   "rule_or_source": "OWASP Top 10 for LLM Applications, LLM01:2025 Prompt Injection",
+   "confirmed": true,
+   "mitigation": "Agent has no send capability and no price-write capability, tool allowlist, attachments treated as untrusted data, outputs validated against the catalog before display, and every draft human-approved.",
+   "source_url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/"
+  },
+  {
+   "issue": "Customer and contact data privacy under the New Jersey Data Privacy Act, which applies only to controllers meeting consumer-volume thresholds.",
+   "rule_or_source": "P.L.2023, c.266 (C.56:8-166.4 et seq.): applies at 100,000 consumers, or 25,000 consumers plus revenue or a price discount from the sale of personal data; 'consumer' excludes a person acting in a commercial or employment context; the act took effect on the 365th day after enactment (approved January 16, 2024)",
+   "confirmed": true,
+   "mitigation": "Most data handled is business contact and order data, which falls outside the Act's 'consumer' definition, and the thresholds are unlikely to be met; still minimize retention, keep logs on the client's own server, and confirm consumer counts in discovery rather than assuming them.",
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.PDF"
+  },
+  {
+   "issue": "Model-vendor data handling: whether RFQ content and prices are retained or used for training by the model provider, and whether the client's customer price agreements permit that.",
+   "rule_or_source": "OpenAI platform data-controls documentation: as of March 1, 2023 API data is not used to train or improve models unless the customer opts in; abuse-monitoring logs may contain prompts and responses and are retained for up to 30 days by default; the Responses API keeps application state for 30 days by default",
+   "confirmed": true,
+   "mitigation": "Use the API tier with the documented default, request the no-training/limited-retention controls the vendor documents, redact unnecessary customer detail, offer a self-hosted open-weight model where the client refuses third-party processing, and re-check the terms at contract time since vendor policy can change.",
+   "source_url": "https://platform.openai.com/docs/guides/your-data"
+  },
+  {
+   "issue": "Platform drift: Shopware upgrades or a change in the client's price-rule configuration can silently break retrieval and produce stale prices.",
+   "rule_or_source": "Not a documented rule - a commercial and technical risk. The Admin API quick start gives /api/* base paths but does not describe endpoint versioning or version-pinned behaviour, so the confirmed flag is dropped.",
+   "confirmed": false,
+   "mitigation": "Scoped read-only credentials where the instance supports them, a nightly regression test against a fixed set of 200 known SKUs and prices, an alert if a price lookup returns nothing, and a version check on every deploy.",
+   "source_url": "https://developer.shopware.com/docs/guides/development/integrations-api/"
+  },
+  {
+   "issue": "Single-founder delivery risk: no staff, no 24/7 cover, and a pilot that overlaps with a day job, against competitors who market continuity.",
+   "rule_or_source": "Not a legal rule; commercial risk. Contrast: AY Automate markets an ongoing partnership where 'an engineer stays on your team' to run the system.",
+   "confirmed": false,
+   "mitigation": "One workflow, one client, fixed four-week shadow scope, business-hours support commitment stated in the contract, documented runbook and a kill switch the client controls.",
+   "source_url": "https://www.ayautomate.com/services/ai-quoting-bidding-automation"
+  },
+  {
+   "issue": "Overstating savings. The audit's USD 13,900-41,700 range rests on assumed request volume, handling minutes and a 40-60% pre-built share; no public data confirms any of them.",
+   "rule_or_source": "Audit assumptions (50-100 requests/week x 50 weeks x 30 minutes x 40-60% pre-built) and the NJ order-clerk wage basis used to price the hours",
+   "confirmed": false,
+   "mitigation": "Quote the range as an estimate, measure a timed baseline in week one, and contract the pilot on measured minutes rather than the audit's numbers.",
+   "source_url": "https://www.onetonline.org/link/localwages/43-4151.00?st=NJ"
+  }
+ ],
+ "feasibility": {
+  "technical_1_5": 3,
+  "commercial_1_5": 4,
+  "weeks_to_pilot": "10-12 weeks from signed pilot to measured pilot result (4-6 weeks build part-time, then 4 weeks shadow running) - INFERENCE",
+  "verdict": "Go with conditions",
+  "reasoning": "INFERENCE. Technical 3/5 (INFERENCE): the Shopware Admin API is documented and token-based, advanced/scaled pricing is a documented shop feature, and the running stack computes to about USD 31/month (up to about USD 49 with the padded token envelope), with the quote document itself a rendering problem rather than a research problem. What holds it at 3 is the matching layer - fastener nomenclature across a very large SKU base, piece/pack/bulk scales and customer-group prices, a WMS whose API is unknown - plus the certificate packet, which needs the client's own spec sheets and a person for lot references. Commercial 4/5 (INFERENCE): the pain is described on the client's own B2B page, the owner is reachable, the audit's benefit range (USD 13,900-41,700/year) supports a USD 750/month care fee at about 65% of the low-end monthly benefit, and there is one workflow with a measurable baseline; it is not a 5 because Qotora sells a credible version from US$149 per month with setup included, so the offer costs roughly 3.3x Qotora's Team plan in year one and must win on Shopware specificity, certificate assembly and private local deployment rather than on price. Conditions: (a) the client supplies read-only API credentials, the price rules and 50+ historical RFQs before build starts; (b) the pilot is scoped to listed parts and shadow mode, with no autonomous sending; (c) the WMS stock source is resolved or the agent explicitly labels stock as a snapshot; (d) the engagement is contingent on a timed baseline showing at least 15 minutes of handling per quote, since below that the savings case collapses."
+ },
+ "discovery_questions": [
+  "How many quote or documentation requests arrive per week, and what share are listed parts versus unlisted or custom-manufactured?",
+  "Which WMS are you running, and can it expose stock by API or scheduled export? Is Shopware stock the same number your reps trust?",
+  "Where do your piece/pack/bulk scales and any customer-specific price agreements live - Shopware advanced prices and customer groups, a spreadsheet, or the reps' heads?",
+  "Which quote format do buyers actually receive today: a PDF, a portal link, or an email body? Can you share three examples, including one C of C/MTR packet?",
+  "Who approves a quote before it goes out, and is there a discount or price-override limit a rep can apply without a second signature?",
+  "How often do you attach C of C, MTR or shop drawings, and who pulls those documents today?",
+  "Do you quote into government or defense buyers where DFARS specialty-metals or domestic-melt certification applies?",
+  "Do you ever receive ITAR or export-controlled drawings, and how are those handled now?",
+  "How is freight estimated on a quote - a table, a UPS rate lookup, or rep judgement?",
+  "What is the actual number of quotes the sales team sends in a normal month (this decides the plan tier and the fee), and what is the median minutes per quote?",
+  "Would you accept a single-tenant deployment on a server you control, and do you have a policy on sending customer RFQ text to a third-party AI provider?",
+  "Who is the internal owner for this tool after handover - sales, purchasing, or IT?"
+ ],
+ "caveats": [
+  "Every founder-day estimate, token volume, cost range, success threshold and the feasibility scores are inferences from list prices and the audit's assumed volumes; none has been validated against the client's data.",
+  "The audit's impact range (USD 13,900-41,700/year) depends on 50-100 requests/week, 30 minutes per quote and a 40-60% pre-built share, all of which are explicitly assumptions, not measurements.",
+  "The 'over 20 employees' figure and the one-family-member-per-function pattern come from the company's own blog page, not from its About page, and are not independently verified; no public source gives revenue or headcount. Any statement that this makes quote turnaround the binding constraint is marked as inference.",
+  "Competitor prices are as published on the dates the pages were reviewed and can change. Qotora's US$49 first month and yearly option (ten monthly payments) mean its effective monthly cost can be lower than the list monthly price; Shopware's plan prices are in EUR excl. VAT and the EUR/USD rate was not fixed here.",
+  "The company's WMS product is not named publicly, so the stock-read path is a design assumption, not a confirmed integration.",
+  "The client's Shopware edition is unknown (Community versus a commercial plan); if they are on Community Edition, native B2B quote objects are not available without an upgrade, which is why the design does not depend on them.",
+  "Shopware documents advanced and scaled prices in the administration guide; the exact Admin API field mapping for this client's tiers must be checked on one live product before build, and the docs' 'Administrator' integration toggle suggests fine-grained read-only scoping may need instance-level configuration.",
+  "No client data, no client references and no prior consultancy results exist for this engagement; the plan deliberately avoids any claim of measured savings.",
+  "Certificate packets carry legal weight under the Fastener Quality Act, so the agent assembles pages but a person supplies lot and certification references.",
+  "The Amazon channel is out of scope for this opportunity; only the own-store quote desk is covered."
+ ],
+ "data_gaps": [
+  "Actual RFQ volume, mix of listed versus unlisted parts, and minutes per quote are not public and could not be verified.",
+  "The WMS vendor, API and data model are unknown; only the company's own claim that it runs an 'AI-powered WMS' is public.",
+  "No access to the client's price-tier rules, customer-specific price agreements, quote template or historical sent quotes.",
+  "Shopware edition and version could not be confirmed from outside; the documentation consulted is version-general, and no source described endpoint versioning behaviour.",
+  "Conexiom's price is not published and could not be obtained without a sales conversation, which is out of scope for read-only research.",
+  "ClearQuote advertises RFQ automation for industrial distributors but no price appeared on the page reviewed, so it was excluded from the competitor price table.",
+  "No public confirmation of the client's annual consumer count, which is what decides whether the New Jersey Data Privacy Act applies to them.",
+  "Tawk.to API and webhook behaviour for chat transcript intake was not verified, and only the header launcher was visible in the storefront HTML, so chat is excluded from the v1 scope.",
+  "Whether the client's Shopware instance can be given a read-only integration scope (rather than the documented Administrator toggle) is unconfirmed.",
+  "New Jersey sales-tax treatment of quoted freight and resale certificates was not researched; the quote template will inherit whatever the client uses today."
+ ]
+}

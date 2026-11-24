@@ -1,0 +1,208 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Kodiak pilot sample: '1,000+ tractor and trailer assets inspected over roughly 12 months in Texas'",
+      "problem": "Minor duration imprecision. The source says the pilot launched April 2023 and the post is dated August 20, 2024 (~16 months of elapsed time), while the post itself is titled 'One Year In' and describes 'its first year piloting'. The figures 1,000+ assets / 525+ defects / 59% vs 70% are exactly as stated; only the elapsed-time description is soft.",
+      "fix": "Say 'about 16 months (April 2023 to the Aug 2024 post), which Kodiak labels its first year' or drop the duration and keep the asset count. Not blocking."
+    },
+    {
+      "claim": "'13,553 vehicle OOS violations' in the 2025 Roadcheck",
+      "problem": "Wording, not number. Fleet Maintenance writes 'inspectors found 13,553 violations and put 10,148 vehicles OOS'; the figure appears in a graphic of total vehicle violations, but the sentence does not attach the words 'vehicle OOS' to it.",
+      "fix": "Render as '13,553 violations found (10,148 vehicles placed OOS)'. Not blocking, and the 18.4% / 18.1% / 41.1% / 2,899 tire (21.4%) figures are exact."
+    },
+    {
+      "claim": "CargoNet cargo-theft finding is rated strength 'Medium'",
+      "problem": "The brief applies a 'vendor claim = Low' rule to Kodiak but rates CargoNet's own self-reported, unaudited incident intake at Medium, while stating in the same entry that CargoNet sells theft-prevention services and the figures are not independently audited. The underlying facts (3,625 incidents, +27%, $202,364 from $187,895) are correct.",
+      "fix": "Downgrade to Low (or label 'Medium-Low' with the commercial-interest caveat in the strength field) for consistency with the Kodiak rating. Not blocking on facts."
+    },
+    {
+      "claim": "fit_score legal_risk_low = 8 of 15",
+      "problem": "Not a factual error, but a label/value tension: the sub-score is named legal_risk_low, yet the rationale itself says 'low-moderate, not low', and the legal section carries two items marked confirmed:false (silent video notice, standalone biometric statute) plus a live per-violation tracking-notice statute. The 8 is defensible because the risks are design-avoidable at the stated pilot scope, and the sub-scores sum correctly (14+13+8+12+8+8 = 63).",
+      "fix": "Keep 8 but state in the score field that it is a low-moderate rating, not a 'low' rating, so the orchestrator does not read 8/15 as 'legal risk is low'. Not blocking."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "49 CFR 396.11: report at completion of each day's work on each vehicle operated, 11 listed parts/accessories, no report where no defect is discovered, intermodal (IEP) equipment excluded, (a)(5) exceptions include private motor carriers of passengers (nonbusiness), driveaway-towaway and carriers operating only one CMV, report + repair certification + driver review certification kept three months",
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/396.11",
+      "result": "confirmed"
+    },
+    {
+      "claim": "396.11(a)(6) allows the DVIR to be created and maintained electronically per 49 CFR 390.32; paragraph (b) puts parallel report, repair certification and three-month retention duties on the intermodal equipment provider; current text amended at 91 FR 7896, Feb. 19, 2026",
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/396.11",
+      "result": "confirmed"
+    },
+    {
+      "claim": "49 CFR 392.7(a): no CMV may be driven unless the driver is satisfied the listed parts and accessories are in good working order; (b) drivers preparing to transport intermodal equipment must inspect listed components before operating over the road",
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/392.7",
+      "result": "confirmed"
+    },
+    {
+      "claim": "49 CFR 396.13: driver must be satisfied the vehicle is in safe operating condition, review the last DVIR where required by 396.11(a)(2)(i), sign to acknowledge review and repair certification, with a towed-unit exception and electronic maintenance allowed under (d)",
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/396.13",
+      "result": "confirmed"
+    },
+    {
+      "claim": "49 CFR 392.9(b): inspect cargo and securement within the first 50 miles of a trip; re-examine at duty-status change, 3 hours or 150 miles, whichever occurs first; not applicable to sealed vehicles ordered not to be opened or loads that make inspection impracticable",
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/392.9",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2025 Roadcheck: 56,178 inspections May 13-15, 18.4% of vehicles had an OOS violation, 13,553 violations found, 10,148 vehicles OOS, 18.1% OOS rate",
+      "source_url": "https://www.fleetmaintenance.com/equipment/safety-and-technology/article/55325215/cvsa-releases-2025-international-roadcheck-results",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Brake Systems (3,304) plus 20% Defective Brakes (2,257) = 41.1% of vehicle OOS violations; tires 2,899 violations = 21.4%; top five were Brake Systems, Tires, 20% Defective Brakes, Lights, Cargo Securement, with no percentage given for the last two",
+      "source_url": "https://www.fleetmaintenance.com/equipment/safety-and-technology/article/55325215/cvsa-releases-2025-international-roadcheck-results",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kodiak pilot (with Drivewyze and Texas DPS from April 2023): 1,000+ assets inspected, 525+ defects, 5% on tractors / 95% on trailers, 59% of partners' trailers passed the enhanced zero-defect inspection vs 70% passing a traditional DVIR",
+      "source_url": "https://kodiak.ai/news/enhanced-inspections",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kodiak: 137 defects across 160+ enhanced inspections of customer trailers, 46% tire-related, 10% lights; 38 minutes for a combination vehicle, 32 tractor-only, 20 trailer-only, vs 15-20 minutes for a properly performed driver pre-trip",
+      "source_url": "https://kodiak.ai/news/enhanced-inspections",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ATRI 2025 cost report on 2024 data: $2.260 average cost per mile, non-fuel marginal cost +3.6% to $1.779 (highest recorded), truckload operating margin -2.3%, margins below 2% in every sector except LTL, capacity -2.2%, empty miles 16.7%",
+      "source_url": "https://truckingresearch.org/2025/07/new-atri-report-shows-trucking-profitability-severly-squeezed-by-high-costs-low-rates/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CargoNet 2024: 3,625 reported incidents in US and Canada, +27% vs 2023, average value $202,364 up from $187,895, trailer burglaries and full trailer theft elevated in major metros including New York City",
+      "source_url": "https://www.cargonet.com/news-and-events/cargonet-in-the-media/2024-theft-trends/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BLS OOH: median pay $58,640/year ($28.19/hour) in May 2025, 2,221,200 jobs; the brief's derived 'about $7 of driver time for a 15-minute walkaround' is arithmetically consistent and labeled an inference",
+      "source_url": "https://www.bls.gov/ooh/transportation-and-material-moving/heavy-and-tractor-trailer-truck-drivers.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ MVC: heavy-duty diesel vehicles 18,000 lb GVWR or more must be tested for smoke emissions annually at a licensed Diesel PIF within 90 days of registration or renewal",
+      "source_url": "https://www.nj.gov/mvc/inspection/dieselemission.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County 2024 QCEW (private ownership, annual averages): NAICS 484 = 609 establishments / 7,065 employees; 4841 = 504 / 5,573; 48411 = 220; 4842 = 105; 493110 = 222 establishments / 24,202 employees",
+      "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJTPA Middlesex profile: more than 1,300 warehousing/distribution buildings and nearly 400 manufacturing buildings, six warehouse buildings above 1 million sq ft, 39 between 500,000 and 1 million sq ft, 765 facilities receiving 11.7 million tons and shipping 12.2 million tons annually; industrial-building inventory sourced to CB Richard Ellis with 2007 freight data (2010 baseline)",
+      "source_url": "https://njtpa.org/wp-content/uploads/2026/01/Freight-Profile-Middlesex-County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Whip Around pricing: Standard (Inspect) $5 per asset per month billed annually, Pro (Maintain) $10 per asset per month billed annually, free Basic plan for one asset",
+      "source_url": "https://help.whiparound.com/en/articles/6925626-how-whip-around-s-plans-work",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Fleetio pricing: $4 / $7 / $10 per vehicle per month (Essential / Professional / Premium) billed annually at a 5-asset band, $5 for Essential if billed monthly",
+      "source_url": "https://www.fleetio.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NVIDIA Jetson Orin Nano Super Developer Kit at $249, down from $499, 8GB module, 67 INT8 TOPS",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ubiquiti UniFi G5 Bullet 2K PoE camera 'From $129.00' with $151.00 shown as the surcharges-included higher price; no bundle/3-pack price on the page",
+      "source_url": "https://store.ui.com/us/en/category/physical-security-bullet",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 34:6B-22 (P.L. 2021, c.449, approved Jan. 18, 2022): knowingly using a tracking device in a vehicle used by an employee without written notice carries civil penalties up to $1,000 first violation and $2,500 each subsequent; 'tracking device' limited to a device designed or intended for the sole purpose of tracking movement",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d) one-party consent exception with the criminal/tortious/other injurious act carve-out, and 2A:156A-3 makes unlawful interception a third-degree crime",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Lewis v. Lytx (BIPA, dash cams with MV+AI): $4,250,000 settlement fund, class of individuals present in Illinois who operated a Lytx DriveCam-equipped vehicle between Oct. 12, 2016 and Jan. 1, 2025, Lytx denies wrongdoing",
+      "source_url": "https://www.lytxsettlement.com/faqs/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDPA (P.L. 2023, c.266): applies at 100,000 consumers or 25,000 consumers plus data-sale revenue; 'consumer' excludes a person acting in a commercial or employment context; biometric definition excludes photographs and audio/video recordings unless generated to identify a specific individual; sensitive data requires consent",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A1488 (2024-2025 session) would require common-entryway notice for biometric surveillance, with $5,000 first-offense / $10,000 subsequent penalties and a crime for a pattern of violations; introduced text only, not enacted",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2024/A1500/1488_I1.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "MMAD benchmark: best commercial model (GPT-4o) reached 74.9% average accuracy on industrial anomaly questions, 39,672 questions over 8,366 images, authors say it falls far short of industrial requirements; accepted ICLR 2025",
+      "source_url": "https://arxiv.org/abs/2410.09453",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ATRI driver-facing camera research: 2.24 on a 0-10 scale among 650 current users, approval up 87% when footage used for proactive safety measures, insurers/attorneys prefer event-based over continuous recording and access limited to safety managers",
+      "source_url": "https://truckingresearch.org/2023/04/new-atri-research-identifies-strategies-for-improving-driver-facing-camera-approval-and-utilization/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NIOSH NOIRS 2015 abstract: 158 on-board video systems at 7 sites over 17 months, ~237,000 usable trigger events, RR=0.47 (p<0.001) for intervention vs RR=0.93 (p=0.44) control, described as preliminary; CDC Stacks lists Peer Reviewed: False, pp. 62-63",
+      "source_url": "https://stacks.cdc.gov/view/cdc/181664",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO repository license is AGPL-3.0",
+      "source_url": "https://raw.githubusercontent.com/ultralytics/ultralytics/main/LICENSE",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate NVR: local real-time object detection, all processing local ('camera feeds never leave your home'), zones and object tracking, Home Assistant/MQTT integration",
+      "source_url": "https://frigate.video/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-1.6B: 1.6B parameters, 32,768-token context, improved OCR and multi-image handling, GGUF build for llama.cpp/CPU inference",
+      "source_url": "https://huggingface.co/LiquidAI/LFM2.5-VL-1.6B",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Samsara DVIR page: AI checks photo accuracy, drivers being near the vehicle and photos being of actual vehicle components; no price on the page",
+      "source_url": "https://www.samsara.com/products/telematics/dvir",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Motive driver-experience page: custom electronic DVIRs per vehicle/asset type, documents, dispatch and driver messaging; no price and no dash-cam/ELD integration detail on that page",
+      "source_url": "https://gomotive.com/products/driver-experience/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BlackBerry Radar H2 is sold on AWS Marketplace as a 36-month contract priced per unit with connectivity and hosted cloud bundled in, with no per-unit figure visible on the page",
+      "source_url": "https://aws.amazon.com/marketplace/pp/prodview-qjtlfrnlgqxme",
+      "result": "confirmed"
+    },
+    {
+      "claim": "UVeye: '1,200+ systems' deployed worldwide (vendor claim, rated Low) plus a heavy-duty truck offering; no published price",
+      "source_url": "https://www.uveye.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Negative finding: no New Jersey statute confirmed requiring notice for silent video-only workplace surveillance, attributed to a secondary source rather than primary text",
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fit_score sub-scores 14/13/8/12/8/8 sum to the stated total of 63",
+      "source_url": "avenue.json (internal arithmetic check of the brief itself)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

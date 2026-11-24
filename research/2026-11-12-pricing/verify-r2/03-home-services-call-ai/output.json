@@ -1,0 +1,193 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Smith.ai AI-first entry, contract_terms: \"10% discount for a 12-month term; 30-day money-back guarantee (refund of plan and add-ons up to $1,000, overage excluded) stated on the human-first page\"",
+      "problem": "These terms are not on smith.ai/pricing/ai-receptionist, which I re-opened. That page's own contract answer says the AI Receptionist is month-to-month, 'there aren't any long-term contracts', and that cancellation requires 30 days' notice, and it offers a 6-month plan for a lower per-call rate rather than a 10% 12-month discount. The money-back guarantee and the 10% 12-month discount appear only on smith.ai/pricing/receptionists. Putting them in the AI-first entry's contract_terms presents human-first terms as AI-first terms, and the cancellation mechanics differ.",
+      "fix": "Move the 10%/12-month discount and the 30-day money-back guarantee out of the AI-first entry (leave them only in the human-first entry). For AI-first, state: 'Month-to-month, no long-term contract, 30 days' notice to cancel; 6-month plan offered for a lower per-call rate (rate not published).' Keep the caveat that the two structures are separate."
+    },
+    {
+      "claim": "price_ranges.full_service_or_custom: \"separately $2.75/call at the top of the published per-call model (ServiceTitan AI Virtual Agent)\"",
+      "problem": "Contradicted by the brief's own sourced data. ServiceTitan's page says 'usage-based, starting at $2.75 per call' — that is the floor of its range, not the top of per-call pricing generally. Smith.ai's human-first plans work out far higher per call ($300/30 = $10.00, $810/90 = $9.00, overage $11.50 on Starter), and Smith.ai AI-first Pro is $2.00/call with a $3.00 overage on Free. A reader would take away the opposite of what the sources show.",
+      "fix": "Reword to: '$2.75/call is ServiceTitan's published starting per-call rate; per-call pricing in this set runs far higher at Smith.ai (about $9-$10 per call on human-first plans, $11.50 overage on the 30-call plan).' If the point is that it is the only vendor-published per-call rate on an AI agent, say that instead."
+    },
+    {
+      "claim": "one_line: \"live human answering sits between at $159-$2,100/month\"",
+      "problem": "Unit/billing-term slip. SIAS bills $159 per 4-week cycle with 13 cycles a year — its page states '$159 every 4 weeks is about $172 per calendar month' — so $159 is not a monthly price. The offerings entry gets this right; the summary sentence does not, and the summary sentence is what gets reused.",
+      "fix": "Change to 'live human answering runs $172-$2,100 per calendar month ($159 per 4-week cycle at SIAS, $2,100 for Smith.ai human-first Pro)', or add '(~$172/calendar month)' after $159."
+    },
+    {
+      "claim": "buyer_reported_costs, Reprise AI case study: \"A Tampa HVAC contractor reportedly paid $1,400/month ... year: 2026\"",
+      "problem": "The $1,400/month figure and the 'bilingual answering service' context are on the page and check out, but the page carries no date and contains no occurrence of '2026' (nor any year), so the stated year is unsupported. Check 3 requires the year to come from the source.",
+      "fix": "Set year to 'not stated on page' for that entry (as the two Reddit entries already do), or date it only if a published/updated date can be found."
+    },
+    {
+      "claim": "one_line low band \"self-serve AI at $49-$150/month\" versus price_ranges.low_cost_self_serve \"$29-$150/month\"",
+      "problem": "Internal inconsistency: the summary excludes the $29 Jobber AI Receptionist add-on that the range text uses as its floor, and the range text also pulls Goodcall Starter/Frontdesk in at $79-$99 while Goodcall's own $129/$299 self-serve tiers sit in the mid band. The band boundaries can be read two ways.",
+      "fix": "Use one figure in both places ($29-$150, flagged that the $29 is a third-party-sourced add-on), and add one clause saying Goodcall's $129/$299 self-serve tiers are counted in the mid band because they include job booking and multi-tool integration, not because of price."
+    },
+    {
+      "claim": "price_ranges.mid_market top anchor: \"90 calls (Smith.ai human-first Basic $810)\" inside a band described as \"trades-focused AI CSR or hybrid human/AI desk\"",
+      "problem": "The price is correct, but Smith.ai's human-first Basic is a live-human receptionist plan, which the brief puts in a separate 'live human answering' band in the one_line. Using it as the top anchor of the AI/hybrid band mixes the two categories, so the $810 ceiling is a human-service price rather than an AI-CSR price.",
+      "fix": "Either relabel the band as 'trades-focused AI CSR or hybrid desk, plus live-human comparator' or cap the AI/hybrid band at the highest AI/hybrid anchor (Sameday Scale $789 / Abby Professional $599 / Smith.ai AI-first Enterprise $500) and show $810 only as the human-service comparator."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Goodcall Starter $79/mo, 100 unique customers (~150 calls), 79¢ per extra customer; Growth $129/500/26¢; Scale $299/2,000/15¢",
+      "source_url": "https://www.goodcall.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Goodcall external-tool caps 1/5/15, workers 5/10/20, team members 1/5/10, call history 30/90/unlimited days, local number included, no per-minute metering, free demo agent",
+      "source_url": "https://www.goodcall.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Rosie Professional $49/250 min, Scale $149/1,000 min, Growth $299/2,000 min; annual = 2 months free; 7-day trial",
+      "source_url": "https://heyrosie.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Rosie Website Texting add-on $50/mo with 25 conversations and $1 per additional; English & Spanish on every call; overage rate not shown",
+      "source_url": "https://heyrosie.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "My AI Front Desk Business-in-a-Box $99/mo or $79/mo billed annually, 200 voice minutes, 100 chatbot convos, 400 SMS, 1,000 overage credits, voice from 7 credits/min on Partner/Enterprise, no contracts",
+      "source_url": "https://www.myaifrontdesk.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Smith.ai AI-first: Free $0 for 25 calls then $3.00/call; Pro $150/mo at $2.00/call for 75 calls; Enterprise $500/mo at $1.67/call for 300 calls",
+      "source_url": "https://smith.ai/pricing/ai-receptionist",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Smith.ai AI-first extra-call rates: Pro $2.50/$2.30/$2.17 at 75/150/300 calls; Enterprise $2.17/$2.10 at 500/1000+ calls",
+      "source_url": "https://smith.ai/pricing/ai-receptionist",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Smith.ai AI-first contract terms include a 10% discount for a 12-month term and a 30-day money-back guarantee",
+      "source_url": "https://smith.ai/pricing/ai-receptionist",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Smith.ai human-first: Starter 30 calls $300/mo ($11.50 overage), Basic 90 calls $810/mo ($10.50), Pro 300 calls $2,100/mo ($8.50), no setup fees, month-to-month, 30-day money-back up to $1,000 excluding overage, 10% for 12 months, no charge for spam",
+      "source_url": "https://smith.ai/pricing/receptionists",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Smith.ai human-first per-call add-ons (booking $1.50, extra CRM $0.50, SMS/Slack $0.50, Teams $0.50, follow-up $0.50, conflicts $0.50, recording $0.25, Spanish $1.00, collect calls $0.50, payments $1.00, third-party intake $1.00, complex routing $1.50, custom calendaring $1.00, extended intake $1.50, extra questions $0.25) and monthly add-ons ($10 caller ID, $15 transfer destination, $5 tracking number)",
+      "source_url": "https://smith.ai/pricing/receptionists",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sameday AI Launch starts at $449/mo with 500 minutes; Scale starts at $789/mo with 1,000 minutes; Enterprise custom; overage billed at an unpublished per-minute/per-message rate; no contract terms published",
+      "source_url": "https://sameday.ai/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sameday's overage rule is missing from its own page and flagged by a third-party price tracker",
+      "source_url": "https://www.answeringprices.com/sameday/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Abby Starter $164/50 Abby Minutes, Essential $329/100, Professional $599/200, Growth $1,380/500; no setup fee; month-to-month; free trial; overage at plan's Abby Minute rate; 1 human minute = 1 Abby Minute, 1 AI minute = 0.5",
+      "source_url": "https://abby.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SIAS Starter $159 per 4 weeks/100 minutes ($0.99 extra), Growth $219/200 ($0.89), Scale $379/400 ($0.85), volume $515/560 to $960/1,200 minutes",
+      "source_url": "https://www.247answering.com/answering-service-for-hvac-and-plumbing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SIAS: no setup fee, no contract, 14-day money-back, 13 four-week cycles a year, $159 per 4 weeks is about $172 per calendar month, ~65-75 answered calls per 100 minutes, bilingual included, no billing after a patch",
+      "source_url": "https://www.247answering.com/answering-service-for-hvac-and-plumbing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Trueline IT trades plan $299/mo plus one-time $299 setup, unlimited calls under normal business use, no per-minute or overage bills, cancel anytime, no contracts, 30-day money-back",
+      "source_url": "https://truelineit.com/ai-receptionist",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell AI: usage-based from $0.07/min, $10 free credits, $0 Free plan, 20 concurrent calls included (higher on Enterprise), no contract minimum, no per-seat fees",
+      "source_url": "https://www.retellai.com/ai-answering-service/new-jersey-answering-service",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ServiceTitan AI Virtual Agent is usage-based, starting at $2.75 per call, with lower rates via volume or commitment pricing, bought on the website or through a Pro account manager",
+      "source_url": "https://www.servicetitan.com/podcasts/mastering-servicetitan/henry-cheng-interview",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ServiceTitan FSM: Starter $250, Essentials $398, The Works $498 per user/month, marked 'Prices unverified — last checked Jul 11, 2026'; median contract $1,500/yr from 19 community cost mentions; 2-year minimum, auto-renew, no mid-term downgrade; 10 documented hidden costs; phone/VoIP not included",
+      "source_url": "https://www.costbench.com/software/field-service-management/servicetitan/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hatch: pricing is platform fee plus usage, plans annual and paid monthly per location, all three tiers 'request pricing', contract length/cancellation set deal-by-deal, white-glove onboarding and 'account management and custom solutions' listed for every plan",
+      "source_url": "https://www.usehatchapp.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hatch is reported by a third-party review site at operator-reported $700-$1,500/month on annual contracts",
+      "source_url": "https://contractortoolstack.com/software/hatch/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Avoca publishes no price (avoca.ai/pricing returns 404, re-checked 24 Sep 2026); the only figures circulating are $1,000-$3,000 mid-market and $2,500-$3,500 enterprise, from ServiceAgent, a competitor, which calls them estimates; billing unit not published; certified ServiceTitan app with Housecall Pro/Google Calendar/LSA/Yelp documented",
+      "source_url": "https://www.getmacha.com/blog/avoca-ai-pricing-explained",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Rilla: $199-$349 per rep per month on an annual contract, five-seat minimum, one-time setup $1,500-$5,000, ten reps about $24,000-$42,000/yr before setup, buyer-reported, updated 24 Oct 2026",
+      "source_url": "https://www.salesask.com/alternatives/rilla/rilla-pricing-guide-2026",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jobber Core $49/$39/$29, Connect $139/$119/$99, Grow $199/$169/$149, Plus (5 users) $499/$439/$399; extra users $29; add-ons AI Receptionist $29/mo, Marketing Suite $99/mo, Pipeline $49/mo; checked 4 Nov 2026 (third-party, because jobber.com returned 403)",
+      "source_url": "https://api.settlejob.com/jobber-pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Housecall Pro renders only an entry plan at $59/mo billed annually with 'Save $20/mo', 14-day free trial, no credit card; no CSR AI add-on price shown",
+      "source_url": "https://www.housecallpro.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A Tampa HVAC contractor's previous bilingual answering service cost $1,400/month (vendor case study)",
+      "source_url": "https://www.reprisesai.com/case-studies/hvac-contractor-after-hours-voice-agent",
+      "result": "confirmed"
+    },
+    {
+      "claim": "That Reprise AI case study dates the $1,400/month figure to 2026",
+      "source_url": "https://www.reprisesai.com/case-studies/hvac-contractor-after-hours-voice-agent",
+      "result": "not found"
+    },
+    {
+      "claim": "A 5-person plumbing company paid $149/month for an AI receptionist and recovered about $4,000/month, with about 8 extra booked estimates per week by month two (published 2026-02-15)",
+      "source_url": "https://agentergon.com/blog/case-study-plumber-saves-4000-per-month-with-ai",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Goodcall's page asserts a live answering service runs about $1.50 to $1.90 a minute (vendor comparison, not independent)",
+      "source_url": "https://www.goodcall.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The three price bands are built only from the sourced tier prices and the third-party/competitor estimates named, and are labeled inference",
+      "source_url": "https://www.goodcall.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The two Reddit buyer-reported figures could not be opened and are labeled unverified search-summary only",
+      "source_url": "https://www.reddit.com/r/smallbusiness/comments/1cnbbhw/how_much_does_an_answering_service_cost_for_your/",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

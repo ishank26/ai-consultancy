@@ -1,0 +1,125 @@
+{
+ "ref": "B00685",
+ "name": "Minieri Realty LLC",
+ "town": "North Brunswick, NJ",
+ "category": "Real estate agency / brokerage",
+ "status": "operating",
+ "domains": [
+  {
+   "domain": "roysellsnj.com",
+   "role": "listed on Google",
+   "final_url": "https://roysellsnj.com/ (no page loaded; Chrome error page)",
+   "result": "DNS_PROBE_FINISHED_NXDOMAIN - Chrome shows 'This site can't be reached' / 'Check if there is a typo in roysellsnj.com'; no server reached, no certificate presented, nothing renders at desktop (1280x800) or 390px phone width. www.roysellsnj.com fails to resolve the same way. Public DNS shows the delegated Cloudflare nameservers refusing queries for the zone (lame delegation), so no DNS records are being served.",
+   "screenshot_files": [
+    "shot-roysellsnj-desktop.png",
+    "shot-roysellsnj-mobile390.png"
+   ],
+   "checked_at": "2026-11-13",
+   "source_url": "https://roysellsnj.com/"
+  },
+  {
+   "domain": "newjersey2floridahomeswithroy.com",
+   "role": "alternate site promoted on the old roysellsnj.com home page (Wayback snapshot of 2025-04-09)",
+   "final_url": "https://newjersey2floridahomeswithroy.com/lander",
+   "result": "Redirects to a GoDaddy parking page reading '<domain> is parked free, courtesy of GoDaddy.com', with a 'Get This Domain' button and auto-generated 'Related Search Topics' links. No brokerage content. Viewed once at desktop 1280x900 and once at 390px phone width; nothing on the page was clicked.",
+   "screenshot_files": [
+    "shot-nj2fl-parked-desktop.png",
+    "shot-nj2fl-parked-mobile390.png"
+   ],
+   "checked_at": "2026-11-13",
+   "source_url": "https://newjersey2floridahomeswithroy.com/"
+  }
+ ],
+ "links_to_broken_domain": [
+  {
+   "place": "Google Business Profile / Maps place page 'Minieri Realty' - the Website field still shows roysellsnj.com",
+   "url": "https://www.google.com/maps/place/Minieri+Realty/@40.4668944,-74.454509,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3df5aa10aa10f:0x3795b016e499bbe6!8m2!3d40.4668944!4d-74.454509!16s%2Fg%2F11kfwnhd7d"
+  }
+ ],
+ "rdap": [
+  {
+   "domain": "roysellsnj.com",
+   "registered": "2014-09-17",
+   "expires": "2026-12-31",
+   "last_changed": "2025-11-14",
+   "registrar": "GoDaddy.com, LLC (IANA ID 146); nameservers ned.ns.cloudflare.com and wanda.ns.cloudflare.com; status client delete/renew/transfer/update prohibited; no redemption-period or pending-delete status",
+   "source_url": "https://rdap.org/domain/roysellsnj.com"
+  },
+  {
+   "domain": "newjersey2floridahomeswithroy.com",
+   "registered": "2021-04-05",
+   "expires": "2026-12-31",
+   "last_changed": "2025-11-14",
+   "registrar": "GoDaddy.com, LLC (IANA ID 146); nameservers ns63.domaincontrol.com and ns64.domaincontrol.com; status client delete/renew/transfer/update prohibited",
+   "source_url": "https://rdap.org/domain/newjersey2floridahomeswithroy.com"
+  }
+ ],
+ "likely_cause": {
+  "cause": "hosting or certificate",
+  "reasoning": "The public registration record for roysellsnj.com shows the same registration created on 2014-09-17, paid through 2026-12-31, with registrar renewal/transfer locks in place and no redemption or pending-delete status, so the name has not lapsed and shows no sign of being re-registered by someone else. The domain is delegated to Cloudflare nameservers, but a public DNS lookup returns REFUSED with the note 'Name servers refused query (lame delegation?)' from the Cloudflare addresses, which is what happens when the zone is no longer served from that account - a DNS/hosting break rather than an expired domain. Chrome's error is DNS_PROBE_FINISHED_NXDOMAIN, not a certificate warning, and no site content is shown, so nothing indicates injected spam. The Wayback Machine shows the real brokerage site live on 2025-04-09 (MLS search, broker bio), and no snapshot after that date; the last_changed date of 2025-11-14 on both domains is consistent with a renewal/account-level change. The second domain, newjersey2floridahomeswithroy.com, was already serving the GoDaddy parking redirect by 2025-07-13. Inference: the name is probably still in the owner's registrar account and the site was disconnected from its DNS/hosting.",
+  "inference": true
+ },
+ "fix_steps": [
+  {
+   "step": "Find out who holds the GoDaddy account for roysellsnj.com and the Cloudflare account whose nameservers it points to, and confirm auto-renew is on (the record shows it is paid to 31 Dec 2026).",
+   "who": "Owner (or the person/agency who built the old site)",
+   "effort_hours": "1-2",
+   "source_url": "https://rdap.org/domain/roysellsnj.com"
+  },
+  {
+   "step": "Reconnect DNS: either re-create the zone in Cloudflare and point it at new hosting, or change the nameservers back to GoDaddy's and publish there, then confirm the apex and www both load over HTTPS.",
+   "who": "Web person / hosting provider",
+   "effort_hours": "2-4",
+   "source_url": "https://dns.google/resolve?name=roysellsnj.com&type=NS"
+  },
+  {
+   "step": "If the domain turns out to be unrecoverable, stop linking to roysellsnj.com everywhere and register a new domain that is short and easy to say on the phone.",
+   "who": "Owner with web person",
+   "effort_hours": "1-2",
+   "source_url": "https://www.google.com/maps/place/Minieri+Realty/@40.4668944,-74.454509,17z"
+  },
+  {
+   "step": "Publish a small site: home, buy/sell, about, reviews and contact, with a home-valuation or showing request form, click-to-call and the licence/broker details visible.",
+   "who": "Web person (owner supplies bio, service area and listings access)",
+   "effort_hours": "8-20",
+   "source_url": "https://web.archive.org/web/20250409102948/https://roysellsnj.com/"
+  },
+  {
+   "step": "Update the website field on the Google Business Profile and the same field on the realtor.com, Zillow, LoopNet and Nestfully profiles to the working address, and retire or redirect the parked second domain.",
+   "who": "Owner (profile access) with web person",
+   "effort_hours": "1-2",
+   "source_url": "https://www.google.com/maps/place/Minieri+Realty/@40.4668944,-74.454509,17z"
+  },
+  {
+   "step": "Add monitoring: an uptime check on the home page plus a calendar reminder 60 days before the domain expiry date, so a DNS break or a lapse is noticed in days rather than months.",
+   "who": "Web person",
+   "effort_hours": "0.5-1",
+   "source_url": "https://rdap.org/domain/roysellsnj.com"
+  }
+ ],
+ "after_fix": {
+  "opportunity": "Consolidate reviews onto the Google profile and ask for one automatically after each closing (triage opportunity #3, re-checked).",
+  "evidence": "The Google Maps place page I opened on 2026-11-13 showed contact details, hours and business attributes but no star rating or review count in the visible panel, while search results describe reviews sitting on realtor.com (5.0 from 8) and Zillow (5.0 from 6). Reviews split across portals carry less weight than the same dozen on the profile customers see first.",
+  "source_url": "https://www.google.com/maps/place/Minieri+Realty/@40.4668944,-74.454509,17z"
+ },
+ "severity": "High",
+ "severity_reason": "The one website link customers can find - the field on the Google Business Profile - leads to a browser error page, and the domain currently serves no DNS, so there is no reachable listing search, service description or enquiry form. The business itself is operating (Google shows it open, with hours and a working phone), so this is a lead-flow and credibility problem rather than a closed business.",
+ "audit_md": "# Website Health Check: Minieri Realty LLC\n\n**What we saw on 13 November 2026**\n\n- The Google Business Profile for Minieri Realty, 735 Georges Rd, North Brunswick, NJ 08902, lists (732) 354-1957, shows the office open, and links its Website field to roysellsnj.com.\n- roysellsnj.com does not load: Chrome reports \"This site can't be reached\" (DNS_PROBE_FINISHED_NXDOMAIN) on desktop and at phone width; www.roysellsnj.com fails too. Public DNS shows the domain's nameservers refusing queries for the zone.\n- The domain is still registered through GoDaddy until 31 Dec 2026, so the name has not lapsed - the DNS/hosting connection is what broke.\n- A second address the old site promoted, newjersey2floridahomeswithroy.com, now shows a GoDaddy parking page with a \"Get This Domain\" button and keyword links. The archive shows the real brokerage site live on 9 April 2025.\n\n**What it means for customers**\n\nSomeone who clicks the website link on the Google listing, or follows an old search result, gets an error page, so listings and the enquiry route are unreachable. The phone still works, which means calls are currently the only way in.\n\n**How to fix it**\n\n1. Confirm who holds the GoDaddy account and the Cloudflare DNS, and that auto-renew is on. (1-2 h)\n2. Reconnect DNS - rebuild the zone or move nameservers back to GoDaddy - and check apex and www over HTTPS. (2-4 h)\n3. Rebuild a small site: home, buy/sell, about, contact, with a valuation request form and tap-to-call. (8-20 h)\n4. Update the website field on the Google profile and the portal profiles; retire the parked domain. (1-2 h)\n5. Add an uptime check and a reminder before the domain renews. (0.5-1 h)\n\n**After the fix**\n\nPull the reviews now split between realtor.com and Zillow onto the Google profile and request one after each closing; the profile is the page most customers see first.\n\nPrepared from publicly available information on 13 November 2026. We did not log in to or change anything.",
+ "founder_md": "**Email draft**\n\nSubject: Minieri Realty's website link is showing an error page\n\nHello Roy,\n\nI looked at Minieri Realty's listing on Google this week and the website link there (roysellsnj.com) does not load - visitors get Chrome's \"This site can't be reached\" page, at desktop and phone width alike. The public domain record still shows roysellsnj.com registered and paid through December 2026, so this looks like a DNS or hosting disconnection rather than a lost name, but the Google listing still points customers to it. I have desktop and phone screenshots of what a customer sees today and of a second domain, newjersey2floridahomeswithroy.com, which now shows a GoDaddy parking page, and I can show you both if that is useful.\n\n**Walk-in / phone opener**\n\n\"Hi Roy - I was checking how Minieri Realty shows up on Google and the website link there is landing on an error page; the domain still looks paid up, so it is probably a DNS fix, and I have screenshots of exactly what customers see.\"\n\n**Sources**\n\n- Google Business Profile / Maps place page (name, address, phone, hours, website field): https://www.google.com/maps/place/Minieri+Realty/@40.4668944,-74.454509,17z\n- roysellsnj.com live test: https://roysellsnj.com/ (screenshots shot-roysellsnj-desktop.png, shot-roysellsnj-mobile390.png)\n- DNS query for roysellsnj.com nameservers (REFUSED / lame delegation): https://dns.google/resolve?name=roysellsnj.com&type=NS\n- RDAP, roysellsnj.com: https://rdap.org/domain/roysellsnj.com\n- RDAP, newjersey2floridahomeswithroy.com: https://rdap.org/domain/newjersey2floridahomeswithroy.com\n- Parked second domain: https://newjersey2floridahomeswithroy.com/ (screenshots shot-nj2fl-parked-desktop.png, shot-nj2fl-parked-mobile390.png)\n- Wayback snapshot of the live site, 9 April 2025 (MLS search, broker bio, mention of the Florida domain): https://web.archive.org/web/20250409102948/https://roysellsnj.com/\n- Wayback snapshot of the parked second domain, 13 July 2025: https://web.archive.org/web/20250713064103/https://newjersey2floridahomeswithroy.com/\n- Wayback index of roysellsnj.com captures: https://web.archive.org/cdx/search/cdx?url=roysellsnj.com&output=json\n- realtor.com agent profile and Zillow profile (review counts, mobile number) - seen only as search results, pages blocked to direct checks on the day: https://www.realtor.com/realestateagents/56b8e609bb954c01006b238a ; https://www.zillow.com/profile/Roy%20Minieri\n\n**Open questions**\n\n- Who actually holds the GoDaddy login for roysellsnj.com and the Cloudflare account its nameservers point to, and is that person or agency still reachable?\n- Was the site deliberately taken down (ended hosting/web contract) or did it break unexpectedly?\n- Does he want to keep roysellsnj.com as the public address, and is newjersey2floridahomeswithroy.com still needed for the Florida referral angle?\n- Does he have IDX/MLS feed access to reuse on a new site, and who provides it?\n- Are the Google profile and the realtor.com/Zillow/LoopNet profiles under his own login, or a portal's?",
+ "caveats": [
+  "Likely cause is an inference from public records, not a statement by the owner: the domain is registered and paid through 2026-12-31 with locks in place and the original 2014 registration date, while its delegated nameservers refuse queries - consistent with the site's DNS zone being removed or the hosting disconnected.",
+  "The GoDaddy parking page shows a 'Get This Domain' button, which appears on GoDaddy parking pages generally; it does not establish that the domain is actually listed for sale.",
+  "Review counts (5.0 from 8 on realtor.com, 5.0 from 6 on Zillow) come from search-result summaries only; both pages blocked direct checks on 2026-11-13, so the figures were not confirmed on the pages themselves.",
+  "The Google Maps page displayed a limited view with no rating or review count, so the profile's own review state is not confirmed.",
+  "Registrant identity is behind the registrar's public record and was not pursued; who holds the accounts is unknown."
+ ],
+ "data_gaps": [
+  "realtor.com agent profile returned HTTP 429 / blank page to both fetch and browser; could not confirm its website field or review count",
+  "Zillow profile showed a 'Press & Hold to confirm you are a human' bot check; not attempted, so its website field is unverified",
+  "LoopNet broker profile returned 'Access Denied' from its CDN",
+  "Nestfully office page sat behind a Cloudflare security check that did not clear; office vs mobile numbers there are unverified (the office number is confirmed on Google Maps)",
+  "Google web search returned a CAPTCHA (/sorry/ page) and DuckDuckGo returned a bot puzzle, so which search results currently list roysellsnj.com could not be checked directly",
+  "No Facebook page or BBB profile for the business could be found or opened, so social/directory links to the broken domain are unconfirmed",
+  "No Wayback captures of roysellsnj.com after 2025-04-09, so the exact date the site stopped loading is unknown"
+ ]
+}

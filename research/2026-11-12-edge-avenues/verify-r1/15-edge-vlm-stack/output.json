@@ -1,0 +1,117 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Rhombus 'MSRP USD 848 per camera (R120 dome at $399 + $149 licence)'",
+      "problem": "Contradicted by the cited page. The R120 Mini Dome is $399 + $149 licence = $548 total; $848 is the R150 Mini Split Camera total ($699 + $149). The $848 figure is also reused in risks ('Rhombus at ~$848/camera all-in') and in the gap section, so one arithmetic error propagates to the competitor comparison that the whole pitch is priced against.",
+      "fix": "Change to 'R120 dome $399 + $149 licence = $548/camera (MSRP); R150 mini split is $848 all-in'. Recompute the Rhombus comparison in risks and gap_for_local_installer."
+    },
+    {
+      "claim": "Gemma 4 E2B: 'In Liquid's benchmark table it trails on screen understanding (ScreenSpot-v2 51.2 vs 80.7)' and '5.1B total params with ~2.3B effective'",
+      "problem": "Numbers attributed to the wrong model. In Liquid's table the ScreenSpot-v2 average of 51.2 belongs to gemma-4-E4B-it (8B); gemma-4-E2B scores 28.1 desktop / 42.9 mobile / 22.4 web (~31 average). Google's Gemma 4 blog says E2B 'activates an effective 2 billion' parameters, not ~2.3B (5.1B total is only in Liquid's table, not the cited Google page).",
+      "fix": "Either quote E2B's own ScreenSpot-v2 splits, or relabel the 51.2 figure as E4B and cite the Liquid table as the source for both numbers; change '~2.3B effective' to '~2B effective' and cite Liquid for the 5.1B total."
+    },
+    {
+      "claim": "Retail shrink 'about 1.6% of sales, roughly $112.1 billion, in fiscal 2022' cited to Retail Dive",
+      "problem": "The cited Retail Dive article does not contain either number. It only says NRF will not publish a 2024 report and that the latest figures are in the 2023 survey reflecting 2022 data. The figures are real (NRF's 2023 National Retail Security Survey reports 1.6% and $112.1B for FY2022) but the citation does not support them.",
+      "fix": "Cite the NRF 2023 National Retail Security Survey (or NRF's 'Shrink Accounted for Over $112 Billion' release) for 1.6%/$112.1B, and keep Retail Dive only for the 'no fresher national number exists' point."
+    },
+    {
+      "claim": "Food workers washed hands correctly in 'about 27% of observed situations (321 food workers observed)'",
+      "problem": "Not found on the cited CDC page. The CDC page states workers wash 'about one in three times' and gives no 27% figure and no 321-worker sample. The number and sample appear to come from a separate J. Food Protection observation study that is named in the year field but not cited by URL.",
+      "fix": "Add the J. Food Protection study URL (with its own year and sample) for 27%/321 workers, or replace the figure with CDC's 'about one in three'."
+    },
+    {
+      "claim": "'733 workers died from workplace violence in 2024, including 470 homicides'",
+      "problem": "Misstated. BLS CFOI 2024 reports 733 fatalities due to 'violent acts', of which 470 were homicides and 263 were suicides. Presenting all 733 as violence deaths overstates the figure by 263. Separately, 'retail trade recorded 80 workplace homicides' could not be verified: the cited AFL-CIO PDF exceeds the fetch size limit and the BLS CFOI release I opened gives no industry breakdown.",
+      "fix": "Say '733 fatalities from violent acts in 2024, including 470 homicides' and source the retail-trade homicide count to the BLS CFOI industry table (or drop it)."
+    },
+    {
+      "claim": "Coral USB Accelerator 'USD 59.99 list; USD 86.68 at Mouser'",
+      "problem": "Unsupported by the cited URL. coral.withgoogle.com/products/accelerator/ now redirects to developers.google.com/coral, which is a developer landing page with no product price at all. No list price could be confirmed.",
+      "fix": "Cite an actual retailer listing with a date for the Coral price (or Mouser only), or mark the price as 'unverified, last seen $59.99-$87' and keep it out of the hard cost table."
+    },
+    {
+      "claim": "Legal: 'I found no New Jersey statute requiring general notice or signage for ordinary workplace video cameras' with confirmed: true",
+      "problem": "Marked as confirmed while the supporting source is a secondary legal summary plus the text of a narrower tracking-device statute (N.J.S.A. 34:6B-22, which I verified: $1,000 first / $2,500 subsequent penalty, written notice required). A negative finding cannot be 'confirmed' from that evidence, and the brief's own caveat says to get counsel sign-off.",
+      "fix": "Set confirmed to false or 'unverified - secondary source only' for this row, and reflect that in the legal_risk_low sub-score rationale."
+    },
+    {
+      "claim": "Frigate+ 'USD 50/year including 12 model trainings/year (price not displayed on the page I opened; 12 trainings/year confirmed in docs)'",
+      "problem": "The Frigate+ FAQ I reopened confirms the tens-of-thousands-of-examples claim, the custom-label limitation, local processing, and the commercial-licence terms, but it contains no '12 trainings/year' and no price. So '12 trainings/year confirmed in docs' is not supported by the cited page either.",
+      "fix": "Cite the specific Frigate+ page/section that states the training allowance, or move both the price and the 12-trainings figure into data_gaps as unverified."
+    },
+    {
+      "claim": "Study types: UCVL (arXiv 2502.09325) and SurveillanceVQA-589K (arXiv 2505.12589) labelled 'peer-reviewed'; UCVL temporal grounding 'best untuned ~26%'",
+      "problem": "Both are cited as arXiv preprints with no acceptance evidence on the abstract pages I opened, so 'peer-reviewed' is unsupported (the SurveillanceVQA abstract also confirms 589,380 QA pairs, 12 question types and 8 LVLMs, but the UCVL abstract does not contain the ~26% temporal-grounding number).",
+      "fix": "Change study_type to 'preprint' unless a venue is cited, and either source the ~26% temporal-grounding figure to the paper's results table or mark it as unverified."
+    },
+    {
+      "claim": "GoodTrack: '632 POS-integrated orders confirmed 26 scan-avoidance incidents (~1 per 24 orders)', study_type peer-reviewed",
+      "problem": "Could not verify: the ScienceDirect article returns HTTP 403 to fetch and the search index only surfaced the title ('A vision-based system for monitoring scan-avoidance and anomalies at retail checkouts'). Neither the 632-order sample nor the 26 incidents could be confirmed from any page I could open.",
+      "fix": "Cite an accessible copy (preprint, author page, or DOI landing page) for the sample and incident count, or flag both numbers as unverified in data_gaps."
+    },
+    {
+      "claim": "Hardware prices: Hailo-8 M.2 'USD 234' (Advantech), Dahua IPC-T54IR-AS-S3 'USD 219.99' (EmpireTech), Raspberry Pi AI Kit 'was USD 70'",
+      "problem": "Not verifiable. The Advantech page extracted incompletely (471 of 4,296 visible characters), the EmpireTech collection page is a rotating product list, and the Raspberry Pi post I opened confirms the Pi 5 8GB at $95 but says nothing about the AI Kit price.",
+      "fix": "Replace with a saved screenshot/dated retailer URL per item, or mark these three as 'approx, unverified' rather than quoting exact dollars in the pilot bill of materials."
+    },
+    {
+      "claim": "NJ minimum wage '$15.23 for businesses with fewer than six employees'",
+      "problem": "The cited NJDOL release confirms $15.92 for most employees and $15.23 for 'seasonal and small employers', but does not state the fewer-than-six-employee definition; that comes from statute, not this source.",
+      "fix": "Add the statutory definition citation (N.J.S.A. 34:11-56a4) or write 'small and seasonal employers' as the release does."
+    },
+    {
+      "claim": "fit_score legal_risk_low = 12/15 while the legal section shows unresolved NJ notice question, criminal exposure zones, FTC accuracy-claim risk and NLRA risk",
+      "problem": "Sub-scores sum correctly (15+13+9+13+12+9 = 71) and are inside plausible ranges, but a 12/15 'legal risk is low' score is hard to reconcile with a section whose first row is explicitly unconfirmed and whose own caveat requires counsel sign-off before contract use; the score reads as evidence of a cleaner legal position than the brief actually established.",
+      "fix": "Either drop legal_risk_low to ~10/15 (and adjust total to 69), or add the confirming primary sources for the notice and biometric negatives so 12/15 is earned."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "NJ security guards median $18.69/hr, $38,880/yr, middle 50% $16.71-$23.14 (2025 OEWS)", "source_url": "https://www.onetonline.org/link/localwages/33-9032.00?st=NJ", "result": "confirmed"},
+    {"claim": "NJ minimum wage $15.92 (Jan 1 2026); $15.23 for small/seasonal employers", "source_url": "https://www.nj.gov/labor/lwdhome/press/2025/20251001_Minimum_Wage.shtml", "result": "confirmed"},
+    {"claim": "Middlesex County 25,042 establishments; 2,282 retail; 1,752 accommodation/food; 1,305 transportation/warehousing; 5,036 health care", "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf", "result": "confirmed"},
+    {"claim": "Middlesex median all-occupation wage $27.55; cashiers $16.30; retail salespersons $17.29; hand packers $20.56; transportation/warehousing employment +26.1% 2018-2024", "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf", "result": "confirmed"},
+    {"claim": "Retail shrink 1.6% and $112.1B in FY2022, cited to Retail Dive", "source_url": "https://www.retaildive.com/news/no-nrf-annual-retail-shrink-report-2024/729009/", "result": "not found"},
+    {"claim": "Food workers wash hands when they should about one in three times (27% / 321 workers as cited)", "source_url": "https://www.cdc.gov/restaurant-food-safety/php/practices/handwashing.html", "result": "contradicted"},
+    {"claim": "733 workplace-violence deaths in 2024 including 470 homicides", "source_url": "https://www.bls.gov/news.release/cfoi.nr0.htm", "result": "contradicted"},
+    {"claim": "733 fatalities due to violent acts, 470 homicides, 263 suicides (BLS CFOI 2024)", "source_url": "https://www.bls.gov/news.release/cfoi.nr0.htm", "result": "confirmed"},
+    {"claim": "Retail trade recorded 80 workplace homicides (2024, via AFL-CIO)", "source_url": "https://aflcio.org/sites/default/files/2026-04/485%20DOTJ_2026%20FIN-NBUG%20rev.pdf", "result": "could not open"},
+    {"claim": "General warehousing and storage 2024 TRC rate 4.9 per 100 FTE (4.3 DART)", "source_url": "https://www.bls.gov/web/osh/table-1-industry-rates-national.htm", "result": "not found"},
+    {"claim": "Census BTOS: 19.8% of firms used AI as of May 3 2026; retail ~14%; no significant change for firms under 20 employees; <20% for firms with 4 or fewer", "source_url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html", "result": "confirmed"},
+    {"claim": "Rhombus R120 dome + licence = $848 per camera", "source_url": "https://www.rhombus.com/pricing/", "result": "contradicted"},
+    {"claim": "Rhombus Relay N100 $2,999, up to 10 camera streams, 20-40 days storage per camera, 10-year warranty", "source_url": "https://www.rhombus.com/pricing/", "result": "confirmed"},
+    {"claim": "Ultralytics Platform Free $0, Pro $29/seat/month with $30/seat/month credits, Enterprise custom, AGPL-3.0 on platform plans", "source_url": "https://www.ultralytics.com/pricing", "result": "confirmed"},
+    {"claim": "AWS Rekognition Custom Labels $1/training hour, $4/inference hour, billed while provisioned even when idle, 2 training + 1 inference hour free for 12 months", "source_url": "https://aws.amazon.com/rekognition/pricing/", "result": "confirmed"},
+    {"claim": "Frigate+ FAQ: model trained on your images alone would need tens of thousands of examples; custom classes not supported; commercial licence needed to power customers' sites", "source_url": "https://docs.frigate.video/plus/faq/", "result": "confirmed"},
+    {"claim": "Frigate+ 12 trainings/year and USD 50/year", "source_url": "https://docs.frigate.video/plus/faq/", "result": "not found"},
+    {"claim": "Frigate hardware: Hailo-8 YOLOv6n ~7 ms / Hailo-8L ~11 ms; ssd mobilenet ~6/~10 ms; Intel N100 YOLO small ~30 ms at 320; Intel NPU ~30 ms at 640; Jetson typically 20-40 ms; Coral ~10 ms with 1000/inference-ms fps cap", "source_url": "https://docs.frigate.video/frigate/hardware/", "result": "confirmed"},
+    {"claim": "RF-DETR nano ~33-40 ms on Intel NPU/Arc A310 at 320px, ~90 ms on AMD 9060XT", "source_url": "https://docs.frigate.video/frigate/hardware/", "result": "confirmed"},
+    {"claim": "YOLO26n OpenVINO INT8 4.24 ms/image at mAP50-95 0.4634 on Intel Core Ultra X7 358H", "source_url": "https://docs.ultralytics.com/integrations/openvino/", "result": "confirmed"},
+    {"claim": "LFM2.5-VL-3B: 3.1B params, SigLIP2 400M NaFlex, ~3 GB memory, 228 tok/s M5 Max, 116 tok/s Ryzen AI Max+ 395, 20 tok/s Galaxy S26 Ultra, RefCOCO 87.9, POPE 88.7", "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b", "result": "confirmed"},
+    {"claim": "Qwen3.5-4B averages 70.1 vs 69.4 for LFM2.5-VL-3B at 4.7B params", "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b", "result": "confirmed"},
+    {"claim": "Qwen announced small multimodal Qwen3.5 sizes in Feb 2026", "source_url": "https://qwen.ai/blog?id=qwen3.5", "result": "could not open"},
+    {"claim": "Gemma 4 E2B 5.1B total/~2.3B effective; ScreenSpot-v2 51.2 vs 80.7", "source_url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/", "result": "contradicted"},
+    {"claim": "CAPTURE (ICCV 2025): GPT-4o 14.75% error on real occluded images, Molmo 32.5%, humans near-zero, all models worse under occlusion", "source_url": "https://openaccess.thecvf.com/content/ICCV2025/papers/Pothiraj_CAPTURE_Evaluating_Spatial_Reasoning_in_Vision_Language_Models_via_Occluded_ICCV_2025_paper.pdf", "result": "confirmed"},
+    {"claim": "LFM2.5-VL-3B on Jetson Orin NX 16GB Q8_0: 2.35 s to first answer, 20.7 tok/s, 2 cameras within 3 s, 4 cameras 12.2 s", "source_url": "https://whitepapers.openzeka.com/vlm-inference-benchmarks/lfm2-5-vl-3b/jetson-orin-nx-16gb/q8-0-llama-cpp/", "result": "confirmed"},
+    {"claim": "Surveillance video volume 'far exceeding the capacity for human monitoring'; 4 open VLMs on UCF-Crime/RWF-2000; privacy filters degrade accuracy; NeurIPS 2025 workshop", "source_url": "https://arxiv.org/abs/2510.23190", "result": "confirmed"},
+    {"claim": "UCVL benchmark: 1,829 videos, six question types, eight models 0.5B-40B, LLaVA-OneVision fine-tune improves", "source_url": "https://arxiv.org/abs/2502.09325", "result": "confirmed"},
+    {"claim": "UCVL: temporal grounding weakest skill, best untuned ~26%", "source_url": "https://arxiv.org/abs/2502.09325", "result": "not found"},
+    {"claim": "CCTV field study: ~55% of target behaviours detected", "source_url": "https://www.sciencedirect.com/science/article/pii/S0003687014001847", "result": "could not open"},
+    {"claim": "GoodTrack: 632 POS-integrated orders, 26 confirmed scan-avoidance incidents", "source_url": "https://www.sciencedirect.com/science/article/abs/pii/S0952197626024930", "result": "could not open"},
+    {"claim": "N.J.S.A. 34:6B-22 vehicle tracking notice: civil penalty up to $1,000 first, $2,500 each subsequent", "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM", "result": "confirmed"},
+    {"claim": "NJ one-party consent under the Wiretap Act with criminal/tortious-purpose exception; 2C:14-9 bathroom/dressing-room recording is a third-degree crime", "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/", "result": "confirmed"},
+    {"claim": "NJ Data Privacy Law defines 'consumer' to exclude 'a person acting in a commercial or employment context'", "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM", "result": "confirmed"},
+    {"claim": "NLRB GC 25-05 dated 02/14/2025 is a 'Rescission of Certain General Counsel Memoranda'; GC 23-02 listed as rescinded by it", "source_url": "https://www.nlrb.gov/guidance/memos-research/general-counsel-memos", "result": "confirmed"},
+    {"claim": "Jetson Orin Nano Super Developer Kit $249, 67 INT8 TOPS, 102 GB/s, 8GB", "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/", "result": "confirmed"},
+    {"claim": "Beelink EQ13 N100 $249.99", "source_url": "https://www.notebookcheck.net/Beelink-EQ13-Quiet-mini-PC-now-available-for-pre-order.844642.0.html", "result": "confirmed"},
+    {"claim": "Raspberry Pi 5 8GB $95", "source_url": "https://www.raspberrypi.com/news/1gb-raspberry-pi-5-now-available-at-45-and-memory-driven-price-rises/", "result": "confirmed"},
+    {"claim": "Raspberry Pi AI Kit was $70", "source_url": "https://www.raspberrypi.com/news/1gb-raspberry-pi-5-now-available-at-45-and-memory-driven-price-rises/", "result": "not found"},
+    {"claim": "Home Assistant Green about $199", "source_url": "https://www.nabucasa.com/news/2026-01-08-green-pricing-change/", "result": "confirmed"},
+    {"claim": "Coral USB Accelerator USD 59.99 list", "source_url": "https://coral.withgoogle.com/products/accelerator/", "result": "not found"},
+    {"claim": "Hailo-8 M.2 module USD 234", "source_url": "https://buy.advantech.com/Boards-Cards/AI-Video-Solutions/model-EAI-1200-00A1.htm", "result": "could not open"},
+    {"claim": "Unsloth QLoRA minimums ~3.5 GB VRAM for 3B models", "source_url": "https://unsloth.ai/docs/get-started/fine-tuning-for-beginners/unsloth-requirements", "result": "confirmed"},
+    {"claim": "fit_score sub-scores 15+13+9+13+12+9 sum to 71", "source_url": "avenue.json (internal)", "result": "confirmed"}
+  ],
+  "confidence": "High"
+}

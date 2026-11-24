@@ -1,0 +1,65 @@
+{
+  "name": "Executive Roofing Systems",
+  "town": "Spotswood",
+  "ref": "B07400",
+  "status": "operating",
+  "website": "https://www.executiveroof.com/",
+  "what_they_do": "Commercial roofing contractor doing single-ply/flat-roof repair, replacement, inspection, new-construction roofing, 24/7 emergency leak response and preventative maintenance across New Jersey and the tri-state area. Certified with GAF, Firestone and Versico and an NRCA member, per the partner logos on the site.",
+  "customers": "Commercial building owners, property managers, facility managers and general contractors - not homeowners. Service area list covers ~379 New Jersey towns plus NY/CT.",
+  "size_signals": [
+    {"signal": "Six distinct service pages plus careers and gallery pages, GAF/Firestone/Versico certifier logos, NRCA membership, LinkedIn and Google Business presence", "source_url": "https://www.executiveroof.com/"},
+    {"signal": "Locations page lists several hundred New Jersey towns served - a multi-crew regional operation rather than a two-man shop (inference from service-area scale)", "source_url": "https://www.executiveroof.com/locations/"},
+    {"signal": "Birdeye profile aggregating 86 customer reviews for the business", "source_url": "https://reviews.birdeye.com/executive-roofing-systems-165332101098515"}
+  ],
+  "listing": {"platform": "Google (aggregated on Birdeye); GAF contractor listing also rated 4.7 from 74 reviews", "rating": "4.4", "reviews": "86", "source_url": "https://reviews.birdeye.com/executive-roofing-systems-165332101098515"},
+  "website_review": {
+    "loads": true,
+    "https": true,
+    "phone_layout": "good",
+    "clear_offer": true,
+    "primary_cta": "'Get Pricing' / 'Get A Fast Quote' (scrolls to a consultation form) plus a 'Click to Call' button in the hero",
+    "click_to_call": true,
+    "contact_form": true,
+    "online_booking_or_quote": "Three on-page forms (short contact, 'Request Consultation' with name/company/email/phone/building address/message, and a 'Service Needed?' version); all reCAPTCHA-protected; 'Make an Appointment' link points at the contact page, no real calendar",
+    "trust_signals": "Manufacturer certifications (GAF, Versico, Firestone), NRCA member badge, project gallery, testimonials section, service pages, LinkedIn feed, 24/7 emergency line",
+    "out_of_date_signs": "Address on the live site is 316 Tennent Rd, Suite 102, Morganville NJ 07751 - not the Spotswood address in the batch record; the site shows a BBB badge image, and the BBB profile (behind a bot check) could not be verified",
+    "search_basics": "Titles and descriptions are service-focused ('Top Rated Commercial Roofing Contractor in New Jersey') but push the state rather than Spotswood/Morganville; each service has its own page; town-level coverage is a single long link list, not town pages",
+    "top_issues": [
+      "Structured data stops at Organization - no LocalBusiness/RoofingContractor record with address, hours, geo or priceRange even though hours (Mon-Fri 9-5) and the address are on the page",
+      "Every quote path ends in a reCAPTCHA-protected form; no calendar booking despite a 'Make an Appointment' link",
+      "Primary listing/NAP conflict: site says Morganville, the directory record says 1 American Way, Spotswood",
+      "Service-area page is a 379-town keyword list - readable, but thin per town and not backed by any local content"
+    ]
+  },
+  "agent_readiness": {
+    "findable": 3,
+    "answerable": 3,
+    "bookable": 2,
+    "notes": "Findable: robots.txt is a Yoast default that allows everything (OAI-SearchBot/PerplexityBot/Googlebot not blocked), Yoast sitemap present, Google Business presence referenced on the site and 86 reviews aggregated. Answerable: services, service area, address, phone and hours (Mon-Fri 9-5) all exist as real text, and each service has its own page - but the JSON-LD @graph has only WebPage/ImageObject/BreadcrumbList/WebSite/Organization, with no address, hours or priceRange in the Organization node, and no published price ranges. Bookable: labelled forms (Your Name, Phone, Email, Service Needed?) and click-to-call work, but reCAPTCHA and the absence of scheduling make a fully agent-driven quote impossible."
+  },
+  "operations_signals": [
+    {"signal": "24/7 emergency leak response offering implies after-hours calls that must be triaged by a human team", "source_url": "https://www.executiveroof.com/commercial-24-7-emergency-roof-leak-response/"},
+    {"signal": "'Takes only 10 seconds to request' quote widget plus three separate forms = multiple unconnected intake channels to reconcile", "source_url": "https://www.executiveroof.com/"},
+    {"signal": "Open careers page - crews are being hired, which usually means office/estimating staff are the bottleneck too (inference)", "source_url": "https://www.executiveroof.com/careers/"}
+  ],
+  "top_opportunities": [
+    {"opportunity": "Quote-intake and triage agent: normalise the three forms, ask building/roof-type and urgency questions, schedule site visits, and hand sales a priced-scope summary - plus remove the CAPTCHA from the agent path", "type": "AI agent", "evidence": "Three separate forms (one with 'Service Needed?'), all reCAPTCHA-gated, no calendar, and a 24/7 emergency line to triage", "effort": "M"},
+    {"opportunity": "Add LocalBusiness/RoofingContractor JSON-LD with address, hours, geo, areaServed and service list, and reconcile the Spotswood vs Morganville NAP across directory listings", "type": "agent readiness", "evidence": "JSON-LD @graph contains only WebPage/WebSite/Organization with no address or hours; site address differs from the directory record", "effort": "S"},
+    {"opportunity": "Replace the 379-town link list with a handful of county/Middlesex-area pages that carry real project photos and named towns, and keep publishing the gallery/blog", "type": "search", "evidence": "Locations page is a bare alphabetical town list with no per-town content or case studies", "effort": "M"}
+  ],
+  "scores": {
+    "gap_size": 2,
+    "ability_to_pay": 4,
+    "ease": 3,
+    "evidence": 4,
+    "reasons": "Gap: this is the most mature site in the batch - service pages, certifications, CTA and click-to-call all present; the gaps are schema depth, CAPTCHA and NAP/listing hygiene. Pay: commercial roofer with a multi-state service area and hiring activity, so contract values in the tens of thousands. Ease: schema and NAP work is quick, but process automation needs their sales input. Evidence: site, forms, JSON-LD types and hours all inspected directly."
+  },
+  "sources": [
+    "https://www.executiveroof.com/",
+    "https://www.executiveroof.com/locations/",
+    "https://www.executiveroof.com/careers/",
+    "https://www.executiveroof.com/robots.txt",
+    "https://reviews.birdeye.com/executive-roofing-systems-165332101098515",
+    "https://njsubcontractors.org/members/executive-roofing-systems/"
+  ]
+}

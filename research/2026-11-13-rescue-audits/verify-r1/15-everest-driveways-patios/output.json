@@ -1,0 +1,98 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "after_fix.opportunity / caveats: \"Birdeye/HomeAdvisor show 153 Joyce Kilmer Ave, New Brunswick, (732) 784-0041\", repeated in founder_md as one of two numbers the owner should confirm",
+      "problem": "Contradicted by the source the audit itself cites. The live Birdeye page (opened today) lists the phone as (732) 784-2976 - I read it from the page data block for this profile (name 'Everest Driveways & Patios', 153 Joyce Kilmer Ave) and it is the number behind the page's 'Call us' link. (732) 784-0041 appears only on dcontrol.com, which the audit lists as HTTP 403 / not loaded, so it is attributed to the wrong sources. HomeAdvisor is still Cloudflare-blocked, so nothing there supports it either.",
+      "fix": "Replace the claim with what the pages actually show: Birdeye gives (732) 784-2976; Google gives (732) 688-7413; treat (732) 784-0041 as unverified (dcontrol blocked) or drop it. Update founder_md's open-question numbering to match, so the founder does not quote or dial the wrong number."
+    },
+    {
+      "claim": "founder_md and domains[0].screenshot_files cite shot-everestdriveways-desktop.png and shot-everestdriveways-phone.png, and the email draft offers to send screenshots of what customers see",
+      "problem": "Neither file is present in the delivered output, so the screenshots cannot be checked or attached. The underlying fact is true - I reproduced it myself in Chrome today - but the cited artefacts are missing from the package the founder would use.",
+      "fix": "Regenerate and store the two screenshots (desktop and 390 px) next to rescue.json, or drop the file names from the sources list and reword the offer only if the images exist."
+    },
+    {
+      "claim": "audit_md length",
+      "problem": "The client-facing body is 308 words against the 300-word limit (headings included); everything else in the tone is calm, plain and non-accusatory.",
+      "fix": "Trim roughly 10-15 words, e.g. shorten the 'What it means for customers' paragraph and the 'After the fix' paragraph."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "everestdriveways.com returns Chrome's 'This site can't be reached ... DNS_PROBE_FINISHED_NXDOMAIN'",
+      "source_url": "https://everestdriveways.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The .com registry holds no RDAP record for everestdriveways.com (HTTP 404)",
+      "source_url": "https://rdap.org/domain/everestdriveways.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Maps profile: 'Everest Driveways & Patios', masonry contractor, 4.4, 4400 US-9 #1000 Freehold NJ, (732) 688-7413, marked 'Claim this business', website field everestdriveways.com",
+      "source_url": "https://www.google.com/maps?cid=4428185344442792164",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye profile: 5.0 from 395 reviews, 153 Joyce Kilmer Ave New Brunswick, website https://www.everestdriveways.com/ with a 'Google' source badge, profile unclaimed",
+      "source_url": "https://reviews.birdeye.com/everest-driveways-patios-167046484373661",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye/HomeAdvisor list the phone as (732) 784-0041",
+      "source_url": "https://reviews.birdeye.com/everest-driveways-patios-167046484373661",
+      "result": "contradicted"
+    },
+    {
+      "claim": "The Birdeye page states the profile 'has not been claimed by the business owner or representative'",
+      "source_url": "https://reviews.birdeye.com/everest-driveways-patios-167046484373661",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Last Wayback capture of everestdriveways.com is 14 Feb 2026 and is a parking-style stub redirecting the browser to /lander",
+      "source_url": "https://web.archive.org/web/20260214160714/http://www.everestdriveways.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Earlier captures (Sep 2024 - Jul 2025) show the bare domain 301-redirecting to www, which answered 403",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=everestdriveways.com&output=json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "everestdrivesandpatios.com is an unrelated paving firm in Middlesex, England (0800 number, UK postcode/trustmark links)",
+      "source_url": "https://everestdrivesandpatios.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "That look-alike domain's RDAP record is GoDaddy, registered 2017-01-25, expires 2028-01-25, belonging to the UK company",
+      "source_url": "https://rdap.org/domain/everestdrivesandpatios.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "153 Joyce Kilmer Ave now appears in Google Maps only as a 'Building' with no business listing",
+      "source_url": "https://www.google.com/maps/search/153+Joyce+Kilmer+Ave,+New+Brunswick,+NJ+08901/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A Google Maps search for 732-784-0041 returns \"Google Maps can't find 732-784-0041\"",
+      "source_url": "https://www.google.com/maps/search/%22732-784-0041%22/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Phone number and opening hours still display, so customers can still call (business not closed)",
+      "source_url": "https://www.google.com/maps?cid=4428185344442792164",
+      "result": "confirmed"
+    },
+    {
+      "claim": "HomeAdvisor listing could not be loaded (HTTP 403)",
+      "source_url": "https://www.homeadvisor.com/rated.everestdrivewaysandpati.116130426.html",
+      "result": "could not open"
+    },
+    {
+      "claim": "Cause labelled 'parked' is stated as an inference, with no accusation about who let the registration lapse",
+      "source_url": "https://web.archive.org/web/20260214160714/http://www.everestdriveways.com/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

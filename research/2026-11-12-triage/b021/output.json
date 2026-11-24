@@ -1,0 +1,664 @@
+{
+  "batch": "b021",
+  "businesses": [
+    {
+      "name": "Dental Magik East Brunswick",
+      "town": "East Brunswick",
+      "ref": "B00259",
+      "status": "operating",
+      "website": "https://dentalmagik.com/",
+      "what_they_do": "General, cosmetic and emergency dental practice (cleanings, restorations, cosmetic work, second-opinion exams) built around a 'see it on screen' visual exam protocol. Site lists five service areas and 21 specialisms and sells a 'Magik Verify' visual second opinion. Single East Brunswick office.",
+      "customers": "Local families and adults in East Brunswick, Old Bridge, South Brunswick, Spotswood, Monroe and wider Middlesex County; insurance patients and dental-emergency walk-ins.",
+      "size_signals": [
+        {"signal": "Homepage badge claims '14+ Years in Practice' and '4.9 Google Rating'", "source_url": "https://dentalmagik.com/"},
+        {"signal": "Homepage claims 5 service areas and 21 specialisms under one roof", "source_url": "https://dentalmagik.com/"},
+        {"signal": "Single location at E7 Brier Hill Ct with 6 treatment days/week (Saturday limited to 2nd & 4th)", "source_url": "https://dentalmagik.com/"},
+        {"signal": "57 Google reviews at 4.9 reported on a third-party Birdeye profile", "source_url": "https://reviews.birdeye.com/dental-magik-emergency-and-cosmetic-dentistry-in-east-brunswick-165547135159344"}
+      ],
+      "listing": {"platform": "Google (rating mirrored on Birdeye)", "rating": "4.9", "reviews": "57", "source_url": "https://reviews.birdeye.com/dental-magik-emergency-and-cosmetic-dentistry-in-east-brunswick-165547135159344"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": false,
+        "primary_cta": "'Book Your Appointment' (routes to the contact form, not a scheduler)",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "No real booking engine - every 'book' button lands on /contact/ or /magik-start/, which are message forms; no scheduler iframe found",
+        "trust_signals": "4.9 Google rating badge, 14+ years claim, 'Our Work' gallery page, insurance page, named team page, patient-perspective copy",
+        "out_of_date_signs": "No stale copyright (footer says 2026), but hours conflict between pages: homepage Mon 8-1, Wed closed, Sat 8-2 (2nd/4th only) vs contact page Mon-Fri 9-6, Sat 9-2",
+        "search_basics": "Title and meta description both name dentist + East Brunswick, NJ; services have their own /services/ hub and per-service pages; nav uses branded names (Magik See, Magik Start) rather than plain service names",
+        "top_issues": [
+          "Hero headline never says dentist or dental on the phone-width first screen - only a small 'EAST BRUNSWICK, NJ' tag",
+          "Two different opening-hours blocks on the same site (homepage vs contact page) - a direct answerability problem for both patients and AI agents",
+          "No online self-scheduling despite 'Book' CTAs; all paths end in a message form or a phone number",
+          "JSON-LD has WebPage/Organization/WebSite nodes but no LocalBusiness/Dentist node with address, hours or services"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 2,
+        "answerable": 1,
+        "bookable": 1,
+        "notes": "robots.txt (Yoast block) is fully open - 'User-agent: * Disallow:' - so Googlebot, OAI-SearchBot and PerplexityBot are not blocked. Hours, address, service area and insurance are in readable text, but the two conflicting hours blocks undermine a clean answer and there are no price ranges anywhere. JSON-LD exists but only WebPage/Organization/WebSite/BreadcrumbList - no LocalBusiness or Dentist type with geo, hours or services. Bookable: contact form has labelled fields and a real Submit button, but it loads a reCAPTCHA-type script and there is no booking platform, so an agent cannot actually schedule."
+      },
+      "operations_signals": [
+        {"signal": "Site pushes emergency/same-day care and 'no call centre' messaging, implying high inbound call/message volume that lands on staff", "source_url": "https://dentalmagik.com/contact/"},
+        {"signal": "Contact form asks patients to pick a visit window (today / tomorrow / this week) - free-text scheduling intent staff must manually convert into appointments", "source_url": "https://dentalmagik.com/contact/"},
+        {"signal": "Six-day schedule with limited Saturday slots (2nd & 4th) suggests tight front-desk capacity (inference from published hours)", "source_url": "https://dentalmagik.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Add real online self-scheduling (or an agent-facing booking link) behind the existing 'Book Your Appointment' buttons", "type": "operations", "evidence": "All book CTAs route to /contact/ or /magik-start/, which are message forms; no scheduler iframe on the contact page", "effort": "M"},
+        {"opportunity": "Fix the hours conflict and publish one canonical hours/services block plus LocalBusiness JSON-LD", "type": "agent readiness", "evidence": "Homepage footer says Mon 8-1/Wed closed/Sat 8-2 (2nd & 4th); contact page says Mon-Fri 9-6/Sat 9-2; JSON-LD lacks a LocalBusiness node", "effort": "S"},
+        {"opportunity": "Rewrite the top of the homepage so service and town are stated plainly above the fold", "type": "website", "evidence": "Phone screenshot at 390px shows 'Nothing Happens Until You See It First' as the only headline; the word dentist never appears in the first screen", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 3,
+        "ability_to_pay": 4,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Site is modern and well-built, so gaps are narrow but concrete (hours conflict, no scheduler, vague hero); a multi-provider practice with 57 reviews and cosmetic/implant tickets can pay; the top fixes are small, one-person jobs."
+      },
+      "sources": [
+        "https://dentalmagik.com/",
+        "https://dentalmagik.com/contact/",
+        "https://dentalmagik.com/robots.txt",
+        "https://reviews.birdeye.com/dental-magik-emergency-and-cosmetic-dentistry-in-east-brunswick-165547135159344"
+      ]
+    },
+    {
+      "name": "Oral Surgery Group (Dental Implants & Wisdom Teeth)",
+      "town": "East Brunswick",
+      "ref": "B00260",
+      "status": "operating",
+      "website": "https://oralsurgerygroup.com/oral-surgery-east-brunswick-nj/",
+      "what_they_do": "Oral and maxillofacial surgery practice: dental implants, wisdom tooth removal, full-arch restoration, extractions and anesthesia/sedation, with referrals from general dentists. A multi-office group (East Brunswick, New Brunswick, Middlesex) practising since 1948.",
+      "customers": "Adult dental patients referred by general dentists for surgery, plus self-referring implant and wisdom-teeth patients across Middlesex County; also referring dentists themselves (a separate referral form exists).",
+      "size_signals": [
+        {"signal": "Six named oral surgeons: Engel, R. Stern, Simos, M. Stern, Tanchyk, Prabhu", "source_url": "https://oralsurgerygroup.com/oral-surgery-east-brunswick-nj/"},
+        {"signal": "'a part of Middlesex County since 1948'; three offices listed", "source_url": "https://oralsurgerygroup.com/oral-surgery-east-brunswick-nj/"},
+        {"signal": "1,461 Google reviews at 4.9 mirrored on Birdeye", "source_url": "https://reviews.birdeye.com/oral-surgery-group-146443259365815"},
+        {"signal": "Zocdoc practice profile with 157 reviews", "source_url": "https://www.zocdoc.com/practice/oral-surgery-group-84095"}
+      ],
+      "listing": {"platform": "Google (rating mirrored on Birdeye); also Zocdoc 5.0/157", "rating": "4.9", "reviews": "1,461", "source_url": "https://reviews.birdeye.com/oral-surgery-group-146443259365815"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "'Schedule Consult' (dead) and 'Contact Us' (a page with no form)",
+        "click_to_call": true,
+        "contact_form": false,
+        "online_booking_or_quote": "None - no contact form fields exist on /contact-us/, and the 'Schedule Consult' buttons are anchors with no href that do nothing when clicked",
+        "trust_signals": "Practising since 1948, six named surgeons with credentials, patient reviews page, three office locations with hours, procedure pages, Facebook reviews count",
+        "out_of_date_signs": "Dead primary CTA (two 'Schedule Consult' anchors with href=null, verified by clicking - no modal, no navigation); nav parent items 'Forms' and 'About' have null href; /forms/ returns a 404 page",
+        "search_basics": "Title 'Oral Surgery in East Brunswick, NJ | Oral Surgeon' and a meta description naming the town and procedures; each procedure has its own page; LocalBusiness JSON-LD with GeoCoordinates present and matching the address block",
+        "top_issues": [
+          "Primary conversion path is broken: 'Schedule Consult' buttons do nothing and the contact page has no form, so every inquiry must be a phone call",
+          "No price ranges, financing detail or insurance specifics in text",
+          "Mobile header exposes only search and 'Menu'; the call button and CTA are not in the first screen (phone screenshot)",
+          "Nav label 'Forms' leads to a 404 while the working forms are third-party links buried in the menu"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 3,
+        "answerable": 3,
+        "bookable": 0,
+        "notes": "robots.txt is open (only 'User-agent: *' plus a sitemap line) so Googlebot, OAI-SearchBot and PerplexityBot are allowed. Address, per-office hours, phone and email are readable text, procedure pages are text-rich, and LocalBusiness + GeoCoordinates JSON-LD matches the page - but no pricing. Bookable is 0: there is no contact form at all on /contact-us/ (zero input fields), 'Schedule Consult' is a no-op anchor, and the only online forms are an existing-patient registration and a dentist referral form, neither of which books an appointment or requests a quote."
+      },
+      "operations_signals": [
+        {"signal": "Patient intake is already digital (third-party 'Patient Registration' form) and referrals have a separate online form, but all scheduling is still by phone", "source_url": "https://oralsurgerygroup.com/oral-surgery-east-brunswick-nj/"},
+        {"signal": "1,461 Google reviews plus three offices implies a large front-desk call load with no web form or online booking as an overflow channel", "source_url": "https://reviews.birdeye.com/oral-surgery-group-146443259365815"},
+        {"signal": "Post-op care complaint appears on a third-party review site, a signal that after-surgery follow-up is handled manually per office", "source_url": "https://www.healthgrades.com/group-directory/nj-new-jersey/new-brunswick/oral-surgery-group-x58lx5"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Replace the dead 'Schedule Consult' anchors with a working consultation-request flow (form plus calendar hand-off) so implant/wisdom-teeth enquiries don't depend on a phone call", "type": "agent readiness", "evidence": "Clicked 'Schedule Consult' at desktop width: no navigation, no modal, zero input fields; /contact-us/ has no form fields", "effort": "M"},
+        {"opportunity": "Add a staff-side AI intake/phone agent to triage referral calls, capture insurance and procedure interest, and route to the right office", "type": "AI agent", "evidence": "Three offices, six surgeons, phone-only booking and 1,461-review volume with no web form to absorb overflow", "effort": "M"},
+        {"opportunity": "Fix the 404 on the 'Forms' nav item and surface patient registration/referral links on the contact page", "type": "website", "evidence": "/forms/ returns the site's 404 page; nav 'Forms' has a null href", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 4,
+        "ability_to_pay": 5,
+        "ease": 4,
+        "evidence": 5,
+        "reasons": "Highest-value practice in the batch (three offices, six surgeons, 1,461 reviews, implant-sized tickets) with a broken primary CTA and zero web intake - a clear, well-evidenced gap a small consultancy can fix quickly."
+      },
+      "sources": [
+        "https://oralsurgerygroup.com/oral-surgery-east-brunswick-nj/",
+        "https://oralsurgerygroup.com/contact-us/",
+        "https://oralsurgerygroup.com/forms/",
+        "https://oralsurgerygroup.com/robots.txt",
+        "https://reviews.birdeye.com/oral-surgery-group-146443259365815",
+        "https://www.zocdoc.com/practice/oral-surgery-group-84095"
+      ]
+    },
+    {
+      "name": "Wang Dental Care (Dr. Aihong Wang)",
+      "town": "East Brunswick",
+      "ref": "B00267",
+      "status": "operating",
+      "website": "https://www.wangdentalcare.com/",
+      "what_they_do": "Single-dentist general practice (Dr. Aihong Wang) offering hygiene, cosmetic (veneers, whitening, Lumineers), implants, endodontics, restorative, periodontic, oral surgery and Invisalign, all listed as service pages. The site is a stock dental template: home page copy is generic welcome text, and 'Meet the Doctor' and 'New Patient Forms' pages both read 'Coming Soon!'.",
+      "customers": "East Brunswick individuals and families looking for a local general/cosmetic dentist; the practice states it is always accepting new patients.",
+      "size_signals": [
+        {"signal": "One dentist (Dr. Aihong Wang) and one address at 1 Brunswick Woods Drive", "source_url": "https://www.wangdentalcare.com/"},
+        {"signal": "Sitemap lists ~57 service/instruction pages, mostly boilerplate template content", "source_url": "https://www.wangdentalcare.com/sitemap.xml"},
+        {"signal": "Published hours 8am-7pm Mon/Wed/Thu/Sat, Tue and Fri by appointment only, closed Sunday", "source_url": "https://www.wangdentalcare.com/"},
+        {"signal": "WebMD profile shows 4.5 from 4 ratings", "source_url": "https://doctor.webmd.com/doctor/aihong-wang-efabcf6d-64ec-439e-bcac-ed1154812c32-overview"}
+      ],
+      "listing": {"platform": "Google (5.0 from 1 review, per a third-party directory); WebMD 4.5 from 4 ratings", "rating": "5.0", "reviews": "1", "source_url": "https://freedentaloffice.com/states/new-jersey/east-brunswick/"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "usable",
+        "clear_offer": false,
+        "primary_cta": "Phone only - the home page says 'if you have any questions please call us'; no book/appointment button",
+        "click_to_call": true,
+        "contact_form": false,
+        "online_booking_or_quote": "None - there is no form on /contact-us (raw HTML contains no <form>), no booking widget; phone and an email address are the only channels",
+        "trust_signals": "No practitioner photos or association badges found; generic welcome copy, a stock smile image and a Testimonials page (Meet the Doctor is a placeholder)",
+        "out_of_date_signs": "'Coming Soon!' placeholder on both /meet-the-doctor and /new-patient-forms; stock template image filename (dental_11_sm.jpg); postal code rendered as '8816' instead of 08816",
+        "search_basics": "Home title 'East Brunswick Dentist | Dr. Aihong Wang | Wang Dental Care | NJ' and meta description both name the town and service; individual service pages exist but are generic template text with no local detail",
+        "top_issues": [
+          "Placeholder pages: 'Meet the Doctor' and 'New Patient Forms' both just say 'Coming Soon!' - no bio, no credentials, no forms",
+          "No contact form and no online booking anywhere; every path is a phone call",
+          "Home page is thin stock copy that never names specific services or prices",
+          "The site returned 403 'Unauthorized' to a normal Chrome browser, which also blocks automated agents from reading it"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 1,
+        "answerable": 2,
+        "bookable": 0,
+        "notes": "robots.txt is exceptionally open - explicit Allow lines for OAI-SearchBot, GPTBot, ChatGPT-User, PerplexityBot, ClaudeBot and Googlebot. Findable is weak on the listing side: only a single Google review appears in third-party directories, with thin photos/services depth. Answerable is partial: hours, address and phone are readable text and a MedicalBusiness JSON-LD block carries geo, phone and opening hours (with a malformed postal code '8816' and priceRange 'Call for pricing options'), but service pages are generic template text. Bookable is 0: no form, no booking platform, phone-only, and the 'New Patient Forms' page is a placeholder."
+      },
+      "operations_signals": [
+        {"signal": "Phone-only intake: no web form exists anywhere on the site, so all new-patient intake and scheduling lands on the front desk", "source_url": "https://www.wangdentalcare.com/contact-us"},
+        {"signal": "'New Patient Forms' page is still 'Coming Soon!', so paperwork is presumably handled in person or by email", "source_url": "https://www.wangdentalcare.com/new-patient-forms"},
+        {"signal": "Two days a week are 'By Appointment Only', implying a very small staff that cannot absorb phone volume during treatment hours (inference from published hours)", "source_url": "https://www.wangdentalcare.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Build a real appointment-request flow plus online new-patient intake to replace the placeholder page and phone-only booking", "type": "agent readiness", "evidence": "/contact-us has no <form> in the HTML; /new-patient-forms and /meet-the-doctor both return 'Coming Soon!'", "effort": "M"},
+        {"opportunity": "Replace stock template copy with a real home page: services, Dr. Wang's bio/credentials, photos, insurance and pricing signals", "type": "website", "evidence": "Home page copy is a generic 'we are always welcoming new patients' block with a stock photo; doctor page is a placeholder", "effort": "M"},
+        {"opportunity": "Rebuild the Google Business Profile with photos, services and a review request routine (only 1 Google review found)", "type": "search", "evidence": "Third-party directory lists the Google listing at 5.0 from a single review; WebMD shows 4 ratings", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 5,
+        "ability_to_pay": 2,
+        "ease": 3,
+        "evidence": 4,
+        "reasons": "Almost everything a patient-facing practice needs online is missing or placeholder, so the gap is large; but this looks like a one-dentist practice with very few reviews, so budget is likely tight and the fix is a rebuild rather than a tweak."
+      },
+      "sources": [
+        "https://www.wangdentalcare.com/",
+        "https://www.wangdentalcare.com/contact-us",
+        "https://www.wangdentalcare.com/meet-the-doctor",
+        "https://www.wangdentalcare.com/new-patient-forms",
+        "https://www.wangdentalcare.com/sitemap.xml",
+        "https://www.wangdentalcare.com/robots.txt",
+        "https://freedentaloffice.com/states/new-jersey/east-brunswick/"
+      ]
+    },
+    {
+      "name": "AC Dental",
+      "town": "East Brunswick",
+      "ref": "B00268",
+      "status": "operating",
+      "website": "https://www.acdent.com/",
+      "what_they_do": "General, cosmetic and emergency dentistry plus implants, dentures, Invisalign and oral surgery, run by Dr. Chandan Ahuja. The site markets a $77 new-patient exam-and-X-ray special and a savings plan.",
+      "customers": "East Brunswick and Route 18 corridor adults and families, including emergency patients and price-sensitive new patients.",
+      "size_signals": [
+        {"signal": "Named dentist Dr. Chandan Ahuja; site mentions a Financial Coordinator role", "source_url": "https://www.acdent.com/contact.php"},
+        {"signal": "Seven service lines each with its own page (general, cosmetic, implants, dentures, emergency, Invisalign, oral surgery)", "source_url": "https://www.acdent.com/"},
+        {"signal": "Offers a $77 new patient exam + X-ray special and a savings program", "source_url": "https://www.acdent.com/booking.php"},
+        {"signal": "WebMD profile for Dr. Ahuja shows 45 ratings at 5.0", "source_url": "https://doctor.webmd.com/doctor/chandan-ahuja-f7f7dcc8-b5d6-4c56-b737-8fa402b429f1-overview"}
+      ],
+      "listing": {"platform": "WebMD (dentist profile); practice-level Google rating not confirmed", "rating": "5.0", "reviews": "45", "source_url": "https://doctor.webmd.com/doctor/chandan-ahuja-f7f7dcc8-b5d6-4c56-b737-8fa402b429f1-overview"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "broken",
+        "clear_offer": false,
+        "primary_cta": "'Book Appointment' link (in the lower page / footer area) -> /booking.php",
+        "click_to_call": false,
+        "contact_form": true,
+        "online_booking_or_quote": "Partial - /booking.php embeds a Paperform consultation-request form (preferred day/time) that the front office confirms; not a live-calendar scheduler",
+        "trust_signals": "ADA, AGD and NJDA logos, smile gallery page, reviews page, named dentist and team page, $77 new-patient offer, payment-plan explanation",
+        "out_of_date_signs": "Footer says '© Copyright 2025' (a year stale as of Nov 2026); hand-coded .php template with a 'Your browser doesn't support HTML5 videos' fallback line; layout and imagery look dated",
+        "search_basics": "Home title 'AC Dental | Dentist in East Brunswick, NJ' and a meta description naming cosmetic dentistry, implants, Invisalign and emergency appointments; each service has its own page; JSON-LD on the site is ImageObject only - no LocalBusiness/Dentist entity",
+        "top_issues": [
+          "No click-to-call on mobile: the phone link is a hidden off-canvas element and the only visible 'Call Us' button sits ~7,500px down the page (measured at 390px width)",
+          "Hero says 'Changing Lives, One Smile at a Time' with no town, service or CTA above the fold on a phone",
+          "Copyright 2025 and a hand-coded template with HTML5-video fallback text read as an unmaintained site",
+          "No LocalBusiness/Dentist JSON-LD and hours are not published as text anywhere"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 2,
+        "answerable": 2,
+        "bookable": 2,
+        "notes": "robots.txt is fully open ('User-agent: * Disallow:') so all major crawlers including OAI-SearchBot and PerplexityBot are allowed. Hours are not published as a text block anywhere I found (contact page only says to call), services are text-rich, and JSON-LD contains only ImageObject nodes - no LocalBusiness, address or hours entity. Bookable is the best in this batch: /booking.php embeds a Paperform consultation-request form with day/time preference, reached via a 'Book Appointment' link, with no CAPTCHA observed; still a request form rather than a confirmed slot, and it is not linked from the mobile first screen."
+      },
+      "operations_signals": [
+        {"signal": "Booking is a manual request form that the front office must confirm by hand - every booking creates a staff follow-up task", "source_url": "https://www.acdent.com/booking.php"},
+        {"signal": "Emergency dentistry is a headline service and the booking page tells emergencies to phone directly, so urgent calls interrupt the front desk", "source_url": "https://www.acdent.com/booking.php"},
+        {"signal": "24-hour cancellation policy plus a no-show fee indicates appointment churn that reminders could reduce", "source_url": "https://www.acdent.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Fix the mobile conversion path: sticky call/book bar and a phone-visible header so mobile visitors can act without scrolling 7,500px", "type": "website", "evidence": "At 390px the header has only logo and hamburger; the sole visible tel: link is a 'Call Us' button measured at y=7515", "effort": "S"},
+        {"opportunity": "Turn the Paperform request into a confirmed online booking with automatic text/email confirmation to cut manual front-office back-and-forth", "type": "operations", "evidence": "Booking page states a member of the front office team will confirm the appointment after the form is submitted", "effort": "M"},
+        {"opportunity": "Add LocalBusiness/Dentist JSON-LD with address, hours and services, and publish hours as text on the contact page", "type": "agent readiness", "evidence": "All JSON-LD on the site is ImageObject; contact page has no hours block", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 4,
+        "reasons": "Dated hand-coded site with a broken mobile call path and no structured data, so the gap is wide, but the fixes are quick template-level jobs; a single-dentist practice with 45 ratings has moderate budget."
+      },
+      "sources": [
+        "https://www.acdent.com/",
+        "https://www.acdent.com/contact.php",
+        "https://www.acdent.com/booking.php",
+        "https://www.acdent.com/robots.txt",
+        "https://doctor.webmd.com/doctor/chandan-ahuja-f7f7dcc8-b5d6-4c56-b737-8fa402b429f1-overview"
+      ]
+    },
+    {
+      "name": "The Family & Cosmetic Dental Group",
+      "town": "East Brunswick",
+      "ref": "B00269",
+      "status": "operating",
+      "website": "https://www.familycosmeticdentalgroup.com/",
+      "what_they_do": "Family and cosmetic dental practice offering Invisalign, implants, veneers, crowns and bridges, fillings, bleaching, preventative care, root canals and extractions. Site is a four-page Wix brochure (Home, About, Services, Contact) with no service detail beyond a bullet list.",
+      "customers": "East Brunswick families (the site says 'let us care for your entire family') plus cosmetic and implant patients; a second location in Flemington is referenced in the footer.",
+      "size_signals": [
+        {"signal": "Two locations referenced: '© 2015 East and Flemington Family & Cosmetic Dental Group'", "source_url": "https://www.familycosmeticdentalgroup.com/contact"},
+        {"signal": "Site text: 'call today to schedule a new patient exam at one of our two locations'", "source_url": "https://www.familycosmeticdentalgroup.com/"},
+        {"signal": "Birdeye profile lists 6 reviews at 4.8; dentistsranked shows 5.0 from 9", "source_url": "https://reviews.birdeye.com/east-brunswick-family-cosmetic-dental-group-281079744"},
+        {"signal": "Separate emergency line for the doctor published on the contact page", "source_url": "https://www.familycosmeticdentalgroup.com/contact"}
+      ],
+      "listing": {"platform": "Google (mirrored on Birdeye)", "rating": "4.8", "reviews": "6", "source_url": "https://reviews.birdeye.com/east-brunswick-family-cosmetic-dental-group-281079744"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "broken",
+        "clear_offer": false,
+        "primary_cta": "Phone number in a top bar ('Call Us Now Toll-FREE • East Brunswick - 732-613-8886')",
+        "click_to_call": true,
+        "contact_form": false,
+        "online_booking_or_quote": "None - the contact page has zero form fields and there is no booking widget; the 'Make an Appointment' text on the contact page is not a link",
+        "trust_signals": "Smile Gallery page, before/after cases pushed to Facebook, one phone number in the header, no reviews, no credentials, no photos of the practice",
+        "out_of_date_signs": "Footer '© 2015' (11 years stale); links to plus.google.com, a service Google shut down in 2019; page is not mobile-responsive - at a 390px viewport the document still lays out at 980px, the topbar text is clipped ('Call Us Now Toll'), nav items are cut off and the hero image is blown up",
+        "search_basics": "Title 'Dentist | Central New Jersey | The Family & Cosmetic Dental Group' names the category but not the town; meta description lists services but not East Brunswick; single Services page with a bullet list, no per-service pages",
+        "top_issues": [
+          "Site is not mobile-responsive at all (980px fixed layout inside a 390px viewport) - the largest usability failure in the batch",
+          "Copyright 2015 and a dead plus.google.com link mark the site as abandoned",
+          "No contact form, no online booking, and the 'Make an Appointment' text is not even a link",
+          "Only 6-9 reviews and no trust content (no dentist bio, credentials, insurance, hours) on a 4-page brochure"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 1,
+        "answerable": 1,
+        "bookable": 0,
+        "notes": "robots.txt allows all crawling ('User-agent: * Allow: /') with only ad-bot and PetalBot exclusions, so OAI-SearchBot, PerplexityBot and Googlebot are fine. Answerable is weak: address and phone are text, but no opening hours anywhere, no pricing, and JSON-LD contains only a WebSite node named 'eastbrunswickdentist' - no LocalBusiness, address or hours entity. The phone-width render is effectively unusable, which also hurts any agent that renders pages. Bookable is 0: no form fields on /contact, no booking platform, phone or emergency line only, and the site itself asks people to leave a voicemail if the call is missed."
+      },
+      "operations_signals": [
+        {"signal": "Contact page says 'If we miss your call, please leave us a message and we will get back to you' - an explicit admission that calls go unanswered, a prime fit for an answering/intake agent", "source_url": "https://www.familycosmeticdentalgroup.com/contact"},
+        {"signal": "Two locations and one published phone number for East Brunswick, with a separate emergency mobile line, so calls must be triaged manually", "source_url": "https://www.familycosmeticdentalgroup.com/contact"},
+        {"signal": "Before/after cases and updates are pushed to Facebook rather than the site, so marketing follow-up is manual and off-site", "source_url": "https://www.familycosmeticdentalgroup.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Rebuild the site as a responsive, mobile-first page with hours, services and a call/book button above the fold, replacing the 2015 Wix layout", "type": "website", "evidence": "At 390px the document still renders at 980px, header text is clipped and nav items are unreachable; footer says © 2015", "effort": "M"},
+        {"opportunity": "Add a missed-call text-back / AI phone agent since the site openly tells patients to leave a voicemail if no one answers", "type": "AI agent", "evidence": "Contact page: 'If we miss your call, please leave us a message and we will get back to you'", "effort": "M"},
+        {"opportunity": "Add a real appointment-request form plus LocalBusiness JSON-LD and published hours so the practice is answerable to search engines and agents", "type": "agent readiness", "evidence": "/contact has zero form fields; JSON-LD is a single WebSite node; no hours text found", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 5,
+        "ability_to_pay": 3,
+        "ease": 3,
+        "evidence": 4,
+        "reasons": "Site is 11 years stale, not mobile-responsive, and has no form, hours or structured data - an unusually large gap; two locations suggest real revenue, but with only 6-9 reviews the practice may be small and slow to spend; the fix is a rebuild, not a tweak."
+      },
+      "sources": [
+        "https://www.familycosmeticdentalgroup.com/",
+        "https://www.familycosmeticdentalgroup.com/contact",
+        "https://www.familycosmeticdentalgroup.com/robots.txt",
+        "https://reviews.birdeye.com/east-brunswick-family-cosmetic-dental-group-281079744"
+      ]
+    },
+    {
+      "name": "Dr. Jeffrey S. Karlin Orthodontics",
+      "town": "East Brunswick",
+      "ref": "B00270",
+      "status": "operating",
+      "website": "https://www.drkarlin.com/",
+      "what_they_do": "Solo-practitioner orthodontic office offering metal braces, Clarity ceramic braces and Invisalign clear aligners, with a stated emphasis on one doctor providing continuity of care. Offers complimentary consultations.",
+      "customers": "East Brunswick families with children and adults seeking braces or aligners; the site speaks directly to parents choosing a family orthodontist.",
+      "size_signals": [
+        {"signal": "'Because Dr. Karlin is our only doctor' - single orthodontist with a named team page", "source_url": "https://www.drkarlin.com/"},
+        {"signal": "947 Google reviews at 5.0 per a directory updated Oct 2026 (another source shows 200 reviews)", "source_url": "https://www.dentistsranked.com/dental-clinic/east-brunswick-nj/dr-jeffrey-s-karlin-orthodontist"},
+        {"signal": "Single East Brunswick office at 17 Brunswick Woods Dr with 3D scanner and 3D printing listed in the footer", "source_url": "https://www.drkarlin.com/"}
+      ],
+      "listing": {"platform": "Google (per third-party directory)", "rating": "5.0", "reviews": "947", "source_url": "https://www.dentistsranked.com/dental-clinic/east-brunswick-nj/dr-jeffrey-s-karlin-orthodontist"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "usable",
+        "clear_offer": true,
+        "primary_cta": "'Request an Appointment' / 'Appointment Request' -> /appointment-request",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "Appointment-request form (name, email, phone, comment) at /appointment-request; no live-calendar booking, no third-party scheduler",
+        "trust_signals": "Before-and-after gallery, testimonials page, office tour, named team page, technology page, large review count",
+        "out_of_date_signs": "No JSON-LD at all (not even Organization); no visible copyright year in the footer; legacy pages such as 'Colour My Braces' suggest an older template",
+        "search_basics": "Title 'Dr. Jeffrey S. Karlin Orthodontics | Orthodontist East Brunswick NJ' and a description naming orthodontic care, Invisalign and the town; treatment types, FAQs and first-visit info each have their own well-titled pages",
+        "top_issues": [
+          "No structured data whatsoever - hours, address and services are text-only for crawlers",
+          "Opening hours are not published anywhere on the site that I could find (location page has address, phone and a map only)",
+          "At 390px the hero image has headline text laid over a busy photo with poor contrast, and there is no phone number or booking CTA in the first screen",
+          "Appointment request is a one-way form with no availability confirmation"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 3,
+        "answerable": 2,
+        "bookable": 2,
+        "notes": "robots.txt is a stock template file that disallows only /ckeditor, /ckfinder, /domains and /site_template, so all AI and search crawlers are allowed. Findable looks strong (5.0 across ~947 reviews, full site with service pages). Answerable is partial: address, phone, treatment types and financial info are in readable text, but no hours block and zero JSON-LD (no LocalBusiness entity at all). Bookable: /appointment-request has a labelled name/email/phone/comment form with a real Submit button and no CAPTCHA, but it is a request-only flow with no scheduler, so an agent cannot confirm a slot."
+      },
+      "operations_signals": [
+        {"signal": "New-patient medical history is collected through a third-party online form (orthoii-forms), so intake is already digital and could be linked into scheduling", "source_url": "https://www.drkarlin.com/patient-forms"},
+        {"signal": "Single-doctor practice with a very high review count implies high inquiry volume handled by a small front desk (inference)", "source_url": "https://www.drkarlin.com/"},
+        {"signal": "Appointment requests arrive as free-text comments with no time preference capture, so staff must call back to schedule", "source_url": "https://www.drkarlin.com/appointment-request"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Add online self-scheduling (or at least preferred-time capture plus auto-confirmation) instead of a one-way request form", "type": "operations", "evidence": "/appointment-request collects only name, email, phone and a free-text comment - no date or time", "effort": "M"},
+        {"opportunity": "Publish opening hours as text and add LocalBusiness/Dentist JSON-LD with address, hours and services", "type": "agent readiness", "evidence": "Zero JSON-LD blocks on the site; location page carries address, phone and an embedded map but no hours", "effort": "S"},
+        {"opportunity": "Fix the mobile hero (headline legibility over the photo) and put a call + request-appointment button in the first screen", "type": "website", "evidence": "390px screenshot shows low-contrast overlapping headline and four navigation tiles, with no phone number above the fold", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 3,
+        "ability_to_pay": 4,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Strong practice (solo orthodontist, ~947 reviews, braces/Invisalign tickets) with a decent site, so the gaps are narrow but clear - no schema, no hours, no real booking; orthodontic case values support good budgets and the fixes are small."
+      },
+      "sources": [
+        "https://www.drkarlin.com/",
+        "https://www.drkarlin.com/appointment-request",
+        "https://www.drkarlin.com/patient-forms",
+        "https://www.drkarlin.com/east-brunswick-office-location",
+        "https://www.drkarlin.com/robots.txt",
+        "https://www.dentistsranked.com/dental-clinic/east-brunswick-nj/dr-jeffrey-s-karlin-orthodontist"
+      ]
+    },
+    {
+      "name": "Dr. Fleer Orthodontics (Marshall Fleer, DDS)",
+      "town": "East Brunswick",
+      "ref": "B00271",
+      "status": "operating",
+      "website": "https://www.drfleerorthodontics.com/",
+      "what_they_do": "Orthodontic practice established in 1988 offering early, adolescent and adult orthodontics, braces, retention and TADs, plus Invisalign. Serves East Brunswick and surrounding towns including Monroe Township, Spotswood, Old Bridge and South River.",
+      "customers": "Families and adults in East Brunswick and neighbouring Middlesex County towns; the site's meta description lists Monroe Township, Sayreville/Parlin, Spotswood, South Amboy, Old Bridge and South River as its service area.",
+      "size_signals": [
+        {"signal": "Logo lockup reads 'Established 1988'", "source_url": "https://www.drfleerorthodontics.com/"},
+        {"signal": "321 Google reviews at 4.8 per a third-party directory; Healthgrades 4.9 from 62 ratings", "source_url": "https://www.dentistsranked.com/dental-clinic/east-brunswick-nj/dr-fleer-orthodontics"},
+        {"signal": "Named staff page plus treatment, patient, financial and FAQ sections; one Main St office", "source_url": "https://www.drfleerorthodontics.com/"}
+      ],
+      "listing": {"platform": "Google (per third-party directory); Healthgrades 4.9/62", "rating": "4.8", "reviews": "321", "source_url": "https://www.dentistsranked.com/dental-clinic/east-brunswick-nj/dr-fleer-orthodontics"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "'Appointment Request' link plus a 'Make an Appointment' button",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "Request form with preferred days, convenient times and referral-source dropdown; protected by a CAPTCHA; no live-calendar scheduler",
+        "trust_signals": "'Established 1988', staff page, FAQ, treatment pages, patient feedback form, four social profiles, large review count",
+        "out_of_date_signs": "A Google+ icon/link is still in the header social row (Google+ was shut down in 2019); the referral dropdown still offers 'Yellow Pages'; stock photography; footer copyright is current (2026)",
+        "search_basics": "Title is 'Home | Marshall Fleer, DDS | East Brunswick NJ' - the town is there but the word orthodontist is not in the title; meta description names orthodontics and all served towns; treatment pages have their own URLs",
+        "top_issues": [
+          "No structured data on the site - zero JSON-LD, so nothing tells crawlers this is an orthodontic practice at a specific address",
+          "Title tag leads with 'Home' instead of the service and town, wasting the strongest ranking element on the site",
+          "Appointment request requires a full postal address and a 'how did you hear about us' answer before the visitor has even spoken to the office",
+          "Google+ social icon still live in the header"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 3,
+        "answerable": 2,
+        "bookable": 1,
+        "notes": "robots.txt could not be read via fetch (HTTP 403 to the fetcher) and was not retried in the browser, so crawler permissions are unverified for this site. Findable is strong otherwise: 4.8 across 321 reviews, complete address, service pages and a staff page. Answerable is partial (hours are on /contact-us as text, roughly Mon-Thu plus alternate Saturdays, and services are described in text) but there is no JSON-LD of any kind. Bookable is weak: the request form is long (name, e-mail, address, phone, preferred days, convenient times, two source dropdowns, notes), sits behind a CAPTCHA, and gives no confirmed slot."
+      },
+      "operations_signals": [
+        {"signal": "Site says after-hours contact goes through an answering service, so someone is already paying for call handling that could be agent-assisted", "source_url": "https://www.drfleerorthodontics.com/contact-us"},
+        {"signal": "Requests arrive with free-text 'preferred days' and 'convenient times', so staff must call each patient back to agree a slot", "source_url": "https://www.drfleerorthodontics.com/office/appointment-request"},
+        {"signal": "A separate feedback form exists, meaning feedback is collected reactively rather than through automated review requests", "source_url": "https://www.drfleerorthodontics.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Replace the call-back request loop with real online scheduling (or auto-offered slots plus confirmation texts)", "type": "operations", "evidence": "Form captures preferred days/times as free text and states a team member will contact you to schedule", "effort": "M"},
+        {"opportunity": "Add LocalBusiness/Dentist JSON-LD with address, hours and services, and put 'Orthodontist East Brunswick NJ' in the title tag", "type": "agent readiness", "evidence": "No JSON-LD blocks; page title starts with 'Home |'", "effort": "S"},
+        {"opportunity": "Shorten the appointment form to name/phone/preferred time and drop the address and Yellow Pages-era source questions", "type": "website", "evidence": "Form requires address, two 'how did you hear' dropdowns and preferred days/times before any contact", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 3,
+        "ability_to_pay": 4,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Established 1988 practice with 321 reviews and a working (if clunky) request form, so the gaps are narrow and specific; orthodontic treatment values support budget, and every listed fix is a small, well-scoped job."
+      },
+      "sources": [
+        "https://www.drfleerorthodontics.com/",
+        "https://www.drfleerorthodontics.com/contact-us",
+        "https://www.drfleerorthodontics.com/office/appointment-request",
+        "https://www.dentistsranked.com/dental-clinic/east-brunswick-nj/dr-fleer-orthodontics"
+      ]
+    },
+    {
+      "name": "Leizer Orthodontics",
+      "town": "East Brunswick",
+      "ref": "B00272",
+      "status": "operating",
+      "website": "https://www.leizerorthodontics.com/",
+      "what_they_do": "Orthodontic practice (Dr. Cary H. Leizer, DMD) providing braces for children, teens and adults plus aligner treatment, with a patient-forms and post-appointment survey area. Runs three offices: East Brunswick, Woodbridge and Montville.",
+      "customers": "Families, teens and adults across Middlesex, Union and Morris County, split across three offices.",
+      "size_signals": [
+        {"signal": "Three office locations listed with separate phone numbers (Woodbridge, East Brunswick, Montville)", "source_url": "https://www.leizerorthodontics.com/east-brunswick-location"},
+        {"signal": "4.9 from 48 reviews on a Birdeye profile", "source_url": "https://reviews.birdeye.com/leizer-orthodontics-155344037035967"},
+        {"signal": "'Jersey Choice top dentist' and 'Kids doc' award badges on the site", "source_url": "https://www.leizerorthodontics.com/east-brunswick-location"}
+      ],
+      "listing": {"platform": "Google (mirrored on Birdeye); Healthgrades 5.0 from 2", "rating": "4.9", "reviews": "48", "source_url": "https://reviews.birdeye.com/leizer-orthodontics-155344037035967"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "'Schedule Now' button in the header -> /appointment-request",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "Appointment-request form (name, e-mail, phone, comment, SMS opt-in) - request only, no live availability and no third-party scheduler",
+        "trust_signals": "Three locations with click-to-call numbers, award badges, meet-the-doctor and staff photos, office tour, post-appointment survey page",
+        "out_of_date_signs": "No JSON-LD anywhere; no opening hours published on any page I opened; the 'Schedule Now' button promises scheduling but delivers a request form",
+        "search_basics": "Title 'Leizer Orthodontics & Montville Orthodontics | Orthodontist Woodbridge East Brunswick NJ' names both towns and the service; meta description names Woodbridge and East Brunswick; location pages exist per office",
+        "top_issues": [
+          "Zero structured data across a three-location practice - no LocalBusiness entities at all",
+          "Opening hours are not published anywhere on the site, so patients and agents must phone to ask",
+          "'Schedule Now' leads to a request form that a human must process, so the promise and the experience don't match",
+          "Multi-location phone routing (three different numbers) with no location picker in the booking flow"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 3,
+        "answerable": 1,
+        "bookable": 2,
+        "notes": "robots.txt is the same stock template as other Sesame sites (disallows only /ckeditor, /ckfinder, /domains, /site_template), so all AI crawlers are allowed. Findable is decent: three complete office addresses, phone numbers, awards and 48 reviews. Answerable is weak: no hours text on the pages I opened and no JSON-LD of any kind. Bookable: the request form has labelled fields, an SMS opt-in checkbox, a real Submit button and no CAPTCHA - but no calendar and no third-party booking integration, so nothing can be confirmed without a human."
+      },
+      "operations_signals": [
+        {"signal": "Post-appointment survey page exists, showing the practice already automates follow-up and could extend that to review requests", "source_url": "https://www.leizerorthodontics.com/appointment-request"},
+        {"signal": "Three locations with three phone numbers and one central request form with no location choice, so staff must route every enquiry by hand", "source_url": "https://www.leizerorthodontics.com/east-brunswick-location"},
+        {"signal": "SMS opt-in consent language on the form means texting is already approved for confirmations and reminders", "source_url": "https://www.leizerorthodontics.com/appointment-request"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Turn 'Schedule Now' into real per-location online scheduling with automatic confirmations, using the SMS opt-in already collected", "type": "operations", "evidence": "Header CTA reads 'Schedule Now' but lands on a generic request form with no location or slot selection", "effort": "M"},
+        {"opportunity": "Add LocalBusiness schema for each of the three offices and publish hours as text on every location page", "type": "agent readiness", "evidence": "No JSON-LD found on the site; no hours found on the East Brunswick location page", "effort": "S"},
+        {"opportunity": "Add an automated review-request flow to grow the 48-review count toward the 300+ that local competitors carry", "type": "operations", "evidence": "Review count (48) is far below Dr. Karlin's 947 and Dr. Fleer's 321 for the same town and specialty", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 4,
+        "ability_to_pay": 4,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Three-office orthodontic group with a clean modern site but no hours, no schema and a fake 'Schedule Now' - clear, well-evidenced gaps; orthodontic case values plus a multi-location footprint suggest healthy budget."
+      },
+      "sources": [
+        "https://www.leizerorthodontics.com/",
+        "https://www.leizerorthodontics.com/east-brunswick-location",
+        "https://www.leizerorthodontics.com/appointment-request",
+        "https://www.leizerorthodontics.com/robots.txt",
+        "https://reviews.birdeye.com/leizer-orthodontics-155344037035967"
+      ]
+    },
+    {
+      "name": "Central Jersey Pediatric Dentistry & Orthodontics",
+      "town": "East Brunswick",
+      "ref": "B00273",
+      "status": "operating",
+      "website": "https://kiddent.com/ (site not listed in batch; found by search)",
+      "what_they_do": "Pediatric dentistry and orthodontics under one roof - cleanings and children's dental care alongside braces, Invisalign and orthodontic treatment - with named doctors Dr. Backhaus and Dr. Overcash. Site promises an 'interactive and fun' child-focused experience.",
+      "customers": "Parents of young children and teens in East Brunswick and surrounding Middlesex County towns, plus orthodontic patients.",
+      "size_signals": [
+        {"signal": "Two named doctors (Dr. Backhaus and Dr. Overcash) plus a 'meet our team' page", "source_url": "https://kiddent.com/"},
+        {"signal": "4.8 from 233 Google reviews per a directory; Birdeye shows a 347-review profile", "source_url": "https://www.dentistsranked.com/dental-clinic/east-brunswick-nj/central-jersey-pediatric-dentistry-and-orthodontics"},
+        {"signal": "Separate pediatric dentistry and orthodontic service sections (braces, Invisalign, orthodontic options)", "source_url": "https://kiddent.com/"},
+        {"signal": "After-hours contact routed through a telephone answering service", "source_url": "https://kiddent.com/contact-us/"}
+      ],
+      "listing": {"platform": "Google (per third-party directory)", "rating": "4.8", "reviews": "233", "source_url": "https://www.dentistsranked.com/dental-clinic/east-brunswick-nj/central-jersey-pediatric-dentistry-and-orthodontics"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "Click-to-call bar plus 'appointment request' in the menu",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "Appointment request and contact forms are embedded Wufoo forms (hosted by a marketing vendor); request only, no live scheduling",
+        "trust_signals": "Doctor and team pages, office tour, reviews page, first-visit page, Facebook and Pinterest profiles, SMS consent language, large review count",
+        "out_of_date_signs": "JSON-LD Place entry gives postal code 08876 for a practice whose address is 08816 - a real mismatch; new patient forms are a downloadable PDF (NPforms.pdf); site otherwise current (media uploaded 2026)",
+        "search_basics": "Title 'East Brunswick - Central Jersey Pediatric Dentistry & Orthodontics' and description both name pediatric dentistry and the town; separate pages for pediatric dentistry, orthodontic options, braces and Invisalign",
+        "top_issues": [
+          "New-patient paperwork is a PDF download rather than an online form",
+          "Structured data contains a wrong postal code (08876 vs 08816) and no local-business hours or service entity",
+          "Appointment request is a third-party Wufoo iframe, so form fields and error states are outside the site's control and unreadable to some agents",
+          "No online scheduling; every request still needs a staff call-back"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 3,
+        "answerable": 3,
+        "bookable": 2,
+        "notes": "robots.txt was not opened for this site; page content is standard WordPress so crawling looks normal. Answerable is better than most: hours are written as text on the contact page (e.g. Mon 8:30-5:30), doctors are named, services have their own pages, and JSON-LD includes a Place entity with the address - but the postal code is wrong (08876 instead of 08816) and there is no hours/service schema. Bookable: an appointment-request form is embedded via Wufoo in an iframe, so labels could not be inspected and it is request-only with SMS opt-in; no scheduler."
+      },
+      "operations_signals": [
+        {"signal": "New-patient forms are a PDF to download, print and bring in - a clear document-handling job that automation could remove", "source_url": "https://kiddent.com/"},
+        {"signal": "After-hours calls go to a telephone answering service, so overflow call handling is already outsourced and could be upgraded to an agent that books", "source_url": "https://kiddent.com/contact-us/"},
+        {"signal": "Marketing vendor supplies the embedded forms, implying an existing agency relationship the practice already pays for", "source_url": "https://kiddent.com/appointment-request/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Replace the PDF new-patient packet with an online intake form that feeds the practice management system", "type": "operations", "evidence": "The 'new patient form' link on every page points to a PDF at /wp-content/uploads/2026/03/NPforms.pdf", "effort": "M"},
+        {"opportunity": "Fix the postal code and build a proper LocalBusiness/Dentist schema with hours and services so AI answers are correct", "type": "agent readiness", "evidence": "JSON-LD Place lists postalCode 08876 while the site's own address block says East Brunswick, NJ 08816", "effort": "S"},
+        {"opportunity": "Add real online scheduling with parent/child intake fields, replacing the Wufoo request form", "type": "operations", "evidence": "Appointment page is a Wufoo iframe with request-only behaviour and a staff call-back", "effort": "M"}
+      ],
+      "scores": {
+        "gap_size": 3,
+        "ability_to_pay": 4,
+        "ease": 3,
+        "evidence": 3,
+        "reasons": "A busy two-doctor pediatric/ortho practice with strong reviews and a decent site, so the gap is moderate (PDF intake, wrong postal code, request-only booking); pediatric plus ortho revenue supports budget, but the fixes touch practice-management integration, which slows delivery."
+      },
+      "sources": [
+        "https://kiddent.com/",
+        "https://kiddent.com/contact-us/",
+        "https://kiddent.com/appointment-request/",
+        "https://www.dentistsranked.com/dental-clinic/east-brunswick-nj/central-jersey-pediatric-dentistry-and-orthodontics",
+        "https://reviews.birdeye.com/central-jersey-pediatric-dentistry-orthodontics-155339026279541"
+      ]
+    },
+    {
+      "name": "Corrective Care Group, PC",
+      "town": "East Brunswick",
+      "ref": "B00274",
+      "status": "operating",
+      "website": "https://www.eastbrunswickwellness.com/",
+      "what_they_do": "Chiropractic and physical therapy centre combining chiropractors and physical therapists under one roof: auto injury, back/neck pain, whiplash, headaches, disc and sciatica care, spinal decompression and cold laser. Founded in 1992 by Dr. Alan Wolkoff, with Dr. Saumin Patel, DPT running physical therapy.",
+      "customers": "East Brunswick area adults with injuries and chronic pain, including auto-accident and workers'-compensation patients; the site lists accepted insurers (Horizon BCBS, UnitedHealthcare, Oxford, Aetna, OMNIA, ChiroHealthUSA).",
+      "size_signals": [
+        {"signal": "Founded in 1992 by Dr. Alan Wolkoff; two named providers (Wolkoff DC, Patel DPT)", "source_url": "https://www.eastbrunswickwellness.com/"},
+        {"signal": "Separate chiropractic and physical therapy appointment forms, i.e. two service lines", "source_url": "https://www.eastbrunswickwellness.com/"},
+        {"signal": "Zocdoc profile at 4.98 from 80 patient reviews", "source_url": "https://www.zocdoc.com/practice/corrective-care-group-104001"}
+      ],
+      "listing": {"platform": "Zocdoc (booking profile); WebMD 5.0 from 1 rating", "rating": "4.98", "reviews": "80", "source_url": "https://www.zocdoc.com/practice/corrective-care-group-104001"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "'Schedule Appointment' (links to a Zocdoc booking page) plus 'Call Us: (732) 613-6000' button",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "Yes - header 'Schedule Appointment' buttons point to a Zocdoc booking page; there are also separate chiropractic and physical-therapy appointment request forms",
+        "trust_signals": "Practising since 1992, doctor bios with credentials, dated patient testimonials, full insurance list, Google review widget, social profiles",
+        "out_of_date_signs": "A cookie-consent modal ('This site uses tracking technologies') covers the mobile first screen until dismissed; the mobile header logo area renders blank; JSON-LD is WebPage/WebSite only - no local business entity",
+        "search_basics": "Title 'Chiropractor & Physical Therapist in East Brunswick, NJ | Corrective Care Group, P.C.' and a description naming the town and appointment request; conditions and services have their own pages",
+        "top_issues": [
+          "Cookie-consent overlay blocks the first screen on mobile, hiding the practice's own hero and branding behind a compliance dialog",
+          "Three different scheduling paths (Zocdoc, chiropractic form, physical-therapy form) with no guidance on which to use",
+          "No LocalBusiness/MedicalClinic JSON-LD and hours only on the contact page, so agents must guess",
+          "Contact form is protected by reCAPTCHA, which blocks automated form submission"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 3,
+        "answerable": 2,
+        "bookable": 3,
+        "notes": "robots.txt only disallows /wp-admin/ (with an admin-ajax exception) and lists a sitemap, so Googlebot, OAI-SearchBot and PerplexityBot are all allowed. Answerable is partial: hours (Mon 8:30am-6:00pm and other days) and the insurance list are real text on the contact page, services are text-rich with dated testimonials, but JSON-LD is only WebPage/WebSite and there are no prices. Bookable is the strongest in this batch: header buttons link straight to a Zocdoc booking page (a platform Google surfaces), plus labelled request forms; the contact form has a reCAPTCHA, but booking does not depend on it."
+      },
+      "operations_signals": [
+        {"signal": "A live chat widget ('Let's Chat?') is already installed on the site, showing appetite for automated front-desk handling", "source_url": "https://www.eastbrunswickwellness.com/"},
+        {"signal": "Two separate intake forms (chiropractic vs physical therapy) mean staff triage which provider each enquiry needs", "source_url": "https://www.eastbrunswickwellness.com/"},
+        {"signal": "SMS consent is already collected on the contact form, so automated reminders and recall messages are permitted", "source_url": "https://www.eastbrunswickwellness.com/contact/"},
+        {"signal": "Insurance-heavy intake (multiple carriers plus personal injury and workers' comp) generates eligibility questions the front desk answers repeatedly", "source_url": "https://www.eastbrunswickwellness.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Unify the three scheduling paths into one booking flow that routes chiropractic vs physical therapy and confirms by text", "type": "operations", "evidence": "Zocdoc link, a chiropractic form and a physical-therapy form all coexist in the header", "effort": "M"},
+        {"opportunity": "Add MedicalClinic/LocalBusiness JSON-LD with hours, providers and insurance, and remove the cookie overlay from the mobile first screen", "type": "agent readiness", "evidence": "JSON-LD graph is WebPage/WebSite only; 390px screenshot shows the tracking-consent modal covering the page", "effort": "S"},
+        {"opportunity": "Upgrade the existing chat widget into an AI intake assistant that captures insurance, injury type and urgency, then books the right provider", "type": "AI agent", "evidence": "'Let's Chat?' widget already present; insurance list and two provider types create repeated triage questions", "effort": "M"}
+      ],
+      "scores": {
+        "gap_size": 2,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Best-configured practice in the batch (real Zocdoc booking, hours, insurance list, chat widget), so the remaining gaps are small; a two-provider practice with 80 reviews has moderate budget, and the top fix - consolidating booking and adding schema - is quick."
+      },
+      "sources": [
+        "https://www.eastbrunswickwellness.com/",
+        "https://www.eastbrunswickwellness.com/contact/",
+        "https://www.eastbrunswickwellness.com/robots.txt",
+        "https://www.zocdoc.com/practice/corrective-care-group-104001"
+      ]
+    }
+  ],
+  "caveats": [
+    "Business-level data only. Ratings and review counts were read from third-party directories (Birdeye, dentistsranked, WebMD, Zocdoc) rather than from the Google Maps panel itself, so counts may lag Google's live numbers.",
+    "Scores are comparable across this batch only (mostly solo/small dental and orthodontic practices in one town), not across categories.",
+    "Specialty benchmark used for Leizer's review gap: Karlin 947 reviews and Fleer 321 reviews in the same town, both from third-party directories."
+  ],
+  "data_gaps": [
+    "Wang Dental Care returned HTTP 403 'Unauthorized' to the browser at both www and non-www, so no phone-width screenshot or in-browser JSON-LD check was possible; that entry relies on fetched raw HTML and page text.",
+    "Dr. Fleer Orthodontics also returned HTTP 403 to the fetcher for the home page and robots.txt; the site loaded normally in the browser, but robots.txt was not re-opened there, so its crawler rules are unverified.",
+    "robots.txt was not checked for kiddent.com.",
+    "The appointment forms embedded by kiddent.com (Wufoo iframe) and AC Dental (Paperform iframe) are cross-origin, so individual field labels could not be inspected.",
+    "Google Business Profile completeness (photos, categories, services) could not be verified directly for any business; 'findable' scores rely on review volume, published hours and crawlability instead."
+  ]
+}

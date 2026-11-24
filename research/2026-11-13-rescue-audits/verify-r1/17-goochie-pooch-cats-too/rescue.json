@@ -1,0 +1,108 @@
+{
+ "ref": "B00588",
+ "name": "Goochie Pooch & Cats Too",
+ "town": "East Brunswick, NJ",
+ "category": "Pet groomer (dogs and cats)",
+ "status": "operating",
+ "domains": [
+  {
+   "domain": "goochie-pooch.com",
+   "role": "old site / still listed as the website on Nextdoor",
+   "final_url": "https://goochie-pooch.com/lander",
+   "result": "Loads without error or certificate warning, but shows GoDaddy's parking page: 'goochie-pooch.com is parked free, courtesy of GoDaddy.com', a 'Get This Domain' button and 'Related Search Topics' ad links including 'Goochie Pooch East Brunswick' and 'Goochie Pooch & Cats Too'. No salon content, hours or contact details. Wayback Machine shows the salon's own site on this domain from 2013 to a last capture on 2020-11-30 (page meta description 'Goochie Pooch & Cats Too - Grooming Salon').",
+   "screenshot_files": [
+    "goochie-pooch-desktop.png",
+    "goochie-pooch-mobile390.png"
+   ],
+   "checked_at": "2026-11-13",
+   "source_url": "https://goochie-pooch.com/lander"
+  },
+  {
+   "domain": "tpaw.net",
+   "role": "website link on the Google Business Profile (third-party directory, not the salon's own site)",
+   "final_url": "https://pet.ecomify.net/explore/goochie-pooch-cats-too/",
+   "result": "Google profile's 'Website' field links to tpaw.net/explore/goochie-pooch-cats-too/; it redirects off-domain to pet.ecomify.net and stops at a Cloudflare 'Performing security verification / Verify you are human' interstitial. Content behind it was not read (no attempt to pass the check).",
+   "screenshot_files": [
+    "tpaw-gmb-website-destination.png"
+   ],
+   "checked_at": "2026-11-13",
+   "source_url": "https://tpaw.net/explore/goochie-pooch-cats-too/"
+  }
+ ],
+ "links_to_broken_domain": [
+  {
+   "place": "Nextdoor business page (unclaimed - shows 'Claim page'), contact block lists 'goochie-pooch.com'",
+   "url": "https://nextdoor.com/pages/goochie-pooch-cats-too-east-brunswick-nj/"
+  }
+ ],
+ "rdap": [
+  {
+   "domain": "goochie-pooch.com",
+   "registered": "2011-05-13",
+   "expires": "2031-05-13",
+   "last_changed": "2026-06-12",
+   "registrar": "GoDaddy.com, LLC (IANA 146); registrant record redacted for privacy",
+   "source_url": "https://rdap.org/domain/goochie-pooch.com"
+  }
+ ],
+ "likely_cause": {
+  "cause": "parked",
+  "reasoning": "The domain is registered and paid through 2031-05-13 at GoDaddy, sits on GoDaddy's own nameservers (ns59/ns60.domaincontrol.com), and its registrant record was last changed on 2026-06-12 - so it has not expired and was not deleted and re-registered. What loads at the root is GoDaddy's standard free parking page, which is what GoDaddy serves for a domain in its account with no hosted website; the salon's real site stopped being archived after 2020-11-30. That fits the website or hosting being taken down behind a still-registered domain rather than a hijack or injected spam. Who currently holds the GoDaddy account cannot be seen publicly (registrant name, organisation, street and email are redacted), so whether the parking was set up by the salon or by a later holder is unproven.",
+  "inference": true
+ },
+ "fix_steps": [
+  {
+   "step": "Log in to the GoDaddy account that holds goochie-pooch.com (use account recovery if the password or email is lost) and check the domain's contact email, auto-renew setting, nameservers and hosting/website product status.",
+   "who": "Owner (with GoDaddy support if the account is inaccessible)",
+   "effort_hours": "0.5-1",
+   "source_url": "https://rdap.org/domain/goochie-pooch.com"
+  },
+  {
+   "step": "If the domain is still the salon's: point DNS at a host and publish a one-page site with services, prices, hours, tap-to-call and a booking or quote link. If the account cannot be recovered: stop advertising the old domain, register a new one and treat the old address as lost.",
+   "who": "Owner decides; web helper builds",
+   "effort_hours": "1-2 owner decision, 4-8 build",
+   "source_url": "https://goochie-pooch.com/lander"
+  },
+  {
+   "step": "In the Google Business Profile, replace the website field (currently tpaw.net, which redirects to a Cloudflare bot-check page) with the working site, and settle on one set of hours - Google shows Friday 9 AM-4 PM while Nextdoor shows Mon-Fri 9 AM-5 PM.",
+   "who": "Owner (profile management)",
+   "effort_hours": "0.5-1",
+   "source_url": "https://www.google.com/maps/place/Goochie+Pooch+%26+Cats+Too/@40.4272818,-74.3826089,17z"
+  },
+  {
+   "step": "Claim the unclaimed Nextdoor business page (it currently points customers to goochie-pooch.com) and update it, then reconcile hours and web addresses on the other directories that list the salon (GroomerJob and dogdog.org say Tue-Sat 9-4).",
+   "who": "Owner or helper",
+   "effort_hours": "1-2",
+   "source_url": "https://nextdoor.com/pages/goochie-pooch-cats-too-east-brunswick-nj/"
+  },
+  {
+   "step": "Set up continuing maintenance: a domain-expiry reminder (current expiry 2031-05-13), uptime and certificate alerts, and a quarterly check that listings still show the live domain.",
+   "who": "Helper",
+   "effort_hours": "1-2",
+   "source_url": "https://rdap.org/domain/goochie-pooch.com"
+  }
+ ],
+ "after_fix": {
+  "opportunity": "Claim and clean up the unmanaged listings: one set of hours, one working website link, and a claimed Nextdoor page.",
+  "evidence": "Nextdoor's page still shows 'Claim page' and carries a different hours set (Mon-Fri 9 AM-5 PM) from Google's (Friday 9 AM-4 PM) and GroomerJob/dogdog.org's (Tue-Sat 9-4); Google's website field points to a third-party directory that leads to a Cloudflare verification wall.",
+  "source_url": "https://nextdoor.com/pages/goochie-pooch-cats-too-east-brunswick-nj/"
+ },
+ "severity": "High",
+ "severity_reason": "There is no working website anywhere in the customer path: the salon's long-standing domain shows a GoDaddy parking page with a 'Get This Domain' call to action and ad links for its own brand name, and the website button on its Google profile leads to a third-party directory that stalls on a bot check. Customers who want services, prices or booking have only the phone number.",
+ "audit_md": "# Website Health Check: Goochie Pooch & Cats Too\n\n**What we saw on 13 November 2026**\n\n- goochie-pooch.com, the salon's domain registered in 2011, loads a GoDaddy page reading \"parked free, courtesy of GoDaddy.com\", with a \"Get This Domain\" button and ad links naming the salon (desktop and 390 px screenshots saved).\n- The Google profile's website field (4.5 stars, 737 NJ-18) points to tpaw.net, which redirects to pet.ecomify.net and stops at a Cloudflare \"verify you are human\" wall.\n- Nextdoor lists goochie-pooch.com as the website and says Mon-Fri 9-5; Google says Friday 9 AM-4 PM, and GroomerJob and dogdog.org say Tue-Sat 9-4. Nextdoor shows \"Claim page\".\n- RDAP: registered 2011-05-13, expires 2031-05-13, registrar GoDaddy, registrant redacted.\n\n**What it means for customers**\n\nA name search can land on a parking page offering the domain for sale instead of services, hours or booking. Phone and the Google listing are the only reliable paths today.\n\n**How to fix it**\n\n1. Confirm who controls the GoDaddy account holding the domain and check renewal, nameservers and hosting (owner, 0.5-1 h).\n2. If it is the salon's, point it at a host and publish a one-page site; if not, register a new domain and stop advertising the old one (owner 1-2 h, build 4-8 h).\n3. Replace the Google profile's website link and settle on one set of hours (owner, 0.5-1 h).\n4. Claim the Nextdoor page and fix the address and hours on the remaining directories (owner or helper, 1-2 h).\n5. Add renewal reminders plus uptime and certificate alerts (helper, 1-2 h).\n\n**After the fix**\n\nThe listings remain unmanaged: Nextdoor is unclaimed and hours disagree across Google, Nextdoor and GroomerJob. Claiming them and publishing one set of hours is the cheapest next win.\n\nPrepared from publicly available information on 13 November 2026. We did not log in to or change anything.",
+ "founder_md": "**Outreach email draft (3 sentences)**\n\nHi - I run a small web research outfit in Milltown and I was checking how Goochie Pooch & Cats Too shows up online, because your domain goochie-pooch.com now displays a GoDaddy \"parked free\" page with a \"Get This Domain\" button, and the website link on your Google profile points to a third-party directory that stalls on a security check. I've saved screenshots of what a customer sees on a desktop and on a phone, and I'm happy to show them to you with no obligation. If it's useful, I can also point out where your hours differ between Google, Nextdoor and the grooming directories - reply and I'll send the short write-up.\n\n**Walk-in or phone opener (1 sentence)**\n\nHi, I was looking up Goochie Pooch online and your website domain now shows a GoDaddy \"parked\" page while Google's website link goes to a directory that won't load - can I show you the two screenshots I took of it?\n\n**Sources**\n\n- https://goochie-pooch.com/lander - live GoDaddy parking page (final URL after redirect from https://goochie-pooch.com/); screenshots goochie-pooch-desktop.png and goochie-pooch-mobile390.png\n- https://rdap.org/domain/goochie-pooch.com - registration 2011-05-13, expiry 2031-05-13, last changed 2026-06-12, registrar GoDaddy, nameservers ns59/ns60.domaincontrol.com\n- https://rdap.godaddy.com/v1/domain/GOOCHIE-POOCH.COM - registrant is an individual with name, organisation, street and email redacted\n- https://web.archive.org/cdx/search/cdx?url=goochie-pooch.com&output=json - captures 2013-03-28 to 2020-11-30, none from 2021 onward\n- https://web.archive.org/web/20201130012033id_/http://www.goochie-pooch.com/ - last archived version of the salon's own site (meta description \"Goochie Pooch & Cats Too - Grooming Salon\")\n- https://www.google.com/maps/place/Goochie+Pooch+%26+Cats+Too/@40.4272818,-74.3826089,17z - 4.5 stars, Pet groomer, 737 NJ-18, (732) 432-9191, website field \"tpaw.net\", Friday 9 AM-4 PM, \"Open now\"; screenshot google-profile.png\n- https://tpaw.net/explore/goochie-pooch-cats-too/ - redirects to pet.ecomify.net Cloudflare verification wall; screenshot tpaw-gmb-website-destination.png\n- https://nextdoor.com/pages/goochie-pooch-cats-too-east-brunswick-nj/ - \"Claim page\" shown; contact block lists goochie-pooch.com; Mon-Fri 9:00 AM-5:00 PM, Sat/Sun closed; founder story says the salon was founded in East Brunswick in 1994; recommendation dated 21 Apr 25; Fave Awards 2023 and 2024\n- https://groomerjob.com/goochie-pooch-cats-too - 4.5 from 92 reviews, Tue-Sat 9:00 AM-4:00 PM\n- https://www.dogdog.org/pet-groomer/goochie-pooch-cats-too-east-brunswick - \"84 people rated this\", Tue-Sat 9 AM-4 PM, no website link on the page\n- https://www.catgroomingdirectory.com/groomer/28670-goochie-pooch-and-cats-too - 4.5 from 93 reviews, address shown as \"North Brunswick Township\"\n\n**Open questions**\n\n- Who holds the GoDaddy account and the contact email for goochie-pooch.com today, and is auto-renew on?\n- Was the website deliberately taken down (for example, a site builder or hosting plan expiring)?\n- Did anyone else take over the registration? RDAP's \"last changed\" date of 2026-06-12 is unexplained publicly.\n- What are the real current hours, service list and prices?\n- Is the salon taking appointments this month? The newest public activity we found is an April 2025 neighbour recommendation.\n- Who set the Google profile's website field to tpaw.net, and is the profile claimed?",
+ "caveats": [
+  "The triage record said the domain had expired and been lost; public RDAP contradicts this - it is registered through 2031-05-13 and was last changed on 2026-06-12, so the parking is not proof of a lost domain.",
+  "Whether the salon or a third party currently holds the domain is unknown: registrant name, organisation, street and email are redacted in RDAP.",
+  "The parking start date cannot be established publicly; the Internet Archive has no captures of goochie-pooch.com after 2020-11-30, which does not by itself prove the site was down.",
+  "Google Maps returned a limited view without review text, so review recency could not be checked there.",
+  "Effort hours are planning estimates from our own experience of this kind of work, not quotes."
+ ],
+ "data_gaps": [
+  "YellowPages, BBB, Superpages, Yelp and localitybiz pages could not be read: they returned Cloudflare/security blocks or empty responses. YellowPages' 'Mon-Fri 9-5' hours and the BBB 'not accredited' status therefore come from the triage record and search snippets, not from pages we opened ourselves.",
+  "The site Google links to (tpaw.net -> pet.ecomify.net) sits behind a Cloudflare human-verification check; we did not attempt to pass it, so its content is unknown.",
+  "No 2026 activity (review, post or news) was found; the most recent public activity seen is a 21 April 2025 Nextdoor recommendation. Current trading status is inferred from the live Google listing ('Open now').",
+  "The business's email address appears on its own Nextdoor page but was deliberately left out of this record as personal contact data.",
+  "Yelp: no listing could be confirmed; the pattern-guessed Yelp URL returned an empty page."
+ ]
+}

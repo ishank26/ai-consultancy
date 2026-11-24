@@ -1,0 +1,223 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Pilot software cost of \"$0-$150/month in software (zero if using Frigate's local LPR only; about $45 per camera per month if using Plate Recognizer Stream)\"",
+      "problem": "Internal arithmetic inconsistency: the pilot specifies 3-4 cameras, and Plate Recognizer Stream is $45 per camera per month, so the paid fallback is $135-$180/month, not capped at $150.",
+      "fix": "Change the ceiling to about $180/month for four cameras, or state the per-camera multiplier explicitly."
+    },
+    {
+      "claim": "measured_outcomes: CarDD benchmark rated strength \"High\"",
+      "problem": "The numbers are correct and peer-reviewed, but this is one paper on one dataset (4,000 images, six classes), i.e. a single study used to bound the whole technical feasibility argument. The role rule is that a single study should not be rated High.",
+      "fix": "Rate Medium-High or Medium, or state that the finding is a single-dataset benchmark result rather than an outcome measured in the field."
+    },
+    {
+      "claim": "measured_outcomes: \"Even a purpose-built ALPR system on the UFPR-ALPR benchmark read only 64.89% ... commercial systems scored 47.39% and 50.94%\"",
+      "problem": "Accurate as stated (single-frame, all-characters-correct), but one-sided and decontextualised: the same table shows the commercial systems reach 56.67% and 70.00% with temporal redundancy, and the dataset is Brazilian plates with both camera and vehicle moving, which is not the shop-lane case the brief uses it to argue.",
+      "fix": "Add the with-redundancy commercial figures and note the dataset is Brazilian plates / moving camera, then say why the shop-lane case is easier (static camera, vehicle slows or stops)."
+    },
+    {
+      "claim": "problem.summary: \"Shops almost never measure bay occupancy or per-vehicle dwell time, because doing so means a person with a clipboard.\"",
+      "problem": "Stated as fact with no source. Nothing fetched supports the frequency claim, and the brief's own data_gaps concedes no study of shop bay-occupancy measurement was found.",
+      "fix": "Label as inference/assumption, or drop the frequency claim and keep only the mechanism (measurement is manual today)."
+    },
+    {
+      "claim": "gap_for_local_installer: \"UVeye itself says a ~100-car/month shop is not a fit, which is most of the 233 general repair shops in the county\"",
+      "problem": "The UVeye quote is confirmed, but \"most of the 233 general repair shops\" is an inference stated as fact; the trailing \"(inference)\" label is attached to the following sentence about defensibility, not to this one.",
+      "fix": "Move the (inference) tag or rephrase as \"plausibly most of the 233 ... (inference; QCEW gives no volume distribution)\"."
+    },
+    {
+      "claim": "legal_privacy row 3: \"License plate reading on a shop's own lot is not governed by NJ's police ALPR rules, which apply to law enforcement agencies only\" — marked confirmed: true",
+      "problem": "The directive's content is confirmed (law-enforcement purposes only, public-view scanning, three-year retention, three purposes for non-alert data, private entities may provide but not receive), but the step from \"the directive binds agencies\" to \"a private shop is not governed\" is an inference from the text, not something the directive states.",
+      "fix": "Set confirmed: false for the private-shop conclusion while keeping the directive's provisions as confirmed, consistent with the treatment of the P.L. 2026 c.4 row."
+    },
+    {
+      "claim": "prospecting_signals.public: NJ MVC auto body \"$300,000 garage liability / $50,000 garage-keepers' limits ... I confirmed those figures only via search summary of the MVC page, not by reading the page\"",
+      "problem": "Over-cautious, not wrong. I opened https://www.nj.gov/mvc/business/autobodylic.htm myself and both figures and the per-location application rule are stated there verbatim.",
+      "fix": "Upgrade to a directly read, cited page (MVC Auto Body Repair License page) and drop the hedge."
+    },
+    {
+      "claim": "fit_score.rationale: \"the trade press describes shops as 'wait and see'\"",
+      "problem": "Quote drift. The source phrase is \"the wait-and-see skepticism of later adopters\"; it is not a standalone quoted phrase.",
+      "fix": "Paraphrase (\"characterised as wait-and-see adopters\") or quote the actual wording."
+    },
+    {
+      "claim": "buyers: body shop \"why\": \"(67% of repairs get a supplement)\"",
+      "problem": "The 67% is correct but drops the qualifier used elsewhere in the brief: it is CCC collision/insurance-claim industrywide data, not all repairs at all shop types.",
+      "fix": "Add \"(CCC collision-claims data)\" so the mechanical-repair reader is not misled."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "N.J.A.C. 13:45A-26C.2 requires signed written authorization stating nature of repair and odometer reading (or documented oral authorization with date, time, name, phone for after-hours/third-party drop-off), a written estimate in one of five forms, consent before exceeding the estimate, itemized invoice, and a posted customer-rights sign",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-45A-26C-2",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 56:8-19 per Sylince v. Thrift Auto Sales (App. Div., Docket A-5891-13T1, 2015): once unlawful conduct, ascertainable loss and causation are proven, \"treble damages and counsel fees ... are mandatory\" and the trial court has \"no discretion to deny this relief\"",
+      "source_url": "https://www.njcourts.gov/system/files/court-opinions/2015/a5891-13.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "67% of all repairs include at least one supplement, up from 57% in 2019; supplements about 22.5% of total repair cost (18% in 2019, 10% in 2009), per CCC industrywide data",
+      "source_url": "https://df9fd9b6ab64495ad759-f14ba961ae89374e6d5a8ee602c09059.ssl.cf5.rackcdn.com/2001.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Repairs with a supplement averaged 13.2 days in 2024 vs 7.7 days without (+5.5); 2020 was 8.8 with vs 5.4 without (+3.4); repairs over $10,000 with a supplement averaged 29.3 days, 13.3 days longer than those without",
+      "source_url": "https://df9fd9b6ab64495ad759-f14ba961ae89374e6d5a8ee602c09059.ssl.cf5.rackcdn.com/2001.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "US keys-to-keys cycle time averaged 19.5 days for BEVs vs 16.5 days for ICE, year to date (Mitchell Q3 2024 Plugged-In, Nov 13 2024)",
+      "source_url": "https://www.mitchell.com/print/pdf/node/28526",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County 2024 private-sector: NAICS 8111 386 establishments / 2,358 employees / $58,380 avg annual pay; 811111 233 / 1,114 / $58,096; 811121 58 / 479 / $68,235; 811192 46 / 416 / $41,811; 811191 12 / 108 / $46,636",
+      "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Division of Consumer Affairs received 1,244 \"Motor Vehicle\" complaints in 2014 (number-two category), an estimated 24% about auto repair, and issued notices of violation to nine auto repair shops seeking $20,797 in penalties and costs",
+      "source_url": "https://www.nj.gov/oag/newsreleases15/pr20150304a.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BayWatch: free installation; $1,900/month entry level, $3,300/month \"fully loaded\"; IR scan about 3 feet; detects dents to 3 mm; does not see under the vehicle; about 250 dealership sites plus a non-Hertz rental company",
+      "source_url": "https://www.autobodynews.com/regional/midwest-regional-news/promise-potential-ai-pre-scan-products-finally-starting-to-show-up-in-body-shops",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Tractable: $299/month entry interface, $499/month \"workhorse\"; a 15-employee Ontario shop (City Centre Collision) pays $500/month; images produce a quote in 30 seconds; white-labelable",
+      "source_url": "https://www.autobodynews.com/regional/midwest-regional-news/promise-potential-ai-pre-scan-products-finally-starting-to-show-up-in-body-shops",
+      "result": "confirmed"
+    },
+    {
+      "claim": "UVeye quoted by its marketing director at a mid-to-high four-figure installation with similar monthly SaaS costs, and says 100 cars/month \"isn't enough\"; the lane needs under 14 feet in any direction",
+      "source_url": "https://www.autobodynews.com/regional/midwest-regional-news/promise-potential-ai-pre-scan-products-finally-starting-to-show-up-in-body-shops",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Tom Wood Group reported 29.3% of vehicles through its scan lane had something the owner did not know about; the same article notes the AI system did not at the time find some ADAS sensor damage",
+      "source_url": "https://www.autobodynews.com/regional/midwest-regional-news/promise-potential-ai-pre-scan-products-finally-starting-to-show-up-in-body-shops",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BayWatch had 500 units on order before tariff turmoil",
+      "source_url": "https://www.autobodynews.com/regional/midwest-regional-news/promise-potential-ai-pre-scan-products-finally-starting-to-show-up-in-body-shops",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Shopmonkey published tiers at $239, $399 and $499 per month, with slightly lower annual pricing ($215/$359/$449) and custom enterprise pricing",
+      "source_url": "https://shopmonkey.io/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Plate Recognizer Stream at $45 per camera per month, a $35 3-camera one-month trial tier, Snapshot lookup plans from $50/month, and $500 per professional-services session",
+      "source_url": "https://platerecognizer.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate is MIT-licensed, its LPR is disabled by default and enabled in Settings, and it needs a one-time model download after which the models run fully offline (LPR requires at least 4GB RAM)",
+      "source_url": "https://docs.frigate.video/configuration/license_plate_recognition/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate docs recommend Hailo-8/Hailo-8L m.2 modules or an Intel iGPU with OpenVINO, and state the Google Coral is no longer recommended for new installations",
+      "source_url": "https://docs.frigate.video/frigate/hardware/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO is AGPL-3.0 by default, and commercial/proprietary or SaaS use requires an Ultralytics Enterprise license",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NVIDIA Jetson Orin Nano Super Developer Kit at $249, down from $499, 67 INT8 TOPS",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Amcrest 5MP PoE bullet camera IP5M-B1186EW (white) listed at $79.99, out of stock at retrieval",
+      "source_url": "https://www.amcrest.com/products/5mp-poe-camera-bullet-ip5m-b1186ew-28mm.js",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CarDD: 4,000 images, 9,000+ annotations, six classes; best model (DCN+, ResNet-101) reaches 57.0 mask AP / 60.6 box AP, 77.7 / 78.8 at IoU 0.50, with per-class box AP 39.2 dent, 36.6 scratch, 30.6 crack, 91.2 glass shatter, 86.4 tire flat; published IEEE T-ITS 2023",
+      "source_url": "https://cardd-ustc.github.io/docs/CarDD.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "UFPR-ALPR: the proposed system read 64.89% of plates fully correct per frame, 78.33% with temporal redundancy; the two commercial baselines scored 47.39% and 50.94% (all correct, single frame); 150 videos, 4,500 frames, camera and vehicle both moving",
+      "source_url": "https://web.inf.ufpr.br/vri/wp-content/uploads/sites/7/2019/08/laroca2018robust.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "71% of the alerts Flock Safety's AI plate readers sent to Roseville, CA police over two years were misreads, incorrectly flagging vehicles as stolen or felony-linked",
+      "source_url": "https://www.forrester.com/blogs/rules-of-the-road-what-flocks-71-misread-rate-teaches-us-about-third-party-ai-risk/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "UVeye identifies 96% of vehicle defects versus 24% in manual inspections; the arch uses more than 20 high-resolution, high-speed cameras and images are processed on cloud servers",
+      "source_url": "https://www.vision-systems.com/cameras-accessories/news/55306984/from-clipboards-to-cameras-hertz-deploys-ai-powered-inspection-system-for-rental-vehicles",
+      "result": "confirmed"
+    },
+    {
+      "claim": "In a survey of 500 US independent repair shops (fielded December 2023), 56% named finding qualified/responsible technicians as a 2024 challenge and 27.2% named retaining them; for shops with eight or more bays retention was the second-largest concern at 43.2%",
+      "source_url": "https://www.automotivebenefits.org/industry-education-articles/2024/7/19/top-5-challenges-for-independent-repair-shops-in-2024",
+      "result": "confirmed"
+    },
+    {
+      "claim": "AG Law Enforcement Directive 2022-12 (eff. Jan 23, 2023) applies to law enforcement: scanning limited to plates exposed to public view, three-year retention, stored non-alert data limited to three purposes, and private entities \"may provide ALPR data to New Jersey agencies but cannot receive law enforcement-owned ALPR data\"",
+      "source_url": "https://www.nj.gov/oag/dcj/agguide/directives/ag-Directive-2022-12_Updated-Directive-Regulating-Use-of-Automated-License-Plate-Recognition-%28ALPR%29-Technology.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "P.L. 2026, c.4 (C.52:4CC-1 et al.) bars a \"government entity\" from selling, sharing or transferring ALPR information except to another government entity, by judicial order/warrant, or to another jurisdiction's law enforcement for a criminal investigation, with injunctive relief and civil damages for knowing violations",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2026/PL26/4_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey is a one-party-consent state under N.J.S.A. 2A:156A-3 and -4: recording a conversation you are not a party to, absent one party's consent, risks criminal and civil liability",
+      "source_url": "https://www.dmlp.org/legal-guide/new-jersey/new-jersey-recording-law",
+      "result": "confirmed"
+    },
+    {
+      "claim": "18 U.S.C. 2721(b)(3) allows a legitimate business to use DMV information only to verify the accuracy of information the individual submitted, and then to correct it only to prevent fraud, pursue legal remedies or recover a debt or security interest",
+      "source_url": "https://www.govinfo.gov/content/pkg/USCODE-2021-title18/html/USCODE-2021-title18-partI-chap123-sec2721.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ consumer privacy law effective January 15, 2025; applies at 100,000+ consumers (or 25,000+ plus revenue from selling data); penalties up to $10,000 per violation and $20,000 for repeats; 30-day cure period ending July 15, 2026",
+      "source_url": "https://www.dataguidance.com/sites/default/files/DG-new-jersey-consumer-privacy-act-act-infographic.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ MVC auto body licensing: separate application per location; $300,000 garage liability / equivalent CGL and $50,000 garage keepers' liability minimums",
+      "source_url": "https://www.nj.gov/mvc/business/autobodylic.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2-VL-450M and LFM2-VL-1.6B: LFM Open License v1.0; English-only; 450M positioned for highly constrained devices and 1.6B as the more capable tier; vendor recommends fine-tuning on narrow use cases and states they are not intended for safety-critical decisions",
+      "source_url": "https://huggingface.co/LiquidAI/LFM2-VL-450M",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen2.5-VL-3B-Instruct can localise objects as bounding boxes or points and provide stable JSON outputs for coordinates and attributes, including structured reads of invoices and forms",
+      "source_url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fit_score sub-scores 15/20 + 11/15 + 8/15 + 16/20 + 10/15 + 7/15 = 67/100, with the rationale's per-dimension figures matching the numeric fields",
+      "source_url": "internal arithmetic check against avenue.json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "problem.summary: \"Shops almost never measure bay occupancy or per-vehicle dwell time, because doing so means a person with a clipboard\"",
+      "source_url": "no source cited in avenue.json; no supporting source found",
+      "result": "not found"
+    }
+  ],
+  "confidence": "High"
+}

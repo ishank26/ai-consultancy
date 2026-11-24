@@ -1,0 +1,102 @@
+{
+  "results": [
+    {
+      "ref": "B01077",
+      "name": "Shamy & Shamy, LLC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "agent_readiness notes state there is 'no hours in text' on the site",
+          "what_is_true": "Hours are published as plain text in the home page footer: 'Hours of Operation: Mon-Fri 9:00 AM - 5:00 PM, Sat-Sun Closed'. They are readable text, just not marked up in schema.",
+          "source_url": "https://www.shamyandshamy.com/"
+        }
+      ],
+      "notes": "TLS failure is real and reproducible: the browser shows the full-page 'Your connection is not private' interstitial, and an HTTPS request without a bypass fails with 'certificate verify failed: self-signed certificate'. I could only read the site after telling the browser to ignore certificate errors. Home page confirmed: title 'Law Office - New Brunswick, NJ - Shamy & Shamy, LLC.', h1 'Litigation Lawyers in New Brunswick, New Jersey', 0 JSON-LD blocks, 0 form inputs on the page (only a Thryv 'Let's Talk / Leave details' gate in an iframe), one tel: link, ~2,533 characters of body text. At 390 px the document scrolls to 768 px: the logo is cut off at the left edge and nav items run off the right edge - mobile claim confirmed. Google Maps place confirms 4.0 rating, category 'Attorney' and no photos (only an 'Add photos & videos' prompt). robots.txt is permissive (User-agent: * plus sitemap). Scores as recorded are reasonable."
+    },
+    {
+      "ref": "B01107",
+      "name": "Robert M. Adochio (law office)",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "out_of_date_signs: \"Footer reads '(c) Robert M. Adochio, 2005'\" (also repeated as a '2005 copyright' in the scores reasons)",
+          "what_is_true": "The copyright year is 2004, not 2005. Interior pages end with '(c) Robert M. Adochio, 2004  All Rights Reserved' plus 'Designed and Maintained by MedFX Internet Services' (rendered footer, so it does not appear in body innerText). The home page itself carries no copyright line at all, and no occurrence of '2005' exists in the home page HTML.",
+          "source_url": "https://www.robertadochiolaw.com/contact.html"
+        }
+      ],
+      "notes": "Everything substantive held. Home page: title is only 'Robert M. Adochio', zero h1 elements, zero JSON-LD, zero forms/inputs, no tel: link, no viewport meta; ~2,400 characters of text; 14 links; copy offers a free initial consultation with phone 732.249.5252 or adochiolaw@gmail.com. /contact.html is nearly empty, with one tel: link, an email link and no form. robots.txt is exactly 'User-agent: *' / 'Crawl-Delay: 20'. The 390 px view is confirmed non-responsive: with no viewport meta Chrome lays out a 980 px page and scales it down, so text is tiny and the page still scrolls sideways. Marlboro and Toms River do read 'Hours By Appointment' (New Brunswick main office lists no hours). Scores (gap 5, ability 2, ease 5, evidence 4) reasonable for a 2004-era static site."
+    },
+    {
+      "ref": "B01113",
+      "name": "M&Y International Financial Services",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 4
+      },
+      "notes": "Re-verified page by page. Home: title 'M&Y International Financial Services | New Brunswick | NJ | Home'; footer '(c) 2012 M&Y International LLC'; banner still '2019 Individual & Business Tax Highlights'; promo 'Tax Refund Advance ... Starts as Early as January 3, 2023'; 0 form inputs and 0 tel: links anywhere checked; a link to /book-online is present. JSON-LD is exactly two blocks: LocalBusiness (address 193 Livingston Avenue, telephone +732-640-5088, no openingHours, no services, no priceRange) and WebSite. /new-client-questionnaire is effectively blank (262 characters: contact e-mail/address/phone plus footer, no form). /book-online shows three genuinely bookable free slots - 30 min, 1 hr, 2 hr - with Book Now buttons. /pricing-for-accounting-bookkeeping lists service modules and a 10% new-customer discount but contains no dollar amounts. robots.txt allows all, blocks PetalBot, gives dotbot/AhrefsBot a crawl delay and lists a sitemap. Our-team page names four people (Mars Mellish DBA/CFO, Franmi Perez, Aldin Cameron, Louis Marotta). At 390 px the layout viewport expands to 1036 px and the firm name and cards are cut off horizontally - mobile claim confirmed. Not in the record: a Google Business Profile does exist (4.8, category 'Accountant', 193 Livingston Ave, open to 6 PM, no photos). On the score, gap_size 5 looks overstated for the one record in this set that already has working online booking plus accurate LocalBusiness schema and a 4.8 profile; I would set gap_size 4 and leave the rest."
+    },
+    {
+      "ref": "B01114",
+      "name": "BD Tax & Accounting Services",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "All claims checked out live. Title 'BDtax - Tax & Accounting Services. New Brunswick, NJ'; hero reads 'FINANCIAL & BUSINESS ADVISOR'; no meta description; 0 JSON-LD; 0 tel: links; 4 forms and 30 inputs with exactly 1 <label>; footer 'BD TAX Copyright (c) 2022 Geo Digital Agency'; top bar shows 127 Livingston Avenue and Mon-Fri 10:00-17:00; 'Employing over 200 employees in 14 countries' is present; typos 'Wendsday', 'BUSSINES', 'coffe' present; '24 hours' callback promise present; 'GET A FREE QUOTE CALCULATION' and 'A CALL BACK' forms present. Fetched from the site itself: /services/, /accounting/, /tax-consulting/, /payroll/, /audit/, /notary-public/, /financial-advisor/, /about-us/ and /robots.txt all return 404. At 390 px the page is responsive with no horizontal overflow (phone_layout 'good' is right). The cited Loc8NearMe page is genuinely about this business: BD Tax & Accounting Services, 127 Livingston Avenue, 'More Comments(36)', recent 5-star reviews. Two small observations, not errors: the directory lists Mon-Thu 9-5 and Fri 9-4:30 while the site says 10:00-17:00, and the Loc8NearMe URL slug still carries an older company name. Scores look reasonable."
+    },
+    {
+      "ref": "B01117",
+      "name": "Samuel S. Fisher & Associates CPA, LLC",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Confirmed exactly as recorded. AccountingService JSON-LD is present and accurate (name, 100 Bayard St Suite 311, telephone 732-846-1700). The header phone is an anchor with href=\"732-846-1700\" - a relative URL, not a tel: link - so tap-to-call is broken. Fetching /about-us.html, /contact.html, /attorney-services.html, /business-services.html, /service-area.html, /news.html, /articles.html and /clients-referrals.html all return 200 from the homepage URL with identical length (5,188 bytes), i.e. they silently serve '/'. Note: /robots.txt does the same - it returns the homepage HTML, so there is effectively no robots file either (the record said robots was not inspected). Footer 'Copyright 2017'. No hours anywhere in the page text. Contact does exist as an embedded third-party form iframe (njypprojects.com form-builder, id 133489), matching 'contact_form: true', and the page is responsive at 390 px. Birdeye profile re-checked: 3.7 from 3 reviews, 'This profile has not been claimed', and it shows Mon-Fri 9:00-5:30 hours that the firm's own site never publishes. Scores reasonable."
+    },
+    {
+      "ref": "B01128",
+      "name": "MarMar Insurance Agency",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "All top issues verified. Home: title 'Home - marmar.net', meta description 'Let's see how we can work with you.', zero h1, zero tel: links (the header number 732-442-1120 sits in a plain SPAN; the contact page shows a second number, 732-545-5441), and the three counters - 'Happy Costumers', 'Plus Companies', 'Years of Experience' - all render 0, confirming the broken counters and the typo. Service card images are named 'Gemini_Generated_Image_acq4tbacq4tbacq4-1024x1024.png'. JSON-LD is a single @graph with Organization and WebSite only - no LocalBusiness. /services/ has two category headings (Personal Lines, Business Insurance) covering auto, homeowners, commercial auto, commercial property, general liability and workers comp. /contact/ form fields are exactly Name, Email, Message. robots.txt disallows only /wp-admin/ and lists a sitemap. Responsive at 390 px. One addition rather than a correction: a Google Business Profile does exist - Marmar Insurance Agency LLC, 5.0, category 'Insurance agency', 226 George St, open until 5 PM, no photos - so agent_readiness findable could be raised from 1 to 2. Scores unchanged."
+    },
+    {
+      "ref": "B01138",
+      "name": "New Brunswick Property Management LLC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Top issue and top-opportunity evidence: \"the 'Click Here to Schedule a Tour Now!' ... is not even a link\" and 'nothing happens when clicked'",
+          "what_is_true": "The tour control is a <button class=\"rounded-button\" onclick=\"location.href='#Contact'\">, so clicking it does work - it scrolls to the #Contact section. That section, however, contains only a mailto: link (info@nbpropertymgmt.com): no form, no phone, no booking. The practical problem stands, but the CTA is not dead.",
+          "source_url": "https://nbpropertymgmt.com/"
+        },
+        {
+          "claim": "listing: 'No Google Business Profile or map listing verified' (repeated in the scores reasons as 'no map presence')",
+          "what_is_true": "A Google Business Profile exists: 'New Brunswick Property Management LLC', 5.0, category 'Property management company', 90 Livingston Ave #2, New Brunswick NJ 08901, phone (732) 354-3316, link to nbpropertymgmt.com, marked 'Claim this business' (unclaimed), with no hours and no photos.",
+          "source_url": "https://www.google.com/maps/search/New+Brunswick+Property+Management+226+Livingston+New+Brunswick+NJ"
+        }
+      ],
+      "notes": "The strongest claim is fully confirmed: there are four tel: anchors and every one points to tel:732-418-5687 while displaying 732-354-3316, 800-436-7734, 732-981-1331 and 732-745-5105 respectively. Also confirmed: no form and no inputs on the page, no meta description, no JSON-LD, no robots.txt (404), a single anchor page with #Services/#Properties, four managed buildings named, a 24/7 claim, and a responsive 390 px layout. Given the unclaimed 5.0 profile, agent_readiness findable should be above 0 (roughly 1-2) even though the profile has no hours or photos. Scores stay as recorded; gap_size 5 still holds because the lead path is broken, the published phone numbers all dial the wrong number and there is no way to enquire online."
+    },
+    {
+      "ref": "B01161",
+      "name": "Professional Land Services Inc. (NJ Professional Land Services)",
+      "verdict": "wrong business or closed",
+      "wrong_claims": [
+        {
+          "claim": "status: 'operating' (and listing rating '4.7' sourced to landsurveyors.directory, described as claiming to mirror Google)",
+          "what_is_true": "Google Maps shows 'PROFESSIONAL LAND SERVICES, INC' at 7 Stratford Pl, New Brunswick NJ 08901 - the exact address and website shown on the site - flagged 'Permanently closed', with a 4.7 rating, phone (908) 693-0175 and 'Posting is currently turned off'. The cited directory no longer exists as a directory: landsurveyors.directory now resolves to a parked domain-for-sale listing (ExpiredDomains/GoDaddy), so that source does not support the 4.7 rating.",
+          "source_url": "https://www.google.com/maps/search/Professional+Land+Services+7+Stratford+Place+New+Brunswick+NJ"
+        }
+      ],
+      "notes": "The website audit itself is accurate on every point I re-checked: an HTTPS request fails with 'certificate verify failed: self-signed certificate' (I had to bypass the interstitial to read the page); footer '(c) Copyright 2024'; no form and no inputs anywhere; the 'Fax: (732) 249-1754' anchor has href=\"tel: (732) 249-1400\" so it dials the main line; no JSON-LD; no meta description; robots.txt and sitemap.xml both 404; titles are 'NJ Professional Land Services' / 'NJ Pro Land Surveyor' with no town; home page says 'over 30 years' while the contact page says 'over 40 years'; scripts load from cdn.rawgit.com and a dead Universal Analytics tag UA-3604312-51 is still wired in; a weather widget sits in the footer; contact gives only phone, fax, text and a personal att.net address. What changes the record is the status: the Google profile for this exact business is marked permanently closed, which fits the dormant site (no update signals since roughly 2019-2021). I could not place a call, so trading has not been proven to have stopped, but a closed Google profile plus the address and website match is enough to pull this record from the ranking until someone confirms by phone. Scores are therefore not corrected - if the firm is trading, the recorded 5/2/4/5 is fair; if it has closed, the record should be dropped."
+    }
+  ],
+  "data_gaps": [
+    "Google Maps 'limited view' never showed review counts, so review totals for Shamy & Shamy, New Brunswick Property Management, MarMar and M&Y remain unconfirmed (the ratings themselves were confirmed: 4.0, 5.0, 5.0, 4.8).",
+    "Professional Land Services: Google's 'Permanently closed' label could not be corroborated independently - no phone call is permitted in this task and the NJ Division of Consumer Affairs licence report was not opened. Treat as 'verify before ranking' rather than certain closure.",
+    "landsurveyors.directory, cited as the rating source in B01161, is now a parked domain for sale and can no longer evidence the 4.7 rating.",
+    "Third-party ratings cited by earlier records (Lawyers.com 4.3 and Martindale 4.5 for Shamy & Shamy; Martindale 5.0 and thatcarhitme.com for Adochio) were not re-opened.",
+    "MarMar's 'Happy Costumers' counters rendered 0 / 0 / 0 during this re-check rather than the 2 / 0 / 0 recorded earlier; the counters are broken either way but the exact values are unstable."
+  ]
+}

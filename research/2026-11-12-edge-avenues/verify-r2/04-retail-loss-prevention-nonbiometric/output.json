@@ -1,0 +1,97 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Frigate+ refuses custom labels \u2014 quoted as 'the set of labels will be consistent for all users'",
+      "problem": "The exact quoted phrase does not appear on the cited page (docs.frigate.video/configuration/object_detectors/) or on docs.frigate.video/plus/. The substance is true, but the wording is presented as a verbatim quote in the source's words.",
+      "fix": "Paraphrase and cite the page that says it: frigate.video/plus/ states 'Only specific labels are supported. You can't add your own custom labels yet.', and docs.frigate.video/plus/ lists the fixed label set."
+    },
+    {
+      "claim": "Frigate+ licence terms \u2014 a standard subscription does not cover deploying models at customer sites (needs a commercial licence unless each customer holds their own)",
+      "problem": "Substantively correct, but the cited URL (object detectors docs page) does not contain the licence terms, so the citation does not support the claim.",
+      "fix": "Cite plus.frigate.video/terms-and-conditions/ (and/or docs.frigate.video/plus/faq/), which is where the customer-site/commercial-licence restriction is stated."
+    },
+    {
+      "claim": "Solink pricing: 'Unknown (FAQ says quotes vary with camera count, resolution and retention)'",
+      "problem": "solink.com/faqs/ as opened contains no pricing text and no statement that quotes vary with camera count, resolution and retention. 'Unknown' is the right label; the parenthetical characterisation is unverified.",
+      "fix": "Keep 'Unknown (not published)' and drop the specific FAQ wording, or cite a page where that wording actually appears."
+    },
+    {
+      "claim": "Hailo-8L M.2 module $89",
+      "problem": "Could not verify. The cited cnx-software.com page returned HTTP 403, and the $89 module figure appears nowhere in the sources I could open. The $70 kit price and 13 TOPS are confirmed (raspberrypi.com launch post).",
+      "fix": "Either cite a live retailer/launch page for the $89 module or state only the verified $70 kit price."
+    },
+    {
+      "claim": "Cactus provides 'OpenAI-compatible text/speech/vision APIs'",
+      "problem": "The repository README I opened describes local text/speech/vision inference, tool calling and fine-tuning, but does not state OpenAI-compatible APIs in the section retrieved.",
+      "fix": "Soften to 'runs text, speech and vision models locally with one Python package' (verified) or cite the specific doc line that says OpenAI-compatible."
+    },
+    {
+      "claim": "FTC Policy Statement on Biometric Information dated May 2023",
+      "problem": "The statement exists and its Section 5 unfairness framing and 'less risky alternatives' language are confirmed in the PDF text, but the document text I opened carries no date line, so the 'May 2023' month is unverified.",
+      "fix": "Say 'FTC Policy Statement on Biometric Information (2023)' or cite the FTC press release that carries the adoption date."
+    },
+    {
+      "claim": "Grocery store counts: '333 establishments / 7,002 employees' (problem section) vs '186 supermarkets and 5,902 grocery employees' (buyers section)",
+      "problem": "Both figures are correct but they are different industries: 333/7,002 is NAICS 4451 (grocery stores group), 186/5,902 is NAICS 445110 (supermarkets). Presenting the larger number as 'grocery stores alone' next to a supermarket count can read as a discrepancy.",
+      "fix": "Label the 333/7,002 line explicitly as NAICS 4451 grocery-store industry group, and the 186/5,902 line as NAICS 445110 supermarkets."
+    },
+    {
+      "claim": "Self-checkout +22% / +0.26pp attribution to specific samples",
+      "problem": "Correct as written (+22% from 8 grocery retailers / 1,300 stores; +0.26pp from 11 grocery retailers / 1,700 stores), but the report also notes the before/after estimates rest on 19 studies \u2014 worth keeping the '19 before/after studies' context so the 8/11 store counts are not read as the whole evidence base.",
+      "fix": "Optional clarity edit only; no factual change required."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "US shrink averaged 1.6% of sales in FY2022, $112.1bn, up from 1.4% / $93.9bn in FY2021", "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf", "result": "confirmed"},
+    {"claim": "Internal and external theft were about 65% of shrink", "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf", "result": "confirmed"},
+    {"claim": "41% of retailers said no employee is authorized to stop or apprehend a shoplifter (up from 38%)", "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf", "result": "confirmed"},
+    {"claim": "53% increased technology/software budgets and 46% increased use of third-party security personnel; sample 177 brands, $1.6tn sales, 97,000+ locations", "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf", "result": "confirmed"},
+    {"claim": "Self-checkout raised loss by a mean of 22% (range 3.19%-41.2%) across 8 grocery retailers / 1,300 test stores", "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/", "result": "confirmed"},
+    {"claim": "Companion estimate is +0.26 percentage points of sales (11 grocery retailers, 1,700 test stores)", "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/", "result": "confirmed"},
+    {"claim": "Missed scans most frequent SCO loss behaviour at 1%-4.8% of transactions; overall study drew on 39 retailers with turnover >EUR 1 trillion", "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/", "result": "confirmed"},
+    {"claim": "Retailers' estimates of malicious non-scan intent ranged 6% to 80%, which the authors read as unreliable", "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/", "result": "confirmed"},
+    {"claim": "Each extra 1% of SCO transactions adds 0.030%-0.048% more shrink, from 4 case studies (3 retailers)", "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/", "result": "confirmed"},
+    {"claim": "Of 14 companies testing non-scan identification/nudge technology, 7 reported positive findings: one 9% loss reduction, another $136m saved across 2,000 stores (0.13% sales increase), one 4.5x return", "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/", "result": "confirmed"},
+    {"claim": "3%-10% of SCO transactions generate a nudge/alert (2 retailers \u2014 one USA, one UK \u2014 plus 2 vendors); customers self-correct in 80%-97% of cases, hard stop needed in the remaining 3%-20% (self-correction from 2 retailers)", "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/", "result": "confirmed"},
+    {"claim": "Middlesex County 44-45: 2,280 establishments, 37,013 employees, average annual pay $45,485", "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv", "result": "confirmed"},
+    {"claim": "Grocery stores (NAICS 4451) 333 establishments / 7,002 employees; supermarkets (445110) 186 / 5,902", "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv", "result": "confirmed"},
+    {"claim": "Beer-wine-liquor stores (4453): 143 establishments / 945 employees at $30,985 average annual pay", "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv", "result": "confirmed"},
+    {"claim": "Pharmacies/drug retailers (45611): 198 establishments / 2,145 employees; hardware line 444140 reports 13 establishments with employment withheld; 4441: 94 / 2,741; 457110: 96 / 1,304; 455: 129 / 7,131", "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv", "result": "confirmed"},
+    {"claim": "FTC alleged Rite Aid's system generated thousands of false-positive matches from 2012-2020 and employees followed, searched, ordered out or called police on wrongly flagged customers, disproportionately people of colour", "source_url": "https://www.ftc.gov/news-events/news/press-releases/2023/12/rite-aid-banned-using-ai-facial-recognition-after-ftc-says-retailer-deployed-technology-without", "result": "confirmed"},
+    {"claim": "Rite Aid order: five-year facial-recognition ban, consumer notice, written complaint investigation, deletion of biometric data, third-party assessments, CEO certification", "source_url": "https://www.ftc.gov/news-events/news/press-releases/2023/12/rite-aid-banned-using-ai-facial-recognition-after-ftc-says-retailer-deployed-technology-without", "result": "confirmed"},
+    {"claim": "FTC biometric policy statement frames biometric use as potentially unfair under Section 5 and asks whether less risky alternatives exist", "source_url": "https://search.ftc.gov/system/files/ftc_gov/pdf/p225402biometricpolicystatement.pdf", "result": "confirmed"},
+    {"claim": "NJ wiretap act is one-party consent and a store intercepting conversations it is not party to is exposed (N.J.S.A. 2A:156A-4(d))", "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/", "result": "confirmed"},
+    {"claim": "No NJ statute requires notice/signage for ordinary workplace or business cameras; N.J.S.A. 34:6B-22 covers only tracking devices in vehicles, with $1,000 first / $2,500 later penalties", "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/", "result": "confirmed"},
+    {"claim": "N.J.S.A. 2C:14-9 criminalises recording where a reasonable expectation of privacy exists (restrooms, locker rooms, changing areas)", "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/", "result": "confirmed"},
+    {"claim": "Friedman v. Martinez (N.J. 2020) restates intrusion upon seclusion as intrusion into a private space plus conduct highly offensive to a reasonable person", "source_url": "https://www.njcourts.gov/system/files/court-opinions/2020/a_37_81_18.pdf", "result": "confirmed"},
+    {"claim": "NLRB GC Memo GC 23-02 dated 31 Oct 2022 is prosecutorial guidance urging a presumptive Section 7 violation where surveillance practices viewed as a whole tend to interfere, and disclosure of technologies used absent a covert-use business need", "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and", "result": "confirmed"},
+    {"claim": "NJ Data Privacy Act (P.L. 2023, c.266) treats biometric data used to uniquely identify as sensitive, excludes photos/audio-video unless generated to identify a specific individual, applies at 100,000 consumers (excluding data processed solely to complete a payment transaction) or 25,000 + sale revenue, excludes employment-context persons, and takes effect on the 365th day after enactment", "source_url": "https://pub.njleg.gov/Bills/2022/AL23/266_.HTM", "result": "confirmed"},
+    {"claim": "P.L. 2025, c.39 directs the AG to 'undertake such steps as the Attorney General deems appropriate' to promote investigation, prosecution and deterrence of organised retail theft, which may include establishing a retail theft unit, task force or other office/initiative", "source_url": "https://pub.njleg.gov/Bills/2024/AL25/39_.HTM", "result": "confirmed"},
+    {"claim": "N.J.S.A. 2C:20-11(e) shields a merchant who detains or causes arrest on probable cause", "source_url": "https://pub.njleg.gov/Bills/2024/AL25/39_.HTM", "result": "confirmed"},
+    {"claim": "Rhombus public price: $399 (R120 mini dome) + $149 licence = $548 total MSRP; licence described as 'ongoing' and required for all cameras; billing period not stated", "source_url": "https://www.rhombus.com/pricing/", "result": "confirmed"},
+    {"claim": "Ultralytics Pro is $29/seat/month with custom-priced Enterprise licence", "source_url": "https://www.ultralytics.com/pricing", "result": "confirmed"},
+    {"claim": "TrackTrack is the current default tracker; available trackers include ByteTrack, BoT-SORT, OC-SORT, Deep OC-SORT, FastTracker; ByteTrack has no ReID/no camera-motion compensation, BoT-SORT adds GMC and optional ReID", "source_url": "https://docs.ultralytics.com/modes/track/", "result": "confirmed"},
+    {"claim": "Frigate accepts a user-supplied model with model.path plus labelmap_path for custom labels", "source_url": "https://docs.frigate.video/configuration/object_detectors/", "result": "confirmed"},
+    {"claim": "Frigate+ is an annual subscription with 12 fine-tunes included and extra fine-tunes at $5", "source_url": "https://frigate.video/plus/", "result": "confirmed"},
+    {"claim": "Frigate+ cannot accept user-defined custom labels", "source_url": "https://frigate.video/plus/", "result": "confirmed"},
+    {"claim": "Frigate+ standard subscription does not cover deploying models at customers' sites; commercial licence needed unless each customer holds their own subscription", "source_url": "https://docs.frigate.video/plus/faq/", "result": "confirmed"},
+    {"claim": "Everseen vendor ROI: 374% three-year ROI, payback under six months, $88,000 recovered per store per year, 0.14% of revenue through covered lanes, Forrester TEI composite of 4 interviewed retailers modelled as a 200-store $20bn grocery chain", "source_url": "https://everseen.com/blog/roi-of-vision-ai-in-retail", "result": "confirmed"},
+    {"claim": "NCR acquired StopLift in 2018 (announced 6 Nov 2018)", "source_url": "https://investor.ncr.com/news-releases/news-release-details/ncr-acquires-stoplift-gains-powerful-anti-theft-solution-self-0", "result": "could not open"},
+    {"claim": "Agilence integrates POS/inventory/video/alarm-type data for exception analytics; no published price", "source_url": "https://www.agilenceinc.com/platform", "result": "confirmed"},
+    {"claim": "Solink FAQ does not publish pricing (quotes vary)", "source_url": "https://solink.com/faqs/", "result": "not found"},
+    {"claim": "Jetson Orin Nano Super Developer Kit is $249 with 67 INT8 TOPS", "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/", "result": "confirmed"},
+    {"claim": "Google Coral USB Accelerator lists at $59.99 and is subject to stock shortages", "source_url": "https://gweb-coral-full.uc.r.appspot.com/products/accelerator", "result": "confirmed"},
+    {"claim": "Raspberry Pi AI Kit (M.2 HAT+ with Hailo-8L, 13 TOPS) launched at $70", "source_url": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/", "result": "confirmed"},
+    {"claim": "Hailo-8L M.2 module costs $89", "source_url": "https://www.cnx-software.com/2024/06/04/70-raspberry-pi-ai-kit-combines-official-m-2-hat-with-hailo-8l-ai-accelerator/", "result": "could not open"},
+    {"claim": "Liquid AI LFM2-VL-450M/1.6B are edge-oriented VLMs; model card recommends fine-tuning for narrow use cases and says not intended for safety-critical decisions", "source_url": "https://huggingface.co/LiquidAI/LFM2-VL-450M", "result": "confirmed"},
+    {"claim": "Liquid AI publishes GGUF weights with llama-mtmd-cli usage examples", "source_url": "https://huggingface.co/LiquidAI/LFM2-VL-3B-GGUF", "result": "confirmed"},
+    {"claim": "Qwen3-VL offers dense and MoE models scaling 'from edge to cloud' with Instruct variants", "source_url": "https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct", "result": "confirmed"},
+    {"claim": "YOLOv5 + Deep SORT pipeline classifies per-person bounding-box time series; best models (XceptionTime, MiniRocket) reached 92% F1, beat RTFM by 3 points, and ran 8.45x faster", "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10347130/", "result": "confirmed"},
+    {"claim": "Benchmark sample: UCF-Crime shoplifting clips, 544 clips from 317 videos, test split 81 clips (12 abnormal + 69 normal) = ~14.9% abnormal, 81 abnormal clips overall", "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10347130/", "result": "confirmed"},
+    {"claim": "Sweethearting detection paper (ICASSP 2009) uses motion-based candidates, spatio-temporal features and Multiple-Instance Learning on data from a real grocery store, with no field metrics in the abstract", "source_url": "https://research.ibm.com/publications/detecting-sweethearting-in-retail-surveillance-videos", "result": "confirmed"},
+    {"claim": "fit_score sub-scores 16+11+8+10+6+6 = 57 total, and legal_risk_low is set low (6) consistent with the legal section's residual Section 5, wiretap, NLRB and notice-gap risks", "source_url": "avenue.json (internal arithmetic and consistency check)", "result": "confirmed"},
+    {"claim": "Vendor outcome claims are rated Low (Everseen 374% ROI, 9% loss reduction) and single small studies are not rated High (92% F1 benchmark is Low; sweethearting is Low; NRF and ECR industry studies are Medium)", "source_url": "avenue.json (internal strength-rating check against sources above)", "result": "confirmed"}
+  ],
+  "confidence": "High"
+}

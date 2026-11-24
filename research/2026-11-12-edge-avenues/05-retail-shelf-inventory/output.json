@@ -1,0 +1,392 @@
+{
+  "avenue": "retail-shelf-inventory",
+  "one_line": "Fixed cameras plus a staff-phone walk that finds empty facings, planogram breaks and wrong shelf tags in independent grocers and specialty retailers, then turns POS velocity into a ranked restock/tag-fix list.",
+  "problem": {
+    "summary": "Small independents run shelf checks by eye, once a day at best, by whoever is free. Industry data says roughly 6.5% of grocery items are out of stock at a given moment (2023) and that 'shelf empty' is the top reason grocery shoppers leave without buying. Price-tag accuracy is not optional in New Jersey: merchants must clearly mark prices, the state has a mandatory unit-pricing law, and the Attorney General has extracted seven-figure settlements from chains over tag/register mismatches. Independents carry the cost with thin labor: 186 supermarkets in Middlesex County average ~32 employees and ~$33k average annual pay, and single-store grocers run ~1.5% EBITDA.",
+    "evidence": [
+      {
+        "fact": "Grocery out-of-stock rate fell from 10.7% in 2022 to 6.5% in 2023, below the ~8% historical norm, per FMI's Food Retailing Industry Speaks.",
+        "year": "2024 (reporting 2023 data)",
+        "source_url": "https://www.fmi.org/blog/view/fmi-blog/2024/07/25/progress-on-supply-chain-efficiency---performance"
+      },
+      {
+        "fact": "IHL Group put inventory distortion at $1.77T globally (2023 study), with $349B in lost sales for U.S./Canadian retailers in 2022 and 17.7% more out-of-stocks in North America than the prior year; for food/grocery, 'empty shelves' was the number one reason shoppers gave for leaving without intended purchases.",
+        "year": "2023",
+        "source_url": "https://www.supermarketnews.com/finance/retail-losses-reach-1-77-trillion-worldwide"
+      },
+      {
+        "fact": "New Jersey law requires merchants to clearly mark the price of items either on the item or on the display where it is offered for sale.",
+        "year": "2023 (state consumer guide)",
+        "source_url": "https://www.njconsumeraffairs.gov/News/Brochures/Consumer-Shopping-Guide.pdf"
+      },
+      {
+        "fact": "New Jersey is one of nine states with a mandatory unit-pricing law; the AG's Office of Weights and Measures found 2,000+ unit-pricing errors at Walmart's 64 NJ stores in Q1 2023, producing a $1.64M settlement (June 2024).",
+        "year": "2024",
+        "source_url": "https://www.njoag.gov/ag-platkin-walmart-agrees-to-pay-1-64-million-settlement-to-resolve-allegations-of-unlawful-pricing-practices-at-retail-stores-statewide/"
+      },
+      {
+        "fact": "OWM inspections of 58 Dollar General stores (Nov 2022, Feb 2023) found more than 2,000 items scanning higher than the posted price, in some cases by $5.95; the chain paid $1.2M and must internally audit every NJ store yearly, with >2% overcharges in a sample counting as a failed audit.",
+        "year": "2023",
+        "source_url": "https://www.njoag.gov/ag-platkin-new-jersey-division-of-consumer-affairs-reaches-settlement-with-dollar-general-over-allegations-of-pricing-violations/"
+      },
+      {
+        "fact": "Middlesex County had 186 NAICS 445110 (supermarket) establishments in 2024 with 5,902 average employees, $195.8M total annual wages, average annual pay $33,172 and average weekly wage $638; NAICS 4451 overall had 333 establishments and 7,002 employees.",
+        "year": "2024",
+        "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv"
+      },
+      {
+        "fact": "Independent grocers' FY2024 net profit edged up to 1.9%, but EBITDA was 1.52% for single-store operators versus 3.28% for multi-store/higher-volume operators; labor and benefits hit a record 16.3% of net sales.",
+        "year": "2025 (FY2024 data)",
+        "source_url": "https://fmssolutions.com/resource-grocery/2025-independent-grocers-financial-report/"
+      },
+      {
+        "fact": "Independent grocers reported 57% average store-level staff turnover, and 35% said they were using automation to fill labor gaps.",
+        "year": "2023",
+        "source_url": "https://www.nationalgrocers.org/news/2023-independent-grocers-financial-survey-webinar-key-takeaways/"
+      },
+      {
+        "fact": "In a vendor case study, a national grocery retailer's existing manual gap-scan process found only 35.6%, 52.3% and 57.1% of shelf gaps across three stores, versus 93.3–95.2% for the camera-based scan (vendor-reported).",
+        "year": "2022",
+        "source_url": "https://pensasystems.com/wp-content/uploads/2022/08/Pensa_CaseStudy_RetailScanning.pdf"
+      }
+    ]
+  },
+  "buyers": [
+    {
+      "business_type": "Supermarkets and other grocery stores (independent, 1–10 stores)",
+      "naics": "445110",
+      "size_where_it_matters": "~5,000–40,000 sq ft, 10–40 aisles, 15+ staff; 186 such establishments in Middlesex County (2024)",
+      "why": "Highest SKU count and fastest restock cycles, so empty facings translate directly into lost baskets; also the most exposed to NJ price-marking and unit-pricing rules."
+    },
+    {
+      "business_type": "Convenience retailers (independent)",
+      "naics": "44513 / 445120",
+      "size_where_it_matters": "1,500–5,000 sq ft, 5–20 staff; 147 establishments in Middlesex County (2024)",
+      "why": "Narrow aisles and 1–3 staff on shift, so no one walks the aisles; small planograms make a 20–30 camera-free capture cheap. (inference)"
+    },
+    {
+      "business_type": "Specialty food retail: meat markets, produce markets, bakeries, ethnic grocers",
+      "naics": "4452 (445210, 445230), 311811 retail bakeries",
+      "size_where_it_matters": "1 location, 5–30 staff",
+      "why": "Perishable, high-turn categories where a hole is a lost sale today, and where staff already handle price changes by hand. (inference)"
+    },
+    {
+      "business_type": "Beer, wine and liquor stores",
+      "naics": "445310",
+      "size_where_it_matters": "3,000–15,000 sq ft, 5–20 staff",
+      "why": "Large facings-per-SKU and heavy promo/tag churn; price accuracy matters because unit pricing and posted-price rules apply to regulated commodities. (inference)"
+    },
+    {
+      "business_type": "Pharmacies and drug stores (independent)",
+      "naics": "446110",
+      "size_where_it_matters": "8,000–20,000 sq ft, 10–40 staff",
+      "why": "Planogram-driven front store with vendor compliance expectations; staff time goes to resets rather than daily gap walks. (inference)"
+    },
+    {
+      "business_type": "Hardware stores and specialty retail (pet, hobby, auto parts, clothing)",
+      "naics": "444140, 444130, 453910, 451120, 448140",
+      "size_where_it_matters": "5,000–30,000 sq ft, 5–50 staff, 1–5 locations",
+      "why": "Same gap problem without grocery's perishable urgency; price-tag accuracy still matters for posted-price rules, and planograms are simpler to digitize. (inference)"
+    }
+  ],
+  "existing_solutions": [
+    {
+      "vendor": "Simbe Robotics",
+      "product": "Tally (autonomous shelf-scanning robot + cloud)",
+      "what_it_does": "Drives aisles 1–3x/day, scans 15–30k products/hour, reports out-of-stocks, missing facings and price mismatches; generates a 'realogram' when no planogram exists; API for downstream systems.",
+      "pricing": "Unknown — Robot-as-a-Service, zero upfront, monthly fee based on store size, SKU count and CV vs RFID; company says typical stores are >5,000 sq ft",
+      "source_url": "https://www.simberobotics.com/faqs"
+    },
+    {
+      "vendor": "Focal Systems",
+      "product": "Focal shelf cameras / shelf intelligence",
+      "what_it_does": "Fixed cameras above shelves producing continuous on-shelf-availability and shelf-condition data for grocery.",
+      "pricing": "Unknown — setup fee plus monthly service fee by store size, services and contract length (AI-as-a-Service; cameras not sold separately)",
+      "source_url": "https://focal.systems/insights/"
+    },
+    {
+      "vendor": "Pensa Systems",
+      "product": "Shelf availability scanning (mobile/drone capture + cloud CV)",
+      "what_it_does": "Captures shelf images with handheld or drone devices and reports gaps and shelf conditions; vendor case study claims 94% gap-detection accuracy vs 35–57% for manual scanning.",
+      "pricing": "Unknown",
+      "source_url": "https://pensasystems.com/wp-content/uploads/2022/08/Pensa_CaseStudy_RetailScanning.pdf"
+    },
+    {
+      "vendor": "Zippedi",
+      "product": "Zippy shelf-scanning robot + Bruno task app",
+      "what_it_does": "Autonomous aisle scanning with cameras/illumination and optional RFID, reporting shelf gaps, price-tag errors and overhead stock up to ~7 m; cloud analytics and staff task app.",
+      "pricing": "Unknown — sold/rented via written quote or RaaS",
+      "source_url": "https://robot-distribution.com/en/brands/zippedi"
+    },
+    {
+      "vendor": "Afresh",
+      "product": "Afresh Store Ordering / replenishment AI",
+      "what_it_does": "Per-store, per-SKU order recommendations for fresh and now center-store using POS, inventory, waste and promo history — the 'reorder tied to POS' half of this avenue without the shelf-vision half.",
+      "pricing": "Unknown (demo/quote; positioned at regional and national grocery chains)",
+      "source_url": "https://www.afresh.com/resources/blog/store-ordering-rfp-faqs"
+    },
+    {
+      "vendor": "Ultralytics (do-it-yourself stack)",
+      "product": "YOLO11/YOLO models, SKU-110K dense-shelf dataset pipeline",
+      "what_it_does": "Open detector family used to find product facings and shelf edges; SKU-110K (11,743 densely packed shelf images) is the standard pretraining set for product detection.",
+      "pricing": "Free under AGPL-3.0; paid Enterprise license required for closed-source/commercial embedding, price not published",
+      "source_url": "https://www.ultralytics.com/license"
+    },
+    {
+      "vendor": "Frigate (open source NVR)",
+      "product": "Frigate + OpenVINO/YOLO detectors",
+      "what_it_does": "Local NVR that runs YOLO-family detectors on IP camera streams via OpenVINO, TensorRT, ONNX or Edge TPU, with custom label maps — usable as the fixed-camera ingest/detection layer for shelf zones.",
+      "pricing": "Free (open source); hardware cost only",
+      "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+    }
+  ],
+  "gap_for_local_installer": "Every credible shelf-intelligence vendor is built for chains: robots that need wide aisles and 5,000+ sq ft, cloud RaaS contracts, and enterprise sales cycles. Independents have no accurate planograms (Simbe itself says most retailers don't), legacy POS with no clean API, and 1.5% single-store EBITDA, so a per-store enterprise subscription rarely pencils. A local installer can sell the inverse: on-prem capture (4–8 fixed PoE cameras on the fastest aisles plus a 5-minute staff phone walk for the rest), build the realogram from the store's own shelf images in week one, wire alerts into the tasks the staff already do, and price it as a flat monthly service call rather than a platform contract. The defensibility is the per-store calibration set, the shelf-tag/label dictionary, and the fact that nobody else will drive to Milltown for a 12,000 sq ft account.",
+  "technical_approach": {
+    "established_pattern": "Two published patterns dominate: (a) detect every product facing with a dense object detector, then infer gaps from missing positions, and (b) directly detect empty shelf space as its own class. Both are followed by shelf-row/sequence alignment against a planogram or a learned 'realogram', then OCR of the shelf tag to catch price mismatches. Published work runs this on a walking robot or a phone/cart capture, not continuous fixed cameras, because one camera only covers a few feet of shelf. For a small store the practical hybrid is: fixed cameras on the 10–20% of facings that carry most velocity (always-on, cheap), plus a once- or twice-daily phone or cart-mounted capture for full-store coverage, with a small VLM used only to adjudicate ambiguous frames and read tags.",
+    "models_and_tools": [
+      {
+        "name": "Ultralytics YOLO11 / YOLOv8",
+        "role": "Product-facing and empty-space detector; export to ONNX/OpenVINO/TensorRT for edge inference; AGPL or paid enterprise license",
+        "source_url": "https://www.ultralytics.com/license"
+      },
+      {
+        "name": "SKU-110K dataset",
+        "role": "11,743 densely packed retail shelf images (8,219 train) used to pretrain dense product detection before fine-tuning on the store's own shelves",
+        "source_url": "https://docs.ultralytics.com/datasets/detect/sku-110k"
+      },
+      {
+        "name": "Liquid AI LFM2.5-VL-450M",
+        "role": "Tiny VLM for captioning/grounding and bounding-box queries on-device; vendor warns it is NOT suited to fine-grained OCR, so not the price-tag reader",
+        "source_url": "https://huggingface.co/LiquidAI/LFM2.5-VL-450M"
+      },
+      {
+        "name": "Liquid AI LFM2.5-VL-1.6B / 3B",
+        "role": "Exception handling and tag reading: the 3B card advertises improved grounding plus full-page OCR with layout annotation; 1.6B ships as ONNX (~1.5 GB FP16-encoder/Q4-decoder) for on-prem boxes",
+        "source_url": "https://huggingface.co/LiquidAI/LFM2.5-VL-3B/raw/main/README.md"
+      },
+      {
+        "name": "Cactus (cactus-compute)",
+        "role": "On-device inference engine for phones/wearables with React Native, Flutter and Kotlin bindings, plus LoRA fine-tuning in the Python package — the path to running the capture model on a staff phone offline",
+        "source_url": "https://github.com/cactus-compute/cactus/"
+      },
+      {
+        "name": "Frigate + OpenVINO detector",
+        "role": "Local NVR/ingest for the fixed PoE cameras; runs YOLO ONNX models on Intel iGPU/NPU/CPU with custom label maps and zone rules",
+        "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+      },
+      {
+        "name": "Square Inventory API (POS side)",
+        "role": "Reference for the reorder half: read item catalog, inventory counts and adjustment history so shelf gaps can be ranked by recent sell-through; Clover/Lightspeed/legacy registers need their own export or nightly CSV",
+        "source_url": "https://developer.squareup.com/docs/inventory-api/what-it-does"
+      }
+    ],
+    "hardware": [
+      {
+        "item": "Reolink 4K PoE cameras (aisle coverage, 1 per 6–10 ft of shelf on priority aisles)",
+        "approx_cost": "$39–$200 each street price depending on model (listed range on Reolink's 4K PoE page: $39–$199.99)",
+        "source_url": "https://reolinktech.com/poe-ip-cameras-nvrs/4k-poe-cameras-122/"
+      },
+      {
+        "item": "NVIDIA Jetson Orin Nano Super Developer Kit (edge inference box, 67 TOPS)",
+        "approx_cost": "$249",
+        "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/"
+      },
+      {
+        "item": "Intel N100/Core Ultra mini-PC as Frigate host with OpenVINO on the iGPU",
+        "approx_cost": "~$150–$350 (inference; no vendor price opened — budget placeholder)",
+        "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+      },
+      {
+        "item": "PoE switch + cabling/install consumables",
+        "approx_cost": "~$80–$300 per store (inference, quote-dependent)",
+        "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+      },
+      {
+        "item": "Capture device: existing staff Android/iPhone, or a dedicated mid-range Android with a cart mount",
+        "approx_cost": "$0 (staff device) to ~$250–$400 (dedicated) — inference, no price source opened",
+        "source_url": "https://github.com/cactus-compute/cactus/"
+      }
+    ],
+    "fine_tuning_needed": "Yes for the detector, no for the VLM. Shelf/product detection needs a store-specific fine-tune: start from SKU-110K-style pretraining, then 300–800 hand-labeled shelf images per store (a few categories at a time) to get gap detection into the 80–90% AP range reported in the literature. The VLM is used zero-shot for tag reading and ambiguous-frame triage; only a light LoRA is worth it if a store has unusual label formats. Planogram data is the real work: expect to build the realogram manually from captured images (hours per store) because independents rarely have usable planograms.",
+    "difficulty": "Medium"
+  },
+  "measured_outcomes": [
+    {
+      "finding": "Detecting fully empty shelf space reached 86.3% average precision and 'frontal' out-of-stock 83.7% AP, beating product-detection-based baselines (which scored only ~56–64% AP on the normal class).",
+      "year": "2024",
+      "sample": "511 full-height shelf images from four Croatian retailers; 1,210 labeled OOS instances; 5-fold test",
+      "study_type": "peer-reviewed",
+      "strength": "Medium",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10819825/"
+    },
+    {
+      "finding": "A shelf-scanning robot (ROSCH) was 8x faster than a human operator at routine out-of-stock detection while running during store hours.",
+      "year": "2023",
+      "sample": "~2,000 annotated images (900 captured in 3 Italian supermarkets); tested in 1 supermarket in Salerno",
+      "study_type": "peer-reviewed",
+      "strength": "Medium",
+      "source_url": "https://openaccess.thecvf.com/content/ICCV2023W/ACVR/html/De_Simone_Autonomous_Mobile_Robot_for_Automatic_out_of_Stock_Detection_in_ICCVW_2023_paper.html"
+    },
+    {
+      "finding": "Camera-based gap scanning found 93.3%, 95.2% and 93.9% of gaps in three stores, versus 35.6%, 52.3% and 57.1% for the retailer's existing manual process.",
+      "year": "2022",
+      "sample": "3 stores of one national grocery retailer (audited trial)",
+      "study_type": "vendor",
+      "strength": "Low",
+      "source_url": "https://pensasystems.com/wp-content/uploads/2022/08/Pensa_CaseStudy_RetailScanning.pdf"
+    },
+    {
+      "finding": "Wakefern-member grocery operators (SRS and Inserra) deployed Tally across all stores; SRS reports a 50% reduction in out-of-stock items, with one store manager citing prioritized pick lists for every category.",
+      "year": "2025–2026 (undated customer story)",
+      "sample": "All stores of two Wakefern members; exact store count not disclosed",
+      "study_type": "vendor",
+      "strength": "Low",
+      "source_url": "https://www.simberobotics.com/resources/customer-stories/wakefern-customer-story"
+    },
+    {
+      "finding": "Inventory distortion (out-of-stocks plus overstocks) cost $1.77T globally in 2023 and $349B in lost sales for U.S./Canadian retailers in 2022, with out-of-stocks up 17.7% year over year in North America.",
+      "year": "2023",
+      "sample": "Multi-country retail survey/model; methodology not fully public",
+      "study_type": "industry",
+      "strength": "Low",
+      "source_url": "https://www.supermarketnews.com/finance/retail-losses-reach-1-77-trillion-worldwide"
+    },
+    {
+      "finding": "Independent grocers report 57% average store-level turnover and 35% already using automation to fill labor gaps — the labor pool that would otherwise do shelf walks.",
+      "year": "2023",
+      "sample": "NGA/FMS Independent Grocers Financial Survey respondents",
+      "study_type": "industry",
+      "strength": "Medium",
+      "source_url": "https://www.nationalgrocers.org/news/2023-independent-grocers-financial-survey-webinar-key-takeaways/"
+    }
+  ],
+  "legal_privacy": [
+    {
+      "issue": "Recording audio in the store",
+      "rule_or_precedent": "New Jersey's Wiretap Act is one-party consent: intercepting an oral communication without a party's consent is a crime (N.J.S.A. 2A:156A-3/-4). Practical rule for a shelf system: buy cameras with microphones disabled or absent, and never record audio.",
+      "confirmed": true,
+      "source_url": "https://www.dmlp.org/legal-guide/new-jersey/new-jersey-recording-law"
+    },
+    {
+      "issue": "Whether video-only recording falls under the Wiretap Act",
+      "rule_or_precedent": "New Jersey courts have held the video portion of a recording is outside the Wiretap Act (State v. Diaz, 1998, discussing N.J.S.A. 2A:156A-2); the Act covers aural interception.",
+      "confirmed": true,
+      "source_url": "https://caselaw.findlaw.com/court/nj-superior-court-appellate-division/1193224.html"
+    },
+    {
+      "issue": "Pricing and tag accuracy obligation",
+      "rule_or_precedent": "NJ requires prices to be clearly marked on the item or the display; N.J.A.C. 13:47C-3.5 sets a minimum $100 penalty per violation, and N.J.S.A. 51:1-100 makes each package a separate violation. New Jersey also mandates unit pricing (one of nine states).",
+      "confirmed": true,
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-47C-3-5"
+    },
+    {
+      "issue": "Enforcement risk for price/tag errors",
+      "rule_or_precedent": "NJ OWM inspections produced a $1.2M Dollar General settlement (2023) with a mandated annual internal audit where >2% overcharges = failed audit, and a $1.64M Walmart unit-pricing settlement (2024). A tag-verification product has a documented regulatory driver, not just a shrink argument.",
+      "confirmed": true,
+      "source_url": "https://www.njoag.gov/ag-platkin-new-jersey-division-of-consumer-affairs-reaches-settlement-with-dollar-general-over-allegations-of-pricing-violations/"
+    },
+    {
+      "issue": "State consumer privacy law applicability",
+      "rule_or_precedent": "The New Jersey Data Privacy Law (effective Jan 15, 2025) applies only to controllers processing personal data of 100,000+ NJ consumers (or 25,000+ plus data sales), so a 5–200 staff retailer is generally out of scope — but the system should still avoid collecting customer-identifiable data.",
+      "confirmed": true,
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/54204/54612"
+    },
+    {
+      "issue": "Facial recognition / biometric surveillance in stores",
+      "rule_or_precedent": "NJ bill A3929 (2026) would make it an unlawful practice to run facial or other remote biometric recognition on consumers without clear and conspicuous notice and a lawful purpose, with a 30-day cure; the text I read is a bill, and I could not confirm enactment. Recommendation: build no face recognition at all.",
+      "confirmed": true,
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2026/A4000/3929_T1.HTM"
+    },
+    {
+      "issue": "Biometric data handling (federal)",
+      "rule_or_precedent": "FTC's May 2023 policy statement says misuse of biometric information — including false claims about accuracy and bias/discrimination risk — can be an unfair or deceptive practice under Section 5 of the FTC Act.",
+      "confirmed": true,
+      "source_url": "https://search.ftc.gov/system/files/ftc_gov/pdf/p225402biometricpolicystatement.pdf"
+    },
+    {
+      "issue": "Employee monitoring and Section 7 rights",
+      "rule_or_precedent": "NLRB General Counsel Memo GC 23-02 (Oct 31, 2022) targets electronic monitoring and algorithmic management that interferes with employees' Section 7 rights — relevant because shelf cameras also observe staff, and because gap alerts can become performance metrics.",
+      "confirmed": true,
+      "source_url": "https://assets.dorsey.com/content/uploads/2023/06/Electronic-Monitoring-10-31-2022-3.pdf"
+    },
+    {
+      "issue": "Employee notice for video-only CCTV",
+      "rule_or_precedent": "I could not confirm any New Jersey statute that requires notice to employees for video-only recording in non-private work areas; recommended practice is posted signage and a written policy even where not mandated.",
+      "confirmed": false,
+      "source_url": "https://www.dmlp.org/legal-guide/new-jersey/new-jersey-recording-law"
+    },
+    {
+      "issue": "Video data retention limits",
+      "rule_or_precedent": "I could not confirm a New Jersey-specific retention limit for retail video; the defensible posture is short retention (e.g., 7–30 days for raw frames), keeping only derived shelf-state metadata, and no cloud upload by default.",
+      "confirmed": false,
+      "source_url": "https://search.ftc.gov/system/files/ftc_gov/pdf/p225402biometricpolicystatement.pdf"
+    },
+    {
+      "issue": "False-accusation / bias risk in alerts",
+      "rule_or_precedent": "The product flags shelves, not people, which keeps it clear of biometric and defamation exposure; the residual risk is blaming a named employee for an unfilled gap based on a false positive, so alerts should be shelf- and task-centric with a human confirmation step. (inference)",
+      "confirmed": false,
+      "source_url": "https://search.ftc.gov/system/files/ftc_gov/pdf/p225402biometricpolicystatement.pdf"
+    }
+  ],
+  "prospecting_signals": {
+    "public": [
+      "Google/Yelp reviews that mention specific empty shelves, 'couldn't find', or a price that rang up higher than the tag (a recurring phrase pattern is the strongest low-cost signal). (inference)",
+      "Weekly circular size and page count — more advertised items means more tag changes per week and more chances for a mismatch. (inference)",
+      "Store footprint and aisle count published on the store's own site or in a shopping-center lease flyer; 8+ aisles with 15+ staff is where a walk stops happening. (inference)",
+      "Number of locations (1–10 is the sweet spot; above that they are already talking to Simbe/Focal). (inference)",
+      "Co-op/wholesaler affiliation visible on signage or the site (Wakefern/ShopRite, Key Food, IGA, Associated) — Wakefern members may already get shelf tools through the co-op, so prioritize non-Wakefern banners. (inference)",
+      "Job postings for 'price integrity', 'planogram', 'reset crew' or overnight stocker roles — evidence that tag/shelf labor is a named, unfilled job. (inference)",
+      "NJ Division of Consumer Affairs / OAG press releases and OWM enforcement actions naming a banner (public, but only large chains appear).",
+      "Store photos on Google Maps that show empty facings, handwritten price signs or cases sitting in the aisle. (inference)"
+    ],
+    "walk_in": [
+      "Holes with no shelf tag versus holes with a tag — the first is a stocking gap, the second is a planogram/price gap; count both per aisle for 10 minutes.",
+      "Handwritten, taped or expired promo signs; tag facings that don't match the product in front of them.",
+      "Overstock on top stock or cut cases parked in the aisle (a sign the store restocks from the back by memory, not by list). (inference)",
+      "Number of staff on the floor at 2–4 pm and whether anyone carries a handheld scanner or a printed pick list.",
+      "Existing camera domes: count them, check whether they are IP/ONVIF (label on the housing) and whether any point at shelves rather than the door.",
+      "Register/POS model and receipt format — can you get an item-level sales export, or is the only data a Z-report? (inference)",
+      "Paper shelf tags versus electronic shelf labels; ESLs mean the price half of the pitch is already solved and only availability remains. (inference)",
+      "Backroom: is there a labeled location for each overstock item, or is it floor-stacked? (inference)"
+    ]
+  },
+  "pilot": {
+    "scope": "One store, 2–4 weeks. Week 1: baseline — two manual gap/price audits per day for five days on a fixed 10–15 aisle route, plus a POS item-level export. Week 2: install 4 fixed PoE cameras on the highest-velocity aisles, build the realogram from captured images, label 300–500 shelf images, fine-tune the detector. Weeks 3–4: daily operation — one 5-minute phone walk per shift plus continuous fixed-camera monitoring on priority aisles, alerts pushed to the store's existing task channel, weekly review of precision and missed holes against a spot audit.",
+    "hardware": "4x 4K PoE cameras ($39–$200 each), PoE switch, one Jetson Orin Nano Super ($249) or Intel mini-PC as the local inference box, existing staff phone for the walk, cart/phone mount, cabling. Everything on-prem; no cloud dependency, no audio capture.",
+    "success_metric": "Primary: at least 25% fewer empty facings on the audited route at the 2 pm audit versus baseline. Secondary: ≥90% of gap alerts confirmed real by staff (precision), price-tag mismatch count reduced by half, and ≤10 minutes/day of added staff time. (thresholds are targets, not findings)",
+    "cost_range": "$4,500–$9,500 for the pilot: roughly $700–$1,600 hardware, 35–55 hours of build/install/labeling at $100–$125/hr ($3,500–$6,900), plus travel. Ongoing service after the pilot: $300–$700/month per store. Assumes one store, 10–15 aisles, existing Wi-Fi or a $150–$300 cabling run, client supplies POS export, and no custom hardware enclosure.",
+    "assumptions": "Assumes the store will give a POS export (CSV or API) and 30 minutes of staff time on day one; assumes an 8–15k sq ft sales floor with 2.1–2.4 m shelving; excludes electronic shelf labels, excludes any customer analytics, and assumes the detector fine-tune reaches ~80%+ AP on the store's own images (consistent with published ranges) — if labeling needs exceed 800 images, add 15–25 hours."
+  },
+  "fit_score": {
+    "demand": 13,
+    "local_buyers": 10,
+    "ability_to_pay": 8,
+    "technical_feasibility": 15,
+    "legal_risk_low": 12,
+    "defensibility": 6,
+    "total": 64,
+    "rationale": "The problem is real and measurable (6.5% out-of-stock in 2023, empty shelves the top reason grocery shoppers leave, mandated price marking plus seven-figure NJ settlements), and Middlesex County alone has 186 supermarkets and 147 convenience retailers. But independents run 1.5–1.9% net profit and 16.3% labor cost, so willingness to pay is the constraint, not the technology: detection accuracy around 85% AP is published and reachable with a YOLO fine-tune plus a small VLM, and video-only sensing keeps legal risk modest (no audio, no biometrics, NJ privacy law thresholds not met). Defensibility is the weak leg — enterprise vendors and open-source stacks both exist, and ESLs solve the price-tag half more directly — so the moat has to be local installation, per-store calibration data, and service, not the model."
+  },
+  "risks": [
+    "Independents may not pay a recurring fee for a problem they have tolerated for years; the value story has to be price-accuracy penalty avoidance and night-crew hours, not 'AI'.",
+    "Most independents have no accurate planogram (Simbe says as much), so the installer absorbs the cost of building a realogram — unbilled hours in the first store of every account.",
+    "False positives erode trust fast; if staff chase 10 bad alerts they stop using the list within a week.",
+    "Fixed cameras are a poor fit for full-store coverage (a few feet of shelf per camera), so the phone walk is load-bearing and depends on staff compliance.",
+    "Electronic shelf labels already solve tag accuracy for chains and are dropping in price; the pitch must lead with availability and planogram execution, not just price checks.",
+    "Wakefern/ShopRite members may get shelf tools through the co-op (Simbe already works with Wakefern members), narrowing the addressable base.",
+    "POS integration is the hidden cost: legacy registers may only export end-of-day totals, which weakens the reorder ranking.",
+    "Cameras that also capture employees invite NLRA Section 7 scrutiny and morale problems if alerts become de facto performance metrics.",
+    "VLM price reading can hallucinate a digit; any price change must be human-confirmed before it reaches a shelf tag or the POS."
+  ],
+  "caveats": "Vendor outcome claims (Pensa, Simbe, Zippi/robot vendors) are rated Low and were not independently audited. All published detection-accuracy figures come from small datasets outside the US (Croatia, Italy), so local accuracy on US packaging and shelf formats is an extrapolation. Middlesex County establishment counts come from BLS QCEW 2024 annual averages and include chains, not just independents; the count of independents with 5–200 staff is an estimate. Hardware prices are street/list prices seen on the cited pages at the time of research and will move. No store visits, interviews or customer discovery were performed for this brief.",
+  "data_gaps": [
+    "No public pricing for Simbe, Focal, Pensa, Zippedi or Afresh — all quote-only, so per-store ROI cannot be benchmarked against their actual contracts.",
+    "No published New Jersey or Middlesex County out-of-stock rate; the FMI and IHL numbers are national/global.",
+    "Could not retrieve Census County Business Patterns for Middlesex County (API requires a key); used BLS QCEW instead, which does not break out establishment size classes.",
+    "No peer-reviewed US deployment of fixed-camera shelf monitoring in an independent grocery; the closest evidence is a 3-store vendor case study.",
+    "Could not confirm any NJ statute requiring employee notice for video-only CCTV, nor a NJ-specific video retention limit.",
+    "Status of NJ bill A3929 (biometric surveillance notice) beyond introduced text was not verified; treat as pending, not law.",
+    "NJ OWM store-level inspection results are not public in a searchable form (only the sticker-verification portal for individual devices), so price-accuracy risk cannot be scored per prospect.",
+    "No data found on how many Middlesex County independents run POS systems with usable APIs versus closed legacy registers."
+  ]
+}

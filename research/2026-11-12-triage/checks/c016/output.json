@@ -1,0 +1,102 @@
+{
+  "results": [
+    {
+      "ref": "B00794",
+      "name": "Roma Beauty Salon",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No service prices published anywhere on the site (top issue 4; also the 'publish hours plus starting prices' opportunity)",
+          "what_is_true": "The /redesign-package page publishes six priced offers ($149, $169, $79 and three at $49) with 'Contact Us' buttons. What is genuinely missing is per-service menu pricing (cuts, colour, keratin) and any hours on the site.",
+          "source_url": "https://www.romabeautysalon.com/redesign-package"
+        }
+      ],
+      "notes": "Operates: live site; branch addresses including 568 Milltown Rd, North Brunswick and five branch phone numbers appear as plain text in the homepage footer. Verified in Chrome at desktop and 390px: 0 tel: links, 0 forms, no booking, no phone number outside the footer list. Nav hrefs for SERVICES, LOCATIONS, TESTIMONIALS and ABOUT US all resolve to https://www.romabeautysalon.com; the six service tiles have href=\"null\"; the promo page's six 'Contact Us' buttons also point back to the homepage. Only JSON-LD is a WebSite node; no hours text anywhere. Raw HTML title is 'HOME | Roma Beauty Salon' and the H1 is just the business name. robots.txt allows all crawlers. Listing: Birdeye mirror for the North Brunswick address shows 4.0 from 274 reviews, unclaimed profile, with Mon-Sun 10-8 hours the site does not publish. Scores left as recorded: gap 5 is at the high end but defensible, pay 4, ease 4, evidence 3."
+    },
+    {
+      "ref": "B00815",
+      "name": "Evey's Beauty & Spa",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Operates: live WordPress site at eveysbeautyspa.com, 1610 US-130; hours published on /contact-us (Mon-Fri 9:30-7, Sat 9-6, Sun 10-5). Services page verified in Chrome: 32 instances of the literal string 'Uploading...' inside Elementor price-list widgets - titles, prices and descriptions are all placeholders, so no service or price is readable. Home page has 0 forms, 0 JSON-LD, no meta description, 3 tel links including the malformed 'tel:%20(732)%20920-7777' and a stray '+1 (847) 669-6998'; the booking CTA is labelled 'BOOKING NOW' (not 'BOOK NOW') and is an elementor icon link with href '#'. /our-services/ has no h1, no meta description and no schema. Template leftovers confirmed live: 'Our London Shop, 9235 Bayberry Drive, Hendersonville NC', lorem ipsum, +51853 phone. robots.txt disallows only /wp-admin/. Layout fine at 390px. Minor wording only: page titles do exist and include the town keyword, so 'no page title tag text detected on some templates' is loose - not a top issue. Rating 4.9 at this address corroborated by directory mirrors. Scores 5/3/4/4 reasonable."
+    },
+    {
+      "ref": "B00836",
+      "name": "Kenneth & Sons HVAC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No JSON-LD at all in the markup / 'no LocalBusiness schema' / 'no JSON-LD found'",
+          "what_is_true": "The home page carries a LocalBusiness JSON-LD with name, telephone +18486005559, openingHours, paymentAccepted, description and a GeoCircle serviceArea, plus a second Service/OfferCatalog JSON-LD; /contact-us/ repeats the LocalBusiness block. Structured data exists - it is just unreachable in a browser because every URL returns 403.",
+          "source_url": "https://kennethsonsplumbing.pro/"
+        },
+        {
+          "claim": "No contact form and no booking anywhere - 'nothing but a phone number on a page that 403s'",
+          "what_is_true": "The server HTML for /contact-us/ contains a full contact form (name, e-mail, phone, message, 'Submit Request') and the theme ships a JS booking modal (bookingForm with showBooking/completeBooking). No online scheduler, but form and modal exist in the markup; only the 403 hides them from visitors.",
+          "source_url": "https://kennethsonsplumbing.pro/contact-us/"
+        },
+        {
+          "claim": "Record filed under town 'North Brunswick'",
+          "what_is_true": "Google and the site's own contact page both put the business at 66 Georges Rd, New Brunswick, NJ 08901 - it is a New Brunswick business, not a North Brunswick one.",
+          "source_url": "https://kennethsonsplumbing.pro/contact-us/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 3
+      },
+      "notes": "Listing re-verified in Chrome via Google Maps: 'Kenneth & Sons HVAC', 4.9, 'HVAC contractor', 66 Georges Rd, New Brunswick, NJ 08901, Open 24 hours, site kennethsonsplumbing.pro, phone (848) 279-9700; panel shows Suggest an edit / Add photos (no 'Claim this business') so it looks claimed. 403 is real and consistent (home and /contact-us/ both '403 Forbidden' in Chrome) while a plain HTTP client receives full HTML (home title 'New Brunswick Same Day Plumbers Call (848) 600-5559', meta description, 'Licensed - Bonded - Insured'). NAP conflict confirmed: site/schema (848) 600-5559 vs Google (848) 279-9700. Conflict the record missed: site schema publishes Mo-Fr 08:00-18:00, Sa/Su 09:00-15:00 while Google says Open 24 hours. robots.txt is empty (Disallow: with no paths); sitemap.xml 404s. Corrected scores: gap 4 not 5 because content, schema, a form and a booking modal already exist and the real blocker is a WAF rule plus a phone mismatch; ease 5 because unblocking browsers is server config; evidence 3 because two structural claims (schema, form) were wrong."
+    },
+    {
+      "ref": "B00890",
+      "name": "Erazo Construction and Painting LLC",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Listing re-verified in Chrome via Google Maps: 'Erazo Construction and Painting LLC', 4.8, category 'Painter', 976 Glenn Ave, North Brunswick Township, NJ 08902, website erazoconstructionandpainting.com, and explicit 'Claim this business' plus 'Add place's phone number' prompts - so unclaimed and no phone, exactly as recorded. The profile's website goes to a live 'THIS WEBSITE IS COMING SOON' placeholder ('Design: 1webmedia.net'), confirmed in the browser. Hours claim corroborated by the BestProsInTown mirror: Monday-Friday and Sunday 'Open 24 hours', Saturday Closed; owner named as Margarito and '20 years of experience' appear there too. Two small metadata quibbles, not top issues: the placeholder site does serve over https (record says https: false), and the Maps limited view only showed 'Open · Closes 12 AM' so I could not independently read the full hours grid off Google. Scores 5/2/5/4 are reasonable for an unclaimed, phone-less, site-less owner-operator."
+    },
+    {
+      "ref": "B00909",
+      "name": "Jazz Construction Group",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Verified in Chrome: title tag is only 'Jazz Construction Group'; meta description is truncated mid-sentence ('...spaces they'); JSON-LD types are Person/Organization, WebSite, ImageObject, WebPage, Person, Article (plus an Organization block) with no LocalBusiness/GeneralContractor. At a 390px viewport the page is 17,342 px tall, the LeadConnector form iframe sits at 15,124 px and the only visible tel link at 17,085 px, and the header is position:absolute (not sticky) with no call/quote button - same finding as the record, with the pixel numbers drifted a little from the recorded 14,723/16,657. 'Request My Free Consultation' anchors to #jcg-home-contact, i.e. the bottom form. The hero H1 parent (.jcg-home-animate) still computed opacity 0 after load, so the headline is invisible until the animation runs; the H1 also has a missing space ('Isn't aSomeday Project'). robots.txt disallows /wp-admin/ and /construction-portfolio/*/, allows the portfolio listing, and points to sitemap_index.xml - as recorded. Homepage confirms '20+ years', '500+', NAHB/NJBA, financing, Jazz Daylight sister brand and founder Ijaz 'Jazz' Mirza. Google Maps shows 5.0, category 'Custom home builder', 1346 How Ln, North Brunswick NJ 08902, (908) 888-9418, Asian-owned, owner posts - but the review count is not displayed, and the contractorsranked snapshot the record cites (36 reviews, East Brunswick) returned HTTP 429, so the 36-review figure is unverified. Sitemap shows the location pages are mostly county pages (Middlesex, Union, Monmouth, Essex, Ocean, Warren, Passaic, Sussex, etc.), so 'about 15 town landing pages' is loose but the per-area pages do exist. Scores 3/5/4/4 look reasonable."
+    },
+    {
+      "ref": "B00923",
+      "name": "Purely Clean Services",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "'CALL NOW' hero button links back to the homepage (href https://www.purelycleanservices.com/) so it just reloads the page",
+          "what_is_true": "The 'Call Now' button is an anchor with an empty href (href=\"\"), so it does nothing at all rather than reloading the homepage. There is still no tel: link anywhere on the site.",
+          "source_url": "https://www.purelycleanservices.com/"
+        }
+      ],
+      "notes": "Verified in Chrome on / and /contact: 0 tel: links on both pages; the homepage LocalBusiness JSON-LD has \"address\":\"\" and \"openingHours\":\"\" (plus a WebSite node); no H1 on the homepage or the contact page; title is the long keyword string with no town; three Cal.com links to cal.com/purelycleanservices/30min ('BOOK A CALL' in header and footer, 'BOOK A CALENDAR' on contact). The contact page does carry a real Squarespace form (first/last name, email, phone, message, newsletter checkbox, SUBMIT) - so contact_form: true is right, though I had to render the page to see it. Address 1626 US Hwy 130, Suite K2, North Brunswick 08902 and (908) 300-9945 appear as text. robots.txt confirms the record: it blocks ClaudeBot, GPTBot, anthropic-ai, CCBot, Google-Extended, Bytespider etc. but not OAI-SearchBot, PerplexityBot or Googlebot. Scores 3/4/5/4 reasonable."
+    },
+    {
+      "ref": "B00950",
+      "name": "Rutgers Auto Body",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Verified in Chrome: 0 tel: links, 0 forms, only a mailto:rutgersauto@gmail.com; HOME, ABOUT, SERVICES and CONTACT all point to https://www.rutgersauto.com; phone 732-640-0303 and fax 732-640-0304 appear as plain text with 'CALL US' in the footer; footer publishes Mon-Fri 8am-6pm, Sat 8am-3pm, Sun closed; one-sentence meta description; Wix LocalBusiness + WebSite JSON-LD present. Google Maps agrees on the headline numbers: 4.8 from 376 reviews, 'Auto repair shop', 1034 12th St, North Brunswick Township NJ 08902, phone (732) 640-0303, hours closing 6 PM, and an owner-posted exterior photo dated 3 days ago. robots.txt matches the record exactly (lightbox/partials disallowed for AdsBot, PetalBot blocked, sitemap listed). One thing the record missed rather than got wrong: the site's LocalBusiness JSON-LD lists telephone 732-640-0203 while the visible number and the Google profile both say (732) 640-0303 - a transposed-digit NAP error worth adding to the schema fix. Scores 4/4/4/4 reasonable."
+    },
+    {
+      "ref": "B00952",
+      "name": "Joe's Service Center",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Verified: https://joeservicecenterllc.com/ fails DNS resolution (net::ERR_NAME_NOT_RESOLVED) in Chrome, and the Google Maps panel simultaneously shows 'joeservicecenterllc.com' as the website field and an 'Add website' prompt. Google Maps: 'Joe Service Center', 4.7 from 658 reviews, 'Auto repair shop', 814 Livingston Ave, North Brunswick Township NJ 08902, (732) 964-3300, 'Identifies as Latino-owned', a Services section, hours Mon-Fri 7 AM-7 PM and Sat/Sun 8 AM-4 PM (so 'opens at 7 AM' is right), plus a 'Updates by visitors' complaint about a $60 charge for a heat shield that was never replaced and no receipt - all as recorded. 'Joe Service Center 2' appears in the page's related-places text, consistent with the three-shop group claim. No site means no robots.txt and no schema to check. Scores 4/4/4/4 reasonable."
+    }
+  ],
+  "data_gaps": [
+    "Kenneth & Sons HVAC: no independent source for the Google phone (848) 279-9700 outside the Maps panel, and the site's 403 prevented checking whether the site names that number anywhere.",
+    "Kenneth & Sons HVAC: reason for the Chrome-only 403 (bot/WAF filtering) could not be established.",
+    "Jazz Construction Group: review count (36) could not be verified - Google's limited Maps view hides the count and contractorsranked.com returned HTTP 429.",
+    "Rutgers Auto Body: could not verify the record's claim that reviewers repeatedly name a single estimator, or that Google now shows hours 'Mon-Fri 8-6, Sat 8-3' (Maps only showed today's closing time).",
+    "Erazo Construction: BestProsInTown's review count (18) was not visible in the extracted page, only individual reviews and hours.",
+    "Evey's Beauty & Spa: the Google attributes 'nail salon' and 'women-owned' could not be read directly (Maps panel not opened for it); rating 4.9 at that address is only corroborated by directory mirrors."
+  ]
+}

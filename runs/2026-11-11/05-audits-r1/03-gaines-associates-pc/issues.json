@@ -1,0 +1,37 @@
+[
+ {
+  "claim": "Email to founder: \"It cites the public pages behind each point.\"",
+  "problem": "Contradicted by the deliverable itself. The client-facing audit body contains no citations or URLs; the only sources list sits inside the section headed \"For the founder (not part of the audit)\", which by its own label is not sent to the prospect. The sentence tells the prospect the one-pager is sourced when it is not.",
+  "fix": "Either add a short 'Sources' footnote (3-6 URLs) to the client-facing page and keep the sentence, or change it to something like \"I can send the sources behind each point if it's useful.\""
+ },
+ {
+  "claim": "Section 1 \"Now\": \"the open Senior Accounting Manager role owns multi-client close across QuickBooks, Bill.com and NetSuite\"; Section 3 \"Now\": the Tax Director posting \"calls for building a new tax practice, setting workflow standards and overseeing technology adoption\".",
+  "problem": "Both postings are live and match on title, employer and location (Tax Director, Edison NJ, posted ~4 weeks ago; Senior Accounting Manager, Edison NJ, posted ~20 hours ago), but the job descriptions could not be re-opened: LinkedIn serves the body only behind a sign-in wall (public job API, job view page and guest endpoint all returned the top card plus 'similar jobs' with no description text). The substance of both claims therefore rests on the analyst's notes, not on a source a reader can open.",
+  "fix": "Re-check the two descriptions in a browser session and confirm the exact tool names and phrasing, then soften the audit wording to what the posting literally says (e.g. \"your posting lists QBO/Bill.com/NetSuite among the client systems\" rather than \"owns multi-client close across\"). If that cannot be re-confirmed, fall back to the firm's own service page and drop the specific tool names from the 'Now' line."
+ },
+ {
+  "claim": "\"hours are 9\u20135 weekdays\" (Section 2).",
+  "problem": "Cited to a Google Maps search URL that returns a JavaScript-rendered shell to an automated fetch; the firm's own site publishes no office hours anywhere (checked home, contact, consultation pages). Not independently confirmable, and it is load-bearing for the after-hours opportunity.",
+  "fix": "Replace the Maps search URL with a stable, openable listing (or the Google Business profile's direct place URL) and confirm hours, or reword to what is verifiable: \"no after-hours line is published; intake is a 9\u20135 phone line plus a web form\"."
+ },
+ {
+  "claim": "Section 1 and 2 valuation: 225\u2013720 close hours and 78\u2013156 triage hours valued at $60.59/hour (accountants and auditors NJ median, loaded x1.25).",
+  "problem": "The wage figure itself is correct, but the occupation is a stretch for the work described. Transaction matching, exception chasing and call triage are closer to bookkeeping/accounting/auditing clerk work, whose NJ median is $58,300 ($28.03/hour, ~$35/hour loaded) - roughly 40% below the rate used. Only the 'x1.25 for benefits' step is labelled as an assumption; the choice of occupation is not, so the ranges read as firmer than they are.",
+  "fix": "Either add a clerk-benchmark low end ($35/hour loaded) alongside the $60.59 figure, or explicitly label the occupation choice as an assumption (e.g. \"valued at the accountant rate because a manager reviews the output, our assumption\")."
+ },
+ {
+  "claim": "Section 2 impact \"= about $4,700\u2013$9,400 a year\".",
+  "problem": "Arithmetic rounding error at the top of the range: 156 hours x $60.59 = $9,452, which rounds to about $9,500, not $9,400. Low end ($4,726 -> $4,700) and both other sections' arithmetic check out.",
+  "fix": "Change to \"about $4,700\u2013$9,500\"."
+ },
+ {
+  "claim": "Opening line: \"You've moved from an Edison tax practice into outsourced accounting and fractional CFO work nationwide\".",
+  "problem": "Half-confirmed and half-inference presented as fact. Edison and 'nationwide' are sourced (home page: virtual CFO/business turnaround focus; careers page: \"serving clients nationwide\"), but nothing public says the firm 'moved from' a tax practice - its site still sells tax planning and preparation, and its metadata still carries the legacy Gaines Goldenfarb name and an old Woodbridge address. It reads as a change of business model the firm has not stated.",
+  "fix": "Reword as observation, not history: \"You run an Edison CPA firm that now leads with virtual CFO and outsourced accounting for clients nationwide, while still doing tax work - a lot of judgment on a small bench.\""
+ },
+ {
+  "claim": "Section 3 \"Now\": \"tax work compresses into filing season\"; impact assumes \"3\u20135 seasonal staff ... about 500 seasonal hours each\".",
+  "problem": "The seasonality point is a general industry fact, not a fact about this firm, and the audit's source list gives no citation for it (the industry brief's O*NET seasonality data would support it). The 3-5 seasonal staff figure is not public anywhere and is at least labelled 'our assumption', which is acceptable but should be visible as a guess about the client rather than a finding.",
+  "fix": "Add a one-line citation for seasonality (O*NET work context for tax preparers) or drop the clause; keep the staff-count labelled and consider phrasing it as a question the discovery call settles."
+ }
+]

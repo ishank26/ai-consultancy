@@ -1,0 +1,418 @@
+{
+ "avenue": "warehouse-dock-safety",
+ "one_line": "Camera-and-edge-AI safety and flow monitoring for small independent 3PLs and warehouses: forklift/pedestrian near-miss detection, dock-door occupancy and trailer dwell, PPE and blocked-aisle/exit checks, installed and calibrated on the site's existing cameras by a local integrator.",
+ "problem": {
+  "summary": "Small warehouses and 3PLs run forklifts and pedestrians in the same aisles and at the same dock doors with no instrumentation: near-misses go unreported, dock doors are tracked on clipboards or in the WMS only, and PPE/blocked-aisle problems are caught (if at all) by a supervisor walking the floor. Federal rules already require the behaviours a camera system can observe and document (chocks/brakes at trailers, horn at blind aisles, clear marked aisles, unobstructed exits, refresher training after a near-miss), yet the only record most 5-200 person sites have is paper. Injury costs and detention costs are the two visible money leaks.",
+  "evidence": [
+   {
+    "fact": "OSHA received 5,186 reports of severe injuries involving forklifts from 2015 to 2024 (vs 29,816 for falls); 9,034 severe injury reports were filed in 2024 alone.",
+    "year": "2026 (report covering 2015-2024)",
+    "source_url": "https://www.aiha.org/news/260514-osha-releases-severe-occupational-injury-report-statistics-for-2024"
+   },
+   {
+    "fact": "BLS: pedestrian-vehicular incidents were 20% of nonfatal and 12% of fatal forklift injuries in 2017; struck-by-powered-vehicle (nontransport) was 15% nonfatal / 18% fatal; nonroadway motorized-vehicle incidents 23% / 27%.",
+    "year": "2019 factsheet, 2017 data",
+    "source_url": "https://www.bls.gov/iif/factsheets/fatal-occupational-injuries-forklifts-2017-chart3-data.htm"
+   },
+   {
+    "fact": "Warehousing and storage (NAICS 493) had a total recordable injury/illness rate of 4.8 per 100 FTE in 2024, DART rate 4.1, and 32 fatalities in 2024.",
+    "year": "2024 (BLS data extracted Nov 2026)",
+    "source_url": "https://www.bls.gov/iag/tgs/iag493.htm"
+   },
+   {
+    "fact": "Powered industrial trucks (29 CFR 1910.178) was the 6th most frequently cited OSHA standard in FY2024 with 2,248 violations.",
+    "year": "FY2024",
+    "source_url": "https://blog.msasafety.com/fall-protection-top-10-osha-violations-of-2024/"
+   },
+   {
+    "fact": "National Safety Council testimony states the average medically consulted work injury cost $43,000 in 2023 and total U.S. work-injury cost was $176.5B. Caveat: the cited nsc.org page could not be re-opened (HTTP 403 on repeated attempts in this pass), so these numbers are reported as NSC's own figures rather than read off a page I opened this round; treat as unverified.",
+    "year": "2023 data, 2025 testimony",
+    "source_url": "https://www.nsc.org/speeches-testimony/reclaiming-osha-s-mission-ensuring-safety-without"
+   },
+   {
+    "fact": "ATRI reports that in 2023 drivers were detained at 39.3% of all stops, losing between 117 and 209 hours per driver per year depending on sector; the industry lost $3.6 billion in direct expenses and $11.5 billion in lost productivity from detention (ATRI's own category label), with total time lost in for-hire trucking exceeding 135 million hours.",
+    "year": "2024 release, 2023 data",
+    "source_url": "https://truckingresearch.org/2024/09/new-research-documents-substantial-financial-and-safety-impacts-from-truck-driver-detention/"
+   },
+   {
+    "fact": "Rite-Hite (vendor blog), citing the National Safety Council, estimates that 'up to 25% of all industrial accidents occur at the loading dock' - a figure about all industrial accidents, not specifically warehouse injuries; no primary NSC or OSHA publication for it was located.",
+    "year": "2018 vendor blog post",
+    "source_url": "https://www.ritehite.com/en/am/news/2018/blog/loading-dock-safety_10-vital-tips-to-maximize-safety-at-the-loading-dock"
+   },
+   {
+    "fact": "Middlesex County alone has 266 warehousing establishments with 17,957 employees (Census County Business Patterns 2023, NAICS 493).",
+    "year": "2023",
+    "source_url": "https://rapidships.com/freight-data/downloads/census-cbp-nj-warehousing-counties.csv"
+   },
+   {
+    "fact": "Middlesex County industrial inventory is 229.2M sq ft at 6.0% vacancy, the largest industrial node in Northern/Central NJ (731M sq ft total).",
+    "year": "2Q 2025",
+    "source_url": "https://www.naihanson.com/wp-content/uploads/2Q-2025-Industrial.pdf"
+   },
+   {
+    "fact": "Industrial truck and tractor operators in warehousing: 286,750 employed nationally, median annual wage $48,170 (May 2025 OEWS).",
+    "year": "2025",
+    "source_url": "https://www.bls.gov/iag/tgs/iag493.htm"
+   }
+  ]
+ },
+ "buyers": [
+  {
+   "business_type": "Third-party logistics (3PL) / public warehousing, 10-200 staff, multi-customer dock scheduling",
+   "naics": "493110",
+   "size_where_it_matters": "5+ staff and 3+ dock doors; acute at 20-150 staff with 2-3 shifts and multiple customers wanting proof of handling",
+   "why": "Forklifts and pedestrians share aisles; dock doors are the bottleneck and detention is a contractual liability; customer audits ask for evidence of safe handling."
+  },
+  {
+   "business_type": "General freight trucking with its own dock/terminal (local and truckload carriers)",
+   "naics": "484121 / 484110",
+   "size_where_it_matters": "5-100 drivers, 2-10 doors",
+   "why": "Drivers walking the yard and dock are the classic pedestrian-vehicular exposure; chocking/restraint compliance is directly citable under 1910.178(k)."
+  },
+  {
+   "business_type": "Durable-goods merchant wholesalers (industrial supplies, electrical, plumbing, HVAC, building material)",
+   "naics": "423840 / 423720 / 423730",
+   "size_where_it_matters": "10-100 staff, 2-8 forklifts, 4-15 doors",
+   "why": "Racking, counterbalance trucks and will-call customers on foot in the same space; no in-house safety function."
+  },
+  {
+   "business_type": "Food and grocery wholesale / small grocery and food-service distributors",
+   "naics": "424410 / 424490",
+   "size_where_it_matters": "20-200 staff, cold or ambient docks, 5-20 doors",
+   "why": "High dock frequency, tight delivery windows, PPE and sanitation discipline, and temperature/dwell trade-offs at doors."
+  },
+  {
+   "business_type": "Light manufacturing and fabrication plants with PITs and a shipping dock",
+   "naics": "332710 / 326199 / 325412",
+   "size_where_it_matters": "20-200 staff, 1-10 forklifts",
+   "why": "Production floor mixes pedestrians and trucks; existing 1910.178 training obligations create a paper trail a camera system can feed."
+  },
+  {
+   "business_type": "Courier / express / parcel local hubs and cross-docks",
+   "naics": "492110",
+   "size_where_it_matters": "15-200 staff, high door count, night shifts",
+   "why": "Peak-hour chaos, high pedestrian density on the dock face, and trailer dwell directly drives cost per stop."
+  }
+ ],
+ "existing_solutions": [
+  {
+   "vendor": "Voxel (Voxel AI)",
+   "product": "Voxel safety/operations platform on existing cameras",
+   "what_it_does": "Runs on a site's existing IP cameras to flag forklift/pedestrian near-misses, blocked exits, spills and ergonomic risk, with alerts and review workflow; sold to large multi-site enterprises.",
+   "pricing": "Unknown - no public price list; demo/sales-led",
+   "source_url": "https://www.voxelai.com/customer-stories/verst-logistics-cut-vehicle-and-ergonomic-incidents-in-under-6-months"
+  },
+  {
+   "vendor": "Protex AI",
+   "product": "Protex AI vision safety platform",
+   "what_it_does": "Camera-based detection of unsafe acts and near-misses (person/vehicle, PPE, mobile phone in high-risk zones), with site dashboards and coaching workflows.",
+   "pricing": "Unknown - no public price list",
+   "source_url": "https://www.protex.ai/case-studies/dot-foods-exceeds-safety-targets-by-4x"
+  },
+  {
+   "vendor": "ElectricEye",
+   "product": "Active Scene Intelligence (cloud)",
+   "what_it_does": "Cloud analysis of existing IP camera streams; forklift/pedestrian near-miss, people in forklift lanes, missing hard hats/hi-vis, plus after-hours security; sends Slack/Teams/email clips.",
+   "pricing": "$5 per camera per month starting, or pooled event-based; free 4-camera pilot (per vendor FAQ)",
+   "source_url": "https://electriceye.ai/faq"
+  },
+  {
+   "vendor": "Ailytics",
+   "product": "Video analytics for logistics and warehouses",
+   "what_it_does": "Existing-CCTV analytics advertised for vehicle-pedestrian proximity, fire and smoke, congestion, unsafe-lifting ergonomics and forklift/labour utilisation; page states sites are live in under 2 weeks, claims 400+ projects worldwide and headlines a 60-80% reduction in safety non-compliance (vendor claim, methodology not stated).",
+   "pricing": "Published tiers $99 / $199 / $399 per plan (currency not stated on the HK site; verify)",
+   "source_url": "https://hk.ailytics.ai/pricing/"
+  },
+  {
+   "vendor": "Blaxtair (Aximum)",
+   "product": "Blaxtair Origin / Pedestrian Detection",
+   "what_it_does": "Truck-mounted AI camera and in-cab display that detects and locates people around a forklift or industrial vehicle without tags and warns the operator.",
+   "pricing": "Public price quoted at EUR 4,000-5,000 per unit (2023, French reseller page)",
+   "source_url": "https://evarisk.com/equipement-de-travail/epc-equipement-de-protections-collectives/blaxtair-origin-previent-les-collision-engins-pietons/"
+  },
+  {
+   "vendor": "NAVA (AWS Marketplace listing)",
+   "product": "DockVision AI listing, whose body and deliverables refer to the product as 'DockView' (the listing name and the product name used in the description do not match)",
+   "what_it_does": "Dock-door occupancy, trailer arrival/departure, forklift and pallet activity, dwell and throughput dashboards on existing cameras; cloud (Rekognition/SageMaker/Kinesis) or Jetson edge; integration with WMS/YMS/TMS.",
+   "pricing": "Unknown - AWS Marketplace professional-service listing, quote-based",
+   "source_url": "https://aws.amazon.com/marketplace/pp/prodview-orudj5ob4gcei"
+  },
+  {
+   "vendor": "Frigate (open source)",
+   "product": "Frigate NVR + bring-your-own detector",
+   "what_it_does": "Self-hosted NVR that runs local object detection on RTSP cameras and supports custom YOLO/ONNX models and label maps - the usual DIY base for a bespoke zone-rule system.",
+   "pricing": "Free / open source (hardware only)",
+   "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+  }
+ ],
+ "gap_for_local_installer": "The named vendors split into two camps that both leave the 5-200 person Middlesex County site unserved: enterprise vision platforms (Voxel, Protex) are sales-led, cloud-first, multi-site-oriented and price-opaque, while per-camera SaaS (ElectricEye, Ailytics) assumes good IP cameras, clean network and someone who will tune alerts (Ailytics' own FAQ concedes racking and stacked goods can block camera views and that camera placement matters). Small 3PLs typically have a mix of old analog/coaxial cameras, one overloaded NVR, no IT staff and no budget for an enterprise rollout. A local installer can sell a fixed-fee, on-premise, camera-agnostic job: site survey and camera repositioning, one edge box on the LAN, detector fine-tuned on that site's own aisles and lighting, zone rules written to the site's floor markings, weekly one-page report, plus the compliance artifacts the site actually needs (near-miss log that triggers 1910.178(l)(4)(ii)(B) refresher training, chock/restraint observations, blocked-exit and aisle photos). Defensibility is service and calibration, not models: the same open detectors are available to any competitor.",
+ "technical_approach": {
+  "established_pattern": "RTSP/ONVIF camera -> hardware decode -> person/forklift detector per frame -> multi-object tracker to keep IDs -> geometry rules (dock-door zones, aisle polygons, pedestrian-walkway vs forklift-lane regions, proximity distance in metres after homography/ground-plane calibration) -> state machine with dwell timers and hysteresis to suppress flicker -> event with clip + timestamp + zone -> alert to supervisor (dashboard/Teams/SMS) and append-only event log. A small VLM is used only for exceptions/review (describe a clip, classify severity, answer 'what happened at door 4 at 14:32'), not on every frame.",
+  "models_and_tools": [
+   {
+    "name": "Ultralytics YOLO11",
+    "role": "Primary real-time person/forklift/truck detector; COCO-pretrained, fine-tunable. Licensing caveat: AGPL-3.0 by default, commercial on-prem deployment needs an Ultralytics Enterprise licence.",
+    "source_url": "https://www.ultralytics.com/license"
+   },
+   {
+    "name": "RF-DETR (Roboflow)",
+    "role": "Apache-2.0 real-time detection transformer (Nano to Large) - a licence-clean alternative to AGPL YOLO for a commercial installer, designed for fine-tuning.",
+    "source_url": "https://rfdetr.roboflow.com/latest/faq/"
+   },
+   {
+    "name": "Frigate",
+    "role": "Self-hosted NVR/orchestration: camera ingest, motion gating, custom ONNX/YOLO detector, zones, event recording and MQTT events into a dashboard.",
+    "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+   },
+   {
+    "name": "SH17 dataset / PPE models",
+    "role": "8,099-image, 17-class manufacturing safety and PPE dataset for training and benchmarking hard-hat/vest detectors; YOLOv9-e baseline exceeds 70.9% mAP, so PPE checks are the least reliable module.",
+    "source_url": "https://arxiv.org/abs/2407.04590"
+   },
+   {
+    "name": "Qwen2.5-VL-3B-Instruct",
+    "role": "Small vision-language model for clip summarisation, severity triage and natural-language search over events; runs on one edge GPU or a modest server.",
+    "source_url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct"
+   },
+   {
+    "name": "LFM2-VL (450M / 1.6B)",
+    "role": "Liquid AI open-weight VLMs designed for on-device inference - candidate for running exception checks on the camera-side box instead of a server.",
+    "source_url": "https://huggingface.co/LiquidAI/LFM2-VL-1.6B"
+   }
+  ],
+  "hardware": [
+   {
+    "item": "NVIDIA Jetson Orin Nano Super Developer Kit (8GB, 67 INT8 TOPS, up to ~4 cameras)",
+    "approx_cost": "$249 (NVIDIA list, Dec 2024)",
+    "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/"
+   },
+   {
+    "item": "Raspberry Pi AI Kit (Raspberry Pi M.2 HAT+ with Hailo-8L accelerator, 13 TOPS) for 1-2 camera edge nodes",
+    "approx_cost": "$70 launch price as given in the Raspberry Pi announcement headline; the price could not be read off the fetched page body and third-party reseller listings differ, so treat as an unverified launch figure",
+    "source_url": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/"
+   },
+   {
+    "item": "IP camera, 2K/4MP PoE bullet (e.g. UniFi G5 Bullet)",
+    "approx_cost": "~$129 list per camera (reseller/retail listings; UniFi store stock and price vary)",
+    "source_url": "https://www.storagereview.com/review/ubiquiti-g5-series-review"
+   },
+   {
+    "item": "PoE switch, cabling, mounts, UPS, small NVR/mini-PC for 14-30 day retention",
+    "approx_cost": "Unknown as a bundle - budget line item, roughly $600-1,500 per site at 4-8 cameras (inference from component pricing)",
+    "source_url": "https://store.ui.com/us/en/products/uvc-g5-bullet"
+   }
+  ],
+  "fine_tuning_needed": "Partly. A COCO-pretrained person + truck/forklift detector plus site-specific zones delivers most of the near-miss and dock-occupancy value with no training at all, provided cameras are repositioned and the ground plane is calibrated per door/aisle. Fine-tuning (or at minimum threshold/label calibration) is needed for: (a) this site's lighting, racking and camera angles, (b) PPE classes (hi-vis vest, hard hat) which are the weakest detectors, (c) distinguishing 'trailer present at door' from 'trailer passing the door' and 'person in forklift lane' vs 'person in walkway'. Budget 1-3 days of labelling plus a training run per camera view.",
+  "data_needed": "2-4 weeks of recorded footage per camera covering every shift, night lighting, rain/snow through open doors, and trailer types used; 500-3,000 labelled frames per camera view for fine-tuning; 20-50 supervisor-confirmed examples each of true near-miss and false alarm for threshold setting; the site's written floor-marking/zone plan and dock schedule for ground truth on dwell; existing OSHA 300 log and near-miss reports for baseline.",
+  "difficulty": "Medium"
+ },
+ "measured_outcomes": [
+  {
+   "finding": "Dot Foods reported a 71% reduction in person/vehicle near-miss events at its hub distribution center and 39%/30% reductions in overall safety events at hub and satellite DCs after deploying Protex AI from January 2026.",
+   "year": "2026",
+   "sample": "2 distribution centers of one food LTL consolidator; pre/post, no control group",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://www.protex.ai/case-studies/dot-foods-exceeds-safety-targets-by-4x"
+  },
+  {
+   "finding": "Voxel's Americold case study headline claims a 70% injury reduction, while the body text reports up to 90% reduction in unsafe behaviours, zero days missed from work due to injury (down from 288) and $1.1M in savings; the body does not itself state a 70% injury figure and does not specify how many facilities were involved.",
+   "year": "Undated case study, citing a multi-year deployment",
+   "sample": "Unspecified number of Americold cold-storage DCs within a 200+ warehouse company; pre/post, no control group",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://www.voxelai.com/customer-stories/americold-saved-1-1m-annually-and-reduced-injures-by-70"
+  },
+  {
+   "finding": "Ailytics' logistics/warehousing page headlines a 60-80% reduction in safety non-compliance, alongside 50+ configurable use cases, 'under 2 weeks' to go live and 400+ projects worldwide. No sample size, denominator, baseline, measurement method or date range is stated for the 60-80% figure, and it is not independently verified.",
+   "year": "2026 (page accessed)",
+   "sample": "Company-reported project count and headline stat only; no per-site denominator, baseline or methodology",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://www.ailytics.ai/industries/logistics-and-warehousing"
+  },
+  {
+   "finding": "ElectricEye claims 68% reduction in OSHA-recordable incidents within 90 days for warehouse customers and cites a $47,316 average workers' comp claim; it also reports 51 high-severity escalations out of 78,244 camera events in one week (Sept 29-Oct 6, 2026).",
+   "year": "2026",
+   "sample": "vendor aggregate across unspecified customer sites",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://electriceye.ai/faq"
+  },
+  {
+   "finding": "A YOLOv8 detector trained on factory-collected images and integrated with a speed-door controller reached precision/recall/F1 of 1.0 for human detection - but on only 55 test images from one site.",
+   "year": "2026",
+   "sample": "55 test images, single factory",
+   "study_type": "peer-reviewed",
+   "strength": "Low",
+   "source_url": "https://journal.unesa.ac.id/index.php/jistel/article/view/48611"
+  },
+  {
+   "finding": "On the SH17 manufacturing safety dataset (8,099 images, 75,994 instances, 17 classes), the best YOLOv9-e baseline exceeded 70.9% mAP for PPE detection, and cross-domain validation showed degradation - evidence that PPE checks are useful but not citation-grade.",
+   "year": "2024",
+   "sample": "8,099 images / 17 classes, benchmark only (no field deployment)",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://arxiv.org/abs/2407.04590"
+  },
+  {
+   "finding": "ATRI found drivers detained more than two hours at 39.3% of stops in 2023, losing 117 to 209 hours per driver per year; time lost in for-hire trucking exceeded 135 million hours, with $3.6B in direct expenses plus $11.5B in lost productivity (ATRI's own category label).",
+   "year": "2024 (2023 data)",
+   "sample": "ATRI carrier/driver survey dataset; industry-wide estimate for for-hire trucking",
+   "study_type": "industry",
+   "strength": "Medium",
+   "source_url": "https://truckingresearch.org/2024/09/new-research-documents-substantial-financial-and-safety-impacts-from-truck-driver-detention/"
+  },
+  {
+   "finding": "Base rates for the problem: warehousing TRC 4.8 per 100 FTE and 32 fatalities (2024); 5,186 severe forklift injury reports to OSHA over 2015-2024; 20% of nonfatal forklift injuries are pedestrian-vehicular.",
+   "year": "2019-2026",
+   "sample": "National BLS/OSHA universes",
+   "study_type": "government",
+   "strength": "High",
+   "source_url": "https://www.bls.gov/iag/tgs/iag493.htm"
+  }
+ ],
+ "legal_privacy": [
+  {
+   "issue": "Trailer loading: brakes and chocks",
+   "rule_or_precedent": "29 CFR 1910.178(k)(1) requires brakes set and wheel chocks under rear wheels before a highway truck is boarded with a powered industrial truck; 1910.178(m)(7) requires brakes set and wheel blocks in place while loading/unloading trailers. Camera observation of the chock/restraint zone is therefore documenting an existing legal duty.",
+   "confirmed": true,
+   "source_url": "https://www.law.cornell.edu/cfr/text/29/1910.178"
+  },
+  {
+   "issue": "Near-miss data triggers a training obligation",
+   "rule_or_precedent": "1910.178(l)(4)(ii)(B): refresher training is required when an operator 'has been involved in an accident or near-miss incident'. A camera-derived near-miss log is therefore evidence of a duty to retrain - a selling point and a liability if ignored.",
+   "confirmed": true,
+   "source_url": "https://www.law.cornell.edu/cfr/text/29/1910.178"
+  },
+  {
+   "issue": "Blind aisles and following distance",
+   "rule_or_precedent": "1910.178(n)(1) requires roughly three truck lengths of following distance; (n)(4) requires slowing and sounding the horn at cross aisles and where vision is obstructed. Both are observable, measurable events on camera.",
+   "confirmed": true,
+   "source_url": "https://www.law.cornell.edu/cfr/text/29/1910.178"
+  },
+  {
+   "issue": "Blocked exits and aisles",
+   "rule_or_precedent": "29 CFR 1910.37(a)(3): exit routes must be free and unobstructed, no materials or equipment placed in them. 29 CFR 1910.176(a): aisles and passageways kept clear, permanent aisles appropriately marked.",
+   "confirmed": true,
+   "source_url": "https://www.law.cornell.edu/cfr/text/29/1910.37"
+  },
+  {
+   "issue": "Reporting timelines that make video evidence valuable",
+   "rule_or_precedent": "29 CFR 1904.39: employer must report a work-related fatality within 8 hours and an in-patient hospitalization, amputation or loss of an eye within 24 hours to OSHA.",
+   "confirmed": true,
+   "source_url": "https://www.law.cornell.edu/cfr/text/29/1904.39"
+  },
+  {
+   "issue": "Penalty exposure used in ROI conversations",
+   "rule_or_precedent": "OSHA maximum civil penalties (2026, unchanged from 2025): $16,550 per serious violation, $165,514 per willful or repeated violation, $16,550 per day for failure to abate.",
+   "confirmed": true,
+   "source_url": "https://www.dol.gov/agencies/whd/resources/penalties"
+  },
+  {
+   "issue": "New Jersey workplace camera notice",
+   "rule_or_precedent": "No New Jersey statute requiring general notice or signage for workplace video cameras was located. The only NJ employee-notice statute found is N.J.S.A. 34:6B-22 (L.2021, c.449), which requires written notice before an employer uses a tracking device in a vehicle used by an employee, with penalties up to $1,000 first violation and $2,500 subsequent. By inference, forklift telematics/GPS should be covered by written notice; camera-only monitoring is not covered by that section. (inference)",
+   "confirmed": true,
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/29592/30613"
+  },
+  {
+   "issue": "Audio recording of workers or conversations",
+   "rule_or_precedent": "New Jersey is a one-party-consent state under the Wiretapping and Electronic Surveillance Control Act: the RCFP state guide states that the consent of at least one party to an in-person conversation is required before recording it, citing N.J. Stat. Ann. 2A:156A-2, -3 and -4 generally, and that recordings made for a criminal or tortious purpose are illegal regardless of consent. That source does not pin the one-party rule to a specific subsection, so the section is cited generally. Practical rule for this product: video only, no audio capture, or explicit written consent. (design inference)",
+   "confirmed": true,
+   "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/"
+  },
+  {
+   "issue": "Employee data and biometrics under the NJ Data Privacy Act",
+   "rule_or_precedent": "N.J.S.A. 56:8-166.4 (P.L. 2023, c.266, effective 2025): 'consumer' expressly excludes a person acting in a commercial or employment context, so employee video is outside the NJDPA; the definition of 'biometric data' excludes photographs and video recordings unless data is generated to identify a specific individual. Consequence: don't do face recognition or identity templates, and the statute's consent framework does not apply.",
+   "confirmed": true,
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/54260/54667"
+  },
+  {
+   "issue": "Common-law privacy and private areas",
+   "rule_or_precedent": "Friedman v. Martinez (N.J. 2020, A-37/81-18, decided June 16, 2020) held that intrusion upon seclusion does not require proof that a plaintiff's image was actually recorded - circumstantial evidence can suffice - but it then reversed the Appellate Division and reinstated summary judgment against the plaintiffs who could not identify themselves on the recovered footage, because the 2014 record did not show that they had used a restroom while a camera was concealed there. Practical rule: cameras must never cover restrooms, locker rooms, changing areas or break rooms.",
+   "confirmed": true,
+   "source_url": "https://www.njcourts.gov/system/files/court-opinions/2020/a_37_81_18.pdf"
+  },
+  {
+   "issue": "Surveillance that chills protected concerted activity",
+   "rule_or_precedent": "NLRB General Counsel Memo GC 23-02 (Oct 31, 2022) states the GC's intent to enforce Section 7 against intrusive electronic monitoring and algorithmic management, including surveillance that captures union or protected activity. It is guidance, not a Board ruling, and its status under the current GC was not confirmed.",
+   "confirmed": true,
+   "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and"
+  },
+  {
+   "issue": "Discipline based on AI flags (false-accusation risk)",
+   "rule_or_precedent": "No NJ or federal statute found that specifically governs discipline decisions from warehouse video analytics. The risk is ordinary employment law: a flag used as discipline without human verification can support discrimination or retaliation claims (N.J.S.A. 10:5-12 et seq.) - not confirmed by any case I could open, so treat as risk assessment, not precedent. (inference)",
+   "confirmed": false,
+   "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and"
+  }
+ ],
+ "prospecting_signals": {
+  "public": [
+   "OSHA inspection and severe-injury-report history for the establishment (OSHA establishment search and the Severe Injury Reports dashboard are public) - a 1910.178 citation or a hospitalization report is the strongest single signal",
+   "Google/Yelp/Glassdoor reviews mentioning forklifts, trucks blocking the lot, 'almost got hit', dock waits, or high turnover among material handlers",
+   "Job postings for forklift/order-picker operators and for a first 'safety coordinator' or 'EHS' role - volume and repetition imply fleet size and no in-house safety function",
+   "Company site lists multiple locations, square footage, '3PL', 'fulfillment', 'cold storage' or 'cross-dock' - all imply dock doors and PIT traffic",
+   "Google Maps satellite view: count dock doors, trailer stalls and yard positions, and whether pedestrian walkways are painted/barriered",
+   "Industry mix (food, grocery, building materials, e-commerce returns) implies shift counts and pedestrian density",
+   "FMCSA SAFER profile for affiliated trucking fleets (power units, crash history) when the site runs its own tractors",
+   "Building listed in NAI Hanson/CBRE/Cushman industrial reports for the submarket - confirms size class and multi-tenant layout"
+  ],
+  "walk_in": [
+   "Are permanent aisles marked and actually clear, or are pallets staged in walkways and near exits?",
+   "Do dock doors show wheel chocks or vehicle restraints, and are they in use while a trailer is being loaded?",
+   "Is there physical separation (guardrail, bollards, painted walkway) between pedestrian paths and forklift lanes at cross-aisles, or only a painted line?",
+   "Dome/convex mirrors, blue safety lights, horns and speed signage at intersections - present, missing, or broken?",
+   "How many cameras cover the dock face and cross-aisles, what NVR/VMS brand and age, analog vs IP, and does anyone actually watch the monitors?",
+   "Where do near-misses get written down - clipboard, spreadsheet, nothing? Is an OSHA 300 log maintained and current?",
+   "Trailers sitting at doors with no activity (dwell), trailers dropped in the yard, and detention notes on the shipping board",
+   "Hi-vis vest use in the yard, drivers walking behind reversing trailers, and whether pedestrians cut through the dock face"
+  ]
+ },
+ "pilot": {
+  "scope": "One facility, 2-6 weeks. Install 4-6 cameras (or reuse existing ones plus 2 new) covering two dock doors plus the busiest cross-aisle and pedestrian walkway. Configure three modules only: (1) person-in-forklift-lane and proximity near-miss events, (2) dock-door occupancy state and trailer dwell per door, (3) blocked-aisle/exit and hi-vis/hard-hat checks as a secondary, clearly-labelled low-confidence module. Deliver a 2-week manual baseline followed by 2 weeks of live alerts, a weekly one-page report, and a documented near-miss log usable for 1910.178(l)(4)(ii)(B) refresher training.",
+  "hardware": "2x NVIDIA Jetson Orin Nano Super ($249 each) or 1 small GPU mini-PC for inference; 4-6 PoE cameras (~$129 each if new) or the site's existing RTSP cameras; PoE switch, cabling, mounts, UPS; 14-30 day on-prem recording (Frigate) with a written retention/deletion policy; no audio capture; no facial recognition; no cloud video storage by default.",
+  "success_metric": "Against a supervisor-verified weekly audit sample of 20 clips: (a) at least 85% of true near-miss events detected; (b) 10 or fewer false alerts per shift during week 4; (c) dock-door occupancy state accurate within +/-5 minutes versus a manual door log over 10 days; (d) 100% of alerts carry a clip, timestamp and zone so they can be attached to a training record; (e) supervisor reports time-to-review under 15 minutes per day.",
+  "cost_range": "Roughly $8,000-$18,000 for the 2-6 week pilot (inference, built from listed hardware prices and assumed 3-5 days of install/calibration labour at local integrator rates, which I could not source publicly): hardware $2,000-$4,000, install and cabling $1,500-$3,000, model calibration and reporting $3,000-$8,000, contingency. Ongoing support after the pilot estimated $400-$900/month for 4-8 cameras (inference).",
+  "assumptions": "Cameras can see the door threshold and aisle intersections (may require repositioning or 2 new cameras); site provides 2-4 weeks of recorded footage and a supervisor for ~2 hours/week of labelling; PoE/network and power exist at camera locations; the site accepts on-premise storage and 14-30 day retention; no union consultation requirement, or the site handles it; no audio, no biometric identification."
+ },
+ "fit_score": {
+  "demand": 17,
+  "local_buyers": 14,
+  "ability_to_pay": 10,
+  "technical_feasibility": 15,
+  "legal_risk_low": 14,
+  "defensibility": 8,
+  "total": 78,
+  "rationale": "Demand is strong and government-documented (4.8 recordable rate per 100 FTE in NAICS 493 in 2024, 5,186 severe forklift injury reports to OSHA over 2015-2024, 1910.178 the 6th most-cited standard in FY2024 with 2,248 violations), and the local buyer pool is unusually dense: 266 warehousing establishments and 229.2M sq ft of industrial space in Middlesex County alone. Ability to pay is the weak link and caps that score at 10 - independent 3PLs run thin margins and the value shows up as avoided injuries, avoided citations and dock throughput, not new revenue, so the sale has to be a fixed-fee pilot priced against one lost-time injury (NSC's $43,000 average medically consulted injury would frame that, but that figure is unverified in this pass and should be re-sourced before use). Technical feasibility scores 15 of 20: the pattern (Frigate + YOLO/RF-DETR + zones) is well established, but PPE detection is mediocre (~70.9% mAP on the SH17 benchmark) and false alerts kill adoption, so scope discipline matters. Legal risk is low-to-moderate and scores 14 of 15 because the residual exposures are avoidable by product design - no NJ camera-notice statute was found, the NJDPA excludes employment-context data, and the Wiretap Act, the near-miss retraining duty, Section 7 objections and AI-flag discipline risk are each addressed by the same three constraints (video only, no biometrics, no automated discipline). Defensibility is the weakest score at 8 of 15 - the same open models are available to everyone - so the moat must be installation quality, calibration data, local response and compliance reporting, not the model. Sub-scores sum to 78 of 100."
+ },
+ "risks": [
+  "False alerts create alarm fatigue and get the system switched off within a month; threshold tuning and honest scoping (skip PPE at first) are the difference between a renewal and a refund.",
+  "A near-miss log becomes discoverable evidence: if the site records near-misses and does not retrain, it has documented a 1910.178(l)(4)(ii)(B) violation.",
+  "Discipline driven by AI flags without human verification invites discrimination/retaliation claims and, at unionized sites, Section 7 surveillance objections.",
+  "Audio capture would raise NJ Wiretap Act exposure - the product must be video-only.",
+  "Licensing trap: Ultralytics YOLO is AGPL-3.0, so on-prem commercial deployment needs an enterprise licence or a licence-clean model such as RF-DETR (Apache 2.0).",
+  "Enterprise vendors (Voxel, Protex) and cheap per-camera SaaS ($5/camera/month) bracket the market; a local integrator cannot win on price per camera, only on install, calibration and service.",
+  "Camera blind spots, racking occlusion, headlights through open doors and winter lighting degrade detection; the pilot can fail for physical reasons, not model reasons.",
+  "ROI is attribution-hard: a site that has no baseline injury or dwell data cannot prove the system worked, so the pilot must capture the baseline first.",
+  "Privacy backslide: face recognition or employee identification would pull the deployment into biometric-privacy territory that NJ has so far left to consumer law, and would poison the employee relationship.",
+  "Small 3PL finances: a $10k pilot is a real decision for a 40-person company, and the buyer is often the owner who is also the safety manager."
+ ],
+ "caveats": "Vendor outcome numbers (Dot Foods/Protex 71% near-miss reduction; Americold/Voxel, where the 70% appears only in the case-study headline while the body reports up to 90% fewer unsafe behaviours; ElectricEye 68%; Ailytics' headline 60-80% reduction in safety non-compliance) are self-published pre/post or headline claims with no control group and, for Ailytics, no stated sample, baseline or method, and should not be repeated as facts in a sales deck. Ailytics' 400+ projects and sub-two-week deployment are also company claims with no methodology. I found no peer-reviewed controlled trial of camera-based near-miss detection in warehouses; the peer-reviewed literature I could open measures detection accuracy, usually on small samples or benchmark datasets. The 25%-at-the-dock figure is a vendor blog citing the National Safety Council for 'up to 25% of all industrial accidents', not warehouse injuries, and no primary NSC or OSHA publication for it was located. Pricing is a mix of public list prices (Ailytics tiers, ElectricEye $5/camera/month, Blaxtair EUR 4,000-5,000 from a French reseller, Jetson $249, Pi AI Kit $70 as an announcement-headline launch figure I could not read off the page body) and unknowns (Voxel, Protex, NAVA). The Middlesex County business counts came from a third-party mirror of Census County Business Patterns 2023 because the Census API required a key; the underlying figures are Census. ATRI reports $3.6B in direct expenses and $11.5B in lost productivity as two separate categories; they are not a single $12.1B cost and the $11.5B figure is an industry-wide estimate, not a per-facility number. The NSC cost-per-injury and total-cost figures are unverified in this pass because nsc.org blocked automated fetches.",
+ "data_gaps": [
+  "osha.gov returned HTTP 403 to every fetch attempt, so OSHA figures were taken from the AIHA summary of the 2024 Severe Injury Report and from BLS; the primary OSHA PDFs were not opened directly.",
+  "nsc.org blocked automated fetches (HTTP 403) on repeated attempts this pass, including the cited testimony page, so the $43,000 average medically consulted injury cost and the $176.5B total for 2023 are attributed to NSC but were not read on a page I opened. Re-source to an NSC PDF attachment or a BLS figure before using either number in sales material.",
+  "The Raspberry Pi AI Kit's $70 price comes from the announcement headline and URL slug; the fetched page body returned only navigation/listing content, so the figure was not read off the page itself. Reseller pages opened (Adafruit, SparkFun) confirmed the 13 TOPS Hailo-8L product and contents but did not expose a price to the extractor.",
+  "No public pricing for Voxel, Protex AI or the NAVA listing - all are demo/quote-gated.",
+  "Ailytics' $99/$199/$399 tiers were read on the Hong Kong site; the currency and what each tier includes (cameras, modules, users) are not stated on the page.",
+  "Ailytics' logistics page headline of a 60-80% reduction in safety non-compliance is reported in measured_outcomes as a Low-strength vendor claim; the page gives no sample, denominator, baseline or method for it. A '6,000+ cameras' figure sometimes attributed to the company was not found on any page I opened and is not asserted here.",
+  "The ATRI abstract page on TRID (trid.trb.org) timed out on every fetch, so ATRI figures are cited to ATRI's own September 2024 press release rather than the full report PDF.",
+  "No county-level New Jersey warehouse injury, citation or fatality counts found; only national BLS/OSHA data.",
+  "No peer-reviewed field trial measuring injury or near-miss reduction from warehouse vision analytics was found; only detection-accuracy papers and vendor case studies.",
+  "Could not confirm whether the NLRB GC memo 23-02 remains in effect under the current General Counsel.",
+  "Could not confirm the status of pending New Jersey biometric/facial-recognition legislation (e.g. S4075 in the 2026 session); treat face recognition as off-limits regardless.",
+  "No public rate card for security/AI camera installers in Middlesex County, so labour and the pilot cost range are estimates labelled as inference.",
+  "Did not verify whether specific NJ municipalities (Milltown or neighbouring boroughs) have their own signage or alarm-permit ordinances for camera systems.",
+  "The subsection letter of the NJ one-party-consent wiretap rule (2A:156A-4(d) in an earlier draft) was not confirmed by the RCFP source opened; the section is now cited generally as N.J.S.A. 2A:156A-2, -3 and -4.",
+  "The AWS Marketplace listing is titled 'DockVision AI' while its description and deliverables call the product 'DockView'; the vendor/product naming could not be resolved from the page."
+ ]
+}

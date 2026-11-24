@@ -1,0 +1,108 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Anvil Services (Anvil International), 417 Elizabeth Ave, Somerset",
+      "problem": "Google's own place name is \"Anvil International, LLC - DBA - Anvil Services\" - a corporate site of a national pipe-fittings manufacturer (ASC Engineered Solutions), not an independent local business. The mapper flagged it as borderline and included it, while excluding similar branch operations (LGE US, Ferguson, Terumo).",
+      "fix": "Remove, or reclassify as a branch of a national company and apply the chain exclusion consistently across the whole list."
+    },
+    {
+      "claim": "Martial arts / self-defense instruction is absent from the list",
+      "problem": "One category search (\"martial arts school near Somerset NJ 08873\") returned 5 in-zone businesses, none of which appear in businesses.json, although comparable instruction businesses (dance, music, art schools) were included.",
+      "fix": "Add Somerset Taekwondo (1075 Easton Ave #13), Warrior Martial Arts Somerset (34 Worlds Fair Dr), New Journey MMA (2 JFK Blvd), Young Moo Martial Arts (120 Cedar Grove Ln), Golden Warrior Self Defense (24 Susan Dr) after township checks."
+    },
+    {
+      "claim": "Dry cleaner coverage",
+      "problem": "The mapper's own category has gaps: Jem Dry Cleaners (225 Demott Ln #5) and La Ritz Cleaners (120 Cedar Grove Ln) are in-zone, independently owned and missing, while four similar cleaners were listed. The mapper's dry-cleaner entries were harvested under a 'tailor alterations' query, which is why the plain dry-cleaner category is under-covered.",
+      "fix": "Add Jem Dry Cleaners and La Ritz Cleaners; run a dedicated 'dry cleaner' Maps query rather than relying on the tailor query."
+    },
+    {
+      "claim": "Florist coverage",
+      "problem": "Biagio's Florist (2135 Amwell Rd, Franklin Twp) appears in the same florist query the mapper cited but is missing from the list.",
+      "fix": "Add Biagio's Florist."
+    },
+    {
+      "claim": "Retail sub-categories not searched at all",
+      "problem": "Picture framing was never queried; CustomPictureFrames.com (6 Shirley Ave, Franklin Twp) is an in-zone independent picture frame shop that is missing. No framing, upholstery (none in-zone found), shoe repair (none in-zone found) or pet-supply category was checked.",
+      "fix": "Add a framing/specialty-retail pass; add CustomPictureFrames.com."
+    },
+    {
+      "claim": "Website column is empty for nearly every entry",
+      "problem": "At least 18 listed businesses publish websites on the very Google listings the mapper cited (venusjewelers.com, totaram.com, lolasblooms.com, lattanziolumber.com, thebrennercompany.com, orionprecision.com, carteretdiecasting.com, fortune-cnc.com, clearyproducts.com, palacesomersetpark.com, plintoncurry.com, modernmotion.org, centraljerseydriving.com, myfamilyappliances.com, gildedravengames.com, lorrainesembroidery.com, mintybuy.com, flowerstation.com, bilcobikes.com), yet the field is blank. The data_gaps note says websites were 'not guessed' - they did not need to be guessed, they were visible on the source listing.",
+      "fix": "Re-capture the website field from each Maps listing; it is the main value for outreach."
+    },
+    {
+      "claim": "The Palace at Somerset Park - phone recorded as \"Unknown\"",
+      "problem": "The Google listing for 333 Davidson Ave shows (877) 725-2234; several other entries also have phones recorded as Unknown while Maps shows numbers.",
+      "fix": "Fill in published phone numbers from the listings (Palace: 877-725-2234)."
+    },
+    {
+      "claim": "Inconsistent treatment of multi-site manufacturers",
+      "problem": "MRP Solutions, MICRO, United Plastics Group, Betar Inc and Ardena US are multi-site or corporate-owned plants (the mapper itself flags size/ownership doubts for three of them) but were kept, while LGE US, Ferguson and Terumo were excluded on the same reasoning. Inference: the list mixes independent shops with branch plants of larger corporations.",
+      "fix": "Apply one rule - either include all manufacturing branch sites or only owner-operated independents - and document it."
+    },
+    {
+      "claim": "Food-adjacent B2B entries vs the 'food' exclusion",
+      "problem": "Ziyad Distribution (food import/distribution warehouse) and W. A. Cleary Corporation (Google category 'Food manufacturer') are B2B food operations. Judgment call: the exclusion most likely targets restaurants/retail food, but the mapper did not state which reading it used.",
+      "fix": "Confirm the intended scope of the food exclusion with the orchestrator and keep or drop both consistently."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Venus Jewelers - 940 Easton Ave Ste 11B, Somerset, (732) 247-4454", "source_url": "https://www.venusjewelers.com/contact", "result": "confirmed"},
+    {"claim": "Totaram Jewelers Online - 17 Clyde Rd #201, Somerset, (732) 228-6300", "source_url": "https://www.google.com/maps/search/?api=1&query=Totaram+Jewelers+17+Clyde+Rd+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Joyeria Diamante - 570 Hamilton St, Somerset, (732) 875-3895", "source_url": "https://www.google.com/maps/search/?api=1&query=Joyeria+Diamante+570+Hamilton+St+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Flower Station - 9 Veronica Ave, Somerset, (732) 249-6500", "source_url": "https://www.google.com/maps/search/florist+near+Somerset+NJ+08873", "result": "confirmed"},
+    {"claim": "Lolas Blooms - 745 Hamilton St Ste 2, Somerset, (732) 509-6763", "source_url": "https://www.google.com/maps/search/?api=1&query=Lolas+Blooms+745+Hamilton+St+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Lattanzio Lumber Co - 11 Springfield Ave, Somerset, (732) 545-5026", "source_url": "https://www.google.com/maps/search/?api=1&query=Lattanzio+Lumber+Co+11+Springfield+Ave+Somerset+NJ", "result": "confirmed"},
+    {"claim": "The Brenner Company - 55 Jiffy Rd, Somerset, (732) 873-1500", "source_url": "https://www.google.com/maps/search/?api=1&query=Brenner+Company+55+Jiffy+Rd+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Bilco Bike Repair - 1695 Amwell Rd, Somerset, (732) 873-0212", "source_url": "https://bilcobikes.com/", "result": "confirmed"},
+    {"claim": "Gilded Raven Games - 120 Cedar Grove Ln, Somerset, (908) 547-5440", "source_url": "https://www.google.com/maps/search/?api=1&query=Gilded+Raven+Games+120+Cedar+Grove+Ln+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Hikmah Books & Gifts - 1320 Hamilton St, Somerset, (732) 249-7323", "source_url": "https://www.google.com/maps/search/?api=1&query=Hikmah+Books+%26+Gifts+1320+Hamilton+St+Somerset+NJ", "result": "confirmed"},
+    {"claim": "MintyBuy Furniture Depot - 142 Belmont Dr Unit 3, Somerset, (609) 469-4833", "source_url": "https://www.mintybuy.com/showroom", "result": "confirmed"},
+    {"claim": "My Family Appliances - 1830 Easton Ave, Somerset, (732) 317-2629", "source_url": "https://www.google.com/maps/search/?api=1&query=My+Family+Appliances+1830+Easton+Ave+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Somerset Wee Shop Cannabis & CBD Store - 657 Hamilton St, Somerset, (732) 757-2866", "source_url": "https://www.google.com/maps/search/?api=1&query=Somerset+Wee+Shop+Cannabis+657+Hamilton+St+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Lorraine's Custom Embroidery and Screen Printing - 873 Hamilton St Unit A, Somerset, (732) 249-8228", "source_url": "https://www.google.com/maps/search/?api=1&query=Lorraine%27s+Custom+Embroidery+873+Hamilton+St+Somerset+NJ", "result": "confirmed"},
+    {"claim": "The Palace at Somerset Park - 333 Davidson Ave, Somerset", "source_url": "https://www.google.com/maps/search/?api=1&query=The+Palace+at+Somerset+Park+333+Davidson+Ave+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Plinton Curry Funeral Home - 428 Elizabeth Ave, Somerset, (732) 469-3300", "source_url": "https://www.google.com/maps/search/?api=1&query=Plinton+Curry+Funeral+Home+428+Elizabeth+Ave+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Modern Motion Dance School - 1 Railroad Ave, Somerset, (732) 422-5532", "source_url": "https://www.google.com/maps/search/?api=1&query=Modern+Motion+Dance+School+1+Railroad+Ave+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Central Jersey Driving School - 802 Hamilton St, Somerset, (732) 853-2375", "source_url": "https://www.google.com/maps/search/?api=1&query=Central+Jersey+Driving+School+802+Hamilton+St+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Orion Precision Industries Inc - 8 Veronica Ave, Somerset, (732) 247-9704", "source_url": "https://www.google.com/maps/search/?api=1&query=Orion+Precision+Industries+8+Veronica+Ave+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Carteret Die-Casting Corporation - 74 Veronica Ave, Somerset, (732) 246-0070", "source_url": "https://www.google.com/maps/search/?api=1&query=Carteret+Die-Casting+74+Veronica+Ave+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Fortune International Inc. - 56 Veronica Ave, Somerset, (732) 214-0700", "source_url": "https://www.google.com/maps/search/?api=1&query=Fortune+International+Inc+56+Veronica+Ave+Somerset+NJ", "result": "confirmed"},
+    {"claim": "W. A. Cleary Corporation - 1049 Somerset St, Somerset, (732) 247-8000", "source_url": "https://www.google.com/maps/search/?api=1&query=W+A+Cleary+Corporation+1049+Somerset+St+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Ziyad Distribution - 850 Randolph Rd, Somerset (no phone published)", "source_url": "https://www.google.com/maps/search/?api=1&query=Ziyad+Distribution+850+Randolph+Rd+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Anvil Services (Anvil International) - 417 Elizabeth Ave, Somerset, (732) 805-4000", "source_url": "https://www.google.com/maps/search/?api=1&query=Anvil+Services+417+Elizabeth+Ave+Somerset+NJ", "result": "confirmed"},
+    {"claim": "School of the Arts Dance Education Center - 202 N Center Dr, Somerset, (732) 821-0666", "source_url": "https://www.google.com/maps/search/?api=1&query=School+of+the+Arts+Dance+Education+Center+202+N+Center+Dr+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Rhythmic Arts Dance and Music Center - 122 Charles St, Somerset, (848) 219-6912", "source_url": "https://www.google.com/maps/search/?api=1&query=School+of+the+Arts+Dance+Education+Center+202+N+Center+Dr+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Artistry Through Movement Dance Academy - 441 Elizabeth Ave Unit 4, Somerset, (908) 986-9040", "source_url": "https://www.google.com/maps/search/?api=1&query=School+of+the+Arts+Dance+Education+Center+202+N+Center+Dr+Somerset+NJ", "result": "confirmed"},
+    {"claim": "Academy Child Care Center-Elcc / Bright Start Pre-School / Promissory Montessori are licensed local childcare providers, not franchises", "source_url": "https://www.nj.gov/dcf/documents/about/divisions/ol/NJDCF-Licensed-Child-Care-Centers.pdf", "result": "confirmed"}
+  ],
+  "coverage": {
+    "searches": [
+      "Google Maps list: picture framing near Somerset NJ 08873",
+      "Google Maps list: upholstery near Somerset NJ 08873",
+      "Google Maps list: shoe repair near Somerset NJ 08873",
+      "Google Maps list: hardware store near Somerset NJ 08873",
+      "Google Maps list: dry cleaner near Somerset NJ 08873",
+      "Google Maps list: dance studio near Somerset NJ 08873",
+      "Google Maps list: pet store near Somerset NJ 08873",
+      "Google Maps list: martial arts school near Somerset NJ 08873",
+      "Google Maps list: gift shop near Somerset NJ 08873",
+      "Google Maps list: florist near Somerset NJ 08873"
+    ],
+    "eligible_found": 16,
+    "already_listed": 9,
+    "missing": [
+      {"name": "CustomPictureFrames.com", "town": "Somerset (6 Shirley Ave)", "source_url": "https://www.google.com/maps/search/picture+framing+near+Somerset+NJ+08873"},
+      {"name": "Somerset Taekwondo", "town": "Somerset (1075 Easton Ave #13)", "source_url": "https://www.google.com/maps/search/?api=1&query=Somerset+Taekwondo+1075+Easton+Ave+13+Somerset+NJ"},
+      {"name": "Warrior Martial Arts Somerset", "town": "Somerset (34 Worlds Fair Dr)", "source_url": "https://www.google.com/maps/search/?api=1&query=Warrior+Martial+Arts+Somerset+34+Worlds+Fair+Dr"},
+      {"name": "Jem Dry Cleaners", "town": "Somerset (225 Demott Ln #5)", "source_url": "https://www.google.com/maps/search/?api=1&query=Jem+Dry+Cleaners+225+Demott+Ln+Somerset+NJ"},
+      {"name": "Biagio's Florist", "town": "Somerset (2135 Amwell Rd)", "source_url": "https://www.google.com/maps/search/?api=1&query=Biagio%27s+Florist+2135+Amwell+Rd+Somerset+NJ"},
+      {"name": "La Ritz Cleaners", "town": "Somerset (120 Cedar Grove Ln) - township inferred from the Cedar Grove Ln plaza", "source_url": "https://www.google.com/maps/search/dry+cleaner+near+Somerset+NJ+08873"},
+      {"name": "New Journey MMA", "town": "Somerset (2 John F Kennedy Blvd) - township inferred from street", "source_url": "https://www.google.com/maps/search/martial+arts+school+near+Somerset+NJ+08873"},
+      {"name": "Young Moo Martial Arts", "town": "Somerset (120 Cedar Grove Ln) - township inferred from street", "source_url": "https://www.google.com/maps/search/martial+arts+school+near+Somerset+NJ+08873"},
+      {"name": "Rhythmic Arts (second listing, 152 Cedar Grove Ln, (732) 568-0123)", "town": "Somerset - possibly a duplicate/older listing of the Charles St entry; township inferred", "source_url": "https://www.google.com/maps/search/?api=1&query=School+of+the+Arts+Dance+Education+Center+202+N+Center+Dr+Somerset+NJ"}
+    ]
+  },
+  "confidence": "Medium"
+}

@@ -1,0 +1,228 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Leverage point: Covetrus states the Covetrus Connect API via its Technology Integration Partner Program is 'the only authenticated and supported way to integrate with Covetrus practice management software', with new integration requests paused (source_url https://covetrus.com/about/partner-with-us/).",
+      "problem": "Both halves of the claim are genuine Covetrus language, but they sit on two different pages. The quoted 'only authenticated and supported way...' line is on https://covetrus.com/covetrus-platform/workflow-and-productivity-tools/technology-integration-hub/ ('Supported' block). The cited /about/partner-with-us/ page confirms only 'New integration requests are paused in the meantime' and does not carry the quote. The substance is supported by the vendor; the citation is imprecise.",
+      "fix": "Cite both URLs (partner-with-us for the pause, technology-integration-hub for the quote) so a reader can find each sentence where it actually appears."
+    },
+    {
+      "claim": "Integration 'Existing main phone number (732) 727-1303 / carrier or VoIP handoff' is marked confirmed_in_docs: true with source_url https://www.retellai.com/pricing and cost 'Retell phone number $2.00/month (no charge for custom phone numbers); telephony $0.015/min; No Charge for Sip Trunking/Custom Telephony'.",
+      "problem": "The prices are correct on the pricing page, but the method description (binding an agent to Retell-managed or imported numbers, routing carrier SIP to sip.retellai.com, per-number fallback destination, Backup mode) is documented on the docs site, not on the cited pricing page. Verified accurate at https://docs.retellai.com/deploy/inbound-call, so the claim stands, but the citation points at the wrong page for the confirmed_in_docs flag.",
+      "fix": "Point the integration's source_url at https://docs.retellai.com/deploy/inbound-call (or list it alongside the pricing page) since that is where the confirmed behaviour is documented."
+    },
+    {
+      "claim": "Running cost: 'roughly $517/month if a premium voice/model mix at the top of Retell's published $0.31/minute is used at 1,500 minutes'.",
+      "problem": "Arithmetic is internally consistent (0.31 x 1,500 + $22.50 telephony + $2.00 number + $23.00 SMS + $4.00 hosting = $516.50), but Retell's '$0.07-$0.31/minute' is the headline Voice AI price for the whole per-minute stack, whereas the lean and standard mixes were built bottom-up from components. Adding the $0.015/min telephony line on top of an all-in per-minute rate likely double-counts about $22.50 at 1,500 minutes. It is labelled inference and 'roughly', so it overstates rather than understates the ceiling.",
+      "fix": "Either state the top-end case as components plus telephony, or note that the $0.31/min figure is all-in and that telephony may not be additional on that path."
+    },
+    {
+      "claim": "Running cost: 'Pilot configuration total ... about $116/month at 900 minutes on the lean model mix'.",
+      "problem": "Recomputed from the plan's own unit prices: 900 x $0.081 = $72.90 voice, plus $13.50 telephony, $2.00 number, $21.50-$23.00 SMS and $4.00 hosting = $113.90-$115.40 (using the exact $0.0814/min component sum, $115.76). About $116 is a slight round-up of the range, not a different number, and the same table reconciles exactly at the other end ($200.00 at 1,500 minutes standard, 0.099 x 1,500 + 22.50 + 2 + 23 + 4).",
+      "fix": "Optional: show the two sums so the reader can see which SMS endpoint was used; no substantive change needed."
+    },
+    {
+      "claim": "Running cost basis: lean mix is '$0.081/min' (0.055 voice infra + 0.015 TTS + 0.0064 GPT 5.4 nano + 0.005 knowledge-base add-on).",
+      "problem": "The components sum to $0.0814, which the plan renders as $0.081 (truncated, not rounded). A 0.5% understatement inside a labelled inference; no effect on any total to the nearest dollar.",
+      "fix": "Write $0.0814/min or 'about $0.081/min' to keep the audit trail exact."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Practice advertises 24-hour emergency care to (732) 727-1303 while open Mon-Thu 8am-7pm, Fri-Sat 8am-5pm, Sun 8am-2pm.",
+      "source_url": "https://sayrebrookvet.com/about-our-clinic/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hours shown on the appointment-request page match: Mon-Thu 8-7, Fri-Sat 8-5, Sun 8-2.",
+      "source_url": "https://sayrebrookvet.com/about-our-clinic/appointment-request/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Appointment-request form collects name, email, phone, pet name, species (canine/feline/ferret/avian/rabbit/pocket pet/reptile/other), breed, age/DOB, requested day, time requested, reason for visit, and states a team member will contact the client to confirm availability and scheduling.",
+      "source_url": "https://sayrebrookvet.com/about-our-clinic/appointment-request/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Booking is not self-serve: same-day/urgent slots availability dependent, clients told to call early or ask about a cancellation list.",
+      "source_url": "https://sayrebrookvet.com/faqs/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Published client email is a general Gmail address SayrebrookVet@gmail.com (plus phone and online request form).",
+      "source_url": "https://sayrebrookvet.com/about-our-clinic/our-team/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New-client form is hosted on LifeLearn (web5q.lifelearn.com) rather than the main domain; site is WebDVM-powered.",
+      "source_url": "https://sayrebrookvet.com/locations/sayrebrook-veterinary-hospital/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Owner is Dr. Joseph R. Chiosi.",
+      "source_url": "https://www.bbb.org/us/nj/sayreville/profile/veterinarian/sayrebrook-veterinary-hospital-0221-27000094",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell pricing: Retell Voice Infra $0.055/min; platform TTS $0.015/min; GPT 5.4 nano $0.0064/min; GPT 5.4 mini $0.024/min; knowledge-base call-agent add-on +$0.005/min; headline $0.07-$0.31/minute.",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell monthly items: phone number $2.00/month with 'No Charge for custom phone numbers'; Retell SMS $20.00/month; SMS $0.01/Msg; Knowledge Base $8.00/KB/month prorated inside an '$80/month free value (10 KBs)' note.",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell telephony $0.015/min with 'No Charge for Sip Trunking/Custom Telephony'.",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Call-transfer node supports warm transfer, human detection, private whisper message, configurable ring duration and a pre-populated failure edge; works for Retell and imported numbers.",
+      "source_url": "https://docs.retellai.com/build/conversation-flow/call-transfer-node",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Transfer billing: agent charges apply during hold and handoff and stop when the agent leaves; telephony continues for the transferred leg, and the docs' own worked example is 'At an example rate of $0.015/min, another 3 minutes costs $0.045'.",
+      "source_url": "https://docs.retellai.com/build/conversation-flow/call-transfer-node",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell documents binding inbound agents to Retell-managed and imported numbers, routing carrier SIP to sip.retellai.com, a per-number fallback_number, and 'Backup mode' that sends new inbound calls straight to the fallback destination.",
+      "source_url": "https://docs.retellai.com/deploy/inbound-call",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Plan's design note that the platform's own fallback covers concurrency, not desk no-answer, so desk overflow must be handled on the practice's carrier/PBX side.",
+      "source_url": "https://docs.retellai.com/deploy/inbound-call",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DigitalOcean Basic Droplet 512 MiB / 1 vCPU / 10 GiB is $4.00/month, with $6.00 and $12.00 tiers on the same page.",
+      "source_url": "https://www.digitalocean.com/pricing/droplets",
+      "result": "confirmed"
+    },
+    {
+      "claim": "WordPress core is released under GPLv2 (no licence fee) and exposes a REST API.",
+      "source_url": "https://wordpress.org/about/license/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Pipecat is BSD 2-Clause licensed.",
+      "source_url": "https://github.com/pipecat-ai/pipecat/blob/main/LICENSE",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Gmail: apps using restricted scopes need verification; apps able to access restricted-scope data from or through a server need an annual security assessment by a Google-empanelled assessor, at least every 12 months; an 'internal use only' exception exists for apps used only inside one Workspace organization.",
+      "source_url": "https://developers.google.com/identity/protocols/oauth2/production-readiness/restricted-scope-verification",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 13:44-4A.4(a)-(b): licensee must identify client and patient, disclose and validate licensure, review history, and determine before each unique patient encounter whether telemedicine can meet the in-person standard of care.",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-44-4A-4",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 13:44-4.9: required record content (facility name on every page, identity of entrant and date, owner name/address/phone, patient identity, history, signs, tests, conclusions, treatment, consents), confidentiality, and five-year retention from last visit (three years where the record reflects decease).",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-44-4-9",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey is one-party consent for recording telephone/electronic communications (N.J.S.A. 2A:156A-3, -4), and recordings made for a criminal or tortious purpose are illegal regardless of consent.",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FCC document FCC-CIRC2408-02 records the Feb 8, 2024 Declaratory Ruling that TCPA restrictions on artificial/prerecorded voice encompass current AI technologies that generate human voices, that such calls need prior express consent absent an emergency purpose or exemption, and that 'The TCPA's requirements do not extend to technologies used to answer inbound calls.'",
+      "source_url": "https://docs.fcc.gov/public/attachments/DOC-404036A1.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BLS May 2023 OEWS: receptionists and information clerks, New Jersey mean $19.07/hour, $39,670/year, 47,910 employed.",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes434171.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wage arithmetic: $19.07 x 1.25 = $23.84/hour loaded and $39,670 x 1.25 = $49,600/year, i.e. 2,080 hours at the loaded rate.",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes434171.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "VetRec: Starter $299/month up to 500 interactions; Plus $499/month up to 1,000 interactions; $0.65 per additional interaction; Online Booking $99/month; coverage window is a plan setting; no annual term shown.",
+      "source_url": "https://vetrec.io/platform/ai-receptionist/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "24PetLine: PIMS integration included in Growth at $449/mo; additional minutes $0.30/min; 14-day free trial; month-to-month with no long-term contracts; Starter shows '500 minutes included' with no price rendered; Growth shows 1,200 minutes; ezyVet/Cornerstone/AVImark/Shepherd available, Impromed and Digitail 'Coming Soon'.",
+      "source_url": "https://www.24petline.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Virtual Reception: 'Billed as $490 per year' (up to 250 minutes), 'Billed as $1,490 per year' (Business, up to 1,000 minutes, includes Book Appointments, Integrations, Call Transfers), 'Billed as $2,990 per year' (Growth, 2,000 minutes, Outbound Calls); headline 'Plans from $49/month'; monthly card figures not rendered.",
+      "source_url": "https://virtualreception.ai/ai-reception/book-appointments-for-veterinarians",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Klugon voice plans $99/mo 1,000 min, $299/mo 3,600 min, $499/mo 6,000 min; yearly billing takes 20% off; phone number $9/month; extra voice minutes $15 per started 100 minutes; Klugon cannot transfer a call and gives out an emergency number instead.",
+      "source_url": "https://klugon.ai/for/vets",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Otto publishes no price on its plans page ('One Price' marketing copy, 'Ready to get your quote?') and integrates Cornerstone, Neo, AVImark, Pulse/eVet, ezyVet and Impromed.",
+      "source_url": "https://otto.vet/otto-plans/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "GuardianVets publishes no price, opens with 'Book a Demo' and a call audit, uses live Credentialed Veterinary Technicians with PIMS integration, and can go live 'in as little as 7 days'.",
+      "source_url": "https://www.guardianvets.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "VetWise market ranges: about $159-$395/month for ~100 included minutes, $1.35-$2.30/min past the plan, $8.50-$11.50 per call, veterinary answering services from about $175/month, $119-$419/month for a veterinary phone suite, $15-$75 per user for a general system; VetWise publishes no price list; per case, month-to-month, no setup fee, PIMS integration an add-on with its own one-time fee.",
+      "source_url": "https://www.getvetwise.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PetDesk: no published price ('That depends on what you want! Reach out to our sales team...'); month-to-month with 30-day notice; the booking product is PetDesk's own online booking, pitched as formerly Vetstoria.",
+      "source_url": "https://petdesk.com/frequently-asked-questions",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Covetrus: 'New integration requests are paused in the meantime' and the Covetrus Connect API is described as 'The only authenticated and supported way to integrate with Covetrus practice management software.'",
+      "source_url": "https://covetrus.com/covetrus-platform/workflow-and-productivity-tools/technology-integration-hub/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vapi: 'Pre-paid, $0.05/min Vapi hosting', 'Models pass-through at cost', Core success package $29/month, and a calculator 'Estimated Total' of $82-$129/mo at 1,000 minutes with Deepgram, OpenAI and ElevenLabs.",
+      "source_url": "https://vapi.ai/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Arithmetic: year-one price about $10,100 ($1,500 pilot + $2,000 set-up after the full pilot credit + $6,600 of monthly fees at $550 for 12 months).",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Arithmetic: $550/month is ~10% above $499 (VetRec Plus), ~22% above $449 (24PetLine Growth), ~1.8x $299 and ~5.5x $99 (Klugon Business/Starter).",
+      "source_url": "https://vetrec.io/platform/ai-receptionist/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Arithmetic: $550/month against $116-$200/month of running cost leaves about $350-$434/month of gross margin.",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Arithmetic: founder-days 3+4+5+3+4+2 = 21 across build and pilot support, with go-live at week 4, pilot weeks 5-8 and review at week 9.",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Feasibility scores (technical 3/5, commercial 3/5) and suggested_pricing are labelled inference and consistent with the evidence: phase one writes nothing to the unidentified practice-management system, the only confirmed_in_docs integrations are Retell telephony/transfer, Retell SMS, WordPress REST, Gmail API and DigitalOcean, and the unconfirmed PMS integration is explicitly excluded from the pilot.",
+      "source_url": "https://docs.retellai.com/deploy/inbound-call",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,193 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Frigate row pricing: \"Free (open source); optional Frigate+ model subscription - the page shows a $5 charge for each additional fine-tune beyond the 12 included but does not print the annual subscription price\"",
+      "problem": "The source_url attached to that row (https://docs.frigate.video/configuration/zones/) contains no pricing at all - I fetched it and searched: no 'Frigate+', no '$5'. The fact itself is correct, but it lives on the Frigate+ page, which the brief cites separately under models_and_tools. Row-level attribution is wrong, so anyone checking that row against its own link will think the price is unsupported.",
+      "fix": "Change the source_url on the Frigate entry in existing_solutions to https://frigate.video/plus/ (or add it as a second URL), keeping the zones URL for the zone-inertia/required-zone description."
+    },
+    {
+      "claim": "Prospecting signal: \"Middlesex County / municipal retail food inspection reports (public; establishments must keep the most recent report on site and local health authorities make records available)\"",
+      "problem": "The regulatory requirement is stated as fact with no citation anywhere in the brief. It happens to be true (N.J.A.C. 8:24-8.13 requires the most recent inspection report to be kept on the premises and made available for public review, retained at least two years; N.J.A.C. 8:24-8.12 covers placard posting), but as written it is an uncited legal claim in a document that is otherwise scrupulous about sourcing law.",
+      "fix": "Cite N.J.A.C. 8:24-8.13 (and 8:24-8.12 for the placard) or drop the 'must keep ... on site' clause and leave only the observational signal."
+    },
+    {
+      "claim": "GC 23-02 entry: \"The memo text does not discuss union status; that it reached non-union workplaces is an inference from Section 7's scope\"",
+      "problem": "Loose characterization. The memo does reference union representation (e.g. the Section 8(a)(5) bargaining/information paragraph and 'union supporters'), so 'does not discuss union status' overstates. The substantive point - that the memo nowhere states it applies to non-union workplaces and that this is inferred from Section 7's scope - holds.",
+      "fix": "Reword to: 'the memo does not limit its guidance to unionized workplaces and does not address union status directly; that it reaches non-union workplaces is an inference from Section 7's scope.'"
+    },
+    {
+      "claim": "Friedman v. Martinez, 242 N.J. 449 (2020)",
+      "problem": "The slip opinion I opened (A-37/81-18, decided June 16, 2020) confirms the docket, date, holding and disposition but does not print the 242 N.J. 449 reporter citation. The citation is almost certainly right; it is simply not verified from the document cited.",
+      "fix": "No change needed for substance; if the reporter cite will be quoted to a client, verify 242 N.J. 449 against a reporter/opinion index rather than the slip PDF."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Middlesex County 722511 (2024): 587 establishments, 9,110 annual average employees, $287.8M total annual wages, average annual pay $31,591, ~15.5 employees per establishment",
+      "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Full-service respondents reported salaries and wages incl. benefits at a median 36.5% of sales in 2024, ~33% in the 2010/2013/2016 editions, survey base more than 900 operators, combined line with no occupational breakdown",
+      "source_url": "https://www.restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-labor-costs-are-well-above-historical-averages/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Published tabletop study: average sales per check up ~1% (95% CI 0.8%-1.02%), meal duration down close to 10% (CI -9.94% to -9.54%), sales per minute up ~11%; sample size not stated in abstract; Management Science 66(10):4496-4515",
+      "source_url": "https://ideas.repec.org/a/inm/ormnsc/v66y2020i10p4496-4515.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2017 working paper version reports 2.91% / 9.74% / 10.77% on 2,609,692 observations",
+      "source_url": "https://faculty.wharton.upenn.edu/wp-content/uploads/2017/09/2017.9.10_Tabletop_For_Submission_WithNames.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Tabletop paper quotes an industry profit margin of between 1% and 7% citing Mogavero and A'agnese (2016), and elsewhere treats a ~3% sales lift as economically meaningful",
+      "source_url": "https://faculty.wharton.upenn.edu/wp-content/uploads/2017/09/2017.9.10_Tabletop_For_Submission_WithNames.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bangalore field study: 94,404 customer groups, one 84-table / 335-seat restaurant, Feb 2016-Jan 2017; reneging 14,585 groups = 15.7% of walk-in groups",
+      "source_url": "https://pure.eur.nl/ws/portalfiles/portal/47914467/1-s2.0-S0272696318300214-main.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Simulation from the same study: revenue +nearly 15% with no waiting, up to 7.5% from more flexible table allocation, 7.7% from 20% more capacity (model output, one site)",
+      "source_url": "https://pure.eur.nl/ws/portalfiles/portal/47914467/1-s2.0-S0272696318300214-main.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2015 multi-stage field study (Netherlands, restaurants/assessment/dental): service-entry wait largest influence on service evaluation in restaurants, exit wait in assessment services, in-service wait in dental; IJBG Vol.14 No.2",
+      "source_url": "https://www.inderscience.com/info/e_inarticle.php?artid=67435",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PreciTaste ~$2,000 install per location then ~$399/month; cameras down to 'a couple hundred bucks'; 'a dominant use case for computer vision has not emerged yet'; Presto dropped its vision product to focus solely on AI voice",
+      "source_url": "https://www.restaurantbusinessonline.com/technology/restaurants-take-closer-look-computer-vision",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey minimum wage rises $0.43 to $15.92/hour for most employees effective January 1, 2026 (tipped cash wage $6.05, tip credit $9.87; small/seasonal $15.23)",
+      "source_url": "https://www.nj.gov/labor/lwdhome/press/2025/20251001_Minimum_Wage.shtml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Resy Platform $289/month, Platform 360 $459/month, published on Resy's pricing page",
+      "source_url": "https://resy.com/join/plans-pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SevenRooms publishes no plan price on its pricing page (quote only)",
+      "source_url": "https://sevenrooms.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jetson Orin Nano Super Developer Kit: $249, down from $499, 67 INT8 TOPS, supports up to four cameras, announced December 2024",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate+ annual subscription allows up to 12 fine-tuned models, additional fine-tunings $5, only specific label types supported and no custom labels; no annual price printed",
+      "source_url": "https://frigate.video/plus/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate zones: presence evaluated from bottom-center of bounding box, zone inertia over consecutive frames, loitering time, required zones to restrict alerts/detections/snapshots",
+      "source_url": "https://docs.frigate.video/configuration/zones/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics licensing: AGPL-3.0 for open source, Enterprise license required for commercial products, closed-source software, embedded/edge deployments and fine-tuned models used proprietarily",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dodo/consultancy case: unnamed 22-table restaurant, 5.8 min guests-left to table-ready, ~$2,600/week estimated lost covers, 1,400 images labeled in CVAT, $4,800 install, $380/month, cleanup 1.9 min, turnover 31 to 27 min, ~$1,350/week, 92-96% F1, 4-8% false alerts, 5 consecutive frames over 10 seconds, 50-60% accuracy untuned, 5-8 table rooms don't pay back",
+      "source_url": "https://data-metrics.pro/en/blog/computer-vision-restaurante-mesas-dodo-pizza/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Single-restaurant YOLOv8 table detector: mAP@0.5 0.997, mAP@0.5:0.95 0.985, authors warn of recalibration for other camera angles/lighting; the 90/10 split belongs to the 1,344-record occupancy time series, not the detector",
+      "source_url": "https://dergipark.org.tr/en/download/article-file/4495676",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Wiretap Act requires consent of at least one party to an in-person conversation with a reasonable expectation it is not being recorded (N.J.S.A. 2A:156A-2, -3, -4); N.J.S.A. 2C:14-9 makes recording intimate parts/sexual acts in a private place a third-degree crime and does not criminalize recording in public areas with no reasonable expectation of privacy",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Friedman v. Martinez (A-37/81-18, decided June 16, 2020): intrusion occurs when a victim uses a private space where a spying device was concealed; no direct evidence of recording needed; circumstantial evidence and reasonable inferences suffice; victim must still show she used the monitored space; Appellate Division reversed and summary judgment reinstated",
+      "source_url": "https://www.njcourts.gov/system/files/court-opinions/2020/a_37_81_18.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC 23-02 (Oct 31, 2022), 'Electronic Monitoring and Algorithmic Management of Employees Interfering with the Exercise of Section 7 Rights'; quotes on 'intrusive or abusive' monitoring, directive to submit such cases to Advice, interagency approach; footnote 40 mentions proposals to let employees respond before discipline",
+      "source_url": "https://www.govinfo.gov/content/pkg/GOVPUB-LR-PURL-gpo212857/pdf/GOVPUB-LR-PURL-gpo212857.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC Policy Statement on Biometric Information and Section 5, dated May 18, 2023, matter P225402",
+      "source_url": "https://www.ftc.gov/legal-library/browse/policy-statement-federal-trade-commission-biometric-information-section-5-federal-trade-commission",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A3929 (introduced text, sponsorship updated 2/19/2026): 'biometric surveillance system' = software performing facial recognition or other remote biometric recognition; notice + lawful purpose; detailed explanation when used to deny access or remove; 30-day cure waives first-violation penalty; up to $10,000 first / $20,000 subsequent; treble damages; effective first day of sixth month after enactment; no vote tally in the bill text",
+      "source_url": "https://pub.njleg.gov/Bills/2026/A4000/3929_I1.PDF",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDPA (P.L. 2023, c.266): 'consumer' excludes a person acting in a commercial or employment context; 'biometric data' excludes a digital or physical photograph, an audio or video recording, and data generated from them unless generated to identify a specific individual",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Maitre'd: per-table state (ungreeted, not cleared, ready-but-empty, section pace), reads against POS/reservation/kitchen data, shadow/observe live today with delegation in pilot, installation takes an afternoon",
+      "source_url": "https://www.maitred.restaurant/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Presto Vision launch: cameras in lobbies and dining areas, alerts on long waits and guest bounce rates, piloted at Outback Steakhouse franchisee Evergreen Restaurant Group",
+      "source_url": "https://presto.com/presto-launches-computer-vision-product-for-real-time-restaurant-operations-insights-2/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Aldente Vision: camera-based analysis of people, tables and queues with table clearing/seating metrics",
+      "source_url": "https://aldenteai.com/analytics",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen2.5-VL-3B-Instruct card: visual localisation by generating bounding boxes or points with stable JSON outputs for coordinates and attributes",
+      "source_url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2-VL-3B: newest addition to a family that already included 450M and 1.6B, built on the LFM2-2.6B backbone with a SigLIP2 encoder",
+      "source_url": "https://www.liquid.ai/blog/lfm2-vl-3b-a-new-efficient-vision-language-for-the-edge",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-3B: follows architecture of LFM2.5-VL-1.6B and LFM2.5-VL-450M, non-reasoning model answering directly for low latency, links local run/fine-tune docs, post citation line dated Aug 2026",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cactus: Apache 2.0 runtime; local OpenAI-compatible server documented only for the separate cactus-mlx path on Apple silicon",
+      "source_url": "https://github.com/cactus-compute/cactus",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate's hardware page recommends the Beelink EQ13 (Intel N100, dual NICs for an isolated camera network) and prints no price",
+      "source_url": "https://docs.frigate.video/frigate/hardware/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fit_score sub-scores (11/20, 11/15, 8/15, 15/20, 7/15, 5/15) add to 57 and are consistent with the evidence: legal_risk_low held at 7/15 alongside a legal section that documents real but design-avoidable exposure; thin margins (1-7%) cited at 8/15 ability to pay; single-site studies and one exited vendor cited at 11/20 demand",
+      "source_url": "local: avenue.json (fit_score block, arithmetic checked)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

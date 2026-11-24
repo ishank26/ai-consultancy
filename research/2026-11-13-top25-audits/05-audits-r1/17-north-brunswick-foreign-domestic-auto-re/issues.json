@@ -1,0 +1,22 @@
+[
+ {
+  "claim": "\"...and one 1-star review saying a car billed over $2,000 wouldn't start.\"",
+  "problem": "The review itself is real and accurately summarised, so the sentence is not false, but 'one 1-star review' reads as if it were the shop's only negative item. Google's rating breakdown on the listing is 5 stars 38, 4 stars 4, 3 stars 0, 2 stars 1, 1 star 4 (47 total) - i.e. four 1-star reviews. profile.json's stronger version ('the only sharply negative review') is contradicted by the listing, and the audit inherited a softened form of it.",
+  "fix": "Write \"a 1-star review saying a car billed over $2,000 left it not starting (one of four 1-star reviews)\", or drop the count and just describe the complaint."
+ },
+ {
+  "claim": "\"Today: card payment in person, no invoice portal...\"",
+  "problem": "The card-payment half rests on Google's 'About' payment attributes, recorded in profile.json, which I could not re-open: the About tab would not render in my session and the page HTML contains no payment, appointment or language strings. Unverified rather than contradicted. The 'no invoice portal' half is well supported (no owned site, no online payment path on the listing).",
+  "fix": "Soften to \"payment taken at the counter, nothing online\", or confirm the card/NFC detail at the walk-in before it goes out."
+ },
+ {
+  "claim": "Email draft: \"what a two-week pilot would cover\"",
+  "problem": "Inconsistent with the audit body, where the front-door pilot is 2-3 weeks and the front-desk pilot 3-4 weeks.",
+  "fix": "Use \"two-to-four-week pilot\" or \"a short paid pilot\" in the email so it matches the body."
+ },
+ {
+  "claim": "Impact ranges in opportunities 1 and 2 (26-195 and 14-156 staff hours a year)",
+  "problem": "Internally consistent and correctly labelled as assumptions, but not the same figures as analysis.json (roughly 3-14 and 4-16 hours a month, i.e. 36-168 and 48-192 hours a year); the audit re-derived them from different call volumes (25-75 vs 18-60 calls a week for the same phone line).",
+  "fix": "No change needed if only the audit is sent; if analysis.json is ever shown, use one call-volume assumption in both."
+ }
+]

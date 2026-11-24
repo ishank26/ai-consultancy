@@ -1,0 +1,143 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "\"...and one 1-star review saying a car billed over $2,000 wouldn't start.\"",
+      "problem": "The review itself is real and accurately summarised, so the sentence is not false, but 'one 1-star review' reads as if it were the shop's only negative item. Google's rating breakdown on the listing is 5 stars 38, 4 stars 4, 3 stars 0, 2 stars 1, 1 star 4 (47 total) - i.e. four 1-star reviews. profile.json's stronger version ('the only sharply negative review') is contradicted by the listing, and the audit inherited a softened form of it.",
+      "fix": "Write \"a 1-star review saying a car billed over $2,000 left it not starting (one of four 1-star reviews)\", or drop the count and just describe the complaint."
+    },
+    {
+      "claim": "\"Today: card payment in person, no invoice portal...\"",
+      "problem": "The card-payment half rests on Google's 'About' payment attributes, recorded in profile.json, which I could not re-open: the About tab would not render in my session and the page HTML contains no payment, appointment or language strings. Unverified rather than contradicted. The 'no invoice portal' half is well supported (no owned site, no online payment path on the listing).",
+      "fix": "Soften to \"payment taken at the counter, nothing online\", or confirm the card/NFC detail at the walk-in before it goes out."
+    },
+    {
+      "claim": "Email draft: \"what a two-week pilot would cover\"",
+      "problem": "Inconsistent with the audit body, where the front-door pilot is 2-3 weeks and the front-desk pilot 3-4 weeks.",
+      "fix": "Use \"two-to-four-week pilot\" or \"a short paid pilot\" in the email so it matches the body."
+    },
+    {
+      "claim": "Impact ranges in opportunities 1 and 2 (26-195 and 14-156 staff hours a year)",
+      "problem": "Internally consistent and correctly labelled as assumptions, but not the same figures as analysis.json (roughly 3-14 and 4-16 hours a month, i.e. 36-168 and 48-192 hours a year); the audit re-derived them from different call volumes (25-75 vs 18-60 calls a week for the same phone line).",
+      "fix": "No change needed if only the audit is sent; if analysis.json is ever shown, use one call-volume assumption in both."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Google rating is 4.5 stars",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The listing has 47 Google reviews",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business name and address 'North Brunswick Foreign & Domestic Auto Repairs', 590 Georges Rd, North Brunswick Township NJ 08902",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The shop sits inside a bp fuel station ('Located in: bp')",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The listing shows an 'Add website' prompt under 'Add missing information' and has no website link",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No booking, quote or message button on the listing (only Directions, Save, Nearby, Send to phone, Share)",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hours are posted on the listing ('Closed - Opens 8 AM Sat' at the time of checking, 13 Nov 2026)",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Posted hours are Mon-Fri 9-6, Sat 8-2, Sun closed (basis for the 'Sunday searcher' line)",
+      "source_url": "https://reviews.birdeye.com/north-brunswick-foreign-domestic-auto-repairs-166108021407986",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye's copy of the profile is unclaimed",
+      "source_url": "https://reviews.birdeye.com/north-brunswick-foreign-domestic-auto-repairs-166108021407986",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Pricing is the most-tagged review topic, at 12 reviews (fair pricing 6, car repair 5, honesty 3 ...)",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A 1-star review says the customer paid over $2,000 and the car would not start",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The listing has only that one 1-star review (the reading 'one 1-star review' invites; histogram is 38/4/0/1/4)",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Payment is taken by card in person (Google 'Payments' attributes)",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "could not open"
+    },
+    {
+      "claim": "There is no invoice portal or online payment path",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey OES 2023 mean hourly wage for automotive service technicians and mechanics (SOC 49-3023) is $27.80",
+      "source_url": "https://www.nj.gov/labor/labormarketinformation/assets/PDFs/employ/oeswageweb/PDFs/nj_all.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "$34.75/hour load rate = $27.80 x 1.25 benefits (stated as an assumption)",
+      "source_url": "https://www.nj.gov/labor/labormarketinformation/assets/PDFs/employ/oeswageweb/PDFs/nj_all.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Opportunity 1: 26-195 staff hours a year and about $903-$6,776 (arithmetic re-run from the stated assumptions)",
+      "source_url": "https://www.nj.gov/labor/labormarketinformation/assets/PDFs/employ/oeswageweb/PDFs/nj_all.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Opportunity 2: 14-156 staff hours a year and about $486-$5,421 (arithmetic re-run from the stated assumptions)",
+      "source_url": "https://www.nj.gov/labor/labormarketinformation/assets/PDFs/employ/oeswageweb/PDFs/nj_all.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Opportunity 3: 13-72 staff hours a year and about $451-$2,502 (0.5-2 hrs/week x 52, 50-70% agent-handled; high end is 72.8 rounded down)",
+      "source_url": "https://www.nj.gov/labor/labormarketinformation/assets/PDFs/employ/oeswageweb/PDFs/nj_all.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SureCritic flags 'Last 30 Day Trend: Inactive Business' and carries a different review count (4.7 from 16 reviews)",
+      "source_url": "https://www.surecritic.com/reviews/north-brunswick-foreign-domestic",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email opener: '4.5 stars from 47 reviews, praise for fair pricing, and an Add website prompt where the link should be'",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Walk-in opener: 'no website link, just an Add website prompt'",
+      "source_url": "https://www.google.com/maps/place/North+Brunswick+Foreign+%26+Domestic+Auto+Repairs/@40.4699289,-74.4506782,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67dc06484d9:0xc79c19cf7adf5141!8m2!3d40.4699289!4d-74.4506782!16s%2Fg%2F11f40m4l0k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body is at most about 450 words (measured 452 including headings and bullets, excluding the 'For the founder' section)",
+      "source_url": "",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

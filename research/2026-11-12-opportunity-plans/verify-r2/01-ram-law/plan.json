@@ -1,0 +1,492 @@
+{
+ "business": "RAM Law (Rebenack Aronow & Mascolo LLP), New Brunswick NJ, with offices in Somerville and Manalapan",
+ "opportunity": "After-hours and overflow bilingual telephone intake agent: answer, structure the intake, flag deadlines and duplicates, route by office, book callbacks, and hand injuries to on-call staff while lawyers keep every acceptance decision (audit opportunity #1)",
+ "problem": {
+  "summary": "RAM Law advertises 'Phone Intake Hours 24/7' at intake while its published office hours are Monday-Friday 8:00 AM-8:00 PM with Saturday and Sunday closed, so every call after 8pm or on a weekend is handled by someone other than office staff - most likely an outside answering or intake service, which is an inference, since the firm never says who picks up. The firm publishes two live intake channels - a phone number and a web form - plus one shared mailbox (contact@ram.law) serving all three offices, and no scheduling calendar, portal or status lookup anywhere on the site. Because the firm works on contingency, a first contact that is answered badly, described to a stranger, or re-keyed the next morning is directly revenue-relevant, and the re-keying falls on paralegals, the only support roles the firm names. The site already carries call tracking, a legal intake widget and a purchased-lead tag, so leads arrive from several directions and all have to be reconciled into one intake record.",
+  "current_tools": [
+   {
+    "tool": "Phone intake on (732) 247-3600, advertised 24/7, against 8am-8pm weekday office hours and closed weekends",
+    "evidence": "Manalapan office page lists Mon-Fri 8:00 AM-8:00 PM, Sat/Sun closed, and 'Phone Intake Hours 24/7'",
+    "source_url": "https://ramlawnj.com/manalapan-new-jersey/"
+   },
+   {
+    "tool": "Gravity Forms web contact form as the only online intake; no scheduling calendar, portal or status lookup",
+    "evidence": "Contact page offers 'contact us online' plus phone only; no calendar/portal links anywhere on the site",
+    "source_url": "https://ramlawnj.com/contact/"
+   },
+   {
+    "tool": "Single shared email contact@ram.law for all three offices, with no location routing at first contact",
+    "evidence": "Contact page lists one email address across New Brunswick, Somerville and Manalapan",
+    "source_url": "https://ramlawnj.com/contact/"
+   },
+   {
+    "tool": "CallRail call tracking with multiple display numbers",
+    "evidence": "CallRail script present on the homepage; several different numbers published across pages",
+    "source_url": "https://ramlawnj.com/"
+   },
+   {
+    "tool": "Lawbrokr legal intake widget (already installed)",
+    "evidence": "A Lawbrokr script is loaded and initialised on the homepage",
+    "source_url": "https://ramlawnj.com/"
+   },
+   {
+    "tool": "Juvo Leads tag (purchased or routed leads in addition to owned intake)",
+    "evidence": "Juvo Leads tag installed on the homepage alongside paid-acquisition pixels",
+    "source_url": "https://ramlawnj.com/"
+   },
+   {
+    "tool": "Case management, document management and billing software",
+    "evidence": "Not identified anywhere on the site; carried forward as an open question",
+    "source_url": "https://ramlawnj.com/contact/"
+   }
+  ]
+ },
+ "solution": {
+  "approach": "build-on-platform",
+  "design": "Do not replace anything the firm already pays for. Keep Lawbrokr as the website intake surface, keep Gravity Forms as the form, keep CallRail as the attribution layer, and add one missing layer: a bilingual voice-and-form agent that owns the after-hours and overflow window. Inbound calls to the firm's published number are forwarded (after hours, or when the front desk does not pick up within N rings) to a dedicated Telnyx number attached to a Telnyx Voice AI agent; after-hours form submissions reach the same agent through a Gravity Forms webhook. On every contact the agent: (1) states a recording/AI-assistant disclosure and offers Spanish; (2) collects a fixed intake schema - incident date, county and location, injury and treatment status, whether police responded, whether a commercial truck or public entity is involved, insurance/UM-UIM posture, other driver's carrier, language preference, best callback window; (3) computes a conservative internal deadline flag from the incident date (2-year personal-injury limitation, plus a hard 'check public-entity notice' flag whenever a government body might be involved) and never states a deadline to the caller as advice; (4) checks for duplicates against the last 12 months of intakes and runs a name/party conflict screen against existing matters and adverse parties; (5) routes by county to New Brunswick, Somerville or Manalapan and by practice area, then books a named callback slot in the shared calendar and sends one SMS plus one email confirmation; (6) for out-of-scope or clearly non-qualifying contacts, drafts a decline/referral note for a human to approve rather than refusing on the call. Escalation: any call describing an active injury, an unrepresented hospitalised person, a tow-truck or insurer pressure, an imminent court date, or a caller who asks for a lawyer is warm-transferred to the on-call rotation; any call the agent scores low-confidence is queued for a human callback and flagged as 'do not answer' to the caller. Human gates: the agent never accepts or declines a case, never discusses fees, liens or case value, never says 'we will represent you', and never sends an outbound message on a matter without a human click during the pilot. Logging: audio, transcript, structured JSON, confidence scores, escalation reason and reviewer ID are written to an append-only per-intake record that the COO can export for a supervision file, with audio retention configurable (default 90 days) and no model training on firm or caller data. Deployment is the Telnyx-hosted voice runtime in a single tenant with zero-retention settings on the language model rather than a per-seat SaaS chatbot, because the NJ Supreme Court's AI notice states that a lawyer 'is responsible to ensure the security of an AI system before entering any non-public client information'.",
+  "components": [
+   {
+    "component": "Telephony and call control (number, forwarding, warm transfer, recording)",
+    "tool": "Telnyx Voice API",
+    "why": "Per-minute pricing with call recording and transfer as separate line items, so the cost of the after-hours window is predictable and the design does not depend on the firm's unknown PBX",
+    "source_url": "https://telnyx.com/pricing/voice-api"
+   },
+   {
+    "component": "Voice agent runtime (orchestration, barge-in, bilingual turn-taking, tool calls)",
+    "tool": "Telnyx Voice AI agent runtime",
+    "why": "$0.05/min covers orchestration, Telnyx-hosted STT and hosted TTS with no monthly platform fee; the vendor's own worked estimate puts a realistic production agent near $0.06/min once telephony and LLM tokens are added",
+    "source_url": "https://telnyx.com/pricing/voice-ai-agents"
+   },
+   {
+    "component": "Bilingual speech-to-text (English/Spanish, including code-switching)",
+    "tool": "Deepgram Nova-3 Multilingual streaming",
+    "why": "The $0.05 voice-engine rate already includes Telnyx-hosted STT, which the vendor lists as including Deepgram models; Deepgram's own published multilingual streaming rate applies only if the STT is unbundled, and Deepgram states BAA availability for Enterprise - relevant because injury narratives include treatment details",
+    "source_url": "https://deepgram.com/pricing"
+   },
+   {
+    "component": "Form-side capture",
+    "tool": "Gravity Forms Webhooks add-on",
+    "why": "Pushes an after-hours form submission into the same intake pipeline as a call without rebuilding the form or touching the site's front end. Open item: the add-on is included only with Gravity Forms Elite and Nonprofit licences, so the firm's tier must be confirmed (only the core Gravity Forms script was seen on the site) and an upgrade priced if it is Basic or Pro",
+    "source_url": "https://www.gravityforms.com/add-ons/webhooks/"
+   },
+   {
+    "component": "Website intake surface (kept, not replaced)",
+    "tool": "Lawbrokr",
+    "why": "Already installed on ramlawnj.com, and 'Webhooks for custom workflows' is listed as included with every Lawbrokr plan, so the agent can subscribe to intake events and write back a structured record instead of competing with the widget",
+    "source_url": "https://lawbrokr.com/pricing"
+   },
+   {
+    "component": "Callback confirmations in English and Spanish",
+    "tool": "Telnyx Messaging API with 10DLC brand/campaign registration",
+    "why": "Application-to-person SMS from a US local number requires TCR brand and campaign registration; the vendor publishes the complete fee schedule and per-part rates",
+    "source_url": "https://telnyx.com/resources/what-is-10dlc"
+   },
+   {
+    "component": "Case management write-back and duplicate/conflict check",
+    "tool": "Firm's existing case management system (product unknown)",
+    "why": "The write-back target cannot be named until discovery; if the firm runs a mainstream product the integration is an API or export, and if not, a CSV/manual export path is the fallback",
+    "source_url": "https://ramlawnj.com/contact/"
+   }
+  ],
+  "integrations": [
+   {
+    "system": "Telnyx Voice API (inbound calls, recording, transfer)",
+    "method": "REST API plus call-control webhooks; number pointed at the agent runtime",
+    "confirmed_in_docs": true,
+    "cost": "Local number calls $0.002/min Voice API platform fee plus SIP trunking inbound from $0.0032/min; call recording $0.002/min; call transfer $0.10 per invocation; US local number $1.00/mo",
+    "source_url": "https://telnyx.com/pricing/voice-api"
+   },
+   {
+    "system": "Telnyx Voice AI agent runtime",
+    "method": "Hosted agent with tool/webhook calls out to our orchestration service",
+    "confirmed_in_docs": true,
+    "cost": "$0.05/min voice engine; LLM tokens billed separately (vendor example ~$0.006/min on Kimi); no monthly platform fee on pay-as-you-go",
+    "source_url": "https://telnyx.com/pricing/voice-ai-agents"
+   },
+   {
+    "system": "Deepgram streaming STT (English/Spanish) - only if unbundled from the voice engine",
+    "method": "WebSocket streaming API",
+    "confirmed_in_docs": true,
+    "cost": "Nova-3 Multilingual streaming $0.0092/min pay as you go, $0.0078/min on Growth; BAA stated for Enterprise customers; included in the Telnyx voice engine if left bundled",
+    "source_url": "https://deepgram.com/pricing"
+   },
+   {
+    "system": "Gravity Forms (existing website forms)",
+    "method": "Webhooks add-on posts the submission payload to our endpoint (GET/POST/PUT/PATCH/DELETE, JSON or form, conditional triggers)",
+    "confirmed_in_docs": true,
+    "cost": "No per-add-on price stated on the add-on page; the add-on is included only with Elite and Nonprofit licences, so any Elite upgrade is an unpriced open item until the firm's tier is confirmed",
+    "source_url": "https://www.gravityforms.com/add-ons/webhooks/"
+   },
+   {
+    "system": "Lawbrokr intake widget",
+    "method": "Webhooks for custom workflows (listed as included with every Lawbrokr plan)",
+    "confirmed_in_docs": true,
+    "cost": "Included in the firm's existing Lawbrokr subscription; no plan prices are published on the pricing page (all plans billed annually, custom pricing for Essentials/Pro/Scale)",
+    "source_url": "https://lawbrokr.com/pricing"
+   },
+   {
+    "system": "SMS confirmations",
+    "method": "Telnyx Messaging API after 10DLC brand and campaign registration",
+    "confirmed_in_docs": true,
+    "cost": "$0.004 per outbound part plus carrier pass-through ($0.0035-$0.005 per part); campaign fee $10/mo standard or $1.50/mo low-volume mixed ($2.00/mo sole proprietor); brand $4.50 and campaign review $15 one-time; SMS-enabled local number $1.10/mo",
+    "source_url": "https://telnyx.com/resources/what-is-10dlc"
+   },
+   {
+    "system": "CallRail call tracking",
+    "method": "Would be read for baseline reporting; API/webhook documentation could not be loaded during research, so no dependency is assumed",
+    "confirmed_in_docs": false,
+    "cost": "Already subscribed by the firm; no incremental cost priced",
+    "source_url": "https://ramlawnj.com/"
+   },
+   {
+    "system": "Firm's case management system",
+    "method": "Unknown - API, export or browser-automation fallback to be chosen at discovery",
+    "confirmed_in_docs": false,
+    "cost": "Unknown",
+    "source_url": "https://ramlawnj.com/contact/"
+   }
+  ],
+  "human_in_the_loop": "Three hard gates. (1) Legal judgement stays human: case acceptance, declination, fee and lien discussion, and anything that could create an attorney-client relationship are drafted or flagged by the agent and decided by a lawyer or the COO. (2) Every outbound message during the pilot is approved by a person before it leaves; after the pilot, only templated callback confirmations send automatically. (3) Hot-injury and deadline calls bypass the agent entirely by warm transfer to the on-call rotation. A named supervising attorney signs a written runbook that lists exactly what the agent may say, the escalation triggers, the prohibited phrases (no advice, no dollar figures, no deadline statements), and the weekly review of a sample of transcripts - the practical form of the oversight duty the Court's AI notice describes for nonlawyer staff (RPC 5.1/5.3), which the notice says 'extends to ensuring the ethical use of AI by other lawyers and nonlawyer staff'."
+ },
+ "build_plan": {
+  "phases": [
+   {
+    "phase": "1. Discovery, compliance and baseline (week 1)",
+    "steps": [
+     "Sit with the COO and front-desk lead for a 60-90 minute walkthrough of what happens to a 9pm call today",
+     "Identify the phone system/PBX, the case management system, the Gravity Forms licence tier and who currently answers after hours",
+     "Pull two months of CallRail after-hours reports: calls offered, answered, missed, voicemail, average duration",
+     "Time 15 real intakes observed live to build the manual baseline",
+     "Draft the written runbook (permitted phrases, escalation triggers, prohibited statements) for attorney sign-off",
+     "Agree data handling: zero-retention LLM settings, no training on firm data, 90-day audio retention, access list"
+    ],
+    "founder_days": "3-4 (INFERENCE)",
+    "client_provides": "COO sponsor, front-desk and one paralegal for shadowing, CallRail admin/reports, phone system admin, case management access (read-only), current intake script and on-call roster, Gravity Forms licence details, and a named supervising attorney for the runbook"
+   },
+   {
+    "phase": "2. Intake schema and dialogue design (week 1-2)",
+    "steps": [
+     "Convert the firm's paper/verbal intake into a 22-28 field JSON schema with required/optional flags",
+     "Write the English and Spanish dialogue with the disclosure, language switch and 6 escalation branches",
+     "Define the conservative deadline-flag rules and the 'never state a deadline' phrasing",
+     "Define duplicate and conflict matching rules (name, phone, incident date, carrier) with thresholds"
+    ],
+    "founder_days": "3 (INFERENCE)",
+    "client_provides": "Current intake form/script, sample of written declination language, confirmation of which counties map to which office, list of practice areas that are out of scope"
+   },
+   {
+    "phase": "3. Build the agent and the plumbing (week 2-3)",
+    "steps": [
+     "Provision Telnyx number, forwarding rule and recording; wire the voice runtime",
+     "Build the orchestration service: schema extraction, confidence scoring, dedupe, conflict stub, routing, callback booking, SMS/email confirmation",
+     "Connect Gravity Forms webhook (subject to licence tier) and Lawbrokr webhook to the same endpoint",
+     "Build the append-only intake record and the daily reconciliation report",
+     "Set zero-retention model settings and access controls; encrypt transcripts at rest"
+    ],
+    "founder_days": "6-8 (INFERENCE)",
+    "client_provides": "Calendar/shared inbox target for callback invites, domain DNS access if a branded caller ID number is wanted, sample callback wording, confirmation of office/county routing"
+   },
+   {
+    "phase": "4. Test and tune (week 3-4)",
+    "steps": [
+     "Run 120-200 simulated calls across accents, background noise, Spanish, and adversarial callers ('are you a lawyer?', 'what is my case worth?')",
+     "Have a native Spanish speaker review 30 Spanish calls for register and comprehension, not just translation",
+     "Staff blind-review 25 transcripts against the schema and score field accuracy",
+     "Fix, re-test, then run 20 live after-hours calls in shadow mode (agent answers, staff check every record next morning)"
+    ],
+    "founder_days": "3-4 (INFERENCE)",
+    "client_provides": "2-3 staff hours for blind review, one bilingual staff member or reviewer for Spanish QA, and a single decision-maker for go/no-go"
+   },
+   {
+    "phase": "5. Pilot live, then report (weeks 5-8)",
+    "steps": [
+     "Go live on after-hours and overflow only, with daily 15-minute review for the first five business days",
+     "Weekly one-page report: contacts captured, structured-record completeness, escalation rate and time, errors, Spanish handling",
+     "Exit review against the pre-agreed criteria, then either a monthly care agreement or a clean hand-back with the runbook and data export"
+    ],
+    "founder_days": "3-4 (INFERENCE)",
+    "client_provides": "COO sign-off on exit review, feedback from front desk, decision on monthly care"
+   }
+  ],
+  "pilot": {
+   "scope": "After-hours (8pm-8am), weekend and daytime-overflow inbound calls plus after-hours web form submissions only. Bilingual. Structured intake record and duplicate/conflict flag for every contact; callback slots booked; hot-injury warm transfer to the on-call rotation; daily reconciliation of CallRail/Juvo leads against created intakes. Explicitly out of scope: weekday live call handling, case acceptance, fee discussion, trust accounting, records chasing and any client-status messaging.",
+   "weeks": "3-4 weeks live after a 3-4 week build, so 7-8 weeks from signed agreement (INFERENCE: estimated effort, not measured)",
+   "success_metrics": [
+    "After-hours contacts captured (answered + structured record created) vs the pre-pilot baseline of after-hours calls answered/abandoned",
+    "Median time from contact to booked callback slot (target: booked during the call)",
+    "Structured-record completeness: share of contacts with all required fields filled (target 90%+)",
+    "Field accuracy on blind-reviewed sample: critical-field error rate under 5% (incident date, county, injury status, phone number)",
+    "Escalation quality: 100% of simulated hot-injury calls transferred within 60 seconds; zero calls where the agent accepted a case, quoted a fee or stated a deadline",
+    "Spanish parity: share of Spanish-language calls completed without a language-based transfer",
+    "Zero confirmed cross-caller data exposure and zero unapproved outbound messages",
+    "Staff time per intake (timed on a sample) vs the pre-pilot manual baseline"
+   ],
+   "baseline_method": "Two months of the firm's own CallRail after-hours data (calls offered, answered, missed, voicemail, duration) plus a timed observation of 15 real intakes during week 1, both recorded in a one-page baseline memo signed by the COO before go-live. Nothing is compared to an industry benchmark, because no peer-reviewed measurement of law-firm intake savings was located.",
+   "exit_criteria": "Pilot converts only if all of the following hold: after-hours capture is at or above baseline; critical-field error rate is under 5% on the final blind review; no unresolved confidentiality or supervision finding; the runbook's prohibited-phrase test passes on 50 consecutive calls; and the COO and supervising attorney both sign the monthly scope. If any fails, the founder hands back the runbook, transcripts and a written findings memo, and the pilot ends with no monthly fee."
+  }
+ },
+ "competitors": [
+  {
+   "vendor": "Smith.ai",
+   "product": "AI Receptionist (Free / Pro / Enterprise tiers)",
+   "fit_for_this_business": "Closest product comparison. 24/7 AI call answering with recording/transcription, lead qualification, AI scheduling and native Clio/Zapier integrations; multi-location support and unlimited custom integrations are Enterprise features, which matches three offices. Legal case studies are published, but its intake is a general qualification flow rather than a New Jersey PI schema with deadline and conflict flags.",
+   "price": "Free: $0/mo, 25 calls/mo ($3.00/call after that). Pro: $150/mo for 75 calls ($2.00/call), $270/mo for 150 calls ($1.80/call, 10% volume discount), $500/mo for 300 calls ($1.67/call, 17% volume discount). Enterprise: $500/mo for 300 calls ($1.67/call), $800/mo for 500 calls ($1.50/call, 10% volume discount per the page's offer data; the on-page rate table shows $1.60), 1000+ calls custom. Month-to-month, no contract, 30 days' notice to cancel.",
+   "source_type": "vendor pricing page",
+   "source_url": "https://smith.ai/pricing/ai-receptionist"
+  },
+  {
+   "vendor": "AI Esquire",
+   "product": "Intake AI (Starter / Growth / Firm)",
+   "fit_for_this_business": "Legal-specific AI intake with English and Spanish conversations, consultation scheduling, recordings/transcripts and structured summaries - the closest published match to the Spanish requirement. Multi-location/multi-practice design only at the top tier.",
+   "price": "Starter $497/month (typical fit: up to ~100 calls/month, 1 workflow); Growth $997/month (~100-300 calls/month, up to 4 workflows); Firm $1,997/month (300+ calls/month, multi-practice or multi-location). Monthly subscription, no long-term contract, 30-day money-back guarantee.",
+   "source_type": "vendor pricing page",
+   "source_url": "https://aiesquire.io/pricing"
+  },
+  {
+   "vendor": "Frontdesk (My AI Front Desk)",
+   "product": "Business-in-a-Box AI receptionist",
+   "fit_for_this_business": "Cheapest credible AI receptionist with published pricing and 20+ languages, plus chat, SMS and a CRM. Volume is thin (200 voice minutes) for 150-400 inquiries a month, and there is no legal intake schema.",
+   "price": "Business-in-a-Box $99/mo, or $79/mo billed annually, including 200 voice minutes/month, 100 chatbot conversations and 400 SMS; Partner/Enterprise custom. No contracts, cancel anytime.",
+   "source_type": "vendor pricing page",
+   "source_url": "https://myaifrontdesk.com/pricing"
+  },
+  {
+   "vendor": "Ruby",
+   "product": "Virtual receptionist (live human) - 24/7 bilingual answering",
+   "fit_for_this_business": "The 'hire people, outsourced' option: live receptionists, 24/7 coverage, 24/7 Spanish and bilingual call handling available, intake and scheduling included, HIPAA-compliant services available. Does the warm human part well but cannot produce a structured PI intake record, run a conflict check or compute a deadline flag, and cost scales with minutes.",
+   "price": "50 minutes/month $250/mo; 100 minutes/month $395/mo; 200 minutes/month $720/mo; 500 minutes/month $1,725/mo. Chat plans: 10 chats/month $143/mo, 30 $335/mo, 50 $520/mo (bundled with a receptionist plan: $115 / $268 / $416, a 20% savings).",
+   "source_type": "vendor pricing page",
+   "source_url": "https://www.ruby.com/plans-and-pricing/"
+  },
+  {
+   "vendor": "Answering Legal",
+   "product": "Legal answering service (live, 24/7)",
+   "fit_for_this_business": "Legal-only live answering with custom intake scripts, bilingual receptionists, CRM integrations (Clio Grow, Lawmatics, PracticePanther, MyCase) and month-to-month terms - the incumbent pattern this firm most likely buys after hours (inference).",
+   "price": "Not public - the page confirms flat-rate, all-inclusive pricing with every feature included regardless of plan size, a free trial and month-to-month service with no contract, but publishes no figure.",
+   "source_type": "vendor page",
+   "source_url": "https://www.answeringlegal.com/help-center/billing/how-does-answering-legal-s-pricing-work"
+  },
+  {
+   "vendor": "Lawbrokr",
+   "product": "Legal intake and conversion platform (already installed on the firm's site)",
+   "fit_for_this_business": "The most important competitor in practice, because the firm already runs it: AI-assisted digital intake, automations, legal software integrations, webhooks, and multilingual flows from the Pro tier as well as a separately priced add-on. Covers website intake; whether it answers the phone after hours is a discovery question, and its plan prices are not published.",
+   "price": "Not public - four tiers (Starter, Essentials, Pro, Scale) with 'Starting at:' and no figure shown; all plans billed annually for the year; Essentials, Pro and Scale offer custom pricing; add-ons separately priced.",
+   "source_type": "vendor pricing page",
+   "source_url": "https://lawbrokr.com/pricing"
+  },
+  {
+   "vendor": "MyCase",
+   "product": "Practice management (Basic / Pro / Advanced) with client portal and intake",
+   "fit_for_this_business": "The 'buy software and change process' alternative: client portal, billing, payments and intake in one system, which would address the no-portal gap and some status questions, but not after-hours phone answering. Per-user pricing means the cost scales with the firm's headcount.",
+   "price": "Basic $50, Pro $100, Advanced $130 USD/user/month billed annually (save $120-$240/year); Basic $60, Pro $120, Advanced $150 USD/user/month billed monthly.",
+   "source_type": "vendor pricing page",
+   "source_url": "https://www.mycase.com/pricing/"
+  },
+  {
+   "vendor": "Hire an intake coordinator / legal secretary (in-house)",
+   "product": "One additional full-time employee",
+   "fit_for_this_business": "The default alternative for after-hours and overflow: a person with judgement, empathy and Spanish, who can also do other work. But one hire is roughly 2,080 paid hours a year on a weekday schedule, which does not cover evenings and weekends, so 24/7 still needs a service or a rotation; and it adds recruiting, training and supervision burden under RPC 5.3.",
+   "price": "Legal secretaries and administrative assistants, New Jersey: $30.33/hr and $63,080/yr (BLS 2025 wage data via O*NET); paralegals and legal assistants, New Jersey: $34.38/hr and $71,500/yr. Loaded cost is higher - a 1.25x multiplier (inference) gives about $79k/yr at the secretary figure.",
+   "source_type": "government data",
+   "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ"
+  }
+ ],
+ "running_costs": [
+  {
+   "item": "Voice agent minutes (voice engine + LLM + telephony), all-in basis",
+   "cost": "\u2248$0.062/min all-in: voice engine $0.05 (orchestration, hosted STT and TTS) + telephony $0.0052 ($0.002 Voice API platform fee + $0.0032 SIP inbound) + LLM ~$0.0064. About $112/mo at 1,800 minutes; about $186/mo at 3,000 minutes",
+   "basis": "Components read from the vendor's own worked production estimate, which puts a realistic production agent at about $0.06/min; that example lists telephony as $0.0032/min only, while the same page's FAQ adds a $0.002/min Voice API platform fee, so $0.0052 is used here and the line items are summed to \u2248$0.062/min. Minute volumes are an inference (150-400 inquiries/month, 25-40% arriving after hours, ~6 minutes each)",
+   "source_url": "https://telnyx.com/pricing/voice-ai-agents"
+  },
+  {
+   "item": "Telephony line items charged separately (recording, transfer)",
+   "cost": "Call recording $0.002/min; call transfer $0.10 per invocation. About $3.60/mo recording plus about $4.00/mo for 40 transfers at 1,800 minutes",
+   "basis": "Published per-minute and per-invocation rates; recording on every after-hours call and under 40 escalations/month are inferences",
+   "source_url": "https://telnyx.com/pricing/voice-api"
+  },
+  {
+   "item": "SMS-enabled local number",
+   "cost": "$1.10/month",
+   "basis": "Published monthly number rental with SMS (the Voice API page lists a plain US local number at $1.00/mo, the SMS-enabled local number at $1.10/mo)",
+   "source_url": "https://telnyx.com/resources/what-is-10dlc"
+  },
+  {
+   "item": "10DLC brand/campaign registration and monthly campaign fee",
+   "cost": "$4.50 brand + $15 campaign review one-time; then $10/mo (standard use cases) or $1.50/mo (low-volume mixed; $2.00/mo sole proprietor)",
+   "basis": "Published TCR/carrier fee schedule passed through by the vendor; registration is mandatory for application-to-person SMS from a US local number",
+   "source_url": "https://telnyx.com/resources/what-is-10dlc"
+  },
+  {
+   "item": "Outbound SMS confirmations and STOP handling",
+   "cost": "$0.0075-$0.009 per part ($0.004 Telnyx + $0.0035-$0.005 carrier), i.e. about $2.25-$2.70/mo at 300 messages",
+   "basis": "Published per-part rates summed; message volume is an inference (one confirmation per captured contact)",
+   "source_url": "https://telnyx.com/resources/what-is-10dlc"
+  },
+  {
+   "item": "Speech-to-text if run outside the bundled voice engine",
+   "cost": "$0.0092/min streaming (Nova-3 Multilingual, pay as you go), $0.0078/min on Growth",
+   "basis": "Published rate; $0 incremental in this design because the $0.05 voice engine already includes hosted STT",
+   "source_url": "https://deepgram.com/pricing"
+  },
+  {
+   "item": "Existing systems the design reuses (Lawbrokr, Gravity Forms, CallRail)",
+   "cost": "No new vendor cost assumed for Lawbrokr or CallRail; one open item - the Gravity Forms Webhooks add-on requires an Elite or Nonprofit licence, and any upgrade from Basic/Pro is unpriced because the add-on page states no figure",
+   "basis": "Lawbrokr and CallRail are already installed on the site; Lawbrokr plan prices are not published. The licence requirement is stated in the add-on FAQ",
+   "source_url": "https://www.gravityforms.com/add-ons/webhooks/"
+  },
+  {
+   "item": "All-in monthly running total for this design",
+   "cost": "About $124-$133/mo at 1,800 minutes and about $201-$211/mo at 3,000 minutes (low end assumes the $1.50/mo low-volume campaign fee and the $0.0075/part carrier rate, high end the $10/mo standard campaign fee and $0.009/part); plus $19.50 one-time for brand registration and campaign review. Excludes any Gravity Forms licence upgrade",
+   "basis": "Sum of the published line items above with the volume assumptions stated in each row (inference); no vendor discount tier is assumed",
+   "source_url": "https://telnyx.com/pricing/voice-ai-agents"
+  }
+ ],
+ "suggested_pricing": {
+  "pilot_fee": "$1,500 fixed for the 3-4 week live pilot (after-hours + overflow only, up to 2,000 voice minutes), invoiced 50% at kickoff and 50% at go-live - INFERENCE",
+  "setup_fee": "$3,500 one-time on conversion, covering intake-schema build, case-management write-back, Spanish QA, the attorney-signed runbook, staff training and the baseline/exit reporting pack - INFERENCE",
+  "monthly_fee": "$650/month for the after-hours and overflow scope with up to 2,000 voice minutes, then $0.10/minute overage; 12-month term, 30 days' notice; daytime live-call handling, records chasing and the client-status agent quoted separately - INFERENCE",
+  "reasoning": "INFERENCE, reasoned against published competitor prices and the audit's own impact range. (a) Competitor anchor: AI Esquire charges $497/month for about 100 calls and $997/month for 100-300 calls; Smith.ai charges $500/mo for 300 AI-handled calls and $800/mo for 500; Ruby charges $1,725/mo for 500 live minutes, and its tier ladder implies about $3.45/min at the 500-minute tier, so 1,800 minutes of live answering would compute to roughly $6,200/mo before any negotiated larger plan. $650/mo therefore sits between AI Esquire's Starter and Growth tiers and far below live answering at this volume. (b) Cost side: the recomputed running total is about $124-$133/mo at 1,800 minutes and about $137-$146/mo at the 2,000-minute allowance, so gross margin is about 78-81%. (c) Value anchor: the audit puts recoverable staff time at about $2,700-$18,100 a year, i.e. $225-$1,508 a month, so $650/mo only pays back inside the middle-to-upper half of that range - which is why the pilot is priced to measure capture rate and volume first, and why the engagement should be re-priced once real call counts replace the inference. (d) The setup fee is deliberately below what a custom CRM integration would cost because the build is configuration on an existing platform plus prompts and schema, not new software; any Gravity Forms Elite upgrade the firm needs is passed through at cost and quoted separately. (e) No result, client reference or conversion uplift is claimed anywhere in the pitch; the pilot is sold as measurement, and the exit criteria let the firm walk away."
+ },
+ "leverage": [
+  {
+   "point": "The build is configuration on a per-minute platform, not custom infrastructure: Telnyx charges no monthly platform fee on pay-as-you-go and publishes a complete rate card including transfer, recording and per-part SMS, so a second and third law-firm client can be added by cloning the agent and swapping prompts - the marginal build falls with each reuse (inference)",
+   "source_url": "https://telnyx.com/pricing/voice-ai-agents"
+  },
+  {
+   "point": "The intake schema, escalation runbook and bilingual prompt set are generic to plaintiff personal-injury intake rather than specific to RAM Law, so the same core is reusable for another firm of the same type (inference, since no second firm has been scoped and nothing has yet been built)",
+   "source_url": "https://telnyx.com/pricing/voice-api"
+  },
+  {
+   "point": "The firm's stack is already integration-ready and already paid for: Lawbrokr lists webhooks for custom workflows on every plan, and Gravity Forms has an official webhooks add-on on Elite/Nonprofit licences, so nothing needs ripping out",
+   "source_url": "https://lawbrokr.com/pricing"
+  },
+  {
+   "point": "The Spanish requirement is a moat rather than a chore: the whole site is translated and Spanish posts are published, and the firm states it has a bilingual attorney, so a genuinely bilingual voice agent is table stakes here and the acoustic/language work transfers to the next bilingual firm",
+   "source_url": "https://ramlawnj.com/es/"
+  },
+  {
+   "point": "Local presence is cheap: a Milltown founder can reach the New Brunswick office in about 20 minutes for shadowing, on-call training and quarterly reviews (inference - drive time estimated, not measured), which national AI-receptionist vendors cannot do",
+   "source_url": "https://ramlawnj.com/contact/"
+  },
+  {
+   "point": "Cost floor: at about $0.062/min all-in versus the $3.45-$5.00 per live-answering minute implied by Ruby's published plan ladder ($1,725 for 500 minutes = $3.45/min; $250 for 50 minutes = $5.00/min), the same after-hours coverage is delivered at a fraction of the incumbent cost - which is the number that makes a fixed monthly fee easy to defend",
+   "source_url": "https://www.ruby.com/plans-and-pricing/"
+  }
+ ],
+ "edge_vs_competitors": "Against national AI receptionists (Smith.ai, AI Esquire, Frontdesk) the edge is specificity and integration: a New Jersey PI intake schema with county-to-office routing, a conservative deadline and public-entity flag, duplicate and conflict screening, and write-back into the firm's own case management - plus a runbook written for the RPC 5.1/5.3 oversight duty described in the Court's AI notice and signed by a named attorney, which no general receptionist product supplies. Against live answering services (Ruby, Answering Legal) the edge is price at volume (about $0.062/min versus live-minute plans) and structured output rather than a message slip, plus warm transfer for the calls that matter. Against hiring, the edge is 24/7 coverage at a small fraction of the loaded cost of one secretary. The edge that does NOT exist: brand, references, a 24/7 human floor, SOC 2, a real CRM/product roadmap, and any proof of results - and the firm already runs Lawbrokr, which sells multilingual intake flows from its Pro tier and as an add-on, so the honest position is that we are adding the phone channel and the legal-quality controls, not inventing intake. If Lawbrokr already answers after-hours calls well, this opportunity shrinks and the pitch should move to the records/status opportunities.",
+ "risks_compliance": [
+  {
+   "issue": "Supervision of an automated nonlawyer assistant: the firm remains responsible for what the agent says to a prospective client",
+   "rule_or_source": "NJ Supreme Court preliminary AI guidelines (Jan 24, 2024), Oversight section: 'Law firms and lawyers are responsible for overseeing other lawyers and nonlawyer staff, as well as law students and interns, as they may be held responsible for ethical violations by those individuals. See, e.g., RPC 5.1 ... RPC 5.3 ... This requirement extends to ensuring the ethical use of AI by other lawyers and nonlawyer staff.' Outside vendors are not named in that sentence; treating them as covered is an inference from RPC 5.3 (responsibilities regarding nonlawyer assistance) plus the confidentiality duty",
+   "confirmed": true,
+   "mitigation": "Written runbook signed by a named supervising attorney; prohibited-phrase list (no advice, no fees, no deadline statements, no acceptance); human approval of every declination; weekly transcript sampling in the supervision file; the firm's supervising attorney is named as the owner of the vendor relationship",
+   "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf"
+  },
+  {
+   "issue": "Confidentiality of non-public client and caller information flowing through an AI system",
+   "rule_or_source": "Same notice: RPC 1.6 requires reasonable efforts to prevent inadvertent or unauthorised disclosure, and 'a lawyer is responsible to ensure the security of an AI system before entering any non-public client information'",
+   "confirmed": true,
+   "mitigation": "Single-tenant deployment, zero-retention/no-training settings, per-matter access scoping so one caller's record can never surface in another's answer, encryption at rest, 90-day configurable audio retention, and a written data-handling schedule naming every subprocessor",
+   "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf"
+  },
+  {
+   "issue": "Accuracy: a hallucinated deadline, county or legal explanation is a misrepresentation risk, not just a bad UX moment",
+   "rule_or_source": "Same notice cites RPC 3.1, RPC 4.1(a)(1) and RPC 8.4(c) and states that 'a lawyer has an ethical duty to check and verify all information generated by AI'",
+   "confirmed": true,
+   "mitigation": "Agent never gives legal advice or states a deadline; deadline flags are internal-only and computed conservatively for a human to act on; scripted answers only; blocking verification on any answer that cites a source; zero-tolerance escalation on treatment, deadlines, money and dissatisfaction",
+   "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf"
+  },
+  {
+   "issue": "Call recording: the agent records every call, and callers are not always in New Jersey",
+   "rule_or_source": "New Jersey is a one-party consent state for telephone recording under N.J.S.A. 2A:156A-3 and -4 (consent of at least one party), unless the recording is made for a criminal or tortious purpose",
+   "confirmed": true,
+   "mitigation": "Keep a spoken disclosure at the top of every call and a recorded consent line on the web form; because a caller may be in a two-party-consent state or the firm may want belt-and-braces, recording disclosure is unconditional rather than relying on the one-party exception",
+   "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/"
+  },
+  {
+   "issue": "SMS and any outbound call: consent, opt-out and registration rules apply to messages sent by software",
+   "rule_or_source": "47 CFR 64.1200 requires prior express consent for autodialed/prerecorded calls and texts, and requires that a called party may revoke consent by any reasonable method, honoured within a reasonable time not to exceed ten business days; separately, application-to-person SMS from a US local number requires 10DLC brand and campaign registration",
+   "confirmed": true,
+   "mitigation": "Only message people who called the firm or submitted the form (transactional confirmation, not marketing); capture the consent language on the form; honour STOP and any reasonable revocation across all channels; register brand and campaign before go-live; no marketing sequences from this system at all",
+   "source_url": "https://www.law.cornell.edu/cfr/text/47/64.1200"
+  },
+  {
+   "issue": "Health information in injury narratives (treatment, diagnoses, providers)",
+   "rule_or_source": "Under 45 CFR 160.103 a 'covered entity' is a health plan, a health care clearinghouse or a health care provider transmitting health information electronically - a plaintiff law firm is none of these, so HIPAA does not directly govern it (inference from the definition); obligations arrive contractually through providers and through the firm's own confidentiality duty",
+   "confirmed": true,
+   "mitigation": "Treat all treatment detail as confidential regardless of HIPAA status: choose subprocessors that will sign a BAA (Deepgram states BAA availability for Enterprise), minimise PHI in prompts, redact provider identifiers from logs where not needed",
+   "source_url": "https://www.law.cornell.edu/cfr/text/45/160.103"
+  },
+  {
+   "issue": "Deadline automation: the agent's most dangerous feature is the one that looks most useful",
+   "rule_or_source": "N.J.S.A. 2A:14-2 sets a two-year limitation for personal-injury actions; claims against public entities run through the Tort Claims Act with a separate notice-of-claim process (the exact notice period could not be confirmed from an opened primary source in this session)",
+   "confirmed": true,
+   "mitigation": "Deadline flags are internal, advisory and conservative only; no date is ever given to a caller; every flag shows its arithmetic and requires a human to accept it; the firm's docketing system remains the system of record",
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/308"
+  },
+  {
+   "issue": "Unauthorised practice of law and accidental creation of an attorney-client relationship by a nonlawyer agent",
+   "rule_or_source": "The NJ notice's oversight section and RPC 5.3 put responsibility for nonlawyer conduct on the firm, and the notice states that such use does not change lawyers' core duties; the specific text of RPC 5.5 could not be opened during this session",
+   "confirmed": false,
+   "mitigation": "Agent states that it is an intake assistant and not a lawyer, never says 'we will represent you', routes any request for legal advice to a person, and every engagement decision is made by a lawyer; scripts reviewed by counsel before go-live",
+   "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf"
+  },
+  {
+   "issue": "Vendor claims about results and the temptation to repeat them in the pitch",
+   "rule_or_source": "Vendor case studies (e.g. the '52% conversion rate' headline linked from Smith.ai's own pricing page) are marketing claims, not measurements; the analyst found no peer-reviewed field study of law-firm intake savings",
+   "confirmed": true,
+   "mitigation": "Pitch and report only the firm's own measured baseline and after numbers; quote no competitor results and no conversion uplift; keep the audit's labour-hour range labelled as an estimate",
+   "source_url": "https://smith.ai/pricing/ai-receptionist"
+  }
+ ],
+ "feasibility": {
+  "technical_1_5": 4,
+  "commercial_1_5": 3,
+  "weeks_to_pilot": "7-8 weeks from signed agreement to live after-hours pilot (3-4 weeks build, 3-4 weeks live) - INFERENCE",
+  "verdict": "Go with conditions",
+  "reasoning": "Scores are INFERENCE (judgement, not measurement). Technical 4/5: every layer of the design has a published, priced API - Telnyx voice and messaging, Gravity Forms webhooks (subject to the licence tier), Lawbrokr webhooks, Deepgram multilingual STT - and the after-hours window is a low-blast-radius place to start because no daytime call and no acceptance decision is touched. It is not 5/5 because the firm's phone system and case management system are both unknown, and write-back into the case file is the one integration that could turn into a multi-week unblockable dependency. Commercial 3/5: the firm has clear ability to pay (three offices, a stated team of 11 civil-litigation attorneys, two of them NBTA-certified in truck-accident law, $170M+ recovered, a COO and a marketing director, heavy paid acquisition), and $650/mo sits comfortably inside published competitor ranges - but three things are unproven and must be settled in discovery: whether after-hours calls are already answered acceptably by an incumbent vendor, whether the volume is at the upper end of the assumed 150-400 inquiries a month (at the low end the monthly fee exceeds the audit's measured savings), and whether Lawbrokr's own intake already covers part of this. Conditions for a Go: discovery confirms a real after-hours capture or re-entry gap; the firm names a supervising attorney and adopts the runbook; the Gravity Forms licence tier is confirmed (or another form webhook path used); case management write-back is achievable via API or clean export; and a bilingual reviewer signs off the Spanish flow. If discovery shows Lawbrokr or an answering service already capturing after-hours calls well, switch the pitch to the records/bill chase or the client-status agent rather than forcing this one."
+ },
+ "discovery_questions": [
+  "What happens today to a call that comes in at 9pm on a Tuesday or 2pm on a Sunday - who answers, what do they record, and where does that record go?",
+  "Which vendor or service handles after hours now, what does it cost per month, and what is in the contract (term, per-minute rate, cancellation)?",
+  "On an average month, how many inbound calls and form submissions do you get, and what share arrive outside 8am-8pm?",
+  "From your CallRail reports, what percentage of after-hours calls are answered versus abandoned or sent to voicemail?",
+  "Which case management system do you use, does it have an API or export, and who administers it?",
+  "What phone system runs the three offices, and can calls be forwarded by time-of-day and by hunt group?",
+  "Which Gravity Forms licence tier does the site run - Basic, Pro, Elite or Nonprofit - and who holds the licence key?",
+  "Which intake questions are mandatory for your screening, and which answers cause you to decline a matter outright?",
+  "Who is on the after-hours on-call rotation for injuries, and how are they reached today?",
+  "Does Lawbrokr currently answer anything live, or is it website intake only?",
+  "Is there a written intake script or training document, and may we see it?",
+  "Which attorney will supervise this and sign the runbook, and what phrases do you never want said to a caller?",
+  "What bilingual capacity exists on staff today, and how do you currently handle a Spanish-only caller after hours?",
+  "What would make you switch this off after four weeks - what does failure look like to you?",
+  "Do you want callbacks booked directly into staff calendars, or queued to the front desk each morning?"
+ ],
+ "caveats": [
+  "No client, result or conversion claim is made anywhere in this plan; the founder has no law-firm clients and should say so.",
+  "All volumes, minutes and cost arithmetic above the published rate cards are inferences (150-400 inquiries/month, 25-40% after hours, ~6 minutes per call, 1,800 minutes/month, ~40 transfers, 300 SMS); they must be replaced with the firm's CallRail data in week 1.",
+  "The vendor's own worked example prices telephony at $0.0032/min while its FAQ adds a $0.002/min Voice API platform fee; this plan uses $0.0052/min, which is why its all-in figure is \u2248$0.062/min rather than the vendor's headline $0.06/min.",
+  "Smith.ai's page is internally inconsistent on one number: its structured offer data gives $1.50/call for the Enterprise 500-call tier while the visible rate table shows $1.60. The monthly total, $800/mo for 500 calls, is the figure used here.",
+  "The audit's $2,700-$18,100/year impact figure is a labour-hour floor at NJ wages, not a revenue or settlement figure, and it understates the loaded cost of an hour because benefits are applied at a rough 1.25 multiplier.",
+  "Vendor pages change; every price here was read on 2026-11-12 and should be re-checked before it appears in a proposal. AI Esquire, Frontdesk and MyCase quotes are retail list prices with self-serve checkout; Lawbrokr, Answering Legal and the case management system are quote-based.",
+  "The single biggest unknown is whether after-hours calls are already handled acceptably. If an incumbent answering service is doing well, the honest pitch changes to records/bill chasing or client status.",
+  "Lawbrokr is already installed and sells multilingual intake flows from its Pro tier and as an add-on, so part of this opportunity may already be paid for and unused; discovery must check what tier the firm is on and what the widget currently does.",
+  "The Gravity Forms Webhooks add-on requires an Elite or Nonprofit licence and its price is not published on the add-on page, so any licence upgrade is an unpriced open item."
+ ],
+ "data_gaps": [
+  "CallRail's own pricing page could not be opened and developers.callrail.com did not resolve, so its API/webhook documentation and per-plan price could not be confirmed - the design therefore avoids depending on it.",
+  "The firm's phone system, case management, document management and billing software are unknown; nothing on the site names them.",
+  "Who answers after-hours calls today is unknown (answering service, vendor, or staff rotation).",
+  "Gravity Forms: the add-on FAQ confirms Webhooks requires an Elite or Nonprofit licence, but no licence price could be read - gravityforms.com/pricing returned only FAQ content to a fetch - and the firm's tier is unknown, so any upgrade cost is unpriced.",
+  "Lawbrokr's plan prices are not published (all plans billed annually, custom pricing for Essentials/Pro/Scale), so no comparison figure could be recorded for the product the firm already runs.",
+  "LEX Reception's own pricing page returned HTTP 404 during research, so it is not included as a priced competitor.",
+  "The full text of the NJ Rules of Professional Conduct (njcourts.gov rpc.pdf) returned HTTP 404; RPC 5.1, 5.3, 1.6, 3.1, 4.1 and 8.4 are therefore cited through the Supreme Court's AI guidelines notice, and RPC 5.5 (unauthorised practice) could not be confirmed from a primary text.",
+  "The Tort Claims Act notice-of-claim period (commonly 90 days) could not be confirmed from an opened primary source; the NJ Treasury claim page describes the process but not the deadline.",
+  "The status of any comprehensive New Jersey consumer privacy statute was not confirmed in this session, and no NJ-specific AI or automated-decision law applicable to a law firm's intake was located.",
+  "HIPAA's non-application to a plaintiff law firm is an inference from the 45 CFR 160.103 definition, not a regulator's statement about law firms.",
+  "No independent measure of the firm's intake volume, after-hours call volume, conversion rate or current answering-service cost exists publicly; the firm publishes none.",
+  "No peer-reviewed study quantifying law-firm intake automation savings was located, so no benchmark uplift is claimed.",
+  "Drive time from Milltown to the New Brunswick office is an estimate, not a measured figure."
+ ]
+}

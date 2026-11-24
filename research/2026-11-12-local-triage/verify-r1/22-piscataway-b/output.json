@@ -1,0 +1,171 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"True Cuts Barbershop\", 46 College Ave, Piscataway",
+      "problem": "Wrong town. The shop's own site gives 46 College Ave, New Brunswick, NJ 08901 (The Yard). It is also a 3-location NJ brand (College Ave + George St in New Brunswick, plus Newark), so it is a small chain as well.",
+      "fix": "Remove the entry (out of zone, and a multi-location brand)."
+    },
+    {
+      "claim": "\"AmeriCare Physical Therapy\", 1260 Centennial Ave (kept, note: 'small NJ multi-office PT group')",
+      "problem": "AmeriCare's Piscataway clinic page now lives on ivyrehab.com and trade press reports Ivy Rehab's NJ expansion via AmeriCare, i.e. this is now a national chain clinic, not a small local group. An excluded chain type remains in the list.",
+      "fix": "Drop the entry (chain), or keep only if the brief explicitly allows acquired-but-locally-branded clinics - and then document the acquisition."
+    },
+    {
+      "claim": "\"Trinity Rehab - Physical Therapy\", 1354 Centennial Ave (kept, note: 'flag for chain review')",
+      "problem": "Trinity Rehab's own site lists 24 New Jersey clinics (27 total) - this is a regional chain, the same category the mapper excluded elsewhere (Ivy Rehab, Kessler).",
+      "fix": "Remove, or apply one consistent chain threshold across PT and state it in the file."
+    },
+    {
+      "claim": "\"Dr. Ayesha Muzaffar, DMD\", 1630 Stelton Rd Ste 201, (732) 800-9524",
+      "problem": "Duplicate. icare4smiles.com is titled 'Dentist in Piscataway, NJ | Dr. Ayesha Muzaffar' and lists the same suite and the same phone as the 'iCare4Smiles Dental Piscataway' entry directly above it.",
+      "fix": "Merge into the iCare4Smiles entry (add Dr. Muzaffar as the provider) and delete the standalone entry."
+    },
+    {
+      "claim": "\"Justin Schaefers, OD\", 213 Stelton Rd (practice name 'not shown')",
+      "problem": "He is a provider at The Eye Center of Piscataway, 213 Stelton Rd, phone (732) 752-9090 - a separate practice that is missing from the list while its employee is listed as a business. The entry is also missing the publicly listed phone.",
+      "fix": "Rename to 'The Eye Center of Piscataway', add the practice phone, and treat Schaefers as a provider."
+    },
+    {
+      "claim": "\"Dr. Martin Marks, DMD (endodontist)\", 1100 Centennial Ave Ste 101",
+      "problem": "Same suite as the 'Dental Cosmetic Center of Piscataway' entry; the mapper's own note says it is likely a provider in that office, so this is a provider listing counted as a business.",
+      "fix": "Merge into Dental Cosmetic Center as a provider, or drop."
+    },
+    {
+      "claim": "\"Piscataway Dunellen Family Practice\", 24 Stelton Rd Suite A",
+      "problem": "Healthgrades lists this practice as 'RWJPE Piscataway Dunellen Family Practice' - an RWJBarnabas/RWJ Physician Enterprise practice. The mapper excluded HMH Primary Care and Saint Peter's Physician Associates as hospital groups, so this is an inconsistent keep.",
+      "fix": "Either exclude as a hospital-system practice or reinstate the other hospital-affiliated practices - apply one rule."
+    },
+    {
+      "claim": "\"Piscataway Animal Clinic\", 13 Stelton Rd",
+      "problem": "Its own site presents it as one of '4 Convenient Locations' (Raritan Animal Hospital group: Edison, South Plainfield, Fords, Piscataway) under shared branding - a multi-location group, which the mapper's chain rule targets.",
+      "fix": "Make an explicit chain call and record it, rather than listing it unqualified."
+    },
+    {
+      "claim": "\"Lissah.Nails\", 542 Longfellow Ave",
+      "problem": "Only aggregator listings (nail/style directories, no phone, no site). Longfellow Ave is a residential street - this looks like a home-based provider, which is out of scope (no residential/personal details).",
+      "fix": "Remove unless a commercial storefront or studio address can be confirmed."
+    },
+    {
+      "claim": "\"Flow Acupuncture\", 80 Kingsbridge Rd #1",
+      "problem": "Unconfirmed as named. Directories place 'Maximum Health & Wellness Piscataway LLC' at 80 Kingsbridge Rd Suite 1 ((732) 667-7797); one aggregator labels the address 'Flow acupuncture', and the flowheals.com site is a Union NJ practice, not Piscataway.",
+      "fix": "Verify the tenant name at Suite 1 before outreach; if it is Maximum Health & Wellness, relabel."
+    },
+    {
+      "claim": "\"Audiology Hearing Health PLLC (Michael Giannella, AuD)\", 200 Centennial Ave",
+      "problem": "Could not be confirmed. YellowPages is blocked in this environment and the mapper's own note says it came from a snippet only; no second source ties that practice name to 200 Centennial Ave.",
+      "fix": "Verify against NPI registry or the practice's own site; otherwise move to a lower-confidence bucket."
+    },
+    {
+      "claim": "\"Ambrose Animal Hospital\", 1636 Stelton Rd Suite 312",
+      "problem": "Address still unverified: the site renders address/hours dynamically and returned no street address to a text fetch, so 'operates in Piscataway' rests on directory snippets.",
+      "fix": "Confirm the suite from a map listing or the booking page before outreach."
+    },
+    {
+      "claim": "\"Snatched Aesthetics\", 31 Stelton Rd",
+      "problem": "The salon's own site contradicts itself: page title says '371 Hoes Lane, Suite E7' while its contact block says '31 Stelton Road, Suite 7'. The list picked one of the two.",
+      "fix": "Confirm current suite by phone/map; note the conflict in the entry."
+    },
+    {
+      "claim": "Phone/website fields left 'Unknown' or blank",
+      "problem": "Publicly listed contact data was easy to find and is missing for at least: Heights Haircutters (732-885-5550), Cassatone Massage (732-877-4534), Dina's Salon (732-529-4000, dinasnj.com), Mehndi Beauty (732-777-9212), Millenium Nails (732-981-1130), Justin Schaefers/Eye Center (732-752-9090). Websites exist but are blank for Smile Wellness, iCare4Smiles, Ohm Dental, Affordable Family Dentistry, NÜVA Smile, Smile Garden, Radiant Orthodontics, In Focus Vision Center, Campana Chiropractic, Cassatone, Fit4Blast, Sonovi.",
+      "fix": "Backfill contact/website fields from the sources cited in claims_checked before outreach; these are warm-intro channels."
+    },
+    {
+      "claim": "Zone coverage of small independents (coverage searches, 14 categories)",
+      "problem": "Around 11 eligible independents found by my own searches are absent, notably two barbers on Stelton Rd (Freddie's, Chief), a second optometry practice (Dr. Madelyne Latorre, OD), three acupuncture clinics, two med spas at 371 Hoes Ln, and Island Spa & Sauna.",
+      "fix": "Add the missing entries listed in coverage.missing; re-run barber/optometry/acupuncture/med-spa passes."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Piscataway Family Dental, P.A. at 1312 Centennial Ave Unit 11, (732) 981-1777, Piscataway NJ", "source_url": "https://piscatawayfamilydental.com/contact-us/", "result": "confirmed"},
+    {"claim": "P.E.B. Dental has a Piscataway office at 155 Stelton Rd, 2nd floor, (732) 752-1932 (own site shows Piscataway + East Brunswick)", "source_url": "https://pebdental.org/address", "result": "confirmed"},
+    {"claim": "Leonard Yee, DDS at 36 Wills Way, (732) 562-8881, Piscataway; leonardyeedds.com is his site", "source_url": "https://www.leonardyeedds.com/", "result": "confirmed"},
+    {"claim": "Central Jersey Dental Arts at 1056 Stelton Rd, Piscataway; cjdentalarts.com is its site", "source_url": "https://www.cjdentalarts.com/our-locations", "result": "confirmed"},
+    {"claim": "Smile Wellness (Precious Smiles) at 1080 Stelton Rd Ste 201, (732) 572-8888", "source_url": "https://www.smilewellnessdental.com/contact-us", "result": "confirmed"},
+    {"claim": "iCare4Smiles Dental at 1630 Stelton Rd Ste 201; practice is Dr. Ayesha Muzaffar, phone (732) 800-9524", "source_url": "https://icare4smiles.com/", "result": "confirmed"},
+    {"claim": "Dr. Ayesha Muzaffar, DMD is a separate business from iCare4Smiles", "source_url": "https://icare4smiles.com/our-office/", "result": "contradicted"},
+    {"claim": "NUVA Smile (Piscataway Dental Group) at 1315 Stelton Rd, (732) 985-5600", "source_url": "https://nuvasmile.com/locations/piscataway-office/", "result": "confirmed"},
+    {"claim": "Affordable Family Dentistry at 165 Stelton Rd, (732) 752-1264", "source_url": "https://www.affordablefamilydentistrynj.com/", "result": "confirmed"},
+    {"claim": "Ohm Dental at 216 Stelton Rd Suite D1, (908) 205-8585", "source_url": "https://www.ohmdentalpiscataway.com/contact-us/", "result": "confirmed"},
+    {"claim": "Smile Garden Pediatric Dentistry at 19 Wills Way, (732) 733-2166", "source_url": "https://smilegardenpediatricdentistry.com/contact/", "result": "confirmed"},
+    {"claim": "Stelton Dental Center / Jason S. Chang DDS, periodontics, at 1100 Stelton Rd, (732) 777-0660", "source_url": "https://www.deltadental.com/member/find-a-dentist/new-jersey/piscataway-dentists/", "result": "confirmed"},
+    {"claim": "Radiant Orthodontics - Tiffany Chen DDS at 5 Wills Way, (732) 465-0600", "source_url": "https://radiantorthonj.com/contact-us/", "result": "confirmed"},
+    {"claim": "Campana Chiropractic & DOT Exam Center at 690 Stelton Rd, (732) 424-1717", "source_url": "https://www.healthydisc.com/contact", "result": "confirmed"},
+    {"claim": "Kingdom Chiropractic LLC at 371 Hoes Ln Suite 200, Piscataway, (848) 565-8092", "source_url": "https://npiprofile.com/npi/1154046183", "result": "confirmed"},
+    {"claim": "AMP Physical Therapy at 242 Old New Brunswick Rd Suite 300, (732) 629-7770", "source_url": "https://www.ampphysicaltherapy.com/contact-us", "result": "confirmed"},
+    {"claim": "New U Physical Therapy at 154 Stelton Rd, (908) 636-9999", "source_url": "https://www.newuphysicaltherapy.com/", "result": "confirmed"},
+    {"claim": "AmeriCare Physical Therapy at 1260 Centennial Ave, (732) 204-0678 is an independent small NJ group", "source_url": "https://ivyrehab.com/physical-therapy-location/americare-physical-therapy-piscataway-centennial-ave/", "result": "contradicted"},
+    {"claim": "Trinity Rehab clinic at 1354 Centennial Ave, Piscataway", "source_url": "https://trinity-rehab.com/physical-therapy-clinic/piscataway-nj/", "result": "confirmed"},
+    {"claim": "Trinity Rehab is a regional chain with 24 NJ clinics (27 total)", "source_url": "https://trinity-rehab.com/location-county/new-jersey/", "result": "confirmed"},
+    {"claim": "In Focus Vision Center at 1100 Centennial Ave Suite 204, (732) 981-8000", "source_url": "https://www.in-focusvision.com/", "result": "confirmed"},
+    {"claim": "Justin Schaefers, OD practices at 213 Stelton Rd as part of The Eye Center of Piscataway, (732) 752-9090", "source_url": "https://www.the-eye-center.com/our-eye-doctors/justin-schaefers/", "result": "contradicted"},
+    {"claim": "Audiology Hearing Health PLLC (Michael Giannella, AuD) at 200 Centennial Ave, (732) 595-2444", "source_url": "https://www.yellowpages.com/piscataway-nj/audiology-hearing-health-pllc", "result": "could not open"},
+    {"claim": "Certified Dermatology at 242 Old New Brunswick Rd Suite 110, Piscataway, (732) 456-7777", "source_url": "https://www.njdermdoc.com/locations/piscataway/", "result": "confirmed"},
+    {"claim": "Piscataway Dunellen Family Practice at 24 Stelton Rd Suite A, (732) 424-0440 is an independent practice", "source_url": "https://www.healthgrades.com/group-directory/nj-new-jersey/piscataway/rwjpe-piscataway-dunellen-family-practice-xbgmng01", "result": "contradicted"},
+    {"claim": "Piscataway Animal Clinic at 13 Stelton Rd is a single-site independent clinic", "source_url": "https://piscatawayanimalclinic.com/", "result": "contradicted"},
+    {"claim": "Ambrose Animal Hospital operates at 1636 Stelton Rd Suite 312 in Piscataway", "source_url": "https://ambroseanimalhospital.com/", "result": "not found"},
+    {"claim": "Snatched Aesthetics is at 31 Stelton Rd Suite 7, Piscataway", "source_url": "https://www.getsnatchedaesthetics.com/", "result": "confirmed"},
+    {"claim": "LUXE Wellness Spa at 648 Stelton Rd, (201) 508-0088", "source_url": "https://info893555.wixsite.com/luxe-wellness-spa", "result": "confirmed"},
+    {"claim": "Cassatone Massage Therapy at 371 Hoes Ln Suite 200, Piscataway (public phone 732-877-4534)", "source_url": "https://cassatone.com/contact/", "result": "confirmed"},
+    {"claim": "Capelli Salon at 443 S Washington Ave, (732) 968-7666", "source_url": "https://www.capellihairsalonllc.com/contact.html", "result": "confirmed"},
+    {"claim": "Heights Haircutters at 14 Plainfield Ave, Piscataway (public phone 732-885-5550)", "source_url": "https://reviews.birdeye.com/heights-haircutters-170245624321847", "result": "confirmed"},
+    {"claim": "Brothers Barber Shop at 1330 W 7th St, Piscataway", "source_url": "https://booksy.com/en-us/1124290_brothers-barbershop_barber-shop_28630_piscataway", "result": "confirmed"},
+    {"claim": "House of Blades II at 397 Park Ave, Piscataway", "source_url": "https://booksy.com/en-us/440021_house-of-blades-ii_barber-shop_28630_piscataway", "result": "confirmed"},
+    {"claim": "Vintage Barbershop at 424 S Washington Ave, (908) 293-1290", "source_url": "https://booksy.com/en-us/1575987_vintage-barbershop_barber-shop_28630_piscataway", "result": "confirmed"},
+    {"claim": "Elite Hair Styling at 147 Stelton Rd, (732) 529-6238", "source_url": "https://reviews.birdeye.com/elite-hair-styling-170196955328050", "result": "confirmed"},
+    {"claim": "Jenny's Hair & Beauty Salon at 600 Stelton Rd, (732) 424-6511", "source_url": "https://reviews.birdeye.com/jennys-hair-beauty-salon-170196955153054", "result": "confirmed"},
+    {"claim": "Dina's Salon & Barbershop at 1297 Centennial Ave, Piscataway (public phone 732-529-4000)", "source_url": "https://www.dinasnj.com/", "result": "confirmed"},
+    {"claim": "Great Cuts Salon at 1390 Centennial Ave, (732) 981-8155", "source_url": "https://www.loc8nearme.com/new-jersey/piscataway/great-cuts-salon/3963263/", "result": "confirmed"},
+    {"claim": "Mehndi Beauty Salon at 1665 Stelton Rd, Piscataway (public phone 732-777-9212)", "source_url": "https://localitybiz.com/new-jersey/nail-salon-reviews-in-piscataway", "result": "confirmed"},
+    {"claim": "Aha Nails & Spa at 1308 Centennial Ave, (732) 629-7200", "source_url": "https://www.yellowpages.com/piscataway-nj/3d-nail-salons", "result": "confirmed"},
+    {"claim": "Millenium Nails at 1386 Centennial Ave, Piscataway (public phone 732-981-1130)", "source_url": "https://www.loc8nearme.com/new-jersey/piscataway/millenium-nails/3963167/", "result": "confirmed"},
+    {"claim": "Lysscoley Nails at 86 Hamilton Blvd, Piscataway", "source_url": "https://www.lysscoleynails.com/", "result": "confirmed"},
+    {"claim": "Lissah.Nails at 542 Longfellow Ave is a business location", "source_url": "https://styleandclassy.com/new-jersey/piscataway/", "result": "not found"},
+    {"claim": "Art of Living of New Jersey at 1032 Stelton Rd, (732) 738-4457, Piscataway", "source_url": "https://www.artoflivingpiscataway.org/", "result": "confirmed"},
+    {"claim": "Kaizen Martial Arts at 1506 Stelton Rd, (732) 572-0023", "source_url": "https://karatepiscataway.com/", "result": "confirmed"},
+    {"claim": "Thaxton Martial Arts at 1780 W 7th St, (908) 444-0805", "source_url": "https://thaxtonmartialarts.com/", "result": "confirmed"},
+    {"claim": "Satori Academy of Martial Arts - Piscataway at 1621 Stelton Rd, (732) 549-5130", "source_url": "https://gymsnj.com/business/satori-academy-of-martial-arts-piscataway/", "result": "confirmed"},
+    {"claim": "Fit4Blast at 371 Hoes Ln, (347) 784-2650", "source_url": "https://fit4blast.com/", "result": "confirmed"},
+    {"claim": "Be Healthy Personal Trainer at 242 Old New Brunswick Rd Suite 430, (973) 830-7816", "source_url": "https://www.behealthypersonaltrainer.com/", "result": "confirmed"},
+    {"claim": "Sonovi at 409 Bell St, (201) 777-0037", "source_url": "https://www.sonovi.com/contact/", "result": "confirmed"},
+    {"claim": "True Cuts Barbershop at 46 College Ave operates in Piscataway", "source_url": "https://truecuts.online/contact/", "result": "contradicted"},
+    {"claim": "Flow Acupuncture is the acupuncture business at 80 Kingsbridge Rd Suite 1", "source_url": "https://painhero.ca/clinic/maximum-health-wellness-piscataway-llc", "result": "not found"},
+    {"claim": "Perspectives Counseling Center, 371 Hoes Ln Suite 200, (732) 532-3844", "source_url": "https://perspectivesnj.com/contact", "result": "not found"}
+  ],
+  "coverage": {
+    "searches": [
+      "dentist Stelton Road Piscataway NJ",
+      "nail salon Piscataway NJ Stelton Road",
+      "physical therapy Piscataway NJ Centennial Ave",
+      "chiropractor Piscataway NJ Stelton Road",
+      "barber shop Piscataway NJ Stelton Road",
+      "veterinarian Piscataway NJ",
+      "optometrist eye doctor Piscataway NJ",
+      "acupuncture Piscataway NJ",
+      "med spa Piscataway NJ",
+      "hair salon Piscataway NJ Centennial Ave / Stelton Road",
+      "gym fitness center Piscataway NJ Hoes Lane",
+      "personal trainer studio Piscataway NJ",
+      "martial arts karate school Piscataway NJ",
+      "dermatologist Piscataway NJ Old New Brunswick Road",
+      "day spa massage Piscataway NJ"
+    ],
+    "eligible_found": 48,
+    "already_listed": 37,
+    "missing": [
+      {"name": "Freddie's Barber Shop", "town": "Piscataway", "source_url": "https://www.yellowpages.com/piscataway-nj/mip/freddies-barbershop-7340127"},
+      {"name": "Chief Barber Shop", "town": "Piscataway", "source_url": "https://www.yellowpages.com/piscataway-nj/mip/chief-barber-shop-483742238"},
+      {"name": "Dr. Madelyne Latorre, OD (1100 Centennial Ave Ste 102)", "town": "Piscataway", "source_url": "https://www.healthgrades.com/providers/madelyne-latorre-xylw3n3"},
+      {"name": "The Eye Center of Piscataway (213 Stelton Rd)", "town": "Piscataway", "source_url": "https://www.the-eye-center.com/our-eye-doctors/justin-schaefers/"},
+      {"name": "Maximum Health & Wellness Piscataway LLC (80 Kingsbridge Rd Ste 1)", "town": "Piscataway", "source_url": "https://painhero.ca/clinic/maximum-health-wellness-piscataway-llc"},
+      {"name": "Hilltop Acupuncture (1661 NJ-27 Ste 2A)", "town": "Piscataway", "source_url": "https://reviews.birdeye.com/d/wellness/piscataway-nj/"},
+      {"name": "BeAti Acupuncture Wellness Clinic (2056 NJ-27)", "town": "Piscataway", "source_url": "https://reviews.birdeye.com/beati-acupuncture-wellness-clinic-157121443157580"},
+      {"name": "Revital Retreat (371 Hoes Ln Ste 300 E7)", "town": "Piscataway", "source_url": "https://medicalspadirectories.com/new-jersey/piscataway"},
+      {"name": "J'Ariae Aesthetics (371 Hoes Ln Ste 200)", "town": "Piscataway", "source_url": "https://spagrades.com/medspa/j-ariae-aesthetics-piscataway-nj"},
+      {"name": "Island Spa & Sauna (1769 Lincoln Hwy)", "town": "Piscataway", "source_url": "https://reviews.birdeye.com/island-spa-sauna-157259222858221"},
+      {"name": "Payal Beauty Parlor (1347 Stelton Rd)", "town": "Piscataway", "source_url": "https://www.superpages.com/piscataway-nj/nail-salons"}
+    ]
+  },
+  "confidence": "Medium"
+}

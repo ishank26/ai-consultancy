@@ -1,0 +1,139 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Alexander Plumbing, Heating & Air Conditioning Co., Inc. - 149 Blackhorse Ln, \"Monmouth Junction\", ph (609) 987-2424",
+      "problem": "Out of zone / wrong town. Opened the Google Maps place panel for this exact listing (same source the mapper cited) and it reads \"149 Blackhorse Ln, North Brunswick Township, NJ 08902\"; BBB and bestprosintown give 149 Black Horse Lane, North Brunswick, NJ 08902-4320 with the same phone.",
+      "fix": "Remove from the zone list (North Brunswick). Treat 'Blackhorse Ln' addresses as North Brunswick 08902 unless the panel explicitly shows Monmouth Junction 08852."
+    },
+    {
+      "claim": "Stearn Brothers Construction - 178 Blackhorse Ln, Monmouth Junction, ph (732) 435-1113",
+      "problem": "Out of zone / wrong town. Google's own place panel (cited source) shows \"178 Blackhorse Ln, North Brunswick Township, NJ 08902\".",
+      "fix": "Remove, or move to the North Brunswick zone. Same Blackhorse Ln cluster error as Alexander Plumbing."
+    },
+    {
+      "claim": "Ace Mechanical - 1035 Old Georges Rd, Monmouth Junction, ph (732) 433-2974",
+      "problem": "Out of zone / wrong town. Google place panel reads \"1035 Old Georges Rd, North Brunswick Township, NJ 08902\".",
+      "fix": "Remove. 'Old Georges Rd' addresses in this set resolve to North Brunswick, not Monmouth Junction."
+    },
+    {
+      "claim": "George Logan Towing, Inc. - 371 Old Georges Rd, Monmouth Junction, ph (732) 297-0391",
+      "problem": "Out of zone / wrong town - the mapper's own notes flagged this as unconfirmed but it was included. Google place panel reads \"371 Old Georges Rd, North Brunswick Township, NJ 08902\".",
+      "fix": "Remove; do not include entries whose address confirmation is still open."
+    },
+    {
+      "claim": "Danley 911 Home Services - 1095 Cranbury-South River Rd Ste 10, Monmouth Junction, ph (732) 656-8208",
+      "problem": "Out of zone / wrong town. Google place panel reads \"1095 Cranbury - South River Rd Ste 10, Monroe Township, NJ 08831\"; the company's own contact page also gives Monroe, NJ 08831 (different main number, 732-432-0164).",
+      "fix": "Remove (Monroe Township)."
+    },
+    {
+      "claim": "Ideal Tile Importing Co - 3730 US Highway 1 Bldg 1 Suite 2, Monmouth Junction, ph (732) 308-1008",
+      "problem": "Wrong town AND excluded type. Google place panel reads \"3730 US-1 Bldg 1 Suite 2, North Brunswick Township, NJ 08902\" (in the Ashley Store); the business is Ideal Tile & Stone, a multi-showroom regional chain (idealtile.com lists Edison, Fairfield, Flemington, Freehold, Ocean, Philadelphia, NE Philadelphia, Falls Church VA, plus a North Brunswick warehouse).",
+      "fix": "Remove - out of zone and a chain, both excludable."
+    },
+    {
+      "claim": "LTD Nursery and Landscaping - Kendall Park, website ltdnurserylandscaping.com",
+      "problem": "Out of zone. The site's own Locations page (opened) gives the only address as \"460 Mine Brk Rd, Bernardsville, NJ 07924, (908) 766-4442\". The 'Kendall Park NJ' page cited by the mapper is an SEO landing page that even prints the Bernardsville street address, not a local operation.",
+      "fix": "Remove. Add a rule: if a site's Locations page shows no in-zone address, drop the entry regardless of how many town landing pages it has."
+    },
+    {
+      "claim": "Cleworth Comfort HVAC Services LLC - 3150 NJ-27, Kendall Park, ph (732) 917-7066",
+      "problem": "In zone and a real business, but the address and phone are stale. The company's own contact page (opened) gives \"335 New Road Suite 4A, Monmouth Junction, NJ 08852\" and 732-297-4841 (footer and header); the 3150 NJ-27 / 732-917-7066 data is what Google still shows.",
+      "fix": "Update to 335 New Road Suite 4A, Monmouth Junction, NJ 08852; phone 732-297-4841; add cleworthcomfort.com as the website."
+    },
+    {
+      "claim": "Navarro Family Roofing - 112 Maple Ave, Kendall Park, ph (848) 281-3500",
+      "problem": "Address/phone do not match current primary listing. Google's roofing results (opened) show Navarro Family Roofing at 260 Ryders Ln with (551) 310-2400; 112 Maple Ave appears only on directories, one of which labels it Monmouth Junction 08852 rather than Kendall Park.",
+      "fix": "Use the current primary listing (260 Ryders Ln, (551) 310-2400) or mark both pins and drop the phone number."
+    },
+    {
+      "claim": "Smart Water Backflow - 1 Beekman Rd #4, Monmouth Junction",
+      "problem": "Minor town-label error: Google/directory listings give 1 Beekman Rd, Suite 4, Kendall Park, NJ 08824 (still South Brunswick, so in-zone).",
+      "fix": "Relabel town as Kendall Park 08824."
+    },
+    {
+      "claim": "Excluded-type scan across the whole list",
+      "problem": "One multi-location chain remains (Ideal Tile Importing Co / Ideal Tile & Stone, 8+ showrooms in NJ/PA/VA). No food, government, school, hospital, worship or bank entries were found. 'Doors Done Right' has three NJ branches but is a small family-owned operator grouped under one regional brand - flagged as borderline, not counted as a chain.",
+      "fix": "Drop Ideal Tile; keep Doors Done Right, but note the multi-branch structure in notes."
+    },
+    {
+      "claim": "Coverage gap: in-zone businesses that my searches surfaced but the list misses",
+      "problem": "JRP Attic Insulation & Roofing Services (679 Ridge Rd, Monmouth Junction 08852) and Rock Solid Landscaping (162 Kendall Rd, Kendall Park 08824 - currently 'Temporarily closed') are in-zone and absent from the list.",
+      "fix": "Add JRP (home-based; verify category - Google files it under Electrician) and recheck Rock Solid before adding."
+    },
+    {
+      "claim": "Root cause of the seven bad entries",
+      "problem": "Anonymous Google Maps result rows show a street and number but no town/ZIP. The mapper appears to have inferred 'Monmouth Junction' for every unlabeled in-area pin, so the North Brunswick strip (Route 27 below ~3050, Old Georges Rd, Blackhorse Ln, northern US-130) was swallowed into the zone.",
+      "fix": "For every entry, open the place panel and copy the address line verbatim (it always includes the township and ZIP); drop anything that does not read Monmouth Junction 08852, Kendall Park 08824 or Dayton 08810."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Wade Ray & Associates Construction, 3827 US Highway 1 South, Monmouth Junction 08852, ph 732.297.1700", "source_url": "https://waderay.com/contact/", "result": "confirmed"},
+    {"claim": "Util Construction, 335 New Rd, Monmouth Junction 08852, ph 908-616-2526", "source_url": "https://www.utilconstruction.com/contact-us", "result": "confirmed"},
+    {"claim": "Buist Inc., 860 Georges Road, Monmouth Junction 08852, ph 732-545-3944", "source_url": "https://www.buistinc.com/contact/", "result": "confirmed"},
+    {"claim": "Doors Done Right, 613 Ridge Rd Unit 111, Monmouth Junction 08852, ph 609-445-4444", "source_url": "https://www.doorsdoneright.net/contact/", "result": "confirmed"},
+    {"claim": "Circle Automotive Inc, 206 Deans Lane, Monmouth Junction, ph 732-422-1300, also tows", "source_url": "https://www.circleautomotivenj.com/South-Brunswick.html", "result": "confirmed"},
+    {"claim": "Pipe Masters Plumbing, 582 Ridge Rd, Monmouth Junction 08852, ph 908-420-4028, NJ lic 13333, family-run 24/7", "source_url": "https://pipemastersnj.com/", "result": "confirmed"},
+    {"claim": "Dave Zammit Contracting Inc, 74 Major Rd, Monmouth Junction 08852, ph 732-329-1292", "source_url": "https://find-open.com/monmouth-junction/contractors", "result": "confirmed"},
+    {"claim": "Five Star Carpentry, 55 Stillwell Rd, Kendall Park 08824, ph 732-485-0002", "source_url": "https://www.cylex.us.com/company/five-star-carpentry-28766383.html", "result": "confirmed"},
+    {"claim": "Accu-Mark Electric Inc, 4 Halsey Rd, Kendall Park, ph 732-266-2126, third-generation South Brunswick electrician", "source_url": "https://www.accumarkelectric.com/about-us", "result": "confirmed"},
+    {"claim": "Rutgers Fence, 314 Ridge Road, Dayton 08810, ph 732-329-5686", "source_url": "https://www.bestprosintown.com/nj/dayton/rutgers-fence-/", "result": "confirmed"},
+    {"claim": "Deans Garage Inc, 862 Georges Rd, Monmouth Junction 08852, ph 732-297-2280", "source_url": "https://www.loc8nearme.com/new-jersey/monmouth-junction/deans-garage-inc/5365848/", "result": "confirmed"},
+    {"claim": "Campanella Contracting LLC, 153 Old Beekman Rd, Monmouth Junction 08852", "source_url": "https://www.buildzoom.com/contractor/campanella-contracting-llc", "result": "confirmed"},
+    {"claim": "Quality Auto & Tire Center, 3078 NJ-27, Kendall Park 08824, ph 732-297-0500", "source_url": "https://qualityauto.com/kendall-park-location/", "result": "confirmed"},
+    {"claim": "Perfect Paving and Masonry, 3010 NJ-27 Suite 323, Kendall Park 08824, ph 732-402-7711", "source_url": "https://local.yahoo.com/masonry/nj/somerset/4/", "result": "confirmed"},
+    {"claim": "DK Contracting LLC, 2 Kathy St, Kendall Park 08824, ph 732-940-9501", "source_url": "https://www.manta.com/c/mt44k7h/dk-contracting-llc", "result": "confirmed"},
+    {"claim": "Amato's Garden Center, 47 Deans Rhode Hall Road, Monmouth Junction 08852, ph 732-297-6790", "source_url": "https://www.nj.gov/agriculture/sadc/documents/Comprehensive%20FP%20Plans/Middlesex%20County.pdf", "result": "confirmed"},
+    {"claim": "Carrefour Gardens, 981 Georges Rd, Monmouth Junction 08852", "source_url": "https://carrefournj.com/", "result": "confirmed"},
+    {"claim": "Dean Plumbing & Heating, 308 Ridge Rd, Dayton 08810, ph 732-305-8881", "source_url": "https://deanplumbingnj.com/contact/", "result": "confirmed"},
+    {"claim": "A Stroke of Genius Painting & Wallpapering, 1 Springdale Rd, Kendall Park 08824, ph 732-744-4327", "source_url": "https://www.asogenius.com/", "result": "confirmed"},
+    {"claim": "Covered Exteriors, 1100 Cornwall Rd Suite 213, Monmouth Junction 08852, ph (929) 888-7374", "source_url": "https://www.coveredexteriors.com/contact", "result": "confirmed"},
+    {"claim": "Shraya Construction, 180 Deans Ln, Monmouth Junction 08852", "source_url": "https://www.buildzoom.com/contractor/shraya-llc", "result": "confirmed"},
+    {"claim": "Smart Water Backflow, 1 Beekman Rd #4 - listed as Monmouth Junction", "source_url": "https://www.bestprosintown.com/nj/kendall-park/smart-water-backflow-/", "result": "contradicted"},
+    {"claim": "Alexander Plumbing, Heating & A/C Co., 149 Blackhorse Ln, Monmouth Junction", "source_url": "https://www.google.com/maps/search/Alexander+Plumbing+Heating+Air+Conditioning+149+Blackhorse+Ln/", "result": "contradicted"},
+    {"claim": "Stearn Brothers Construction, 178 Blackhorse Ln, Monmouth Junction", "source_url": "https://www.google.com/maps/search/Stearn+Brothers+Construction+178+Blackhorse+Ln/", "result": "contradicted"},
+    {"claim": "Ace Mechanical, 1035 Old Georges Rd, Monmouth Junction", "source_url": "https://www.google.com/maps/search/Ace+Mechanical+1035+Old+Georges+Rd/", "result": "contradicted"},
+    {"claim": "George Logan Towing, Inc., 371 Old Georges Rd, Monmouth Junction", "source_url": "https://www.google.com/maps/search/George+Logan+Towing+371+Old+Georges+Rd/", "result": "contradicted"},
+    {"claim": "Danley 911 Home Services, 1095 Cranbury-South River Rd Ste 10, Monmouth Junction", "source_url": "https://www.google.com/maps/search/Danley+911+Home+Services+Cranbury+South+River+Rd/", "result": "contradicted"},
+    {"claim": "Ideal Tile Importing Co, 3730 US Highway 1 Bldg 1 Suite 2, Monmouth Junction", "source_url": "https://www.google.com/maps/search/Ideal+Tile+Importing+3730+US+Highway+1/", "result": "contradicted"},
+    {"claim": "Ideal Tile is a single-location contractor (not a chain)", "source_url": "https://idealtile.com/showrooms/", "result": "contradicted"},
+    {"claim": "LTD Nursery and Landscaping is a Kendall Park, NJ landscaping firm", "source_url": "https://ltdnurserylandscaping.com/locations/", "result": "contradicted"},
+    {"claim": "Cleworth Comfort HVAC is at 3150 NJ-27, Kendall Park, ph (732) 917-7066", "source_url": "https://www.cleworthcomfort.com/contact/", "result": "contradicted"},
+    {"claim": "Navarro Family Roofing at 112 Maple Ave, Kendall Park, ph (848) 281-3500", "source_url": "https://www.google.com/maps/search/roofing+contractor+Kendall+Park+NJ/@40.4200,-74.5500,14z?hl=en", "result": "contradicted"},
+    {"claim": "Topline Prime Roofing Services, 3376 NJ-27, Kendall Park, ph (201) 682-5251", "source_url": "https://www.google.com/maps/search/roofing+contractor+Kendall+Park+NJ/@40.4200,-74.5500,14z?hl=en", "result": "confirmed"},
+    {"claim": "PrimeVent Heating and Cooling, 2088 US-130, ph (640) 250-1074", "source_url": "https://www.google.com/maps/search/hvac+contractor/@40.4200,-74.5500,14z?hl=en", "result": "confirmed"},
+    {"claim": "Advanced Auto Center (3817 US-1 South, 732-821-1006) and Allen's Automotive (3120 NJ-27, 732-297-3673) exist at those addresses", "source_url": "https://www.google.com/maps/search/auto+repair+shop/@40.4200,-74.5400,14z?hl=en", "result": "confirmed"},
+    {"claim": "Handyman Near You NJ (23 Welcome Farms Rd), Tony Handyman Construction (1 Kenneth Ave) and Smooth Handyman LLC (19 Dutchess Ln) exist at those addresses", "source_url": "https://www.google.com/maps/search/handyman/@40.4150,-74.5400,14z?hl=en", "result": "confirmed"},
+    {"claim": "7/24 Tree Service and Landscaping, 4 Cherry St, ph (848) 228-6297", "source_url": "https://www.google.com/maps/search/tree+service/@40.4150,-74.5500,14z?hl=en", "result": "confirmed"},
+    {"claim": "Alexander Plumbing contact page could be read directly", "source_url": "https://www.alexanderplumbingheatingandcooling.com/contact-us/", "result": "could not open"},
+    {"claim": "South Brunswick Contracting street address on its own site", "source_url": "http://www.southbrunswickcontracting.com/", "result": "could not open"}
+  ],
+  "coverage": {
+    "searches": [
+      "Google Maps: plumber @40.400,-74.540 13z",
+      "Google Maps: roofing contractor Kendall Park NJ @40.420,-74.550 14z",
+      "Google Maps: electrician Monmouth Junction NJ @40.415,-74.535 14z",
+      "Google Maps: landscaping @40.420,-74.560 14z (+ landscaping Kendall Park NJ)",
+      "Google Maps: handyman @40.415,-74.540 14z",
+      "Google Maps: tree service @40.415,-74.550 14z",
+      "Google Maps: hvac contractor @40.420,-74.550 14z",
+      "Google Maps: auto repair shop @40.420,-74.540 14z",
+      "Google Maps: painting contractor @40.420,-74.545 14z"
+    ],
+    "eligible_found": 21,
+    "already_listed": 19,
+    "missing": [
+      {"name": "JRP Attic Insulation & Roofing Services of Monmouth Junction, NJ", "town": "Monmouth Junction (679 Ridge Rd, 08852)", "source_url": "https://electrician-usa.nears.me/business/united-states/new-jersey/monmouth-junction/jrp-attic-insulation-roofing-services-of-monmouth-junction-nj-electrician-in-monmouth-junction-nj/"},
+      {"name": "Rock Solid Landscaping", "town": "Kendall Park (162 Kendall Rd, 08824) - listing shows 'Temporarily closed'", "source_url": "https://www.google.com/maps/search/landscaping+Kendall+Park+NJ/"}
+    ]
+  },
+  "confidence": "High",
+  "notes": "37 entries checked on opened pages. 7 were in the wrong township (6 outside South Brunswick entirely), 1 more had stale address/phone, 2 had minor town/phone mismatches, and 1 chain survives the exclusions scan - all well past the FAIL threshold. Coverage is otherwise good: of the 21 in-zone eligible businesses my nine category searches surfaced, 19 were already listed (~90%), and nearly every apparent 'gap' turned out to be a North Brunswick, Franklin Park, Princeton, East Brunswick or Monroe firm sitting just over the township line (NJ Master Sewer, Any Auto Services, 27 Auto, Hollander Electric, Diamond Electrical, Almeida Electric, Lodi Handyman Pro, Lucky 17 Handyman, High Quality Painters, Sunlight Contracting, Standard Painting Services, Mehrovinci Contracting, Jireh Landscaping, Maple Tree Farm, Strong Contractor & Roofing).",
+  "data_gaps": [
+    "alexanderplumbingheatingandcooling.com sat behind a Cloudflare bot check in the browser, so that entry was adjudicated from the Google place panel and BBB profile instead of the company site.",
+    "southbrunswickcontracting.com/contact/ is JavaScript-rendered and returned nothing usable; that entry's street address (135 Major Rd) is only corroborated by directories (cisleads, superpages).",
+    "Google Maps served an anonymous 'limited view' with about five results per query, so coverage is a ranked sample, not an exhaustive sweep; a closed list cannot be produced from it.",
+    "Five Star Plumbing & Heating, Right On Air Conditioning and Heating, Family Tree Care, A&C Tree Service and Kirkwood HVAC Repair Services surfaced in map results with no street address and could not be assigned to a township, so they were excluded from the coverage count rather than guessed.",
+    "One place panel was opened per disputed address; I did not re-check every one of the remaining ~40 entries' town labels, so the true error count in the list is probably higher than seven."
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Section 2 Impact: \"about 22–150 staff hours a year (10–20 pursuits × 15–30 assembly hours, 15–25% rework) ... = about $1,000–$7,200 a year.\"",
+      "problem": "The hours do not follow from the stated drivers. 10–20 pursuits at 15–30 assembly hours is 150–600 hours before rework, and roughly 170–750 hours with 15–25% rework. The lower bound of 22 hours is not derivable from any figure shown, so both the hour range and the dollar range are wrong by a wide margin. The dollars are internally consistent with the hours (22 × $48 = ~$1,050; 150 × $48 = $7,200), which means the error sits in the hours calculation. The audit also contradicts its own analysis file, which estimated $10,000–$30,000 a year for this opportunity. An audit that understates an opportunity by roughly 5–6x while showing the arithmetic that contradicts it is a credibility risk if the client checks.",
+      "fix": "Recompute from the stated drivers: 150–750 hours a year (10–20 pursuits × 15–30 hours, plus 15–25% rework), which at $48/hour is about $7,200–$36,000 a year. Use that range, or lower the per-pursuit assumption (e.g. 2–4 assembly hours) and say so explicitly, and align with analysis.json."
+    },
+    {
+      "claim": "Section 1 Impact: 270–450 hours at \"$83/hour (construction manager median, NJ, x1.25 for benefits) = about $22,400–$37,300 a year.\"",
+      "problem": "The arithmetic is correct (NJ construction-manager median $138,230 = $66.46/hour; x1.25 = $83; 270 × $83 = $22,410; 450 × $83 = $37,350) and the BLS-backed figure is real. But the median used ($138,230, i.e. $66.46/hour) is above the top of the midpoint of Benaka's own advertised band for this role ($100,000–$140,000 = $48–$67/hour, midpoint ~$58/hour; ~$72/hour loaded at 1.25). The rate chosen therefore sits at the top of what Benaka actually pays, which stretches the impact range upward.",
+      "fix": "Either use the posted midpoint (~$72/hour loaded, giving ~$19,400–$32,400 a year) or state both: \"at $72/hour based on the midpoint of your own posted band, or $83/hour at the NJ construction-manager median.\" That also removes the appearance of picking the flattering base."
+    },
+    {
+      "claim": "Opening line: \"You have been building since 1994, largely federal clients by your published list.\"",
+      "problem": "The 1994 founding and the federal clients are sourced, but \"largely federal\" is our characterization, not something the client page states. That page lists Air Force, Army, Navy, Labor, USPS and Smithsonian alongside the Baltimore Orioles organization, a Maryland school district and various NJ/NY/MD municipal agencies. It is an unlabelled inference.",
+      "fix": "Soften to a documented statement: \"with a client list that runs from the Air Force, Army and Navy to the Smithsonian and municipal agencies.\""
+    },
+    {
+      "claim": "Section 2 Now: \"You bid task orders under an Air Force MACC and a Corps small-business MATOC.\"",
+      "problem": "The Air Force MACC is confirmed (FA448420D0005, 87 CONS, multiple-award IDIQ). For the Corps vehicle, the source only shows that Benaka was added to the USACE New England MATOC pool in September 2026; that the firm has bid or won task orders under it is an inference, not a documented fact.",
+      "fix": "Write \"you are now in the pool for a Corps small-business MATOC\" rather than asserting task-order bidding under it."
+    },
+    {
+      "claim": "Section 3: the agent checks certificates \"against the state's registered-contractor list.\"",
+      "problem": "No URL is given for this list and I could not locate a published registered-public-works-contractor list page in this pass (the NJDOL prevailing-wage pages I opened cover rates and filings, not a contractor registry). As written it asserts the existence of a specific public dataset.",
+      "fix": "Cite the NJDOL page that publishes the registry, or soften to \"checks the certificate against the state's registration records\" and confirm at discovery."
+    },
+    {
+      "claim": "Section 3 Now: \"the published intake is phone, fax and email, with nowhere to submit qualifications.\"",
+      "problem": "The channel list is right (7 Lawrence St, 732-246-7060, fax 732-246-7073, benaka@benakainc.com, and no form element is actually published), but the contact page text does tell vendors to reach the firm \"by phone, email, or contact form,\" so the flat statement that there is nowhere to submit anything is an inference from absence and sits slightly awkwardly against the page's own wording.",
+      "fix": "Tighten to what is documented: \"no published qualification form or vendor portal — subs are told to phone, email or use the contact page.\""
+    },
+    {
+      "claim": "Opening line: \"Your QC Manager posting reads like a list of daily documents.\"",
+      "problem": "Tone only: it is an editorial aside aimed at the client's own job ad, and it is the one place the audit sounds like a judgement rather than an observation.",
+      "fix": "Replace with a neutral observation: \"The posting sets out the documents that role owns every day.\""
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Founded 1994; design-build, bid-build, JOC, IDIQ and M&R work",
+      "source_url": "https://www.benakainc.com/projects.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Published client list includes Air Force, Army and Navy",
+      "source_url": "https://www.benakainc.com/clients.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"Largely federal clients\" on the published list",
+      "source_url": "https://www.benakainc.com/clients.html",
+      "result": "contradicted"
+    },
+    {
+      "claim": "QC Manager posting lists three-phase control, preparatory meetings, minutes, RFIs, purchase orders, daily production reports; QCS/RMS familiarity alongside Word, Excel, Outlook",
+      "source_url": "https://www.benakainc.com/careers.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "$100,000–$140,000 on the related QC Manager/Project Superintendent listing",
+      "source_url": "https://www.simplyhired.com/job/m2NUtDE885oLWMoDsU45Bi_gsBQWD8D19S_eYPt48YmnNXahaaHWWQ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Air Force MACC IDIQ FA448420D0005, 87 CONS",
+      "source_url": "https://www.fpds.gov/ezsearch/FEEDS/ATOM?FEEDNAME=PUBLIC&templateName=1.5.3&q=Benaka+SIGNED_DATE%3A%5B2023%2F01%2F01%2C2026%2F12%2F31%5D",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The MACC solicitation drew 28 offers",
+      "source_url": "https://www.fpds.gov/ezsearch/FEEDS/ATOM?FEEDNAME=PUBLIC&templateName=1.5.3&q=Benaka+SIGNED_DATE%3A%5B2023%2F01%2F01%2C2026%2F12%2F31%5D",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Benaka added in 2026 to the USACE New England small-business construction MATOC",
+      "source_url": "https://www.highergov.com/news/benaka-joins-90-million-army-corps-small-business-6490041",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Benaka bids task orders under the Corps MATOC",
+      "source_url": "https://www.highergov.com/news/benaka-joins-90-million-army-corps-small-business-6490041",
+      "result": "not found"
+    },
+    {
+      "claim": "Subs are asked to email details and expertise; no prequalification form",
+      "source_url": "https://www.benakainc.com/subcontractors.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Published intake is phone, fax and email; company details 7 Lawrence Street, New Brunswick NJ, 732-246-7060, fax 732-246-7073, benaka@benakainc.com",
+      "source_url": "https://www.benakainc.com/contact-us.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nowhere to submit qualifications / no contact form exists",
+      "source_url": "https://www.benakainc.com/contact-us.html",
+      "result": "contradicted"
+    },
+    {
+      "claim": "NJ public-work certified payrolls are filed online via NJ Wage Hub",
+      "source_url": "https://www.nj.gov/labor/wageandhour/prevailing-rates/njwagehub.shtml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ public work also requires contractor registration certificates",
+      "source_url": "https://www.nj.gov/labor/wageandhour/prevailing-rates/njwagehub.shtml",
+      "result": "not found"
+    },
+    {
+      "claim": "Section 1 rate: NJ construction-manager median $138,230 annual = $66.46/hour",
+      "source_url": "https://www.onetonline.org/link/localwages/11-9021.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 1 impact math: 270–450 hours x $83 = $22,400–$37,300 a year",
+      "source_url": "https://www.onetonline.org/link/localwages/11-9021.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2 rate: NJ cost-estimator median $80,570 (x1.25 = $48/hour)",
+      "source_url": "https://www.onetonline.org/link/localwages/13-1051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2 impact math: 22–150 hours from 10–20 pursuits x 15–30 hours x 15–25% rework",
+      "source_url": "audit.md (arithmetic re-derived; benchmark page https://www.onetonline.org/link/localwages/13-1051.00?st=NJ)",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Section 3 rate: NJ payroll-clerk median $60,750 = $29.21/hour (x1.25 = $36/hour)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-3051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 3 impact math: 180–360 hours x $36 = $6,400–$12,900 a year",
+      "source_url": "https://www.onetonline.org/link/localwages/43-3051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business name, town, services, address and contact details correct",
+      "source_url": "https://www.benakainc.com/contact-us.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder email and walk-in opener repeat only sourced facts (posting duties, QCS/RMS, $100,000–$140,000)",
+      "source_url": "https://www.benakainc.com/careers.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No owner or president is named, so no individual is addressed or named in the audit or the email",
+      "source_url": "https://www.benakainc.com/careers.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body is at most ~450 words",
+      "source_url": "audit.md (word count, excluding the 'For the founder' section and source list)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

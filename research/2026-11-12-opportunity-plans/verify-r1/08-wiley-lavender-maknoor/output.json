@@ -1,0 +1,218 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Running cost item \"Domain, TLS, transactional email, backups\" = \"$0 incremental\", basis \"backups stored on the same plan (inference - a paid backup add-on is optional...)\", and design promises \"encrypted backups\" on a $6 droplet.",
+      "problem": "Contradicted by DigitalOcean's own documentation: droplet backups are a paid add-on at 20% of the droplet cost per month (weekly) or 30% (daily), or $0.04/GiB/month on usage-based backup plans. Backups are not \"stored on the same plan\" at no cost, so this price claim is misstated. The shortfall is small (~$1.20/month on a $6 droplet) but it is a price the plan asserts as $0.",
+      "fix": "Either price DigitalOcean weekly backups (~$1.20/month, giving ~$61/month total running cost) or specify a self-managed nightly pg_dump to storage the firm already pays for, and restate the item and the running-cost total accordingly."
+    },
+    {
+      "claim": "\"the intake service runs on the consultancy's own droplet with encrypted backups and no model training on firm data\" (solution.design), repeated in leverage/edge as \"no model training\"; risks_compliance row 10 marks vendor data handling confirmed with \"data used for training only not at all for enterprise MSA customers\".",
+      "problem": "The Retell security/compliance page says no-training applies only \"If you're an enterprise customer with a Master Services Agreement (MSA)\". A pay-as-you-go account (which this design buys, at $0.055-0.149/minute) carries no such commitment. The design presents an MSA-only guarantee as a property of the pilot deployment, which is exactly the kind of statement a partner would rely on for the RPC 1.6 confidentially analysis. The risk-register row states the conditional correctly, so the plan contradicts itself.",
+      "fix": "Change the design/edge wording to: retention window, PII exclusion and storage opt-out apply on the PAYG account; no-training applies only if the firm is put on an enterprise MSA (price it, or drop the claim). Do not put \"no model training\" in a client-facing security summary unless an MSA is signed."
+    },
+    {
+      "claim": "Risks row: \"RPC 7.1 prohibits false or misleading communications, including unjustified expectations about results; the New Jersey AI guidelines note that AI use 'likely will affect lawyer billing practices and advertising' (RPC 1.5, 7.2)\", marked confirmed: true against the Jan 24, 2024 guidelines PDF.",
+      "problem": "The quoted guidelines sentence and its (RPC 1.5, 7.2) parenthetical are verbatim correct, but the notice never mentions RPC 7.1 anywhere (I read all six pages). The RPC 7.1 proposition is standard rule knowledge, not something this source states, so the confirmed flag is stronger than the source supports.",
+      "fix": "Either cite the NJ RPC 7.1 text directly for the false/misleading-communications proposition, or label it as general rule knowledge and keep the guidelines PDF as the source only for the billing/advertising sentence."
+    },
+    {
+      "claim": "Pilot scope: \"weeks: 4 (2 weeks build, 3 weeks shadow/live overlap)\" versus founder_days summing to 17.5 days (~3.5 weeks) and setup_fee described as \"about 11 founder-days of the 17.5-day build\".",
+      "problem": "Internal arithmetic inconsistency: a 17.5-day solo build cannot fit in the \"2 weeks build\" allowance, and 2 weeks build plus 3 weeks shadow exceed a 4-week pilot unless the phases run in parallel. Nothing in the phases says phase 3-4 work happens during the shadow period.",
+      "fix": "Reconcile the schedule in one place: e.g. \"6 weeks: 3 weeks build (17.5 founder-days), 3 weeks shadow/live overlap\", or keep 4 weeks and state explicitly which phases run concurrently in the shadow window."
+    },
+    {
+      "claim": "Ruby competitor price: \"Chat bundles: $143/mo for 10 chats, $335/mo for 30, $520/mo for 50.\"",
+      "problem": "Those figures match Ruby's standalone chat-plan prices, but the same page shows chat added to a receptionist plan at 20% off: $115 for 10, $268 for 30, $416 for 50. Calling the full-price figures \"bundles\" overstates Ruby's chat cost for the comparison being made.",
+      "fix": "Relabel as \"standalone chat plans: $143 / $335 / $520\" or cite the bundled rates ($115 / $268 / $416 at 20% off with a receptionist plan)."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Retell pay-as-you-go: voice infra $0.055/min, platform voices $0.015/min, recommended LLM tier $0.064/min, telephony $0.015/min",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell phone number $2.00/month (no charge for custom/SIP numbers)",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell chat agent $0.0208 per AI message (recommended tier) and knowledge base $8/month",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Arithmetic: 150 voice minutes at $0.149/min = about $22/month; 300 chat messages at $0.0208 = about $6/month; 2 Cal.com Teams seats = $24/month; total running cost about $60/month",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell has a native Cal.com integration with check availability, book, reschedule, cancel and look-up-appointment tools, connected once in the dashboard via OAuth or Cal.com API key",
+      "source_url": "https://docs.retellai.com/integrations/overview.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell exposes webhooks for real-time call events, REST API, Node/Python SDKs and an MCP server; supports single-prompt agents, warm transfer, buying a number or bringing own telephony over SIP",
+      "source_url": "https://docs.retellai.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell: HIPAA/GDPR compliant, SOC 2 Type 1 and 2; BAA and DPA self-signing with no additional fee; per-agent retention 1 day to 2 years; PII exclusion settings; zero-data-retention agreements with LLM/STT/TTS subprocessors",
+      "source_url": "https://docs.retellai.com/general/compliance.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell does not train on customer data - only for enterprise customers under a Master Services Agreement (plan states this guarantee unconditionally)",
+      "source_url": "https://docs.retellai.com/general/compliance.md",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Cal.com Free $0 (1 user) / Teams $12 per user/month / Organizations $28 per user/month, 25% saving if billed yearly",
+      "source_url": "https://site.cal.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cal.com API v2: OAuth, API key or platform auth; 120 requests/minute default rate limit; bookings/event-types/schedules endpoints",
+      "source_url": "https://cal.com/docs/api-reference/v2/introduction",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cal.com can no longer be self-hosted free for commercial use; Cal.diy is MIT-licensed and recommended for personal, non-production use only",
+      "source_url": "https://cal.com/blog/self-hosted-scheduling-platforms-benefits-and-challenges",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Calendly Free: one event type/one calendar; Standard $10/seat/mo; Teams $16/seat/mo (yearly billing); Enterprise from $15k/yr with 50-seat minimum",
+      "source_url": "https://calendly.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Smith.ai: Free $0 for 25 calls/mo ($3.00/call after); Pro $150/mo for 75 calls ($2.00/call, extra calls $2.50); Enterprise $500/mo for 300 calls ($1.67/call); month-to-month with 30 days' notice",
+      "source_url": "https://smith.ai/pricing/ai-receptionist",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ruby: $250/50 min, $395/100 min, $720/200 min, $1,725/500 min monthly; chat plans $143/10, $335/30, $520/50",
+      "source_url": "https://www.ruby.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ruby chat pricing presented as \"bundles\" ($143/$335/$520) when bundling with a receptionist plan gives 20% off ($115/$268/$416)",
+      "source_url": "https://www.ruby.com/pricing/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "LEX Reception about $425/month for 150 minutes, reported by a third party; LEX's own pricing not public",
+      "source_url": "https://www.mycase.com/blog/client-management/law-firm-answering-service/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Lawmatics: no public price; 3-user minimum on Essential and Premium, 5 on Enterprise; Essential includes 500 contacts; advanced conflict checking on Premium",
+      "source_url": "https://www.lawmatics.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Intaker: no public price, pricing page routes to a demo/quote",
+      "source_url": "https://intaker.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DigitalOcean Basic droplet $6/month: 1 GiB RAM, 1 vCPU, 25 GiB SSD, 1,000 GiB transfer",
+      "source_url": "https://www.digitalocean.com/pricing/droplets",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Droplet backups cost $0 incremental / are stored on the same plan",
+      "source_url": "https://docs.digitalocean.com/products/backups/details/pricing/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Webflow form-submission webhook POST payload carries form name, siteId, submitted field data, field schema and submittedAt",
+      "source_url": "https://developers.webflow.com/data/reference/webhooks/events/form-submission",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Calendar API v3 REST covers events, calendars, ACL, free/busy",
+      "source_url": "https://developers.google.com/calendar/api/guides/overview",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Microsoft Graph v1.0 calendar resource exists for M365/Outlook calendars",
+      "source_url": "https://learn.microsoft.com/en-us/graph/api/resources/calendar?view=graph-rest-1.0",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey legal secretaries/administrative assistants (SOC 43-6012): median $63,080/year, $30.33/hour, BLS 2025 data",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Arithmetic: $63,080 + 25% benefits = about $78,850/year, about $6,571/month; a $275/month fee is about $3,300/year",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey Supreme Court preliminary AI guidelines dated January 24, 2024: RPC 1.6(f) requires reasonable efforts to prevent inadvertent or unauthorized disclosure, and \"a lawyer is responsible to ensure the security of an AI system before entering any non-public client information\"",
+      "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The same guidelines say oversight over nonlawyer staff \"extends to ensuring the ethical use of AI by other lawyers and nonlawyer staff\", citing RPC 5.1 and 5.3",
+      "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The guidelines address RPC 7.1 and false/misleading communications",
+      "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf",
+      "result": "not found"
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d) permits interception where the person is a party or one party has given prior consent, except for criminal/tortious/injurious purposes (one-party consent)",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239",
+      "result": "confirmed"
+    },
+    {
+      "claim": "47 CFR 64.1200: autodialed/prerecorded calls and texts need prior express consent, telemarketing needs prior express written consent, revocation by \"stop/quit/end\" and similar honoured within a reasonable time",
+      "source_url": "https://www.law.cornell.edu/cfr/text/47/64.1200",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Firm contact page lists phone hours Mon-Fri 9AM-5PM on (732) 494-6099, with a Webflow form (7-item service dropdown, message box, Turnstile, redirect to /thank-you) and no booking widget or answering service",
+      "source_url": "https://www.wileylavender.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site FAQ says consultations are scheduled \"by calling our office or filling out the contact form on our website\" - no self-scheduling tool",
+      "source_url": "https://www.wileylavender.com/our-attorneys",
+      "result": "confirmed"
+    },
+    {
+      "claim": "GTM-ML8VXZ7C and GA4 G-8WYZ2PDNST are installed on every page; site is Webflow, last published Dec 22 2025",
+      "source_url": "https://www.wileylavender.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Firm self-reports 200+ successful cases per year and 1K+ clients across New Jersey",
+      "source_url": "https://www.wileylavender.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Partner emails larry@ and Pankaj@wileylavender.com are published and act as the intake queue",
+      "source_url": "https://www.wileylavender.com/attorney-details/pankaj-maknoor",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Build effort totals 17.5 founder-days across phases 0-6 (2+5+2+3+1.5+3+1) and the $2,200 setup fee equals about 11 days at $200/day",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit's impact estimate of $2,500-$9,287/year in recovered staff time, used to justify the $275/month fee",
+      "source_url": "n/a - audit.md not present in this task folder",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

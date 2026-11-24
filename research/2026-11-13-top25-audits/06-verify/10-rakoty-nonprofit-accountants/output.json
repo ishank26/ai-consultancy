@@ -1,0 +1,148 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"the 'Schedule an appointment' button leads to a 'not found' page, nav buttons have no link\"",
+      "problem": "Half true and overstated. I re-opened the site: the slider 'Schedule an appointment' link does point at https://rakotygroup.com/contacts-us/ which returns HTTP 404 (confirmed), and the single header 'Schedule an appointment' anchor has no href attribute (confirmed - it is the only anchor on the page without one). But the site navigation itself works: the six nav menu items (Home, Non-Profit, Small Businesses, Taxes, Contacts Us, Blog) all carry working hrefs. Read literally, 'nav buttons have no link' is contradicted by the live page and is the kind of error a prospect can spot in ten seconds on their own site.",
+      "fix": "Reword to: \"the header 'Schedule an appointment' button has no link, and the in-page 'Schedule an appointment' button leads to a 'not found' page\" - drop the blanket reference to nav buttons."
+    },
+    {
+      "claim": "\"your nonprofit page lists close by the 10th ... and each starts with an email chasing a missing statement.\"",
+      "problem": "The first half is sourced; the clause about internal workflow is not. /non-profit-2/ lists the deliverables but says nothing about how documents are collected, and no source in profile.json or analysis.json shows an email-based chase. It is the author's inference (correctly framed as an inference in the researcher's profile: 'all of which require collecting documents from many client finance staff') but here it is stated to the firm as fact about their own operations.",
+      "fix": "Frame it as a question or an inference: e.g. \"...and each of those presumably starts with someone at your end chasing a missing statement - worth confirming.\""
+    },
+    {
+      "claim": "\"quarterly grant budget-to-actual, audit lists\"",
+      "problem": "Loose paraphrase of the nonprofit page, which says budget-to-actual is tracked on a monthly basis and grant reports are produced monthly and quarterly; and which describes leading the annual audit process, with no mention of 'audit lists'. Neither phrase is wrong in spirit but neither is what the page says.",
+      "fix": "Use the page's own wording: \"monthly close by the 10th, monthly budget-to-actual plus monthly and quarterly grant reports, the annual audit, 990s and 1099/W-2 season\"."
+    },
+    {
+      "claim": "Body length of about 450 words (brief requirement)",
+      "problem": "Borderline but inside tolerance: 424 words of prose excluding title and section headings, 461 words counting them. No change strictly required.",
+      "fix": "Optional: drop 'Prepared from publicly available information' or one pilot line if the orchestrator wants headroom under 450 including headings."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Site sets out a nonprofit practice: bookkeeping, grant reporting, audit leadership, 990s",
+      "source_url": "https://rakotygroup.com/non-profit-2/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "About two dozen client logos on the site",
+      "source_url": "https://rakotygroup.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "On 13 Nov 2026 a visitor's first screen was a percentage loader stuck at 9-32% with nothing behind it",
+      "source_url": "https://rakotygroup.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'Schedule an appointment' leads to a 'not found' page",
+      "source_url": "https://rakotygroup.com/contacts-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "nav buttons have no link",
+      "source_url": "https://rakotygroup.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "No contact form renders anywhere on the site",
+      "source_url": "https://rakotygroup.com/contacts/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Enquiries come by phone or email",
+      "source_url": "https://rakotygroup.com/contacts/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nonprofit page lists close by the 10th and grant budget-to-actual tracking",
+      "source_url": "https://rakotygroup.com/non-profit-2/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nonprofit page lists 'quarterly grant budget-to-actual'",
+      "source_url": "https://rakotygroup.com/non-profit-2/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Nonprofit page lists 990s and 1099/W-2 season",
+      "source_url": "https://rakotygroup.com/non-profit-2/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'Each starts with an email chasing a missing statement'",
+      "source_url": "https://rakotygroup.com/non-profit-2/",
+      "result": "not found"
+    },
+    {
+      "claim": "Training and support is a listed service",
+      "source_url": "https://rakotygroup.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Blog already covers 990s, cost allocation and accrual basis",
+      "source_url": "https://rakotygroup.com/blog/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Published $99/month bookkeeping price",
+      "source_url": "https://rakotygroup.com/bookkeeping-services-offer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ bookkeeping clerk median wage, May 2025 = $58,300/yr (basis of the $35/hour figure)",
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000043303113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ accountant median wage, May 2025 = $100,830/yr (basis of the $60/hour figure)",
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000013201113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2 arithmetic: 24 x 1-3 hrs x 12 closes x 30-40% = 86-345 hrs; at $35/hr = ~$3,000-12,000",
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000043303113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 3 arithmetic: 24 x 0.5-1.5 hrs x 12 x 30-40% = 43-172 hrs; at $60/hr = ~$2,580-10,320",
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000013201113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 1 arithmetic: 1-2 clients x $99/month x 12 = ~$1,180-2,370 a year",
+      "source_url": "https://rakotygroup.com/bookkeeping-services-offer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'It sits beside WordPress, Tag Manager, QuickBooks and email'",
+      "source_url": "https://rakotygroup.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email draft: pages sat on a loading screen and the booking button led to a missing page (phone check)",
+      "source_url": "https://rakotygroup.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Walk-in opener: could not book through the website",
+      "source_url": "https://rakotygroup.com/contacts-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business name, address, phone and email as used in the audit",
+      "source_url": "https://rakotygroup.com/contacts/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body at most ~450 words (counted from the supplied audit.md)",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

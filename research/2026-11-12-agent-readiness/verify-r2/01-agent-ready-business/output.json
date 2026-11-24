@@ -1,0 +1,188 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Finding 2 / summary: \"Google's stated eligibility bar for AI surfaces is ordinary indexability plus structured data that matches visible text\" (no additional requirements).",
+      "problem": "Incomplete but not contradicted. Google's AI optimization guide now states a further gate: 'In addition to the technical requirements for Search, a site must be included in Search generative AI features in Search Console to be eligible for display in generative AI features on Google Search' (help page 16908024 confirms the Search generative AI control). The control defaults to 'Include', which is why the brief's practical conclusion still holds, but the audit in recommendation 2 does not list checking it.",
+      "fix": "Add one sentence to finding 2 (and one audit item to recommendation 2): confirm the Search Console 'Search generative AI' control is set to include (the default) for the client's property, citing https://support.google.com/webmasters/answer/16908024."
+    },
+    {
+      "claim": "Finding 7 text: local ranking is based on \"relevance, distance, and prominence\".",
+      "problem": "Wording mix-up inside the same finding: the cited page states 'Local results are mainly based on relevance, distance, and popularity' and uses 'Prominence' only as the heading of the third factor. The finding's own evidence quote says 'popularity', so text and quote disagree.",
+      "fix": "Say 'relevance, distance and popularity (Google labels the third factor prominence)' or quote the sentence exactly."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Google's AI features doc: 'There are no additional requirements to appear in AI Overviews or AI Mode, nor other special optimizations necessary' and 'You don't need to create new machine readable files, AI text files, or markup... There's also no special schema.org structured data that you need to add.'",
+      "source_url": "https://developers.google.com/search/docs/appearance/ai-features",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google's optimization guide: Google Search 'doesn't use' llms.txt; creating one 'will neither harm nor help your site's visibility or rankings in Google Search, as Google Search ignores them'; advises ignoring 'chunking' and inauthentic mentions.",
+      "source_url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Eligibility for AI features = indexed and eligible for a snippet, plus the newly documented requirement that the site be included in Search generative AI features in Search Console.",
+      "source_url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Browser agents use screenshots, the DOM and the accessibility tree (Google guide wording).",
+      "source_url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide",
+      "result": "confirmed"
+    },
+    {
+      "claim": "web.dev: avoid transparent 'ghost' overlays; use <button>/<a> or add role and tabindex; add the for attribute on labels; interactive elements must be larger than 8 square pixels; keep layout stable; accessibility tree previewable in Chrome DevTools.",
+      "source_url": "https://web.dev/articles/ai-agent-site-ux",
+      "result": "confirmed"
+    },
+    {
+      "claim": "WebMCP: 'a proposed web standard', published 18 May 2026, updated 7 Oct 2026, origin trial from Chrome 149, two APIs (imperative JS, declarative HTML), 'in active development and may change', limitations on headless use and tool discoverability ('Clients and browsers must visit a site directly to know if it has callable tools').",
+      "source_url": "https://developer.chrome.com/docs/ai/webmcp/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google 17 Nov 2025 post: restaurant agentic booking rolling out in the U.S. with no Labs opt-in; event-ticket and local-appointment booking available to all U.S. Labs users; partners OpenTable, Resy, Tock, Ticketmaster, StubHub, SeatGeek, Vivid Seats, Booksy, Fresha, Vagaro.",
+      "source_url": "https://blog.google/products-and-platforms/products/search/agentic-plans-booking-travel-canvas-ai-mode/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "21 Aug 2025 post: AI Mode 'links you directly to the booking page, so you can easily take the last step and finalize your reservation', naming OpenTable, Resy, Tock and others.",
+      "source_url": "https://blog.google/products-and-platforms/products/search/ai-mode-agentic-personalized/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "GBP help: Google may call a business on a customer's behalf (booking appointments, restaurant wait times, confirming price and availability); 'Businesses and customers can use this feature at no charge'; opt out by phone or profile settings; calls monitored and recorded; U.S. availability in all states except Indiana, Louisiana, Minnesota, Montana, Nebraska.",
+      "source_url": "https://support.google.com/business/answer/16190256?hl=en",
+      "result": "confirmed"
+    },
+    {
+      "claim": "GBP local ranking: 'Businesses with complete and accurate info are more likely to show up in local search results'; 'There's no way to request or pay for a better local ranking on Google'.",
+      "source_url": "https://support.google.com/business/answer/7091?hl=en",
+      "result": "confirmed"
+    },
+    {
+      "claim": "GBP guidelines: name must 'reflect your business's real-world name, as used consistently on your storefront, website, stationery, and as known to customers'; description must not focus on promotions/prices or contain links.",
+      "source_url": "https://support.google.com/business/answer/3038177?hl=en",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business Agent requires a US-based e-commerce store, verified Merchant Center account, at least 50 free listings approved and a claimed brand profile; uses website data 'in addition to your shopping data'; agentic checkout 'coming soon'.",
+      "source_url": "https://support.google.com/brandprofile/answer/16410382?hl=en",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RCS Business Profile AI messaging: available in France, Germany, UK and US (select carriers) for Restaurant, Beauty Services and Vehicle Services; requires an additional review process; draws on GBP core details and verified website URLs; handoff triggers include high-risk topics, complex/custom quotes, unanswered questions and a request for a person.",
+      "source_url": "https://support.google.com/business/answer/17003851?hl=en",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OpenAI commerce: 'Onboarding product feeds in ChatGPT is currently available to approved partners' (form at chatgpt.com/merchants); SFTP product feed plus Promotions API; commerce index built around 'agentic checkout, delegated payment, and product feeds'.",
+      "source_url": "https://developers.openai.com/commerce/guides/get-started",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OpenAI bots: OAI-SearchBot surfaces sites in ChatGPT search and opted-out sites 'will not be shown in ChatGPT search answers'; ChatGPT-User acts on user request and 'robots.txt rules may not apply'.",
+      "source_url": "https://platform.openai.com/docs/bots",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Perplexity: allow PerplexityBot 'To ensure your site appears in search results'; Perplexity-User 'generally ignores robots.txt rules'; Cloudflare Bot Fight Mode 'can't be skipped with WAF custom rules' and can still challenge Perplexity bots.",
+      "source_url": "https://docs.perplexity.ai/docs/resources/perplexity-crawlers",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Apple: Apple Business available from Tuesday 14 April, more than 200 countries and regions, free service; place cards display across Apple Maps, Safari, Spotlight; custom order/reserve actions point to a preferred website or app; Business Essentials/Manager/Connect retired; existing Business Connect data migrates.",
+      "source_url": "https://www.apple.com/newsroom/2026/03/introducing-apple-business-a-new-all-in-one-platform-for-businesses-of-all-sizes/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Apple partner guide: Flexible Action Links need no iOS app and deep link to the owner's website; 'Partners use the API; business owners use the portal'; one link per action type; showcases 1-365 days, scheduled at least 3 business days ahead, supported in 38 countries; place cards viewed billions of times monthly.",
+      "source_url": "https://business.apple.com/docs/onboarding-guide/place-card",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Microsoft support page: 'To add or change information about your business in Bing Maps search results, use Bing Places for Business to claim or update your business listing'; no cost or verification detail on the page.",
+      "source_url": "https://support.microsoft.com/en-us/bing/add-and-manage-your-business-listing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "schema.org LocalBusiness carries openingHours (with the Tu,Th 16:00-20:00 example), priceRange ('$$$'), paymentAccepted, potentialAction, aggregateRating, sameAs.",
+      "source_url": "https://schema.org/LocalBusiness",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google 8 Aug 2023: FAQ rich results only for 'well-known, authoritative government and health websites' and not shown regularly elsewhere; How-To later deprecated entirely.",
+      "source_url": "https://developers.google.com/search/blog/2023/08/howto-faq-changes",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Review snippet doc limits Local business and Organization review snippets to sites that capture reviews about other businesses (self-serving reviews excluded).",
+      "source_url": "https://developers.google.com/search/docs/appearance/structured-data/review-snippet",
+      "result": "confirmed"
+    },
+    {
+      "claim": "llms.txt registry: 1,000,642 domains checked, 4.67% adoption over 999,839 ranked domains, 46,741 publishing, 'More sites block us than publish one', 51,666 blocked, dated 1 Nov 2026.",
+      "source_url": "https://llmstxt.studio/stats",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ahrefs: 137,210 domains with traffic in May 2026, 28% publish llms.txt, 97% of those files got zero traffic, 'no major AI platform has ever committed to reading it'.",
+      "source_url": "https://ahrefs.com/blog/llmstxt-study/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Theory Ventures survey: 455 responses, 57.4% use MCP to reach APIs/data, 69.7% of those build internal MCPs.",
+      "source_url": "https://theoryvc.com/surveys/ai-in-practice-2026",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cyclr: same 816 products, official MCP support 47 to 100, share 5.8% to 12.3%, 57% with no verified official server.",
+      "source_url": "https://cyclr.com/resources/reports/the-state-of-mcp-2025-2026",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Census BTOS, 14 Dec 2025-3 May 2026: overall AI use 17-20%; less than 20% of firms with four or fewer employees; 37% (250+) and 32% (100-249); Finance and Insurance 33.9%, Retail ~14%, national 19.8%; wording changed to 'in any business function' in November 2025; 15-function supplement.",
+      "source_url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Big 'I' ACT 2026: 38% very likely and 30% somewhat likely to increase AI use; 33% experimenting, 31% not using, 22% limited areas, 8% embedded; 55% no written policy, 13% formal; concerns 24% privacy/compliance, 22% inaccurate outputs; national email survey with no sample size stated.",
+      "source_url": "https://www.independentagent.com/news/two-thirds-of-independent-agents-plan-to-increase-ai-use-this-year/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NARPM/AppFolio 2026: 751 property-management professionals and 554 owners/investors; 'During survey screening, 78% of fee managers reported that their companies use some form of AI and were included in the final survey'; agentic AI used by 7%; only 9% measured a quantifiable improvement.",
+      "source_url": "https://www.appfolio.com/blog/narpm-ai-property-management-report-2026",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ADA HPI Q2 2026: invitations to 2,432 panel dentists, 589 responses, 24.3% adjusted response rate, 552 in private practice; one-quarter plan to use AI; most likely tasks are reception/front-desk check-in, scheduling, analytics, charting and notetaking; least open to treatment recommendations.",
+      "source_url": "https://www.ada.org/-/media/project/ada-organization/ada/ada-org/files/resources/research/hpi/state_us_dental_economy_q22026.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Search Console generative AI performance report: impressions in AI Overviews and AI Mode by page/country/date/device, export button, report may be absent without enough impressions, rolled out to all websites worldwide as of 31 August 2026.",
+      "source_url": "https://support.google.com/webmasters/answer/16984139",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Rich Results Test validates structured data on a public URL or code snippet and shows which rich results can be generated; no price or paid tier listed.",
+      "source_url": "https://search.google.com/test/rich-results",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google structured-data workflow of guidelines -> Rich Results Test -> URL Inspection (resource 'how to use it' paragraph).",
+      "source_url": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Pitfall: the contractor missed-call analysis is vendor-produced and modelled - 1,247 contractors, 2.4M inbound calls, 38% missed, 41% conversion assumption, ~$78k annual lost revenue.",
+      "source_url": "https://runclockwork.com/research/missed-call-crisis",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

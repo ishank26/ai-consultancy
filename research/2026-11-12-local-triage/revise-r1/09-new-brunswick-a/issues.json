@@ -1,0 +1,72 @@
+[
+ {
+  "claim": "Arons & Arons LLC - 93 Bayard St, New Brunswick, (732) 247-5000 (sourced only from the AllPages attorneys page)",
+  "problem": "Firm's own contact page lists 76 South Orange Ave., Suite 100, South Orange, NJ 07079, phone (973) 762-0795. No New Brunswick address appears on the firm's own site; the Bayard St address traces only to a bulk directory. Wrong town / stale listing.",
+  "fix": "Remove, or keep only if a current New Brunswick office is confirmed by the firm itself."
+ },
+ {
+  "claim": "Castronovo and McKinney - 104 Bayard St #2, New Brunswick, (973) 860-3622 (AllPages only)",
+  "problem": "The firm's own contact page shows a 973-920-7888 number and (per search of the firm's site) a Morristown, NJ office; no New Brunswick address is published by the firm. The listed 973 area-code phone was already a weak fit for a New Brunswick office.",
+  "fix": "Remove or verify directly; the entry looks like an outdated directory record."
+ },
+ {
+  "claim": "The Harrison Group - New Brunswick, (732) 249-6777 (localsolution.com only)",
+  "problem": "The firm's own contact page lists a mailing address in Milltown, NJ 08850 for the same phone number. It is a recruiting firm, not a New Brunswick business per its own materials.",
+  "fix": "Re-assign to the Milltown zone (or drop), and re-classify as staffing/recruiting rather than business consulting."
+ },
+ {
+  "claim": "Hannum, Feretic, Prendergast & Merlino LLC - 46 Bayard St, New Brunswick (AllPages only)",
+  "problem": "No New Brunswick office could be found. The firm's own site offices block did not render an address and its LinkedIn/company listing gives 110B Meadowlands Parkway, Suite 300, Secaucus, NJ 07094. Third directory-sourced entry with no firm-side confirmation.",
+  "fix": "Verify or remove; do not treat AllPages-only addresses as evidence of a local office."
+ },
+ {
+  "claim": "Jeffrey Intravatola (law office) - 40 Paterson St, (732) 545-4717 listed as a separate business",
+  "problem": "Jeffrey S. Intravatola is a partner at Hoagland, Longo, Moran, Dunst & Doukas, whose address and main number are exactly 40 Paterson St / 732-545-4717 (already a separate entry). His chamber listing is an individual attorney at that firm, not a distinct firm, so this is a duplicate.",
+  "fix": "Merge into the Hoagland Longo entry; drop the standalone row."
+ },
+ {
+  "claim": "Eleven entries rest solely on the AllPages New Brunswick attorneys page (Arons & Arons, Hannum Feretic, Castronovo & McKinney, Deutchman & Drews, Ronaldo George, Feeney Law, Dennis Auciello, Hendricks & Hendricks, Robert Adochio, Hoagland Longo, Wu & Hung)",
+  "problem": "At least two of these (Arons & Arons, Castronovo & McKinney) proved to be stale or out-of-town when checked against the firms' own sites, and a third (Hannum) has no confirmable local office. The page returns HTTP 403 to direct fetching, so the mapper could not have read it either, and the whole batch is unverified.",
+  "fix": "Re-verify each AllPages-only row against the firm's own site or a map listing before the zone is worked; expect several more drops."
+ },
+ {
+  "claim": "Seven entries share 317 George St, Suite 320 (Brach Eichler, Leon Matchin, Shaw Divorce & Family Law, Adam C Brown, Easy Prep Tax, Comprehensive Wealth Strategies, Richmond Asset Management)",
+  "problem": "Suite 320 at 317 George St is advertised as a Regus/Davinci virtual-office addresss (mail and business-address packages), so these may be registered addresses rather than staffed offices. Brach Eichler is a Roseland-based firm using the suite as a satellite. The list flags this in caveats but still counts seven separate local prospects.",
+  "fix": "Treat as one address with unverified staffing; confirm a person actually answers locally before any outreach, and down-rank or flag these rows."
+ },
+ {
+  "claim": "K+C Bookkeeping Services LLC (109 Church St, 732-745-8090) and North East Title Agency (109 Church St, 732-745-8090)",
+  "problem": "109 Church St is the Middlesex County Regional Chamber of Commerce's own address and 732-745-8090 is the chamber's number, which also appears in the chamber's member-spotlight page for Overmyer Insurance Agency. Both entries appear to have inherited the chamber's phone; the companies' own lines are unconfirmed.",
+  "fix": "Leave phone as Unknown until a direct business line is confirmed; do not use chamber switchboard numbers."
+ },
+ {
+  "claim": "Richmond Asset Management (Wells Fargo Advisors Financial Network) - 317 George St, Suite 320",
+  "problem": "The practice sits on a bank-owned brokerage platform (Wells Fargo), which is arguably inside the mapper's own bank exclusion - and the mapper excluded other bank-affiliated advisors on that basis.",
+  "fix": "Drop for consistency with the bank exclusion, or document why FiNet practices are treated as independent."
+ },
+ {
+  "claim": "Slalom (100 Albany St, Suite 230) and TRC Companies (317 George St, Suite 520) kept in the list",
+  "problem": "Both are very large national/global firms with local branch offices, yet the mapper excluded CBIZ and CGI as 'chains/large institutions' on the same page. The exclusion rule is applied inconsistently, in the direction of over-inclusion.",
+  "fix": "Apply one rule: either drop all large multi-office firms (Slalom, TRC, CBIZ, CGI) or state explicitly that branch offices of big firms are in scope."
+ },
+ {
+  "claim": "Phone numbers for several entries",
+  "problem": "Law Offices of Adam C Brown lists (973) 348-6141 but the firm's site shows (973) 281-2388; Blinder Law lists (848) 800-8486 but the firm's contact page shows (848) 201-3667; Red Hawk Realty, Garces Grabler & LeBrocq, Ginarte and Thompson-style directory rows show Unknown phone where a number is published (732-220-1700, (732) 486-0500 respectively).",
+  "fix": "Refresh phones from the firms' own contact pages; mark the rest Unknown only after checking the site."
+ },
+ {
+  "claim": "AMS Technical Solutions - 21 Kilmer Rd, New Brunswick",
+  "problem": "The company site returns HTTP 403, so the address could not be read; the mapper itself flags that Kilmer Rd straddles the New Brunswick/Edison line, and phone was left Unknown although a 732-305-6310 number appears in search results.",
+  "fix": "Confirm municipality (Edison vs New Brunswick) before including; add the published phone."
+ },
+ {
+  "claim": "Source citation: https://maps.mail.ru/osm/tools/overpass/api/interpreter?data=office-lawyer",
+  "problem": "This is not a runnable Overpass query (the API expects a full query string, not 'data=office-lawyer'), so the three OSM-derived entries (Wysoker, Garces Grabler & LeBrocq, and the office=lawyer set) cannot be reproduced from the cited URL.",
+  "fix": "Replace with the actual Overpass query URL or a per-feature OSM link."
+ },
+ {
+  "claim": "Coverage: eligible New Brunswick firms omitted from the list",
+  "problem": "Six eligible professional-services firms with New Brunswick addresses surfaced in independent category searches: three law firms on Livingston Ave with their own websites, an architecture firm, a CPA and an independent insurance agency. The legal, accounting, architecture and insurance categories are therefore incomplete even though the mapper flagged legal density as a known gap.",
+  "fix": "Add the six firms in coverage.missing, and re-sweep Livingston Ave law offices plus the chamber's accounting/insurance categories."
+ }
+]

@@ -1,0 +1,57 @@
+{
+  "name": "Dubin Orthodontics",
+  "town": "North Brunswick",
+  "ref": "B00750",
+  "status": "operating",
+  "website": "https://www.dubinorthodontics.com/",
+  "what_they_do": "Family-owned orthodontic practice operating since 1976 with three offices (1648 US-130 North Brunswick, 85 Raritan Ave Highland Park, 1600 Perrineville Rd Monroe Township). Treatments are metal and clear braces for children and adults, Invisalign, Empower self-ligating appliances and early treatment, with iTero digital impressions and surgical orthodontics also listed.",
+  "customers": "Families with children needing braces plus adults seeking Invisalign across Middlesex County, Highland Park and Monroe Township; insurance-accepting and financed patients.",
+  "size_signals": [
+    {"signal": "Three office locations listed in the header and footer of every page", "source_url": "https://www.dubinorthodontics.com/"},
+    {"signal": "'FAMILY OWNED & SERVING THE COMMUNITY SINCE 1976' hero statement; single named doctor, Dr. Joseph Dubin", "source_url": "https://www.dubinorthodontics.com/"},
+    {"signal": "Has an Online Payment portal and Patient Login, plus a post-appointment survey page - signs of an established, systemised practice", "source_url": "https://www.dubinorthodontics.com/"}
+  ],
+  "listing": {"platform": "Google Maps / Google Business Profile", "rating": "4.9", "reviews": "Google count not displayed in the limited logged-out Maps view", "source_url": "https://www.google.com/maps/search/Dubin+Orthodontics+1648+US+Highway+130+North+Brunswick+NJ"},
+  "website_review": {
+    "loads": true,
+    "https": true,
+    "phone_layout": "good",
+    "clear_offer": true,
+    "primary_cta": "Three equal buttons above the hero: 'Appointment Request', 'Online Payment', 'Patient Login'",
+    "click_to_call": true,
+    "contact_form": true,
+    "online_booking_or_quote": "Request-only. The appointment form (office, name, email, phone, comment) says a scheduling coordinator will contact you to confirm; no live availability. Google profile shows a 'Book online' button that lands on that request page.",
+    "trust_signals": "50 years in business, doctor photo and bio, before/after gallery, office tour, testimonials page, insurance page, financial information, Invisalign and Empower brand pages",
+    "out_of_date_signs": "Pages are image-heavy (home screenshot alone was ~800KB at phone width); no review rating shown anywhere on site; the three CTAs bury the one action (request an appointment) among payment and login",
+    "search_basics": "Titles and descriptions name orthodontics + the three towns; ~15 treatment and patient pages; but the home page has zero structured data (no JSON-LD at all) so hours, locations and services are unstructured",
+    "top_issues": [
+      "No schema.org markup on any page reviewed",
+      "Booking is a callback request, not a calendar",
+      "Heavy images; no visible reviews or ratings on the site"
+    ]
+  },
+  "agent_readiness": {
+    "findable": 2,
+    "answerable": 1,
+    "bookable": 2,
+    "notes": "Findable: robots.txt only blocks CMS folders, so Googlebot/OAI-SearchBot/PerplexityBot are welcome, and the GBP is complete enough to show category, hours and a 'Book online' button. Answerable: office addresses and phone are text, but hours are not stated on the home page, prices/financing detail is thin, and script[type=application/ld+json] returned 0 nodes on both the home page and the appointment page - so nothing machine-readable confirms location or services. Bookable: an appointment-request form with proper labels exists and is one click from the header, but it only produces a callback."
+  },
+  "operations_signals": [
+    {"signal": "New-patient intake still runs on downloadable PDF registration forms (adult, child, HIPAA in English and Spanish) that staff must key in", "source_url": "https://www.dubinorthodontics.com/patient-forms"},
+    {"signal": "Appointment requests are confirmed by a human scheduling coordinator, and the form explicitly redirects cancellations to a phone call", "source_url": "https://www.dubinorthodontics.com/appointment-request"},
+    {"signal": "Three offices share one scheduling coordinator and eight pages of patient instructions, a routing and reminder load (inference from the shared contact block)", "source_url": "https://www.dubinorthodontics.com/"}
+  ],
+  "top_opportunities": [
+    {"opportunity": "Add LocalBusiness/Dentist JSON-LD for all three offices and put hours, insurance and price ranges in text - right now the site is completely unmarked up and an agent cannot reliably answer 'when are you open in North Brunswick'", "type": "agent readiness", "evidence": "document.querySelectorAll('script[type=\"application/ld+json\"]') returned an empty NodeList on the home page and appointment page", "effort": "S"},
+    {"opportunity": "Replace the callback-request form with real online scheduling (Invisalign consults, new-patient exams) per office, so a patient's agent can book and reschedule without waiting for the coordinator", "type": "operations", "evidence": "Form text: 'Our scheduling coordinator will contact you soon to confirm your appointment'; cancellations must be phoned in; GBP already advertises 'Book online' and lands on this form", "effort": "M"},
+    {"opportunity": "Digitise new-patient intake (replace the four PDFs with an online form that writes into the practice management system) and automate reminders across three offices", "type": "operations", "evidence": "Patient Forms page links adult, child and HIPAA PDFs for print-and-fill", "effort": "M"}
+  ],
+  "scores": {"gap_size": 3, "ability_to_pay": 5, "ease": 4, "evidence": 4, "reasons": "Gap: professional-looking site with a clear story and 50 years of trust, but zero structured data, callback-only booking and PDF intake. Pay: three-office orthodontic practice with high-ticket treatment plans, insurance and financing - the most obvious budget here. Ease: adding schema and swapping in a scheduler is a short, well-bounded engagement. Evidence: reviewed home, appointment-request, patient-forms pages, robots.txt, mobile layout and Google profile."},
+  "sources": [
+    "https://www.dubinorthodontics.com/",
+    "https://www.dubinorthodontics.com/appointment-request",
+    "https://www.dubinorthodontics.com/patient-forms",
+    "https://www.dubinorthodontics.com/robots.txt",
+    "https://www.google.com/maps/search/Dubin+Orthodontics+1648+US+Highway+130+North+Brunswick+NJ"
+  ]
+}

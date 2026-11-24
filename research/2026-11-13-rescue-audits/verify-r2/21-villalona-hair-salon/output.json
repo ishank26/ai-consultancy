@@ -1,0 +1,93 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "audit_md: \"we found no public page that still links to it\" (and rescue.json \"links_to_broken_domain\": [] , severity_reason \"damage is limited to anyone who types or follows the old brand domain\")",
+      "problem": "Contradicted. The salon's own Vagaro profile - the page the Google profile's website field and Book online button both go to - has a contact block reading \"Website: villalonahairsalon.com\" linking to http://villalonahairsalon.com/ (same page also lists Phone (732) 640-2800, hours Thu-Fri 9-6, Sat 8-5:30). So a public page does still link to the parked domain, and a customer can reach it in two clicks from Google, not only by typing it. Verified in Chrome on 2026-11-13 (screenshot verify-vagaro-website-field.png in this folder).",
+      "fix": "Replace the \"no public page links to it\" line with the Vagaro finding and its URL; drop the assumption that only people who type the address arrive; put https://www.vagaro.com/villalonahairsalon in links_to_broken_domain; raise or restate severity so it reflects the live link from the booking page."
+    },
+    {
+      "claim": "audit_md fix step 4: \"Point the Google profile's website field at that address (1-2 hrs, owner)\" / founder_md: \"the for-sale page is what someone sees if they type the old address\"",
+      "problem": "The fix list never tells the owner to change the Website field on the Vagaro listing, which is the one place actually pointing at the dead domain, and the outreach note implies typing the address is the only route there.",
+      "fix": "Add a step: in the Vagaro business profile, change the Website field from villalonahairsalon.com to the salon's own site (or blank it) until the domain is fixed; estimate 1 hr, owner or whoever manages the Vagaro account. Adjust the outreach wording to say the booking page's website link also points at the parked address."
+    },
+    {
+      "claim": "caveats: \"A plain HTTP fetch of villalonahairsalon.com returns a small script page that reloads the URL with a tracking parameter; the for-sale wording and banner appear only once that script runs, so a reader without JavaScript sees neither the salon nor the parking text.\"",
+      "problem": "Not true of the page as served now. A plain HTTP GET with no JavaScript returned static HTML whose <title> is \"villalonahairsalon.com\" and whose body already contains \"Find information, resources and relevant links... This domain may be for sale.\" plus the Terms/Privacy links; only the black top banner needs the script. A reader without JavaScript does see the for-sale text.",
+      "fix": "Correct the caveat to say the for-sale wording is in the static HTML and only the banner and marketplace link need JavaScript, or remove the caveat."
+    },
+    {
+      "claim": "severity_reason: \"The damage is limited to anyone who types or follows the old brand domain\"",
+      "problem": "Built on the same wrong premise as issue 1 - the brand domain is one click from the Vagaro contact block that Google sends customers to.",
+      "fix": "Rewrite the severity reason to mention the Vagaro website link; keep Medium if you judge the booking path still works, but say so on accurate grounds."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "villalonahairsalon.com serves a parking page saying the domain may be for sale, with no salon name, phone or hours; banner links to above.com/marketplace",
+      "source_url": "https://villalonahairsalon.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 2010-04-14, expires 2027-04-14, last changed 2026-04-15, registrar GoDaddy.com, LLC, nameservers 3927.NS1/NS2.ABOVEDOMAINS.COM",
+      "source_url": "https://rdap.org/domain/villalonahairsalon.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile: villalona hair salon, hair salon, 4.6, 631 Georges Rd North Brunswick Township NJ, (732) 640-2800, open at check time, website field vagaro.com, Book online button to vagaro.com",
+      "source_url": "https://www.google.com/maps/search/villalona+hair+salon+631+Georges+Rd+North+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google website field resolves to https://www.vagaro.com/villalonahairsalon and Book online to vagaro.com/googlemap/.../services",
+      "source_url": "https://www.google.com/maps/search/villalona+hair+salon+631+Georges+Rd+North+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback 2022-03-26: GoDaddy Website Builder page, title \"VILLALONA HAIR SALON\", phone (732) 640-2800",
+      "source_url": "https://web.archive.org/web/20220326152229id_/https://villalonahairsalon.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback 2024-05-27: parking lander with window.park script",
+      "source_url": "http://web.archive.org/web/20240527063352id_/https://villalonahairsalon.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vagaro page exists, titled \"Villalona Hair Salon - North Brunswick Township NJ | Vagaro\", about 2005",
+      "source_url": "https://www.vagaro.com/villalonahairsalon",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vagaro blocks the browser with Imperva Error 15 at 2026-11-13 21:34 UTC",
+      "source_url": "https://www.vagaro.com/villalonahairsalon",
+      "result": "not found"
+    },
+    {
+      "claim": "links_to_broken_domain is empty / no public page still links to villalonahairsalon.com",
+      "source_url": "https://www.vagaro.com/villalonahairsalon",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Birdeye listing: 4.6, 84 reviews, address 631 Georges Rd, hours, profile unclaimed",
+      "source_url": "https://reviews.birdeye.com/villalona-hair-salon-170189478317752",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A plain HTTP fetch returns only a script page and JS-less readers see no for-sale text",
+      "source_url": "https://villalonahairsalon.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Business is open and independent (not a chain); Vagaro describes two locations, North Brunswick and Somerset",
+      "source_url": "https://www.vagaro.com/villalonahairsalon",
+      "result": "confirmed"
+    },
+    {
+      "claim": "YellowPages and dnb listings could not be opened (bot block)",
+      "source_url": "https://www.yellowpages.com/north-brunswick-nj/villalona-hair-salon",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

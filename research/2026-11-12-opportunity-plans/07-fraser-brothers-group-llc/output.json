@@ -1,0 +1,457 @@
+{
+  "business": "Fraser Brothers Group, LLC (Fraser Brothers Insurance Agency / DeLaurier / Kennedy & Ward), Edison, NJ",
+  "opportunity": "Opportunity #1: 24/7 intake and quote-request triage agent across the three agency brands (audit.md, 'Requests answered within the hour')",
+  "problem": {
+    "summary": "Every inbound lead path at this 17-person, three-brand agency is human-gated and weekday-only. Quote and contact requests arrive through embedded Agency Revolution web forms (separate personal and commercial form IDs) or by phone; there is no online booking, no instant quote and no chat widget, and the three offices close between 4:15 PM (Edison) and 5:00 PM (Belford). A request sent Friday evening is therefore not acknowledged until Monday, and because Edison, Belford (DeLaurier) and Tinton Falls (Kennedy & Ward) each run their own name, phone number and hours, a person must manually decide which office, brand and producer owns each lead. The agency also sells ~10 commercial niches plus life/health/Medicare, so a request cannot be routed until someone reads it and classifies the line of business. The audit prices the intake work at roughly 832-2,080 staff hours a year (0.4-1.0 intake role) at $28.69/hour loaded, i.e. about $23,868-$59,670 a year, plus lead decay that is not counted.",
+    "current_tools": [
+      {
+        "tool": "Agency Revolution embedded web quote/contact forms (separate personal and commercial form IDs), served on an FMG Suite website",
+        "evidence": "Site offers only 'Request a Quote' and contact forms; forms are Agency Revolution embedded scripts on an FMG Suite build; no booking, scheduling or instant-quote tool anywhere",
+        "source_url": "https://www.fraserbrothers.com/"
+      },
+      {
+        "tool": "Phone-first intake on three published office numbers, plus a secure upload link at crm.bridge.insure (third-party CRM portal)",
+        "evidence": "Contact page lists separate phone and fax lines and weekday-only hours per office; secure document intake is a generic third-party upload link, not an agency-branded portal",
+        "source_url": "https://www.fraserbrothers.com/contact"
+      },
+      {
+        "tool": "Bridge (bridge.insure) insurance CRM/communications platform",
+        "evidence": "Public site routes clients to crm.bridge.insure for secure uploads; Bridge publishes AMS360 integration setup and a phone/SMS/chat platform priced per user",
+        "source_url": "https://www.bridge.insure/platform"
+      },
+      {
+        "tool": "Claims intake by phone during office hours, with carrier 24-hour claim lines as the fallback",
+        "evidence": "Claims page instructs clients to call the office during regular business hours and notes many carriers accept initial claims 24 hours a day",
+        "source_url": "https://www.fraserbrothers.com/claims-center"
+      }
+    ]
+  },
+  "solution": {
+    "approach": "build-on-platform",
+    "design": "A thin, founder-built intake service (Python/TypeScript + Postgres, containerised on a small cloud VM) that sits between Fraser Brothers' existing channels and its existing systems. It owns three inbound channels for the Edison pilot: (a) the Agency Revolution website form webhook, (b) the shared office service inbox, and (c) missed-call/voicemail capture on the Edison main line. Each contact is normalised into one lead record with the raw source payload retained, the line of business and niche classified (e.g. personal auto vs contractor vs restaurant), urgency and after-hours flag set, and a proposed owner (brand/office/producer) computed from a routing table the principal signs off on. The agent then runs a short, scripted clarification exchange by email and SMS (3-5 questions: insured name, address/town, effective or renewal date, current carrier, key drivers/property or business details) and offers a callback or meeting slot. Everything client-facing is a draft: the agent writes the reply plus the qualification summary into an approval queue where a licensed producer or CSR edits, approves and sends; nothing is quoted, bound or advised by the agent. A daily exception queue catches unclassifiable items, anything mentioning a claim or a coverage question, and anything where the model reports low confidence. All events (received, classified, drafted, approved, sent, outcome) are appended to an audit log with the approving user ID, which is the artefact the agency needs for E&O and for a future carrier vendor review. Voice (a live AI answering agent on the three main lines) is deliberately out of the pilot: the pilot proves form/email/SMS triage and the approval workflow first, and voice is added as a priced phase 2 once the routing rules and reply library are trusted.",
+    "components": [
+      {
+        "component": "Website form intake (webhook from the existing Agency Revolution/FMG forms)",
+        "tool": "Agency Revolution (Forge) form webhook configured by Agency Revolution support on the specified forms; Fuse-to-Zapier/CSV export as a fallback",
+        "why": "Uses the forms the agency already pays for, so no site rebuild; Agency Revolution documents adding a webhook key to nominated website forms on request",
+        "source_url": "https://help.agencyrevolution.com/en/agencyzoom-integration-forge-website-forms"
+      },
+      {
+        "component": "Telephony, missed-call capture and SMS",
+        "tool": "Telnyx (Voice API / SIP + SMS) for missed-call and voicemail-to-text capture and outbound acknowledgement texts",
+        "why": "Published pay-as-you-go rates ($0.0032/min inbound local, $0.005/min outbound, $0.004 per SMS part) with no platform fee, and 10DLC registration handled in the same portal",
+        "source_url": "https://telnyx.com/pricing/elastic-sip"
+      },
+      {
+        "component": "Agent reasoning and drafting",
+        "tool": "Anthropic API - Claude Haiku 5.5 for classification/drafting ($0.10 per MTok input, $0.50 per MTok output for prompts up to 100k tokens), Claude Sonnet 5.5 ($2/$10 per MTok) for hard cases",
+        "why": "Classification and 3-5 question drafting are short, high-volume tasks; the cheap tier keeps model cost per lead in cents, with escalation available",
+        "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing"
+      },
+      {
+        "component": "Callback/meeting booking",
+        "tool": "Cal.diy (open-source, MIT-licensed, self-hosted scheduling) or the office calendar if the agency prefers no new tool",
+        "why": "Self-hosted scheduling keeps client data on infrastructure the consultancy controls and avoids a per-seat SaaS fee; MIT licence removes redistribution risk for a resellable core",
+        "source_url": "https://cal.com/blog/calcom-v6-4"
+      },
+      {
+        "component": "Lead record, routing rules and system of record",
+        "tool": "Postgres lead table + signed-off routing matrix; write-back to Bridge CRM / the agency management system where access exists (AMS360 Web Service API via Bridge)",
+        "why": "The agency already runs Bridge for communications and AMS integration; keeping the AMS as system of record avoids a second book of record",
+        "source_url": "https://portal.bridge.insure/knowledge/ams360-integration"
+      },
+      {
+        "component": "Human approval queue and audit log",
+        "tool": "Small internal web queue (founder-built) + append-only event log; optionally a Bridge/shared-inbox queue if the agency wants everything in one place",
+        "why": "The licensed-approver gate is the core control; a purpose-built queue makes 'approved by whom, when' provable for E&O and carrier review",
+        "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17A-1-3"
+      },
+      {
+        "component": "Phase 2 only - after-hours voice agent",
+        "tool": "Retell AI pay-as-you-go voice agents ($0.055/min voice infrastructure, $0.015/min platform TTS, LLM per model)",
+        "why": "Voice is a bigger compliance and quality step (TCPA, recording disclosure, claims calls); Retell's published per-minute pricing lets this be quoted as a separate, capped add-on",
+        "source_url": "https://www.retellai.com/pricing"
+      }
+    ],
+    "integrations": [
+      {
+        "system": "Agency Revolution / FMG website forms",
+        "method": "Webhook added to nominated forms by Agency Revolution support (webhook key supplied by the destination system); Agency Revolution's Zapier path is outbound-only and cannot write back into Fuse",
+        "confirmed_in_docs": true,
+        "cost": "No separate webhook fee published; included with the existing Agency Revolution/FMG subscription (not public)",
+        "source_url": "https://help.agencyrevolution.com/en/agencyzoom-integration-forge-website-forms"
+      },
+      {
+        "system": "Bridge CRM (bridge.insure) / agency management system",
+        "method": "Bridge documents an AMS360 integration using an AMS360 Web Service API user; Bridge API access is listed only on its Custom plan (20-user minimum). Whether Fraser Brothers' AMS is AMS360 is unconfirmed.",
+        "confirmed_in_docs": true,
+        "cost": "Bridge plans $35 or $65 per user per month; Custom/API plan price not public",
+        "source_url": "https://portal.bridge.insure/knowledge/ams360-integration"
+      },
+      {
+        "system": "Telnyx voice and SMS",
+        "method": "Voice API / SIP trunk for missed-call capture and voicemail-to-text; SMS via Messaging API after 10DLC brand and campaign registration",
+        "confirmed_in_docs": true,
+        "cost": "Inbound local $0.0032/min, outbound $0.005/min, SMS $0.004 per part plus carrier passthrough; 10DLC brand $4.50 and campaign review $15 per submission",
+        "source_url": "https://telnyx.com/pricing/elastic-sip"
+      },
+      {
+        "system": "Anthropic Claude API",
+        "method": "Messages API with the agency's reply library and routing rules supplied as context; no training on client data",
+        "confirmed_in_docs": true,
+        "cost": "Claude Haiku 5.5 $0.10 per MTok input / $0.50 per MTok output; Claude Sonnet 5.5 $2 / $10 per MTok",
+        "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing"
+      },
+      {
+        "system": "Calendar booking",
+        "method": "Google Calendar API events.insert (if the office runs Google Workspace) or Cal.diy booking links",
+        "confirmed_in_docs": true,
+        "cost": "Google Calendar API is quota-based at no published per-call fee; Cal.diy self-hosted is free (MIT)",
+        "source_url": "https://developers.google.com/workspace/calendar/api/v3/reference/events/insert"
+      },
+      {
+        "system": "Shared office email inbox",
+        "method": "OAuth/IMAP connection to the office mailbox to read new enquiries and to hold drafts; provider (Microsoft 365 or Google Workspace) not confirmed publicly",
+        "confirmed_in_docs": false,
+        "cost": "No added cost assumed if the existing mailbox is reused; not verified",
+        "source_url": ""
+      },
+      {
+        "system": "After-hours voice agent (phase 2)",
+        "method": "Retell AI agent with a dedicated number or call-forwarding from the existing lines; recording can be disabled",
+        "confirmed_in_docs": true,
+        "cost": "$0.055/min infrastructure + $0.015/min platform TTS + LLM component ($0.0032/min for Claude 5.5 Haiku); range published as $0.07-$0.31/min",
+        "source_url": "https://www.retellai.com/pricing"
+      }
+    ],
+    "human_in_the_loop": "A licensed producer or CSR approves every client-facing message, every quote-related commitment and every coverage statement, before it leaves. The agent may acknowledge receipt, ask scripted qualification questions and offer a callback slot, but it never states a price, never compares coverage, never binds or endorses a policy and never releases a certificate. Any message mentioning a claim, a coverage question, a cancellation or a complaint leaves the automated flow immediately and is routed to a person (claims go to the office during hours, or to the carrier's 24-hour line after hours, which the agency already publishes). Low-confidence classifications go to the exception queue rather than being guessed, and all approvals are logged with the approver's identity."
+  },
+  "build_plan": {
+    "phases": [
+      {
+        "phase": "0. Discovery and data mapping",
+        "steps": [
+          "Confirm the agency management system (AMS360 / Applied Epic / HawkSoft / EZLynx) and what Bridge is actually used for (phone, CRM, uploads)",
+          "Identify which Agency Revolution form product hosts the quote forms and request webhook enablement for the personal and commercial forms",
+          "Collect the signed-off routing matrix: brand, town, line of business, producer/CSR owner, escalation contact per brand",
+          "Collect the reply library, approved wording, and the agency's E&O/compliance red lines (no prices, no coverage advice, no certificates)",
+          "Baseline measurement: export 8-12 weeks of form submission timestamps and first-reply timestamps from the shared inbox/Bridge; if unavailable, run a 2-week manual time-to-response log"
+        ],
+        "founder_days": "2-3",
+        "client_provides": "Principal + one CSR for two 60-minute sessions; read access to form submissions and the shared inbox (or exports); routing and wording decisions"
+      },
+      {
+        "phase": "1. Channel plumbing",
+        "steps": [
+          "Stand up the intake service, Postgres and audit log on a small cloud VM with encryption at rest and per-user access",
+          "Wire the Agency Revolution form webhook into the intake endpoint and map the personal/commercial field sets into one lead schema",
+          "Connect the shared inbox for new-enquiry detection and draft placement (no auto-send)",
+          "Attach missed-call/voicemail-to-text capture to the Edison main line via Telnyx, with the published office greeting preserved"
+        ],
+        "founder_days": "3-4",
+        "client_provides": "Phone carrier login or a support ticket authorising forwarding; mailbox OAuth consent; confirmation that the carrier/AMS terms permit the integration"
+      },
+      {
+        "phase": "2. Agent core: qualification, classification, routing, drafting",
+        "steps": [
+          "Build the 3-5 question clarification flow per line of business with stop rules and opt-out handling",
+          "Classify line of business, niche and urgency; compute proposed owner from the routing matrix with a confidence score",
+          "Generate the drafted acknowledgement plus qualification summary into the approval queue; enforce hard blocks on price, coverage, binding and certificate language",
+          "Implement the exception queue and the claims/coverage/complaint immediate-escalation rule",
+          "Add callback/meeting slot offers using Cal.diy or the office calendar"
+        ],
+        "founder_days": "6-7",
+        "client_provides": "Routing matrix sign-off, approved reply templates, appetite notes for the pilot lines, a named approver and a backup approver"
+      },
+      {
+        "phase": "3. Approval workflow, logging and dashboards",
+        "steps": [
+          "Build the reviewer UI: approve / edit / reject with reason codes, one click to send by email or SMS",
+          "Add the audit log views and retention settings, plus role-based access so only approved staff see lead content",
+          "Add the weekly dashboard: after-hours volume, time to first response, classification accuracy, draft acceptance rate, staff minutes per lead"
+        ],
+        "founder_days": "3-4",
+        "client_provides": "Approver accounts and an owner for the weekly review meeting"
+      },
+      {
+        "phase": "4. Pilot operation and calibration (runs concurrently with the 4-week pilot)",
+        "steps": [
+          "Shadow week: agent drafts, staff handle as today; compare drafts against what staff actually sent",
+          "Turn on acknowledgement-plus-qualification for after-hours and overflow; weekly tuning of routing rules and templates",
+          "Build the 50-lead gold set with one CSR and report accuracy, time-to-response and handled-without-rework",
+          "Produce the pilot report and a go/no-go recommendation, including a priced phase 2 voice option"
+        ],
+        "founder_days": "3-4",
+        "client_provides": "Two staff hours a week for the gold set and tuning; one decision meeting at the end"
+      },
+      {
+        "phase": "5. Production rollout (post-pilot, optional)",
+        "steps": [
+          "Extend to Belford and Tinton Falls and to commercial lines",
+          "Add AMS/CRM write-back once API access is confirmed",
+          "Add the after-hours voice agent with recording disclosure and transfer rules",
+          "Hand over runbook, on-call escalation and monthly care tasks"
+        ],
+        "founder_days": "6-10",
+        "client_provides": "Bridge/AMS API access (may require a plan change), E&O sign-off on voice scripts"
+      }
+    ],
+    "pilot": {
+      "scope": "Four weeks, Edison office, personal lines only (personal auto and homeowners). Channels: the personal and commercial Agency Revolution website forms, the Edison shared service inbox, and missed-call/voicemail-to-text on the Edison main line. The agent acknowledges every enquiry within minutes, runs the 3-5 question qualification, classifies line of business and urgency, proposes the owning brand/office/producer, offers a callback slot and places a drafted reply plus summary in the approval queue. No voice agent, no quotes, no AMS write-back, no certificates. A producer or CSR approves every outbound message.",
+      "weeks": "4 weeks (after roughly 3 weeks of build; total ~7 weeks from kickoff to pilot report)",
+      "success_metrics": [
+        "Share of after-hours and weekend enquiries acknowledged within 15 minutes (target >=90% of eligible enquiries)",
+        "Time to first response, measured against the pre-pilot baseline (target: median under 15 minutes for acknowledgements, versus next-business-day baseline)",
+        "Classification accuracy (line of business, office/brand, urgency) against a producer-reviewed 50-lead sample (target >=85% line-of-business accuracy, 100% of claim mentions escalated)",
+        "Draft acceptance rate: share of agent drafts sent with edits of one sentence or less (target >=70%)",
+        "Zero unapproved client-facing messages, zero price quotes, zero coverage statements issued by the agent (target: zero)",
+        "Staff minutes per lead before vs during the pilot (target: 15-30% reduction in handling time on pilot leads)",
+        "Number of leads rescued after hours that would previously have waited (reported, not targeted)"
+      ],
+      "baseline_method": "Primary: export submission timestamps from the Agency Revolution forms and the first outbound reply timestamps from the shared inbox/Bridge call and message logs for the prior 8-12 weeks, and compute time-to-first-response by hour-of-day and day-of-week. If timestamps are incomplete, run a two-week shadow period before go-live in which the assigned CSR logs received-at and first-replied-at for every enquiry; that log becomes the baseline. Staff minutes per lead are measured by a short manual time log on the same two weeks.",
+      "exit_criteria": "Pilot is a success (proceed to production) if, over the final two weeks: >=90% of eligible after-hours enquiries acknowledged within 15 minutes; >=85% line-of-business classification accuracy on the gold set; >=70% draft acceptance; no unapproved, quoted or advisory message and no unresolved compliance flag; and the principal confirms the workflow reduced rather than added staff effort. Either side may stop at the end of the pilot with no further commitment; the pilot fee is not refundable but no setup fee is due unless the agency proceeds."
+    }
+  },
+  "competitors": [
+    {
+      "vendor": "RingReady",
+      "product": "AI receptionist for insurance agents (24/7 call answering, quote intake, booking, routing)",
+      "fit_for_this_business": "Closest low-cost substitute for the after-hours phone gap: answers calls, captures line of business, books consultations and texts a summary. Insurance-specific script, 3-minute setup, call forwarding so existing numbers stay. Weaker on the three-brand web-form/email side and on writing into an AMS/CRM, which is where this opportunity's value sits.",
+      "price": "$39 per month flat, no setup fee, no contracts, no per-minute charges (insurance page)",
+      "source_type": "vendor page",
+      "source_url": "https://www.ring-ready.com/industries/insurance"
+    },
+    {
+      "vendor": "Awava",
+      "product": "AI receptionist + AI assistant for insurance agencies (answers phone 24/7, web-lead replies in seconds, booking)",
+      "fit_for_this_business": "Insurance-specific, states it never quotes or binds; bundles website, web-lead response and renewal outreach. Closest published comparison for a full agency-grade package with a real setup fee.",
+      "price": "AI Pro: $1,997 setup plus $397 per month; the AI Receptionist alone is $97 per month added to the Website or Core plan",
+      "source_type": "vendor page",
+      "source_url": "https://awava.ai/insurance-agents"
+    },
+    {
+      "vendor": "Structurely (21X)",
+      "product": "AI inside-sales / conversational agent (voice, SMS, email) sold as platform fee plus usage",
+      "fit_for_this_business": "Can be tailored to an industry and does multi-channel follow-up, so it covers qualification and nurture, but platform fee is quote-only and insurance-specific routing/AMS work still falls to the agency.",
+      "price": "Platform fee not public (Small Team / Large Team 'contact sales'); usage published as voice from $0.07 per minute (BYOC), SMS from $0.02 per message, AI email from $0.02 per email",
+      "source_type": "vendor pricing page",
+      "source_url": "https://www.structurely.com/pricing"
+    },
+    {
+      "vendor": "Smith.ai",
+      "product": "AI-first / hybrid receptionist (AI plus human backup) with custom integrations on the top tier",
+      "fit_for_this_business": "A buy-it-now alternative that blends AI and humans; strong on call handling and intake, custom integrations only at Enterprise, and it is not insurance-specific so appetite/routing logic would have to be taught.",
+      "price": "Pro: $2.00 per real call at 75 calls/month, $1.80 at 150, $1.67 at 300; Enterprise $500 per month at $1.67 per call with custom prompting and unlimited custom integrations",
+      "source_type": "vendor pricing page",
+      "source_url": "https://smith.ai/pricing/ai-receptionist"
+    },
+    {
+      "vendor": "Ruby",
+      "product": "Live virtual receptionists (24/7 live answering, intake, scheduling, bilingual)",
+      "fit_for_this_business": "The 'hire a person who answers' option without headcount: real humans, 24/7, lead qualification and scheduling included, no setup fees. Priced by receptionist minutes, so a small agency pays for a shallow amount of coverage and the agent cannot classify insurance lines or update the AMS.",
+      "price": "$250/month for 50 receptionist minutes; $395/month for 100; $720/month for 200; $1,725/month for 500. Chat-only plans $143/$335/$520 per month for 10/30/50 chats",
+      "source_type": "vendor pricing page",
+      "source_url": "https://www.ruby.com/plans-and-pricing/"
+    },
+    {
+      "vendor": "Bridge (existing vendor)",
+      "product": "Insurance agency phone/communications platform with AMS integration; higher tier adds automated call summaries and sentiment",
+      "fit_for_this_business": "The agency's incumbent: already holds the phone/SMS/chat and AMS360 integration, and its upper tier adds AI call summaries. The cheapest incremental path for call intelligence, but it summarises calls rather than qualifying web/email enquiries, applying routing across three brands, or drafting replies for approval - and API access sits on a Custom plan with a 20-user minimum.",
+      "price": "$35 per user per month (list shows $25 crossed out); higher tier $65 per user per month including automated call summaries; Custom plan (API access, 20-user minimum) price not public",
+      "source_type": "vendor pricing page",
+      "source_url": "https://www.bridge.insure/resources/pricing"
+    },
+    {
+      "vendor": "Hire a person (market benchmark)",
+      "product": "Part-time or full-time customer service representative / after-hours intake clerk",
+      "fit_for_this_business": "The do-nothing-technical option: a licensed or unlicensed CSR can qualify and route, and only licensed staff can discuss coverage. But a 17-person agency already staffs 8:15-4:15, and adding evening coverage means a second shift or overtime, so cost scales linearly with hours and does not solve the weekend gap.",
+      "price": "New Jersey customer service representatives: median $47,740 per year ($22.95/hour); 10th percentile $35,520, 90th percentile $72,040; loaded at 1.25x for benefits the median is about $59,675 per year (about $4,973 per month)",
+      "source_type": "government data",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ"
+    }
+  ],
+  "running_costs": [
+    {
+      "item": "Cloud hosting (intake service + Postgres + audit log)",
+      "cost": "$12-$24 per month",
+      "basis": "One small DigitalOcean Basic Droplet: 1 GiB/1 vCPU $6, 2 GiB/1 vCPU $12, 4 GiB/2 vCPU $24 per month; the $12-$24 sizes are the realistic range for this workload (inference)",
+      "source_url": "https://www.digitalocean.com/pricing/droplets"
+    },
+    {
+      "item": "LLM usage (classification, drafting)",
+      "cost": "$3-$10 per month at pilot volume",
+      "basis": "Claude Haiku 5.5 at $0.10 per MTok input and $0.50 per MTok output; inference: ~600 enquiries/month x ~8k input tokens of routing rules/reply library context = ~4.8M input tokens ($0.48) plus ~0.7M output tokens ($0.35), with headroom for retries and Sonnet 5.5 escalation at $2/$10 per MTok",
+      "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing"
+    },
+    {
+      "item": "SMS acknowledgements and qualification texts",
+      "cost": "about $12 per month at ~1,500 message parts",
+      "basis": "Telnyx $0.004 per outbound message part plus carrier passthrough (Telnyx's own example uses ~$0.0038 blended per part) = ~$0.0078 per part; part volume is an estimate (inference) pending the agency's actual enquiry count",
+      "source_url": "https://telnyx.com/pricing/elastic-sip"
+    },
+    {
+      "item": "Missed-call capture and voicemail-to-text minutes",
+      "cost": "about $1-$3 per month",
+      "basis": "Telnyx inbound local $0.0032 per minute and outbound $0.005 per minute; inference: ~200-400 after-hours voicemail minutes/month on the Edison line",
+      "source_url": "https://telnyx.com/pricing/elastic-sip"
+    },
+    {
+      "item": "10DLC brand and campaign registration (one-time, not monthly)",
+      "cost": "$4.50 brand fee + $15 per campaign submission",
+      "basis": "Telnyx publishes a $4.50 brand fee and a $15 campaign review fee per submission or resubmission",
+      "source_url": "https://support.telnyx.com/en/articles/5634625-10dlc-fees-and-charges"
+    },
+    {
+      "item": "Scheduling (callback/meeting booking)",
+      "cost": "$0",
+      "basis": "Cal.diy community edition is MIT-licensed and self-hosted on the same VM; or use the office calendar at no extra licence cost",
+      "source_url": "https://cal.com/blog/calcom-v6-4"
+    },
+    {
+      "item": "Phase 2 after-hours voice agent",
+      "cost": "about $22 per month for 300 minutes; roughly $0.07-$0.31 per minute depending on voice and model",
+      "basis": "Retell AI: $0.055 per minute voice infrastructure + $0.015 per minute platform TTS + Claude 5.5 Haiku at $0.0032 per minute = ~$0.073 per minute; 300 minutes is an inference for one office's after-hours calls",
+      "source_url": "https://www.retellai.com/pricing"
+    }
+  ],
+  "suggested_pricing": {
+    "pilot_fee": "$2,500 fixed for the four-week Edison personal-lines pilot, paid up front (inference)",
+    "setup_fee": "$4,500 one-time for production configuration across the three brands, crediting the pilot fee if the agency continues within 30 days (inference)",
+    "monthly_fee": "$550 per month for the pilot configuration (Edison, personal lines, forms + email + SMS); $950 per month once all three brands and the after-hours voice agent are live (inference)",
+    "reasoning": "Inference, reasoned against published competitor prices and the audit's impact estimate. The audit values the intake work at $23,868-$59,670 a year, and the agency has no public revenue or lead-volume data, so pricing is set as a small fraction of the low-end value rather than a share of it: $550/month (~$6,600/yr) is about 28% of the low end and about 11% of the high end, leaving the agency most of the benefit. It is priced at parity with the obvious substitutes: Ruby at $720/month for 200 receptionist minutes and $395 for 100, Awava at $397/month after a $1,997 setup, Smith.ai at $1.67-$2.00 per call, and the incumbent Bridge uplift from $35 to $65 per user (about $510/month across 17 staff for call summaries alone). What justifies sitting at the top of that band rather than at RingReady's $39 flat rate is the work those products do not do here: three brands with three routing rules, classification across personal lines and ~10 commercial niches, a licensed-approver queue with an audit trail, and AMS/CRM write-back. The $4,500 setup is roughly 2.25x Awava's $1,997 because the build is 13-16 founder-days (phases 0-3) rather than a self-serve configuration, and it covers the two things the agency cannot buy off the shelf: the multi-brand routing matrix and the approval/audit workflow. The $2,500 pilot fee is about 1.25x Awava's setup fee, small enough for a principal to approve without procurement, and large enough to pay for the three weeks of build that precede the pilot; it is deliberately below the $4,500 setup so that the pilot is the low-risk entry point. If the agency insists on a lower monthly, the fallback is the same $550/month with the voice agent and the second and third brands priced as separate $200/month modules."
+  },
+  "leverage": [
+    {
+      "point": "The agency already owns the intake surface: Agency Revolution forms on an FMG Suite site, with a documented path to have a webhook added to nominated forms at no extra product cost - so the pilot does not require a website rebuild or a new form vendor.",
+      "source_url": "https://help.agencyrevolution.com/en/agencyzoom-integration-forge-website-forms"
+    },
+    {
+      "point": "Bridge is already in place for phone, SMS, chat and AMS360 integration, including a documented Web Service API setup for the management system - the write-back path exists if the agency is on AMS360 and on a Bridge plan with API access.",
+      "source_url": "https://portal.bridge.insure/knowledge/ams360-integration"
+    },
+    {
+      "point": "Published, very low infrastructure rates make the gross margin on a retainer high: Telnyx inbound at $0.0032/min and SMS at $0.004/part, DigitalOcean from $12/month, and Claude Haiku 5.5 at $0.10 per MTok input mean running costs are tens of dollars a month against a $550-$950 retainer.",
+      "source_url": "https://telnyx.com/pricing/elastic-sip"
+    },
+    {
+      "point": "Self-hostable, permissively licensed components (Cal.diy under MIT for scheduling) let the consultancy build a shared core without redistribution constraints, which matters if the same intake product is later sold to other agencies.",
+      "source_url": "https://cal.com/blog/calcom-v6-4"
+    },
+    {
+      "point": "The pattern is repeatable: a multi-brand independent agency with ~40 carrier appointments, 17 staff, weekday-only hours and vendor-generated content is a common shape, so one working build becomes a template for other independent agencies in Middlesex and Monmouth counties (inference from the profile, not a measured market size).",
+      "source_url": "https://www.fraserbrothers.com/meet-the-team"
+    },
+    {
+      "point": "Local presence: the consultancy is in Milltown, roughly 10 minutes from the Edison office, so discovery, approver training and on-site E&O conversations can be done in person - something the SaaS vendors selling into this account cannot offer.",
+      "source_url": "https://www.fraserbrothers.com/contact"
+    }
+  ],
+  "edge_vs_competitors": "Against RingReady ($39/month) and Ruby ($250-$1,725/month) the edge is not price, it is coverage of the channels this agency actually loses leads on: the embedded web forms, the shared inbox and the three separately branded phone lines, with one lead record that carries the owning brand, office and producer. Against Awava and Smith.ai the edge is the licensed-approver queue and an audit trail built for a New Jersey producer's licensing constraint (the agent may never quote, advise or bind), plus write-back into the agency's own AMS rather than a parallel inbox. Against Structurely/21X the edge is a fixed, published price instead of a quote-only platform fee, and against Bridge's $65/user AI tier the edge is per-enquiry qualification and drafting rather than per-call summarisation - at roughly the same monthly money as the Bridge uplift for 17 seats. Where it has no edge: brand recognition, 24/7 human fallback (Smith.ai, Ruby), a polished self-serve onboarding (RingReady activates in minutes), SOC 2-grade security attestations that a one-founder side business cannot show, and the fact that the buyer may simply prefer to turn on a feature in a vendor he already pays. The realistic positioning is 'the integration and approval layer for the enquiry flow you already own', sold on local presence and a four-week measured pilot, not on being cheaper."
+  ,
+  "risks_compliance": [
+    {
+      "issue": "Unlicensed activity: New Jersey treats soliciting, negotiating or selling insurance as requiring a producer licence, and a licensed producer may not permit an unlicensed person to transact that business; an AI agent that discusses coverage or quotes prices looks like exactly that.",
+      "rule_or_source": "N.J.A.C. 11:17A-1.3 (who must be licensed; a single act or holding out is sufficient; producers may not allow unlicensed persons to transact), implementing N.J.S.A. 17:22A-26 et seq.",
+      "confirmed": true,
+      "mitigation": "Hard-block price, coverage, binding and certificate language in the agent's output filters; only an identified licensed producer or CSR can release a client-facing message; the pilot scope excludes coverage questions and routes any such message to a person; agency's E&O contact reviews scripts before go-live.",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17A-1-3"
+    },
+    {
+      "issue": "TCPA exposure if the agent makes AI-voiced calls or sends texts without consent; the FCC has held that AI-generated voices are 'artificial or prerecorded' voices under the TCPA.",
+      "rule_or_source": "FCC Declaratory Ruling FCC 24-17 (Feb 8, 2024)",
+      "confirmed": true,
+      "mitigation": "Inbound-only voice in phase 2 (no outbound AI calling); SMS only as a reply to an inbound enquiry or with consent language on the form; honour STOP/HELP; no AI voice on marketing campaigns.",
+      "source_url": "https://docs.fcc.gov/public/attachments/FCC-24-17A4.pdf"
+    },
+    {
+      "issue": "Application-to-person SMS to US numbers requires 10DLC brand and campaign registration before messages deliver; unregistered traffic is filtered.",
+      "rule_or_source": "Telnyx 10DLC brand and campaign help documentation (Twilio documents the same requirement for its own numbers)",
+      "confirmed": true,
+      "mitigation": "Register the agency's brand and a low-volume conversational campaign (with the site's opt-in wording documented) before the pilot starts; budget the one-time brand and campaign fees and allow lead time for review.",
+      "source_url": "https://support.telnyx.com/en/articles/6339152-how-to-create-a-10dlc-campaign"
+    },
+    {
+      "issue": "GLBA Safeguards Rule: an insurance agency is generally a financial institution, so nonpublic personal information handled by the agent and by the consultancy as a service provider must sit inside a written information security programme with vendor oversight.",
+      "rule_or_source": "FTC Safeguards Rule, 16 CFR Part 314 (WISP, designated Qualified Individual, encryption, MFA, service-provider oversight, incident response)",
+      "confirmed": true,
+      "mitigation": "Deliver a service-provider addendum: encryption at rest and in transit, MFA on all admin access, least-privilege and role-based access, no training on client data, defined retention and deletion, incident notification, and support for the agency's annual WISP review.",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/ftc-safeguards-rule-what-your-business-needs-know"
+    },
+    {
+      "issue": "Call recording consent: New Jersey is a one-party-consent state, but the agency's callers may be in two-party-consent states, and recording an AI-handled call without notice is a needless risk.",
+      "rule_or_source": "N.J.S.A. 2A:156A-4 (lawful interception; party consent exception)",
+      "confirmed": true,
+      "mitigation": "Disclose recording/AI answering in the greeting, or disable recording and keep transcripts only; state the disclosure in the pilot scope and get E&O sign-off. Phase 2 only.",
+      "source_url": "https://law.justia.com/codes/new-jersey/title-2a/section-2a-156a-4/"
+    },
+    {
+      "issue": "Regulatory expectations for AI in insurance are set at the insurer level; the agency's carriers may push vendor due-diligence and documentation requirements down onto the agency.",
+      "rule_or_source": "NJ DOBI Bulletin No. 25-03, 'The Use of Artificial Intelligence Systems in Insurance' (Feb 11, 2025), addressed to all insurers authorised or admitted in New Jersey, expecting a written AI Systems Program and third-party due diligence",
+      "confirmed": true,
+      "mitigation": "Offer the agency a one-page system description, data-flow diagram, model/prompt version log and test results to hand to carriers; expect this to be requested at some point and price the documentation into the setup fee.",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt25_03.pdf"
+    },
+    {
+      "issue": "New Jersey Data Privacy Act obligations (controller duties, consumer rights) could apply if volume thresholds are met.",
+      "rule_or_source": "NJDPA, effective January 15, 2025; applies at 100,000 consumers of personal data, or 25,000 consumers plus revenue from selling personal data",
+      "confirmed": true,
+      "mitigation": "An agency of this size is very likely below the thresholds (inference), but the build should still honour access/deletion requests, minimise retained fields, and publish the SMS opt-in and privacy language on the form - which the 10DLC campaign also requires.",
+      "source_url": "https://www.njconsumeraffairs.gov/ocp/Pages/NJ-Data-Privacy-Law-FAQ.aspx"
+    },
+    {
+      "issue": "Errors-and-omissions exposure from a wrong classification or a drafted line that reads like advice, especially where life/health or Medicare enquiries carry medical detail.",
+      "rule_or_source": "General professional liability exposure for producers; NJ DOBI AI bulletin's emphasis on unfair trade practices and consumer harm, and N.J.A.C. 11:17A-1.3 on licensed activity",
+      "confirmed": false,
+      "mitigation": "Scope the pilot to personal auto/home; exclude medical details from the pilot data model; approver must edit or reject rather than rubber-stamp; full audit log; escalate anything involving claims, cancellations or coverage to a person. The agency should confirm its E&O carrier's position on AI-assisted intake - not confirmable from public sources.",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt25_03.pdf"
+    },
+    {
+      "issue": "Integration-dependency risk: the Agency Revolution webhook is added at the vendor's discretion, and Bridge API access is gated behind a Custom plan with a 20-user minimum.",
+      "rule_or_source": "Agency Revolution documentation states the webhook is requested through its support team; Bridge pricing lists API access only on the Custom plan with a 20-user minimum",
+      "confirmed": true,
+      "mitigation": "Make the pilot contract conditional on the webhook being enabled (fallback: scheduled CSV export from the form centre, plus inbox parsing); do not promise AMS write-back until the agency's AMS and Bridge plan are confirmed.",
+      "source_url": "https://www.bridge.insure/resources/pricing"
+    }
+  ],
+  "feasibility": {
+    "technical_1_5": 4,
+    "commercial_1_5": 3,
+    "weeks_to_pilot": "About 3 weeks of build (13-16 founder-days) to a working Edison pilot, then a 4-week measured pilot; ~7 weeks kickoff to pilot report. Voice adds 2-3 weeks afterwards.",
+    "verdict": "Go with conditions",
+    "reasoning": "Technically this is a tractable build: the channels already exist and are documented (Agency Revolution form webhook on request, Bridge for phone/SMS and AMS integration, self-hosted scheduling), the expensive part is rules and wording, not infrastructure, and running costs land in the tens of dollars a month. The conditions are concrete. First, the pilot must be sold as forms + inbox + missed-call capture with a licensed-approver queue - not as a live AI phone agent - because producer licensing and TCPA make voice the riskiest surface and the agency has to trust the routing rules first. Second, it depends on two vendor gates that are outside our control: Agency Revolution enabling a webhook on the agency's specific forms, and knowing which AMS holds the book (Bridge's documented AMS360 path only helps if they are on AMS360). Third, the commercial case is thinner than the technical one: the buyer is a single principal with no public revenue, lead volume or response-time data, the price floor is set by $39/month AI receptionists and $397/month agency packages with a $1,997 setup, and the incumbent Bridge vendor can add call intelligence for a per-user uplift. That is why the pilot is priced at $2,500 with a written baseline and explicit exit criteria: it buys the missing data (volume, after-hours share, time-to-response, draft acceptance) at low cost to both sides, and the outcome is a defensible either/or rather than an open-ended build."
+  },
+  "discovery_questions": [
+    "Which agency management system holds the book (AMS360, Applied Epic, HawkSoft, EZLynx, other), and is Bridge your phone system, your CRM, or just the secure-upload and texting tool?",
+    "Who administers your Agency Revolution/FMG website, and are the quote forms the Forge form product (webhook-capable) or Fuse forms (CSV/Zapier only)?",
+    "Roughly how many quote requests, contact-form submissions and inbound calls do you get in a typical week, and how many arrive outside office hours or at weekends?",
+    "Do you currently measure time-to-first-response? If so, where does that timestamp live, and can we export 8-12 weeks of it?",
+    "Who decides which of the three brands, offices and producers owns a new enquiry today, and what are those rules written down as?",
+    "Do you text clients today from a business number, and does the website form carry opt-in language we can use for 10DLC registration?",
+    "Which calendar do producers actually use for callbacks, and do you want customers to self-book or only to request a slot?",
+    "What do your carriers give you as written appetite or underwriting guides, and who signs off on what the agent is allowed to say about eligibility?",
+    "What has your E&O carrier or broker said about AI-assisted intake, retention and call recording, and who signs off internally on scripts?",
+    "If the pilot works, who operates the approval queue day to day, what is the acceptable turnaround for approvals outside office hours, and what would make you switch it off?"
+  ],
+  "caveats": [
+    "Every business fact about Fraser Brothers comes from audit.md, profile.json and analysis.json and was treated as already sourced; only the pages I re-opened for design, pricing and compliance are cited fresh here.",
+    "The audit's $23,868-$59,670 annual impact is an estimate built on NJ median wages and an assumed 0.4-1.0 FTE of intake work; no call volume, lead count, close rate or revenue figure for the agency is public, so no revenue or conversion claim is made anywhere in this plan.",
+    "Running costs assume a small pilot volume (roughly 600 enquiries and 1,500 message parts a month). These volumes are inferences, not the agency's numbers, and the SMS and model lines will move with actual volume.",
+    "Pilot fee, setup fee and monthly fee are the consultancy's own inferences, not market prices; competitor prices are quoted as published and may change or be superseded by plan changes.",
+    "Vendor pages describing AI receptionist results (for example RingReady's '40% more quote requests') are vendor marketing claims and are treated as Low strength; they are not relied on for any figure here.",
+    "The design deliberately excludes live AI voice answering from the pilot; the feasibility and pricing reflect that narrower scope, and the voice phase would need its own compliance review.",
+    "Whether Bridge API write-back is available to this agency depends on their Bridge plan and their AMS, neither of which is public; the pilot does not depend on write-back."
+  ],
+  "data_gaps": [
+    "No call, form or email volume data, and no measured time-to-first-response, are public: the baseline has to be built during discovery, and the pilot's value case rests on that measurement.",
+    "The agency's agency management system is unknown (Bridge documents AMS360, but the agency could be on Applied Epic, HawkSoft or EZLynx).",
+    "Which Agency Revolution form product the site uses (Forge website forms vs Fuse campaign forms) could not be determined from public pages; Forge supports a vendor-configured webhook, Fuse documents only CSV export and outbound Zapier.",
+    "Bridge's Custom plan (the only tier listing API access) is price-on-request with a 20-user minimum, so incremental API cost is not public.",
+    "Twilio's US voice and SMS rate tables are rendered client-side and could not be read from the official pricing pages in this session, so Telnyx's published rates are used instead; Twilio retail rates were not verified.",
+    "The office email platform (Microsoft 365 or Google Workspace) is not visible publicly, so that integration is marked unconfirmed.",
+    "Telephone number rental and E911 fees on Telnyx were not confirmed from a page I could open, so they are excluded from the running-cost table.",
+    "No customer reviews, ratings, job postings, headcount, revenue or premium figures could be retrieved (review and job sites blocked automated access), so the size of the intake pain is inferred from operating choices only.",
+    "Whether Fraser Brothers' carriers impose vendor due-diligence or AI documentation requirements on producers is not public; NJ DOBI Bulletin 25-03 is addressed to insurers, so any downstream agency obligation is an inference.",
+    "No New Jersey guidance specifically governing producer (as opposed to insurer) use of AI was found; the producer-side constraint that is actually confirmed is the licensing rule in N.J.A.C. 11:17A-1.3, plus E&O considerations that are not publicly documented.",
+    "Gross margins assume the consultancy does the build itself on its own tooling; no cost for founder time, insurance or business registration is included."
+  ]
+}

@@ -1,0 +1,415 @@
+{
+  "avenue": "restaurant-table-state",
+  "one_line": "Cameras plus zone/state logic that tell a full-service restaurant which tables are open, seated, eating, finished or dirty, so hosts seat faster and bussers clear the right table first \u2014 sold as a locally installed, on-premise system to independent Middlesex County restaurants with 15+ tables.",
+  "problem": {
+    "summary": "In a full-service restaurant the floor is the only system nobody instruments: the POS knows an order was rung, the reservation book knows a party was seated, but nothing knows that table 14 has been dirty for six minutes while three parties wait at the host stand. Managers act as the human integration layer \u2014 walking the room, reading tables, radioing bussers. The cost shows up three ways: (1) slow bussing directly shortens the number of turns in the peak hour, and turn time is worth money (published peer-reviewed result: about 1% higher average sales per check combined with a meal roughly 10% shorter, giving about 11% higher sales per minute at a large casual-dining chain; the 2017 working-paper version of the same study reports slightly different point estimates \u2014 2.91% / 9.74% / 10.77% \u2014 on slightly over 2.6 million check-level observations); (2) wait at the door is a documented driver of dissatisfaction \u2014 in one multi-stage study the entry/host-stand wait had the largest influence on overall service evaluation of the stages studied; (3) front-of-house labor, the person who would otherwise watch the room, is the single largest cost line in a business where salaries and wages run a median 36.5% of sales and net margins run 1-7%. Independents rarely buy anything for this because the packaged options are chain-priced or require a POS ecosystem.",
+    "evidence": [
+      {
+        "fact": "Middlesex County, NJ private-sector full-service restaurants (NAICS 722511): 587 establishments, 9,110 annual average employees, $287.8M total annual wages, average annual pay $31,591 (about 15.5 employees per establishment on average).",
+        "year": "2024",
+        "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv"
+      },
+      {
+        "fact": "Full-service restaurant respondents reported salaries and wages (including benefits) at a median of 36.5% of sales in 2024, up from roughly 33% in the 2010/2013/2016 editions; survey base was more than 900 operators.",
+        "year": "2025 (report on 2024 data)",
+        "source_url": "https://www.restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-labor-costs-are-well-above-historical-averages/"
+      },
+      {
+        "fact": "The tabletop-technology study states that, because of a low industry profit margin of between 1% and 7%, 'investing extra budget in technology innovation can seem hard to justify' (the paper attributes that point to Mogavero and A'agnese, 2016); elsewhere the same paper argues the opposite direction, that a sales lift of close to 3% is economically meaningful given thin casual-dining margins. Both framings appear in the document; the 1-7% range is quoted, not measured by the authors.",
+        "year": "2017 working paper; published in Management Science 2020 (first online 2019) \u2014 the working-paper copy was the one read",
+        "source_url": "https://faculty.wharton.upenn.edu/wp-content/uploads/2017/09/2017.9.10_Tabletop_For_Submission_WithNames.pdf"
+      },
+      {
+        "fact": "The published version of the same tabletop study reports that tabletop devices raised average sales per check by approximately 1% (95% confidence interval 0.8% to 1.02%) and reduced meal duration by close to 10% (confidence interval -9.94% to -9.54%), which combines to roughly 11% higher sales per minute; the publisher abstract does not state the sample size.",
+        "year": "2020 (Management Science 66(10):4496-4515; abstract read via the RePEc record, full published text not read)",
+        "source_url": "https://ideas.repec.org/a/inm/ormnsc/v66y2020i10p4496-4515.html"
+      },
+      {
+        "fact": "A field study covering 94,404 customer groups at a popular Indian restaurant over a 12-month period found longer waits associated with more guests leaving before being seated (reneging), longer time until the customer returns, and shorter dining visits.",
+        "year": "2018",
+        "source_url": "https://doi.org/10.1016/j.jom.2018.05.001"
+      },
+      {
+        "fact": "Across multi-stage service settings including restaurants, the wait before service (the entry/host-stand wait) had the largest influence on overall service evaluation of the stages studied.",
+        "year": "2015",
+        "source_url": "https://www.inderscience.com/info/e_inarticle.php?artid=67435"
+      },
+      {
+        "fact": "Industry reporting says restaurants are still early in computer-vision adoption and 'a dominant use case for computer vision has not emerged yet'; Presto dropped its vision product to focus on voice AI, and most restaurants already own security cameras but lack the time to review footage.",
+        "year": "2025",
+        "source_url": "https://www.restaurantbusinessonline.com/technology/restaurants-take-closer-look-computer-vision"
+      },
+      {
+        "fact": "New Jersey's minimum wage rose to $15.92/hour for most employees on January 1, 2026, raising the floor cost of every bussing and hosting hour.",
+        "year": "2026",
+        "source_url": "https://www.nj.gov/labor/lwdhome/press/2025/20251001_Minimum_Wage.shtml"
+      },
+      {
+        "fact": "A consultancy case write-up (unnamed 22-table pizzeria) claims 5.8 minutes between 'guests left' and 'table ready' before a pilot, and estimates that dirty tables cost roughly $2,600/week in lost covers during the Friday-Saturday peak. (vendor/consultancy blog, single unnamed client; treat the dollar figure as unverified and rate it Low)",
+        "year": "2026",
+        "source_url": "https://data-metrics.pro/en/blog/computer-vision-restaurante-mesas-dodo-pizza/"
+      }
+    ]
+  },
+  "buyers": [
+    {
+      "business_type": "Full-service, independently owned sit-down restaurants (Italian, diner, seafood, pub, taqueria with table service)",
+      "naics": "722511",
+      "size_where_it_matters": "15+ tables and roughly 20-80 staff; below ~10 tables the walk-around is cheaper than the system (stated in a practitioner case write-up, Low strength)",
+      "why": "Enough tables that no one can see the whole room from the host stand, plus enough covers in a 2-hour peak that one recovered turn per table per night is measurable money. 587 such establishments in Middlesex County per BLS QCEW."
+    },
+    {
+      "business_type": "Multi-unit local groups (2-5 locations) run by one owner or a small management team",
+      "naics": "722511",
+      "size_where_it_matters": "2-5 sites, 40-200 staff total",
+      "why": "Replication economics: one calibration effort amortized over several rooms, and a manager who cannot be in two dining rooms. Highest willingness to pay for a dashboard comparing sites. (inference: no local survey of willingness to pay was found)"
+    },
+    {
+      "business_type": "High-volume casual dining with waitlists (weekend dinner queues, 60-120 seats)",
+      "naics": "722511",
+      "size_where_it_matters": "60+ seats with a real Friday/Saturday queue",
+      "why": "Where the wait-to-be-seated problem is worst and where a host stand already exists to receive the alert; also where the entry wait matters most to satisfaction."
+    },
+    {
+      "business_type": "Country clubs, banquet halls, hotel F&B and assisted-living dining rooms in the county",
+      "naics": "722320 / 721110 / 623311",
+      "size_where_it_matters": "One large dining room, 60-200 seats, 20-100 staff",
+      "why": "Same problem, fewer competitors chasing them, purchasing process is slower but budget exists. (inference: no direct source found on this segment's adoption)"
+    },
+    {
+      "business_type": "Full-service restaurants already on a reservation platform with a digital floor plan",
+      "naics": "722511",
+      "size_where_it_matters": "Any size with OpenTable/Resy/SevenRooms/Toast Tables",
+      "why": "They already treat table state as data and already have table IDs to map camera zones onto; lower integration cost and a natural place to surface the alert. (inference from what those products do)"
+    }
+  ],
+  "existing_solutions": [
+    {
+      "vendor": "PreciTaste",
+      "product": "Vision/Station Assistant (kitchen and inventory vision)",
+      "what_it_does": "Camera-based inventory and demand monitoring in kitchens and front line; not primarily table-state, but it sets the market price for restaurant vision per location.",
+      "pricing": "About $2,000 install per location, then about $399/month (2025 trade press)",
+      "source_url": "https://www.restaurantbusinessonline.com/technology/restaurants-take-closer-look-computer-vision"
+    },
+    {
+      "vendor": "Presto Automation",
+      "product": "Presto Vision (discontinued)",
+      "what_it_does": "Cameras in lobby and dining areas to alert managers to long waits and guest bounce rates; piloted at Outback Steakhouse franchisee Evergreen Restaurant Group. Presto later dropped the vision product to focus on voice AI.",
+      "pricing": "Unknown (product discontinued; any performance claim in the launch release is vendor-stated and rated Low)",
+      "source_url": "https://presto.com/presto-launches-computer-vision-product-for-real-time-restaurant-operations-insights-2/"
+    },
+    {
+      "vendor": "Ma\u00eetre'd",
+      "product": "Ma\u00eetre'd AI floor manager",
+      "what_it_does": "Closest direct competitor to this avenue: a few cameras per dining room feed a back-office computer that produces per-table state (ungreeted, not cleared, ready-but-empty, section pace), reads it against POS/reservation/kitchen data, and routes tasks. Starts in shadow/observe mode; delegation in pilot. Claims an afternoon install (vendor claim, Low).",
+      "pricing": "Unknown (no public price; demo/quote)",
+      "source_url": "https://www.maitred.restaurant/"
+    },
+    {
+      "vendor": "Aldente AI",
+      "product": "Aldente Vision (restaurant camera analytics)",
+      "what_it_does": "Camera-based restaurant analytics including table occupancy and service-flow metrics.",
+      "pricing": "Unknown",
+      "source_url": "https://aldenteai.com/analytics"
+    },
+    {
+      "vendor": "Wobot",
+      "product": "Wobot camera-analytics platform",
+      "what_it_does": "Runs a library of configurable use cases on a restaurant's existing security cameras, including detecting a waiting customer with no employee present; positioned as software on top of cameras you already own.",
+      "pricing": "Unknown",
+      "source_url": "https://www.restaurantbusinessonline.com/technology/restaurants-take-closer-look-computer-vision"
+    },
+    {
+      "vendor": "Resy (American Express)",
+      "product": "Resy Platform / Platform 360 table management",
+      "what_it_does": "Digital floor plan, reservations, waitlist and table management \u2014 i.e. the software layer that table-state sensing must feed. Does not sense the room.",
+      "pricing": "$289/month Platform, $459/month Platform 360 (published on Resy pricing page)",
+      "source_url": "https://resy.com/join/plans-pricing/"
+    },
+    {
+      "vendor": "SevenRooms",
+      "product": "SevenRooms table management / CRM",
+      "what_it_does": "Reservations, table management, waitlist and guest CRM; no camera sensing.",
+      "pricing": "No published price (quote only)",
+      "source_url": "https://sevenrooms.com/pricing/"
+    },
+    {
+      "vendor": "Frigate (open source) + Home Assistant",
+      "product": "Frigate NVR with object detection and zones",
+      "what_it_does": "Self-hosted NVR whose zone system defines a polygon area per camera, applies object-type filters, evaluates presence from the bottom-center of an object's bounding box, and can require an object to be in the zone for several consecutive frames (zone inertia) or a minimum loitering time; zones are combined with required-zone settings so that alerts/review items and snapshots are only created when an object such as a person enters a given zone. That is the standard DIY building block for 'is a person at this table'; it requires custom state logic on top, because zones give presence, not 'finished' or 'needs cleaning'.",
+      "pricing": "Free (open source); optional Frigate+ model subscription \u2014 the page shows a $5 charge for each additional fine-tune beyond the 12 included but does not print the annual subscription price",
+      "source_url": "https://docs.frigate.video/configuration/zones/"
+    }
+  ],
+  "gap_for_local_installer": "Two gaps. First, a price/packaging gap: PreciTaste is chain-priced (~$399/mo + ~$2k install), Presto exited, Ma\u00eetre'd sells with no public price, and the reservation platforms (Resy $289-459/mo, SevenRooms quote-only) sell software but never sense the room. An independent 40-table restaurant in Milltown is unlikely to buy a national contract plus a multi-week onboarding, but may buy a $1,500-3,000 install plus $150-350/month from a person who answers the phone (pricing is my proposal, not a market rate I could source). Second, a service gap: this is a physical install with cable runs, camera aiming, glare/occlusion tuning, per-restaurant labels, and a manager who needs the alert to land somewhere they already look (radio, phone, POS). National vendors cannot economically re-aim a camera in a diner in Milltown on a Tuesday. The honest counter-argument: the category has already seen one funded entrant (Presto) exit vision, and the direct competitor (Ma\u00eetre'd) is explicitly positioned at this exact job, so defensibility is service quality and financing terms, not the model.",
+  "technical_approach": {
+    "established_pattern": "Detector + zones + a state machine, with a small VLM used only for exception review. Concretely: RTSP cameras -> person/table detection on an edge box -> per-table polygon (or per-table AOI derived from a detected table box) -> track IDs over time (ByteTrack/BoT-SORT in Ultralytics, or Frigate's built-in object tracking and zone inertia) -> rules: 0 persons in zone for N seconds after >=1 person was present = 'finished'; +M seconds = 'needs cleaning'; cleaning detected by a staff-track entering the zone = 'available'; seated + no staff contact for X min = 'ungreeted'. Debounce over multiple frames (the Dodo write-up describes requiring 5 consecutive matching frames over ~10s) to suppress flicker. A small VLM then looks at a single snapshot only when the rule engine is uncertain (e.g. table looks person-free but there are coats/bags, or a party is standing up) and returns a label plus a one-line reason for the manager. The VLM is the exception layer, not the main loop \u2014 per-frame VLM inference on many cameras is neither cheap nor stable enough for a 2-second alert latency. (inference from the throughput and latency characteristics of the tools listed)",
+    "models_and_tools": [
+      {
+        "name": "Ultralytics YOLO11 (detect + pose)",
+        "role": "Primary detector; n/s sizes run on edge accelerators. Pose helps distinguish a seated guest from a passing server near a table. (inference on the pose use)",
+        "source_url": "https://docs.ultralytics.com/models/yolo11"
+      },
+      {
+        "name": "Ultralytics license (AGPL-3.0 vs Enterprise)",
+        "role": "Commercial deployment in a closed-source product or embedded device requires a paid enterprise license \u2014 a real line item and a reason to prefer a permissively licensed detector for the shipped product.",
+        "source_url": "https://www.ultralytics.com/license"
+      },
+      {
+        "name": "Qwen2.5-VL-3B-Instruct",
+        "role": "Exception layer: scene questions from a single frame. The model card describes visual localisation by generating bounding boxes or points with stable JSON coordinate/attribute output, which is what a 'locate the tables' prompt needs. 3B should fit a Jetson-class box or a rented GPU (inference; I did not benchmark it).",
+        "source_url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct"
+      },
+      {
+        "name": "LFM2-VL (450M / 1.6B / 3B)",
+        "role": "Smaller on-device vision-language family for low-latency edge deployment; the LFM2-VL-3B release page describes it as the newest addition to a family that already included 450M and 1.6B, and notes the 3B runs on a 2.6B text backbone with a SigLIP2 encoder.",
+        "source_url": "https://www.liquid.ai/blog/lfm2-vl-3b-a-new-efficient-vision-language-for-the-edge"
+      },
+      {
+        "name": "LFM2.5-VL (450M / 1.6B / 3B)",
+        "role": "Successor generation, all three sizes shipping: the LFM2.5-VL-3B release note says it 'follows the architecture of our previous VLMs, LFM2.5-VL-1.6B and LFM2.5-VL-450M', is a non-reasoning model that answers directly to keep latency low for real-time/on-device use, and publishes fine-tuning docs. Candidate for the on-prem exception check.",
+        "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b"
+      },
+      {
+        "name": "llama.cpp (llama-mtmd-cli)",
+        "role": "Runtime for the small VLM on the edge box; LFM2-VL GGUF weights are published for it.",
+        "source_url": "https://huggingface.co/LiquidAI/LFM2-VL-450M-GGUF"
+      },
+      {
+        "name": "Frigate (+ Frigate+ fine-tuning)",
+        "role": "Open-source NVR with zones, tracking and MQTT/HTTP events, plus an optional paid service that fine-tunes a detector on your own uploaded, annotated frames (up to 12 fine-tunes per year with the annual subscription; extra fine-tunings $5 each). Limit worth knowing: Frigate+ models support only certain label types and you cannot add your own custom labels, so fine-tuning improves person/object detection, not the table-state rules. Fastest path to a working pilot.",
+        "source_url": "https://frigate.video/plus/"
+      },
+      {
+        "name": "Cactus (cactus-compute)",
+        "role": "On-device inference runtime (Apache 2.0) aimed at phones and wearables: one Python package that runs text, speech and vision models locally with tool calling, structured extraction and fine-tuning; the README documents a local OpenAI-compatible server only for the separate cactus-mlx path on Apple silicon. Relevant if the alert surface is a staff phone rather than a wall tablet.",
+        "source_url": "https://github.com/cactus-compute/cactus"
+      }
+    ],
+    "hardware": [
+      {
+        "item": "NVIDIA Jetson Orin Nano Super Developer Kit (8GB, 67 INT8 TOPS, supports up to four cameras)",
+        "approx_cost": "$249 list at launch (Dec 2024); street price has run higher",
+        "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/"
+      },
+      {
+        "item": "IP cameras (PoE, RTSP, H.264, 4-5MP; existing security cameras can often be reused)",
+        "approx_cost": "about $200 each per an industry source in 2025 ('a couple hundred bucks today', down from several thousand five years ago)",
+        "source_url": "https://www.restaurantbusinessonline.com/technology/restaurants-take-closer-look-computer-vision"
+      },
+      {
+        "item": "Mini PC host (Frigate's current recommendation: Beelink EQ13, Intel N100, dual NICs for an isolated camera VLAN)",
+        "approx_cost": "Unknown (price not stated on the page I read)",
+        "source_url": "https://docs.frigate.video/frigate/hardware/"
+      },
+      {
+        "item": "Whole-install reference point from a practitioner case: 1 Jetson Orin Nano + 2 recabled IP cameras + integration, 8-week pilot",
+        "approx_cost": "$4,800 install; $380/month operation (consultancy blog, unnamed client \u2014 treat as anecdote, not a benchmark)",
+        "source_url": "https://data-metrics.pro/en/blog/computer-vision-restaurante-mesas-dodo-pizza/"
+      }
+    ],
+    "fine_tuning_needed": "Yes, at the per-restaurant level \u2014 but not for the reason people expect. Generic person detection is solved; what needs calibration is the mapping from detections to your tables and your definition of 'finished'. A practitioner write-up claims that a stock COCO detector with no fine-tuning sits around 50-60% production accuracy for 'table after pizza' states, and that the floor is roughly 800 labeled images from the specific restaurant; their pilot used 1,400 images labeled in CVAT (vendor/consultancy claim, Low). Academic work confirms the pattern from the other direction: a YOLOv8 trained on one restaurant hit mAP@0.5 = 0.997 for the 'table' class but the authors explicitly warn the model was trained on one camera angle and one lighting regime and would need recalibration elsewhere. So: fine-tune lightly per site (or per camera cluster), and budget re-labeling whenever the floor plan or furniture changes.",
+    "data_needed": "Per restaurant: 1-3 days of recorded peak and off-peak video per camera (daylight, dusk, artificial light, full room, empty room), then ~800-1,500 labeled frames covering each table state (empty/clean, seated, food present, finished-with-plates, mid-clean, staff clearing) using the actual table IDs; plus a floor-plan export or a hand-drawn zone map; plus 2-4 weeks of POS or reservation timestamps to calibrate 'seated' and 'finished' against ground truth; plus a labelled list of false-alarm cases from the first two weeks of shadow mode.",
+    "difficulty": "Medium"
+  },
+  "measured_outcomes": [
+    {
+      "finding": "In the published version, tabletop ordering devices raised average sales per check by approximately 1% (95% CI 0.8%-1.02%) and reduced meal duration by close to 10% (95% CI -9.94% to -9.54%), which combines to roughly 11% higher sales per minute. The 2017 submitted working paper reports somewhat different point estimates (2.91%, 9.74%, 10.77%); I read the publisher abstract through a RePEc record and the working-paper PDF, not the full published article, so the number to quote to a client is the published ~1% / ~10% / ~11%.",
+      "year": "2020 (published; first online 2019; working paper 2017)",
+      "sample": "One large full-service casual-dining chain, staggered rollout, difference-in-differences; sample size is not stated in the published abstract (the 2017 working paper reports slightly over 2.6 million check-level observations)",
+      "study_type": "peer-reviewed",
+      "strength": "Medium",
+      "source_url": "https://ideas.repec.org/a/inm/ormnsc/v66y2020i10p4496-4515.html"
+    },
+    {
+      "finding": "Longer waits increase reneging (parties leaving before being seated), delay the customer's return, and shorten the dining visit \u2014 the mechanism by which host-stand blindness costs revenue. Single-restaurant setting, so treat effect sizes as site-specific.",
+      "year": "2018",
+      "sample": "94,404 customer groups at one restaurant over a 12-month period",
+      "study_type": "peer-reviewed",
+      "strength": "High",
+      "source_url": "https://doi.org/10.1016/j.jom.2018.05.001"
+    },
+    {
+      "finding": "Single-restaurant YOLOv8 table detector reached mAP@0.5 = 0.997 and mAP@0.5:0.95 = 0.985 for the 'table' class, with the authors cautioning the model was trained on one restaurant's camera angles and lighting and would need recalibration for other rooms.",
+      "year": "2025",
+      "sample": "One restaurant, custom dataset, 90/10 train-test split",
+      "study_type": "peer-reviewed",
+      "strength": "Medium",
+      "source_url": "https://dergipark.org.tr/en/download/article-file/4495676"
+    },
+    {
+      "finding": "Practitioner claim (vendor outcome claim, rated Low): in a 22-table pizzeria, an 8-week pilot with a fine-tuned YOLOv8m on 1,400 labeled images cut average cleanup time from 5.8 to 1.9 minutes and turnover from 31 to 27 minutes, adding roughly $1,350/week in peak covers; install $4,800, running $380/month.",
+      "year": "2026",
+      "sample": "1 unnamed restaurant, 8 weeks",
+      "study_type": "vendor",
+      "strength": "Low",
+      "source_url": "https://data-metrics.pro/en/blog/computer-vision-restaurante-mesas-dodo-pizza/"
+    },
+    {
+      "finding": "Same write-up reports 92-96% F1 in production for dirty-table detection and notes 4-8% of alerts are false positives or false negatives; it also says fast-food/tray formats and rooms of 5-8 tables do not pay back.",
+      "year": "2026",
+      "sample": "Practitioner experience, multiple deployments; no dataset published",
+      "study_type": "vendor",
+      "strength": "Low",
+      "source_url": "https://data-metrics.pro/en/blog/computer-vision-restaurante-mesas-dodo-pizza/"
+    },
+    {
+      "finding": "Industry reporting: no dominant computer-vision use case has emerged in restaurants, adoption is still at proof-of-concept stage for many operators, and at least one funded vendor (Presto) exited vision entirely after running a lobby/dining-room pilot with a casual-dining franchisee.",
+      "year": "2025",
+      "sample": "Trade-press interviews with WWT, Wobot, PreciTaste, Presto executives",
+      "study_type": "industry",
+      "strength": "Medium",
+      "source_url": "https://www.restaurantbusinessonline.com/technology/restaurants-take-closer-look-computer-vision"
+    }
+  ],
+  "legal_privacy": [
+    {
+      "issue": "Audio capture in the dining room",
+      "rule_or_precedent": "New Jersey's Wiretap Act requires the consent of at least one party to an in-person conversation where there is a reasonable expectation it is not being recorded (N.J.S.A. 2A:156A-2, -3, -4). A restaurant recording guest conversations it is not a party to is exposed. Design rule: disable camera microphones in the product, or record video only.",
+      "confirmed": true,
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/"
+    },
+    {
+      "issue": "Video in restrooms and locker rooms",
+      "rule_or_precedent": "N.J.S.A. 2C:14-9 makes it a third-degree crime to record intimate parts or sexual acts where there is a reasonable expectation of privacy; the same guide notes the law does not criminalize recording in areas open to the public with no reasonable expectation of privacy. Dining rooms therefore fall outside the statute; restrooms and locker/changing rooms are inside it and are an absolute exclusion, enforced by physical camera aiming and a written scope.",
+      "confirmed": true,
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/"
+    },
+    {
+      "issue": "Cameras in employee-only areas of a restaurant (break room, office, staff changing area)",
+      "rule_or_precedent": "Unconfirmed by any source I read: the RCFP guide says nothing about employee-only spaces, so the extension from 'restroom or locker room' to 'staff areas' is inference, not statute. (inference) Employees have a stronger expectation of privacy in a changing area or a closed break room than a guest does in a dining room, so the same N.J.S.A. 2C:14-9 exposure plus intrusion-upon-seclusion exposure plausibly applies. Practical rule for the product: no cameras in restrooms, locker/changing areas, or staff break/office spaces, and say so in the written scope.",
+      "confirmed": false,
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/"
+    },
+    {
+      "issue": "Employee monitoring and the tort of intrusion upon seclusion",
+      "rule_or_precedent": "Friedman v. Martinez, 242 N.J. 449 (2020) (A-37/81-18, decided 16 June 2020), arose when a janitor hid video devices in the women's restrooms and locker room of an office building. The Court held that an intrusion occurs when someone uses a private space where a spying device has been concealed and the intrusion would be highly offensive to a reasonable person; that the victim does not have to present direct evidence she was secretly recorded; and that she may rely on circumstantial evidence and reasonable inferences. But she must still show, directly or by reasonable inference, that she used the monitored space while the device was concealed. On the 2014 summary-judgment record the dismissed plaintiffs had not done so, so the Court reversed the Appellate Division and reinstated summary judgment against them. (inference) Applied to a restaurant: a visible dining-room camera disclosed in writing sits far from this fact pattern, while a concealed camera in a staff changing area is the high-risk case. The opinion does not address restaurant dining rooms \u2014 that extension is my reasoning.",
+      "confirmed": true,
+      "source_url": "https://www.njcourts.gov/system/files/court-opinions/2020/a_37_81_18.pdf"
+    },
+    {
+      "issue": "Is there a New Jersey statute requiring employers to notify employees that they are on video?",
+      "rule_or_precedent": "Could not confirm any New Jersey statute or regulation that specifically governs employer use of video recording devices in the workplace; practitioner commentary states there is no such state law and that the constraint comes from common-law privacy and the Wiretap Act. Give written notice anyway \u2014 it is cheap and it converts a privacy claim into a consented-to practice.",
+      "confirmed": false,
+      "source_url": "https://www.bracheichler.com/insights/use-of-cameras-in-nj-based-ambulatory-surgery-centers/"
+    },
+    {
+      "issue": "Federal labor-law guidance on electronic monitoring (NLRB GC 23-02)",
+      "rule_or_precedent": "NLRB General Counsel Memorandum GC 23-02 (Oct 31, 2022) announced the GC's intent to urge the Board to apply the Act to 'intrusive or abusive electronic monitoring and automated management practices', committed to an interagency approach, and instructed Regions to 'submit to Advice any cases involving intrusive or abusive electronic surveillance and algorithmic management that interferes with the exercise of Section 7 rights'. The memo text does not discuss union status; that it reached non-union workplaces is an inference from Section 7's scope, not a statement in the document. Cite the memo itself, not the NLRB news page.",
+      "confirmed": true,
+      "source_url": "https://www.govinfo.gov/content/pkg/GOVPUB-LR-PURL-gpo212857/pdf/GOVPUB-LR-PURL-gpo212857.pdf"
+    },
+    {
+      "issue": "GC 23-02 is no longer in force",
+      "rule_or_precedent": "The NLRB's General Counsel memoranda index lists GC 25-05, 'Rescission of Certain General Counsel Memoranda', dated 02/14/2025, and marks a series of Abruzzo-era memoranda as rescinded by it; a law-firm summary states that GC 25-05 rescinded GC 23-02 in full. The GC 25-05 document itself served as an unsupported content type when fetched, so its text was not read. So the enforcement posture that motivated a no-per-employee-scoring design is withdrawn, but the NLRA itself is unchanged and employees' Section 7 rights still exist (that last step is inference). Treat this as a design preference, not a legal requirement.",
+      "confirmed": true,
+      "source_url": "https://www.nlrb.gov/guidance/memos-research/general-counsel-memos"
+    },
+    {
+      "issue": "Biometrics and face recognition",
+      "rule_or_precedent": "The FTC's Policy Statement on Biometric Information and Section 5 of the FTC Act (dated May 18, 2023, matter P225402 on the Commission's legal-library page) treats facial/video and other biometric data as sensitive, and flags unsubstantiated accuracy and bias claims as deceptive. Design rule: no face recognition, no guest identification, blur or never persist faces; the product only needs 'person present in zone'.",
+      "confirmed": true,
+      "source_url": "https://www.ftc.gov/legal-library/browse/policy-statement-federal-trade-commission-biometric-information-section-5-federal-trade-commission"
+    },
+    {
+      "issue": "Pending New Jersey biometric-surveillance bill (A3929, 2026 session) \u2014 what the text would do",
+      "rule_or_precedent": "A3929 would make it an unlawful practice under the Consumer Fraud Act for a business to use a 'biometric surveillance system' (facial recognition or other remote biometric recognition, including logging face/head/body characteristics to infer emotion, activities or location) on consumers on its premises without clear and conspicuous notice (a sign at the perimeter suffices), would require a written explanation before denying entry or removing a consumer, and would bar selling or sharing the data. Penalties stated as up to $10,000 first offense / $20,000 subsequent plus treble damages. This is the introduced bill text (I1), not enacted law. A video-only people-counter would likely fall outside 'biometric surveillance system', but a face-recognition feature would not. (inference on the last point)",
+      "confirmed": true,
+      "source_url": "https://pub.njleg.gov/Bills/2026/A4000/3929_I1.PDF"
+    },
+    {
+      "issue": "Legislative status of A3929 (reported Assembly passage 56-16-1 on 2026-03-23, referral to Senate Law and Public Safety)",
+      "rule_or_precedent": "Unverified. The bill PDF I cite is only the introduced text with sponsorship updated 2/19/2026 and contains no vote tally, date or committee referral; the Legislature's bill-status page (njleg.state.nj.us/bill-search/2026/A3929) is a JavaScript application that returned no readable content when I fetched it. Treat the reported passage and referral as unconfirmed, and check the status page in a browser before quoting it to a client.",
+      "confirmed": false,
+      "source_url": "https://njleg.state.nj.us/bill-search/2026/A3929"
+    },
+    {
+      "issue": "Does the New Jersey Data Privacy Act cover employee or guest data collected by this system?",
+      "rule_or_precedent": "P.L. 2023, c.266 (N.J.S.A. 56:8-166.4) defines 'consumer' as a resident 'acting only in an individual or household context' and states that consumer 'shall not include a person acting in a commercial or employment context' \u2014 so employment-context data sits outside the Act's consumer rights. The same section defines 'biometric data' to exclude 'a digital or physical photograph; an audio or video recording' and data derived from them unless generated to identify a specific individual, which is the statutory reason plain table-state video is not biometric data here. I found no enacted New Jersey biometric-consent statute covering private employers during this research; that is an unverified absence, not a confirmed one, and common-law privacy claims and the FTC statement still apply.",
+      "confirmed": true,
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM"
+    },
+    {
+      "issue": "Data retention and storage",
+      "rule_or_precedent": "Could not confirm any New Jersey or federal rule that sets a retention period for dining-room video. Recommended posture (inference, not law): keep events and metadata 90 days, keep raw frames only for flagged incidents, store the box on-premise with no cloud video egress, and put the retention period in writing for the client.",
+      "confirmed": false,
+      "source_url": "https://www.restaurantbusinessonline.com/technology/restaurants-take-closer-look-computer-vision"
+    },
+    {
+      "issue": "False accusation / defamation risk from wrong alerts",
+      "rule_or_precedent": "No New Jersey case law specific to AI-generated employee performance flags in food service was located (unverified). The 2022 GC memo that discussed surveillance-derived discipline \u2014 noting proposals to let employees respond before discipline is imposed, fn. 40 \u2014 has since been rescinded, so the closest written guide is gone. Manage by process: shadow mode first, alerts phrased as prompts ('check table 12') not verdicts ('Maria missed table 12'), no per-person scoring, manager review before any discipline.",
+      "confirmed": false,
+      "source_url": "https://www.govinfo.gov/content/pkg/GOVPUB-LR-PURL-gpo212857/pdf/GOVPUB-LR-PURL-gpo212857.pdf"
+    }
+  ],
+  "prospecting_signals": {
+    "public": [
+      "Google/Yelp reviews that name waiting or dirty tables specifically ('stood at the host stand', 'sat at a dirty table', 'empty tables while we waited') \u2014 read the last 6 months, count repeats rather than reading one bad night",
+      "Seat/table count published on the restaurant's own site or reservation page; 15+ tables is the practitioner threshold where the ROI starts to close, 40+ is comfortable (threshold is a vendor/consultancy claim, Low)",
+      "Reservation platform shows no availability at 6:30-8:00pm Friday/Saturday, or the restaurant runs a waitlist \u2014 evidence of unmet peak demand",
+      "Job postings for bussers, hosts or food runners on Indeed/industry boards, and repeated reposting of the same role \u2014 signals bussing labor churn and thin coverage",
+      "Middlesex County / municipal retail food inspection reports (public; establishments must keep the most recent report on site and local health authorities make records available) \u2014 not a table-state signal directly, but reveals high-volume, high-turnover operations and which ones get re-inspected",
+      "Multiple locations under one owner (site footer, same phone/website) \u2014 replication value and a manager who cannot see every room",
+      "Physical footprint clues: large dining room visible in photos, patio plus dining room (two rooms with separate sightlines), second-floor or divided dining areas",
+      "Existing camera domes visible in customer photos or on the building \u2014 reuse cuts install cost dramatically",
+      "Hours concentrated in a 3-hour dinner window \u2014 the peak-hour economics are strongest there"
+    ],
+    "walk_in": [
+      "Stand at the host stand for 10 minutes at peak and count how many times someone walks the room just to check table status",
+      "Count empty-but-dirty tables and time how long each stays dirty (a stopwatch on 5 tables is the entire sales pitch)",
+      "Note occlusion: pillars, half-walls, booths, plants and ceiling height that would block a camera view of any table",
+      "Note lighting: west-facing windows with evening sun, glass or highly reflective tables (both are documented failure modes for vision models)",
+      "Look for existing cameras, a network closet, a PoE switch with spare ports, and whether cable can be run in ceiling or conduit without closing the room",
+      "Ask the host 'how do you know a table is ready?' \u2014 paper floor plan, radio call, shouting, or nothing",
+      "Check whether the POS is a modern tablet system (Toast/Square) with a digital floor plan, or a legacy terminal",
+      "Sit through one turn: how long from guests standing up to table being wiped, and does anyone greet the table after seating",
+      "Note staff phones/radios: is there already a device in every server's pocket that an alert could reach"
+    ]
+  },
+  "pilot": {
+    "scope": "One restaurant, one dining room, 4-6 weeks. Week 1: install and shadow-only (no alerts) to collect ground truth and label data; weeks 2-3: fine-tune/calibrate and run alerts to a single manager device, comparing alert timestamps to a manager's manual log; weeks 4-6: alerts to the host stand plus a weekly one-page report (median dirty-table dwell, tables cleared within 2 minutes, covers per peak hour, false alerts per shift). No POS write-back in the pilot, no per-employee scoring, no audio.",
+    "hardware": "4-6 PoE IP cameras ($150-250 each, reused where the restaurant already has them) + one edge box (Jetson Orin Nano Super ~$249, or an Intel N100 mini PC if only detection is needed) + PoE switch and cabling + one tablet or a phone web-app at the host stand; on-premise only, no cloud video.",
+    "success_metric": "Primary: median time from 'party left' to 'table ready' drops by at least 30% versus the shadow-mode baseline, with false alerts staying under about 1 per shift. Secondary: covers seated per peak hour up at least 5% on the same night-of-week basis, and the manager keeps using it in week 6 without being asked (a leading indicator of whether the alert is in the right place).",
+    "cost_range": "$2,500-$5,500 one-time (cameras ~$800-1,500, edge box $250-450, network/cabling $300-800, 2-4 days install and calibration at $75-125/hr) plus $0-500 for labeling/model work; then $150-350/month for monitoring, retraining and support. Benchmarks used: PreciTaste at ~$2,000 install + $399/month (2025 trade press), a consultancy pilot at $4,800 install + $380/month, and cameras at roughly $200 each. Labor rates in this range are my estimates, not sourced.",
+    "assumptions": "Restaurant has 15+ tables and a real weekend peak; existing network can take 4-6 PoE cameras or a switch can be added; the owner will give 2-4 weeks of POS or reservation timestamps for calibration; a manager agrees to act on alerts (without this the system is ignored within two weeks per the practitioner write-up); pricing assumes Middlesex County labor rates for low-voltage install and does not include a POS integration project, which would add cost; excludes any legal review, which a cautious client should buy separately."
+  },
+  "fit_score": {
+    "demand": 13,
+    "local_buyers": 11,
+    "ability_to_pay": 8,
+    "technical_feasibility": 15,
+    "legal_risk_low": 8,
+    "defensibility": 6,
+    "total": 61,
+    "rationale": "Demand is real but latent: operators feel dirty tables and door waits every shift, yet trade reporting says no dominant computer-vision use case has emerged and one funded vendor exited the category, so this is a sell-the-problem engagement, not a fulfill-a-request one. Local buyer count is decent (587 full-service establishments in Middlesex County, 9,110 jobs, ~15.5 staff each per BLS QCEW 2024) but the slice with 15+ tables, a real peak, and budget is a subset. Ability to pay is constrained by 1-7% net margins and a $31,591 average annual wage, though $150-350/month sits inside what they already pay Resy ($289-459/month), which is the anchor to sell against. Technical feasibility is the strongest dimension: detection is close to solved, an open-source stack (Frigate/YOLO) plus a Jetson gets a working pilot in a week, and the hard parts (state machine, lighting, per-site labels) are exactly the kind of work a local installer is good at. Legal risk scores 8 of 15: the exposure is avoidable by design (no audio, no face recognition, no cameras in restrooms or changing areas, written notice, no per-person scoring), and the controlling New Jersey case actually came out against the plaintiffs who could not show they used the monitored space, but circumstantial proof is enough to get such a claim to a jury, the audio and restroom statutes are live, a biometric-surveillance bill is pending in the Legislature, and I could not confirm any New Jersey workplace-camera notice rule or video retention rule, so the compliance answer is uncertain rather than clean. Defensibility is weakest: Ma\u00eetre'd is positioned at this exact job, PreciTaste/Wobot/Aldente exist, and open source means the model is not the moat \u2014 the moat would have to be installation quality, response time, and local relationships."
+  },
+  "risks": [
+    "Ma\u00eetre'd already markets this exact product (per-table state, service-failure alerts, afternoon install, shadow mode) with no public price \u2014 a funded direct competitor could price below a local installer",
+    "Presto, a funded restaurant-tech company, launched a dining-room vision product and then dropped vision entirely to focus on voice AI \u2014 the category has already failed once at scale",
+    "False alerts destroy adoption fast: a practitioner write-up says ignored alerts degrade to ignored-by-default within two weeks, and 4-8% false positive/negative rates are described as the tolerable production level (vendor claim, Low)",
+    "Occlusion, glass/reflective tables and shifting window light are documented failure modes that force per-site retraining and repeat site visits that are hard to bill",
+    "Per-employee performance reporting (who was slow to clear) is the feature owners will ask for and the one that creates the most legal and morale exposure \u2014 the 2022 NLRB guidance that most directly discouraged it was rescinded in February 2025, but privacy torts and Section 7 principles did not go away (inference), so the commercial upside is small against the reputational risk",
+    "Restaurant churn: a client that closes in 18 months takes the subscription with it, and independent restaurants close often",
+    "The value case depends on demand exceeding capacity in the peak hour; for a restaurant that is never full, faster turns produce no extra covers and the ROI story collapses",
+    "AGPL licensing on Ultralytics YOLO means either paying for an enterprise license or shipping around it \u2014 a cost most small integrators discover late",
+    "A pending NJ biometric-surveillance bill (A3929) would add notice obligations if enacted in its introduced form, and its current legislative status is unverified \u2014 scope creep into face or 'emotion' analytics would move the product into that bill's definition"
+  ],
+  "caveats": "Most of the numeric evidence on the value of faster turns comes from adjacent interventions (tabletop ordering devices, wait-time studies), not from table-state cameras specifically: the strongest peer-reviewed result measures what happens when meals get about 10% shorter, and I am inferring that a camera system that cuts 3-4 minutes of dirty-table dwell produces a fraction of that effect. There is no peer-reviewed study of a commercial table-state product. On the tabletop study, I read the publisher abstract of the 2020 Management Science article through a RePEc record plus the 2017 working-paper PDF; the full published article was not read, and the two versions report different point estimates, so use the published ~1% / ~10% / ~11% figures. The wait-time study is a single-restaurant field study, so its effect sizes are site-specific. The most on-point deployment numbers I found are from an unnamed 22-table restaurant in a consultancy blog and should be treated as a hypothesis to test in the pilot, not a benchmark; every such vendor or practitioner number here is rated Low. Vendor pages were used only for what products do and what they cost. Pricing pages change; Resy's figures and PreciTaste's figures were read in the 2025-2026 window and should be re-checked before quoting. I could not open the OpenTable pricing page (repeated fetch failures) and did not include its prices. One illustration was removed entirely rather than quoted second-hand: Kimes' 2004 Cornell worked example (100 seats, 60- to 50-minute meals, 400 to 480 covers) \u2014 the Cornell PDF returned HTTP 405/429 on every attempt, so those numbers are not in this brief. On law: I am not a lawyer, this is not legal advice, and three items \u2014 any NJ notice requirement for workplace cameras, any NJ retention rule, and the current legislative status of A3929 \u2014 are recorded as unconfirmed rather than guessed.",
+  "data_gaps": [
+    "No peer-reviewed study measuring table-state camera deployments in restaurants \u2014 no controlled before/after with sample size exists that I could find",
+    "The tabletop study's full published article was not read (only the publisher abstract via a RePEc record plus the 2017 working paper), so the published sample size and robustness checks are unverified",
+    "The Journal of Operations Management article was re-checked via its DOI, but ScienceDirect returned HTTP 406, so the paper text was not re-read in this revision; the '94,404 customer groups' unit comes from the verifier's reading of the paper",
+    "Kimes 2004 (Cornell) worked example on seat-turn arithmetic could not be verified: ecommons bitstream returned HTTP 405/429 and a CORE mirror returned 403, so the item was dropped instead of quoted from search snippets",
+    "A3929's legislative status (reported Assembly passage 56-16-1 and Senate referral) is unverified \u2014 the NJ Legislature bill-search page is a JavaScript app that returned no readable content, and I did not find a static status page",
+    "OpenTable's current published plan prices could not be retrieved (page repeatedly failed to load); Toast Tables is quote-only with no public self-serve price, so both were left out of the pricing comparison",
+    "No public price for Ma\u00eetre'd, Aldente, Wobot, Spot AI or Verkada as applied to a restaurant dining room, and no annual price printed for the Frigate+ subscription",
+    "Could not retrieve pricing for a specific PoE IP camera from a US vendor page (Ubiquiti US page did not render the base price; Reolink product URLs 404'd); used a trade-press statement of 'a couple hundred bucks' instead",
+    "Census County Business Patterns for Middlesex County 722511 could not be queried (Census API requires a key), so establishment size-class distribution is unknown; I substituted BLS QCEW 2024 averages",
+    "Middlesex County health-inspection data is published per municipality and I did not verify whether a county-wide searchable database exists \u2014 prospecting would need to go town by town",
+    "Sangati's site did not load, so that vendor is excluded rather than described from a search snippet",
+    "GC 25-05 is confirmed only as an entry (number, title, date 02/14/2025) on the NLRB's GC memoranda index plus a law-firm summary that it rescinded GC 23-02 in full; the memo document itself returned an unsupported content type when fetched, so its full text was not read",
+    "No confirmed New Jersey statute requiring employer notice of video surveillance, and no confirmed retention-period rule \u2014 both left as unconfirmed rather than asserted",
+    "No NJ case law found specifically on AI-generated employee performance flags in food service, so the false-accusation exposure is reasoned from privacy torts and the (now-rescinded) 2022 NLRB guidance",
+    "LFM2.5-VL release dates were not shown on the blog pages I read, so no year is asserted for that family"
+  ]
+}

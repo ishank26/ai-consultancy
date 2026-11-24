@@ -1,0 +1,293 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Running costs include \"Web chat agent messages: $6.24/month at 300 AI messages\" ($0.0208 per AI message, Retell chat agent pricing).",
+      "problem": "No chat channel exists anywhere in the solution design, components, integrations, phases or pilot scope - the web front door is a self-built Next.js guided intake, not a Retell chat agent. The unit price is correct, but this line prices a component that is not being built, which inflates the stated total by $6.24 and makes the $275 fee reasoning slightly conservative in the wrong place.",
+      "fix": "Either add a Retell web-chat channel to the design/components, or drop the line and restate the total as $55.55/month (22.35 + 2.00 + 24.00 + 6.00 + 1.20)."
+    },
+    {
+      "claim": "Retell pricing basis accounts for the full cost of the voice channel at $0.149/minute (voice infra + platform voices + LLM + telephony).",
+      "problem": "Retell's docs state that after a warm transfer connects, the agent fee stops but telephony charges continue until the transferred call ends; the plan's per-minute basis and 150-minute volume do not mention these post-handoff telephony minutes, which the design will generate every time the agent warm-transfers to a partner.",
+      "fix": "Add a sentence to the voice-cost line that post-transfer telephony minutes are billed at $0.015/min on top of the 150 agent minutes, and note the tail is small but non-zero."
+    },
+    {
+      "claim": "\"Estimated total running cost at pilot volumes: $61.79/month\" is cited to https://www.retellai.com/pricing.",
+      "problem": "The arithmetic is right ($22.35 + $2.00 + $6.24 + $24.00 + $6.00 + $1.20 = $61.79), but the line's single source URL is Retell's page while the sum also includes Cal.com, DigitalOcean, DigitalOcean backups and Resend items priced from four other pages.",
+      "fix": "Point the total line at a cost table summary (or list the underlying source URLs) rather than at Retell pricing alone."
+    },
+    {
+      "claim": "Pilot schedule: \"weeks 1-4 are build ... 13.5 of the 17.5 founder-days\" at \"about 3 founder-days a week\".",
+      "problem": "13.5 days across four weeks at 3 days/week is 12 days; the plan's own rate implies the build needs about 4.5 weeks. Day totals themselves are consistent (2+5+2+1.5+3+1 = 17.5; 17.5/3 = 5.83 weeks), so the mismatch is only in the week-by-week split.",
+      "fix": "Say build may spill into week 5 before web intake goes live, or state the build rate as 3.5 days/week."
+    },
+    {
+      "claim": "Suggested pricing and feasibility reasoning lean on \"the audit's own impact estimate of $2,500-$9,287/year in recovered staff time\".",
+      "problem": "That figure comes from an internal artifact (audit.md) that is not in this verification folder and is not a public source, so it could not be re-checked here. It is at least labeled as the audit's estimate rather than as published data.",
+      "fix": "Carry the audit figure with an explicit \"internal estimate, not independently sourced\" label, or restate the fee argument from the verified cost base and competitor prices alone."
+    },
+    {
+      "claim": "Retell knowledge base line notes \"$8.00 per knowledge base per month\" and \"the first 10 knowledge bases are free\".",
+      "problem": "Both statements do appear on Retell's pricing page (the page is internally inconsistent, showing both a per-KB price and a free allowance of 10), so the plan is faithful to the source, but the $0 line rests on the free allowance rather than on the published $8 price.",
+      "fix": "No change required to the number; if a knowledge base is ever used, re-check which statement applies before quoting $0."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Retell voice line items: $0.055/min voice infra, $0.015/min Retell Platform Voices, $0.064/min GPT 5.6 Terra (recommended), $0.015/min telephony, page summarises $0.07-$0.31/minute.",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell running cost: 150 minutes x $0.149/minute = $22.35/month.",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell phone number $2.00/month; no charge for custom phone numbers (SIP/custom telephony).",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Chat agent GPT 5.6 Terra $0.0208 per AI message, so 300 messages = $6.24.",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell states \"no platform fees\" on pay-as-you-go, supporting the claim that the Retell->intake-service webhook integration carries no extra fee.",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell documents a native Cal.com integration (check availability, book, reschedule, cancel, look up appointments), connected once on the dashboard Integrations page via OAuth or API key, with each agent tool bound to one connection.",
+      "source_url": "https://docs.retellai.com/integrations/overview.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell webhooks fire call_started, call_ended and call_analyzed, and the REST API (Get Call) is available.",
+      "source_url": "https://docs.retellai.com/features/webhook-overview.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell supports warm transfer to a human recipient (documented Transfer Call tool with cold, warm and agentic warm modes).",
+      "source_url": "https://docs.retellai.com/build/single-multi-prompt/transfer-call.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell compliance: self-signing DPA/BAA at no additional fee, per-agent retention 1 day to 2 years, PII storage controls, zero-data-retention subprocessor agreements, and no-model-training only for enterprise customers with an MSA.",
+      "source_url": "https://docs.retellai.com/general/compliance.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cal.com pricing: Free $0 with 1 user, unlimited links and calendars; Teams $12 per user/month (save 25% yearly); Organizations $28 per user/month; Enterprise custom.",
+      "source_url": "https://site.cal.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cal.com Teams seats cost $24/month for 2 users at $12 per user/month (plan states it does not use the annual discount rate).",
+      "source_url": "https://site.cal.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cal.com API v2 supports OAuth and API keys, API-key rate limit 120 requests per minute, and Teams customers get all endpoints except those prefixed Platform and Orgs.",
+      "source_url": "https://cal.com/docs/api-reference/v2/introduction",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cal.com moved to closed source in April 2026, self-hosting is no longer a self-serve option, and Cal.diy (MIT) is recommended for personal, non-production use without teams, routing forms or workflows.",
+      "source_url": "https://cal.com/blog/self-hosted-scheduling-platforms-benefits-and-challenges",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Webflow form-submission webhook payload carries form name, siteId, submitted form data, schema and submittedAt.",
+      "source_url": "https://developers.webflow.com/data/reference/webhooks/events/form-submission",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DigitalOcean Basic droplet at $6.00/month with 1 GiB RAM, 1 vCPU, 25 GiB SSD and 1,000 GiB transfer.",
+      "source_url": "https://www.digitalocean.com/pricing/droplets",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DigitalOcean Basic-plan backups cost 20.0% of the droplet's monthly cost weekly (30% daily), so $1.20/month weekly and $1.80 daily on a $6 droplet.",
+      "source_url": "https://docs.digitalocean.com/products/backups/details/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Resend free plan is $0 for 3,000 emails/month limited to 100 per day; Pro is $20/month for 50,000.",
+      "source_url": "https://resend.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Running-cost total of $61.79/month reconciles with the listed lines ($22.35 + $2.00 + $6.24 + $24.00 + $6.00 + $1.20 + $0 + $0 + $0).",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Smith.ai AI Receptionist: Free $0/mo, 25 calls/mo ($3.00/call after); Pro $150/mo, $2.00/call, 75 calls/month, extra calls $2.50; Enterprise $500/mo, $1.67/call, 300 calls/month, extra $2.17; month-to-month with 30 days' notice.",
+      "source_url": "https://smith.ai/pricing/ai-receptionist",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Smith.ai includes 24/7 AI answering, recording/transcription/summaries, AI scheduling and native integrations (Clio, Zapier).",
+      "source_url": "https://smith.ai/pricing/ai-receptionist",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ruby receptionist plans: $250/50 min, $395/100 min, $720/200 min, $1,725/500 min; chat plans $143/10, $335/30, $520/50; chat bundled at 20% saving $115/$268/$416; no activation, onboarding or setup fees.",
+      "source_url": "https://www.ruby.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LEX Reception entry plan $425/month for 150 minutes, $2.75 per additional minute, $75 setup, quoted as third-party reporting (not vendor list price).",
+      "source_url": "https://www.mycase.com/blog/client-management/law-firm-answering-service/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The same third-party article shows Ruby at $245 for 50 minutes, below Ruby's current $250.",
+      "source_url": "https://www.mycase.com/blog/client-management/law-firm-answering-service/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Calendly: Free (one event type, one calendar connection); Standard $10/seat/month billed yearly (save 17%); Teams $16/seat/month billed yearly (save 20%); Enterprise starts at $15k/yr and 50 seats; monthly rates not visible on the page.",
+      "source_url": "https://calendly.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Lawmatics publishes no dollar amounts, shows user minimums of 3, 3 and 5, contacts of 500 / 10,000 / 10,000, and conflict checking Basic on plan one and Advanced on the other two.",
+      "source_url": "https://www.lawmatics.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Lawmatics product includes intake forms, lead management, calendaring, e-signature and AI lead qualification.",
+      "source_url": "https://www.lawmatics.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Intaker's pricing page returned no readable price (client-rendered), so its price is unknown rather than zero.",
+      "source_url": "https://intaker.com/pricing/",
+      "result": "could not open"
+    },
+    {
+      "claim": "New Jersey SOC 43-6012.00 median wage is $63,080/year and $30.33/hour (BLS 2025 data via O*NET).",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wage arithmetic: 25% benefits load gives $37.91/hour, $78,850/year, about $6,571/month.",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ AI guidelines quote RPC 1.6(f) language on preventing inadvertent or unauthorized disclosure and state a lawyer is responsible to ensure the security of an AI system before entering non-public client information.",
+      "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ AI guidelines extend oversight to the ethical use of AI by other lawyers and nonlawyer staff, citing RPC 5.1, 5.2 and 5.3.",
+      "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ AI guidelines say AI will affect billing and advertising, citing RPC 1.5 and 7.2, and that no per-use AI disclosure duty exists but disclosure is required if the client asks or cannot make an informed decision.",
+      "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Jan 24, 2024 AI guidelines do not cite RPC 7.1 (so the 7.1 point must be cited to the rule text, as the plan does).",
+      "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d) permits interception where the person is a party or one party has given prior consent, unless used for a criminal/tortious or other injurious act.",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239",
+      "result": "confirmed"
+    },
+    {
+      "claim": "47 CFR 64.1200(a)(1) bars artificial/prerecorded-voice calls without prior express consent except emergency calls; (b)(1) requires stating the business identity at the start of the message; (a)(10) treats stop/quit/end/revoke/opt out/cancel/unsubscribe replies as per-se revocation with honouring within ten business days.",
+      "source_url": "https://www.law.cornell.edu/cfr/text/47/64.1200",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RPC 5.5(a)(2) bars assisting a nonlawyer in activity constituting the unauthorized practice of law.",
+      "source_url": "https://njlawconnect.com/wp-content/uploads/2016/03/New-Jersey-Rules-of-Professional-Conduct.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RPC 5.4(a) bars sharing legal fees with a nonlawyer except listed exceptions; RPC 5.4(c) bars a nonlawyer who recommends/employs/pays the lawyer from directing professional judgment.",
+      "source_url": "https://njlawconnect.com/wp-content/uploads/2016/03/New-Jersey-Rules-of-Professional-Conduct.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RPC 7.1(a)(2) prohibits communications likely to create an unjustified expectation about results; 7.1(a)(3) covers comparisons lacking the name, substantiation and disclaimer.",
+      "source_url": "https://njlawconnect.com/wp-content/uploads/2016/03/New-Jersey-Rules-of-Professional-Conduct.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RPC 5.3 requires reasonable efforts to ensure a nonlawyer's conduct is compatible with the lawyer's professional obligations.",
+      "source_url": "https://njlawconnect.com/wp-content/uploads/2016/03/New-Jersey-Rules-of-Professional-Conduct.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The official njcourts.gov RPC PDF (sites/default/files/rpc.pdf) returns a not-found page, which is why the plan cites a third-party compilation.",
+      "source_url": "https://www.njcourts.gov/sites/default/files/rpc.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Firm contact page lists phone hours \"Mon-Fri from 9AM to 5PM\" with no after-hours or emergency line.",
+      "source_url": "https://www.wileylavender.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The site says a consultation is scheduled \"by calling our office or filling out the contact form\", with no self-scheduling widget.",
+      "source_url": "https://www.wileylavender.com/our-attorneys",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Webflow form is native, redirects to /thank-you and carries a Cloudflare Turnstile site key.",
+      "source_url": "https://www.wileylavender.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Tag Manager GTM-ML8VXZ7C and GA4 G-8WYZ2PDNST are installed site-wide.",
+      "source_url": "https://www.wileylavender.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Partner emails Pankaj@wileylavender.com and larry@wileylavender.com are published on the site.",
+      "source_url": "https://www.wileylavender.com/attorney-details/pankaj-maknoor",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The firm self-reports \"200+ successful cases per year\" and has seven practice areas matching the intake taxonomy.",
+      "source_url": "https://www.wileylavender.com/services",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The site carries inconsistent client counts (1K+ on /services, 5K+ on /our-history) as the risk section notes.",
+      "source_url": "https://www.wileylavender.com/our-history",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Suggested-pricing arithmetic: 17.5 founder-days x $200 = $3,500; setup $2,200 = 11 days; pilot $750 + setup $2,200 = $2,950 = 14.75 days, leaving 2.75 days absorbed; $275/month less ~$61.79 running cost leaves ~$213; $275 x 12 = $3,300/year.",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Phase founder-days sum to 17.5 (2 + 5 + 2 + 3 + 1.5 + 3 + 1) and both suggested_pricing and effort are explicitly labeled inference.",
+      "source_url": "https://www.digitalocean.com/pricing/droplets",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Feasibility scores (technical 4/5, commercial 3/5) are labeled inference and sit below 5 despite carrier forwarding being unconfirmed, consistent with the evidence.",
+      "source_url": "https://docs.retellai.com/integrations/overview.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The audit's impact estimate of $2,500-$9,287/year is an internal figure (audit.md) not present in this folder.",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

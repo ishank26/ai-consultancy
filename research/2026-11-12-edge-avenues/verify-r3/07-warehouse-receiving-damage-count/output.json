@@ -1,0 +1,218 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "legal_privacy[1] (NJ notice for silent video): 'silent video falls outside the wiretap act' carried under confirmed: true with the Brach Eichler URL",
+      "problem": "The Brach Eichler page does support the two main points (no NJ statute/regulation governing employer video use in the workplace; common-law intrusion upon seclusion; handbook notice; stay out of restrooms/break rooms), but it never mentions the Wiretap Act or silent video. The 'outside the wiretap act' half is inference, not from that source. I confirmed separately that N.J.S.A. 2A:156A-3 keys on interception of a 'wire, electronic or oral communication', so the inference is sound - it is just not sourced to the cited page.",
+      "fix": "Split the entry: keep 'no NJ statute governs employer video; intrusion tort applies' as confirmed to Brach Eichler, and either cite 2A:156A-3 for the audio-only reading of the wiretap act or mark that half as inference."
+    },
+    {
+      "claim": "existing_solutions: PalletVision is 'A wrap-station/outbound product for shippers and 3PLs, not an inbound PO-reconciliation tool.'",
+      "problem": "The wrap-station/outbound facts and the 'shippers and 3PLs' audience are confirmed on palletvision.com, but 'not an inbound PO-reconciliation tool' is a positioning inference stated as fact, without an inference label.",
+      "fix": "Phrase as 'page describes only wrap-station capture and pallet records; no inbound PO/ASN reconciliation is described (inference)'."
+    },
+    {
+      "claim": "technical_approach: SCD has '10k+ annotated stacking scenes'",
+      "problem": "True but understated. The arXiv abstract reports 16,136 images and 250,000 instance masks.",
+      "fix": "Use the published figures (16,136 images / 250k instance masks) so the dataset's scale is stated as the source states it."
+    },
+    {
+      "claim": "measured_outcomes: YOLOv12 damaged-parcel study rated strength 'Medium'",
+      "problem": "Not a FAIL - vendor claims are correctly Low and nothing is rated High. But this is a single 5,188-image dataset with a ~7% test split and no field deployment; 'Medium' is at the top of what the evidence supports.",
+      "fix": "Optional: keep Medium but add 'single dataset, small test split, no field deployment' to the sample field (the split detail is already there) and avoid citing it as a dock-readiness number in the pitch."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Middlesex County: 1,305 transportation and warehousing establishments, 49,911 employees, 13.3% of county private employment vs 6.4% statewide, +26.1% 2018-2024, fastest-growing sector; report dated February 2026",
+      "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Shipping, receiving and inventory clerks, NY-Newark-Jersey City metro: 40,440 jobs, $23.08/hour mean, $48,000/year (May 2023)",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes435071.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hand laborers/freight movers, same metro: 130,180 jobs, $20.66/hour, $42,970/year (May 2023)",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes537062.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Carmack Amendment: carrier may not set a claim window under 9 months, or a suit window under 2 years from written disallowance (49 U.S.C. 14706(e))",
+      "source_url": "https://uscode.house.gov/us/usc/119-138/t49/s14706/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "49 CFR 370.9: pay, decline or firm written settlement offer within 120 days; re-advise every 60 days while pending",
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/370.9",
+      "result": "confirmed"
+    },
+    {
+      "claim": "49 CFR 370.3(b)-(c): written claim must identify shipment, assert liability and state a specified or determinable amount; shortage/damage notations on freight bills, delivery receipts, bad order or inspection reports 'standing alone' do not satisfy the minimum filing requirements",
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/370.3",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d) is one-party consent; unlawful interception carries civil liability under 2A:156A-24; violation is a third-degree crime (2A:156A-3)",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239",
+      "result": "confirmed"
+    },
+    {
+      "claim": "P.L. 2021, c.449 (N.J.S.A. 34:6B-22): written notice before knowingly using a tracking device in an employee's vehicle; penalties up to $1,000 first violation, $2,500 subsequent; effective April 18, 2022 (90th day after Jan 18, 2022 approval); covers vehicles, not fixed cameras",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDPA (P.L. 2023, c.266): 'consumer' excludes a person acting in a commercial or employment context; thresholds 100,000 consumers or 25,000 plus data-sale revenue; effective Jan 15, 2025 (365th day after Jan 16, 2024 approval)",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC 23-02 (news release Oct 31, 2022): GC will urge the Board to hold surveillance presumptively unlawful where practices viewed as a whole tend to interfere with Section 7 activity, and to require disclosure of the technologies, reasons and use of information; a litigation position, not a Board ruling",
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No NJ statute or regulation specifically governs employer use of workplace video; employees retain common-law intrusion-upon-seclusion rights (law-firm summary)",
+      "source_url": "https://www.bracheichler.com/insights/use-of-cameras-in-nj-based-ambulatory-surgery-centers/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kargo/Tillamook: 7 outbound doors, damage claims down 50% YoY, $173,000 in fees/chargebacks avoided in 2025, 42 claims refuted, inventory accuracy 99.6% to 99.8%, read rate >99%, OCR >99%, 31-second event-to-alert",
+      "source_url": "https://www.kargo.ai/blog/tillamook-case-study-os&d-claims",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Neovia/Octave Coda: claims down 40%, 370+ claims successfully disputed in the first four months, 65 packing-area cameras, deployed December 2025 in Northampton UK for BMW Group UK",
+      "source_url": "https://media.ffycdn.net/us/octave/d/1386e7ef48494fae84026840f69d33b1",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Warp: LTL industry damage rate 1.24% (roughly 1 in 80), 0.81% across 851,978 shipments for the two-touch cross-dock model; vendor research, not an independent audit",
+      "source_url": "https://www.wearewarp.com/research/ltl-damage-rates-fewer-touches",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FreightWaves/Kargo white paper: survey of more than 300 shippers, carriers and 3PLs; most suspect they are not at fault for up to 70-90% of OS&D claims they pay (vendor-sponsored)",
+      "source_url": "https://www.freightwaves.com/news/white-paper-everyone-pays-for-osd-uncertainty",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SCDigest/Attain+CRF 2018: median non-trade deductions 0.5-1% of AR for vendors under $500M revenue; 48% leave chargebacks open with no time limit",
+      "source_url": "https://www.scdigest.com/NEWSVIEWS/18-05-29-1.PHP?cid=14268&ctype=content",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Production v.33 e20220077 (2023) Table 1: order receiving error 10.00% MO, 3.50% TYP, 1.00% BIC; initial IRI 10.00% / 1.95% / 0.10%; values 'based on' WERC 2019",
+      "source_url": "https://www.scielo.br/j/prod/a/m5fWPJPb6sYv74PhTDJbnKw/?format=pdf&lang=en",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PatchCore (CVPR 2022) Table 1: 99.1% image-level AUROC on MVTec AD at the 25% coreset; abstract says 'up to 99.6%'",
+      "source_url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Roth_Towards_Total_Recall_in_Industrial_Anomaly_Detection_CVPR_2022_paper.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "YOLOv12 damaged-parcel detector: 93.7% mAP@0.50, 93.3% precision, 93.8% recall, 5,188 images, 86/7/7 split, published July 2025",
+      "source_url": "https://dergipark.org.tr/en/pub/jdaia/article/1714220",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Packaging structure recognition: ~85% correct, 91% restricted to most common package types, custom logistics dataset",
+      "source_url": "https://arxiv.org/abs/2008.04620",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Multi-view counting of stacked objects is ICCV 2025 oral, validated on real-world and large-scale synthetic datasets, error rates not stated in the abstract",
+      "source_url": "https://arxiv.org/abs/2411.19149",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SCD dataset is a large-scale public carton detection/segmentation dataset (abstract: 16,136 images, 250,000 instance masks)",
+      "source_url": "https://arxiv.org/abs/2102.12808",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen3-VL technical report lists dense 2B/4B/8B/32B and MoE variants",
+      "source_url": "https://arxiv.org/abs/2511.21631",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-450M: 242 ms at 512x512 on Jetson Orin at Q4_0, OCRBench 684, CountBench 73.31 (vendor benchmarks)",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-450m",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jetson Orin Nano Super Developer Kit announced at $249, down from $499 (blog image assets and screenshot dated December 2024)",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO is AGPL-3.0; proprietary/closed-source, embedded and SaaS deployment requires an Ultralytics Enterprise license",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate supports Coral EdgeTPU, OpenVINO, TensorRT (incl. Jetson), Hailo-8, Rockchip RKNN, MemryX, AMD ROCm/ONNX detectors",
+      "source_url": "https://docs.frigate.video/configuration/object_detectors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Extensiv 3PL Warehouse Manager: GET /orders filtered by rql, POST /orders, bearer security scheme, token from POST /AuthServer/api/Token with client id, client secret, 3PL guid and user login id, expiring hourly",
+      "source_url": "https://developer.extensiv.com/api/3w-openApi.json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ShipHero: inventory_add on receipt, then purchase_order_update with line_items {sku, quantity_received} (cumulative), then purchase_order_close",
+      "source_url": "https://developer.shiphero.com/flows/purchase-orders/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CargoLens pricing: free 50 inspections/2 users; Pro $599/site/month billed annually, $749 month-to-month, unlimited users; $499/site/month from sixth site; $2,500 one-site 30-day pilot credited to year one",
+      "source_url": "https://www.cargolens.app/receiving-inspection-app",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sensifai DockReceive AI: EUR 0.05 per verified consignment, pay-as-you-go prepaid wallet, no seat fees",
+      "source_url": "https://dockreceive-ai.sensifai.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Happ Labs: from $8,000 per project, 6-10 weeks, 1-2 week discovery, fixed estimate within 2-3 days of a site survey, existing cameras often usable (move or add one rather than replace)",
+      "source_url": "https://labs.happ.tools/en/engineering/vision/warehouse-pallet-counting/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "IEMI Labs DockOne: from $1,290 per dock door, labelled a 'VisionConcept'; counts and photographs every pallet, calls open edges/trailer creep, slows forklifts",
+      "source_url": "https://iemilabs.com/industries/logistics/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PalletVision: FAQ shows no dollar figure and describes on-unit image processing, raw video staying on site, only inspection results/images/metadata to cloud; home page describes PalletCam at the turntable stretch wrapper, kiosk, printed label scannable to report damage, Load Health Score; /pricing returns HTTP 404",
+      "source_url": "https://www.palletvision.com/faq",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Zimark Shipping Control: free two-day proof of value on one gate, dock-door pallet verification; no price published",
+      "source_url": "https://zimark.io/solutions/shipping-control/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Arvist: time-stamped capture at packing station and dock door linked to WMS/TMS; inbound OS&D inspection becomes a claim against supplier or carrier; email/PDF/phone claim intake with automated triage and drafted OS&D dispute letter",
+      "source_url": "https://arvist.ai/claims-management/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "coral.ai/products/accelerator shows no price (redirects to the Coral landing page)",
+      "source_url": "https://coral.ai/products/accelerator/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fit_score sub-scores 20/15/15/20/15/15 bands: 16+12+10+15+6+8 = 67, and legal_risk_low is scored low (6) consistent with the criminal-statute and NLRB exposures in the legal section",
+      "source_url": "",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

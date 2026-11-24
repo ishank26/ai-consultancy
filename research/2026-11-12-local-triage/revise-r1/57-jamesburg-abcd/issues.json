@@ -1,0 +1,67 @@
+[
+ {
+  "claim": "FYZICAL Therapy & Balance Center, 333 Forsgate Dr Suite 106",
+  "problem": "FYZICAL is a franchised brand (FYZICAL Therapy & Balance Centers sells franchises; the Jamesburg location is owned through a separate LLC per NPI record). The mapper's own rule excludes chains and franchises, yet the entry was kept with a 'confirm independence' note instead of being excluded.",
+  "fix": "Remove, or re-file as 'franchise' and drop from the outreach list."
+ },
+ {
+  "claim": "Bin There Dump That Middlesex County, 258 Gatzmer Ave",
+  "problem": "Nationally franchised dumpster-rental brand; the entry itself notes 'franchise-branded ... may be locally owned'. That is an excluded type under the chains/franchises rule.",
+  "fix": "Remove from the eligible list."
+ },
+ {
+  "claim": "Mozarts & Einsteins Preschool, Kindergarten and Music Academy, 175 Gatzmer Ave",
+  "problem": "Licensed preschool/kindergarten and daycare (NJ childcare license, greatschools listing). Schools are an excluded type under the mapper's rules, so this is an excluded business that remains on the list.",
+  "fix": "Remove, or explicitly reclassify if the team decides daycares are in-scope (would need a rule change, not a one-off exception)."
+ },
+ {
+  "claim": "M. David DeMarco Funeral Home, 205 Rhode Hall Rd, town = Jamesburg",
+  "problem": "The firm's own directions page gives 205 Rhode Hall Road, Monroe Township, NJ 08831, not Jamesburg borough. Wrong town for this zone; the phone is also listed as Unknown but is (732) 521-0555.",
+  "fix": "Move to the Monroe Township zone (or delete); fill in phone."
+ },
+ {
+  "claim": "Monroe French Cleaners, 399 Spotswood Englishtown Rd, town = Jamesburg",
+  "problem": "Listed by directory sources as 399 Spotswood-Englishtown Road, Suite D, Monroe Township, NJ 08831 (the business name itself says Monroe). Outside the borough.",
+  "fix": "Move to Monroe zone or delete."
+ },
+ {
+  "claim": "Dubin Orthodontics, 29 E Railroad Ave",
+  "problem": "The practice's own website lists offices in Monroe Township (1600 Perrineville Rd) and Highland Park; no Jamesburg office appears there. Only a WebMD directory carries the Jamesburg address, and 29 E Railroad Ave is also Archer Law Office's address. Likely a stale or false record.",
+  "fix": "Drop or mark 'unverified - probably no longer in borough' before any outreach."
+ },
+ {
+  "claim": "Jamesburg Hearing Specialists / Audibel (333 Forsgate Dr Ste 105) and Penta Hearing Care (241 Forsgate Dr Ste 112)",
+  "problem": "The Audibel Jamesburg site is titled 'Jamesburg Penta Hearing', so the two entries appear to be the same practice; the addresses differ between the two entries and the live site. Probable duplicate plus an address mismatch.",
+  "fix": "Merge into one entry and use the address confirmed on audibeljamesburg.com / by phone."
+ },
+ {
+  "claim": "Audibel (hearing-aid brand) at 333 Forsgate Dr",
+  "problem": "Audibel is a manufacturer's branded retail network; whether this is an independent dispenser or a branded/franchised outlet was left unresolved in the entry notes.",
+  "fix": "Confirm ownership before counting it as an independent; if branded-only, treat as excluded."
+ },
+ {
+  "claim": "Alert Sprinkler Co, 1085 Cranbury - South River Rd, Suite 1",
+  "problem": "The entry cites njbusinessdirectory.org, but that page lists Alert Sprinkler at 300 Buckelew Ave. The 1085 Cranbury S River Rd Suite 1 address is correct per the NJ DFS fire-protection contractor permit list, so the cited source does not support the address.",
+  "fix": "Swap the citation to the NJ DFS permitted-business list (or a second address source) and keep the Cranbury-South River Rd address."
+ },
+ {
+  "claim": "Hope Yoga, 241 Forsgate Dr, Suite 114",
+  "problem": "NJTGO lists Hope Yoga at 241 Forsgate Dr Suite 102, while Suite 114 is the NPI address for Keep Moving Physical Therapy & Rehab. Suite number is likely transposed.",
+  "fix": "Verify suite by phone; correct to 102 if the directory is right."
+ },
+ {
+  "claim": "Complete Dental Care of Jamesburg, website blank",
+  "problem": "The practice has an active own website (jamesburgdentist.com) that was not captured, so the entry looks weaker than it is for an outreach/site-audit use case.",
+  "fix": "Add https://www.jamesburgdentist.com/ as the website."
+ },
+ {
+  "claim": "Stage Door Studio (300 Buckelew Ave) and Axles Sneakers (71 E Railroad Ave)",
+  "problem": "Both rest on single, aging directory records (wellness.com/WhereOrg; cataloxy) with no map listing, website or recent review evidence. May be defunct.",
+  "fix": "Verify by phone or drop; do not spend outreach time without confirmation."
+ },
+ {
+  "claim": "Coverage gaps: local law/health/landscape practices in the borough are missing",
+  "problem": "Independent searches surfaced at least five Jamesburg-address businesses absent from the list (Callinan, Kostbar, Apuzzo law offices; Dr. DeMarco DC; Keep Moving Physical Therapy), plus Damian Landscape on Nextdoor.",
+  "fix": "Add the missing entries listed under coverage.missing; re-scan yellowpages/martindale/NPI sources for the law and health categories."
+ }
+]

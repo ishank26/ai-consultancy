@@ -1,0 +1,469 @@
+{
+  "business": "Benaka, Inc. — general contractor, 7 Lawrence Street, New Brunswick, NJ (founded 1994; federal design-build, IDIQ/MACC and JOC work for Air Force, Army, Navy, DoL and the Smithsonian)",
+  "opportunity": "Audit opportunity #1 — a federal QC documentation agent that drafts daily production/QC reports, three-phase control checklists, preparatory and QC meeting minutes, RFIs and a submittal register for USACE/Air Force task orders, with the QC Manager signing every document",
+  "problem": {
+    "summary": "Benaka's one publicly advertised field role is a Quality Control Manager whose job description is almost a list of documents: manage the three phases of control and all associated report forms, run preparatory meetings and initial inspections, keep QC/production meeting minutes, write RFIs with the superintendent, prepare purchase orders, and complete daily QC reports — using QCS/RMS plus Word, Excel, Outlook and Project. A live listing for that role, on a third-party job board, advertises $100,000.00 - $140,000.00 per year and requires daily commuting to the federal project site (retrieved 12 Nov 2026); the company also advertises it as a combined QC Manager/Project Superintendent position, which points to thin field staffing carrying a continuous paperwork load across concurrent task orders inside occupied government facilities. Because reporting spans a government system (QCS/RMS) and Office files, the same content is re-keyed or re-typed two or three times, and every document must still be performed and signed by a qualified QC Manager under the contract's QC specification. The bottleneck is drafting and reconciling, not judgement — which is what an agent can absorb while leaving classification of defects and safety conditions with the human.",
+    "current_tools": [
+      {
+        "tool": "USACE/Air Force QCS — RMS 3.0 Contractor Mode",
+        "evidence": "USACE documentation describes QCS as 'the Contractor Module of RMS that construction contractors utilize to exchange information electronically with the Government'; the company's QC posting lists QCS/RMS familiarity as a plus.",
+        "source_url": "https://rms.usace.army.mil/datafiles/helpvideos/qcsabout/Advanced/Content/Topics/FAQ_COM_2/What%20Is%20RMS%2C%20QAS%2C%20and%20QCS.htm"
+      },
+      {
+        "tool": "Microsoft Word, Excel, Outlook and Project",
+        "evidence": "The advertised QC role requires proficiency with Microsoft Office (Outlook, Word, Excel, Project) and web-based programs alongside QCS/RMS, i.e. documents are produced in Office and then entered into the government system.",
+        "source_url": "https://www.simplyhired.com/job/m2NUtDE885oLWMoDsU45Bi_gsBQWD8D19S_eYPt48YmnNXahaaHWWQ"
+      },
+      {
+        "tool": "Email + fax + phone intake (Exchange/OWA at bimail.benakainc.com)",
+        "evidence": "Contact page lists phone, fax, email and a contact form, and links employee webmail to an OWA path — no portal, booking or document-exchange channel is published.",
+        "source_url": "https://www.benakainc.com/contact-us.html"
+      },
+      {
+        "tool": "Static website with project/client galleries (no structured project data)",
+        "evidence": "Project and client history is published as flat HTML pages, so past reports, specs and photos live in files and mailboxes rather than a queryable system.",
+        "source_url": "https://www.benakainc.com/sitemap.xml"
+      }
+    ]
+  },
+  "solution": {
+    "approach": "build-on-platform",
+    "design": "A 'shadow' QC desk that sits beside QCS/RMS and never writes to it. Three scheduled triggers: (1) a field packet — photos plus a 2-3 minute voice note or short email — arriving in a per-project mailbox or shared folder; (2) a 4:00 pm scheduled run per active project; (3) an inbound submittal/RFI email from the government or a subcontractor. On each trigger the agent: transcribes the voice note and captions the photos; retrieves the relevant spec section, definable feature of work (DFOW) entry and the last three approved daily reports for that project; drafts the daily production/QC report in Benaka's own Word template with an explicit 'source' line behind every quantity and activity; maintains a submittal/RFI register in the project's Excel layout with overdue flags and age-of-review; and produces preparatory-meeting minutes and RFI drafts for the QC Manager to edit. Output always lands in a review queue as an editable Word/Excel file plus a short 'what I could not confirm' list. The QC Manager edits and signs; a human pastes or types the approved content into QCS/RMS. Nothing is emailed to a contracting officer, filed in QCS, or marked as an inspection result by the agent, and the agent never classifies a defect or a safety condition. Deployment is two-tier: the pilot runs on a small self-hosted box with a commercial model API against one task order's non-sensitive documents; if the client's contract flowdowns mark any project documents as CUI/FCI, the same container is redeployed in an Azure Government region, which holds a FedRAMP High P-ATO for the platform (per-service coverage of the specific AI endpoint must be confirmed in Microsoft's audit-scope table before committing).",
+    "components": [
+      {
+        "component": "Intake from the project mailbox",
+        "tool": "Microsoft Graph mail API (application permission Mail.Read / Mail.ReadBasic.All, admin consent)",
+        "why": "Field notes, government submittals and RFIs already arrive by email; reading a mailbox means the QC Manager changes no behaviour and the client buys no new channel.",
+        "source_url": "https://learn.microsoft.com/en-us/graph/api/user-list-messages?view=graph-rest-1.0"
+      },
+      {
+        "component": "Document rendering into the client's own forms",
+        "tool": "docxtpl / python-docx (open-source Python packages)",
+        "why": "Fills Benaka's existing Word daily-report and minutes templates in place, so the output is the document the QC Manager already signs instead of a new format he has to retype.",
+        "source_url": "https://docxtpl.readthedocs.io/en/latest/"
+      },
+      {
+        "component": "Per-project retrieval (specs, DFOW list, prior reports, submittals)",
+        "tool": "PostgreSQL with the pgvector extension, embeddings through the model gateway",
+        "why": "A draft daily report is only useful if it cites the right spec section and DFOW; pgvector keeps a separate vector index per project inside one database, so the agent can show its source line without a second search product.",
+        "source_url": "https://github.com/pgvector/pgvector"
+      },
+      {
+        "component": "Model gateway / provider abstraction",
+        "tool": "LiteLLM proxy (open source) in front of a commercial model API or an Azure Government endpoint",
+        "why": "Same code path for a cheap model during the pilot and a government-cloud endpoint if CUI rules apply; also gives per-project token accounting and request logging.",
+        "source_url": "https://docs.litellm.ai/docs/"
+      },
+      {
+        "component": "Field voice-note transcription",
+        "tool": "OpenAI gpt-transcribe (gpt-4o-transcribe as the higher-cost option)",
+        "why": "Superintendents talk faster than they type; a 3-minute voice note becomes the raw material for the report at $0.0045 per minute.",
+        "source_url": "https://developers.openai.com/api/docs/pricing"
+      },
+      {
+        "component": "OCR for scanned submittals and spec pages",
+        "tool": "Azure AI Document Intelligence, Read model (S0)",
+        "why": "Government submittal packages and stamped drawings arrive as scans; Read extracts text and page structure so the register and retrieval work on them.",
+        "source_url": "https://prices.azure.com/api/retail/prices?currencyCode='USD'&$filter=armRegionName%20eq%20'eastus'%20and%20productName%20eq%20'Azure%20Document%20Intelligence'%20and%20skuName%20eq%20'S0'"
+      },
+      {
+        "component": "Review queue, sign-off and audit log",
+        "tool": "Small self-hosted FastAPI app with server-rendered pages and an append-only event log",
+        "why": "Every draft needs a visible approve/edit/reject step and a record of which source documents and which model version produced it, so the QC Manager's signature is defensible and a contracting officer's question can be answered.",
+        "source_url": "https://fastapi.tiangolo.com/"
+      }
+    ],
+    "integrations": [
+      {
+        "system": "Microsoft 365 / Exchange project mailbox",
+        "method": "Microsoft Graph mail API with an application permission (Mail.Read or the least-privileged Mail.ReadBasic.All) granted by a tenant admin, scoped to one project mailbox; the Graph mail API is documented for the US Government L4/L5 clouds as well as commercial. The client's tenant type is not public, so availability of Graph is a discovery item rather than an assumption.",
+        "confirmed_in_docs": true,
+        "cost": "No separate charge for the Graph API itself; if a dedicated mailbox licence has to be created, Microsoft lists Microsoft 365 Business Basic at $7.00 user/month, paid yearly (annual subscription, auto-renews; $8.40 user/month on a monthly subscription)",
+        "source_url": "https://www.microsoft.com/en-us/microsoft-365/business/microsoft-365-business-basic"
+      },
+      {
+        "system": "USACE/Air Force QCS — RMS 3.0 Contractor Mode",
+        "method": "No public API found; USACE documentation describes QCS as the contractor module of RMS for exchanging information with the Government and publishes manuals and help files, not a developer API. Integration stays manual: the agent produces a per-document 'QCS entry checklist' and a human enters or imports the approved content.",
+        "confirmed_in_docs": false,
+        "cost": "Not public — QCS/RMS access is furnished through the Corps contract; no published contractor subscription price was found",
+        "source_url": "https://rms.usace.army.mil/datafiles/helpvideos/qcsabout/Advanced/Content/Topics/FAQ_COM_2/What%20Is%20RMS%2C%20QAS%2C%20and%20QCS.htm"
+      },
+      {
+        "system": "Word/Excel templates owned by Benaka",
+        "method": "docxtpl/python-docx render into the client's .docx files in place; register sheets written as .xlsx or CSV in the client's existing layout",
+        "confirmed_in_docs": true,
+        "cost": "$0 in vendor fees — self-hosted open-source Python packages; paid support or a hosted edition is not required for this design",
+        "source_url": "https://docxtpl.readthedocs.io/en/latest/"
+      },
+      {
+        "system": "Speech-to-text for field voice notes",
+        "method": "OpenAI audio transcription endpoint called through LiteLLM",
+        "confirmed_in_docs": true,
+        "cost": "$0.0045 per minute (gpt-transcribe); $0.006 per minute (gpt-4o-transcribe)",
+        "source_url": "https://developers.openai.com/api/docs/pricing"
+      },
+      {
+        "system": "OCR for scanned submittals",
+        "method": "Azure AI Document Intelligence, Read model, S0 pay-as-you-go (REST API, billed per page analyzed)",
+        "confirmed_in_docs": true,
+        "cost": "$1.50 per 1,000 pages (S0 Read Pages meter, US East, tier minimum 0); a lower $0.60 per 1,000 pages rate applies above the meter's tier threshold",
+        "source_url": "https://prices.azure.com/api/retail/prices?currencyCode='USD'&$filter=armRegionName%20eq%20'eastus'%20and%20productName%20eq%20'Azure%20Document%20Intelligence'%20and%20skuName%20eq%20'S0'"
+      },
+      {
+        "system": "Azure Government deployment (CUI-adjacent path)",
+        "method": "Same container redeployed in an Azure Government region against an Azure-hosted model endpoint; Microsoft documents Azure Government as holding a FedRAMP High P-ATO and publishes a per-service audit-scope table, so the specific AI service must be checked in that table before the client relies on it.",
+        "confirmed_in_docs": true,
+        "cost": "Not captured — Azure model token prices for a government-cloud endpoint could not be read (dynamic pricing page returned placeholders); a quote or calculator run is required",
+        "source_url": "https://learn.microsoft.com/en-us/azure/azure-government/compliance/azure-services-in-fedramp-auditscope"
+      }
+    ],
+    "human_in_the_loop": "The QC Manager (or PM for RFIs) is the only signer: every daily production report, minutes set, RFI and submittal transmittal is generated as a draft, reviewed in a queue, edited in Word/Excel, and signed by that person before it enters QCS/RMS or leaves the company. The agent cannot mark an inspection pass/fail, cannot classify a deficiency, cannot email a contracting officer, and cannot write to QCS. A weekly 30-minute review with the QC Manager checks rejected drafts and any 'could not confirm' flags; a monthly review with the founder checks token spend, error patterns and template drift."
+  },
+  "build_plan": {
+    "phases": [
+      {
+        "phase": "0 — Discovery and data-boundary check",
+        "steps": [
+          "Pick the pilot task order and the QC Manager who will review drafts",
+          "Collect the QC plan, DFOW list, the Word daily-report and minutes templates, the Excel register, and 3 months of approved daily reports/RFIs",
+          "Read the contract's flowdown list with the PM and decide whether any pilot document is CUI/FCI (this decides self-hosted VPS vs Azure Government)",
+          "Confirm whether the mailbox is Microsoft 365 (Graph available) or on-premises Exchange, and get a dedicated read-only project mailbox approved"
+        ],
+        "founder_days": "2",
+        "client_provides": "Named QC Manager, pilot project ID, templates and 3 months of prior documents, PM time for the CUI/flowdown call, IT approval for a scoped mailbox"
+      },
+      {
+        "phase": "1 — Corpus and template harness",
+        "steps": [
+          "Build the per-project index: spec sections, DFOW list, submittal log, prior daily reports, photo library",
+          "Convert the client's Word/Excel templates into docxtpl templates without changing their layout",
+          "Write the source-citation layer so every drafted line carries a document/page reference or is flagged 'unconfirmed'"
+        ],
+        "founder_days": "4",
+        "client_provides": "Digital copies of spec sections and submittals; confirmation that template layout must not change"
+      },
+      {
+        "phase": "2 — Drafting agents",
+        "steps": [
+          "Daily report agent: voice note + photos + tasks into the client template",
+          "Meeting-minutes agent for preparatory and QC meetings, pre-filled from the DFOW and prior minutes",
+          "RFI drafting agent that cites the spec paragraph in question and drafts the question only (no proposed answer unless asked)",
+          "Submittal/RFI register agent with overdue and age-of-review flags, plus three-phase checklist pre-fill that leaves pass/fail blank"
+        ],
+        "founder_days": "6",
+        "client_provides": "Two or three real examples of each document type; 2 hours/week of QC Manager time for corrections"
+      },
+      {
+        "phase": "3 — Review queue, logging and access control",
+        "steps": [
+          "Approve/edit/reject queue with a visible diff against the draft and a 'sources used' panel",
+          "Append-only log: source document hashes, model and prompt version, editor identity, timestamp",
+          "Least-privilege access: one project mailbox, one project folder, no write access to any QCS asset; retention and deletion rules agreed with the PM",
+          "Backups and a one-page incident/rollback runbook"
+        ],
+        "founder_days": "4",
+        "client_provides": "Who may approve, retention expectations, any IT security questionnaire"
+      },
+      {
+        "phase": "4 — Four-week shadow pilot",
+        "steps": [
+          "Week 1: baseline timing exercise, then drafts on one project in parallel with the QC Manager's own",
+          "Weeks 2-3: daily drafts plus weekly review; log edit minutes per document and every factual correction",
+          "Week 4: run 20 back-tested RFIs and 20 daily reports against the QC Manager's versions; compute the delta and write the go/no-go memo"
+        ],
+        "founder_days": "5 (spread over the four pilot weeks, plus ~2 hours/week of live support)",
+        "client_provides": "QC Manager availability for review (est. 3-4 hours/week), field packets, access to the live project correspondence"
+      },
+      {
+        "phase": "5 — Hardening and handover",
+        "steps": [
+          "Fix the top rejection causes found in the pilot; freeze prompt and template versions",
+          "Write the runbook: what the agent drafts, what it must never do, how to correct it, escalation",
+          "Agree the monthly care scope (project additions, template changes, monthly error review) and the price",
+          "If the client opts for CUI-safe deployment, redeploy in Azure Government and re-run two weeks of documents"
+        ],
+        "founder_days": "3",
+        "client_provides": "Decision on CUI deployment tier; sign-off on the runbook"
+      }
+    ],
+    "pilot": {
+      "scope": "One active federal task order, four weeks, draft-only shadow mode. Deliverables: a per-project library of that task order's spec sections, DFOW list, submittals and prior reports; a working daily-report drafter fed by voice note/photos; preparatory and QC meeting-minutes drafting; an RFI drafter; a submittal/RFI register in the client's Excel layout with overdue flags; and a measured comparison of edit time and factual corrections against the QC Manager's own documents. Nothing is transmitted to QCS/RMS or to the Government during the pilot.",
+      "weeks": "4 weeks of shadow pilot following a ~4-week build: phases 0-3 total 16 founder-days (inference) at roughly 4 founder-days a week, then 4 weeks of pilot. About 8 weeks from go-ahead to pilot result; the 24-founder-day total across phases 0-5 is the same figure used in pricing.",
+      "success_metrics": [
+        "Median QC Manager edit time per daily report at least 40% below baseline by week 4",
+        "At least 60% of drafted documents accepted with under 10 minutes of editing in week 4",
+        "Zero factual errors in the final two weeks that would have changed the content of a signed QC record (quantities, dates, locations, spec references)",
+        "Submittal/RFI register catches every overdue item the QC Manager identifies manually, plus at least one the manual process missed",
+        "20 back-tested RFIs and 20 daily reports scored against the QC Manager's versions for spec citation accuracy and omissions",
+        "QC Manager states in writing that he would keep using it, and measured founder support load is 3 hours/week or less"
+      ],
+      "baseline_method": "Two-part baseline taken in week 1, before drafts are shown: (a) the QC Manager's own log of minutes spent producing each daily report, minutes set and RFI for 10 working days; (b) a timed exercise where he produces three daily reports and two RFIs from the same field packet the agent will later receive, so the delta is measured on identical inputs rather than on memory. Register baseline is a manual count of overdue submittals/RFIs he identifies from the current Excel or QCS view.",
+      "exit_criteria": "Continue only if (1) the 40% edit-time reduction and the zero-material-error bar are both met, (2) the QC Manager will sign off in writing, (3) the client confirms the deployment tier is acceptable to its PM/KO for the documents involved, and (4) measured support load is under 3 hours/week. Otherwise the engagement converts to a paid diagnostic memo and stops; no monthly fee begins."
+    }
+  },
+  "competitors": [
+    {
+      "vendor": "USACE (Government-furnished)",
+      "product": "RMS 3.0 Contractor Mode / QCS (the incumbent system the contract already specifies)",
+      "fit_for_this_business": "This is the system of record Benaka must use on Corps/Air Force work. It stores three-phase control records and exchanges information with the Government, but it does not draft anything: the QC Manager still types the daily report, minutes and RFI text before entry, which is the gap the agent fills. Any design that tries to replace it fails on contract compliance.",
+      "price": "Not public — furnished through the contract rather than sold as a subscription; no published contractor price found on the USACE RMS pages",
+      "source_type": "government data",
+      "source_url": "https://rms.usace.army.mil/datafiles/helpvideos/qcsabout/Advanced/Content/Topics/FAQ_COM_2/What%20Is%20RMS%2C%20QAS%2C%20and%20QCS.htm"
+    },
+    {
+      "vendor": "Procore",
+      "product": "Procore project management, quality and field productivity bundles (government projects included)",
+      "fit_for_this_business": "Closest full-suite alternative: would hold daily logs, inspections and submittals in one place and reduce re-keying. But it is a system of record to migrate into, not a drafting assistant, and Benaka would still have to satisfy QCS-formatted QC requirements and train field staff.",
+      "price": "Not public — the pricing page says 'Start here to get a custom quote.', quotes every bundle, and notes that the Field Productivity product is excluded and 'priced based on FTE'; plans are sold as annual contracts with unlimited users and unlimited data",
+      "source_type": "vendor pricing page",
+      "source_url": "https://www.procore.com/pricing"
+    },
+    {
+      "vendor": "Fieldwire by Hilti",
+      "product": "Fieldwire (Basic / Pro / Business / Business Plus)",
+      "fit_for_this_business": "Cheap, credible field tool for checklists, photos and — on Business Plus — RFIs, submittals and change orders. Good for the register and photo evidence; it does not write the narrative daily QC report from field notes, and the government QC forms still have to be produced.",
+      "price": "Basic $0, Pro $39, Business $64, Business Plus $89 — each shown as 'per user / month' and 'billed annually'; the page also offers a monthly-billing toggle and custom contracts for unlimited users, API access (contracts of $5,000+), SSO and training",
+      "source_type": "vendor pricing page",
+      "source_url": "https://www.fieldwire.com/pricing/"
+    },
+    {
+      "vendor": "Raken",
+      "product": "Raken daily reporting / field management",
+      "fit_for_this_business": "Strong daily-report product that field crews actually use, with report templates and photo capture. It standardises the report but still requires a person to write it; QC-specific three-phase records and QCS formatting are not its centre.",
+      "price": "Not public — the vendor's purchasing help article describes plan options (Basic, Performance, a Time Clock add-on) but lists no rate and directs customers to contact the sales team",
+      "source_type": "vendor page",
+      "source_url": "https://help.rakenapp.com/en/articles/14447812-purchasing-raken"
+    },
+    {
+      "vendor": "Autodesk",
+      "product": "Autodesk Forma (formerly Autodesk Construction Cloud — document management, submittal log, quality management, project closeout)",
+      "fit_for_this_business": "Would give Benaka a structured document and submittal system with quality-management modules; heavy for a firm that must keep QCS as the record, and it does not draft the QC narrative.",
+      "price": "Not public — every bundle on the pricing page routes to 'Get a Quote'; the page describes 'flexible user, project, and account-based pricing' and publishes no rate",
+      "source_type": "vendor pricing page",
+      "source_url": "https://construction.autodesk.com/pricing/"
+    },
+    {
+      "vendor": "FedQC",
+      "product": "Federal construction QC workflow app (three-phase inspections, deficiency lifecycle, photos, daily QC report)",
+      "fit_for_this_business": "The most directly comparable vertical product: purpose-built around federal QC, covering three-phase inspections, deficiency tracking, photo linkage and daily QC report assembly, and it states it does not replace eCMS, RMS or Procore. Crucially it ships no AI drafting today — an 'AI Narrative Engine' for daily report language is labelled roadmap, not shipped — so it competes with the record-keeping half of the design but not yet with the drafting half.",
+      "price": "Not public — no price is shown on the vendor's site as retrieved",
+      "source_type": "vendor page",
+      "source_url": "https://www.fedqc.com/"
+    },
+    {
+      "vendor": "Trunk Tools",
+      "product": "Construction document AI (Cortex ingestion of every document and drawing, unlimited seats)",
+      "fit_for_this_business": "Would answer 'what does the spec say' questions and surface requirements quickly, which helps RFI drafting. It is a retrieval/answer layer, not a producer of the signed daily report or register, so it complements rather than replaces the proposed design.",
+      "price": "Not public — both tiers (Core, Enterprise) show 'One clear price based off your construction volume' with unlimited seats and no token limits, and no rate is shown",
+      "source_type": "vendor pricing page",
+      "source_url": "https://trunktools.com/pricing/"
+    },
+    {
+      "vendor": "Document Crunch",
+      "product": "Construction contract risk platform (CrunchAI cited answers and redlining; Project Assist for submittals, notices and RFIs)",
+      "fit_for_this_business": "Adjacent, not overlapping: it reads contracts and project documents and flags risk, and its agentic layer can prepare submittals, notices and RFIs for review. Useful at bid stage and for flowdown obligations; it does not produce the daily QC record the QC Manager signs.",
+      "price": "Not public — no rate on the vendor's site; its /pricing URL returns HTTP 404",
+      "source_type": "vendor page",
+      "source_url": "https://www.documentcrunch.com/"
+    },
+    {
+      "vendor": "Hire a person (the default option)",
+      "product": "Quality Control Manager / QC Manager-Superintendent hire",
+      "fit_for_this_business": "The option Benaka is actually pursuing. It solves the problem completely and carries judgement, credentials and installation access that no software has — but it costs a full salary and cannot scale across several task orders without more hires. The agent's thesis is to make one QC Manager cover more work, not to replace him.",
+      "price": "Range as advertised on a third-party job board (SimplyHired) for Benaka's Construction Quality Control Manager/Project Superintendent role, retrieved 12 Nov 2026: 'The salary range is $100,000.00 - $140,000' and 'Pay: $100,000.00 - $140,000.00 per year' — the page shows 'Work Location: In person' and a benefits list (401(k) with match, health insurance, PTO). Comparison from BLS/O*NET 2025 New Jersey wage data for Construction Managers (SOC 11-9021): median $138,230/year, 25th percentile $110,230, average $66.46/hour (https://www.onetonline.org/link/localwages/11-9021.00?st=NJ)",
+      "source_type": "third-party",
+      "source_url": "https://www.simplyhired.com/job/m2NUtDE885oLWMoDsU45Bi_gsBQWD8D19S_eYPt48YmnNXahaaHWWQ"
+    }
+  ],
+  "running_costs": [
+    {
+      "item": "Model tokens (drafting, retrieval, RFIs)",
+      "cost": "About $1.93/month computed; planning budget $15/month",
+      "basis": "Inference, priced from published rates: 120 drafts/month at ~12,000 input and ~1,500 output tokens on gpt-5.4-mini at $0.75 per 1M input and $4.50 per 1M output = $1.08 + $0.81; plus ~2M embedding tokens/month at $0.02 per 1M (text-embedding-3-small) = $0.04. The $15 budget covers re-runs, occasional escalation to a larger model and index refreshes.",
+      "source_url": "https://developers.openai.com/api/docs/pricing"
+    },
+    {
+      "item": "Voice-note transcription",
+      "cost": "About $0.81/month computed; planning budget $5/month",
+      "basis": "Inference: 60 field notes × 3 minutes = 180 minutes/month at $0.0045 per minute (gpt-transcribe).",
+      "source_url": "https://developers.openai.com/api/docs/pricing"
+    },
+    {
+      "item": "OCR of scanned submittals",
+      "cost": "About $0.30/month",
+      "basis": "Inference: ~200 scanned pages/month at $1.50 per 1,000 pages (Document Intelligence Read, S0, US East).",
+      "source_url": "https://prices.azure.com/api/retail/prices?currencyCode='USD'&$filter=armRegionName%20eq%20'eastus'%20and%20productName%20eq%20'Azure%20Document%20Intelligence'%20and%20skuName%20eq%20'S0'"
+    },
+    {
+      "item": "Application host (agent, database, review queue)",
+      "cost": "$12.00/month",
+      "basis": "DigitalOcean Basic Droplet, 2 GiB memory / 1 vCPU / 50 GiB SSD / 2,000 GiB transfer, published at $0.01786 per hour and $12.00 per month; backups are billed separately at 20% (weekly) or 30% (daily) of Droplet cost.",
+      "source_url": "https://www.digitalocean.com/pricing/droplets"
+    },
+    {
+      "item": "Dedicated project mailbox (only if a new licence is required)",
+      "cost": "$7.00 per user per month, paid yearly",
+      "basis": "Microsoft 365 Business Basic listed at $7.00 user/month, paid yearly (annual subscription, auto-renews); $8.40 user/month on a monthly subscription. Assumes the pilot uses an existing Benaka mailbox or a new licence.",
+      "source_url": "https://www.microsoft.com/en-us/microsoft-365/business/microsoft-365-business-basic"
+    },
+    {
+      "item": "Document generation, retrieval and orchestration libraries",
+      "cost": "$0 in vendor fees",
+      "basis": "docxtpl/python-docx, pgvector and the open-source LiteLLM proxy are self-hosted; no per-seat, per-document or licence fee is required for this design.",
+      "source_url": "https://docxtpl.readthedocs.io/en/latest/"
+    },
+    {
+      "item": "Phone / SMS minutes",
+      "cost": "$0",
+      "basis": "The design has no telephony or SMS component; all intake is mailbox, shared folder and email, so no carrier or messaging fees apply.",
+      "source_url": "https://www.benakainc.com/contact-us.html"
+    },
+    {
+      "item": "CUI-safe deployment premium (if required)",
+      "cost": "Not public",
+      "basis": "Azure Government hosting and Azure model token prices could not be captured — the pricing pages render per-model figures dynamically and returned placeholders; a quote or calculator run is required before committing to that tier. Total computed list-price run rate of the lines above is ~$15.04/month without a new mailbox licence and ~$22.04/month with one; with the stated budgets it is ~$39.30/month.",
+      "source_url": "https://learn.microsoft.com/en-us/azure/azure-government/compliance/azure-services-in-fedramp-auditscope"
+    }
+  ],
+  "suggested_pricing": {
+    "pilot_fee": "$1,800 fixed for the four-week, one-task-order pilot (credited in full against the set-up fee if the client continues)",
+    "setup_fee": "$3,500 one-time (net $1,700 after the pilot credit), covering the project library, template conversion, mailbox scoping, review queue and runbook",
+    "monthly_fee": "$450 per month on a 12-month minimum, covering up to two active projects, template changes, monthly error review and 3 hours of support; each additional project +$150 per month",
+    "reasoning": "Inference, reasoned from three anchors. (1) Value: the audit estimates $9,700-$22,600 a year in QC drafting time (135-315 hours at $72/hour); the recommended year-one total is $8,900 (pilot $1,800 + net set-up $1,700 + 12 x $450), below the low end of that range and about 55% of the $16,150 midpoint, so the client keeps a positive first-year return even if only the conservative case is realised. (2) Competitor frame: Fieldwire Business Plus — which handles registers and RFIs but drafts nothing — is $89 per user per month billed annually, i.e. $1,068 per user a year ($5,340 for a five-person field team); a QC Manager hire is advertised at $100,000-$140,000 a year; the fee has to look like a fraction of a hire and no more than a small multiple of a field app. (3) Founder economics: at ~24 founder-days for the first build, $3,500 set-up is well below cost — the first client is a product investment, and the fee only works because the same core is resold to other small federal GCs at the same $3,500/$450 shape. Computed run cost is ~$15-$22 a month (plus hosting headroom to ~$39), so the monthly fee is overwhelmingly care margin; recurring load is ~2-3 hours/month, which puts it at roughly $150-$225 per hour of care work. Guardrails: if the pilot lands under 40% edit-time reduction, drop to a $250/month register-only scope or decline the retainer; do not discount the set-up fee further without cutting scope (e.g. one project, no OCR)."
+  },
+  "leverage": [
+    {
+      "point": "A reusable 'federal QC document core' (mailbox intake → retrieval → Word/Excel render → review queue → audit log) that is client-agnostic; the second and third small federal GC sold the same core needs only new templates and a new project library, which is where the margin is.",
+      "source_url": "https://docxtpl.readthedocs.io/en/latest/"
+    },
+    {
+      "point": "The output format is the client's own Word/Excel template, so the agent rides on tools Benaka already owns and on QCS as the untouched record — no migration project, no data-migration objection, no training burden.",
+      "source_url": "https://www.simplyhired.com/job/m2NUtDE885oLWMoDsU45Bi_gsBQWD8D19S_eYPt48YmnNXahaaHWWQ"
+    },
+    {
+      "point": "Public federal source material can be baked in once and reused for every client: UFGS 01 45 00 (Quality Control) is a public specification whose structure — submittals, QC program requirements, meetings — the agent's document tree can mirror, and USACE publishes its QCS/RMS help files describing the contractor module.",
+      "source_url": "https://www.wbdg.org/FFC/DOD/UFGS/UFGS%2001%2045%2000.pdf"
+    },
+    {
+      "point": "A single container can be redeployed from a $12/month VPS into an Azure Government region, which Microsoft documents as holding a FedRAMP High P-ATO with a published per-service audit-scope table — that reuse path is the answer to the DFARS cloud question for every DoD client instead of bespoke work each time, subject to confirming the chosen AI service is in scope.",
+      "source_url": "https://learn.microsoft.com/en-us/azure/azure-government/compliance/azure-services-in-fedramp-auditscope"
+    },
+    {
+      "point": "Open-source, self-hosted components (python-docx/docxtpl, pgvector, the LiteLLM proxy, FastAPI) mean near-zero software cost per client, so the monthly fee is almost entirely care and hosting margin.",
+      "source_url": "https://docs.litellm.ai/docs/"
+    },
+    {
+      "point": "Opportunity #2 in the same house (bid-desk agent) shares the past-performance index and retrieval layer; opportunity #3 shares the mailbox intake and register pattern, so a Benaka relationship compounds without a second platform.",
+      "source_url": "https://www.benakainc.com/commendations.html"
+    }
+  ],
+  "edge_vs_competitors": "Three defensible edges and two honest gaps. Edges: (1) Local presence — the founder is in Milltown, a short drive from 7 Lawrence Street (inference, not measured), so a same-week walkthrough and on-site review with the QC Manager is possible in a way it is not for a national vendor; (2) QCS-compatible by design — because the agent drafts in Benaka's Word templates and treats QCS as read-only, it does not ask a firm mid-task-order to change its system of record, which is the main objection to Procore/Autodesk/Fieldwire, and it is the same posture the closest vertical competitor (FedQC) takes; (3) drafting depth — FedQC's AI narrative engine for daily QC report language is labelled roadmap, not shipped, so no vertical product found publishes an AI drafter for the signed QC narrative, and private deployment in Azure Government is available to a one-person build in a way most construction-software vendors do not offer. Gaps: there is no track record, no reference client, no security clearance and no audit history, so Benaka is being asked to be first; and the field platforms have mobile apps, photo annotation, deficiency lifecycles and hundreds of integrations that this build does not. The proposal should therefore not claim to be a better Fieldwire, Procore or FedQC — it is a drafting layer above them, and the pilot is the only proof offered."
+  ,
+  "risks_compliance": [
+    {
+      "issue": "QC documents generated under a federal contract are Federal Contract Information at minimum, so the systems that process them must meet basic safeguarding requirements.",
+      "rule_or_source": "FAR 52.204-21, Basic Safeguarding of Covered Contractor Information Systems (Nov 2021) — defines Federal contract information and sets 15 minimum safeguarding controls for covered contractor information systems (access limitation, authentication, media sanitisation, physical access, monitoring, flaw remediation, malicious-code protection).",
+      "confirmed": true,
+      "mitigation": "Run the agent in a dedicated, least-privilege environment with named users, MFA on every account, encrypted storage, no personal devices, documented sanitisation on project close-out; keep the design single-tenant rather than a shared consumer tool.",
+      "source_url": "https://www.acquisition.gov/far/52.204-21"
+    },
+    {
+      "issue": "If any project document is Controlled Unclassified Information (covered defense information), using an external cloud or AI service to process it triggers DoD safeguarding and incident-reporting duties.",
+      "rule_or_source": "DFARS 252.204-7012 — requires NIST SP 800-171 safeguards on covered contractor systems, rapid (72-hour) cyber incident reporting, and, where an external cloud service provider stores, processes or transmits covered defense information, that the contractor 'require and ensure' the provider meets security requirements equivalent to the FedRAMP Moderate baseline.",
+      "confirmed": true,
+      "mitigation": "Treat the CUI determination as a gate in phase 0. If CUI is in scope, deploy only in an Azure Government region (documented FedRAMP High P-ATO, per-service scope table to be checked) and mirror NIST SP 800-171 Rev. 3 controls in the client's system security plan; never route those documents through a commercial consumer API.",
+      "source_url": "https://www.law.cornell.edu/cfr/text/48/252.204-7012"
+    },
+    {
+      "issue": "NIST SP 800-171 Rev. 3 is the control set the client's own SSP is assessed against, so an agent touching CUI becomes part of that assessment boundary.",
+      "rule_or_source": "NIST SP 800-171 Rev. 3, Protecting Controlled Unclassified Information in Nonfederal Systems and Organizations — the control set DFARS 252.204-7012 points contractors to.",
+      "confirmed": true,
+      "mitigation": "Scope the pilot to documents the PM agrees are not CUI; if CUI is unavoidable, provide the client with the agent's component inventory, data-flow description and control mapping so it can be added to their SSP rather than appearing as an unassessed shadow system.",
+      "source_url": "https://csrc.nist.gov/pubs/sp/800/171/r3/final"
+    },
+    {
+      "issue": "The QC Manager holds personal accountability for QC records: three-phase control, submittals, certifications and documentation are his duties, so a fluent but wrong AI draft becomes his signature.",
+      "rule_or_source": "UFGS 01 45 00 (Quality Control) is the public specification that sets the QC program requirements the contractor must run, including the submittal and QC-program sections (1.3 Submittals, 1.5 QC Program Requirements, 1.5.1 Meetings, per its table of contents); Benaka's own posting describes the role as managing and coordinating the three phases of control for all features of work 'as per USACE's Quality Control Program'.",
+      "confirmed": true,
+      "mitigation": "Draft-only mode with mandatory human edit and signature; no auto-classification of pass/fail or deficiencies; a per-line source citation or an explicit 'unconfirmed' flag; an append-only log of who edited what; a weekly review of rejected drafts so recurring errors are fixed rather than repeated.",
+      "source_url": "https://www.wbdg.org/FFC/DOD/UFGS/UFGS%2001%2045%2000.pdf"
+    },
+    {
+      "issue": "Work is on military installations and field hires must clear a background check for installation access; the agent (and the founder) holds no clearance.",
+      "rule_or_source": "Benaka's advertised QC role states the selected candidate 'will have to go through a Background Check to gain access to the federal government installation' and will commute daily to the federal project site.",
+      "confirmed": true,
+      "mitigation": "Scope the engagement to unclassified administrative documents; the founder never handles classified material and does not need site access beyond an escorted visit arranged through the PM; documents move by mailbox/folder, not by physical media.",
+      "source_url": "https://www.simplyhired.com/job/m2NUtDE885oLWMoDsU45Bi_gsBQWD8D19S_eYPt48YmnNXahaaHWWQ"
+    },
+    {
+      "issue": "Prompt injection or malicious content in inbound email, submittal PDFs or photos (instructions disguised as text) could make the agent take an unintended action or inject false content into a draft.",
+      "rule_or_source": "Inference — no construction-specific rule found; the exposure follows from giving an agent read access to third-party email and attachments, which the design requires.",
+      "confirmed": false,
+      "mitigation": "No tool execution or outbound sending from parsed content; documents are treated as data only; outbound email is disabled in the agent; a fixed allowlist of templates and recipients; human approval is the only path to a filing, so an injected instruction can at worst produce a bad draft that is visible in the diff.",
+      "source_url": "https://learn.microsoft.com/en-us/graph/permissions-reference"
+    },
+    {
+      "issue": "Photographs taken inside occupied facilities can capture workers, badges or building security features, which raises privacy and client-confidentiality questions separate from CUI.",
+      "rule_or_source": "Inference — no specific rule confirmed for this use; Benaka's own site says work happens in fully occupied facilities with concurrent projects, which is where such photos arise.",
+      "confirmed": false,
+      "mitigation": "Agree a photo rule in phase 0 (no faces, no badges, no access-control detail), run a face/plate blur step before captioning, and store photos only in the project library with the same retention as the report.",
+      "source_url": "https://www.benakainc.com/about-us.html"
+    },
+    {
+      "issue": "No rule was found that specifically authorises or prohibits a contractor using generative AI to draft QC records; the safe reading is that the record must be accurate and the human must own it, not that AI drafting is banned.",
+      "rule_or_source": "Could not confirm any DoD/USACE rule addressing AI-drafted contractor QC documentation; UFGS 01 45 00 as retrieved sets documentation duties without addressing AI tools, so no prohibition or authorisation is cited here.",
+      "confirmed": false,
+      "mitigation": "Ask the PM to confirm in writing with the KO/COR that draft-only AI assistance on unclassified project documents is acceptable on the pilot task order before week 1, and keep that note in the project file.",
+      "source_url": "https://www.wbdg.org/FFC/DOD/UFGS/UFGS%2001%2045%2000.pdf"
+    },
+    {
+      "issue": "Consultant liability: an error in a draft that reaches a signed record could produce a claim against a one-person side business with no insurance or capital.",
+      "rule_or_source": "Inference — commercial risk, not a cited rule.",
+      "confirmed": false,
+      "mitigation": "Written scope that the agent produces drafts only and the client's QC Manager is the author of record; a liability cap at fees paid; no warranty of accuracy; consider professional liability cover before the first retainer; keep the pilot inside an existing task order so an error is caught by the client's own QC process.",
+      "source_url": "https://www.wbdg.org/FFC/DOD/UFGS/UFGS%2001%2045%2000.pdf"
+    }
+  ],
+  "feasibility": {
+    "technical_1_5": 3,
+    "commercial_1_5": 3,
+    "weeks_to_pilot": "About 8 weeks from go-ahead to pilot result: a ~4-week build (16 founder-days across phases 0-3) plus a 4-week shadow pilot; 24 founder-days in total across phases 0-5.",
+    "verdict": "Go with conditions",
+    "reasoning": "Technically this is a well-understood build — mailbox intake, per-project retrieval, Word rendering and a review queue — with no exotic dependency, and the computed run rate is ~$15/month without a new mailbox licence (~$22 with one, ~$39 including budget headroom), so a solo founder can ship it. The technical score is held at 3 rather than 4 because three things are unresolved: QCS/RMS has no public API, so the 'last mile' stays manual and the value stops at the draft; the client's mailbox may be on-premises Exchange (the contact page links an OWA path), which could remove Microsoft Graph from the design; and the accuracy bar is unforgiving because a fluent wrong quantity lands on a QC record a human signs — retrieval and citation discipline, not model quality, is the real engineering risk. Commercially it is 3: the pain is unusually well evidenced (a public job description that is essentially a document list, advertised at $100,000.00-$140,000.00 per year on a third-party board), the client has real contract value behind it (a $134M-ceiling Air Force MACC and a 2026 USACE MATOC), and the audit's value range ($9,700-$22,600) supports a $450/month fee — but margins on federal construction are thin, the decision-maker is unnamed publicly, the first build is ~24 founder-days against a $3,500 set-up, and the sale must go through a general inbox to a firm that is simultaneously trying to hire the very person the product helps. Conditions for proceeding: (1) a written CUI/flowdown determination for the pilot task order, (2) a named QC Manager who agrees to 3-4 hours a week for four weeks, (3) acceptance that QCS entry stays manual, and (4) a pilot contract with the 40% edit-time and zero-material-error exit criteria attached. If the CUI answer requires full NIST SP 800-171 system treatment in week 1, defer to Not now — that is a two-client-scale build, not a pilot."
+  },
+  "discovery_questions": [
+    "Which active task order can we use for a four-week pilot, who is the QC Manager on it, and how many federal projects is that person covering at once?",
+    "Which office and project would the pilot sit in — the New Brunswick office or a field project — and was the advertised QC Manager/Project Superintendent role tied to a specific site?",
+    "What exactly does today's daily QC report contain (fields, photos, quantities, signature block) and where does the blank template live — Word, Excel, QCS, or all three?",
+    "How long does one daily report, one set of preparatory-meeting minutes and one RFI take to produce today, and can we time ten documents to set the baseline?",
+    "Is the mailbox Microsoft 365 or on-premises Exchange, and can IT create a dedicated read-only project mailbox that the agent can access?",
+    "Have your contracting officers or CORs said anything about CUI marking, cloud services or AI use on these task orders — can the PM walk through the flowdown clauses with us?",
+    "Who signs daily reports and RFIs today, and what is the review path between the field note and the QCS entry?",
+    "Would you rather the submittal register mirror the QCS fields exactly or stay in your own Excel format?",
+    "If the pilot shows less than a 40% reduction in editing time, what would you want instead — a register-only tool, or nothing?",
+    "Is there an IT security questionnaire or vendor review the pilot would have to pass before we touch a mailbox?"
+  ],
+  "caveats": [
+    "The impact range ($9,700-$22,600/year) is the audit's assumption-based estimate (45 weeks x 6-10 hours x 50-70% drafted at $72/hour); no Benaka time data exists, so it is a hypothesis the pilot baseline is designed to test, not a promise.",
+    "The audit and this plan assume the daily report, minutes and RFI content is the right target; if the real time sink is photograph handling, QCS data entry or submittal logging, the design has to shift after discovery.",
+    "Founder-days are inferences from building similar document pipelines, not measured on this codebase; the 4-week build assumes ~4 founder-days a week on a side-business schedule, so a slower cadence stretches it, and the first client will take longer than the second.",
+    "All vendor prices were observed on 12 Nov 2026, are list prices in USD and exclude tax, discounts and negotiated terms; several of the most relevant vendors publish no price at all (Procore, Raken, Autodesk bundles, Trunk Tools, Document Crunch, FedQC, USACE QCS).",
+    "Pricing is an inference and deliberately sits below the audit's low-end value so the client's first-year return is positive in the conservative case; it also assumes the set-up is partly funded as product development for later clients.",
+    "The plan does not claim any reduction in change orders, claims or rework, because no credible quantified figure was available; do not repeat vendor time-saving claims to the client."
+  ],
+  "data_gaps": [
+    "No public API or developer documentation for USACE QCS/RMS 3.0 Contractor Mode was found; whether an approved interface exists for a specific RMS version must be asked of the RMS Help Desk. Integration is therefore designed as manual.",
+    "Whether Benaka's mailbox is Exchange on-premises or Microsoft 365 is not confirmed — the contact page links an OWA path (bimail.benakainc.com/owa), which suggests on-premises and would put Microsoft Graph in doubt.",
+    "The salary range comes from a third-party job board (SimplyHired) that opened on 12 Nov 2026; the page displayed the range and 'Work Location: In person' but no street address or city, so the posting's location is unconfirmed. The company's own careers page, as recorded in profile.json, carries no salary.",
+    "Microsoft's business pricing pages abort on direct fetch; the $7.00 user/month Business Basic figure was read from the vendor's own plan page through a text-reader proxy, which is weaker evidence than a direct render, and Microsoft's separate licensing pricelist (quoted in the earlier draft at $6.00) was not revisited.",
+    "No decision-maker is named on the company website or LinkedIn company page; the sale starts at a general inbox (benaka@benakainc.com), and the QC Manager role is currently vacant or in hiring, so the pilot reviewer may not be in place yet.",
+    "Number of concurrent active task orders, current QC staffing and any QCS usage per project are not public, so the per-project multiplier in the pricing is an assumption.",
+    "Document Crunch's Procore Marketplace listing is JavaScript-rendered and could not be read, so its price statement rests only on the vendor's own site showing no rate and a 404 at /pricing.",
+    "FedQC published no price and no way to see a rate without contacting the vendor; its feature list was read from its own site, which labels the AI narrative engine as roadmap.",
+    "Azure model token pricing (including any Azure Government endpoint) could not be captured — dynamic pages returned placeholders — so the CUI-safe running cost is unknown and needs a calculator run or quote.",
+    "Microsoft's FedRAMP audit-scope page confirms Azure and Azure Government hold FedRAMP High P-ATOs and publishes per-service tables, but the specific AI service row was not read, so service-level coverage for the model endpoint is unconfirmed.",
+    "No DoD policy document addressing generative AI use on contractor QC records was retrievable, so the AI-drafting question is left open for the PM/KO to answer in writing.",
+    "No customer, employee or peer review of Benaka's document quality was retrievable (BBB, Glassdoor, Indeed blocked), so the pain case rests on the firm's own job posting and process descriptions.",
+    "No NJ-specific licensing or regulatory requirement affecting AI-drafted construction QC records was found; the governing constraints appear to be federal contract clauses, not state law."
+  ]
+}

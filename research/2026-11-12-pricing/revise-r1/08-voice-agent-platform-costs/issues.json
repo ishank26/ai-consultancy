@@ -1,0 +1,37 @@
+[
+ {
+  "claim": "Retell LLM option \"$0.0064/minute (GPT 5 mini)\"",
+  "problem": "Misattributed price. Retell's live table shows GPT 5 mini at $0.008/minute standard / $0.016/minute fast. $0.0064 is a different model (GPT 5.6 Luna standard, and GPT 6 Luna fast). The number is real but the model label is wrong, so the claim as written is contradicted by the cited page.",
+  "fix": "Change to \"$0.008/minute (GPT 5 mini; $0.016 fast tier)\" and, if the $0.0064 figure is wanted for the floor calculation, attribute it to GPT 5.6 Luna."
+ },
+ {
+  "claim": "price_ranges.full_service_or_custom: \"$280-$700/month plus $199-$3,000 one-time setup for a managed deployment\"",
+  "problem": "Does not follow from the sourced offerings. The only sourced managed monthly prices in offerings are Goodcall $79/$129/$299, Vocenya $49-$499 and Sarah247 \"from $350 + 35c/min\"; none reaches $700, and the only sourced setup statement is Sarah247's \"setup included\" (Vocenya: none published). The $280 low end, the $700 high end and the whole $199-$3,000 setup band come from Voicewell, Rosie and the NJ Business AI $697/$2,997 figures, which have no offering entry and no URL anywhere in the file - the caveats themselves say those NJ figures were only seen in search summaries and their pages could not be opened.",
+  "fix": "Rebuild the band from sourced prices only, e.g. \"$350-$499+/month for managed receptionist plans (Sarah247 from $350 + 35c/min of usage; Vocenya Pro $499 for 2,500 minutes), setup included or not published\", and drop $199-$3,000 from the range or add a Voicewell offering entry with a working source_url."
+ },
+ {
+  "claim": "implications_for_consultancy #2, #3 and #5 cite \"$280-$380/month plus $199-$299 setup (Voicewell)\", \"$499-$697/month high\" and \"setup from $0-$2,997\" / \"$2,997 + $697/month NJ outlier\"",
+  "problem": "Specific numbers presented as known market facts with no source in the file. Voicewell, Rosie and the $697/$2,997 NJ figure appear only in prose; there is no offering, source_url or retrieved page for them, and the caveats state the $697/$2,997 page could not be opened. This contradicts the file's own statement that unopenable NJ figures were \"deliberately excluded from offerings\" while still using them to anchor the recommended price.",
+  "fix": "Either add Voicewell (and any NJ provider) as a properly sourced offering with a URL that opens, or restate these implications using only the sourced anchors: Sarah247 from $350 + usage, Vocenya $249/$499, Goodcall $79-$299, no published setup fee except Sarah247's included setup. Then the recommended $1,500-$3,000 build can be labelled as a judgement call rather than an undercut of a specific sourced outlier."
+ },
+ {
+  "claim": "buyer_complaints #3: \"the headline per-minute rate omits telephony, model choice, prompt size and per-call minimums, so the same agent can cost 5-10x its advertised rate once prompts grow\"",
+  "problem": "Overstated relative to the cited thread. Thread 3118 (June 2026) contains the $0.17 average and the 11c-40c reports but no \"5-10x\" figure and no statement about per-call minimums; the only documented multiple is ~5x, in thread 2441, and Retell states it bills per second with no per-call minimum (the sole minimum is 10 seconds when a Dynamic Opening Message is used, per thread 2720).",
+  "fix": "Restate as: headline rate is component-only, prompt size can multiply billed LLM duration (Retell support showed ~5x on a 229-second call, thread 2441), and cite the 10-second dynamic-greeting minimum instead of \"per-call minimums\"."
+ },
+ {
+  "claim": "price_ranges themselves labeled as inference",
+  "problem": "The three range strings are not labelled inference inline; only the separate inference_note explains the derivation. The brief's own instruction (and the file's style in implications_for_consultancy, which prefixes \"Inference:\") expects the label on the range.",
+  "fix": "Prefix each range string with \"Inference:\" or add a \"label\": \"inference\" key alongside them."
+ },
+ {
+  "claim": "Telnyx source_url https://telnyx.com/pricing/voice-ai-agents and the STT/TTS component rates cited to it",
+  "problem": "That URL returns HTTP 404 on direct fetch; the same page is served at https://telnyx.com/pricing/conversational-ai (canonical still reports voice-ai-agents). Also, the per-provider STT rates ($0.005 Deepgram Nova 3/Flux, $0.0015 Parakeet, $0.017 Google) are not on the voice-agent page - they are on https://telnyx.com/pricing/speech-to-text.",
+  "fix": "Replace the source_url with the working URL and cite /pricing/speech-to-text for the STT component rates. (All the Telnyx prices themselves checked out.)"
+ },
+ {
+  "claim": "Twilio US inbound toll-free $0.022/min and call recording $0.0025/min",
+  "problem": "Direct fetch of the cited Twilio page returns descriptions only, no rate table. Outbound $0.014, inbound $0.0085 and $1.15/month local number were confirmed through the search-engine rendering of the cited URL; toll-free inbound and recording were not confirmed by any page I could open.",
+  "fix": "Re-verify these two on Twilio's own rendering or the docs page and mark them \"unverified\" until then; the existing caveat only mentions the local-number figures."
+ }
+]

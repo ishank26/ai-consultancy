@@ -1,0 +1,108 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Fix step 2: \"register a clean alternative (for example hometechremodelingnj.com) with auto-renew on\"",
+      "problem": "The example domain is not available: Verisign RDAP shows hometechremodelingnj.com registered 2026-10-23 (expires 2027-10-23) via Cloudflare, Inc. and it does not resolve. The same day also saw the hyphenated variant registered, so this name family looks squatted. This is advice, not an assertion of availability, and the business-facing audit_md only says \"register a clean alternative\", so it does not falsify the check, but an owner following the step list would hit a taken domain.",
+      "fix": "Replace the example with an instruction to check availability of a fresh name (e.g. \"choose a new .com such as hometechremodelingnj.com only if RDAP shows it unregistered\"), or drop the named example."
+    },
+    {
+      "claim": "audit_md: \"someone who tries the company name plus '.com' gets a server error\"",
+      "problem": "What the visitor actually gets is an Akamai 'Access Denied' page (a 403 permission error, which audit_md itself names correctly two lines earlier), not a server-side fault. Slightly loose plain-English wording rather than a false statement, since the page really is an error page.",
+      "fix": "Say \"gets an 'Access Denied' error page\" for consistency with the first bullet."
+    },
+    {
+      "claim": "after_fix.evidence: logged-out Maps search for 'Hometech Remodeling 757 Ridgewood Ave North Brunswick NJ' returned six named firms and no listing for Hometech Remodeling",
+      "problem": "Re-run live today, the same search returned those six plus one more entry, 'HOMETECH SOLUTIONS LLC' (handyman, MacArthur Dr, marked Permanently closed). The enumeration is incomplete, but the conclusion (no listing for this business, only similarly named firms elsewhere) still holds, and audit_md does not name the firms.",
+      "fix": "Either add HOMETECH SOLUTIONS LLC to the list or write \"among others\" so the enumeration is not read as exhaustive."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "hometechremodeling.com root serves a script-only page that forwards to /lander, which returns an Akamai 'Access Denied' naming http://forsale.godaddy.com/forsale/hometechremodeling.com",
+      "source_url": "https://hometechremodeling.com/lander",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registration 2023-08-21, expiration 2027-08-21, last changed 2026-09-07, registrar Dynadot Inc (IANA 472), nameservers NS1/NS2.AFTERNIC.COM and VERIFICATION-QXU9BFDAIH4CXURBBN3F4D.NS101.VERIFY.HN, status client transfer prohibited, no registrant published",
+      "source_url": "https://rdap.org/domain/hometechremodeling.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: hometech-remodeling.com registered 2026-10-23, expires 2027-10-23, last changed 2026-10-27, GMO Internet Group d/b/a Onamae.com (IANA 49), status client hold, Cloudflare nameservers; domain does not resolve",
+      "source_url": "https://rdap.org/domain/hometech-remodeling.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No Google Business Profile: Maps search for the name with 757 Ridgewood Ave returned only similarly named firms (HomeTech Renovations, Hometech Construction And Development, Home Technicians LLC, Hometech Construction NY, Advance Home Renovations LLC, 7T Home Improvement)",
+      "source_url": "https://www.google.com/maps/search/Hometech+Remodeling+757+Ridgewood+Ave+North+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Maps search for \"732-967-7777\" returns \"Google Maps can't find\" and offers \"Add a missing place\"",
+      "source_url": "https://www.google.com/maps/search/%22732-967-7777%22",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ home improvement registration 13VH09579000 for HOMETECH REMODELING LLC, Home Improvement Business Contr, Active, North Brunswick NJ",
+      "source_url": "https://newjersey.mylicense.com/verification/Search.aspx?facility=Y",
+      "result": "confirmed"
+    },
+    {
+      "claim": "USDOT 3371268 HOMETECH REMODELING LLC, 757 RIDGEWOOD AVE N BRUNSWICK NJ 08902-2255, phone (732) 967-7777, status ACTIVE, entity CARRIER, data as of 11/11/2026",
+      "source_url": "https://safer.fmcsa.dot.gov/query.asp?query_param=USDOT&query_string=3371268&query_type=queryCarrierSnapshot&searchtype=ANY",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2003 archive capture is Home-Tech Remodeling and Painting, Inc., Acworth GA, North Metro Atlanta since 1997",
+      "source_url": "https://web.archive.org/web/20031214141905/http://www.hometechremodeling.com:80/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2009 archive capture is a Homestead-built Tampa Bay renovation site with Florida licence CRC 1328324 and a 727-area phone",
+      "source_url": "https://web.archive.org/web/20090614024417/http://hometechremodeling.com:80/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2016 capture is a GoDaddy parking frame (mcc.godaddy.com/park)",
+      "source_url": "https://web.archive.org/web/20161002005036/http://hometechremodeling.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2021 capture is an AdSense-for-domains parking lander with no title",
+      "source_url": "https://web.archive.org/web/20211207194316/http://hometechremodeling.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2024 and 2025 captures are the same /lander redirect stub seen today",
+      "source_url": "https://web.archive.org/web/20250711230804/http://hometechremodeling.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Unsampled archive captures (2013, 2016-03, 2018) are GoDaddy 'My Site' placeholders or AdSense parking, not a North Brunswick business site",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=hometechremodeling.com&output=text&fl=timestamp,original,statuscode,length&collapse=digest&limit=60",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No page found that links hometechremodeling.com to this business (links_to_broken_domain empty)",
+      "source_url": "https://www.bing.com/search?q=%22Hometech+Remodeling%22+%22North+Brunswick%22",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BBB profile could not be read today (Cloudflare 'Just a moment...' challenge)",
+      "source_url": "https://www.bbb.org/us/nj/north-brunswick/profile/remodeling/hometech-remodeling-llc-0221-90184362",
+      "result": "could not open"
+    },
+    {
+      "claim": "BuildZoom shows only a bot/JavaScript challenge page, so its fields are unverified",
+      "source_url": "https://www.buildzoom.com/contractor/hometech-remodeling-llc",
+      "result": "could not open"
+    },
+    {
+      "claim": "hometechremodelingnj.com (the fix-step example) is available to register",
+      "source_url": "https://rdap.org/domain/hometechremodelingnj.com",
+      "result": "contradicted"
+    }
+  ],
+  "confidence": "High"
+}

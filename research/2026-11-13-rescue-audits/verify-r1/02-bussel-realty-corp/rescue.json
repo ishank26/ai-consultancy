@@ -1,0 +1,101 @@
+{
+ "ref": "B01139",
+ "name": "Bussel Realty Corp",
+ "town": "Edison (New Brunswick service pages)",
+ "category": "Commercial real estate brokerage",
+ "status": "operating",
+ "domains": [
+  {
+   "domain": "bussel.com",
+   "role": "listed on Google / old site / alternate",
+   "final_url": "https://bussel.com/",
+   "result": "HTTP 200. The real brokerage site loads normally in Chrome (logo, 732-287-3777, property search, featured listings, deal news). But the rendered home page contains a hidden block positioned at left:-9999px with Vietnamese, Hebrew and Russian text and four outbound links (vietnam-millionaire.me, portuguese-passport.online, top10binary.ru, top10shops.ru), and the tab title is prefixed with a horse emoji. The same URL fetched as plain HTML (no browser navigation) returns clean HTML, so the spam is served only under some conditions. /contact-us/ returns HTTP 404.",
+   "screenshot_files": [
+    "bussel-home-desktop-1440.png",
+    "bussel-home-mobile-390.png",
+    "google-maps-profile.png"
+   ],
+   "checked_at": "2026-11-13",
+   "source_url": "https://bussel.com/"
+  }
+ ],
+ "links_to_broken_domain": [
+  {
+   "place": "Google Maps / Search profile 'Bussel Realty Corporation' (4.5, 2 Ethel Rd #202a, Edison NJ 08817, (732) 287-3777, 'Located in: Durham Center', open until 4 PM) \u2014 lists bussel.com as the website",
+   "url": "https://www.google.com/maps/place/Bussel+Realty+Corporation/@40.5412402,-74.3948696,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3b7fb806a6985:0xb89cb9047c768c11!8m2!3d40.5412402!4d-74.3948696!16s%2Fg%2F1tcx_scb"
+  },
+  {
+   "place": "The site's own pages and templates (header, footer, property search, news) link to bussel.com throughout, and info@bussel.com is the published email address",
+   "url": "https://bussel.com/contact-us/commercial-real-estate/central-new-jersey"
+  }
+ ],
+ "rdap": [
+  {
+   "domain": "bussel.com",
+   "registered": "1996-04-23",
+   "expires": "2028-08-01",
+   "last_changed": "2026-07-29",
+   "registrar": "GoDaddy.com, LLC (IANA 146); status: client delete/renew/transfer/update prohibited; nameservers NS49/NS50.DOMAINCONTROL.COM",
+   "source_url": "https://rdap.org/domain/bussel.com"
+  }
+ ],
+ "likely_cause": {
+  "cause": "hacked",
+  "reasoning": "The domain is still registered through the business's own registrar account with its own nameserver pair and is paid until 1 August 2028, so it has not lapsed, been parked or been re-registered by anyone else. The live page is the genuine Bussel site (its own brokers, listings and deal news), so the site was not replaced. What differs is content injected into it: a hidden off-canvas block of Binomo/gambling, passport and Russian retail spam with four outbound links, plus a horse emoji added to the tab title. The Wayback snapshot of 4 August 2026 is clean, and a plain-HTML fetch of the same URL today is clean, while a real Chrome navigation today carries the spam \u2014 consistent with an injection that is served selectively. Inference: injected SEO spam on the business's own site, not a domain loss; the selective serving cannot be confirmed without server access.",
+  "inference": true
+ },
+ "fix_steps": [
+  {
+   "step": "Change the hosting/IIS, FTP, database, /login.asp admin and mailbox passwords and enable two-factor where offered. Leave the domain registration where it is: it is paid to 2028 and locked.",
+   "who": "Owner plus whoever administers the hosting account",
+   "effort_hours": "1-2",
+   "source_url": "https://rdap.org/domain/bussel.com"
+  },
+  {
+   "step": "Diff the live home page against the clean Wayback copy of 4 August 2026, then hunt the injected hidden block and emoji title tag through every .asp template, include file and shared footer, and re-test in a normal browser rather than a text fetch.",
+   "who": "Web developer (classic ASP)",
+   "effort_hours": "3-6",
+   "source_url": "https://web.archive.org/web/20260804094057/https://bussel.com/"
+  },
+  {
+   "step": "Ask the host for access/FTP logs around the last template change to find the entry point, patch it (outdated component, weak FTP or admin password) and keep IIS and the ASP stack updated.",
+   "who": "Hosting provider with the developer",
+   "effort_hours": "2-4",
+   "source_url": "https://bussel.com/"
+  },
+  {
+   "step": "Check Google Search Console for Security Issues and Manual Actions on bussel.com, request a review once the spam is gone, and set up a weekly alert on outbound links and the page title.",
+   "who": "Developer, then owner for the weekly check",
+   "effort_hours": "1-2",
+   "source_url": "https://support.google.com/webmasters/answer/6347750"
+  },
+  {
+   "step": "Fix the contact path while the developer is in: /contact-us/ returns a bare 404 and the contact page's only form is the CRM login. Point /contact-us/ at the directory page and add a public enquiry route.",
+   "who": "Web developer",
+   "effort_hours": "2-4",
+   "source_url": "https://bussel.com/contact-us/"
+  }
+ ],
+ "after_fix": {
+  "opportunity": "Add a public enquiry/requirement form (property type, size, location, timeline) and click-to-call on the phone number, so a tenant or landlord can reach the right broker without the CRM login or copying a number by hand.",
+  "evidence": "On the contact page there are 0 tel: links and the only form posts to /login.asp (the staff login); 732-287-3777 appears as plain text in the header and footer.",
+  "source_url": "https://bussel.com/contact-us/commercial-real-estate/central-new-jersey"
+ },
+ "severity": "Medium",
+ "severity_reason": "Customers see a normal, working brokerage site and the domain is safe and paid until 2028, so there is no outage. The damage is to search visibility and trust: the site serves hidden gambling, passport and Russian-retail links to browsers, its page title is altered, and its /contact-us/ URL returns a 404.",
+ "audit_md": "# Website Health Check: Bussel Realty Corp\n\n**What we saw on 13 November 2026**\n\n- bussel.com is registered through GoDaddy in the company's own account, paid until 1 August 2028 with registrar locks on, so it has not lapsed or changed hands.\n- The site loads normally in Chrome \u2014 logo, 732-287-3777, property search, listings, deal news \u2014 but the home page also carries a hidden off-screen block of Vietnamese, Hebrew and Russian spam linking to vietnam-millionaire.me, portuguese-passport.online, top10binary.ru and top10shops.ru, and the tab title is prefixed with a horse emoji.\n- A plain text fetch of that same page returns clean HTML, so the spam is served only some of the time.\n- Google's \"Bussel Realty Corporation\" profile (4.5, 2 Ethel Rd #202a, Edison NJ 08817) lists bussel.com, so that is where customers are sent; bussel.com/contact-us/ returns a bare 404.\n\n**What it means for customers**\n\nVisitors see a normal, working site; the injected text sits out of view. Search engines can still read it, and spam links like these can cost rankings or bring a security warning.\n\n**How to fix it**\n\n1. Change hosting, FTP, database and staff-login passwords and add two-factor; leave the domain registration alone (1\u20132 hours).\n2. Diff the home page against the clean Wayback copy of 4 August 2026, then strip the injected block from the templates and includes (3\u20136 hours).\n3. Have the host trace the entry point in the access logs and patch it (2\u20134 hours).\n4. Check Search Console for security issues, request a review, add weekly page monitoring (1\u20132 hours).\n5. Repair /contact-us/ and add a public enquiry route (2\u20134 hours).\n\n**After the fix**\n\nAdd click-to-call on 732-287-3777 and a short requirement form, so a tenant or landlord reaches a broker in one tap.\n\nPrepared from publicly available information on 13 November 2026. We did not log in to or change anything.",
+ "founder_md": "# Founder notes \u2014 Bussel Realty Corp (B01139)\n\n**Outreach email draft (3 sentences)**\n\nSubject: Something on bussel.com you might not be able to see\n\nHi [name], while looking at commercial brokerages in Middlesex County I opened bussel.com in an ordinary browser and found a hidden block of Vietnamese, Hebrew and Russian spam text with four outbound links on the home page, and a horse emoji added to the browser tab title, even though the page looks completely normal to a visitor. We have screenshots of the desktop and phone view alongside the page code, and I am happy to send them over so your developer can check whether anything else was touched. It is a contained, specific job \u2014 removing the injected block and closing the way it got in \u2014 and I can walk you through what we saw in ten minutes.\n\n**Walk-in / phone opener (1 sentence)**\n\n\"I was on your website this morning and spotted hidden spam links baked into the home page that you would never see as a visitor \u2014 can I show you the screenshots?\"\n\n**Sources**\n\n- https://bussel.com/ \u2014 live home page, HTTP 200; in Chrome the rendered page contains `div.dc` at left:-9999px with links to vietnam-millionaire.me, portuguese-passport.online, top10binary.ru and top10shops.ru, and the title carries a horse emoji (13 Nov 2026)\n- Screenshots: bussel-home-desktop-1440.png (1440px), bussel-home-mobile-390.png (390px), google-maps-profile.png\n- https://rdap.org/domain/bussel.com \u2014 registration 1996-04-23, expiry 2028-08-01, last changed 2026-07-29, GoDaddy.com LLC, client delete/renew/transfer/update prohibited, NS49/NS50.DOMAINCONTROL.COM\n- https://web.archive.org/cdx/search/cdx?url=bussel.com&output=json&from=2024 \u2014 continuous HTTP 200 snapshots from Feb 2024 to Aug 2026\n- https://web.archive.org/web/20260804094057/https://bussel.com/ \u2014 4 Aug 2026 snapshot; no spam strings in that archived HTML (news excerpt there is dated June 1, 2026)\n- https://www.google.com/maps/place/Bussel+Realty+Corporation/@40.5412402,-74.3948696,17z \u2014 profile: 4.5, 2 Ethel Rd #202a, Edison NJ 08817, \"Located in: Durham Center\", \"Open \u00b7 Closes 4 PM\", bussel.com, (732) 287-3777; screenshot google-maps-profile.png\n- https://bussel.com/contact-us/commercial-real-estate/central-new-jersey \u2014 employee directory page; 0 tel: links; only form action /login.asp\n- https://bussel.com/contact-us/ \u2014 HTTP 404\n- https://support.google.com/webmasters/answer/6347750 \u2014 Google guidance on injected content and review requests\n\n**Open questions**\n\n- Who holds the registrar (GoDaddy) and hosting/IIS logins, and when were those passwords last changed?\n- Who builds and maintains the classic ASP site \u2014 in-house, a web firm, or the host?\n- When did the home page last change, and has anyone seen a rankings or traffic drop in Search Console?\n- Is there a Google Business Profile login for \"Bussel Realty Corporation\", or is the profile unclaimed (the panel still shows \"Add missing information\" and \"Add a photo\")?\n- Is there a New Brunswick office at all, or are those pages only service-area landing pages (the only address published on the site is Edison)?",
+ "caveats": [
+  "The spam was seen in a real Chrome navigation and in the rendered DOM, but a plain HTTP fetch of the same URL returned clean HTML and the 4 Aug 2026 Wayback copy is also clean; how the site decides which version to serve is not visible from outside (inference: selective/cloaked serving).",
+  "There is no New Brunswick address: the only address published on the site is 2 Ethel Road, Suite 202A, Edison NJ 08817, so this audit covers that business and its New Brunswick service pages.",
+  "The Google panel showed a 4.5 rating but no review count, plus 'Add missing information' prompts; whether the profile is claimed cannot be confirmed without logging in.",
+  "The site was read, not exercised: property search and the staff login were not used."
+ ],
+ "data_gaps": [
+  "MyEListing listing could not be opened: browser returned net::ERR_CERT_COMMON_NAME_INVALID.",
+  "Clutch returned HTTP 403 and other directory pages failed to fetch, so whether those directories link to bussel.com is unverified.",
+  "No BBB or Yelp profile was located in search; none verified.",
+  "No server logs or Search Console data, so the entry point of the injection and any ranking impact are unknown.",
+  "Google review count not shown in the limited Maps panel view."
+ ]
+}

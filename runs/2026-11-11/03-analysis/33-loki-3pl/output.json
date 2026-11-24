@@ -1,0 +1,83 @@
+{
+  "business": "LOKI 3PL",
+  "industry": "logistics-3pl",
+  "town": "East Brunswick, NJ",
+  "opportunities": [
+    {
+      "title": "Quote-to-proposal intake agent across both warehouse and freight funnels",
+      "capability": "A",
+      "problem": "Inbound demand is captured by two parallel manual funnels - a five-step warehousing questionnaire and a separate 60-second warehouse quote form - with truckload/LTL running yet another path, and the only public promise is that 'our team will review your requirements and get back to you quickly'. No instant pricing, no online scheduling, and a single sales@ inbox plus one phone number are the only response channels, so every lead is read, re-keyed and quoted by a person. A business advertising 11 sites and 2M+ sq ft is qualifying all of that interest through human triage.",
+      "evidence": [
+        "Lead intake is a five-step questionnaire asking ownership, current US warehouse presence, preferred inventory location, max shipping distance, start timing, project type and peak season - all fields a machine could normalise and score. https://loki3pl.com/3pl-warehousing-quote-questionnaire/",
+        "A second, separate 60-second warehouse quote form exists alongside it, and the page promises only that 'our team will review your requirements and get back to you quickly' - i.e. no automated response, scoring or pricing. https://loki3pl.com/warehouse-form/",
+        "Only general contact channels are published site-wide (1-844-565-4537 and sales@loki3pl.com); no chatbot, instant quote engine or self-serve scheduling appears on the pages reviewed. https://loki3pl.com/support/",
+        "The careers page lists no open requisitions and no ATS link, and SimplyHired returns no LOKI 3PL postings - consistent with a small commercial/back-office team absorbing the lead volume (inference from absence of postings). https://loki3pl.com/career/",
+        "Content engine is prolific (40+ blog posts through Nov 2026, per-state location pages, calculators as lead magnets), so inbound volume is being actively manufactured while handling stays phone/email based. https://loki3pl.com/blog-post-sitemap.xml"
+      ],
+      "agent_design": "Event-driven intake agent fires on each new form submission or sales@ email: it normalises both funnels into one lead record, enriches with the data the site already collects (product ownership, current 3PL, target geography vs. the 11-site network, cubic/pallet math from their published calculators), checks declared volumes against facility capacity bands (100 to 100,000+ orders/month), scores fit, and drafts a branded reply plus a suggested service mix and tour slots. Human approval is mandatory before anything price-bearing leaves the building: a rep reviews the draft quote, edits rate assumptions, and sends. Tour booking writes to the rep's calendar rather than confirming itself. Systems touched: WMS/API quote endpoints, CRM or spreadsheet pipeline, email, calendar, website forms.",
+      "why_not_DIY": "A chatbot subscription answers questions; this has to write structured records from two different form schemas and free-text email, hold network capacity logic across 11 sites, and produce a document a salesperson is willing to put their name on. It also needs deterministic guardrails so no rate is ever sent unapproved - that is workflow and integration engineering, not prompt writing.",
+      "impact_estimate": {
+        "range": "8-20 rep-hours per month returned and same-hour first response on every inbound (versus next-business-day); roughly $180-$600/month of clerk/rep time at NJ medians. The larger effect - faster response on higher-intent leads - cannot be sized from public data.",
+        "assumptions": "INFERENCE: 20-40 inbound quote requests per month across the funnels (not disclosed; assumed from an active content engine plus two live forms), 25-40 minutes of manual handling per request (read, qualify, capacity check, draft reply, follow-up), and 60-75% of that step automated with a rep still approving each quote. Dollar conversion uses NJ median $22.95/hr for customer service reps and $30.15/hr for planner/expediter clerks, i.e. straight-time base pay excluding overhead.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-3 weeks on one funnel (warehousing): unified lead record schema, enrichment and scoring, branded draft-reply generation with rep approval step, and a one-screen triage queue with response-time tracking, so LOKI can measure hours saved and speed-to-first-response on real leads before adding the freight funnel."
+    },
+    {
+      "title": "Client exception and status agent with a self-serve inventory/order dashboard",
+      "capability": "A",
+      "problem": "LOKI advertises 24/7 customer support and 24/7 operations across 11 facilities with orders cut off at 2 PM for same-day shipping, but the evidence points to client communication running through individual reps' inboxes and phones: reviews praise named account contacts and responsiveness, and no client portal or dashboard is mentioned anywhere on the site. That makes service quality person-dependent, exposes the 98% on-time claim to same-day scramble when a pick slips or stock shorts, and does not scale with peak volume swings from 100 to 100,000+ orders/month.",
+      "evidence": [
+        "Site claims 24/7 customer support and 24/7 operations, with multilingual phone coverage in English, Spanish and Mandarin - shift-based human answering of routine status questions. https://loki3pl.com/3pl-fulfillment-center-new-jersey/",
+        "No client-facing portal or dashboard is described anywhere reviewed; what is described is real-time WMS tracking, scan-at-every-step and automated cycle counts - internal visibility, not client visibility. https://loki3pl.com/3pl-fulfillment-center-new-jersey/",
+        "Reviewers praise named individual account contacts and quick updates rather than self-service tools, indicating relationship-managed accounts. https://loki3pl.com/3pl-fulfillment-center-new-jersey/",
+        "Order-cutoff-driven service commitments (orders before 2 PM ship same day, 98%+ on-time, 99.9% accuracy) mean every exception is a same-day client-communication event. https://loki3pl.com/3pl-fulfillment-center-texas/",
+        "The client integration story is API-first - REST API with webhooks and GraphQL plus Shopify/Amazon/Walmart/eBay/Etsy connectors - so exception data is already machine-reachable. https://loki3pl.com/3pl-fulfillment-center-new-jersey/",
+        "Middlesex County warehousing employment fell 1.9% year-over-year in 2025 Q1 while average weekly wage rose 7.5%, the margin-squeeze pattern where added volume must come from productivity rather than headcount. https://data.bls.gov/cew/data/api/2025/1/industry/493.csv"
+      ],
+      "agent_design": "Two coupled pieces. (1) An exception agent subscribes to WMS webhooks/GraphQL events: inventory short, pick delay, cutoff miss, backorder, failed carrier pickup, return awaiting disposition. It classifies severity, drafts a proactive client message in the client's language and tone (EN/ES/CM), attaches the order-level detail, and either sends low-risk transactional notices automatically or holds for the account rep on anything with a cost, credit or SLA consequence. (2) An agent-built client dashboard renders live inventory by SKU/location, order status, exceptions and return-reason trends per client account, replacing 'email my rep' lookups. Human approval sits at the credit/claim/SLA-commitment boundary; the rep keeps the relationship, the agent removes the lookup work. Systems touched: WMS API, marketplace connectors, email/SMS, ticketing, BI layer.",
+      "why_not_DIY": "Client-owned inventory data, per-client rate cards and retailer compliance scorecards are commercially confidential, so this needs private or VPC deployment with per-client data isolation rather than a public chatbot. It also has to be reliable at 3 AM without a human watching, write correctly into the WMS, and never promise a credit it is not authorised to promise - integration, permissions and audit trail work.",
+      "impact_estimate": {
+        "range": "0.2-1.0 FTE-equivalent of client-service effort redirected, roughly $9k-$48k per year at the NJ median for customer service reps, plus status answers moving from hours to seconds.",
+        "assumptions": "INFERENCE: LOKI runs roughly 4-8 client-service/operations staff across its 11 sites (headcount is not published; sized from 24/7 support claims, named account contacts and a back office with no open requisitions), of whom 15-25% of time goes to routine status and exception communication; 30-50% of that slice is removed. The 30-50% automation rate is deliberately set well below the +14% average gain in issues resolved per hour measured for support agents given a generative-AI assistant in NBER working paper 31161 (2023; published version in QJE 2025), because this pilot covers only lookups and drafting, not full conversation handling. Dollar figure uses NJ median $47,740/yr ($22.95/hr), base pay only.",
+        "benchmark_source_url": "https://www.nber.org/papers/w31161"
+      },
+      "complexity": "High",
+      "pilot_scope": "3-4 weeks on one facility and 5-10 client accounts: webhook listener plus exception classifier, drafted client notifications with a rep approval queue, and a read-only client dashboard for inventory, order status and open exceptions. Success measured as status-request emails per account per week and median time from exception to client notification."
+    },
+    {
+      "title": "Dock appointment and carrier check-in agent for multi-site receiving/shipping",
+      "capability": "A",
+      "problem": "Each LOKI facility runs roughly 18 dock doors with a 2 PM same-day cutoff, facility visits are by appointment, and driver reviews on the company's own page repeatedly praise fast loading and friendly dock staff - meaning a real, daily volume of carrier appointment requests, confirmations, reschedules and check-ins is being handled by coordinators over phone and email. With 11 sites and peak-season surges, that coordination load is duplicated per facility and is invisible until a truck waits or a door sits idle.",
+      "evidence": [
+        "Facility pages state 18 dock doors per facility and network-wide service commitments of same-day shipping on orders before 2 PM, which concentrates inbound and outbound appointments into a short daily window. https://loki3pl.com/3pl-fulfillment-center-california/",
+        "Site visits and facility tours are 'by appointment', an explicitly manual coordination step with no self-serve booking visible. https://loki3pl.com/3pl-fulfillment-center-new-jersey/",
+        "Several short reviews from truck drivers praise quick loading and friendly dock staff (in English and Spanish), indicating steady carrier traffic and a staffed dock/receiving desk. https://loki3pl.com/3pl-fulfillment-center-new-jersey/",
+        "The company advertises a dedicated truck fleet plus nationwide truckload/LTL coverage, so both own-fleet and third-party carriers request slots. https://loki3pl.com/",
+        "Shipping/receiving clerk work in this industry is dominated by document and correspondence tasks - conferring with carriers to arrange shipments and rectify shortages, preparing BOLs and recording discrepancies. https://www.onetonline.org/link/summary/43-5071.00"
+      ],
+      "agent_design": "Agent owns the appointment inbox and a carrier self-serve link per site: it parses carrier emails/portal requests and ASNs, extracts load details, proposes a slot against the dock calendar and staffing plan, confirms in the carrier's language (EN/ES), sends reminders, detects no-shows and re-books, and pushes check-in status to receiving so the dock knows what is at the door. It flags oversold windows and cutoff risk to the shift supervisor. Human approval: supervisors set dock capacity and staffing rules and approve any override, expedite or detention-related commitment; the agent never negotiates accessorial charges. Systems touched: email, dock/YMS calendar, WMS receiving, carrier portals, optional on-site tablet kiosk for check-in.",
+      "why_not_DIY": "Dock scheduling is capacity-constrained and multi-site: the agent must respect real door, crew and cutoff limits, reconcile carrier free-text against ASNs, and survive a driver showing up early. That is integration with the WMS plus a rules engine plus optional edge hardware (kiosk/tablet) at the door - beyond any off-the-shelf assistant, and a wrong slot has immediate operational cost.",
+      "impact_estimate": {
+        "range": "0.06-0.20 FTE of coordinator time returned per site, roughly $3k-$12k per site per year, with fewer re-booking cycles from no-shows (not quantifiable from public data).",
+        "assumptions": "INFERENCE: one dock/receiving coordinator per facility spending 20-40% of the day on appointment requests, confirmations, reschedules and check-in traffic (assumed from 18 doors, the 2 PM cutoff and appointment-only visits; staffing is not published), of which 30-50% is automated. Dollar conversion uses NJ medians of $45,440/yr ($21.85/hr) for shipping/receiving clerks and $62,710/yr ($30.15/hr) for planner/expediter clerks, base pay only, before any detention or overtime effect.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-5071.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks at one facility (East Brunswick): appointment inbox agent, carrier self-serve booking link, dock calendar with capacity limits, automated confirmations/reminders in English and Spanish, and a supervisor dashboard showing door utilisation, no-shows and cutoff risk - with a measured before/after on coordinator hours and truck wait time."
+    }
+  ],
+  "lead_score": {
+    "pain": 15,
+    "fit": 18,
+    "ability_to_pay": 14,
+    "ease": 10,
+    "strategic": 13,
+    "total": 70,
+    "rationale": "Pain (15/30): the operating signals are consistent - two manual quote funnels, no instant pricing, no client portal, appointment-only visits, 24/7 human phone coverage and a careers page with zero requisitions - but none of it is a stated complaint, a job posting naming the bottleneck, or an independent review, so this is structural inference rather than verified pain. Fit (18/20): unusually strong for our A/D/F stack because the company already runs an API-first WMS with webhooks and GraphQL and 18-door facilities across 11 sites, giving agents something to attach to without ripping anything out. Ability to pay (14/20): 11 first-party sites, 2M+ sq ft and an advertised 100 to 100,000+ orders per month imply real revenue, but terms are month-to-month with no setup fees, so client count - not contract lock-in - is the revenue base, and no revenue or headcount figure is public. Ease of pilot (10/15): single-site, single-funnel pilots are cheap to scope and the East Brunswick hub is minutes from Milltown, but no decision-maker is named anywhere on the site and LinkedIn was blocked, so the hardest step is finding the buyer. Strategic (13/15): every multi-site 3PL sells against the same three constraints - quote latency, person-dependent client service and dock coordination - so a working pilot here becomes a repeatable offer across the Middlesex County warehousing cluster (251 NAICS-493 establishments, 27,047 employees in Jan 2025, with employment down 1.9% YoY while wages rose 7.5%, which is exactly the productivity-over-headcount argument we would lead with). We deliberately did not lead with picking robotics: the robotics evidence available is simulation-only (including the EJOR 2021 robotic-mobile-fulfillment study, arXiv:1902.03092), so software agents are the defensible first step."
+  },
+  "best_evidence_signal": "Two parallel manual quote funnels with no instant pricing or scheduling - the site's only promise is that 'our team will review your requirements and get back to you quickly' - while the careers page shows no open back-office roles, i.e. growth is being pushed into content and facilities and absorbed by a thin admin team. https://loki3pl.com/warehouse-form/",
+  "suggested_channel": "walk-in",
+  "evidence_thin": true
+}

@@ -1,0 +1,37 @@
+[
+ {
+  "claim": "audit_md, After the fix: the Google listings 'are how most people find the business'.",
+  "problem": "Unsupported generalisation presented as fact. No cited source measures how the business's customers find it; it is an inference from the two listings being the only visible presence.",
+  "fix": "Reword as an inference, e.g. 'with no working website, the Google listings appear to be the main way customers find the business', or drop the clause."
+ },
+ {
+  "claim": "after_fix.evidence: 'neither listing offers any route beyond a phone number'.",
+  "problem": "Contradicted by the live listing cards, which show 'Website' and 'Directions' buttons as well as the phone number, and contradicted by the audit's own earlier statement that both Website buttons point at webtheoryppc.com.",
+  "fix": "Change to 'the only online route on each listing is a Website button that points at the broken domain', or delete the sentence."
+ },
+ {
+  "claim": "founder_md sources: WP Engine partner page 'still live (dateModified 2026-11-12)'.",
+  "problem": "Page is live, but its schema.org WebPage dateModified reads 2026-11-11T17:02:37+00:00, not 2026-11-12.",
+  "fix": "Correct to 2026-11-11, or drop the timestamp and say the partner page is live with the business name 'WebTheory Media LLC'."
+ },
+ {
+  "claim": "audit_md length.",
+  "problem": "The body runs about 330 words including headings (about 305 without headings), over the 300-word limit.",
+  "fix": "Trim roughly 30 words: shorten the second bullet (addresses/phones can be summarised) and the 'What it means for customers' paragraph."
+ },
+ {
+  "claim": "audit_md step 1: 'new passwords, 2FA, review of nameserver and contact changes'.",
+  "problem": "Light jargon for a small-business owner ('2FA', 'nameserver'); the rest of the report is plain English.",
+  "fix": "Use 'two-step sign-in' and 'domain settings' so the step reads in plain English."
+ },
+ {
+  "claim": "domains[webtheorymedia.com].result: 'rendered a blank white page with no text and plain fetch failed'.",
+  "problem": "Reproduced as a blank white page in Chrome (my screenshot verify-webtheorymedia.png is blank), so the report is not misleading, but the server does return a Namecheap parking page (text such as 'has been recently registered with namecheap.com'). Calling it 'blank' loses a fact that supports the 'parked, not a live site' point, and the 'parking address' claim is not sourced to the dns.google URL given.",
+  "fix": "Say 'shows only a Namecheap parking page, which in our browser failed to render (blank white page)', and cite the parking page itself as the source for the parking detail."
+ },
+ {
+  "claim": "founder_md outreach email: 'I have screenshots from a desktop and a phone-sized screen taken on 13 November 2026'.",
+  "problem": "rescue.json names screenshot files (webtheoryppc-desktop.png, webtheoryppc-mobile390.png, google-maps-search.png, webtheorymedia-com-check.png) but none are present in this handoff folder, so their existence could not be confirmed; the email promises them.",
+  "fix": "Confirm the four images exist and are attached before the email is sent; I re-took equivalent desktop and Maps screenshots myself and both reproduce the findings."
+ }
+]

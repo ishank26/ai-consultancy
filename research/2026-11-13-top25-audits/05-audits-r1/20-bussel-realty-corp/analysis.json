@@ -1,0 +1,89 @@
+{
+  "business": "Bussel Realty Corp (New Brunswick office)",
+  "industry": "property-realestate (commercial real estate brokerage)",
+  "town": "New Brunswick",
+  "opportunities": [
+    {
+      "title": "Front-door rescue: compromised legacy site, dead click-to-call, no schema, inventory invisible to search and AI",
+      "capability": "G",
+      "problem": "The only route from a prospective tenant or landlord to this 23-broker firm is a plain-text phone number and a broker directory on a classic-ASP site: phone numbers are not tel: links, there is zero structured data, the listing search ships a placeholder and injects inventory only via JavaScript, /contact-us/ returns a raw IIS 404 that leaks the server path, and a browser review found a hidden injected spam block (Vietnamese/Hebrew/Russian gambling and passport links) in the home page. A prospective tenant, a Google crawler and an AI assistant all get either a dead page or a page with no readable inventory.",
+      "evidence": [
+        "Contact page for the New Brunswick landing page is a 23-broker directory plus one admin extension (x223) and info@ email; no enquiry form, no booking, no quote path (https://bussel.com/contact-us/office-property/new-brunswick-nj)",
+        "Header/footer print 732-287-3777 as plain text, no tel: link on the home page; no JSON-LD/structured data in raw HTML (https://bussel.com/)",
+        "Exclusives/search page ships 'Data Loading...', lorem ipsum and 'Type:industrial Available:0,000 sf' with listings injected by JavaScript, so static fetch sees no inventory (https://bussel.com/property-result.asp)",
+        "Listing template prints 'OPEN LISTING' and '[-address on file-]' instead of a street address, forcing a phone call before a tenant learns where the building is (https://bussel.com/listing/23253)",
+        "Triage record: /contact-us/ returns 'IIS 10.0 Detailed Error - 404.0' exposing C:\\www\\bussel\\contact-us\\; agent_readiness scored findable 1, answerable 1, bookable 0 (triage.json, sources https://bussel.com/contact-us/ and https://bussel.com/)",
+        "Hidden spam block (div at left:-9999px linking vietnam-millionaire.me, portuguese-passport.online, top10binary.ru) was seen in a browser review but not in raw HTML fetched 2026-11-13 — status unconfirmed, so treat as an unresolved security question rather than a proven live hack (profile.json tech_footprint, https://bussel.com/)",
+        "Stack is classic ASP/IIS with jQuery 1.11.2 (2014) and retired Universal Analytics UA-19665552-1, i.e. no modern tag management or consent layer (https://bussel.com/)"
+      ],
+      "agent_design": "Phase 1 is a hardening and structure pass done with a developer: full malware/injection audit and cleanup of every .asp template, removal of the legacy hidden-div pattern, a file-integrity and outbound-link monitor that alerts on new injected blocks, real 404 and contact pages, tel: links on every number, and RealEstateAgent/LocalBusiness JSON-LD (2 Ethel Road Suite 202A, Edison NJ 08817, service areas incl. Middlesex/Union/Somerset) on every template. Phase 2 is an agent-maintained, server-rendered layer: a nightly job pulls the in-house inventory database and emits static, crawlable listing pages with schema.org Offer/Apartment/Place markup and machine-readable feeds, so Google and AI assistants can quote size, tailboards, sprinklers, divisibility and availability, with street address still gated to a broker-approved record. A small agent watches Search Console, page integrity and listing publish/drift and posts a daily digest to the office admin. Human approval: Steve Bussel or the office admin approves every published listing page and any address release; no address is exposed automatically.",
+      "why_not_DIY": "This is not a chatbot: it needs a security audit and cleanup of a hacked/legacy ASP codebase, a rendering layer over an in-house listing database with no public API, structured-data modelling for 300+ listings, and continuous integrity monitoring. A website builder or chatbot subscription cannot read the ASP database or detect a re-injection, and one wrong 'address on file' exposure is a client-confidentiality problem.",
+      "impact_estimate": {
+        "range": "Not dollar-quantified. Today 0 of 3 agent-readiness gates pass fully (findable 1, answerable 1, bookable 0) and no inventory is machine-readable; the deliverable is a working, monitored front door rather than a revenue number.",
+        "assumptions": "No sourced benchmark exists for the revenue value of schema markup or click-to-call in commercial brokerage, so no dollar range is asserted. The measurable targets are: 100% of public phone numbers as tel: links, JSON-LD present on home/contact/listing templates, every active listing rendering in static HTML, zero injected-link events per month, and 404s returning a branded page. Any monetised claim waits for a 30-day baseline of calls and form/after-hours enquiries.",
+        "benchmark_source_url": ""
+      },
+      "complexity": "High",
+      "pilot_scope": "2-4 weeks: injection audit and cleanup across the ASP templates with a written findings report; branded 404 and contact pages; tel: links sitewide; RealEstateAgent JSON-LD on home/contact/NJ landing pages; a server-rendered proof-of-concept of 10 live listings with schema and a matching JSON feed; uptime and file-integrity monitoring with a daily digest.",
+      "walk_in_checks": []
+    },
+    {
+      "title": "Requirement intake and broker-routing agent behind the phone-only front desk",
+      "capability": "A",
+      "problem": "Every inbound tenant, landlord and investor enquiry lands on one of 23 broker mobiles or the single reception extension, and nothing structured (property type, size range, location, budget, timeline, use) is captured at first contact. Because listings withhold the street address, an enquiry cannot even be self-served, and no after-hours routing, auto-reply or follow-up process is published — so response speed and capture depend on which broker's phone rang.",
+      "evidence": [
+        "No enquiry, requirement or quote form and no online booking anywhere on the site; the contact page is a directory plus a CRM login (/login.asp) (https://bussel.com/contact-us/office-property/new-brunswick-nj)",
+        "23 brokers each with a direct mobile plus one admin extension x223 and info@bussel.com; no after-hours coverage or auto-reply path published (https://bussel.com/contact-us/office-property/new-brunswick-nj)",
+        "Listings hide the street address ('[-address on file-]'), so a tenant must call a named broker before knowing where the building is — a manual step per enquiry (https://bussel.com/listing/23253)",
+        "The one structured capture on the site is seller-side only: 'What Is Your Property Worth?' opens an iframe form (whatismypropertyworth.asp) (https://bussel.com/)",
+        "Firm handles 3M+ sq ft annually and publicises a heavy 2026 deal cadence (158,641 sq ft Metuchen expansion, 123,766 sq ft Linden renewals, $21.7M Union sale), so enquiry volume is not trivial relative to one reception line (https://bussel.com/news-detail.asp?id=212)",
+        "Broker-side CRM is separated from the public site by a username/password login, so any intake agent must integrate with an existing, undocumented CRM (https://bussel.com/)"
+      ],
+      "agent_design": "An event-driven intake agent sits in front of the phone and the web: a web requirement form (property type, size, location, budget, timeline, use, contact) and an answering path for the main line after hours. On each enquiry it normalises the requirement, de-duplicates against existing broker contacts, matches it against live inventory and the broker specialism/geography table (industrial, office, retail, investment; Middlesex/Union/Somerset/Paterson etc.), notifies the best-fit broker with a one-screen brief, replies to the enquirer with next steps and a proposed tour window, then chases if there is no reply in 24h/72h. It logs everything to the CRM and to an auditable enquiry log. Human approval: brokers confirm every tour time, every address release and any pricing or availability guidance; the agent never quotes rent, never sends a buyer/tenant representation agreement, and flags existing clients, institutional and government enquiries straight to Steve Bussel or Gregory Irving. AI-voice disclosure is scripted into any automated call path.",
+      "why_not_DIY": "Requires integration with an in-house ASP listing database and an undocumented broker CRM, a routing table for 23 people, calendar/tour coordination, after-hours telephony, duplicate and existing-client detection, and an audit trail — plus licensed-broker supervision of anything that touches pricing or representation terms, and TCPA/AI-call disclosure handling. A form plugin captures the data and then drops it in one inbox; that is the current failure mode.",
+      "impact_estimate": {
+        "range": "≈$5,000-$12,000/yr of recovered admin and broker time, plus a measurable speed-to-lead improvement; no revenue attributed.",
+        "assumptions": "Assumes the agent absorbs 4-8 hours/week of first-response, routing, tour coordination and follow-up currently spread across one admin and 23 brokers (profile inference: no form, one reception extension). Costed at the NJ median for secretaries/administrative assistants, $50,260/yr ≈ $24/hr unloaded, ×1.25 loaded ≈ $30/hr → 208-416 hours/yr = $6.2k-$12.5k. Speed-to-lead effect borrowed from an NBER working paper on a generative assistant for 5,179 support agents: +14% issues resolved per hour overall, +34% for novice/low-skilled agents and near zero for experienced ones — so the realistic gain here is on junior brokers and admin, not the SIOR brokers. Any figure for recovered deal volume would be invented and is deliberately excluded.",
+        "benchmark_source_url": "https://www.nber.org/papers/w31161"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: published requirement form with confirmation email; a routing rule set for all 23 brokers signed off by management; after-hours auto-response and callback queue; a single shared enquiry log; duplicate/existing-client detection against CRM exports; one pilot geography (Middlesex County industrial) measured against a two-week baseline of calls, after-hours calls and time-to-first-response.",
+      "walk_in_checks": []
+    },
+    {
+      "title": "Listing-to-collateral agent: flyers, offering memoranda, deal releases and the empty quarterly market reports",
+      "capability": "D",
+      "problem": "Listing data lives in a hand-maintained in-house ASP database and every flyer, brochure, social post, press release and market report is produced by people. The firm is hiring a $42,000-$50,000 Marketing/Administrative Assistant explicitly for brochures, flyers, research, content, social media, branding and press announcements, and its 'Quarterly Report' news category renders empty in static HTML — the research output either is not being produced or is not published.",
+      "evidence": [
+        "Open Marketing / Administrative Assistant role in Edison at $42,000-$50,000/yr covering brochures and flyers, research and content creation, social media, branding and press announcements (https://www.indeed.com/cmp/Bussel-Realty-Corp)",
+        "Listings are entered by hand into an in-house ASP property database; there is no client portal or document room, only a broker-side CRM login (https://bussel.com/property-search.asp)",
+        "'Quarterly Report' news category exists but renders empty in static HTML, so market-report output is not visibly published (https://bussel.com/news.asp?c=Quarterly_Report)",
+        "Heavy 2026 press cadence plus a named sub-team ('Metz Industrial Group (MIG) of Bussel Realty Corp') issuing its own releases multiplies the collateral/press workload (https://bussel.com/news-detail.asp?id=212, https://bussel.com/news-detail.asp?id=262)",
+        "Firm describes in-house research/operations staff feeding brokers from an 'extensive database' — i.e. the data exists, the production step is manual (https://bussel.com/history/real-estate-brokerage/edison-nj/)",
+        "Own careers page advertises only commission broker roles, so back-office/marketing capacity is a hire the firm must fund rather than a function it is growing internally (https://bussel.com/careers/commercial-real-estate/edison-nj/)"
+      ],
+      "agent_design": "A pipeline agent reads each listing record (and each closed transaction) and drafts a pack: a branded flyer/OM with the standard fields (available sf, divisibility, tailboards, clear height, sprinklers, acreage, zoning, asking terms), a 60-word web summary, a LinkedIn post, and a one-page deal release for closed transactions; for market reports it aggregates the firm's own listing and transaction data plus a county-level comp set into a quarterly industrial snapshot per submarket (Middlesex, Union, Somerset, Paterson/Passaic). Every artefact renders from one structured record so a size or status change updates all outputs. Human approval: the broker on the assignment and the marketing assistant approve every pack before it leaves the building; rent/asking terms and any address release are always human-entered, and the agent is barred from publishing an address marked 'on file'.",
+      "why_not_DIY": "It must write into an in-house ASP listing database with no API, hold a brand/design system, produce a consistent multi-format pack per listing, and stay in sync when a listing changes or leases — then feed the same record to the public site and social. Off-the-shelf flyer tools cannot read the ASP data, cannot keep 300 listings in sync, and leave the copy-and-paste step (the actual cost) intact.",
+      "impact_estimate": {
+        "range": "≈$10,000-$25,000/yr of marketing/admin production capacity absorbed, i.e. 25-50% of the salary the firm is about to spend on that role.",
+        "assumptions": "Assumes collateral, flyer and report production is 25-50% of the Marketing/Administrative Assistant role (profile inference from the posting's task list) and that the agent handles first drafts only, with human approval adding an hour per pack rather than the current multi-hour build. Costed at the posted range $42,000-$50,000 (https://www.indeed.com/cmp/Bussel-Realty-Corp) and cross-checked against the NJ median for secretaries/administrative assistants, $50,260 (https://www.onetonline.org/link/localwages/43-6014.00?st=NJ). Assumes listings stay in the existing ASP database rather than a replatform. Publishing volume is unchanged, so no revenue is claimed.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: a schema for the listing record; generated packs for 8-10 live industrial listings (flyer/OM, web blurb, LinkedIn post) reviewed by the assigning broker; one quarterly Middlesex industrial market snapshot from the firm's own data; and a measured before/after time per pack against the marketing assistant's current process.",
+      "walk_in_checks": []
+    }
+  ],
+  "lead_score": {
+    "pain": 19,
+    "fit": 16,
+    "ability_to_pay": 15,
+    "ease": 8,
+    "strategic": 12,
+    "total": 70,
+    "rationale": "Pain is directly observable and layered (no form, no tel: links, no schema, JS-only inventory, raw IIS errors, disputed spam injection) but it is a broken front door and an under-resourced back office rather than a documented revenue wound: no customer reviews or complaints exist anywhere to size the loss, and hiring evidence points at more commission brokers rather than more ops staff. Fit is high for A/D/G and there is no honest E opportunity: the only physical space the firm occupies is a single office suite in Edison, the warehouse signals (Paterson 39 tailboards, Metuchen 20 tailboards) belong to landlord clients who build and operate them, and no avenues.json was supplied — so a camera/sensor design would have no site to install on and no buyer for the operations data except a third-party landlord. Ability to pay is real (23-broker firm, $21.7M sale and 158,641 sq ft lease in 2026, funding a $42-50k marketing hire) but a commission-split culture makes recurring opex a harder sale, hence 15 not 20. Ease is the weak point: classic ASP/IIS, an undocumented in-house listing database, a separate CRM login, and a possible live compromise all mean a real developer plus a security cleanup. Strategic value is high because hundreds of independent CRE brokerages run the same legacy-ASP, phone-first, no-schema pattern, so the deliverable repeats. Evidence caveat: the hidden spam injection was seen in a browser review but not in raw HTML fetched 2026-11-13, and Indeed/Glassdoor/Clutch all blocked direct fetches, so some inputs are search-extract derived."
+  },
+  "best_evidence_signal": "The contact page is a 23-broker phone directory plus a CRM login — no enquiry form, no booking, no after-hours path — on a site whose listings withhold the street address, so every inbound tenant or landlord enquiry must be hand-dispatched by a person (https://bussel.com/contact-us/office-property/new-brunswick-nj)",
+  "suggested_channel": "email to Steve Bussel (President) and Gregory Irving (EVP) with a short note on the front-door findings, then phone the main line 732-287-3777; any in-person meeting must be at 2 Ethel Road Suite 202A, Edison — there is no New Brunswick office to walk into",
+  "evidence_thin": false
+}

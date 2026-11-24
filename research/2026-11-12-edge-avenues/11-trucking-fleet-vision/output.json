@@ -1,0 +1,369 @@
+{
+  "avenue": "trucking-fleet-vision",
+  "one_line": "Yard- and gate-mounted vision (plus driver phone-photo verification) that turns pre/post-trip inspection photos, seal numbers and trailer movements into audit-ready evidence for 5-50 power-unit fleets in Middlesex County, NJ.",
+  "problem": {
+    "summary": "Small interstate carriers must produce a written (or electronic) driver vehicle inspection report at the end of each day's work on every vehicle, listing defects in 11 specified systems, keep it three months, and certify repairs before dispatch (49 CFR 396.11, 396.13). Drivers must also inspect cargo and securement within the first 50 miles and re-check every 3 hours, 150 miles or duty-status change (49 CFR 392.9). In practice this is a clipboard-and-text-message workflow: photos sit on drivers' personal phones, trailer condition is discovered at the customer's dock, and the fleet has no defensible record when a roadside inspector finds a defect. Nationally about one in five vehicles inspected at roadside is placed out of service, with brakes and tires dominating and cargo securement in the top five. A one-year program using certified inspectors instead of drivers found 95% of all defects on trailers, and only 59% of partners' trailers passed the stricter inspection versus 70% of the same partners' trailers passing a traditional driver DVIR - the trailer class is where small fleets share assets and have the least visibility. (inference: those two pass rates are not the same trailers, so this is directional evidence that driver walkarounds miss trailer defects, not a measured miss rate.)",
+    "evidence": [
+      {
+        "fact": "DVIR required at completion of each day's work on each vehicle, covering service brakes, parking brake, steering, lighting/reflectors, tires, horn, wipers, mirrors, coupling devices, wheels/rims and emergency equipment; driver signs; report, repair certification and driver review certification must be kept three months; report may be electronic under 49 CFR 390.32. Exempt only for carriers operating a single CMV, driveaway-towaway and private motor carriers of passengers.",
+        "year": "2026 (current eCFR text, amended 91 FR 7896, Feb. 19 2026)",
+        "source_url": "https://www.law.cornell.edu/cfr/text/49/396.11"
+      },
+      {
+        "fact": "Before driving, the driver must be satisfied the vehicle is safe and must review and sign the prior DVIR acknowledging defects and repairs (49 CFR 396.13).",
+        "year": "2026",
+        "source_url": "https://www.law.cornell.edu/cfr/text/49/396.13"
+      },
+      {
+        "fact": "Driver must inspect cargo and securement devices within the first 50 miles of a trip and re-examine whenever duty status changes, the vehicle has been driven 3 hours, or 150 miles, whichever comes first; the rule does not apply to a driver of a sealed vehicle ordered not to open it.",
+        "year": "2026",
+        "source_url": "https://www.law.cornell.edu/cfr/text/49/392.9"
+      },
+      {
+        "fact": "2025 CVSA International Roadcheck: 56,178 inspections over three days; 13,553 vehicle OOS violations; 10,148 vehicles placed out of service (18.1% OOS rate). Brake systems plus 20%-defective-brakes were 41.1% of vehicle OOS violations, tires 21.4%, lights 12.8%, cargo securement 11.4%.",
+        "year": "2025 (event May 13-15, 2025)",
+        "source_url": "https://www.fleetmaintenance.com/equipment/safety-and-technology/article/55325215/cvsa-releases-2025-international-roadcheck-results"
+      },
+      {
+        "fact": "Kodiak/Drivewyze/Texas DPS enhanced-inspection pilot (started April 2023): certified inspectors checked over 1,000 autonomous tractors and partner trailers and found over 525 defects; 95% of defects were on trailers; 59% of partners' trailers passed the enhanced inspection, while 70% of trailers from the same partners had passed a traditional driver DVIR.",
+        "year": "2024 (published Aug 20, 2024; pilot from April 2023)",
+        "source_url": "https://kodiak.ai/news/enhanced-inspections"
+      },
+      {
+        "fact": "Industry operating cost averaged $2.260 per mile in 2024; non-fuel marginal cost rose 3.6% to $1.779 per mile, the highest ATRI has recorded; truckload carriers averaged a -2.3% operating margin and empty miles averaged 16.7%.",
+        "year": "2025 report on 2024 data",
+        "source_url": "https://truckingresearch.org/2025/07/new-atri-report-shows-trucking-profitability-severly-squeezed-by-high-costs-low-rates/"
+      },
+      {
+        "fact": "Cargo theft hit record levels in 2024: 3,625 reported incidents in the US and Canada, up 27% from 2023; average reported value per theft $202,364 (up from $187,895); trailer burglaries and full trailer thefts remained elevated in major metros including the New York City area.",
+        "year": "2024 data (released Jan 21, 2025)",
+        "source_url": "https://www.cargonet.com/news-and-events/cargonet-in-the-media/2024-theft-trends/"
+      },
+      {
+        "fact": "Median pay for heavy and tractor-trailer truck drivers was $58,640 per year ($28.19/hour) in May 2025, with 2,221,200 jobs - the basis for valuing inspection and re-inspection time (inference: at about $28/hour, a 15-minute walkaround costs roughly $7 in driver time per inspection).",
+        "year": "2025",
+        "source_url": "https://www.bls.gov/ooh/transportation-and-material-moving/heavy-and-tractor-trailer-truck-drivers.htm"
+      },
+      {
+        "fact": "New Jersey requires all heavy-duty diesel vehicles 18,000 lb GVWR or more to pass an annual smoke-opacity emissions inspection at a licensed Diesel Private Inspection Facility within 90 days of registration or renewal - a second recurring inspection deadline on top of DVIRs.",
+        "year": "current page (accessed 2026)",
+        "source_url": "https://www.nj.gov/mvc/inspection/dieselemission.htm"
+      }
+    ]
+  },
+  "buyers": [
+    {
+      "business_type": "General freight / truckload carriers (for-hire)",
+      "naics": "484121 (General Freight Trucking, Long-Distance, Truckload); 4841",
+      "size_where_it_matters": "2-50 power units; legally in scope at 2+ (single-CMV carriers are exempt from DVIRs), economically from about 5 units and 3+ trailers",
+      "why": "Nightly DVIRs on every unit, shared trailer pools they do not own, and direct roadside-inspection exposure; the national OOS data and the Kodiak trailer-defect findings hit this segment hardest."
+    },
+    {
+      "business_type": "Specialized freight: flatbed, tank, auto transport, intermodal drayage",
+      "naics": "4842 / 484230 (Automobile Transporters), 484110",
+      "size_where_it_matters": "3-50 power units",
+      "why": "Cargo securement is a top-five vehicle OOS cause (11.4% of vehicle OOS violations in 2025) and securement photos are the evidence a carrier needs after a shift or a claim; drayage fleets also handle seals and intermodal equipment reports under 396.11(b)."
+    },
+    {
+      "business_type": "Private fleets of wholesalers / distributors (grocery, beverage, building materials, foodservice)",
+      "naics": "4244, 4245, 4233 (5-200 employee establishments)",
+      "size_where_it_matters": "10-200 staff, 5-40 trucks/trailers",
+      "why": "Own yards and docks, seal discipline on deliveries, damage disputes with customers, and DOT obligations once they cross state lines; 44.3% of New Jersey's FMCSA-registered carriers are private carriers."
+    },
+    {
+      "business_type": "Warehousing, storage and 3PL operators",
+      "naics": "493110 (General Warehousing and Storage)",
+      "size_where_it_matters": "20-200 staff, 1-5 buildings with a trailer yard",
+      "why": "Trailer moves, gate logs, seal verification for inbound/outbound loads and detention disputes are daily operational questions; Middlesex County has more than 1,300 warehousing/distribution buildings."
+    },
+    {
+      "business_type": "Couriers and local delivery",
+      "naics": "492110 (Couriers and Express Delivery Services)",
+      "size_where_it_matters": "10-100 staff, 8-60 vans/box trucks",
+      "why": "High vehicle count relative to staff, damage and 'pre-existing vs. new damage' disputes, and no inspection culture beyond a checklist app."
+    },
+    {
+      "business_type": "Waste collection and construction/site-work fleets",
+      "naics": "562111 (Solid Waste Collection), 238910 (Site Preparation Contractors)",
+      "size_where_it_matters": "10-100 power units",
+      "why": "Heavy stop-and-go duty cycles, frequent body and undercarriage damage, DOT-registered trucks, and inspection records that matter for insurance and roadside stops."
+    }
+  ],
+  "existing_solutions": [
+    {
+      "vendor": "Samsara",
+      "product": "DVIR in the Samsara Driver App (with AI checks) plus vehicle gateway / dash cams",
+      "what_it_does": "Digital DVIR in the driver app; AI verifies that submitted photos are of actual vehicle components rather than irrelevant images, and checks that the driver is near the vehicle and that submission duration is plausible; DVIR findings flow into maintenance work orders.",
+      "pricing": "Unknown - no published per-vehicle price; third-party reviews estimate roughly $40-60/vehicle/month for an AI dash-cam bundle (Low confidence)",
+      "source_url": "https://www.samsara.com/products/telematics/dvir"
+    },
+    {
+      "vendor": "Whip Around",
+      "product": "Inspect/Maintain plans plus AI Inspections Pro add-on",
+      "what_it_does": "Mobile DVIR with offline inspection, defect management and compliance forms; AI Inspections Pro scans inspection photos for damage, verifies required steps were completed, checks DVIR submissions for compliance, and flags mismatches between driver notes and photos; admins choose which photo cards (tires, brakes, coupling points) get AI review.",
+      "pricing": "Public: Standard (Inspect) $5 per asset per month billed annually; Pro (Maintain) $10 per asset per month billed annually; free tier for one asset",
+      "source_url": "https://help.whiparound.com/en/articles/6925626-how-whip-around-s-plans-work"
+    },
+    {
+      "vendor": "Fleetio",
+      "product": "Fleetio inspections with FMCSA-approved templates",
+      "what_it_does": "Mobile and offline inspection forms including FMCSA-approved templates, defect/issue tracking, service programs and work orders; a low-cost system of record rather than a vision product.",
+      "pricing": "Public: $4 / $7 / $10 per vehicle per month (Essential / Professional / Premium), billed annually at the 5-asset band",
+      "source_url": "https://www.fleetio.com/pricing"
+    },
+    {
+      "vendor": "Motive",
+      "product": "Driver Experience / DVIR plus AI Dashcam",
+      "what_it_does": "Customizable electronic DVIRs per asset type, inspection forms and timers in the driver app, integrated with ELD/HOS and AI dash cams.",
+      "pricing": "Unknown - quote-based; camera and gateway are separate subscription line items in public-agency quotes (an older public quote showed about $40/vehicle/month camera plus about $37.50/month gateway; Low confidence)",
+      "source_url": "https://gomotive.com/products/driver-experience/"
+    },
+    {
+      "vendor": "Lytx",
+      "product": "DriveCam (event recorder with machine vision plus AI)",
+      "what_it_does": "In-cab event recording with machine-vision/AI detection of risky driving behavior, coaching workflow and video evidence; the reference product for the privacy litigation noted below.",
+      "pricing": "Unknown - quote-based; third-party listings cite about $36/vehicle/month on a 36-month lease for one camera model (Low confidence, not a vendor source)",
+      "source_url": "https://www.lytx.com/"
+    },
+    {
+      "vendor": "TruckX",
+      "product": "4-Channel AI Dashcam Pro plus ELD/DVIR platform",
+      "what_it_does": "360-degree in-cab and exterior camera coverage with fatigue/distraction alerts, cloud video, GPS, and DVIR inside the same ELD app.",
+      "pricing": "Unknown - base subscription not published; the product page presents features as per-month add-ons without a visible base rate",
+      "source_url": "https://truckx.com/4-channel-ai-dashcam/"
+    },
+    {
+      "vendor": "BlackBerry (QNX)",
+      "product": "BlackBerry Radar H2 trailer/container tracker",
+      "what_it_does": "Battery-powered trailer, chassis and container tracker with location, mileage, door open/close and container on/off sensing plus optional cargo/container sensors; sold as a 36-month per-unit bundle including connectivity and cloud.",
+      "pricing": "Unknown - AWS Marketplace sells it only as 36-month per-unit bundles; the exact per-unit figure was not visible on the fetched page (a search result cited about $544 per unit, unverified)",
+      "source_url": "https://aws.amazon.com/marketplace/pp/prodview-qjtlfrnlgqxme"
+    },
+    {
+      "vendor": "UVeye",
+      "product": "Drive-through multi-camera vehicle scanner",
+      "what_it_does": "Fixed drive-through camera gantries that scan a vehicle's exterior and undercarriage and produce a condition report; the vendor states 1,200+ systems deployed worldwide, concentrated in dealers and large fleets/rentals.",
+      "pricing": "Unknown - enterprise/quote only",
+      "source_url": "https://www.uveye.com/"
+    }
+  ],
+  "gap_for_local_installer": "The incumbents sell per-vehicle SaaS plus their own hardware and cloud: Samsara, Motive and Lytx price per vehicle per month and want the whole stack; Whip Around and Fleetio are cheap apps that verify photos but have no physical presence at the yard; BlackBerry Radar tracks trailers but does not read seals or tie photos to DVIRs; UVeye is capital equipment aimed at large sites. Nobody in the 5-50 unit range sells a local, fixed-camera yard/gate system that (a) captures every trailer in/out event with plate and seal images, (b) attaches timestamped photo evidence to the customer's existing DVIR and repair workflow, and (c) runs on-premises on a few hundred dollars of hardware with no per-vehicle fee. That is the opening: own the physical layer (cameras, gate, PoE/Wi-Fi, mounting, calibration, service) and be the integration layer rather than a competing dash-cam SaaS. (inference)",
+  "technical_approach": {
+    "established_pattern": "Fixed cameras at the yard gate and at a marked inspection lane feed a local NVR/detector that (1) runs a YOLO-family detector for trucks, trailers, people and plates, (2) tracks objects across frames to emit entry/exit and dwell events per trailer, (3) applies zone rules (gate-in, gate-out, slot occupancy, inspection lane) to decide when to capture bursts of high-resolution stills, (4) runs OCR on plate, USDOT-number and seal-number crops, and (5) sends only low-confidence or exception crops to a small vision-language model for a plain-language second opinion queued for human review. The driver side is deliberately not a new app: drivers photograph the 11 DVIR items in whatever app the fleet already uses, and the yard system cross-checks that the unit actually arrived/departed and that the same trailer had no unrepaired defect flagged earlier.",
+    "models_and_tools": [
+      {
+        "name": "Ultralytics YOLO (YOLO family detectors)",
+        "role": "Real-time object detection/segmentation for trucks, trailers, wheels, people and light/reflector presence; runs on Jetson-class edge hardware. The repository license is AGPL-3.0, so a closed-source commercial deployment needs the vendor's enterprise license or careful separation of the model server.",
+        "source_url": "https://raw.githubusercontent.com/ultralytics/ultralytics/main/LICENSE"
+      },
+      {
+        "name": "Frigate NVR",
+        "role": "Open-source local NVR built around real-time object detection with zones and tracking; all processing local, no cloud; integrates with Home Assistant/MQTT for event automation - a ready-made skeleton for the gate and slot event pipeline.",
+        "source_url": "https://frigate.video/"
+      },
+      {
+        "name": "PaddleOCR",
+        "role": "OCR toolkit for license plates, USDOT numbers on cab doors and trailer seal numbers; crop-level reads are queued for human confirmation when confidence is low.",
+        "source_url": "https://github.com/PaddlePaddle/PaddleOCR"
+      },
+      {
+        "name": "LFM2.5-VL-1.6B (Liquid AI)",
+        "role": "Small (1.6B) vision-language model with improved OCR and multi-image handling, 32k context, and a GGUF build for llama.cpp/CPU inference - used as the exception reviewer on cropped stills (for example 'mud flap missing or just shadow?') rather than as the primary detector.",
+        "source_url": "https://huggingface.co/LiquidAI/LFM2.5-VL-1.6B"
+      },
+      {
+        "name": "Qwen3-VL-2B-Instruct",
+        "role": "Alternative small VLM for the same exception-review role, giving a second vendor option if the 1.6B model's reading of dirty seals or low-light crops is insufficient.",
+        "source_url": "https://huggingface.co/Qwen/Qwen3-VL-2B-Instruct"
+      },
+      {
+        "name": "Cactus (cactus-compute)",
+        "role": "On-device inference runtime for phones; relevant if a driver-side photo-quality check ('is this actually a tire sidewall?') is later embedded in a customer's own app instead of running in the cloud.",
+        "source_url": "https://github.com/cactus-compute/cactus"
+      }
+    ],
+    "hardware": [
+      {
+        "item": "NVIDIA Jetson Orin Nano Super Developer Kit (8GB, 67 INT8 TOPS, supports up to four cameras)",
+        "approx_cost": "$249",
+        "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/"
+      },
+      {
+        "item": "Ubiquiti UniFi G5 Bullet 2K PoE camera (gate and inspection-lane capture)",
+        "approx_cost": "$129 single unit; $359 for a 3-pack (list price on the Ubiquiti store)",
+        "source_url": "https://store.ui.com/us/en/products/uvc-g5-bullet"
+      },
+      {
+        "item": "PoE switch, outdoor cabling and surge protection, mounting hardware, mini-PC/NVR storage, LTE failover router",
+        "approx_cost": "Unknown from a primary source - distributor quote required; planning assumption roughly $600-1,200 for a two-camera gate build (inference from typical component pricing, not a cited figure)",
+        "source_url": "https://store.ui.com/us/en/products/uvc-g5-bullet"
+      }
+    ],
+    "fine_tuning_needed": "Partial. The detector benefits from site-specific fine-tuning (500-2,000 labeled frames per fixed camera covering day, night, rain, snow, headlights and trailer-only views) because 'trailer with a missing light' versus 'shadow under a mud flap' is a local-context problem. OCR needs domain adaptation to the actual seal and label stock the customer uses, but not a new model. The VLM does not need fine-tuning for v1 - prompt, cropped image and a confidence gate are enough - and should stay in a human-review loop; fine-tune a LoRA only if reviewers reject too many of its calls.",
+    "data_needed": "Per camera: 500-2,000 labeled frames (truck, trailer, wheel, person, plate, seal) with night and wet-weather examples; 200-500 cropped seal and plate images with ground-truth strings; one month of gate-event ground truth (yard marshal log or manual count) to measure capture and OCR accuracy; historical DVIR and repair records to calibrate what 'defect' means for that fleet. No personal data about drivers is needed for the yard half of the product.",
+    "difficulty": "Medium"
+  },
+  "measured_outcomes": [
+    {
+      "finding": "About one in five vehicles inspected at roadside is placed out of service; brake systems plus 20%-defective-brakes accounted for 41.1% of vehicle OOS violations, tires 21.4%, lights 12.8%, cargo securement 11.4%.",
+      "year": "2025",
+      "sample": "56,178 commercial vehicle, driver and cargo inspections; 10,148 vehicles placed out of service",
+      "study_type": "industry",
+      "strength": "High",
+      "source_url": "https://www.fleetmaintenance.com/equipment/safety-and-technology/article/55325215/cvsa-releases-2025-international-roadcheck-results"
+    },
+    {
+      "finding": "Certified-inspector 'enhanced inspections' found over 525 defects on 1,000+ assets in a year, 95% of them on trailers; 59% of partners' trailers passed the enhanced inspection versus 70% of the same partners' trailers passing a traditional driver DVIR - directional evidence that driver walkarounds miss trailer defects.",
+      "year": "2024 (pilot from April 2023)",
+      "sample": "1,000+ tractor and trailer assets inspected over 12 months in Texas",
+      "study_type": "industry",
+      "strength": "Medium",
+      "source_url": "https://kodiak.ai/news/enhanced-inspections"
+    },
+    {
+      "finding": "On-board video with instant driver feedback plus supervisor coaching cut the rate of overall risky driving behaviors roughly in half (rate ratio 0.47, p<0.001), with no significant change in the control group (RR 0.93, p=0.44).",
+      "year": "2015 (17 months of monitoring)",
+      "sample": "158 on-board video systems across 7 business sites; about 237,000 usable trigger events",
+      "study_type": "peer-reviewed",
+      "strength": "Medium",
+      "source_url": "https://stacks.cdc.gov/view/cdc/181664"
+    },
+    {
+      "finding": "Driver approval of driver-facing cameras averaged 2.24 on a 0-10 scale among current users, but rose 87% when carriers used footage for specific proactive safety measures; insurers and attorneys preferred event-based over continuous recording and access limited to safety managers.",
+      "year": "2023",
+      "sample": "650 current driver-facing camera users (ATRI report/survey)",
+      "study_type": "industry",
+      "strength": "Medium",
+      "source_url": "https://truckingresearch.org/2023/04/new-atri-research-identifies-strategies-for-improving-driver-facing-camera-approval-and-utilization/"
+    },
+    {
+      "finding": "Even the best commercial multimodal model reached only 74.9% average accuracy on industrial anomaly-detection questions (MMAD; 39,672 questions over 8,366 images), which the authors call far short of industrial requirements - a direct warning against letting a VLM make accept/reject calls on vehicle condition unsupervised.",
+      "year": "2024 (ICLR 2025)",
+      "sample": "39,672 questions / 8,366 industrial images",
+      "study_type": "peer-reviewed",
+      "strength": "Medium",
+      "source_url": "https://arxiv.org/abs/2410.09453"
+    },
+    {
+      "finding": "Cargo theft reached record volume with an average reported loss above $200,000 per incident and elevated trailer burglary / full-trailer theft in the New York metro area - the business case for seal photos and gate records.",
+      "year": "2024",
+      "sample": "3,625 reported incidents in the US and Canada",
+      "study_type": "industry",
+      "strength": "Medium",
+      "source_url": "https://www.cargonet.com/news-and-events/cargonet-in-the-media/2024-theft-trends/"
+    }
+  ],
+  "legal_privacy": [
+    {
+      "issue": "DVIR content, signature, repair certification and retention",
+      "rule_or_precedent": "49 CFR 396.11 requires a report for each vehicle at the end of each day's work listing defects in 11 systems, a driver signature, a carrier certification that defects were repaired or repair was unnecessary, and three-month retention. A camera system can supply evidence but cannot replace the driver's report or signature.",
+      "confirmed": true,
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/396.11"
+    },
+    {
+      "issue": "Electronic DVIR records and signatures",
+      "rule_or_precedent": "49 CFR 396.11(a)(6) expressly allows the DVIR to be created and maintained electronically in accordance with 49 CFR 390.32 (electronic documents and signatures); the current CFR text reflects an amendment published at 91 FR 7896 (Feb. 19, 2026).",
+      "confirmed": true,
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/396.11"
+    },
+    {
+      "issue": "Cargo and seal inspection timing",
+      "rule_or_precedent": "49 CFR 392.9(b) requires the driver to inspect cargo and securement within the first 50 miles and re-examine at duty-status change, 3 hours or 150 miles, whichever comes first; the requirement does not apply to a driver of a sealed vehicle who has been ordered not to open it. A seal-photo product must not be presented as satisfying cargo inspection on sealed loads.",
+      "confirmed": true,
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/392.9"
+    },
+    {
+      "issue": "New Jersey notice rule for vehicle tracking devices",
+      "rule_or_precedent": "N.J.S.A. 34:6B-22 (P.L. 2021, c.449, approved January 2022) makes it a violation for an employer to knowingly use a tracking device in a vehicle used by an employee without written notice, with civil penalties up to $1,000 for a first violation and $2,500 for each subsequent violation. The definition covers devices used for the sole purpose of tracking movement (inference: a GPS/telematics unit plainly falls in scope; a fixed yard camera does not, but any in-vehicle tracking feature added later does).",
+      "confirmed": true,
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM"
+    },
+    {
+      "issue": "Audio capture in the cab or at the gate",
+      "rule_or_precedent": "New Jersey's Wiretap Act permits a person who is a party to an oral communication, or who has one party's prior consent, to intercept it, unless the interception is used to commit a criminal or tortious act or another injurious act (N.J.S.A. 2A:156A-4(d)). Practical guidance (inference): ship the system with audio disabled by default and require a written policy if a customer insists on audio.",
+      "confirmed": true,
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239"
+    },
+    {
+      "issue": "Notice for silent video surveillance of employees in New Jersey",
+      "rule_or_precedent": "I could not confirm any New Jersey statute requiring general notice or consent for silent video-only workplace surveillance. A secondary source says there is no such state statute; the NJ Attorney General's investigative-advice guide was not text-extractable for this question and the NJ Division of Consumer Affairs FAQ blocked automated access. Conservative practice is posted notice at the gate plus a written camera policy, which also supports defensibility if footage is used in discipline.",
+      "confirmed": false,
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/"
+    },
+    {
+      "issue": "Biometric identifiers and facial recognition",
+      "rule_or_precedent": "New Jersey has no standalone biometric privacy statute in force; A1488 (2024-2025 session, sponsored by Middlesex-area assembly members) would prohibit collection of biometric identifier information unless clear notice is posted at every common entryway, with civil penalties of $5,000 for a first offense and $10,000 for later offenses, and a fourth-degree crime for a pattern of violations. The text I opened is the introduced version, not enacted law. Design implication (inference): no face recognition, driver identification or emotion analysis in the yard product.",
+      "confirmed": true,
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2024/A1500/1488_I1.PDF"
+    },
+    {
+      "issue": "Out-of-state biometric exposure from in-cab cameras",
+      "rule_or_precedent": "An Illinois BIPA class action against Lytx over dash cams using machine vision/AI to predict distracted driving settled for a $4,250,000 fund covering people who operated a Lytx DriveCam in Illinois between October 12, 2016 and January 1, 2025; Lytx denied wrongdoing. A New Jersey installer that resells or integrates face-analysing in-cab cameras can inherit that exposure for any driver working in Illinois.",
+      "confirmed": true,
+      "source_url": "https://www.lytxsettlement.com/faqs/"
+    }
+  ],
+  "prospecting_signals": {
+    "public": [
+      "FMCSA CSA/SMS Vehicle Maintenance BASIC percentile at or above the 80% intervention threshold, plus recent inspection history and OOS violations by carrier (public on csa.fmcsa.dot.gov) - the strongest public signal of a maintenance-documentation problem.",
+      "Fleet size and commodity from the carrier's MCS-150 (power units, drivers, for-hire vs private) via FMCSA/SAFER or an aggregator - target 2-50 power units and exclude one-truck owner-operators, who are exempt from DVIRs.",
+      "Number of terminals/yards and trailer count: multi-yard operators have the worst trailer visibility, and trailer-heavy fleets accounted for 95% of defects in the Kodiak inspection program.",
+      "Job postings for a 'DOT compliance clerk', 'safety manager' or 'yard jockey' - paperwork and yard chaos being solved with headcount.",
+      "Google/Yelp reviews of the carrier or its shipper customers mentioning late deliveries, damaged freight, missing seals or trailers arriving with defects.",
+      "Warehouse square footage and dock count from commercial real-estate listings - a proxy for trailer volume at that address.",
+      "NJ MVC diesel inspection deadlines and prior OSHA/FMCSA inspection or crash records as conversation openers, not accusations."
+    ],
+    "walk_in": [
+      "Paper DVIR binders, clipboards or faxed inspection sheets in the dispatch office; drivers photographing damage on personal phones and texting it to dispatch.",
+      "No camera at the gate; a paper gate log or guard shack with a handwritten trailer sheet; trailer numbers written on the nose by hand.",
+      "Yard inventory mismatch: trailers parked with numbers not visible, unmarked trailer pool, no marked inspection lane and poor yard lighting.",
+      "Unrepaired visible defects in the yard - missing conspicuity tape, cracked lenses, hanging mud flaps, tires with obvious tread issues - while the fleet claims a DVIR process.",
+      "Which ELD/DVIR app is on the dash tablet (Samsara, Motive, TruckX, Whip Around, paper) - determines whether we integrate or displace.",
+      "Seal discipline: where seals are stored, who records seal numbers, and whether outbound photos exist for high-value or food/pharma loads.",
+      "Shop bay condition and whether a tread-depth gauge or brake-stroke gauge is actually hanging in the bay versus on a shelf."
+    ]
+  },
+  "pilot": {
+    "scope": "4-week pilot at one yard with a customer running 8-20 power units and at least 10 trailers: two cameras at the gate (in/out) plus one at a marked inspection lane; local Jetson-based processing; event records for every trailer arrival and departure with plate, USDOT and seal-number crops; automatic attachment of gate photos to that unit's DVIR/defect record in the customer's existing app (Whip Around, Fleetio, or a CSV/webhook fallback); a daily exception queue reviewed by the customer's safety lead, not by us making pass/fail calls. No in-cab cameras and no audio in phase 1.",
+    "hardware": "3x Ubiquiti G5 Bullet PoE cameras ($129 each, or $359 for a 3-pack), 1x Jetson Orin Nano Super ($249), PoE switch plus outdoor cabling, mounts, mini-PC/NVR and LTE failover router (distributor quote; planning assumption $600-1,200, not a primary price source), and the customer's existing yard Wi-Fi or a small AP.",
+    "success_metric": "Capture rate of at least 95% of gate trailer movements against a manual yard-marshal log; plate/USDOT exact-match of at least 95% and seal-number exact-match of at least 90% on legible seals; at least 90% of DVIRs for pilot units carry linked gate photo evidence; at least 70% of AI exception flags accepted by the safety lead on review (false-flag rate below 30%); zero trailers with an unrepaired flagged defect dispatched without a documented repair certification.",
+    "cost_range": "Roughly $6,000-$12,000 for hardware, installation and pilot-specific integration, plus $250-$600/month for monitoring, model upkeep and support. Assumptions (inference, not quoted prices): 3 cameras at list price, 16-24 hours of installation at $100-150/hour, 40-80 hours of engineering to wire the event pipeline into one customer's DVIR app, and no new cabling trenching. The customer's existing DVIR app subscription is unchanged.",
+    "assumptions": "Single yard with line-of-sight from two mounting points; power and network available at the gate; the customer already uses an electronic DVIR app with an API or export; seals are printed and legible; the customer names one accountable reviewer; the pilot reuses one calibrated detector build rather than requiring a fresh labeling round per site."
+  },
+  "fit_score": {
+    "demand": 15,
+    "local_buyers": 13,
+    "ability_to_pay": 8,
+    "technical_feasibility": 12,
+    "legal_risk_low": 11,
+    "defensibility": 8,
+    "total": 67,
+    "rationale": "Demand is real and regulation-driven: DVIRs are mandatory for every carrier with two or more CMVs, about one in five vehicles inspected at roadside goes out of service, and the Kodiak data shows certified inspectors finding 95% of defects on trailers that drivers had largely passed. Local buyer density is excellent - New Jersey has 49,887 active FMCSA carriers, of which about 18,600 report 2-50 power units, and Middlesex County alone has 1,300+ warehousing/distribution buildings. Ability to pay is the weak link: truckload operating margins were -2.3% in 2024, 51.7% of New Jersey carriers report a single power unit and are legally exempt from DVIRs, and incumbents give away DVIR apps at $4-10 per vehicle per month, so pricing must attach to avoided OOS events and cargo claims rather than software seats. Technical feasibility is medium: detection, tracking, zone rules and plate OCR are solved; tread depth, brake adjustment and crack detection from fixed cameras are not, and the best VLM scores about 75% on industrial anomaly questions, so the product must be evidence capture plus a human-review queue. Legal risk is moderate but manageable - no New Jersey biometric statute in force and no confirmed general camera-notice statute, but the state's vehicle-tracking notice law, the Wiretap Act's treatment of audio and the Lytx BIPA settlement all constrain the design. Defensibility is only fair: hardware is commodity and Samsara/Motive could bundle yard features, so the moat is local installation, calibration data, service response and integration with whichever DVIR app the fleet already runs."
+  },
+  "risks": [
+    "Incumbent bundling: Samsara already advertises AI DVIR photo and location verification, and Whip Around sells AI photo review as an add-on to a $5/asset/month plan, so a buyer may reasonably say the problem is already solved on the app side.",
+    "Margin and price sensitivity: truckload operating margins were -2.3% in 2024 and non-fuel costs hit a record $1.779/mile, so a $6k-$12k pilot is a real decision for a 10-truck fleet.",
+    "Segment mismatch: 51.7% of New Jersey's registered carriers report a single power unit and are exempt from DVIRs, and many have no yard to instrument - bad prospects who look like good ones on a carrier list.",
+    "Liability for missed defects: if an evidence system is quietly sold as a safety system, a customer will argue we should have caught the defect. Contracts and UI must keep the human reviewer and the driver's statutory report as the decision-makers.",
+    "False positives destroy adoption: ATRI found driver approval of in-cab cameras at 2.24/10, rising 87% only when footage is used for proactive safety - an over-flagging yard system will be ignored or disabled.",
+    "Privacy and audio: adding a microphone or face analysis converts a low-risk fixed-camera install into Wiretap Act and (for Illinois-operating drivers) BIPA exposure; the Lytx settlement shows the size of that tail.",
+    "New Jersey tracking-notice compliance: any in-vehicle tracking feature added later triggers written-notice duties under N.J.S.A. 34:6B-22 with per-violation penalties.",
+    "Site conditions: dirty lenses, headlights at night, snow and gravel yards will degrade OCR, and seal numbers are often illegible, so sell 'image evidence plus review', not 'automated seal verification'.",
+    "Data retention and breach: DVIRs must be kept three months, but gate video should not be kept by default; an unclear retention policy on footage of drivers is both a privacy and a discovery risk.",
+    "Single-operator dependency: pilot economics assume one calibrated detector build reused across yards; if every site needs a fresh labeling round, gross margin collapses."
+  ],
+  "caveats": "Local buyer counts come from a third-party aggregator of FMCSA MCS-150 self-reported data (statnorth), which warns that fleet and driver counts can be out of date; the Middlesex County warehouse figure (1,300+) is from an NJTPA freight profile built on a 2010 baseline, not a current facility census. The out-of-service statistics are national Roadcheck results, not New Jersey or Middlesex-specific inspection data. Prices from Samsara, Motive, Lytx, TruckX, BlackBerry Radar and UVeye are quote-based; where a figure appears it is a third-party or unverified source and is marked Low. No peer-reviewed truck-specific study of camera-based defect detection was found; the closest published work is industrial anomaly detection, whose best model reached 74.9%. Several numbers are explicitly inferences: per-inspection labour cost from the BLS median wage, the 2-50 unit carrier count derived from the fleet-size table, the pilot BOM and labour assumptions, and the reading of N.J.S.A. 34:6B-22 as covering telematics but not fixed yard cameras. Nothing here is legal advice; a New Jersey employment/privacy attorney should review the notice, policy and retention schedule before the first install.",
+  "data_gaps": [
+    "cvsa.org returned HTTP 403; the 2025 Roadcheck figures were taken from Fleet Maintenance's reproduction of the CVSA release rather than the CVSA page itself.",
+    "FMCSA's own Roadside Inspection OOS Rates report is a JavaScript application and could not be read directly, so no carrier-size or New-Jersey-specific OOS rate was verified (a 2019-2024 national table appeared only in search results and is not cited).",
+    "No NJ-specific or Middlesex-County-specific inspection, OOS or crash data was located.",
+    "No public price for Samsara, Motive, Lytx, TruckX base plans, BlackBerry Radar per-unit bundles (the exact AWS Marketplace figure was not visible on the page I opened), or UVeye.",
+    "Could not confirm any New Jersey statutory text requiring notice for silent video surveillance of employees (NJ Division of Consumer Affairs FAQ blocked automated access; NJ Attorney General guide PDF was not text-extractable).",
+    "Could not verify the New Jersey Data Privacy Act's treatment of employee and applicant data from primary text, so it is omitted from the legal findings rather than asserted from secondary summaries.",
+    "No peer-reviewed study measuring defect-detection accuracy of fixed-camera or photo-verification systems on commercial trucks was found; the Kodiak program used human certified inspectors, not cameras.",
+    "No measured crash-reduction figure attributable to cameras alone was verified; the studies found measure risky-driving events, not crashes.",
+    "Automated weigh-station and undercarriage-inspection deployments (thermal brake inspection in Texas, California virtual weigh stations) were identified only through search snippets and were not opened, so they are not cited.",
+    "Trailer-seal OCR accuracy on real-world dirty or damaged seals is unknown; no vendor or study benchmark was found.",
+    "One scratch file was written outside the task folder (/tmp/patch_head.txt) by mistake while drafting the summary edit; no other file outside the task folder was read or modified."
+  ]
+}

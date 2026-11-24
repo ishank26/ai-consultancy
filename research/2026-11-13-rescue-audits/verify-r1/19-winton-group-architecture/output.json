@@ -1,0 +1,98 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Screenshots are presented as delivered evidence (rescue.json screenshot_files: shot-domain-desktop.png, shot-domain-mobile390.png, shot-google-maps.png; audit_md says \"(screenshots attached)\"; founder_md promises \"desktop and phone screenshots\").",
+      "problem": "None of those three image files is present in the folder supplied for verification, so the attachment itself cannot be checked and cannot be handed to the owner as-is. The pages were independently re-verified by me and look exactly as described, so this is a delivery gap, not a wrong claim about the business.",
+      "fix": "Attach the three PNGs to the owner-facing package (or regenerate equivalents from the live parking page and the Google listing) before anything is sent; if they cannot be produced, remove \"(screenshots attached)\" from audit_md and the screenshot sentence from the founder email, since the email offers to show them."
+    },
+    {
+      "claim": "Google source_url https://www.google.com/maps/place/Winton+Group+Architecture/@40.4240936,-74.4372537,17z (after_fix, fix step 4, founder_md sources).",
+      "problem": "Opened cold in a fresh browser this URL lands on a blank place panel at those coordinates (Google drops the business name from the path) - the map is centred near Hager St but no listing card shows. The listing is real and carries every stated detail; the cited link just does not demonstrate it by itself.",
+      "fix": "Cite a URL that opens the card, e.g. https://www.google.com/maps/search/Winton+Group+Architecture+East+Brunswick+NJ, so anyone checking the claim lands on the listing."
+    },
+    {
+      "claim": "\"correct directory listings (starting with HomeBlue)\" / \"the HomeBlue directory still links the old domain\", with only one place under links_to_broken_domain.",
+      "problem": "Only one directory was confirmed to link the old domain, yet audit_md and fix step 4 use the plural \"directory listings\". Not false, but the file reads as if more than one was checked and it was not; the lead source (HomeBlue) is confirmed, and data_gaps already admits the others are unverified.",
+      "fix": "Say \"the one directory we could open (HomeBlue)\" in audit_md, or add a second verified listing before using the plural."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "The domain root returns HTTP 200 and its only content is a short inline script that sends the browser to /lander (not an HTTP-level redirect).",
+      "source_url": "https://wintongrouparchitecture.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The /lander page reads 'wintongrouparchitecture.com is parked free, courtesy of GoDaddy.com', with a 'Get This Domain' button and 'Related Search Topics' links including 'Winton Group Architecture Chicago' and 'Winton Group Architecture Reviews'.",
+      "source_url": "https://wintongrouparchitecture.com/lander",
+      "result": "confirmed"
+    },
+    {
+      "claim": "HTTPS loads with no certificate warning and the parking page shows no gambling or adult content (only firm-name search topics and a GoDaddy ad disclaimer).",
+      "source_url": "https://wintongrouparchitecture.com/lander",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: created 2004-11-04, expires 2028-11-04, last changed 2026-11-05, registrar GoDaddy.com, LLC (IANA 146), nameservers NS01/NS02.DOMAINCONTROL.COM, and registrar-level delete, renew, transfer and update locks.",
+      "source_url": "https://rdap.org/domain/wintongrouparchitecture.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The firm's own four-page site (Our History, Our Motto, Our Services, Contact Us) is archived as recently as 2024-02-29.",
+      "source_url": "https://web.archive.org/web/20240229152705/http://wintongrouparchitecture.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The old pages carry real text (so \"the wording can be recovered\"), not just images.",
+      "source_url": "https://web.archive.org/web/20240229152705/http://wintongrouparchitecture.com/services.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Capture history shows the same site continuously from 2007-07-04 to 2024-02-29 (identical digest) and a different, much smaller homepage by the 2025-05-20 capture.",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=wintongrouparchitecture.com&output=json&collapse=timestamp:6&limit=60",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Maps lists Winton Group Architecture, category 'Architect', 3.0 rating, 4 Hager St, East Brunswick, NJ 08816, phone (732) 651-2675, unclaimed, with 'Add hours' and 'Add website' prompts and no hours shown.",
+      "source_url": "https://www.google.com/maps/search/Winton+Group+Architecture+East+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The HomeBlue architects directory entry for Winton Group Architecture, 4 Hager Street, East Brunswick, contact Vladimir Kaushansky, R.A., phone (732) 651-2675, still lists http://www.wintongrouparchitecture.com as the website.",
+      "source_url": "https://directory.homeblue.com/architects.aspx",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NYC DOB NOW filings name 'WINTON GROUP ARCHITECTURE' with Vladimir Kaushansky as applicant, most recently filed 2026-11-05, across Manhattan, Brooklyn and Queens alteration jobs.",
+      "source_url": "https://data.cityofnewyork.us/resource/w9ak-ipjd.json?$where=upper(applicant_business_name)%20like%20%27%25WINTON%25%27&$order=filing_date%20DESC&$limit=6",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Identity: Winton Group Architecture, Inc., founded 1993, Vladimir Kaushansky R.A. founding principal, NY/NJ practice - matches the East Brunswick listing, the HomeBlue contact and the domain's own archived site; an independent firm, not a chain or franchise.",
+      "source_url": "https://web.archive.org/web/20240229152705/http://wintongrouparchitecture.com/history.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The business is operating, not closed (filings into November 2026, live Google listing, live directory record).",
+      "source_url": "https://data.cityofnewyork.us/resource/w9ak-ipjd.json?$where=upper(applicant_business_name)%20like%20%27%25WINTON%25%27&$order=filing_date%20DESC&$limit=6",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cause is labelled as an inference drawn from RDAP and Wayback, no source states why the site went offline, and no person, host or vendor is blamed.",
+      "source_url": "https://rdap.org/domain/wintongrouparchitecture.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Other listings (LinkedIn company page, BuildZoom) were not verified; data_gaps says they blocked automated access.",
+      "source_url": "https://www.linkedin.com/company/winton-group-architecture",
+      "result": "could not open"
+    },
+    {
+      "claim": "Tone and length: audit_md is calm and plain English with no fear language or prices, and its body is about 278 words (limit 300).",
+      "source_url": "rescue.json (local file, audit_md field)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

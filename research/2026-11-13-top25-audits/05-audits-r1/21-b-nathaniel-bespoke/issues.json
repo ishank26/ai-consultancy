@@ -1,0 +1,27 @@
+[
+ {
+  "claim": "The \"FAQs\" link shows no questions (section 3, \"Now\"), and the agent will \"draft the FAQ page\".",
+  "problem": "Contradicted by the live site. The /#FAQs section renders on the home, alterations and shop pages with at least six answered questions (why buy from B. Nathaniel, where located, what products, can I feel fabric swatches, do you offer home/office visits, how to contact). The thin fetched HTML showed only the heading, which is what the researcher recorded; a browser render shows the content.",
+  "fix": "Delete \"the FAQs link shows no questions\". Rewrite as, e.g., \"the FAQ answers general questions but carries no prices, turnaround times or alteration rates\", and change the agent line to \"extends the existing FAQ with signed-off price bands and ready dates\"."
+ },
+ {
+  "claim": "\"Book Now\" opens a free-text form with no slots, prices or confirmation.",
+  "problem": "Slots and prices are verified absent, but \"no confirmation\" was not tested (submitting the form is out of bounds) and the page does contain a real submit input plus a separate \"Contact Us\" link pointing at /review, so the post-submit behaviour is unverified.",
+  "fix": "Say \"no calendar, slots or prices, and no confirmation step visible before you submit\" - or drop \"or confirmation\"."
+ },
+ {
+  "claim": "\"enquiries land in a Gmail inbox\" (section 2, \"Now\").",
+  "problem": "The contact page publishes bnatbespoke@gmail.com as its email, but the form's delivery address is obfuscated in the page source, so routing of form submissions to that inbox is an inference, not a stated fact.",
+  "fix": "Write \"replies go to a Gmail address (bnatbespoke@gmail.com) rather than a domain mailbox\", or label it \"we assume\"."
+ },
+ {
+  "claim": "Three impact ranges totalling roughly $13,100-$30,200 a year.",
+  "problem": "Each range is arithmetically correct and its assumptions are labelled, but ranges 1 and 3 count overlapping activity (an inquiry call that is a price question would be counted in both), and the audit never says the ranges are alternatives that should not be added.",
+  "fix": "Add one clause: \"these are separate, partly overlapping pockets - do not add them together\", or merge 1 and 3 into one price-and-inquiry figure."
+ },
+ {
+  "claim": "Audit body length.",
+  "problem": "Body (title through the \"Prepared from publicly available information\" line) is ~444-455 words including headings, i.e. right at the ~450 limit rather than comfortably under it.",
+  "fix": "Trim 10-15 words, e.g. the duplicated rate aside in section 2, to leave headroom."
+ }
+]

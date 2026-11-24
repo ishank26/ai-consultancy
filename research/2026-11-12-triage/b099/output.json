@@ -1,0 +1,473 @@
+{
+  "batch": "b099",
+  "businesses": [
+    {
+      "name": "First Rehab",
+      "town": "Spotswood",
+      "ref": "B07370",
+      "status": "operating",
+      "website": "https://first-rehab.com/",
+      "what_they_do": "Outpatient physical, occupational and hand therapy clinic with a Spotswood office at 404 Main St and a second clinic in Lakewood. Site says it opened in 2007 and markets a large open gym, state-of-the-art equipment and one-on-one therapy.",
+      "customers": "Injured and post-surgical adults, plus hand-injury and occupational-therapy patients; most are referred by physicians or insurance networks (inference from 'Diagnosis' and 'Referral source' fields on their scheduling form).",
+      "size_signals": [
+        {"signal": "Two locations advertised on site (Lakewood and Spotswood); 'Since opening in 2007'", "source_url": "https://first-rehab.com/"},
+        {"signal": "Staff page lists multiple named clinicians incl. OTs and DPTs", "source_url": "https://first-rehab.com/staff/"},
+        {"signal": "Careers page exists, implying ongoing hiring", "source_url": "https://first-rehab.com/careers-at-first-rehab/"}
+      ],
+      "listing": {"platform": "Google Maps / Google Business Profile", "rating": "5.0", "reviews": "10", "source_url": "https://www.google.com/maps/search/First+Rehab+404+Main+St+Spotswood+NJ"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "BOOK NOW (goes to /schedule-an-appointment/) plus tel: click-to-call in the header",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "Request form only (Contact Form 7, with reCAPTCHA); the 'Location' dropdown offers only Lakewood",
+        "trust_signals": "Long testimonial wall with patient first names and towns, staff bios with credentials, clinic interior photos, 'since 2007'",
+        "out_of_date_signs": "Copyright is current (2026) and pages were last modified March 2026; but the locations page and footer only mention Lakewood - the Spotswood clinic is absent from the whole site (no Spotswood page in the XML sitemap).",
+        "search_basics": "Title and description name the services and both towns ('Physical / Occupational Therapy Lakewood & Spotswood, NJ'); PT, OT, hand therapy and conditions each have their own pages; Organization JSON-LD present but describes the Lakewood clinic.",
+        "top_issues": [
+          "Spotswood location has no page, address, hours or phone anywhere on the site, even though the Google profile links here",
+          "Header click-to-call shows the Lakewood number (732.884.2020), not the Spotswood number (732.251.6640)",
+          "Scheduling form's location dropdown lists only Lakewood, so a Spotswood patient cannot request that location online"
+        ]
+      },
+      "agent_readiness": {"findable": 2, "answerable": 2, "bookable": 1, "notes": "Findable: claimed-looking Google profile with 5.0/10 reviews, hours and website link; robots.txt is allow-all. Answerable: proper service pages and Organization JSON-LD, but no Spotswood NAP or hours as text. Bookable: form exists but excludes the Spotswood location and sits behind reCAPTCHA with placeholder-only fields."},
+      "operations_signals": [
+        {"signal": "Patient intake collects diagnosis and referral source on a web form - a manual triage step for front desk staff", "source_url": "https://first-rehab.com/schedule-an-appointment/"},
+        {"signal": "Submitting the form produces no confirmation of a slot; staff must call back, which is a plus for review follow-up but a delay for patients", "source_url": "https://first-rehab.com/schedule-an-appointment/"},
+        {"signal": "Hiring signals via a careers page (staff turnover or growth means more intake/admin load)", "source_url": "https://first-rehab.com/careers-at-first-rehab/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Build a real Spotswood location page (address, hours, local phone, therapist, directions) and wire it into the schedule form's location list, so Google traffic lands somewhere that matches the clinic", "type": "website", "evidence": "Google profile for 404 Main St links to first-rehab.com, whose locations page and sitemap mention only Lakewood", "effort": "S"},
+        {"opportunity": "Add location-specific LocalBusiness/MedicalClinic JSON-LD and per-location hours text so AI assistants can answer 'First Rehab Spotswood hours/phone'", "type": "agent readiness", "evidence": "Only a generic Organization/WebPage @graph exists; no Spotswood NAP in the markup or on-page text", "effort": "S"},
+        {"opportunity": "Automated intake agent that captures referral/insurance details, checks the requested location and books or offers slots, replacing the callback loop", "type": "AI agent", "evidence": "Form asks for diagnosis and referral source then relies on staff follow-up; no calendar availability online", "effort": "M"}
+      ],
+      "scores": {"gap_size": 4, "ability_to_pay": 4, "ease": 5, "evidence": 5, "reasons": "Gap: two-clinic practice whose site ignores half its footprint. Pay: multi-clinician, two-site therapy business with insurance billing. Ease: a single well-built location page and a form dropdown fix is days of work. Evidence: verified on the live site, sitemap, form and Google profile."},
+      "sources": ["https://first-rehab.com/", "https://first-rehab.com/locations/", "https://first-rehab.com/schedule-an-appointment/", "https://first-rehab.com/staff/", "https://first-rehab.com/robots.txt", "https://first-rehab.com/page-sitemap.xml", "https://www.google.com/maps/search/First+Rehab+404+Main+St+Spotswood+NJ"]
+    },
+    {
+      "name": "Spotswood Wellness Center",
+      "town": "Spotswood",
+      "ref": "B07371",
+      "status": "operating",
+      "website": "https://spotswoodwellnesscenter.com/",
+      "what_they_do": "Wellness center in a building shared with Spotswood Pharmacy offering massage therapy (Swedish, hot stone, Himalayan salt stone, deep tissue, sports, geriatric in 60/90 minutes), counseling and mental-health services, plus COVID-19 testing and vaccine sign-ups left over from the pandemic era.",
+      "customers": "Local Spotswood-area residents: massage and relaxation clients, counseling patients, and historically people needing COVID tests plus employers for off-site testing.",
+      "size_signals": [
+        {"signal": "Seven-day-a-week posted hours (Sun 9-1, Mon-Fri 9-6, Sat 9-2)", "source_url": "https://spotswoodwellnesscenter.com/contact-us/"},
+        {"signal": "Shares a 'newly renovated building' with Spotswood Pharmacy; multiple service lines (massage, counseling, mental health)", "source_url": "https://spotswoodwellnesscenter.com/"},
+        {"signal": "Team page exists (named staff) and the site is a full multi-page WordPress build", "source_url": "https://spotswoodwellnesscenter.com/about-our-team/"}
+      ],
+      "listing": {"platform": "Google Maps / Google Business Profile", "rating": "4.4", "reviews": "16 (Birdeye mirror of Google reviews)", "source_url": "https://www.google.com/maps/search/Spotswood+Wellness+Center+14+Snowhill+St+Spotswood+NJ"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "usable",
+        "clear_offer": false,
+        "primary_cta": "None above the fold; navigation only. COVID testing CTA dominates the home page",
+        "click_to_call": true,
+        "contact_form": false,
+        "online_booking_or_quote": "None - booking is by phone, Facebook Messenger or email; COVID testing points to a Google Form",
+        "trust_signals": "Service descriptions with real detail, add-on menu, staff/team page, pharmacy partnership; no review widget or photos of the space above the fold",
+        "out_of_date_signs": "Home page still leads with COVID-19 PCR/rapid testing, vaccine registration, mask and social-distancing instructions and 2021-era imagery; no meta description; hero image left a large blank area when loaded at 390px; a body link to /counseling-mental-health-services/massage-therapy/ returns 404.",
+        "search_basics": "Title names the business and town but there is no meta description; massage has its own page with real descriptive text; hours exist only on the contact page.",
+        "top_issues": [
+          "Home page is still a COVID-testing page - first-time visitors cannot tell it is mainly a massage/wellness center",
+          "No online booking for massage; seven-day hours but phone/email only",
+          "Dead internal link (404) and missing meta description hurt crawl quality"
+        ]
+      },
+      "agent_readiness": {"findable": 2, "answerable": 1, "bookable": 0, "notes": "Findable: Google profile shows hours, phone and website link; robots.txt has no blocking rules (only Cloudflare content-signal comments). Answerable: no JSON-LD at all, no meta description, prices not published, stale COVID copy confuses service/category signals. Bookable: nothing online - phone, Messenger or email only."},
+      "operations_signals": [
+        {"signal": "COVID testing intake requires a pre-registration Google Form plus emailing photos of ID and insurance card - entirely manual document handling", "source_url": "https://spotswoodwellnesscenter.com/"},
+        {"signal": "No appointment system; 'You do not need an appointment' for testing and phone-only booking for massage, so staff field every booking call", "source_url": "https://spotswoodwellnesscenter.com/contact-us/"},
+        {"signal": "Relies on Facebook Messenger as a contact channel, a common source of missed or late replies", "source_url": "https://spotswoodwellnesscenter.com/contact-us/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Replace the COVID-era home page with a massage-first page (services, prices, hours, book button) and keep testing on a sub-page", "type": "website", "evidence": "Home page hero and body are COVID testing/vaccine content from the 2021 era; massage is only reachable through the menu", "effort": "S"},
+        {"opportunity": "Put online booking on the massage pages (Fresha/Booksy/Vagaro or a simple scheduler) so the seven-day schedule can be filled without phone calls", "type": "agent readiness", "evidence": "No booking link anywhere; contact page offers only phone, email and Messenger", "effort": "M"},
+        {"opportunity": "Add LocalBusiness/HealthAndBeautyBusiness JSON-LD with address, hours, services and a crawlable price range", "type": "agent readiness", "evidence": "No ld+json on the site and no published prices, so assistants can only guess at hours and cost", "effort": "S"}
+      ],
+      "scores": {"gap_size": 5, "ability_to_pay": 3, "ease": 5, "evidence": 4, "reasons": "Gap: outdated home page, no schema, no booking, dead link. Pay: small shared-building wellness center with several service lines and 16 reviews - modest budget. Ease: page rewrite plus a booking embed is quick. Evidence: inspected live site, robots.txt, contact page and Google profile."},
+      "sources": ["https://spotswoodwellnesscenter.com/", "https://spotswoodwellnesscenter.com/contact-us/", "https://spotswoodwellnesscenter.com/health-services/massage-therapy/", "https://spotswoodwellnesscenter.com/robots.txt", "https://www.google.com/maps/search/Spotswood+Wellness+Center+14+Snowhill+St+Spotswood+NJ", "https://reviews.birdeye.com/d/wellness/spotswood-nj/"]
+    },
+    {
+      "name": "New Ocean Spa",
+      "town": "Spotswood",
+      "ref": "B07372",
+      "status": "operating",
+      "website": "https://www.newoceanspanj.com/",
+      "what_they_do": "Massage spa on Snowhill Street open seven days, specializing in foot massage and body-work massage with 30/45/60/90-minute sessions and combos.",
+      "customers": "Walk-in and appointment locals seeking relaxation and pain-relief massage; seven-day 10-to-9 hours suggest commuter and weekend trade.",
+      "size_signals": [
+        {"signal": "Open Monday-Sunday 10:00 AM - 9:00 PM (Google shows 9:30 AM open)", "source_url": "https://www.newoceanspanj.com/"},
+        {"signal": "Booking flow lists multiple specialists and combo services", "source_url": "https://go.bychronos.com/l/spotswood-08884-new-ocean-spa-804534/a/services"},
+        {"signal": "Owner posted an update on the Google profile dated Nov 6, 2026", "source_url": "https://www.google.com/maps/search/New+Ocean+Spa+12+Snowhill+St+Spotswood+NJ"}
+      ],
+      "listing": {"platform": "Google Maps / Google Business Profile", "rating": "4.8", "reviews": "23 (BestProsInTown listing)", "source_url": "https://www.google.com/maps/search/New+Ocean+Spa+12+Snowhill+St+Spotswood+NJ"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "Pink 'Book Online' button at the top, linking to a Go3/Chronos booking flow",
+        "click_to_call": true,
+        "contact_form": false,
+        "online_booking_or_quote": "Yes - go.bychronos.com booking page with service menu and prices ($45-$95)",
+        "trust_signals": "Google rating and address, owner Google posts, hours; but no testimonials, no staff credentials, and banner photos failed to render",
+        "out_of_date_signs": "Single-page template site (Go3 Technology); banner carousel images showed as empty boxes at 390px; no copyright line; hours on site (10:00 AM) disagree with the Google profile (opens 9:30 AM).",
+        "search_basics": "Title is just the business name and the meta description is boilerplate that names the town; no separate service pages and no price text on the site itself.",
+        "top_issues": [
+          "Bare-bones one-page site: no service pages, no prices, no photos that load reliably",
+          "Hours on the site differ from the Google profile",
+          "No schema.org markup, so hours and prices live only in the booking app"
+        ]
+      },
+      "agent_readiness": {"findable": 3, "answerable": 1, "bookable": 3, "notes": "Findable: claimed profile with hours, category, booking link and an owner post from Nov 2026; robots.txt allow-all. Answerable: almost no crawlable detail (no schema, no prices on site, template copy). Bookable: full online booking with real prices and staff selection, no captcha."},
+      "operations_signals": [
+        {"signal": "Booking already self-serve online, which removes phone load - the gap is marketing content, not scheduling", "source_url": "https://go.bychronos.com/l/spotswood-08884-new-ocean-spa-804534/a/services"},
+        {"signal": "Owner actively posts promos on Google (Nov 2026), suggesting they will act on recommendations", "source_url": "https://www.google.com/maps/search/New+Ocean+Spa+12+Snowhill+St+Spotswood+NJ"},
+        {"signal": "Daily 11-hour operation implies shift handoffs where reminders and rebooking follow-up are usually missed (inference)", "source_url": "https://www.newoceanspanj.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Turn the one-pager into a small service site with per-service pages and published prices, matching the booking menu", "type": "website", "evidence": "Only body and foot massage described in two sentences; prices exist only inside the Chronos booking flow", "effort": "S"},
+        {"opportunity": "Add LocalBusiness (DaySpa) JSON-LD and align hours with the Google profile", "type": "agent readiness", "evidence": "No ld+json found; site says 10:00 AM open while Google says 9:30 AM", "effort": "S"},
+        {"opportunity": "Automated review requests and rebooking reminders after each visit (4.8 stars but only ~23 reviews for a seven-day spa)", "type": "operations", "evidence": "High rating with thin review volume; no post-visit follow-up visible anywhere", "effort": "M"}
+      ],
+      "scores": {"gap_size": 3, "ability_to_pay": 3, "ease": 5, "evidence": 4, "reasons": "Gap: real but narrow - thin content, no schema, hours mismatch, while booking is already solved. Pay: seven-day spa with $45-95 tickets and steady volume. Ease: content and markup fixes are fast. Evidence: site, booking flow and Google profile all inspected."},
+      "sources": ["https://www.newoceanspanj.com/", "https://go.bychronos.com/l/spotswood-08884-new-ocean-spa-804534/a/services", "https://www.newoceanspanj.com/robots.txt", "https://www.google.com/maps/search/New+Ocean+Spa+12+Snowhill+St+Spotswood+NJ", "https://www.bestprosintown.com/nj/spotswood/new-ocean-spa-/"]
+    },
+    {
+      "name": "Alleviations Massage & Bodywork Spa",
+      "town": "Spotswood",
+      "ref": "B07373",
+      "status": "operating",
+      "website": "none",
+      "what_they_do": "Appointment-only massage and bodywork spa at 100 Summerhill Rd with posted hours Tue/Thu 1-9, Wed 9-6, Fri 9-9, Sat 9-8, closed Sunday and Monday.",
+      "customers": "Local massage clients booking by phone; evening and Saturday hours point to working residents (inference).",
+      "size_signals": [
+        {"signal": "Listed as 'by appointment only', accepts credit cards, private lot parking", "source_url": "https://www.bestprosintown.com/nj/spotswood/alleviations-massage-and-bodywork-spa-/"},
+        {"signal": "Closed two days a week with single-shift hours - consistent with a one- or two-therapist operation (inference)", "source_url": "https://www.bestprosintown.com/nj/spotswood/alleviations-massage-and-bodywork-spa-/"}
+      ],
+      "listing": {"platform": "Google Maps / Google Business Profile (unclaimed)", "rating": "2.5", "reviews": "about 10 (Birdeye mirror shows 2.3 from 10)", "source_url": "https://www.google.com/maps/search/Alleviations+Massage+Bodywork+Spa+100+Summerhill+Rd+Spotswood+NJ"},
+      "website_review": {
+        "loads": false,
+        "https": false,
+        "phone_layout": "no site",
+        "clear_offer": false,
+        "primary_cta": "none",
+        "click_to_call": false,
+        "contact_form": false,
+        "online_booking_or_quote": "none - phone only",
+        "trust_signals": "none online",
+        "out_of_date_signs": "No website at all; the Google profile is unclaimed and has no website field.",
+        "search_basics": "Nothing to index: no site, no schema, no service or price text anywhere first-party.",
+        "top_issues": [
+          "Google profile is unclaimed ('Claim this business' shown) with no website, so hours and services are third-party guesses",
+          "2.5-star rating with no owner response or review recovery visible",
+          "No way to book or get a price except by phoning (732) 416-5718"
+        ]
+      },
+      "agent_readiness": {"findable": 0, "answerable": 0, "bookable": 0, "notes": "Findable: unclaimed profile, no website link, no photos beyond directory scrapes. Answerable: no first-party text or schema at all. Bookable: phone only, no form, no booking platform. Directory listings disagree (BestProsInTown claims 37 reviews vs about 10 on Google)."},
+      "operations_signals": [
+        {"signal": "Appointment-only with no online booking means every booking is a phone call during treatment hours - a classic missed-call problem (inference)", "source_url": "https://www.bestprosintown.com/nj/spotswood/alleviations-massage-and-bodywork-spa-/"},
+        {"signal": "Directory-listed review themes include dissatisfaction, and the owner has not claimed the profile to reply", "source_url": "https://reviews.birdeye.com/d/wellness/spotswood-nj/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Claim the Google Business Profile, add hours, services, photos and a booking link - the single highest-value fix", "type": "search", "evidence": "Google Maps shows 'Claim this business' and 'Add website' for this listing", "effort": "S"},
+        {"opportunity": "One-page site (services, prices, hours, therapist bio) plus a booking embed to replace phone-only scheduling", "type": "website", "evidence": "No website exists; hours and services are only found on third-party directories", "effort": "M"},
+        {"opportunity": "Review recovery: request reviews from recent clients and reply to existing ones", "type": "operations", "evidence": "2.5 average from roughly 10 reviews, with no owner responses visible", "effort": "S"}
+      ],
+      "scores": {"gap_size": 5, "ability_to_pay": 2, "ease": 4, "evidence": 3, "reasons": "Gap: nothing first-party - unclaimed profile, no site, no booking. Pay: small appointment-only spa with a weak rating, so budget is thin. Ease: claim plus one-pager is quick, though reputation work takes longer. Evidence: Google listing and directories seen, but no site to inspect and review text was not readable."},
+      "sources": ["https://www.google.com/maps/search/Alleviations+Massage+Bodywork+Spa+100+Summerhill+Rd+Spotswood+NJ", "https://www.bestprosintown.com/nj/spotswood/alleviations-massage-and-bodywork-spa-/", "https://reviews.birdeye.com/d/wellness/spotswood-nj/", "https://www.go-new-jersey.com/Alleviations-Massage-and-Bodywork-Spa/"]
+    },
+    {
+      "name": "Nail Envy",
+      "town": "Spotswood",
+      "ref": "B07374",
+      "status": "operating",
+      "website": "https://nailenvyspotswood.com/",
+      "what_they_do": "Full-service nail salon near ShopRite on Old Stage Rd offering spa manicures and pedicures, powder gel, acrylics, UV/LCN gel, waxing and kids' services, with prices published per package.",
+      "customers": "Local walk-in and appointment clients, largely women and families; holiday gift-card and coupon buyers.",
+      "size_signals": [
+        {"signal": "304 Google reviews and an active Thanksgiving 2026 promo on both site and Google profile", "source_url": "https://reviews.birdeye.com/nail-envy-170023888840075"},
+        {"signal": "Google profile shows a gocheckin.net booking link plus the salon site", "source_url": "https://www.google.com/maps/search/Nail+Envy+65+Old+Stage+Rd+Spotswood+NJ"},
+        {"signal": "Staff selection step in the online booking flow implies several technicians", "source_url": "https://booking.gocheckin.net/v2/4801"}
+      ],
+      "listing": {"platform": "Google Maps / Google Business Profile", "rating": "4.2", "reviews": "304 (Birdeye mirror of Google reviews)", "source_url": "https://www.google.com/maps/search/Nail+Envy+65+Old+Stage+Rd+Spotswood+NJ"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "Floating BOOKING button plus click-to-call on mobile; 'MAKE AN APPOINTMENT' in the desktop menu",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "Yes - GoCheckin booking portal (booking.gocheckin.net/v2/4801) with real service durations",
+        "trust_signals": "Large gallery of recent nail work, Google review link, coupons and gift cards, price list with package detail",
+        "out_of_date_signs": "Current: Thanksgiving 2026 popup and gallery labelled Nov 11 2026. Minor template leftovers ('Created by Medical Professionals of Spa Labs') that read oddly for a nail salon.",
+        "search_basics": "Title and description name the salon, town and ZIP; the services page carries a full price list in text; no schema.org markup at all.",
+        "top_issues": [
+          "Booking portal showed repeated 'No staff available for this service on this time' dialogs, which pushes clients back to calling",
+          "No LocalBusiness/NailSalon JSON-LD despite excellent on-page pricing data",
+          "Template copy and a gmail address in the site header reduce polish"
+        ]
+      },
+      "agent_readiness": {"findable": 3, "answerable": 2, "bookable": 2, "notes": "Findable: claimed profile with hours, booking link, fresh owner post and 304 reviews; robots.txt only disallows /_nuxt paths. Answerable: prices and services are real text on /service, but no ld+json and hours appear only in the header/footer. Bookable: GoCheckin works but availability errors blocked a live slot lookup; no captcha."},
+      "operations_signals": [
+        {"signal": "High inbound volume (304 reviews) handled by phone plus a booking portal that currently reports no staff availability - likely double-entry and lost bookings", "source_url": "https://booking.gocheckin.net/v2/4801"},
+        {"signal": "Runs recurring coupon and gift-card promotions that need manual redemption tracking", "source_url": "https://nailenvyspotswood.com/coupons"},
+        {"signal": "Review volume is large but the site only links out - no automated post-visit review requests visible", "source_url": "https://nailenvyspotswood.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Fix the booking platform's staff/service availability mapping so every service shows open slots", "type": "agent readiness", "evidence": "Visiting the GoCheckin flow produced repeated 'No staff available for this service on this time' dialogs", "effort": "M"},
+        {"opportunity": "Add NailSalon JSON-LD with hours, services, price range and geo, reusing the existing price list", "type": "agent readiness", "evidence": "No ld+json on any page though /service has a complete priced menu", "effort": "S"},
+        {"opportunity": "Automated post-visit review requests and rebooking nudges via SMS", "type": "operations", "evidence": "304 reviews show demand; no follow-up automation or SMS capture visible on site", "effort": "M"}
+      ],
+      "scores": {"gap_size": 3, "ability_to_pay": 4, "ease": 4, "evidence": 5, "reasons": "Gap: mostly polish and a broken booking-availability setting rather than missing fundamentals. Pay: busy 304-review salon with coupons, gift cards and packages up to $85. Ease: schema and booking-config work is days. Evidence: site, price list, booking portal and Google profile all verified."},
+      "sources": ["https://nailenvyspotswood.com/", "https://nailenvyspotswood.com/service/", "https://booking.gocheckin.net/v2/4801", "https://nailenvyspotswood.com/robots.txt", "https://www.google.com/maps/search/Nail+Envy+65+Old+Stage+Rd+Spotswood+NJ", "https://reviews.birdeye.com/nail-envy-170023888840075"]
+    },
+    {
+      "name": "Aree Nails",
+      "town": "Spotswood",
+      "ref": "B07375",
+      "status": "operating",
+      "website": "none",
+      "what_they_do": "Nail salon in the Summerhill Rd strip offering manicures, pedicures, acrylics, gel extensions, nail art and waxing; reviewers single out pedicures and foot massage while some report inconsistent manicures.",
+      "customers": "Walk-in local clients, mostly women and families in the Spotswood / Old Bridge area.",
+      "size_signals": [
+        {"signal": "115 Google reviews, Mon-Fri 10-7 and Sat 9:30-6", "source_url": "https://reviews.birdeye.com/aree-nails-spotswood-170109553506084"},
+        {"signal": "Multiple staff implied by the service range and six-day hours (inference)", "source_url": "https://www.fresha.com/lvp/aree-nails-spotswood-summerhill-road-spotswood-bxv0nE"}
+      ],
+      "listing": {"platform": "Google Maps / Google Business Profile (unclaimed)", "rating": "4.1", "reviews": "115 (Birdeye mirror of Google reviews)", "source_url": "https://www.google.com/maps/search/Aree+Nails+100+Summerhill+Rd+Spotswood+NJ"},
+      "website_review": {
+        "loads": false,
+        "https": false,
+        "phone_layout": "no site",
+        "clear_offer": false,
+        "primary_cta": "none",
+        "click_to_call": false,
+        "contact_form": false,
+        "online_booking_or_quote": "Third-party only: a sparse Fresha profile that names service categories with no prices or staff, filed under the wrong region",
+        "trust_signals": "none first-party",
+        "out_of_date_signs": "No website; the Google profile is unclaimed with an 'Add website' prompt.",
+        "search_basics": "No site to index; service names exist only on Fresha and directories.",
+        "top_issues": [
+          "Google profile unclaimed and missing a website link - the Fresha booking page is not connected to it",
+          "Fresha profile has service names but no prices or photos, so it reads as an auto-generated stub",
+          "No price or hours text a crawler can rely on"
+        ]
+      },
+      "agent_readiness": {"findable": 1, "answerable": 1, "bookable": 1, "notes": "Findable: Google profile exists with rating and hours but is unclaimed and has no website. Answerable: no first-party text; the Fresha page lists categories only. Bookable: Fresha is a platform Google's booking features can use in principle, but this profile shows no prices or staff, so an agent has little to transact with."},
+      "operations_signals": [
+        {"signal": "Reviews note inconsistent manicure results - a service-quality signal that also points to absent follow-up/rebooking", "source_url": "https://reviews.birdeye.com/aree-nails-spotswood-170109553506084"},
+        {"signal": "Walk-in salon with no first-party booking channel; the only online route is an unclaimed third-party stub", "source_url": "https://www.fresha.com/lvp/aree-nails-spotswood-summerhill-road-spotswood-bxv0nE"},
+        {"signal": "Six-day, nine-hour operation means phone enquiries during treatments are easily missed (inference)", "source_url": "https://www.loc8nearme.com/new-jersey/spotswood/aree-nails/3967405/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Claim the Google profile, add website/booking link and photos, and respond to the 115 existing reviews", "type": "search", "evidence": "Google Maps shows 'Claim this business' and 'Add website' for Aree Nails", "effort": "S"},
+        {"opportunity": "Finish the Fresha profile (prices, durations, staff, photos) so online booking converts and AI booking agents can transact", "type": "agent readiness", "evidence": "Fresha page lists service categories with no prices and is categorised under the wrong region", "effort": "S"},
+        {"opportunity": "Simple one-page site with price list and hours to anchor traditional and answer-engine search", "type": "website", "evidence": "No website exists; hours and prices only appear on directories", "effort": "M"}
+      ],
+      "scores": {"gap_size": 5, "ability_to_pay": 3, "ease": 5, "evidence": 4, "reasons": "Gap: no site, unclaimed profile, stub booking listing. Pay: established salon with 115 reviews and six-day hours, so there is revenue but thin margins. Ease: claim plus Fresha cleanup is hours, not weeks. Evidence: Google listing, Fresha page and review mirror all checked."},
+      "sources": ["https://www.google.com/maps/search/Aree+Nails+100+Summerhill+Rd+Spotswood+NJ", "https://www.fresha.com/lvp/aree-nails-spotswood-summerhill-road-spotswood-bxv0nE", "https://reviews.birdeye.com/aree-nails-spotswood-170109553506084", "https://www.loc8nearme.com/new-jersey/spotswood/aree-nails/3967405/"]
+    },
+    {
+      "name": "George Hair Salon",
+      "town": "Spotswood",
+      "ref": "B07377",
+      "status": "operating",
+      "website": "none",
+      "what_they_do": "Hair salon at 100 Summerhill Rd offering color, highlights, haircuts, styling and updos; the owner's Google post notes the stylist has more than 20 years of experience and that Spanish is spoken.",
+      "customers": "Local walk-in and phone clients, families, and Spanish-speaking customers.",
+      "size_signals": [
+        {"signal": "Owner Google post (May 2026) names stylist Lycey, 20+ years' experience, and lists color, highlights, cuts, styling and updo", "source_url": "https://www.google.com/maps/search/George+Hair+Salon+100+Summerhill+Rd+Spotswood+NJ"},
+        {"signal": "217 Google reviews", "source_url": "https://reviews.birdeye.com/george-hair-salon-170035386863735"},
+        {"signal": "Six-day hours with weekday 10-7:30 close, implying a small team (inference from directory hours)", "source_url": "https://www.fresha.com/lvp/george-hair-salon-summerhill-road-spotswood-rwazy5"}
+      ],
+      "listing": {"platform": "Google Maps / Google Business Profile", "rating": "4.6", "reviews": "217 (Birdeye mirror; Birdeye shows 4.5)", "source_url": "https://www.google.com/maps/search/George+Hair+Salon+100+Summerhill+Rd+Spotswood+NJ"},
+      "website_review": {
+        "loads": false,
+        "https": false,
+        "phone_layout": "no site",
+        "clear_offer": false,
+        "primary_cta": "none",
+        "click_to_call": false,
+        "contact_form": false,
+        "online_booking_or_quote": "none - the Fresha listing for this salon has no services or staff attached (stub)",
+        "trust_signals": "Google reviews and owner posts only",
+        "out_of_date_signs": "No website; the Google profile shows 'Add website' as missing information.",
+        "search_basics": "No first-party page to index; service names appear only in the owner's Google post and directories.",
+        "top_issues": [
+          "No website and no website link on Google - 217 reviews of demand with nowhere to land",
+          "No online booking; walk-ins and phone only",
+          "Hours and price information exist only on third-party directories"
+        ]
+      },
+      "agent_readiness": {"findable": 2, "answerable": 1, "bookable": 0, "notes": "Findable: claimed profile (owner posts in May 2026) with hours and category, but no website. Answerable: no schema, no site, services only in a short owner post. Bookable: nothing online; the Fresha stub has no services or staff."},
+      "operations_signals": [
+        {"signal": "Owner uses Google posts for announcements, a channel a simple automation could keep fed", "source_url": "https://www.google.com/maps/search/George+Hair+Salon+100+Summerhill+Rd+Spotswood+NJ"},
+        {"signal": "Reviews mention accommodating walk-ins - walk-in-heavy salons absorb scheduling chaos on the phone (inference)", "source_url": "https://reviews.birdeye.com/george-hair-salon-170035386863735"},
+        {"signal": "Bilingual service note suggests a Spanish-speaking clientele that generic booking flows may not serve well (inference)", "source_url": "https://www.google.com/maps/search/George+Hair+Salon+100+Summerhill+Rd+Spotswood+NJ"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Add a one-page site with services, prices, hours and a book button, and attach it to the Google profile", "type": "website", "evidence": "Google profile is missing a website field entirely and no domain exists", "effort": "S"},
+        {"opportunity": "Set up real online booking (Booksy or a fully configured Fresha) to take pressure off walk-in-heavy phone handling", "type": "agent readiness", "evidence": "Existing Fresha listing has no services or staff configured; no booking link on Google", "effort": "M"},
+        {"opportunity": "Automated review replies and post-visit review requests to build on an already strong 4.6 across 217 reviews", "type": "operations", "evidence": "Large review base with no owner responses visible", "effort": "S"}
+      ],
+      "scores": {"gap_size": 4, "ability_to_pay": 3, "ease": 5, "evidence": 4, "reasons": "Gap: no site, no booking, missing website field on a 217-review salon. Pay: established single-location salon with modest ticket sizes. Ease: one-pager plus booking setup is quick. Evidence: Google profile, owner post and review mirror inspected; no site existed to test."},
+      "sources": ["https://www.google.com/maps/search/George+Hair+Salon+100+Summerhill+Rd+Spotswood+NJ", "https://www.fresha.com/lvp/george-hair-salon-summerhill-road-spotswood-rwazy5", "https://reviews.birdeye.com/george-hair-salon-170035386863735", "https://www.loc8nearme.com/new-jersey/spotswood/george-hair-salon/3967394/"]
+    },
+    {
+      "name": "Paolo Cuppari Hair Designs",
+      "town": "Spotswood",
+      "ref": "B07378",
+      "status": "operating",
+      "website": "https://paolocupparihair.com/",
+      "what_they_do": "Full-service hair salon at 529 Main St offering cuts, color and balayage, Deva and keratin, extensions, bridal and makeup, with Davines product retail, gift cards and complimentary consultations.",
+      "customers": "Higher-end local clients (color, balayage, bridal parties) plus retail product buyers via the online shop.",
+      "size_signals": [
+        {"signal": "Multiple service pages (balayage, Deva and keratin, bridal/makeup), a product shop and gift cards - implies a staffed team", "source_url": "https://paolocupparihair.com/"},
+        {"signal": "121 reviews aggregated (82 Google, 30 Facebook, 9 Insider Pages)", "source_url": "https://reviews.birdeye.com/paolo-cuppari-designs-149514418297470"},
+        {"signal": "Testimonials name individual stylists (e.g. 'Debbie')", "source_url": "https://paolocupparihair.com/"}
+      ],
+      "listing": {"platform": "Google Maps / Google Business Profile", "rating": "4.8", "reviews": "82 Google reviews (121 aggregated across platforms)", "source_url": "https://www.google.com/maps/search/Paolo+Cuppari+Hair+Designs+529+Main+St+Spotswood+NJ"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "usable",
+        "clear_offer": true,
+        "primary_cta": "Menu item 'RESERVE' - but it links to a Phorest waitlist page, and the contact page offers an appointment request form instead of live availability",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "Request/waitlist only (phorest.com/book/.../waitlist); no self-serve time-slot booking",
+        "trust_signals": "Real salon photos, named stylist testimonials, Davines partnership, product shop, gift cards, Instagram gallery",
+        "out_of_date_signs": "Content is fresh (2025-2026 imagery), but there is no meta description, no opening hours anywhere on the site, and the home page copy references Monroe, NJ rather than Spotswood.",
+        "search_basics": "Service pages exist for each offering and schema.org WebPage/Organization markup is present; but no opening hours, no LocalBusiness hours/geo, and the town is named only in the footer and contact block.",
+        "top_issues": [
+          "RESERVE goes to a Phorest waitlist, not a bookable calendar - a client ready to book cannot pick a slot",
+          "No hours anywhere on the site or in the Google profile ('Add hours' prompt shown)",
+          "Mobile hero shows no town or phone above the fold, and the copy references Monroe, which muddies local search"
+        ]
+      },
+      "agent_readiness": {"findable": 2, "answerable": 2, "bookable": 1, "notes": "Findable: Google profile present with website and rating, but hours are missing (Google asks the owner to add them). Answerable: good service text and JSON-LD, yet no hours or prices as text and the town reference is inconsistent. Bookable: Phorest is installed for gift cards and a waitlist, but there is no live slot booking; the contact form is a request form."},
+      "operations_signals": [
+        {"signal": "Consultation-led model with appointment request forms means staff manually confirm each booking - a queue that grows with bridal and color demand", "source_url": "https://paolocupparihair.com/contact-us/"},
+        {"signal": "Runs a retail shop and gift cards through separate systems (mysalon2me + Phorest) that usually need manual reconciliation", "source_url": "https://paolocupparihair.com/"},
+        {"signal": "A Phorest account already exists, so enabling real online booking is configuration rather than a new purchase (inference)", "source_url": "https://gift-cards.phorest.com/salons/paolocupparihairdesigns#"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Switch the RESERVE link from the Phorest waitlist to live Phorest booking and surface it above the fold on mobile", "type": "agent readiness", "evidence": "The RESERVE menu item resolves to phorest.com/book/salons/paolocupparihairdesigns/waitlist", "effort": "S"},
+        {"opportunity": "Publish hours on the site and in the Google profile, with LocalBusiness/openingHours JSON-LD", "type": "search", "evidence": "No hours on the contact page; Google shows an 'Add hours' prompt for this business", "effort": "S"},
+        {"opportunity": "Add a proper Spotswood landing section or page (address, stylists, parking) to clear up the Monroe ambiguity", "type": "website", "evidence": "Fetched home page heading read 'Hair Design Salon in Monroe, NJ' while the contact page lists 529 Main Street, Spotswood", "effort": "S"}
+      ],
+      "scores": {"gap_size": 3, "ability_to_pay": 5, "ease": 5, "evidence": 4, "reasons": "Gap: polished brand with three specific, quick fixes (booking link, hours, local copy). Pay: full-service salon with retail, bridal and gift-card revenue - best budget in the batch. Ease: all three are hours-to-days of work. Evidence: live site, contact page, Phorest links and Google profile verified."},
+      "sources": ["https://paolocupparihair.com/", "https://paolocupparihair.com/contact-us/", "https://phorest.com/book/salons/paolocupparihairdesigns/waitlist", "https://www.google.com/maps/search/Paolo+Cuppari+Hair+Designs+529+Main+St+Spotswood+NJ", "https://reviews.birdeye.com/paolo-cuppari-designs-149514418297470"]
+    },
+    {
+      "name": "Domani Hair Salon",
+      "town": "Spotswood",
+      "ref": "B07382",
+      "status": "operating",
+      "website": "none",
+      "what_they_do": "Neighborhood hair salon at 19 Snowhill St (Suite C) open Tuesday to Saturday plus Sunday, closed Monday, providing cuts, color and styling.",
+      "customers": "Local walk-in and phone clients; weekend and Sunday hours suggest families and shift workers (inference).",
+      "size_signals": [
+        {"signal": "Listed hours Tue-Thu 10-7, Fri-Sat 9-7, Sun 10-6, closed Mon - six days a week", "source_url": "https://www.loc8nearme.com/new-jersey/spotswood/domani-hair-salon/3965428/"},
+        {"signal": "67 reviews on Loc8NearMe (77 on another directory - counts vary)", "source_url": "https://www.loc8nearme.com/new-jersey/spotswood/domani-hair-salon/3965428/"}
+      ],
+      "listing": {"platform": "Google Maps / Google Business Profile", "rating": "4.9", "reviews": "67 (Loc8NearMe; other directories show 77)", "source_url": "https://www.google.com/maps/search/Domani+Hair+Salon+19+Snowhill+St+Spotswood+NJ"},
+      "website_review": {
+        "loads": false,
+        "https": false,
+        "phone_layout": "no site",
+        "clear_offer": false,
+        "primary_cta": "none",
+        "click_to_call": false,
+        "contact_form": false,
+        "online_booking_or_quote": "none - phone only; the Google profile's only website is a Facebook mobile link",
+        "trust_signals": "4.9 rating and review volume only",
+        "out_of_date_signs": "No website. The Google profile points its website field at m.facebook.com rather than a proper page.",
+        "search_basics": "No indexable first-party content: no title, description, service page or schema.",
+        "top_issues": [
+          "No website at all, and the Google profile's website link is a Facebook mobile URL",
+          "No online booking despite a 4.9 rating that would convert well",
+          "Services, prices and stylists are invisible to search and AI assistants"
+        ]
+      },
+      "agent_readiness": {"findable": 1, "answerable": 0, "bookable": 0, "notes": "Findable: profile has rating, hours and phone, but the website field is a Facebook link and the listing is thin. Answerable: nothing crawlable first-party. Bookable: phone only."},
+      "operations_signals": [
+        {"signal": "Six-day salon with phone-only booking - enquiries during appointments are lost (inference)", "source_url": "https://www.loc8nearme.com/new-jersey/spotswood/domani-hair-salon/3965428/"},
+        {"signal": "Relies on Facebook as its web presence, where posts are not a substitute for booking or service info", "source_url": "https://www.google.com/maps/search/Domani+Hair+Salon+19+Snowhill+St+Spotswood+NJ"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Replace the Facebook link with a simple salon site (services, prices, hours, book button) and set it as the profile website", "type": "website", "evidence": "Google profile website field resolves to m.facebook.com and no domain exists", "effort": "S"},
+        {"opportunity": "Add online booking so a 4.9-rated salon stops losing calls", "type": "agent readiness", "evidence": "No booking path anywhere: Google shows only phone and directions", "effort": "M"},
+        {"opportunity": "Automated review requests to build on 67-77 existing reviews", "type": "operations", "evidence": "Strong rating with a modest, directory-only review base", "effort": "S"}
+      ],
+      "scores": {"gap_size": 5, "ability_to_pay": 3, "ease": 5, "evidence": 4, "reasons": "Gap: no site, no booking, Facebook-only web presence. Pay: established six-day salon but likely a small team and modest tickets. Ease: one-pager plus booking is quick. Evidence: Google profile and directories inspected; no site to test."},
+      "sources": ["https://www.google.com/maps/search/Domani+Hair+Salon+19+Snowhill+St+Spotswood+NJ", "https://www.loc8nearme.com/new-jersey/spotswood/domani-hair-salon/3965428/", "https://www.bestprosintown.com/nj/spotswood/domani-hair-salon-/"]
+    },
+    {
+      "name": "Ralph's Barber Shop",
+      "town": "Spotswood",
+      "ref": "B07385",
+      "status": "operating",
+      "website": "none",
+      "what_they_do": "Traditional Main Street barber shop offering everyday cuts and classic barbering, popular with families and reported to work well with children, including kids with sensory needs.",
+      "customers": "Local men and boys, families, and Main Street walk-in trade.",
+      "size_signals": [
+        {"signal": "347 Google reviews - the largest review base in this batch", "source_url": "https://reviews.birdeye.com/ralphs-barber-shop-170208275817429"},
+        {"signal": "Reviews name multiple barbers working the chairs", "source_url": "https://www.bestprosintown.com/nj/spotswood/ralphs-barber-shop-/"},
+        {"signal": "Google profile shows daily hours ('Opens 9 AM')", "source_url": "https://www.google.com/maps/search/Ralph%27s+Barber+Shop+422+Main+St+Spotswood+NJ"}
+      ],
+      "listing": {"platform": "Google Maps / Google Business Profile", "rating": "4.8", "reviews": "347 (Birdeye mirror of Google reviews)", "source_url": "https://www.google.com/maps/search/Ralph%27s+Barber+Shop+422+Main+St+Spotswood+NJ"},
+      "website_review": {
+        "loads": false,
+        "https": false,
+        "phone_layout": "no site",
+        "clear_offer": false,
+        "primary_cta": "none",
+        "click_to_call": false,
+        "contact_form": false,
+        "online_booking_or_quote": "none - walk-in and phone only; no booking link on Google",
+        "trust_signals": "Review volume and rating only",
+        "out_of_date_signs": "The Google profile's website field points to 'zenmaxi.click', which returned HTTP 403 when opened and has nothing to do with the shop - effectively a broken website link on a 347-review listing.",
+        "search_basics": "No first-party content: no site, no schema, no service or price text.",
+        "top_issues": [
+          "Google profile website link goes to zenmaxi.click (403 Forbidden), not to the barber shop",
+          "No website, no prices and no online booking for the busiest review profile in the batch",
+          "No queue or waitlist option for a walk-in-heavy barber shop"
+        ]
+      },
+      "agent_readiness": {"findable": 1, "answerable": 0, "bookable": 0, "notes": "Findable: profile has hours, category, phone and 347 reviews, but the website field is a junk domain that blocks access - actively misleading for users and AI agents. Answerable: nothing crawlable. Bookable: nothing online."},
+      "operations_signals": [
+        {"signal": "347 reviews on a walk-in barber shop means high chair turnover managed entirely by walk-ins and phone", "source_url": "https://reviews.birdeye.com/ralphs-barber-shop-170208275817429"},
+        {"signal": "Reviews highlight skill with children including sensory needs - appointment flexibility matters for those families but is phone-only (inference)", "source_url": "https://reviews.birdeye.com/ralphs-barber-shop-170208275817429"},
+        {"signal": "A stale or spam website field on Google suggests nobody is watching the profile, and likely no review replies either", "source_url": "https://www.google.com/maps/search/Ralph%27s+Barber+Shop+422+Main+St+Spotswood+NJ"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Remove or replace the zenmaxi.click website link on the Google profile immediately and add a real site or booking page", "type": "search", "evidence": "Google profile lists zenmaxi.click as the website; opening it returns 403 Forbidden and it has no evident connection to the shop", "effort": "S"},
+        {"opportunity": "Add online queue or appointment booking (e.g. Booksy, Squire) to shorten walk-in waits and capture after-hours demand", "type": "agent readiness", "evidence": "No booking or waitlist link anywhere; 347 reviews show real demand", "effort": "M"},
+        {"opportunity": "Simple one-page site with prices, hours, barber list and a book button", "type": "website", "evidence": "No site exists; price and service info live only in reviews and directories", "effort": "S"}
+      ],
+      "scores": {"gap_size": 4, "ability_to_pay": 3, "ease": 5, "evidence": 4, "reasons": "Gap: broken website link plus zero first-party presence on a very popular shop. Pay: high footfall but low ticket sizes and no retail. Ease: fixing the profile link is minutes; site and booking are days. Evidence: Google profile and review mirror seen; the linked site could not be read (403)."},
+      "sources": ["https://www.google.com/maps/search/Ralph%27s+Barber+Shop+422+Main+St+Spotswood+NJ", "https://reviews.birdeye.com/ralphs-barber-shop-170208275817429", "https://www.bestprosintown.com/nj/spotswood/ralphs-barber-shop-/", "http://zenmaxi.click/"]
+    }
+  ],
+  "caveats": [
+    "Review counts and star ratings attributed to Google were partly read from Google Maps' limited guest view (rating only) and partly from Birdeye/Loc8NearMe mirrors of Google reviews, which is why the two sometimes differ by a tenth of a star.",
+    "Google web search (google.com/search) returned a bot-check page, so ratings were collected from the Maps interface instead of the search results panel; per-listing review counts were not visible there.",
+    "No forms were submitted, no accounts created and no messages sent. Contact and booking forms were inspected only up to the first input.",
+    "The 'operating' status for businesses without websites rests on an active Google listing with current hours and posts, not on an in-person or phone check."
+  ],
+  "data_gaps": [
+    "Alleviations Massage & Bodywork Spa: review text could not be read (Google Maps limited view, no first-party site), so complaint themes are only partly inferred from a directory summary; directory review counts conflict (about 10 vs 37).",
+    "Domani Hair Salon: the Facebook page behind the Google website link was not opened (mobile Facebook typically requires login), so services and prices are unconfirmed.",
+    "Ralph's Barber Shop: the website listed on Google (zenmaxi.click) returned HTTP 403 Forbidden and could not be inspected, so it is unknown whether it was ever the shop's site or an unrelated domain.",
+    "Spotswood Wellness Center: massage pricing is not published anywhere I could see, so ticket size is unknown.",
+    "First Rehab: it is unclear whether the Spotswood clinic is part of the same company as the Lakewood site (the site lists only Lakewood); the Google profile links to first-rehab.com, which is the basis for treating them as one business (inference)."
+  ]
+}

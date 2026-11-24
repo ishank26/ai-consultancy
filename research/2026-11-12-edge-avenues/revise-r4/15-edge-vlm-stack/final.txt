@@ -1,0 +1,12 @@
+All five verifier fixes are applied and the structure checks out.
+
+**Changes:**
+1. **Qwen3-VL-2B throughput** — split into its own `measured_outcomes` entry citing the NVIDIA TensorRT Edge-LLM page I opened (v0.10.0: 135.3 tok/s AGX Thor BS=1 INT4 AWQ, 88.7 AGX Orin, 52.6 Orin NX, 32.3 Orin Nano, 133.9/119.9 DGX Spark), with an explicit warning not to mix the older-release ~180.8 tok/s row; the Liquid AI entry now carries only LFM2.5-VL numbers and its own URL. Both remain `strength: Low`.
+2. **fit_score rationale** — replaced the "lower half" claim with "sits above the midpoint ... deliberately kept below the level the other sub-scores suggest"; subscores unchanged, all in range, total 68 = sum.
+3. **Coral** — removed the "~10 ms measured latency" reading; now says the docs use 10 ms only as a worked example of the 1000/inference-ms cap, and a data_gap was added saying no Coral latency is asserted anywhere.
+4. **data_gaps Dahua** — now: vendor page loads and confirms specs, shows no price; retailer pages 403/404.
+5. **CAPTURE** — downgraded to `strength: Medium` with "single peer-reviewed ICCV 2025 benchmark" stated in the finding and caveats.
+
+Also removed an out-of-schema `score_note` key I had briefly added inside `fit_score`, and pruned the now-stale "EmpireTech product URL 404'd" wording from the risk list context.
+
+done

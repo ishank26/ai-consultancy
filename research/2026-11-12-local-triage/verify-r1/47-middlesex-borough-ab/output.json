@@ -1,0 +1,157 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Coverage - the trades are almost entirely absent from the list",
+      "problem": "Six of my eleven category searches (roofing, plumbing, HVAC, electrical, landscaping, general contracting) returned multiple Middlesex Borough independents with 08846 street addresses, and none of them are in businesses.json. Only 11 of the 44 eligible businesses my searches surfaced are listed (~25%, well under the 70% bar). The list concentrates on law, accounting, health and personal care.",
+      "fix": "Add the trades businesses in coverage.missing and run a dedicated contractor sweep (roofing, plumbing, HVAC, electrical, landscaping, general contracting) before this zone is assigned to outreach."
+    },
+    {
+      "claim": "Coverage - auto repair is missing entirely",
+      "problem": "Four established Middlesex Borough shops with their own websites (Auto Shop of Middlesex, Stoms Automotive, Divine Autoworks, JEM Service Center) are absent, and the auto-repair category appears nowhere in the list.",
+      "fix": "Add the four shops; all four have live sites, so they are high-confidence entries."
+    },
+    {
+      "claim": "Allison Roy - State Farm Insurance (1316 Bound Brook Rd, Suite 2A)",
+      "problem": "Address and phone verify, but the office page presents it as a State Farm agent ('independent contractor agent who solicits applications for State Farm products') - a branded carrier agency, which the zone rules exclude as a franchise/brand location. The mapper flagged the risk and listed it anyway.",
+      "fix": "Remove, or get an explicit client decision that branded carrier-agency storefronts are in scope."
+    },
+    {
+      "claim": "David Basile - Allstate Insurance (540 Bound Brook Rd)",
+      "problem": "Same branded-carrier problem (Allstate agent storefront), and it rests on a single aggregator page (locationsnear.me) with no Allstate or licensing source I could open.",
+      "fix": "Drop as a branded franchise agency; if kept, re-verify against an Allstate agent page."
+    },
+    {
+      "claim": "Evenly Orthodontics (495 Union Ave)",
+      "problem": "Multi-location NJ brand - my search found Evenly offices in Red Bank, Cherry Hill, Collingswood, Saddle Brook, Mullica Hill and elsewhere. That is a regional chain, not a one-site independent; the mapper flagged it and kept it.",
+      "fix": "Remove as a multi-site brand (or confirm the client's chain threshold)."
+    },
+    {
+      "claim": "Erica J. Mandell, Attorney at Law - cited website https://www.ejmandellattorney.com/about_us",
+      "problem": "The cited URL returns HTTP 404. The site root loads and is the right person, but shows no office address, and a Martindale listing places her in New Brunswick while an older SSA list gives 601 Bound Brook Rd, Middlesex.",
+      "fix": "Replace the dead citation with the working homepage and confirm the current Middlesex office before outreach."
+    },
+    {
+      "claim": "Curcio Louis J - listed as 'Accounting and tax'",
+      "problem": "Could not confirm him as an accountant at all; only source is a single MerchantCircle stub, the mapper's own note says he may be an attorney, and my searches found no accounting practice by that name in Middlesex.",
+      "fix": "Verify occupation and current activity, or remove."
+    },
+    {
+      "claim": "C G Bookkeeping Services - address 'Unknown'",
+      "problem": "Single MerchantCircle stub with no street address and no second source; not demonstrably a Middlesex Borough business.",
+      "fix": "Verify address and activity, or remove."
+    },
+    {
+      "claim": "MedStop NJ (138 Bound Brook Rd) - category 'Urgent care / medical clinic'",
+      "problem": "The only listing is a Birdeye 'wellness' profile with one review; nothing confirms it is an urgent care or even currently operating as a clinic. The one-source category label overstates what was verified.",
+      "fix": "Re-verify or downgrade/remove."
+    },
+    {
+      "claim": "BEST Physical Therapy - phone 'Unknown'",
+      "problem": "The practice's own site (bestptnj.com) lists the Middlesex clinic at 601 Bound Brook Rd Suite 201 with 732-968-4422, so a phone that was recorded as unknown is actually available. Two NJ locations, PT-owned private practice - it is not a chain.",
+      "fix": "Fill in 732-968-4422 and remove the chain flag."
+    },
+    {
+      "claim": "Amaltas Dental & Implant Center and The Don's Barbershop - listed with 'own website' evidence",
+      "problem": "Neither site would render for me (amaltasdental.com fetch failed twice; thedonsbsxsp.com is JavaScript-only). Amaltas's address does surface in search results, but The Don's has no independently opened page confirming the Middlesex address.",
+      "fix": "Re-check both in a real browser before outreach."
+    },
+    {
+      "claim": "Coverage - accounting: Joseph R. Petracca, CPA (435 Union Ave)",
+      "problem": "Found in my own CPA search and missing from the list, while the accounting category was otherwise well covered.",
+      "fix": "Add after verifying."
+    },
+    {
+      "claim": "Shared-address duplicates",
+      "problem": "CrownCutz and Braids Fades and Weaves (547 Bound Brook Rd), East Horizon Acupuncture and Healing Art of Acupuncture (601 Bound Brook Rd Suite 102), and Viva Insurance / O'Donnell Agency (568 Union Ave) are each listed twice at the same address. Some are probably the same business under two names, which will double-count in outreach.",
+      "fix": "Resolve each pair to a single current business before outreach."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Vastola & Sullivan is a law firm at 495 Union Ave, Middlesex, NJ 08846, phone 732-560-0888", "source_url": "https://www.vastolaandsullivan.com/location-1", "result": "confirmed"},
+    {"claim": "Law Offices of Stacy I. Benson is a Middlesex, NJ law firm", "source_url": "https://sbensonlawfirm.com/", "result": "confirmed"},
+    {"claim": "Law Office of Victor H. Anthenelli is at 141 Union Ave, Suite 4, Middlesex, 732-560-8483", "source_url": "http://www.anthenelli.com/", "result": "confirmed"},
+    {"claim": "Erica J. Mandell attorney site is ejmandellattorney.com/about_us", "source_url": "https://www.ejmandellattorney.com/about_us", "result": "contradicted"},
+    {"claim": "Mark A. Bailey runs his own criminal defense practice", "source_url": "https://attorneybailey.com/criminal-defense-law/", "result": "confirmed"},
+    {"claim": "SRM Tax and Accounting Services LLC is at 1273 Bound Brook Rd Suite 11, Middlesex", "source_url": "https://srmtaxandaccountingservices.com/contact-us/", "result": "confirmed"},
+    {"claim": "Linda M. Yu CPA is a Middlesex NJ accounting/wealth-management firm", "source_url": "https://lmycpa.com/wealth-management.php", "result": "confirmed"},
+    {"claim": "Alan B. Douglas, CPA phone 732-805-0100, Middlesex business clientele", "source_url": "https://douglascpafirm.com/", "result": "confirmed"},
+    {"claim": "R.J. Ferb Law Offices at 448 Union Ave, Middlesex", "source_url": "https://www.lawyers.com/middlesex/new-jersey/robert-j-ferb-1122067-a/", "result": "confirmed"},
+    {"claim": "Forte Real Estate Development is at 242 Lincoln Blvd, 2nd Floor, Middlesex", "source_url": "https://www.buildforte.com/home/", "result": "confirmed"},
+    {"claim": "Frieman Realty is listed at 27 Hamiltonian Apartments, Middlesex, 732-968-8209", "source_url": "https://www.yellowpages.com/middlesex-nj/mip/frieman-realty-3969933", "result": "confirmed"},
+    {"claim": "Cortland Computer Services Inc serves Middlesex NJ businesses", "source_url": "https://www.cortlandcomputerservices.com/", "result": "confirmed"},
+    {"claim": "GCOM IT Solutions is a computer repair/IT provider in Middlesex, NJ", "source_url": "https://gcomitsolutions.com/", "result": "confirmed"},
+    {"claim": "Mark Computer Repair is at 550 Union Ave, Office 9, Middlesex", "source_url": "https://markcomputerrepair.net/contact-us/", "result": "confirmed"},
+    {"claim": "WS Consulting 4 is at 282 Lincoln Blvd, Middlesex", "source_url": "https://wsconsulting4.com/site/contact/", "result": "confirmed"},
+    {"claim": "Argos Insurance Group is an independent Middlesex NJ agency (PO Box 41)", "source_url": "https://argosinsure.com/about-us/", "result": "confirmed"},
+    {"claim": "Allison Roy State Farm office is at 1316 Bound Brook Rd Suite 2A, Middlesex", "source_url": "https://sfagentaroy.com/", "result": "confirmed"},
+    {"claim": "Middlesex Family Dental is at 77 Main Street, Middlesex", "source_url": "https://www.middlesexfamilydentist.com/", "result": "confirmed"},
+    {"claim": "Amaltas Dental is a dental office at 495 Union Ave Suite 2A, Middlesex", "source_url": "https://amaltasdental.com/our-office/", "result": "could not open"},
+    {"claim": "Your Eyes and You optometry is at 1326 Bound Brook Road, Middlesex", "source_url": "https://www.youreyesandyou.com/", "result": "confirmed"},
+    {"claim": "EyeDocs USA operates an optometry office in Middlesex, NJ", "source_url": "https://www.eyedocsusa.com/", "result": "confirmed"},
+    {"claim": "Bound Brook Veterinary Clinic is a veterinary practice in Middlesex, NJ", "source_url": "https://www.boundbrookvet.com/", "result": "confirmed"},
+    {"claim": "MedStop NJ at 138 Bound Brook Rd is an operating urgent care/clinic", "source_url": "https://reviews.birdeye.com/d/wellness/middlesex-nj/", "result": "not found"},
+    {"claim": "BEST Physical Therapy Middlesex clinic is at 601 Bound Brook Rd Suite 201", "source_url": "https://bestptnj.com/", "result": "confirmed"},
+    {"claim": "Unna Chiropractic Care operates in Middlesex NJ", "source_url": "https://unnacc.com/", "result": "confirmed"},
+    {"claim": "Focus Martial Arts is a martial arts/fitness school in Middlesex", "source_url": "https://focusmartialarts.net/", "result": "confirmed"},
+    {"claim": "Quality Movement Physical Therapy & Wellness operates in Middlesex", "source_url": "https://www.qmptwellness.com/faq.html", "result": "confirmed"},
+    {"claim": "Braids Fades and Weaves LLC is a Middlesex barbershop at 547 Bound Brook Rd", "source_url": "https://braidsfadesandweaves.com/", "result": "confirmed"},
+    {"claim": "The Don's Barbershop & Shave Parlor is an operating Middlesex business", "source_url": "https://www.thedonsbsxsp.com/", "result": "could not open"},
+    {"claim": "Curl Up & Dye Hair Salon operates at 714 Union Avenue, Middlesex", "source_url": "https://www.bestprosintown.com/nj/dunellen/curl-up-and-dye-/", "result": "confirmed"},
+    {"claim": "Klean Kutz II barbershop operates at 321 Bound Brook Road, Middlesex", "source_url": "https://www.bestprosintown.com/nj/middlesex/klean-kutz-ii-/", "result": "confirmed"},
+    {"claim": "Meraki Hair Studio & Day Spa is at 1309 Bound Brook Rd, Middlesex", "source_url": "https://merakihairstudiodayspa.com/Contact", "result": "could not open"}
+  ],
+  "coverage": {
+    "searches": [
+      "roofing contractor Middlesex NJ 08846",
+      "plumber Middlesex NJ 08846",
+      "auto repair shop Middlesex NJ 08846",
+      "electrician Middlesex NJ 08846",
+      "HVAC contractor Middlesex NJ 08846",
+      "landscaping contractor Middlesex NJ 08846",
+      "general contractor Middlesex NJ 08846 builder",
+      "dentist Middlesex NJ 08846 Union Ave",
+      "hair salon Middlesex NJ 08846 Bound Brook Rd",
+      "insurance agency Middlesex NJ 08846 independent agent",
+      "accountant CPA Middlesex NJ 08846 Union Ave firm"
+    ],
+    "eligible_found": 44,
+    "already_listed": 11,
+    "missing": [
+      {"name": "CJM Professional Roofing LLC", "town": "Middlesex", "source_url": "https://www.bestprosintown.com/nj/middlesex/roofing/"},
+      {"name": "Anthony Guiliano LLC (roofing)", "town": "Middlesex", "source_url": "https://www.bestprosintown.com/nj/middlesex/roofing/"},
+      {"name": "Roof Experts NJ", "town": "Middlesex", "source_url": "https://www.bestprosintown.com/nj/middlesex/roofing/"},
+      {"name": "Thomas O'Brien Construction LLC", "town": "Middlesex", "source_url": "https://www.bestprosintown.com/nj/middlesex/roofing/"},
+      {"name": "Navarro Family Roofing", "town": "Middlesex", "source_url": "https://navarrofamilyroofing.com/"},
+      {"name": "Arrow Sewer and Drain", "town": "Middlesex", "source_url": "https://www.bestprosintown.com/nj/middlesex/plumbers/"},
+      {"name": "Quality Pro Services LLC", "town": "Middlesex", "source_url": "https://www.bestprosintown.com/nj/middlesex/plumbers/"},
+      {"name": "Robert Wilson & Sons", "town": "Middlesex", "source_url": "https://www.bestprosintown.com/nj/middlesex/plumbers/"},
+      {"name": "Specian Plumbing & Heating LLC", "town": "Middlesex", "source_url": "https://www.bestprosintown.com/nj/middlesex/plumbers/"},
+      {"name": "Nardi Heating & Air Conditioning", "town": "Middlesex", "source_url": "https://www.bestprosintown.com/nj/middlesex/hvac/"},
+      {"name": "Supreme Heating And Air Conditioning, Inc.", "town": "Middlesex", "source_url": "https://www.bestprosintown.com/nj/middlesex/hvac/"},
+      {"name": "Victor's Air Conditioning Co", "town": "Middlesex", "source_url": "https://www.bestprosintown.com/nj/middlesex/hvac/"},
+      {"name": "Auto Shop of Middlesex", "town": "Middlesex", "source_url": "https://www.autoshopofmiddlesex.com/"},
+      {"name": "Stoms Automotive", "town": "Middlesex", "source_url": "https://stomsauto.com/"},
+      {"name": "Divine Autoworks", "town": "Middlesex", "source_url": "https://www.divineautoworks.com/"},
+      {"name": "JEM Service Center", "town": "Middlesex", "source_url": "https://www.jemservicecenter.com/"},
+      {"name": "Rhodes & Sons Electrical Contracting", "town": "Middlesex", "source_url": "https://local.yahoo.com/consumer-services/home-and-garden-services/electricians/nj/middlesex/"},
+      {"name": "Power Solutions Electrical Contractors", "town": "Middlesex", "source_url": "https://www.cylex.us.com/middlesex/electricians-electrical-contractors/"},
+      {"name": "All Wired Up Electric LLC", "town": "Middlesex", "source_url": "https://www.cylex.us.com/middlesex/electricians-electrical-contractors/"},
+      {"name": "Sole Electric Inc.", "town": "Middlesex", "source_url": "https://www.cylex.us.com/middlesex/electricians-electrical-contractors/"},
+      {"name": "J & S Electrical Service", "town": "Middlesex", "source_url": "https://www.yellowpages.com/middlesex-nj/electricians"},
+      {"name": "Custom Electric", "town": "Middlesex", "source_url": "https://local.yahoo.com/consumer-services/home-and-garden-services/electricians/nj/middlesex/"},
+      {"name": "Genesis Landscape Contractors", "town": "Middlesex", "source_url": "https://www.yellowpages.com/middlesex-nj/mip/genesis-landscape-contractors-12660376"},
+      {"name": "High Point Landscaping", "town": "Middlesex", "source_url": "https://local.yahoo.com/consumer-services/home-and-garden-services/lawn-and-garden-services/landscaping/nj/middlesex/"},
+      {"name": "Sami's Landscape & Tree Service", "town": "Middlesex", "source_url": "https://reviews.birdeye.com/samis-landscape-tree-service-156041965320050"},
+      {"name": "Small Time Landscaping", "town": "Middlesex", "source_url": "https://local.yahoo.com/consumer-services/home-and-garden-services/lawn-and-garden-services/landscaping/nj/middlesex/"},
+      {"name": "M.R. Schoenbach Inc.", "town": "Middlesex", "source_url": "https://www.yellowpages.com/middlesex-nj/home-builders"},
+      {"name": "Hybrid Luxury Home Building", "town": "Middlesex", "source_url": "https://www.yellowpages.com/middlesex-nj/home-builders"},
+      {"name": "All About Perfection Construction", "town": "Middlesex", "source_url": "https://www.yellowpages.com/middlesex-nj/home-builders"},
+      {"name": "Gulliver General Construction", "town": "Middlesex", "source_url": "https://www.yellowpages.com/middlesex-nj/home-builders"},
+      {"name": "Method Construction", "town": "Middlesex", "source_url": "https://www.yellowpages.com/middlesex-nj/home-builders"},
+      {"name": "Sweet Construction", "town": "Middlesex", "source_url": "https://www.yellowpages.com/middlesex-nj/home-builders"},
+      {"name": "Joseph R. Petracca, CPA", "town": "Middlesex", "source_url": "https://www.taxbuzz.com/find-the-best-cpa/new-jersey/middlesex/joseph-r-petracca-cpa"}
+    ]
+  },
+  "confidence": "Medium"
+}

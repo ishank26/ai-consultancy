@@ -1,0 +1,42 @@
+{
+  "name": "PPIS Insurance",
+  "town": "North Brunswick",
+  "ref": "B00674",
+  "status": "operating",
+  "website": "https://ppisinsurance.net/",
+  "what_they_do": "Independent insurance agency (Pollution and Property Insurance Specialists) writing personal and commercial lines across New Jersey. Personal side is auto, home, renters and umbrella; commercial side covers general liability, commercial property, commercial vehicle, workers' compensation and storage-tank liability, which appears to be a specialism. The site markets itself on quoting multiple carriers for NJ residents and small businesses.",
+  "customers": "New Jersey homeowners, renters and drivers, plus small and mid-size businesses - especially those with fuel-storage or environmental exposure, given the storage-tank liability page.",
+  "size_signals": [
+    {"signal": "Single office at 501 Adams Lane Suite 2, one phone and one fax line; staff described only as 'our agents' with no named producers", "source_url": "https://ppisinsurance.net/contact-us/"},
+    {"signal": "Published hours Monday-Friday 9am-5pm, weekends closed", "source_url": "https://ppisinsurance.net/contact-us/"},
+    {"signal": "Six commercial coverage lines each with their own page (property, vehicle, general liability, workers comp, storage tank)", "source_url": "https://ppisinsurance.net/"}
+  ],
+  "listing": {"platform": "Google (as reported by a third-party directory)", "rating": "5.0", "reviews": "3 (review text looks unrelated to insurance, so treat with caution)", "source_url": "https://localitybiz.com/new-jersey/personal-insurance-in-north-brunswick-township"},
+  "website_review": {
+    "loads": true,
+    "https": true,
+    "phone_layout": "usable",
+    "clear_offer": true,
+    "primary_cta": "'GET A QUOTE' buttons on the auto/home and commercial sections, plus a phone number in the footer",
+    "click_to_call": false,
+    "contact_form": true,
+    "online_booking_or_quote": "Contact Form 7 quote request (name, e-mail, telephone, message); no carrier-comparison or instant quote, no appointment slot",
+    "trust_signals": "Named specialty, coverage-by-coverage pages, address, phone, fax and hours; no carrier logos, no testimonials, no team photos",
+    "out_of_date_signs": "Copyright reads 2026 but no meta description; on 390px the form inputs overflow the right edge of the viewport; no photos of staff or office",
+    "search_basics": "Home title is 'Home - PPIS Insurance' - no service, no town, no description; coverage pages exist per line of business; JSON-LD is a Yoast WebPage/Organization graph but the @id URLs are still http:// and there is no LocalBusiness with hours",
+    "top_issues": [
+      "Title 'Home - PPIS Insurance' with no meta description at all",
+      "No click-to-call tel: link anywhere - the phone is plain text",
+      "No hours, service area or price signal in schema, and JSON-LD URLs still use http://",
+      "Quote request is a generic contact form, not a coverage-aware quote intake"
+    ]
+  },
+  "agent_readiness": {"findable": 1, "answerable": 1, "bookable": 1, "notes": "Findable: robots.txt is a default allow-all with crawl-delay 1 and no Disallow; no convincing Google Business Profile rating (the only '5.0 from 3' listing shows unrelated review text). Answerable: address, phone, fax and hours are readable text on the contact page, but the home page has no description, no schema LocalBusiness/hours, and no premium or price-range information. Bookable: a labelled Contact Form 7 form with no CAPTCHA, but it collects only name/e-mail/phone/message, so an agent cannot get a quote or bind a policy - everything ends in a human callback."},
+  "top_opportunities": [
+    {"opportunity": "Turn the generic contact form into a coverage-aware quote intake (line of business, property/vehicle details, effective date) that pre-fills carrier submissions and replies instantly", "type": "operations", "evidence": "Only form on the site is Contact Form 7 with name, e-mail, telephone and message; every 'GET A QUOTE' button leads there", "effort": "M"},
+    {"opportunity": "Fix local search basics: descriptive page titles, meta description, LocalBusiness schema with hours and area served, and click-to-call on mobile", "type": "search", "evidence": "document.title is 'Home - PPIS Insurance', description is null, JSON-LD has no LocalBusiness/hours and uses http:// @ids, and there are zero tel: links", "effort": "S"},
+    {"opportunity": "Add a simple annual-renewal reminder and cross-sell follow-up sequence (auto to home to umbrella; business to workers comp)", "type": "operations", "evidence": "Agency sells six commercial lines plus personal lines but the site offers no client portal, reminders or follow-up mechanism - only a one-off contact form", "effort": "M"}
+  ],
+  "scores": {"gap_size": 4, "ability_to_pay": 3, "ease": 5, "evidence": 3, "reasons": "Gap: no meta description, no tel links, no LocalBusiness schema, and quote requests are a plain contact form. Ability to pay: small independent agency earning commissions, so moderate and tied to policy volume. Ease: WordPress with Contact Form 7, so quote intake plus schema is a short project. Evidence: opened home and contact pages, read robots.txt and JSON-LD, checked the 390px form layout; review evidence is weak."},
+  "sources": ["https://ppisinsurance.net/", "https://ppisinsurance.net/contact-us/", "https://ppisinsurance.net/robots.txt", "https://ppisinsurance.net/commercial-insurance/", "https://localitybiz.com/new-jersey/personal-insurance-in-north-brunswick-township"]
+}

@@ -1,0 +1,91 @@
+{
+  "results": [
+    {
+      "ref": "B00958",
+      "name": "High Velocity Auto (formerly Ben's Auto)",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked against the live Google place page as a visitor on 2026-11-12: 'High velocity auto', 5.0 with 4 reviews, auto repair shop, 1184 Cozzens Ln, (732) 821-4686, banner 'Claim this business', and explicit 'Add hours' / 'Add website' / 'Add photos & videos' prompts. So the unclaimed, hours-less, site-less, 4-review description is accurate. The 'Mark and Ray' review is real and appears on both the Google reviews and the Loc8NearMe entry. The review-volume split is real: Google shows 4, Birdeye shows 61 at '1184 D, Cozzens Ln' (4.7) and Loc8NearMe shows 58 at '521 Cozzens Ln D' (4.7) - two directory identities, which supports the duplicate/stale-listing issue. highvelocityautollc.com does not resolve at all (DNS ENOTFOUND), confirming 'no website'. There is no owned site, so there was no desktop/390px render, robots.txt, schema or booking flow to inspect - phone-only intake is correct. Scores look right for a 4-review single-bay shop: gap_size 5, ability_to_pay 2, ease 5, evidence 4 (the conflicting addresses are flagged honestly and remain unresolved even after re-checking)."
+    },
+    {
+      "ref": "B00960",
+      "name": "Blue Star Car Care Center",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Identity and address confirmed on Google: 'Carone Auto LLC (Blue Star Car Care Center)', 4.6 with 170 reviews, 1020 Apache St, caronenj.com, (732) 658-6300, owner photos and videos present, claimed profile (only 'Suggest an edit', no 'Claim this business'). Site re-checked on desktop and at 390px. Placeholder meta description confirmed verbatim ('Replace this text with description of your website for SEO purposes'); title is 'Carone Auto LLC - Home' with an emoji and no town or service; the only JSON-LD is a WebSite node whose url is https://carone.tidbe.com/ - no LocalBusiness or openingHours markup. robots.txt is 'User-agent: * / Allow: /' with a sitemap. /contact carries one real enquiry form (name, email, phone, message) behind an ALTCHA checkbox, i.e. contact-only, no booking - and the FAQ does say appointments are recommended while walk-ins are welcome. Hero contrast bug confirmed by screenshot: the welcome copy renders dark grey on a near-black hero at phone width. AI-looking artwork confirmed (the hero asset filename is a ChatGPT-generated image). One top_issue could NOT be re-verified: the 'old phone number 732-940-0558' claim. Neither a quoted search nor any reachable directory ties that number to this shop, and every directory page I tried (YellowBot, Roadtrippers, Cylex) returned 403 - see data_gaps. Scores as filed are reasonable for the strongest profile in the batch: gap_size 3, ability_to_pay 4, ease 4, evidence 5."
+    },
+    {
+      "ref": "B00961",
+      "name": "Nani Auto Repair",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Agent readiness is limited only by placeholder copy, missing JSON-LD and an empty booking link; the record states the 'robots response' was read and still scores findable 3",
+          "what_is_true": "The site's robots.txt is 'User-agent: * / Disallow: /'. The whole site is blocked to every crawler, so no search engine or AI answer engine can read Nani's pages at all. That is a bigger agent-readiness defect than the dead booking button and was missed in the record.",
+          "source_url": "https://naniautorepair.com/robots.txt"
+        }
+      ],
+      "notes": "Everything else re-checked holds. Google: 'Nani Auto Repair', 4.8 with 74 reviews, 940 Livingston Ave, 'Located in: Shell', website naniautorepair.com, (732) 964-3883, Monday 8 AM to 6 PM. Site: browser title 'Nani Auto Repair | Just another WordPress site', no meta description, zero ld+json scripts, every service heading carries the same Latin filler paragraph and all three testimonials are filler text, 'Since 2013' present, social icons href='#', the header phone anchor is href='callto:' with no number (dead click-to-call), both 'book an appointment' links just point back to /contact-us/, and the contact page's 'Book Online' link has an empty href. Hours conflict confirmed both ways: site 10-5 / Sat 10-3 versus Google Monday 8 AM-6 PM. The contact page does expose a working enquiry form (name, email, subject, message), so a message can be sent, but no appointment can be booked. Proposed gap_size 5 rather than 4 because of the robots.txt block, which makes the unfinished site invisible to agents as well as wasteful to humans; ability_to_pay 3, ease 4 and evidence 5 stand.",
+      "corrected_scores": {
+        "gap_size": 5,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 5
+      }
+    },
+    {
+      "ref": "B00962",
+      "name": "Raj Auto Center",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Google place page confirmed: 'Raj Auto Center', 4.5 with 150 reviews, 1400 Jersey Ave, (732) 249-5535, an 'Add website' prompt (so the website field really is empty), owner-uploaded photos and videos, Popular times showing 'a little busy' on a weekday, and a claimed profile (no 'Claim this business'). The AASP/NJ member page independently lists 1400 Jersey Avenue with 732-469-0059, a Facebook link and no website, so the two-phone-number inconsistency is real - note that a web-search summariser wrongly attributed 732-249-5535 to aaspnj.org while the page itself says 732-469-0059. The critical review about a mis-diagnosis and an $1,100 strut quote is on the listing, and the review topics cluster on honest pricing, free inspection and second opinions, matching the estimate-transparency signal. northbrunswickautomotiverepair.com would not resolve or connect from this machine, consistent with a dead directory-cited domain (the specific 'SSL protocol error' wording is unverified). No owned site means no robots.txt, schema or booking flow to inspect; phone-only is correct. Scores as filed are reasonable for a 150-review shop with zero owned presence: gap_size 5, ability_to_pay 3, ease 4, evidence 4."
+    },
+    {
+      "ref": "B00964",
+      "name": "Livingston Avenue Auto Services",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Google confirms the name split exactly as described: the listing at 1040 Livingston Ave is titled 'Livingston Auto Repair', 4.7 with 37 reviews, (732) 828-8020, with an 'Add website' prompt and workshop photos 'By owner'; the profile is claimed. Neither name has a website. The review the record characterises is real: a customer describes an older Corvette getting head springs and valve seals and a 2015 Audi getting an A/C compressor swapped, which supports the high-value job signal. Birdeye independently carries 'Livingston Avenue Auto Services' with 32 reviews at 4.7, and Loc8NearMe lists the same shop at 4.7 with 30 reviews, so the identity is genuinely split. No site means no robots.txt, schema or booking path to inspect. Scores as filed are reasonable: gap_size 5, ability_to_pay 2, ease 5, evidence 4."
+    },
+    {
+      "ref": "B00966",
+      "name": "27 Auto LLC (27 Car Care)",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Every headline claim re-verified on the live place page: '27 Auto', 4.3 with 66 reviews, 2844 NJ-27, (732) 422-1600, banner 'Claim this business' (unclaimed), and a website field that really does point to kpsprincetongarage.com - which resolves to a different business, an auto repair shop in Princeton. Staff names Kenny and JP appear in the listing's review quotes, and a real review describes a walk-in muffler replacement on a van, matching the exhaust/walk-in profile. Popular times are present. 'No services text, no quote path' holds; the photos tab shows only Street View & 360 plus an 'Add photos & videos' prompt rather than owner photos, so 'no photos' is fair in substance. No owned site means no robots.txt, schema or booking flow to inspect; phone-only is correct. Scores as filed are reasonable: gap_size 5, ability_to_pay 2, ease 5, evidence 4."
+    },
+    {
+      "ref": "B01044",
+      "name": "Cambridge Learning & College Planning Center",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked the homepage, /parents-scheduling-form/ and the Google Business Profile. Document title is literally 'njcambridgelearningcenter.com', there is no meta description tag, and document.querySelectorAll('script[type=\"application/ld+json\"]').length is 0 on both pages checked. robots.txt is 'User-agent: * / Disallow: /wp-admin/ / Allow: /wp-admin/admin-ajax.php' plus a sitemap, so AI crawlers are not blocked. The scheduling page links seven Formsite endpoints (interest form, Summer 2026 availability, inquiry meeting, request-a-meeting, confidential document upload, cancellations, schedule change), the cancellation form does warn about the 24-hour charge, and 'Summer 2026 Availability' is still the live wording in November 2026 - all confirmed. GBP: 4.6, category 'Tutoring service', 731 Georges Rd, website link, (732) 640-1004, hours shown, review count not exposed in this view, and an 'Add photos & videos' prompt with no owner updates, so the 'bare or unclaimed' inference is fair. Mobile at 390px: the header phone link is zero-size behind the hamburger and the only other click-to-call ('Call Us') sits roughly 11,500 px down the page, so the 'phone hidden on mobile' issue holds in practice. 'New Parent Interest Form!' routes to a Formsite intake and there is no slot picker anywhere - no real booking. No prices or packages surfaced on the pages I read. Scores as filed are reasonable: gap_size 4, ability_to_pay 4, ease 4, evidence 4."
+    },
+    {
+      "ref": "B01065",
+      "name": "Capacity LLC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Mobile home-page hero image failed to render in testing (top_issue #4)",
+          "what_is_true": "At 390 px the hero illustration is present and fully loaded: the image element has naturalWidth/naturalHeight 1024x707, renders 330x228, computed visibility visible and opacity 1, and a screenshot taken after load shows the full warehouse illustration above the headline. A screenshot taken immediately on arrival shows only the flat grey hero band, which is what the earlier record appears to have captured; it is a load/reveal timing artefact, not a broken image.",
+          "source_url": "https://www.capacityllc.com/"
+        }
+      ],
+      "notes": "The other issues and opportunities hold. /contact/ says 'Simply fill out our form' but the only <form> on the page is the header site-search box (action https://www.capacityllc.com/, single input name=s), so both hero CTAs dead-end - confirmed. The phone link is 'tel:732-745-7770' whose link text is '732-745-7770 press option 3' - confirmed. /about-us/ returns 404 while /about/ returns 200 - confirmed. Homepage JSON-LD is a WebPage/Organization/WebSite graph plus SiteNavigationElement with no LocalBusiness, address or openingHours - confirmed. robots.txt is a Yoast block with 'User-agent: * / Disallow:' (fully open) and a sitemap. Minor understatement to note: the contact page lists five sites, adding Menen-Rekkem Belgium to the four the record names, which if anything supports the high ability_to_pay. Because one of the four top issues is a false positive, evidence drops from 5 to 4; gap_size 3, ability_to_pay 5 and ease 3 are otherwise well judged.",
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 5,
+        "ease": 3,
+        "evidence": 4
+      }
+    }
+  ],
+  "data_gaps": [
+    "Blue Star / Carone top_issue #4 ('old phone number 732-940-0558 still circulating in directories') could not be substantiated or disproved: a quoted search for the number returns no New Jersey auto shop, and YellowBot, Roadtrippers and Cylex all returned HTTP 403. Treated as unverified, and possibly a number belonging to a different business picked up in a shared browser session.",
+    "Google Maps review totals and claimed status vary by aggregator (Google 4 reviews for High Velocity versus Birdeye 61 and Loc8NearMe 58), and Google's limited map view does not expose the duplicate-listing history. The records' Google figures were confirmed on the live place panels, but the directories' higher counts cannot be reconciled to a single listing.",
+    "northbrunswickautomotiverepair.com (cited for Raj Auto Center) failed to resolve or connect from this machine, so the record's specific 'SSL protocol error' wording is unverified; only that the domain is dead.",
+    "Cambridge Learning's Google review count is not displayed in the limited map view, so the record's reliance on Birdeye's mirror (115 reviews) could not be cross-checked against Google directly.",
+    "Carone's Google 'Onsite services' attribute named in size_signals was not visible in the limited map view, so it is unverified (the owner photos, videos and 170 reviews were verified)."
+  ]
+}

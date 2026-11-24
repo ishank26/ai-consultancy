@@ -1,0 +1,468 @@
+{
+ "business": "Gaines & Associates, PC (formerly Gaines, Goldenfarb & Associates) - CPA firm, 105 Fieldcrest Ave, Suite 501, Edison, NJ 08837",
+ "opportunity": "Pre-close assistant for client books: match transactions, queue exceptions with proposed fixes, draft adjusting journal entries, chase missing documents, assemble the close pack - with a reviewer approving every posting",
+ "problem": {
+  "summary": "The firm sells payroll, AP/AR, bank and card reconciliations and month-end closings as ongoing outsourced services, and is hiring a Senior Accounting Manager whose duty is to own month-end close and reporting for multiple clients at once. If each client sits on a different stack, the same reconcile-review-chase-approve sequence is re-performed per client with no single standardized pipeline, and the work is sold as recurring manual service rather than software. Only part of that stack can be verified: the firm's own site confirms QuickBooks as an anchor accounting product line, while the wider list (Bill.com, NetSuite, CCH ProSystem fx, Reach Reporting, Power BI/Tableau, HubSpot) comes from the firm's Senior Accounting Manager posting, whose body could not be re-opened during this revision, and search descriptions quoting that posting disagree about which tools are required versus 'nice to have'. The client stack is therefore a discovery question, not a confirmed fact. Files move through a third-party secure link (ProtectedXchange) in the site header, with no task list or automated document chasing attached to it. The cost is capacity the firm must hire for instead of billing for: the audit puts the recoverable time at roughly 225-720 staff hours a year, about $13,600-$43,600 at the BLS New Jersey accountant benchmark. That figure rests on assumptions the firm has not confirmed (25-40 books a month, 1.5-3 hours per close, 50% handover), so the pilot must measure the real baseline first.",
+  "current_tools": [
+   {
+    "tool": "QuickBooks (anchor accounting stack: setup, support, file cleanup service line)",
+    "evidence": "The firm's own service page is a QuickBooks accounting line, which is the only stack fact verifiable from the firm's own site; the page confirms the product line, not which clients run it or at what volume.",
+    "source_url": "https://www.gainescpacfo.com/quickbooks-accounting.htm"
+   },
+   {
+    "tool": "Mixed client accounting stack - QuickBooks Online and Reach Reporting reported as tools in use; Bill.com, NetSuite and CCH ProSystem fx reported as 'nice to have' (UNVERIFIED)",
+    "evidence": "Derived from the firm's Senior Accounting Manager posting (Edison, NJ). The posting body could not be retrieved from this environment (LinkedIn renders it behind a sign-in/script shell), so this is carried as a secondary description, not a confirmed fact; search results describing the posting also conflict on which tools are required versus optional. Treat the actual client stack as an open discovery question.",
+    "source_url": "https://www.linkedin.com/jobs/view/senior-accounting-manager-at-gaines-associates-pc-4458639021"
+   },
+   {
+    "tool": "ProtectedXchange secure file link (document intake)",
+    "evidence": "Site header carries a 'Send Files' link to protectedxchange.com/gainescfo rather than a branded client portal with tasks or e-signature; no public API documentation was found for it.",
+    "source_url": "https://www.gainescpacfo.com/"
+   },
+   {
+    "tool": "Manual recurring back-office delivery (payroll, AP/AR, reconciliations, month-end close)",
+    "evidence": "The outsourced accounting page offers payroll processing, AP/AR, credit-card and bank reconciliations and month-end closings as ongoing services; cadence not published.",
+    "source_url": "https://www.gainescpacfo.com/outsourced-accounting-and-bookkeeping.htm"
+   },
+   {
+    "tool": "Website form only, no scheduling or intake automation (adjacent signal of manual ops)",
+    "evidence": "Consultation page is a plain web form with reCAPTCHA and no calendar link.",
+    "source_url": "https://www.gainescpacfo.com/consultation.htm"
+   }
+  ]
+ },
+ "solution": {
+  "approach": "build-on-platform",
+  "design": "A per-client pre-close pipeline that runs on a close calendar (T-7, T-5, T-1 before each client's close date) and on new bank/AP activity. For each client book it: pulls the trial balance, bank/card transactions and open bills; auto-matches at the transaction level with deterministic rules first (amount, date tolerance, vendor alias, recurring pattern) and an LLM only for the residue (fuzzy descriptions, split transactions, ambiguous vendors); ranks every unmatched item into an exception queue carrying a proposed resolution, the GL account, a confidence score and the supporting document; drafts adjusting journal entries with GL code and backup attached; sends missing-document requests in the reviewer's name with a tracked thread and a reminder schedule; and at the end assembles the close pack (P&L, balance sheet, KPI deltas versus prior month, open exceptions list). Nothing is written to the client ledger until a named reviewer approves the line item in the queue, and approved entries post with an idempotency key so a retry cannot double-post. Build rather than buy because no published product combines per-client reconciliation logic with the firm's own review standard and checklist, but buy or borrow the commodity parts: Intuit's own MIT-licensed QuickBooks Online MCP server for the QBO surface (29 entity types, JournalEntry and Attachable CRUD, QUICKBOOKS_DISABLE_WRITE/UPDATE/DELETE flags), an open-source document parser, and a hosted transactional email API. The AP layer (BILL v3) and any NetSuite/CCH ProSystem access are conditional: they are wired only if discovery confirms a pilot book actually uses them. Keep the runtime in a US region under the firm's control, one database schema per client with hard tenant isolation, and a full audit log of every read, proposal, approval and post.",
+  "components": [
+   {
+    "component": "Application hosting and scheduler (job scheduler that opens a client's close run and stages each step)",
+    "tool": "Self-built Python service (FastAPI + scheduled jobs) on a small cloud server - Hetzner Cloud Regular Performance from EUR 5.49 per month excl. VAT",
+    "why": "The trigger is the firm's close calendar, not a chat message; the same code path must be repeatable per client and resumable after failure. Price and plan are vendor list; server sizing and US-location choice are our inference.",
+    "source_url": "https://www.hetzner.com/cloud/"
+   },
+   {
+    "component": "QuickBooks Online read/write layer",
+    "tool": "Intuit's open-source quickbooks-online-mcp-server (MIT licence; 145 tools, 29 entity types, full CRUD on Journal Entry and Attachable, QUICKBOOKS_DISABLE_WRITE/UPDATE/DELETE flags)",
+    "why": "Reuses Intuit's own handlers for the entities the close touches, and the DISABLE_* flags give a mechanical guarantee that read-only mode is possible during the first pilot weeks. It is a local stdio server authenticating per company over OAuth 2.0, so a per-client process or token store is needed.",
+    "source_url": "https://github.com/intuit/quickbooks-online-mcp-server"
+   },
+   {
+    "component": "AP/bill data (conditional on discovery)",
+    "tool": "BILL v3 API - wired only if a pilot book is confirmed to run its bills in BILL",
+    "why": "BILL's v3 API covers AP, AR and Spend & Expense, so unmatched bills and payment status come from there rather than from the bank feed alone - but nothing verified so far shows that the firm's clients actually use BILL, so this is a discovery item, not a design assumption.",
+    "source_url": "https://www.bill.com/product/api"
+   },
+   {
+    "component": "Document parsing for receipts, invoices and statements",
+    "tool": "Docling (open-source document conversion/parsing)",
+    "why": "Turns scanned PDFs and photos into structured text locally, so client documents do not have to be shipped to a third-party OCR service.",
+    "source_url": "https://github.com/docling-project/docling"
+   },
+   {
+    "component": "Matching and proposal model",
+    "tool": "OpenAI API, gpt-5.4-mini ($0.75 per 1M input tokens, $4.50 per 1M output, $0.075 cached input)",
+    "why": "Cost is low enough that a per-transaction call is affordable, and API data is not used for training by default; US data residency is available but adds a 10% uplift on eligible models released on or after 5 March 2026.",
+    "source_url": "https://platform.openai.com/docs/pricing"
+   },
+   {
+    "component": "Document-chase email",
+    "tool": "Postmark transactional email - Pro plan, $16.50 per month for 10,000 emails, extra emails at $1.30 per 1,000, inbound email processing included",
+    "why": "Deliverability plus inbound reply processing and custom retention; the Pro tier is required because inbound email processing is not on the $15 Basic plan. Replaces trying to automate the ProtectedXchange link, which publishes no API.",
+    "source_url": "https://postmarkapp.com/pricing"
+   },
+   {
+    "component": "Run tracing and audit log",
+    "tool": "Langfuse, self-hosted open source",
+    "why": "Gives per-run traces of every model call and tool call next to the approval record, which is what a reviewer and the firm's WISP need to see.",
+    "source_url": "https://github.com/langfuse/langfuse"
+   },
+   {
+    "component": "Reviewer queue (the only place anything gets approved)",
+    "tool": "Self-built internal web app: exception list, proposed entry, source documents, approve/reject, reason code - calling the QBO tools above",
+    "why": "The human decision has to be a first-class record, not an email reply; the reason codes are also how the matcher gets tuned between closes.",
+    "source_url": "https://github.com/intuit/quickbooks-online-mcp-server"
+   }
+  ],
+  "integrations": [
+   {
+    "system": "QuickBooks Online (Accounting API via Intuit Developer Platform)",
+    "method": "OAuth 2.0 per client company (realm); read entities and reports; create JournalEntry and Attachable records through the MIT-licensed MCP server handlers, with write tools suppressed by QUICKBOOKS_DISABLE_WRITE during ingestion",
+    "confirmed_in_docs": true,
+    "cost": "Builder tier: no monthly program fee, 500,000 CorePlus (data-out: reads, queries, reports) API credits per month, uncapped Core (data-in: creates/updates) calls; CorePlus calls above 500,000 are blocked rather than billed. Silver is US$300 per month with 1 million CorePlus credits.",
+    "source_url": "https://static.developer.intuit.com/resources/Intuit_App_Partner_Program_Guide.pdf"
+   },
+   {
+    "system": "QuickBooks Online journal entries and attachments (endpoint surface)",
+    "method": "Journal Entry and Attachable create/get/update/delete/search handlers in Intuit's MCP server",
+    "confirmed_in_docs": true,
+    "cost": "No separate fee - included in the API programme above",
+    "source_url": "https://github.com/intuit/quickbooks-online-mcp-server"
+   },
+   {
+    "system": "Bill.com (BILL v3 API) - conditional",
+    "method": "BILL v3 API for AP/AR/Spend & Expense data; developer credentials and sandbox via developer.bill.com. Wire only if a pilot book is confirmed to use BILL; authentication mechanics were not read in this revision.",
+    "confirmed_in_docs": true,
+    "cost": "No API fee is published on BILL's API page; the underlying BILL subscription is paid by the client entity, not by us - pricing not public",
+    "source_url": "https://www.bill.com/product/api"
+   },
+   {
+    "system": "NetSuite (SuiteTalk REST Web Services)",
+    "method": "REST record operations against the client's NetSuite account, set up per Oracle's prerequisites and role-based access - not attempted in the pilot",
+    "confirmed_in_docs": true,
+    "cost": "Not public - depends on the client's NetSuite entitlement and any partner arrangement; out of scope for the pilot",
+    "source_url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/book_1559132836.html"
+   },
+   {
+    "system": "ProtectedXchange secure file link",
+    "method": "None confirmed - no public API documentation was found; treat as a manual hand-off and send document requests by tracked email instead",
+    "confirmed_in_docs": false,
+    "cost": "Unknown",
+    "source_url": "https://www.gainescpacfo.com/"
+   },
+   {
+    "system": "CCH ProSystem fx / CCH Axcess",
+    "method": "Vendor integration programme exists with a developer portal, but the programme page returned HTTP 403 on fetch and no pricing or entitlement terms could be read",
+    "confirmed_in_docs": false,
+    "cost": "Unknown",
+    "source_url": "https://developers.cchaxcess.com/"
+   }
+  ],
+  "human_in_the_loop": "A named reviewer (the Senior Accounting Manager or a senior on the book) is the only actor that can move an item from 'proposed' to 'posted'. Controls: (1) every proposed journal entry carries the GL account, the source transactions and the confidence score, and posts only on explicit approval of that line; (2) anything above a firm-set dollar threshold, in a flagged account, or below a confidence floor is escalated with no proposal attached; (3) posting uses an idempotency key and a one-click reversal, and the run log shows who approved what and when; (4) outbound document-chase emails are generated by the agent but the first two weeks are reviewed before send, and reminders are capped so a client is never spammed; (5) a weekly exception digest goes to the manager listing anything unresolved or auto-matched with low confidence; (6) a hard kill switch suppresses the QBO write tools via the MCP server's QUICKBOOKS_DISABLE_WRITE flag. The firm remains the decision-maker on every number that reaches a client's ledger."
+ },
+ "build_plan": {
+  "phases": [
+   {
+    "phase": "0. Discovery and access",
+    "steps": [
+     "Confirm which client books are on QuickBooks Online versus NetSuite, CCH ProSystem exports or another ledger, and pick 3 pilot books that are QBO-only (add BILL only if a chosen book is confirmed to run bills in BILL)",
+     "Get QuickBooks Online Accountant access or per-client OAuth consent for the pilot companies",
+     "Collect the firm's close checklist, prior-month workpapers and the review standard written down (what the reviewer checks)",
+     "Agree the dollar and confidence thresholds that force escalation, and who the named reviewer is",
+     "Agree data-handling terms: US-region processing, no training use, retention and deletion per engagement"
+    ],
+    "founder_days": "3-4",
+    "client_provides": "Named reviewer and backup, QBO access for 3 books, close checklist and prior workpapers, thresholds, engagement-letter or consent language for third-party processing"
+   },
+   {
+    "phase": "1. Read-only ingestion",
+    "steps": [
+     "Stand up the server, database and secrets handling (one schema per client, encryption at rest, one token store per client)",
+     "Wire the QBO MCP layer in read-only mode (QUICKBOOKS_DISABLE_WRITE=true) and pull trial balance, chart of accounts, bank/card transactions, open bills and existing entries",
+     "If and only if confirmed in phase 0, pull open bills and payment status from the BILL v3 API",
+     "Normalise vendors and descriptions, build a per-client matching history table",
+     "Add run tracing so every read is logged with client, timestamp and actor"
+    ],
+    "founder_days": "6-8",
+    "client_provides": "Sandbox or read-only access first; a 15-minute walkthrough of one month's actual manual close"
+   },
+   {
+    "phase": "2. Matching and exception queue",
+    "steps": [
+     "Build the deterministic matcher (exact amount, date window, vendor alias, recurring pattern) and measure how much it clears on its own",
+     "Add the LLM proposal step only for residue transactions, with the chart of accounts and the client's own prior coding as context",
+     "Build the reviewer queue UI: proposed resolution, GL code, confidence, source rows, approve/reject, reason code",
+     "Calibrate the escalation threshold against the first real close"
+    ],
+    "founder_days": "8-10",
+    "client_provides": "Reviewer time for two 45-minute tuning sessions; examples of good and bad codings"
+   },
+   {
+    "phase": "3. Journal entry drafting and safe posting",
+    "steps": [
+     "Generate draft adjusting entries with balanced lines, GL account, memo and attached backup",
+     "Post approved entries through the Journal Entry handler with an idempotency key and a reversal path",
+     "Write the audit record: who approved, what changed, which source documents",
+     "Run a parallel test on one already-closed month and reconcile the result to the firm's own numbers"
+    ],
+    "founder_days": "4-5",
+    "client_provides": "One closed month to replay; sign-off that the replay ties out"
+   },
+   {
+    "phase": "4. Document chasing and close pack",
+    "steps": [
+     "Detect missing receipts/invoices/statements from unmatched items and from the firm's own checklist",
+     "Send tracked requests in the reviewer's name via the Postmark Pro inbound-enabled message stream, with reminder caps and an inbound reply parser for the thread",
+     "Attach received documents to the right QBO entity as an Attachable",
+     "Assemble the close pack: P&L, balance sheet, KPI deltas vs prior month, open exceptions, and a one-page summary"
+    ],
+    "founder_days": "4-5",
+    "client_provides": "Approved email wording and tone, list of which documents each client normally owes, the current pack format"
+   },
+   {
+    "phase": "5. Pilot run, measurement and handover",
+    "steps": [
+     "Run two live closes on 3 books with the reviewer using the queue",
+     "Time every close against the baseline and log exception acceptance rates",
+     "Fix the top three friction points, then write the runbook and the handover note",
+     "Decide go/no-go on extending to more books and to NetSuite/ProSystem clients"
+    ],
+    "founder_days": "5-6",
+    "client_provides": "Two live closes, time logs, a decision meeting"
+   }
+  ],
+  "pilot": {
+   "scope": "3 client books on QuickBooks Online, two consecutive monthly closes; BILL is added only if discovery confirms a chosen book uses it. In scope: read-only ingestion first, then the exception queue with proposed resolutions and draft journal entries, tracked document-chase emails, and the assembled close pack. Out of scope: NetSuite and CCH ProSystem clients, payroll filings, tax-return work, any autonomous posting, and any change to ProtectedXchange or the client portal. Pricing, invoicing and client communication stay entirely with the firm.",
+   "weeks": "4 weeks elapsed (two monthly closes), after roughly 2 weeks of build",
+   "success_metrics": [
+    "Reviewer minutes per book per close, measured against the baseline for the same 3 books (target: at least 30% lower by the second pilot close)",
+    "Share of transactions cleared without reviewer touch (target: 60%+ by close two, reported separately for deterministic vs model-assisted matches)",
+    "Acceptance rate of proposed journal entries (target: 80%+ accepted or accepted-with-edit; a low rate means the proposals are noise)",
+    "Zero entries posted without an approval record, and zero postings that had to be reversed for error",
+    "Share of missing-document requests sent within one business day of detection (target: 95%)",
+    "Both pilot closes completed by the firm's normal due date, with the pack produced from the agent run rather than rebuilt by hand"
+   ],
+   "baseline_method": "Before any build, have the reviewer keep a simple per-book, per-close time log for the two most recent closes: minutes on reconciliation, minutes on exception chasing, minutes drafting entries, minutes assembling the pack - plus the count of unmatched items and of client document requests. Where a log does not exist, reconstruct the split in a 30-minute interview per book and mark it as reconstructed. The same three books and the same log format are used during the pilot, so the comparison is like-for-like rather than against a firm-wide average. This is an inference on method: the firm has published no close-time data, so the baseline is whatever the firm records.",
+   "exit_criteria": "Stop or re-scope if any of these hold: fewer than three QBO books can be identified and granted access (or the only available books need NetSuite/CCH access that cannot be granted inside the pilot window); the reviewer is confirmed to be working in BILL and BILL access cannot be obtained; after two pilot closes, less than 15% reduction in reviewer minutes per book; proposed-entry acceptance below 60%; more than 10% of exceptions needing a second reviewer; any unapproved posting, any reversal for error, or any client-data cross-contamination between books; or the reviewer judges the queue slower than working directly in QuickBooks. If the firm cannot grant write access at all, fall back to a read-only 'exception pack' scope and re-price."
+  }
+ },
+ "competitors": [
+  {
+   "vendor": "Botkeeper",
+   "product": "AI bookkeeping platform for accounting firms (transaction categorisation, bank recs, journal entries, month-end review, close tracker)",
+   "fit_for_this_business": "Closest like-for-like: a firm-side AI bookkeeping engine priced per client entity, with a close tracker. It does not span NetSuite or ProSystem exports and it standardises to its own workflow rather than the firm's checklist, but for a QBO-heavy book it is a credible buy-instead-of-build option and the price anchor for per-book economics.",
+   "price": "$134 per license/month billed annually; $149 billed monthly (1-4 licenses). $98 per license/month billed annually; $109 billed monthly (5-9 licenses). $71 per license/month billed annually; $79 billed monthly (10-24 licenses). $53 per license/month billed annually; $59 billed monthly (25+ licenses). Annual billing saves 10%. No free trial. (Prices transcribed from the vendor's pricing page by a third-party price index, checked 15 October 2026; the vendor page renders its price table with JavaScript so the numbers could not be read directly.)",
+   "source_type": "third-party",
+   "source_url": "https://aiaccountingvendors.com/vendors/botkeeper/pricing"
+  },
+  {
+   "vendor": "Double (formerly Keeper)",
+   "product": "Month-end close and client-communication platform for bookkeeping firms, plus an 'Autoclose' AI-agent add-on",
+   "fit_for_this_business": "Very strong fit for the workflow half of this opportunity (close checklists, client queries, review, portal) at a low per-client price, and it is the obvious component to buy instead of building the queue. It organises the close and asks clients questions; it does not do the per-client QBO reconciliation logic against the firm's own review standard, which is the part being proposed here.",
+   "price": "Core $10, Plus $25, Scale $50 - per connected client per month, unlimited users (third-party transcription of the vendor's pricing page, read 12 October 2026; the tiers render only with JavaScript, so the tier figures were not readable on the vendor page itself). Vendor page add-ons, read directly: Autoclose $500 per month; The Tax Suite 'Included with $200 per month annual commitment'; Emails $10 per connected team email per month (one Practice Email included in Core). 'At least one connected client' required; billed monthly per connected client at the start of each cycle.",
+   "source_type": "third-party",
+   "source_url": "https://practice.getverticalos.com/pricing/keeper"
+  },
+  {
+   "vendor": "Uncat",
+   "product": "Uncategorised-transaction and receipt chasing for accounting firms (QuickBooks Online, QuickBooks Desktop, Xero)",
+   "fit_for_this_business": "Covers only the 'chase the client for the explanation and the receipt' slice, which is a real part of this opportunity and the cheapest slice to buy. It is the fallback if the firm wants the document chase without the matching and journal-entry work.",
+   "price": "$9/month/client; unlimited accountant and client users, unlimited transactions, unlimited client requests and unlimited receipt matching",
+   "source_type": "vendor pricing page",
+   "source_url": "https://www.uncat.com/"
+  },
+  {
+   "vendor": "FloQast",
+   "product": "Close Management plus 'Close AI' (AI agents, AI matching, automated reconciliations, journal entry posting, COSO-aligned AI governance)",
+   "fit_for_this_business": "The closest functional match to the full design, including automatic JE posting and variance explanations, but it is built for in-house accounting departments and ERP-scale ledgers, not a CPA firm running many small client books on mixed stacks. Useful as a benchmark for what 'good' looks like in controls.",
+   "price": "Not public - Close Management and Close AI both list 'Contact Sales' with no dollar figure",
+   "source_type": "vendor pricing page",
+   "source_url": "https://www.floqast.com/pricing"
+  },
+  {
+   "vendor": "Numeric",
+   "product": "Close management, cash-matching and analytics modules alongside an ERP-replacement platform",
+   "fit_for_this_business": "Strong transaction matching, flux analysis and close management, but oriented to a single company's ledger or a NetSuite replacement rather than to a multi-client firm book. Relevant only for the firm's larger NetSuite clients.",
+   "price": "Not public - the pricing page lists modules and features with no dollar figures published",
+   "source_type": "vendor pricing page",
+   "source_url": "https://www.numeric.io/pricing"
+  },
+  {
+   "vendor": "Xendoo",
+   "product": "Outsourced monthly bookkeeping service (US-based team) - the 'buy labor instead of software' option for the firm's own delivery",
+   "fit_for_this_business": "A direct substitute for the hours the agent is meant to recover: the firm could sub-contract the recurring bookkeeping for its smaller clients at a fixed monthly price and keep the review and advisory. It is labour, not software, so the firm still owns the relationship and the review, but it adds a vendor in the middle of its own client relationship.",
+   "price": "Essential $395/mo ($355/mo billed annually); Growth $695/mo ($625/mo billed annually); Scale $995/mo ($895/mo billed annually). Catch-Up Bookkeeping 'Starts at $295/mo'; Fractional CFO 'Starts at $2,500/mo'. No onboarding/setup fees.",
+   "source_type": "vendor pricing page",
+   "source_url": "https://xendoo.com/xendoo-pricing/"
+  },
+  {
+   "vendor": "Bookkeeper360",
+   "product": "Outsourced bookkeeping, tax and fractional CFO with its own client app",
+   "fit_for_this_business": "Same buy-labor logic as Xendoo at a higher-touch level (dedicated US team, monthly or weekly close, unlimited support). A plausible route for the firm's smallest clients if it would rather not run them at all.",
+   "price": "Bookkeeping price is not public - the page shows 'From / month' with the figure not rendered. Published anchors on the same page: business tax returns from $1,200; individual returns from $550; catch-up & prior-period cleanup from $1,000.",
+   "source_type": "vendor pricing page",
+   "source_url": "https://www.bookkeeper360.co/pricing/"
+  },
+  {
+   "vendor": "Hire a person (in-house hire or agency placement)",
+   "product": "A New Jersey bookkeeping/accounting clerk doing the reconciliation and chasing manually",
+   "fit_for_this_business": "The status quo alternative the firm is already choosing, since it is hiring a senior accounting manager to own the multi-client close rather than buying software. A clerk at the New Jersey median costs about $28.03/hour unloaded ($58,300 / 2,080), roughly $35/hour loaded at the audit's 1.25 benefits factor, so 225-720 recovered hours a year is worth about $7,900-$25,200 of clerk time at that benchmark (our arithmetic). That is the real comparison for the agent's monthly fee, and it is why the fee has to sit well below a part-time hire.",
+   "price": "$58,300 annual median for Bookkeeping, Accounting, and Auditing Clerks in New Jersey, May 2025 (OEWS), i.e. about $28.03/hour at 2,080 hours before benefits",
+   "source_type": "government data",
+   "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000043303113"
+  }
+ ],
+ "running_costs": [
+  {
+   "item": "Application and database hosting (two small cloud servers)",
+   "cost": "From EUR 5.49 per month, excluding VAT, on the Regular Performance tier (cheapest plan listed)",
+   "basis": "Vendor list price. Two servers at about EUR 11-15/month is our inference for a 3-to-40 book workload; the page does not publish a separate US-region price, so the location and sizing must be confirmed in the Hetzner console at sign-up. Amounts are left in EUR - no exchange-rate source was opened.",
+   "source_url": "https://www.hetzner.com/cloud/"
+  },
+  {
+   "item": "Model inference (matching residue, entry drafting, close-pack summaries)",
+   "cost": "$0.75 per 1M input tokens, $4.50 per 1M output tokens, $0.075 per 1M cached input tokens (gpt-5.4-mini). Add 10% if US data residency is enabled on the project.",
+   "basis": "Inference: about 30 books x 800 transactions = 24,000 transactions/month; ~2,000 input tokens (chart of accounts, vendor history, rules) and ~150 output tokens each = ~48M input ($36) and ~3.6M output ($16.20) = about $52/month, called $40-90/month with document parsing, retries and the residency uplift. Regional-processing endpoints are charged a 10% uplift for models released on or after 5 March 2026.",
+   "source_url": "https://platform.openai.com/docs/pricing"
+  },
+  {
+   "item": "Transactional email for document chasing and reviewer notifications",
+   "cost": "$16.50 per month for 10,000 emails (Pro plan), extra emails at $1.30 per 1,000",
+   "basis": "Vendor list price. Pro is the lowest tier that includes inbound email processing, which the reply parser needs; the $15 Basic plan does not include it. 10,000 emails is far above what 30 books would generate in a month, so this is a flat cost.",
+   "source_url": "https://postmarkapp.com/pricing"
+  },
+  {
+   "item": "QuickBooks Online API",
+   "cost": "$0 monthly program fee at the Builder tier: 500,000 CorePlus API credits per month, uncapped Core calls, CorePlus calls above the cap blocked rather than billed",
+   "basis": "Published Intuit App Partner Program guide. That a close run at 30 books stays inside 500,000 CorePlus calls is our inference - it requires batched queries and must be measured, not assumed.",
+   "source_url": "https://static.developer.intuit.com/resources/Intuit_App_Partner_Program_Guide.pdf"
+  },
+  {
+   "item": "Bill.com API",
+   "cost": "No separate API fee published; requires a BILL account and, for app partners, developer credentials. The client entity's own BILL subscription is a cost the client already carries.",
+   "basis": "BILL's API product page states the v3 API covers BILL AP, AR and Spend & Expense; no pricing is published on that page",
+   "source_url": "https://www.bill.com/product/api"
+  },
+  {
+   "item": "Run tracing / audit logging",
+   "cost": "$0 licence fee (self-hosted open source); consumes part of the server cost above",
+   "basis": "Open-source project, self-hosted",
+   "source_url": "https://github.com/langfuse/langfuse"
+  },
+  {
+   "item": "Document parsing service",
+   "cost": "$0 licence fee (Docling, open source, runs on the same server)",
+   "basis": "Open-source project",
+   "source_url": "https://github.com/docling-project/docling"
+  }
+ ],
+ "suggested_pricing": {
+  "pilot_fee": "$2,000 for a 4-week pilot on 3 client books (credited in full against the set-up fee if the firm continues) - inference",
+  "setup_fee": "$4,500 one-time for 3 books, including the QBO wiring, the firm's close checklist encoded, the reviewer queue and the first close run; $400 per additional book - inference",
+  "monthly_fee": "$550 per month covering up to 5 books, plus $25 per additional book per month (at 25 books that is $1,050/month, about $42 per book; at 40 books $1,425/month, about $36 per book) - inference",
+  "reasoning": "All figures here are inference, priced against the audit's own impact range and the competitor prices above, not against the firm's (unpublished) billing rate. Year one for the firm on a 5-book engagement is about $11,450 ($2,000 pilot + $4,500 set-up + 9 x $550), against an audit value estimate of $13,600-$43,600 of recovered accountant time - i.e. about 0.84x the low end and about 0.26x the high end. That deliberately leaves the firm most of the upside in the conservative case, because the first reference client is worth more than the margin and because the low-end number is built on unconfirmed volume assumptions. Against the alternatives: a part-time New Jersey clerk is about $35/hour loaded, so 5-10 hours a month of displaced work already covers the monthly fee; Botkeeper would be $447-$596/month for 3-5 licenses at monthly billing ($149 each for 3-4, $109 each at 5), before anyone configures it to the firm's review standard; Double is only $30-$50/month for 3-5 clients on Core ($150-$250 on Scale, plus $500/month if Autoclose is added) but stops at workflow, not reconciliation logic. The $25 per-additional-book step is set so the fee grows with the book without outrunning the value: $42 per book at 25 books sits below Botkeeper's cheapest band ($59 per license/month at 25+) and above Double's $10-$50 per connected client, which reflects that this design does the matching and entry work those tools do not (inference). The $550 base is also small enough to approve against a manager's discretionary budget rather than a capital cycle. If the pilot's measured savings land near the bottom of the audit range, expect to hold at $550 and add books rather than raise the fee; if savings land above $30,000/year, re-price at the renewal to $900-$1,100/month."
+ },
+ "leverage": [
+  {
+   "point": "Intuit publishes an MIT-licensed QuickBooks Online MCP server with 145 tools, full CRUD on 29 entity types including Journal Entry and Attachable, and QUICKBOOKS_DISABLE_WRITE/UPDATE/DELETE flags - a large share of the QBO integration work is already written and is permissively reusable.",
+   "source_url": "https://github.com/intuit/quickbooks-online-mcp-server"
+  },
+  {
+   "point": "The QBO API is free at the Builder tier with 500,000 CorePlus credits/month and uncapped Core calls, so the dominant cost of this integration is engineering time, not API fees - a margin a per-seat SaaS product cannot match at small firm scale.",
+   "source_url": "https://static.developer.intuit.com/resources/Intuit_App_Partner_Program_Guide.pdf"
+  },
+  {
+   "point": "Docling and Langfuse are open source and self-hostable, so the parsing and the audit-trace layer cost nothing in licence fees and stay inside the firm's data boundary - the same two modules are reusable for the tax-season knowledge agent and for the next accounting firm.",
+   "source_url": "https://github.com/docling-project/docling"
+  },
+  {
+   "point": "Uncat at $9/month/client is a cheap buy for the document-chase slice if the firm prefers not to run that module itself; keeping it as an option lowers the technical risk of the pilot without changing the per-client economics much.",
+   "source_url": "https://www.uncat.com/"
+  },
+  {
+   "point": "QuickBooks is the one stack fact confirmed from the firm's own site (its QuickBooks accounting service line), so a QBO-only pilot needs no new software on the client side - only OAuth grants. Whether the firm's clients also use Bill.com or NetSuite is unconfirmed and must be established in discovery before it is designed for.",
+   "source_url": "https://www.gainescpacfo.com/quickbooks-accounting.htm"
+  },
+  {
+   "point": "Client documents already arrive through a third-party hosted channel (ProtectedXchange) rather than the firm's own servers, so the design can leave secure storage where it is and add only the request tracking and the QBO attachment step. The channel publishes no API, so intake stays manual.",
+   "source_url": "https://www.gainescpacfo.com/"
+  }
+ ],
+ "edge_vs_competitors": "Where this design has an edge: (1) integration depth - it is built per client on QuickBooks Online and reads the firm's own checklist, where Double organises the close and Botkeeper standardises to its own workflow; (2) a review-first posting path with an idempotency key, a reversal and a per-line approval record, which is the thing a CPA firm actually has to be able to show; (3) local presence - Edison is roughly ten miles from Milltown, so the founder can sit in the office for a close, tune thresholds with the reviewer in person and be reachable in a way a national SaaS vendor is not; (4) private/US-region deployment with no training on client data, which is directly responsive to the confidentiality and Safeguards rules below and is something the cheapest tools (Uncat at $9/month/client, Double at $10 per connected client) do not sell on; (5) the code is reusable across other multi-client bookkeeping firms, so the second and third sale cost far less to deliver. Where it has no edge, and should not pretend otherwise: no SOC 2 report, no security questionnaire history, no reference clients, no brand, a single founder with no cover during a bad week, and no ability to match Botkeeper's or FloQast's breadth of pre-built features or their support organisation. The honest positioning is 'weeks of engineering plus close attention, at a price a 20-person firm can approve', not 'better than FloQast'.",
+ "risks_compliance": [
+  {
+   "issue": "Sending client bookkeeping and tax data to a model vendor or any subprocessor can be treated as a disclosure of confidential client information without client consent.",
+   "rule_or_source": "N.J.A.C. 13:29-3.7(a): a licensee or the licensee's firm shall not, without the client's consent, disclose confidential information obtained in the course of performing professional services.",
+   "confirmed": true,
+   "mitigation": "Add the consultancy as a named service provider in engagement letters or a short consent addendum; keep processing in a US region with no training use; offer a private/on-prem tenancy for clients who will not consent to any external model call; log every disclosure path.",
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-29-3-7"
+  },
+  {
+   "issue": "A CPA firm is a 'financial institution' under the FTC Safeguards Rule, so it must select service providers capable of safeguarding customer information, require safeguards by written contract, and reassess them periodically - the consultancy is exactly that service provider.",
+   "rule_or_source": "16 CFR 314.4(f) service-provider oversight (select and retain capable providers; require safeguards by contract; periodically assess).",
+   "confirmed": true,
+   "mitigation": "Sign a written information-security addendum covering encryption, access control, incident notification, subprocessor list and deletion on termination; supply a filled security questionnaire and a network diagram; accept annual reassessment and give the firm audit-log exports.",
+   "source_url": "https://www.govinfo.gov/content/pkg/CFR-2024-title16-vol1/pdf/CFR-2024-title16-vol1-sec314-4.pdf"
+  },
+  {
+   "issue": "Tax preparers must maintain a written information security plan and vet service providers; a vendor touching return information becomes part of that programme.",
+   "rule_or_source": "IRS Publication 4557 (Rev. 5-2024) - Safeguarding Taxpayer Data; preparers should choose providers capable of protecting taxpayer information, put the safeguards obligation in the contract, and oversee the provider as part of the WISP.",
+   "confirmed": true,
+   "mitigation": "Align the contract with the firm's WISP; document provider vetting before the first book is connected; keep the QBO write path off until the security addendum is signed; provide the firm with the trace logs it needs for its own oversight.",
+   "source_url": "https://www.irs.gov/pub/irs-pdf/p4557.pdf"
+  },
+  {
+   "issue": "If any return information (rather than pure bookkeeping data) reaches the system - prior-year figures in a workpaper, a tax export in a close pack - unauthorised use or disclosure carries criminal and civil exposure.",
+   "rule_or_source": "26 U.S.C. 7216 makes knowing or reckless unauthorised disclosure or use of return information a misdemeanour, with civil penalties under 6713; 26 CFR 301.7216-2 sets out the permitted disclosures, including to service providers, without consent.",
+   "confirmed": true,
+   "mitigation": "Scope the pilot to bookkeeping entities only, exclude tax returns and return workpapers, and have the firm's counsel confirm the service-provider basis for any return information that does arrive; keep a per-client data map so the firm can see what is in scope.",
+   "source_url": "https://uscode.house.gov/us/usc/119-118/t26/s7216/"
+  },
+  {
+   "issue": "The agent can create and post journal entries programmatically, so a wrong or duplicated entry propagates into client financials and, later, into a tax return - a restatement failure mode, not a bad answer.",
+   "rule_or_source": "Intuit's MIT-licensed QuickBooks Online MCP server ships working create/update/delete handlers for the Journal Entry and Attachable entities, so the write path is real and needs controls rather than hoping it is not.",
+   "confirmed": true,
+   "mitigation": "Propose-only by default; approval per line with a named reviewer; dollar and confidence thresholds that force escalation; idempotency keys on posting; one-click reversal; replay a closed month and tie out before the first live posting; QUICKBOOKS_DISABLE_WRITE=true during ingestion phases.",
+   "source_url": "https://github.com/intuit/quickbooks-online-mcp-server"
+  },
+  {
+   "issue": "Model and vendor data handling: prompts contain client financial data, and default retention or training use would be unacceptable to the firm and its clients.",
+   "rule_or_source": "OpenAI states that API data is not used to train or improve models as of 1 March 2023 unless the customer opts in, that abuse-monitoring logs are retained up to 30 days by default, that Zero Data Retention is available only to eligible customers subject to prior approval, and that the United States is listed as a region with both regional storage and regional processing (eligibility via sales).",
+   "confirmed": true,
+   "mitigation": "Request Zero Data Retention or modified abuse monitoring approval before the pilot, pin the project to the US region and budget the 10% residency uplift, set store=false, avoid stateful endpoints (threads/vector stores) that are not ZDR-eligible, and keep the option of a self-hosted open-weight model for clients who require it.",
+   "source_url": "https://platform.openai.com/docs/guides/your-data"
+  },
+  {
+   "issue": "API quota and rate limits can silently break a close run mid-month if the design queries per transaction.",
+   "rule_or_source": "Intuit's App Partner Program Guide: the Builder tier includes 500,000 CorePlus API credits per month and blocks (does not bill) CorePlus calls above the cap, while Core create/update calls are unmetered.",
+   "confirmed": true,
+   "mitigation": "Use batched queries and webhooks rather than per-transaction reads; monitor CorePlus consumption per client per run; keep a cached daily snapshot so a blocked run can still assemble a pack; move to the Silver tier (US$300 per month, 1M CorePlus credits) only if the book grows past the cap.",
+   "source_url": "https://static.developer.intuit.com/resources/Intuit_App_Partner_Program_Guide.pdf"
+  },
+  {
+   "issue": "Client-facing document-chase email can turn into bulk or repeated messaging, and misconfigured sending damages both deliverability and the firm's reputation.",
+   "rule_or_source": "No specific rule was confirmed for this design in this revision: it sends no SMS, so TCPA consent questions do not arise, and the reminder caps below are a design choice rather than a regulatory requirement.",
+   "confirmed": false,
+   "mitigation": "Send from the reviewer's own address, cap reminders (for example three over ten days), require reviewer approval of outbound content for the first two weeks, keep a per-client opt-out that the agent respects, and warm the sending domain before the first live chase.",
+   "source_url": "https://postmarkapp.com/pricing"
+  },
+  {
+   "issue": "Unknowns that could change the compliance answer and that this research could not close: the firm's own WISP contents, its client consent language, whether its engagement letters permit third-party processing, and its professional-liability insurer's conditions on AI use.",
+   "rule_or_source": "Could not confirm - no public source exists for the firm's internal policies or its E&O terms.",
+   "confirmed": false,
+   "mitigation": "Ask in discovery and make the security addendum and consent language a condition of the pilot start; if the firm's insurer requires prior notification, the firm files it before any client data is processed.",
+   "source_url": "https://www.gainescpacfo.com/contact.htm"
+  }
+ ],
+ "feasibility": {
+  "technical_1_5": 3,
+  "commercial_1_5": 3,
+  "weeks_to_pilot": "6 weeks from signed scope to first live pilot close (about 2 weeks of build before the first close, then 4 weeks covering two monthly closes)",
+  "verdict": "Go with conditions",
+  "reasoning": "Technically this is a 3 rather than a 4 or 5: the QBO side is largely solved (Intuit's own MIT-licensed MCP server with Journal Entry and Attachable handlers, a free Builder tier, documented Core/CorePlus split), but the value depends on matching quality across messy client data, on a review UI the firm will actually use, and on safe idempotent posting - and NetSuite and CCH ProSystem remain unproven integration paths. Commercially it is also a 3: the pain is inferred from hiring and site structure rather than from the firm complaining, the client tool stack itself is unconfirmed, the volume assumptions behind the $13,600-$43,600 range are unconfirmed, no client count or billing rate is public, and the decision-maker's name and title are not published on the firm's site - so the first obstacle is finding who signs, not building the thing. Conditions for Go: (1) scope to 3 QuickBooks Online books, read-only first, with BILL added only if discovery confirms it; (2) get the security addendum and consent language agreed before any client data is touched, with US-region processing and ZDR approval requested; (3) make the pilot a measured before/after with a written time-log baseline, and accept that the answer may be 'no saving' for a 5-person book; (4) price at $550/month so the firm's downside is small and the founder gets a reference in a vertical where every other firm has the same problem; (5) do not promise NetSuite, ProSystem or ProtectedXchange automation until those are separately confirmed."
+ },
+ "discovery_questions": [
+  "How many client books do you close each month today, and how many of those are QuickBooks Online versus NetSuite, CCH ProSystem exports or something else?",
+  "Do your clients run bills and payments in Bill.com? For how many of the books you would put in a pilot?",
+  "Who owns the close for each book now, and who signs off before anything posts - is there a dollar threshold above which a partner looks?",
+  "What does your close checklist look like for one representative book, and what does 'done' mean for the pack you send the client?",
+  "How many hours does a typical book take from first bank transaction to delivered pack, and do you have any time records we could use as a baseline?",
+  "Do you have QuickBooks Online Accountant access to these clients, or would each client need to grant OAuth consent, and who asks them?",
+  "What do your engagement letters say about third-party service providers processing client data, and does your E&O insurer have conditions on AI tools?",
+  "Do you have a written information security plan (WISP), and who maintains it? Would a vendor security addendum need partner or client sign-off?",
+  "Which part of the close would you hand over first if you could hand over only one: the reconciliation exceptions, the client document chase, or the pack assembly?",
+  "What is the senior accounting manager hire meant to take off whose plate, and what happens to this work if that hire lands first?",
+  "Who else would need to say yes before a paid pilot on three books could start, and what would each of them need to see?"
+ ],
+ "caveats": [
+  "All impact and pricing figures are inference or the audit's labelled assumptions. The audit's $13,600-$43,600 range rests on 25-40 books a month, 1.5-3 hours per close and a 50% handover rate, none of which the firm has confirmed publicly.",
+  "The BLS medians used to value time ($100,830 accountants and auditors, $58,300 bookkeeping clerks, both New Jersey, May 2025) are wage benchmarks, not the firm's billing rates; a CPA firm's billed rate is much higher, so recovered hours are worth more to the firm than the wage figure implies.",
+  "Running-cost total is our sum of the sourced lines above: about $57-$107 per month in USD (model $40-90, Postmark Pro $16.50, everything else $0) plus about EUR 11-15 per month of hosting, before any US data-residency uplift on model pricing. No currency conversion is applied because no exchange-rate source was opened.",
+  "Botkeeper's per-license prices and Double's tier prices were transcribed from their pricing pages by third-party price indexes because both pages render prices with JavaScript; both were checked in October 2026 and both could change. Verify with the vendor before quoting them to the firm.",
+  "FloQast, Numeric, AIwyn-style enterprise close tools and Bookkeeper360's bookkeeping tier publish no price, so the mid-market comparison here is qualitative for those vendors.",
+  "The firm's decision-maker is unknown - no owner, managing partner or GM is named on the firm's home, about or contact pages - so the commercial score assumes access can be obtained through the published inbox or a walk-in.",
+  "Technical scope is deliberately limited to QuickBooks Online, with BILL conditional. NetSuite and CCH ProSystem clients, ProtectedXchange automation and any tax-season work are excluded from the pilot and priced separately.",
+  "No SOC 2, ISO 27001 or pen-test evidence exists for the consultancy at this stage; any firm that runs a security questionnaire will find that out, and the honest answer is 'not yet, here are the controls instead'."
+ ],
+ "data_gaps": [
+  "The Senior Accounting Manager job posting body could not be retrieved in this revision (LinkedIn serves it only behind a sign-in/script shell), so the firm's actual client tool list - and specifically whether Bill.com is used by clients - is unverified and is carried as a discovery question.",
+  "Botkeeper's own pricing page was opened but its price table is rendered client-side and no figures could be read directly; the $134/$149 per license per month figures come from a third-party price index that states it checked the vendor page on 15 October 2026.",
+  "Double's tier prices ($10/$25/$50 per connected client per month) were likewise only readable via a third-party transcription; the vendor page itself yielded the add-on prices only (Autoclose $500/month, Tax Suite $200/month annual commitment, Emails $10/connected team email/month).",
+  "Wolters Kluwer's CCH Axcess integration vendor programme page returned HTTP 403, so the existence, terms and cost of a ProSystem/CCH Axcess API route could not be confirmed.",
+  "No public API documentation was found for ProtectedXchange, the firm's secure file link, so document intake is treated as a manual hand-off.",
+  "The firm publishes no client count, revenue, billing rate, close calendar or hours data, so the baseline for the pilot has to be created from the firm's own time logs.",
+  "No public source covers the firm's WISP, engagement-letter consent language or professional-liability insurance conditions on AI tools; these must be asked for in discovery.",
+  "Intuit's Builder-tier cap (500,000 CorePlus credits per month) is confirmed, but the actual CorePlus cost of a close run at 25-40 books is our own estimate; it should be measured during the pilot rather than assumed.",
+  "Hetzner's cloud page publishes a starting price per tier but no distinct US-region price, and no exchange-rate source was opened, so hosting is quoted in EUR and the US location must be confirmed at sign-up."
+ ]
+}

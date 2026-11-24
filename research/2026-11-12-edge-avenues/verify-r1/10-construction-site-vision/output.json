@@ -1,0 +1,288 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Silarius Cloud hard hat detection: \"$8.00 per camera per month\" (existing_solutions pricing, gap_for_local_installer, risks, and the $8/camera/month comparison invoked three times)",
+      "problem": "Price is misstated as a standalone per-camera cost. The cited page says: \"Hard hats and safety vests (PPE), added to the Advanced AI Package ($16.00 per camera / month) on the same camera, on top of a Silarius Cloud plan from $6.99 per camera / month.\" So hard-hat detection actually costs roughly $8 + $16 + $6.99 = about $31/camera/month. The brief uses $8 to argue cheap self-serve competition is far below the planned $400-$900/site/month, which understates the true competitor price by about 4x.",
+      "fix": "Change to \"$8/camera/month PPE add-on, on top of the $16 advanced AI package and a Cloud plan from $6.99/camera/month (about $31/camera/month all-in as listed)\", and adjust the gap/risk language that uses the bare $8 figure."
+    },
+    {
+      "claim": "EarthCam pricing: \"a third-party cost guide estimates $130-$600+ per camera per month for proprietary construction camera services\"",
+      "problem": "No URL is given for the estimate and the cited vendor URL does not resolve (client.earthcam.com: DNS ENOTFOUND), so neither the vendor description nor the price band could be checked at the cited source. The $130-$600 band does appear on a third-party guide (sitewatch.com/guides/construction-camera-cost) found via search, but it is not cited and is not EarthCam's own price.",
+      "fix": "Cite the third-party cost guide URL explicitly for the range, state that it is a third-party estimate rather than EarthCam pricing, and replace the dead client.earthcam.com link with a resolving EarthCam page (or mark the product description unverified)."
+    },
+    {
+      "claim": "OpenSpace pricing: \"Custom quote; reported $10,000 minimum for the SMB tier\"",
+      "problem": "No source is given, and the cited openspace.ai/pricing page contains no dollar figures at all (pricing is stated as based on annual construction volume, quote only). A search summary attributes a $10,000 minimum to openspace.ai/smb-pricing-webpage, but that URL redirected to the same pricing page on fetch and the figure could not be seen in page text.",
+      "fix": "Either cite the exact SMB pricing page and quote the minimum, or downgrade to \"quote-only; a $10,000 floor is sometimes reported but could not be confirmed\"."
+    },
+    {
+      "claim": "Evidence item 1: \"1,075 of 5,283 U.S. work fatalities in 2023 were in construction ... falls, slips and trips accounted for 421 of the 1,075 (39.2%)\", cited to the BLS TED article",
+      "problem": "The cited TED page does not contain these figures. It says construction was 20.8% of workplace deaths, that 47.8% of all fatal falls were in construction, and its own table shows 423 construction fatal falls (38.5%). The 1,075 / 421 / 39.2% combination comes from the BLS CFOI 2023 news release (5,283 total; construction 1,075; falls 421 = 39.2%), which the TED page links to. The two BLS pages differ by two deaths (421 vs 423), and the brief uses both without reconciling them (\"110 of 423 construction fall deaths\" later in buyers).",
+      "fix": "Cite https://www.bls.gov/news.release/archives/cfoi_12192024.htm for 1,075 / 421 / 39.2%, keep the TED URL for the 47.8% share and the sub-trade counts, and add one line noting the 421 vs 423 difference between the two BLS releases."
+    },
+    {
+      "claim": "\"1926.501 ... with 6,557 citations\" in FY2024",
+      "problem": "6,557 is OSHA's count of serious violations for that standard; the total violation count for 1926.501 in FY2024 is 6,745. The brief elsewhere is careful, so this reads as an overstatement of total citations.",
+      "fix": "Say \"6,557 serious violations (6,745 total violations) for 29 CFR 1926.501\"."
+    },
+    {
+      "claim": "ARSA \"$48 per camera per month for the software tier\" and the 98.2% SHWD hard-hat figure, both cited to the Basic Safety Guard product page",
+      "problem": "Neither number is on the cited product page. The $48 appears on arsa.technology/pricing as the Safety Guard module rate for the self-hosted AI Video Analytics Software ($576/camera/year, billed annually, minimum four cameras, customer supplies an AI-GPU server). The 98.2% \"hard-hat decisions correct ... on the SHWD dataset\" appears in ARSA's blog post on hard-hat detection, which points to an ARSA benchmarks page. Because the $48 tier requires the customer's own GPU server and a 4-camera minimum, it is a less direct \"cheap self-serve\" comparator than the brief implies.",
+      "fix": "Point the price at the pricing page and note the 4-camera minimum plus customer-supplied GPU server; point the 98.2% at the ARSA benchmarks page and keep it labelled a vendor claim (Low)."
+    },
+    {
+      "claim": "\"about 1,556 construction establishments in Middlesex County, CBP 2023\" (fit_score rationale)",
+      "problem": "Presented as a Census figure, but the only source located is a third-party aggregator (bebop.ai), not a CBP table; the brief's own data_gaps admits the CBP table was never opened. The number is therefore attributed to a primary statistical source it was not read from.",
+      "fix": "Mark it \"about 1,556 establishments (third-party summary of CBP 2023, table not opened)\" or drop the attribution to CBP until the table is read."
+    },
+    {
+      "claim": "Drone harness/lifeline/helmet study: \"2023 (published)\"",
+      "problem": "Year is wrong for the cited work. \"Real-time monitoring of work-at-height safety hazards in construction sites using drones and deep learning\" appears in Journal of Safety Research Volume 83, December 2022. The accuracy figures themselves (about 90% overall, 97.2% precision, 90.2% recall, ~12 s to detect a violation) match the paper.",
+      "fix": "Change year to 2022 (or \"2022, Journal of Safety Research 83\")."
+    },
+    {
+      "claim": "Jetson Orin Nano Super Developer Kit \"$249 (NVIDIA launch price, 2025)\"",
+      "problem": "Price is right ($249, down from $499) but the launch was announced in December 2024, not 2025.",
+      "fix": "Change to \"$249, NVIDIA launch price announced December 2024\"."
+    },
+    {
+      "claim": "CCTV evidence: \"51% reduction in crime in car parks across six evaluations ... five of six schemes combined CCTV with other measures\"",
+      "problem": "The 51% figure and the six car-park studies check out (Welsh & Farrington, Campbell systematic review), but the \"five of six\" qualifier could not be verified: sources describing the review state CCTV was combined with other measures (guards, lighting, fencing) in the car-park studies, i.e. all six. Left as \"five of six\" it understates the confound.",
+      "fix": "Change to \"in all six car-park schemes CCTV was accompanied by other measures\" or cite the exact sentence from the review for the five-of-six count."
+    },
+    {
+      "claim": "FAA Part 107 requirements (remote pilot certificate, registration, visual line of sight, at or below 400 ft AGL, no flight over people absent an allowed category) - marked confirmed: true",
+      "problem": "The cited faa.gov page returned HTTP 403 and could not be read, so this rule set is marked confirmed without a page read. The substance matches the well-known Part 107 rule set, but the brief's own caveat only lists osha.gov 403s, not this one.",
+      "fix": "Either verify against an accessible FAA page and note it, or add the FAA 403 to the caveats list of claims not read at source."
+    },
+    {
+      "claim": "fit_score: legal_risk_low = 10 and total 69",
+      "problem": "Arithmetic is correct (15+12+10+14+10+8 = 69) and every sub-score is a non-negative integer, but legal_risk_low = 10 is generous relative to the brief's own legal section, which documents statutory civil liability exposure for audio (2A:156A-4/2A:156A-24), pending biometric bills that could retrofit obligations, discoverability of footage, and defamation/discipline exposure from false positives. The brief's own rationale calls legal risk \"moderate-low\", which is not consistent with a high score in a field labelled \"legal_risk_low\".",
+      "fix": "Reduce legal_risk_low to about 7 and restate the total (66), or state the scale and justify 10 explicitly."
+    },
+    {
+      "claim": "Comment: strength ratings on outcome claims",
+      "problem": "No strength-rating violation found. Vendor/self-interested claims are all marked Low (Smartvidio/Suffolk case study, PR Newswire vendor claim, ARSA 98.2%, TrueLook survey described as vendor-run); single peer-reviewed studies are marked Medium, none High; the absence-of-evidence item is Low. This part of the brief passes.",
+      "fix": "No change needed."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Construction had 1,075 of 5,283 U.S. work fatalities in 2023 and falls, slips and trips were 421 (39.2%)",
+      "source_url": "https://www.bls.gov/opub/ted/2025/fatal-falls-in-the-construction-industry-in-2023.htm",
+      "result": "not found"
+    },
+    {
+      "claim": "Same figures (1,075 / 421 / 39.2%) as confirmed in the BLS CFOI 2023 release",
+      "source_url": "https://www.bls.gov/news.release/archives/cfoi_12192024.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Construction accounted for 47.8% of all fatal falls, slips and trips in 2023",
+      "source_url": "https://www.bls.gov/opub/ted/2025/fatal-falls-in-the-construction-industry-in-2023.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Roofing contractors 110 fall deaths (26.0%), residential building construction 62 (14.7%); painting 29, framing 27, electrical 27, plumbing/HVAC 24, commercial/institutional 18, drywall 13, masonry 12",
+      "source_url": "https://www.bls.gov/opub/ted/2025/fatal-falls-in-the-construction-industry-in-2023.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "26,005 construction citations in FY2024; 29 CFR 1926.501 the most-cited standard at 6,557 (serious) violations; about $48 million in penalties",
+      "source_url": "https://www.equipmentworld.com/regulations/safety-compliance/article/15707920/oshas-top-10-construction-violations-in-2024",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Maximum federal OSHA penalty for a serious violation $16,550 effective 15 January 2025",
+      "source_url": "https://www.osha.gov/news/newsreleases/osha-trade-release/20250114",
+      "result": "confirmed"
+    },
+    {
+      "claim": "15,000+ NIBRS construction theft incidents: about $6,000 average loss per incident, trucks about $42,000, trucks recovered 55%, recovery across all targets under 7%",
+      "source_url": "https://etsu.elsevierpure.com/en/publications/an-exploratory-look-at-thefts-from-construction-sites/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NICB/NER estimate heavy construction equipment theft at $300 million to $1 billion per year, excluding tool theft and damage",
+      "source_url": "https://usassure.com/resources/articles/tracking-high-value-construction-equipment/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "TrueLook survey of 739 construction managers/supervisors/tradesmen/foremen; 78% said their organization had items stolen from a jobsite",
+      "source_url": "https://www.truelook.com/blog/construction-site-security/key-findings-from-truelooks-jobsite-security-survey",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Employers with 10 or fewer employees in the prior year are partially exempt from OSHA 300/300A/301 logs but still must report under 1904.39",
+      "source_url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1904/1904.1",
+      "result": "confirmed"
+    },
+    {
+      "claim": "29 CFR 1904.39: fatality reported within 8 hours; in-patient hospitalization, amputation or loss of an eye within 24 hours",
+      "source_url": "https://www.osha.gov/report",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CompanyCam pricing: Core $79/mo (1-2 users), Crew $149/mo (3 users), Scale $299/mo, extra users $34/mo",
+      "source_url": "https://help.companycam.com/en/articles/14477655-companycam-plans-explained",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Evercam price list: software $500/month, PPE detection $750/month, 4K fixed kit $3,700/month, 4K mains installed $4,850/month, gate report kit $10,750/month installed",
+      "source_url": "https://www.evercam.com/pricing-list",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NationCam: platform from $79/camera/month, camera rental from $39/month, cellular internet from $60/month per site",
+      "source_url": "https://nationcam.com/construction",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Silarius hard hat detection price $8.00 per camera per month as the cost of the capability",
+      "source_url": "https://silariussecurity.com/use-cases/hard-hat-detection",
+      "result": "contradicted"
+    },
+    {
+      "claim": "ARSA Basic Safety Guard $48/camera/month for the software tier; 3-, 12- and 25-camera appliance options",
+      "source_url": "https://arsa.technology/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ARSA vendor claim: 98.2% of hard-hat decisions correct on the SHWD dataset",
+      "source_url": "https://arsa.technology/blogs/how-basic-safety-guard-detects-a-missing-hard-hat/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ARSA on-prem detection of hard hat present/absent, 3-day default continuous recording, anonymous by default, optional face recognition with consent record, AI Box option",
+      "source_url": "https://arsa.technology/products/arsa-ai-video-analytics-software/basic-safety-guard/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Samsara Site Visibility: AI on third-party IP streams, restricted-zone and equipment-damage alerts, at least 30 days local recording with clips saved to cloud, coaching library, quote-only pricing",
+      "source_url": "https://www.samsara.com/products/cameras/site-visibility",
+      "result": "confirmed"
+    },
+    {
+      "claim": "EarthCam ConstructionCam product description and $130-$600+/camera/month third-party estimate",
+      "source_url": "https://client.earthcam.com/products-solutions/constructioncam/",
+      "result": "could not open"
+    },
+    {
+      "claim": "OpenSpace pricing is custom quote with a reported $10,000 minimum for the SMB tier",
+      "source_url": "https://www.openspace.ai/pricing/",
+      "result": "not found"
+    },
+    {
+      "claim": "NVIDIA Jetson Orin Nano Super Developer Kit at $249 launch price",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Raspberry Pi AI Kit (Hailo accelerator + M.2 HAT+) priced at $70",
+      "source_url": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate sizing guidance: AVX+AVX2 CPU, 4 GB RAM basic minimum with a dedicated detector, 8 GB for enrichments, 16 GB recommended; hardware video decode matters",
+      "source_url": "https://docs.frigate.video/frigate/planning_setup/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate is an open-source NVR with ONNX/YOLO exports and OpenVINO, Hailo and Nvidia support",
+      "source_url": "https://docs.frigate.video/frigate/hardware",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen3-VL-2B-Instruct exists as a small edge-friendly VLM",
+      "source_url": "https://arxiv.org/abs/2511.21631",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-3B from Liquid AI with 1.6B and 450M sibling variants, documented for local deployment",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Triax Spot-r clip detects worker slips/trips/falls, lets workers raise alerts, provides zone-level location and mustering, plus EquipTag equipment tracking",
+      "source_url": "https://docs.lib.purdue.edu/ectfs/236/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2018 harness study: 80% precision / 98% recall for workers not wearing a harness; worker detection 99% precision / 95% recall",
+      "source_url": "https://doi.org/10.1016/j.autcon.2018.02.018",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Efficient-YOLOv5 harness detector: 97.7% precision, 89.3% recall, 94% mAP, 3,300 images",
+      "source_url": "https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/ipr2.12696",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PPE detection on surveillance footage: 92.36% mAP on one test set, 66.70% on a second",
+      "source_url": "https://ieeexplore.ieee.org/abstract/document/10654263",
+      "result": "confirmed"
+    },
+    {
+      "claim": "YOLACT + DeepSORT PPE framework: 91.3% accuracy for PPE-wearing status, 66.4 mAP@50",
+      "source_url": "https://academic.oup.com/jcde/article/10/2/905/7069329",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Drone + deep learning work-at-height system: about 90% overall accuracy, 97.2% precision, 90.2% recall, roughly 12 seconds per violation",
+      "source_url": "https://khazna.ku.ac.ae/en/publications/real-time-monitoring-of-work-at-height-safety-hazards-in-construc/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CCTV systematic review: 51% crime reduction in car parks across six evaluations, mostly vehicle crime, largely bundled with other measures",
+      "source_url": "https://doi.org/10.4073/csr.2008.17",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Smartvidio/Suffolk: model predicted 20% of incidents at about 80% accuracy on three years of unseen data; customer estimated $1.4M-$3.6M annual avoided costs across 50 projects",
+      "source_url": "https://www.casestudies.com/company/smartvidio/case-study/how-suffolk-smartvidio-learned-to-predict-and-prevent-construction-incidents",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d): interception lawful only where the person is a party or one party has given prior consent",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9: third/fourth degree crime to observe or record where a reasonable person would not expect to be observed; prior notice plus lawful purpose is an affirmative defense",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/2785/2918",
+      "result": "confirmed"
+    },
+    {
+      "claim": "P.L. 2021, c.449 requires written notice before using a tracking device in a vehicle used by an employee",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A4981/S4075 pending (workplace electronic monitoring incl. biometrics); A3929 passed the Assembly in March 2026 and was referred to a Senate committee",
+      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A4981/bill-text",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ OSHA-approved State Plan (PEOSH) covers state and local government employees only; private-sector Middlesex County contractors are under federal OSHA",
+      "source_url": "https://www.osha.gov/stateplans/nj",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRA Section 7 protects concerted activity; surveillance or the impression of surveillance is an unfair labor practice",
+      "source_url": "https://www.nlrb.gov/about-nlrb/rights-we-protect/the-law/employees/concerted-activity-0",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FAA Part 107 requirements (remote pilot certificate, registration, visual line of sight, at or below 400 ft, restrictions on flight over people)",
+      "source_url": "https://www.faa.gov/newsroom/small-unmanned-aircraft-systems-uas-regulations-part-107",
+      "result": "could not open"
+    },
+    {
+      "claim": "About 1,556 construction establishments in Middlesex County, CBP 2023",
+      "source_url": "https://www.census.gov/data/datasets/2023/econ/cbp/2023-cbp.html",
+      "result": "not found"
+    }
+  ],
+  "confidence": "High"
+}

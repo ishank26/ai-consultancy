@@ -1,0 +1,42 @@
+[
+ {
+  "claim": "MDPI measured outcome: 'In factory vibration data covering 11 bearing-failure cases over four years, degradation speed varied widely - some faults developed over months, one became detectable only days before bearing replacement.'",
+  "problem": "The cited page (mdpi.com/2306-5729/8/7/115) returns HTTP 403 on every attempt, so the numbers were never read at source - the brief admits this in data_gaps yet still states them as fact in measured_outcomes with strength Medium. Independent search results describing the paper say 11 cases were selected of which 10 were bearing faults and 1 an external event, plus the dataset covers 2019-2022 in a pulp mill; '11 bearing-failure cases' is therefore misstated, and the 'months vs days' lead-time finding could not be confirmed anywhere.",
+  "fix": "Either reword to '11 selected vibration cases (10 bearing faults, 1 external event), 2019-2022, single pulp mill' after actually reading the paper, or delete the entry. Do not keep a specific case count and a lead-time finding that rest on a search snippet. If kept, lower strength to Low and say in the finding that it is unverified."
+ },
+ {
+  "claim": "Hardware: 'Raspberry Pi 5 8GB $95 official (raised from $80); Hailo-8L Raspberry Pi AI Kit $70 (announced June 2024)' with source_url = raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/",
+  "problem": "The cited page confirms only the $70 AI Kit (published 4 June 2024). It contains no $80 or $95 Pi 5 price. The $95 figure is a price with no source in the brief. Separately, Raspberry Pi announced further memory-driven rises after December 2025, so $95 may already be stale.",
+  "fix": "Cite the actual price announcement (e.g. raspberrypi.com/news/1gb-raspberry-pi-5-now-available-at-45-and-memory-driven-price-rises/ for the $80 -> $95 move) and check for later rises, or change the Pi 5 line to 'Unknown / quote' and keep only the $70 AI Kit figure on this URL."
+ },
+ {
+  "claim": "Problem evidence: 'N.J.A.C. 8:24-1.5 defines refrigeration temperature as 41 degrees Fahrenheit or below, and 8:24-3.2 requires refrigerated potentially hazardous food to be received at 41F or below' with a single source_url to the 8:24-1.5 definitions page.",
+  "problem": "The 41F definition and the 45F legacy exception with the January 2, 2012 upgrade date are confirmed verbatim on the cited 8:24-1.5 page. But the receiving-temperature rule is not on that page; it is N.J.A.C. 8:24-3.2(f)(1), which I verified separately. A reader checking the cited URL would find half the claim.",
+  "fix": "Add https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-2 as the source for the 8:24-3.2 sentence (the rule as stated is accurate)."
+ },
+ {
+  "claim": "Sensorfact pricing: 'quote-based; subscription model with a base package covering five devices plus per-device licensing (per ABB-distributed brochure)' with source_url = sensorfact.eu/products/",
+  "problem": "The cited products page shows no pricing and no base-package or five-device structure; it only lists electricity, vibration, OEE, gas, compressed-air, water and temperature products with email/SMS/WhatsApp alerts. The 'five devices' detail is attributed to an uncited brochure.",
+  "fix": "Either add the ABB brochure URL, or reduce the pricing line to 'Unknown - quote-based; no public list price on the products page'. The 'zero list price' conclusion itself is supported."
+ },
+ {
+  "claim": "Measured outcome strength rating: DOE O&M Best Practices Guide figures (35-45% downtime reduction, 70-75% fewer breakdowns, 25-30% lower maintenance cost, 8-12% over preventive) rated Medium.",
+  "problem": "The guide does state every one of those numbers (Release 3.0, August 2010, verified) but attributes them to unspecified 'independent surveys' with no study, n or method given. That is weaker evidence than a single named study and is closer to the vendor-survey tier than to Medium; the brief itself calls it 'an aggregate of unnamed independent surveys' in the sample field and still rates it Medium.",
+  "fix": "Downgrade the strength to Low (or Medium-Low with an explicit 'no primary study identifiable, 2010 vintage' caveat) so the strength label matches the sample description already in the entry."
+ },
+ {
+  "claim": "N.J. Data Privacy Act: effective January 15, 2025; applies at 100,000 consumers or 25,000 consumers plus revenue from selling personal data; no small-business exemption; employment/job-applicant data outside the consumer definition.",
+  "problem": "Cited source (njconsumeraffairs.gov FAQ) is behind an Incapsula challenge and could not be opened from here. The substance (effective date, both thresholds, employment/commercial-context exclusion, no small-business exemption) is corroborated by search results quoting the same FAQ and by the statute P.L.2023 c.266, but not from the cited page in this pass.",
+  "fix": "Add the statute as a second source (pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM) so the claim does not depend on a bot-blocked FAQ page, and note the effective date and thresholds come from the statute."
+ },
+ {
+  "claim": "A3929/S1464 biometric bills: passed the Assembly March 23, 2026 and referred to a Senate committee May 4, 2026; S1463 introduced January 13, 2026.",
+  "problem": "The cited bill-text URL returns an incomplete extraction (432 of 1,997 visible characters) so the legislative history could not be read directly. The March 23, 2026 Assembly passage (56-16-1) and the May 4, 2026 Senate referral are corroborated only by search results pointing at njleg.state.nj.us/bill-search/2026/A3929, not by the cited page.",
+  "fix": "Cite the bill-status page (njleg.state.nj.us/bill-search/2026/A3929) alongside the bill text so the status claim is checkable, and confirm the S1463 January 13, 2026 introduction date on its own bill page."
+ },
+ {
+  "claim": "fit_score.legal_risk_low = 12/15 alongside a legal section that includes the NLRB GC 23-02 rescission and two unresolved 'Unknown' questions (video retention limits, landlord consent for attachments).",
+  "problem": "Sub-scores do sum correctly to 71 (14+12+9+17+12+7) and all sit inside plausible ranges, and the legal section does not show a confirmed rule that would bite (audio and face recognition are avoided, panel work is subcontracted), so 12 is defensible. The inconsistency is presentational: two open 'confirmed: false' items are not reflected anywhere in the rationale's risk accounting.",
+  "fix": "In the fit_score rationale, note that two legal questions (retention period, landlord consent) remain open and are handled by contract terms rather than by law, so the 12/15 is explicitly a 'managed residual risk' score."
+ }
+]

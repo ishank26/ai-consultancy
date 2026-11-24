@@ -1,0 +1,121 @@
+{
+  "results": [
+    {
+      "ref": "B05573",
+      "name": "Girgis Family Medicine (Dr. Moris Girgis / Dr. Linda Girgis)",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Operating: Google Maps (limited view) still returns two separate profiles at '123 Main St', same phone (732) 254-9494 - 'Girgis Family Medicine - Dr Linda Girgis' 4.3 'Family practice physician', 'Girgis Family Medicine - Dr Moris Girgis' 4.1 - both showing 'Open'. The only non-Google website href captured from the results DOM is https://girgismd.com/, and girgismd.com today renders a slot-gambling landing page (title begins 'PRAGMATIC88 : Link Slot Gacor Resmi'), so the hijacked-domain core claim holds; I could capture only one girgismd.com href, so 'both profiles point at it' is plausible but only partly observed. drlinda-md.com is a commentary blog (nav: Home, About Dr. Linda, Featured Articles & Press, Contact Me...) with no phone number, no 'South River'/123 Main St address text and no booking. Minor inaccuracies that do not touch a top issue: the Saint Peter's physician page lists Dr. Moris at '171 Main Street, Suite 4, South River' - a third NAP variant - and shows office and phone but no fax, while the record's size_signal says 'office, phone and fax'. Scores 5/3/4/5 are defensible, though 'ease' may be optimistic (a lapsed, hijacked domain may not be recoverable, so the fix may be a new domain plus listing cleanup, closer to 3)."
+    },
+    {
+      "ref": "B05703",
+      "name": "Trygar's Hardware Locksmith Store",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "robots.txt not retrievable over the broken HTTPS (agent_readiness), i.e. nothing explicitly managed",
+          "what_is_true": "robots.txt is served over plain HTTP and is a plain allow-all - 'User-agent: *' with an empty Disallow. Only HTTPS is unreachable, because of the certificate failure.",
+          "source_url": "http://trygar.com/robots.txt"
+        },
+        {
+          "claim": "website_review.loads: false",
+          "what_is_true": "The site does load over plain HTTP; it is only the HTTPS endpoint that fails (Chrome 'Privacy error' interstitial and a certificate-verify failure on direct GET).",
+          "source_url": "http://trygar.com/"
+        }
+      ],
+      "notes": "Re-verified directly. http://trygar.com/ returns the Network Solutions builder page: empty <title>, a single 'Home' nav item, body text 'Established 1974 / Veteran Owned / NJ Locksmith Business License LX000152 / 44 Ferry Street, South River, NJ 08882 / 732-254-2112 / email@keysthatplease.com / Whatsapp 7322542112 / Facebook Messenger / Instagram' all as unlinked plain text, one image that is <img src='images/spacer.gif' alt='Click to Replace'>, no hours, no services, no form, no JSON-LD, and 'Call text or email to schedule an appointment.' in plain text. Google Maps limited view: 4.7, category 'Hardware store', 44 Ferry St, 'Open - Closes 6 PM', website trygar.com, (732) 254-2112, plus 'Identifies as veteran-owned' and 'Identifies as women-owned'; the review count is still not displayed. The keysthatplease.com mirror could not be re-opened (request timed out), so that detail is unverified. All three top issues and all three top opportunities hold. Scores 5/3/4/5 stand."
+    },
+    {
+      "ref": "B07042",
+      "name": "Lozito Law, LLC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "A one-attorney practice - 'One named attorney (Danielle M. Lozito, Esq.)', and the opportunity 'closings handled by one attorney'",
+          "what_is_true": "The About page profiles two attorneys: Danielle M. Lozito, Esq. (NY Law School 2002) and Alyssa N. Seiden, Esq. (Hofstra 2001). Two office lines (848-202-1650 and 848-202-1651) plus fax 848-202-1653 are published on every page.",
+          "source_url": "https://lozitolaw.com/about-lozito-law/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 5,
+        "ability_to_pay": 4,
+        "ease": 5,
+        "evidence": 4
+      },
+      "notes": "All three top issues re-check as described. Chrome gets the same NinjaFirewall 403 ('your request cannot be processed'), so I worked from raw HTML. Confirmed: zero <form> elements and zero tel: links in the homepage HTML; contact is a text block; phones/fax printed as plain text in the footer; title 'Lozito Law, LLC - Middlesex NJ Real Estate Lawyer - Milltown, NJ' while the body says '480 Georges Road in North Brunswick' and the footer '480 Georges Rd, North Brunswick, NJ 08902'; the meta description contains 'Specialing'; sitemap_index.xml -> page-sitemap.xml contains exactly two URLs (/ and /about-lozito-law/), so there are no service pages and no contact page - /contact/ returns the homepage markup with a canonical to the homepage. Gmail claim is right but narrower: lozitolaw@gmail.com appears as a mailto: link only on the About page. robots.txt is a bare Yoast allow-all with a sitemap line. JSON-LD graph is WebPage / BreadcrumbList / WebSite / Organization; the Organization carries name, logo and sameAs LinkedIn only - no address, phone or hours. Score change: ability_to_pay 3 -> 4, because a second attorney and a second line indicate more closing volume than a one-lawyer shop; evidence stays 4 since rendering was blocked and the Google panel could not be loaded."
+    },
+    {
+      "ref": "B07110",
+      "name": "Diamond Electrical Services",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No contact/quote form anywhere - '/contact-us only lists a phone number and email'; '0 forms and 0 inputs on /contact-us'; and the top opportunity 'add a labelled quote/booking request form ... so estimates no longer require a phone call'",
+          "what_is_true": "/contact-us embeds two Housecall Pro iframes: a live lead-form widget (rendered 300x150, showing a 'First name' field and 'Tell us how we can help' copy) and a Housecall Pro booking widget (book.housecallpro.com/book/Diamond-Electrical-Services/...). A quote/booking request can already be submitted online, so the 'no self-service path' premise and the proposed new-form opportunity do not hold; the page also states 'By appointment only'.",
+          "source_url": "https://www.diamondelectricalservices.net/contact-us"
+        },
+        {
+          "claim": "The home-page <title> is a 160-character run-on",
+          "what_is_true": "document.title measures 181 characters (same North/East Brunswick + Middlesex/Monmouth/Somerset run-on), so the substance holds but the figure is off.",
+          "source_url": "https://www.diamondelectricalservices.net/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 4
+      },
+      "notes": "Otherwise close to the record. At 390 px device emulation documentElement.scrollWidth is 768 vs innerWidth 390 (horizontal overflow) and the 'Over 37 Years' banner, the 'Servicing Middlesex/Monmouth/Somerset' line and the 'Contact' nav item are visibly clipped; the 'Let's Talk!' modal opens on load with a 'Call 732-310-6239' button - both top-issue 2 and 3 confirmed. Home page: 0 <form>, 0 inputs, one JSON-LD block typed WebSite only, h1 'Providing Exceptional Electrical Services for More Than 37 Years', testimonial cards still carrying 'Slide title' headings and blank placeholder images. robots.txt is 'User-agent: *' with 'Content-Signal: search=yes, ai-input=yes, ai-train=yes' - the ai-input claim is right. Seven tel: anchors point at (732) 310-6239. Contact page adds a BreadcrumbList block but no LocalBusiness. Gap falls 4 -> 3 and evidence 5 -> 4 because a working third-party lead form and booker are already embedded; ease and ability to pay unchanged."
+    },
+    {
+      "ref": "B07114",
+      "name": "Continental Pools",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked live. document.title is 'continentalpoolsnj.com'; 0 <h1>, 0 <h2>, 0 <form>, 0 inputs, 0 JSON-LD, 0 tel: links and 0 mailto: links; the only four anchors on the page are internal (#page-0 / #page-1), including the misspelled 'CONCACT' hero button - so 'no click-to-call, no form, no title/H1/schema' holds exactly. Phone '(732) 543 - 2737' is plain text, as is a separate power-washing cell '(609) 423 - 8798'. A pricing block headed 'Opening & Closings / 2023 Prices' still lists $343.33 / $364.66 / $442.49 / $463.82. Site address is '134 N. Main Street, Milltown NJ 08850'; Google Maps limited view shows 'Continental Pools', 3.0, 'Swimming pool contractor', 26 Highland Dr, Milltown NJ 08850, phone (732) 543-2737, website continentalpoolsnj.com, with no photo thumbnails - the address mismatch and the 3.0/no-photos claims are confirmed. At 390 px there is no horizontal overflow (390 = 390), and the 'In the Press' section is present with image slots whose files never resolve (every <img> on the page has naturalWidth 0 and the header logo renders as an empty grey rectangle), so the 'empty images' observation is directionally right though I could not isolate exactly two press logos; the 'no reviews' claim is also correct in that no reviews appear on the site. robots.txt returns 404 as recorded. Scores 5/3/4/5 are reasonable."
+    },
+    {
+      "ref": "B07150",
+      "name": "Anna Electric, LLC",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked page by page. Home page: title 'Anna Electric Llc - Electrical Contracting, Service', h1 'Anna Electric, LLC', 0 forms, 0 inputs, 0 JSON-LD, and a body that is only the header phone, nav, business name, 'Get in Touch' button, social block and 'Copyright 2024 ... Powered by GoDaddy' - the 'effectively an empty page' issue is confirmed. Phone mismatch confirmed on /services and /contact: the header and every tel: anchor read (732) 521-3163, while the footer contact block on those pages prints (732) 521-3136; Google Maps limited view shows 4.2, (11), 'Electrician', 5 Madison Dr, Helmetta NJ 08828, 'Open - Closes 5 PM', website annaelectric.com, phone (732) 521-3163 - so 3163 is the correct number and 3136 is the misprint. /contact has exactly one form (text, text, text, textarea = name/email/message) with reCAPTCHA copy and no quote fields; the contact page footer shows 'Today: Closed' while Google shows it open until 5 PM - the hours contradiction holds (I could not see Google's opening time to confirm the record's '8 AM'). /services targets East Brunswick rather than Helmetta and carries no licence number, only 'licensed, bonded, and insured'. The NJSDA prequalification page is JavaScript-rendered and could not be fetched, so that size signal is unverified. All three top issues and opportunities hold; scores 5/3/5/4 are reasonable (ability_to_pay could arguably be 4 given commercial work plus state prequalification, but 3 is not unreasonable)."
+    },
+    {
+      "ref": "B07371",
+      "name": "Spotswood Wellness Center",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Home page confirms the COVID-era problem: nav plus hero, then 'HEALTH SERVICES' opening with 'Non-Rapid PCR COVID-19 Testing' and 'Rapid COVID-19 Testing' ($100), vaccine links, and the Kaga Institute pre-registration Google Form - massage appears only in the menu. No meta description element and 0 JSON-LD on the home, contact and massage pages; 0 forms; one tel: link (732-210-0808). At 390 px the hero renders as a large blank grey block above the logo, matching the record's blank-hero note. Contact page lists Sun 9-1, Mon-Fri 9-6, Sat 9-2, info@spotswoodwellnesscenter.com, 14 Snowhill St, and an m.me Messenger link - no scheduler, no booking platform, so bookable 0 holds. Massage page lists Swedish / Himalayan Salt Stone / Hot Stone etc. with 60/90-minute options but no prices and no booking link. robots.txt is comments-only (Cloudflare content-signal text) with no allow/disallow directives behind them, which matches 'no blocking rules'. Google Maps limited view shows 4.4, 'Wellness center', 14 Snowhill St Ste A, (732) 210-0808, website link; the 16-review count (Birdeye mirror) was not independently confirmed. The cited dead path /counseling-mental-health-services/massage-therapy/ does return a 404 (GitHub Pages 'Page not found'), although the current navigation uses /health-services/... links, so I could not relocate the live dead link the record points to - flagged rather than contradicted. Scores 5/3/5/4 are reasonable."
+    },
+    {
+      "ref": "B07375",
+      "name": "Aree Nails",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Bookable: 1 - 'Fresha is a platform Google's booking features can use in principle', and the top opportunity 'Finish the Fresha profile (prices, durations, staff, photos) so online booking converts and AI booking agents can transact'",
+          "what_is_true": "The Fresha page is an auto-generated stub that Fresha itself labels: 'This page uses publicly available information ... The business is not currently affiliated with or partnered with Fresha.' Its only action is 'Call to book'; there are no prices, no staff, no booking calendar and no booking flow. There is nothing bookable to finish and no Fresha account to complete, so bookable is 0, not 1, and the 'finish the Fresha profile' opportunity is not achievable by the salon through Fresha as it stands.",
+          "source_url": "https://www.fresha.com/lvp/aree-nails-spotswood-summerhill-road-spotswood-bxv0nE"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 5,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 3
+      },
+      "notes": "Everything else about this record re-checks. Google Maps limited view: 'Aree nails Spotswood', 4.1, 'Nail salon', 100 Summerhill Rd #10, Spotswood NJ 08884, 'Open - Closes 7 PM', phone (732) 416-9033, with 'Claim this business' and 'Add missing information / Add website' prompts and no website field - so unclaimed and no site are confirmed. Fresha breadcrumb reads 'United States > New York' for a New Jersey salon (the wrong-region claim is right), and it lists Acrylic Nails, Gel Nail Extensions, Manicure, Nail Art, Pedicure, Spa Pedicure etc. with no prices, no durations and no staff. Birdeye mirror shows 4.1 with 118 reviews today (the record says 115 - a small drift, likely growth rather than error); review text was not rendered in the fetch, so the 'inconsistent manicures' review characterization is unverified. Evidence 4 -> 3 because the record credited an online booking channel that does not exist; gap 5, ability 3 and ease 5 stay."
+    }
+  ],
+  "data_gaps": [
+    "B05573: Google Maps served only its 'limited view'; I could not open individual profiles to confirm the website link on BOTH listings (one girgismd.com href was captured), and no review counts are displayed anywhere.",
+    "B05703: keysthatplease.com did not respond within the timeout, so the 'same single page on a second domain' detail is unverified; the Google review count is still not shown in the limited Maps view.",
+    "B07042: lozitolaw.com's NinjaFirewall returns 403 to this network's browser, so no rendered desktop/mobile check was possible; the Google Maps panel could not be loaded, so the 4.4 rating and the Birdeye 83-review figure are unverified.",
+    "B07114: could not confirm the Google review count, and the 'In the Press' block's image files never resolved, so 'two empty logo images' is only partially verified.",
+    "B07150: the NJSDA vendor page is JavaScript-rendered and did not fetch, so the 'prequalified through June 30, 2028' signal is unverified; Google's listed opening time (record says 8 AM) is not visible in the limited Maps view, only 'Closes 5 PM'.",
+    "B07371: the 16-review count comes from a Birdeye mirror and was not confirmed on Google; a live link to the cited 404 path was not found in the current navigation, though the path does 404.",
+    "B07375: Birdeye renders no review text to anonymous fetches, so the specific review claims (pedicures praised, manicures inconsistent) could not be re-read; Google's review count is not displayed in the limited Maps view."
+  ]
+}

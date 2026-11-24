@@ -1,0 +1,60 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "\"It runs on the existing listing database and CRM login.\" (Why this works) and \"broker-side CRM login\" framing",
+      "problem": "The public site does have a username/password broker login (form action /login.asp), but nothing publicly identifies that system as a CRM. The audit states it as fact rather than as the researcher's inference.",
+      "fix": "Say \"the existing listing database and the broker login on the site, subject to a discovery check that it is the firm's CRM\" — or drop the word CRM from the audit body."
+    },
+    {
+      "claim": "\"The contact page offers 23 broker mobiles and one admin extension; the one structured form is seller-side (property valuation).\"",
+      "problem": "The valuation form is not on the contact page — it is an iframe on the home page (whatismypropertyworth.asp), reached from the \"What Is Your Property Worth?\" box. Read quickly, the sentence implies the form sits on the contact page. The same form also carries a \"Space Needed (sf)\" field, so \"seller-side\" is a fair summary of the page copy but not the whole form.",
+      "fix": "Rewrite as: \"the contact page is a directory and a main number only; the site's one structured form is an owner-side property valuation request on the home page.\""
+    },
+    {
+      "claim": "\"You are hiring a full-time marketing/admin assistant at $42,000–$50,000 for brochures, flyers, research and press\"",
+      "problem": "The cited Indeed page (https://www.indeed.com/cmp/Bussel-Realty-Corp) is blocked to re-checking (HTTP 403 / Cloudflare block in a real browser), so the duty list (brochures, flyers, research, press) could not be re-opened and confirmed. The salary and location are independently visible in two job-board index copies (Glassdoor and SimplyHired both show a Bussel Realty Corp Marketing / Administrative Assistant, Edison NJ, $42,000–$50,000, full-time), so only the duty list is unverified.",
+      "fix": "Add one openable job-board link alongside Indeed (e.g. the Glassdoor or SimplyHired copy of the posting) and keep the duty wording close to the posting text, or soften to \"brochures, flyers and marketing content\"."
+    },
+    {
+      "claim": "\"bussel.com/contact-us/ returns a raw IIS error page.\" (email draft)",
+      "problem": "Accurate but \"IIS\" is server jargon for a non-technical founder in a cold email; the walk-in line already uses the plainer phrase.",
+      "fix": "In the email, say \"returns a raw server error page\" and keep IIS for the audit body if at all."
+    },
+    {
+      "claim": "Sources list: \"#26961 — exclusive listing printing a street address (Prestige Plaza, 334 Roue 31, Flemington)\"",
+      "problem": "Not wrong — the page literally prints \"334 Roue 31\" — but it is the site's own misspelling of Route 31 and will look like a transcription error by us.",
+      "fix": "Mark it: \"334 Roue 31 (sic — Route 31), Flemington\"."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Founded 1984 by Steve Bussel; grew from a two-person shop; still directs day-to-day operations", "source_url": "https://bussel.com/history/real-estate-brokerage/edison-nj/", "result": "confirmed"},
+    {"claim": "\"Says it handles three million square feet a year\" — page states the firm handles over three million sq ft of corporate and industrial properties annually in NJ", "source_url": "https://bussel.com/history/real-estate-brokerage/edison-nj/", "result": "confirmed"},
+    {"claim": "Markets industrial and office space across Central and North Jersey", "source_url": "https://bussel.com/", "result": "confirmed"},
+    {"claim": "New Brunswick page lists the Edison suite (2 Ethel Road, Suite 202A, Edison NJ 08817; main line 732-287-3777; info@bussel.com)", "source_url": "https://bussel.com/contact-us/office-property/new-brunswick-nj", "result": "confirmed"},
+    {"claim": "23-broker directory plus one admin extension (Cynthia Colon, x223) on the contact page", "source_url": "https://bussel.com/contact-us/office-property/new-brunswick-nj", "result": "confirmed"},
+    {"claim": "No enquiry form and no booking on the contact page", "source_url": "https://bussel.com/contact-us/office-property/new-brunswick-nj", "result": "confirmed"},
+    {"claim": "Main number is plain text with no tel: link (no tap-to-call)", "source_url": "https://bussel.com/", "result": "confirmed"},
+    {"claim": "bussel.com/contact-us/ returns a raw IIS error page", "source_url": "https://bussel.com/contact-us/", "result": "confirmed"},
+    {"claim": "Listing #23253 is an open listing printing \"[-address on file-]\" instead of a street address", "source_url": "https://bussel.com/listing/23253", "result": "confirmed"},
+    {"claim": "Listing #27516 is an open listing printing \"[-address on file-]\" instead of a street address", "source_url": "https://bussel.com/listing/27516", "result": "confirmed"},
+    {"claim": "Exclusive listing #26961 prints a street address (Prestige Plaza, 334 Roue 31, Flemington)", "source_url": "https://bussel.com/listing/26961", "result": "confirmed"},
+    {"claim": "Search results load only in a browser: static HTML is a \"Data Loading...\" placeholder with lorem ipsum and \"Type:industrial Available:0,000 sf\", while a browser renders 20 of 57 listings", "source_url": "https://bussel.com/property-result.asp", "result": "confirmed"},
+    {"claim": "The one structured form on the site is a property-value / seller-side form (iframe to whatismypropertyworth.asp, action valueconfirm.asp)", "source_url": "https://bussel.com/whatismypropertyworth.asp", "result": "confirmed"},
+    {"claim": "Broker username/password login exists on the public site (form action /login.asp, forgotten-password flow)", "source_url": "https://bussel.com/", "result": "confirmed"},
+    {"claim": "Full-time Marketing / Administrative Assistant posting in Edison at $42,000–$50,000", "source_url": "https://www.indeed.com/cmp/Bussel-Realty-Corp", "result": "confirmed"},
+    {"claim": "That posting's duties include brochures, flyers, research and press announcements", "source_url": "https://www.indeed.com/cmp/Bussel-Realty-Corp", "result": "could not open"},
+    {"claim": "The Quarterly Report news section shows nothing (category page renders no items in a browser, and the static HTML is empty too)", "source_url": "https://bussel.com/news.asp?c=Quarterly_Report", "result": "confirmed"},
+    {"claim": "O*NET NJ median $24.16/hour for secretaries and administrative assistants, 2025 wage data (NJ annual median $50,260)", "source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ", "result": "confirmed"},
+    {"claim": "$30/hour loaded rate = $24.16 x 1.25 for benefits (arithmetic and labelling as our assumption)", "source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ", "result": "confirmed"},
+    {"claim": "208–416 staff hours a year = 4–8 hours a week x 52 weeks x 100% handled; at $30/hour = $6,240–$12,480", "source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ", "result": "confirmed"},
+    {"claim": "520–1,040 staff hours = 40 hours a week x 52 weeks x 25–50% of the role; at $30/hour = $15,600–$31,200; at $25/hour the low end is about $13,000", "source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ", "result": "confirmed"},
+    {"claim": "Section 1 carries no dollar figure and says no benchmark exists (no inflated or invented impact)", "source_url": "https://bussel.com/property-result.asp", "result": "confirmed"},
+    {"claim": "Business name, town and contact details (Bussel Realty Corp, Edison NJ suite listed on the \"New Brunswick\" page, 732-287-3777, info@bussel.com)", "source_url": "https://bussel.com/contact-us/office-property/new-brunswick-nj", "result": "confirmed"},
+    {"claim": "Email draft and walk-in opener: /contact-us/ errors, #27516 and #23253 hide the street address, search results only render in a browser", "source_url": "https://bussel.com/contact-us/", "result": "confirmed"},
+    {"claim": "\"Note for the visit\": no New Brunswick street address is published; the address on the New Brunswick page is the Edison suite", "source_url": "https://bussel.com/contact-us/office-property/new-brunswick-nj", "result": "confirmed"},
+    {"claim": "Audit body is within ~450 words (counted headings, bullets and the prepared-from line, excluding the \"For the founder\" section and Sources: about 420 words)", "source_url": "audit.md", "result": "confirmed"},
+    {"claim": "No personal data beyond business contacts; no home addresses or personal numbers in the audit; all pages were public and read-only", "source_url": "audit.md", "result": "confirmed"}
+  ],
+  "confidence": "High"
+}

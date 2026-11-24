@@ -1,0 +1,529 @@
+{
+ "note": "Verified physical/edge AI avenues: an independent verifier re-opened the sources for the key numbers, prices, legal rules and outcomes. Hard limits: no face recognition or biometric ID, no audio, no automated accusations; a person reviews every alert. NJ: CCTV and AI used for security count as an alarm business (N.J.S.A. 45:5A-2, P.L.2021 c.2), so security installs need a licensed alarm or electrical contractor.",
+ "avenues": [
+  {
+   "avenue": "cold-chain-food-safety-sensors",
+   "one_line": "Install and run a local, monitored cold-chain system (probe temperature + door-ajar + power-loss + automatic time-stamped logs and phone alerts) for independent restaurants, delis, bakeries, caterers and small grocers in Milltown / Middlesex County, NJ, with records formatted for N.J.A.C. 8:24 inspections.",
+   "fit_score": 74,
+   "buyers": [
+    {
+     "business_type": "Full-service restaurants with a walk-in cooler and reach-ins",
+     "naics": "722511",
+     "size_where_it_matters": "Starts at roughly 8-15 staff and one walk-in; acute at 20-80 staff with dinner service and $5k-$20k of perishable inventory on hand (inference from stated inventory reasoning, not a sourced figure)"
+    },
+    {
+     "business_type": "Delis, prepared-food counters and small independent grocers",
+     "naics": "445110 / 445210 / 445220",
+     "size_where_it_matters": "Matters from one deli case plus a walk-in; strongest at 10-200 staff, multiple cases"
+    },
+    {
+     "business_type": "Caterers and commissary kitchens",
+     "naics": "722320",
+     "size_where_it_matters": "5-50 staff; one commissary cooler serving many events"
+    },
+    {
+     "business_type": "Retail bakeries and pastry shops",
+     "naics": "311811",
+     "size_where_it_matters": "5-40 staff with retarders/proofers plus a cream/custard cooler"
+    }
+   ],
+   "problem_evidence": [
+    {
+     "fact": "FDA observed 397 retail deli departments in 2015-2016: 70.0% were out of compliance on 'foods requiring refrigeration are held at proper temperature' (data item 5), 62.9% on 'foods are cooled properly' (data item 7), and the improper holding/time-and-temperature risk factor as a whole was out of compliance in 91.2% of delis.",
+     "year": "2015-2016 data (FDA deli report)",
+     "source_url": "https://www.fda.gov/media/148247/download"
+    },
+    {
+     "fact": "FDA's 10-year trend study (roughly 850 establishments observed per data-collection phase across nine facility types) found that in 2008 only 45% of full-service restaurants and 49% of delis were 'in compliance' with the improper holding (time and temperature) risk factor - i.e. a majority were not.",
+     "year": "2010 Trend Analysis Report, 2008 data",
+     "source_url": "https://www.fda.gov/food/retail-food-protection/retail-food-risk-factor-study"
+    },
+    {
+     "fact": "New Jersey defines 'refrigeration temperatures' as 41 F or less (a 45 F allowance applied only to equipment in use before Jan 2, 2007 that had to be upgraded or replaced by Jan 2, 2012), and requires potentially hazardous food to be held at refrigeration temperatures except during prep/cooking/cooling or approved time-as-control.",
+     "year": "N.J.A.C. 8:24-1.5 and 8:24-3.5(f), readopted effective 11/17/2021",
+     "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-1-5"
+    },
+    {
+     "fact": "NJ's cooling rule is two-stage and the stages are cumulative, not concurrent: N.J.A.C. 8:24-3.5(d)1 reads 'i. Within two hours, from 135 degrees Fahrenheit to 70 degrees Fahrenheit; and ii. Within four hours, from 70 degrees Fahrenheit to refrigeration temperatures.' The four-hour clock starts at 70 F, so the total allowed window is up to six hours, not four - a rule that can only be evidenced with timestamped readings.",
+     "year": "N.J.A.C. 8:24-3.5(d)1, current (readopted effective 11/17/2021)",
+     "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-5"
+    }
+   ],
+   "established_pattern": "Three independent signals per refrigerated unit, not one: (1) product-simulating temperature probe (probe in a glycol bottle or a buffered simulant, not just air temperature, because air temp swings on every door open and every defrost cycle), (2) magnetic reed/door contact to catch a door left ajar and to suppress nuisance alarms during stocking, (3) power/compressor state from a current clamp or a gateway on a UPS, so a power loss is reported even when the sensor itself is dead. Gateway publishes to MQTT, a local database keeps the immutable series, and a rules engine fires on persistence (e.g. product temp >41 F for >30 min) plus degree-minutes accumulation, with escalation tiers. The same rules engine must model NJ's cooling curve as two sequential deadlines - 135 F to 70 F inside 2 hours, then 70 F to refrigeration temperature inside 4 further hours (up to 6 hours total) per ...",
+   "fine_tuning_needed": "No, for the core product. Temperature thresholds, the two-stage cooling deadlines from N.J.A.C. 8:24-3.5(d)1, degree-minute accumulation and door-ajar persistence are deterministic rules, and a 450M-2B VLM reads a seven-segment cooler display or a dial thermometer zero-shot well enough for triage. Fine-tuning only becomes worth it if we sell camera-based product-state classification (is that pan of sliced turkey in the case or on the prep table) - that needs a few hundred labeled frames per ...",
+   "existing_solutions": [
+    {
+     "vendor": "SmartSense by Digi",
+     "product": "SmartSense food safety monitoring (sensors + gateway + cloud HACCP workflows)",
+     "pricing": "Unknown - no list price; the vendor's how-to-buy page describes an asset-based subscription with no published rate, and a public school district Master Services Agreement I opened contains a pricing exhibit that is blank/image-only in the fetched document. Treat any per-sensor figure as quote-specific.",
+     "source_url": "https://www.smartsense.co/food-service"
+    },
+    {
+     "vendor": "TempGenius (Compliance Control Inc.)",
+     "product": "Wireless refrigeration temperature monitoring, installed",
+     "pricing": "~$2,000 for a small install under 5 sensors; ~$5,000 for about 20 sensors (vendor-published)",
+     "source_url": "https://tempgenius.com/temperature-monitoring/"
+    },
+    {
+     "vendor": "Sensaphone",
+     "product": "Sentinel SCD-1200 (12-input cloud monitor) and WEB600",
+     "pricing": "Unknown - I could not get a static price off any page I opened (the Absolute Automation product page, Absolute Automation's Sensaphone collection page, the Sensaphone product page and CDW listings all render price dynamically or show none; the reseller's 'subscription information' block is an image). Search snippets suggested roughly $554-$615 for the SCD-1200 and roughly $392 for the WEB600, but I could not confirm those on a page I opened, so treat them as unconfirmed (inference). Note: text and phone-call notifications require a paid subscription on the SCD-1200.",
+     "source_url": "https://www.absoluteautomation.com/products/sensaphone-sentinel-scd-1200-web-based-monitoring"
+    },
+    {
+     "vendor": "Monnit",
+     "product": "ALTA wireless temperature sensors (MNS2-9-W2-TS-ST) + gateway + iMonnit",
+     "pricing": "$116.00 per standard wireless temperature sensor; probe add-ons +$11 (3 ft) to +$117 (100 ft) depending on lead length; 25-month NIST certification +$71 (8-point NIST +$203); line power with battery backup +$50",
+     "source_url": "https://www.monnit.com/products/sensors/temperature/standard-temperature/MNS2-9-W2-TS-ST/"
+    },
+    {
+     "vendor": "ThermoWorks",
+     "product": "ThermaData WiFi loggers (ambient, thermistor probe, thermocouple)",
+     "pricing": "$289.00 for the two-channel Type K thermocouple logger (meter only, probes sold separately; $274 at 5+, $264 at 10+). The ambient and single-removable-probe logger prices did not render on the pages I opened, so those are Unknown here rather than a range.",
+     "source_url": "https://www.thermoworks.com/products/thermadata-wifi-type-k"
+    }
+   ],
+   "measured_outcomes": [
+    {
+     "finding": "70.0% of delis were out of compliance on 'foods requiring refrigeration are held at proper temperature', 62.9% on proper cooling, and 91.2% were out of compliance on the improper holding/time-temperature risk factor overall.",
+     "year": "2015-2016",
+     "sample": "397 retail deli departments observed by FDA",
+     "study_type": "government",
+     "strength": "High",
+     "source_url": "https://www.fda.gov/media/148247/download"
+    },
+    {
+     "finding": "In 2008, only 45% of full-service restaurants and 49% of delis were in compliance with the improper holding (time and temperature) risk factor; compliance improved statistically from 1998 but improper holding remained one of three risk factors still needing improvement.",
+     "year": "2010 report (2008 data)",
+     "sample": "roughly 850 establishments observed per phase across 9 facility types",
+     "study_type": "government",
+     "strength": "High",
+     "source_url": "https://www.fda.gov/food/retail-food-protection/retail-food-risk-factor-study"
+    },
+    {
+     "finding": "Supermarket loss for 2005-06 averaged 11.4% for fresh fruit, 9.7% for fresh vegetables and 4.5% for fresh meat, poultry and seafood - material baseline shrink before any equipment failure. Caveat: the sample is six large supermarket chains, not independents, and the report does not break out refrigeration failure as a cause.",
+     "year": "2005-06 data, published March 2009",
+     "sample": "Six large national and regional supermarket retailers (supplier-shipment vs point-of-sale data)",
+     "study_type": "government",
+     "strength": "High",
+     "source_url": "https://ers.usda.gov/sites/default/files/_laserfiche/publications/44306/10894_eib44_reportsummary.pdf"
+    },
+    {
+     "finding": "Item-level supermarket loss rates for 24 fresh fruits ranged from 4.1% (bananas) to 43.1% (papayas), illustrating how much of the loss is perishability-driven rather than failure-driven.",
+     "year": "2011-12 data, published 2019",
+     "sample": "2,900 US supermarkets",
+     "study_type": "government",
+     "strength": "High",
+     "source_url": "https://ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=92910"
+    }
+   ],
+   "legal_privacy": [
+    {
+     "issue": "Audio recording in the cooler or kitchen",
+     "rule": "New Jersey is a one-party-consent state under the wiretapping statute, N.J.S.A. 2A:156A-1 et seq.; intercepting an oral communication without a participant's consent is a third-degree crime (2A:156A-3), with the one-party exception in 2A:156A-4(d). Practical consequence: ship video-only cameras or no cameras at all; disable microphone hardware. (Secondary legal summary quoting the statute, not ...",
+     "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/"
+    },
+    {
+     "issue": "Video of employees in a walk-in or back-of-house",
+     "rule": "No New Jersey statute specifies where an employer may place cameras or requires written notice; courts look to reasonable expectation of privacy, and recording in restrooms/locker rooms is criminal under N.J.S.A. 2C:14-9. Best practice is signage plus a written policy, which is what most NJ employers do even though no statute compels it. (Secondary legal summary.)",
+     "source_url": "https://www.recordinglaw.com/united-states-recording-laws/one-party-consent-states/new-jersey-recording-laws/video/"
+    },
+    {
+     "issue": "Biometrics / face recognition",
+     "rule": "The New Jersey Data Privacy Act (P.L. 2023, c.266) treats biometric data as sensitive data requiring opt-in consent, effective January 15, 2025. But 'consumer' is defined as a resident acting in an individual or household - not employment - context, so employee biometrics are outside the NJDPA's consumer definition; and the Act only applies to controllers processing 100,000+ consumers (25,000 if ...",
+     "source_url": "https://www.njconsumeraffairs.gov/ocp/Pages/NJ-Data-Privacy-Law-FAQ.aspx"
+    },
+    {
+     "issue": "How long to keep records",
+     "rule": "There is no universal federal retention period for routine cooler logs; the FDA Food Code sets retention only for specific records (e.g. time-as-public-health-control records). NJ separately requires the most recent inspection report to be kept on premises for public review for at least two years (N.J.A.C. 8:24-8.13). A 2-year default retention covers the NJ requirement; anything longer is a ...",
+     "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-13"
+    },
+    {
+     "issue": "Public inspection results as a data source",
+     "rule": "NJ requires the evaluation placard from the most recent inspection to be posted conspicuously near the public entrance (N.J.A.C. 8:24-8.12) and the report kept on premises for public review (8:24-8.13) - so inspection outcomes are legitimately public and usable for prospecting.",
+     "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-12"
+    }
+   ],
+   "prospecting_signals": {
+    "public": [
+     "Middlesex County / municipal health inspection results: look for repeat critical items on cold holding, cooling, or 'food not held at 41 F' - this is the single strongest predictor (note: the county site blocked our crawler, so pull results in a ...",
+     "Posted evaluation placard level (Conditionally Satisfactory / Unsatisfactory) visible in storefront photos or Google Street View (placard posting is required by N.J.A.C. 8:24-8.12)",
+     "Google/Yelp reviews mentioning warm beer, soft or melted ice cream, 'the milk was off', 'salad was wilted', or a sudden multi-day closure",
+     "A 'temporarily closed' or reduced-hours gap followed by a reopening - often an equipment event",
+     "Job postings for a 'food safety' or 'HACCP' responsibility, or for a maintenance/facilities person, at a single-unit independent",
+     "Multi-location independents (2-5 units, same name) - each added site multiplies the unmonitored overnight risk and the owner's inability to be present",
+     "Large walk-in footprint visible in listing photos or a drive-through alley: outdoor condensing units, 2+ walk-ins, a separate freezer box",
+     "Business type mix in Milltown/Spotswood/Monroe/East Brunswick strip centers: pizzerias with walk-in dough retarders, delis, Indian/Asian grocers with frequent door openings"
+    ],
+    "walk_in": [
+     "Clipboard or paper 'temperature log' sheet on the walk-in door, with gaps, same-pen-filled columns, or identical numbers - the classic tell",
+     "A standalone thermometer hanging on a hook and no probe thermometer visible at the prep line",
+     "Door gaskets torn or a door that does not self-close; a propped-open walk-in during delivery",
+     "Condensation, ice build-up on the ceiling/floor of the freezer, or frost on the evaporator coil - signs of defrost or door problems",
+     "Cases over-packed above the load line, blocking airflow, and product stacked on the floor",
+     "No visible monitoring hardware at all (no probe, no gateway, no antenna) plus a Wi-Fi router far from the cooler - installation difficulty, which is our differentiator",
+     "Refrigeration contractor sticker on the unit with a recent service date - they had a failure recently and may already have been quoted a monitoring add-on",
+     "Manager mentions 'we lost everything in the freezer last summer' - the cheapest possible discovery conversation"
+    ]
+   },
+   "pilot": {
+    "scope": "One independently owned site in the Milltown / Middlesex County area (target: a deli or full-service restaurant with 2-4 refrigerated units: one walk-in cooler, one walk-in or reach-in freezer, one prep/deli case). 2-6 weeks: week 1 site survey and baseline instrumentation with alarms suppressed; weeks 2-4 live alerting with a weekly review call; weeks 5-6 hand-off, log export in inspection-ready format (including a two-stage cooling report: 2 hours to 70 F, then 4 more hours to refrigeration ...",
+    "hardware": "Per unit: probe-style temperature sensor with a buffered simulant (freezer-rated to at least -10 F), magnetic door contact, and power/compressor sensing via current clamp or a UPS-backed gateway. Commercial grade: Monnit ALTA sensors at $116 each plus probe (+$11 to +$117) and optional NIST certification (+$71), or a 12-input Sensaphone-class panel (price Unknown; note text/phone alerts on the SCD-1200 need a paid subscription); budget build: ESP32 + DS18B20 + reed switch (estimated ~$15-$25 ...",
+    "success_metric": "Primary: 100% of excursions >41 F lasting more than 30 minutes on a product-simulating probe are detected and alerted to a named phone within 5 minutes, with zero missed days of record, over 4 consecutive weeks. Secondary: false-alert rate under 2 per unit per week (measured against defrost and stocking windows), staff time on manual temperature checks reduced from baseline (baseline measured in week 1), and an export that the owner confirms matches what the inspector asks for. Do not promise ...",
+    "cost_range": "Roughly $1,200-$4,100 for a 2-6 week pilot at one site, all-in. Assumptions: 3-4 monitored units; commercial sensors at $116 each plus $11-$117 per probe and optional $71 NIST cert (= $130-$300 per unit), or an estimated $15-$25 per unit for the DIY build; gateway/controller $200-$800 (assumed, not a price I verified); optional camera + edge box $400-$900 (unverified estimate); installation and commissioning 6-10 hours at $85-$125/hour (our own rate assumption, not a market survey); ...",
+    "assumptions": "Site has functional Wi-Fi or we run Ethernet/LTE to the gateway; probe access through an existing port or gasket is possible without modifying the box; the owner will name two escalation contacts and actually answer; the refrigeration contractor will not treat our probe as tampering; and the pilot is priced as a paid evaluation, not free, because free installs do not convert and the hardware is a real cost."
+   },
+   "risks": [
+    "Commodity hardware: an estimated $15-$25 of ESP32 + DS18B20 + reed switch does most of what a $2,000 installed system does, so a technically confident owner can and will build it themselves once they see the parts list.",
+    "National SaaS vendors (SmartSense/Digi, TempGenius, Sensaphone) already own the category and can undercut on hardware while charging per asset; a local installer competing on price alone loses.",
+    "False alarms from defrost cycles, door openings during stocking, and probe placement will destroy trust in week one if commissioning is sloppy - this is the #1 way the pilot fails, and it is a configuration problem, not a hardware problem.",
+    "Wi-Fi does not propagate through a metal walk-in box; every install needs a probe run or an external-mount design, and retrofits on old boxes can require drilling (customer approval, sanitation concerns about penetrations)."
+   ],
+   "full_brief": "revise-r2/03-cold-chain-food-safety-sensors/output.json"
+  },
+  {
+   "avenue": "retail-loss-prevention-nonbiometric",
+   "one_line": "Camera-plus-POS exception alerts (self-checkout non-scans, back-door/receiving shrink, cash-wrap anomalies) that queue short clips for a human to review - no face recognition, no audio, no autonomous accusations.",
+   "fit_score": 57,
+   "buyers": [
+    {
+     "business_type": "Independent supermarket / grocery",
+     "naics": "445110 (supermarkets); 4451 grocery-store industry group",
+     "size_where_it_matters": "8-200 staff, one or more self-checkout lanes, $3M+ annual sales"
+    },
+    {
+     "business_type": "Beer / wine / liquor store",
+     "naics": "4453",
+     "size_where_it_matters": "3-30 staff, 2,000+ sq ft sales floor"
+    },
+    {
+     "business_type": "Independent pharmacy",
+     "naics": "45611 (pharmacies and drug retailers)",
+     "size_where_it_matters": "5-50 staff"
+    },
+    {
+     "business_type": "Hardware store / home center",
+     "naics": "444140 (hardware retailers); parent industry group 4441 building material and garden equipment dealers",
+     "size_where_it_matters": "5-100 staff with a loading dock or back-door receiving"
+    }
+   ],
+   "problem_evidence": [
+    {
+     "fact": "US retail shrink averaged 1.6% of sales in FY2022, $112.1 billion, up from 1.4% / $93.9 billion in FY2021; internal and external theft together accounted for about 65% of shrink.",
+     "year": "2023 (FY2022 data)",
+     "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf"
+    },
+    {
+     "fact": "41% of surveyed retailers said no employee is authorized to stop or apprehend a shoplifter (up from 38%), so detection value now comes from documentation and deterrence rather than confrontation.",
+     "year": "2023",
+     "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf"
+    },
+    {
+     "fact": "Self-checkout raised loss by a mean of 22% in the year after installation (range 3.19%-41.2%) across 8 grocery retailers / 1,300 test stores, and by +0.26 percentage points of sales across 11 grocery retailers / 1,700 test stores; both estimates come from a set of 19 before/after studies, so the 8 and 11 retailer counts are not the whole evidence base.",
+     "year": "2026",
+     "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/"
+    },
+    {
+     "fact": "Missed scans were the most frequent self-checkout loss behaviour, at 1%-4.8% of transactions, in frequency data returned by 12 retailers (the overall study drew on 39 retailers with combined turnover over EUR 1 trillion).",
+     "year": "2026",
+     "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/"
+    }
+   ],
+   "established_pattern": "IP cameras -> local NVR running a person/object detector plus multi-object tracker -> zone and line-crossing rules per camera (each SCO lane, the bagging area, back door inside/outside, receiving dock, cash-wrap till) -> fusion with transaction events (POS export or SCO scan events) -> exception scoring and de-duplication -> short clip + still queued for human review -> reviewer confirms or rejects, and rejections feed back as training negatives. A small vision-language model is used only as a second stage on flagged clips (describe what is in the basket or hands, read a receipt or label), never as the primary alarm. This mirrors how published systems work: detection plus tracking to get stable person/object tracks, then a separate classifier over the track's trajectory or the POS-video comparison for lane-level events.",
+   "fine_tuning_needed": "Split answer. Zone, loitering, back-door and receiving rules need no fine-tuning - a stock person detector plus zones is enough, and Frigate will run either its bundled models or a custom model with its own label map. Item-level scan-bagging detection does need a custom detector trained on that store's own camera angles and packaging, plus per-store threshold calibration against a labelled week of footage; there is no off-the-shelf model that knows 'this box of cereal moved from hand to bag ...",
+   "existing_solutions": [
+    {
+     "vendor": "Everseen",
+     "product": "Checkout Intelligence (formerly Evercheck)",
+     "pricing": "Unknown (no list price; the vendor's own ROI guide describes 'fees charged per lane, per week' for Evercheck)",
+     "source_url": "https://everseen.com/blog/roi-of-vision-ai-in-retail"
+    },
+    {
+     "vendor": "NCR Voyix",
+     "product": "Self-checkout vision analytics (from the 2018 StopLift acquisition)",
+     "pricing": "Unknown (bundled with NCR self-checkout estate; deal terms not disclosed)",
+     "source_url": "https://www.retaildive.com/news/ncr-acquires-stoplift-to-combat-self-checkout-theft/541609/"
+    },
+    {
+     "vendor": "Rhombus",
+     "product": "Cloud-managed cameras + console licence",
+     "pricing": "Public: $399 per camera (R120 mini dome) plus a $149 per-camera licence = $548 MSRP including hardware and licence; a $649 licence applies to the multisensor model. The page says all cameras require 'an ongoing license to operate' but does not state a billing period.",
+     "source_url": "https://www.rhombus.com/pricing/"
+    },
+    {
+     "vendor": "Solink",
+     "product": "Solink video + POS exception platform",
+     "pricing": "Unknown (not published)",
+     "source_url": "https://solink.com/faqs/"
+    },
+    {
+     "vendor": "Agilence",
+     "product": "Agilence Analytics (exception-based reporting)",
+     "pricing": "Unknown (no price shown on the platform page; quote-based)",
+     "source_url": "https://www.agilenceinc.com/platform"
+    }
+   ],
+   "measured_outcomes": [
+    {
+     "finding": "Self-checkout raises loss by a mean of 22% in year one (range 3.19%-41.2%), and by +0.26 percentage points of sales; regression on 4 case studies (3 retailers) puts the effect of each extra 1% of transactions through SCO at 0.030%-0.048% more shrink.",
+     "year": "2026",
+     "sample": "39 retailers overall (>EUR 1 trillion turnover); the before/after estimates rest on 19 before/after studies, with +22% from 8 grocery retailers / 1,300 test stores, +0.26pp from 11 grocery retailers / 1,700 test stores, and the per-1% regression on 4 case studies",
+     "study_type": "industry",
+     "strength": "Medium",
+     "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/"
+    },
+    {
+     "finding": "Average US shrink was 1.6% of sales ($112.1bn) with internal plus external theft about 65% of it; 53% of retailers increased technology and software budgets and 46% increased their use of third-party security personnel in response.",
+     "year": "2023 (FY2022)",
+     "sample": "177 retail brands, $1.6 trillion sales, 97,000+ locations",
+     "study_type": "industry",
+     "strength": "Medium",
+     "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf"
+    },
+    {
+     "finding": "Facial-recognition alerts produced thousands of false matches over eight years and employees acted on them by following, searching, ejecting and calling police on innocent customers; the settlement banned facial recognition for five years and required notice, complaint handling and deletion.",
+     "year": "2023 (conduct 2012-2020)",
+     "sample": "Hundreds of Rite Aid stores; FTC administrative action",
+     "study_type": "government",
+     "strength": "High",
+     "source_url": "https://www.ftc.gov/news-events/news/press-releases/2023/12/rite-aid-banned-using-ai-facial-recognition-after-ftc-says-retailer-deployed-technology-without"
+    }
+   ],
+   "legal_privacy": [
+    {
+     "issue": "Automated flags acted on by staff without safeguards can be an unfair practice under Section 5 of the FTC Act.",
+     "rule": "FTC v. Rite Aid (Dec 2023): five-year ban on facial recognition in stores, mandated notice to consumers, written complaint investigation, deletion of images/algorithms, third-party assessments, CEO certification. The order is about biometric surveillance, but the reasoning (untested accuracy, no false-positive tracking, no employee training, disparate impact) maps onto any alert system staff act ...",
+     "source_url": "https://www.ftc.gov/news-events/news/press-releases/2023/12/rite-aid-banned-using-ai-facial-recognition-after-ftc-says-retailer-deployed-technology-without"
+    },
+    {
+     "issue": "Biometric data collection carries separate FTC scrutiny even absent a state statute.",
+     "rule": "FTC Policy Statement on Biometric Information (adopted 2023; the FTC announced it on 18 May 2023, reportedly on a 3-0 vote). The statement says false or unsubstantiated claims about biometric accuracy may violate the FTC Act and lists factors the Commission will weigh in judging unfairness, including failing to assess foreseeable harms before collecting, surreptitious or unexpected collection, ...",
+     "source_url": "https://www.ftc.gov/news-events/news/press-releases/2023/05/ftc-warns-about-misuses-biometric-information-harm-consumers"
+    },
+    {
+     "issue": "Employee and customer privacy tort exposure for camera placement and review.",
+     "rule": "New Jersey's intrusion-upon-seclusion tort, restated by the state Supreme Court in Friedman v. Martinez (2020), turns on intrusion into a private space plus conduct highly offensive to a reasonable person; the Court tied the tort to the placement of a surveillance device in an area reasonably expected to be private rather than to proof of viewing. Sales floors, checkouts, back rooms and loading ...",
+     "source_url": "https://www.njcourts.gov/system/files/court-opinions/2020/a_37_81_18.pdf"
+    },
+    {
+     "issue": "Employee monitoring and union activity.",
+     "rule": "NLRB General Counsel Memo GC 23-02 (31 Oct 2022) is prosecutorial guidance, not a Board holding: it urges the Board to find a presumptive Section 7 violation where an employer's surveillance and management practices, viewed as a whole, would tend to interfere with protected activity, and to require employers to disclose the technologies used, why, and how the data is used (absent a business need ...",
+     "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and"
+    },
+    {
+     "issue": "State privacy-statute exposure in New Jersey (biometric and otherwise).",
+     "rule": "The New Jersey Data Privacy Act (P.L. 2023, c.266) treats 'genetic or biometric data that may be processed for the purpose of uniquely identifying an individual' as sensitive data, but expressly excludes photographs, audio/video recordings and data generated from them unless generated to identify a specific individual - which is exactly the line a non-biometric design stays behind. It applies ...",
+     "source_url": "https://pub.njleg.gov/Bills/2022/AL23/266_.HTM"
+    }
+   ],
+   "prospecting_signals": {
+    "public": [
+     "Self-checkout lanes visible in Google Maps/Street View or store photos, especially 4+ lanes with one attendant.",
+     "Job postings for 'self-checkout attendant', 'overnight receiving', 'loss prevention associate' or 'asset protection' at a single-site independent.",
+     "Google/Yelp reviews that mention being asked for receipts, waiting for an attendant, or items not scanning (inference: indicates SCO friction and unattended lanes).",
+     "Recent local police blotter or news items naming the store or its block for shoplifting.",
+     "Store assortment: spirits on open shelves, OTC, power tools, infant formula, energy drinks - categories NRF names as organised-retail-crime targets.",
+     "Number of locations and rough square footage from the operator's own site (a 2+ store independent can amortise the build across sites).",
+     "Old analog/dome cameras visible outside and no camera over the loading door (inference from street-level photos).",
+     "Public liquor-licence and business-registration records (NJ ABC / county) to size the operator and confirm ownership structure."
+    ],
+    "walk_in": [
+     "Count self-checkout lanes vs attendants at peak; note whether the attendant also covers customer service or the cigarette case.",
+     "Look for a camera directly over each SCO bagging area and over the cash-wrap till; absence is the sale.",
+     "Back door: is it propped, alarmed, on a camera, and is there a dock/count station with light?",
+     "Receiving practice: does anyone count cases against the invoice, or is it 'sign and stack'?",
+     "POS terminal type (Square, Clover, NCR, Lightspeed, legacy) and whether the manager can export transaction-level data.",
+     "Existing DVR/NVR brand and age, where the monitor sits, and who actually reviews footage (often: nobody).",
+     "High-theft SKU placement: razors, spirits, formula, OTC, tools - locked cases are a signal of prior loss pain.",
+     "Staffing and turnover: single clerk overnight, new faces weekly, posted schedules (inference: higher internal-theft and sweethearting risk)."
+    ]
+   },
+   "pilot": {
+    "scope": "One store, 4 weeks live after a 1-week install/calibration. Four to six cameras: two overhead on self-checkout/checkout lanes, one inside the back door, one outside the back door or on the receiving area, one on the cash-wrap/till. Local NVR and inference box on the store network; no audio; signage at the entrance stating cameras are in use for loss prevention and that alerts are reviewed by staff. Daily POS export ingested overnight (transaction-level if the POS allows, otherwise the Z-report ...",
+    "hardware": "4-6 PoE 4K cameras, PoE switch, Jetson Orin Nano Super (or Coral/Hailo if detection-only), 2-4 TB storage, UPS, small network cabinet. Reuse the store's existing cameras if they are IP and at least 1080p with a clean overhead view of the bagging area.",
+    "success_metric": "Precision and workload, not 'theft stopped': (1) at least 60% of alerts confirmed as genuine exceptions on human review by week 4; (2) total alerts under ~15 per day so a manager can clear the queue in under 20 minutes; (3) zero alerts that led to a customer confrontation; (4) at least one documented, clip-backed exception per week in each of the three target categories (SCO non-scan, back-door/receiving, cash-wrap). Dollar shrink impact needs a full inventory cycle and is explicitly out of ...",
+    "cost_range": "Roughly $5,000-$9,000 one-time plus $250-$500/month support for a single store. Assumptions: 4-6 cameras at $100-200 each ($400-1,200); compute and storage $600-1,200; switch/cabling/UPS $400-800; install and aiming 16-24 hours at $100-150/hr ($1,600-3,600); POS ingestion and rule/zone calibration 20-40 engineering hours ($2,000-4,000 at internal cost or a discounted pilot rate); monthly covers remote health checks, model/threshold updates and the weekly review call. Excludes the owner's own ...",
+    "assumptions": "Store already has a working network and at least some IP cameras; POS can export transaction or Z-report data at least daily; one named manager owns the review queue; no facial recognition, no audio, no cloud video by default; pilot pricing is discounted and hardware is resold at cost plus install margin; no claim of measured shrink reduction is made until a full inventory cycle is compared."
+   },
+   "risks": [
+    "False positives leading to a customer accusation: the exact harm pattern the FTC charged Rite Aid over. Mitigation (review-only queue, no confrontation, written policy, signage) must be contractual, not aspirational.",
+    "Employee-relations blowback: staff read 'alert system' as suspicion. NLRB GC 23-02, though only guidance, signals scrutiny of intrusive monitoring; announcing purpose and limits before switch-on is safer than a surprise rollout.",
+    "POS integration is the real project risk. Independents often run Square/Clover with limited exports, or a legacy POS; without transaction-level data, scan-bagging detection degrades to person-in-zone analytics.",
+    "Licensing traps: Ultralytics Free/Pro plans are listed as AGPL 3.0, so a closed commercial deployment points to the Enterprise licence (reading, not legal advice); and Frigate+ training supports only a fixed label set while its terms forbid ..."
+   ],
+   "full_brief": "revise-r2/04-retail-loss-prevention-nonbiometric/output.json"
+  },
+  {
+   "avenue": "retail-shelf-inventory",
+   "one_line": "Fixed cameras plus a staff-phone walk that finds empty facings, planogram breaks and wrong shelf tags in independent grocers and specialty retailers, then turns POS velocity into a ranked restock/tag-fix list.",
+   "fit_score": 60,
+   "buyers": [
+    {
+     "business_type": "Supermarkets and other grocery stores (independent, 1\u201310 stores)",
+     "naics": "445110",
+     "size_where_it_matters": "~5,000\u201340,000 sq ft, 10\u201340 aisles, 15+ staff (footprint, aisle and staffing ranges are inference \u2014 no source opened); 186 such establishments in Middlesex County (2024, BLS QCEW)"
+    },
+    {
+     "business_type": "Convenience retailers (independent)",
+     "naics": "44513 / 445120",
+     "size_where_it_matters": "1,500\u20135,000 sq ft, 5\u201320 staff; 147 establishments in Middlesex County (2024)"
+    },
+    {
+     "business_type": "Specialty food retail: meat markets, produce markets, bakeries, ethnic grocers",
+     "naics": "4452 (445210, 445230), 311811 retail bakeries",
+     "size_where_it_matters": "1 location, 5\u201330 staff"
+    },
+    {
+     "business_type": "Beer, wine and liquor stores",
+     "naics": "445310",
+     "size_where_it_matters": "3,000\u201315,000 sq ft, 5\u201320 staff"
+    }
+   ],
+   "problem_evidence": [
+    {
+     "fact": "Grocery out-of-stock rate fell from 10.7% in 2022 to 6.5% in 2023, below the ~8% historical norm, per FMI's Food Retailing Industry Speaks.",
+     "year": "2024 (reporting 2023 data)",
+     "source_url": "https://www.fmi.org/blog/view/fmi-blog/2024/07/25/progress-on-supply-chain-efficiency---performance"
+    },
+    {
+     "fact": "Independent grocers surveyed by FMS/NGA reported an average out-of-stock rate of 17.5% in FY2022, down from 24.3% in 2021, and 49% said they lost sales to procurement problems \u2014 a much higher out-of-stock level than the national all-retailer figure above.",
+     "year": "2023 (reporting FY2022 data)",
+     "source_url": "https://www.nationalgrocers.org/news/2023-independent-grocers-financial-survey-webinar-key-takeaways/"
+    },
+    {
+     "fact": "IHL Group put inventory distortion at $1.77T globally (2023 study), with $349B in lost sales for U.S./Canadian retailers in 2022 and 17.7% more out-of-stocks in North America than the prior year; for food/grocery, 'empty shelves' was the number one reason shoppers gave for leaving without intended purchases.",
+     "year": "2023",
+     "source_url": "https://www.supermarketnews.com/finance/retail-losses-reach-1-77-trillion-worldwide"
+    },
+    {
+     "fact": "N.J.S.A. 56:8-2.5 makes it an unlawful practice to sell, attempt to sell or offer merchandise at retail unless the total selling price is 'plainly marked by a stamp, tag, label or sign' affixed to the merchandise or located at the point where it is offered for sale; N.J.S.A. 56:8-2.6 makes each day of non-marking for each group of identical merchandise a separate violation. (Division of Consumer Affairs compilation of the Consumer Fraud Act, revised 3/30/2022; statutes enacted L.1973, c.308.)",
+     "year": "2022 (DCA compilation revision date)",
+     "source_url": "https://www.njconsumeraffairs.gov/statutes/consumer-fraud-act.pdf"
+    }
+   ],
+   "established_pattern": "Two published patterns dominate: (a) detect every product facing with a dense object detector, then infer gaps from missing positions, and (b) directly detect empty shelf space as its own class \u2014 the paper below reports that pattern (a) cannot see 'frontal' gaps that are boxed in from behind, and that pattern (b) with a second frontal class scores higher. Both are followed by shelf-row/sequence alignment against a planogram or a learned 'realogram', then tag reading to catch price mismatches. Published work runs this on a walking robot or a phone/cart capture rather than continuous fixed cameras, because one camera covers only a few feet of shelf (inference from camera geometry, not from a cited test). For a small store the practical hybrid is: fixed cameras on the 10\u201320% of facings that carry most velocity (always-on, cheap), plus a once- or twice-daily phone or cart-mounted capture ...",
+   "fine_tuning_needed": "Yes for the detector, no for the VLM. Shelf/product detection needs a store-specific fine-tune: start from SKU-110K-style pretraining, then 300\u2013800 hand-labeled shelf images per store (a few categories at a time). Do not promise a headline AP jump: the peer-reviewed study below gained ~4 AP points on the normal class over the best prior deep-learning baseline, so the win for a client is workflow and coverage, not a new accuracy record. The VLM is usable as shipped for tag reading and ...",
+   "existing_solutions": [
+    {
+     "vendor": "Simbe Robotics",
+     "product": "Tally (autonomous shelf-scanning robot + cloud)",
+     "pricing": "Unknown \u2014 Robot-as-a-Service: zero upfront cost, monthly fee depending on store size, SKU count and whether CV and/or RFID is used; company says most of its stores are >5,000 sq ft (minimum >1,000 sq ft)",
+     "source_url": "https://www.simberobotics.com/faqs"
+    },
+    {
+     "vendor": "Focal Systems",
+     "product": "Focal shelf cameras / 'Shelf AI'",
+     "pricing": "Unknown \u2014 set-up fee plus a monthly service fee; total depends on number/size of stores, number of services and contract length. Cameras are not sold separately (AI-as-a-Service).",
+     "source_url": "https://focal.systems/faqs/"
+    },
+    {
+     "vendor": "Pensa Systems",
+     "product": "Shelf availability scanning (mobile/drone capture + cloud CV)",
+     "pricing": "Unknown",
+     "source_url": "https://pensasystems.com/wp-content/uploads/2022/08/Pensa_CaseStudy_RetailScanning.pdf"
+    },
+    {
+     "vendor": "Zippedi",
+     "product": "Zippy shelf-scanning robot",
+     "pricing": "Unknown \u2014 no published manufacturer price. A European distributor (Robot Distribution, robot-distribution.com/en/brands/zippedi) lists the robot for purchase, short rental (1\u201330 days), medium rental (1\u201312 months) or RaaS (24\u201360 months), with price on a written quote; US pricing terms not confirmed.",
+     "source_url": "https://robot-distribution.com/en/brands/zippedi"
+    },
+    {
+     "vendor": "Afresh",
+     "product": "Afresh Store Ordering / replenishment AI",
+     "pricing": "Unknown (demo/quote; positioned at regional and national grocery chains)",
+     "source_url": "https://www.afresh.com/resources/blog/store-ordering-rfp-faqs"
+    }
+   ],
+   "measured_outcomes": [
+    {
+     "finding": "Direct detection of empty shelf space with a two-stage (augment-then-fine-tune) training process plus an aspect-ratio post-filter reached 86.3% AP on fully empty out-of-stocks and 83.7% AP on 'frontal' out-of-stocks (85.0 mAP across both classes). That is about 4 AP above the best prior deep-learning direct-detection baseline (Jha et al.: YOLOv5 82.4%, YOLOv7 79.7%, EfficientDet 77.1% on the normal class) and far above earlier classical detectors (Canny 63.8%, colour histogram 61.4%, SVM 56.9%).",
+     "year": "2024",
+     "sample": "511 full-height shelf images from four major retailers in Croatia; 1,210 labeled OOS instances (730 normal, 480 frontal); 5-fold test",
+     "study_type": "peer-reviewed",
+     "strength": "Medium",
+     "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10819825/"
+    },
+    {
+     "finding": "A shelf-scanning robot (ROSCH) was 8x faster than a human operator at routine out-of-stock detection while running during store hours.",
+     "year": "2023",
+     "sample": "~2,000 annotated images (900 captured in 3 Italian supermarkets); tested in 1 supermarket in Salerno",
+     "study_type": "peer-reviewed",
+     "strength": "Medium",
+     "source_url": "https://openaccess.thecvf.com/content/ICCV2023W/ACVR/html/De_Simone_Autonomous_Mobile_Robot_for_Automatic_out_of_Stock_Detection_in_ICCVW_2023_paper.html"
+    },
+    {
+     "finding": "Independent grocers report 57% average store-level turnover and 35% already using automation to fill labor gaps \u2014 the labor pool that would otherwise do shelf walks. The same survey put independents' average out-of-stock rate at 17.5% (FY2022, from 24.3% in 2021).",
+     "year": "2023",
+     "sample": "521 independent grocers representing nearly 2,000 stores (FMS/NGA survey, FY2022)",
+     "study_type": "industry",
+     "strength": "Medium",
+     "source_url": "https://www.nationalgrocers.org/news/2023-independent-grocers-financial-survey-webinar-key-takeaways/"
+    }
+   ],
+   "legal_privacy": [
+    {
+     "issue": "Recording audio in the store",
+     "rule": "New Jersey's Wiretap Act requires the consent of at least one party to an in-person conversation before recording it (N.J.S.A. 2A:156A-2, -3, -4); recording for the purpose of a criminal or tortious act is illegal regardless of consent. Practical rule for a shelf system: buy cameras with microphones disabled or absent, and never record audio.",
+     "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/"
+    },
+    {
+     "issue": "Whether video-only recording in a retail sales floor is lawful",
+     "rule": "New Jersey's hidden-camera statute (N.J.S.A. 2C:14-9) criminalizes photographing or recording intimate parts or sexual acts where there is a reasonable expectation of privacy; the Reporter's Committee guide states the law does not criminalize recording devices for other purposes in areas to which the public has access or where there is no reasonable expectation of privacy. The Wiretap Act is ...",
+     "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/"
+    },
+    {
+     "issue": "Pricing and tag accuracy obligation",
+     "rule": "N.J.S.A. 56:8-2.5 makes it an unlawful practice to sell or offer merchandise at retail unless the total selling price is plainly marked by stamp, tag, label or sign on the merchandise or at the point of sale; N.J.S.A. 56:8-2.6 makes each day of non-marking for each group of identical merchandise a separate violation. Separately, the Unit Pricing Disclosure Act requires standard unit pricing for ...",
+     "source_url": "https://www.njconsumeraffairs.gov/statutes/consumer-fraud-act.pdf"
+    },
+    {
+     "issue": "Correction: the N.J.A.C. 13:47C-3.5 penalty is not the price-marking penalty",
+     "rule": "N.J.A.C. 13:47C-3.5 imposes a penalty of not less than $100 per violation (each package a separate violation) for noncompliance 'with the provisions of this subchapter' \u2014 a subchapter that contains the building-materials advertising rule at 13:47C-3.4 and covers nonfoodstuffs packaging and quantity rules. Nothing in it sets the penalty for retail price marking of grocery items, so the ...",
+     "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-47C-3-5"
+    },
+    {
+     "issue": "Enforcement risk for price/tag errors",
+     "rule": "NJ OWM inspections produced a $1.2M Dollar General settlement (announced November 2023) with a mandated annual internal audit where >2% overcharges = failed audit, a $1.64M Walmart unit-pricing settlement (June 2024) with the same audit-failure threshold concept, and a $150,000 Apple settlement (January 2026) that is the Division's largest ever under the Merchandise Pricing Act. A ...",
+     "source_url": "https://www.njoag.gov/ag-platkin-walmart-agrees-to-pay-1-64-million-settlement-to-resolve-allegations-of-unlawful-pricing-practices-at-retail-stores-statewide/"
+    }
+   ],
+   "prospecting_signals": {
+    "public": [
+     "Google/Yelp reviews that mention specific empty shelves, 'couldn't find', or a price that rang up higher than the tag (a recurring phrase pattern is the strongest low-cost signal). (inference)",
+     "Weekly circular size and page count \u2014 more advertised items means more tag changes per week and more chances for a mismatch. (inference)",
+     "Store footprint and aisle count published on the store's own site or in a shopping-center lease flyer; 8+ aisles with 15+ staff is where a walk stops happening. (inference)",
+     "Number of locations (1\u201310 is the sweet spot; above that they are already talking to Simbe/Focal). (inference)",
+     "Co-op/wholesaler affiliation visible on signage or the site (Wakefern/ShopRite, Key Food, IGA, Associated) \u2014 Wakefern members may already get shelf tools through the co-op (Simbe's Tally is deployed at two Wakefern members), so prioritize ...",
+     "Job postings for 'price integrity', 'planogram', 'reset crew' or overnight stocker roles \u2014 evidence that tag/shelf labor is a named, unfilled job. (inference)",
+     "NJ Division of Consumer Affairs / OAG press releases and OWM enforcement actions naming a banner (public, but only large chains appear).",
+     "Store photos on Google Maps that show empty facings, handwritten price signs or cases sitting in the aisle. (inference)"
+    ],
+    "walk_in": [
+     "Holes with no shelf tag versus holes with a tag \u2014 the first is a stocking gap, the second is a planogram/price gap; count both per aisle for 10 minutes.",
+     "Handwritten, taped or expired promo signs; tag facings that don't match the product in front of them.",
+     "Overstock on top stock or cut cases parked in the aisle (a sign the store restocks from the back by memory, not by list). (inference)",
+     "Number of staff on the floor at 2\u20134 pm and whether anyone carries a handheld scanner or a printed pick list.",
+     "Existing camera domes: count them, check whether they are IP/ONVIF (label on the housing) and whether any point at shelves rather than the door.",
+     "Register/POS model and receipt format \u2014 can you get an item-level sales export, or is the only data a Z-report? (inference)",
+     "Paper shelf tags versus electronic shelf labels; ESLs mean the price half of the pitch is already solved and only availability remains. (inference)",
+     "Backroom: is there a labeled location for each overstock item, or is it floor-stacked? (inference)"
+    ]
+   },
+   "pilot": {
+    "scope": "One store, 2\u20134 weeks. Week 1: baseline \u2014 two manual gap/price audits per day for five days on a fixed 10\u201315 aisle route, plus a POS item-level export. Week 2: install 4 fixed PoE cameras on the highest-velocity aisles, build the realogram from captured images, label 300\u2013500 shelf images, fine-tune the detector. Weeks 3\u20134: daily operation \u2014 one 5-minute phone walk per shift plus continuous fixed-camera monitoring on priority aisles, alerts pushed to the store's existing task channel, weekly ...",
+    "hardware": "4x 4K PoE cameras (page-1 prices $80\u2013$200 list / $48\u2013$120 current each), PoE switch, one Jetson Orin Nano Super ($249, supports up to four cameras so this is the ceiling for a single Jetson) or an Intel mini-PC as the local inference box, existing staff phone for the walk, cart/phone mount, cabling. Everything on-prem; no cloud dependency, no audio capture.",
+    "success_metric": "Primary: at least 25% fewer empty facings on the audited route at the 2 pm audit versus baseline. Secondary: \u226590% of gap alerts confirmed real by staff (precision), price-tag mismatch count reduced by half, and \u226410 minutes/day of added staff time. (thresholds are targets, not findings)",
+    "cost_range": "$4,500\u2013$9,500 for the pilot: cameras plus Jetson $440\u2013$730 at the prices cited above, plus an unsourced allowance for switch, cabling, mounts and labor (assume $700\u2013$1,600 all-in hardware), 35\u201355 hours of build/install/labeling at $100\u2013$125/hr ($3,500\u2013$6,900), plus travel. Ongoing service after the pilot: $300\u2013$700/month per store. Assumes one store, 10\u201315 aisles, existing Wi-Fi or a $150\u2013$300 cabling run, client supplies POS export, and no custom hardware enclosure.",
+    "assumptions": "Assumes the store will give a POS export (CSV or API) and 30 minutes of staff time on day one; assumes an 8\u201315k sq ft sales floor with 2.1\u20132.4 m shelving; excludes electronic shelf labels, excludes any customer analytics, and assumes the detector fine-tune reaches roughly 80\u201386% AP on the store's own images \u2014 the low end of what the Croatian study reports, because US packaging and lighting differ (inference). If labeling needs exceed 800 images, add 15\u201325 hours."
+   },
+   "risks": [
+    "Independents may not pay a recurring fee for a problem they have tolerated for years; the value story has to be price-accuracy penalty avoidance and night-crew hours, not 'AI'.",
+    "Most independents have no accurate planogram (Simbe says as much), so the installer absorbs the cost of building a realogram \u2014 unbilled hours in the first store of every account.",
+    "False positives erode trust fast; if staff chase 10 bad alerts they stop using the list within a week.",
+    "Fixed cameras are a poor fit for full-store coverage (a few feet of shelf per camera, and a single Jetson Orin Nano Super accepts up to four cameras), so the phone walk is load-bearing and depends on staff compliance."
+   ],
+   "full_brief": "revise-r2/05-retail-shelf-inventory/output.json"
+  }
+ ]
+}

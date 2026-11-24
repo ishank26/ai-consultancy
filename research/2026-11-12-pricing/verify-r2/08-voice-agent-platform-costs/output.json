@@ -1,0 +1,263 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "one_line: 'buyers on builder forums report $0.12-$0.40 per minute all-in'",
+      "problem": "The forum figures are Retell platform cost only, not all-in. The thread's headline number is explicitly 'around $0.17 US per minute ... This is JUST the retellai cost', and that poster separates middleware/API spend as an additional cost. The brief's own buyer_reported_costs entry says the same ('excluding separate middleware/API spend'), so the one_line contradicts its own sourced detail by labelling the band 'all-in'.",
+      "fix": "Reword to 'buyers on builder forums report $0.12-$0.40 per minute in platform cost (middleware/API extra)', or state platform + carrier + middleware separately. Do not describe the forum band as all-in."
+    },
+    {
+      "claim": "one_line: '($0.31-$0.38 at the premium voice/model end)'",
+      "problem": "Not derivable from the sourced prices and not labelled as inference. $0.31 is Retell's own headline maximum (confirmed on the pricing page); $0.38 is the GPT Realtime 2.1 per-minute LLM component, a part rather than an all-in figure. The two endpoints come from different kinds of number and no derivation is given, and the number does not reappear in any price_ranges band.",
+      "fix": "Recompute and show the build, e.g. Retell voice engine $0.055 + ElevenLabs v3 $0.10 + GPT 5.5 $0.16 + telephony $0.015 = ~$0.33/min (a straightforward premium configuration), label it 'Inference', or delete the parenthetical."
+    },
+    {
+      "claim": "what_is_included_vs_extra #1: 'Retell's headline $0.07-$0.31/min is the sum of voice engine $0.055 + TTS $0.015-$0.10 + LLM $0.0016-$0.38 + telephony $0.015'",
+      "problem": "The stated components do not sum to the stated endpoints. Cheapest combination = $0.055 + $0.015 + $0.0016 + $0.015 = $0.0866/min; most expensive = $0.055 + $0.10 + $0.38 + $0.015 = $0.55/min. Neither $0.07 nor $0.31 is reproduced, so the sentence presents an arithmetic relationship as fact that the rate card contradicts. (Each individual figure is correct on the page; the 'is the sum of' claim is not.)",
+      "fix": "Replace with something the numbers support: 'Retell's headline band is composed of voice engine $0.055 + TTS $0.015-$0.10 + LLM $0.0016-$0.384 + telephony $0.015, which sums to roughly $0.087-$0.55/min depending on voice and model chosen' - labelled Inference."
+    },
+    {
+      "claim": "price_ranges.full_service_or_custom: 'No vendor in this set publishes a one-time setup fee except Sarah247, which states setup is included.'",
+      "problem": "Self-contradictory: Sarah247 states setup is included, which means it publishes no setup fee either. The sentence reads as if Sarah247 is the one exception with a published fee. (Retell's $10 one-time verified-number fee is also not a setup fee.)",
+      "fix": "Rewrite: 'No vendor in this set publishes a one-time setup fee; Sarah247 states setup is included in the $350/month base. Retell's one-time $10 is per verified number, not a setup fee.' Setup-fee absence supports no setup-fee band, as the inference_note already says."
+    },
+    {
+      "claim": "caveats: 'Telnyx's voice-ai-agents URL now resolves at /pricing/conversational-ai, which is the URL cited here'",
+      "problem": "Backwards. I opened the cited https://telnyx.com/pricing/conversational-ai and it serves the voice-agent pricing page whose canonical URL and breadcrumb are https://telnyx.com/pricing/voice-ai-agents (dateModified 2026-10-01). The cited URL does work, so this is a wording error in the caveat rather than a broken citation, but as written it misdescribes which URL is canonical.",
+      "fix": "Reword: 'The cited /pricing/conversational-ai URL serves the same page as /pricing/voice-ai-agents, which is its canonical URL.'"
+    },
+    {
+      "claim": "Twilio offering rows: US outbound $0.014/min, US inbound local $0.0085/min, US local number $1.15/month",
+      "problem": "Not confirmable from the vendor page itself: fetching https://www.twilio.com/en-us/voice/pricing/us returns 854 characters of marketing copy with no rate table (the brief discloses this). I re-ran search against the same URL and the returned rendering does show $0.0140/min outbound, $0.0085/min inbound local, $0.0220/min toll-free inbound and $1.15/month local number - so the figures are corroborated by a search rendering of the cited URL, not by an opened rate card. Not a price error, but these are the only prices in the file with no machine-readable vendor page behind them.",
+      "fix": "Keep the UNVERIFIED labels and the caveat, and do not let Twilio rates carry weight in any quoted range (they currently do not). Optionally note that the toll-free $0.022/min figure is now corroborated by the same search rendering and could be unflagged, while call recording ($0.0025/min) and the $2.15/month toll-free rental remain unconfirmed."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Retell pay-as-you-go headline $0.07-$0.31/minute; 20 concurrent calls included, no platform fee, no feature gating, no minimums, no contracts",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell voice engine (Retell Voice Infra) $0.055/minute",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell TTS: $0.015/min for Retell Platform, Minimax, Fish, Cartesia, OpenAI, Inworld; ElevenLabs Flash $0.040; Multilingual v2 $0.06; v3 Conversational $0.08; v4 Turbo $0.08; v3 $0.10; v4 $0.10",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell LLM sample: GPT 5 nano $0.0016; GPT 5 mini $0.008 ($0.016 fast); GPT 5.6 Luna $0.0064 ($0.0128 fast); GPT 4.1 $0.045 ($0.0675 fast); GPT 5.6 Terra $0.064 ($0.128 fast); GPT 5.5 $0.16 ($0.32 fast); front-page table carries roughly 40 text LLMs plus a separate speech-to-speech table",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell speech-to-speech: GPT Realtime 2.1 $0.38/minute; GPT-Live 1 $0.05/minute plus backend LLM price per minute",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell telephony $0.015/min with no charge for SIP trunking/custom telephony; Retell phone numbers $2.00/month; verified number $10.00/number/month plus one-time $10 fee; extra concurrency $8.00/concurrency/month",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell add-ons: KB +$0.005/min, denoising +$0.005/min, guardrails +$0.005/min, PII removal +$0.01/min, batch call +$0.005/dial, branded call +$0.10/outbound call, AI QA $0.10/min with first 100 minutes free",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell subscriptions: KB $8.00/KB/month (first 10 free), SMS $0.01/msg, Retell SMS $20.00/month; calls billed to nearest second on total accumulated minutes, no per-call rounding",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell docs: 10-second minimum on calls using a dynamic opening message; billed duration scaled by prompt tokens / 4,000 above 4,000 tokens; Flex mode named as a common trigger",
+      "source_url": "https://docs.retellai.com/accounts/billing-exceptions",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vapi: $0 to start with $5 free credits, prepaid $0.05/min hosting, models pass-through at cost; Core $29/month; Pro 10% of hosting fee with $999/mo minimum; Premier custom; HIPAA $2,000/month; extra concurrency $10/line/month; extra org $20/organization/month",
+      "source_url": "https://vapi.ai/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vapi's own 1,000 minute/month estimate: $82-$129/mo total (hosting $50, Deepgram $10, OpenAI $8-$45, ElevenLabs $15-$24, transport $0, success package $0)",
+      "source_url": "https://vapi.ai/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vapi docs: audio transcribed on both channels, voice billed per character spoken, long calls cost more because growing history is re-sent with each request",
+      "source_url": "https://docs.vapi.ai/assistants/model-intelligence/understanding-cost",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bland Start $0.14/min with $0 platform fee and no card required; Build $0.12/min with $299/month platform fee; transfer time $0.05/min (Start) and $0.04/min (Build); 10/50 concurrent, 100 vs 2,000 calls per day, 99.9% SLA",
+      "source_url": "https://www.bland.ai/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bland FAQ claim that typical provider rates bring production stacks to roughly $0.13-$0.30/min on Vapi and $0.11-$0.25/min on Retell (third-party claim, undated)",
+      "source_url": "https://www.bland.ai/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bland bundles LLM/STT/TTS with no token charges, telephony separate at pass-through, and keeps warm/live transfers, SMS node, appointment-scheduling node and guardrails Enterprise-only; 28-day deployment framework",
+      "source_url": "https://www.bland.ai/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ElevenLabs ElevenAgents: Free $0/15 min/4 concurrent; Starter $1 first month then $6/75 min/6; Creator $11 then $22/275 min/10; Pro $99/1,238 min/20; Scale $299/3,738 min/30/3 seats; Business $990/12,375 min/40/10 seats/10 PVCs; Enterprise custom",
+      "source_url": "https://elevenlabs.io/pricing/agents",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ElevenLabs additional call $0.080/min, burst $0.160/min (2x, up to 3x concurrency), SMS $0.003/message, LLM at cost, telephony surcharge-free, prices exclude taxes/levies/duties, monthly or yearly billing, unused paid credits expire on downgrade/cancel",
+      "source_url": "https://elevenlabs.io/pricing/agents",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Deepgram Voice Agent: Standard $0.075/min PAYG ($4.50/hr) and $0.068 Growth ($4.08/hr); Standard BYO TTS $0.065/$0.051; Custom BYO LLM $0.065/$0.059; Custom BYO LLM+TTS $0.050/$0.041; Advanced $0.163/$0.146 ($9.78/$8.76/hr); Advanced BYO TTS $0.122/$0.110; billed on WebSocket connection time",
+      "source_url": "https://deepgram.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Deepgram streaming: Nova-3 Mono $0.0077/$0.0065; Nova-3 Multilingual $0.0092/$0.0078; Flux STT English $0.0077/$0.0065; add-ons redaction $0.0020, keyterm $0.0013, diarization $0.0020; per-second billing, no block rounding; smart formatting free",
+      "source_url": "https://deepgram.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Deepgram Growth $4,000+/year prepaid credits saving up to 20%, concurrency 225 vs 150, overage at Growth rate +10% billed weekly on Mondays, card must stay on file or 402; $200 free credit (~43,000 min Nova-3) with no card required",
+      "source_url": "https://deepgram.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OpenAI gpt-live-1 $0.05/minute billed per second without rounding up, backend model and tools charged separately",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OpenAI gpt-realtime-2.1 audio $32.00 in/$64.00 out per 1M tokens (cached $0.40), text $4.00/$24.00; gpt-realtime-2.1-mini audio $10.00/$20.00 (cached $0.30), text $0.60/$2.40",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OpenAI transcription: gpt-live-transcribe and gpt-realtime-whisper $0.017/min; gpt-transcribe $0.0045/min; gpt-4o-transcribe $0.006/min; Whisper $0.006/min; data-residency endpoints +10% for models released on or after March 5, 2026",
+      "source_url": "https://developers.openai.com/api/docs/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Telnyx voice engine $0.05/min including orchestration + hosted STT + hosted TTS; Kimi on Telnyx GPUs typically ~$0.006/min; telephony from $0.0032/min; vendor's stated all-in ~$0.06/min and ~$13,700/month at 230,000 minutes; per-call rounding to 60-second increments excluded from the estimate",
+      "source_url": "https://telnyx.com/pricing/conversational-ai",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Telnyx Voice API $0.002/min, SIP trunking from $0.0032/min inbound and from $0.005/min outbound, US local numbers $1.00/mo with volume from $0.79/mo, 500 concurrent calls on pay-as-you-go, HIPAA included on every plan",
+      "source_url": "https://telnyx.com/pricing/conversational-ai",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Telnyx Growth $2,000/mo monthly minimum spend with 15% discount on Voice, Messaging and Numbers; Enterprise $5,000/mo minimum; voice engine and LLM rates identical on every plan",
+      "source_url": "https://telnyx.com/pricing/conversational-ai",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Telnyx comparison table: 'Competitor estimates ... July 2026' of $0.12-$0.42/min on Vapi and $0.088-$0.31/min on Retell vs ~$0.06 on Telnyx; 10,000 minutes at $596 on Telnyx vs $1,450-$3,250 and $880-$1,650",
+      "source_url": "https://telnyx.com/pricing/conversational-ai",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Telnyx STT rate card: Telnyx STT $0.015, Deepgram Nova 2/Nova 3/Flux $0.005, Google $0.017, Azure $0.027, AssemblyAI $0.005, Parakeet $0.0015 per minute; TTS from $0.000003 per character",
+      "source_url": "https://telnyx.com/pricing/speech-to-text",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Synthflow sells only an annual enterprise agreement, no free plan or trial, no rate by the minute, integrations/telephony/security review/launch support scoped into one contract, forward-deployed engineers where the agreement includes launch support",
+      "source_url": "https://synthflow.ai/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Goodcall Starter $79/mo (100 unique customers, 5 workers, 1 external tool, base AI usage, 1 team member, 30-day history); Growth $129 (500, 10, 5, 5x, 5, 90-day); Scale $299 (2,000, 20, 15, 20x, 10, unlimited); overage 79c/26c/15c; no per-minute billing; local number included",
+      "source_url": "https://www.goodcall.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Goodcall FAQ: live answering service runs about $1.50-$1.90 a minute and its $79 Starter works out to about 13c a minute at four-minute calls",
+      "source_url": "https://www.goodcall.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vocenya: Value $49/250 AI min/$0.25 overage; Starter $99/300/$0.35; Growth $249/1,000/$0.30 with calendar booking, warm transfers, recordings, live chat with handoff, 10 team members; Pro $499/2,500/$0.25; 14-day trial on all; no contract",
+      "source_url": "https://vocenya.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vocenya add-ons: HIPAA mode $150/mo, GH Phone $25/user/mo, website live chat $49/mo (included Growth/Pro), your own voice $29/mo on Value; GH Live agents a separately quoted per-call rate; AI minute rounded up to the next minute",
+      "source_url": "https://vocenya.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sarah247 New Jersey: from $350/month including one channel plus 35c per minute of conversation, setup included, no long-term contracts, no per-state pricing, NJ area codes 201/973/609/732, Eastern time, free porting",
+      "source_url": "https://sarah247.ai/locations/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell community thread (June 2026): agency operator reports average ~$0.17 US per minute YTD across mixed complexity, 'JUST the retellai cost'",
+      "source_url": "https://community.retellai.com/t/average-cost-per-minute-for-ai-voice-agents-built-on-retell/3118",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Same thread: 11-15c simple, 16-23c complex, $0.12-$0.14 typical for clients, 12-15c, and $0.35-$0.40 for ElevenLabs v3 with 6k+ tokens of production knowledge",
+      "source_url": "https://community.retellai.com/t/average-cost-per-minute-for-ai-voice-agents-built-on-retell/3118",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Thread 2720 (May 2026): 1,044 calls, 567 answered, ~22 min 10 s read from the export, ~$32.69 billed, poster's ~$1.47/min effective vs advertised ~$0.12/min; Retell replies with per-agent totals of 23 min and 238.57 min, says the duration column was not converted, and that it bills per second",
+      "source_url": "https://community.retellai.com/t/urgent-billing-transparency-and-invoice-discrepancy-review/2720",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Thread 2441 (April 2026): 229-second call $0.7391 and 173-second call $0.6358 against a 13.6c/min dashboard headline (~5x); breakdown voice engine $0.210 + platform TTS $0.057 + GPT-5.1 $0.153 + US Twilio telephony $0.057 + LLM token surcharge $0.262, posted by Retell staff",
+      "source_url": "https://community.retellai.com/t/why-are-my-calls-suddenly-much-higher/2441",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Same thread: staff cite a 3,500-token threshold (docs now say 4,000) and say no alert exists for prompt length, only a total call-cost alert",
+      "source_url": "https://community.retellai.com/t/why-are-my-calls-suddenly-much-higher/2441",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Twilio US outbound $0.014/min, US inbound local $0.0085/min, US local number $1.15/month",
+      "source_url": "https://www.twilio.com/en-us/voice/pricing/us",
+      "result": "could not open - direct fetch returns marketing copy with no rate table; corroborated only by a search-engine rendering of the same URL ($0.0140/$0.0085/$1.15, and $0.0220 toll-free inbound)"
+    },
+    {
+      "claim": "Twilio US toll-free inbound $0.022/min, call recording $0.0025/min, toll-free number $2.15/month (all marked UNVERIFIED in the brief)",
+      "source_url": "https://www.twilio.com/en-us/voice/pricing/us",
+      "result": "not found - page not machine-readable; toll-free $0.022/min appears in the search rendering of the cited URL, recording and toll-free rental rates appear nowhere I could open"
+    },
+    {
+      "claim": "price_ranges.low_cost_self_serve $0.06-$0.15/min: Telnyx $0.05 + ~$0.006 Kimi + $0.0032 telephony ~ $0.06; Retell $0.055 + $0.064 LLM + $0.015 TTS + $0.015 telephony ~ $0.15",
+      "source_url": "https://telnyx.com/pricing/conversational-ai",
+      "result": "confirmed (arithmetic reproduces: $0.0596 and $0.149; labelled inference)"
+    },
+    {
+      "claim": "price_ranges.mid_market $0.12-$0.40/min plus $79-$499/month SMB plans",
+      "source_url": "https://community.retellai.com/t/average-cost-per-minute-for-ai-voice-agents-built-on-retell/3118",
+      "result": "confirmed (endpoints and monthly prices all trace to the cited sources; labelled inference)"
+    },
+    {
+      "claim": "price_ranges.full_service_or_custom: $350-$499/month managed, $999 (Vapi Pro) and $2,000-$5,000/month (Telnyx) minimums",
+      "source_url": "https://sarah247.ai/locations/new-jersey/",
+      "result": "confirmed (prices trace; the setup-fee sentence in the same band is the problem - see issues)"
+    },
+    {
+      "claim": "Implications: 1,000 minutes at $0.12-$0.17/min = $120-$170; live answering service $1.50-$1.90/min = $1,500-$1,900 per 1,000 minutes; 500 min at 35c adds $175/mo and 1,000 min adds $350/mo to Sarah247's $350 base",
+      "source_url": "https://www.goodcall.com/pricing",
+      "result": "confirmed (arithmetic correct, labelled inference, consistent with the sourced prices)"
+    }
+  ],
+  "confidence": "High"
+}

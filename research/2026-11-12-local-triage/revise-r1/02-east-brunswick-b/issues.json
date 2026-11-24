@@ -1,0 +1,47 @@
+[
+ {
+  "claim": "Brunswick Hills OB/GYN of East Brunswick and OB/GYN of East Brunswick (both listed, both on axiawh.com)",
+  "problem": "Excluded type still in the list: both are locations of Axia Women's Health, a multi-state corporate physician group whose own locations directory lists 150+ offices across NJ, PA, IN and KY (including three 'OB/GYN of East Brunswick' sites and 'Brunswick Hills OB/GYN - East Brunswick'). The mapper already flagged them for exclusion review; the review resolves against inclusion.",
+  "fix": "Remove both entries, or keep only if the team explicitly accepts large-group practices; do not count them toward the zone's independent-business total."
+ },
+ {
+  "claim": "Coverage of independent podiatry in East Brunswick",
+  "problem": "AZNO Foot and Ankle Specialist (172 Summerhill Rd, Suite 2) is a large, active East Brunswick practice (4.8, ~1,323 reviews on Birdeye) and is completely absent from the list; so are Dr. Arnold Horowitz's East Brunswick Foot and Ankle Care Center (ebfootcare.com) and Dr. Anshini Dalal (Complete Foot and Ankle Specialty, G12 Brier Hill Ct). Only 1 of 4 podiatry practices found by search is listed.",
+  "fix": "Add AZNO Foot and Ankle Specialist, East Brunswick Foot and Ankle Care Center and Complete Foot and Ankle Specialty with addresses."
+ },
+ {
+  "claim": "Coverage of optometry",
+  "problem": "Only Logos Vision from my optometry search is listed; Eye Health Group of East Brunswick (Dr. Matthew Lauletti, 326 Route 18 N) and SEE MORE Eye Care (Dr. Mikhail Vairona, 561 Cranbury Rd Suite E) are missing. (Eyexam Group inside LensCrafters was treated as chain-affiliated and excluded.)",
+  "fix": "Add the two independent optometry practices; verify whether Eyexam Group is corporate-run before adding."
+ },
+ {
+  "claim": "Coverage of dental, acupuncture, dermatology and therapy categories",
+  "problem": "Missing independent practices: The Family & Cosmetic Dental Group (East Brunswick, familycosmeticdentalgroup.com), Oriental Natural Health Center (77 Milltown Rd Suite C2, 4.7/23 reviews), Dr. James Chang LAc (160 Tices Ln), Dr. Patricia Iannotta, dermatologist (6 Auer Ct Suite E), and four Psychology Today therapists in East Brunswick (Anne Lieber, Michelle Porter, Stacy Paul, Araceli Fernandez) where the list holds only 5 therapists total.",
+  "fix": "Add these practices in a follow-up pass; the therapist sweep in particular looks under-sampled versus the Psychology Today directory."
+ },
+ {
+  "claim": "Seesaw Vision Center phone '(732) 247-2847'",
+  "problem": "The practice's own East Brunswick location page gives (848) 308-7504 at 190 NJ-18, Suite 302; the listed number is not the one the business publishes.",
+  "fix": "Replace with (848) 308-7504."
+ },
+ {
+  "claim": "Dr. Daniel Belli, VMD (44 Arthur Street) and East Brunswick Animal Hospital (address 'Unknown')",
+  "problem": "Duplicate entry: East Brunswick Animal Hospital's own staff page lists Daniel Belli, VMD as one of its veterinarians, and 44 Arthur Street is that hospital's address, so the two rows describe one practice, not two prospects. The hospital's address was left Unknown while the doctor's row carries it.",
+  "fix": "Merge into one entry: East Brunswick Animal Hospital, 44 Arthur St, with Dr. Belli noted as a staff veterinarian."
+ },
+ {
+  "claim": "~35 entries with address 'Unknown' (all of the DentistsRanked-derived rows, East Brunswick Animal Hospital, Elevate PT, LBS Nutrition, etc.)",
+  "problem": "These rows can be verified as existing but cannot be routed or prioritised without a street address; two of them (Elevate PT) are actually inside another listed venue (CrossFit Barbending) and one is a duplicate of another row.",
+  "fix": "Fill addresses from each practice's own site before triage; where the only source is an aggregator snippet, mark the row as unaddressed and deprioritise it."
+ },
+ {
+  "claim": "Website field left blank for businesses that clearly run their own site",
+  "problem": "Several listed businesses have an active own-website that was not captured (e.g. Wadie's Salon wadieshairsalon.com, Drama Salon dramasalon.com, New Image Hair Salon mynewimagehairsalon.com, Ellan Laser MedSpa ellanlaser.com, Alliance Orthopedics allianceortho.com is present but phone blank). Blank websites understate how contactable these prospects are.",
+  "fix": "Backfill website (and phone) fields from the practice sites; a blank website should mean 'none found', not 'not looked for'."
+ },
+ {
+  "claim": "Elevate Physical Therapy and Rehab address 'Unknown'",
+  "problem": "Its own site states the clinic is located inside CrossFit Barbending in East Brunswick, which the list separately records at 3 Joanna Court, Suite E.",
+  "fix": "Set address to 3 Joanna Court, Suite E (inside CrossFit Barbending) and cross-reference the two entries so the team does not treat them as separate buildings."
+ }
+]

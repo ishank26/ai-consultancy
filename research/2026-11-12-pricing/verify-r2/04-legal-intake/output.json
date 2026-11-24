@@ -1,0 +1,93 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "implications_for_consultancy[0]: a firm is 'already budgeting $300-$900/month for coverage (Alert's own blog) and is used to annualising that to $4,500-$10,800'",
+      "problem": "$300/month annualised is $3,600, not $4,500. The low end of the annual figure does not follow from the sourced monthly range (Alert's blog: $300-$900/month). Only the ceiling ($900 x 12 = $10,800) is arithmetically correct.",
+      "fix": "Restate as '$3,600-$10,800 a year' (or '$300-$900/month, i.e. $3,600-$10,800 annualised'). Keep the inference label."
+    },
+    {
+      "claim": "implications_for_consultancy[6]: 'a $250-$400/month after-hours AI-plus-backup offer lands below Alert's $240 message-taking tier while including qualification'",
+      "problem": "Internally contradictory: a $250-$400/month offer is above, not below, Alert's $240 Basic tier (verified at alertcommunications.com/plans: Basic 'Starting at $240/month', 100 minutes, message taking). The pricing recommendation and the comparison it rests on cannot both stand.",
+      "fix": "Either reprice the offer (e.g. '$150-$230/month to sit under Alert's $240 message-taking tier') or drop the 'below Alert's $240 tier' justification and instead anchor it under Ruby $250 / Abby $164-$329 and above Smith.ai AI Pro $150. State which number the claim is measured against."
+    },
+    {
+      "claim": "offerings[Alert Communications].setup_fee: 'Not stated on plans page'",
+      "problem": "Incomplete. The plans page footnote states 'Additional usage, overages, setup fees, and add-ons may apply', so the vendor does signal that setup fees exist, just not an amount. As written a reader may conclude setup is free.",
+      "fix": "Change to 'Amount not published; page footnote says additional usage, overages, setup fees and add-ons may apply. Vendor blog itemises a typical ~$500 setup (CRM integration $200, custom scripts $150, agent training $150).'"
+    },
+    {
+      "claim": "offerings[Answering Legal] setup_fee / contract_terms cite source_url https://www.answeringlegal.com/help-center/billing/how-does-answering-legal-s-pricing-work",
+      "problem": "That help-center page does not contain the $399-$599 extensive-setup reserve, the $350 Dec 5-Jan 7 trial setup fee, the $21.50 carrier recovery fund, the 1.5%/month late fee or the first-six-months review. All of those are in https://www.answeringlegal.com/terms-of-service (last modified April 10, 2026), which I opened and confirmed - the figures are right, the citation is not.",
+      "fix": "Add https://www.answeringlegal.com/terms-of-service as the source for the fee/contract terms and keep the help-center URL only for the feature-inclusion and month-to-month claims it actually supports."
+    },
+    {
+      "claim": "price_ranges.mid_market: A Message Center grouped among 'general-market/per-call options'",
+      "problem": "Classification only, not a price error: A Message Center markets itself as a law-firm answering service (amessagecenter.com/legal-answering-service, 'Serving law firms since 1962'). Its $145 price is legitimate as the mid-market floor, but the label misdescribes the vendor.",
+      "fix": "Move A Message Center into the legal-only group, which would make the legal-only band $145-$675 and require the $240-$675 sub-band sentence to be restated (Alert Basic $240 and LEX Entry $375 are the floor for vendors with no cheaper tier; A Message Center Standard $145 is lower)."
+    },
+    {
+      "claim": "offerings[Lawmatics] presents the grid as Essential and Premium at a '3 user minimum'",
+      "problem": "The vendor pricing page shows a user-minimum row reading 3 / 3 / 5, i.e. a third, higher plan (10,000 contacts, 5-user minimum) exists above Premium. The brief's two-tier summary is incomplete and the blanket '3 user minimum' is not true of the whole line. No price is misquoted (all Lawmatics plan prices are quote-only).",
+      "fix": "Add the third tier (5-user minimum) or state 'Essential and Premium carry a 3 user minimum; the plan above Premium has a 5 user minimum'."
+    },
+    {
+      "claim": "buyer_reported_costs entries sourced to Reddit (r/Lawyertalk $225/$440/~$10 per call; r/LawFirm $429/250 min; $299 for 50 calls) and the BBB Smith.ai complaint",
+      "problem": "Could not be independently reopened: Reddit returned 'could not extract readable content', BBB returned HTTP 403, exactly as the brief discloses. The figures remain unverified search-summary anecdotes.",
+      "fix": "Keep, but the brief's own caveats should be repeated wherever these figures are used downstream; do not let them into any range or recommendation as if they were vendor prices."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Smith.ai AI Receptionist Free tier: $0/mo, 25 calls, $3.00/call after", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai AI Receptionist Pro: $150/mo at $2.00/call (75 calls); 150 calls at $1.80, 300 at $1.67", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai AI Receptionist Enterprise: $500/mo at $1.67/call (300 calls); 500 at $1.60, 1000+ custom", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai AI overage: $2.50 at 75 calls, $2.30 at 150, $2.17 at 300; Enterprise $2.17 at 300, $2.10 at 500", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai AI-first is month-to-month, 30 days' notice, plan changes any time, 6-month rollover plan offered", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai human-first Starter $300/mo for 30 calls, overage $11.50/call", "source_url": "https://smith.ai/pricing/receptionists", "result": "confirmed"},
+    {"claim": "Smith.ai human-first Basic $810/mo for 90 calls (overage $10.50) and Pro $2,100/mo for 300 calls (overage $8.50); Enterprise custom", "source_url": "https://smith.ai/pricing/receptionists", "result": "confirmed"},
+    {"claim": "Smith.ai human-first: no setup fees, 30-day money-back up to $1,000 excluding overage, month-to-month, first CRM free then $0.50/call per extra CRM, 10% discount for 12 months", "source_url": "https://smith.ai/pricing/receptionists", "result": "confirmed"},
+    {"claim": "Smith.ai per-call add-ons: bookings $1.50, SMS/Slack $0.50, conflict checks $0.50, recording $0.25, Spanish line $1.00, payments $1.00, third-party intake $1.00, complex routing $1.50, extended intake $1.50, custom extended intake $0.25/question", "source_url": "https://smith.ai/pricing/receptionists", "result": "confirmed"},
+    {"claim": "Smith.ai Hybrid presets from $2.50 / $3.10 / $3.70 per call with live-agent cost about $4.80 and AI about $1.80 per call", "source_url": "https://smith.ai/pricing/hybrid-ai-human-receptionists", "result": "confirmed"},
+    {"claim": "Smith.ai Hybrid at 300 calls/month = $771 (New Client Priority), $951 (Highest Touch), $1,131 (After Hours Only)", "source_url": "https://smith.ai/pricing/hybrid-ai-human-receptionists", "result": "confirmed"},
+    {"claim": "Alert Communications Basic $240/mo (100 min), Advanced $590/mo (250 min), Premier $575/mo + $75 per retainer (250 min), Alert Go $2.50/min + $100 per retainer", "source_url": "https://www.alertcommunications.com/plans/", "result": "confirmed"},
+    {"claim": "Alert plans page lists no overage rate; page footnote says additional usage, overages, setup fees and add-ons may apply", "source_url": "https://www.alertcommunications.com/plans/", "result": "contradicted"},
+    {"claim": "LEX Reception: $375/150 min ($1.75 overage), $395/300 min ($1.50), $675/500 min ($1.50), last updated July 30 2026", "source_url": "https://directory.lawnext.com/products/lex-reception/pricing/", "result": "confirmed"},
+    {"claim": "LEX's own site has no live /pricing page (404), so plans are request-only/third-party", "source_url": "https://lexreception.com/pricing/", "result": "confirmed"},
+    {"claim": "LEX FAQ: plans can be changed, billing in receptionist minutes rounded up to the next whole minute", "source_url": "https://www.lexreception.com/faqs", "result": "confirmed"},
+    {"claim": "Ruby: $250 (50 min), $395 (100), $720 (200), $1,725 (500) per month", "source_url": "https://www.ruby.com/pricing/", "result": "confirmed"},
+    {"claim": "Ruby chat bundled at 20% saving: 10 chats $115, 30 chats $268, 50 chats $416; chat-only $143 / $335 / $520", "source_url": "https://www.ruby.com/pricing/", "result": "confirmed"},
+    {"claim": "Ruby: no additional or hidden fees for activation, onboarding, setup, customization or coverage; AI enhancements at no extra cost", "source_url": "https://www.ruby.com/pricing/", "result": "confirmed"},
+    {"claim": "Ruby overage rate not stated on the pricing page", "source_url": "https://www.ruby.com/pricing/", "result": "confirmed"},
+    {"claim": "Abby Connect: $164/50 Abby Minutes, $329/100, $599/200, $1,380/500; overage at plan's Abby Minute rate; no setup fee; free trial on every plan; month-to-month", "source_url": "https://www.abby.com/pricing/", "result": "confirmed"},
+    {"claim": "Abby Connect lists bilingual English/Spanish answering and 1,000+ integrations among included plan features", "source_url": "https://www.abby.com/pricing/", "result": "confirmed"},
+    {"claim": "A Message Center: Starter $47/mo ($42 annual) + $2.00/call; Standard $145 ($140 annual) incl. 50 calls, $1.85 overage; Growth $320 ($310) incl. 150 calls, $1.75; Enterprise $490 ($480) incl. 250 calls, $1.65", "source_url": "https://amessagecenter.com/pricing", "result": "confirmed"},
+    {"claim": "A Message Center states English+Spanish 'at no additional charge for standard calls', Millville NJ, month-to-month, no hidden fees", "source_url": "https://amessagecenter.com/legal-answering-service", "result": "confirmed"},
+    {"claim": "NextPhone Pro $199/mo, Growth $299/mo, Scale $599/mo, unlimited calls, no overage, no setup fee; annual $1,990/$2,990/$5,990 (about $166/$249/$499 per month); 7-day trial", "source_url": "https://www.getnextphone.com/pricing", "result": "confirmed"},
+    {"claim": "NextPhone: Growth and Scale include done-for-you agent build that the vendor values at $1,500; local number included on every plan; outbound calls from the mobile app on Scale only", "source_url": "https://www.getnextphone.com/pricing", "result": "confirmed"},
+    {"claim": "Answering Legal publishes no plan price (form-gated) and overage rate is only in the agreement", "source_url": "https://www.answeringlegal.com/help-center/billing/how-does-answering-legal-s-pricing-work", "result": "confirmed"},
+    {"claim": "Answering Legal claims 24/7 live answering, custom legal intake scripts, CRM integrations, bilingual receptionists, scheduling included at any plan size; month-to-month; free trial offered", "source_url": "https://www.answeringlegal.com/help-center/billing/how-does-answering-legal-s-pricing-work", "result": "confirmed"},
+    {"claim": "Answering Legal terms (last modified April 10, 2026): $399-$599 reserved extensive setup, $350 setup for trials Dec 5-Jan 7, $21.50 carrier recovery fund, 1.5%/month late fee, first six months usage review", "source_url": "https://www.answeringlegal.com/terms-of-service", "result": "confirmed"},
+    {"claim": "Lawmatics SMS ladder: $0/50, $39/1,500, $99/5,000, $179/10,000, $399/25,500, $699/50,000, $1,249/100,000, $2,249/200,000 with overage $0.03/$0.022/$0.02; MMS $25 per 1,000 ($300/12,000 annual); no downgrades", "source_url": "https://www.lawmatics.com/pricing/sms-mms", "result": "confirmed"},
+    {"claim": "Lawmatics plan prices are quote-only; Essential 500 contacts and 10 automations; Premium 10,000 contacts; 50 e-signatures/50 texts on entry; user minimums 3/3/5", "source_url": "https://www.lawmatics.com/pricing", "result": "confirmed"},
+    {"claim": "Lawmatics $399 onboarding discounted from $1,500, $1,101 early-exit cap, annual contract (quoted from Terms of Use by CaseAgent, Sep 16 2026)", "source_url": "https://caseagent.com/blog/lawmatics-pricing", "result": "confirmed"},
+    {"claim": "Clio Grow last published $59/user/mo annual and $69 monthly plus $399 setup, quote-only since May 2026, $49 is the only rate left on the page", "source_url": "https://caseagent.com/blog/clio-grow-pricing", "result": "confirmed"},
+    {"claim": "Clio Grow AI billed $25 per hired matter with first three free, rate reported at the August 2026 launch; 20 matters ~ $500/month", "source_url": "https://caseagent.com/blog/clio-grow-pricing", "result": "confirmed"},
+    {"claim": "Answering Legal third-party reports: MyCase (Dec 12 2024) $330/100 min, $479/150, $616/200, $737/250; Upfirst (Sep 24 2026) $360/100, $676/200, $936/300; 'about $330 to $360 for 100 minutes'", "source_url": "https://www.getnextphone.com/blog/answering-legal-pricing", "result": "confirmed"},
+    {"claim": "Answering Legal's own 2016 blog said rates start at $198/month; 2018 post priced a 100-minute solo plan at $3.60/minute (~$360/month)", "source_url": "https://www.getnextphone.com/blog/answering-legal-pricing", "result": "confirmed"},
+    {"claim": "Answering Legal free trial described variously as 7 days, 14 days or 400 minutes", "source_url": "https://www.answeringlegal.com/free-trial-tutorial", "result": "confirmed"},
+    {"claim": "Alert Communications blog: legal answering range $25 to over $1,500/month; small/midsize firms allocate $300-$900/month; per-minute $1.50-$5.00; per-call $7-$10.50; bilingual support adds $30-$50/month", "source_url": "https://www.alertcommunications.com/blog/how-much-does-a-legal-answering-service-cost/", "result": "confirmed"},
+    {"claim": "Alert blog's typical setup breakdown: CRM integration $200, custom scripts $150, agent training $150 (~$500 total)", "source_url": "https://www.alertcommunications.com/blog/how-much-does-a-legal-answering-service-cost/", "result": "confirmed"},
+    {"claim": "Legal Intaker: page headline 'Starting at $13/hr', pricing chart is an image, no long-term contracts, no upfront costs, flat monthly rates", "source_url": "https://www.legalintaker.com/pricing", "result": "confirmed"},
+    {"claim": "Legal Intaker Philippines $13.00/hr and Latin America $15.00/hr, page title 'From $2,227/mo'", "source_url": "https://www.legalintaker.com/pricing", "result": "not found"},
+    {"claim": "Intaker publishes no price; third-party records 'Price not listed ... fees vary depending on usage ... no refunds', checked 30 Sep 2026", "source_url": "https://techyorker.com/products/intaker/pricing/", "result": "confirmed"},
+    {"claim": "Captorra starting price $200/month per GetApp listing", "source_url": "https://www.getapp.com/legal-law-software/a/captorra/", "result": "could not open"},
+    {"claim": "Reddit buyer reports ($225 Answering Legal, $440 LEX, ~$10/call Smith.ai, $429/250 min, $299/50 calls)", "source_url": "https://www.reddit.com/r/Lawyertalk/comments/1m5o14c/what_answering_service_do_you_use_do_you_like_it/", "result": "could not open"},
+    {"claim": "BBB Smith.ai complaint: 163 spam/automated calls billed, >$300 disputed overages", "source_url": "https://www.bbb.org/us/ca/los-altos/profile/online-shopping/smithai-1216-1000053964/complaints", "result": "could not open"},
+    {"claim": "price_ranges.low_cost_self_serve $0-$199/month and $13-$15/hr", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "price_ranges.mid_market $145-$720/month with legal-only sub-band $240-$675", "source_url": "https://www.ruby.com/pricing/", "result": "confirmed"},
+    {"claim": "price_ranges.full_service_or_custom $810-$2,100+, $399-$1,500 onboarding, $75-$100 per retainer", "source_url": "https://smith.ai/pricing/receptionists", "result": "confirmed"},
+    {"claim": "implications: annualising $300-$900/month gives $4,500-$10,800", "source_url": "https://www.alertcommunications.com/blog/how-much-does-a-legal-answering-service-cost/", "result": "contradicted"},
+    {"claim": "implications: a $250-$400/month offer 'lands below Alert's $240 message-taking tier'", "source_url": "https://www.alertcommunications.com/plans/", "result": "contradicted"}
+  ],
+  "confidence": "High"
+}

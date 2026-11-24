@@ -1,0 +1,102 @@
+{
+ "ref": "B05565",
+ "name": "MS3 Corp. Architects",
+ "town": "South River, NJ",
+ "category": "Architect",
+ "status": "operating",
+ "domains": [
+  {
+   "domain": "ms3corp.com",
+   "role": "listed on Google",
+   "final_url": "https://ms3corp.com/ (page never loads; the TLS certificate is rejected)",
+   "result": "https://ms3corp.com/ and https://www.ms3corp.com/ both stop at Chrome's \"Your connection is not private\" page with NET::ERR_CERT_COMMON_NAME_INVALID; the certificate presented is issued to *.inmotionhosting.com. Plain http://ms3corp.com/ returns a bare InMotion Hosting server placeholder (title \"InMotion Hosting\", body reads \"HOSTNAME\" beside the InMotion logo, no business content). http://ms3corp.com/services.html returns HTTP 404. DNS resolves (ms3corp.com and www to 173.205.126.156).",
+   "screenshot_files": [
+    "screenshot-https-ms3corp-desktop.png",
+    "screenshot-https-ms3corp-desktop-advanced.png",
+    "screenshot-ms3corp-mobile-390.png",
+    "screenshot-google-profile.png"
+   ],
+   "checked_at": "2026-11-13",
+   "source_url": "https://ms3corp.com/"
+  }
+ ],
+ "links_to_broken_domain": [
+  {
+   "place": "Google Business Profile for MS3 Corp. Architects (36 Monticello Way) - website field shows ms3corp.com",
+   "url": "https://www.google.com/maps/search/MS3+Corp+Architects+South+River+NJ"
+  },
+  {
+   "place": "nybizdb.com company record for MS3 (NY) / Ms3 Corp - website field http://www.ms3corp.com",
+   "url": "https://www.nybizdb.com/company/ms3-corp-3796289/"
+  }
+ ],
+ "rdap": [
+  {
+   "domain": "ms3corp.com",
+   "registered": "2010-04-23",
+   "expires": "2029-04-23",
+   "last_changed": "2024-04-09",
+   "registrar": "Tucows Domains Inc. (IANA ID 69); nameservers NS.INMOTIONHOSTING.COM and NS2.INMOTIONHOSTING.COM; domain status active",
+   "source_url": "https://rdap.org/domain/ms3corp.com"
+  }
+ ],
+ "likely_cause": {
+  "cause": "hosting or certificate",
+  "reasoning": "The registration is current to April 2029 and was last changed in April 2024; the nameservers are still InMotion Hosting's and the name resolves (ms3corp.com and www to 173.205.126.156). So the domain has not lapsed and has not moved to a new owner. What answers on that address is InMotion's default server page behind a *.inmotionhosting.com certificate, and the old page paths return 404 - the pattern of a hosting service that is no longer serving this site (plan lapsed, site files removed, or the domain dropped from the hosting account), with SSL not re-issued for the domain. No gambling, advertising, for-sale or foreign content appeared on the domain at any point, and archived copies of the real site (13 Jan 2024, 11 Sep 2025) are consistent with the business's own content, so third-party re-registration or spam injection is not supported by what we saw.",
+  "inference": true
+ },
+ "fix_steps": [
+  {
+   "step": "Open the InMotion Hosting account (or call InMotion support) and check whether the hosting plan is still active and whether ms3corp.com is still added as a domain on it; renew or re-add the domain if it is not.",
+   "who": "Business owner or office manager, with InMotion support",
+   "effort_hours": "0.5-2",
+   "source_url": "https://rdap.org/domain/ms3corp.com"
+  },
+  {
+   "step": "Once hosting is active again, issue a certificate for ms3corp.com from the hosting control panel (AutoSSL / Let's Encrypt) so the browser warning disappears and ms3corp.com and www both load on https.",
+   "who": "InMotion support or the firm's web person",
+   "effort_hours": "0.5-2",
+   "source_url": "https://ms3corp.com/"
+  },
+  {
+   "step": "Restore the site files from the host's backup if one exists; otherwise republish the short site (home, services, public projects, contact) from the archived copy of 11 September 2025, including the online inquiry form the archived site offered.",
+   "who": "Web designer or the person who built the site",
+   "effort_hours": "4-12",
+   "source_url": "https://web.archive.org/web/20250911153103/http://ms3corp.com/"
+  },
+  {
+   "step": "Confirm the domain registration is on auto-renew in the registrar/hosting account, so the April 2029 expiry cannot be missed.",
+   "who": "Business owner or office manager",
+   "effort_hours": "0.25-0.5",
+   "source_url": "https://rdap.org/domain/ms3corp.com"
+  },
+  {
+   "step": "Put uptime and certificate-expiry monitoring on ms3corp.com (a free or low-cost monitoring service, or the host's own alerts) so a repeat is noticed in days rather than months.",
+   "who": "Web person or hosting support",
+   "effort_hours": "0.5-1",
+   "source_url": "https://ms3corp.com/"
+  }
+ ],
+ "after_fix": {
+  "opportunity": "Claim the Google Business Profile and complete it - hours, services, project photos and the working website link.",
+  "evidence": "On 13 Nov 2026 the Google profile for MS3 Corp. Architects (36 Monticello Way, South River, NJ 08882, (848) 218-1744, category Architect, rated 5.0) still shows \"Claim this business\" and \"Add hours\", with no hours listed; the review count was not shown in the limited view.",
+  "source_url": "https://www.google.com/maps/search/MS3+Corp+Architects+South+River+NJ"
+ },
+ "severity": "High",
+ "severity_reason": "The only website the business is publicly listed with cannot be opened over HTTPS: every visitor who clicks the link - including the one on the Google profile - meets a browser security warning, and the plain-http fallback is an empty hosting placeholder.",
+ "audit_md": "# Website Health Check: MS3 Corp. Architects\n\n**What we saw on 13 November 2026**\n\n- ms3corp.com, the site on the firm's Google profile, does not open: ms3corp.com and www.ms3corp.com both stop at Chrome's \"Your connection is not private\" warning (NET::ERR_CERT_COMMON_NAME_INVALID), with a certificate issued to *.inmotionhosting.com.\n- Over plain http the address shows an empty InMotion Hosting placeholder page headed \"HOSTNAME\", and ms3corp.com/services.html returns 404.\n- The domain is not lost: the registration record shows it registered in 2010, paid to April 2029, last changed April 2024, registrar Tucows, nameservers at InMotion, and DNS still resolving.\n- Customers are still sent there: the Google profile lists ms3corp.com, and nybizdb.com lists the same domain. Archived copies show a live site on 11 September 2025.\n\n**What it means for customers**\n\nAnyone who clicks the website link meets a security warning, and most will leave. The service and public-project pages that existed until recently are not readable by a customer or a search engine today.\n\n**How to fix it**\n\n1. Check the InMotion hosting account: is the plan active and ms3corp.com still attached? Renew or re-add it. (0.5-2 hours, owner plus host support)\n2. Re-issue an SSL certificate for ms3corp.com in the hosting panel. (0.5-2 hours, host support or web person)\n3. Restore the site from hosting backup, or republish a short site from the September 2025 archive. (4-12 hours, web designer)\n4. Confirm domain auto-renew, then keep the Google profile link on the working https address. (under 1 hour, owner)\n5. Add uptime and certificate-expiry monitoring so this is caught in days, not months. (0.5-1 hour, web person)\n\n**After the fix**\n\nThe Google profile is still unclaimed: it shows \"Claim this business\" and \"Add hours\". Claiming it and adding hours, services and project photos would complete the listing itself, not just the website.\n\nPrepared from publicly available information on 13 November 2026. We did not log in to or change anything.",
+ "founder_md": "# Founder notes - MS3 Corp. Architects (B05565)\n\n**Email draft (3 sentences)**\n\nHello - I'm writing from a small web consultancy in Milltown. I noticed that ms3corp.com, the site linked from your Google listing, currently opens to a browser security warning (\"Your connection is not private\") while the domain itself is still registered through 2029, and the old service page now returns a 404. I've saved screenshots of exactly what a visitor sees on a desktop and on a phone, and I'd be glad to send them over or show you the short list of hosting-side settings that usually explains this - would a 15-minute call this week be useful?\n\n**Walk-in / phone opener (1 sentence)**\n\nHi - I'm calling because the website linked on your Google listing currently shows a security warning instead of your site; I have screenshots of what customers see and can show you in about two minutes.\n\n**Sources**\n\n- Domain record (registration 2010-04-23, expiry 2029-04-23, last changed 2024-04-09, registrar Tucows, InMotion nameservers): https://rdap.org/domain/ms3corp.com\n- Live HTTPS failure, certificate error NET::ERR_CERT_COMMON_NAME_INVALID: https://ms3corp.com/ (screenshots: screenshot-https-ms3corp-desktop.png, screenshot-https-ms3corp-desktop-advanced.png, screenshot-ms3corp-mobile-390.png)\n- http://ms3corp.com/ placeholder page (title \"InMotion Hosting\", body \"HOSTNAME\") and http://ms3corp.com/services.html HTTP 404: read by direct HTTP request on 13 Nov 2026\n- DNS resolution of ms3corp.com and www.ms3corp.com to 173.205.126.156: https://dns.google/resolve?name=ms3corp.com&type=A\n- Google Business Profile (36 Monticello Way, South River, NJ 08882; (848) 218-1744; Architect; 5.0; website ms3corp.com; \"Claim this business\"; \"Add hours\"): https://www.google.com/maps/search/MS3+Corp+Architects+South+River+NJ (screenshot-google-profile.png)\n- Directory listing the domain as website http://www.ms3corp.com: https://www.nybizdb.com/company/ms3-corp-3796289/\n- Archived live site 11 Sep 2025 (services, public projects, \"Contact us online via our Online form\"): https://web.archive.org/web/20250911153103/http://ms3corp.com/\n- Archive history showing 200 responses from 2021 through 11 Sep 2025: https://web.archive.org/cdx/search/cdx?url=ms3corp.com&output=json&collapse=timestamp:6&from=2019&to=2026\n- Directory profile describing the practice (South River, NJ): https://cisleads.com/company/details/49535\n- 2005 NJDOT DBE directory entry (36 Monticello Way, (848) 218-1744, NAICS 541310 architectural services): https://www.nj.gov/transportation/business/procurement/ProfServ/documents/directory.pdf\n\n**Open questions**\n\n- Who holds the InMotion Hosting account and the registrar login today?\n- Was the hosting plan cancelled, or was the site moved and the domain left pointing at the old server?\n- Does any backup of the site files exist (host backup, a designer's copy, an old laptop)?\n- Does the firm want the old site restored, or a smaller rebuilt one?\n- Is the New York office (132 W. 31st St., shown on cached copies of the site) still active? We did not verify it.\n- Is Mita Amin, listed as the contact in a 2005 NJDOT directory and on the firm's own site, still the principal and the right person to speak to?\n- Was the site taken down on purpose, for example ahead of a relaunch?\n",
+ "caveats": [
+  "The cause is an inference from the RDAP record, DNS resolution and the server's response; only the owner and the host can confirm what actually happened to the hosting account.",
+  "Search engines still show ms3corp.com page titles and some snippets; that text comes from cached indexes and the Wayback archive, not from the live site, and was not treated as the current site.",
+  "The Google profile was viewed in Google Maps' limited view, so no review count or review dates were visible; \"operating\" rests on the profile being present and unclaimed, not on recent activity.",
+  "Effort ranges describe typical hosting, certificate and rebuild work; they are not quotes and not commitments."
+ ],
+ "data_gaps": [
+  "Chrome refused to load http://ms3corp.com (ERR_BLOCKED_BY_CLIENT) although other plain-http sites loaded, so the placeholder page and the 404 were confirmed with direct HTTP requests instead; the browser screenshots are of the HTTPS certificate warning at desktop and at 390 px width.",
+  "BizStanding and Yellow Pages blocked automated access (Cloudflare challenge/403), so their website fields could not be re-confirmed; a Yellow Pages architects listing for MS3 Corp appeared only in search results.",
+  "The Wayback Machine has no captures of ms3corp.com after 11 September 2025, so the exact date the site stopped serving cannot be established.",
+  "Review count and dates on the Google profile were not visible in the limited Maps view.",
+  "Registrant contact details in RDAP are redacted; they were not pursued."
+ ]
+}

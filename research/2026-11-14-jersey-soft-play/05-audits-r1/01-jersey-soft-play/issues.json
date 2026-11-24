@@ -1,0 +1,37 @@
+[
+ {
+  "claim": "\"On 14 November 2026 we found no way to enquire on the site.\" (audit opener)",
+  "problem": "Contradicted by the pages it summarises. The site publishes a phone number (732) 743-8931 and jerseysoftplay@gmail.com in the contact block and footer of every page checked, plus an Instagram DM link, and /booking/ carries a visible \"Start Inquiry\" button. There is no on-site form or availability check, but there are three on-site ways to enquire. As written the sentence is a factual error the owner can disprove in one glance, and it contradicts the audit's own source note for /booking/ (\"links hand off to the HoneyBook portal\").",
+  "fix": "Replace with the accurate, equally strong version: \"On 14 November 2026 we found no way to check availability or get a price on the site itself - the only routes are a phone call, an email, or a link out to a third-party form.\""
+ },
+ {
+  "claim": "For the founder email: \"all five 'Check Availability' links leave the site for a 64-field HoneyBook form\" (and the parallel wording in the walk-in opener)",
+  "problem": "Wrong on the navigation path. All five \"Check Availability\" links resolve to the on-site page /booking/ (relative href \"/booking/\", same tab). Only the \"Start Inquiry\" button on that page leaves the site (target=\"_blank\" to jerseysoftplay214395.hbportal.co). A founder who clicks one link will see it does not leave the site, which undermines the opener.",
+  "fix": "Say: \"all five 'Check Availability' links land on a page with no form, which then sends you to a 64-field HoneyBook form in a new tab\". Keep the two-step description; drop \"leave the site\"."
+ },
+ {
+  "claim": "\"delivery is priced per trip, never published\" (section 2, \"Now\")",
+  "problem": "The \"never published\" half is sourced (\"Delivery fees apply and are confirmed with your event quote\"), but \"per trip\" is nowhere stated on the site - it is an inference presented as fact alongside a sourced claim.",
+  "fix": "Write \"delivery is priced per enquiry, never published\" or mark it: \"priced per trip as far as the site shows (our inference)\"."
+ },
+ {
+  "claim": "\"2-4 re-deliveries avoided a year at $550-$750 = about $1,100-$3,000\" (section 3 impact)",
+  "problem": "The arithmetic is right, but only the 80-90% automation share is flagged \"(our assumption)\". The 2-4 incident count - the input that drives the whole $1,100-$3,000 - is an unlabelled guess in the audit body (analysis.json correctly labels it inferred).",
+  "fix": "Add \"(2-4 incidents a year is our assumption)\" next to the count, or say \"if 2-4 mis-specified or re-delivered events a year (our assumption) are avoided\"."
+ },
+ {
+  "claim": "Body length",
+  "problem": "The audit body (title through the \"Prepared from publicly available information\" line, excluding the For-the-founder section) is 474 words by whitespace count, about 5% over the ~450-word target.",
+  "fix": "Trim 25-40 words - the easiest cut is the parenthetical wage derivation in section 2 (keep \"$31/hour, NJ mean for Counter and Rental Clerks plus 25% for benefits, our assumption\" and move the arithmetic to a footnote or the sources list)."
+ },
+ {
+  "claim": "\"a town page for East Brunswick\" (section 1 pilot)",
+  "problem": "Directionally supported (findpartyrental lists a 104 Buttonwood Dr, East Brunswick address from the Google listing; Nextdoor uses an East-Brunswick slug), but the exa.ai place record the audit cites as its review source locates the business in Old Bridge. The home town is therefore not settled across sources, and the audit states East Brunswick as if established.",
+  "fix": "Say \"a town page for East Brunswick (the town on your directory listing) - we would confirm your home town in the walkthrough\", or pick whichever town the founder confirms first."
+ },
+ {
+  "claim": "\"a HoneyBook tab asking 64 questions\" / source note \"64 labelled inputs\"",
+  "problem": "Minor unit mismatch. The rendered form has 64 <label> elements but 60 input/select/textarea controls (several labels belong to choice groups). \"64 questions\" is defensible; \"64 labelled inputs\" is not literally what the DOM shows.",
+  "fix": "Use one consistent, safe phrasing in both places: \"64 labelled fields\" or \"a 60-plus-field form\"."
+ }
+]

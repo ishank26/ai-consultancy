@@ -1,0 +1,157 @@
+{
+  "results": [
+    {
+      "ref": "B01164",
+      "name": "Vitality Staffing (New Brunswick office)",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Listing: 'none confirmed (Google rating not found for the New Brunswick branch)', rating and reviews unknown",
+          "what_is_true": "Google Maps has a place page for Vitality Staffing at 127 Livingston Ave, New Brunswick NJ 08901, Employment agency, rated 4.6, with website vitalitystaffing.com and phone (609) 632-2100; review count not shown in the limited Maps view",
+          "source_url": "https://www.google.com/maps/search/Vitality+Staffing+127+Livingston+Ave+New+Brunswick+NJ?hl=en"
+        },
+        {
+          "claim": "website_review.contact_form: false",
+          "what_is_true": "The /contact page has a working-looking Wix form with First Name, Last Name, Email, Subject and Submit, plus the toll-free number in text",
+          "source_url": "https://www.vitalitystaffing.com/contact"
+        }
+      ],
+      "notes": "Re-checked live: /application has no form and no input fields (only a header, 'Apply Today!' text and the toll-free number), /job-board lists no positions, /locations lists five addresses and phone numbers with zero tel: links and no hours, zero tel: links sitewide, LocalBusiness JSON-LD on the home page, robots.txt is a permissive wildcard allow with a sitemap. At 390 px the page still overflows badly (scrollWidth ~1634 against a 390 viewport), the nav is clipped at the left edge and the header carries no phone number. Original scores still look right (large, multi-office employer with a dead apply path), so I did not change them."
+    },
+    {
+      "ref": "B01210",
+      "name": "Brunswick's Finest Barbershop & Supply",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "The mobile hero image fails to load, leaving a grey panel (cited as evidence for the site rebuild opportunity)",
+          "what_is_true": "At 390 px the hero renders a full photo collage (photographer/barber images) with no grey panel; all large images report naturalWidth above 0",
+          "source_url": "https://bookthefinest.com/"
+        },
+        {
+          "claim": "The Google website link is 'unrelated app marketing site' with nothing to do with the shop",
+          "what_is_true": "It is the shop's own booking-app site: the footer HTML contains a commented-out block reading 'Brunswick Finest 266 George st / New Brunswick NJ' with a placeholder phone 0123456789. The shop details are hidden, but the site was built for this business, not a stranger's app",
+          "source_url": "https://bookthefinest.com/"
+        }
+      ],
+      "notes": "Confirmed live on Google Maps: profile links bookthefinest.com (twice), 4.8, 266 George St in Stirlingside Estates, (732) 317-4050, 'Open - Closes 8 PM', and the Black-owned / Latino-owned / LGBTQ+ friendly attributes. Birdeye still mirrors 4.8 with 381 reviews and Mon-Fri 9-6 with weekends closed, while BestProsInTown shows 9-8 every day including Sunday 9-6, so the hours conflict claim holds. On the site: title 'Book the Finest' with an emoji, no meta description, no JSON-LD, no tel: links, no form, every nav item is '#'; only the app-store and social links work. Scores still reasonable; no change."
+    },
+    {
+      "ref": "B01246",
+      "name": "Optical Boutique",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Half-built template in customer view: placeholder address block ('Street Address / City, State, Zip / Phone Number / Your Custom Text Here'), 'Summary Block - This block is invalid' error and lorem ipsum on home, contact and booking pages",
+          "what_is_true": "None of that renders. Home, Brands, Contact and Book-an-appointment pages show a clean layout with the real address and phone; the placeholder strings and an invalid form/block node exist only in the page source and are not visible text, and 'lorem ipsum' does not appear at all",
+          "source_url": "https://www.myopticalboutique.com/"
+        },
+        {
+          "claim": "No meta descriptions",
+          "what_is_true": "Home ('Optical eyewear, sunglasses, eye exams and contact lenses'), Brands and Contact all carry real meta descriptions; only the booking page's description is blank/whitespace",
+          "source_url": "https://www.myopticalboutique.com/book-an-appointment"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 3
+      },
+      "notes": "What still holds: no tel: link anywhere (number is plain text), no booking CTA above the fold at 390 px (the page opens on MENU, logo, promo banner, address, hours), no exam/price/insurance detail beyond hours above the Acuity widget (iframe owner=18086249 confirmed), emoji-first page titles, WebSite-only JSON-LD with an empty description, Squarespace robots.txt allowing OAI-SearchBot/PerplexityBot/Googlebot. Listing check: Google Maps shows 4.5 for Optical Boutique at 1 Spring St Unit 101 (not 3.9); the cited Birdeye URL is a city/category aggregate that does list this shop at 3.9 with 164 reviews, so the numbers are sourced but conflict with Google. Lowered gap to 3 and evidence to 3 because the most dramatic visible damage described is not on the live site."
+    },
+    {
+      "ref": "B01249",
+      "name": "Brunswick Health & Physical Therapy Center, PC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "The contact page renders the Squarespace error 'This form needs a storage option', so the contact form is visibly broken (also website_review.contact_form: true)",
+          "what_is_true": "No form renders at all on /contact: there is no <form> element, only an empty Squarespace form block with data-state='invalid' at zero height, so visitors see no error message and no form - effectively no web inquiry path",
+          "source_url": "https://www.brunswickptcenter.com/contact"
+        },
+        {
+          "claim": "On 390 px the first screen is a full-bleed stock photo with no business name, phone or CTA",
+          "what_is_true": "The 390 px hero does show a bordered 'CONTACT US' CTA button over the video, along with the headline 'It's your life, live it in health!' - though that CTA is the placeholder tel:5555555555 link and there is still no business name or phone on screen",
+          "source_url": "https://www.brunswickptcenter.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 5,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Everything else verified: the header CONTACT US link really is tel:5555555555 (the footer number (732) 565-1701 is plain text), no booking anywhere, /online-forms links three print-and-fill PDFs, title is just the business name with an emoji prefix, meta description empty, JSON-LD is a WebSite node only, hours Mon-Fri 10-6 in the footer, Squarespace robots.txt allows the AI crawlers. Kept gap at 5 because a live header CTA that dials 555-555-5555 plus no reachable web form is still a real lead-capture failure; evidence trimmed to 3 for the two misdescribed observations."
+    },
+    {
+      "ref": "B01257",
+      "name": "Resilience Wellness Studio",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Class pages still show the template phone number +48 123 456 789 and generic 'if your studio uses an app or booking system' copy",
+          "what_is_true": "No +48 number and no boilerplate booking copy anywhere on the home, services, classes or contact pages today; the only published number is 732-799-4579",
+          "source_url": "https://resiliencewellnessstudio.com/our-classes"
+        },
+        {
+          "claim": "No contact form at all; the only form on the contact page is a newsletter signup",
+          "what_is_true": "The site footer (on every page, including /contact) carries a First name / Last name / Email / Submit enquiry form alongside the newsletter signup",
+          "source_url": "https://resiliencewellnessstudio.com/contact"
+        },
+        {
+          "claim": "No meta description on the home or contact page beyond boilerplate",
+          "what_is_true": "Home, Services, Classes and Contact all have written meta descriptions naming New Brunswick and the services",
+          "source_url": "https://resiliencewellnessstudio.com/"
+        },
+        {
+          "claim": "Mobile home page opens on a full-screen video with no headline, town or CTA visible on first paint",
+          "what_is_true": "At 390 px the first screen shows a 'BOOK A SERVICE' button pinned top-right and the 'Where resilience is built.' headline over the video",
+          "source_url": "https://resiliencewellnessstudio.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 3
+      },
+      "notes": "Still true and worth citing: footer Terms & Conditions and Privacy Policy link to /template/terms-and-conditions and /template/privacy-policy; zero tel: and mailto: links (phone and email are plain text); no JSON-LD on home/contact; emoji-first titles; no pricing published, only durations; Momence booking live (momence.com/u/resilience-wellness-studio-hzwgf3) and linked from every page; robots.txt returns an empty body. The gap is smaller than recorded - the leftover-template damage has been cleaned up - so gap 3 and evidence 3."
+    },
+    {
+      "ref": "B01319",
+      "name": "Miguel's Painting",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Quote form: two text inputs have no label or placeholder",
+          "what_is_true": "The two text inputs are labelled 'First Name*' and 'Email*' through real label elements (they simply have no placeholder attribute); the third field is a textarea with the accessible name 'Phone Number & Description*'",
+          "source_url": "https://miguelspainter.com/"
+        }
+      ],
+      "notes": "Confirmed on the live site: one-page build, emoji-prefixed title 'Professional Painting Services | Miguel's Painting LLC' with no town, meta description without the town, zero JSON-LD, working tel:+1(732)619-8060 links, reCAPTCHA quote form. At 390 px a full 'Welcome to Miguel's Painting LLC' modal covers the screen on load and the cookie 'Accept' bar sits on top of it, exactly as described. Google Maps confirms a service-area profile at '08901, New Brunswick, NJ' with no street address, 5.0, website miguelspainter.com and phone (732) 619-8060; the photo count could not be read in the limited Maps view (see data_gaps). Scores still look right; no change."
+    },
+    {
+      "ref": "B05338",
+      "name": "Park Chiropractic & Posture",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "All top issues checked and hold: zero tel: links (header phone is plain text), no booking/CTA above the fold, the only form is method=GET to https://www.painsolutionsnj.com/ with 6 inputs that have placeholders but no labels, page title 'Posture | Park Chiropractic & Posture | United States', meta description lists conditions but not the town, JSON-LD is a WebSite node only. Layout defects confirmed: at 390 px the logo is clipped ('ark'), the page does not reflow and scrolls horizontally; at 1440 px scrollWidth is 1489 (visible overflow). Fresha listing confirmed auto-generated and unclaimed with no services, only 'Call to book', hours Mon 9-6, Tue 9-1, Wed 9-6, Thu closed, Fri 9-6. New detail the record lacked: Google Maps does have a profile - 85 Raritan Ave Ste 430, 4.9, chiropractor, (732) 342-7575, closes 6 PM - so the Birdeye 4.8/154 is close but Google's own rating is 4.9. Scores reasonable; no change."
+    },
+    {
+      "ref": "B07385",
+      "name": "Ralph's Barber Shop",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Google Maps profile confirmed: 422 Main St, Spotswood NJ 08884, 4.8 barber shop, no booking link, phone (732) 723-3775, and the website field is 'zenmaxi.click'. http://zenmaxi.click/ returns HTTP 403 (as recorded); https://zenmaxi.click/ serves a stock CentOS 'HTTP Server Test Page', so either way there is nothing about the shop. No first-party site, no schema, no price or service text anywhere; Birdeye mirror confirms 4.8 with 347 reviews and the reviews naming Ralph, Daniel and Donna (including the sensory-needs child review) support the 'multiple barbers' and 'good with children' signals. Scores reasonable; no change."
+    }
+  ],
+  "data_gaps": [
+    "Google web search (google.com/search) returned a 'unusual traffic' CAPTCHA for this IP, so nothing was verified through Google result pages; individual Google Maps place pages did load and were used instead.",
+    "Google Maps was served in the limited (signed-out) view, which shows the star rating but not the review count. Review counts for Vitality Staffing, Optical Boutique, Brunswick's Finest, Miguel's Painting, Park Chiropractic and Ralph's come from Birdeye/BestProsInTown mirrors, not from Google directly.",
+    "The same limited Maps view shows an 'Add photos & videos' prompt on every profile, including ones that clearly have photos, so it cannot be used to prove a profile has zero photos (affects the Miguel's Painting and Ralph's photo claims).",
+    "Mobile layout was tested with a CDP device-metrics override at 390 px CSS width; the tool's mobile=true override did not apply, so behaviour observed is responsive CSS at 390 px rather than an emulated phone with a mobile user agent.",
+    "salondiscover.com returned HTTP 403, so the '9am-8pm seven days' hours for Brunswick's Finest were verified at bestprosintown.com instead.",
+    "No form, booking or quote flow was submitted anywhere (read-only); 'working' or 'broken' judgements on forms are based on rendered markup, field labels and action/method only."
+  ]
+}

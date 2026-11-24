@@ -1,0 +1,67 @@
+[
+ {
+  "claim": "Alexander Plumbing, Heating & Air Conditioning Co., Inc. - 149 Blackhorse Ln, \"Monmouth Junction\", ph (609) 987-2424",
+  "problem": "Out of zone / wrong town. Opened the Google Maps place panel for this exact listing (same source the mapper cited) and it reads \"149 Blackhorse Ln, North Brunswick Township, NJ 08902\"; BBB and bestprosintown give 149 Black Horse Lane, North Brunswick, NJ 08902-4320 with the same phone.",
+  "fix": "Remove from the zone list (North Brunswick). Treat 'Blackhorse Ln' addresses as North Brunswick 08902 unless the panel explicitly shows Monmouth Junction 08852."
+ },
+ {
+  "claim": "Stearn Brothers Construction - 178 Blackhorse Ln, Monmouth Junction, ph (732) 435-1113",
+  "problem": "Out of zone / wrong town. Google's own place panel (cited source) shows \"178 Blackhorse Ln, North Brunswick Township, NJ 08902\".",
+  "fix": "Remove, or move to the North Brunswick zone. Same Blackhorse Ln cluster error as Alexander Plumbing."
+ },
+ {
+  "claim": "Ace Mechanical - 1035 Old Georges Rd, Monmouth Junction, ph (732) 433-2974",
+  "problem": "Out of zone / wrong town. Google place panel reads \"1035 Old Georges Rd, North Brunswick Township, NJ 08902\".",
+  "fix": "Remove. 'Old Georges Rd' addresses in this set resolve to North Brunswick, not Monmouth Junction."
+ },
+ {
+  "claim": "George Logan Towing, Inc. - 371 Old Georges Rd, Monmouth Junction, ph (732) 297-0391",
+  "problem": "Out of zone / wrong town - the mapper's own notes flagged this as unconfirmed but it was included. Google place panel reads \"371 Old Georges Rd, North Brunswick Township, NJ 08902\".",
+  "fix": "Remove; do not include entries whose address confirmation is still open."
+ },
+ {
+  "claim": "Danley 911 Home Services - 1095 Cranbury-South River Rd Ste 10, Monmouth Junction, ph (732) 656-8208",
+  "problem": "Out of zone / wrong town. Google place panel reads \"1095 Cranbury - South River Rd Ste 10, Monroe Township, NJ 08831\"; the company's own contact page also gives Monroe, NJ 08831 (different main number, 732-432-0164).",
+  "fix": "Remove (Monroe Township)."
+ },
+ {
+  "claim": "Ideal Tile Importing Co - 3730 US Highway 1 Bldg 1 Suite 2, Monmouth Junction, ph (732) 308-1008",
+  "problem": "Wrong town AND excluded type. Google place panel reads \"3730 US-1 Bldg 1 Suite 2, North Brunswick Township, NJ 08902\" (in the Ashley Store); the business is Ideal Tile & Stone, a multi-showroom regional chain (idealtile.com lists Edison, Fairfield, Flemington, Freehold, Ocean, Philadelphia, NE Philadelphia, Falls Church VA, plus a North Brunswick warehouse).",
+  "fix": "Remove - out of zone and a chain, both excludable."
+ },
+ {
+  "claim": "LTD Nursery and Landscaping - Kendall Park, website ltdnurserylandscaping.com",
+  "problem": "Out of zone. The site's own Locations page (opened) gives the only address as \"460 Mine Brk Rd, Bernardsville, NJ 07924, (908) 766-4442\". The 'Kendall Park NJ' page cited by the mapper is an SEO landing page that even prints the Bernardsville street address, not a local operation.",
+  "fix": "Remove. Add a rule: if a site's Locations page shows no in-zone address, drop the entry regardless of how many town landing pages it has."
+ },
+ {
+  "claim": "Cleworth Comfort HVAC Services LLC - 3150 NJ-27, Kendall Park, ph (732) 917-7066",
+  "problem": "In zone and a real business, but the address and phone are stale. The company's own contact page (opened) gives \"335 New Road Suite 4A, Monmouth Junction, NJ 08852\" and 732-297-4841 (footer and header); the 3150 NJ-27 / 732-917-7066 data is what Google still shows.",
+  "fix": "Update to 335 New Road Suite 4A, Monmouth Junction, NJ 08852; phone 732-297-4841; add cleworthcomfort.com as the website."
+ },
+ {
+  "claim": "Navarro Family Roofing - 112 Maple Ave, Kendall Park, ph (848) 281-3500",
+  "problem": "Address/phone do not match current primary listing. Google's roofing results (opened) show Navarro Family Roofing at 260 Ryders Ln with (551) 310-2400; 112 Maple Ave appears only on directories, one of which labels it Monmouth Junction 08852 rather than Kendall Park.",
+  "fix": "Use the current primary listing (260 Ryders Ln, (551) 310-2400) or mark both pins and drop the phone number."
+ },
+ {
+  "claim": "Smart Water Backflow - 1 Beekman Rd #4, Monmouth Junction",
+  "problem": "Minor town-label error: Google/directory listings give 1 Beekman Rd, Suite 4, Kendall Park, NJ 08824 (still South Brunswick, so in-zone).",
+  "fix": "Relabel town as Kendall Park 08824."
+ },
+ {
+  "claim": "Excluded-type scan across the whole list",
+  "problem": "One multi-location chain remains (Ideal Tile Importing Co / Ideal Tile & Stone, 8+ showrooms in NJ/PA/VA). No food, government, school, hospital, worship or bank entries were found. 'Doors Done Right' has three NJ branches but is a small family-owned operator grouped under one regional brand - flagged as borderline, not counted as a chain.",
+  "fix": "Drop Ideal Tile; keep Doors Done Right, but note the multi-branch structure in notes."
+ },
+ {
+  "claim": "Coverage gap: in-zone businesses that my searches surfaced but the list misses",
+  "problem": "JRP Attic Insulation & Roofing Services (679 Ridge Rd, Monmouth Junction 08852) and Rock Solid Landscaping (162 Kendall Rd, Kendall Park 08824 - currently 'Temporarily closed') are in-zone and absent from the list.",
+  "fix": "Add JRP (home-based; verify category - Google files it under Electrician) and recheck Rock Solid before adding."
+ },
+ {
+  "claim": "Root cause of the seven bad entries",
+  "problem": "Anonymous Google Maps result rows show a street and number but no town/ZIP. The mapper appears to have inferred 'Monmouth Junction' for every unlabeled in-area pin, so the North Brunswick strip (Route 27 below ~3050, Old Georges Rd, Blackhorse Ln, northern US-130) was swallowed into the zone.",
+  "fix": "For every entry, open the place panel and copy the address line verbatim (it always includes the township and ZIP); drop anything that does not read Monmouth Junction 08852, Kendall Park 08824 or Dayton 08810."
+ }
+]

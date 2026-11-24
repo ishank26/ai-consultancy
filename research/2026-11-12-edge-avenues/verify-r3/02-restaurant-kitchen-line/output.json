@@ -1,0 +1,238 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "measured_outcomes: the 2020 Journal of Imaging system 'estimated rubbing duration within 2.20-2.39 seconds'",
+      "problem": "Source Table 8 is titled 'Average mis-prediction in seconds' (2.39 for rub-without-water, 2.20 for rub-with-water), against ground-truth mean durations of 16.40 s and 13.72 s (Table 9). The number is right, but read quickly the sentence implies rubbing lasted ~2.2 s, which is wrong by roughly 7x. Two other places in avenue.json say it correctly ('roughly 2-second duration error'), so this is a wording slip, not bad data.",
+      "fix": "Restate as 'estimated rubbing duration to within 2.20-2.39 s of ground truth (ground-truth means 13.7-16.4 s)'."
+    },
+    {
+      "claim": "pilot.cost_range arithmetic: '$1,302 ... add an unpriced allowance of roughly $200-500 ... giving about $1,300-1,800 of hardware' and 'so the sum is about $4,300-10,550'",
+      "problem": "Internal arithmetic is loose: $1,302 + $200 = $1,502, so the hardware band should read ~$1,500-1,800, not ~$1,300-1,800; the later sum then computes to ~$4,500-10,550, not $4,300-10,550. The final published range ($4,500-11,000 one-time) still covers the correct figure, so nothing is overstated.",
+      "fix": "Use $1,500-1,800 for hardware and $4,500-10,550 for the pre-rounding sum, keeping the $4,500-11,000 headline."
+    },
+    {
+      "claim": "Buyer-turnover evidence: 96% (full service) / 135% (limited service) hourly turnover, Q3 2024, Black Box Intelligence",
+      "problem": "Cited URL (blackboxintelligence.com/news/state-of-restaurant-workforce-2024) returns HTTP 403 on re-check, and Black Box's 2024 PDF upload is 2021-era data, so the figure could not be read on Black Box's own page. It is corroborated by trade press: FEr (fermag.com) reports 135% limited-service hourly turnover in Q3 2024 and full-service hourly turnover 'below 100%' in Q3.",
+      "fix": "Add the FEr article as a second citation, or re-cite the Black Box release with a note that the primary page blocked retrieval."
+    },
+    {
+      "claim": "Bare-hand-contact exception applies only to establishments not serving a highly susceptible population (N.J.A.C. 8:24-3.3(a)4)",
+      "problem": "Confirmed in the rule text, but 3.3(a)4's training-documentation list in the published text is numbered (1), (3), (4), (5) - there is no (2) - so an operator quoting avenue's 'three items' framing may be asked why the rule looks incomplete.",
+      "fix": "No change needed to the substance; optionally note that the codified list is numbered (1),(3)-(5) in the published text."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Foodservice generated 12.5M tons of surplus in 2024, valued at $156B = 11% of foodservice sales; 78.4% (9.73M tons) of sector food waste went to landfill",
+      "source_url": "https://refed.org/uploads/by-sector-foodservice-1.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "More than 43% of restaurant/foodservice surplus came from full-service restaurants and nearly 70% from plate waste",
+      "source_url": "https://refed.org/stakeholders/restaurants-and-foodservice",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Median food and non-alcoholic beverage cost 32.0% of sales (full service) and 32.4% (limited service), 2024",
+      "source_url": "https://www.restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-operators-kept-food-cost-ratios-in-check-in-2024/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Median labor cost incl. benefits 36.5% of sales (full service) and 31.7% (limited service), 2024",
+      "source_url": "https://restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-labor-costs-are-well-above-historical-averages/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FDA 1998-2008 study: proper/adequate handwashing in compliance only 24% at full-service and 61% at fast-food restaurants; poor personal hygiene risk factor 59% (FSR) and 76% (fast food); improper holding 45% (FSR); ~850 establishments per phase across nine facility types",
+      "source_url": "https://www.fda.gov/food/retail-food-protection/retail-food-risk-factor-study",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Handwashing top violation area across two million inspections (Sept 2022-Sept 2023): nearly 6% of all inspections, 15% among 17 hospitality brands",
+      "source_url": "https://www.nrn.com/restaurant-operations/food-health-and-safety-compliance-is-not-as-vigilant-in-a-post-pandemic-world",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County Accommodation and Food Services: 1,752 establishments, 24,124 employees, 2024 QCEW",
+      "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hourly turnover 96% full service / 135% limited service, Q3 2024 (Black Box Intelligence)",
+      "source_url": "https://blackboxintelligence.com/news/state-of-restaurant-workforce-2024",
+      "result": "could not open"
+    },
+    {
+      "claim": "Same turnover figures corroborated independently: 135% limited-service hourly turnover Q3 2024; full-service hourly turnover below 100% in Q3",
+      "source_url": "https://www.fermag.com/articles/new-research-report-tracks-labor-trends/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-2.1(c)3.i requires the person in charge to ensure employees are cleaning hands 'through routinely monitoring the employees' handwashing'; amended effective 12/20/2021",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-2-1",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-3.3(a)2 bars bare-hand contact with exposed ready-to-eat food, and (a)4 permits it for establishments not serving a highly susceptible population that keep written procedures, handwashing-facility diagrams and documented training acknowledgement",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-3",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-8.13(a): most recent inspection report kept on premises for public review, minimum two years",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-13",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No NJ statute requires notice/signage for ordinary workplace video cameras; N.J.S.A. 34:6B-22 covers only vehicle tracking devices",
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9(d) affirmative defence requires both prior notice and a lawful purpose",
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9 makes observing/recording a person without consent in circumstances where a reasonable person would not expect observation a crime (intimate parts, sexual acts)",
+      "source_url": "https://www.njcourts.gov/sites/default/files/charges/iopobsv.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Wiretapping Act requires consent of at least one party to a private in-person conversation",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDPA (P.L. 2023 c.266, effective 15 Jan 2025) treats biometric data as sensitive data with opt-in consent, but 'consumer' excludes employment context, so employee biometrics fall outside its consent/rights requirements; no standalone NJ biometric statute",
+      "source_url": "https://www.recordinglaw.com/us-laws/data-privacy-laws/new-jersey-data-privacy-laws/biometric-privacy/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A3929 (2026-27) would make it unlawful for a business entity to run a biometric surveillance system on a consumer at its premises absent clear perimeter notice and a lawful purpose, and bans profiting from the data; avenue flags it as not law and its procedural status as second-hand",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2026/A4000/3929_T1.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC memo of 31 Oct 2022 sets out a framework treating intrusive/abusive electronic monitoring that would tend to interfere with Section 7 rights as presumptively unlawful and urges disclosure of technologies, reasons and data use",
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC substantiation policy: advertisers must have a reasonable basis for objective claims before dissemination; absence is an unfair/deceptive practice",
+      "source_url": "https://www.ftc.gov/legal-library/browse/ftc-policy-statement-regarding-advertising-substantiation",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Journal of Imaging 6(11):120, published 7 Nov 2020: 86.36% for 'apply soap', 93.18% for 'dry hands', 95.45% for 'touch faucet with elbow', heavy classifiers on 67.8% of frames, 100 participants",
+      "source_url": "https://mdpi-res.com/d_attachment/jimaging/jimaging-06-00120/article_deploy/jimaging-06-00120.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "That study's '2.20-2.39 seconds' figure is an average mis-prediction (error) in seconds, not the rubbing duration",
+      "source_url": "https://mdpi-res.com/d_attachment/jimaging/jimaging-06-00120/article_deploy/jimaging-06-00120.pdf",
+      "result": "contradicted"
+    },
+    {
+      "claim": "2025 five-site KITRO study (Sigala et al.) sites in Germany, Greece, Switzerland; waste per meal down 23-51% at four of five sites; prep waste >80%; overproduction cost 48-69%; avoidable waste cost per meal up to 39%; Swiss hotel site showed no improvement",
+      "source_url": "https://refed.org/uploads/2026-refed-ai-report-final.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ReFED report date May 2026",
+      "source_url": "https://refed.org/uploads/2026-refed-ai-report-final.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Winnow: average 42% food-waste reduction in first 6 months, over 50% over longer periods (vendor self-reported)",
+      "source_url": "https://650776.fs1.hubspotusercontent-na1.net/hubfs/650776/2025/Winnow%202024-25%20Impact%20Report.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Winnow VisionAI priced at an approximate $10,000 per site per year baseline on AWS Marketplace",
+      "source_url": "https://aws.amazon.com/marketplace/pp/prodview-daodgjgx7t5vg",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Miso Flippy: $5,400/month rental, no upfront cost; 'more than 100 baskets per hour - almost twice as many as humans' (vendor claim, Jan 28 2025 release)",
+      "source_url": "https://info.misorobotics.com/press-releases/miso-launches-next-generation-flippy-fry-station-the-most-significant-evolution-of-the-ai-powered-robot-since-its-inception",
+      "result": "confirmed"
+    },
+    {
+      "claim": "HME Nitro Vision AI (April 3, 2025) is built on the Agot AI acquisition and gives 'real-time awareness of customers' total wait times, including mobile order pick-up zones'; release describes the drive-thru lane, not kitchen order accuracy",
+      "source_url": "https://www.hme.com/news/Nitro_Vision_AI_Press_Release.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Third-party directory states Agot AI 'spots 85%+ of order errors in real time'",
+      "source_url": "https://azrestaurantpartners.com/tools/agot-ai.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "16% of quick-service/fast-casual orders have problems customers notice and report; one chain's annual cost of inaccuracy above $26 million",
+      "source_url": "https://www.marketforce.com/blog/the-cost-of-inaccuracy",
+      "result": "confirmed"
+    },
+    {
+      "claim": "KDS pricing roughly $20-30 per screen per month in 2026 comparisons",
+      "source_url": "https://expresso.io/blog/kitchen-display-system",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ubiquiti G5 Flex (UVC-G5-Flex): 2K HD PoE, $129.00 list / $151.00 with surcharges",
+      "source_url": "https://store.ui.com/us/en/category/physical-security-compact/products/uvc-g5-flex",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ubiquiti Lite 8 PoE (USW-Lite-8-POE): 8 ports, 52W total PoE availability, $109.00 / $120.00 with surcharge",
+      "source_url": "https://store.ui.com/us/en/category/switching-utility/products/usw-lite-8-poe",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jetson Orin Nano Super Developer Kit: $249 list, down from $499; 67 INT8 TOPS; 8GB SoM; supports up to four cameras",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ohaus Valor 2000 (V22PWE30T AM), 30 kg x 5 g, NSF certified, IPX8: $479.95 your price, $710.00 retail",
+      "source_url": "https://www.southwestscales.com/OHAUS-Valor%C2%AE-2000-Compact-Bench-Scales--V22PWE30T-AM-60-x-01-lb-30251704_p_687.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO is AGPL-3.0 by default and an Enterprise licence is required for proprietary/embedded/commercial deployment",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RT-DETR is Apache-2.0 licensed",
+      "source_url": "https://github.com/lyuwenyu/RT-DETR",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2-VL model card recommends fine-tuning for narrow use cases and states it is not intended for safety-critical decisions",
+      "source_url": "https://huggingface.co/LiquidAI/LFM2-VL-450M",
+      "result": "confirmed"
+    },
+    {
+      "claim": "AI-facilitated handwashing study: 46 food handlers at National University of Singapore student canteens, two visits, 44 completed both",
+      "source_url": "https://www.nature.com/articles/s41598-026-56516-3",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PreciTaste Vision AI sees 'in the case, on the line, in the oven and at the pass'",
+      "source_url": "https://precitaste.com/vision-ai/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Journal of Imaging data collected in two public restrooms with wall/chest/nose camera views",
+      "source_url": "https://mdpi-res.com/d_attachment/jimaging/jimaging-06-00120/article_deploy/jimaging-06-00120.pdf",
+      "result": "not found"
+    },
+    {
+      "claim": "fit_score sub-scores (14+12+7+10+9+8) sum to total 60/100 and sit within plausible /20 or /15 bands",
+      "source_url": "https://www.fda.gov/food/retail-food-protection/retail-food-risk-factor-study",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

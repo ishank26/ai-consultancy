@@ -1,0 +1,145 @@
+{
+  "results": [
+    {
+      "ref": "B07378",
+      "name": "Paolo Cuppari Hair Designs",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Every top issue checked out first-hand. The RESERVE nav item really targets phorest.com/book/salons/paolocupparihairdesigns/waitlist (waitlist, not a calendar), and the contact page pushes an 'Online Reservation Request' form plus a 'Book Now' link to the same waitlist. No hours on the home page or the contact page, and the live Google profile shows an 'Add hours' prompt under 'Add missing information'. Home page H1 does read 'Hair Design Salon in Monroe, NJ' while the contact block gives 529 Main Street, Spotswood. At 390 px the hero is a salon photo with logo and social icons only - no town, no phone above the fold. JSON-LD is the Yoast WebPage/WebSite/Organization graph only (no LocalBusiness, no openingHours); robots.txt is the default WordPress file, open apart from query strings, crawl-delay 3. Minor drift: Google now shows 4.8 with 77 reviews rather than 82. Scores (3/5/5/4) look fair."
+    },
+    {
+      "ref": "B07382",
+      "name": "Domani Hair Salon",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Google profile confirms the salon is open and lists its only web link as m.facebook.com - there is no first-party site (a web search surfaces only directories and a Facebook page). No 'Book online' action on the profile, so phone-only booking holds. Drift on the review base: the live profile shows 4.9 with 92 reviews today (record says 67 Loc8NearMe / 77 elsewhere), which strengthens rather than weakens the record. Scores (5/3/5/4) reasonable."
+    },
+    {
+      "ref": "B07429",
+      "name": "Main Street Tire & Auto",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Mobile layout breaks: nav overlaps the logo, page scrolls sideways, content cut off",
+          "what_is_true": "At 390 px with an iPhone user agent the site serves its Wix mobile layout: logo plus working hamburger menu, and document scrollWidth equals the viewport (no horizontal overflow). The overlap and sideways-scroll symptoms only appear when a desktop user agent is given a 390 px viewport. Large blank gaps between mobile sections were visible, which may be lazy-load.",
+          "source_url": "https://www.mainstreettirenj.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Other issues hold: Google Maps lists mainsttireauto.com (request resets the connection) alongside two mainstreettirenj.com links, the phone anchors are literally href=\"tel:(732) 838-6200\", and the only JSON-LD is a WebSite node - no LocalBusiness, no hours. The schedule page is a labelled request form (Name, Email, Phone, Year, Make, Model, Requested Appointment Date, Comments) with no live availability, and hours do appear in the Google profile ('Open - Closes 5 PM'). Scores trimmed because the headline 'broken mobile' issue is not reproducible on a real phone."
+    },
+    {
+      "ref": "B07435",
+      "name": "Perry's Automotive",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Google profile matches: 3.8 from 35 reviews, 'Claim this business', 'Add website', no website field, phone-only. One nuance: the profile does display hours ('Open - Closes 6 PM'), so the phrase 'no owner-controlled services or hours' is fair but hours are publicly visible. No first-party site exists (web search returns directories only). Scores (5/3/5/4) reasonable."
+    },
+    {
+      "ref": "B00322",
+      "name": "ReNova Skin Med Spa",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Bookable: 0 - the only booking route returns a password wall and no alternative path exists",
+          "what_is_true": "The site's Book Now does lead to a password-protected /appointments page, but the live Google profile carries a 'Book online' button that opens a working Acuity Scheduling flow for RENOVA SKIN MEDSPA with named treatments and durations. Appointment-only customers can self-book; the failure is that the website never links the scheduler.",
+          "source_url": "https://app.acuityscheduling.com/schedule.php?owner=34889177"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 4
+      },
+      "notes": "Confirmed: /appointments returns a Squarespace password lock screen; /contact has zero form elements despite promising 'please provide your information' (0 forms, 0 inputs in the DOM); no tel: link anywhere on the contact page; LocalBusiness JSON-LD ships with empty address and empty openingHours; robots.txt is the Squarespace file that names AI crawlers and disallows only account/config/api paths. Profile now shows 4.0 with 37 reviews. Gap lowered from 5 because a working scheduler already exists - the fix is wiring it to the site's Book Now."
+    },
+    {
+      "ref": "B00331",
+      "name": "John Martin Hair Co",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Directory profile unclaimed despite 248 reviews, so review responses and Q&A are unattended",
+          "what_is_true": "The live Google profile shows 4.9 from 294 reviews with no 'Claim this business' prompt; the 'unclaimed' flag came from a Birdeye mirror page, not the Google Business Profile.",
+          "source_url": "https://www.google.com/maps/search/John+Martin+Hair+Co+336+NJ-18+East+Brunswick+NJ"
+        },
+        {
+          "claim": "Bookable: 0, no booking system connected; only a Fresha profile with no visible booking flow",
+          "what_is_true": "The Google profile links a live Boulevard booking widget (joinblvd.com/b/jmhairsalon/widget) offering individual appointments, memberships, packages and gift cards. The salon's own site still has no link to it, so the site-level gap stands but the business is bookable online.",
+          "source_url": "https://www.joinblvd.com/b/jmhairsalon/widget"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 3
+      },
+      "notes": "Site claims verified: title tag is just 'Home', no meta description, zero JSON-LD, no tel: link, nav anchors have empty href (Privacy Policy resolves to the same page), and 'Book Now' is a plain <p> inside the hero with no href or click handler. Fresha listing exists at 336 NJ-18 with three services and no rating. Bebe as owner and the named stylists were confirmed on the page itself."
+    },
+    {
+      "ref": "B00333",
+      "name": "Impressions Hair Salon",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Bookable: 0 - neither a customer nor an agent can book online",
+          "what_is_true": "The salon's own /book-appointment page is broken (page title and body literally read 'Restricted content' with empty content), but the live Google profile's 'Book online' button opens a working Vagaro services page with prices and Book Now buttons, and the profile also lists impressionshairsalon.zoca.com (now dead - 'This resource is no longer available') and a second domain, impressionsofficial.com.",
+          "source_url": "https://www.google.com/maps/search/Impressions+Hair+Salon+293+NJ-18+East+Brunswick+NJ"
+        }
+      ],
+      "notes": "Site issues all verified: no tel: link anywhere in the rendered home page, the phone appears as plain text ('Call : +732-613-1942'), the Hair Colors card carries 'Quis autem vel eum sure repreh enderit wun', both 'Booking now' and 'Book An Appointment' links point at the broken page, and the Perms card links to /services/item/body-massage/. robots.txt is the Yoast allow-all file; JSON-LD is Yoast WebPage/WebSite plus an Organization node with telephone and address but no hours. Review base now 4.6 with 388 reviews. Original scores still reasonable given the broken on-site booking path."
+    },
+    {
+      "ref": "B00430",
+      "name": "Blue Apex Home Improvement",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Site is not responsive: 980px layout on a 390px phone, headline and menu cut off",
+          "what_is_true": "At 390 px with an iPhone user agent the Wix site serves a mobile layout: hamburger menu, stacked hero headline fully visible, and a sticky bottom bar with Phone / Email / Facebook. The 980-wide desktop render only happens when a desktop user agent is squeezed to 390 px.",
+          "source_url": "https://www.blueapexhomeimprovement.net/"
+        },
+        {
+          "claim": "No click-to-call anywhere - the phone number is plain text and there are zero tel: links",
+          "what_is_true": "The rendered page contains three tel: links (tel:(732) 586-7186, tel:732-586-7186, tel:1-732-586-7186), including a mobile 'Phone' button in the sticky bar. Wix injects these client-side, which is why a static HTML fetch shows none.",
+          "source_url": "https://www.blueapexhomeimprovement.net/"
+        },
+        {
+          "claim": "Contact form fields are unlabeled (first-name, email, project-details names only)",
+          "what_is_true": "Every consultation-form field has a visible <label>: First Name, Last Name, Email, Phone, Address, Project Details.",
+          "source_url": "https://www.blueapexhomeimprovement.net/"
+        },
+        {
+          "claim": "LocalBusiness JSON-LD has no house number and no phone",
+          "what_is_true": "The LocalBusiness node does include telephone (732) 586-7186; it is only the street address that lacks a house number (streetAddress is just the street name).",
+          "source_url": "https://www.blueapexhomeimprovement.net/"
+        },
+        {
+          "claim": "Title names the service but leads with an emoji",
+          "what_is_true": "The title tag is plain text: 'Blue Apex Home Improvement | Affordable roofing near me | New Jersey, USA'. No emoji exists in the HTML - a leading glyph shows up in this shared browser as an environment artifact, not on the site.",
+          "source_url": "https://www.blueapexhomeimprovement.net/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 2,
+        "ability_to_pay": 4,
+        "ease": 4,
+        "evidence": 2
+      },
+      "notes": "What still holds: LocalBusiness schema street address lacks the house number, Google category is the generic 'Contractor' (5.0 from 61 reviews, owner posts 2 days ago, Asian-owned and Indigenous-owned attributes), GuildQuality shows only 3 verified reviews, and robots.txt allows all agents except PetalBot. Everything the record flagged as broken on mobile turned out to be an emulation artifact, so the remaining gap is small (schema and category tidy-up); evidence score lowered because four of the five top issues did not reproduce in a real phone browser."
+    }
+  ],
+  "data_gaps": [
+    "Birdeye, spagrades, Loc8NearMe and GuildQuality pages were not re-opened this pass, so third-party review totals (e.g. '121 aggregated', '403 reviews', '3 verified GuildQuality reviews') are unverified; live Google counts were used instead.",
+    "Static HTML fetches of the two Wix sites (Main Street Tire, Blue Apex) omit JS-injected tel: links, which is likely how earlier records concluded click-to-call was missing. Phone-link claims should always be checked in a rendered browser.",
+    "Google Maps pages rendered without login, but 'From the owner' post timestamps and review-count history could not be verified beyond the current snapshot.",
+    "Domani Hair Salon's Facebook page (linked from its Google profile) was not opened, so nothing about its content is confirmed."
+  ]
+}

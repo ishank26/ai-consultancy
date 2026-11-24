@@ -1,0 +1,312 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "All One Insurance Agency LLC listed at 100 Plainfield Ave #3C with town 'Unknown'",
+      "problem": "Wrong township. 100 Plainfield Ave is in Edison NJ 08817 (Suite 3C). The agency's own site confirms the phone (732-543-0444) but not a Sayreville/Parlin address, so this is an out-of-zone business.",
+      "fix": "Remove from the Sayreville zone list (Edison is a different zone); note the agency name for the Edison/Metuchen list if one exists."
+    },
+    {
+      "claim": "Loeb And Haas, LLC at 2071 NJ-35, town Sayreville",
+      "problem": "Wrong township. Business and tax-prep directory data place 2071 NJ-35 in South Amboy NJ 08879, not Sayreville. The mapper flagged this in notes but still assigned Sayreville.",
+      "fix": "Change town to South Amboy or drop the entry; do not spend outreach time in this zone."
+    },
+    {
+      "claim": "AVC Tax & Accounting Services at 5109 Klimek Pl, town Sayreville",
+      "problem": "Wrong township. Klimek Place addresses in this range read South Amboy NJ 08879 (confirmed by directory data for both AVC and Alto CPA). Mapper flagged the risk in notes but assigned Sayreville.",
+      "fix": "Move to South Amboy or remove; verify township by tax record before any outreach."
+    },
+    {
+      "claim": "Alto CPA Group, LLC at 3308 Klimek Pl, town Sayreville",
+      "problem": "Wrong township. Business directory profile lists 3308 Klimek Pl as South Amboy NJ 08879; also a neighbouring Klimek Place property, same issue as AVC Tax.",
+      "fix": "Reassign to South Amboy or remove from this zone."
+    },
+    {
+      "claim": "Pinnacle Accounting & Tax Services at 984 US-9 Ste 4A, Parlin",
+      "problem": "Address appears stale. The firm's own website (pinnacleaccountingfirm.com) gives 8 Old Bridge Turnpike, Suite 5, South River NJ 08882; directories also give a different phone (732-753-9176) than the listed 732-554-5574.",
+      "fix": "Either re-verify a live Parlin office or reclassify as a South River business and drop from this zone."
+    },
+    {
+      "claim": "Robert Downey General, listed as insurance agency at 515 Washington Ave, Sayreville",
+      "problem": "Probably mis-categorised. Business-record listings show 'Robert Downey General Contractor LLC' in Sayreville; 515 Washington Rd is otherwise associated with Generazio Associates. Nothing supports an insurance agency of this name, and the listing name looks truncated.",
+      "fix": "Drop the entry unless the Google pin can be re-read as a full agency name; if it is a general contractor it does not belong in group A."
+    },
+    {
+      "claim": "Central Jersey Graphics at 28 Krumb St, Sayreville (graphic design / sign shop)",
+      "problem": "Could not be found in any source. Repeated name and phone searches returned nothing for this business; the only Sayreville design shop that verifies is Grafix Solutions, 201 Hartle St.",
+      "fix": "Remove or re-check the original Google Maps pin; likely a mis-transcription of another listing."
+    },
+    {
+      "claim": "CNJ Insurance Agency at 924 US-9 S, Parlin, (732) 707-3200",
+      "problem": "Could not be found. Name, address and phone searches returned no listing or site for this agency.",
+      "fix": "Re-verify against the live Google listing before the entry is used; drop if it cannot be re-found."
+    },
+    {
+      "claim": "Sage Risk & Insurance Mgmt at 21 Ernston Rd, Parlin",
+      "problem": "Address not supported. Directory data associates 21 Ernston Rd with a different firm (M.J. Comerford) and places the Sage Risk phone (732-906-3920) at 3010 Bordentown Ave instead.",
+      "fix": "Confirm the correct street address from the live listing or drop the entry."
+    },
+    {
+      "claim": "GotWorX Staffing, Sayreville, address Unknown",
+      "problem": "No Sayreville location. Its own job board and company profiles put the corporate office in Freehold; the only Sayreville evidence is job postings for client sites, which is not a local business address.",
+      "fix": "Remove from the zone list or relabel as 'not a Sayreville business'."
+    },
+    {
+      "claim": "Kumar B. Trivedi, CPA LLC at 499 Ernston Rd Ste 12, Parlin",
+      "problem": "Suite number wrong. The firm's own website gives 499 Ernston Road, Ste B-14, Parlin NJ 08859 (phone 732-721-6830 matches).",
+      "fix": "Correct the address to Suite B-14."
+    },
+    {
+      "claim": "Paige & Haag and Blanda & Blanda at 368 Washington Rd, both town 'Parlin'",
+      "problem": "Town label wrong for both. Directory and attorney records give 368 Washington Rd as Sayreville NJ 08872 (Paige & Haag, 732-257-8900; Blanda & Blanda, 732-254-5900). Same zone, but the town field is inaccurate.",
+      "fix": "Change town to Sayreville (keep both, they are distinct firms in the same building)."
+    },
+    {
+      "claim": "Bowes James at 81 Ernston Rd, Parlin",
+      "problem": "Name is reversed on the listing. The business is 'James Bowes, Attorney at Law' at 81 Ernston Rd, Parlin; one directory gives (732) 838-6307 rather than the listed 732-721-1100, and one profile says he is of counsel at another firm.",
+      "fix": "Rename to 'James Bowes, Attorney at Law', confirm the current phone and that the solo office still operates."
+    },
+    {
+      "claim": "Cafaro Stanley CPA and CAFCO Financial Services LLC, both at 515 Washington Rd, Parlin, both (732) 238-1565",
+      "problem": "Duplicate records. Identical address and phone indicate one practice listed twice, which inflates the list count and would create a duplicate outreach attempt.",
+      "fix": "Merge into one entry (Cafaro Stanley CPA / CAFCO) and note the DBA relationship."
+    },
+    {
+      "claim": "Grossman Law Firm phone (732) 401-3040",
+      "problem": "The firm's contact page currently shows (732) 625-9494 (plus toll-free 877-996-5529 and fax 732-625-9444). The 190 Pulaski Ave address is supported, but the phone in the entry is not the one on the page.",
+      "fix": "Update phone to the number shown on grossmanjustice.com/contact-us/ and confirm the Sayreville office is the one to call."
+    },
+    {
+      "claim": "Coverage of the zone's professional-services categories",
+      "problem": "Coverage is well below target. Independent searches in six categories found at least 11 eligible in-zone businesses that are absent from the list, including CME Associates (a 280-person consulting engineering firm with its head office in Parlin) and several CPAs and staffing agencies.",
+      "fix": "Add the missing businesses listed in the coverage section, and re-run category searches for accounting, staffing, insurance, title and engineering before triage."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Wisniewski & Associates, LLC is a Sayreville law firm at 17 Main St with website wisniewskilaw.com and phone (732) 651-0040",
+      "source_url": "https://www.wisniewskilaw.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Grossman Law Firm, LLC is at 190 Pulaski Ave Ste B, Sayreville, website grossmanjustice.com",
+      "source_url": "https://www.grossmanjustice.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kumar B. Trivedi, CPA LLC, 499 Ernston Rd Ste 12, Parlin, (732) 721-6830",
+      "source_url": "https://www.kumarbtrivedicpallc.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "HVH Tech Consulting is a Sayreville IT managed-services firm (41 Delikat Ln) with website hvhtechconsulting.com",
+      "source_url": "https://www.hvhtechconsulting.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vitale Insurance Solutions, independent agency, 499 Ernston Rd Ste B-5, Parlin, (732) 721-8273",
+      "source_url": "https://www.vitaleinsurance.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Jordan Insurance Agency, 984 Route 9 Ste 5C, Parlin, phone (732) 330-5930",
+      "source_url": "https://jordaninsagency.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "AGS Insurance Group is a Sayreville independent brokerage at 4000 Bordentown Ave Ste 20, (732) 832-7217",
+      "source_url": "https://agsinsurancegroup.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "All One Insurance Agency LLC is in the Sayreville/Parlin zone at 100 Plainfield Ave #3C",
+      "source_url": "https://www.alloneinsurance.com/contact",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Loeb And Haas, LLC is in Sayreville at 2071 NJ-35, (732) 226-0632",
+      "source_url": "https://taxscout.ai/cpa/loeb-and-haas-llc-south-amboy-nj",
+      "result": "contradicted"
+    },
+    {
+      "claim": "AVC Tax & Accounting Services is in Sayreville at 5109 Klimek Pl, (732) 882-5890",
+      "source_url": "https://taxscout.ai/cpa/avc-tax-accounting-services-llc-south-amboy-nj",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Alto CPA Group, LLC is in Sayreville at 3308 Klimek Pl, (908) 613-0002",
+      "source_url": "https://www.bbb.org/us/nj/south-amboy/profile/cpa/alto-cpa-group-llc-0221-90195159",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Pinnacle Accounting & Tax Services is in Parlin at 984 US-9 Ste 4A, (732) 554-5574",
+      "source_url": "https://www.pinnacleaccountingfirm.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Vintage Title Services, LLC is a title agency at 51 Main St, Sayreville, (732) 967-6590",
+      "source_url": "https://www.vintagetitleservices.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Transparent Title & Settlements, LLC is at 811 Washington Rd Ste 2B, Parlin, (732) 387-8977",
+      "source_url": "https://transparent-title.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Carlin-Simpson (listed as 'Carlin-Simpson Associates') is an engineering firm in Sayreville, 61 Main St, (732) 432-5757",
+      "source_url": "https://www.carlinsimpson.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "AMBSI Medical Billing is in Sayreville (495 Raritan St) and operates as a billing/revenue-cycle firm",
+      "source_url": "https://www.ambsi.com/medical-billing-sayreville-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Absolute Property Management is at 152 Washington Rd, Sayreville, (732) 238-1360",
+      "source_url": "https://locationsnear.me/real-estate-managers-near-sayreville-nj",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Blanda & Blanda is a Parlin firm at 368 Washington Rd #2, (732) 254-5900",
+      "source_url": "https://m.yellowpages.com/parlin-nj/legal-service-plans",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Paige & Haag is a Parlin law firm at 368 Washington Rd, (732) 257-8900",
+      "source_url": "https://www.yellowpages.com/parlin-nj/transportation-law-attorneys",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Volk Insurance Group is at 440 Main St, Sayreville, (732) 257-2114",
+      "source_url": "https://www.yellowpages.com/sayreville-nj/insurance",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Salaam Insurance is at 209 Main St, Sayreville, (732) 874-5472",
+      "source_url": "https://www.yellowpages.com/sayreville-nj/insurance",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bowes James is an attorney office at 81 Ernston Rd, Parlin, (732) 721-1100",
+      "source_url": "https://www.yellowpages.com/parlin-nj/mip/james-bowes-attorney-at-law-462804785",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Thomas & Chadwick is a law firm at 6 Washington Rd, Sayreville",
+      "source_url": "https://firmania.com/sayreville/attorneys",
+      "result": "not found"
+    },
+    {
+      "claim": "Central Jersey Graphics is a graphics/sign business at 28 Krumb St, Sayreville, (732) 421-4130",
+      "source_url": "https://www.yellowpages.com/sayreville-nj/printing-services",
+      "result": "not found"
+    },
+    {
+      "claim": "CNJ Insurance Agency is at 924 US-9 S, Parlin, (732) 707-3200",
+      "source_url": "https://www.google.com/maps/search/insurance+agency/@40.4648,-74.3138,14z",
+      "result": "not found"
+    },
+    {
+      "claim": "Sage Risk & Insurance Mgmt is an insurance broker at 21 Ernston Rd, Parlin, (732) 906-3920",
+      "source_url": "https://www.superpages.com/parlin-nj/insurance-consultants-analysts",
+      "result": "not found"
+    },
+    {
+      "claim": "Robert Downey General is an insurance agency at 515 Washington Ave, Sayreville",
+      "source_url": "https://naicslist.com/company-profile/robert-downey-general-contractor-llc-sayreville-nj-08872",
+      "result": "contradicted"
+    },
+    {
+      "claim": "GotWorX Staffing has a Sayreville, NJ operation",
+      "source_url": "https://jobs.gotworxstaffing.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Flying Irishman Consulting is a Sayreville-based business consultancy",
+      "source_url": "https://www.linkedin.com/company/flying-irishman-consulting",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cutting Edge Consulting is headquartered in Sayreville, NJ",
+      "source_url": "https://www.linkedin.com/company/cecsolutions",
+      "result": "confirmed"
+    }
+  ],
+  "coverage": {
+    "searches": [
+      "accounting firm Sayreville NJ certified public accountant",
+      "accountant Parlin NJ CPA office Route 9",
+      "insurance agency Parlin NJ independent agent",
+      "insurance agency Sayreville NJ Main Street",
+      "title agency Parlin NJ title insurance",
+      "marketing agency Sayreville NJ web design",
+      "staffing agency Parlin NJ employment",
+      "engineering firm Parlin NJ consulting engineer",
+      "IT managed services company Sayreville NJ",
+      "property management company Sayreville NJ",
+      "attorney law office Parlin NJ Main Street law firm"
+    ],
+    "eligible_found": 23,
+    "already_listed": 12,
+    "missing": [
+      {
+        "name": "CME Associates",
+        "town": "Parlin",
+        "source_url": "https://acecnj.org/member_directory/cme-associates/"
+      },
+      {
+        "name": "McCutcheon Accounting & Tax, LLC",
+        "town": "Parlin",
+        "source_url": "https://www.yellowpages.com/parlin-nj/accountants-certified-public"
+      },
+      {
+        "name": "Ramesh A. Patel, CPA",
+        "town": "Parlin",
+        "source_url": "https://www.yellowpages.com/parlin-nj/accountants-certified-public"
+      },
+      {
+        "name": "Sweta Patel CPA Inc",
+        "town": "Parlin",
+        "source_url": "https://www.yellowpages.com/parlin-nj/sweta-patel-cpa-inc"
+      },
+      {
+        "name": "Jatin Patel, CPA",
+        "town": "Sayreville",
+        "source_url": "https://www.taxbuzz.com/find-the-best-cpa/new-jersey/sayreville/jatin-patel"
+      },
+      {
+        "name": "Jeffrey G. Comunale, CPA",
+        "town": "Sayreville",
+        "source_url": "https://cpadirectory.com/certified-public-accountants/new-jersey/sayreville-nj/jeffrey-comunale/901878"
+      },
+      {
+        "name": "Reliance Accounting and Taxation Services",
+        "town": "Sayreville",
+        "source_url": "https://taxscout.ai/cpa/reliance-accounting-and-taxation-services-sayreville-nj"
+      },
+      {
+        "name": "Sayreville Insurance Director",
+        "town": "Sayreville",
+        "source_url": "https://localitybiz.com/new-jersey/best-insurance-services-in-sayreville"
+      },
+      {
+        "name": "Flex Resources Inc.",
+        "town": "Parlin",
+        "source_url": "https://www.whereorg.com/employment-agencies-parlin-nj"
+      },
+      {
+        "name": "Louis Search Group",
+        "town": "Parlin",
+        "source_url": "https://www.whereorg.com/employment-agencies-parlin-nj"
+      },
+      {
+        "name": "Kevin J. Begley, Attorney at Law",
+        "town": "Parlin",
+        "source_url": "https://www.lawyers.com/parlin/new-jersey/kevin-j-begley-attorney-at-law-3848648-f/"
+      }
+    ]
+  },
+  "confidence": "High"
+}

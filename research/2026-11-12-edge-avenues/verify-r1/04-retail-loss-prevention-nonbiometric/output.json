@@ -1,0 +1,233 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "New Jersey ... created a retail-theft unit in the Department of Law and Public Safety (A4755/S3587 signed April 1, 2025)",
+      "problem": "Legal rule misstated. The enacted law (P.L. 2025, c.39, §6, read in full) says the Attorney General 'shall undertake such steps as the Attorney General deems appropriate ... which may include establishing a retail theft unit, task force, or other appropriate office or initiative'. A unit is discretionary, not created by the statute. The $1,000,000 appropriation for the purpose was struck from the final text. Separately, the cited URL (nj.gov governor press release 20250404c) returns HTTP 404, so no cited source supports the claim as written.",
+      "fix": "Reword to: the law upgraded retail-theft crimes and directed the AG to take steps against organized retail theft, 'which may include' a retail-theft unit; drop the assertion that a unit was created, cite https://pub.njleg.gov/Bills/2024/AL25/39_.HTM, and replace the dead nj.gov link."
+    },
+    {
+      "claim": "In live self-checkout data, 3%-10% of transactions generated a scan-error nudge or alert and customers self-corrected in 80%-97% of cases ... sample: 'Data supplied by 39 retailers' ... strength: Medium",
+      "problem": "Sample misstated and strength inflated. The ECR 2026 report attributes the 3-10% figure to 'data from two retailers (one USA and one UK) and two vendors', and the 80-97% self-correction figure to 'data from two retailers' — not 39 retailers. Partly vendor-sourced outcome data rated Medium also breaks the rule that vendor outcome claims are Low.",
+      "fix": "Change sample to '2 retailers + 2 vendors (nudges); 2 retailers (self-correction)' and downgrade strength to Low."
+    },
+    {
+      "claim": "Missed scans were the most frequent self-checkout loss behavior, at 1%-4.8% of transactions, in data supplied by 39 retailers",
+      "problem": "Base overstated. The 1-4.8% missed-scan range comes from Figure 6 of the ECR report, base '12 retailers', not the 39-retailer study sample.",
+      "fix": "Attribute the range to the 12 retailers that returned non-scan frequency data, while keeping 39 as the overall study sample."
+    },
+    {
+      "claim": "Frigate ... 'Cannot add custom labels' / 'Frigate explicitly does not accept custom labels, so a bespoke detector is mandatory' (cited to the zones docs page)",
+      "problem": "Contradicted and mis-cited. The cited zones page never mentions labels. Frigate's own docs allow a user-supplied object-detection model with its own label map (docs.frigate.video/configuration/object_detectors/); only Frigate+ training rejects custom user-defined labels (docs.frigate.video/plus/faq/). The 'bespoke detector is mandatory' conclusion therefore does not follow.",
+      "fix": "Restate as: 'Frigate+ does not accept custom labels; Frigate can run a custom TFLite/ONNX detector with its own label map, but item-level scan detection still requires training and wiring your own model'; cite the object_detectors and plus/faq pages."
+    },
+    {
+      "claim": "New Jersey Data Privacy Act ... treats biometric data used to identify someone as sensitive data but applies only to businesses processing data of 100,000+ consumers, or 25,000+ while selling data (confirmed: true)",
+      "problem": "The cited source (njconsumeraffairs.gov NJDPA FAQ) is bot-blocked (Incapsula 'Request unsuccessful'), and the brief's own data_gaps admits the page could not be read, yet the legal rule is marked confirmed. A legal rule cannot be presented as confirmed on a source the researcher could not open.",
+      "fix": "Mark confirmed:false (or re-source to the statute text, P.L.2023 c.266 / N.J.S.A. 56:8-166 et seq. on njleg.gov) before treating the thresholds and 15 Jan 2025 effective date as verified."
+    },
+    {
+      "claim": "Hardware/buyers NAICS label '4441 (444140 home centers)' with '94 building-material establishments / 2,741 employees'",
+      "problem": "The counts are right for NAICS 4441 (BLS QCEW 2024: 94 establishments, 2,741 employees), but 444140 is Hardware Retailers in the current NAICS, not home centers; the 444140 row itself shows 13 establishments with employment undisclosed (code N).",
+      "fix": "Cite '4441 building material and garden equipment dealers (94 / 2,741)' for the numbers and list the target as NAICS 444140 hardware retailers without attaching the 4441 totals to that code."
+    },
+    {
+      "claim": "Rhombus: '$399 per camera (R120 mini dome) plus $149/camera/year Professional licence'",
+      "problem": "Prices confirmed ($399 R120, $149 licence, total $548 includes hardware and license), but the pricing page and the licence-comparison page state only an ongoing licence, never a per-year period. '/year' is an inference presented as published pricing.",
+      "fix": "Write '$149 per camera licence (ongoing/recurring; billing period not stated on the pricing page)' or label the annual period as an inference."
+    },
+    {
+      "claim": "Sweethearting ... 'the authors note real systems suffer from large numbers of false alarms that waste manual verification labour'",
+      "problem": "Not found in the cited source. The IBM Research page for the 2009 ICASSP paper only says the method prunes 'falsely alarmed' candidates; there is no statement about false alarms wasting manual verification labour.",
+      "fix": "Drop the unsupported clause or replace with what the abstract does say (motion-based candidate generation plus pruning of false alarms on real grocery-store data)."
+    },
+    {
+      "claim": "fit_score legal_risk_low = 12 (of the 63 total)",
+      "problem": "Sub-scores do sum to the total (16+11+8+10+12+6 = 63), but the legal sub-score is inconsistent with the evidence in the same brief: live Section 5 exposure mapped from Rite Aid, defamation/false-imprisonment exposure for acting on alerts, wiretap liability for any audio, and NLRB scrutiny of electronic monitoring. A high 'legal risk low' score reads as if the category were near-harmless.",
+      "fix": "Cut legal_risk_low to a mid-range value that reflects residual (non-biometric) risk and rebalance the total, or explain in the rationale why only the biometric subset of risk was scored."
+    },
+    {
+      "claim": "'46% added third-party security personnel' (NRF 2023)",
+      "problem": "Minor wording drift: NRF reports 46% 'have increased the use of third-party security personnel', not that 46% added personnel.",
+      "fix": "Use the survey's wording ('increased use of')."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "US shrink averaged 1.6% of sales in FY2022 ($112.1bn), up from 1.4% / $93.9bn in FY2021; internal+external theft about 65% of shrink",
+      "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "41% of retailers said no employee is authorized to stop or apprehend a shoplifter, up from 38%",
+      "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "53% of retailers increased technology/software budgets",
+      "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Self-checkout raised loss by a mean of 22% in the year after installation (range 3.19%-41.2%) across 8 grocery retailers / 1,300 test stores; average difference +0.26 percentage points",
+      "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Every extra 1% of transactions through SCO adds 0.030%-0.048% loss",
+      "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Missed scans are the most frequent loss behaviour at 1%-4.8% of transactions (base 12 retailers, not 39)",
+      "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retailers' estimates of malicious non-scan ranged 6%-80%, read by the authors as unreliable intent estimates",
+      "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Of 14 companies testing non-scan identification, 7 reported positive findings; one 9% loss reduction, another $136m saved across 2,000 stores (0.13% sales increase) and a 4.5x return",
+      "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "3%-10% of SCO transactions generate a nudge/alert; customers self-correct in 80%-97% of cases (2 retailers + 2 vendors, not 39 retailers)",
+      "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County 2024: 2,280 retail establishments (NAICS 44-45), 37,013 employees, average annual pay $45,485",
+      "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Grocery stores 333 establishments / 7,002 employees; supermarkets (445110) 186 / 5,902; beer-wine-liquor (4453) 143 / 945 at $30,985 average pay",
+      "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Pharmacy (45611) 198 establishments / 2,145 employees; gasoline stations with convenience stores (457110) 96 / 1,304; general merchandise (455) 129 / 7,131",
+      "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Building material dealers (4441) 94 establishments / 2,741 employees — but the brief labels this '444140 home centers'",
+      "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC alleged Rite Aid generated thousands of false matches 2012-2020 and employees followed, searched, ejected or called police on wrongly flagged customers, disproportionately people of colour",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2023/12/rite-aid-banned-using-ai-facial-recognition-after-ftc-says-retailer-deployed-technology-without",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Rite Aid order: five-year facial-recognition ban, consumer notice, written complaint investigation, deletion of images/algorithms, third-party assessments, CEO certification",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2023/12/rite-aid-banned-using-ai-facial-recognition-after-ftc-says-retailer-deployed-technology-without",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Everseen Checkout Intelligence (formerly Evercheck) with Soft Nudge; no published price",
+      "source_url": "https://everseen.com/solutions/checkout-intelligence",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vendor-commissioned Forrester TEI claims 374% three-year ROI for checkout vision AI",
+      "source_url": "https://everseen.com/blog/roi-of-vision-ai-in-retail",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Rhombus R120 $399 per camera plus $149 licence, total $548 includes hardware and license; AI features and cloud archiving not in Professional",
+      "source_url": "https://www.rhombus.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics Pro $29/seat/month; Pro platform licence AGPL-3.0 and Enterprise licence required for closed commercial use",
+      "source_url": "https://www.ultralytics.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jetson Orin Nano Super Developer Kit (8GB) at $249, 67 INT8 TOPS",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Coral USB Accelerator at $59.99 list, often out of stock",
+      "source_url": "https://gweb-coral-full.uc.r.appspot.com/products/accelerator",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate zones support required zones for review items and loitering times",
+      "source_url": "https://docs.frigate.video/configuration/zones/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate cannot add custom labels / 'explicitly does not accept custom labels'",
+      "source_url": "https://docs.frigate.video/configuration/zones/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "YOLOv5 + Deep SORT pipeline reached 92% median F1 on UCF-Crime shoplifting clips with 8.45x faster inference than RTFM (2023)",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10347130/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d) one-party consent exception, with civil liability under 2A:156A-24",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239?f=templates&fn=document-frameset.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Friedman v. Martinez (2020) restates intrusion upon seclusion: private space plus conduct highly offensive to a reasonable person",
+      "source_url": "https://www.njcourts.gov/system/files/court-opinions/2020/a_37_81_18.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC Memo 23-02 (Oct 2022) targets intrusive electronic surveillance and algorithmic management under Section 7",
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No New Jersey statute requires notice/signage for ordinary workplace cameras; N.J.S.A. 34:6B-22 covers only vehicle tracking devices ($1,000 / $2,500 penalties)",
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A4755/S3587 signed April 1, 2025 (P.L. 2025, c.39) and upgraded retail-theft crimes",
+      "source_url": "https://pub.njleg.gov/Bills/2024/AL25/39_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The same law 'created a retail-theft unit in the Department of Law and Public Safety'",
+      "source_url": "https://nj.gov/governor/news/news/562025/approved/20250404c.shtml",
+      "result": "contradicted"
+    },
+    {
+      "claim": "NCR acquired StopLift in 2018 for self-checkout vision analytics",
+      "source_url": "https://investor.ncr.com/news-releases/news-release-details/ncr-acquires-stoplift-gains-powerful-anti-theft-solution-self-0",
+      "result": "could not open"
+    },
+    {
+      "claim": "Solink FAQ says quotes vary with camera count, resolution and retention",
+      "source_url": "https://solink.com/faqs/",
+      "result": "not found"
+    },
+    {
+      "claim": "Raspberry Pi AI Kit at $70 (Hailo-8L, 13 TOPS); Hailo-8L M.2 module at $89",
+      "source_url": "https://www.cnx-software.com/2024/06/04/70-raspberry-pi-ai-kit-combines-official-m-2-hat-with-hailo-8l-ai-accelerator/",
+      "result": "could not open"
+    },
+    {
+      "claim": "NJDPA thresholds (100,000 consumers / 25,000 + data selling) and 15 Jan 2025 effective date, marked confirmed: true",
+      "source_url": "https://www.njconsumeraffairs.gov/ocp/Pages/NJ-Data-Privacy-Law-FAQ.aspx",
+      "result": "could not open"
+    },
+    {
+      "claim": "Agilence platform ingests POS/inventory/HR/alarm data for exception reporting; pricing not published",
+      "source_url": "https://www.agilenceinc.com/platform",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

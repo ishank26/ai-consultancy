@@ -1,0 +1,57 @@
+[
+ {
+  "claim": "Coverage of the dentist category (9 dental entries listed)",
+  "problem": "My own dental sweep (dentistsranked.com New Brunswick, 32 clinics, opened page) shows at least 19 independent New Brunswick dental practices that are not in the list: Viola Barry F DDS, CosmicSmiles Dental LLC, Wonseok Jang DDS, Healing Smiles (Sandra Onukwugha DMD), Dental Health Associates PA, Kishor Kulkarni DDS, Salim Nathoo DDS, Vaibhavi Shah DDS, Vivek Nijhawan, Andrea Elchoness DDS, Luz M. Nieto DDS, Michelle Redd, Lealon Robinson DDS, Lanny Rubin DDS, Dental Implants & Surgery, Livingston Avenue Dental, Mid Jersey Endodontic Group, Confident Smiles: Brunswick, New Brunswick Dental Associates. Only 6 of the 25 eligible dental practices I found are listed, so the category is roughly one-quarter covered.",
+  "fix": "Add the missing dental practices from dentistsranked.com (each entry there carries a street address); keep the two correctly-excluded Rutgers Health entities and Eric B. Chandler out."
+ },
+ {
+  "claim": "Coverage of nail salons, massage and chiropractic",
+  "problem": "My searches surfaced four eligible New Brunswick businesses that are absent: Organic Nails and Spa (18 Elizabeth St), New Star Salon (53 Bayard St), Madeth Bodycare (active Booksy profile in New Brunswick), Heavenly Hands Massage (49 Bayard St), plus a chiropractic office at 330 Livingston Ave (732-246-4226) that only appears as an unnamed practitioner entry.",
+  "fix": "Verify these on their booking/directory pages and add them; the nail category in particular was flagged by the mapper as thin but was not backfilled."
+ },
+ {
+  "claim": "Eric B. Chandler Health Center, 277 George St (listed as a community health center)",
+  "problem": "Excluded type remains. It is operated under Rutgers Robert Wood Johnson Medical School (rwjms.rutgers.edu location page returned by search), i.e. a public university / hospital-system health centre. The mapper flagged this risk but included it anyway.",
+  "fix": "Remove the entry, or move it to an exclusions list with the reason (Rutgers/RWJMS public health system)."
+ },
+ {
+  "claim": "Garden of Healing Yoga & Wellness - source URL https://www.gardenofhealingyoga.com/connect",
+  "problem": "Cited page is dead: /connect, /ways-to-shop and the site root all return HTTP 404, so the 'own website with class schedule and WellnessLiving booking' evidence cannot be verified. The studio does still appear at 94 Church St, Suite 203 on WellnessLiving and gymsnj.",
+  "fix": "Re-source the entry to the WellnessLiving location page or gymsnj listing, and drop the dead website field."
+ },
+ {
+  "claim": "Luminous Aesthetic - website https://nj.luminousam.com/",
+  "problem": "Could not open: the nj.luminousam.com subdomain fails DNS resolution from this environment, and the opened brand page https://www.luminousam.com/services/botox/ does not mention the New Brunswick address. Search results do index the NJ page with 330 Livingston Ave Ste 232 and (732) 543-0024, matching the entry, but I could not confirm it on an opened page.",
+  "fix": "Confirm the NJ page or an active NJ booking profile before outreach; otherwise mark the town/address as unverified."
+ },
+ {
+  "claim": "New Brunswick Chiropractic Center - source https://stormrage.nyc/local-seo-audit/new-brunswick-chiropractic-center/",
+  "problem": "Cited source is an unrelated SEO-audit blog page, not a business listing, and it does not establish that the practice exists or trades in the zone. The business itself does check out elsewhere (177 Livingston Ave, 732-247-0800 on WebMD/Healthgrades provider listings), so the entry is fine but the citation is not.",
+  "fix": "Replace the source URL with the WebMD or Healthgrades provider listing that carries the address and phone."
+ },
+ {
+  "claim": "True Cuts at The Yard (46 College Ave) and True Cuts at George (353A George St)",
+  "problem": "Two entries for one brand, and the brand's own site also lists a third shop (77 Halsey St, Newark). Counting storefronts as separate businesses double-counts the same operator.",
+  "fix": "Keep both storefront addresses but flag them as one company with three locations (two in zone), or merge into a single entry with two addresses."
+ },
+ {
+  "claim": "Entries with 'Unknown' address that are actually resolvable",
+  "problem": "Nails by Wanda (Booksy: 264 Paul Robeson Blvd, New Brunswick 08901 - same address as Diane's Beauty Salon), Blessed Beauty K&M (Booksy skin-care listing: 364 Somerset St), Planeta Nuevo Barbershop (Booksy: 43/58 Georges Rd) all have public addresses that were left blank. Optical Boutique's website is also publicly listed at myopticalboutique.com and was left blank.",
+  "fix": "Fill the addresses and the Optical Boutique website from Booksy / the practice site; keep 'Unknown' only where truly unpublished."
+ },
+ {
+  "claim": "Swagger Barber Shop - address shown as '1213_255_1'",
+  "problem": "Unresolved garbled address; the only source is a single map-derived directory page, so the entry cannot be triaged or contacted as written.",
+  "fix": "Resolve the street address from a second source or drop the entry."
+ },
+ {
+  "claim": "Prestige Salon And Barbershop, 237 Hamilton St",
+  "problem": "The listing confirms the name and town but its URL slug is /carols-beauty-salon/, suggesting the shop may have traded as Carol's Beauty Salon or been renamed. Name at that address is ambiguous.",
+  "fix": "Confirm the current trading name at 237 Hamilton St before any outreach; note the possible former name."
+ },
+ {
+  "claim": "Borderline entries kept with flags: Axis Family Care (Advocare brand) and CrossFit Stealth New Brunswick (branded affiliate)",
+  "problem": "Axis trades under the Advocare network brand and CrossFit Stealth uses a franchised brand identity. Both are locally run offices rather than national chains, but they sit on the exclusion boundary the mapper itself defined.",
+  "fix": "Decide the network/franchise rule at triage level and apply it consistently; if Advocare/CROSSFIT brand offices count as franchises, remove both."
+ }
+]

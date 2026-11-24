@@ -1,0 +1,243 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Running cost line: '10DLC brand and campaign registration (one-time, not monthly)' at '$4.50 brand fee + $15 per campaign submission'",
+      "problem": "Contradicted by the cited Telnyx page. The page lists the $4.5 brand application fee and $15 per campaign review, but also a recurring 'Monthly cost: $1.5/mo for Low Volume Mixed - $10/month for standard volume Campaigns... Campaign fees are billed for three months initially, then subsequently on a monthly recurring basis.' The plan labels the item 'one-time, not monthly', which the source does not support.",
+      "fix": "Relabel as 'one-time $4.50 brand fee + $15 per campaign review, plus a recurring campaign fee of about $1.50-$10/month depending on use case (billed 3 months up front)'. Add the recurring fee to the monthly running-cost total."
+    },
+    {
+      "claim": "Build effort: 'the build is 13-16 founder-days (phases 0-3)' and feasibility 'About 3 weeks of build (13-16 founder-days)'",
+      "problem": "Arithmetic does not match the plan's own phase table. Phases 0-3 are 2-3, 3-4, 6-7 and 3-4 founder-days, which sum to 14-18, not 13-16. The underpinning of the $4,500 setup fee rationale is therefore understated by one to two days.",
+      "fix": "Change to '14-18 founder-days (phases 0-3)' and quote roughly 3-3.5 weeks of build; or reduce a phase range so the total actually equals 13-16."
+    },
+    {
+      "claim": "Integrations: Agency Revolution/FMG website forms - 'Webhook added to nominated forms by Agency Revolution support (webhook key supplied by the destination system)', marked confirmed_in_docs: true",
+      "problem": "Overstated. The cited help article documents adding a webhook key to nominated Forge website forms only for one named destination (AgencyZoom's Web Lead Integration). It does not document posting a form to an arbitrary endpoint of the builder's choosing, which is what the pilot design needs. The mechanism (vendor-configured webhook on specified forms) is confirmed; the destination flexibility is not.",
+      "fix": "Keep confirmed_in_docs true only for 'Agency Revolution adds a webhook key to nominated Forge forms on request' and add an explicit unconfirmed item: whether a webhook can be pointed at a non-AgencyZoom endpoint, to be confirmed with Agency Revolution support in discovery (this is already the right fallback in the risks section - keep the pilot contract conditional on it)."
+    },
+    {
+      "claim": "Integrations: 'Agency Revolution's Zapier path is outbound-only and cannot write back into Fuse'",
+      "problem": "Not found in the cited Agency Revolution article, which does not mention Zapier or Fuse at all. The statement is presented as fact but is unsupported by any source in the plan.",
+      "fix": "Either cite an Agency Revolution or FMG page that documents the Zapier/Fuse limitation, or soften to 'Zapier path documented only as outbound from Fuse (unverified for reverse sync)' and move it to data_gaps."
+    },
+    {
+      "claim": "Risks: 'GLBA Safeguards Rule: an insurance agency is generally a financial institution...', marked confirmed: true",
+      "problem": "The rule content is confirmed on the cited FTC page (information security programme, Qualified Individual, encryption, MFA, service-provider oversight, incident response), but the page never states that insurance agencies are financial institutions. That characterisation is an inference, not something the cited source says.",
+      "fix": "Keep confirmed: true for the rule elements, and label the 'insurance agency = financial institution' linkage as an inference (or cite an FTC/16 CFR 314.2 or state-regulator page that names insurance)."
+    },
+    {
+      "claim": "Running cost: 'Telnyx $0.004 per outbound message part plus carrier passthrough (Telnyx's own example uses ~$0.0038 blended per part)' cited to https://telnyx.com/pricing/elastic-sip",
+      "problem": "The figures are correct but the citation is the wrong page: the Elastic SIP trunking page carries no SMS rates. Both figures ($0.004/part and the $0.0038 blended carrier passthrough example) appear on Telnyx's SMS API pricing page. The same mismatched citation is used for SMS $0.004/part in the Telnyx integrations entry.",
+      "fix": "Re-cite the SMS figures to https://telnyx.com/pricing/messaging and leave the elastic-sip URL for the $0.0032/$0.005 per-minute voice rates."
+    },
+    {
+      "claim": "Risks: 'FCC Declaratory Ruling FCC 24-17 (Feb 8, 2024)' and the cited PDF https://docs.fcc.gov/public/attachments/FCC-24-17A4.pdf",
+      "problem": "Minor: the holding is confirmed (the cited file is Commissioner Gomez's statement in FCC 24-17, which confirms that the TCPA's 'artificial or prerecorded voice' prohibition includes AI-generated voices), but the file itself is a one-page concurring statement dated February 2, 2024, not the ruling text, and its date differs from the 'Feb 8, 2024' in the plan.",
+      "fix": "Cite the Declaratory Ruling document itself (FCC 24-17 main text) rather than the 24-17A4 statement, or keep the statement as corroboration and align the date with the ruling's release date."
+    },
+    {
+      "claim": "Business facts sourced to fraserbrothers.com/contact and /claims-center: weekday-only hours per office, office closing times (Edison 4:15 PM, Belford 5:00 PM), separate phone/fax lines, 'call the office during regular business hours' claims guidance",
+      "problem": "Neither page's body content could be retrieved - both returned only the Agency Revolution footer/copyright text, so the hours, closing times and claims guidance could not be re-verified from the cited URLs. These facts rest on audit.md rather than on a page a verifier can open.",
+      "fix": "No change to the substance, but flag in caveats that the hours/phone/claims facts come from audit.md only; if a verifier or the buyer checks them, cite a retrievable page (e.g. a Google Business Profile or a saved snapshot) or ask the principal to confirm hours in discovery."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "RingReady: $39 per month flat, no setup fee, no contracts, no per-minute charges, insurance-specific 24/7 answering with booking and routing",
+      "source_url": "https://www.ring-ready.com/industries/insurance",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Awava: AI Pro $1,997 setup plus $397 per month; AI Receptionist alone $97 per month added to Website or Core plan",
+      "source_url": "https://awava.ai/insurance-agents",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Structurely (21X): platform fee not public; voice from $0.07/min (BYOC), SMS from $0.02/message, AI email from $0.02",
+      "source_url": "https://www.structurely.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Smith.ai: Pro $2.00 per real call at 75 calls/month, $1.80 at 150, $1.67 at 300; Enterprise $500/month at $1.67 per call with custom prompting and unlimited custom integrations",
+      "source_url": "https://smith.ai/pricing/ai-receptionist",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ruby: $250/50 min, $395/100, $720/200, $1,725/500; chat plans $143/10, $335/30, $520/50",
+      "source_url": "https://www.ruby.com/plans-and-pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bridge: $35 per user per month (list shows $25 crossed out); higher tier $65 per user per month with automated call summaries; API access only on Custom plan with 20-user minimum, price not public",
+      "source_url": "https://www.bridge.insure/resources/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ customer service representatives: median $47,740/yr ($22.95/hr), 10th percentile $35,520, 90th percentile $72,040",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Loaded wage arithmetic: median x 1.25 = about $59,675/yr and about $4,973/month; $28.69/hr loaded ($22.95 x 1.25)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Claude Haiku 5.5 at $0.10 per MTok input / $0.50 per MTok output for prompts up to 100k tokens; Claude Sonnet 5.5 at $2/$10 per MTok",
+      "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LLM running cost arithmetic: 4.8M input tokens at $0.10/MTok = $0.48; 0.7M output tokens at $0.50/MTok = $0.35",
+      "source_url": "https://docs.anthropic.com/en/docs/about-claude/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Telnyx: inbound local $0.0032/min, outbound $0.005/min, $0 platform fee, pay-as-you-go",
+      "source_url": "https://telnyx.com/pricing/elastic-sip",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Telnyx SMS $0.004 per message part plus carrier passthrough, with Telnyx's example using ~$0.0038 blended passthrough per part (as cited to the Elastic SIP page)",
+      "source_url": "https://telnyx.com/pricing/elastic-sip",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Telnyx SMS $0.004 per part and ~$0.0038 blended US carrier passthrough, and SMS monthly cost of about $12 for ~1,500 parts (1,500 x $0.0078 = $11.70)",
+      "source_url": "https://telnyx.com/pricing/messaging",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Telnyx 10DLC: $4.50 brand registration fee and $15 per campaign review",
+      "source_url": "https://support.telnyx.com/en/articles/5634625-10dlc-fees-and-charges",
+      "result": "confirmed"
+    },
+    {
+      "claim": "10DLC brand and campaign registration is one-time, not monthly",
+      "source_url": "https://support.telnyx.com/en/articles/5634625-10dlc-fees-and-charges",
+      "result": "contradicted"
+    },
+    {
+      "claim": "DigitalOcean Basic Droplets: 1 GiB/1 vCPU $6, 2 GiB/1 vCPU $12, 4 GiB/2 vCPU $24 per month",
+      "source_url": "https://www.digitalocean.com/pricing/droplets",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell AI: $0.055/min voice infrastructure, $0.015/min platform TTS, Claude 5.5 Haiku LLM component $0.0032/min, published range $0.07-$0.31/min",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Phase 2 voice running cost: about $22/month for 300 minutes at ~$0.073/min (0.055 + 0.015 + 0.0032 = 0.0732; x300 = $21.96)",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cal.diy is MIT-licensed, self-hosted open-source scheduling (supports $0 scheduling cost)",
+      "source_url": "https://cal.com/blog/calcom-v6-4",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Agency Revolution documents adding a webhook key to nominated Forge website forms on request through its support team",
+      "source_url": "https://help.agencyrevolution.com/en/agencyzoom-integration-forge-website-forms",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Integrations: Agency Revolution webhook can deliver to an arbitrary destination endpoint of the builder's choosing (marked confirmed_in_docs: true)",
+      "source_url": "https://help.agencyrevolution.com/en/agencyzoom-integration-forge-website-forms",
+      "result": "not found"
+    },
+    {
+      "claim": "Agency Revolution's Zapier path is outbound-only and cannot write back into Fuse",
+      "source_url": "https://help.agencyrevolution.com/en/agencyzoom-integration-forge-website-forms",
+      "result": "not found"
+    },
+    {
+      "claim": "Bridge documents an AMS360 integration using an AMS360 Web Service API user",
+      "source_url": "https://portal.bridge.insure/knowledge/ams360-integration",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Calendar API events.insert exists and is quota-based with no published per-call fee",
+      "source_url": "https://developers.google.com/workspace/calendar/api/v3/reference/events/insert",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 11:17A-1.3: soliciting/negotiating/selling requires a producer licence; a single act or holding out is sufficient; a producer may not permit an unlicensed person to transact",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17A-1-3",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FCC held that AI-generated voices are 'artificial or prerecorded' voices under the TCPA (FCC 24-17)",
+      "source_url": "https://docs.fcc.gov/public/attachments/FCC-24-17A4.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Application-to-person SMS needs 10DLC brand and campaign registration, with opt-in/opt-out and help keywords documented in the campaign",
+      "source_url": "https://support.telnyx.com/en/articles/6339152-how-to-create-a-10dlc-campaign",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC Safeguards Rule (16 CFR 314) requires a WISP, a designated Qualified Individual, encryption in transit and at rest, MFA, and service-provider oversight",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/ftc-safeguards-rule-what-your-business-needs-know",
+      "result": "confirmed"
+    },
+    {
+      "claim": "An insurance agency is generally a financial institution for Safeguards Rule purposes (stated as confirmed)",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/ftc-safeguards-rule-what-your-business-needs-know",
+      "result": "not found"
+    },
+    {
+      "claim": "New Jersey is a one-party-consent state under N.J.S.A. 2A:156A-4",
+      "source_url": "https://law.justia.com/codes/new-jersey/title-2a/section-2a-156a-4/",
+      "result": "could not open"
+    },
+    {
+      "claim": "NJ one-party consent: it is lawful to intercept a communication where the person is a party to it or a party has given prior consent (2A:156A-4(d))",
+      "source_url": "https://www.njcourts.gov/system/files/court-opinions/2014/a1758-11.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ DOBI Bulletin 25-03 (Feb 11, 2025) is addressed to all insurers authorised or admitted in New Jersey and expects a written AIS Program with third-party due diligence",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt25_03.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDPA applies at 100,000 consumers, or 25,000 consumers plus revenue from selling personal data, effective January 2025",
+      "source_url": "https://www.njconsumeraffairs.gov/ocp/Pages/NJ-Data-Privacy-Law-FAQ.aspx",
+      "result": "could not open"
+    },
+    {
+      "claim": "NJDPA thresholds are 100,000 consumers, or 25,000 consumers plus revenue/discount from selling personal data",
+      "source_url": "https://ccianet.org/wp-content/uploads/2024/02/CCIA-Summary-New-Jersey-Data-Privacy-Law.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Suggested pricing arithmetic: $550/month (~$6,600/yr) is about 28% of the $23,868 low-end value and about 11% of the $59,670 high-end value",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Suggested pricing arithmetic: $4,500 setup is about 2.25x Awava's $1,997 setup and the $2,500 pilot fee about 1.25x it",
+      "source_url": "https://awava.ai/insurance-agents",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bridge uplift comparison: moving 17 staff from $35 to $65 per user is about $510/month",
+      "source_url": "https://www.bridge.insure/resources/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Build effort is 13-16 founder-days across phases 0-3",
+      "source_url": "",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Fraser Brothers contact page lists separate phone/fax lines and weekday-only hours per office, and the claims page sends clients to the office during business hours",
+      "source_url": "https://www.fraserbrothers.com/contact",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

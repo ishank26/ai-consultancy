@@ -1,0 +1,121 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Lener, Myler and Company, P.C. — 605 Franklin Blvd, Suite 2A, Somerset 08873 (CPA firm in-zone, cited to lenermyler.com)",
+      "problem": "Wrong town. The firm's own contact page and site footer both give 197 Route 18 Ste 3000, East Brunswick, NJ 08816 with the same phone (732) 220-8550; a Google map embed on that page points to East Brunswick. The cited source (richard-lener.php) contains no address at all, so the Somerset address came only from third-party listings (whereorg/taxbuzz). No Somerset address appears anywhere on the firm's own site.",
+      "fix": "Remove the entry or, if a Somerset office is claimed, require a source that is not a bulk directory (e.g., a Somerset-specific page on the firm's site or a signed lease/utility record). Do not keep 'own website' as the active evidence for a Somerset address."
+    },
+    {
+      "claim": "Walton Accounting and Tax Solutions — 341 Hillcrest Ave, Somerset; active_evidence 'own website plus directory listing'; website waltonaccountingandtax.com",
+      "problem": "The listed website is dead: waltonaccountingandtax.com returns a publisher placeholder page ('SITE NOT FOUND — this site is not published or does not have a domain assigned'). The only live support for the practice is a TaxScout profile built from public records (PTIN + Google Business listing, checked Oct 2026), which is a directory, not the firm's own site.",
+      "fix": "Blank the website field and change active_evidence to 'directory listing (TaxScout, from IRS PTIN / Google Business profile) only'. Treat as a single-source entry needing a confirmation call, and keep the home-office flag (341 Hillcrest Ave is a residential-style street address)."
+    },
+    {
+      "claim": "NJ Sehgal & Associates — phone (908) 241-0582, no website (Cylex only)",
+      "problem": "The firm has its own site (njsehgal.com) whose contact page gives 370 Campus Drive, Suite 138, Somerset 08873 and phone 732-690-4410. The entry's primary phone is the Cylex number, and the website field is empty even though a live site exists.",
+      "fix": "Set phone to (732) 690-4410, add https://njsehgal.com/contact-us/ as the website and cite it as the authoritative source; drop the Cylex phone or keep it only as a secondary/alternate line."
+    },
+    {
+      "claim": "Natsoft Corporation — 27 Worlds Fair Dr, Somerset; phone (732) 812-8098",
+      "problem": "Phone has a digit error. Natsoft's own privacy page (dated Jan 2026, signed by its CEO) gives 27 Worlds Fair Dr, Somerset, NJ 08873 and '+1 732-812-9098'.",
+      "fix": "Correct the phone to (732) 812-9098 and cite https://natsoft.us/privacy-policy as the source instead of relying on the IBM partner directory."
+    },
+    {
+      "claim": "Weissman & Mintz, LLC — 220 Davidson Ave, Somerset (no suite)",
+      "problem": "Address confirmed but incomplete: the firm's own contact page gives 220 Davidson Avenue, Suite 410, Somerset 08873 (and a second office at 90 Broad Street, Suite 254, New York).",
+      "fix": "Add 'Suite 410' to the address; keep the multi-office note (NJ-headquartered firm, kept under the mapper's rule)."
+    },
+    {
+      "claim": "Axis Design Consultants Ltd — 532 New Brunswick Rd, Somerset; website https://axisdcl.com/",
+      "problem": "The website could not be opened (fetch failed), so it is not verified as that business's site. It was already flagged in the entry as 'domain taken from the directory profile, not opened'. The firm's address/phone rest on a single salary-data profile page.",
+      "fix": "Either verify axisdcl.com in a browser (confirm it names the Somerset firm and the 532 New Brunswick Rd address) or blank the website and mark the entry as single-directory evidence."
+    },
+    {
+      "claim": "Hi Caliber IT Solutions — 100 Davidson Ave, Suite 300, Somerset, retained despite 'STATUS UNCERTAIN'",
+      "problem": "No opened source shows the business currently operating. LinkedIn (which lists the address) is a self-maintained page, and the CB Insights profile cited by the mapper reports the company ceased operations; a further search found only 'may be closed' labels and no live site or current phone.",
+      "fix": "Drop the entry, or hold it in a 'needs confirmation before outreach' bucket rather than counting it as an eligible lead."
+    },
+    {
+      "claim": "Comptech Associates Inc — 1075 Easton Ave, Tower One, Suite 4, Somerset",
+      "problem": "Only the phone (732-873-5040) is confirmed. The firm redesigned its site; the current contact page and homepage show no street address, so the Easton Ave tower/suite could not be re-verified this round.",
+      "fix": "Confirm the address from a page that prints it (older contact page, chamber listing, or NJ business registration) before mailing or visiting."
+    },
+    {
+      "claim": "Ascendant (New Jersey Managed IT Services) — 265 Davidson Ave, Suite 110; phone (732) 563-2675",
+      "problem": "Phone unconfirmed and likely outdated: the firm's own contact page shows no phone or address text, while an agent/directory result for the same 265 Davidson Ave, Suite 110 office gives (732) 444-3736.",
+      "fix": "Re-verify the number (call or open a page that prints it) and replace (732) 563-2675 if (732) 444-3736 is current."
+    },
+    {
+      "claim": "Coverage claim that Franklin Park (08823) is 'still sparse — only ASM Tax Office has a confirmed 08823 address'",
+      "problem": "A single Franklin Park search surfaced MRR Associates Inc at 3031 Rt 27, Franklin Park 08823 (732-230-2424) with its own live site and full contact page — a clear in-zone accounting firm that is missing from the list. Other missing in-zone firms also turned up in insurance, staffing, property management, engineering and marketing.",
+      "fix": "Add MRR Associates and the other missing names listed under coverage.missing, and correct the data_gaps note about Franklin Park."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Dafer Solutions is at 2 Camner Ave, Suite 3, Somerset 08873, phones (732) 819-1626 / (732) 993 0909", "source_url": "https://www.dafersolutions.com/contacto/", "result": "confirmed"},
+    {"claim": "M.L. Perry, CPA is at 1075 Easton Ave., Tower 2, Suite 3, Somerset 08873, phone 732-220-9700", "source_url": "https://www.mlperrycpa.com/contact.php", "result": "confirmed"},
+    {"claim": "Carletta O. Beckwith CPA LLC is at 3 Clyde Road, Ste. 201, Somerset 08873, phone (732) 873-0902", "source_url": "https://www.beckwithcpa.com/contact.php", "result": "confirmed"},
+    {"claim": "Apostolakis CPA (Rosner CPA / Siminoff PA) is at 1553 Route 27, Suite 1700, Somerset 08873, phone (732) 249-0384", "source_url": "https://www.apostocpa.com/", "result": "confirmed"},
+    {"claim": "Pinkham & Associates, CPA's, LLC is at 100 Davidson Avenue, Suite 107, Somerset 08873", "source_url": "https://www.pinkhamandassociates.com/contact.php", "result": "confirmed"},
+    {"claim": "NJ Sehgal & Associates is at 370 Campus Drive, Suite 138, Somerset 08873 — and its published phone is 732-690-4410", "source_url": "https://njsehgal.com/contact-us/", "result": "contradicted"},
+    {"claim": "Kaufman Diamond & Co is at 5 Clyde Road, Suite 201, Somerset 08873, phone (732) 568-1040", "source_url": "https://taxscout.ai/cpa/kaufman-diamond-and-company-somerset-nj", "result": "confirmed"},
+    {"claim": "Naughton, Eugene CPA is at 1320 Hamilton St., Suite 5, Somerset 08873", "source_url": "https://advisor-registry.org/certified-public-accountants/new-jersey/somerset-nj/eugene-naughton/910997", "result": "confirmed"},
+    {"claim": "Lener, Myler and Company, P.C. is at 605 Franklin Blvd, Suite 2A, Somerset 08873", "source_url": "https://www.lenermyler.com/contact.php", "result": "contradicted"},
+    {"claim": "Walton Accounting and Tax Solutions has an operating own website at waltonaccountingandtax.com", "source_url": "https://www.waltonaccountingandtax.com/", "result": "contradicted"},
+    {"claim": "Walton Accounting and Tax Solutions (Kimberly Walton) is at 341 Hillcrest Ave, Somerset 08873", "source_url": "https://www.taxscout.ai/cpa/walton-accounting-and-tax-solutions-inc-somerset-nj", "result": "confirmed"},
+    {"claim": "Weissman & Mintz, LLC is at 220 Davidson Avenue, Somerset 08873, phone (732) 563-4565", "source_url": "https://weissmanmintz.com/contact/", "result": "confirmed"},
+    {"claim": "Barrood Agency is a Somerset insurance agency with a Somerset office, phone 732-247-8664", "source_url": "https://www.barrood.com/", "result": "confirmed"},
+    {"claim": "NJ Central Real Estate is at 225 Demott Ln #203, Somerset 08873, phone 848-702-0858", "source_url": "https://njcentralrealestate.net/", "result": "confirmed"},
+    {"claim": "Design Resources Group Architects lists a Somerset office at 270 Davidson Avenue, Suite 303, tel 732.560.7900", "source_url": "https://drg-architects.com/", "result": "confirmed"},
+    {"claim": "Allied Business Consulting Inc is at 19 Clyde Road, Suite 201, Somerset 08873, tel 908-222-7015", "source_url": "https://www.abcinc-us.com/contact-us", "result": "confirmed"},
+    {"claim": "Sypram Software LLC is at 5 Clyde Road, Suite 101, Somerset 08873, phone (732) 875-3851", "source_url": "https://sypramsoftware.com/contact/", "result": "confirmed"},
+    {"claim": "SYMBASTECH CORP is at 1075 Easton Ave, Tower 2, Suite 6, Somerset 08873, phone +1 203 382 3323", "source_url": "https://symbastech.com/contact.html", "result": "confirmed"},
+    {"claim": "Radus Tek Services, Inc. is at 100 Franklin Square Drive, Suite 207-A, Somerset 08873, phone (732) 302-9100", "source_url": "https://radustekservices.com/NewWebsite/index.html", "result": "confirmed"},
+    {"claim": "EG&R Engineering PC is at 270 Davidson Ave, Suite 603, Somerset 08873, phone (609)-619-5256", "source_url": "https://www.egrengineering.com/contact-us/", "result": "confirmed"},
+    {"claim": "Excel Environmental Resources, Inc. is at 1743 State Route 27, Somerset 08873, phone 732-545-9525", "source_url": "https://excelenv.com/contact-us/", "result": "confirmed"},
+    {"claim": "D2 Creative is at 399 Campus Drive, Suite 309, Somerset 08873, phone 732-539-2257", "source_url": "https://www.d2creative.com/contact-us/", "result": "confirmed"},
+    {"claim": "Delta Personnel Staffing is at 285 Davidson Ave. Suite 100, Somerset 08873, phone (732) 560-9000", "source_url": "https://deltastaffing.net/contact-us/", "result": "confirmed"},
+    {"claim": "MEM Property Management's Central Jersey office is 3 Executive Drive, Suite #350, Somerset 08873, phone 732-296-6660", "source_url": "https://www.memproperty.com/contact-us/", "result": "confirmed"},
+    {"claim": "AMH Real Estate Management LLC is at 50 Atrium Drive, Somerset 08873, phone 732-357-1873", "source_url": "https://amhrealty.com/contact-2/", "result": "confirmed"},
+    {"claim": "Rangam Consultants Inc. lists (908) 704-8843 as its corporate HQ number", "source_url": "https://rangam.com/contact-us/", "result": "confirmed"},
+    {"claim": "Natsoft Corporation is headquartered at 27 Worlds Fair Dr, Somerset 08873 with phone +1 732-812-9098", "source_url": "https://natsoft.us/privacy-policy", "result": "contradicted"},
+    {"claim": "Somerset Tax Services LLC publishes phone 732-246-3332", "source_url": "https://www.somersettaxservices.com/contact-us", "result": "confirmed"},
+    {"claim": "Wizard Accounting Services runs a live site at wizardaccounting.com offering bookkeeping/payroll", "source_url": "http://www.wizardaccounting.com/", "result": "confirmed"},
+    {"claim": "Sigma Engineering and Consulting Associates is an operating Somerset firm reachable at (732) 356-3046", "source_url": "https://sigmaeca.com/", "result": "confirmed"},
+    {"claim": "Comptech Associates Inc publishes 732-873-5040 as its contact number", "source_url": "https://comptechassoc.com/contact.php", "result": "confirmed"},
+    {"claim": "WareWorks LLC lists 507 Hamilton St, Store 3, Somerset on its own contact page", "source_url": "https://www.wareworks.me/contact", "result": "not found"},
+    {"claim": "Axis Design Consultants' website axisdcl.com is that firm's own site", "source_url": "https://axisdcl.com/", "result": "could not open"},
+    {"claim": "Waterstone Wealth Advisors publishes the Amwell Rd office on its own contact page", "source_url": "https://www.wwallc.net/contact", "result": "could not open"},
+    {"claim": "NT Bookkeeping and Tax Services site ntbookkeeping.com is live", "source_url": "http://ntbookkeeping.com/", "result": "could not open"},
+    {"claim": "Alan W. Latanzio Insurance Agency site latanzio.com is live and readable", "source_url": "http://latanzio.com/", "result": "could not open"}
+  ],
+  "coverage": {
+    "searches": [
+      "CPA firm Somerset NJ 08873 accounting office",
+      "law firm Somerset NJ 08873 attorneys office",
+      "accountant OR bookkeeping \"Franklin Park\" NJ 08823 tax office",
+      "insurance agency Somerset NJ 08873 independent agent",
+      "IT consulting company Somerset NJ 08873 office",
+      "property management company Somerset NJ 08873 office address",
+      "staffing agency Somerset NJ 08873 employment agency",
+      "architectural firm OR engineering firm Somerset NJ 08873 office",
+      "marketing agency Somerset NJ 08873 digital branding studio"
+    ],
+    "eligible_found": 35,
+    "already_listed": 25,
+    "missing": [
+      {"name": "MRR Associates Inc. (Tax and Financial Consultants)", "town": "Franklin Park", "source_url": "https://www.mrrassociate.com/contact-us/"},
+      {"name": "Taylor Management Company (Central NJ office)", "town": "Somerset", "source_url": "https://taylormgt.com/contact-us"},
+      {"name": "Synerfac Technical Staffing", "town": "Somerset", "source_url": "https://synerfac.com/contact-us/"},
+      {"name": "Ascension Agent Group, LLC (independent insurance agency)", "town": "Somerset", "source_url": "https://www.plymouthrock.com/find-an-agent/NJ"},
+      {"name": "Lanfrit & Tullio, LLC (law firm, 428 Elizabeth Ave — current status not established)", "town": "Somerset", "source_url": "https://www.lawyers.com/somerset/new-jersey/lanfrit-and-tullio-llc-4428031-f/"},
+      {"name": "Pappas Insurance Agency", "town": "Somerset", "source_url": "https://www.yellowpages.com/somerset-nj/mip/pappas-insurance-agency-507341810"},
+      {"name": "Personnel Connections (employment agency, 764 Easton Ave)", "town": "Somerset", "source_url": "https://www.yellowpages.com/somerset-nj/employment-agencies"},
+      {"name": "Gravitas Engineering Group, PC (civil engineering, 100 Davidson Ave)", "town": "Somerset", "source_url": "https://www.linkedin.com/company/gravitasengineeringgroup"},
+      {"name": "CrossGlobe LLC (performance marketing; own site states Somerset base, street address not printed)", "town": "Somerset", "source_url": "https://crossglobellc.com/"},
+      {"name": "Financial Management Consultants LLC (tax prep / financial consulting, 732-821-4910)", "town": "Franklin Park", "source_url": "https://fredlwalker.com/"}
+    ]
+  },
+  "confidence": "Medium"
+}

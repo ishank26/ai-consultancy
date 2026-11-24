@@ -1,0 +1,3 @@
+Triage every business in batch.json per your role. Today is 2026-11-14. Use "batch": "b001". Write the JSON to output.json.
+
+Note on this business: it was added by hand after the owner asked about it, so the record is thin. It appears to be a mobile soft-play (toddler play equipment) rental service for parties, based in East Brunswick. Find its own web presence first (website, Google Business Profile, Instagram or Facebook page, booking page) and use those as the primary sources. The street address comes from a public directory listing and may be a home base: use only public business listings and the business's own pages, and do not look up the property or who lives there.

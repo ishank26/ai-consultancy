@@ -1,0 +1,113 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"Anyone typing the old address lands on a page offering the domain for sale\" (audit_md, What it means for customers) and \"the address on your old site, huakangskincare.com, now redirects to a GoDaddy page offering the domain for sale\" (founder_md outreach email)",
+      "problem": "Not what the live page says. Opened https://huakangskincare.com/ today: the visible text is only the domain name, 'is parked free, courtesy of GoDaddy.com', a 'Get This Domain' button, six 'Related Search Topics' links and a GoDaddy copyright/disclaimer line. The words 'for sale' and any price are absent. The 'Get This Domain' button points at godaddy.com/domainsearch/find?...domainToCheck=huakangskincare.com (a domain-availability search), not a listing page. Meanwhile RDAP shows the name still registered to 2027-03-27 with client delete/renew/transfer/update prohibited, and the auditor's own data_gaps say it is unknown 'whether huakangskincare.com has a buyer, is formally listed for sale, or is simply an unused domain'. So 'offering the domain for sale' is an unlabelled inference that the audit's own gaps contradict - and it is the sentence the consultant would say to the owner on the phone.",
+      "fix": "Reword both to the observable fact, e.g. 'a GoDaddy parking page with a \"Get This Domain\" button; the domain itself is still registered through 2027, so whether it can actually be bought is unclear'. Keep 'for sale' out unless a source says so."
+    },
+    {
+      "claim": "\"the archived site said 10:00-21:00 daily\" (severity_reason and caveats)",
+      "problem": "The archived page does not say that. Opened https://web.archive.org/web/20240229065606/https://www.huakangskincare.com/: 'Hours of Operation are: Monday~Sunday: 10:00 PM ~ 9:00 PM' - internally contradictory times. Reading that as 10:00-21:00 assumes the 'PM' is a typo for 'AM'; the same sentence also appears in the 2014-11-22 capture. The audit's own caveat already says none of the hours are the business's current statement, but the 10:00-21:00 rendering is presented as what the page said.",
+      "fix": "Either quote it as it stands ('the archived site shows a garbled \"10:00 PM ~ 9:00 PM\" line, probably 10 AM-9 PM') or drop the archived hours from the comparison and rely on Google 9 PM vs BestProsInTown 9 PM vs SpaAndParlor 7 PM."
+    },
+    {
+      "claim": "Body length of audit_md (limit: at most 300 words)",
+      "problem": "The body runs to about 314 words counting headings (about 295 excluding headings), so it is at or just over the limit depending on how headings are counted.",
+      "fix": "Cut roughly 20 words - e.g. drop the '(screenshots saved)' note and shorten the 'What it means for customers' paragraph - so it is comfortably under 300."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "huakangskincare.com redirects to /lander, a GoDaddy parking page reading 'parked free, courtesy of GoDaddy.com', with a 'Get This Domain' button and unrelated skin-care search topics",
+      "source_url": "https://huakangskincare.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The parking lander loads over HTTPS with no certificate warning and shows the same text at desktop and phone width",
+      "source_url": "https://huakangskincare.com/lander",
+      "result": "confirmed"
+    },
+    {
+      "claim": "huakanghealthcenter.com does not resolve (DNS failure)",
+      "source_url": "http://www.huakanghealthcenter.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "huakangspa.com returns HTTP 522",
+      "source_url": "http://www.huakangspa.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 2014-03-27, expires 2027-03-27, last changed 2026-03-13, registrar GoDaddy.com LLC (IANA 146), nameservers NS55/NS56.DOMAINCONTROL.COM, statuses client delete/renew/transfer/update prohibited",
+      "source_url": "https://rdap.org/domain/huakangskincare.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The GoDaddy lander is itself described on the page as offering the domain for sale",
+      "source_url": "https://huakangskincare.com/lander",
+      "result": "not found"
+    },
+    {
+      "claim": "Google Business Profile: Hua Kang Health Center, 118 Ryders Ln, Milltown NJ 08850, (732) 253-7885, 4.4 stars, category 'Massage therapist', 'Open - Closes 9 PM', an 'Add website' prompt (no website link), actions Directions/Save/Send to phone/Share/Write a review, limited signed-out view",
+      "source_url": "https://www.google.com/maps/search/Hua+Kang+Health+Center+118+Ryders+Ln+Milltown+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BestProsInTown listing: phone (732) 253-7885, hours 10AM-9PM, a Facebook link, no business-website field, and no huakang domain anywhere in the page HTML",
+      "source_url": "https://www.bestprosintown.com/nj/milltown/hua-kang-health-center-/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BestProsInTown review summary praises friendly, accommodating staff, prices and late Sunday hours",
+      "source_url": "https://www.bestprosintown.com/nj/milltown/hua-kang-health-center-/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SpaAndParlor listing: address only plus hours 10:00AM-7:00PM daily, phone behind a 'Show Number' control, no website link, and a 'Book Service' button",
+      "source_url": "https://www.spaandparlor.com/spa-and-parlor-details/hua-kang-health-center/united-states/new-jersey/milltown",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SalonDiscover page returns HTTP 403 / bot check and was not read directly; search summaries put its website field as huakangskincare.com",
+      "source_url": "https://salondiscover.com/hua-kang-health-center-08850/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback CDX: 2023-10-30 and 2023-12-30 are 301; 2024-02-29 is a '-' revisit entry; every capture from 2024-04-03 onward is a 200 parking redirect",
+      "source_url": "https://web.archive.org/cdx/search/cdx?url=huakangskincare.com&output=json&fl=timestamp,statuscode,redirect&collapse=timestamp:6",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The archived business site's menu links point at huakangskincare.chinesenj.net (index, facial, skincare, massage, hotstonemassage, contact), and that host no longer resolves",
+      "source_url": "https://web.archive.org/web/20240229065606/https://www.huakangskincare.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The archived site shows facial, skin care, massage and hot-stone massage, phone 732-253-7885 and 118 Ryders Lane, Milltown, with footer links to huakanghealthcenter.com and huakangspa.com",
+      "source_url": "https://web.archive.org/web/20240229065606/https://www.huakangskincare.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "By 3 April 2024 the address served the parking redirect",
+      "source_url": "https://web.archive.org/web/20240403181034/https://www.huakangskincare.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "huakangskincare.com was the business's own site in 2014 (supporting 'own site since 2014')",
+      "source_url": "https://web.archive.org/web/20141122125814/http://huakangskincare.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived site stated 'Hours of Operation are: Monday~Sunday: 10:00 PM ~ 9:00 PM', i.e. 10:00-21:00 daily",
+      "source_url": "https://web.archive.org/web/20240229065606/https://www.huakangskincare.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Business is the correct entity (Hua Kang Health Center, Milltown NJ, phone (732) 253-7885), trading and not closed, and independent rather than a chain",
+      "source_url": "https://www.bestprosintown.com/nj/milltown/hua-kang-health-center-/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

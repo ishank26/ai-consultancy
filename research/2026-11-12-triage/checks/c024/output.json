@@ -1,0 +1,157 @@
+{
+  "results": [
+    {
+      "ref": "B00202",
+      "name": "Loyal Tech and Security",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No contact form, no quote request and no click-to-call reachable on the secondary site",
+          "what_is_true": "A click-to-call tel: link for 732-675-6843 sits in the header of every page of loyaltechandsecurity.com ('Call 732-675-6843'); the contact form and quote request are genuinely absent.",
+          "source_url": "https://loyaltechandsecurity.com/contact-us/"
+        },
+        {
+          "claim": "Secondary site has 'no substantive service pages'",
+          "what_is_true": "It has a Managed IT Services page with Network Operations Center and Full-Service Help Desk sections (~7.4k characters of text), an Industry Specific page and a Cloud Security page. There is no pricing and the Testimonials page is blank, but the service pages exist.",
+          "source_url": "https://loyaltechandsecurity.com/managed-it-services/"
+        },
+        {
+          "claim": "robots.txt cannot even be read on the main domain",
+          "what_is_true": "robots.txt on loyaltechsecurity.com returns normally (disallows /wp-admin/, */trackback/, /cgi-bin/, lists sitemaps); only HTML page requests hit the Cloudflare interstitial.",
+          "source_url": "https://loyaltechsecurity.com/robots.txt"
+        },
+        {
+          "claim": "Hours conflict: site 9-5 weekdays vs 9-6 Mon-Sat in a directory",
+          "what_is_true": "The conflict is real but the figures differ: Google's profile shows Friday 9 AM-7 PM while the site says Monday to Friday 9am-5pm.",
+          "source_url": "https://www.google.com/maps/search/Loyal+Tech+and+Security+197+Route+18+South+East+Brunswick+NJ"
+        },
+        {
+          "claim": "Recruiting a Business Development Representative (cited as a current size/operations signal)",
+          "what_is_true": "The cited job-board URL now returns HTTP 410 Gone (a second copy on careers.augsburg.edu returns 404), so the posting is not live today; search results indicate an application deadline of October 5, 2026.",
+          "source_url": "https://careers.augustana.edu/jobs/loyal-tech-and-security-business-development-representative/"
+        }
+      ],
+      "notes": "Operating and not an excluded type. Google profile re-confirmed: 4.8, 'Computer support and services', 197 NJ-18 East Brunswick, phone (732) 675-6843, and an owner post dated November 12, 2026 (19 hours ago) about a Microsoft 365 outage linking to a page on the main domain - so the profile is active. Main domain still serves Cloudflare's 'Just a moment... / Performing security verification' page in a real Chrome at 1280px after a 6-second wait, so the blocked-site issue holds; robots.txt and sitemaps are reachable, so the block is on HTML for automated visitors rather than robots. Secondary domain loads but is thin and stale: H1 'Home', 2020-era Newspaperly theme credit, a reused 'Tweets by JaysStop' embed on Contact and Testimonials, and an empty Testimonials page. Scores left as recorded: gap 4 and evidence 4 fit a claimed, active profile pointing at a blocked site plus a duplicate thin domain; pay 3 and ease 3 are defensible, though the BDR-hiring support for pay/ease should be dropped now that the posting is dead."
+    },
+    {
+      "ref": "B00215",
+      "name": "Key Marketing",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No intake form anywhere on the site; the only booking path is the Calendly phone consult",
+          "what_is_true": "A Contact Form 7 form exists on /contact with name, email, subject and message fields plus a 'select the truck' image captcha. What is missing is project-intake questions (budget, timeline, service), not a form.",
+          "source_url": "https://key.marketing/contact"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 2,
+        "ease": 4,
+        "evidence": 4
+      },
+      "notes": "Operating, marketing agency (not an excluded type). Verified live: title 'Home - Key Marketing Agency', no meta description, viewport maximum-scale=1, footer '© 2020 Key Marketing Agency', six testimonials and a Verizon/Firestone/Sprint-style logo strip, Calendly phone-consult link (calendly.com/keymktg/phone-consult-general) and a working tel link to (732) 200-2889, one JSON-LD @graph block, Yoast robots.txt with 'Disallow:' and a sitemap. Address mismatch confirmed: site footer and contact page say 1 Tower Center Blvd Suite 1510 PMB 30 East Brunswick, while Google shows 485C US Highway 1 South Suite 100 with a 5.0 rating and the same phone. 390px layout is clean, no overflow, form reachable. Gap lowered 4 to 3: the site functions, books consultations and carries real social proof, so the decay is polish plus local-search hygiene rather than a broken funnel."
+    },
+    {
+      "ref": "B00604",
+      "name": "Kilmer Driving School",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Operating driving school (not an excluded type). Re-confirmed every top issue: https://www.kilmerdrivingschool.com/ fails in Chrome with ERR_CERT_AUTHORITY_INVALID, and the HTTP version is what serves; the contact page has no form, no address and no phone in text (only the logo image links tel:732-895-2911); the footer reads '(c) 2016 Kilmer Driving School'; default WordPress sidebar widgets (Recent Comments, Archives, Categories, Meta, Log in) are still exposed; the fetched HTML has no meta description and no JSON-LD. The services page confirms $390 six-hour course, $50 permit fee, $160/$240 road-test packages, 'Office Visits by Appointments Only', a 24-hour cancellation request and License #000293. Google listing: 4.9 'Driving school', 646 NJ-18, closes 5 PM. One added finding that strengthens the record: Google's phone for the listing is (732) 955-6552, so the site's tel: link points to a number that does not match the profile - worth calling out to the owner. Minor imprecision: the 'instructors speak English, Spanish and Arabic' signal is on the home page, while the cited /services/ page says English and Arabic only. Review count of 1,089 could not be re-read in Google's limited Maps view. Scores reasonable as recorded (gap 5, pay 3, ease 3, evidence 3)."
+    },
+    {
+      "ref": "B00617",
+      "name": "Fotoplicity",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No online self-serve booking and no calendar exists - 'every inquiry routes to a form or phone call'; 'site uses book language but no calendar exists'",
+          "what_is_true": "The headshots page has a 'Schedule A Phone Call' link into the Fotoplicity client portal scheduler (clientportal.fotoplicity.com), which offers a 15-minute phone consultation with pickable slots (Nov 17, 2026, 1:00-3:00 PM shown). A visitor or agent can pick a time online; what does not exist is self-serve booking of a paid photo session or a deposit.",
+          "source_url": "https://clientportal.fotoplicity.com/public/appointment-scheduler/5dd25c68c93ca651e64f9d59/schedule"
+        },
+        {
+          "claim": "online_booking_or_quote: 'Contact/quote form only; no calendar-based online booking seen'",
+          "what_is_true": "A calendar-based appointment scheduler exists one click from the headshots page and should have been seen; only session/deposit booking is missing.",
+          "source_url": "https://www.fotoplicity.com/headshots"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 2,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Operating, solo-owner portrait studio, not an excluded type. Verified: title is just 'Fotoplicity'; meta description does name the East Brunswick studio; three JSON-LD blocks including a LocalBusiness whose openingHours string is malformed ('Mo 09:00-12:00, Tu 09:00-12:00, , Th 09:00-12:00, Fr 09:00-12:00, , '); Squarespace robots.txt disallows GPTBot, ClaudeBot, Google-Extended, anthropic-ai, CCBot and others while leaving OAI-SearchBot, PerplexityBot and Googlebot allowed; contact page carries a Flodesk form, tel:+1739177748, '180 Tices Lane, Building A, Suite 103', the 24-hour reply promise and the 'limited number of families each month' line. The 'Book a ...' buttons on the home page link to service pages, not a scheduler. 390px layout is legible but the hero is a very faded photo with a large blank band before the headline. Gap lowered 3 to 2 and evidence 4 to 3 because a bookable consultation path exists and the record missed it; bookable should arguably be 2 rather than 1."
+    },
+    {
+      "ref": "B00628",
+      "name": "Elite Packaging Corp.",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Listing platform 'YellowPages (directory only)'; no Google listing; 'only thin third-party directory entries (YellowPages, Macrae's) describe the business'",
+          "what_is_true": "A Google Maps listing exists for the business under the name 'Elite Packing' at 40 Cotters Ln, East Brunswick: 4.0 rating, category 'Distribution service', with 'Claim this business', no phone, no hours and no website attached. It is unclaimed and incomplete rather than absent.",
+          "source_url": "https://www.google.com/maps/search/Elite+Packaging+Corp+21+Cotters+Lane+East+Brunswick+NJ"
+        }
+      ],
+      "notes": "Operating small contract packager, not an excluded type (YellowPages, Macrae's and a D&B entry all list it; nothing suggests closure). Core issue re-confirmed directly: https://www.elitepkg.net/ returns a bare '403 Forbidden - You don't have permission to access this resource' in real Chrome, so there is no crawlable content, no quote form and no visible phone or email; robots.txt is equally inaccessible. The 4.0 Google listing at 40 Cotters Ln is very likely the same firm (listings variously give 21 and 40 Cotters Lane; matching name and street, so this is an inference, not confirmed), which adds a concrete claim-and-complete action and a small review history to the opportunity. Evidence score 3 remains fair: the site itself could not be read, so service descriptions rest on directories and search-indexed copy. Gap 5, pay 2 and ease 4 look reasonable."
+    },
+    {
+      "ref": "B00807",
+      "name": "Prestige Nails",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Reviews mention appointment delays and repeated comments about waits (basis for the review-request/reply opportunity)",
+          "what_is_true": "The BestProsInTown page I opened summarises 192 reviews as praising friendliness, cleanliness and attention to detail while noting 'mixed experiences with specific services, such as sculpted nails and gel manicures'; it records no appointment-delay or wait complaints that I could see.",
+          "source_url": "https://www.bestprosintown.com/nj/north-brunswick/prestige-nails-/"
+        },
+        {
+          "claim": "Owner posted a promo update '2 days ago'",
+          "what_is_true": "The owner post on the Google profile reads '3 days ago' today.",
+          "source_url": "https://www.google.com/maps/search/Prestige+Nails+771+Shoppes+Blvd+North+Brunswick+NJ"
+        }
+      ],
+      "notes": "Operating nail salon, not an excluded type. All four top issues re-confirmed on the live site: at 390px the gift-card flyer modal covers nearly the whole first screen (closable X, 'Exp 12/31/2026', 5% bonus); the header link is tel:(813) 654-4663 while its text reads 'Call: 732-246-7777'; service groups all resolve to service.html?group=NN query strings; no JSON-LD anywhere; the booking button hands off to lldtek.org/salon/appt, which opens on 'Please enter your Mobile' and later asks for card, expiry, name on card and billing address. Also confirmed: 'Townsh' typo, meta description naming the salon and township, robots.txt 404, Google 4.8 at 771 Shoppes Blvd with matching phone and 'Open - Closes 7:30 PM'. The review-reply opportunity should be re-argued on 'inconsistent service' rather than waits. Scores unchanged (gap 3, pay 3, ease 4, evidence 4)."
+    },
+    {
+      "ref": "B00811",
+      "name": "Nail Fever & Spa",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No published prices or hours in crawlable text (top issue); the site is described as having almost nothing answerable",
+          "what_is_true": "The SpacePOS widget does publish prices once a service group is opened: Regular Manicure 20 min $22, hand gel colour change $25, gel manicure 30 min $35, and so on. Prices are rendered by JavaScript rather than static HTML and hours are genuinely absent, but 'no published prices' overstates it.",
+          "source_url": "https://booking.spacepos.net/?id=SA6V33kvHVQ="
+        },
+        {
+          "claim": "Eight service groups in the booking widget",
+          "what_is_true": "The widget lists ten: Acrylic Enhance, Gel Enhance, Manicure, Pedicure, Waxing, Eyelash Extension, Kids, Accessories, Dip Powder, Facial.",
+          "source_url": "https://booking.spacepos.net/?id=SA6V33kvHVQ="
+        }
+      ],
+      "notes": "Operating nail salon, not an excluded type. Re-confirmed: the only web presence in the Google profile's website field is booking.spacepos.net/?id=SA6V33kvHVQ=, branded 'Nail Fever Spa 2', 1825 US-130 #4, phone (732) 398-9888, title 'Salon Booking - SpacePOS', no informational copy, no hours, no photos or reviews, no JSON-LD; the widget note sends facial and eyelash-extension customers to call the shop. Google listing is healthy: 4.8, 'Nail salon', 1825 US-130, same phone, website field pointing at the widget. A second 'NAIL FEVER' listing exists at 1451 US-1 (4.1, different phone), which the record does not mention and which matters for review requests and NAP consistency. Scores reasonable (gap 4, pay 2, ease 5, evidence 3)."
+    },
+    {
+      "ref": "B01068",
+      "name": "Parkway-Kew Corporation",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "On mobile the hero photo sits behind near-invisible dark headline text; '390px screenshot shows dark headline over a dark building photo' (evidence for the mobile-contrast opportunity)",
+          "what_is_true": "At 390px the hero headline 'Making machine parts last longer.' renders white with an orange accent over a dark overlay on the shop photo and is clearly legible, with 'Request a Quote' and 'Read our story' buttons visible. The body paragraph is white over a busier part of the photo and is lower contrast, but the headline is not dark or invisible.",
+          "source_url": "https://parkwaykew.com/"
+        }
+      ],
+      "notes": "Operating precision coating shop since 1952, not an excluded type. Everything else checked holds: title 'Parkway-Kew | Precision Wear-Resistant Coatings Since 1952', descriptive meta description, Organization + WebSite + LocalBusiness + FAQPage JSON-LD with telephone, foundingDate 1952 and 2095 Excelsior Ave North Brunswick, hours 'Mon to Fri, 8 am to 5 pm ET' as text, two labelled quote forms (5 and 8 fields, no CAPTCHA, no file input) inviting 'Drawings, dimensions, or a part number', robots.txt 'Allow: /' with sitemaps. Google listing confirmed unclaimed - 'Claim this business', category 'Machine shop', phone and website present, no rating, 'Add hours' prompt. Minor: the record's quoted 'send a drawing, dimensions, or a brief description' is a paraphrase of 'Phone, email, or send a drawing.' and 'Drawings, dimensions, or a part number.' Drop the mobile-contrast opportunity or replace it with the sub-headline contrast. Scores unchanged: gap 2, pay 4, ease 4, evidence 4 still fit, though evidence could be 3 given one of the three issues was misread."
+    }
+  ],
+  "data_gaps": [
+    "Google's limited Maps view never exposed review counts, so counts cited in the records (Kilmer 1,089; Prestige's 192-448; Key Marketing) could not be re-verified - ratings and listing details were.",
+    "Kilmer Driving School could not be rendered in Chrome at all (ERR_CERT_AUTHORITY_INVALID, and the HTTP fallback refused to load in the browser profile), so its layout, mobile behaviour and click-to-call rendering were checked only from raw HTML and readable extracts.",
+    "Elite Packaging's site returns 403 to every client used, so its page copy (including the 'under construction' text) and any phone/email on the site could not be confirmed first-hand; the Google listing 'Elite Packing' at 40 Cotters Ln is treated as the same business by inference from name and street, not confirmed.",
+    "The main domain loyaltechsecurity.com's actual content could not be viewed (Cloudflare challenge), so the record's judgements about that site's design, forms and mobile layout are untestable; I could not test whether Googlebot or AI crawlers specifically are allowed through.",
+    "Whether Prestige Nails reviews complain about waiting could not be confirmed from the only review source opened (an aggregator summary page); the underlying review text was not reachable without deeper navigation.",
+    "The Loyal Tech BDR job posting is gone from both job boards checked (410 and 404), so whether the company is currently recruiting is unknown."
+  ]
+}

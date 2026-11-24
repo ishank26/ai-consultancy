@@ -1,0 +1,47 @@
+[
+ {
+  "claim": "Pilot software cost of \"$0-$150/month in software (zero if using Frigate's local LPR only; about $45 per camera per month if using Plate Recognizer Stream)\"",
+  "problem": "Internal arithmetic inconsistency: the pilot specifies 3-4 cameras, and Plate Recognizer Stream is $45 per camera per month, so the paid fallback is $135-$180/month, not capped at $150.",
+  "fix": "Change the ceiling to about $180/month for four cameras, or state the per-camera multiplier explicitly."
+ },
+ {
+  "claim": "measured_outcomes: CarDD benchmark rated strength \"High\"",
+  "problem": "The numbers are correct and peer-reviewed, but this is one paper on one dataset (4,000 images, six classes), i.e. a single study used to bound the whole technical feasibility argument. The role rule is that a single study should not be rated High.",
+  "fix": "Rate Medium-High or Medium, or state that the finding is a single-dataset benchmark result rather than an outcome measured in the field."
+ },
+ {
+  "claim": "measured_outcomes: \"Even a purpose-built ALPR system on the UFPR-ALPR benchmark read only 64.89% ... commercial systems scored 47.39% and 50.94%\"",
+  "problem": "Accurate as stated (single-frame, all-characters-correct), but one-sided and decontextualised: the same table shows the commercial systems reach 56.67% and 70.00% with temporal redundancy, and the dataset is Brazilian plates with both camera and vehicle moving, which is not the shop-lane case the brief uses it to argue.",
+  "fix": "Add the with-redundancy commercial figures and note the dataset is Brazilian plates / moving camera, then say why the shop-lane case is easier (static camera, vehicle slows or stops)."
+ },
+ {
+  "claim": "problem.summary: \"Shops almost never measure bay occupancy or per-vehicle dwell time, because doing so means a person with a clipboard.\"",
+  "problem": "Stated as fact with no source. Nothing fetched supports the frequency claim, and the brief's own data_gaps concedes no study of shop bay-occupancy measurement was found.",
+  "fix": "Label as inference/assumption, or drop the frequency claim and keep only the mechanism (measurement is manual today)."
+ },
+ {
+  "claim": "gap_for_local_installer: \"UVeye itself says a ~100-car/month shop is not a fit, which is most of the 233 general repair shops in the county\"",
+  "problem": "The UVeye quote is confirmed, but \"most of the 233 general repair shops\" is an inference stated as fact; the trailing \"(inference)\" label is attached to the following sentence about defensibility, not to this one.",
+  "fix": "Move the (inference) tag or rephrase as \"plausibly most of the 233 ... (inference; QCEW gives no volume distribution)\"."
+ },
+ {
+  "claim": "legal_privacy row 3: \"License plate reading on a shop's own lot is not governed by NJ's police ALPR rules, which apply to law enforcement agencies only\" \u2014 marked confirmed: true",
+  "problem": "The directive's content is confirmed (law-enforcement purposes only, public-view scanning, three-year retention, three purposes for non-alert data, private entities may provide but not receive), but the step from \"the directive binds agencies\" to \"a private shop is not governed\" is an inference from the text, not something the directive states.",
+  "fix": "Set confirmed: false for the private-shop conclusion while keeping the directive's provisions as confirmed, consistent with the treatment of the P.L. 2026 c.4 row."
+ },
+ {
+  "claim": "prospecting_signals.public: NJ MVC auto body \"$300,000 garage liability / $50,000 garage-keepers' limits ... I confirmed those figures only via search summary of the MVC page, not by reading the page\"",
+  "problem": "Over-cautious, not wrong. I opened https://www.nj.gov/mvc/business/autobodylic.htm myself and both figures and the per-location application rule are stated there verbatim.",
+  "fix": "Upgrade to a directly read, cited page (MVC Auto Body Repair License page) and drop the hedge."
+ },
+ {
+  "claim": "fit_score.rationale: \"the trade press describes shops as 'wait and see'\"",
+  "problem": "Quote drift. The source phrase is \"the wait-and-see skepticism of later adopters\"; it is not a standalone quoted phrase.",
+  "fix": "Paraphrase (\"characterised as wait-and-see adopters\") or quote the actual wording."
+ },
+ {
+  "claim": "buyers: body shop \"why\": \"(67% of repairs get a supplement)\"",
+  "problem": "The 67% is correct but drops the qualifier used elsewhere in the brief: it is CCC collision/insurance-claim industrywide data, not all repairs at all shop types.",
+  "fix": "Add \"(CCC collision-claims data)\" so the mechanical-repair reader is not misled."
+ }
+]

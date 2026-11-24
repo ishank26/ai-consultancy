@@ -1,0 +1,154 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "South Amboy Car Wash & Detailing Center, 2087 Route 35, phone (732) 952-2462",
+      "problem": "Phone digit transposition: the city directory row for the car wash at 2087 RT. 35 gives (732) 952-2642, and a search-result listing repeats 952-2642. The list's 952-2462 did not appear in any source I saw.",
+      "fix": "Change phone to (732) 952-2642 (or mark Unknown); keep the note that the site was formerly branded Go Go Car Wash."
+    },
+    {
+      "claim": "Harbor Air, LLC is a South Amboy business at 1122 Cook Ave",
+      "problem": "1122 Cook Ave is in Laurence Harbor, which is part of Old Bridge Township, not South Amboy (the 08879 zip overlaps). The company also has its own site (hvacharbor.com) and phone 732-589-4353, neither recorded; the town name is only right if the zone's radius rule is applied.",
+      "fix": "Town should read 'Laurence Harbor (Old Bridge Twp)', note 'in radius, outside South Amboy', and backfill website hvacharbor.com and phone 732-589-4353."
+    },
+    {
+      "claim": "Odyssey Mixed Martial Arts, 200 John T. O'Leary Blvd",
+      "problem": "The gym's own contact page says 'Visit Us: South Amboy YMCA, 200 John T. O'Leary Blvd' - the address is the YMCA building, and the mapper excluded the South Amboy YMCA itself as a network branch. It is a class programme renting YMCA space, not independent premises. The site also publishes (732) 298-2839, which the list records as Unknown.",
+      "fix": "Keep only with a note that it operates inside the South Amboy YMCA, and fill in phone (732) 298-2839."
+    },
+    {
+      "claim": "Clyde Auto Recycling is in South Amboy at 6000 Main Street",
+      "problem": "6000 Main St sits in the Parlin/Sayreville stretch; a NJ Department of Health scrap-metal facility report for Sayreville borough lists Clyde Auto Recycling at 6000 Main St. The South Amboy label appears to come from the 08879 zip.",
+      "fix": "Re-label town as Sayreville/Parlin (in radius) or drop; verify municipality before outreach."
+    },
+    {
+      "claim": "John P. Morro, CPA, PA - active South Amboy practice, address Unknown",
+      "problem": "Only evidence is one CPA directory listing, with no address or phone. A legacy.com obituary for a John Morro, Jr. of New Jersey dated 29 Aug 2025 turned up in search; I could not tie it to this CPA (that obituary appears to be for a 'Heights' resident), so the practice may be inactive or the listing stale.",
+      "fix": "Verify the practice is still operating (NJ CPA licence lookup or a call) before keeping; otherwise drop the row."
+    },
+    {
+      "claim": "Joseph J. Madura, DDS (Alkham Dental) at 360 Main Street",
+      "problem": "The dentist is real and his own site (josephjmaduradmd.com) gives 360 Main St and 732-721-1166, but Delta Dental and other current listings now show 'Clear Path Dentistry' at the same address and phone, while the list names the practice Alkham Dental after a different insurer directory. Which brand is current is unresolved.",
+      "fix": "Note that the practice trades as Clear Path Dentistry in at least one current payer directory; confirm the current trading name."
+    },
+    {
+      "claim": "Thomas E. Downes, PA at 101 N Feltus St, (732) 679-5000",
+      "problem": "City directory matches the entry, but a YellowPages attorney listing shows 'Thomas E. Downs, PA' at 415 Main St with (732) 679-5600. One of the two address/phone pairs is stale.",
+      "fix": "Confirm the office address and number before outreach; add a note about the conflicting listing."
+    },
+    {
+      "claim": "Little People's Day School at 257 4th Street",
+      "problem": "The city directory lists a different business (Sweet Art Cakes LLC) at 257 Fourth Street, so the day school's address rests on a YellowPages row plus state childcare data that I did not see matched to this street number.",
+      "fix": "Verify the street address (and that it is operating) before outreach; if unconfirmed, drop."
+    },
+    {
+      "claim": "Coverage of HVAC contractors in town",
+      "problem": "General Mechanical Services of NJ, LLC at 413 Raritan St, South Amboy, 732-558-3190 (site gmsofnj.com) appears in the mapper's own BestProsInTown HVAC source but is not in the list.",
+      "fix": "Add General Mechanical Services of NJ, LLC (413 Raritan St, 732-558-3190, gmsofnj.com)."
+    },
+    {
+      "claim": "Attorneys coverage",
+      "problem": "Three in-town firms found on lawyers.com / YellowPages / Super Lawyers are absent: CourtLaw (1945 NJ-35), Gregory F. Kusic (301 Main St, 732-721-1688) and the Law Offices of Gary S. Forshner (South Amboy).",
+      "fix": "Add CourtLaw and Gregory F. Kusic; add Forshner only if an office address can be confirmed."
+    },
+    {
+      "claim": "Auto repair coverage",
+      "problem": "B & M Automotive LLC, 253 Kath St, South Amboy, (732) 721-0886, 4.8 stars from 70 reviews, is not in the list although it is a stronger listing than several bulk-directory rows that are.",
+      "fix": "Add B & M Automotive LLC."
+    },
+    {
+      "claim": "Landscaping coverage",
+      "problem": "Liberty Landscapes, Pavers and Maintenance LLC, (732) 583-6622, appears with a South Amboy 08879 area on Porch and in YellowPages, but D&B places the business in Old Bridge Township - a candidate, not a certain in-town miss.",
+      "fix": "Check the base address; add if the shop or yard is in town or inside the radius under the mapper's rule."
+    },
+    {
+      "claim": "Excluded-type boundaries: Vrola / Primal Custom Cutting / Tidal Seafood, Super Meat Products, Cambridge Pavers",
+      "problem": "The two meat/seafood operations are processors and wholesalers, i.e. 'food' businesses under a literal reading of the exclusion, even though they are not restaurants or delivery kitchens. Cambridge Pavers is a large multi-plant hardscape manufacturer entered via its South Amboy yard and its main line (201-933-5000), which reads more like a network brand than a local independent.",
+      "fix": "State explicitly in the list why processors/wholesalers and the Cambridge yard count as eligible B2B manufacturing targets; otherwise drop them."
+    },
+    {
+      "claim": "Excluded-type boundaries: childcare/preschool and school-named entries",
+      "problem": "Three childcare/preschool entries (Children's Center for Learning, Creative Kids Daycare, Little People's Day School) and two 'school' businesses (South Amboy Arts, EZ Wheels Driving School) sit near the 'schools' exclusion. South Amboy Arts is additionally the city's Arts Alliance gallery per the city website, which touches the government/non-profit line.",
+      "fix": "Add a one-line rule note that licensed private childcare, arts and driving schools count as businesses (not the excluded K-12/college institutions), or remove them."
+    },
+    {
+      "claim": "Remaining single-source entries and blank fields",
+      "problem": "Roughly half the list rests on one directory row each (city directory, loc8nearme, bestprosintown, Angi) and several have no phone or no street number. Most of the ones I checked held up (Kiki Pools, Drainpro, AVC Tax, Lionheart, A&K Air, Eastern Orthodontics, Amboy Motel confirmed), but A&K Air, Amboy Motel, Titan MMA and Dynamic Realty Group all have phones or sites published elsewhere that the list leaves blank.",
+      "fix": "Backfill known phones/sites (A&K 908-247-1192, Amboy Motel 732-721-1525, Titan MMA 732-707-3325, Dynamic Realty Group drgusa.com) and keep the confirm-before-outreach caveat."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Hecker Law Group, 169 N Broadway, South Amboy, (732) 308-9623", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "Tina James law office at 137 S Broadway, (732) 343-7030", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "Thomas E. Downes, PA at 101 N Feltus St, (732) 679-5000", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "Field Womack & Kawczynski LLC at 137 S Broadway, Suite B-1", "source_url": "https://www.lawyers.com/south-amboy/new-jersey/field-womack-and-kawczynski-llc-2135319-f/", "result": "confirmed"},
+    {"claim": "Law Offices of Joseph R. Bulman at 108 S Broadway, (732) 727-8687", "source_url": "https://www.yellowpages.com/south-amboy-nj/attorneys", "result": "confirmed"},
+    {"claim": "J&E Income Taxes at 106 N Broadway, (732) 397-8149", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "Alto CPA Group, LLC at 3308 Klimek Place, (908) 613-0002, altocpagroup.com", "source_url": "https://www.altocpagroup.com/Contact-Us", "result": "confirmed"},
+    {"claim": "AVC Tax & Accounting Services at 5109 Klimek Place, (732) 882-5890", "source_url": "https://taxscout.ai/cpa/avc-tax-accounting-services-llc-south-amboy-nj", "result": "confirmed"},
+    {"claim": "CNJ Insurance Agency at 924 Route 9 S, (732) 707-3200, independent multi-carrier agency", "source_url": "https://www.cnjinsurance.com/", "result": "confirmed"},
+    {"claim": "Halo Realty at 165 N Broadway, (732) 997-9650", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "Dynamic Realty Group at 23 Heston Ave, South Amboy", "source_url": "https://www.drgusa.com/", "result": "confirmed"},
+    {"claim": "Potomac-Hudson Environmental at 207 S Stevens Ave, (732) 525-3100", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "Gerhart Systems and Controls at 603 Washington Ave, Bldg. 2, (732) 525-1000", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "Electronics Design Group at 339 Main St, (732) 650-9800", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "Station Bay at South Amboy, 1000 Schindler Drive, (732) 525-3223", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "The Axis at South Amboy, 611 Bordentown Ave, (732) 617-6593", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "180 Chiropractic Holistic Wellness at 169 North Broadway, phone (732) 838-3180, by appointment only", "source_url": "https://www.180chiropracticnj.com/contact", "result": "confirmed"},
+    {"claim": "Lenahan Chiropractic is a South Amboy practice on postureforlife.com", "source_url": "https://www.postureforlife.com/", "result": "confirmed"},
+    {"claim": "Ivy Pediatrics, PA at 175 North Broadway, (732) 952-8818", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "Venetian Post Acute and Healthcare Center at 275 John T. O'Leary Blvd, 732-721-8200, venetianrehab.com live", "source_url": "https://venetianrehab.com/contact/", "result": "confirmed"},
+    {"claim": "Joseph J. Madura, D.M.D. at 360 Main Street, South Amboy, 732-721-1166", "source_url": "https://www.josephjmaduradmd.com/contact", "result": "confirmed"},
+    {"claim": "Bayshore Dental Excellence at 1872 State Route 35, (732) 525-2242, family-owned practice of Dr. Qian Chen", "source_url": "https://bayshoredentalexcellence.com/", "result": "confirmed"},
+    {"claim": "Studio Smiles at 441 Gordon St, (732) 727-0474", "source_url": "https://www.deltadental.com/member/find-a-dentist/new-jersey/south-amboy-dentists/", "result": "confirmed"},
+    {"claim": "Eastern Orthodontics Associates at 960 Route 9 South, South Amboy", "source_url": "https://hglfunds.org/forms/welfare/dentallistnj102022.pdf", "result": "confirmed"},
+    {"claim": "Cure Physical Therapy & Sports Rehab at 232 Tyler St, (732) 721-1050", "source_url": "https://www.tebra.com/care/practice/cure-physical-therapy-sports-rehab-413845", "result": "confirmed"},
+    {"claim": "Dr. Vairona S. Mikhail, OD at 474 S Pine Ave, South Amboy", "source_url": "https://www.vitals.com/optometrists/1qk4kc/vairona-mikhail", "result": "confirmed"},
+    {"claim": "Animal Hospital of Sayreville is physically in South Amboy and operating, (732) 727-7739", "source_url": "https://www.sayrevillevet.com/", "result": "confirmed"},
+    {"claim": "The Lash Genie at 137 South Broadway, Unit 4A, and Belle Allure at 112 N Broadway", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "Titan Mixed Martial Arts Academy at 1866 Route 35 North, South Amboy", "source_url": "https://titanmixedmartialarts.com/", "result": "confirmed"},
+    {"claim": "Lionheart Modern Martial Arts LLC at 346 Bordentown Ave, Unit C", "source_url": "https://www.bbb.org/us/nj/south-amboy/profile/martial-arts/lionheart-modern-martial-arts-llc-0221-90156626", "result": "confirmed"},
+    {"claim": "T-Mac Fitness runs a South Amboy studio but publishes no street address", "source_url": "https://t-macfitness.com/", "result": "confirmed"},
+    {"claim": "South Amboy Arena - Rollermagic at 270 North Stevens Avenue, (732) 727-1122", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "A&T Electrical Contractors, Inc. at 219 Church St, 732-236-0207, family-owned", "source_url": "https://www.antelectricalcontractors.com/", "result": "confirmed"},
+    {"claim": "Strouse Electric Co. is a South Amboy firm, 732-727-6161, family-owned 40+ years", "source_url": "https://strouse-electric.com/", "result": "confirmed"},
+    {"claim": "Weathermen Mechanical at 341 South Pine Ave, (732) 727-6600", "source_url": "https://www.bestprosintown.com/nj/south-amboy/hvac/", "result": "confirmed"},
+    {"claim": "A&K Air Specialist LLC at 843 Main St, South Amboy", "source_url": "https://reviews.birdeye.com/ak-air-specialist-llc-166754550121100", "result": "confirmed"},
+    {"claim": "Americas General Contracting & Roofing Corp. at 116 N. Broadway, (732) 532-6959", "source_url": "https://www.amgcroofing.com/contact", "result": "confirmed"},
+    {"claim": "Drainpro Plumbing Services at 503 Woodland Ave, (732) 599-0930", "source_url": "https://www.yellowpages.com/south-amboy-nj/plumbers", "result": "confirmed"},
+    {"claim": "KiKi Pool Installations LLC at 12 Adam Blvd, 732-727-3733", "source_url": "https://www.kikipools.com/", "result": "confirmed"},
+    {"claim": "EZ Wheels Driving School South Amboy branch at 101 Main St, 732-201-4909", "source_url": "https://ezwheelsdriving.com/south-amboy/", "result": "confirmed"},
+    {"claim": "Creme de la Creme Loft event venue at 7050 Hwy 35, South Amboy", "source_url": "https://www.cremedelacremeloft.com/venue-details", "result": "confirmed"},
+    {"claim": "Amboy Motel at 4261 State Route 35, South Amboy 08879", "source_url": "https://www.yellowpages.com/south-amboy-nj/mip/amboy-motel-459027933", "result": "confirmed"},
+    {"claim": "South Amboy Arts at 141 N. Broadway is the city Arts Alliance gallery", "source_url": "https://www.southamboynj.gov/Departments/arts-alliance", "result": "confirmed"},
+    {"claim": "South Amboy Adult Day at 540 Bordentown Ave (city directory publishes no phone)", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "confirmed"},
+    {"claim": "Odyssey MMA is an independent gym with its own South Amboy premises at 200 John T. O'Leary Blvd", "source_url": "https://odysseymma.com/contact/", "result": "contradicted"},
+    {"claim": "South Amboy Car Wash & Detailing Center phone (732) 952-2462", "source_url": "https://www.southamboynj.gov/pages/business-and-non-profit-directory", "result": "contradicted"},
+    {"claim": "Harbor Air, LLC is a South Amboy business at 1122 Cook Ave", "source_url": "https://www.hvacharbor.com/contact", "result": "contradicted"},
+    {"claim": "Alkham Dental is the current trading name at 360 Main St", "source_url": "https://www.deltadental.com/member/find-a-dentist/new-jersey/south-amboy-dentists/", "result": "contradicted"}
+  ],
+  "coverage": {
+    "searches": [
+      "dentist South Amboy NJ",
+      "roofing contractor South Amboy NJ",
+      "HVAC contractor South Amboy NJ",
+      "plumber South Amboy NJ",
+      "landscaping South Amboy NJ",
+      "cleaning service South Amboy NJ",
+      "law firm attorney South Amboy NJ office",
+      "auto repair shop South Amboy NJ",
+      "independent insurance agency South Amboy NJ"
+    ],
+    "eligible_found": 30,
+    "already_listed": 24,
+    "missing": [
+      {"name": "General Mechanical Services of NJ, LLC", "town": "South Amboy", "source_url": "https://www.bestprosintown.com/nj/south-amboy/hvac/"},
+      {"name": "B & M Automotive LLC", "town": "South Amboy", "source_url": "https://reviews.birdeye.com/b-m-automotive-llc-car-mechanic-auto-repair-service-shop-south-amboy-nj-165985315263170"},
+      {"name": "CourtLaw", "town": "South Amboy", "source_url": "https://www.lawyers.com/south-amboy/new-jersey/courtlaw-300040047-f/"},
+      {"name": "Gregory F. Kusic, attorney", "town": "South Amboy", "source_url": "https://www.yellowpages.com/south-amboy-nj/attorneys"},
+      {"name": "Law Offices of Gary S. Forshner", "town": "South Amboy", "source_url": "https://profiles.superlawyers.com/new-jersey/south-amboy/lawyer/gary-s-forshner/72be6cce-3239-4e38-be4b-2842fd363244.html"},
+      {"name": "Liberty Landscapes, Pavers and Maintenance LLC", "town": "South Amboy 08879 (D&B places the base in Old Bridge Twp)", "source_url": "https://pro.porch.com/south-amboy-nj/landscapers/liberty-landscapes-pavers-and-maintenance-llc/pp"}
+    ]
+  },
+  "confidence": "Medium"
+}

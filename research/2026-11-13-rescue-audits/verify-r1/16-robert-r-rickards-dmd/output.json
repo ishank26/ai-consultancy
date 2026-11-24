@@ -1,0 +1,163 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"result\": the redirect lands on an unrelated Indonesian-language online gambling site ('MEDUSA88', slot-deposit promotions) — repeated in the same wording in the domain entry and implied by the audit's screenshots.",
+      "problem": "The redirect itself is real and the page is Indonesian-language gambling, but the brand name is not reproducible: the page's own title is 'Slot Depo 10k Link Situs Geometrys Spot Gacor Deposit 10rb Via QRIS Hari Ini', the visible text brands the site 'Slot Depo 10K' / 'Geometry Spot', and the string 'MEDUSA88' appears zero times in the served HTML of both https://geometrysspot.com/activities/ and https://geometrysspot.com/ (checked twice, including in real Chrome). The screenshots that would document it (rickardsdentistry-desktop-2026-11-13.png, rickardsdentistry-phone390-2026-11-13.png) are not present in this folder, so the name cannot be traced to a source. These portals rotate brand names, so the auditor may have seen a different variant — but as written the name is unsupported.",
+      "fix": "Delete 'MEDUSA88' and describe what is on the page today: an Indonesian-language online slot/gambling page ('Slot Depo 10k' / 'Geometry Spot', QRIS deposit promotions, 18+ notice). Alternatively keep the brand only if a screenshot showing it is filed with the deliverable. The business-facing audit_md and founder_md are already correct on this point and need no change."
+    },
+    {
+      "claim": "\"Renew or confirm auto-renew now\" (fix step 2), effort 0.25-0.5 hours, who: practice owner.",
+      "problem": "GoDaddy RDAP shows the domain in clientDeleteProhibited, clientRenewProhibited, clientTransferProhibited and clientUpdateProhibited status. A registrar-applied renewal lock means the owner may not be able to renew from the account dashboard at all, which makes a 15-30 minute self-service renewal optimistic. Not a false statement, but the effort estimate and step description omit it.",
+      "fix": "Add one clause: 'the registration currently shows registrar locks, so a renewal may have to be done with GoDaddy support rather than online', and widen the estimate to roughly 0.5-1.5 hours if the account is not accessible. Do not speculate about why the lock is there."
+    },
+    {
+      "claim": "Screenshot traceability (\"screenshot_files\": rickardsdentistry-desktop-2026-11-13.png, rickardsdentistry-phone390-2026-11-13.png; gmb-desktop-2026-11-13.png).",
+      "problem": "None of the three referenced screenshot files are in this task folder, so a checker cannot confirm they show what is claimed; every claim had to be re-derived from the live URLs instead.",
+      "fix": "Ship the PNGs with rescue.json so the desktop, phone-width and Google-profile views can be checked against the text."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "The domain still redirects: https://rickardsdentistry.com/ lands on https://geometrysspot.com/activities/",
+      "source_url": "https://rickardsdentistry.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The destination is an unrelated Indonesian-language online gambling site (slots, deposit/QRIS promotions, 18+), with no dental content, practice name, phone number or address on it",
+      "source_url": "https://geometrysspot.com/activities/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The site is branded 'MEDUSA88'",
+      "source_url": "https://geometrysspot.com/",
+      "result": "not found"
+    },
+    {
+      "claim": "No certificate warning is shown (site loads over https)",
+      "source_url": "https://rickardsdentistry.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The www host serves the same gambling content, including on the old page URL /our-team.html",
+      "source_url": "https://www.rickardsdentistry.com/our-team.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registration created 2016-12-06",
+      "source_url": "https://rdap.org/domain/rickardsdentistry.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: expiration 2026-12-06 (fix steps' 'less than four weeks out' = 23 days from 13 Nov 2026)",
+      "source_url": "https://rdap.org/domain/rickardsdentistry.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: last changed 2026-01-24",
+      "source_url": "https://rdap.org/domain/rickardsdentistry.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registrar GoDaddy.com, LLC (IANA 146)",
+      "source_url": "https://rdap.org/domain/rickardsdentistry.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: nameservers on Cloudflare (DESIREE.NS.CLOUDFLARE.COM, TREY.NS.CLOUDFLARE.COM)",
+      "source_url": "https://rdap.org/domain/rickardsdentistry.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: domain is in client delete/renew/transfer/update prohibited status",
+      "source_url": "https://rdap.org/domain/rickardsdentistry.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Internet Archive capture 6 June 2026 still shows the practice's own site (\"Rickards Dentistry\", appointments 732-297-7788)",
+      "source_url": "https://web.archive.org/web/20260606105027/https://www.rickardsdentistry.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Internet Archive capture 18 February 2026 shows the same practice site",
+      "source_url": "https://web.archive.org/web/20260218060317/https://www.rickardsdentistry.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "6 June 2026 is the newest capture of the domain (so 'as recently as 6 June 2026' is accurate)",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=rickardsdentistry.com&output=json&filter=statuscode:200&collapse=timestamp:8&from=2025",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The archived site is a GoDaddy website-builder site (assets served from nebula.wsimg.com)",
+      "source_url": "https://web.archive.org/web/20260606105027/https://www.rickardsdentistry.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A directory still publishes rickardsdentistry.com as the practice website",
+      "source_url": "https://dentist-usa.nears.me/dentists/united-states/new-jersey/milltown/trusted-rickards-robert-r-dds-dentist-in-milltown-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "That directory lists 196 Riva Ave, Milltown, NJ 08850, phone +1 732-297-7788, 4.6 stars",
+      "source_url": "https://dentist-usa.nears.me/dentists/united-states/new-jersey/milltown/trusted-rickards-robert-r-dds-dentist-in-milltown-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google place page 'Rickards Robert R DDS': 196 Riva Ave, Milltown, NJ 08850, (732) 297-7788, Dentist, 4.6",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=Rickards%20Robert%20R%20DDS%20196%20Riva%20Ave%20Milltown%20NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google listing shows 'Open - Closes 5 PM' (not closed) on the check date, a Friday",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=Rickards%20Robert%20R%20DDS%20196%20Riva%20Ave%20Milltown%20NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google listing is unclaimed and offers no website ('Claim this business' and 'Add website' prompts visible)",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=Rickards%20Robert%20R%20DDS%20196%20Riva%20Ave%20Milltown%20NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sharecare profile lists only the phone, no website",
+      "source_url": "https://providers.sharecare.com/doctor/dr-robert-r-rickards",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DentistDig profile gives 196 Riva Ave and (732) 297-7788 with no website; NPI 1821291949, general dentist",
+      "source_url": "https://dentistdig.com/dentist/robert-rickards-dmd-1821291949",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Identity: right business, Milltown NJ, right town and phone; an independent single-office practice, not a chain or franchise (inference from the practice's own archived site, NPI record and one-office address)",
+      "source_url": "https://dentistdig.com/dentist/robert-rickards-dmd-1821291949",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cause is labelled an inference and accuses nobody (likely_cause.inference = true; audit_md and founder_md state no cause and name no person or company)",
+      "source_url": "https://rdap.org/domain/rickardsdentistry.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Fix steps are in a workable order and contain no prices, only hour estimates",
+      "source_url": "https://rdap.org/domain/rickardsdentistry.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "audit_md body is at most 300 words (about 276 excluding headings and the closing note) and is plain, calm English",
+      "source_url": "https://rickardsdentistry.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Checked_at 2026-11-13 matches the RDAP database timestamp for this check (2026-11-13T20:47Z)",
+      "source_url": "https://rdap.org/domain/rickardsdentistry.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Screenshots referenced in the file (domain desktop/phone, Google profile) exist and show what is claimed",
+      "source_url": "https://rickardsdentistry.com/",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

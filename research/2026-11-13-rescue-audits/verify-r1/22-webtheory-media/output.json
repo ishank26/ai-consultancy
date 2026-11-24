@@ -1,0 +1,138 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "audit_md, After the fix: the Google listings 'are how most people find the business'.",
+      "problem": "Unsupported generalisation presented as fact. No cited source measures how the business's customers find it; it is an inference from the two listings being the only visible presence.",
+      "fix": "Reword as an inference, e.g. 'with no working website, the Google listings appear to be the main way customers find the business', or drop the clause."
+    },
+    {
+      "claim": "after_fix.evidence: 'neither listing offers any route beyond a phone number'.",
+      "problem": "Contradicted by the live listing cards, which show 'Website' and 'Directions' buttons as well as the phone number, and contradicted by the audit's own earlier statement that both Website buttons point at webtheoryppc.com.",
+      "fix": "Change to 'the only online route on each listing is a Website button that points at the broken domain', or delete the sentence."
+    },
+    {
+      "claim": "founder_md sources: WP Engine partner page 'still live (dateModified 2026-11-12)'.",
+      "problem": "Page is live, but its schema.org WebPage dateModified reads 2026-11-11T17:02:37+00:00, not 2026-11-12.",
+      "fix": "Correct to 2026-11-11, or drop the timestamp and say the partner page is live with the business name 'WebTheory Media LLC'."
+    },
+    {
+      "claim": "audit_md length.",
+      "problem": "The body runs about 330 words including headings (about 305 without headings), over the 300-word limit.",
+      "fix": "Trim roughly 30 words: shorten the second bullet (addresses/phones can be summarised) and the 'What it means for customers' paragraph."
+    },
+    {
+      "claim": "audit_md step 1: 'new passwords, 2FA, review of nameserver and contact changes'.",
+      "problem": "Light jargon for a small-business owner ('2FA', 'nameserver'); the rest of the report is plain English.",
+      "fix": "Use 'two-step sign-in' and 'domain settings' so the step reads in plain English."
+    },
+    {
+      "claim": "domains[webtheorymedia.com].result: 'rendered a blank white page with no text and plain fetch failed'.",
+      "problem": "Reproduced as a blank white page in Chrome (my screenshot verify-webtheorymedia.png is blank), so the report is not misleading, but the server does return a Namecheap parking page (text such as 'has been recently registered with namecheap.com'). Calling it 'blank' loses a fact that supports the 'parked, not a live site' point, and the 'parking address' claim is not sourced to the dns.google URL given.",
+      "fix": "Say 'shows only a Namecheap parking page, which in our browser failed to render (blank white page)', and cite the parking page itself as the source for the parking detail."
+    },
+    {
+      "claim": "founder_md outreach email: 'I have screenshots from a desktop and a phone-sized screen taken on 13 November 2026'.",
+      "problem": "rescue.json names screenshot files (webtheoryppc-desktop.png, webtheoryppc-mobile390.png, google-maps-search.png, webtheorymedia-com-check.png) but none are present in this handoff folder, so their existence could not be confirmed; the email promises them.",
+      "fix": "Confirm the four images exist and are attached before the email is sent; I re-took equivalent desktop and Maps screenshots myself and both reproduce the findings."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "webtheoryppc.com loads and serves an Indonesian lottery page ('OLI4D ... Toto Macau') with no agency name, services or contact.",
+      "source_url": "https://webtheoryppc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The page carries a full-screen pop-up headed 'PENTING - UPDATE 2026' with 'LOGIN OLI4D' and 'DAFTAR SEKARANG' buttons.",
+      "source_url": "https://webtheoryppc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A formerly indexed agency URL, /google-ads-audit/, now returns HTTP 404.",
+      "source_url": "https://webtheoryppc.com/google-ads-audit/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The page existed before as an agency URL (captured with status 200 from Jan 2025 to Apr 2026).",
+      "source_url": "https://web.archive.org/cdx/search/cdx?url=webtheoryppc.com/google-ads-audit/&output=json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "sitemap.xml is a bare one-URL file made by a third-party generator, lastmod 2026-10-19.",
+      "source_url": "https://webtheoryppc.com/sitemap.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Two Google listings named 'WebTheory PPC', both rated 5.0, both 'Open - Closes 5 PM': Advertising agency, 14 Old Bridge Tpke Ste 203, (732) 655-9038; Internet marketing service, 607 Lake Ave, (732) 800-9867.",
+      "source_url": "https://www.google.com/maps/search/WebTheory+PPC+New+Jersey",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Both listings' 'Website' buttons point to webtheoryppc.com (utm_campaign=gmb and utm_campaign=GMB).",
+      "source_url": "https://www.google.com/maps/search/WebTheory+PPC+New+Jersey",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived copies show the agency's Google Ads blog on webtheoryppc.com as late as 19 May 2026, with no later snapshot.",
+      "source_url": "https://web.archive.org/web/20260519070856/https://webtheoryppc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "webtheoryppc.com RDAP: registered 2019-09-06, expires 2027-09-06, last changed 2026-10-19, registrar NameCheap, Inc., nameservers cosmin/susan.ns.cloudflare.com.",
+      "source_url": "https://rdap.org/domain/webtheoryppc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "webtheorymedia.com RDAP: registered 2018-04-08, expires 2027-04-08, last changed 2026-05-06, registrar NameCheap, Inc., nameservers dns1/dns2.registrar-servers.com.",
+      "source_url": "https://rdap.org/domain/webtheorymedia.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "webtheorymedia.com resolves to 192.64.119.69, a Namecheap parking address, and shows no agency content and no redirect to webtheoryppc.com.",
+      "source_url": "https://dns.google/resolve?name=webtheorymedia.com&type=A",
+      "result": "confirmed"
+    },
+    {
+      "claim": "webtheorymedia.com used to 301-redirect to webtheoryppc.com, from Nov 2023 to Jul 2025.",
+      "source_url": "https://web.archive.org/cdx/search/cdx?url=webtheorymedia.com&output=json&fl=timestamp,statuscode",
+      "result": "confirmed"
+    },
+    {
+      "claim": "WP Engine agency directory page 'WebTheory Media LLC' is live.",
+      "source_url": "https://wpengine.com/agency-directory/webtheory-media-llc/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "WP Engine page dateModified is 2026-11-12.",
+      "source_url": "https://wpengine.com/agency-directory/webtheory-media-llc/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "The business is WebTheory Media LLC / WebTheory PPC of North Brunswick, NJ, with a named president (Stephen Calogera) - a single independent agency, not a chain or franchise, and not closed.",
+      "source_url": "https://stellarbusiness.com/awards/webtheory-media/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The business is not permanently closed: both Google listings show 'Open - Closes 5 PM' and no closed notice was seen in search or on the live partner page.",
+      "source_url": "https://www.google.com/maps/search/WebTheory+PPC+New+Jersey",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cause is labelled an inference and accuses no one; registrant redaction and the open questions are acknowledged.",
+      "source_url": "https://rdap.org/domain/webtheoryppc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Fix steps contain no prices and run in a sensible order (secure accounts, investigate hosting, decide path, repoint listings, rebuild, directories, search removal, monitoring).",
+      "source_url": "https://rdap.org/domain/webtheoryppc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Clutch profile exists with 2 verified reviews at 5.0.",
+      "source_url": "https://clutch.co/profile/webtheory-ppc",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

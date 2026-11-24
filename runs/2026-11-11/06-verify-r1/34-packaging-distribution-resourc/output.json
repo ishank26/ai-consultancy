@@ -1,0 +1,148 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"The study found 14% more issues per hour, 34% for new staff and no measurable gain for experienced staff\" (audit section 3)",
+      "problem": "The cited paper does not say experienced staff gained nothing. The NBER abstract (w31161) says 34% is for \"novice and low-skilled workers\" and that the tool had \"minimal impact on experienced and highly skilled workers\". \"No measurable gain\" is stronger than the source and \"new staff\" is a looser category than \"novice and low-skilled\".",
+      "fix": "Rewrite as: \"The study found 14% more issues resolved per hour on average, 34% for novice and low-skilled agents, and only a small gain for experienced agents; we assume 8-15%.\""
+    },
+    {
+      "claim": "\"500-800 hours of quote prep a year, roughly $12,000-$25,000 ... (Inference: 15-40 requests monthly, 2-6 hours each.)\" (audit section 1)",
+      "problem": "The hours range does not follow from the stated assumptions. 15-40 requests a month at 2-6 hours is 360-2,880 gross hours a year, so the 500-hour low end is above the low end of the stated volume; the reader cannot reproduce the figure without an unstated reduction percentage. The dollar band itself is consistent with the hours and the two NJ wage medians ($22.95/$30.15), so it is not inflated, just unexplained.",
+      "fix": "Add the missing step, e.g. \"(Inference: ~1,000-1,600 gross hours a year from 20-30 requests a month at ~4 hours each; we assume about half is saved.)\" or state the cut percentage explicitly."
+    },
+    {
+      "claim": "\"500-1,850 hours of client-service capacity, $12,000-$40,000 a year\" (audit section 3)",
+      "problem": "Arithmetic does not reconcile: 500 hours x $22.95 = ~$11,500 and 1,850 hours x $22.95 = ~$42,500, so the stated dollar band is above the low end and below the high end of its own hours. Small, but a CEO who checks will notice.",
+      "fix": "Use matching figures, e.g. \"500-1,750 hours, roughly $11,500-$40,000 a year\"."
+    },
+    {
+      "claim": "\"Yet new business still arrives as a spreadsheet emailed to a general inbox\" (opening) and \"new business still comes in as a downloaded questionnaire emailed to info@\" (email opener)",
+      "problem": "PDR's pricing page does direct prospects to download the questionnaire and email it to info@, but the contact page also publishes a phone number (732.316.2757) and a web form, so \"new business arrives as\" states the only intake path as fact and contradicts section 3 of the same document, which lists the phone and inbox as the channels. It also reads as a claim about internals we cannot see.",
+      "fix": "Attribute it to the site: \"the published route to a price is still a downloaded questionnaire emailed to info@\" / \"your pricing page still sends new enquiries to an Excel questionnaire at info@\"."
+    },
+    {
+      "claim": "\"Even with the client visibility you advertise, businesses like yours often find answers live in one person's memory of a client's SOP.\" (audit section 3)",
+      "problem": "The claim that peer 3PLs \"often\" keep client SOPs in one person's memory has no cited source and reads as an assertion about other companies. The client-visibility half is well sourced (technology page), the second half is not.",
+      "fix": "Either cite a source or mark it: \"our working assumption - not verified for PDR - is that the answer often sits with one experienced person.\""
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "100+ clients, 20 assembly lines, six Edison NJ sites, 600,000+ sq ft of NJ space",
+      "source_url": "https://www.pdrnj.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Toronto site runs the same order systems as Edison and was live in September 2026",
+      "source_url": "https://www.pdrnj.com/pdr-expands-operations-into-canada-with-fully-operational-toronto-fulfillment-facility/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Toronto launch date of September 2026 (article body carries no date)",
+      "source_url": "https://www.pdrnj.com/in-the-news/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New business / quotes come from a downloadable Excel questionnaire emailed to info@",
+      "source_url": "https://www.pdrnj.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "30+ front-end platforms integrated on Microsoft Dynamics ERP with in-house programmers and EDI experts",
+      "source_url": "https://www.pdrnj.com/pdr-technology/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Order Desk handles multi-channel order edits",
+      "source_url": "https://www.pdrnj.com/services/e-commerce-fulfillment/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Single phone number and one generic contact form as the client-facing contact surface",
+      "source_url": "https://www.pdrnj.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"The client visibility you advertise\"",
+      "source_url": "https://www.pdrnj.com/pdr-technology/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "100+ clients across four regions (NJ, TX, CA, Ontario)",
+      "source_url": "https://www.pdrnj.com/pdr-expands-operations-into-canada-with-fully-operational-toronto-fulfillment-facility/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Day and night shifts",
+      "source_url": "https://www.pdrnj.com/our-people/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No new corporate roles published",
+      "source_url": "https://www.pdrnj.com/page-sitemap.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Study found 14% more issues resolved per hour on average",
+      "source_url": "https://www.nber.org/papers/w31161",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Study found 34% for novice/new staff",
+      "source_url": "https://www.nber.org/papers/w31161",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Study found no measurable gain for experienced staff",
+      "source_url": "https://www.nber.org/papers/w31161",
+      "result": "contradicted"
+    },
+    {
+      "claim": "NJ median wage $30.15/hr for planner/expediter clerks (43-5061)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ median wage $22.95/hr for customer service representatives (43-4051)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jack Sandbach is the founder and CEO addressed by first name in the email",
+      "source_url": "https://njbmagazine.com/njb-news-now/packaging-distribution-resources-expands-operations/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Edison NJ is in Middlesex County (walk-in opener)",
+      "source_url": "https://en.wikipedia.org/wiki/Edison,_New_Jersey",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact of 900-2,200 hours / $25,000-$60,000 in section 2 reconciles at a blended ~$27-28/hr",
+      "source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 1 hours range derivable from its own stated assumptions",
+      "source_url": "https://www.pdrnj.com/pricing/",
+      "result": "not found"
+    },
+    {
+      "claim": "Peer 3PLs 'often' rely on one person's memory of a client's SOP",
+      "source_url": "https://www.nber.org/papers/w31161",
+      "result": "not found"
+    },
+    {
+      "claim": "Audit body within ~450 words",
+      "source_url": "https://www.pdrnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No personal data on private individuals; only the CEO named, from the company's own site",
+      "source_url": "https://www.pdrnj.com/our-people/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

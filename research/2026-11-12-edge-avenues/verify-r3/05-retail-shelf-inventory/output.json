@@ -1,0 +1,218 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "gap_for_local_installer: \"Every credible shelf-intelligence vendor is built for chains: robots that need wide aisles and 5,000+ sq ft\"",
+      "problem": "Overstates Simbe's published requirement. The cited FAQ says a store should be bigger than a convenience store, i.e. >1,000 sq ft, and only that most of its stores are >5,000 sq ft. Presented as a hard 5,000+ sq ft need, which the source does not say. (The same brief states the FAQ correctly elsewhere, so it is an internal inconsistency, not a fabrication.)",
+      "fix": "Rewrite as \"most Tally deployments are >5,000 sq ft, with a stated minimum of >1,000 sq ft\" or drop the square-footage qualifier from this sentence."
+    },
+    {
+      "claim": "existing_solutions > Zippedi: 8-hour scanning shift, overhead camera up to 7 m, high-res tag cameras, depth sensors, optional RFID, \"specs as published on the vendor's Zippy page\", source_url = robot-distribution.com",
+      "problem": "The specs are real but not on the cited URL. The Robot Distribution page only covers acquisition modes and EU compliance; it does not list the 8-hour shift, 7 m overhead camera or RFID specs. The specs appear on zippedi.com/zippy, which is not cited. Sourcing mismatch, values themselves are correct.",
+      "fix": "Set source_url to https://www.zippedi.com/zippy for the spec sentence and keep the distributor URL for the pricing/acquisition sentence."
+    },
+    {
+      "claim": "existing_solutions > Pensa: \"Captures shelf images with handheld or drone devices and reports gaps and shelf conditions\"",
+      "problem": "The cited Pensa case study says store associates scanned and that the whole store took ~35 minutes, but does not mention handheld or drone capture. Unsupported by the cited page (it is a product-page claim, not a number).",
+      "fix": "Cite a Pensa product page for handheld/drone capture, or drop the device detail and keep only the case-study findings."
+    },
+    {
+      "claim": "legal_privacy > \"N.J.A.C. 13:47C-3.5 ... a subchapter that contains the building-materials advertising rule at 13:47C-3.4 and covers nonfoodstuffs packaging and quantity rules\"",
+      "problem": "Imprecise. The rule text expressly carves 13:47C-3.4 (advertising of building materials) OUT of the $100 penalty in (a) and gives it its own $50-$500 schedule in (b). The brief's wording implies 3.4 sits inside the $100-per-package penalty. The conclusion (this is not the retail price-marking penalty) is still correct.",
+      "fix": "Add the carve-out: \"$100 minimum per violation, each package separate, for this subchapter except 13:47C-3.4, which has its own $50-$500 schedule.\""
+    },
+    {
+      "claim": "legal_privacy > pricing/tag obligation: \"Separately, the Unit Pricing Disclosure Act requires standard unit pricing for regulated grocery commodities (New Jersey is one of nine states with such a law).\" source_url = njconsumeraffairs.gov CFA PDF",
+      "problem": "The Consumer Fraud Act compilation does not contain the Unit Pricing Disclosure Act or the nine-state claim; that sentence is unsupported at the cited URL. It is supported by the cited NJ OAG Walmart release, which is used elsewhere in the brief.",
+      "fix": "Add the OAG Walmart release as a second source for that sentence, or move the sentence to the enforcement-risk bullet that already cites it."
+    },
+    {
+      "claim": "fit_score: legal_risk_low = 10, while the rationale says \"Legal risk is moderate-low, not low\"",
+      "problem": "Labelling inconsistency (arithmetic is fine: 13+10+8+13+10+6 = 60). The rationale's own text argues against calling the risk low while the sub-score is a high-ish 10, which reads as a contradiction to a reader comparing the two.",
+      "fix": "Either reword the rationale (\"comparatively low: video-only, no audio, no biometrics, NJDPA thresholds far out of reach; residual items are unconfirmed, not adverse\") or drop the sub-score to reflect \"moderate\"."
+    },
+    {
+      "claim": "models_and_tools > Cactus: \"Fine-tuning tooling is documented for its text and speech models, not its vision model.\"",
+      "problem": "Not visible on the cited model card, which documents the runtime, targets and three model families but no fine-tuning tooling for any of them. Cannot be confirmed from the cited page.",
+      "fix": "Cite the specific docs page that covers Needle/Whistle fine-tuning, or soften to \"fine-tuning support for the vision model is not documented on the model card.\""
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Grocery out-of-stock fell from 10.7% (2022) to 6.5% (2023), below the ~8% historical rate (FMI Food Retailing Industry Speaks 2024)",
+      "source_url": "https://www.fmi.org/blog/view/fmi-blog/2024/07/25/progress-on-supply-chain-efficiency---performance",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Independents' average out-of-stock 17.5% in FY2022, down from 24.3% in 2021; 49% lost sales to procurement problems",
+      "source_url": "https://www.nationalgrocers.org/news/2023-independent-grocers-financial-survey-webinar-key-takeaways/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "57% average store-level turnover and 35% using automation to fill labor gaps (521 grocers, ~2,000 stores, FY2022)",
+      "source_url": "https://www.nationalgrocers.org/news/2023-independent-grocers-financial-survey-webinar-key-takeaways/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "IHL: $1.77T global inventory distortion, $349B lost sales US/Canada 2022, 17.7% more out-of-stocks in North America; empty shelves #1 reason for food/grocery",
+      "source_url": "https://www.supermarketnews.com/finance/retail-losses-reach-1-77-trillion-worldwide",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 56:8-2.5 requires total selling price plainly marked by stamp, tag, label or sign affixed to the merchandise or at the point of sale; L.1973, c.308; compilation revised 3/30/2022",
+      "source_url": "https://www.njconsumeraffairs.gov/statutes/consumer-fraud-act.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 56:8-2.6: each day of non-marking for each group of identical merchandise is a separate violation",
+      "source_url": "https://www.njconsumeraffairs.gov/statutes/consumer-fraud-act.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 13:47C-3.5: penalty of not less than $100 per violation, each package separate, for this subchapter; building-materials rule at 13:47C-3.4",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-47C-3-5",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ OWM found >2,000 incorrect unit-of-measure instances at Walmart's 64 NJ stores in the first three months of 2023; $1.64M settlement incl. $1.61M civil penalty, OWM's largest ever; NJ one of nine states with mandatory unit pricing",
+      "source_url": "https://www.njoag.gov/ag-platkin-walmart-agrees-to-pay-1-64-million-settlement-to-resolve-allegations-of-unlawful-pricing-practices-at-retail-stores-statewide/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dollar General: 58 stores inspected Nov 2022 and Feb 2023, >2,000 items scanning higher (up to $5.95), $1.2M with $1.18M civil penalty, annual internal audits, >2% overcharges = failed audit",
+      "source_url": "https://www.njoag.gov/ag-platkin-new-jersey-division-of-consumer-affairs-reaches-settlement-with-dollar-general-over-allegations-of-pricing-violations/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Apple: $150,000 civil penalty, the Division's largest ever under the Merchandise Pricing Act, after reinspection of 11 stores found cables/cases/audio devices offered without a price on or near the item (January 2026)",
+      "source_url": "https://www.njoag.gov/ag-platkin-apple-inc-agrees-to-pay-150000-and-change-its-business-practices-to-resolve-allegations-of-widespread-pricing-violations-in-stores-throughout-new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County 2024: NAICS 445110 = 186 establishments, 5,902 employees, $195.8M wages, $33,172 avg annual pay, $638 avg weekly wage; 4451 = 333 establishments / 7,002 employees; 44513 = 147 establishments",
+      "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FY2024 independents: net profit 1.9%, EBITDA 1.52% single-store vs 3.28% multi-store, labor+benefits record 16.3% of sales, 93 respondents / 626 stores plus 507-grocer benchmark base",
+      "source_url": "https://fmssolutions.com/resource-grocery/2025-independent-grocers-financial-report/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Pensa vendor case study: gap detection 93.3/95.2/93.9% vs 35.6/52.3/57.1% manual; 94% gap detection and 99% overall accuracy; ~2 s vs >6 s per shelf segment; 3 stores of one national retailer",
+      "source_url": "https://pensasystems.com/wp-content/uploads/2022/08/Pensa_CaseStudy_RetailScanning.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Simbe FAQ: Tally scans 15-30K products/hour, up to 3x/day, large supermarket 1.5-2 hours per scan; zero upfront cost, monthly RaaS fee by store size/SKU count/CV vs RFID; minimum >1,000 sq ft, most stores >5,000 sq ft; most retailers lack accurate planograms, hence realogram; API provided",
+      "source_url": "https://www.simberobotics.com/faqs",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wakefern: Inserra's 23 ShopRite stores and SRS's 37 NY/NJ ShopRite locations; SRS cut out-of-stock items by 50%; prioritized task lists (published Sept 16, 2024)",
+      "source_url": "https://www.simberobotics.com/resources/customer-stories/wakefern-customer-story",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Croatian study: 86.3% AP fully empty and 83.7% AP frontal OOS (85.0 mAP); ~4 AP above best prior DL baseline; baselines Jha et al. YOLOv5 82.4, YOLOv7 79.7, EfficientDet 77.1 on the normal class; earlier classical Canny 63.8, colour histogram 61.4, SVM 56.9",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10819825/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Croatian study sample: 511 full-height shelf images from four major retailers in Croatia, 1,210 labeled OOS instances (730 normal, 480 frontal), five-fold average",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10819825/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ROSCH robot was 8x faster than a human operator at routine OOS detection, run during store hours; ~2,000 annotated images, 900 from three Italian supermarkets, tested in one Salerno supermarket (2023)",
+      "source_url": "https://openaccess.thecvf.com/content/ICCV2023W/ACVR/html/De_Simone_Autonomous_Mobile_Robot_for_Automatic_out_of_Stock_Detection_in_ICCVW_2023_paper.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Focal: set-up fee plus monthly service fee depending on number/size of stores, number of services and commitment length; cameras not sold separately (AI-as-a-Service); single-day install; still images with individual pixels stripped before analysis or storage; vendor maintains hardware",
+      "source_url": "https://focal.systems/faqs/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Zippedi acquisition modes via Robot Distribution: purchase, short rental 1-30 days, medium rental 1-12 months, RaaS 24-60 months, price on written quote",
+      "source_url": "https://robot-distribution.com/en/brands/zippedi",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Zippedi specs: scans with store lights off (built-in lighting), 8-hour shift, high-res cameras for price tags, depth sensors for shelf-out detection, overhead camera up to 7 m, optional RFID",
+      "source_url": "https://www.zippedi.com/zippy",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Reolink 4K PoE category: 30 results over 4 pages, page-1 models listed $79.99-$199.99 with current prices $47.99-$119.99",
+      "source_url": "https://reolinktech.com/poe-ip-cameras-nvrs/4k-poe-cameras-122/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NVIDIA Jetson Orin Nano Super: $249, 67 INT8 TOPS, supports up to four cameras",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO free under AGPL-3.0 with a paid Enterprise license required for closed-source/commercial embedding; price not published (quote only)",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SKU-110K: 11,743 densely packed shelf images, 8,219 train",
+      "source_url": "https://docs.ultralytics.com/datasets/detect/sku-110k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-3B: 228 tok/s on Apple M5 Max, 116 tok/s on AMD Ryzen AI Max+ 395, under 3.3 GB memory (vendor-reported); 450M not well-suited to fine-grained OCR; 1.6B ships ONNX and GGUF with documented OCR",
+      "source_url": "https://huggingface.co/LiquidAI/LFM2.5-VL-3B",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Wiretap Act requires consent of at least one party (N.J.S.A. 2A:156A-2,-3,-4); criminal/tortious-purpose recording illegal regardless of consent; N.J.S.A. 2C:14-9 hidden-camera statute does not criminalise recording devices in areas open to the public or with no reasonable expectation of privacy",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Data Privacy Law (P.L. 2023, c.266) applies only at 100,000+ consumers, or 25,000+ plus revenue/discount from selling personal data; approved January 16, 2024; effective the 365th day after enactment",
+      "source_url": "https://pub.njleg.gov/Bills/2022/PL23/266_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ A3929 (2026) is an introduced bill, not law: biometric surveillance notice + lawful purpose, 30-day cure on first violation, ban on selling/sharing the data",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2026/A4000/3929_T1.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC policy statement: misuse of biometric information, including accuracy/bias claims, can be an unfair or deceptive practice under Section 5",
+      "source_url": "https://search.ftc.gov/system/files/ftc_gov/pdf/p225402biometricpolicystatement.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB General Counsel Memo GC 23-02 (October 31, 2022) targets electronic monitoring and algorithmic management interfering with Section 7 rights",
+      "source_url": "https://assets.dorsey.com/content/uploads/2023/06/Electronic-Monitoring-10-31-2022-3.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate OpenVINO detector runs on Intel iGPU/NPU/CPU with custom label maps, plus TensorRT/Edge TPU alternatives; Square Inventory API exposes catalog items, inventory counts and adjustment history",
+      "source_url": "https://docs.frigate.video/configuration/object_detectors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Pilot cost arithmetic: 4 cameras at $48-$120 plus a $249 Jetson = $440-$730; 35-55 hours at $100-$125/hr = $3,500-$6,900; fit_score sub-scores 13+10+8+13+10+6 = 60",
+      "source_url": "https://reolinktech.com/poe-ip-cameras-nvrs/4k-poe-cameras-122/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Pensa captures shelf images with handheld or drone devices",
+      "source_url": "https://pensasystems.com/wp-content/uploads/2022/08/Pensa_CaseStudy_RetailScanning.pdf",
+      "result": "not found"
+    },
+    {
+      "claim": "Cactus fine-tuning tooling is documented for its text and speech models, not its vision model",
+      "source_url": "https://huggingface.co/Cactus-Compute/cactus",
+      "result": "not found"
+    }
+  ],
+  "confidence": "High"
+}

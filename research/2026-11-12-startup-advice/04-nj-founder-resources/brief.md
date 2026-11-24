@@ -1,0 +1,2 @@
+INPUT: question = Free and low-cost help for a new small business founder in Middlesex County, New Jersey: Rutgers or NJ Small Business Development Centers, SCORE mentors, NJEDA programs and grants, NJ business registration and LLC costs, chambers of commerce, coworking and accelerators, and anything specific to tech or AI services. Include costs, eligibility and how to sign up from each program page.
+Today is 2026-11-12. Research it per your role. Use "question": "nj-founder-resources". Write the JSON to output.json.

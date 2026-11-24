@@ -1,0 +1,27 @@
+[
+ {
+  "claim": "pilot.weeks / feasibility.weeks_to_pilot: '4 weeks of pilot after a 1-2 week build; 5-6 weeks from go-ahead to pilot result'",
+  "problem": "Internally inconsistent arithmetic. Phases 0-3 (discovery, corpus, drafting agents, review queue) total 16 founder-days, which cannot be delivered in a 1-2 week (5-10 working day) build by a solo founder. Only the 24-founder-day total is consistent (2+4+6+4+5+3 = 24, matching '~24 founder-days' in suggested_pricing).",
+  "fix": "Either state a 3-4 week build (making it 7-8 weeks from go-ahead to pilot result), or cut phases 0-3 to about 8-10 founder-days and keep the 1-2 week build. Reconcile the same figure in feasibility.weeks_to_pilot."
+ },
+ {
+  "claim": "Competitor 'Hire a person': 'Benaka's own live posting advertises $100,000-$140,000 per year for QC Manager/Project Superintendent'; also the problem section's 'hiring that role externally at $100,000-$140,000'",
+  "problem": "The cited source_url (O*NET NJ wage page) contains no Benaka posting and no $100,000-$140,000 range - it only gives SOC 11-9021 wage percentiles, which the plan already quotes separately. The Benaka range comes from a job-board listing (Construction Quality Control Manager/Project Superintendent, Egg Harbor Township NJ, $100,000-$140,000/yr) that surfaced in search results but could not be opened directly (HTTP 401). benakainc.com/careers.html carries no salary. So the figure appears real but is not traceable to the URL given, and the plan presents a job-board number as if the company documented it on its own careers page.",
+  "fix": "Cite the job-board listing itself (e.g. the Indeed viewjob page) and label it 'range as advertised on a third-party job board, retrieved <date>'; keep O*NET only for the BLS comparison. Also note the posting location (Egg Harbor Township) rather than implying it is the New Brunswick office."
+ },
+ {
+  "claim": "Microsoft 365 Business Basic is '$6.00 per user per month on annual terms' (integration cost and running-cost line 'Dedicated project mailbox')",
+  "problem": "The cited page could not be opened (every fetch of microsoft.com compare-all-business-products aborted). Two independent search retrievals summarising that same page state Business Basic is $7.00 per user/month paid yearly, while Microsoft's own licensing pricelist (Update to Microsoft 365 and Teams Licensing, USD effective 1 Nov 2025) lists Microsoft 365 Business Basic at $6.00. The figure is unresolved rather than confirmed and is cited to a page that could not be verified.",
+  "fix": "Re-open the vendor page and set the current list price; if it is $7.00, update the $6.00 in both the integration cost and the running-cost table. If $6.00 still holds, cite the Microsoft licensing pricelist table instead of the marketing compare page."
+ },
+ {
+  "claim": "Trunk Tools price: 'priced on construction volume, quote required, unlimited users'",
+  "problem": "The pricing page confirms one price based on construction volume and unlimited seats, but never says a quote is required and publishes no rate, so 'quote required' is an unsupported detail stated as fact.",
+  "fix": "Say 'price set by construction volume and not published; no rate shown', and keep the unlimited-seats point, which the page does state."
+ },
+ {
+  "claim": "Procore price: 'routes to a custom quote and states annual contracts; pricing varies with products and construction volume'",
+  "problem": "Custom quote and annual contracts are confirmed, but the page does not attribute variation to construction volume; its only volume-related qualifier is that Field Productivity is priced on FTE.",
+  "fix": "Replace 'construction volume' with the page's actual wording (fully custom quote per product bundle; Field Productivity priced by FTE)."
+ }
+]

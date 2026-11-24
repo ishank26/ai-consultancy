@@ -1,0 +1,120 @@
+{
+  "ref": "B00437",
+  "name": "Biondo Contracting (Biondo Contracting-Roofing Specialists)",
+  "town": "Monroe Township / East Brunswick, NJ",
+  "category": "Roofing contractor",
+  "status": "operating",
+  "domains": [
+    {
+      "domain": "biondoroofing.com",
+      "role": "listed on Google",
+      "final_url": "https://biondoroofing.com/",
+      "result": "Loads over HTTPS with no certificate warning (HTTP 200, no redirect away from the domain). The page is a Thai-language slot/gambling landing page built to look like a Google Play listing: a slot-game title, '4.9 star / 419K reviews / 14.2M+ Downloads', an 'install' button and Thai slot-game thumbnail art. No roofing content or business contact details anywhere on the page.",
+      "screenshot_files": ["screenshot-biondoroofing-desktop.png", "screenshot-biondoroofing-mobile390.png"],
+      "checked_at": "2026-11-13",
+      "source_url": "https://biondoroofing.com/"
+    },
+    {
+      "domain": "biondo-contracting.webflow.io",
+      "role": "alternate",
+      "final_url": "https://biondo-contracting.webflow.io/",
+      "result": "Loads normally. A single-page Webflow site headed 'Biondoroofing.com' with one paragraph describing the roofing company (services, since 1990, own in-house crew) and one outbound link, to biondoroofing.com. No phone number, address, form or photos of its own.",
+      "screenshot_files": ["screenshot-webflow-stub.png"],
+      "checked_at": "2026-11-13",
+      "source_url": "https://biondo-contracting.webflow.io/"
+    }
+  ],
+  "links_to_broken_domain": [
+    {
+      "place": "Google Business Profile 'Biondo Contracting-Roofing Specialists' (4.9, Roofing contractor, 38 Spotswood Ave, Monroe Township, NJ 08831, (732) 257-2926) - website field, link href https://biondoroofing.com/",
+      "url": "https://www.google.com/maps/place/Biondo+Contracting-Roofing+Specialists/@40.3781711,-74.3972853,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3cffc915a5ec9:0xf5810fb2cc491782!8m2!3d40.3781711!4d-74.3972853!16s%2Fg%2F11dxddl3_9"
+    },
+    {
+      "place": "AECinfo company profile (address 163 Fresh Ponds Rd, East Brunswick; phone 732-257-2926) - 'URL: http://www.biondoroofing.com'",
+      "url": "https://aecinfo.com/biondo-contracting/company.html"
+    },
+    {
+      "place": "FindTrustedRoofers listing for Monroe Township - 'Website: biondoroofing.com'",
+      "url": "https://www.findtrustedroofers.com/nj/monroe-township/biondo-contracting-roofing-specialists/"
+    },
+    {
+      "place": "Webflow page headed 'Biondoroofing.com' - its only outbound link is to biondoroofing.com",
+      "url": "https://biondo-contracting.webflow.io/"
+    }
+  ],
+  "rdap": [
+    {
+      "domain": "biondoroofing.com",
+      "registered": "2010-12-07",
+      "expires": "2030-12-07",
+      "last_changed": "2025-12-08",
+      "registrar": "GoDaddy.com, LLC",
+      "source_url": "https://rdap.org/domain/biondoroofing.com"
+    }
+  ],
+  "likely_cause": {
+    "cause": "hacked",
+    "reasoning": "Inference. The registration was not lost or re-created: RDAP shows a creation date of 2010-12-07, an expiry of 2030-12-07, client delete/renew/transfer/update locks, registrar GoDaddy, and GoDaddy nameservers (ns23/ns24.domaincontrol.com), so this is not a lapsed-then-reregistered domain. An Internet Archive capture of the same URL from 2026-04-20 still shows the genuine roofing site (title about a local NJ roofing company, 30+ years), so the replacement happened between April 2026 and today. The domain now resolves to 160.153.0.162, hostname 162.0.153.160.host.secureserver.net (GoDaddy shared hosting), which is consistent with the site's files being replaced inside a hosting account rather than the name being moved to a third-party spam host. That points to a compromised or unauthorised change to the site/hosting content; only the owner's registrar and hosting account logs can confirm how access was obtained. An abandoned or parked-with-monetisation explanation cannot be fully excluded from public data.",
+    "inference": true
+  },
+  "fix_steps": [
+    {
+      "step": "Confirm who holds the GoDaddy account for biondoroofing.com, that the domain is set to auto-renew, and that two-step verification is on. The domain is already paid to 7 Dec 2030, so the fix is about account access, not renewal.",
+      "who": "Owner plus whoever originally set up the website or domain",
+      "effort_hours": "0.5-1",
+      "source_url": "https://rdap.org/domain/biondoroofing.com"
+    },
+    {
+      "step": "Inside the GoDaddy hosting account, find and remove the gambling page, restore the site from the most recent clean backup, then change the hosting, WordPress (if used) and email passwords. If no clean backup exists, keep the domain serving a holding page until a replacement is ready.",
+      "who": "Web developer, with the owner on the account",
+      "effort_hours": "1-3",
+      "source_url": "https://biondoroofing.com/"
+    },
+    {
+      "step": "Publish a simple one-page site at the domain straight away: company name, services, towns served, phone, licence number and a few job photos. A static page or page-builder template keeps it from being overwritten again.",
+      "who": "Web developer",
+      "effort_hours": "2-4",
+      "source_url": "https://web.archive.org/web/20260420032126/https://biondoroofing.com/"
+    },
+    {
+      "step": "Repair the places customers are sent: edit the website field on the Google Business Profile so it points to a working page, and update or remove the old link on the AECinfo, FindTrustedRoofers, Houzz and the biondo-contracting.webflow.io entries (plus BBB, which we could not open).",
+      "who": "Owner or office manager; developer for the directory edits",
+      "effort_hours": "1-2",
+      "source_url": "https://support.google.com/business/answer/3038177"
+    },
+    {
+      "step": "Once the spam is gone, use Google's removals tool for the domain in Search Console to block the old URL from results, request a refresh of outdated content, and add uptime plus content-change monitoring so a repeat replacement is noticed within a day.",
+      "who": "Web developer",
+      "effort_hours": "1-2",
+      "source_url": "https://support.google.com/webmasters/answer/9689846"
+    }
+  ],
+  "after_fix": {
+    "opportunity": "Add an online quote request (with roof-photo upload) and a tap-to-call button, linked from the Google profile, so enquiries stop depending on a phone call.",
+    "evidence": "The Google Business Profile offers an address, hours and the phone number (732) 257-2926, with the website field pointing at the broken domain; no listing page we opened offers a form or booking, while the profile's 4.9 rating and review volume (172 reviews on Birdeye) show steady demand.",
+    "source_url": "https://www.google.com/maps/place/Biondo+Contracting-Roofing+Specialists/@40.3781711,-74.3972853,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3cffc915a5ec9:0xf5810fb2cc491782!8m2!3d40.3781711!4d-74.3972853!16s%2Fg%2F11dxddl3_9"
+  },
+  "severity": "High",
+  "severity_reason": "The website link on a 4.9-rated, heavily reviewed Google Business Profile sends homeowners to a Thai gambling page, and no live page describes the business's services or service area.",
+  "audit_md": "# Website Health Check: Biondo Contracting\n\n## What we saw on 13 November 2026\n\n- biondoroofing.com, the site on your Google Business Profile, still loads but shows a Thai-language slot/gambling page styled as a Google Play listing; there is no roofing content (screenshots kept).\n- The profile \"Biondo Contracting-Roofing Specialists\" (4.9, 38 Spotswood Ave, Monroe Township, (732) 257-2926) still uses that domain as its website link.\n- The domain has not lapsed: the registry shows it created in 2010, paid to 7 December 2030, with GoDaddy locks in place, and an Internet Archive capture from 20 April 2026 still shows your roofing site.\n- AECinfo and FindTrustedRoofers still publish the domain, and a small Webflow page headed \"Biondoroofing.com\" links to it.\n\n## What it means for customers\n\nA homeowner who taps the website on your profile lands on a gambling page and finds no services, towns served or way to ask for a quote. The phone number still works, so enquiries depend on someone calling.\n\n## How to fix it\n\n1. Confirm who holds the GoDaddy account and turn on two-step verification (owner and site builder, 0.5-1 hour).\n2. Remove the injected page in the hosting account, restore the last clean backup, change hosting and site passwords (developer, 1-3 hours).\n3. Publish a simple one-page site: services, towns, phone, licence number, photos (developer, 2-4 hours).\n4. Update the website field on Google plus the AECinfo, FindTrustedRoofers, Houzz and Webflow links (owner, 1-2 hours).\n5. Ask Google to refresh the removed page in results and set up change monitoring (developer, 1-2 hours).\n\n## After the fix\n\nAdd an online quote request with roof-photo upload and tap-to-call, linked from the profile; enquiries would no longer depend on a phone call.\n\nPrepared from publicly available information on 13 November 2026. We did not log in to or change anything.",
+  "founder_md": "# Founder notes - Biondo Contracting (B00437)\n\n## Outreach email draft\n\nSubject: Your website is showing a gambling page\n\nHello - I looked up Biondo Contracting after seeing your 4.9 rating on Google, and the website link on your Google profile (biondoroofing.com) currently opens a Thai slot-machine page instead of your roofing site. Your domain is still registered in your name through 2030, so this looks fixable rather than lost, but anyone who taps that link sees the gambling page. I have screenshots from a desktop and a phone, and I can walk you through them and the five-step fix in about fifteen minutes - no charge and no obligation.\n\n## Walk-in / phone opener\n\n\"I called about your website - the link on your Google profile is opening a Thai casino page instead of your roofing site, and I have the screenshots if you'd like to see what customers see.\"\n\n## Sources\n\n- Live domain test, desktop and 390 px: https://biondoroofing.com/ (title and page text read in browser; screenshots screenshot-biondoroofing-desktop.png, screenshot-biondoroofing-mobile390.png)\n- Google Business Profile place page with website field: https://www.google.com/maps/place/Biondo+Contracting-Roofing+Specialists/@40.3781711,-74.3972853,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3cffc915a5ec9:0xf5810fb2cc491782!8m2!3d40.3781711!4d-74.3972853!16s%2Fg%2F11dxddl3_9 (screenshot-google-profile.png)\n- RDAP registration record: https://rdap.org/domain/biondoroofing.com\n- Internet Archive capture of the genuine site, 20 April 2026: https://web.archive.org/web/20260420032126/https://biondoroofing.com/\n- Internet Archive index showing the last capture on that date: http://web.archive.org/cdx/search/cdx?url=biondoroofing.com&output=json&from=2023&to=2026\n- DNS records (A 160.153.0.162, NS ns23/ns24.domaincontrol.com): https://dns.google/resolve?name=biondoroofing.com&type=A and https://dns.google/resolve?name=biondoroofing.com&type=NS\n- Host lookup for 160.153.0.162: https://ipinfo.io/160.153.0.162/json\n- AECinfo profile listing the domain: https://aecinfo.com/biondo-contracting/company.html\n- FindTrustedRoofers listing: https://www.findtrustedroofers.com/nj/monroe-township/biondo-contracting-roofing-specialists/\n- Webflow page headed \"Biondoroofing.com\": https://biondo-contracting.webflow.io/ (screenshot-webflow-stub.png)\n- Birdeye profile, 4.7 from 172 reviews, 163 Fresh Ponds Rd address: https://birdeye.com/biondo-contracting-east-brunswick-nj-149586765701051\n- Nextdoor page describing services and counties: https://nextdoor.com/pages/biondo-contracting-monroe-township-nj/\n- Google help on editing a Business Profile: https://support.google.com/business/answer/3038177\n- Google Search Console removals tool: https://support.google.com/webmasters/answer/9689846\n\n## Open questions\n\n- Who holds the GoDaddy registrar and hosting account for biondoroofing.com, and is two-step verification on it?\n- Was the site moved to GoDaddy hosting recently, and is there a clean backup of the previous WordPress site?\n- Which address and phone number should be published - the Monroe Township office on Google or 163 Fresh Ponds Rd, East Brunswick (used by Birdeye and AECinfo)?\n- Does the Webflow page belong to the business or to a contractor or agency?\n- Is the old contact email on the domain still in use, or did mail change hands as well?",
+  "caveats": [
+    "The cause cannot be established from public data alone; 'hacked' is an inference based on continuous registration plus a genuine archive capture from April 2026 versus today's gambling page.",
+    "BBB returned HTTP 403 to us, so its website field, address and phone could not be checked on 2026-11-13.",
+    "Houzz returned HTTP 429 (rate limit) when opened; a search-result summary said it lists biondoroofing.com, but we did not confirm that on the page itself.",
+    "Porch, BuildZoom and Storeboard blocked our requests, so whether they still show the domain is unknown.",
+    "No Yelp listing for this business was found in search, so Yelp is not listed.",
+    "Search-engine summaries still describe biondoroofing.com as a roofing site; that is cached or older text and does not match the live page.",
+    "Owner and employee names that appear in reviews and directory profiles were deliberately left out.",
+    "Fix-step effort ranges are planning estimates, not quotes from a source."
+  ],
+  "data_gaps": [
+    "BBB profile page blocked (403) - website field unverified",
+    "Houzz profile blocked (429) - website field unverified",
+    "Porch, BuildZoom and Storeboard blocked - website field unverified",
+    "No Wayback capture between 2026-04-20 and today, so the exact date the site changed is unknown",
+    "Registrant identity is not public in the thin .com registry record and was not pursued",
+    "No business-owned social profiles (Facebook, Instagram) found to check for links",
+    "Could not confirm whether the Webflow page belongs to the business"
+  ]
+}

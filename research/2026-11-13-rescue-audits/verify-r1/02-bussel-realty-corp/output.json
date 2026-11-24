@@ -1,0 +1,123 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "audit_md: \"bussel.com is registered through GoDaddy in the company's own account ... so it has not lapsed or changed hands\" (also likely_cause: \"still registered through the business's own registrar account\").",
+      "problem": "Unsupported by the cited source. rdap.org/domain/bussel.com shows the registrar (GoDaddy.com, LLC, IANA 146), the expiry, the client locks and the nameservers, but it shows nothing about who holds the GoDaddy account, and no registrant details are published. I re-opened the RDAP record today and it does not contain that fact. Account ownership cannot be established from outside, and it is the claim that justifies fix step 1 (\"leave the domain registration alone\").",
+      "fix": "Either drop the phrase or hedge it, e.g. \"registered through GoDaddy, paid until 1 August 2028, with registrar locks on, so it has not lapsed.\" Then add one line: \"We could not see from outside whose GoDaddy login holds the domain - worth confirming.\""
+    },
+    {
+      "claim": "audit_md: \"Search engines can still read it [the injected text]\".",
+      "problem": "Stated as fact with no source, and it is not demonstrated. When I requested the page with a Googlebot user agent and JavaScript disabled, the horse emoji was in the title but the hidden block and its outbound links were not present at all. Whether crawlers receive the block is unknown from outside.",
+      "fix": "Hedge it: \"Search engines may still pick it up\", or \"if a search engine is served the same version a browser gets, it can read it\", and note that a crawler was not tested."
+    },
+    {
+      "claim": "fix_steps step 2: \"hunt the injected hidden block and emoji title tag through every .asp template, include file and shared footer\".",
+      "problem": "Plausible but likely incomplete, and it reads as if the vector were already known. In my tests the hidden block was absent from the page with JavaScript disabled and appeared only after the page's scripts ran, while the emoji title was in the served HTML; the site's own /js files and its FontAwesome kit contain no spam strings, and the page also loads third-party tags (app.agencysonar.com tracker, googletagmanager/GA, FontAwesome kit). Sending a developer only to the ASP templates and includes may miss it. (Inference on my part - the vector is not visible from outside, which the audit correctly says.)",
+      "fix": "Widen the instruction: search the templates, includes, the /js directory and any third-party tags or analytics accounts (the audit already asks for weekly monitoring); say \"start with the templates\" rather than implying that is the whole job."
+    },
+    {
+      "claim": "links_to_broken_domain: \"The site's own pages and templates (header, footer, property search, news) link to bussel.com throughout.\"",
+      "problem": "Imprecise. The internal navigation and footer links are relative paths (/news.asp, /default/commercial-real-estate/...), not absolute bussel.com URLs; the only absolute bussel.com reference I found on the page is mailto:info@bussel.com. Minor, and it does not affect the finding.",
+      "fix": "Say \"the site and its internal links all resolve to bussel.com, and info@bussel.com is the published email\"."
+    },
+    {
+      "claim": "likely_cause reasoning: \"with its own nameserver pair\".",
+      "problem": "NS49/NS50.DOMAINCONTROL.COM are GoDaddy's shared nameservers, not nameservers the business owns or controls uniquely. Small, but it is used as evidence that the domain was not moved, so the wording overstates it.",
+      "fix": "Say \"on GoDaddy's standard nameservers (ns49/ns50.domaincontrol.com)\" and keep the conclusion as an inference."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "bussel.com loads normally in Chrome with logo, phone 732-287-3777, property search, featured listings and deal news (HTTP 200).",
+      "source_url": "https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The rendered home page contains a hidden block at left:-9999px (div.dc) linking to vietnam-millionaire.me, portuguese-passport.online, top10binary.ru and top10shops.ru.",
+      "source_url": "https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The hidden block contains Vietnamese, Hebrew and Russian text.",
+      "source_url": "https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The browser tab title is prefixed with a horse emoji.",
+      "source_url": "https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A plain HTML fetch (no browser navigation) of the same URL returns clean HTML, so the spam is served only under some conditions.",
+      "source_url": "https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "bussel.com/contact-us/ returns HTTP 404.",
+      "source_url": "https://bussel.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The contact page has 0 tel: links and the only form posts to /login.asp (staff login).",
+      "source_url": "https://bussel.com/contact-us/commercial-real-estate/central-new-jersey",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile \"Bussel Realty Corporation\": 4.5, 2 Ethel Rd #202a, Edison NJ 08817, located in Durham Center, open until 4 PM, website bussel.com, phone (732) 287-3777, with \"Add missing information\"/\"Add a photo\" prompts and no review count visible.",
+      "source_url": "https://www.google.com/maps/place/Bussel+Realty+Corporation/@40.5412402,-74.3948696,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3b7fb806a6985:0xb89cb9047c768c11!8m2!3d40.5412402!4d-74.3948696!16s%2Fg%2F1tcx_scb",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 1996-04-23, expires 2028-08-01, last changed 2026-07-29, registrar GoDaddy.com, LLC (IANA 146), status client delete/renew/transfer/update prohibited, nameservers NS49/NS50.DOMAINCONTROL.COM.",
+      "source_url": "https://rdap.org/domain/bussel.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The domain is registered in the company's own registrar account.",
+      "source_url": "https://rdap.org/domain/bussel.com",
+      "result": "not found"
+    },
+    {
+      "claim": "Wayback snapshot of 4 August 2026 (20260804094057) contains no spam strings, and its news excerpt is dated June 1, 2026.",
+      "source_url": "https://web.archive.org/web/20260804094057/https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback CDX shows continuous HTTP 200 snapshots of bussel.com from Feb 2024 to Aug 2026.",
+      "source_url": "https://web.archive.org/cdx/search/cdx?url=bussel.com&output=json&from=2024",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google guidance on hacked/injected content and requesting a review is at answer 6347750.",
+      "source_url": "https://support.google.com/webmasters/answer/6347750",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The business is Bussel Realty Corp at 2 Ethel Road, Suite 202A, Edison NJ 08817, phone 732-287-3777, an independent New Jersey industrial/retail brokerage (not a chain), still operating.",
+      "source_url": "https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A LoopNet company profile for Bussel Realty exists (seen in search results; the page itself was not opened).",
+      "source_url": "https://www.loopnet.com/company/bussel-realty/41qp9dhl/",
+      "result": "not found"
+    },
+    {
+      "claim": "audit_md body is at most 300 words (measured about 295).",
+      "source_url": "rescue.json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The cause is labelled an inference and no person or firm is accused.",
+      "source_url": "rescue.json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Screenshot files bussel-home-desktop-1440.png, bussel-home-mobile-390.png and google-maps-profile.png exist as cited evidence.",
+      "source_url": "rescue.json",
+      "result": "not found"
+    }
+  ],
+  "confidence": "High"
+}

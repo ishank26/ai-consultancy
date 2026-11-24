@@ -1,0 +1,273 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "measured_outcomes, 'Vendor benchmarks' entry: 'Qwen3-VL-2B reaches ~180 tok/s generation on NVIDIA's TensorRT Edge-LLM reference setup' (cited to https://www.liquid.ai/blog/lfm2-5-vl-3b).",
+      "problem": "The cited source does not contain this number - I re-opened the Liquid AI blog and it reports only LFM2.5-VL-3B figures plus an H100 vLLM comparison; there is no Qwen3-VL-2B TensorRT Edge-LLM throughput anywhere on the page. Checking NVIDIA's actual TensorRT Edge-LLM benchmark page, Qwen3-VL-2B-Instruct decodes at about 151 tok/s on Jetson AGX Thor (BS=1, INT4 AWQ/FP16), ~150 on DGX Spark, ~98.9 on AGX Orin and ~58.5 on Orin NX; the ~180.8 tok/s figure appears only in the older v0.4.0 NVFP4 results. So the number is both unsourced at the citation given and stale relative to the current benchmark. This is a number attached to a source that does not support it.",
+      "fix": "Either delete the Qwen3-VL-2B clause, or cite https://nvidia.github.io/TensorRT-Edge-LLM/user_guide/performance/performance-benchmarks.html and state the device-specific current figure (e.g. 'Qwen3-VL-2B-Instruct decodes at ~151 tok/s on Jetson AGX Thor, batch size 1, INT4 AWQ') with the caveat that ~180 tok/s comes from older v0.4.0 NVFP4 results. Split the LFM2.5-VL and Qwen3-VL numbers into separate entries so each carries the URL that actually states it."
+    },
+    {
+      "claim": "fit_score rationale: legal_risk_low 9/15 is described as 'deliberately kept in the lower half'.",
+      "problem": "Arithmetic is fine (15+13+9+13+9+9 = 68 of 100, and the /20 and /15 ceilings quoted in the rationale match the sub-scores), but 9/15 is 60%, i.e. above the midpoint of its own scale, so the 'lower half' description contradicts the score. Minor: the score itself is defensible against the legal section (criminal exposure under N.J.S.A. 2C:14-9, an unverified negative finding on notice, a rescinded NLRB GC memo).",
+      "fix": "Reword to 'kept below the level the other sub-scores suggest' and/or drop legal_risk_low to 7 (total 66), rather than claiming it sits in the lower half."
+    },
+    {
+      "claim": "data_gaps: 'EmpireTech product URL 404'd' for the Dahua IPC-T54IR-AS-S3.",
+      "problem": "The same URL loaded for me and is also the source_url for the hardware line, which correctly says 'specs confirmed on the vendor page; no price shown there'. The 404 statement is inconsistent with the body and with what the page actually does (it serves full specs; only the price is absent).",
+      "fix": "Change the data_gap to 'vendor page loads and confirms specs, but shows no price; retailer price pages returned 403/404'."
+    },
+    {
+      "claim": "measured_outcomes, 'Detector latencies' entry: 'Coral ~10 ms with the default model (Frigate caps a Coral at 1000/inference-ms fps)'.",
+      "problem": "The Frigate hardware page states the 1000/inference-ms cap, but the '~10 ms' is the page's own worked example ('With an inference speed of 10, your Coral will top out at 100 frames per second'), not a benchmarked Coral latency - the table carries no Coral ms column. Presented as a measured latency it overstates the source.",
+      "fix": "Say 'Frigate's docs use an inference speed of 10 ms for a Coral as their worked example (cap = 1000/inference-ms fps)' or drop the figure and keep the cap rule."
+    },
+    {
+      "claim": "measured_outcomes, CAPTURE entry: strength 'High'.",
+      "problem": "Confirmed as a peer-reviewed ICCV 2025 benchmark (GPT-4o 14.75% error on real occluded images, Molmo 32.49%, humans near-zero), so High is defensible for a benchmark; but it is still a single study and is being used to argue a market-level caution. Flagging only so the orchestrator applies the 'single small study is not High' rule knowingly.",
+      "fix": "Either keep High and add 'one benchmark, peer-reviewed' to the finding, or downgrade to Medium. No number change needed."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "NJ security guards (SOC 33-9032) median $18.69/hr, $38,880/yr, middle 50% $16.71-$23.14/hr",
+      "source_url": "https://www.onetonline.org/link/localwages/33-9032.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ minimum wage $15.92/hr from Jan 1, 2026; $15.23/hr for seasonal and small employers; release does not define 'small'",
+      "source_url": "https://www.nj.gov/labor/lwdhome/press/2025/20251001_Minimum_Wage.shtml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County 2024: 25,042 establishments total; 2,282 retail; 1,752 accommodation/food; 1,305 transportation/warehousing; 5,036 health care; all-occupation median $27.55/hr; cashiers $16.30; retail salespersons $17.29; hand packagers $20.56; transportation/warehousing +26.1% 2018-2024",
+      "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NRF 2023 NRSS: FY2022 shrink 1.6% of sales = $112.1B, up from 1.4% and $93.9B in 2021; theft 65% of shrink; 177 brands, $1.6T sales, 97,000+ locations",
+      "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NRF did not publish a 2024 shrink report; FY2022 survey remains the latest comparable figure",
+      "source_url": "https://www.retaildive.com/news/no-nrf-annual-retail-shrink-report-2024/729009/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CDC: food workers wash hands when they should about one in three times; nine handwash-requiring activities/hr but 2-3 washes; 1 in 4 wash after raw animal products; page reviewed Aug 27, 2026",
+      "source_url": "https://www.cdc.gov/restaurant-food-safety/php/practices/handwashing.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BLS CFOI 2024: 733 fatal violent acts (470 homicides, 263 suicides); 5,070 total fatal injuries; rate 3.3 per 100,000 FTE; released Feb 19, 2026",
+      "source_url": "https://www.bls.gov/news.release/cfoi.nr0.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "General warehousing and storage (NAICS 49311) 2024 incidence rate 4.9 per 100 FTE total recordable, 4.3 days-away/transfer/restriction",
+      "source_url": "https://www.bls.gov/web/osh/table-1-industry-rates-national.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Donald, Donald & Thatcher 2015: at stage two (total N=73) 'fifty percent of target behaviours were detected and false alarms were high'; no vigilance decrement for the 42 full-time operators as a whole; specialists held then increased performance after the first hour",
+      "source_url": "https://ro.ecu.edu.au/ecuworkspost2013/922/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Surveillance video volume 'far exceeding the capacity for human monitoring'; 4 open VLMs on UCF-Crime and RWF-2000; NeurIPS 2025 workshop paper",
+      "source_url": "https://arxiv.org/abs/2510.23190",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Census BTOS Dec 2025-May 2026: national AI use 19.8%; retail trade ~14%; no significant change for firms under 20 employees; under 20% of firms with four or fewer employees use AI",
+      "source_url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Rhombus pricing: R120 $399 + $149 = $548; R150 $699 + $149 = $848; R200 $599 + $149 = $748; Professional licence excludes AI features and cloud archiving; all cameras require an ongoing licence; N100 Relay $2,999, up to 10 streams, 20 days/camera on 2TB or 40 on 4TB; $149/camera to enable AI on third-party cameras",
+      "source_url": "https://www.rhombus.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics Platform: Free $0, Pro $29/seat/month (with $30/seat/month credits), Enterprise custom; software under AGPL-3.0 with a separate Enterprise licence",
+      "source_url": "https://www.ultralytics.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "AWS Rekognition Custom Labels: $1 per training hour (one-time), $4 per inference hour, charged even when no images are processed; free tier 2 training + 1 inference hour/month for 12 months",
+      "source_url": "https://aws.amazon.com/rekognition/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Home Assistant Green about USD 199",
+      "source_url": "https://www.nabucasa.com/news/2026-01-08-green-pricing-change/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Coral USB Accelerator USD 111 at Seeed Studio (listing price at research date)",
+      "source_url": "https://www.seeedstudio.com/Coral-USB-Accelerator-p-2899.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Beelink EQ13 (Intel N100, dual 1GbE) USD 249.99",
+      "source_url": "https://www.notebookcheck.net/Beelink-EQ13-Quiet-mini-PC-now-available-for-pre-order.844642.0.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jetson Orin Nano Super Developer Kit USD 249, 67 INT8 TOPS, 102GB/s",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Raspberry Pi 5 8GB USD 95 after the December 2025 memory-driven price rise",
+      "source_url": "https://www.raspberrypi.com/news/1gb-raspberry-pi-5-now-available-at-45-and-memory-driven-price-rises/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hailo-8 M.2 module is 26 TOPS; no price published on the vendor page (buy via distributors)",
+      "source_url": "https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dahua IPC-T54IR-AS-S3 class turret: 4MP, IR, H.264/H.265, ONVIF Profile S/G/T, PoE, multiple substreams; no price on vendor page",
+      "source_url": "https://empiretech01.com/products/empiretech-ipc-t54ir-as-1-1-8-cmos-4mp-ir-fixed-focal-eyeball-network-camera",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-3B: 3.1B params, SigLIP2 400M NaFlex encoder, non-reasoning, ~3GB memory, day-one llama.cpp/MLX/vLLM/SGLang/ONNX, 228 tok/s (M5 Max) / 116 (Ryzen AI Max+ 395) / 20 (Galaxy S26 Ultra), RefCOCO-avg 87.9, POPE 88.7, 28-benchmark average 69.4 vs 70.1 for Qwen3.5-4B (4.7B), 'within 0.7%', ScreenSpot-v2 80.7 vs gemma-4-E4B 51.2 / Qwen3.5-4B 78.5 / InternVL-3.5-4B 84.1, per-split 78.7/81.2/82.2 vs 28.1/42.9/22.4 (E2B) and 45.8/60.3/47.6 (E4B), InternVL-3.5-2B desktop 79.9, IFEval 82.3 vs 83.0 (E2B), MM-IFEval 60.6 vs 65.6",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen3.5-4B: 4B parameters, causal LM with vision encoder, 262,144-token native context, thinks by default with a documented non-thinking path",
+      "source_url": "https://huggingface.co/Qwen/Qwen3.5-4B",
+      "result": "confirmed"
+    },
+    {
+      "claim": "YOLO26n OpenVINO INT8: 4.24 ms/image, mAP50-95 0.4634 on Intel Core Ultra X7 358H iGPU",
+      "source_url": "https://docs.ultralytics.com/integrations/openvino/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate hardware table: Hailo-8L YOLOv6n ~11 ms and ssd mobilenet ~10 ms; Hailo-8 YOLOv6n ~7 ms / ssd mobilenet ~6 ms; Intel N100 YOLOv9-s 320px 30 ms; Intel NPU YOLOv9-s 640px 30 ms; RF-DETR 320-n 33 ms on Iris XE and 40 ms on Intel NPU; RF-DETR 336/448 20/27 ms on Arc A380; RF-DETR Nano-320 ~90 ms on AMD 9060XT; no RF-DETR figure for Arc A310; Jetson typically 20-40 ms; Coral no longer recommended for new installs; Coral throughput cap = 1000/inference-ms fps",
+      "source_url": "https://docs.frigate.video/frigate/hardware/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OpenZeka Jetson Orin NX 16GB, Q8_0 llama.cpp: 2.35 s to first answer on one 720p image at 20.7 tok/s; 2 cameras stay under 3 s; 4 cameras 12.2 s; 1-32 images per request; 2K image 6.95 s",
+      "source_url": "https://whitepapers.openzeka.com/vlm-inference-benchmarks/lfm2-5-vl-3b/jetson-orin-nx-16gb/q8-0-llama-cpp/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CAPTURE (ICCV 2025): GPT-4o 14.75% error on real occluded images, Molmo 32.49%; humans 'almost no error'",
+      "source_url": "https://openaccess.thecvf.com/content/ICCV2025/papers/Pothiraj_CAPTURE_Evaluating_Spatial_Reasoning_in_Vision_Language_Models_via_Occluded_ICCV_2025_paper.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "UCVL: 1,829 videos from UCF-Crime/UCF-Crime Annotation, six question types, eight MLLMs 0.5B-40B, GPT-4o-assisted assessment, LLaVA-OneVision fine-tune improved scores; abstract contains no per-skill breakdown",
+      "source_url": "https://arxiv.org/abs/2502.09325",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SurveillanceVQA-589K: 589,380 open-ended QA pairs, 12 question types, eight LVLMs, gaps 'especially in causal and anomaly-related tasks'",
+      "source_url": "https://arxiv.org/abs/2505.12589",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SmolVLM2 released in 2.2B, 500M and 256M sizes, MLX (Python and Swift) from day zero, 256M described as an experimental release",
+      "source_url": "https://huggingface.co/blog/smolvlm2",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Gemma 4 E2B/E4B activate an effective 2B/4B parameter footprint, native audio and vision, 128K context for edge models, Apache 2.0, runs on phones/Raspberry Pi/Jetson Orin Nano",
+      "source_url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Unsloth requirements: 3B QLoRA minimum 3.5GB VRAM; the page covers text models only and says nothing about vision training",
+      "source_url": "https://unsloth.ai/docs/get-started/fine-tuning-for-beginners/unsloth-requirements",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate+ FAQ states no price and no training quota; base model trained on a sample across all users, tens of thousands of examples needed for your own; all processing local; uniform label set, no custom classes; models keep working after a subscription lapses; professional installers fine if each customer holds their own subscription, commercial licence where the installer's subscription powers customer sites",
+      "source_url": "https://docs.frigate.video/plus/faq/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate GenAI docs: qwen3-vl recommended as a vision model, Ollama example uses model tag qwen3-vl:4b, descriptions role for tracked-object descriptions",
+      "source_url": "https://docs.frigate.video/configuration/genai/genai_config/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate zones documented as per-camera rule layer filtering which objects generate events",
+      "source_url": "https://docs.frigate.video/configuration/zones/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cactus runtime: pip package, Apache 2.0, Needle 3 / Whistle / Mirage, LoRA fine-tuning for its own models, banner 'Sub-50mb Super Intelligence For Consumer Devices'",
+      "source_url": "https://github.com/cactus-compute/cactus",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 34:6B-22: written-notice requirement for tracking devices in employee vehicles, civil penalty up to $1,000 first violation and up to $2,500 for each subsequent violation",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9: fourth-degree observation, third-degree recording of exposed intimate parts, fourth-degree undergarment-clad recording; (f) private dressing stalls of retail fitting rooms; (e)(1) access-way observation only with conspicuous prior notice; statute text does not name bathrooms",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/2785/2918",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Wiretap Act one-party consent, cited as N.J. Stat. Ann. 2A:156A-2, -3, -4, with the 'purpose of committing any criminal or tortious act' carve-out",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Data Privacy Law P.L. 2023, c.266 defines 'consumer' as a resident acting only in an individual or household context and expressly excludes a person acting in a commercial or employment context",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC biometric policy statement dated May 18, 2023: false/unsubstantiated claims about validity, reliability, accuracy or fairness are deceptive under Section 5; accuracy claims deceptive if true only for certain populations and the limitation is not stated; no claims of particular outcomes such as reductions in theft or violent incidents without substantiation; specific accuracy claims 'must generally be supported by a high level of substantiation, such as scientific or engineering tests'",
+      "source_url": "https://www.ftc.gov/legal-library/browse/policy-statement-federal-trade-commission-biometric-information-section-5-federal-trade-commission",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC 'Operation AI Comply' (Sept 2024) sweep includes DoNotPay, Ascend Ecom, Ecommerce Empire Builders, Rytr and FBA Machine",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC 23-02 (Oct 31, 2022) set out the presumptively-unlawful surveillance framework and a disclosure expectation; NLRB announced on Feb 14, 2025 that GC 23-02 on electronic monitoring was among the memos rescinded",
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/gc-25-05-rescission-of-certain-general-counsel-memoranda",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Illinois BIPA as described by the Seventh Circuit in Svoboda v. Amazon (filed Mar 6, 2026): section 15(a) retention/destruction policy, section 15(b)(1)-(3) written notice, length and reason, signed written release; statutory damages $1,000 negligent and $5,000 intentional or reckless",
+      "source_url": "https://www.govinfo.gov/content/pkg/USCOURTS-ca7-25-01361/pdf/USCOURTS-ca7-25-01361-2.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NYC Local Law 144: independent bias audit within the prior year, published audit summary, and notice at least 10 business days before using an AEDT",
+      "source_url": "https://www.nyc.gov/site/dca/businesses/faq-automated-employment-decision-tools.page",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-8.2(a): the health authority 'shall inspect every retail food establishment as often as it deems necessary'",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-2",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen3-VL-2B reaches ~180 tok/s generation on NVIDIA's TensorRT Edge-LLM reference setup",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b",
+      "result": "not found"
+    },
+    {
+      "claim": "Current NVIDIA TensorRT Edge-LLM benchmark for Qwen3-VL-2B-Instruct (cross-check of the disputed figure)",
+      "source_url": "https://nvidia.github.io/TensorRT-Edge-LLM/user_guide/performance/performance-benchmarks.html",
+      "result": "contradicted"
+    }
+  ],
+  "confidence": "High"
+}

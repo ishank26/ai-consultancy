@@ -1,0 +1,133 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"Archive snapshots show a four-page site on this domain as recently as 13 February 2026\" (audit_md, bullet 3) and \"The four-page site that was live in February this year\" (founder_md outreach email)",
+      "problem": "Contradicted by the site's own archived sitemap. The 13 Feb 2026 capture links an /about, /service, /service-1, /service-2, /service-3, /service-4 and /contact page in addition to the home page, and the archived sitemap.xml (16 Jan 2026) lists eight URLs. The nav shows Home, About Us, Services (with four service pages) and Contact. Only the four top-level nav items could be called \"four pages\", and the sentence itself names four features, not pages. An owner reading this will spot that the page count is wrong, which undermines the accurate parts.",
+      "fix": "Replace with something checkable, e.g. \"a small site - home, about, four service pages and a contact page\" and in the email \"the small site that was live in February\"."
+    },
+    {
+      "claim": "Google profile listed as \"(5.0, \\\"General contractor\\\", 47 Welton St Apt 2A, (973) 905-2129)\" in audit_md bullet 1",
+      "problem": "The street address plus apartment number is the operator's home address. It is public on Google and WiserMap, but repeating the unit number in a document that gets emailed to a stranger is unnecessary personal detail, and our own rule is no home addresses. The town is enough to identify the listing. Nothing in the audit depends on the street address.",
+      "fix": "Write \"the Google profile (5.0, \\\"General contractor\\\", New Brunswick, NJ, (973) 905-2129)\" and drop the street and unit number from the customer-facing file."
+    },
+    {
+      "claim": "audit_md body length",
+      "problem": "The body is roughly 305-310 words once markdown list markers are stripped (about 317 counting them), against the 300-word ceiling. Marginal, but it is the only part the owner reads, so it should sit comfortably inside the limit.",
+      "fix": "Cut about 15 words: shorten the DNS sentence to \"the domain does not resolve in a browser at desktop or phone width\" and compress the archive bullet once the page-count wording is fixed."
+    },
+    {
+      "claim": "\"Public RDAP record\" and \"Ask the registrar account holder today\" (audit_md bullets 2 and step 1); \"the address the business advertises may be gone from the registry within days\" (severity_reason)",
+      "problem": "RDAP is unexplained jargon for a small contractor, and \"the registrar account holder\" is ambiguous - the owner almost certainly is that person and may not recognise the phrase. The severity line can read as a scare claim if anyone outside the team sees it; the factual position (pending delete, will drop after several days per ICANN) is enough.",
+      "fix": "Say \"the public record for the domain\" and \"log in at Squarespace Domains (where the domain was bought in 2023) and ask today whether it can still be renewed or restored\". Keep the severity line internal or replace it with \"the domain is in pending delete, so it will drop from the registry after several days\"."
+    },
+    {
+      "claim": "Five screenshot files cited in rescue.json / founder_md (screenshot_domain_desktop.png, screenshot_domain_mobile.png, screenshot_google_profile.png, screenshot_archived_site_desktop.png, screenshot_buildzoom.png)",
+      "problem": "None of these files are present in the folder I was given, so the visual claims they are meant to support could not be checked against them. The desktop NXDOMAIN screen and the Google panel were re-verified live by me instead.",
+      "fix": "Confirm the five images travel with the report before the owner sees it, and re-shoot the Google panel if it was captured before the \"limited view\" banner appeared."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "advancehomereno.com does not resolve; browser shows \"This site can't be reached - DNS_PROBE_FINISHED_NXDOMAIN\"",
+      "source_url": "https://advancehomereno.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "www.advancehomereno.com also fails (the host WiserMap links to)",
+      "source_url": "http://www.advancehomereno.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP registration 2023-08-29, expiration 2026-08-29, last changed 2026-11-10",
+      "source_url": "https://rdap.org/domain/advancehomereno.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Registrar Squarespace Domains II LLC, IANA ID 895",
+      "source_url": "https://rdap.org/domain/advancehomereno.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Statuses client hold, client transfer prohibited, pending delete",
+      "source_url": "https://rdap.org/domain/advancehomereno.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Cloud nameservers still listed on the record",
+      "source_url": "https://rdap.org/domain/advancehomereno.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ICANN glossary: clientHold means the name will not resolve; pendingDelete means it stays a few days then is purged and dropped from the registry",
+      "source_url": "https://icann.org/epp",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile: 5.0 rating, category \"General contractor\", 47 Welton St APT 2A, New Brunswick NJ 08901, (973) 905-2129, website advancehomereno.com, hours closing 6 PM",
+      "source_url": "https://www.google.com/maps/place/Advance+Home+Renovations+LLC/@40.4895907,-74.4435001,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c77069010c6f:0x70c62c6d895b4976!8m2!3d40.4895907!4d-74.4435001!16s%2Fg%2F11vdp7rwtf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Google website field points at the dead host (https://www.advancehomereno.com/)",
+      "source_url": "https://www.google.com/maps/place/Advance+Home+Renovations+LLC/@40.4895907,-74.4435001,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c77069010c6f:0x70c62c6d895b4976!8m2!3d40.4895907!4d-74.4435001!16s%2Fg%2F11vdp7rwtf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business is not marked closed and is trading (panel reads \"Open - Closes 6 PM\")",
+      "source_url": "https://www.google.com/maps/place/Advance+Home+Renovations+LLC/@40.4895907,-74.4435001,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c77069010c6f:0x70c62c6d895b4976!8m2!3d40.4895907!4d-74.4435001!16s%2Fg%2F11vdp7rwtf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "WiserMap listing links to www.advancehomereno.com and shows the same address, phone and 8 AM-6 PM hours",
+      "source_url": "https://wisermap.com/biz/advance-home-renovations-llc-new-brunswick",
+      "result": "confirmed"
+    },
+    {
+      "claim": "WiserMap shows no reviews on its own listing",
+      "source_url": "https://wisermap.com/biz/advance-home-renovations-llc-new-brunswick",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business is independent and locally run, not a chain or franchise",
+      "source_url": "https://wisermap.com/biz/advance-home-renovations-llc-new-brunswick",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archive: 200 captures on 16 Jan 2026 and 13 Feb 2026; 2024 captures 403 and July 2025 capture 301",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=advancehomereno.com&output=json&collapse=timestamp:6&limit=40",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived homepage and contact page show services, a before/after photo gallery, a (973) 905-2129 tap-to-call link and a \"Get a Free Quote Now\" form with name, phone, email, services and message fields",
+      "source_url": "https://web.archive.org/web/20260213235222/https://www.advancehomereno.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The site was a four-page site",
+      "source_url": "https://web.archive.org/web/20260116025850id_/https://www.advancehomereno.com/sitemap.xml",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Archived pages were served from a website-builder CDN (cdn-website.com assets)",
+      "source_url": "https://web.archive.org/web/20260213235202/https://www.advancehomereno.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BuildZoom blocked our visit, and its licence 13VH12639200 / expired 31 Mar 2025 detail is quoted from search results only",
+      "source_url": "https://www.buildzoom.com/contractor/advance-home-renovations-llc-new-brunswick-nj",
+      "result": "could not open"
+    },
+    {
+      "claim": "NJ home improvement registration is current",
+      "source_url": "https://newjersey.mylicense.com/verification/",
+      "result": "could not open"
+    },
+    {
+      "claim": "Screenshots cited in audit_md and founder_md (desktop, phone, Google profile, archived site, BuildZoom)",
+      "source_url": "",
+      "result": "not found"
+    }
+  ],
+  "confidence": "High"
+}

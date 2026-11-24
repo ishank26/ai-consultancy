@@ -1,0 +1,99 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "My AI Front Desk: 'monthly credit pool covers about 40 extra minutes and unused credits expire at month end' (also repeated in what_is_included_vs_extra: the 1,000-credit pool 'expires monthly').",
+      "problem": "Contradicted by the vendor's own billing documentation. The pricing page confirms 1,000 monthly overage credits and auto-reload, but the vendor tutorial states that on auto-reload 'it's $10 for 1,000 credits, and purchased credits never expire. They roll over month to month.' Only the included monthly allowance resets; purchased credits do not expire.",
+      "fix": "Rewrite as: '1,000 included overage credits/month (25 credits = $0.25/min of voice, about 40 extra minutes); the included pool resets each billing cycle, while auto-reload credits ($10 per 1,000) never expire and roll over.' Cite https://www.myaifrontdesk.com/tutorials/how-does-billing-pricing-work-for-my-ai-front-desk alongside the pricing page."
+    },
+    {
+      "claim": "what_is_included_vs_extra #1: 'a third-party review notes Goodcall has no human backup and transfers only to the client's own staff', source_url https://smith.ai/pricing/ai-receptionist.",
+      "problem": "The cited Smith.ai page supports only the Smith.ai half of the comparison (it does describe 24/7 escalation to a live North America-based receptionist). It says nothing about Goodcall, so the Goodcall assertion is unsourced and the URL is wrong for it.",
+      "fix": "Split the entry: keep the Smith.ai human-escalation fact on smith.ai/pricing/ai-receptionist, and either add the actual URL of the third-party Goodcall review or drop the Goodcall clause. Alternatively attribute it from Goodcall's own page, which does say transfers go to people the client chooses ('choose who receives transfers'), without asserting there is no human backup."
+    },
+    {
+      "claim": "buyer_complaints: 'Goodcall has no human receptionist backup, its entry plan keeps call details for only 30 days (a third-party review reported 7 days)...' cited to https://www.goodcall.com/pricing; and 'Dialzara... a third-party review also flags at least one one-star complaint about support being hard to reach' cited to https://dialzara.com/pricing.",
+      "problem": "Neither vendor pricing page contains those third-party assertions. The Goodcall page confirms 30-day call history on Starter but says nothing about absence of human backup or a 7-day third-party report; the Dialzara page says nothing about one-star support complaints. Claims are presented as fact with a source that does not support them.",
+      "fix": "Cite the actual third-party review URLs for both statements, or remove them. Keep only what the vendor pages show (Goodcall Starter = 30-day call history; Dialzara Lite = 60 included minutes)."
+    },
+    {
+      "claim": "implications_for_consultancy #2: '...and a third-party setup-fee guide describes $500-$1,000 as typical.'",
+      "problem": "No URL anywhere in the brief supports this, and it is stated as a fact inside an inference bullet. This is the only unsourced factual assertion in the implications section.",
+      "fix": "Add the URL of the setup-fee guide (and confirm the $500-$1,000 figure in it), or restate using only sourced data: 'ZAVYANS publishes $499/$999/$1,999 setup and Fusion Calling $799/$1,250, i.e. $499-$1,999 observed.'"
+    },
+    {
+      "claim": "Goodcall contract_terms: 'Month-to-month, cancel anytime in the service dashboard'.",
+      "problem": "Not supported by https://www.goodcall.com/pricing, which only says there is a free demo agent and you pay when a number is connected. The brief's own caveat says Goodcall's 'contract/cancellation specifics beyond month-to-month are not stated', contradicting the offering entry.",
+      "fix": "Change to 'No contract stated on the pricing page; free demo agent, pay only when a number is connected (cancellation mechanics not published)' so the offering and the caveat agree."
+    },
+    {
+      "claim": "Rosie overage: 'a third-party source says Rosie automatically moves the account to the next plan at its standard price'.",
+      "problem": "The claim is flagged as third-party but no third-party URL is given; the only source_url is heyrosie.com/pricing, whose overage FAQ answer is rendered client-side and could not be read. As written the behavior is unsupported by any cited link.",
+      "fix": "Add the third-party URL, or reduce to 'No per-minute overage rate published; overage handling not stated on the pricing page (FAQ answer did not render)'."
+    },
+    {
+      "claim": "price_ranges.low_cost_self_serve: '$0-$99/month entry plans; typically 25-250 calls or 60-220 minutes included'; mid_market: '$99-$350/month; typically 200-1,000 minutes or 75-600 calls'.",
+      "problem": "The dollar boundaries follow from the sourced prices, but the allowance descriptors do not cover the sourced data points inside those bands: Rosie's $49 Professional plan includes 250 minutes (above the stated 60-220) and its $299 Growth plan includes 2,000 minutes (above the stated 200-1,000) while still sitting in the mid band. The text therefore misdescribes plans it lists as its own evidence.",
+      "fix": "Widen to 'roughly 25-300 calls or 60-250 minutes' for the entry band and 'roughly 75-600 calls or 200-2,000 minutes' for the mid band, or say 'allowances vary widely (e.g. Rosie $49 = 250 min; Dialzara $29 = 60 min)'."
+    },
+    {
+      "claim": "Smith.ai Pro 150-call option is '$270/mo ... figure shown by the page's call-volume selector and confirmed in a search result quoting the vendor page'.",
+      "problem": "The live page shows the Pro selector at 150 calls as '-10%' and a per-call rate of $1.80, and states the 75-call plan at $150/mo ($2.00/call); it does not print $270 as a monthly total. $270 is correct arithmetic ($1.80 x 150) but it is a derived figure, and no 'search result quoting the vendor page' is linked.",
+      "fix": "Label it as arithmetic: '$150/mo for 75 calls at $2.00/call; the 150-call selector shows $1.80/call (-10%), i.e. about $270/mo (calculated, not printed on the page).'"
+    },
+    {
+      "claim": "Smith.ai tier attribution: the 300-call option at $1.67/call ($500/mo) is listed only under 'Enterprise'.",
+      "problem": "On the live page the 300-call option appears in both the Pro selector (75/150/300) and the Enterprise selector (300/500/1000+), so the $500/mo 300-call price is not Enterprise-only. The price itself is correct; only the tier placement is incomplete.",
+      "fix": "Note that the 300-call option is selectable inside Pro as well as being Enterprise's default: 'Pro (300-call option): $1.67/call, i.e. $500/mo; the same price is Enterprise's starting option.'"
+    },
+    {
+      "claim": "data_gaps: 'Simple Phones (from $97/month for 100 calls)...'",
+      "problem": "A specific price is asserted for a vendor with no cited URL anywhere in the brief.",
+      "fix": "Add the Simple Phones pricing URL, or delete the figure and say only that the vendor was reviewed and excluded to keep the set at 12."
+    },
+    {
+      "claim": "implications_for_consultancy #8: 'Rosie and several competitors advertise two months free (about 17%)'.",
+      "problem": "Only Rosie is confirmed at '2 months free' (about 17%). The confirmed competitor discounts are Upfirst at 20% off annual (about 2.4 months) and Fusion Calling at 10% off annual (about 1.2 months), so 'several competitors advertise two months free' overstates the sourced data.",
+      "fix": "Rewrite as 'Rosie advertises two months free (about 17%); Upfirst prices annual at 20% off and Fusion Calling at 10% off.'"
+    },
+    {
+      "claim": "Fusion Calling contract_terms: 'no long-term contract stated; cancellation/refund terms not captured'.",
+      "problem": "Understates what the page actually publishes: the FAQ states all plans are month-to-month with no long-term contract, cancel anytime with access to the end of the billing period, and a 14-day money-back guarantee. The terms are present, not missing.",
+      "fix": "Replace with the published terms: 'Month-to-month, no long-term contract; cancel anytime (access to end of billing period); 14-day money-back guarantee.'"
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Smith.ai Free: $0/mo for 25 calls, $3.00 per call after; 25 test calls and 50 simulated calls", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai Pro: $150/mo for 75 calls at $2.00/call; 150- and 300-call selector options at $1.80 and $1.67/call", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai overage: $2.50 (75 calls), $2.30 (150), $2.17 (300); Enterprise $2.17 at 300 and $2.10 at 500", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai Enterprise: $500/mo for 300 calls; no setup fee; month-to-month, 30 days' notice, plan change next billing month; 6-month plan for rollover", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai includes human escalation (transfers to live North America-based receptionist any time) and includes native integrations (Clio, Zapier) even on Free", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Goodcall Starter $79/mo for 100 unique customers (~150 calls), 79c overage; Growth $129/500, 26c; Scale $299/2,000, 15c; workers/tools/history/AI runs as listed", "source_url": "https://www.goodcall.com/pricing", "result": "confirmed"},
+    {"claim": "Goodcall includes a local number on every plan, free demo agent with no card, no minute metering", "source_url": "https://www.goodcall.com/pricing", "result": "confirmed"},
+    {"claim": "Rosie Professional $49/250 min, Scale $149/1,000 min, Growth $299/2,000 min; 7-day trial; cancel anytime; 2 months free annually", "source_url": "https://heyrosie.com/pricing", "result": "confirmed"},
+    {"claim": "Rosie tier order (Professional $49, Scale $149, Growth $299) and direct calendar booking only from Scale up", "source_url": "https://heyrosie.com/pricing", "result": "confirmed"},
+    {"claim": "Rosie publishes no voice overage rate / auto-upgrade behavior", "source_url": "https://heyrosie.com/pricing", "result": "not found"},
+    {"claim": "Dialzara $29/60 min ($0.48), $99/220 ($0.45), $199/500 ($0.40), $349/1,000 ($0.35); Done for You from $1,500; no setup fee; no contract; 7-day trial", "source_url": "https://dialzara.com/pricing", "result": "confirmed"},
+    {"claim": "Dialzara numbers $3/mo US local and $5/mo US toll-free; SMS agent $19/mo + $0.05/message; chatbot $39/mo standalone or free with voice plans (100 sessions)", "source_url": "https://dialzara.com/pricing", "result": "confirmed"},
+    {"claim": "My AI Front Desk $99/mo (or $79/mo billed annually) with 200 voice minutes, 1,000 overage credits, auto-reload, Zapier, verified outbound number, 3 recipients; Partner/Enterprise custom from 7 credits/min voice", "source_url": "https://www.myaifrontdesk.com/pricing", "result": "confirmed"},
+    {"claim": "My AI Front Desk overage: 25 credits ($0.25) per extra voice minute; 1,000 credits cover about 40 extra minutes; auto-reload 1,000 credits for $10", "source_url": "https://www.myaifrontdesk.com/tutorials/how-does-billing-pricing-work-for-my-ai-front-desk", "result": "confirmed"},
+    {"claim": "My AI Front Desk: unused credits expire at month end", "source_url": "https://www.myaifrontdesk.com/tutorials/how-does-billing-pricing-work-for-my-ai-front-desk", "result": "contradicted"},
+    {"claim": "Upfirst Starter $24.95/mo ($20 annual) 30 calls $1.50 overage; Premium $59.95/$48, 90 calls, $1; Pro $159.95/$128, 300 calls, 75c; Scale $299/$240, 600 calls, 70c; Enterprise 1,000+ custom", "source_url": "https://upfirst.ai/pricing", "result": "confirmed"},
+    {"claim": "Upfirst: 14-day trial or 100 calls with no card, cancel/upgrade anytime, 20% annual discount, phone number included, extra agent $9.95/mo, free 30-minute onboarding call, Scale+ white-glove integration setup", "source_url": "https://upfirst.ai/pricing", "result": "confirmed"},
+    {"claim": "Upfirst buyer quote: attorney Thomas Davenport was paying $1,000-$2,500/month for an answering service", "source_url": "https://upfirst.ai/pricing", "result": "confirmed"},
+    {"claim": "Upfirst buyer quote: AFL-CIO Community Services program director says the next human option was $400 a month", "source_url": "https://upfirst.ai/pricing", "result": "confirmed"},
+    {"claim": "Slang.ai Core 'starting at $399 *per location' and Premium 'starting at $599 *per location' (USD), quote-based, no published setup/contract/minutes", "source_url": "https://www.slang.ai/pricing", "result": "confirmed"},
+    {"claim": "Fusion Calling Starter $149/500 min ($0.30), Pro $249/1,050 ($0.25), Enterprise $497/2,100 ($0.20); setup $0/$799/$1,250", "source_url": "https://www.fusioncalling.com/pricing", "result": "confirmed"},
+    {"claim": "Fusion Calling: all integrations on every plan, white-label for agencies, month-to-month with cancel anytime and 14-day money-back", "source_url": "https://www.fusioncalling.com/pricing", "result": "confirmed"},
+    {"claim": "Sarah 24/7: from $350/month one channel, $100/month each additional channel, 35c per conversation minute, $0 setup, no contract, cancel from dashboard, 7-day refund window, no free plan only a callback demo", "source_url": "https://sarah247.ai/pricing/", "result": "confirmed"},
+    {"claim": "ZAVYANS: Starter from $249/mo + $499 setup, Growth from $449 + $999, Pro from $799 + $1,999; AI platform usage billed separately at cost; prices exclude taxes; quoted in writing after a proposal call; no office in New Jersey", "source_url": "https://zavyans.com/locations/usa/new-jersey/ai-calling-agents/", "result": "confirmed"},
+    {"claim": "UpNewLevel Basic $299/month, Pro $599/month; setup included in 24-48h; month-to-month, cancel anytime from dashboard, 30-day money-back; Google Calendar/Cal.com", "source_url": "https://upnewlevel.com/", "result": "confirmed"},
+    {"claim": "Lithium $179 a month managed AI reception, no setup fee, no contract, no published minute allowance or overage rate", "source_url": "https://lithiumseo.com/north-jersey-ai-systems/", "result": "confirmed"},
+    {"claim": "Fortify case study: five-office dental group, $8,554 AI cost for one month across five offices, 573 calls handled, $66,342 production", "source_url": "https://fortifypractice.com/ai-dental-receptionist-roi-case-study/", "result": "confirmed"},
+    {"claim": "Fusion Calling complaints analysis: 55 user reports collected September 16, 2026 (Reddit, Trustpilot, App Store); includes a ~$60/month access complaint and a 9-month refund wait", "source_url": "https://www.fusioncalling.com/blog/ai-receptionist-complaints", "result": "confirmed"},
+    {"claim": "Seashore IT case study: client cut call handling from $4,500/month to under $500/month; provider serves the Western US", "source_url": "https://www.seashoreit.com/how-an-ai-receptionist-saved-one-small-business-4000-month-on-call-handling/", "result": "confirmed"},
+    {"claim": "Reddit r/AIReceptionists: small-business posters cite plans around $29-$199/month with managed setups $500+", "source_url": "https://www.reddit.com/r/AIReceptionists/comments/1sjh808/do_anyone_really_making_any_money/", "result": "could not open"},
+    {"claim": "Reddit r/LawFirm: law-firm buyers describe per-call billing at $7-$9 per call as steep/sketchy", "source_url": "https://www.reddit.com/r/LawFirm/comments/1ly4nu2/answering_service/", "result": "could not open"}
+  ],
+  "confidence": "Medium"
+}

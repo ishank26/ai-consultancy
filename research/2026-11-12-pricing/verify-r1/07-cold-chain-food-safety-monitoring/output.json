@@ -1,0 +1,99 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "price_ranges.mid_market: \"$80-$250 per location per month (about $10-$25 per monitored unit plus a $29-$150 platform/hub fee), often plus $50-$115 per sensor of installation or configuration\"",
+      "problem": "Unit misstatement on the upper bound of the install band. The $49.99-$69.99 figures from Standard Merchant Services are genuinely per sensor, but the $115 from Kitchen Brains is a one-time configuration fee attached to the TMS subscription, not a per-sensor charge. Presenting the band as \"per sensor\" overstates it. The same error is repeated in one_line (\"often plus $50-$115 per-sensor install\").",
+      "fix": "Rewrite as \"plus roughly $50-$70 per sensor of onboarding/installation (Standard Merchant Services $69.99/$59.99/$49.99 per sensor), with separate one-time configuration fees on top (e.g. Kitchen Brains $115 configuration, ChirpDat $495 per zone)\". Correct one_line to match."
+    },
+    {
+      "claim": "price_ranges.low_cost_self_serve: \"$0-$45 per month, or $149-$300 one-time hardware, equivalent to roughly $5-$15 per sensor per month\"",
+      "problem": "The $300 hardware endpoint does not follow from any price in offerings or buyer_reported_costs. Confirmed one-time hardware there tops out at $219.70 (Sensor Easy Starter Kit); TemperatureWise adds $200/sensor and gateways of $100/$250/$450; Kitchen Brains is $529 gateway + $184 sensor (not a self-serve low-cost option).",
+      "fix": "Change to \"$149-$250 one-time hardware\" (Temp Stick $149; TemperatureWise $200 sensor / $250 gateway; Sensor Easy $219.70 kit), or delete the $300 endpoint."
+    },
+    {
+      "claim": "price_ranges.mid_market: \"about $10-$25 per monitored unit\"",
+      "problem": "The $25 monitored-unit endpoint has no source inside offerings. Highest confirmed recurring per-unit price there is TemperatureWise at $250 per sensor per year, i.e. about $21/month. The only $25-per-sensor figures seen ($25/site/year in the school bid; Crafted Coolers' $25/sensor/month) are either a different unit or appear only in caveats.",
+      "fix": "Change to \"about $10-$21 per monitored unit\", or add the specific source for a $25 per-unit month and re-label it as coming from outside the offerings set."
+    },
+    {
+      "claim": "buyer_reported_costs: \"Sensitii advertises $79 per location per month including two sensors, with additional sensors at $7/month each\" cited to https://sensitii.com/pricing/",
+      "problem": "The cited page does not contain these numbers. On re-fetch the live pricing page is quote-only (\"we quote in writing after seeing your kitchen\", \"Core is available today\", no figures). The $79 + $7 figures only appear in a search-indexed summary of that URL. Source_url therefore does not support the number, even though the finding itself flags it as an older rate.",
+      "fix": "Either drop the row, or re-label the source as a search-indexed/cached version of the vendor pricing page with a note that the live page no longer shows it, and keep the existing caveat. Do not present it under the live pricing-page URL."
+    },
+    {
+      "claim": "caveats: \"TemperatureWise's $250/sensor/year and Sensitii's $79/location were only visible in search-indexed versions of the vendor pages\"",
+      "problem": "Contradicted on the TemperatureWise half. The live page at renyergytech.com/temperaturewise states \"$250 per sensor per year, about $21 a month\", plus the three restaurant examples ($175 up front/$750 a year; $1,050 up front/$1,000 a year; $2,500 up front/$2,300 a year), and says prices were checked 18 October 2026 against a 1 September 2026 price list. The same caveat sentence also lists TemperatureWise among pages that \"rendered prices on fetch\", so it contradicts itself. Only the Sensitii half is true.",
+      "fix": "Delete TemperatureWise from that caveat and state instead that its price list is live and dated 1 Sep 2026 (checked 18 Oct 2026). Optionally add the hardware prices the live page now publishes: $200/sensor, $25 Bluetooth sensor, gateway $100/$250/$450, cellular $125 once + $50/year."
+    },
+    {
+      "claim": "implications_for_consultancy #1: \"roughly $99-$199 per location per month ... because that sits below ConnectedFresh's own typical $190-$210/month for a 4-6 unit restaurant\"",
+      "problem": "Internal inconsistency: $199 is not below $190. At 4-6 units the ConnectedFresh equivalent is $190-$210, so the top of the proposed band overlaps rather than sits below it. Inference label is present, but the comparison as written is wrong.",
+      "fix": "Either narrow the band (e.g. $99-$189) or restate the comparison as \"at or below ConnectedFresh's $190-$210/month for 4-6 units, and clearly below it at 7-8 units where ConnectedFresh would price near $230-$250\"."
+    },
+    {
+      "claim": "implications_for_consultancy #3: \"Every serious competitor bundles unlimited users (ThermoWorks Business tiers, Standard Merchant Services 12-month, Sensitii, ConnectedFresh)\"",
+      "problem": "The ConnectedFresh citation does not support it: its cost article says nothing about user counts. The other three are supported (ThermoWorks Business Pro/Business Pro Plus \"Unlimited Users\"; SMS 12-month \"Unlimited Users\"; Sensitii \"never per seat\" / unlimited users).",
+      "fix": "Replace ConnectedFresh with SmartSense (how-to-buy lists \"Unlimited users\" among included items), which is verifiable, or drop ConnectedFresh from the list."
+    },
+    {
+      "claim": "implications_for_consultancy #5 and #8: \"Sensor Easy 30-day guarantee, Senso/SmartSense style pilots\" and \"SmartSense, ComplianceMate and SensoScientific all hide prices behind quotes\"",
+      "problem": "Unsupported vendor references. \"Senso\" appears nowhere else in the brief and has no cited source; SensoScientific is never cited to a URL, only asserted in caveats/data_gaps. \"SmartSense style pilots\" is also unsourced: the only SmartSense trial language found is nothing at all on how-to-buy (the 45-day trial is Monnit's, not SmartSense's).",
+      "fix": "Delete the Senso reference and the \"SmartSense style pilots\" phrase, or cite a page. For the quote-only claim, restrict it to the vendors with cited sources (SmartSense how-to-buy, ComplianceMate/Ladle FAQ) and either cite SensoScientific or remove it."
+    },
+    {
+      "claim": "offerings/Ideal Sciences: \"Sensor plus unlimited data logging, 24/7 monitoring and alerts for the life of the sensor\"",
+      "problem": "\"For the life of the sensor\" is not stated on tempstick.com/common-questions. The page says \"no fees or subscriptions\", \"all accounts are free\", \"unlimited history\" and \"continuous monitoring and alert notifications all year round without paying a monthly fee or subscription charge\". The lifetime wording is an inference presented as included-feature fact.",
+      "fix": "Reword to what the page says (no fees or subscriptions, unlimited history, continuous monitoring and alerts) or label the lifetime framing as an inference."
+    },
+    {
+      "claim": "buyer_reported_costs: ComplianceMate estimate labelled year \"2026\"",
+      "problem": "Minor dating error. The cited page (ustechautomations / US Tech Automations comparison) is titled as the 2027 edition, not 2026, although the URL slug says 2026. The prices themselves check out exactly (Year 1 $5,000-$10,500; Year 2+ $1,200-$3,000 per location).",
+      "fix": "Label the year as \"2027 edition, retrieved 2026-11-12\" so the reader can judge freshness."
+    },
+    {
+      "claim": "buyer_reported_costs: school-district bid \"monitoring at $25 per site per year\" and \"installation at $450 per address\" attributed to SmartSense",
+      "problem": "The document does contain \"$25/site per year\" and \"$450 installation per address\", and now that it has been opened the $175/sensor-with-display and $400/gateway figures are visible in the SmartSense column. But the table flattens on extraction, so the $450/address cell cannot be tied to the SmartSense column with confidence; it may belong to another bidder's column. The brief's own context note (\"summary not opened directly\") is now outdated.",
+      "fix": "Keep the figures but add a caution that column-to-price mapping in the bid table could not be confirmed, or limit the quoted numbers to the ones clearly inside the SmartSense column ($175/sensor with display, $400/gateway)."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "ThermoWorks Cloud Free Basic: $0, up to 10 devices, 1 user, app & web, push notifications", "source_url": "https://www.thermoworks.com/pages/thermoworks-cloud", "result": "confirmed"},
+    {"claim": "ThermoWorks Home: $3/month, up to 16 devices, 2 users, auto-archive, SMS/email, offline alerts", "source_url": "https://www.thermoworks.com/pages/thermoworks-cloud", "result": "confirmed"},
+    {"claim": "ThermoWorks Pro: $9/month, 24 devices, 3 users, checklists, 2 locations, $0.90 per additional device", "source_url": "https://www.thermoworks.com/pages/thermoworks-cloud", "result": "confirmed"},
+    {"claim": "ThermoWorks Business Pro: $35/month, 48 devices, unlimited users/locations, $0.83 per additional device", "source_url": "https://www.thermoworks.com/pages/thermoworks-cloud", "result": "confirmed"},
+    {"claim": "ThermoWorks Business Pro Plus: $79/month, 100 devices, $0.79 per additional device; no contract/cancellation language shown", "source_url": "https://www.thermoworks.com/pages/thermoworks-cloud", "result": "confirmed"},
+    {"claim": "Temp Stick $149 display price, $159 regular, one-time, no monthly fee or subscription", "source_url": "https://tempstick.com/common-questions/", "result": "confirmed"},
+    {"claim": "Temp Stick 30-day money-back guarantee, free US shipping", "source_url": "https://tempstick.com/common-questions/", "result": "confirmed"},
+    {"claim": "Temp Stick cannot be recalibrated; only a calibration offset in settings", "source_url": "https://tempstick.com/common-questions/", "result": "confirmed"},
+    {"claim": "Sensor Easy Starter Kit $219.70 one-time (Ethernet gateway + 1 food-grade sensor)", "source_url": "https://sensoreasy.com/en/food-and-beverage.html", "result": "confirmed"},
+    {"claim": "Sensor Easy subscription $5/month for up to five sensors, then $1 per additional sensor; cancel anytime; 30-day guarantee; self-install adhesive/screw", "source_url": "https://sensoreasy.com/en/food-and-beverage.html", "result": "confirmed"},
+    {"claim": "Zip Temperature Hub $29/month and Sensor $8/month, HACCP compliance tools included", "source_url": "https://ziptemperature.com/pricing/", "result": "confirmed"},
+    {"claim": "Kitchen Brains FSM_Gateway $529.00 and FSM_Sensor $184.00, $10/month per sensor subscription, $115 one-time configuration, price list effective 1/1/2025", "source_url": "https://permul.com/wp-content/uploads/2020/03/2025-Jan-1-USD-Kitchen-Brains-Retail-Price-List.pdf", "result": "confirmed"},
+    {"claim": "Monnit iMonnit Premiere tiers: $45.00 (6), $70.00 (12), $120.00 (25), $175.00 (50), $325.00 (100)", "source_url": "https://www.monnit.com/products/software/imonnit-sensor-management-software/imonnit-premiere-6/MNW-IP-006/", "result": "confirmed"},
+    {"claim": "Monnit licence term is annual (one-year subscription) and Premiere starts at $45/year; new customers get a 45-day Premiere trial", "source_url": "https://support.monnit.com/article/266-how-to-purchase-or-renew-an-imonnit-premiere-subscription", "result": "confirmed"},
+    {"claim": "Standard Merchant Services $15 / $13 / $10 per sensor per month on month-to-month / 6-month / 12-month, with $69.99 / $59.99 / $49.99 per-sensor onboarding & installation (10% and 15% discounts), up to 5 / 10 / unlimited users, 30-day trial and first month free on 12-month", "source_url": "https://www.standardmerchantservices.com/refrigeration-monitoring", "result": "confirmed"},
+    {"claim": "ConnectedFresh about $150 per location per month platform plus about $10 per monitored unit per month; 4-6 units ≈ $190-$210/month; ~$150 per unit hardware if bought outright; hardware included on annual plans; ~15 minute setup", "source_url": "https://connectedfresh.com/resources/restaurant-temperature-monitoring-cost", "result": "confirmed"},
+    {"claim": "TemperatureWise $250 per sensor per year (about $21/month) with dashboard, alerts and setup included; examples $175 up front + $750/year and $1,050 up front + $1,000/year", "source_url": "https://www.renergytech.com/temperaturewise", "result": "confirmed"},
+    {"claim": "ChirpDat $45/zone/month Monitor and $65/zone/month Compliance, $300 monthly minimum, $2,500 gateway per site, $495 per zone one-time, month-to-month monitoring, 50% deposit, founding 12-month customers get gateway fee waived by Dec 31 2026, up to three sensors per equipment zone", "source_url": "https://www.chirpdat.com/faq/", "result": "confirmed"},
+    {"claim": "ChirpDat Compliance tier adds HACCP-ready logs, annual NIST-traceable sensor swap, human escalation call tree, audit-prep reports", "source_url": "https://www.chirpdat.com/faq/", "result": "confirmed"},
+    {"claim": "ComplianceMate publishes no prices: one-time equipment fee, one-time checklist configuration fee, annual subscription with 24/7 support and alerting; self-install/plug-and-play; LoRaWAN/Bluetooth; hierarchical dashboard; 24/7 call center", "source_url": "https://ladle.com/resources/faq/compliancemate-faqs/", "result": "confirmed"},
+    {"claim": "SmartSense sells a quote-only asset-based subscription with commitment to term length and asset count, not cancellable in the initial term", "source_url": "https://www.smartsense.co/how-to-buy", "result": "confirmed"},
+    {"claim": "Jolt single-location August 2026 quote: $115/month paid annually on a 3-year contract (checklists, library, scheduling, time tracking); $30/month for scheduling + time tracking alone; unlimited users per location and onboarding included", "source_url": "https://connecteam.com/reviews/jolt/", "result": "confirmed"},
+    {"claim": "Jolt baseline ~$89.99/location/month; single-location suite $296/month + $549 setup negotiated to $207.75; four locations ~$664.80/month; ~$149.58/location/month on annual billing", "source_url": "https://softwarefinder.com/resources/how-much-does-jolt-cost", "result": "confirmed"},
+    {"claim": "ComplianceMate third-party estimate: $5,000-$10,500 year one and $1,200-$3,000 per location per year thereafter", "source_url": "https://mta-sts.ustechautomations.com/resources/blog/restaurant-food-safety-automation-comparison-2026", "result": "confirmed"},
+    {"claim": "ComplianceMate legacy tiers $69/month Lite, $99/month Plus, $159/month Pro (third-party legacy listing)", "source_url": "https://restauranttools.ai/tools/compliancemate", "result": "confirmed"},
+    {"claim": "Public bid lists SmartSense sensors at $175 each with display, gateways at $400 per site, $450 installation per address, monitoring at $25 per site per year", "source_url": "https://lps53.community.diligentoneplatform.com/document/3e5e06ea-2b79-4451-a1c1-0ed302c9d0f4/", "result": "confirmed"},
+    {"claim": "Ocean County NJ referral page states a typical temperature-monitoring and alarm job of $1,200-$8,000, explicitly \"not a quote\"", "source_url": "https://tomsrivercommercialrefrigeration.com/services/temperature-monitoring/", "result": "confirmed"},
+    {"claim": "SmartSense iOS app rated 2.6 out of 5 from 28 ratings", "source_url": "https://apps.apple.com/us/app/smartsense/id1545981488", "result": "confirmed"},
+    {"claim": "Sensitii advertises $79 per location per month including two sensors, extra sensors $7/month each", "source_url": "https://sensitii.com/pricing/", "result": "not found"},
+    {"claim": "Sensitii never charges per seat, includes gateway/sensors/install in one monthly price, annual billing gets one month free", "source_url": "https://sensitii.com/pricing/", "result": "confirmed"},
+    {"claim": "Jolt buyers report contract lock-in and expensive pricing on G2", "source_url": "https://www.g2.com/products/jolt/reviews", "result": "could not open"},
+    {"claim": "ComplianceMate troubleshooting guidance flags moisture/corrosion damage, placement problems and reading gaps", "source_url": "https://help.compliancemate.com/hc/en-us/articles/34675412535571-Troubleshooting-Sensors", "result": "could not open"},
+    {"claim": "Reddit operators report dropped Wi-Fi connections and re-pairing with cheap sensors; DIY figures of ~$35/sensor and ~$715 for 11 sensors", "source_url": "https://www.reddit.com/r/restaurantowners/comments/1x58adv/anyone_have_a_bluetooth_digital_thermometer/", "result": "could not open"},
+    {"claim": "Testo shut down the free Saveris Cloud tier and moved users to a paid subscription", "source_url": "https://consumerrights.wiki/w/Testo_disables_free_Saveris_Cloud_and_forces_paid_subscription_on_existing_customers", "result": "could not open"},
+    {"claim": "price_ranges.mid_market install band \"$50-$115 per sensor\"", "source_url": "https://permul.com/wp-content/uploads/2020/03/2025-Jan-1-USD-Kitchen-Brains-Retail-Price-List.pdf", "result": "contradicted"},
+    {"claim": "price_ranges.low_cost_self_serve upper hardware endpoint of $300 one-time", "source_url": "https://sensoreasy.com/en/food-and-beverage.html", "result": "not found"}
+  ],
+  "confidence": "High"
+}

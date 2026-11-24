@@ -1,0 +1,414 @@
+{
+ "avenue": "restaurant-kitchen-line",
+ "one_line": "Install and run an on-premise camera-plus-scale system for independent restaurants and caterers that times tickets at the pass, checks glove/handwash/hairnet practice at prep stations, and tracks over-portioning and waste - sold as install plus a monthly service, using off-the-shelf PoE cameras, open-source tracking and a small edge box.",
+ "problem": {
+  "summary": "Independent kitchens run on paper tickets, clipboard prep lists and a manager's eyeballs. Three things reliably leak money and create legal exposure: (1) timing - nobody measures expedite time per ticket, so a slow station is only discovered when a guest complains; (2) hygiene practice - New Jersey requires the person in charge to ensure employees are effectively cleaning their hands 'through routinely monitoring the employees' handwashing' (N.J.A.C. 8:24-2.1(c)3.i) and bars bare-hand contact with exposed ready-to-eat food unless the establishment keeps written procedures, handwashing-facility diagrams and signed training acknowledgements (N.J.A.C. 8:24-3.3(a)2 and (a)4), but monitoring is manual, intermittent and undocumented, and proper handwashing was the lowest-scoring data item in FDA's 1998-2008 observations at full-service restaurants (24% in compliance); (3) portioning and waste - food cost is roughly a third of sales, and surplus food in foodservice was valued at about 11% of sector sales in 2024. Independent operators have no analyst, no IT staff, and no chain-level operations team, so none of this is measured except when an inspector or a bad review forces the issue.",
+  "evidence": [
+   {
+    "fact": "Foodservice businesses generated 12.5 million tons of surplus food in 2024, valued at $156 billion - equivalent to 11% of foodservice sales - and 78.4% of the sector's food waste (9.73 million tons) went to landfill.",
+    "year": "2024 data (fact sheet accessed 2026)",
+    "source_url": "https://refed.org/uploads/by-sector-foodservice-1.pdf"
+   },
+   {
+    "fact": "More than 43% of restaurant and foodservice surplus came from full-service restaurants and nearly 70% came from plate waste (food served but not eaten) - meaning a kitchen-side camera cannot fix most of the tonnage; only portion size and prep decisions are addressable from the line.",
+    "year": "2024 data",
+    "source_url": "https://refed.org/stakeholders/restaurants-and-foodservice"
+   },
+   {
+    "fact": "Median food and non-alcoholic beverage cost was 32.0% of sales at full-service restaurants and 32.4% at limited-service restaurants.",
+    "year": "2024",
+    "source_url": "https://www.restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-operators-kept-food-cost-ratios-in-check-in-2024/"
+   },
+   {
+    "fact": "Median labor cost including benefits was 36.5% of sales at full-service restaurants and 31.7% at limited-service restaurants - so food plus labor is roughly two-thirds of sales before rent, leaving little room for new software spend.",
+    "year": "2024",
+    "source_url": "https://restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-labor-costs-are-well-above-historical-averages/"
+   },
+   {
+    "fact": "In FDA's 1998-2008 observation study, 'proper and adequate hand washing' was in compliance in only 24% of observations at full-service restaurants and 61% at fast-food restaurants; it was the data item most typically low within the poor personal hygiene risk factor, which itself scored 59% (full service) and 76% (fast food) in 2008. Improper holding was also low (45% full service), so handwashing was not the worst-scoring item across every facility type.",
+    "year": "2008 data (2010 trend report)",
+    "source_url": "https://www.fda.gov/food/retail-food-protection/retail-food-risk-factor-study"
+   },
+   {
+    "fact": "New Jersey food code requires the person in charge to ensure employees are effectively cleaning their hands 'through routinely monitoring the employees' handwashing' - an ongoing supervisory duty, at N.J.A.C. 8:24-2.1(c)3.i, not a one-time training.",
+    "year": "current rule (amended effective 12/20/2021; accessed 2026)",
+    "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-2-1"
+   },
+   {
+    "fact": "Across two million US restaurant inspections (Sept 2022-Sept 2023), handwashing was the top FDA-food-code violation area: about 6% of all inspections cited inadequate handwashing stations; among 17 hospitality brands the figure was 15%.",
+    "year": "2023",
+    "source_url": "https://www.nrn.com/restaurant-operations/food-health-and-safety-compliance-is-not-as-vigilant-in-a-post-pandemic-world"
+   },
+   {
+    "fact": "Hourly employee turnover in restaurants was running at 96% (full service) and 135% (limited service) as of Q3 2024, so any behavior a manager trains is continuously being reset by new hires.",
+    "year": "2024",
+    "source_url": "https://blackboxintelligence.com/news/state-of-restaurant-workforce-2024"
+   },
+   {
+    "fact": "Middlesex County had 1,752 Accommodation and Food Services establishments employing 24,124 people in 2024 - the addressable universe for an installer working out of Milltown.",
+    "year": "2024 (QCEW)",
+    "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf"
+   }
+  ]
+ },
+ "buyers": [
+  {
+   "business_type": "Full-service restaurants (sit-down, 60-150 seats)",
+   "naics": "722511",
+   "size_where_it_matters": "15-100 staff; pain starts when there are 2+ line cooks and a separate expediter, i.e. roughly $1.5M+ annual sales (inference from labor share and ticket complexity)",
+   "why": "Ticket pacing, missed modifiers and pass timing directly move table turns and review scores; the owner is usually the expediter and cannot also audit handwashing."
+  },
+  {
+   "business_type": "Limited-service / fast-casual restaurants",
+   "naics": "722513",
+   "size_where_it_matters": "10-50 staff, single or 2-3 units",
+   "why": "Highest volume per labor hour, so order-accuracy and speed problems compound; also the segment most likely to already have a KDS or POS with exportable ticket data to hang analytics on (inference)."
+  },
+  {
+   "business_type": "Caterers and event/banquet food service",
+   "naics": "722320",
+   "size_where_it_matters": "10-100 staff, 50-500 events/year",
+   "why": "Batch production makes over-portioning and overproduction a bigger share of cost than in a la carte; hygiene documentation is also a sales asset when quoting corporate and institutional clients (inference)."
+  },
+  {
+   "business_type": "Bakeries, cafes and small prepared-food retail",
+   "naics": "311811 / 722515",
+   "size_where_it_matters": "5-25 staff",
+   "why": "Glove and bare-hand rules bite hardest on ready-to-eat assembly; but budgets are smallest, so these are likely a lighter 'hygiene-only' package (inference)."
+  },
+  {
+   "business_type": "Food service contractors and institutional kitchens (schools, senior living, corporate cafes)",
+   "naics": "722310",
+   "size_where_it_matters": "50-200 staff per site, multi-site operators",
+   "why": "Already sold to by enterprise vendors and often have corporate food-safety programs, so they are a weaker fit for a local installer but a good reference buyer (inference). Note that the documented-procedure route to bare-hand contact at N.J.A.C. 8:24-3.3(a)4 is not available to establishments serving a highly susceptible population, which limits the pitch at hospitals and senior living (inference)."
+  }
+ ],
+ "existing_solutions": [
+  {
+   "vendor": "HME Hospitality & Specialty Communications (Nitro Vision AI, built on computer-vision technology acquired from Agot AI)",
+   "product": "Nitro Vision AI - a vision add-on to the ZOOM Nitro drive-thru timer system",
+   "what_it_does": "Per the vendor's April 2025 release, cameras give operators 'real-time awareness of customers' total wait times, including mobile order pick-up zones' and visibility across the drive-thru queue, aimed at cutting drive-offs and wait times. The release describes the drive-thru lane, not kitchen prep-line order accuracy. Third-party directories describe Agot AI's technology as kitchen order-accuracy vision; that use is not confirmed by HME's own release.",
+   "pricing": "Unknown - quote only; the vendor release publishes no price and positions it as an add-on to an existing ZOOM Nitro system.",
+   "source_url": "https://www.hme.com/news/Nitro_Vision_AI_Press_Release.pdf"
+  },
+  {
+   "vendor": "PreciTaste",
+   "product": "AI Kitchen Management + optional Vision AI",
+   "what_it_does": "Forecasts demand, turns it into prep lists and production plans; optional cameras check stock and food on the line, in the oven and at the pass.",
+   "pricing": "Unknown - quote only, positioned at chains",
+   "source_url": "https://precitaste.com/vision-ai/"
+  },
+  {
+   "vendor": "Winnow",
+   "product": "Winnow VisionAI",
+   "what_it_does": "Camera plus scale at the waste bin; staff 'throw and go' and the system identifies the food and weight, then reports waste cost by item and site.",
+   "pricing": "Approximately $10,000 per site per year baseline per its AWS Marketplace listing; final quote varies with kitchen size",
+   "source_url": "https://aws.amazon.com/marketplace/pp/prodview-daodgjgx7t5vg"
+  },
+  {
+   "vendor": "Leanpath",
+   "product": "Bench Scale AI, Floor Scale AI, Snap AI, Scout",
+   "what_it_does": "Smart scales with computer vision that auto-classify waste and remove container weight, plus a tablet tool that estimates weight from a photo for off-site events; daily/weekly reporting.",
+   "pricing": "Unknown - subscription quote only; the vendor's product pages publish no rate.",
+   "source_url": "https://www.leanpath.com/products/food-waste-tracking/"
+  },
+  {
+   "vendor": "KITRO",
+   "product": "AI food-waste station (scale + camera)",
+   "what_it_does": "Weighs and classifies food waste in real time and reports waste by food group, source (prep, overproduction, plate) and cost; it is the device used in the five-site 2025 European foodservice study summarised by ReFED (May 2026).",
+   "pricing": "Unknown - quote only (no price published on vendor site)",
+   "source_url": "https://www.kitro.ch/"
+  },
+  {
+   "vendor": "PathSpot",
+   "product": "Hand scanner / handwashing verification",
+   "what_it_does": "A wall-mounted scanner staff use after washing; it detects residual contamination on hands and logs named scan events so managers can see who washed and when.",
+   "pricing": "Unknown - quote only; no price published on the vendor site.",
+   "source_url": "https://pathspot.com/"
+  },
+  {
+   "vendor": "Miso Robotics",
+   "product": "Flippy Fry Station (robotics, adjacent category)",
+   "what_it_does": "Vision-guided robot that dispenses, fries and baskets fries; Miso's January 2025 launch release states the new generation 'can process more than 100 baskets per hour - almost twice as many as humans' (vendor claim, not independently validated). It shows the price ceiling for automation sold to restaurant operators.",
+   "pricing": "$5,400/month rental, no upfront cost (2025 launch pricing, vendor-stated)",
+   "source_url": "https://info.misorobotics.com/press-releases/miso-launches-next-generation-flippy-fry-station-the-most-significant-evolution-of-the-ai-powered-robot-since-its-inception"
+  },
+  {
+   "vendor": "Toast / Fresh KDS",
+   "product": "Kitchen display systems",
+   "what_it_does": "Replaces paper tickets with screens that time each ticket and show all-day counts - the cheapest existing way to get ticket-time data, but it gives no view of what staff are actually doing.",
+   "pricing": "Reported at roughly $20-30 per screen per month across major KDS vendors in 2026 comparisons; Toast itself sells by quote",
+   "source_url": "https://expresso.io/blog/kitchen-display-system"
+  }
+ ],
+ "gap_for_local_installer": "Every named vendor above is either chain-oriented and quote-only (PreciTaste, HME/Nitro Vision AI, KITRO, Leanpath) or solves exactly one slice (Winnow = bin waste; PathSpot = handwashing only; Toast KDS = tickets only). HME's vision product, as described by HME itself, is pointed at the drive-thru lane rather than the prep line, which leaves the kitchen interior uncovered even at QSR chains. None of them will walk into a 40-seat Milltown restaurant, run cable, calibrate to that kitchen's stations, connect to whatever POS the owner already has, print an inspection-ready hygiene log, and support it in person for a few hundred dollars a month. The gap a local installer fills: (1) POS/KDS-agnostic integration so ticket time is measured without replacing the owner's system; (2) one on-premises box, no per-camera cloud subscription, video staying in the building; (3) site-specific calibration (this sink, this prep table, this expo shelf) which is exactly what hurts generic models; (4) a human who answers the phone and can re-tune zones when the line is rearranged; (5) NJ-specific compliance artifacts, including monitoring records that can sit alongside the written bare-hand-contact procedures, handwash-facility diagrams and training acknowledgements N.J.A.C. 8:24-3.3(a)4 requires. The honest counter-argument: at the low end this is a $200-500/month service competing with a $25/month KDS, so it only works where the owner already believes hygiene documentation or waste cost is a real number.",
+ "technical_approach": {
+  "established_pattern": "RTSP PoE cameras on the handwash sink, one or two prep stations, and the pass/expo shelf; frames decoded on a small on-premises GPU box; a real-time detector (people, hands, gloves, hairnets, pans, plates) plus a multi-object tracker assigns a temporary track ID to each person; polygon zone rules convert tracks into events (entered sink zone -> dwell -> dispenser interaction -> dwell at drying -> exit = one handwash event; item placed at pass = ticket item fired). Ticket timing comes from POS/KDS webhooks reconciled against pass-camera timestamps, so the camera measures what the system cannot see (food actually leaving the pass). Portion/waste uses a bench scale with a camera above it: weight is the ground truth, vision classifies what was thrown. A small vision-language model runs at low frame rate only on flagged clips ('does this clip show a gloved hand touching ready-to-eat food?') to triage exceptions for a human, never to auto-discipline. The event-and-zone pattern is standard practice in open-source NVR deployments (Frigate) and in the peer-reviewed hand-hygiene work, which likewise splits the job into a cheap stage that localises the handwash period and a heavier stage that classifies the specific actions.",
+  "models_and_tools": [
+   {
+    "name": "Ultralytics YOLO11",
+    "role": "Real-time person/object detector for people, hands, gloves, pans, plates; runs comfortably on edge GPUs. Licensing matters commercially: AGPL-3.0 by default, Enterprise licence required for proprietary/embedded/commercial deployment.",
+    "source_url": "https://www.ultralytics.com/license"
+   },
+   {
+    "name": "ByteTrack (via Ultralytics tracking mode)",
+    "role": "Multi-object tracker that links detections frame to frame so a person keeps one ID across sink -> prep -> pass; simple baseline suited to static cameras.",
+    "source_url": "https://docs.ultralytics.com/modes/track"
+   },
+   {
+    "name": "RT-DETR",
+    "role": "Apache-2.0 real-time detector, an alternative when the client will not accept AGPL terms or an Ultralytics Enterprise licence.",
+    "source_url": "https://github.com/lyuwenyu/RT-DETR"
+   },
+   {
+    "name": "Frigate NVR",
+    "role": "Open-source local NVR that ingests RTSP, runs object detection on the premises, records only when needed, supports zones and Home Assistant notifications - the fastest way to stand up the recording/event layer without a cloud subscription.",
+    "source_url": "https://docs.frigate.video/"
+   },
+   {
+    "name": "Qwen2.5-VL-3B-Instruct",
+    "role": "Small vision-language model for exception review on flagged clips (describe what is happening, is a glove visible, is the pan labelled); 3B parameters keeps it within a single edge GPU.",
+    "source_url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct"
+   },
+   {
+    "name": "Liquid AI LFM2-VL (450M / 1.6B)",
+    "role": "Edge-optimised vision-language model for on-box or on-phone checks; the model card explicitly recommends fine-tuning for narrow use cases and states it is not intended for safety-critical decisions - which matches using it as a triage aid, not an enforcement system.",
+    "source_url": "https://huggingface.co/LiquidAI/LFM2-VL-450M"
+   },
+   {
+    "name": "Cactus",
+    "role": "Local inference and fine-tuning runtime for phones/consumer devices - lets a manager review flagged clips or run a small model on a tablet on the kitchen network without sending video out.",
+    "source_url": "https://github.com/cactus-compute/cactus"
+   },
+   {
+    "name": "llama.cpp",
+    "role": "GGUF-quantised model serving with an OpenAI-compatible local API and built-in VLM support, for running the small VLM on the edge box.",
+    "source_url": "https://github.com/ggml-org/llama.cpp"
+   }
+  ],
+  "hardware": [
+   {
+    "item": "PoE IP cameras, 2K, one per station (3-6 cameras): Ubiquiti G5 Flex (UVC-G5-Flex)",
+    "approx_cost": "$129.00 each, $151.00 with surcharges (US store list price)",
+    "source_url": "https://store.ui.com/us/en/category/physical-security-compact/products/uvc-g5-flex"
+   },
+   {
+    "item": "Edge compute: NVIDIA Jetson Orin Nano Super Developer Kit (67 INT8 TOPS, 8GB, supports up to four cameras per NVIDIA)",
+    "approx_cost": "$249 (list price stated in NVIDIA's announcement, down from $499)",
+    "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/"
+   },
+   {
+    "item": "PoE switch: Ubiquiti Lite 8 PoE (USW-Lite-8-POE, 8 ports, 52W total PoE budget)",
+    "approx_cost": "$109.00, $120.00 with surcharge - note the 52W budget and 8 ports cap how many cameras one switch can carry (inference); a larger switch is needed for 5-6 cameras",
+    "source_url": "https://store.ui.com/us/en/category/switching-utility/products/usw-lite-8-poe"
+   },
+   {
+    "item": "Food-service bench scale for portion and waste capture (example: Ohaus Valor 2000, 30 kg x 5 g, NSF-certified, IPX8)",
+    "approx_cost": "$479.95 at a US scale retailer (retail list $710.00); models with a PC/USB data interface for automated logging were not priced here and this listing does not state one - verify before promising automatic weight capture",
+    "source_url": "https://www.southwestscales.com/OHAUS-Valor%C2%AE-2000-Compact-Bench-Scales--V22PWE30T-AM-60-x-01-lb-30251704_p_687.html"
+   },
+   {
+    "item": "Local storage for 30-day retention, plus cable, mounts and patch leads",
+    "approx_cost": "Unknown - no vendor price checked in this session; budgeted inside the pilot's hardware allowance as an inference",
+    "source_url": "https://docs.frigate.video/"
+   }
+  ],
+  "fine_tuning_needed": "Yes, but narrowly (inference). Generic person/object detectors work out of the box for people and pans; glove, hairnet, beard-guard and 'hand at soap dispenser' classes are likely to need site-specific fine-tuning because glove colour, lighting, camera angle and station layout vary by kitchen (inference). Expect roughly 300-1,000 labelled frames per class per station and a few hours of GPU time (inference - no published benchmark for these classes in commercial kitchens was found). A small VLM can be used zero-shot for coarse triage, but the LFM2-VL card itself recommends fine-tuning for narrow use and warns against safety-critical use, so discipline decisions should never rest on the VLM alone.",
+  "data_needed": "2-4 weeks of unlabelled video per station for calibration and false-positive hunting; roughly 300-1,000 labelled frames per custom class (inference); POS/KDS ticket exports (item, fire time, bump time) as ground truth for ticket timing; recipe/portion specs per menu item for portion variance; the prior inspection report (which the operator must keep on the premises under N.J.A.C. 8:24-8.13) and any existing handwash/prep audit sheets as a baseline.",
+  "difficulty": "High"
+ },
+ "measured_outcomes": [
+  {
+   "finding": "Proper and adequate handwashing was in compliance in only 24% of observations at full-service restaurants and 61% at fast-food restaurants in 2008 - the data item most typically low within the poor personal hygiene risk factor, which itself sat at 59% (full service) and 76% (fast food). This is the baseline problem the system would address.",
+   "year": "2008 data, published 2010",
+   "sample": "Roughly 850 foodservice and retail establishments per phase across nine facility types; data collected 1998, 2003 and 2008 (FDA observers)",
+   "study_type": "government",
+   "strength": "High",
+   "source_url": "https://www.fda.gov/food/retail-food-protection/retail-food-risk-factor-study"
+  },
+  {
+   "finding": "A two-stage camera system recognised hand-hygiene actions with 86.36% accuracy for 'apply soap', 93.18% for 'dry hands' and 95.45% for 'touch faucet with elbow', and estimated rubbing duration within 2.20-2.39 seconds - while running the heavy classifiers on only 67.8% of frames.",
+   "year": "2020 (Journal of Imaging 6(11):120, published 7 November 2020)",
+   "sample": "100 participants recorded in two public restrooms with three camera views (wall, chest, nose); small enclosed restroom rather than a commercial kitchen",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://mdpi-res.com/d_attachment/jimaging/jimaging-06-00120/article_deploy/jimaging-06-00120.pdf"
+  },
+  {
+   "finding": "AI-guided handwashing changed food handlers' technique and hand microbiota profiles versus their habitual washing, but the authors state the benefit cannot be separated from procedural standardisation, timing and being observed.",
+   "year": "2026",
+   "sample": "46 food handlers at a university canteen, two visits (44 completed both), hand swabs before/after",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://www.nature.com/articles/s41598-026-56516-3"
+  },
+  {
+   "finding": "AI waste-tracking devices cut food waste per meal by 23-51% at four of five foodservice sites; prep waste fell by more than 80%, overproduction cost fell 48-69% and avoidable waste cost per meal by up to 39%. The single site with no improvement (a Swiss hotel) had low management engagement, high staff turnover and COVID-related demand uncertainty.",
+   "year": "2025 study (figures read in ReFED's May 2026 report, which summarises it)",
+   "sample": "5 foodservice sites in Germany, Greece and Switzerland using a KITRO scale-plus-camera device",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://refed.org/uploads/2026-refed-ai-report-final.pdf"
+  },
+  {
+   "finding": "Vendor-reported average food-waste reduction of 42% in the first six months across its customer base, with reductions averaging over 50% over longer periods.",
+   "year": "2024-25",
+   "sample": "Winnow customer base (self-reported, no independent audit)",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://650776.fs1.hubspotusercontent-na1.net/hubfs/650776/2025/Winnow%202024-25%20Impact%20Report.pdf"
+  },
+  {
+   "finding": "Handwashing was the most-cited violation area in routine inspections, appearing in about 6% of two million inspections (and 15% among a 17-brand hospitality subset).",
+   "year": "2023",
+   "sample": "~2,000,000 US restaurant inspections, Sept 2022-Sept 2023, analysed by Hazel Analytics/Ecolab",
+   "study_type": "industry",
+   "strength": "Medium",
+   "source_url": "https://www.nrn.com/restaurant-operations/food-health-and-safety-compliance-is-not-as-vigilant-in-a-post-pandemic-world"
+  },
+  {
+   "finding": "About 16% of quick-service and fast-casual orders have a problem severe enough that customers notice and report it, and one chain's annual cost of inaccuracy exceeded $26 million.",
+   "year": "n.d. - page carries no publication date and promotes 'the 2022 QSR results'",
+   "sample": "Market Force customer-experience survey data; sample size not disclosed on the page",
+   "study_type": "industry",
+   "strength": "Low",
+   "source_url": "https://www.marketforce.com/blog/the-cost-of-inaccuracy"
+  },
+  {
+   "finding": "A third-party vendor-comparison directory states that Agot AI's kitchen computer vision 'spots 85%+ of order errors in real time'; the vendor's own materials reviewed here (HME's Nitro Vision AI release) describe drive-thru visibility, not order-error detection, and no independent validation was found.",
+   "year": "2026 (directory page; no vendor confirmation)",
+   "sample": "Not disclosed",
+   "study_type": "industry",
+   "strength": "Low",
+   "source_url": "https://azrestaurantpartners.com/tools/agot-ai.html"
+  }
+ ],
+ "legal_privacy": [
+  {
+   "issue": "Recording video (not audio) in a commercial kitchen",
+   "rule_or_precedent": "New Jersey has no statute requiring employers to give notice of, or post signs for, ordinary workplace video cameras; the state's employer monitoring-notice law (N.J.S.A. 34:6B-22) covers only tracking devices in vehicles used by employees. So notice is a best practice and a liability shield, not a statutory duty - but see the invasion-of-privacy point below.",
+   "confirmed": true,
+   "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/"
+  },
+  {
+   "issue": "Audio capture",
+   "rule_or_precedent": "New Jersey's Wiretapping Act requires at least one party's consent to record a private in-person conversation. A fixed kitchen camera capturing employees' conversations is not a party to them, so audio is a real legal risk - configure cameras video-only.",
+   "confirmed": true,
+   "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/"
+  },
+  {
+   "issue": "Restrooms, locker rooms, changing areas",
+   "rule_or_precedent": "N.J.S.A. 2C:14-9 makes it a crime to observe or record a person without consent in circumstances where a reasonable person would not expect to be observed (intimate parts, sexual acts, undressing). Cameras must not cover restrooms, locker areas or staff changing spaces under any circumstances.",
+   "confirmed": true,
+   "source_url": "https://www.njcourts.gov/sites/default/files/charges/iopobsv.pdf"
+  },
+  {
+   "issue": "Posting notice as a defence",
+   "rule_or_precedent": "Under N.J.S.A. 2C:14-9(d), prior posted or provided notice is an affirmative defence to the invasion-of-privacy crime only if the actor also acted with a lawful purpose - both elements are required, and a sign does not stop a charge by itself.",
+   "confirmed": true,
+   "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/"
+  },
+  {
+   "issue": "Biometrics / facial recognition",
+   "rule_or_precedent": "New Jersey has no standalone biometric-privacy statute; biometric data is regulated inside the New Jersey Data Privacy Act (P.L. 2023, c.266, effective 15 January 2025) as 'sensitive data' requiring opt-in consent. That consent regime runs only to 'consumers', and the Act expressly excludes anyone acting in a commercial or employment context, so employee biometric data (fingerprint clocks, facial-recognition badge access) falls outside its consent and rights requirements. Note this page is a secondary law summary, not the statute itself, and the exclusion is stated by that summary rather than read in the statutory text here. Camera footage that is not processed to identify an individual is also excluded from the Act's biometric definition. Recommendation: no face recognition in the product, which keeps the whole NJDPA biometric question off the table.",
+   "confirmed": true,
+   "source_url": "https://www.recordinglaw.com/us-laws/data-privacy-laws/new-jersey-data-privacy-laws/biometric-privacy/"
+  },
+  {
+   "issue": "Pending biometric-surveillance bill A3929 (2026-27 session)",
+   "rule_or_precedent": "A3929 would make it an unlawful practice for a business entity to use a 'biometric surveillance system' (facial recognition or other remote biometric recognition) on a consumer at its physical premises, unless it gives clear and conspicuous perimeter notice and the use is for a lawful purpose, and it bans profiting from the resulting information. As drafted it addresses consumers at business premises, not employee monitoring. It is not law: per the last action listed on the Legislature's bill page (reported in search results as Assembly passage 56-16-1 on 23 March 2026 and referral to the Senate Law and Public Safety Committee on 4 May 2026 - the bill page itself did not render in this session, so the procedural status is second-hand). Either way the operational conclusion is the same: no face recognition.",
+   "confirmed": false,
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2026/A4000/3929_T1.HTM"
+  },
+  {
+   "issue": "Employee monitoring and protected concerted activity",
+   "rule_or_precedent": "NLRB General Counsel memo GC 23-02 (Oct 31, 2022) announced a framework in which intrusive or abusive electronic monitoring that would tend to interfere with Section 7 rights is presumptively unlawful, and urged requiring employers to disclose what technologies are used, why, and how data is used. Board law can shift with GC turnover, so this is a disclosure-and-consult posture rather than a settled prohibition.",
+   "confirmed": true,
+   "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and"
+  },
+  {
+   "issue": "Substantiating marketing and accuracy claims",
+   "rule_or_precedent": "Under FTC Act Section 5 an advertiser must have a reasonable basis for express and implied objective claims before they are disseminated, and the Commission's advertising-substantiation policy statement treats the absence of such a basis as an unfair or deceptive practice; 'tests prove' or 'studies show' claims demand at least the level of support those words convey. Practical consequence for this product: publish measured false-positive/false-negative rates rather than accuracy adjectives. (The February 2023 FTC business blog 'Keep your AI claims in check' was cited in an earlier draft through a law-firm summary; that summary URL and the ftc.gov blog URL both returned HTTP 404 on re-check, so the claim is carried on the substantiation policy statement instead.)",
+   "confirmed": true,
+   "source_url": "https://www.ftc.gov/legal-library/browse/ftc-policy-statement-regarding-advertising-substantiation"
+  },
+  {
+   "issue": "Documented hand-hygiene monitoring duty and the bare-hand-contact exception",
+   "rule_or_precedent": "N.J.A.C. 8:24-2.1(c)3.i obliges the person in charge to ensure employees clean their hands effectively 'through routinely monitoring the employees' handwashing'. N.J.A.C. 8:24-3.3(a)2 bars bare-hand contact with exposed ready-to-eat food, but (a)4 lets establishments that do not serve a highly susceptible population allow it if they keep written procedures listing the foods involved, diagrams showing handwashing facilities in close proximity to the work station, and documentation that employees acknowledge training - camera or scan logs can feed that documentation set while never replacing it.",
+   "confirmed": true,
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-3"
+  },
+  {
+   "issue": "Inspection report must be kept on the premises",
+   "rule_or_precedent": "N.J.A.C. 8:24-8.13(a): the operator of each retail food establishment must maintain the most recent inspection report on the premises for review by the public on request, for a minimum of two years. This is the operator's duty and the natural anchor for the prospecting question 'can I see your last inspection report?' - it does not create any duty to install monitoring.",
+   "confirmed": true,
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-13"
+  }
+ ],
+ "prospecting_signals": {
+  "public": [
+   "Posted inspection report: NJ requires the most recent report on premises for public review, kept at least two years (N.J.A.C. 8:24-8.13) - ask for it, since no county-wide searchable inspection database for Middlesex County was found; individual towns run their own health departments.",
+   "Review language about wrong orders, missing modifiers, cold food or long waits - repeated mentions of the same failure mode suggest an expedite/accuracy problem rather than one bad night (inference).",
+   "Job postings: repeated or year-round ads for line cooks and expediters, or ads stressing 'fast-paced' with wide pay ranges, are a turnover proxy (inference from the 96-135% hourly turnover benchmark).",
+   "Menu complexity: heavy customization, many modifiers, or multi-page menus raise error and portion-variance risk per ticket (inference).",
+   "Catering or private-event pages with stated capacities (e.g. 'up to 150 guests') indicate batch production where over-portioning and overproduction concentrate (inference).",
+   "Multiple locations or a second concept under the same owner - the point where an owner can no longer personally expedite every service (inference).",
+   "Seat count and square footage from the listing or a certificate-of-occupancy filing, used to size camera count and cabling (inference)."
+  ],
+  "walk_in": [
+   "Paper tickets on a rail or hanging printer, no kitchen display: no ticket-time data exists today.",
+   "An expediter calling orders with no screen or timer - the classic under-instrumented pass.",
+   "Hand sink blocked by a cart, used for dumping, or missing soap/paper towels at 7pm on a Friday.",
+   "Glove boxes stored away from the prep station, or cooks handling ready-to-eat food bare-handed during a rush.",
+   "No hair restraints or beard guards on the line, or restraints worn incorrectly.",
+   "Prep lists on a clipboard, portion scoops and no scale - portion variance is unmeasured.",
+   "End-of-shift trash bags with edible food, or full hotel pans being discarded at close: overproduction is visible to the naked eye.",
+   "Cameras already installed but pointed only at the register and the dining room - the kitchen is a blind spot, which makes the incremental install cheap.",
+   "Manager doing verbal on-the-job training with no records - and no evidence file to show an inspector."
+  ]
+ },
+ "pilot": {
+  "scope": "One site, 4 weeks: week 0 install and baseline (no feedback shown to staff), weeks 1-3 feedback on. Three cameras (handwash sink, one prep station, pass/expo) plus optional bench scale at the prep station. Video-only, on-premises processing, 30-day rolling retention, posted notice plus a one-page written notice to staff, and a named manager who owns the weekly review. Weekly 30-minute review with the owner: handwash event counts, ticket-time distribution, portion variance, and a list of the previous week's false alerts.",
+  "hardware": "3 PoE cameras (Ubiquiti G5 Flex, $129 list / $151 with surcharges each = $453), one 8-port PoE switch (Ubiquiti Lite 8 PoE, $109 list / $120 with surcharge - confirm the 52W PoE budget covers the camera count and step up to a larger switch if not), one Jetson Orin Nano Super 8GB edge box ($249), one NSF-certified food-service scale for the portion test (~$480 for an Ohaus Valor 2000 30 kg x 5 g at a US retailer), plus local storage, cabling and mounts (not priced in this session). Reuse the restaurant's existing network where possible; no cloud dependency, no audio.",
+  "success_metric": "Primary: handwash completion rate (completed events / opportunities at the sink zone) improves by at least 15 percentage points over baseline by week 4, measured the same way in both periods. Secondary: ticket-time P90 is reported daily and the owner can name the bottleneck station; portion variance on the three highest-cost items is quantified; false alerts stay at or below 5 per day; and the owner signs a written statement of what they would pay monthly. Anything short of the false-alert bar means the model is not ready to sell.",
+  "cost_range": "$4,500-11,000 one-time per site, plus $150-500/month ongoing. Arithmetic, one-time: priced hardware is $453 (3 cameras with surcharges) + $120 (switch) + $249 (edge box) + ~$480 (scale) = $1,302; add an unpriced allowance of roughly $200-500 for local storage, cable and mounts (inference, nothing priced in this session), giving about $1,300-1,800 of hardware; add 40-70 hours of engineering, labelling, install and calibration at $75-125/hour = $3,000-8,750 (inference), so the sum is about $4,300-10,550, rounded up to $4,500-11,000 to cover the unpriced items. Arithmetic, monthly: 2-4 hours of support and review at $75-125/hour = $150-500/month (inference), with no hosting line because everything runs on the customer's edge box; camera and model maintenance beyond that is not costed here. Assumptions: cabling is short-run and the ceiling/network can be reused; the owner provides POS/KDS exports; single kitchen under ~3,000 sq ft; no union consultation process; English/Spanish staff materials sufficient. A paid pilot would typically be priced at $3,500-7,500 with the fee credited toward a first-year contract (inference).",
+  "assumptions": "That ticket-time data can be obtained from the owner's existing POS/KDS without replacement; that the handwash sink has a clear camera line of sight; that the owner will act on weekly reviews (the 2025 waste study saw reductions only where management engaged); and that staff are told what is measured and why, which is both an NLRB-posture and a practical adoption requirement."
+ },
+ "fit_score": {
+  "demand": 14,
+  "local_buyers": 12,
+  "ability_to_pay": 7,
+  "technical_feasibility": 10,
+  "legal_risk_low": 9,
+  "defensibility": 8,
+  "total": 60,
+  "rationale": "Sub-scores sum to 60/100. Demand is real and documented (14/20): proper handwashing in compliance in only 24% of FDA observations at full-service restaurants, handwashing the top inspection violation area at roughly 6% of two million inspections, food cost at ~32% of sales, and 1,752 food-service establishments in Middlesex County. But the buyer is a thin-margin independent (labor 36.5% + food 32% of sales) with no IT staff and a $25/month KDS as the mental price anchor, so ability to pay is the weakest dimension (7/15) and local buyers, while numerous, are mostly small (12/15). Technical feasibility is graded 10/20: ticket timing and portion/waste are tractable with a detector, tracker and scale, and the strongest quantitative result is waste tracking (23-51% per-meal reduction at four of five sites in a 2025 study, read via the May 2026 ReFED summary); hygiene recognition, however, is documented only in a 100-participant public-restroom dataset published in 2020 (86-95% on discrete actions, roughly 2-second duration error) and no in-kitchen validation was found, so false positives under steam, grease and occlusion remain the main technical risk. Legal risk is manageable (9/15) if the product is video-only, has no face recognition and no audio, uses posted notice, and never auto-disciplines - all design choices, and the biometric picture is favourable because the NJDPA's consent regime excludes the employment context. Defensibility is modest (8/15): hardware and models are commodities, but local calibration, POS-agnostic integration and an in-person service relationship are sticky in a county where vendors quote only to chains."
+ },
+ "risks": [
+  "False accusation risk: a mislabelled handwash or glove event shown to an owner can get a worker disciplined or fired; the system must present evidence clips and rates, never verdicts, and the contract should say so.",
+  "Hygiene model accuracy is the weak link - published results (2020, small enclosed restroom, 86-95% for discrete actions, roughly 2 seconds duration error) will degrade with steam, grease, occlusion and camera angle in a real kitchen, and no in-kitchen accuracy study was found.",
+  "Plate waste dominates restaurant surplus (nearly 70%), and cameras at the pass cannot fix what guests leave on the plate; over-promising waste savings is the fastest route to a churned client.",
+  "Willingness to pay is unproven at independent scale; a $300/month service competes with a $25/month KDS and with doing nothing.",
+  "Enterprise vendors are moving down-market (HME's acquisition of Agot AI's vision technology, PreciTaste's packaged modules), which could compress the local installer's price umbrella.",
+  "Camera hygiene and physical reality: grease film on lenses, staff blocking views, line rearrangements that invalidate zone rules, and network drops during service.",
+  "Licensing trap: Ultralytics YOLO is AGPL-3.0 by default and an Enterprise licence is required for proprietary commercial deployment - a cost and a legal exposure if ignored.",
+  "Staff relations: covert or unexplained monitoring is the scenario NLRB GC 23-02 targets; disclosure and a written policy are cheap insurance. Audio capture would create a separate Wiretapping Act problem.",
+  "Data security: on-premises video of identifiable workers still needs access control, retention limits and a deletion policy; a breach at a small restaurant is a reputational event for the installer too.",
+  "Scope creep into documentation: N.J.A.C. 8:24-8.13 requires the most recent inspection report to stay on the premises for public review, and 8:24-3.3(a)4's written bare-hand-contact procedures are the operator's legal responsibility - camera logs support those files but must never be sold as compliance itself."
+ ],
+ "caveats": "Revision notes (this version): the two NJ food-code rules are now cited to their own pages - 8:24-2.1(c)3.i and 8:24-3.3(a)2/(a)4 to N-J-A-C-8-24-3-3, and the two-year on-premises inspection-report rule to N-J-A-C-8-24-8-13, which was opened and reads as quoted; the 'no employer-facing biometric statute' statement is no longer hung on the A3929 bill text, which says nothing about it, and is now sourced to a secondary New Jersey biometric-privacy summary (with A3929 split into its own item and flagged unconfirmed on procedural status); the Flippy throughput is stated as the vendor's own 'more than 100 baskets per hour - almost twice as many as humans'; the KITRO descriptor drops the unverified 'HORECA' label in favour of the five-site 2025 European foodservice study as summarised by ReFED; and the pilot cost range is restated at $4,500-11,000 one-time with the arithmetic shown, plus a monthly figure derived from support hours rather than asserted. Pricing in this category is almost entirely opaque: PreciTaste, Leanpath, KITRO, PathSpot and HME/Nitro Vision AI publish no rates, so most pricing fields read 'Unknown' rather than carrying third-party guesses. Earlier corrections retained: the multi-view hand-hygiene paper is Journal of Imaging 6(11):120, published 7 November 2020 (not 2021), and the FTC AI-claims blog post could not be retrieved at either its ftc.gov URL or the law-firm summary, so the substantiation rule is cited from the FTC's own policy statement instead. The strongest quantitative evidence is about the problem (FDA observation studies, ReFED tonnage, NRA cost ratios) and about waste tracking (the 2025 five-site study, read here through ReFED's May 2026 summary because the publisher's page was inaccessible), not about hygiene monitoring in real commercial kitchens - the hand-hygiene recognition work uses controlled, purpose-collected restroom video. No study found measures ROI for a 20-50 staff independent restaurant, which is precisely this avenue's target buyer. County establishment and wage data are QCEW/OEWS aggregates, not a count of independently owned restaurants. Vendor outcome claims (Winnow's reduction percentages, the Agot '85%+ order errors' figure, Miso's throughput and ROI language) are rated Low and unverified. The waste-study percentages, though peer-reviewed work summarised second-hand, should be treated as Medium at best. The legal notes are a research summary, not legal advice; two of the sources are secondary law summaries rather than statute text, and the NLRB posture in particular can change with agency leadership. The pilot cost range is a bottom-up estimate, not a quoted price.",
+ "data_gaps": [
+  "No public, county-wide New Jersey restaurant inspection dataset for Middlesex County was found; reports must be requested from the municipality or read on premises, so inspection history cannot be screened at scale from a desk.",
+  "No peer-reviewed study of glove, hairnet or bare-hand-contact detection accuracy in operating commercial kitchens was found.",
+  "No published pricing for PreciTaste, Leanpath, KITRO, PathSpot or HME/Nitro Vision AI; those fields are marked Unknown rather than estimated.",
+  "The primary paper for the 2025 five-site KITRO waste study (Waste Management, doi 10.1016/j.wasman.2025.02.044) returned HTTP 406/403 and could not be read directly; its figures are taken from ReFED's May 2026 report, which summarises it. The study's own framing (including whether the authors use the term 'HORECA') was not read.",
+  "The FTC business blog post 'Keep your AI claims in check' (Feb 2023) returned HTTP 404 at its ftc.gov URL, and the law-firm summary used in an earlier draft also 404s; the substantiation requirement is instead sourced to the FTC's policy statement on advertising substantiation.",
+  "The exact FDA Food Code and NJ provision on hair restraints was not confirmed in this session; glove and bare-hand rules were confirmed, hair restraint wording was not.",
+  "No independent validation of vendor claims (Agot 85%+ error detection; Winnow 42% average reduction; Miso '>100 baskets/hour' and '$5,000-20,000/month prime-cost impact') was found.",
+  "No study measuring ticket-time or order-accuracy improvement from camera-based line monitoring at independent (non-chain) restaurants was found.",
+  "NLRB GC 23-02 reflects the 2022 General Counsel's position; whether the current Board or GC still pursues that framework was not verified.",
+  "No vendor price was checked in this session for local storage, cable, mounts or a USB/serial-capable bench scale, so those hardware lines are estimates or Unknown - which is why the one-time cost range carries an explicit unpriced allowance.",
+  "The claim that New Jersey has no employer-facing biometric statute rests on a secondary law summary (recordinglaw.com) that also states the NJDPA excludes employment-context data; the statutory definition and exclusions in N.J.S.A. 56:8-166.4 were not read directly from the enacted text in this session.",
+  "A3929's procedural status (Assembly passage 56-16-1 on 23 March 2026; referral to the Senate Law and Public Safety Committee on 4 May 2026) is second-hand from a search-result summary of the Legislature's bill page; that page did not render when opened, and a third-party tracker returned HTTP 403."
+ ]
+}

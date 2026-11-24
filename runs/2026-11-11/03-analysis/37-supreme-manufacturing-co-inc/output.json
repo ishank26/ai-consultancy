@@ -1,0 +1,82 @@
+{
+  "business": "Supreme Manufacturing Co., Inc.",
+  "industry": "manufacturing (food and beverage / private-label beverage concentrates and syrups)",
+  "town": "East Brunswick, NJ",
+  "opportunities": [
+    {
+      "title": "Inbound inquiry and sample-request intake agent",
+      "capability": "A",
+      "problem": "Every inbound path is a single phone line or one shared info@ mailbox on weekday hours only, yet the company sells nationally and exports. Sample requests, private-label briefs and distributor/export inquiries from other time zones queue overnight, nothing is captured in a form or record, and the quality of the first response depends on who happens to answer. There is no web form, chat, quote request or online ordering anywhere on the site.",
+      "evidence": [
+        "Contact page publishes only tel (732) 254-0087 and info@supreme-mfg.com - no contact form, quote form or chat widget (https://www.supremebeverages.com/copy-of-tea-2)",
+        "Office hours Mon-Fri 8:00 am-4:30 pm, warehouse closes 3:30 pm Friday; no after-hours, weekend or emergency contact is listed (https://www.supremebeverages.com/copy-of-tea-2)",
+        "Sample and custom-formula inquiries are routed to a phone call - the private-label page closes with 'Call us today and let's talk' (https://www.supremebeverages.com/copy-of-private-label)",
+        "Company states it sells both classic formulas and custom flavors to countries around the world (https://www.supremebeverages.com/copy-of-contact-us)",
+        "Wix brochure site with no e-commerce, booking, quoting or portal components and no live chat (https://www.supremebeverages.com/products)"
+      ],
+      "agent_design": "An event-driven agent subscribes to the info@ mailbox plus a new web form. On each message it classifies the inquiry (existing order, sample request, private-label brief, distributor/wholesale, export, other), extracts structured fields (customer segment, product category, volume, sweetener type, juice percentage, pack format, dietary attributes, destination country) and writes a ticket/CRM record. It drafts a reply that points to the right catalog section and the next step in the sample or private-label process, then escalates to a human for any pricing, MOQ, lead-time or custom-formulation commitment. Follow-up nudges fire at 2 and 5 business days on unanswered threads. Human approves every outbound message for the first two weeks, then only exception and pricing replies.",
+      "why_not_DIY": "A Wix chat widget answers on-page questions but cannot watch a mailbox, hold state across a multi-message private-label thread, write to a record, or apply follow-up cadence. It also requires integration across mailbox + site + CRM and a firm rule that the agent never states a price or MOQ it was not given - reliability and guardrails, not prompt quality.",
+      "impact_estimate": {
+        "range": "$3,000-$9,000 per year of administrative time recovered (upside from recovered out-of-hours inquiries excluded from the range)",
+        "assumptions": "Inferred, not measured: intake and triage currently consumes 5-10 hrs/week of admin/inside-sales time (the profile publishes no volumes), 40-60% of that work is handled without staff rework after the pilot, 50 working weeks, and time is costed at the NJ median of $62,710/yr (~$30.15/hr) for Production, Planning, and Expediting Clerks, the closest published coordination-clerk benchmark. No revenue effect is claimed.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-3 weeks: a real web form wired to the mailbox agent, an 8-type inquiry taxonomy, an extraction schema for private-label briefs (sweetener, juice %, pack format, dietary attributes, destination), draft-reply templates covering all 21 categories, a human approval queue, and a weekly log of inquiries, first-response time and field completeness so the client can see before/after."
+    },
+    {
+      "title": "Private-label quote and spec-sheet engine",
+      "capability": "D",
+      "problem": "Because no price, minimum order quantity, case spec, lead time or downloadable spec sheet is published for any of the 21 categories, every private-label or export inquiry has to be hand-translated from free-text prose into a formulation plus packaging spec plus price. That work lands on a very small team and is the bottleneck on the 'unmatched turn around time' the company markets as its differentiator.",
+      "evidence": [
+        "All 21 product categories are flavor/pack tables only - no prices, MOQs, case specs or spec-sheet downloads anywhere in the catalog (https://www.supremebeverages.com/products)",
+        "Private-label variables are described only in prose: cane sugar vs corn sweetener vs artificial sweetener, juice mixes from 5% to 100%, bottles or Bag-In-Box, shelf stable at least one year (https://www.supremebeverages.com/copy-of-private-label)",
+        "Company promotes 'unmatched turn around time' as a selling point - self-reported, and entirely dependent on manual quote work (https://www.supremebeverages.com/copy-of-contact-us)",
+        "Three in-house brands (Tropical Sensations, La Spezzia coffee syrups, Evans toppings/syrups) run in parallel with private label, multiplying the SKU and configuration combinations (https://www.supremebeverages.com/copy-of-private-label)",
+        "No downloadable PDF or spec-sheet content exists in the 26-page sitemap (https://www.supremebeverages.com/pages-sitemap.xml)"
+      ],
+      "agent_design": "Build a product and configuration data model from the published category tables plus the company's own formulation, packaging and pricing records. An agent then takes a structured brief (or the ticket from the intake agent) and generates a draft quote package: formulation path, pack format and case pack, dietary/compliance attributes, an indicative price from a maintained rate card, and a branded PDF spec sheet. A human owner approves anything non-standard - new flavor, custom sweetener blend, export order needing duty/incoterm fields - and every generated document is version-stamped so an outdated spec sheet cannot be re-sent.",
+      "why_not_DIY": "This is a data-model and document-generation build with pricing logic, a maintained rate card, permissioned access to margin and formulation data, deterministic PDF output and document versioning. A chatbot subscription or a GPT prompt cannot enumerate 21 categories x dozens of flavors x pack formats consistently, cannot hold a rate card, and cannot guarantee the same answer twice.",
+      "impact_estimate": {
+        "range": "$3,000-$20,000 per year of inside-sales and technical time (quote-turnaround and win-rate upside excluded)",
+        "assumptions": "Inferred, not measured: a custom private-label quote consumes 2-4 hrs of formulation/packaging/dietary spec work, the company handles 10-25 new private-label or export inquiries per month (no volumes are published), the engine cuts drafting time 40-60% after the rate card is populated, 12 months, costed at $30.15/hr (NJ median $62,710/yr, SOC 43-5061 production/planning/expediting clerk) as a proxy for inside-sales admin. No conversion-rate gain is claimed because none is evidenced.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "4 weeks: schema plus the 40-60 most-quoted SKUs encoded, one branded quote/spec-sheet PDF template, agent draft generation with an owner approval step, and a measured before/after on turnaround for 10 real inquiries. Deliberately excludes ERP integration and any automatic pricing beyond the approved rate card."
+    },
+    {
+      "title": "Product, dietary and allergen answer agent for buyers and staff",
+      "capability": "C",
+      "problem": "Institutional buyers - school systems, day care facilities, nursing homes, cafeterias, casinos and hotels - need confirmed dietary and allergen answers, but the company publishes no spec sheets, certificates or FAQ and has no downloadable documents at all. Every such question routes back to the same mailbox or phone line, and the underlying knowledge (formulation sheets, allergen statements, non-GMO/Fair Trade/kosher paperwork, pack specs) sits with a few long-tenured people on a small team with no public org chart or documented SOPs.",
+      "evidence": [
+        "Facility is gluten-free and nut-free and many products are offered soy-free, non-dairy, vegan, non-GMO or Fair Trade - claims buyers must have documented before purchase (https://www.supremebeverages.com/copy-of-private-label)",
+        "Stated customer base explicitly includes school systems, day care facilities, nursing homes, cafeterias and fitness centers, i.e. buyers with documented dietary requirements (https://www.supremebeverages.com/copy-of-private-label)",
+        "No spec sheets, downloadable PDFs, blog or FAQ content appear in the 26-page sitemap, so no buyer-facing answer corpus is published (https://www.supremebeverages.com/pages-sitemap.xml)",
+        "No careers page (/careers returns 404) and no readable open roles, consistent with a small team where product knowledge is concentrated in a few people (https://www.supremebeverages.com/careers)",
+        "Working paper (not yet peer-reviewed in this form) on a generative-AI assistant at a support desk: issues resolved per hour up 14% on average and 34% for novice workers, minimal effect for experienced staff (https://www.nber.org/papers/w31161)"
+      ],
+      "agent_design": "A retrieval agent grounded only in the company's own documents - formulation sheets, allergen and dietary statements, certification paperwork, pack specs and past customer spec sheets - that answers buyer and rep questions with the exact source document and date attached. Triggers are an email to a dedicated address and an internal chat box; every answer is logged. The agent must refuse and escalate to a named human when the answer is not in the corpus (never guess on allergens), and staff approve the reply before it goes out. Unanswered questions roll into a weekly gap list that becomes the backlog of documents to write. Deployed to staff first, then optionally as a gated buyer portal.",
+      "why_not_DIY": "A generic website chatbot over marketing copy would confabulate allergen answers, which is the highest-liability failure mode in this business. Doing it safely requires grounded retrieval with per-answer citations, document-level permissions, an audit log, hard refusal behaviour and re-indexing whenever a formulation or certificate changes. That is an engineering and document-governance job, not a subscription feature.",
+      "impact_estimate": {
+        "range": "$1,500-$5,000 per year of staff time, plus reduced risk of a misstated allergen or dietary claim (not monetized)",
+        "assumptions": "Inferred, not measured: 4-10 buyer or staff product questions per week at 10-15 minutes each, 50-70% answered from documents without escalation after the corpus is built, 12 months, costed at $30.15/hr (NJ median $62,710/yr, SOC 43-5061). The 14%/34% figures in the cited working paper come from a customer-support desk, not food Q&A, so they are used as directional support only and are not multiplied into the range.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "3-4 weeks: ingest 30-80 documents covering the three in-house brands, build a citation-grounded Q&A over the top ~100 real buyer questions, prove the refusal path on out-of-corpus questions, and deliver a log of every answer a human overrode or could not source."
+    }
+  ],
+  "lead_score": {
+    "pain": 17,
+    "fit": 17,
+    "ability_to_pay": 9,
+    "ease": 11,
+    "strategic": 12,
+    "total": 66,
+    "rationale": "Pain evidence (17/30): the channel design itself is the evidence - one phone number, one info@ mailbox, weekday-only hours, no form, no chat, no published pricing/MOQ/spec sheet across 21 categories, against a national and export customer base. But nothing is quantified: no volumes, no lead counts, no customer reviews, no complaint history, no named decision maker, so this is strong on structure and weak on magnitude. Fit (17/20): all three opportunities are desk, intake and document work sitting directly on capabilities A, C and D, with no hardware or plant-integration prerequisite. Ability to pay (9/20): single facility, family-owned since 1984, no careers page and no open roles (headcount, revenue and ownership unverified; SimplyHired readable and empty, other boards bot-blocked), a DIY-grade Wix site and no visible capital or hiring signal - a small shop that will buy a modest pilot, not a large programme. Ease (11/15): email and documents are available on day one and the owner answers the phone, but there is no CRM, ERP, e-commerce or API layer to integrate with, so the first phase must also create the data model. Strategic (12/15): the pattern - brochure Wix site, phone-and-single-mailbox intake, zero published specs or pricing for a 21-category catalog - repeats across small NJ food, beverage and private-label co-packers, so the quote/spec engine and intake agent become reusable assets. Sequencing recommendation: phase 1 intake agent, phase 2 quote/spec engine, phase 3 knowledge agent, because 2 and 3 both depend on the structured product data built in phase 1."
+  },
+  "best_evidence_signal": "Intake is one phone line and a single info@ mailbox on weekdays 8:00-4:30 with no form, chat or online quote path, while the company markets nationally and exports and publishes no price, MOQ or spec sheet for any of its 21 categories (https://www.supremebeverages.com/copy-of-tea-2)",
+  "suggested_channel": "phone",
+  "evidence_thin": true
+}

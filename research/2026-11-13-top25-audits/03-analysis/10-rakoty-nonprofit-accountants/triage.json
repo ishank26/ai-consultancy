@@ -1,0 +1,110 @@
+{
+ "name": "Rakoty Nonprofit Accountants",
+ "town": "East Brunswick",
+ "ref": "B00071",
+ "status": "operating",
+ "website": "https://rakotygroup.com/",
+ "what_they_do": "Accounting firm specialising in nonprofits - nonprofit accounting, audit preparation and support during state-funded audits, fiscal management, plus small-business accounting and tax work. A published client testimonial describes audit preparation and working directly with state auditors.",
+ "customers": "Nonprofit organisations (including out-of-state ones - the published testimonial is from a Philadelphia nonprofit) and small businesses.",
+ "size_signals": [
+  {
+   "signal": "Site nav splits Non-Profit / Small Businesses / Taxes and speaks of 'the Rakoty team', implying more than one preparer",
+   "source_url": "https://rakotygroup.com/"
+  },
+  {
+   "signal": "Client testimonial from Rising Hope For Change (Philadelphia) describes a state-funded audit engagement",
+   "source_url": "https://rakotygroup.com/"
+  },
+  {
+   "signal": "Office inside Brunswick Woods Office Park, 82 Brunswick Woods Dr, per Google Maps",
+   "source_url": "https://www.google.com/maps/search/Rakoty+Nonprofit+Accountants+82+Brunswick+Woods+Dr+East+Brunswick+NJ"
+  }
+ ],
+ "listing": {
+  "platform": "Google Maps",
+  "rating": "5.0",
+  "reviews": "count not displayed in the limited Maps view I got",
+  "source_url": "https://www.google.com/maps/search/Rakoty+Nonprofit+Accountants+82+Brunswick+Woods+Dr+East+Brunswick+NJ"
+ },
+ "website_review": {
+  "loads": true,
+  "https": true,
+  "phone_layout": "broken",
+  "clear_offer": false,
+  "primary_cta": "'Schedule an appointment' in the nav, which just links to /contacts-us/ (no scheduler)",
+  "click_to_call": true,
+  "contact_form": true,
+  "online_booking_or_quote": "none - 'Schedule an appointment' goes to a contact page; no calendar",
+  "trust_signals": "Client testimonial, phone number, embedded Google map of the office",
+  "out_of_date_signs": "Site is stuck behind a full-screen percentage preloader: at 390px it showed only a logo and '6%', rising to ~25% after ~20 seconds, with no page content; body text never rendered; footer/\u00a9 notice absent; meta description is an unfinished template string ('Accounting Company or a natural variation like accounting firm with a focus on nonprofits')",
+  "search_basics": "Title is 'Rakoty - Nonprofit Accounting company' with no town and no service keyword; meta description is placeholder text; JSON-LD is WebPage/ImageObject/BreadcrumbList/WebSite/Organization with no address, phone or AccountingService type",
+  "top_issues": [
+   "Site never finishes loading - visitors (and crawlers) see a blank preloader screen",
+   "Placeholder meta description and a keyword-free title; no town anywhere in the title",
+   "No LocalBusiness/AccountingService schema and no real scheduling"
+  ]
+ },
+ "agent_readiness": {
+  "findable": 2,
+  "answerable": 1,
+  "bookable": 1,
+  "notes": "Findable: Maps profile exists with category 'Accounting firm', address, hours and site link, but the limited view showed no review count and no photos; robots.txt is a plain Yoast block with 'Disallow:' empty, so bots are not blocked at that level. Answerable: effectively no - the rendered page contains only a loader percentage, the meta description is placeholder text, and JSON-LD has no address/phone/service type; the only readable copy was a single testimonial block returned by a fetch. Bookable: nothing - 'Schedule an appointment' links to a contact page."
+ },
+ "operations_signals": [
+  {
+   "signal": "'Schedule an appointment' is offered in the nav but is not a scheduler, so appointment requests still need manual handling",
+   "source_url": "https://rakotygroup.com/"
+  },
+  {
+   "signal": "Nonprofit audit/preparation work with state auditors is document-intensive (per the published testimonial), a natural fit for document-chasing automation",
+   "source_url": "https://rakotygroup.com/"
+  }
+ ],
+ "top_opportunities": [
+  {
+   "opportunity": "Fix the site so it loads: remove or slim the full-screen preloader and the oversized assets - the business currently has no working web front door",
+   "type": "website",
+   "evidence": "At 390px the page sat at '6%' and reached only ~25% after 20 seconds with no content rendered; fetch returned only a testimonial block",
+   "effort": "S"
+  },
+  {
+   "opportunity": "Rewrite title/meta with service + East Brunswick and add LocalBusiness/AccountingService JSON-LD so the firm is answerable to AI search",
+   "type": "search",
+   "evidence": "Title 'Rakoty - Nonprofit Accounting company'; meta description is literal placeholder text; JSON-LD lacks address, phone and service type",
+   "effort": "S"
+  },
+  {
+   "opportunity": "Nonprofit client document-request and deadline tracker (990, audit PBC lists) to cut manual chasing during audit season",
+   "type": "operations",
+   "evidence": "Testimonial describes coordinating detailed documentation with state auditors under tight timelines",
+   "effort": "M"
+  }
+ ],
+ "scores": {
+  "gap_size": 5,
+  "ability_to_pay": 3,
+  "ease": 5,
+  "evidence": 4,
+  "reasons": "Gap: the website is effectively down for visitors and crawlers, plus placeholder SEO copy (5). Ability: niche nonprofit accounting with recurring audit/compliance revenue, but a small firm (3). Ease: performance fix and metadata rewrite are quick, high-impact (5). Evidence: phone screenshot, page JS state, robots.txt and Maps all read directly (4)."
+ },
+ "sources": [
+  "https://rakotygroup.com/",
+  "https://rakotygroup.com/robots.txt",
+  "https://www.google.com/maps/search/Rakoty+Nonprofit+Accountants+82+Brunswick+Woods+Dr+East+Brunswick+NJ"
+ ],
+ "batch": "b006",
+ "rank": 10,
+ "check": "corrected",
+ "wrong_claims": [
+  {
+   "claim": "The nav's 'Schedule an appointment' link 'just links to /contacts-us/ (a contact page, no scheduler)'",
+   "what_is_true": "The nav button does point to https://rakotygroup.com/contacts-us/, but that URL returns HTTP 404. The live contact page is /contacts/ (nav label 'Contacts Us'), which shows address, phone, email and a Google map but no form.",
+   "source_url": "https://rakotygroup.com/contacts-us/"
+  },
+  {
+   "claim": "website_review contact_form: true (a contact form exists)",
+   "what_is_true": "No contact form on any page checked (home, /contacts/, /non-profit-2/, /taxes/): the only <form> is the site-search box; zero Contact Form 7 widgets render even though the plugin script loads.",
+   "source_url": "https://rakotygroup.com/contacts/"
+  }
+ ]
+}

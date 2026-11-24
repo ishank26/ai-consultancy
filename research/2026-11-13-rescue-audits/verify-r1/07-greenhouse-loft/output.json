@@ -1,0 +1,113 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "In likely_cause: \"the gambling page carries canonical/og:url tags pointing at unrelated third-party hosts (culturenightmarket.com)\".",
+      "problem": "Not reproducible today. Opening https://www.greenhouselofthp.com/ (both www and non-www) lands on https://cavaliercorneronline.com/ and the page's own canonical and og:url both read https://cavaliercorneronline.com/ - no culturenightmarket.com appears anywhere in the served HTML. The unrelated-host detail is used to support the spam-template inference, so it either needs the capture that showed it or should be dropped.",
+      "fix": "Either cite the archive capture/timestamp where greenhouselofthp.com served a page with a culturenightmarket.com canonical, or delete that clause and support the spam-template inference with what is verifiable: identical casino template served on unrelated domains such as culturenightmarket.com today, plus the Malay-language template and the site's own canonical at cavaliercorneronline.com."
+    },
+    {
+      "claim": "In founder_md sources: Nextdoor \"phone shown only as a Call button\"; in data_gaps: \"Nextdoor requires login for contact details: the phone number sits behind a 'Call' button and was not read\".",
+      "problem": "Contradicted. The public Nextdoor business page (no login) shows the phone (732) 339-8044 as a visible tel: link and the email greenhouseloft@gmail.com, in the 'Our story' block, alongside the website field which does link to https://www.greenhouselofthp.com/. The rest of the Nextdoor finding is correct.",
+      "fix": "Change the founder_md line to record the visible website link to greenhouselofthp.com and, if useful for the opener, the public phone (732) 339-8044; remove the data_gaps entry about Nextdoor contact details needing login."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "greenhouselofthp.com loads over HTTPS then ends at cavaliercorneronline.com, an online-casino page (login/register, game thumbnails, IDR jackpot).",
+      "source_url": "https://www.greenhouselofthp.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "At 390 px phone width the casino page is fixed-width and overflows to the right.",
+      "source_url": "https://cavaliercorneronline.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Squarespace site arnold-weinberg-zgc3.squarespace.com loads venue pages, published rates and an enquiry form.",
+      "source_url": "https://arnold-weinberg-zgc3.squarespace.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Squarespace site's canonical tag and og:url still point to https://www.greenhouselofthp.com.",
+      "source_url": "https://arnold-weinberg-zgc3.squarespace.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Squarespace JSON-LD telephone field is empty and openingHours is empty placeholders.",
+      "source_url": "https://arnold-weinberg-zgc3.squarespace.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Contact page says replies will be within 48 hours and unavailable-date enquiries may not be answered.",
+      "source_url": "https://arnold-weinberg-zgc3.squarespace.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Facebook page 'Greenhouse Loft | Highland Park NJ' website field shows greenhouselofthp.com; 382 followers; latest visible post 18 September 2022.",
+      "source_url": "https://www.facebook.com/people/Greenhouse-Loft/100076522939012/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nextdoor business page website field links to https://www.greenhouselofthp.com/.",
+      "source_url": "https://nextdoor.com/pages/greenhouse-loft-highland-park-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nextdoor phone is only behind a 'Call' button and requires login.",
+      "source_url": "https://nextdoor.com/pages/greenhouse-loft-highland-park-nj/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Green Bowtie 'Visit website' leads to greenhouselofthp.com with tracking parameters; page quotes 4.7 from 52 Google reviews.",
+      "source_url": "https://www.greenbowtie.com/venues/new-jersey/greenhouse-loft-highland-park",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Maps profile: 4.6, Event venue, 431 Raritan Ave Second Floor, women-owned, with 'Add website', 'Add place's phone number' and 'Add hours' prompts and no website, phone or hours.",
+      "source_url": "https://www.google.com/maps/place/Greenhouse+Loft/@40.5004686,-74.4251228,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c7cb30c88e4b:0x22356d8f20ce0635!8m2!3d40.5004686!4d-74.4251228!16s%2Fg%2F11c6lbssrn",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 2017-01-30, expires 2027-01-30, last changed 2026-03-15, registrar GoDaddy.com, LLC, Cloudflare nameservers, lock statuses active.",
+      "source_url": "https://rdap.org/domain/greenhouselofthp.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback captures show the venue site on 16 March and 2 April 2026, casino content on 12 May 2026, and 301 responses from 6 July 2026.",
+      "source_url": "https://web.archive.org/cdx/search/cdx?url=greenhouselofthp.com&output=json&fl=timestamp,original,statuscode,mimetype&collapse=timestamp:6&limit=60",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The 2 April 2026 capture at greenhouselofthp.com is the venue's own site.",
+      "source_url": "https://web.archive.org/web/20260402193335id_/https://www.greenhouselofthp.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The 12 May 2026 capture at greenhouselofthp.com is the MEGA888 casino page.",
+      "source_url": "https://web.archive.org/web/20260512010315id_/http://www.greenhouselofthp.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The gambling page's canonical/og:url point at culturenightmarket.com.",
+      "source_url": "https://www.greenhouselofthp.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Likely cause is labelled an inference, names no culprit, and says only the owner can confirm control of the accounts.",
+      "source_url": "https://rdap.org/domain/greenhouselofthp.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business identity: Greenhouse Loft, event venue, 431 Raritan Ave Second Floor, Highland Park NJ, trading (live site, Google listing, Nextdoor page).",
+      "source_url": "https://www.google.com/maps/place/Greenhouse+Loft/@40.5004686,-74.4251228,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c7cb30c88e4b:0x22356d8f20ce0635!8m2!3d40.5004686!4d-74.4251228!16s%2Fg%2F11c6lbssrn",
+      "result": "confirmed"
+    },
+    {
+      "claim": "audit_md body is at most 300 words (measured 274 excluding headings and footer).",
+      "source_url": "https://arnold-weinberg-zgc3.squarespace.com/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

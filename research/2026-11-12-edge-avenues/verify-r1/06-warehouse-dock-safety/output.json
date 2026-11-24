@@ -1,0 +1,223 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Rite-Hite states roughly 25% of warehouse injuries occur at or near the loading dock, attributing the figure to OSHA/NSC (problem.evidence[6]).",
+      "problem": "Misstated on three counts. The Rite-Hite page actually says 'The National Safety Council estimates ... that up to 25% of all industrial accidents occur at the loading dock.' (a) 'up to 25%' became 'roughly 25%'; (b) 'all industrial accidents' became 'warehouse injuries'; (c) the figure is attributed to NSC only, not OSHA/NSC. The caveat at the end of the brief half-concedes this, but the evidence entry itself, which an orchestrator may quote, overstates the number and its scope.",
+      "fix": "Rewrite as: 'Rite-Hite (vendor blog), citing NSC, estimates that up to 25% of all industrial accidents occur at the loading dock (no primary OSHA/NSC publication located).' Keep the vendor and 'up to' qualifiers in the fact string itself, not only in caveats."
+    },
+    {
+      "claim": "Ailytics claims 60-80% reduction in safety non-compliance across 400+ projects and 6,000+ cameras (measured_outcomes[2]).",
+      "problem": "The cited page (ailytics.ai/industries/logistics-and-warehousing) states '400+ projects worldwide', '60-80% reduction in safety non-compliance' and '<2 weeks', but contains no '6,000+ cameras' figure anywhere on the page. The camera count appears on Ailytics' company LinkedIn, not on the cited URL.",
+      "fix": "Drop '6,000+ cameras', or re-cite to a page that actually states it (e.g. the Ailytics projects page or company LinkedIn) and label it company-reported."
+    },
+    {
+      "claim": "'$11.5B lost productivity' from driver detention (problem.evidence[5] and measured_outcomes[6]).",
+      "problem": "ATRI reports $3.6 billion in unreimbursed direct expenses and, separately, $11.5 billion in lost revenue to the for-hire trucking industry ('lost as much as $11.5 billion in revenue due to detention in 2023'), with 135.9 million hours lost. Calling the $11.5B 'lost productivity' is a mislabel of the study's own category.",
+      "fix": "Change to '$3.6B in unreimbursed direct expenses plus $11.5B in lost revenue (135.9M driver hours)'. All other ATRI numbers (39.3% of stops, 117.5-209.4 hours per driver) are correct as written."
+    },
+    {
+      "claim": "Americold attributed a ~70% reduction in injuries, with lost-time days falling from 288 to zero and $1.1M annual savings, at one cold-storage facility (measured_outcomes[1]).",
+      "problem": "Partly supported. The 288-to-zero days and $1.1M savings are in the body of the Voxel page, but the body credits 'up to 90% reduction in unsafe behaviors' and does not state a 70% injury reduction. The 70% appears only in the page headline/URL slug ('Reduced Injures By 70%'). The page also says losses were 'at several of its distribution centers', so 'one facility' is the author's framing, not the source's.",
+      "fix": "Restate as: 'Voxel case study headline claims a 70% injury reduction; body text reports up to 90% reduction in unsafe behaviours, zero days missed (down from 288) and $1.1M annual savings; site count not specified.' Keep strength Low."
+    },
+    {
+      "claim": "fit_score: legal_risk_low = 11 of 20, while the rationale says 'Legal risk is moderate-low'.",
+      "problem": "Sub-scores do sum correctly (17+14+10+15+11+8 = 75) and sit in plausible ranges, but 11/20 is a middling score that does not match the 'moderate-low' characterisation. The legal section itself documents real residual risk (wiretap exposure on audio, a retraining duty created by the near-miss log, Section 7 surveillance objections), all of which are avoidable by design.",
+      "fix": "Either raise legal_risk_low to ~14-15 and keep the 'moderate-low' rationale, or keep 11 and restate the rationale as 'moderate, managed by design constraints' (video only, no biometrics, no discipline automation)."
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d) cited as the one-party-consent provision.",
+      "problem": "The cited RCFP page supports the rule (one party's consent suffices; N.J. Stat. Ann. sections 2A:156A-2, -3, -4) and the criminal penalties, but it does not pin the rule to subsection (d). That subsection letter is unverified.",
+      "fix": "Cite the section generally (N.J.S.A. 2A:156A-4) unless a primary copy of the statute confirming subsection (d) is opened."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "OSHA received 5,186 severe-injury reports involving forklifts 2015-2024, vs 29,816 for falls; 9,034 severe injury reports filed in 2024.",
+      "source_url": "https://www.aiha.org/news/260514-osha-releases-severe-occupational-injury-report-statistics-for-2024",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BLS forklift factsheet (2017 data): pedestrian-vehicular 20% nonfatal / 12% fatal; struck-by-powered-vehicle non-transport 15% / 18%; nonroadway motorized vehicle 23% / 27%.",
+      "source_url": "https://www.bls.gov/iif/factsheets/fatal-occupational-injuries-forklifts-2017-chart3-data.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NAICS 493 in 2024: total recordable rate 4.8 per 100 FTE, DART 4.1, 32 fatalities.",
+      "source_url": "https://www.bls.gov/iag/tgs/iag493.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Industrial truck and tractor operators: 286,750 employed, median annual wage $48,170 (2025 OEWS).",
+      "source_url": "https://www.bls.gov/iag/tgs/iag493.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Powered industrial trucks (1910.178) was the 6th most frequently cited standard in FY2024 with 2,248 violations.",
+      "source_url": "https://blog.msasafety.com/fall-protection-top-10-osha-violations-of-2024/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Average medically consulted work injury cost $43,000 in 2023; total U.S. work-injury cost $176.5B (NSC).",
+      "source_url": "https://www.nsc.org/speeches-testimony/reclaiming-osha-s-mission-ensuring-safety-without",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ATRI: detention on 39.3% of stops in 2023; 117.5-209.4 hours per driver per year; 135.9M hours industry-wide; $3.6B unreimbursed direct expense.",
+      "source_url": "https://trid.trb.org/View/2427471",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ATRI: $11.5B described as 'lost productivity'.",
+      "source_url": "https://trid.trb.org/View/2427471",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Rite-Hite: 25% of injuries/accidents at the loading dock, attributed to OSHA/NSC.",
+      "source_url": "https://www.ritehite.com/en/am/news/2018/blog/loading-dock-safety_10-vital-tips-to-maximize-safety-at-the-loading-dock",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Middlesex County: 266 warehousing establishments, 17,957 employees (Census CBP 2023, NAICS 493).",
+      "source_url": "https://rapidships.com/freight-data/downloads/census-cbp-nj-warehousing-counties.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County industrial inventory 229.2M sq ft at 6.0% vacancy; Northern/Central NJ total 731M sq ft (2Q 2025).",
+      "source_url": "https://www.naihanson.com/wp-content/uploads/2Q-2025-Industrial.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dot Foods / Protex: 71% reduction in person/vehicle near-misses at the hub, 39%/30% reductions in overall safety events at hub and satellite, deployment expanded January 2026.",
+      "source_url": "https://www.protex.ai/case-studies/dot-foods-exceeds-safety-targets-by-4x",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Americold / Voxel: ~70% injury reduction, lost-time days 288 to zero, $1.1M annual savings, one facility.",
+      "source_url": "https://www.voxelai.com/customer-stories/americold-saved-1-1m-annually-and-reduced-injures-by-70",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ElectricEye: $5 per camera per month starting; 68% reduction in OSHA-recordable incidents within 90 days; $47,316 average workers' comp claim; 51 high-severity escalations from 78,244 events (Sept 29-Oct 6, 2026); free 4-camera pilot.",
+      "source_url": "https://electriceye.ai/faq",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ailytics pricing tiers $99 / $199 / $399, currency not stated on the HK site.",
+      "source_url": "https://hk.ailytics.ai/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ailytics: 60-80% reduction in safety non-compliance, 400+ projects, live in under 2 weeks, 6,000+ cameras.",
+      "source_url": "https://www.ailytics.ai/industries/logistics-and-warehousing",
+      "result": "not found"
+    },
+    {
+      "claim": "Blaxtair Origin public price quoted between EUR 4,000 and 5,000 on a French reseller page.",
+      "source_url": "https://evarisk.com/equipement-de-travail/epc-equipement-de-protections-collectives/blaxtair-origin-previent-les-collision-engins-pietons/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SH17: 8,099 images, 75,994 instances, 17 classes; YOLOv9-e baseline exceeds 70.9% mAP; cross-domain validation shows degradation.",
+      "source_url": "https://arxiv.org/abs/2407.04590",
+      "result": "confirmed"
+    },
+    {
+      "claim": "YOLOv8 speed-door study: precision/recall/F1 of 1.0 (100% accuracy) on 55 test images from one factory, published 2026.",
+      "source_url": "https://journal.unesa.ac.id/index.php/jistel/article/view/48611",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO is AGPL-3.0 by default, with an Enterprise licence required for commercial/embedded/private deployment.",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RF-DETR Nano through Large is Apache-2.0 and commercially usable out of the box.",
+      "source_url": "https://rfdetr.roboflow.com/latest/faq/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jetson Orin Nano Super Developer Kit: $249 list, 67 INT8 TOPS, supports up to four cameras (Dec 2024).",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Raspberry Pi AI Kit (Hailo-8L) launched at $70.",
+      "source_url": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "UniFi G5 Bullet is a 2K/4MP PoE camera listed at $129 at time of review.",
+      "source_url": "https://www.storagereview.com/review/ubiquiti-g5-series-review",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NAVA DockVision AI: dock-door occupancy, trailer arrival/departure, forklift/pallet activity, dwell/throughput, existing CCTV, AWS or Jetson edge, WMS/YMS/TMS integration; no public price.",
+      "source_url": "https://aws.amazon.com/marketplace/pp/prodview-orudj5ob4gcei",
+      "result": "confirmed"
+    },
+    {
+      "claim": "29 CFR 1910.178(k)(1) requires brakes set and wheel chocks under rear wheels while a highway truck is boarded with a PIT; (m)(7) requires brakes set and wheel blocks in place while loading/unloading.",
+      "source_url": "https://www.law.cornell.edu/cfr/text/29/1910.178",
+      "result": "confirmed"
+    },
+    {
+      "claim": "1910.178(l)(4)(ii)(B) requires refresher training when an operator has been involved in an accident or near-miss incident.",
+      "source_url": "https://www.law.cornell.edu/cfr/text/29/1910.178",
+      "result": "confirmed"
+    },
+    {
+      "claim": "1910.178(n)(1) requires approximately three truck lengths of following distance; (n)(4) requires slowing and sounding the horn at cross aisles and where vision is obstructed.",
+      "source_url": "https://www.law.cornell.edu/cfr/text/29/1910.178",
+      "result": "confirmed"
+    },
+    {
+      "claim": "1910.37(a)(3): exit routes must be free and unobstructed, no materials or equipment placed in them.",
+      "source_url": "https://www.law.cornell.edu/cfr/text/29/1910.37",
+      "result": "confirmed"
+    },
+    {
+      "claim": "1910.176(a): aisles and passageways kept clear, permanent aisles and passageways appropriately marked.",
+      "source_url": "https://www.law.cornell.edu/cfr/text/29/1910.176",
+      "result": "confirmed"
+    },
+    {
+      "claim": "1904.39: fatality reportable within 8 hours; in-patient hospitalization, amputation or loss of an eye within 24 hours.",
+      "source_url": "https://www.law.cornell.edu/cfr/text/29/1904.39",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OSHA maximum civil penalties for 2026 (unchanged from 2025): $16,550 per serious violation, $165,514 per willful or repeated violation, $16,550 per day failure to abate.",
+      "source_url": "https://www.dol.gov/agencies/whd/resources/penalties",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 34:6B-22 (L.2021, c.449) requires written notice before an employer uses a tracking device in a vehicle used by an employee; penalties up to $1,000 first violation and $2,500 subsequent.",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/29592/30613",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDPA (N.J.S.A. 56:8-166.4): 'consumer' excludes a person acting in a commercial or employment context; 'biometric data' excludes photographs and audio/video recordings unless generated to identify a specific individual.",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/54260/54667",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey is a one-party-consent state under the Wiretapping Act (N.J.S.A. 2A:156A-4); intercepting an in-person conversation without any party's consent can be criminal.",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Friedman v. Martinez (N.J. 2020) recognised intrusion upon seclusion for hidden cameras in restrooms and allowed claims without proof images were actually captured.",
+      "source_url": "https://www.njcourts.gov/system/files/court-opinions/2020/a_37_81_18.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC Memo GC 23-02 (Oct 31, 2022) states intent to enforce Section 7 against intrusive electronic monitoring; guidance, not a Board ruling, status under the current GC unconfirmed.",
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

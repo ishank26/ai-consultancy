@@ -1,0 +1,118 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "audit_md overall body length",
+      "problem": "Counting headings, the body runs to roughly 310-315 words (about 295 excluding headings and the closing disclaimer) - at or just over the 300-word cap in the brief. Not a factual problem, but it is tight.",
+      "fix": "Trim one sentence - e.g. shorten the third bullet on the domain record, or cut 'and most will leave' - to land clearly under 300 words."
+    },
+    {
+      "claim": "audit_md: \"Anyone who clicks the website link meets a security warning, and most will leave.\"",
+      "problem": "\"most will leave\" is a general claim about visitor behaviour with no source. The first half is directly observable; the second half is an unsourced estimate, so under the rules it should be softened or labelled.",
+      "fix": "Change to 'many visitors will leave' framed as our expectation, or drop the clause."
+    },
+    {
+      "claim": "rescue.json likely_cause: \"the old page paths return 404\"",
+      "problem": "Slightly over-general: only /services.html (plus the bare placeholder) was re-tested. It reads as if many paths were checked.",
+      "fix": "Say 'the old service page (services.html) returns 404' to match what was actually tested. Cause is otherwise correctly labelled an inference and accuses no one."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "RDAP: registered 2010-04-23, expires 2029-04-23, last changed 2024-04-09, registrar 'Tucows Domains Inc.' (IANA ID 69), nameservers NS.INMOTIONHOSTING.COM and NS2.INMOTIONHOSTING.COM, status active",
+      "source_url": "https://rdap.org/domain/ms3corp.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "https://ms3corp.com/ stops at Chrome's 'Your connection is not private' page with NET::ERR_CERT_COMMON_NAME_INVALID",
+      "source_url": "https://ms3corp.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The certificate presented is issued to *.inmotionhosting.com (Chrome: 'its security certificate is from *.inmotionhosting.com')",
+      "source_url": "https://ms3corp.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "https://www.ms3corp.com/ also stops at the same certificate warning",
+      "source_url": "https://www.ms3corp.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Plain http://ms3corp.com/ returns a bare InMotion Hosting placeholder (title 'InMotion Hosting', body reads 'HOSTNAME', InMotion logo, no business content)",
+      "source_url": "http://ms3corp.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "http://ms3corp.com/services.html returns HTTP 404 ('Error 404 - Not Found')",
+      "source_url": "http://ms3corp.com/services.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DNS resolves: ms3corp.com and www.ms3corp.com both to 173.205.126.156",
+      "source_url": "https://dns.google/resolve?name=ms3corp.com&type=A",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile: MS3 Corp. Architects, 36 Monticello Way, South River, NJ 08882, (848) 218-1744, category Architect, rated 5.0, website field ms3corp.com, shows 'Claim this business' and 'Add hours', no hours listed, limited view without review count",
+      "source_url": "https://www.google.com/maps/search/MS3+Corp+Architects+South+River+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "nybizdb.com record lists the website as http://www.ms3corp.com for Ms3 (ny) / MS3 Corp, 36 Monticello Way, South River 08882, (848) 218-1744",
+      "source_url": "https://www.nybizdb.com/company/ms3-corp-3796289/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived copy shows a live business site on 11 September 2025, including 'Contact us online via our Online form' and a services page link",
+      "source_url": "https://web.archive.org/web/20250911153103/http://ms3corp.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived 'Public Projects' page exists as described (transit/rail, airports, building projects) under ms3corp.com",
+      "source_url": "https://web.archive.org/web/20250911153103/http://ms3corp.com/publicprojects.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archive history shows 200 responses from 2021 through 11 September 2025 (captures at 2024-01-13 and 2025-09-11), with no capture after that date per this query",
+      "source_url": "https://web.archive.org/cdx/search/cdx?url=ms3corp.com&output=json&collapse=timestamp:6&from=2019&to=2026",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Directory profile describing the practice in South River, NJ",
+      "source_url": "https://cisleads.com/company/details/49535",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2005 NJDOT DBE directory entry: 'MS3 CORP, 36 MONTICELLO WAY, (848) 218-1744, (732) 613-2808, MITA AMIN, NAIC 541310 ARCHITECTURAL SERVICES, SOUTH RIVER, NJ 08882' (directory dated August 2005)",
+      "source_url": "https://www.nj.gov/transportation/business/procurement/ProfServ/documents/directory.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business identity: same firm, town and phone across sources (South River NJ, (848) 218-1744), single-office practice, not a chain or franchise",
+      "source_url": "https://www.google.com/maps/search/MS3+Corp+Architects+South+River+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business is not closed (status 'operating' with caveat)",
+      "source_url": "https://www.google.com/maps/search/MS3+Corp+Architects+South_River+NJ",
+      "result": "not found"
+    },
+    {
+      "claim": "Cause ('hosting or certificate', possibly lapsed plan / removed files / SSL not re-issued) is an inference, not stated as fact, and accuses no one",
+      "source_url": "https://rdap.org/domain/ms3corp.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Fix steps: sensible order (hosting -> certificate -> restore site -> auto-renew -> monitoring), realistic effort, no prices quoted",
+      "source_url": "https://ms3corp.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Screenshots named in the report (screenshot-https-ms3corp-desktop.png, -advanced, mobile-390, google-profile.png) show what is described",
+      "source_url": "https://ms3corp.com/",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

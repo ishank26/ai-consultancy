@@ -1,0 +1,153 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"Clients also choose among roughly 30 carrier claim and payment portals.\" (Section 2, and the email/opener logic built on it)",
+      "problem": "The cited page (https://sodeninsurance.com/report-a-claim-pay-online/) lists 44 separate carrier entries, each with its own \"Report a Claim\" and \"Pay Online\" links (AAA/CSAA through Zurich). \"Roughly 30\" understates the count by about a third. The owner can check this in seconds on his own page, so it is the one number in the audit most likely to cost credibility.",
+      "fix": "Change to \"roughly 45 carrier claim and payment portals\" or \"more than 40 of its carriers' claim and payment portals (the page lists 44)\". No other wording in Section 2 needs to change; the argument gets stronger, not weaker."
+    },
+    {
+      "claim": "\"about 700-1,700 staff hours a year (assumes 2-4 staff on certificate work, 25-45% standard)\"",
+      "problem": "The stated assumptions do not reproduce the range. 2-4 full-time staff is roughly 4,160-8,320 hours a year, and 25-45% of that is about 1,040-3,740 hours, not 700-1,700. Landing on 700-1,700 requires each of the 2-4 people to spend roughly 45-70% of their year on certificates and change requests, which is a strong assumption and is stated nowhere (for a CSR team that also quotes, answers phones and handles claims, it is unlikely). The 700 floor is therefore doing hidden work.",
+      "fix": "Add the missing share-of-time assumption and recompute, e.g. \"(assumes 2-4 staff who spend ~35% of their hours on certificates/endorsements, of which 25-45% is template-standard)\" -> roughly 370-1,300 hours, or keep 700-1,700 and state explicitly that it assumes certificate work is close to a full-time job for 1-2 people. Also label the x1.25 as an assumed benefits load."
+    },
+    {
+      "claim": "\"about 400-800 staff hours a year (assumes 8-15 routine payment/claims questions a day, 30-50% deflectable)\"",
+      "problem": "No handling-time assumption is given, and the range does not follow from the ones that are. 8-15 questions a day over ~250 business days is 2,000-3,750 contacts; 30-50% deflectable is 600-1,875 contacts. 400-800 hours therefore implies 26-40 minutes of staff time per deflected contact, which is long for a \"where do I pay\" question. At a more typical 10-15 minutes the same assumptions give roughly 150-470 hours ($4,300-$13,500), not $11,400-$22,900.",
+      "fix": "Add \"at ~10-15 minutes of staff time per contact\" and restate the range and dollars (roughly 150-470 hours / $4,300-$13,500), or keep the headline range and say plainly that it assumes ~30 minutes of handling per question."
+    },
+    {
+      "claim": "\"about 150-400 staff hours a year (assumes 50-100 shopped submissions and renewals, 2-5 hours saved each)\"",
+      "problem": "Minor internal inconsistency: 50 x 2 hours = 100 and 100 x 5 hours = 500, so the stated assumptions bracket 100-500 hours, not 150-400. The quoted figure is defensible as a conservative middle, but it cannot be traced to the parenthetical as written.",
+      "fix": "Either state the range as 100-500 hours (about $4,900-$24,500) or narrow the assumption to \"3-4 hours saved each\" so 150-400 follows directly."
+    },
+    {
+      "claim": "Email opener: \"your site lists offices in Jamesburg and Little Silver plus the John B. Wright division in Manasquan\" (same framing in the audit's opening paragraph)",
+      "problem": "The site's contact page and navigation list exactly two offices, Jamesburg and Little Silver; there is no Manasquan office listed anywhere on the site. Manasquan and John B. Wright come from the 2021 partnership press release on the site, which said the agency would have offices in Jamesburg, Shrewsbury and Manasquan (Shrewsbury being the predecessor of the current Little Silver office). \"Your site lists ... in Manasquan\" therefore slightly overstates what the site currently shows.",
+      "fix": "Reword the opener to \"your site's announcement of the John B. Wright partnership in Manasquan\" or \"your Jamesburg and Little Silver offices and the John B. Wright agency you partnered with in Manasquan\". In the audit body, keep \"plus the John B. Wright division in Manasquan\" but attribute it to the 2021 announcement rather than to the site's office list."
+    },
+    {
+      "claim": "Section heading \"2. Someone answering after 5pm\"",
+      "problem": "The heading implies nobody answers after 5pm today. The body only says the agency advertises 24-hour phone lines against 9-5 published hours, and the underlying research explicitly records after-hours handling as unknown (could be voicemail, a service, or carrier direct). Presenting an unverified gap as the premise of a heading edges toward an unsupported claim.",
+      "fix": "Retitle to something the audit can stand behind, e.g. \"2. Consistent answers after 5pm\" or \"2. After-hours questions, answered the same way\", and leave the hedged \"Now\" paragraph as it is."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Agency was established in 1925 and operates as an independent agency.",
+      "source_url": "https://sodeninsurance.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Offices in Jamesburg and Little Silver (680 Branch Ave).",
+      "source_url": "https://sodeninsurance.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "John B. Wright division, Manasquan, marine/marina specialization, March 2021.",
+      "source_url": "https://sodeninsurance.com/oliver-l-e-soden-agency-partners-with-john-b-wright-insurance",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The site lists offices in Jamesburg, Little Silver AND the John B. Wright division in Manasquan (as the email opener states).",
+      "source_url": "https://sodeninsurance.com/contact/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "\"about 180 Google reviews at 5.0\".",
+      "source_url": "https://www.trustindex.io/reviews/sodeninsurance.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"Your site says the whole Account Management department sits in Jamesburg.\"",
+      "source_url": "https://sodeninsurance.com/jamesburg-office/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Certificate requests go to the CSR24 portal (portald23.csr24.com).",
+      "source_url": "https://sodeninsurance.com/request-a-quote/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Agency advertises 24-hour phone service / 24-7 online and phone service.",
+      "source_url": "https://sodeninsurance.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Published hours are Monday-Friday 9am-5pm.",
+      "source_url": "https://sodeninsurance.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"roughly 30 carrier claim and payment portals\".",
+      "source_url": "https://sodeninsurance.com/report-a-claim-pay-online/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Quoting starts from one embedded web form with no upload step visible from outside.",
+      "source_url": "https://sodeninsurance.com/request-a-quote/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Separate pages cover contractor, HVAC/electrical/plumbing, pickleball, nonprofit and cyber liability.",
+      "source_url": "https://sodeninsurance.com/page-sitemap1.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Insurance Claims and Policy Processing Clerks, NJ median $28.76/hr (BLS 2025 data); $28.76 x 1.25 = $35.95.",
+      "source_url": "https://www.onetonline.org/link/localwages/43-9041.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Customer Service Representatives, NJ median $22.95/hr (BLS 2025 data); $22.95 x 1.25 = $28.69.",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Insurance Sales Agents, NJ median $39.25/hr (BLS 2025 data); $39.25 x 1.25 = $49.06.",
+      "source_url": "https://www.onetonline.org/link/localwages/41-3021.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dollar totals are the stated hours x the stated loaded rates (700-1,700 h -> $25,100-$61,100; 400-800 h -> $11,400-$22,900; 150-400 h -> $7,300-$19,600).",
+      "source_url": "https://sodeninsurance.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "700-1,700 hours follows from \"2-4 staff on certificate work, 25-45% standard\".",
+      "source_url": "https://www.onetonline.org/link/localwages/43-9041.00?st=NJ",
+      "result": "not found"
+    },
+    {
+      "claim": "400-800 hours follows from \"8-15 routine payment/claims questions a day, 30-50% deflectable\".",
+      "source_url": "https://sodeninsurance.com/report-a-claim-pay-online/",
+      "result": "not found"
+    },
+    {
+      "claim": "150-400 hours follows from \"50-100 shopped submissions and renewals, 2-5 hours saved each\".",
+      "source_url": "https://www.onetonline.org/link/localwages/41-3021.00?st=NJ",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Hal Soden, Sr. is a named principal of the agency (addressee of email, walk-in and closing).",
+      "source_url": "https://sodeninsurance.com/jamesburg-office/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email is three sentences and the walk-in opener one sentence, as labelled.",
+      "source_url": "https://sodeninsurance.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body is at most ~450 words.",
+      "source_url": "https://sodeninsurance.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No personal data on private individuals; the only named person is a principal listed on the agency's own site; no contact details, home addresses or personal numbers appear.",
+      "source_url": "https://sodeninsurance.com/jamesburg-office/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

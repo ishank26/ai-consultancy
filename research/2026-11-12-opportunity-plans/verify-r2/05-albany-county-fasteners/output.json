@@ -1,0 +1,72 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Phone line 866-573-0445 and email, staffed Monday-Friday 8:00AM-5:00PM EST (evidence: 'About page publishes weekday 8-5 EST hours')",
+      "problem": "The weekday hours are real but the cited URL (Contact-Us) shows only 'Hours: 8:00am - 5:00pm EST' with no weekday qualifier; 'Monday - Friday 8:00AM - 5:00PM EST' appears on the About Us page instead. The evidence text and the source_url point at different pages.",
+      "fix": "Keep the Monday-Friday wording but cite https://www.albanycountyfasteners.com/Customer-Service/About-Us/ for it, and cite Contact-Us only for the number, email and Edison address."
+    },
+    {
+      "claim": "Shopware 6 storefront current_tools evidence: 'profile tech footprint records Shopware 6 with bulk pricing configured in the platform and order history in the account portal'",
+      "problem": "That clause cites an unnamed third-party 'profile' with no URL, so the evidence as written is unverifiable. The underlying claim is true, but it is supported by the storefront itself (Shopware theme asset paths, cms-element/sw-* markup) and the homepage's 'volume pricing applied automatically' line, not by the cited profile.",
+      "fix": "Replace the 'profile tech footprint' wording with the storefront HTML and homepage evidence already used elsewhere, and drop the unlinkable profile reference."
+    },
+    {
+      "claim": "Baserow free plan gives reps 'a filterable queue with a status column and row-change history' and 'paid plans start at US$10 per user per month'",
+      "problem": "Both numbers are correct, but free-tier row change history is 14 days only, and the US$10 rate is the billed-yearly price (monthly is US$12). The plan's append-only approval log therefore cannot rest on Baserow's change history on the free plan.",
+      "fix": "Say 'US$10 per user/month billed yearly (US$12 monthly)' and state that the approval log is a separate append-only table written by the service, not Baserow's 14-day row history."
+    },
+    {
+      "claim": "Design: 'Nothing is emailed to a customer by the agent... sent from the rep's own mailbox'; component list uses Postmark inbound + a USD 16.50/month email cost line",
+      "problem": "Internally consistent on price (Postmark Pro is US$16.50 and inbound processing is Pro-only, not Basic), but the running-cost line is labelled 'Inbound and outbound email' while the design routes all customer mail through the rep's own mailbox. The outbound half of that line is not actually consumed.",
+      "fix": "Rename the cost line 'Inbound email processing (quote mailbox)' so the cost matches the architecture."
+    },
+    {
+      "claim": "Benefit range USD 13,900-41,700/year, 50-100 RFQs/week and 30 minutes per quote used throughout suggested_pricing and feasibility",
+      "problem": "These come from the internal audit and are not publicly verifiable from this folder; the arithmetic built on them (monthly USD 1,158-3,475; 65% / 22%; 54% / 18%) is correct, and the plan itself flags the inputs as unmeasured assumptions.",
+      "fix": "No change required before use; keep the assumptions labelled as they are and let the week-one timed baseline replace them, as the plan already proposes."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Albany County Fasteners advertises quotes for listed and unlisted products, USA sourcing, custom manufacturing, C of C / MTR / shop drawings, stock & release programs, piece/pack/bulk tiered pricing", "source_url": "https://www.albanycountyfasteners.com/B2B/Request-A-Quote/", "result": "confirmed"},
+    {"claim": "The company sells with no order minimum", "source_url": "https://www.albanycountyfasteners.com/", "result": "confirmed"},
+    {"claim": "Company runs 'blanket releases and stock and lock pricing'", "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/", "result": "confirmed"},
+    {"claim": "Blog states family business grown to 'over 20 employees', naming Bob Cominos as president and owner, Anna as VP, Peter as purchasing manager, Francesca as warehouse fulfillment manager, Victoria as brand/marketing/HR", "source_url": "https://www.albanycountyfasteners.com/blog/about-albany-county-fasteners/", "result": "confirmed"},
+    {"claim": "Contact page publishes 866-573-0445, email and 100 Newfield Ave, Suite D, Edison NJ 08837", "source_url": "https://www.albanycountyfasteners.com/Contact-Us/", "result": "confirmed"},
+    {"claim": "Hours are Monday-Friday 8:00AM-5:00PM EST", "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/", "result": "confirmed"},
+    {"claim": "About page describes an unnamed 'AI-powered' Warehouse Management System for real-time inventory", "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/", "result": "confirmed"},
+    {"claim": "Storefront HTML carries Tawk.to launcher via Tawk_API.toggle() in desktop header and mobile 'Live chat' link", "source_url": "https://www.albanycountyfasteners.com/", "result": "confirmed"},
+    {"claim": "Amazon storefront exists as a second sales channel", "source_url": "https://www.amazon.com/stores/AlbanyCountyFasteners/page/7B1D54CC-242B-4E4F-A20A-CE6E32705A64", "result": "confirmed"},
+    {"claim": "Shopware Admin API: OAuth client-credentials integration created under Settings > System > Integrations, access key = client_id / secret = client_secret, Bearer token, POST /api/search/{entity}, base path /api/*", "source_url": "https://developer.shopware.com/docs/guides/development/integrations-api/", "result": "confirmed"},
+    {"claim": "Shopware docs describe an 'Administrator' toggle for integration permissions (read-only scoping not documented in the quick start)", "source_url": "https://developer.shopware.com/docs/guides/development/integrations-api/", "result": "confirmed"},
+    {"claim": "Shopware advanced pricing uses Rule Builder rules with sales price, list price and scaled prices per quantity scale; customer groups set gross vs net", "source_url": "https://docs.shopware.com/en/shopware-6-en/catalogues/products", "result": "confirmed"},
+    {"claim": "Shopware Community Edition EUR 0; Rise from EUR 600/month excl. VAT; Evolve from EUR 2,400/month excl. VAT with B2B components such as quotes and purchasing approvals; Beyond custom", "source_url": "https://www.shopware.com/en/pricing/", "result": "confirmed"},
+    {"claim": "Shopware Admin API carries no separate API fee", "source_url": "https://www.shopware.com/en/pricing/", "result": "confirmed"},
+    {"claim": "Postmark Pro is US$16.50/month starting at 10,000 emails, extra US$1.30 per 1,000, inbound email processing included on Pro but not on Basic (US$15)", "source_url": "https://postmarkapp.com/pricing", "result": "confirmed"},
+    {"claim": "Postmark inbound gives each server a unique hash mailbox, POSTs parsed mail as JSON with base64 attachments to a webhook, and retries non-200 deliveries (10 retries, 1 min to 6 hours)", "source_url": "https://postmarkapp.com/developer/user-guide/inbound/parse-an-email", "result": "confirmed"},
+    {"claim": "DigitalOcean Basic Droplet 2 GiB / 1 vCPU / 50 GiB SSD / 2,000 GiB transfer costs US$12.00 per month", "source_url": "https://www.digitalocean.com/pricing/droplets", "result": "confirmed"},
+    {"claim": "Baserow free plan US$0 with 3,000 rows per workspace; paid from US$10 per user/month", "source_url": "https://baserow.io/pricing", "result": "confirmed"},
+    {"claim": "WeasyPrint is free and open source software (HTML/CSS to PDF)", "source_url": "https://weasyprint.org/", "result": "confirmed"},
+    {"claim": "OpenAI gpt-5.6-luna standard pricing is US$0.20 input / US$1.20 output / US$0.02 cached input per 1M tokens, short context", "source_url": "https://platform.openai.com/docs/pricing", "result": "confirmed"},
+    {"claim": "OpenAI documents that as of March 1, 2023 API data is not used to train or improve models unless the customer opts in, and abuse-monitoring logs are retained up to 30 days by default; the Responses API keeps application state 30 days by default", "source_url": "https://platform.openai.com/docs/guides/your-data", "result": "confirmed"},
+    {"claim": "Qotora Counter US$49 first month then US$149/month up to 150 quotes, Team US$349 (500 quotes), Network US$799 (2,000 quotes), yearly US$1,490 / US$3,490 / US$7,990 equal to ten monthly payments, setup included, unlimited users, monthly, cancel anytime", "source_url": "https://app.qotora.com/en/pricing", "result": "confirmed"},
+    {"claim": "Qotora reads email, PDF, Excel, photo, voice or text, connects read-only to one database, reproduces the quote template, traces every price to source data and requires human approval before sending", "source_url": "https://app.qotora.com/en/pricing", "result": "confirmed"},
+    {"claim": "Qotora describes non-Odoo (Sage, SAP B1, Dynamics, QuickBooks) connections as set up per client rather than certified integrations, and advertises no Shopware or C of C/MTR feature", "source_url": "https://app.qotora.com/en/pricing", "result": "confirmed"},
+    {"claim": "QuoteWerks Desktop Standard US$15 / Professional US$21 / Corporate US$30 billed monthly, concurrent-usage licensing, one-time upfront options, Professional adds ODBC links, Accelerated Implementation Service US$299 per session", "source_url": "https://desktop.quotewerks.com/pricelist.asp", "result": "confirmed"},
+    {"claim": "AY Automate: from $3K a month, cancel anytime, 90-day replacement guarantee, reads RFQs from email/PDF/portal, prices from the client's own lists, estimator approves, writes back to ERP/CRM, and states it does not claim a quoting build in its client list", "source_url": "https://www.ayautomate.com/services/ai-quoting-bidding-automation", "result": "confirmed"},
+    {"claim": "Conexiom B2B quote automation page publishes no pricing and shows no Shopware support", "source_url": "https://conexiom.com/glossary/what-is-b2b-quote-automation", "result": "confirmed"},
+    {"claim": "NJ order clerk (43-4151.00) median US$46,270/year and US$22.25/hour, BLS 2025 wage data via O*NET", "source_url": "https://www.onetonline.org/link/localwages/43-4151.00?st=NJ", "result": "confirmed"},
+    {"claim": "Loaded wage arithmetic: 46,270 x 1.25 = US$57,837.50/year, about US$4,820/month, US$27.81/hour", "source_url": "https://www.onetonline.org/link/localwages/43-4151.00?st=NJ", "result": "confirmed"},
+    {"claim": "Inference cost arithmetic: 325 x 25,000 tokens = 8.125M at US$0.20/1M = US$1.63; 325 x 3,000 = 0.975M at US$1.20/1M = US$1.17; total US$2.80", "source_url": "https://platform.openai.com/docs/pricing", "result": "confirmed"},
+    {"claim": "Running cost totals: US$31.30/month on computed base (2.80 + 12.00 + 16.50) and about US$48.50 with a US$20 token envelope", "source_url": "https://www.digitalocean.com/pricing/droplets", "result": "confirmed"},
+    {"claim": "FQA makes it a violation to knowingly falsify or misrepresent the record of conformance, the lot's characteristics or markings, or the manufacturer's insignia (15 U.S.C. 5401 et seq.)", "source_url": "https://www.nist.gov/standardsgov/compliance-faqs-fastener-quality-act-fqa", "result": "confirmed"},
+    {"claim": "DFARS 252.225-7009 (JAN 2023) paragraph (b) requires specialty metals melted or produced in the US, its outlying areas or a qualifying country, and (c)(2)(i)(D) excludes COTS fasteners from the COTS exception when incorporated into COTS end items, subsystems, assemblies or components", "source_url": "https://www.acquisition.gov/dfars/252.225-7009-restriction-acquisition-certain-articles-containing-specialty-metals.", "result": "confirmed"},
+    {"claim": "22 CFR 122.1(a) requires DDTC registration for anyone in the US in the business of manufacturing, exporting or temporarily importing defense articles, with 'only one occasion' triggering it and 122.1(b) exemptions including businesses confined to unclassified technical data", "source_url": "https://www.law.cornell.edu/cfr/text/22/122.1", "result": "confirmed"},
+    {"claim": "22 CFR 120.50(a)(2) and (b) treat release of technical data to a foreign person in the US as a deemed export to all countries where that person holds or held citizenship or permanent residency", "source_url": "https://www.law.cornell.edu/cfr/text/22/120.50", "result": "confirmed"},
+    {"claim": "OWASP Top 10 for LLM Applications LLM01:2025 is Prompt Injection", "source_url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/", "result": "confirmed"},
+    {"claim": "NJ Data Privacy Act (P.L.2023 c.266, C.56:8-166.4 et seq.) applies at 100,000 consumers, or 25,000 consumers plus revenue or a price discount from selling personal data; 'consumer' excludes persons acting in a commercial or employment context; effective the 365th day after enactment, approved January 16, 2024", "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.PDF", "result": "confirmed"},
+    {"claim": "Suggested pricing arithmetic: year one US$14,000 (5,000 setup + 9,000 care, pilot credited); Qotora Team year about US$4,188; ratio about 3.3x; US$750 is about one-sixth of a US$4,820/month loaded hire; 65% / 22% and 54% / 18% of the monthly and annual low/high benefit", "source_url": "https://app.qotora.com/en/pricing", "result": "confirmed"},
+    {"claim": "Feasibility scores (technical 3/5, commercial 4/5) and weeks_to_pilot 10-12 weeks are labelled INFERENCE and consistent with a documented Shopware API path plus an unconfirmed WMS/stock source", "source_url": "https://developer.shopware.com/docs/guides/development/integrations-api/", "result": "confirmed"}
+  ],
+  "confidence": "High"
+}

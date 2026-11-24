@@ -1,0 +1,57 @@
+[
+ {
+  "claim": "Smith.ai Pro: \"$510/mo for 300\" calls",
+  "problem": "Misstated tier price. The vendor pricing page's own structured data lists Pro - 300 calls/mo at $500 (and $1.67/call, i.e. ~$501); the rate table shows -17% off $2.00/call. $510 does not appear anywhere on the page.",
+  "fix": "Change to $500/mo for 300 calls ($1.67/call)."
+ },
+ {
+  "claim": "Smith.ai Enterprise: \"$835/mo for 500\" calls",
+  "problem": "Misstated tier price. The page lists Enterprise - 500 calls/mo at $800 ($1.50/call, 10% volume discount); $835 applies no discount and appears nowhere on the page.",
+  "fix": "Change to $800/mo for 500 calls ($1.50/call)."
+ },
+ {
+  "claim": "\"11 certified trial attorneys\" (feasibility reasoning)",
+  "problem": "Contradicted by the firm's own site. The Spanish homepage says the firm has 11 abogados especializados en litigios civiles (11 attorneys specialising in civil litigation) and that two of them hold National Board of Trial Advocacy certification in truck-accident law. Neither page supports \"11 certified trial attorneys\".",
+  "fix": "Reword to \"11 civil-litigation attorneys, two NBTA-certified in truck-accident law\" and cite https://ramlawnj.com/es/."
+ },
+ {
+  "claim": "Ruby cost floor of \"$3.60-$5.00 per live-answering minute implied by Ruby's plan ladder\"",
+  "problem": "Arithmetic misstated at the low end. $1,725/500 min = $3.45/min, not $3.60; $3.60 is the 200-minute tier ($720/200). Range as given is not the min-max of the ladder.",
+  "fix": "Use $3.45-$5.00/min, or state the tier each figure comes from."
+ },
+ {
+  "claim": "Voice-agent all-in cost basis: \"$0.06/min (voice engine $0.05 + local inbound telephony $0.0032 + LLM ~$0.0064)\"",
+  "problem": "Total matches the vendor's estimate ($0.06/min), but the telephony component omits the $0.002/min Voice API platform fee. Telnyx's own FAQ on the same page says inbound telephony is SIP trunking from $0.0032/min PLUS a $0.002/min Voice API platform fee, i.e. ~$0.0052/min, which puts the honest all-in near $0.062/min.",
+  "fix": "Show telephony as $0.0052/min ($0.002 platform + $0.0032 SIP) and restate all-in as ~$0.06-$0.062/min; the $108/$180 monthly figures then become ~$112/$186."
+ },
+ {
+  "claim": "Gravity Forms Webhooks is treated as already available at no incremental cost (\"already on the firm's WordPress site\")",
+  "problem": "The add-on exists in official docs (confirmed), and the page does not list an add-on price - both correct. But the page also states the Webhooks Add-On is included only with Gravity Forms Elite and Nonprofit licences. The plan neither states that licensing requirement nor flags a possible Elite upgrade cost, and installation on ramlawnj.com is unverified (only the core Gravity Forms script is present).",
+  "fix": "Add: Webhooks requires an Elite (or Nonprofit) licence, so confirm the firm's tier and price an upgrade if it is Basic/Pro; drop \"already on the firm's site\" for the add-on and mark it an open item."
+ },
+ {
+  "claim": "NJ Supreme Court AI guidelines oversight \"extend to ... nonlawyer staff and outside providers\"",
+  "problem": "Partly unsupported. The Jan 24, 2024 notice says oversight duties under RPC 5.1/5.3 apply to other lawyers, nonlawyer staff, and law students/interns, and that this \"extends to ensuring the ethical use of AI by other lawyers and nonlawyer staff\". \"Outside providers\" is not in the text.",
+  "fix": "Quote the notice's actual formulation and present the outside-provider point as an inference from RPC 5.3 and the firm's confidentiality duty."
+ },
+ {
+  "claim": "Lawbrokr: \"multilingual workflows at the top tier\"",
+  "problem": "Minor misstatement. On lawbrokr.com/pricing, Multilingual is listed inside the Pro tier (third of four) and again as a priced add-on, not only at the top (Scale) tier.",
+  "fix": "Say \"multilingual flows from the Pro tier and as an add-on\"."
+ },
+ {
+  "claim": "\"The firm publishes only two intake channels, a phone number and a web form\"",
+  "problem": "Internally inconsistent with the plan's own tools list: the contact page publishes contact@ram.law as a third channel (the plan lists that mailbox separately).",
+  "fix": "Say \"two live intake channels plus a shared mailbox\"."
+ },
+ {
+  "claim": "Feasibility ratings (technical 4/5, commercial 3/5) and founder-day effort estimates",
+  "problem": "Not labelled as inference, although both are judgement calls. suggested_pricing is correctly labelled INFERENCE, but the scores, the 18-23 total founder_days and the 7-8 week timeline are presented unlabelled.",
+  "fix": "Mark the scores and the founder_days/weeks estimates as inference in the same way suggested_pricing is."
+ },
+ {
+  "claim": "Cost of outbound SMS \"roughly $0.01 per message; ~$3/mo at 300 messages\"",
+  "problem": "Overstated at the low end of the carrier range: 300 x ($0.004 Telnyx + $0.0035-$0.005 carrier) = $2.25-$2.70/mo, not $3. Immaterial to the P&L but it is a calculation the plan presents as derived from the rate card.",
+  "fix": "Say \"~$0.008-$0.009 per part, i.e. ~$2.40-$2.70/mo at 300 messages\"."
+ }
+]

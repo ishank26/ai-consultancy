@@ -1,0 +1,86 @@
+{
+  "business": "Berk's Warehouse (Berk's Warehousing & Transportation)",
+  "industry": "logistics-3pl",
+  "town": "Sayreville, NJ",
+  "opportunities": [
+    {
+      "title": "Inquiry-to-quote agent for a phone-only, named-person intake funnel",
+      "capability": "A",
+      "problem": "Every new piece of business enters through two different phone numbers, a generic cforms form, or the literal instruction 'Ask for Michael or Matthew', with no quote, booking, pricing or response-time promise published anywhere. The person who would answer is also the person running customer onboarding, business development and the entire IT department, so inbound shipper inquiries compete directly with onboarding and systems work, and anything arriving after floor hours waits.",
+      "evidence": [
+        "Contact page lists two conflicting numbers, (732) 254-4777 in the header and (732) 254-9955 in the body, plus 'Ask for Michael or Matthew' as the routing method; the only digital intake is a generic cforms form with no qualification or confirmation described — https://www.berkswarehouse.com/contact",
+        "Site has no online quote, booking, scheduling, chat, pricing or portal-login tool; the contact form is the old 'cforms' plugin with no CRM or marketing automation attached — https://www.berkswarehouse.com/",
+        "Matthew Gross (joined 2020) handles customer onboarding, business development and the IT department — three functions on one desk — https://www.berkswarehouse.com/about",
+        "No business hours, holiday schedule or after-hours coverage is published; the call to action is 'call today' — https://www.berkswarehouse.com/contact",
+        "Company markets itself on advance scheduling and on-time, on-budget processing versus competitors' 'crisis-mode' staffing, so quote and capacity commitments are the product promise — https://www.berkswarehouse.com/",
+        "Distribution managers in NJ median $130,610/yr and planner/expediting clerks $62,710/yr, i.e. the hours being consumed are expensive ones — https://www.onetonline.org/link/localwages/11-3071.00?st=NJ"
+      ],
+      "agent_design": "Trigger: inbound email/form submission, transcribed voicemail, or a staff-entered note. The agent extracts a shipper profile (SKU count, carton vs pallet vs piece volume, inbound origins, target site from the seven-facility list, retailer channels, EDI/portal requirements, seasonality), checks a site capability-and-rate matrix maintained by Berk's, drafts a quote with stated assumptions and a short list of unknowns, drafts the onboarding checklist (EDI map, retailer portal access, VAS spec), and places both in an approval queue. It then owns the follow-up cadence (day 2, day 5, day 10 nudges) and posts a weekly stalled-inquiry digest by site. A human (Matthew for commercial, Michael for pricing exceptions) approves every price before anything leaves the building; the agent never sends a rate card or sets capacity on its own.",
+      "why_not_DIY": "The quote depends on per-site capability, real capacity against existing clients, a private rate structure and per-client EDI/retailer setup requirements that live in an in-house WMS and in email. A chatbot subscription cannot read the WMS, hold multi-day state across a 10-day follow-up cycle, write to a CRM or calendar, or enforce that no rate leaves without approval. Customer and rate data are commercially confidential, so it needs a private deployment with per-client isolation rather than a public model endpoint.",
+      "impact_estimate": {
+        "range": "2-6 hours/week of principal/BD drafting and triage time recovered, worth about $3,000-$9,400/yr valued at the NJ clerical median of $30.15/hr; the material benefit is same-day acknowledgement and a sub-24-hour draft quote instead of a phone-tag cycle, which is unquantified here",
+        "assumptions": "Assumes roughly 5-15 inbound inquiries per week (not published; inferred from a seven-site sales motion with no marketing content) and 30-60 minutes of senior time per qualified inquiry for first response plus quote draft. Claimed value uses the SOC 43-5061 NJ median as a deliberately conservative stand-in for a principal's hour, not a loaded manager cost. Excludes win-rate effect, which cannot be estimated from public data.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: ingest 6-12 months of past inquiry emails and form submissions, reconstruct the rate/capability matrix from them and from two working sessions with Matthew, and stand up an intake inbox plus approval-queue UI. Deliverable is the agent drafting 20 real historical quotes, scored line-by-line against what Berk's actually sent, plus live handling of new inquiries in approval-only mode and a weekly stalled-inquiry digest."
+    },
+    {
+      "title": "Retailer-compliance and EDI exception agent with chargeback evidence packs",
+      "capability": "A",
+      "problem": "Order flow is document-heavy and configured per client: files by upload, Commerce Hub, SPS Commerce, B2B Gateway and retailer-specific portals, with most orders promised inside 24 hours and multiple UPS/FedEx and LTL pickups per day. Any SKU/UPC mismatch, bad UCC label, late ASN or routing-guide miss against a big-box scorecard turns into a chargeback that someone has to research and dispute by hand, and the company already sells SKU/UPC verification and EDI processing as paid labour.",
+      "evidence": [
+        "Orders arrive by file upload, third-party integration (Commerce Hub, SPS Commerce, B2B Gateway) or retailer portals, each set up individually per client, with most orders processed within 24 hours — https://www.berkswarehouse.com/services/ecommerce/",
+        "Value-added services explicitly include EDI processing, SKU/UPC verification and application, QC inspections and pick ticket/invoice/UCC label printing — i.e. structured, rule-based exception work — https://www.berkswarehouse.com/services/value-added-services/",
+        "Retailer relationships include Bed Bath and Beyond.com, Overstock.com, Kohls.com, Costco.com and Amazon.com, all of which run compliance scorecards and deductions — https://www.berkswarehouse.com/services/ecommerce/",
+        "Core clerk task in this occupation is conferring with carriers and trading partners to rectify damages, shortages or nonconformance — exactly the exception loop described — https://www.onetonline.org/link/summary/43-5071.00",
+        "Shipping cadence is time-boxed (multiple parcel pickups daily, daily LTL, expedited offered), so an unresolved exception misses a pickup, not just a report — https://www.berkswarehouse.com/services/ecommerce/",
+        "O*NET work context for shipping/receiving clerks shows only 'some freedom' to make decisions (63%) with high responsibility for others' safety, so this workflow must stay human-approved — https://www.onetonline.org/link/summary/43-5071.00"
+      ],
+      "agent_design": "Trigger: scheduled poll of the EDI drop/file upload folder and portal exports, plus a real-time webhook on new orders and on any scan exception from the in-house WMS. Agents: (1) parse each partner's order/acknowledgement/ship-notice/invoice set and validate against that retailer's routing and labeling rules; (2) pre-pick SKU/UPC and pack-configuration check that blocks or flags a bad line before a picker touches it; (3) monitor acknowledged ship deadlines against pickup times and raise a same-day alert; (4) when a deduction or nonconformance notice lands, assemble an evidence pack (order, scan log, packing list, BOL, POD, label proof) and draft the dispute. Human approval gates: every outbound message to a trading partner, every dispute filing, and every case above a dollar threshold are queued for a named clerk or Matthew.",
+      "why_not_DIY": "This needs read and write access to an in-house WMS plus several trading-partner formats, per-partner rule maps that change without notice, deterministic deadline logic and an audit trail that can be shown to a retailer, all under per-client data isolation. Generic AI tooling cannot touch the WMS, cannot guarantee a 24-hour turnaround, and gives no defensible record of what was checked when. This is integration and reliability engineering, not prompting.",
+      "impact_estimate": {
+        "range": "15-25 clerk hours/week removed across the network (roughly $17,000-$28,500/yr at the NJ median of $21.85/hr), plus partial recovery of retailer chargebacks; recovery value is left unquantified because no chargeback rate for this firm is public",
+        "assumptions": "Assumes the network processes on the order of a few thousand order lines a week and that 10-25% of them surface an exception requiring a clerk touch of 5-15 minutes. Assumes two-to-four clerk-equivalents' worth of time is currently spread across sites, inferred from the advertised VAS list rather than from headcount (employee count is not published). Wage figure is straight-time base pay and excludes overtime and shift differentials, so it understates peak-season cost.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-5071.00?st=NJ"
+      },
+      "complexity": "High",
+      "pilot_scope": "2-4 weeks on one retailer channel and one client: build the partner rule map, stand up an exception queue with the four validations, run it in shadow mode alongside the current manual process, and deliver a reconciliation showing exceptions the agent caught versus what staff caught, plus three completed chargeback evidence packs and a measured pre-pick catch rate."
+    },
+    {
+      "title": "Per-client knowledge agent for onboarding, VAS specs and site SOPs",
+      "capability": "C",
+      "problem": "Seven facilities in six states are coordinated from Sayreville, each client has its own order channel, VAS spec and retailer requirements, onboarding is owned by one person, and there is no careers, training or resource page anywhere on the site, so procedural knowledge almost certainly lives in documents and in individual heads on the floor. Seasonal apparel and toy volume makes the gap worst exactly when the most new people are on the floor.",
+      "evidence": [
+        "Order intake and per-client setup vary by channel (file upload, Commerce Hub, SPS Commerce, B2B Gateway, retailer portals), so procedures are client-specific rather than uniform — https://www.berkswarehouse.com/services/ecommerce/",
+        "Value-added work spans ticketing/marking/bundling, QC inspection, SKU/UPC verification, hanger/polybag work and label printing — many small specs that a picker or inspector must get right per client — https://www.berkswarehouse.com/services/value-added-services/",
+        "Seven facilities (NJ, PA, VA, GA, TX, CA) all coordinated from the Sayreville headquarters, with onboarding and IT owned by one second-generation leader — https://www.berkswarehouse.com/location/ and https://www.berkswarehouse.com/about",
+        "No careers, news, resource, blog or training pages exist in the sitemap, and site content dates from 2012-2015, so no self-serve operational reference is published — https://www.berkswarehouse.com/sitemap.xml",
+        "Verticals are apparel, textiles/hospitality, electronics, perfume, toys and appliances, a mix with strong Q4 and back-to-school peaks that implies recurring seasonal ramp — https://www.berkswarehouse.com/verticals/",
+        "Best available measured analogue: a generative-AI assistant for 5,179 support agents raised issues resolved per hour 14% on average and 34% for novice/low-skilled workers, published in the Quarterly Journal of Economics (2025) — directional support only, it is a support-desk study, not a warehouse study — https://www.nber.org/papers/w31161"
+      ],
+      "agent_design": "Trigger: a question from a supervisor or floor worker on a tablet/phone, or an onboarding task being opened. The agent ingests per-client SOPs, VAS spec sheets, retailer routing guides, onboarding checklists and prior onboarding email threads, then answers with a citation to the exact document and section, scoped by client and site so one client's specs are never retrievable from another's session. Every 'I don't know' escalates to Matthew or the relevant site lead and is logged as a documentation gap; a monthly drift report lists SOPs that contradict observed practice or have not been touched in a year. The agent proposes drafts for missing SOPs but a human owns and approves every document version; it never edits a spec or a work instruction on its own.",
+      "why_not_DIY": "The hard parts are tenancy and provenance: client A's routing guide and pricing-adjacent specs must be inaccessible to client B's session, access must be scoped by site and role, every answer must cite the source clause an auditor or client could check, and scanned PDFs and email threads have to be parsed. A subscription chatbot cannot enforce per-client isolation, has no citation discipline, and cannot be pointed at a shared drive of client documents without leaking them.",
+      "impact_estimate": {
+        "range": "3-8 supervisor/onboarding hours/week recovered, roughly $4,700-$12,500/yr at the NJ median of $30.15/hr; faster seasonal ramp and fewer spec errors are real but not quantified",
+        "assumptions": "Assumes one to three onboarding or spec questions per site per day currently landed on a supervisor, at 3-8 minutes each, and that about half can be answered from documents once those documents exist. Uses SOC 43-5061 NJ median as a proxy for supervisor time (actual NJ distribution managers median $130,610 is far higher, so this is conservative). The 34% novice gain from the QJE support-desk study is treated as directional only and is not used to size the range.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks at the Sayreville site with one client and one VAS process: collect 50-100 documents and email threads, build the scoped retrieval layer with citations, deploy a floor tablet UI at two workstations, and report time-to-answer, escalation rate, unanswered-question list (the documentation backlog) and a first pass at three missing SOPs."
+    }
+  ],
+  "lead_score": {
+    "pain": 19,
+    "fit": 15,
+    "ability_to_pay": 13,
+    "ease": 10,
+    "strategic": 13,
+    "total": 70,
+    "rationale": "Pain (19/30): the operating signals are concrete and mutually reinforcing — two phone numbers on one page, 'ask for Michael or Matthew', a 2014-era WordPress site with 2012-2015 content, no quote/booking/training page, and one leader holding onboarding, BD and all of IT. But the pain is inferred from the company's own front door rather than from customer voice: no reviews, job postings, news or headcount could be retrieved, so we cannot show that inquiries are actually being lost. Fit (15/20): three of the firm's needs map cleanly onto A, C and D, and the in-house WMS plus existing EDI/portal integrations are exactly the systems an agent should sit in front of; E is plausible (QC and SKU/UPC verification) but not a first sale. Ability to pay (13/20): seven sites, claimed 2M sq ft and big-box retail clients imply real budget, but size, revenue and client count are unpublished and the claim itself is internally contradicted (2,000,000 vs 750,000 sq ft), while Middlesex County warehousing shows employment down 1.9% with wages up 7.5% — margin pressure that cuts both ways, willing to buy productivity but price-sensitive. Ease (10/15): a family business with two decision-makers and a tech-owning second generation is a short path to yes, but the proprietary WMS integration is unassessed, documents are likely undigitized, and a company that still runs WordPress 3.8.10 may be slow on procurement and security review. Strategic (13/15): the EDI/retailer-compliance and phone-only-intake patterns repeat across the 251 NAICS-493 warehousing establishments in Middlesex County alone, so one build becomes a template.",
+    "sub_scores_note": "Scored against the industry brief's wage and automation evidence; the absence of any 3PL-specific measured automation study (noted in industry data_gaps) caps how high pain evidence can go."
+  },
+  "best_evidence_signal": "The contact page publishes two different phone numbers and tells prospects to 'Ask for Michael or Matthew' as the entire routing mechanism — https://www.berkswarehouse.com/contact",
+  "suggested_channel": "phone",
+  "evidence_thin": true
+}

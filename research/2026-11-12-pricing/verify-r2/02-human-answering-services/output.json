@@ -1,0 +1,73 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "buyer_reported_costs[2]: \"About $900/month for roughly 300 minutes plus chat\" dated year \"2025\"",
+      "problem": "The cited thread (r/LawFirm, id 1eow2bg) appears to date from August 2024, not 2025 — a web search summary of that thread describes it as an August 2024 discussion, and Reddit's base-36 thread id (1eo...) sits in the mid-2024 range (the brief's own 2025 threads use ids such as 1m5o14c). I could not open reddit.com to read the thread directly (fetch failed), so the year is unconfirmed either way, but the only evidence available points to 2024.",
+      "fix": "Change the year to 2024 (or \"2024, per thread date; not verified — Reddit blocked\") and, if a 2025 recency signal is needed, drop this item from any recency-weighted reasoning."
+    },
+    {
+      "claim": "implications_for_consultancy[0]: the accepted band is \"roughly $250-$500/month\" because \"four independent national vendors price their entry human plans into that window - Ruby $250/$395, Abby Starter/Essential $164/$329, AnswerConnect $350/$395 and PATLive $189-$479\"",
+      "problem": "Four of the ten prices cited to justify the window fall below its $250 lower bound (Abby $164, PATLive $189; PATLive $479 is inside), so the sourced prices support a band of about $164-$500, not $250-$500. The stated window contradicts the brief's own figures even though it is labeled inference.",
+      "fix": "Either widen the band to roughly $165-$500 (and keep the \"pilot at $300-$500 reads as normal\" conclusion, which still holds), or rephrase to \"entry human plans cluster at roughly $165-$500, with national brands at $250-$395\"."
+    },
+    {
+      "claim": "implications_for_consultancy[4]: \"those tiers are message-only or AI-with-backup, they exclude transfers, intake and integrations\" (about the $15-$55 self-serve tiers)",
+      "problem": "Contradicted by the brief's own sourced data: AnsweringService.com's \"Answer\" tier at $40/month on the same cited page includes warm call transfers and unlimited contacts, so \"they exclude transfers\" is false for the $40 tier (CRM/web-form entry and appointment setting are indeed confined to the $55 MyAssistant tier).",
+      "fix": "Narrow the claim: \"the $15 and $25 tiers are message-only; transfers start at $40, and lead entry into CRMs/appointment setting only appear at $55\" — the conclusion (do not compete there) survives unchanged."
+    },
+    {
+      "claim": "what_is_included_vs_extra: \"AnswerConnect bills whole minutes rounded up ... hold, transfer/patch time and after-call work count toward billed time (rounding per vendor page, included-activity detail per third-party tracker)\" — source_url given as https://www.answerconnect.com/plans-direct",
+      "problem": "The vendor page confirms only the full-minute rounding and the first-30-short-interactions exemption. The hold/transfer/after-call-work billing detail is not on that page; the brief itself says it comes from a third-party tracker, but no URL for that tracker is given, so the most consequential part of the claim (what counts as billable time) is not traceable from the source_url supplied.",
+      "fix": "Add the tracker URL (https://www.answeringprices.com/answerconnect/pricing/, which states hold, transfers/patches and after-call work are billed, citing answerconnect.com/termsofservice and the vendor billing guide) alongside the vendor page, or cite AnswerConnect's own terms/help-centre page directly."
+    },
+    {
+      "claim": "caveats[0]: \"a third-party tracker notes Ruby raised prices in December 2024 and again in December 2025\"",
+      "problem": "No source_url or tracker name is given for this repricing claim, and I did not verify it on any page; it is presented in the caveat list without attribution.",
+      "fix": "Name and link the tracker, or soften to \"Ruby's page assets are dated December 2025, which suggests a recent repricing that I did not confirm\"."
+    },
+    {
+      "claim": "implications_for_consultancy[2]: a $150-$400/month managed fee sits \"on top of whatever platform plan the client buys\" and does \"not push the client past what they currently pay\" (citing buyer-reported $450-$900/month)",
+      "problem": "Arithmetic tension rather than a price error: a $350-$500 platform plan plus a $150-$400 fee lands at roughly $500-$900, i.e. at or above the top of the cited buyer-reported range and above the $225-$450 reports. As worded the sentence overstates the headroom.",
+      "fix": "Say the fee keeps a mid-tier client at roughly $500-$800/month, near the upper end of reported spend, rather than \"without pushing past\" it."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Ruby 50 min = $250/month, 100 min = $395, 200 min = $720 (most popular), 500 min = $1,725", "source_url": "https://www.ruby.com/plans-and-pricing/", "result": "confirmed"},
+    {"claim": "Ruby chat plans: 10 chats $143, 30 chats $335, 50 chats $520; bundled chat add-on $115 / $268 / $416 (20% saving)", "source_url": "https://www.ruby.com/plans-and-pricing/", "result": "confirmed"},
+    {"claim": "Ruby: no activation/onboarding/setup fees, identical feature set across tiers, optional AI enhancements at no extra cost, 5000+ integrations", "source_url": "https://www.ruby.com/plans-and-pricing/", "result": "confirmed"},
+    {"claim": "Ruby rounds to 30-second increments, includes hold time, excludes time after transfer, overage at the plan's predetermined rate, no rollover, base fee in advance and overage in arrears", "source_url": "https://assets.ruby.com/hubfs/Downloadable%20Assets/Briefs%20and%20Datasheets/Ruby%20billing%20FAQs.pdf", "result": "confirmed"},
+    {"claim": "Smith.ai Starter 30 calls $300 (overage $11.50), Basic 90 calls $810 ($10.50), Pro 300 calls $2,100 ($8.50), Enterprise custom", "source_url": "https://smith.ai/pricing/receptionists", "result": "confirmed"},
+    {"claim": "Smith.ai: no setup fees, month-to-month, bills through end of current cycle on cancellation, 30-day money-back guarantee up to $1,000 excluding overage, 10% discount for 12 months, 24/7 costs the same", "source_url": "https://smith.ai/pricing/receptionists", "result": "confirmed"},
+    {"claim": "Smith.ai add-ons: booking $1.50/call, Spanish line $1.00, payments $1.00, conflict checks $0.50, complex routing $1.50, extended intake $1.50 (+$0.25/question), recording $0.25, extra CRM $0.50, insurance of $15/mo extra transfer destinations, $10 caller ID, $5/mo tracking numbers", "source_url": "https://smith.ai/pricing/receptionists", "result": "confirmed"},
+    {"claim": "AnswerConnect 200 min $350 (+$49.99 setup, $2.50 overage)", "source_url": "https://www.answerconnect.com/plans-direct", "result": "confirmed"},
+    {"claim": "AnswerConnect 300 min $395, no setup fee, 'Best value', customizable scripting + Live Chat, $1.85 overage", "source_url": "https://www.answerconnect.com/plans-direct", "result": "confirmed"},
+    {"claim": "AnswerConnect 400 min $575 +$49.99; 550/$795; 750/$1,050; 950/$1,325; 1,200/$1,625; 1,500/$2,025; 2,500/$3,375; 5,000/$6,650; 100,000/$132,950", "source_url": "https://www.answerconnect.com/plans-direct", "result": "confirmed"},
+    {"claim": "AnswerConnect: whole minutes rounded up, first 30 interactions under 30 seconds free, FAQ 'Am I locked into a plan/contract? Not at all!'", "source_url": "https://www.answerconnect.com/plans-direct", "result": "confirmed"},
+    {"claim": "AnswerConnect 90-calendar-day minimum then written notice, partial month billed in full (attributed in the brief to a third-party reviewer of its terms)", "source_url": "https://www.answeringprices.com/answerconnect/pricing/", "result": "confirmed"},
+    {"claim": "Abby Connect $164/50, $329/100, $599/200, $1,380/500 Abby Minutes; Enterprise custom", "source_url": "https://www.abby.com/pricing/", "result": "confirmed"},
+    {"claim": "Abby: overage at the plan's Abby Minute rate, no setup fee, free trial, month-to-month, 1 Abby Minute = 2 AI minutes, Professional example 200 human / 100 human+200 AI / 400 AI", "source_url": "https://www.abby.com/pricing/", "result": "confirmed"},
+    {"claim": "PATLive $49/mo + $2.99/min; $99/50 ($2.29); $189/100 ($2.09); $479/300 ($1.89); $759/500 ($1.79); $1,499/1,000 ($1.69)", "source_url": "https://www.answeringprices.com/patlive/pricing/", "result": "confirmed"},
+    {"claim": "PATLive: month-to-month, cancel with no notice period, 14-day trial auto-converts, prices exclude taxes and fees, package minutes do not roll over, six-second increments after a one-minute minimum", "source_url": "https://www.answeringprices.com/patlive/pricing/", "result": "confirmed"},
+    {"claim": "PATLive's own pricing page still renders only FAQ text, not plan prices", "source_url": "https://www.patlive.com/pricing/", "result": "confirmed"},
+    {"claim": "PATLive free phone system: 1 number, unlimited users, unlimited automated minutes on receptionist calls, 1,000 automated min/month otherwise, 100 texts, $0.02 per extra minute/text, $5/mo per extra number, one-time $50 regulatory review", "source_url": "https://www.patlive.com/pricing/", "result": "confirmed"},
+    {"claim": "MAP $49/0 min ($1.37), $179/125 ($1.30), $339/250 ($1.28), $649/500 ($1.28); no long-term contracts; free trial without credit card; custom scripts add fees", "source_url": "https://www.mapcommunications.com/pricing/", "result": "confirmed"},
+    {"claim": "Moneypenny live $165/50 ($2.85), $265/100 ($2.65), $422/200 ($2.39), $985/500 ($2.09); AI $99/50, $199/100, $435/250, $775/500; no contract, 30 days' notice", "source_url": "https://www.voicenation.com/pricing/", "result": "confirmed"},
+    {"claim": "voicenation.com/pricing now serves the Moneypenny page; figures rendered as 'Original price:'", "source_url": "https://www.voicenation.com/pricing/", "result": "confirmed"},
+    {"claim": "AnsweringService.com from $25 / $40 / $55 / $15; no setup fee on the first two tiers, complexity-based setup on MyAssistant; AI tier $1.20 per excess call; '* New customers only'", "source_url": "https://www.answeringservice.com/pricing/", "result": "confirmed"},
+    {"claim": "$40 'Answer' tier includes warm call transfers (contradicts the brief's implication #5 that the cheap tiers exclude transfers)", "source_url": "https://www.answeringservice.com/pricing/", "result": "contradicted"},
+    {"claim": "AnswerFirst $30/month base, $1.60-$1.95/minute, true one-second billing, no nights/weekends/holiday fees, $3/mo per extra forwarding number, possible one-time charge for complex accounts, 30-day risk-free", "source_url": "https://answerfirst.com/pricing/", "result": "confirmed"},
+    {"claim": "Responsive Answering $29/0 min ($1.25), $149/125 ($1.20), $299/250 ($1.18), $549/500 ($1.15), one-time $75 setup on every plan, all activity rounded to the whole next minute, billed monthly", "source_url": "https://responsiveanswering.com/pricing/", "result": "confirmed"},
+    {"claim": "Lancaster $49/30 ($1.39), $109/80 ($1.29), $189/160 ($1.19), $339/300 ($1.09), $519/500 ($1.04), $995/1,000 ($0.99), $2,395/2,500 ($0.95), per billing period, no long-term contracts, call patching $0.15/min", "source_url": "https://lancasteranswering.com/pricing", "result": "confirmed"},
+    {"claim": "AnswerAide $79/40 ($1.59), $199/140 ($1.49), $579/450 ($1.39), $1,149/1,000 ($1.29), $2,579/2,500 ($1.07), $4,999/5,000 ($1.03), $9,499/10,000 ($0.99\u00a2)", "source_url": "https://answeraide.com/locations/philadelphia-answering-service/", "result": "confirmed"},
+    {"claim": "buyer_reported_costs[0]-[1]: $225/month Answering Legal and $440/month Lex Reception, 2025", "source_url": "https://www.reddit.com/r/Lawyertalk/comments/1m5o14c/what_answering_service_do_you_use_do_you_like_it/", "result": "could not open"},
+    {"claim": "buyer_reported_costs[2]: about $900/month for roughly 300 minutes plus chat, year given as 2025", "source_url": "https://www.reddit.com/r/LawFirm/comments/1eow2bg/answering_service_advice_needed/", "result": "could not open"},
+    {"claim": "AnswerFirst Trustpilot review (Sept 2025) mentioning 'our bills were higher than we expected ($8k/$9k per month)'", "source_url": "https://commsadvisor.com/answering-service-real-cost/", "result": "confirmed"},
+    {"claim": "Trade-article complaints: bill rarely matches plan price, overage roughly $1.75 to over $5.40/min, full-minute rounding estimated at 20-40%, 28-day billing cycles (13 invoices)", "source_url": "https://commsadvisor.com/answering-service-real-cost/", "result": "confirmed"},
+    {"claim": "Trade article's Smith.ai complaints (historical per-transfer fees, add-on stacking, disputed post-cancellation billing) and Ruby complaints (quality declining while prices rose, dead air/missed urgent calls)", "source_url": "https://commsadvisor.com/answering-service-real-cost/", "result": "confirmed"},
+    {"claim": "Trade article's third-party conflicts: Abby $95 setup fee, AnswerConnect '$179/mo, 100 min' entry plan, Abby AI 'no overage; forced tier upgrade'", "source_url": "https://commsadvisor.com/answering-service-real-cost/", "result": "confirmed"},
+    {"claim": "price_ranges values ($15-$99, $150-$500, $500+) each trace back to a sourced list price in offerings, and derived_from lists all 12 vendors", "source_url": "https://www.ruby.com/plans-and-pricing/", "result": "confirmed"},
+    {"claim": "Inference arithmetic: Smith.ai $300/30 calls = $10.00 per call; AnswerConnect $350/200 min = $1.75/min = $5.25 for a 3-minute call; Ruby $250/50 min = $5.00/min = $15.00", "source_url": "https://www.answerconnect.com/plans-direct", "result": "confirmed"}
+  ],
+  "confidence": "Medium"
+}

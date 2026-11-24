@@ -1,0 +1,42 @@
+[
+ {
+  "claim": "measured_outcomes #1: 'CCTV was associated with about a 13% reduction in crime in camera areas versus control areas (odds ratio 1.141, p<.001); the effect for violent crime alone was smaller and not statistically significant.' strength: Medium",
+  "problem": "The pooled numbers are correct, but the brief applies this finding to a multifamily-building camera offering and omits the disaggregated result that matters here: in the same paper the 'housing' (housing-complex) setting had n=10 evaluations, OR 1.028, p=.805 - not significant. The 'residential' setting (n=16) was significant at OR 1.133, p=.009. As stated for apartment buildings the evidence is weaker than the brief implies. (Source confirmed from the full text PDF; the doi.org/Wiley URL in the brief returned HTTP 406/403 to me, so the citation should point at an openable copy.)",
+  "fix": "Add the subgroup result ('housing complexes: OR 1.028, n.s.; residential areas: OR 1.133' ) to the finding, restate the strength for the in-building camera use case as Low-Medium, and cite an openable full-text URL alongside the DOI."
+ },
+ {
+  "claim": "existing_solutions Verkada: \"the price page states 'Price includes hardware. Additional license required' on every camera SKU and publishes no license price\"",
+  "problem": "Contradicted for at least one camera SKU: the CR63-TE on verkada.com/pricing reads 'Price includes hardware, 1-year license, and 30 days of retention', i.e. a license is bundled on that SKU. The general point (no per-license price published for the CD/CM series) is correct.",
+  "fix": "Narrow to 'on the CD/CM/CB/CF/CY/CP series SKUs; the CR63-TE lists a bundled 1-year license', and keep the 'no license price published' statement."
+ },
+ {
+  "claim": "existing_solutions Verkada product line: 'Cloud-managed cameras (CD/CM/D series)'",
+  "problem": "No 'D series' appears on verkada.com/pricing; the series listed are CD, CD-E, CB, CM, CF, CY, CH, CP and CR. Model-name error.",
+  "fix": "Replace 'CD/CM/D series' with the actual series names (e.g. CD/CM indoor and mini, CB bullet, CP PTZ, CR remote)."
+ },
+ {
+  "claim": "existing_solutions Sensor Industries product: 'SI-Leak / SI-Flush wireless leak and toilet sensors'",
+  "problem": "SI-Leak, SI-Rope and SI-Drywall are named on the Sensor Industries case-study page I opened; 'SI-Flush' did not appear on either the homepage or that case study, so the model name is unsupported by any page in the brief.",
+  "fix": "Drop 'SI-Flush' or replace with the toilet-sensor naming used on sensorindustries.com, and cite the page that names it."
+ },
+ {
+  "claim": "pilot cost_range: '$5,000-$10,500 installed for the pilot building ... = $5,000 low end, $10,400 high end'",
+  "problem": "Internal arithmetic inconsistency: the stated components ($2,400 hardware + $7,500 labor + $500 misc) sum to $10,400, and the same paragraph says $10,400, while the headline range and the fit_score rationale/risks use $10,500. One number must be wrong.",
+  "fix": "Use $5,000-$10,400 consistently in pilot.cost_range, fit_score.rationale and risks (or explain the $100 rounding)."
+ },
+ {
+  "claim": "problem.evidence #6 and legal_privacy #3: '\"2024 edition of NJ DCA Truth in Renting\"",
+  "problem": "The PDF at the cited URL contains no edition year or revision date that I could find ('2024' and 'Revised' both returned no match across the 55-page text), so the year is unverified.",
+  "fix": "State the edition/date exactly as it appears on the document, or say 'undated edition retrieved 2026'."
+ },
+ {
+  "claim": "buyers[0]: \"Buildings with 3+ units are 'multiple dwellings' under NJ DCA rules and carry registration/inspection obligations\"",
+  "problem": "Fact is supported by the same Truth in Renting document ('All buildings with three or more rental units ... must be registered with the Bureau of Housing Inspection'), but no source is attached to it in the brief, so a factual/regulatory claim appears without a citation.",
+  "fix": "Attach the t_i_r.pdf URL (or N.J.S.A. 55:13A-3) to that sentence."
+ },
+ {
+  "claim": "measured_outcomes #2: 'Combining both phases, LPR-equipped patrols ... produced nearly 3 times as many hits for stolen vehicles'",
+  "problem": "Loose aggregation. Phase 1 was 2.7x (16 vs 6 hits); Phase 2 is reported in the report text as 6x more (12 vs 2) while its Table 7 shows 5 vs 2. 'Combining both phases' into a single 'nearly 3x' figure is not a number the report states. The other figures in the entry (8-10x plate checks = 7.74x and 9.65x; 10 vs 5 recoveries = twice; no displacement; manual patrol reduced theft; no LPR theft reduction; Dec 7 2011) all check out.",
+  "fix": "Report the two phases separately rather than a combined multiplier."
+ }
+]

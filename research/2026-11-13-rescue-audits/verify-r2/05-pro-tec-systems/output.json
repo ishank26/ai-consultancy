@@ -1,0 +1,138 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "audit_md body length",
+      "problem": "The document runs about 318-322 words including headings, labels and the closing line, over the 300-word limit for the customer-facing body. Minor (about 7%) but measurable.",
+      "fix": "Cut the closing line 'Prepared from publicly available information...' and tighten the last bullet; target under 290 words."
+    },
+    {
+      "claim": "audit_md: 'The Feedback form posts to FrontPage's _derived/nortbots.htm' and 'NET::ERR_CERT_COMMON_NAME_INVALID'",
+      "problem": "Both are raw technical strings placed in the copy the business owner reads; they are accurate but read as jargon. Minor.",
+      "fix": "Keep the plain-English sentence ('the form cannot send a message', 'the address without www shows a security warning') and move the codes and file path into founder_md's sources list only."
+    },
+    {
+      "claim": "audit_md: 'a block pushed off-screen by an injected script', 'Strip the injected link block'",
+      "problem": "Wording risk, not a factual error: that an unrelated link block and a hiding script were added to the page is confirmed by the 2023 vs 2024 Wayback comparison and the live HTML, but describing it as 'injected' implies a method of entry that no source states. It names no one, so it does not accuse anyone, and the dedicated cause entry is correctly labelled an inference.",
+      "fix": "Soften to 'a block of unrelated links and a script that hides it, added between January 2023 and November 2024' so the customer-facing text carries no cause claim at all."
+    },
+    {
+      "claim": "caveats: RDAP shows protecsystems.org 'behind Squarespace's privacy service'",
+      "problem": "RDAP shows registrar Squarespace Domains LLC and a redacted record with no registrant details; it does not show that a privacy/proxy service was purchased. Small overstatement in the caveats only.",
+      "fix": "Say 'registrant details are withheld in the RDAP record' instead of naming a privacy service."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "https://www.protecsystems.net/ loads over https with no certificate warning and serves the old FrontPage site ('Since 1988' paragraph, vendor logos, phone 732-828-7756, PO Box 6114 Somerset NJ 08875, four mailto addresses, Under Construction graphic, 'Copyright 2008 / Last modified 03/25/08')",
+      "source_url": "https://www.protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Home page has 119 anchors, 110 of them in one block of unrelated links, and a script moves that block off-screen",
+      "source_url": "https://www.protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The hiding style is position:fixed with top:-4011px on the home page",
+      "source_url": "https://www.protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Home page has no viewport meta tag (no mobile layout)",
+      "source_url": "https://www.protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Feedback page has 91 anchors, 87 in a similar injected block, and its form posts to _derived/nortbots.htm",
+      "source_url": "http://www.protecsystems.net/feedback.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The feedback form cannot deliver a message",
+      "source_url": "http://www.protecsystems.net/_derived/nortbots.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Footer email is webmaster@protecsystems.org",
+      "source_url": "https://www.protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "robots.txt returns a 404 'Page Not Found'",
+      "source_url": "http://www.protecsystems.net/robots.txt",
+      "result": "confirmed"
+    },
+    {
+      "claim": "https://protecsystems.net/ (bare domain, no www) stops at Chrome's 'Your connection is not private' with net::ERR_CERT_COMMON_NAME_INVALID",
+      "source_url": "https://protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google lists Pro-Tec Systems Inc at 607 Georges Rd, North Brunswick NJ 08902, phone (732) 828-7756, category 'General contractor', website protecsystems.net, rated 5.0 with no review count shown, and shows 'Claim this business' plus 'Add hours' and 'Add photos & videos'",
+      "source_url": "https://www.google.com/maps?q=Pro-Tec+Systems+Inc+607+Georges+Rd+North+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "MacRae's Blue Book listing shows 'Website: http://protecsystems.net' linking to http://protecsystems.net",
+      "source_url": "https://www.macraesbluebook.com/search/company.cfm?company=586220",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP protecsystems.net: registered 2008-01-29, expires 2027-01-29, last changed 2025-11-30, registrar Network Solutions, LLC",
+      "source_url": "https://rdap.org/domain/protecsystems.net",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP protecsystems.org: registered 2026-10-21, expires 2029-10-21, last changed 2026-10-26, registrar Squarespace Domains LLC",
+      "source_url": "https://rdap.org/domain/protecsystems.org",
+      "result": "confirmed"
+    },
+    {
+      "claim": "protecsystems.org serves a Squarespace holding page reading 'We're under construction. Please check back for an update soon.' with a robots noindex",
+      "source_url": "https://protecsystems.org/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback capture of 2023-01-29 has no link block and no hiding script",
+      "source_url": "https://web.archive.org/web/20230129055239/http://protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback capture of 2024-11-05 has the same link block and the same hiding script (position:fixed, top:-4011px)",
+      "source_url": "https://web.archive.org/web/20241105032156/http://protecsystems.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ DCA fire protection contractor report, October 2026, lists Pro-Tec Systems Inc as a C4 fire alarm system contractor, permit P00814, expiring 04/30/2028, Box 6114 Somerset NJ 08875",
+      "source_url": "https://www.nj.gov/dca/dfs/pdf/Cont%20Cert%20Lists/Report%20Fire%20Protection%20Contractors%20October%202026.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "crt.sh returned 'Certificates None found' for protecsystems.net",
+      "source_url": "https://crt.sh/?q=protecsystems.net",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The business is operating, not closed, and is a single local company rather than a chain or franchise",
+      "source_url": "https://www.google.com/maps?q=Pro-Tec+Systems+Inc+607+Georges+Rd+North+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Identity match between listing and site: same phone 732-828-7756 and same PO Box 6114 Somerset NJ on both the site and the state contractor report",
+      "source_url": "https://www.nj.gov/dca/dfs/pdf/Cont%20Cert%20Lists/Report%20Fire%20Protection%20Contractors%20October%202026.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "protecsystems.org registration sits behind a Squarespace privacy service",
+      "source_url": "https://rdap.org/domain/protecsystems.org",
+      "result": "not found"
+    },
+    {
+      "claim": "Superpages and YellowPages listings for this company (any website field on them)",
+      "source_url": "https://www.superpages.com/north-brunswick-nj/fire-alarm-systems",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

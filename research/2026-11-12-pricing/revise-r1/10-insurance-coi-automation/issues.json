@@ -1,0 +1,47 @@
+[
+ {
+  "claim": "price_ranges.low_cost_self_serve includes \"Choices $180-$540/year\" and \"Choices\" is listed in derived_from",
+  "problem": "No offering object exists for Choices anywhere in the brief and no source URL is cited for the figure, so a price appears in the ranges and in the derivative list with no source and no tier/unit/inclusion detail. The figure is real (Basic Fill $180/year through Agency Anywhere Gold $540/year) but the brief does not show where it came from.",
+  "fix": "Add a Choices offering entry (plans $180/$300/$420/$540 per year, billed yearly) citing https://insuranceagencytools.com/coi-tracking-software/cost/ (updated October 30, 2026), or drop Choices from the range and derived_from."
+ },
+ {
+  "claim": "price_ranges.mid_market = \"$450-$1,000/month per agency (PolisAgent $497-$997; COIflow Network $497; Hailey $199 base plus $0.25/minute over 500)\"",
+  "problem": "Hailey's $199 base is cited as support for the band but sits below the $450 floor, so the range does not follow from the prices listed under it. PolisAgent Enterprise at $1,997/month is also above the ceiling and is omitted. The only prices actually inside $450-$1,000 are PolisAgent $497/$997 and COIflow $497.",
+  "fix": "Either drop Hailey from the mid-market citation (keep it in low_cost_self_serve where $199 fits) and state that Enterprise $1,997 is the outlier above the band, or restate the band as \"$450-$1,000/month for a per-seat AI operations platform, with a $199 entry point (Hailey, 500 minutes included) and $1,997 at the top (PolisAgent Enterprise)\"."
+ },
+ {
+  "claim": "price_ranges.full_service_or_custom = \"$2,500-$7,500/month plus $1,500-$5,000 one-time\" citing Native Base, Clermont, Deskpilot partner and CaliberNova",
+  "problem": "The one-time band ($1,500-$5,000) is contradicted by a price cited in the same range: CaliberNova's Production Workflow starts at $25,000 and its Automation Platform at $50,000. Native Base's $2,499/month is also $1 below the stated $2,500 monthly floor. Monthly retainers and fixed-fee implementation projects are being merged into one numeric range.",
+  "fix": "Split the band: monthly retainers $2,499-$7,500 (Native Base $2,499, Clermont $2,800-$7,500, Deskpilot partner $2,500+) and fixed-fee implementation/one-time $449-$10,000 plus a separate calibre for custom builds (CaliberNova $5,000 pilot, $25,000+ workflow, $50,000+ platform)."
+ },
+ {
+  "claim": "Hailey entry: \"insurance page lists 24/7 answering, quote intake, claim triage, renewal booking, TCPA consent capture\" and AMS list Applied Epic, AMS360, EZLynx, QQ Catalyst, HawkSoft, NowCerts; source_url https://www.usehailey.com/",
+  "problem": "Those details are not on the homepage cited; they are on https://www.usehailey.com/ai-receptionist/insurance, which does show 'From $199/mo (500 min)', explicit/recorded TCPA consent capture, claim-call triage, renewal booking and the six AMS names. The price and overage figures are correctly on the homepage, but the insurance-specific claims are cited to the wrong page.",
+  "fix": "Set source_url to https://www.usehailey.com/ai-receptionist/insurance (or cite both) for the insurance-page claims, keeping https://www.usehailey.com/ for $199/500 minutes/$0.25 per extra minute and the integration-based setup fee."
+ },
+ {
+  "claim": "Certificial contract_terms: \"third-party compilation reports no fixed term in the license terms\"",
+  "problem": "The cited URL (coisoftware.com/blog/certificial-pricing) does the opposite: it says the contract length is unknown and tells buyers to ask. The 'No fixed term in the license terms' row is on insuranceagencytools.com. As written the attribution is wrong even though the underlying fact is supportable.",
+  "fix": "Cite https://insuranceagencytools.com/coi-tracking-software/cost/ for the 'no fixed term in the license terms' statement, or relabel it as unstated/unknown per the coisoftware article."
+ },
+ {
+  "claim": "TrustLayer Starter: \"Free up to 50 vendors, then $10 per additional vendor per month (third-party compilation)\" with \"Vendor portal, automated chase, AI certificate review, per the compilation\"",
+  "problem": "The $10 figure is on TrustLayer's own page (https://www.trustlayer.io/pages/starter), not only in a competitor's compilation, so it is mislabelled as third-party-only; conversely the inclusion list (vendor portal, automated chase) is not stated in the coisoftware article that is cited. The current page says Starter is free to 50 vendors then $10 per additional vendor per month and describes it as 'automation and AI'.",
+  "fix": "Change source_type to vendor page and cite https://www.trustlayer.io/pages/starter for the $10/vendor/month overage, and trim the inclusions to what that page says (free to 50 vendors, automation and AI included) instead of asserting vendor portal and automated chase from a compilation that does not list them."
+ },
+ {
+  "claim": "buyer_reported_costs: \"Agency owner reports paying about $230 per user per month for Applied Epic\" with context \"agency size and modules unknown\"",
+  "problem": "The thread was not retrievable here (Reddit blocked), but the search summary of that thread says the $230 commenter works at an organisation with 500+ users. Calling agency size 'unknown' understates available context and makes the figure look more transferable to a 5-200 person New Jersey agency than it is.",
+  "fix": "Keep the figure but state that the commenter described a 500+ user agency, and flag that per-seat AMS pricing at that scale may not transfer to small agencies."
+ },
+ {
+  "claim": "buyer_complaints: G2 reviewer said the full integration with their AMS was not available",
+  "problem": "g2.com returned HTTP 403 and could not be opened, and no other retrievable source in this check repeats that reviewer's integration point. Left unverified.",
+  "fix": "Replace with a retrievable source (e.g. the Synatic/McMichael case study, which documents integration and endorsement-tracking failure) or keep it but mark it 'not independently verified'."
+ },
+ {
+  "claim": "price_ranges.low_cost_self_serve: \"Insurance Agent App $50-$149 typical plans with $449 setup\"",
+  "problem": "The cited compilation lists $50, $85, $149, $199, $299, $382/yr, $399 and $549, and setup fees of $449 to $10,000. Which plans are 'typical' is the brief's judgement, not stated in the source, and it is not labelled as inference inside the range string.",
+  "fix": "Write it as \"$50-$149 per month on the smaller client-count plans with $449 setup; larger plans run $199-$549/month and setup can reach $10,000\" and note in inference_note that '$50-$149 typical' is the brief's characterisation, not the source's."
+ }
+]

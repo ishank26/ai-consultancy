@@ -1,0 +1,67 @@
+[
+ {
+  "claim": "Silarius Cloud hard hat detection: \"$8.00 per camera per month\" (existing_solutions pricing, gap_for_local_installer, risks, and the $8/camera/month comparison invoked three times)",
+  "problem": "Price is misstated as a standalone per-camera cost. The cited page says: \"Hard hats and safety vests (PPE), added to the Advanced AI Package ($16.00 per camera / month) on the same camera, on top of a Silarius Cloud plan from $6.99 per camera / month.\" So hard-hat detection actually costs roughly $8 + $16 + $6.99 = about $31/camera/month. The brief uses $8 to argue cheap self-serve competition is far below the planned $400-$900/site/month, which understates the true competitor price by about 4x.",
+  "fix": "Change to \"$8/camera/month PPE add-on, on top of the $16 advanced AI package and a Cloud plan from $6.99/camera/month (about $31/camera/month all-in as listed)\", and adjust the gap/risk language that uses the bare $8 figure."
+ },
+ {
+  "claim": "EarthCam pricing: \"a third-party cost guide estimates $130-$600+ per camera per month for proprietary construction camera services\"",
+  "problem": "No URL is given for the estimate and the cited vendor URL does not resolve (client.earthcam.com: DNS ENOTFOUND), so neither the vendor description nor the price band could be checked at the cited source. The $130-$600 band does appear on a third-party guide (sitewatch.com/guides/construction-camera-cost) found via search, but it is not cited and is not EarthCam's own price.",
+  "fix": "Cite the third-party cost guide URL explicitly for the range, state that it is a third-party estimate rather than EarthCam pricing, and replace the dead client.earthcam.com link with a resolving EarthCam page (or mark the product description unverified)."
+ },
+ {
+  "claim": "OpenSpace pricing: \"Custom quote; reported $10,000 minimum for the SMB tier\"",
+  "problem": "No source is given, and the cited openspace.ai/pricing page contains no dollar figures at all (pricing is stated as based on annual construction volume, quote only). A search summary attributes a $10,000 minimum to openspace.ai/smb-pricing-webpage, but that URL redirected to the same pricing page on fetch and the figure could not be seen in page text.",
+  "fix": "Either cite the exact SMB pricing page and quote the minimum, or downgrade to \"quote-only; a $10,000 floor is sometimes reported but could not be confirmed\"."
+ },
+ {
+  "claim": "Evidence item 1: \"1,075 of 5,283 U.S. work fatalities in 2023 were in construction ... falls, slips and trips accounted for 421 of the 1,075 (39.2%)\", cited to the BLS TED article",
+  "problem": "The cited TED page does not contain these figures. It says construction was 20.8% of workplace deaths, that 47.8% of all fatal falls were in construction, and its own table shows 423 construction fatal falls (38.5%). The 1,075 / 421 / 39.2% combination comes from the BLS CFOI 2023 news release (5,283 total; construction 1,075; falls 421 = 39.2%), which the TED page links to. The two BLS pages differ by two deaths (421 vs 423), and the brief uses both without reconciling them (\"110 of 423 construction fall deaths\" later in buyers).",
+  "fix": "Cite https://www.bls.gov/news.release/archives/cfoi_12192024.htm for 1,075 / 421 / 39.2%, keep the TED URL for the 47.8% share and the sub-trade counts, and add one line noting the 421 vs 423 difference between the two BLS releases."
+ },
+ {
+  "claim": "\"1926.501 ... with 6,557 citations\" in FY2024",
+  "problem": "6,557 is OSHA's count of serious violations for that standard; the total violation count for 1926.501 in FY2024 is 6,745. The brief elsewhere is careful, so this reads as an overstatement of total citations.",
+  "fix": "Say \"6,557 serious violations (6,745 total violations) for 29 CFR 1926.501\"."
+ },
+ {
+  "claim": "ARSA \"$48 per camera per month for the software tier\" and the 98.2% SHWD hard-hat figure, both cited to the Basic Safety Guard product page",
+  "problem": "Neither number is on the cited product page. The $48 appears on arsa.technology/pricing as the Safety Guard module rate for the self-hosted AI Video Analytics Software ($576/camera/year, billed annually, minimum four cameras, customer supplies an AI-GPU server). The 98.2% \"hard-hat decisions correct ... on the SHWD dataset\" appears in ARSA's blog post on hard-hat detection, which points to an ARSA benchmarks page. Because the $48 tier requires the customer's own GPU server and a 4-camera minimum, it is a less direct \"cheap self-serve\" comparator than the brief implies.",
+  "fix": "Point the price at the pricing page and note the 4-camera minimum plus customer-supplied GPU server; point the 98.2% at the ARSA benchmarks page and keep it labelled a vendor claim (Low)."
+ },
+ {
+  "claim": "\"about 1,556 construction establishments in Middlesex County, CBP 2023\" (fit_score rationale)",
+  "problem": "Presented as a Census figure, but the only source located is a third-party aggregator (bebop.ai), not a CBP table; the brief's own data_gaps admits the CBP table was never opened. The number is therefore attributed to a primary statistical source it was not read from.",
+  "fix": "Mark it \"about 1,556 establishments (third-party summary of CBP 2023, table not opened)\" or drop the attribution to CBP until the table is read."
+ },
+ {
+  "claim": "Drone harness/lifeline/helmet study: \"2023 (published)\"",
+  "problem": "Year is wrong for the cited work. \"Real-time monitoring of work-at-height safety hazards in construction sites using drones and deep learning\" appears in Journal of Safety Research Volume 83, December 2022. The accuracy figures themselves (about 90% overall, 97.2% precision, 90.2% recall, ~12 s to detect a violation) match the paper.",
+  "fix": "Change year to 2022 (or \"2022, Journal of Safety Research 83\")."
+ },
+ {
+  "claim": "Jetson Orin Nano Super Developer Kit \"$249 (NVIDIA launch price, 2025)\"",
+  "problem": "Price is right ($249, down from $499) but the launch was announced in December 2024, not 2025.",
+  "fix": "Change to \"$249, NVIDIA launch price announced December 2024\"."
+ },
+ {
+  "claim": "CCTV evidence: \"51% reduction in crime in car parks across six evaluations ... five of six schemes combined CCTV with other measures\"",
+  "problem": "The 51% figure and the six car-park studies check out (Welsh & Farrington, Campbell systematic review), but the \"five of six\" qualifier could not be verified: sources describing the review state CCTV was combined with other measures (guards, lighting, fencing) in the car-park studies, i.e. all six. Left as \"five of six\" it understates the confound.",
+  "fix": "Change to \"in all six car-park schemes CCTV was accompanied by other measures\" or cite the exact sentence from the review for the five-of-six count."
+ },
+ {
+  "claim": "FAA Part 107 requirements (remote pilot certificate, registration, visual line of sight, at or below 400 ft AGL, no flight over people absent an allowed category) - marked confirmed: true",
+  "problem": "The cited faa.gov page returned HTTP 403 and could not be read, so this rule set is marked confirmed without a page read. The substance matches the well-known Part 107 rule set, but the brief's own caveat only lists osha.gov 403s, not this one.",
+  "fix": "Either verify against an accessible FAA page and note it, or add the FAA 403 to the caveats list of claims not read at source."
+ },
+ {
+  "claim": "fit_score: legal_risk_low = 10 and total 69",
+  "problem": "Arithmetic is correct (15+12+10+14+10+8 = 69) and every sub-score is a non-negative integer, but legal_risk_low = 10 is generous relative to the brief's own legal section, which documents statutory civil liability exposure for audio (2A:156A-4/2A:156A-24), pending biometric bills that could retrofit obligations, discoverability of footage, and defamation/discipline exposure from false positives. The brief's own rationale calls legal risk \"moderate-low\", which is not consistent with a high score in a field labelled \"legal_risk_low\".",
+  "fix": "Reduce legal_risk_low to about 7 and restate the total (66), or state the scale and justify 10 explicitly."
+ },
+ {
+  "claim": "Comment: strength ratings on outcome claims",
+  "problem": "No strength-rating violation found. Vendor/self-interested claims are all marked Low (Smartvidio/Suffolk case study, PR Newswire vendor claim, ARSA 98.2%, TrueLook survey described as vendor-run); single peer-reviewed studies are marked Medium, none High; the absence-of-evidence item is Low. This part of the brief passes.",
+  "fix": "No change needed."
+ }
+]

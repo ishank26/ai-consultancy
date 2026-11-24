@@ -1,0 +1,208 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "New Jersey law requires merchants to clearly mark the price of items either on the item or on the display where it is offered for sale (cited to https://www.njconsumeraffairs.gov/News/Brochures/Consumer-Shopping-Guide.pdf).",
+      "problem": "I read all 24 pages of the cited Consumer Shopping Guide. It contains no price-marking mandate. It covers refund-policy posting, rain checks, layaway, gift cards and scams, and only advises shoppers to 'watch the cash register display to make sure the scanned price matches the advertised or posted price.' The obligation itself appears to exist, but under N.J.S.A. 56:8-2.5 (total selling price 'plainly marked' by stamp, tag, label or sign on the merchandise or where it is offered for sale) - a provision the brief does not cite. As written, a legal rule is presented as confirmed by a source that does not support it.",
+      "fix": "Re-cite this fact to N.J.S.A. 56:8-2.5 (or the NJ Division of Consumer Affairs release quoting it) and drop the shopping-guide citation for the price-marking requirement. Keep the shopping guide only for what it actually says (e.g. consumers are told to check the register against the posted price)."
+    },
+    {
+      "claim": "legal_privacy: 'N.J.A.C. 13:47C-3.5 sets a penalty of not less than $100 per violation, and each package in violation is a separate violation under N.J.S.A. 51:1-100' - presented as the penalty backing the NJ price/tag-accuracy obligation.",
+      "problem": "The wording is quoted accurately (Cornell LII confirms it), but it is scoped to 'the provisions of this subchapter' - i.e. N.J.A.C. 13:47C Subchapter 3, NONFOODSTUFFS (firewood delivery tickets, holiday decorating materials, building-materials advertising, paper-product quantity declarations). Nothing in that subchapter concerns retail price marking of grocery items, so using 13:47C-3.5 as the price-accuracy penalty misstates the legal basis of the risk the pitch leans on.",
+      "fix": "State that 13:47C-3.5 covers nonfoodstuffs packaging/quantity rules only, and either drop the $100-per-package figure or source price-marking enforcement from the Consumer Fraud Act route actually used by OWM (the two OAG settlements are the defensible citations)."
+    },
+    {
+      "claim": "New Jersey Data Privacy Law thresholds (100,000 NJ consumers, or 25,000 plus data selling; effective Jan 15, 2025), cited to https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/54204/54612.",
+      "problem": "The cited URL returned HTTP 500 on two attempts, so the source could not be re-opened. The substance checks out against P.L. 2023, c.266 (S332): 100,000 consumers, or 25,000 plus revenue/discount from selling personal data, effective Jan 15, 2025.",
+      "fix": "Replace the dead statute link with https://pub.njleg.gov/Bills/2022/PL23/266_.HTM (P.L. 2023, c.266) or the DCA NJDPA FAQ page."
+    },
+    {
+      "claim": "State v. Diaz (1998) held the video portion of a recording is outside the NJ Wiretap Act, cited to https://caselaw.findlaw.com/court/nj-superior-court-appellate-division/1193224.html.",
+      "problem": "That URL returned HTTP 403, so the cited page could not be re-opened by a verifier. The holding and year are correct (308 N.J. Super. 504 (App. Div. 1998): video portion outside the Act; audio portion separately upheld under the consent provision).",
+      "fix": "Swap in an openable citation (e.g. a court-opinion PDF or openjurist record for 308 N.J. Super. 504) so the claim can be checked without a paywall/block."
+    },
+    {
+      "claim": "Zippedi pricing: 'no published price; a distributor listing describes acquisition via written quote or robot-as-a-service (robot-distribution.com/en/brands/zippedi)'.",
+      "problem": "The source_url given is home.zippedi.com/zippy/, which I opened and which says nothing about purchasing or pricing. The distributor listing is named inline but is not the cited URL and I did not open it, so the 'quote or RaaS' description is unverified.",
+      "fix": "Either add the robot-distribution.com URL as an explicit source and open it, or reduce the entry to 'Unknown - no published price'."
+    },
+    {
+      "claim": "Reolink hardware: 'the full category also includes cheaper non-4K and refurbished units and models up to $899'.",
+      "problem": "I confirmed page 1 of 4 of the cited 4K PoE category (list $79.99-$199.99, current $47.99-$119.99), but not the claimed $899 top end or the presence of non-4K/refurbished units - the category listing is paginated (30 results) and the cited page shows only nine.",
+      "fix": "Verify against the last page of the category, or trim the caveat to what page 1 shows."
+    },
+    {
+      "claim": "buyers[0].size_where_it_matters: '~5,000-40,000 sq ft, 10-40 aisles, 15+ staff'.",
+      "problem": "These footprint, aisle and staffing ranges have no source and, unlike the other four buyer entries, are not marked as inference. Only the 186-establishment count is sourced (BLS QCEW 2024).",
+      "fix": "Add '(inference)' to the size range, as the other buyer entries do."
+    },
+    {
+      "claim": "fit_score legal_risk_low = 11 of 15.",
+      "problem": "Sub-scores do add to the total (13+10+8+13+11+6 = 61), so the arithmetic is sound. But 11 is generous for a section that itself lists two unconfirmed items (employee-notice duty, NJ retention limit), one pending bill (A3929) and - after correction - an unresolved price-marking penalty basis. Consistency check only, not a factual error.",
+      "fix": "Consider 10, or note explicitly why the residual legal uncertainty does not move the score."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Grocery out-of-stock rate fell from 10.7% in 2022 to 6.5% in 2023, below the ~8% historical norm (FMI Food Retailing Industry Speaks).",
+      "source_url": "https://www.fmi.org/blog/view/fmi-blog/2024/07/25/progress-on-supply-chain-efficiency---performance",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Independents' average out-of-stock rate 17.5% in FY2022, down from 24.3% in 2021; 49% lost sales to procurement problems.",
+      "source_url": "https://www.nationalgrocers.org/news/2023-independent-grocers-financial-survey-webinar-key-takeaways/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "IHL Group: $1.77T global inventory distortion in 2023, $349B lost sales for U.S./Canadian retailers in 2022, 17.7% more out-of-stocks in North America, 'empty shelves' the number one reason for food/grocery shoppers.",
+      "source_url": "https://www.supermarketnews.com/finance/retail-losses-reach-1-77-trillion-worldwide",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County NAICS 445110: 186 establishments, 5,902 employees, $195.8M annual wages, avg annual pay $33,172, avg weekly wage $638; NAICS 4451: 333 establishments / 7,002 employees; NAICS 44513: 147 establishments.",
+      "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FY2024 (2025 report): net profit 1.9%, EBITDA 1.52% single-store vs 3.28% multi-store, labor+benefits a record 16.3% of net sales; 93 respondents / 626 stores plus benchmarks from 507 grocers.",
+      "source_url": "https://fmssolutions.com/resource-grocery/2025-independent-grocers-financial-report/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "57% average store-level staff turnover; 35% using automation to fill labor gaps (521 grocers, ~2,000 stores).",
+      "source_url": "https://www.nationalgrocers.org/news/2023-independent-grocers-financial-survey-webinar-key-takeaways/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ requires prices to be clearly marked on the item or on the display where offered for sale.",
+      "source_url": "https://www.njconsumeraffairs.gov/News/Brochures/Consumer-Shopping-Guide.pdf",
+      "result": "contradicted"
+    },
+    {
+      "claim": "N.J.A.C. 13:47C-3.5: penalty not less than $100; each package a separate violation under N.J.S.A. 51:1-100.",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-47C-3-5",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 13:47C-3.5 applies to retail price marking of grocery items.",
+      "source_url": "https://www.njconsumeraffairs.gov/regulations/Chapter-47C-General-Commodities-Weights-and-Measures.pdf",
+      "result": "contradicted"
+    },
+    {
+      "claim": "NJ is one of nine states with mandatory unit pricing; OWM found >2,000 unit-of-measure errors at Walmart's 64 NJ stores in Q1 2023; $1.64M settlement with $1.61M civil penalty; 2% audit-failure threshold.",
+      "source_url": "https://www.njoag.gov/ag-platkin-walmart-agrees-to-pay-1-64-million-settlement-to-resolve-allegations-of-unlawful-pricing-practices-at-retail-stores-statewide/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dollar General: 58 stores inspected Nov 2022 / Feb 2023, >2,000 items scanning above posted price (up to $5.95), $1.2M settlement incl. $1.18M civil penalty, annual internal audits with >2% = failed audit.",
+      "source_url": "https://www.njoag.gov/ag-platkin-new-jersey-division-of-consumer-affairs-reaches-settlement-with-dollar-general-over-allegations-of-pricing-violations/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Pensa case study: gap detection 35.6%/52.3%/57.1% manual vs 93.3%/95.2%/93.9%; 94% gap-detection and 99% overall accuracy; ~2 s vs >6 s per shelf segment.",
+      "source_url": "https://pensasystems.com/wp-content/uploads/2022/08/Pensa_CaseStudy_RetailScanning.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Croatian study: 86.3% AP fully-empty OOS, 83.7% frontal, 85.0 mAP; baselines YOLOv5 82.4 / YOLOv7 79.7 / EfficientDet 77.1 (normal class), Canny 63.8, SVM 56.9, colour histogram 61.4; 511 images, 1,210 OOS instances (730 normal / 480 frontal), four Croatian retailers.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10819825/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ROSCH robot 8x faster than a human operator at routine out-of-stock detection; ~2,000 annotated images with 900 captured in 3 Italian supermarkets; tested in one Salerno supermarket during working hours.",
+      "source_url": "https://openaccess.thecvf.com/content/ICCV2023W/ACVR/html/De_Simone_Autonomous_Mobile_Robot_for_Automatic_out_of_Stock_Detection_in_ICCVW_2023_paper.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Simbe Wakefern story: Inserra 23 ShopRite stores and SRS 37 ShopRite locations in NY and NJ; SRS cut out-of-stock items by 50%; published Sept 16, 2024.",
+      "source_url": "https://www.simberobotics.com/resources/customer-stories/wakefern-customer-story",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Simbe FAQ: 15-30K products/hour, up to 3x/day, large supermarket 1.5-2 hours per scan, RaaS with zero upfront and monthly fee by size/SKU/CV-RFID mix, most stores >5,000 sq ft with >1,000 sq ft minimum, 'most retailers don't have accurate planograms', realogram generation, API docs.",
+      "source_url": "https://www.simberobotics.com/faqs",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Focal FAQ: set-up fee plus monthly service fee, total depends on number/size of stores, services and contract length; AI-as-a-Service, cameras not sold separately; install in a single day; pixels containing individuals stripped before analysis or storage; vendor maintains hardware.",
+      "source_url": "https://focal.systems/faqs/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Zippedi Zippy: scans with store lights off, 8+ hour scanning shift, high-res cameras for price tags, depth sensors for shelf-out detection, overhead camera for stock up to 7 m, RFID capabilities.",
+      "source_url": "https://home.zippedi.com/zippy/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics: free under AGPL-3.0; Enterprise license required for proprietary/closed-source and embedded commercial use; enterprise price not published.",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SKU-110K: 11,743 densely packed shelf images, 8,219 in the train split.",
+      "source_url": "https://docs.ultralytics.com/datasets/detect/sku-110k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NVIDIA Jetson Orin Nano Super Developer Kit: $249, 67 INT8 TOPS, supports up to four cameras.",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Reolink 4K PoE page 1: list prices $79.99-$199.99, current prices $47.99-$119.99.",
+      "source_url": "https://reolinktech.com/poe-ip-cameras-nvrs/4k-poe-cameras-122/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Liquid AI LFM2.5-VL-3B: 228 tok/s on Apple M5 Max, 116 tok/s on AMD Ryzen AI Max+ 395, under 3.3 GB memory (vendor benchmark); full-page OCR with layout annotation.",
+      "source_url": "https://huggingface.co/LiquidAI/LFM2.5-VL-3B",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-450M is 'not well-suited' to fine-grained OCR while doing bounding-box prediction and object detection.",
+      "source_url": "https://huggingface.co/LiquidAI/LFM2.5-VL-450M",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Wiretap Act is one-party consent; intercepting an oral communication without a party's consent is a crime under N.J.S.A. 2A:156A-3/-4.",
+      "source_url": "https://www.dmlp.org/legal-guide/new-jersey/new-jersey-recording-law",
+      "result": "confirmed"
+    },
+    {
+      "claim": "State v. Diaz (1998) put the video portion of a recording outside the NJ Wiretap Act, which covers aural interception.",
+      "source_url": "https://caselaw.findlaw.com/court/nj-superior-court-appellate-division/1193224.html",
+      "result": "could not open"
+    },
+    {
+      "claim": "NJDPA applies at 100,000+ NJ consumers, or 25,000+ plus data selling; effective Jan 15, 2025.",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/54204/54612",
+      "result": "could not open"
+    },
+    {
+      "claim": "NJ A3929 (2026 session) would require clear and conspicuous notice plus a lawful purpose for facial/remote biometric recognition at business premises, with a 30-day cure after a first violation and a bar on selling or sharing the data; bill only, not law.",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2026/A4000/3929_T1.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC policy statement on biometric information treats misuse (including false accuracy/bias claims) as unfair or deceptive acts under Section 5 of the FTC Act (May 2023).",
+      "source_url": "https://search.ftc.gov/system/files/ftc_gov/pdf/p225402biometricpolicystatement.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB General Counsel Memo GC 23-02, dated October 31, 2022, addresses electronic monitoring and algorithmic management interfering with Section 7 rights.",
+      "source_url": "https://assets.dorsey.com/content/uploads/2023/06/Electronic-Monitoring-10-31-2022-3.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate OpenVINO detector runs YOLO ONNX models on Intel CPU/iGPU/NPU (also TensorRT / Edge TPU paths) with a custom label map.",
+      "source_url": "https://docs.frigate.video/configuration/object_detectors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Square Inventory API exposes catalog items, inventory counts and adjustment history for the reorder half of the pitch.",
+      "source_url": "https://developer.squareup.com/docs/inventory-api/what-it-does",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

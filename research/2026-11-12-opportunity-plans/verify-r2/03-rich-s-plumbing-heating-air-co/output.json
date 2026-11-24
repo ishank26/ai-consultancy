@@ -1,0 +1,203 @@
+{
+ "verdict": "PASS",
+ "issues": [
+  {
+   "claim": "Integration row 'On-call technician mobile (emergency escalation)' \u2014 cost: 'No separate transfer charge; the transfer leg is billed as platform/model usage inside the per-minute estimate, and transport is $0 on Vapi telephony' \u2014 marked confirmed_in_docs: true",
+   "problem": "The integration exists and behaves exactly as described in the docs, but neither the Transfer Call page nor the assistant-based warm transfer page states any billing for the destination leg. 'No separate transfer charge' is a reasonable derivation from the documented $0 Vapi Telephony/SIP transport fee, but it is an inference, not a documented statement, so it should not sit in a cost field under confirmed_in_docs: true.",
+   "fix": "Keep confirmed_in_docs: true for the integration mechanics, and relabel the cost as 'inference: no transfer-specific charge is published; the destination leg is assumed to be covered by the documented per-minute usage and $0 Vapi transport fee \u2014 confirm on the first live transfer test'."
+  },
+  {
+   "claim": "edge_vs_competitors: 'a complete, queryable transcript trail for every emergency call, which no answering service hands back in structured form'",
+   "problem": "Overbroad and contradicted by the cited competitor pages: Ruby's pricing page advertises voicemail and chat transcripts plus 'AI-powered transcripts and sentiment analysis' in all plans, and MAP/AnswerConnect deliver message reports and portal access. The differentiator may still hold for structured machine-readable triage records, but the absolute wording is not supported.",
+   "fix": "Narrow to something the cited pages support, e.g. 'structured triage fields (hazard class, escalation outcome, confidence) alongside transcripts, which the live answering plans reviewed publish only as transcripts or message reports'."
+  },
+  {
+   "claim": "current_tools: the site's 'online scheduling' for service requests 'is that request form' (describing the form as the online scheduling path)",
+   "problem": "Rich's emergency page only says online scheduling is available for service requests; the contact page's form has no calendar or slot picker and the /contact-us/ page never uses the words 'online scheduling'. Equating the two is an inference, but the item is written as evidence.",
+   "fix": "Mark it explicitly as inference ('the request form is the only web intake found; whether the site's 'online scheduling' refers to it is an inference to confirm at discovery')."
+  },
+  {
+   "claim": "running_costs: 'about $2.40-$5.10/month at 200-400 one-segment messages'",
+   "problem": "Recomputing from the cited page: 200 messages x ($0.0083 + $0.0035 to $0.0045) = $2.36-$2.56; 400 messages = $4.72-$5.12. The stated band is slightly tight at both ends ($2.40 vs $2.36, $5.10 vs $5.12) but does not change the $61-$131 total materially.",
+   "fix": "State '$2.36-$5.12/month at 200-400 one-segment messages' or keep '$2.40-$5.10' and call it rounded."
+  }
+ ],
+ "claims_checked": [
+  {
+   "claim": "Vapi published 1,000-minute estimate totals $82-$129/month with no success package: hosting $50 at $0.05/min, Deepgram $10, OpenAI $8-$45, ElevenLabs $15-$24, transport $0",
+   "source_url": "https://vapi.ai/pricing",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Vapi Core is $29/month and includes 5 phone numbers, 10 concurrent calls, 30-day raw data retention and a 2-business-day email response SLA",
+   "source_url": "https://vapi.ai/pricing",
+   "result": "confirmed"
+  },
+  {
+   "claim": "The Vapi free/pay-as-you-go tier includes 1 number, 4 concurrent calls and 14 days raw data retention",
+   "source_url": "https://vapi.ai/pricing",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Vapi's 99% uptime SLA starts only at the Pro tier ($999/month minimum); the Core package carries no uptime SLA",
+   "source_url": "https://vapi.ai/pricing",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Core + usage totals $111-$158/month (i.e. $29 added to the $82-$129 usage estimate)",
+   "source_url": "https://vapi.ai/pricing",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Assistant-based warm transfer (`warm-transfer-experimental`) works on Vapi numbers and BYO SIP trunks, puts the caller on hold, has a transfer assistant speak the summary when summaryPlan is enabled, connects only on transferSuccessful, and rolls back to the assistant via fallbackPlan on busy/no-answer/timeout",
+   "source_url": "https://docs.vapi.ai/calls/assistant-based-warm-transfer",
+   "result": "confirmed"
+  },
+  {
+   "claim": "The summary/message/TwiML/wait-for-operator warm transfer modes are Twilio-only and do not speak on other providers, so they cannot be assumed on a Vapi number",
+   "source_url": "https://docs.vapi.ai/tools/transfer-call",
+   "result": "confirmed"
+  },
+  {
+   "claim": "On Vapi numbers a failed transfer returns the caller to the assistant only where a fallbackPlan is configured; the assistant-based mode is labelled experimental, uses E.164 destinations and has a default transfer-assistant max duration of 120s",
+   "source_url": "https://docs.vapi.ai/tools/transfer-call",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Vapi Transfer Call destinations accept an E.164 number or SIP URI and the transfer leg has no published billing of its own (cost stated as 'no separate transfer charge')",
+   "source_url": "https://docs.vapi.ai/tools/transfer-call",
+   "result": "not found"
+  },
+  {
+   "claim": "Twilio US SMS: $0.0083 per 160-character outbound segment, plus carrier fees AT&T $0.0035 and T-Mobile $0.0045, and US A2P 10DLC senders are subject to carrier registration onboarding fees of unpublished amount",
+   "source_url": "https://www.twilio.com/en-us/sms/pricing/us",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Twilio's phone-number price table did not render in the fetched page, so long-code rental is not published there",
+   "source_url": "https://www.twilio.com/en-us/sms/pricing/us",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Google Calendar API: usage under 1,000,000 requests per day per project incurs no charge, and full billing details for above-threshold use will be shared later in 2026 with at least 90 days' notice",
+   "source_url": "https://developers.google.com/workspace/calendar/api/guides/quota",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Retell AI pay-as-you-go publishes $0.07-$0.31/minute, no charge for SIP trunking/custom telephony, phone numbers at $2.00/month, SMS at $0.01/message and a separate $0.015/minute country call rate",
+   "source_url": "https://www.retellai.com/pricing",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Sameday AI: Launch starts at $449/month with 500 included minutes and 3 locations, English/Spanish and pro scheduling; Scale starts at $789/month with 1,000 minutes; Enterprise is custom; overage at the plan's per-minute rate, which is not published",
+   "source_url": "https://sameday.ai/pricing",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Sameday's FAQ describes forwarding your current number to theirs (the pattern the plan relies on)",
+   "source_url": "https://sameday.ai/pricing",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Marlie AI: Basic $49/250 min then $0.35/min with no call transfer; Standard $99/500 min then $0.35/min with transfer to 1 number and calendar sync; Pro $199/1,000 min then $0.30/min; Premium $399/2,000 min then $0.25/min; 14-day trial, no long-term contracts",
+   "source_url": "https://www.marlie.ai/pricing",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Ruby: minutes plans $250/50, $395/100, $720/200, $1,725/500; chat plans $143/10, $335/30, $520/50; optional AI enhancements included in all plans",
+   "source_url": "https://www.ruby.com/pricing/",
+   "result": "confirmed"
+  },
+  {
+   "claim": "AnswerConnect: 200 min $350/month + $49.99 setup, $2.50 per extra minute; 300 min $395/month with no setup fee, $1.85 per extra minute; 400 min $575/month + $49.99 setup, $1.85 per extra minute",
+   "source_url": "https://www.answerconnect.com/plans-direct",
+   "result": "confirmed"
+  },
+  {
+   "claim": "MAP Communications: Pay As You Go $49/mo with 0 minutes and $1.37/extra minute; Business $179/mo, 125 min, $1.30; Enterprise $339/mo, 250 min, $1.28; Premium $649/mo, 500 min, $1.28; 24/7 coverage, no long-term contracts",
+   "source_url": "https://www.mapcommunications.com/pricing/",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Avoca publishes no public price (quote only), per a third-party directory that states it checked the vendor site on 2026-10-21",
+   "source_url": "https://receptionistratings.com/tools/avoca",
+   "result": "confirmed"
+  },
+  {
+   "claim": "New Jersey dispatchers (SOC 43-5032): annual median $54,590, average $26.25/hour, 10th percentile $39,730, 90th percentile $79,890, based on BLS May 2025 wage data",
+   "source_url": "https://www.onetonline.org/link/localwages/43-5032.00?st=NJ",
+   "result": "confirmed"
+  },
+  {
+   "claim": "BLS ECEC for June 2026 puts benefits at 30.0% of total compensation for private industry, implying about a 1.43x load on wages",
+   "source_url": "https://www.bls.gov/news.release/ecec.nr0.htm",
+   "result": "confirmed"
+  },
+  {
+   "claim": "PSE&G gas-leak guidance: exit the building immediately, move at least 350 feet away, leave lights/appliances/phones alone, do not try to find or control the leak, then call 911 or 1-800-880-7734",
+   "source_url": "https://nj.pseg.com/outageandgasleaks/ismellgas",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Rich's publishes a 60-minute response claim qualified by conditions and call location, a four-part 'Information to Share When You Call' list, and says online scheduling is available for service requests while active emergencies should call",
+   "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/",
+   "result": "confirmed"
+  },
+  {
+   "claim": "The same number (732) 257-1663 is published for the East Brunswick, Elizabeth and Bayville offices, described as reaching the office staff",
+   "source_url": "https://www.richsplumbing.com/contact-us/",
+   "result": "confirmed"
+  },
+  {
+   "claim": "The site's lead form is a two-step form posting to /api/lead with a Cloudflare Turnstile widget, an optional SMS-consent checkbox and no time-slot picker",
+   "source_url": "https://www.richsplumbing.com/contact-us/",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Customers publicly praise office staff calling ahead that a technician is on the way",
+   "source_url": "https://www.richsplumbing.com/",
+   "result": "confirmed"
+  },
+  {
+   "claim": "N.J.S.A. 2A:156A-4(d) allows a party to intercept where one party has given prior consent, subject to exceptions where the interception or use is for a criminal, tortious or other injurious act",
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239",
+   "result": "confirmed"
+  },
+  {
+   "claim": "FCC Declaratory Ruling FCC 24-17 in CG Docket 23-362 (Feb 2, 2024): the Chairwoman's statement says TCPA restrictions on an 'artificial or prerecorded voice' apply to AI technologies generating such calls, which are illegal unless prior express consent is obtained; the document opened is the statement, not the ruling text",
+   "source_url": "https://docs.fcc.gov/public/attachments/FCC-24-17A2.pdf",
+   "result": "confirmed"
+  },
+  {
+   "claim": "New Jersey's privacy law (P.L.2023, c.266) applies only to controllers processing personal data of at least 100,000 consumers, or 25,000 consumers plus revenue from selling personal data",
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2022/AL23/266_.HTM",
+   "result": "confirmed"
+  },
+  {
+   "claim": "The LiveKit Agents repo is Apache-2.0 and ships examples/frontdesk (agent, calendar_api, simulation, test_agent) and examples/data_capture_sim",
+   "source_url": "https://github.com/livekit/agents",
+   "result": "confirmed"
+  },
+  {
+   "claim": "The LiveKit Agents LICENSE file is the Apache License, Version 2.0",
+   "source_url": "https://raw.githubusercontent.com/livekit/agents/main/LICENSE",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Running-cost arithmetic: scaled Vapi usage of 0.36-0.75 of the 1,000-minute estimate = about $30-$97, and the total $61-$131 = 29 + 30..97 + 2.40..5.10",
+   "source_url": "https://vapi.ai/pricing",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Setup fee arithmetic: 16 founder-days (2+2+4+2+2+4) at $150/day = $2,400",
+   "source_url": "https://www.onetonline.org/link/localwages/43-5032.00?st=NJ",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Year-one cash: $1,200 pilot + ($2,400 - $1,200 credit) + 12 x $450 = $7,800; fallback tier 12 x $299 gives $5,988; 27,297/7,800 = 3.5 and 47,771/7,800 = 6.1; $1,200 is about 2.7 months of Sameday's $449 Launch plan",
+   "source_url": "https://sameday.ai/pricing",
+   "result": "confirmed"
+  }
+ ],
+ "confidence": "High"
+}

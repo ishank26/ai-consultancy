@@ -1,0 +1,233 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Johnson & Associates, Attorney — 280 Amboy Ave, Metuchen, website johnsonlegalpc.com",
+      "problem": "The firm's own live site (johnsonlegalpc.com, 'Johnson Legal PC', foreclosure defence) lists its office as 1 Tower Center Blvd., Suite 1510, East Brunswick, NJ 08816 and gives phone 1.848.229.2254 — the same phone the mapper recorded. Only the Downtown Metuchen member directory still shows 280 Amboy Ave. The firm looks to have relocated out of the zone, so the Metuchen address is contradicted by a current primary source.",
+      "fix": "Drop the entry, or keep it but change town/address to East Brunswick and mark it out-of-zone pending a call to 848-229-2254."
+    },
+    {
+      "claim": "Vella, Singer and Martinez Law Group — 326 Main St, website http://vsmlawgroup.com/",
+      "problem": "vsmlawgroup.com does not resolve (DNS ENOTFOUND, not just an HTTP error). The only surviving evidence of the firm is the Downtown Metuchen member listing and stale Martindale/lawyers.com profiles for 'Vella, Singer & Associates, P.C.'. Current activity is unconfirmed.",
+      "fix": "Clear the website field and verify the practice is still trading at 326 Main St (call 732-494-8200) before it goes into the outreach queue."
+    },
+    {
+      "claim": "Zenith Energy — 1 Highland Ave, Metuchen; category 'energy consulting'; website http://www.zenithem.com/",
+      "problem": "zenithem.com is the corporate site of Zenith Energy L.P., a Houston-headquartered bulk liquid storage terminal operator (3900 Essex Lane, Houston per its LinkedIn profile; own site describes 7 terminals in 5 states). D&B names the Metuchen record 'Zenith Energy Management, LLC'. So the local listing is a secondary/registered office of a multi-site corporate group, not an independent Metuchen energy consultancy, and 'energy consulting' is an inference not stated anywhere I opened.",
+      "fix": "Reclassify or drop: treat as a corporate affiliate (chain-type exclusion) unless the local entity is confirmed to be independent and client-facing; if kept, relabel the category as 'liquid storage / energy holding company (affiliate)' and note the Houston parent."
+    },
+    {
+      "claim": "Management Recruiters of Edison — 276 Main St, 2nd Floor (recruiting and staffing)",
+      "problem": "This is an MRINetwork office (mrinetwork.com office profile, owner Frank Noorani). MRINetwork is a franchise brand, yet the mapper removed other franchise-branded businesses (Supercuts, Massage Envy, Club Pilates, StretchLab, Computer Troubleshooters). The franchise rule is applied inconsistently.",
+      "fix": "Either remove this entry to match the treatment of other franchise-branded offices, or state in the caveats why independently owned franchise offices are being kept."
+    },
+    {
+      "claim": "Arch2, Inc. — source_urls include https://www.downtownmetuchen.org/directory/architecture-engineering/",
+      "problem": "The architecture-engineering directory page does not list Arch2. I found Arch2 on https://www.downtownmetuchen.org/directory/business-professional-services/ (495 Main St, 732-906-8203, arch2inc.com) — the business is real and the details match, but one of the two cited URLs does not support the entry.",
+      "fix": "Replace the architecture-engineering URL with the business-professional-services page so the citation matches."
+    },
+    {
+      "claim": "Dentist entries with address 'Unknown' / partial addresses that the cited source actually supplies",
+      "problem": "The mapper's own cited source (dentistsranked.com/dentists/metuchen-nj) publishes street addresses for these entries, so 'Unknown' is under-extraction rather than genuine absence: Smiles on Main Street 244 Main St; Family Dentistry of Metuchen 150 Middlesex Ave; George E. Ludwig, DDS 601 Main St; Gregory A. Kubinak, DMD 652 Middlesex Ave; Family Dentistry – Richard D. Gentile, DMD 220 Amboy Ave; Elm Court Dental Associates 1 Elm Ct; Metuchen Dental Center (Caesar M. Revano) 35 Amboy Ave; Susan Krutyansky 450 Main St #2. Smiles on Main Street is also duplicated in the source (#6 and #14, differing phone/hours) and appears once in the list.",
+      "fix": "Backfill these addresses from the cited page and mark the source's duplicate Smiles-on-Main records as one practice."
+    },
+    {
+      "claim": "Dentist entries sourced only from dentistsranked.com (Park Family Dental, Fu Tzulin DDS, Dr. Minah Kim, Kim Jennifer J, Dr. Andrew Chen)",
+      "problem": "The cited ranking page also contains an obvious placeholder, 'Test Dental Practice' at 123 Main Street with a non-NJ phone (780) 940-8975, plus lead-generation style records ('Emergency Dentist Metuchen', 'Pure Pearl Dental Metuchen' with 12 AM–12 AM hours). A source that publishes synthetic listings cannot by itself substantiate five named dentists with no address.",
+      "fix": "Treat these five as unverified: confirm each against the NJ dental licence lookup or a practice website before outreach, or move them to a 'needs verification' appendix."
+    },
+    {
+      "claim": "Timeshares Inc — 24 Hillside Ave, 'real estate services'",
+      "problem": "The best support I could find is a Middlesex Greenway planning appendix and a 1996 Metuchen Review newspaper page. The locationsnear.me record cited by the mapper is the only 'current' trace, and the nature of the business is inferred from the name alone.",
+      "fix": "Drop it unless a current licence, phone answer or listing shows it still operates; it fails the 'active' bar."
+    },
+    {
+      "claim": "Coverage: L'Essence Day Spa, 470 Main St, Metuchen",
+      "problem": "Active independent day spa with its own live site ('Now Open in Metuchen', 470 Main St, 848-260-0808, massage/facials/lashes/head spa) and absent from businesses.json — a genuine gap in the beauty/personal-care group.",
+      "fix": "Add to group B (beauty/personal care) with the site and phone."
+    },
+    {
+      "claim": "Coverage: ATON Computer Services, Inc., 28 Hazelwood Ave, Metuchen",
+      "problem": "Found in an IT-services search and in a Cylex Metuchen record (732-443-0433, atoncs.com / atoncomputing.com); the company site is live but shows no street address, so the Metuchen address is directory-only. Not in businesses.json.",
+      "fix": "Add as a provisional group A IT entry and confirm the Hazelwood Ave office before outreach."
+    },
+    {
+      "claim": "Coverage: OM Pharmacy, 63 Pearl St, Metuchen",
+      "problem": "Appears on the mapper's own cited Health & Medicine directory page (63 Pearl St, 732-494-4350) but is not in the list. Not an excluded type (independent pharmacy), though it is retail-adjacent.",
+      "fix": "Decide explicitly whether pharmacies are in scope; if they are, add it."
+    },
+    {
+      "claim": "Metuchen Dentistry, 652 Middlesex Ave (Dr. Akata Patel, own site with 30+ years' history)",
+      "problem": "Found via search and confirmed on its own site, but absent by that name. It shares 652 Middlesex Ave and the phone 732-603-0030 with the listed 'Gregory A. Kubinak, DMD' record, so this is probably the same practice under a newer brand rather than a miss — the list should say which.",
+      "fix": "Reconcile: either rename the Kubinak entry to Metuchen Dentistry (Dr. Akata Patel) or add the practice name as an alias so the team does not treat them as two prospects."
+    },
+    {
+      "claim": "'Metuchen Dental Group' — 26 Bridge St, Metuchen",
+      "problem": "Only the dentistsranked ranking record (phone 732-321-1151, hours) plus a bulk NJ directory support it; I found no practice site or second independent source. The neighbouring source quality makes this record worth checking.",
+      "fix": "Verify by phone or NJ licence lookup before including it as a prospect."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Armour Law Firm is a Metuchen law firm at 407 Main St with phone 732-276-9499 and site armourlawfirm.com",
+      "source_url": "https://www.downtownmetuchen.org/directory/legal/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Barrett & Pavluk, LLC at 61 Pearl St, Metuchen — bpnjlaw.com is their site and they list a Metuchen office",
+      "source_url": "http://bpnjlaw.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Busch Law Group is at 450 Main St, Metuchen and buschlawgroup.com is its site",
+      "source_url": "https://www.buschlawgroup.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Brause, Brause & Ventrice, LLC at 276 Main St is a Middlesex County law firm and brausebrauseandventrice.com is its site",
+      "source_url": "https://www.brausebrauseandventrice.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Law Office of David E. Sachs is in Downtown Metuchen (52 Pearl St) and sachslawoffice.com is its site",
+      "source_url": "http://sachslawoffice.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Mark R. Silber, Attorney at Law practises in Metuchen with phone 732-494-0400 and marksilber.com is his site",
+      "source_url": "http://marksilber.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Law Office of Jace C. McColley at 540 Middlesex Ave, phone 732-494-8404, site jcmlaw.com",
+      "source_url": "http://www.jcmlaw.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Johnson & Associates / Johnson Legal PC operates from 280 Amboy Ave, Metuchen",
+      "source_url": "http://johnsonlegalpc.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Vella, Singer and Martinez Law Group website is http://vsmlawgroup.com/",
+      "source_url": "http://vsmlawgroup.com/",
+      "result": "not found"
+    },
+    {
+      "claim": "Zenith Energy at 1 Highland Ave is an energy consulting business whose site is zenithem.com",
+      "source_url": "http://www.zenithem.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Star Accounting Services is at 48 Bridge St, Building A, Metuchen, phone 732-662-5170, Kirti Desai CPA president",
+      "source_url": "https://staraccounting.net/contact_us.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "JW CPA LLC is at 254 Bridge Street, Building G, Metuchen, phone 848-200-7361",
+      "source_url": "https://jiawucpa.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Edward Kane, CPA is a CPA firm located in Metuchen, NJ (ekanecpa.com)",
+      "source_url": "https://ekanecpa.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Don Pedro Financial is a Metuchen-based father-and-son CPA firm",
+      "source_url": "https://donpedrofinancial.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Weiss Group, LLC — weisslawyersnj.com is a New Jersey law firm (Metuchen address not stated on the site)",
+      "source_url": "https://weisslawyersnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Hair Loft is at 476 Main Street, Metuchen, phone 732-738-3770",
+      "source_url": "https://www.hairloftnj.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Metuchen Pediatric Dentistry is at 236 Bridge Street, Metuchen, closed Wednesdays, Mon/Tue/Thu/Fri hours",
+      "source_url": "https://www.metuchenpediatricdentistry.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "WeCARE Physical Therapy is a Metuchen NJ physical therapy practice",
+      "source_url": "https://wecareptnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Metuchen Veterinary Hospital (69 Pearl St) is a full-service vet practice, metuchenvet.com",
+      "source_url": "https://metuchenvet.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BlueWater Marketing Group is a live web design/SEO agency at 402 Main Street, Suite 100-280, Metuchen, phone 732-744-9119",
+      "source_url": "https://www.bluewmg.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "L'Essence Day Spa is open at 470 Main St, Metuchen (848-260-0808)",
+      "source_url": "https://www.lessencedayspanj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Metuchen Dentistry is a dental practice at 652 Middlesex Ave, Metuchen (Dr. Akata Patel)",
+      "source_url": "https://metuchendentist.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "dentistsranked.com Metuchen ranking publishes addresses for Family Dentistry of Metuchen (150 Middlesex Ave) and Smiles on Main Street (244 Main St), and includes a placeholder 'Test Dental Practice' at 123 Main Street",
+      "source_url": "https://www.dentistsranked.com/dentists/metuchen-nj",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Arch2, Inc. is listed on the Downtown Metuchen architecture-engineering directory page",
+      "source_url": "https://www.downtownmetuchen.org/directory/architecture-engineering/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Safety & Risk Control Services, Inc. is at 395 Main Street, Suite 4, Metuchen (its own site gives 800-466-4025)",
+      "source_url": "https://www.safetyrisk.com/",
+      "result": "could not open"
+    },
+    {
+      "claim": "Management Recruiters of Edison at 276 Main St is an MRINetwork franchise office",
+      "source_url": "https://mrinetwork.com/offices/management-recruiters-of-edison/",
+      "result": "confirmed"
+    }
+  ],
+  "coverage": {
+    "searches": [
+      "dentist Metuchen NJ office",
+      "roofing contractor Metuchen NJ (trades = group C, outside this zone's AB scope)",
+      "chiropractor Metuchen NJ",
+      "physical therapy clinic Metuchen NJ",
+      "optometrist eye doctor Metuchen NJ",
+      "hair salon Metuchen NJ Main Street",
+      "accountant CPA firm Metuchen NJ Bridge Street",
+      "insurance agency Metuchen NJ local independent",
+      "IT support computer services company Metuchen NJ",
+      "massage therapy studio Metuchen NJ",
+      "architect firm Metuchen NJ",
+      "staffing agency Metuchen NJ employment"
+    ],
+    "eligible_found": 30,
+    "already_listed": 28,
+    "missing": [
+      {
+        "name": "L'Essence Day Spa",
+        "town": "Metuchen",
+        "source_url": "https://www.lessencedayspanj.com/"
+      },
+      {
+        "name": "ATON Computer Services, Inc.",
+        "town": "Metuchen",
+        "source_url": "https://www.cylex.us.com/company/aton-computer-services--inc--30054846.html"
+      }
+    ]
+  },
+  "confidence": "Medium"
+}

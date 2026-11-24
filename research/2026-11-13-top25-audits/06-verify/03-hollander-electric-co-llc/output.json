@@ -1,0 +1,153 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"31 town pages with no page titles\" (standfirst and section 1 heading) and \"all 32 pages have an empty title\"",
+      "problem": "I could only find 30 town pages. The homepage navigation/footer exposes exactly 30 distinct /electrician/<town> URLs (cranbury, dayton, east-brunswick, east-windsor, edison, fords, franklin-park, helmetta, highland-park, jamesburg, kendall-park, kingston, manalapan, matawan, metuchen, millstone, milltown, monmouth-junction, monroe, monroe-township, new-brunswick, north-brunswick, old-bridge, parlin, princeton, sayreville, somerset, south-brunswick, south-river, spotswood), and unlisted towns I tested (/electrician/robbinsville, /electrician/plainsboro) return a \"CITY PAGE NOT FOUND\" view. Homepage + 30 town pages = 31 pages, not 32. The empty-title finding itself is correct; the counts are off by one.",
+      "fix": "Change to \"30 town pages\" and \"all 31 pages\" (or re-crawl, list the URLs and state the exact count you observed)."
+    },
+    {
+      "claim": "\"four master licences on the page\" and \"structured data with the four licences\"",
+      "problem": "The site publishes three master licences (NJ Master Electrician #9674, NJ Master HVAC #4711, NJ Master HVAC #6091) plus a Home Improvement Contractor registration (#13VH02466500). The HIC registration is not a master licence, so \"four master licences\" overstates the credentials.",
+      "fix": "Say \"three master licences and an NJ home-improvement registration\" or \"four published credentials/licence numbers\"."
+    },
+    {
+      "claim": "\"published hours are Mon–Fri 8:00–4:30 (third-party profiles)\"",
+      "problem": "The cited Birdeye profile shows Mon–Thu 8:00 a.m.–4:30 p.m. but Friday 8:00 a.m.–4:00 p.m., closed Saturday and Sunday. The single \"Mon–Fri ... 4:30\" range is not what the cited source says.",
+      "fix": "\"published hours are Mon–Thu 8:00–4:30 and Fri 8:00–4:00, closed weekends (per Birdeye)\", or cite a source that actually shows 4:30 on Friday."
+    },
+    {
+      "claim": "\"Hi Toby\" inside \"For the founder\"",
+      "problem": "Toby is a published first-name mailbox (toby@hollanderelectric.com) and is named in reviews, but nothing public establishes that Toby is the founder/owner. Google reviews name \"Steve Hollander\" as the person a long-standing customer's family called, so the addressee's role is an unverified inference presented as fact.",
+      "fix": "Confirm who the owner/founder is before sending, or drop the founder framing (\"Hi Toby\" alone) and keep the personalise-before-sending note."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "In business 38 years / since 1988",
+      "source_url": "https://hollanderelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Four master licences published on the page",
+      "source_url": "https://hollanderelectric.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Commercial and industrial electrical is the stated primary focus",
+      "source_url": "https://hollanderelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "24/7 emergency response advertised to commercial/industrial clients",
+      "source_url": "https://hollanderelectric.com/electrician/milltown",
+      "result": "confirmed"
+    },
+    {
+      "claim": "31 town pages (count)",
+      "source_url": "https://hollanderelectric.com/electrician/milltown",
+      "result": "contradicted"
+    },
+    {
+      "claim": "All town/home pages carry an empty title",
+      "source_url": "https://hollanderelectric.com/electrician/milltown",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No meta description on the pages",
+      "source_url": "https://hollanderelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No structured data (zero application/ld+json blocks)",
+      "source_url": "https://hollanderelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sitemap lists the homepage alone, lastmod 2026-09-03",
+      "source_url": "https://hollanderelectric.com/sitemap.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Legacy /residential.php serves the same empty-title single-page shell",
+      "source_url": "https://hollanderelectric.com/residential.php",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Web quote form promises a same-business-day response",
+      "source_url": "https://hollanderelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Quote form has no field for the service address (only name, phone, service, town, free text)",
+      "source_url": "https://hollanderelectric.com/electrician/milltown",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No online booking / call-window selection anywhere on the site",
+      "source_url": "https://hollanderelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Published hours are Mon–Fri 8:00–4:30",
+      "source_url": "https://reviews.birdeye.com/hollander-electric-llc-889694528",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Google rating 4.8 from 207 reviews",
+      "source_url": "https://www.google.com/maps/place/Hollander+Electric/@40.4835935,-74.497676,10z/data=!4m8!3m7!1s0x89c3c4583c2a3431:0x5f303e8f28a7c110!8m2!3d40.4835935!4d-74.497676!9m1!1b1!16s%2Fg%2F1xg5tmkb",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Reviewer account of the owner answering a Friday call and booking the Monday visit",
+      "source_url": "https://www.google.com/maps/place/Hollander+Electric/@40.4835935,-74.497676,10z/data=!4m8!3m7!1s0x89c3c4583c2a3431:0x5f303e8f28a7c110!8m2!3d40.4835935!4d-74.497676!9m1!1b1!16s%2Fg%2F1xg5tmkb",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Switchgear, motor controls, standby generators and an industrial preventive-maintenance programme are on public pages",
+      "source_url": "https://hollanderelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NEIF-approved contractor with JCP&L Energy Plus home-improvement plan and commercial energy finance",
+      "source_url": "https://www.neifund.org/hollander-electric-llc/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Customer-service representative NJ annual median $47,740 (May 2025)",
+      "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000043405113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dispatcher NJ annual median $54,590 (May 2025)",
+      "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000043503213",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Electrician NJ annual median $77,250 (May 2025)",
+      "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000047211113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Derived rates $28.69–$32.81/hr and $46.42/hr, and the $3,442–$10,500 and $464–$2,785 ranges",
+      "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000043405113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact arithmetic: 25–40 leads x 20 min x 30–50% x 48 weeks = 120–320 hours; 2–3 sites x 5–20 hours = 10–60 hours",
+      "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000047211113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body is at most ~450 words",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Toby is the founder/owner being addressed",
+      "source_url": "https://hollanderelectric.com/",
+      "result": "not found"
+    }
+  ],
+  "confidence": "High"
+}

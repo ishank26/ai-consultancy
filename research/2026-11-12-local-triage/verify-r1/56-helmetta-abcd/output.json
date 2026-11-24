@@ -1,0 +1,337 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Coverage gap: A.J. Cascon, LLC (home improvement / remodeling, Helmetta)",
+      "problem": "One of the highest-review independent (non-franchise) contractors in the borough is missing. Angi lists 4.0/5 from 34 reviews for an additions-and-remodeling contractor based in Helmetta; a contractor profile gives 44 Lakeview Dr, Helmetta. The List's own categories_thin says 'only about half a dozen show any review volume', and this is one of them.",
+      "fix": "Add A.J. Cascon, LLC (group C, home improvement/remodeling), Angi listing + 44 Lakeview Dr as published address; verify address before outreach."
+    },
+    {
+      "claim": "Coverage gap: JEK Electric, 1 Park Place, Helmetta",
+      "problem": "A second Helmetta-based electrical contractor is missing. BuildZoom, Manta and Yellow Pages all carry JEK Electric at 1 Park Place, Helmetta, (732) 521-5975. The List has only Anna Electric and Lighthouse Electric, and its thin-category note implies electrical coverage is complete.",
+      "fix": "Add JEK Electric (group C, electrical); note BuildZoom shows one NJ electrical license inactive - flag licence status as unverified."
+    },
+    {
+      "claim": "Coverage gap: Garden State Landscaping & Tree Service, 33 Madeline Ct, Helmetta",
+      "problem": "Yellow Pages landscape-contractor results for Helmetta list Garden State Landscaping & Tree Service at 33 Madeline Ct, (732) 656-1595. The List includes JLV Landscaping and Ava Landscapes but not this one, so its landscaping coverage is incomplete.",
+      "fix": "Add as a single-directory entry with the same caveat applied to JLV/Ava; property records show a residential parcel, so label home-based."
+    },
+    {
+      "claim": "Coverage inconsistency: HMG Auto Repair, 28 Main St, Helmetta",
+      "problem": "HMG Auto Repair is named only in the notes of the Anuj Auto Care entry, not as its own entry, although the List gives separate entries to two other 28 Main St auto businesses (The Corner Auto Service, Three Brothers). Directory results also show A To Z Auto Repair Shop as a Helmetta listing.",
+      "fix": "Either add HMG Auto Repair as its own entry (consistent with the other 28 Main St auto listings) or state explicitly why it is merged."
+    },
+    {
+      "claim": "Coverage gap: cleaning services (Better Service Office Cleaners, 10 Appleby Dr, Helmetta)",
+      "problem": "A WhereOrg Helmetta listing shows Better Service Office Cleaners at 10 Appleby Dr, 08828. The List carries registry-only cleaning names (ALA Cleaning, Cleaning With Meaning, Top Class Services) but omits this directory-listed one.",
+      "fix": "Add as a directory-only entry, or explain why WhereOrg listings were accepted for pets/retail but not cleaning."
+    },
+    {
+      "claim": "Internal inconsistency with the List's own cited registry source",
+      "problem": "The List includes many business-type names from city-data.com (e.g. Hollywood Painting, Sealcoating Pros, Pristine Floors) while omitting clearly operating-type entities on the same page: GORMAN ELECTRIC, LLC, JAFCO AIR CONDITIONING INC., WESTCOAST AIR HEATING & COOLING INC., YIN & YANG HEATING AND COOLING LLC, USA AUTO REPAIR & MAINTENANCE, LLC, ORIENTAL AUTO EXPRESS CORP., REDSCAPE LAWNSERVICE & LANDSCAPING LLC, CCM INSTALLATIONS LLC. The data_gaps note says ~130 entities were skipped as holding/HOA/trucking/nonprofit, which does not describe these.",
+      "fix": "Either add these registry-only names with the same 'registry only, unverified' label, or state the exclusion rule that separated them from the registry names that were kept."
+    },
+    {
+      "claim": "Name error: 'George Furniture, LLC'",
+      "problem": "The state registry entry on the cited source is GEORGIE FURNITURE, LLC, not 'George Furniture, LLC'. As written the name will not match any lookup.",
+      "fix": "Rename to 'Georgie Furniture, LLC'."
+    },
+    {
+      "claim": "H & D Prime Construction, Inc. - address recorded as 'Unknown'",
+      "problem": "BBB's Helmetta profile for this company shows 4 Main St, Suite 1 (same building as Lance Enterprises and the excluded Superior Fence & Rail). Calling the address unknown understates what the cited source contains.",
+      "fix": "Set address to '4 Main St, Suite 1' and note it shares the 4 Main St building."
+    },
+    {
+      "claim": "Imagination Station Play Cafe - website recorded as blank",
+      "problem": "The business has its own site, imaginationstationplaycafe.com, whose contact page gives 2 Old Forge Road Unit 101 and (732) 314-7529 - matching the entry. Listing it as no-website and NJTGO-only makes a solid storefront lead look weaker than it is.",
+      "fix": "Add https://imaginationstationplaycafe.com/ to website and sources; keep the party-venue/play-space framing."
+    },
+    {
+      "claim": "Phone fields left 'Unknown' where the cited directories publish one",
+      "problem": "R. Bloomfield General Contractor: BBB lists 732-521-0513. Anna Electric: BestProsInTown lists (732) 521-3163. H & D Prime has (732) 656-7766 already. Several 'Unknown' phones are gaps in extraction, not missing public data.",
+      "fix": "Backfill phones from the already-cited directories and keep the existing caveat that phones were not dialled."
+    },
+    {
+      "claim": "Gasland Gas Station (28 Main St) as a scoped business",
+      "problem": "Fuel retail with convenience items is kept and flagged as borderline by the mapper. It passes the stated exclusion list (not food service, not a franchise location confirmed), but if the owner scopes out fuel/petrol retail this entry and the 28 Main St auto cluster need re-review.",
+      "fix": "Get an explicit scope ruling on fuel stations; if included, note that Waze/directories give (732) 656-0804 as the station phone."
+    },
+    {
+      "claim": "Weight of thin-evidence entries",
+      "problem": "Roughly 35 of 90 entries rest on a single source, mostly the state-registry mirror on city-data.com, with no address, phone or operating listing. They are honestly labelled, but they are registry names, not verified operating businesses, and will dilute outreach lists.",
+      "fix": "Tier the list (verified operating / directory-listed / registry-only) so the BD team works the top two tiers first."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "R.A. Nichols Plumbing, Heating & Air is at 13 Lake Ave, Helmetta, with 4.9 stars / 893 Birdeye reviews, and ranicholshomeservices.com is its site with a Helmetta service-area page",
+      "source_url": "https://reviews.birdeye.com/d/contractors/helmetta-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ranicholshomeservices.com/service-area/helmetta/ exists and is the contractor's own Helmetta page",
+      "source_url": "https://ranicholshomeservices.com/service-area/helmetta/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Just In Case Plumbing & Heating LLC is a Helmetta-based plumbing/heating contractor",
+      "source_url": "https://www.njtgo.com/towns/H/Helmetta/Helmetta.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "All-Wayz Plumbing's site all-wayzplumbing.com is live and it is a plumbing contractor serving Middlesex/Monmouth/Ocean",
+      "source_url": "https://all-wayzplumbing.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Anna Electric, LLC is at 5 Madison Dr, Helmetta, 4.2 stars / 11 reviews",
+      "source_url": "https://reviews.birdeye.com/d/contractors/helmetta-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Lighthouse Electric of Central New Jersey LLC is at 22 Locust Dr, Helmetta, (732) 656-1979",
+      "source_url": "https://www.buildzoom.com/contractor/lighthouse-electric-of-central-new-jersey-llc",
+      "result": "could not open"
+    },
+    {
+      "claim": "Storm Master Co. (Storm Master Gutters) is at 13 Lake Ave, Helmetta, and is a NJ gutter contractor",
+      "source_url": "https://www.loc8nearme.com/new-jersey/helmetta/storm-master-gutters/6532899/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Roof.info lists exactly one roofing contractor in Helmetta",
+      "source_url": "https://www.roof.info/roofing-contractors/new-jersey/helmetta/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Lance Enterprises LLC is at 4 Main St, Helmetta, HVAC service, with customer reviews",
+      "source_url": "https://www.loc8nearme.com/new-jersey/helmetta/lance-enterprises-llc/6301947/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Font & Sons Painting LLC is at 1 Washington Ave, Helmetta, 3.9 stars / 11 reviews",
+      "source_url": "https://reviews.birdeye.com/d/contractors/helmetta-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Eurostyle Home Improvement LLC is at 609 Chester Ct, Helmetta, 3.5 stars / 4 reviews",
+      "source_url": "https://reviews.birdeye.com/d/contractors/helmetta-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "JLV Landscaping & Excavating is at 1 N 12th St, Helmetta, with posted hours and no reviews",
+      "source_url": "https://reviews.birdeye.com/d/contractors/helmetta-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Glenn Kaune's Custom Painting is at 35 Railroad Ave, Helmetta, with posted hours and no reviews",
+      "source_url": "https://reviews.birdeye.com/d/contractors/helmetta-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "T & R Alarm and Electrical Systems, Inc. is at 58 Main Street, Helmetta",
+      "source_url": "https://sam.directory/contractors/t-r-alarm-electrical-systems-inc-sgn2nkdum1u8",
+      "result": "confirmed"
+    },
+    {
+      "claim": "T & R Alarm and Electrical Systems, Inc. is a registered NY/NJ entity at 58 Main Street, Helmetta 08828",
+      "source_url": "https://www.city-data.com/business-entities/Helmetta-NJ.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "H & D Prime Construction, Inc. is a Helmetta general contractor at 4 Main St, Suite 1, (732) 656-7766, roofing/siding/windows, not BBB-accredited",
+      "source_url": "https://www.bbb.org/us/nj/helmetta/profile/general-contractor/h-d-prime-construction-inc-0221-90028112",
+      "result": "could not open"
+    },
+    {
+      "claim": "R. Bloomfield General Contractor is at 44 Lake Ave, Helmetta, not accredited and not rated",
+      "source_url": "https://www.bbb.org/us/nj/helmetta/profile/construction-services/r-bloomfield-general-contractor-0221-23002215",
+      "result": "could not open"
+    },
+    {
+      "claim": "SOS Construction Services, LLC has a live own site",
+      "source_url": "https://sites.google.com/sosconstruction.net/sos-construction/home",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SOS CONSTRUCTION SERVICES, LLC is a Helmetta-registered entity",
+      "source_url": "https://www.city-data.com/business-entities/Helmetta-NJ.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sky Cleaners is at 2 Old Forge Rd, Suite 4, Helmetta, (732) 605-0365",
+      "source_url": "https://www.bestprosintown.com/nj/helmetta/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Allegiance Garden Center's own site says the store is on Main Street in Helmetta and is open daily",
+      "source_url": "https://allegiancegardencenter.com/garden-center/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Allegiance Lawn & Garden is at 104 Main St, Helmetta, (732) 521-3347",
+      "source_url": "https://www.bestprosintown.com/nj/helmetta/landscapers/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "South County Day Care Center is at 56 Main St, Helmetta, (732) 521-1020, with its own site",
+      "source_url": "https://unitedwayofcentral4.wixsite.com/southcountydaycare",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Imagination Station Play Cafe is at 2 Old Forge Rd, Unit 101, Helmetta, (732) 314-7529",
+      "source_url": "https://www.njtgo.com/towns/H/Helmetta/Helmetta.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kris Kell Creations is a beauty salon at 2 Old Forge Rd, Suite 6, Helmetta, (732) 656-0013",
+      "source_url": "https://www.yellowpages.com/helmetta-nj/beauty-salons",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Iris Nails is at 2 Old Forge Rd, Helmetta, (732) 521-6006",
+      "source_url": "https://www.superpages.com/helmetta-nj/nail-salons",
+      "result": "confirmed"
+    },
+    {
+      "claim": "IRIS NAIL, LLC and NAIL XPO & SPA, LLC are both Helmetta-registered entities",
+      "source_url": "https://www.city-data.com/business-entities/Helmetta-NJ.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kanine Kutters is at 12 Lake Ave, Helmetta, (732) 251-0093 (single directory)",
+      "source_url": "https://www.whereorg.com/animal-specialty-services-middlesex-cty-nj",
+      "result": "could not open"
+    },
+    {
+      "claim": "Gasland gas station is at 28 Main St, Helmetta",
+      "source_url": "https://www.njtgo.com/towns/H/Helmetta/Helmetta.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Corner Auto Service is at 28 Main St, Helmetta, as an independent auto-repair service",
+      "source_url": "https://www.njtgo.com/towns/H/Helmetta/Helmetta.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Anuj Auto Care is at 28 Main St, Helmetta, (732) 656-0295",
+      "source_url": "https://www.yellowpages.com/helmetta-nj/mip/anuj-auto-care-552213593",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ANUJ AUTO CARE, LLC is a Helmetta-registered entity",
+      "source_url": "https://www.city-data.com/business-entities/Helmetta-NJ.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Three Brothers One in Glory Auto Repair has a Dun & Bradstreet Helmetta listing and its own Yola site",
+      "source_url": "https://www.dandb.com/businessdirectory/threebrothersoneingloryautorepair-helmetta-nj-12345002.html",
+      "result": "could not open"
+    },
+    {
+      "claim": "Doctor Appraisal LLC is a Helmetta appraisal practice, phone (732) 656-0445",
+      "source_url": "https://appraiserusa.com/city/db_apr.cgi?County=Middlesex&State=New+Jersey&cgifunction=Search&hidcity=New+Brunswick+or+&pagenum=4&suspended=%5E%24",
+      "result": "could not open"
+    },
+    {
+      "claim": "DOCTOR APPRAISAL, LLC is a Helmetta-registered entity",
+      "source_url": "https://www.city-data.com/business-entities/Helmetta-NJ.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A2Z INVESTIGATIONS, INC., AMT DATA SYSTEMS INC, AMT RESOURCES SYSTEMS INC, ITRESEARCH CORP, VIRTUAL SUPERNOVA COMPUTING LLC, GTS ADVERTISING LLC, ELM STAR DESIGNS LLC, MISNER CONSULTING LLC are all Helmetta-registered entities",
+      "source_url": "https://www.city-data.com/business-entities/Helmetta-NJ.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "APPRAISAL INSIGHTS, KOTLER REAL ESTATE SOLUTIONS, SANCHEZ TAX & ACCOUNTING SERVICES, MEDIATION FIRST FOR DIVORCE, COMBAT SCIENCE MMA, SAVAGE ROOFING, MOROZ HEATING & COOLING, YETMAN EXCAVATING, PRISTINE FLOORS, SEALCOATING PROS, HETTINGER HOME IMPROVEMENTS, JEFFREY LYNCH CUSTOM HOME IMPROVEMENTS, HOLLYWOOD PAINTING, RICHTER'S RENOVATIONS, FWC RENOVATIONS, KPS BUILDERS, JAKUB RYBKA CARPENTRY, RARITAN VALLEY WILDLIFE SOLUTIONS, SUPER DOOPER POOPER SCOOPER, ALL ABOUT MOVING, NOORI AUTO REPAIR, VICTORY CIRCLE AUTOMOTIVE, VM MOTORWERKS, TX TINTING, ALA CLEANING SERVICE, CLEANING WITH MEANING, TOP CLASS SERVICES, ALSTED DOCUMENT DESTRUCTION, HELMETTA FAMILY CHILD CARE, BRADY EDUCATIONAL SERVICES, DBT COLLECTIBLES, BARON TRADING, NEDERLAND-U.S.A., GREENBRIAR FORWARDING, VAST LOGISTICS, VELVET BUNGALOW BOUTIQUE, TAPFLASHPHOTO, MEMORY ZONE PHOTO BOOTH, PERSONAL DENTAL INSTRUMENTS, AVA LANDSCAPES, EVEREST LANDSCAPING MATERIALS/LAWN SERVICE/SNOW PLOWING, STORM MASTER CO., LIGHTHOUSE ELECTRIC, LANCE ENTERPRISES appear in the state-registry mirror for Helmetta",
+      "source_url": "https://www.city-data.com/business-entities/Helmetta-NJ.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'George Furniture, LLC' is a Helmetta-registered entity under that name",
+      "source_url": "https://www.city-data.com/business-entities/Helmetta-NJ.html",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Harris Kessler LLC (Dana Harris, CPA) is listed as a Helmetta, NJ tax preparer at PO Box 370, (732) 688-1255",
+      "source_url": "https://www.ptindirectory.com/tax-preparers/new-jersey/helmetta-nj/844800/harris-kessler-llc/dana-harris-cpa",
+      "result": "could not open"
+    },
+    {
+      "claim": "Fireside Plants and Gifts is at 2601 Candlelight Ct, Helmetta (single WhereOrg listing)",
+      "source_url": "https://www.whereorg.com/miscellaneous-retail-in-helmetta-nj",
+      "result": "could not open"
+    },
+    {
+      "claim": "Superior Fence & Rail occupies 4 Main St, Ste 1, Helmetta and is a franchise brand, so it is an excluded type",
+      "source_url": "https://reviews.birdeye.com/d/contractors/helmetta-nj/",
+      "result": "confirmed"
+    }
+  ],
+  "coverage": {
+    "searches": [
+      "dentist Helmetta NJ 08828",
+      "roofing contractor Helmetta NJ",
+      "hair salon Helmetta NJ 08828",
+      "auto repair Helmetta NJ Main St",
+      "landscaping contractor Helmetta NJ",
+      "dry cleaner Helmetta NJ 08828",
+      "electrician Helmetta NJ",
+      "pet grooming Helmetta NJ",
+      "insurance agency Helmetta NJ",
+      "restaurant Helmetta NJ Main St",
+      "general contractor Helmetta NJ",
+      "child care Helmetta NJ daycare",
+      "cleaning service Helmetta NJ office",
+      "law office Helmetta NJ attorney",
+      "gas station Helmetta NJ Main Street",
+      "accountant CPA Helmetta NJ tax office",
+      "auto body shop Helmetta NJ 08828",
+      "chiropractor / physical therapy Helmetta NJ",
+      "\"33 Madeline Ct\" Helmetta NJ landscaping",
+      "\"Jek Electric\" Helmetta NJ",
+      "\"A.J. Cascon\" Helmetta NJ contractor"
+    ],
+    "eligible_found": 29,
+    "already_listed": 22,
+    "missing": [
+      {
+        "name": "A.J. Cascon, LLC (A J Cascon Remodeling)",
+        "town": "Helmetta",
+        "source_url": "https://www.angi.com/companylist/us/nj/helmetta/a-j-cascon-llc-reviews-27201256.htm"
+      },
+      {
+        "name": "JEK Electric",
+        "town": "Helmetta",
+        "source_url": "https://www.buildzoom.com/contractor/jek-electric"
+      },
+      {
+        "name": "Garden State Landscaping & Tree Service",
+        "town": "Helmetta",
+        "source_url": "https://www.yellowpages.com/helmetta-nj/landscape-contractors"
+      },
+      {
+        "name": "HMG Auto Repair",
+        "town": "Helmetta",
+        "source_url": "https://www.whereorg.com/businesses/automotive-services-in-helmetta-nj"
+      },
+      {
+        "name": "Better Service Office Cleaners",
+        "town": "Helmetta",
+        "source_url": "https://www.whereorg.com/helmetta-nj"
+      },
+      {
+        "name": "A To Z Auto Repair Shop",
+        "town": "Helmetta",
+        "source_url": "https://www.dandb.com/businessdirectory/atozautorepairshop-helmetta-nj-26335890.html"
+      },
+      {
+        "name": "Charles P. Mataya, CPA",
+        "town": "Helmetta",
+        "source_url": "https://preparerindex.com/nj/helmetta/"
+      }
+    ]
+  },
+  "confidence": "Medium"
+}

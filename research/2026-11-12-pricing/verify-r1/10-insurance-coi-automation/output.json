@@ -1,0 +1,96 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "price_ranges.low_cost_self_serve includes \"Choices $180-$540/year\" and \"Choices\" is listed in derived_from",
+      "problem": "No offering object exists for Choices anywhere in the brief and no source URL is cited for the figure, so a price appears in the ranges and in the derivative list with no source and no tier/unit/inclusion detail. The figure is real (Basic Fill $180/year through Agency Anywhere Gold $540/year) but the brief does not show where it came from.",
+      "fix": "Add a Choices offering entry (plans $180/$300/$420/$540 per year, billed yearly) citing https://insuranceagencytools.com/coi-tracking-software/cost/ (updated October 30, 2026), or drop Choices from the range and derived_from."
+    },
+    {
+      "claim": "price_ranges.mid_market = \"$450-$1,000/month per agency (PolisAgent $497-$997; COIflow Network $497; Hailey $199 base plus $0.25/minute over 500)\"",
+      "problem": "Hailey's $199 base is cited as support for the band but sits below the $450 floor, so the range does not follow from the prices listed under it. PolisAgent Enterprise at $1,997/month is also above the ceiling and is omitted. The only prices actually inside $450-$1,000 are PolisAgent $497/$997 and COIflow $497.",
+      "fix": "Either drop Hailey from the mid-market citation (keep it in low_cost_self_serve where $199 fits) and state that Enterprise $1,997 is the outlier above the band, or restate the band as \"$450-$1,000/month for a per-seat AI operations platform, with a $199 entry point (Hailey, 500 minutes included) and $1,997 at the top (PolisAgent Enterprise)\"."
+    },
+    {
+      "claim": "price_ranges.full_service_or_custom = \"$2,500-$7,500/month plus $1,500-$5,000 one-time\" citing Native Base, Clermont, Deskpilot partner and CaliberNova",
+      "problem": "The one-time band ($1,500-$5,000) is contradicted by a price cited in the same range: CaliberNova's Production Workflow starts at $25,000 and its Automation Platform at $50,000. Native Base's $2,499/month is also $1 below the stated $2,500 monthly floor. Monthly retainers and fixed-fee implementation projects are being merged into one numeric range.",
+      "fix": "Split the band: monthly retainers $2,499-$7,500 (Native Base $2,499, Clermont $2,800-$7,500, Deskpilot partner $2,500+) and fixed-fee implementation/one-time $449-$10,000 plus a separate calibre for custom builds (CaliberNova $5,000 pilot, $25,000+ workflow, $50,000+ platform)."
+    },
+    {
+      "claim": "Hailey entry: \"insurance page lists 24/7 answering, quote intake, claim triage, renewal booking, TCPA consent capture\" and AMS list Applied Epic, AMS360, EZLynx, QQ Catalyst, HawkSoft, NowCerts; source_url https://www.usehailey.com/",
+      "problem": "Those details are not on the homepage cited; they are on https://www.usehailey.com/ai-receptionist/insurance, which does show 'From $199/mo (500 min)', explicit/recorded TCPA consent capture, claim-call triage, renewal booking and the six AMS names. The price and overage figures are correctly on the homepage, but the insurance-specific claims are cited to the wrong page.",
+      "fix": "Set source_url to https://www.usehailey.com/ai-receptionist/insurance (or cite both) for the insurance-page claims, keeping https://www.usehailey.com/ for $199/500 minutes/$0.25 per extra minute and the integration-based setup fee."
+    },
+    {
+      "claim": "Certificial contract_terms: \"third-party compilation reports no fixed term in the license terms\"",
+      "problem": "The cited URL (coisoftware.com/blog/certificial-pricing) does the opposite: it says the contract length is unknown and tells buyers to ask. The 'No fixed term in the license terms' row is on insuranceagencytools.com. As written the attribution is wrong even though the underlying fact is supportable.",
+      "fix": "Cite https://insuranceagencytools.com/coi-tracking-software/cost/ for the 'no fixed term in the license terms' statement, or relabel it as unstated/unknown per the coisoftware article."
+    },
+    {
+      "claim": "TrustLayer Starter: \"Free up to 50 vendors, then $10 per additional vendor per month (third-party compilation)\" with \"Vendor portal, automated chase, AI certificate review, per the compilation\"",
+      "problem": "The $10 figure is on TrustLayer's own page (https://www.trustlayer.io/pages/starter), not only in a competitor's compilation, so it is mislabelled as third-party-only; conversely the inclusion list (vendor portal, automated chase) is not stated in the coisoftware article that is cited. The current page says Starter is free to 50 vendors then $10 per additional vendor per month and describes it as 'automation and AI'.",
+      "fix": "Change source_type to vendor page and cite https://www.trustlayer.io/pages/starter for the $10/vendor/month overage, and trim the inclusions to what that page says (free to 50 vendors, automation and AI included) instead of asserting vendor portal and automated chase from a compilation that does not list them."
+    },
+    {
+      "claim": "buyer_reported_costs: \"Agency owner reports paying about $230 per user per month for Applied Epic\" with context \"agency size and modules unknown\"",
+      "problem": "The thread was not retrievable here (Reddit blocked), but the search summary of that thread says the $230 commenter works at an organisation with 500+ users. Calling agency size 'unknown' understates available context and makes the figure look more transferable to a 5-200 person New Jersey agency than it is.",
+      "fix": "Keep the figure but state that the commenter described a 500+ user agency, and flag that per-seat AMS pricing at that scale may not transfer to small agencies."
+    },
+    {
+      "claim": "buyer_complaints: G2 reviewer said the full integration with their AMS was not available",
+      "problem": "g2.com returned HTTP 403 and could not be opened, and no other retrievable source in this check repeats that reviewer's integration point. Left unverified.",
+      "fix": "Replace with a retrievable source (e.g. the Synatic/McMichael case study, which documents integration and endorsement-tracking failure) or keep it but mark it 'not independently verified'."
+    },
+    {
+      "claim": "price_ranges.low_cost_self_serve: \"Insurance Agent App $50-$149 typical plans with $449 setup\"",
+      "problem": "The cited compilation lists $50, $85, $149, $199, $299, $382/yr, $399 and $549, and setup fees of $449 to $10,000. Which plans are 'typical' is the brief's judgement, not stated in the source, and it is not labelled as inference inside the range string.",
+      "fix": "Write it as \"$50-$149 per month on the smaller client-count plans with $449 setup; larger plans run $199-$549/month and setup can reach $10,000\" and note in inference_note that '$50-$149 typical' is the brief's characterisation, not the source's."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "COIflow Starter $67/mo monthly, 250 active certificates, $3.22/cert/yr, +$0.25/cert overage, feature list", "source_url": "https://coiflow.app/", "result": "confirmed"},
+    {"claim": "COIflow Agency $247/mo monthly, 1,000 active certificates, $2.96/cert/yr, SMS chasing, per-client profiles, branded portal", "source_url": "https://coiflow.app/", "result": "confirmed"},
+    {"claim": "COIflow Network $497/mo monthly, 5,000 active certificates, $1.19/cert/yr, API & AMS export only on this tier", "source_url": "https://coiflow.app/", "result": "confirmed"},
+    {"claim": "COIflow: 7-day free trial including 25 certificates, no credit card, no setup fee published, annual = Starter 1 month free, Agency 15% off, Network 20% off", "source_url": "https://coiflow.app/", "result": "confirmed"},
+    {"claim": "Certificial: $0 for insureds, agents and brokers, free requestor tier up to 5 suppliers/insureds, no annual toggle on the page", "source_url": "https://www.certificial.com/pricing", "result": "confirmed"},
+    {"claim": "Certificial Requestor Professional starts at $99/mo with unlimited users; Enterprise not published", "source_url": "https://coisoftware.com/blog/certificial-pricing", "result": "confirmed"},
+    {"claim": "Certificial contract has no fixed term in the license terms", "source_url": "https://insuranceagencytools.com/coi-tracking-software/cost/", "result": "confirmed"},
+    {"claim": "PolisAgent Starter $497/month, Pro $997/month, Enterprise $1997/month with the listed modules and seat counts", "source_url": "https://www.polisagent.com/", "result": "confirmed"},
+    {"claim": "PolisAgent: 30-day free trial, no credit card, no contracts, cancel anytime; no setup fee published; AMS integration architecture only on Enterprise", "source_url": "https://www.polisagent.com/", "result": "confirmed"},
+    {"claim": "Deskpilot Executive Assistant $25/mo for 500 credits; Insurance Desk $100/mo for 2,000 credits; AI Agency Partner $2,500+/mo unlimited credits; Bronze/Silver/Gold/Platinum credit tiers selectable; waitlist/early access; no setup fee or contract terms published", "source_url": "https://trydeskpilot.com/", "result": "confirmed"},
+    {"claim": "Deskpilot Insurance Desk includes AMS integration for HawkSoft, Applied Epic, AMS360 and ACORD 25/28 COI generation", "source_url": "https://trydeskpilot.com/", "result": "confirmed"},
+    {"claim": "Insurance Agent App Plan A (301-700 active clients) $50/month, one-time setup $449, annual $510 (save 15%, non-refundable), no contract", "source_url": "https://www.insuranceagentapp.com/pricing", "result": "confirmed"},
+    {"claim": "Insurance Agent App higher plans $85/$149/$199/$299/$399/$549 per month, $382/year Scratch plan, setup fees $449 to $10,000", "source_url": "https://insuranceagencytools.com/coi-tracking-software/cost/", "result": "confirmed"},
+    {"claim": "Choices $180-$540 per year (Basic Fill $180; Agency Anywhere Bronze $300, Silver $420, Gold $540)", "source_url": "https://insuranceagencytools.com/coi-tracking-software/cost/", "result": "confirmed"},
+    {"claim": "Dooza: first 5 certificates free then $5 each, pack of 10 for $50, same business day if in by 2 pm Central, no contract, no AMS integration", "source_url": "https://www.dooza.ai/certificates-for-agencies", "result": "confirmed"},
+    {"claim": "Native Base: $2,499 one time only if live and in use by day 14, then $2,499/mo flat; $4,499/mo for two build lanes; up to 4 new builds/month; no per-certificate charges; month to month", "source_url": "https://www.nativebase.ai/services/coi-automation/", "result": "confirmed"},
+    {"claim": "Native Base works on top of EZLynx, HawkSoft, NowCerts, QQCatalyst, AMS360, Applied Epic", "source_url": "https://www.nativebase.ai/services/coi-automation/", "result": "confirmed"},
+    {"claim": "Clermont Global Essentials from $2,800/mo (~80 processing hours), Dedicated Desk from $5,200/mo (~160 hours), Agency Scale from $7,500/mo", "source_url": "https://clermontglobal.com/pricing.html", "result": "confirmed"},
+    {"claim": "Clermont pay-as-you-go $15+ per certificate, $30+ per policy check, $25+ per ACORD prep", "source_url": "https://clermontglobal.com/pricing.html", "result": "confirmed"},
+    {"claim": "Clermont: short scoped paid trial (missed SLA = free task), then month-to-month, annual at a preferred rate, billed at start of month, no setup fee stated", "source_url": "https://clermontglobal.com/pricing.html", "result": "confirmed"},
+    {"claim": "Hailey: starts at $199/month including 500 inbound minutes, $0.25 per additional minute, one-time setup fee based on integrations (amount not published)", "source_url": "https://www.usehailey.com/", "result": "confirmed"},
+    {"claim": "Hailey insurance page: 24/7 answering, quote intake, claim triage, renewal booking, explicit/recorded TCPA consent capture, and Applied Epic, AMS360, EZLynx, QQ Catalyst, HawkSoft, NowCerts listed", "source_url": "https://www.usehailey.com/ai-receptionist/insurance", "result": "confirmed"},
+    {"claim": "CaliberNova: COI Pilot $5,000 one-time fixed, bought online, AMS implementation not included, no retainer or auto-renewal; Production Workflow starting $25,000; Automation Platform starting $50,000; milestone billing with deposit via Stripe/ACH/wire", "source_url": "https://calibernova.com/pricing", "result": "confirmed"},
+    {"claim": "CaliberNova AMS connectivity (Applied Epic, EZLynx, AMS360, HawkSoft) is a scoped implementation dependent on vendor authorization and licensing", "source_url": "https://calibernova.com/pricing", "result": "confirmed"},
+    {"claim": "Cover Operation 'Issue Certificate' priced $1,500.00 with no unit stated; 12-20 minute average handling time; works in EZLynx, Epic, HawkSoft, AMS360 and carrier portals", "source_url": "https://coveroperation.com/product/issue-certificate/", "result": "confirmed"},
+    {"claim": "VRA $800/month part-time (20 hrs/wk) and $1,500/month full-time (40 hrs/wk), no setup or overage fees, no bilingual or after-hours upcharge, three-month commitment, invoiced on the 20th", "source_url": "https://vra.global/pricing", "result": "confirmed"},
+    {"claim": "TrustLayer Starter free up to 50 vendors then $10 per additional vendor per month; Pro/Complete quoted", "source_url": "https://www.trustlayer.io/pages/starter", "result": "confirmed"},
+    {"claim": "InsuraMate: quoted per agency, never metered per call or minute, Twilio billed to the agency's own account, AMS vendor may charge for access, setup included, month to month with no minimum, refund terms as described", "source_url": "https://insuramateai.com/pricing/", "result": "confirmed"},
+    {"claim": "Synatic/McMichael case study: ~2 hours per week saved for each of 10 agents, 520 hours a year, ~$10,000 in savings, combined Synatic + Certificial solution 'comes at no additional cost', undated", "source_url": "https://www.synatic.com/case-studies/mcmichael-insurance", "result": "confirmed"},
+    {"claim": "Clermont cost model: $33.33 loaded CSR hourly, 10 minutes per standard certificate = $5.56 labour, 650 certificates/month = about $3,600/month", "source_url": "https://clermontglobal.com/blog/coi-processing-cost-comparison.html", "result": "confirmed"},
+    {"claim": "Clermont blog market ranges: per-transaction standard COIs $3-$7; part-time desk $1,200-$2,000/month; full-time desk $2,500-$4,000/month", "source_url": "https://clermontglobal.com/blog/coi-processing-cost-comparison.html", "result": "confirmed"},
+    {"claim": "Clermont blog: $13.89 per complex certificate at 25 minutes; in-house makes sense below 5 certificates/day, outsourcing above 15-20/day", "source_url": "https://clermontglobal.com/blog/coi-processing-cost-comparison.html", "result": "confirmed"},
+    {"claim": "EZLynx: no flat rate, price depends on number of users and products, network members usually get a discount, free trial", "source_url": "https://www.ezlynx.com/why-ezlynx/pricing/", "result": "confirmed"},
+    {"claim": "Applied Epic: certificate servicing and client self-service certificate requests are inside the platform, no prices published", "source_url": "https://www1.appliedsystems.com/en-us/platform/applied-epic/client-servicing/", "result": "confirmed"},
+    {"claim": "Selectsys New Jersey COI support: flat-rate not hourly, no commitment, first month free, dual-layer QA, 24/5 coverage, rush requests 2-4 hours, AMS360/Epic native, white-label, no dollar rate published", "source_url": "https://www.selectsys.com/solutions/coi-processing-support/new-jersey", "result": "confirmed"},
+    {"claim": "Sonant publishes no prices; commercial terms not public", "source_url": "https://www.sonant.ai/ai-receptionist-for-agencies", "result": "confirmed"},
+    {"claim": "SourceForge review (May 2026) alleges poor support and a limited website, single review", "source_url": "https://sourceforge.net/software/product/Certificial/", "result": "confirmed"},
+    {"claim": "G2 reviewer said full AMS integration was not available for Certificial", "source_url": "https://www.g2.com/products/certificial/reviews", "result": "could not open"},
+    {"claim": "Reddit: about $230/user/month for Applied Epic (agency reported as 500+ users in the thread summary)", "source_url": "https://www.reddit.com/r/InsuranceAgent/comments/1g79krw", "result": "confirmed"},
+    {"claim": "Reddit: $240/user/month via aggregator; $270 per additional user and $1,300 first user", "source_url": "https://www.reddit.com/r/InsuranceAgent/comments/1id5n4e", "result": "could not open"},
+    {"claim": "Reddit: $200+ per added user plus $800 new-user setup fee", "source_url": "https://www.reddit.com/r/InsuranceAgent/comments/1af6uia", "result": "could not open"},
+    {"claim": "Reddit: about $40/month for a COI tracking tool", "source_url": "https://www.reddit.com/r/Insurance_Companies/comments/1vaa2rv/how_is_everyone_actually_tracking/", "result": "could not open"},
+    {"claim": "myCOI described as expensive with inconsistent support on r/InsuranceAgent", "source_url": "https://www.reddit.com/r/InsuranceAgent/comments/1kl5xrv/certificates_of_insurance_management/", "result": "could not open"}
+  ],
+  "confidence": "High"
+}

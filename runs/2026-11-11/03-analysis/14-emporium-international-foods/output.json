@@ -1,0 +1,91 @@
+{
+  "business": "Emporium International Foods",
+  "industry": "ecommerce-retail",
+  "town": "Old Bridge",
+  "opportunities": [
+    {
+      "title": "Catering and custom-platter intake agent that drafts the menu and quote, human approves",
+      "capability": "A",
+      "problem": "Every catering and custom-platter order is verbal and phone-only: the catering page tells customers they must call one number to plan a menu or place a custom platter, and the pre-orders page sends custom dates and large orders to the same phone. Staff therefore re-gather guest count, occasion, date, pickup window and item mix on every call, from a menu of smoked-fish, deli, cheese, salad and pickled-vegetable platters plus special-order whole animals — and none of that intake is captured as structured data or a written quote.",
+      "evidence": [
+        "Business's own catering page routes all catering and custom platters to the phone line rather than the site: https://emporiumfoods.com/catering",
+        "Catering platters and a separate 14-item seasonal pre-order catalog with lead times and pickup-only flags, e.g. stuffed suckling pig at $395 and stuffed goose at $325: https://emporiumfoods.com/pre-orders",
+        "Pre-orders page instructs customers to call the store for a custom date or large order, i.e. the exception path is manual: https://emporiumfoods.com/pre-orders",
+        "Industry brief lists phone/email order intake and re-keying of customer and item data, plus special orders, as core manual hotspots for Order Clerks (43-4151) and Retail Salespersons (41-2031): https://www.onetonline.org/link/summary/43-4151.00",
+        "Clerical order-taking work is projected to shrink (Order Clerks, BLS 2025-2035), so the labour being freed is not re-hireable headcount but the owner/supervisor's own hours — per industry brief trends"
+      ],
+      "agent_design": "Inbound agent on the existing phone line and web form: greets in English/Russian/Polish/Ukrainian/German (matching the storefront's five languages), collects occasion, headcount, date, pickup-vs-delivery and budget, then drafts a platter combination with per-platter quantities and a priced quote from the catering menu; checks the requested date against kitchen capacity and pickup windows; asks the two or three clarifying questions a human would ask; writes a structured order summary into the store's admin and emails/SMSes the customer a quote. Triggers: inbound call, web-form submission with topic=catering, or a pre-order enquiry. Human approval gate: no quote is sent and no order is confirmed until a staff member reviews the drafted menu, price and date — the agent never commits the kitchen. Exceptions (unusual items, large orders, allergy or custom-date requests) are routed to a call-back queue with the transcript attached.",
+      "why_not_DIY": "A chatbot subscription cannot price a configurable platter menu, hold conversational state across a multi-turn menu negotiation, check kitchen capacity, or write an order into the store's admin — and the storefront is a custom Laravel/Livewire build with no SaaS cart to bolt onto. It also has to answer in five languages with correct product names, and the escalation path must reach a phone-first staff that currently has no ticketing system.",
+      "impact_estimate": {
+        "range": "$4,000-$12,000/yr of recovered staff time, plus 1-3 additional catering orders per week captured from calls that currently go unanswered after hours or during service peaks",
+        "assumptions": "Assumes 8-20 catering/custom enquiries per week (not published by the store — inference from a large catering menu plus 14 seasonal SKUs and a Q4 banner); 12-15 minutes of verbal intake and hand-written quoting per enquiry reduced to 3-5 minutes of human review; the person doing intake is paid at the NJ median for Order Clerks, $46,270/yr (~$22/hr) per O*NET's BLS May 2025 mirror; catering order value assumed $150-$400, inferred from the $110 zone-1 delivery minimum and $325-$395 pre-order items. Revenue portion is deliberately capped at 1-3 orders/week because no call volume or conversion data exists.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4151.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: agent answers catering enquiries after hours and overflows during Friday-Sunday and holiday peaks, drafts a priced platter quote for staff approval, and logs every enquiry as a structured record; deliverable includes a rated accuracy sheet on 50 real transcripts, a catering-menu knowledge base the store can edit, and a one-page runbook for staff approval and escalation.",
+      "pilot_metric": "Share of catering enquiries answered within 5 minutes, minutes of staff time per enquiry, and quotes approved without edits"
+    },
+    {
+      "title": "Multilingual after-hours answer agent grounded in the store's own MCP server and policy pages",
+      "capability": "C",
+      "problem": "The store is open 9am-8pm seven days with no stated after-hours coverage, and its only non-phone channel is a form that promises no response time; the contact page itself pushes the phone as fastest for urgent order changes, pickup questions and availability. Meanwhile the published policies contradict each other: a legacy delivery page still describes UPS dispatch and tracking while the FAQ says the store does not ship out of state, so a customer asking the same question can get two different answers.",
+      "evidence": [
+        "Contact page sends urgent order changes, pickup questions and availability to the phone and offers only a fallback form with no response-time promise: https://emporiumfoods.com/contact-us",
+        "FAQ states the store does not ship groceries to other states: https://emporiumfoods.com/faq",
+        "Legacy delivery page still carries generic dispatched-in-two-days, shipped-via-carrier boilerplate that contradicts the FAQ: https://emporiumfoods.com/pages/delivery",
+        "The storefront already exposes a public read-only MCP server (emporium-foods-storefront v2.0.0) with tools for product search, store hours, pickup slots, delivery ZIP checks, specials and pre-orders: https://emporiumfoods.com/.well-known/mcp/server-card.json",
+        "Delivery is decided by five ZIP zones with per-zone fees and cart minimums ($110-$350), a rules-based question customers routinely get wrong before shopping: https://emporiumfoods.com/delivery-areas",
+        "Weight-sold items are ordered at an estimated weight and re-priced on packed weight with a temporary authorization buffer, a reconciliation step customers query: https://emporiumfoods.com/faq",
+        "Storefront is live in English, Russian, Polish, Ukrainian and German, so any answer channel must be too: https://emporiumfoods.com/",
+        "Field evidence: a GenAI support assistant raised issues resolved per hour by 14% on average across 5,179 agents, with larger gains for novices — NBER working paper w31161 (not peer-reviewed as distributed; large-vendor support desk, not a retailer): https://www.nber.org/papers/w31161"
+      ],
+      "agent_design": "Knowledge-and-tools agent behind a web chat widget plus a messaging/SMS channel, answering only from (a) the store's own policy and FAQ corpus and (b) live tool calls to the existing MCP server for hours, pickup slots, delivery ZIP eligibility, product availability, specials and pre-order status. Handles the recurring set: is my item in stock, can you deliver to my ZIP and what is the minimum, how does pickup work and where do I collect, why was my order re-priced by weight, change my pickup slot, when is the next pre-order cut-off. Reply in the customer's language. Triggers: chat open, form submission, after-hours inbound message. Human approval gate: anything that moves money or cancels an order (refunds, slot changes inside 24h, delivery-fee waivers) is drafted and queued for staff approval; low-confidence or angry threads escalate with the transcript to the phone queue.",
+      "why_not_DIY": "The value is in the integration, not the chat window: answering correctly requires live order data, the MCP tool surface, the five-zone delivery rules and a weight-reconciliation explanation, and it must agree with policy pages that currently contradict each other — a subscription bot would confidently repeat the stale UPS boilerplate. It also touches customer order records under NJ's 2025 privacy law and payment authorizations under PCI DSS, so scoped read-only tool calls and redaction are a build requirement, not a setting.",
+      "impact_estimate": {
+        "range": "$3,000-$9,000/yr of staff time kept off repeat questions, plus roughly $1,500-$4,500 of incremental online revenue per 1,000 orders/yr from recovered conversion",
+        "assumptions": "Assumes 20-60 inbound non-catering questions per week (not published — inference from a phone-first contact page and no chat widget); 3-5 minutes of staff handling each, valued at the NJ median Customer Service Representative wage of $47,740/yr (~$23/hr) per O*NET's BLS May 2025 mirror; only the share currently unanswered or handled by higher-paid staff is credited. Revenue side uses the working paper's finding that GenAI support gains arrive through conversion, applied as a deliberately small 1-3% relative lift, with an assumed ~$150 basket anchored to the $110 zone-1 delivery minimum rather than to any measured AOV. Deflection is capped at 50% of volume because weight and delivery disputes will still need a human.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: chat + SMS agent live after 8pm and on overflow, answering availability, hours, pickup, delivery-zone and re-pricing questions from the MCP server and a curated policy set; ships with a single source-of-truth policy file that reconciles the stale delivery page against the FAQ, a daily unanswered-question report, and a measured deflection rate on real traffic.",
+      "pilot_metric": "Share of after-hours questions answered without staff, wrong-answer rate on a 100-question audit, and policy contradictions removed"
+    },
+    {
+      "title": "Peak-season pre-order and pickup-capacity operator with a staff console",
+      "capability": "A",
+      "problem": "Holiday and weekend peaks are hand-managed. The seasonal pre-order catalog is a separate 14-item list with lead times and pickup-only flags, and the shop has to track which items still have pickup capacity as Thanksgiving and the December holidays approach; custom dates, large orders and urgent changes all land on the same phone. Weekend specials are a Friday-Sunday window that a person appears to refresh by hand (the specials page showed a single discounted item during the crawl), so promotional setup and pre-order chasing compete with counter work in exactly the weeks volume spikes.",
+      "evidence": [
+        "Seasonal pre-orders are a separate 14-item catalog with lead times and per-item pickup-only flags, and custom dates require a phone call: https://emporiumfoods.com/pre-orders",
+        "Holiday demand is explicitly planned for — Thanksgiving turkey and holiday catering banners plus a pre-order flow that must track pickup capacity: https://emporiumfoods.com/shop",
+        "Weekend specials run Friday-Sunday only, a recurring manual merchandising cycle: https://emporiumfoods.com/shop",
+        "Catalog pages (/new-products, /best-sellers, /specials) carry lastmod timestamps one day old, consistent with hand-editing by a small team rather than a PIM/ERP feed: https://emporiumfoods.com/sitemap.xml",
+        "Delivery eligibility is a rules check across five ZIP zones with $110-$350 cart minimums and $20-$30 fees in zones 3-5, i.e. order-level exceptions that must be caught before packing: https://emporiumfoods.com/delivery-areas",
+        "Weight-sold items are re-priced on packed weight with an authorization buffer, a per-order reconciliation task: https://emporiumfoods.com/faq",
+        "Industry brief constraint: Q4 volume concentrates seasonally (5-10x spikes), so automation must survive peak rather than steady state",
+        "Order/fulfilment clerical work is among the tasks the brief identifies as re-keying and three-way-check heavy for Order Clerks and Shipping/Receiving clerks: https://www.onetonline.org/link/summary/43-5071.00"
+      ],
+      "agent_design": "A pre-order ops agent plus a lightweight staff console. Triggers: a pre-order is placed, a pickup window approaches capacity, a cart fails a zone minimum or fee check, or a packed weight differs materially from the estimate. The agent (1) maintains a live capacity board per pre-order item and pickup window and takes a waitlist instead of overbooking, (2) sends staged confirmations and pickup reminders in the customer's language with lead-time and pickup-only constraints restated, (3) drafts the exception queue — zone-minimum shortfalls, fee mismatches, weight re-pricing above buffer, items promised for a date the kitchen cannot hit — for staff decision, and (4) prepares the weekend specials and holiday campaign changes as a reviewable draft list rather than a live publish. Human approval gate: capacity limits, substitutions, refunds and goodwill are proposed, never applied; publishing to the storefront and confirming a custom date stay with staff.",
+      "why_not_DIY": "This is a multi-source reconciliation problem — pre-order catalog, kitchen lead times, pickup-window capacity, zone rules, packed weights — and the storefront is custom-built, so no off-the-shelf app covers it. A spreadsheet plus a chatbot cannot hold the state, cannot catch a zone-minimum shortfall at packing time, and cannot be trusted to decide who gets the last stuffed goose; the value is the integrated console, which is exactly the kind of internal tool a chatbot subscription cannot produce.",
+      "impact_estimate": {
+        "range": "$1,500-$5,000 per holiday season in avoided oversell, spoilage and goodwill, plus 4-8 supervisor hours per week returned during the six-week peak",
+        "assumptions": "Assumes 2-4 items per peak season are oversold, promised on an impossible date, or spoiled because capacity was tracked informally, valued at $325-$395 each (the store's own suckling pig and goose list prices) — this is an inference about failure frequency, not a measured figure; peak coordination assumed at 5-10 hrs/week for six weeks, valued at the NJ median Order Clerk wage of $46,270/yr (~$22/hr); assumes no new revenue from waitlist conversion is credited, so the range is cost-avoidance only. Excludes any effect on routine weekly specials.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4151.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks, timed ahead of a holiday: live capacity board for the 14 pre-order items with pickup-window limits and a waitlist, automated confirmation and reminder messages in five languages, a daily exception queue for zone/weight/date problems, and a rehearsal using the store's own historical peak list so staff can compare the console's board against how they ran the last season.",
+      "pilot_metric": "Oversold or impossible-date items (target zero), supervisor hours spent on peak coordination, and waitlist-to-order conversion"
+    }
+  ],
+  "lead_score": {
+    "pain": 22,
+    "fit": 19,
+    "ability_to_pay": 11,
+    "ease": 11,
+    "strategic": 13,
+    "total": 76,
+    "rationale": "Pain (22/30): the store states outright that catering is ordered by phone, that custom dates need a call, and that urgent help goes to one number; contradictory live policy pages and no after-hours channel corroborate unowned manual work. Marked down because no call volume, review content or headcount was obtainable, so the size of the pain is inferred rather than measured. Fit (19/20): all three opportunities land in A and C, the storefront is a custom build with a public read-only MCP server and schema.org catalog — an unusually clean grounding surface — and the Q4 capacity problem maps to A plus a D-style console. Ability to pay (11/20): single-location independent market, likely low tens of employees per inference, no revenue or ownership data published; offset by a 30-year trading history, a custom-built multilingual storefront that implies real dev spend, and an additional in-store advertising revenue line. Ease of pilot (11/15): no integration against a hosted SaaS cart is needed and the catalog is already agent-readable, but there is no named owner with a title, no ticketing or CRM visible, and a phone-first culture that may not trust an agent with catering enquiries at first. Strategic (13/15): a catering-intake and multilingual policy/order agent for independent ethnic grocers is highly repeatable — NJ has a dense field of single-store specialty markets with the same phone-only intake and holiday spikes. Total 76."
+  },
+  "best_evidence_signal": "The store's own catering page sends every catering and custom-platter order to the phone, so its highest-margin revenue line has no digital intake at all — https://emporiumfoods.com/catering",
+  "suggested_channel": "walk-in",
+  "evidence_thin": false
+}

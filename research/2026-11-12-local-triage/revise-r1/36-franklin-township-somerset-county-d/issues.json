@@ -1,0 +1,47 @@
+[
+ {
+  "claim": "Anvil Services (Anvil International), 417 Elizabeth Ave, Somerset",
+  "problem": "Google's own place name is \"Anvil International, LLC - DBA - Anvil Services\" - a corporate site of a national pipe-fittings manufacturer (ASC Engineered Solutions), not an independent local business. The mapper flagged it as borderline and included it, while excluding similar branch operations (LGE US, Ferguson, Terumo).",
+  "fix": "Remove, or reclassify as a branch of a national company and apply the chain exclusion consistently across the whole list."
+ },
+ {
+  "claim": "Martial arts / self-defense instruction is absent from the list",
+  "problem": "One category search (\"martial arts school near Somerset NJ 08873\") returned 5 in-zone businesses, none of which appear in businesses.json, although comparable instruction businesses (dance, music, art schools) were included.",
+  "fix": "Add Somerset Taekwondo (1075 Easton Ave #13), Warrior Martial Arts Somerset (34 Worlds Fair Dr), New Journey MMA (2 JFK Blvd), Young Moo Martial Arts (120 Cedar Grove Ln), Golden Warrior Self Defense (24 Susan Dr) after township checks."
+ },
+ {
+  "claim": "Dry cleaner coverage",
+  "problem": "The mapper's own category has gaps: Jem Dry Cleaners (225 Demott Ln #5) and La Ritz Cleaners (120 Cedar Grove Ln) are in-zone, independently owned and missing, while four similar cleaners were listed. The mapper's dry-cleaner entries were harvested under a 'tailor alterations' query, which is why the plain dry-cleaner category is under-covered.",
+  "fix": "Add Jem Dry Cleaners and La Ritz Cleaners; run a dedicated 'dry cleaner' Maps query rather than relying on the tailor query."
+ },
+ {
+  "claim": "Florist coverage",
+  "problem": "Biagio's Florist (2135 Amwell Rd, Franklin Twp) appears in the same florist query the mapper cited but is missing from the list.",
+  "fix": "Add Biagio's Florist."
+ },
+ {
+  "claim": "Retail sub-categories not searched at all",
+  "problem": "Picture framing was never queried; CustomPictureFrames.com (6 Shirley Ave, Franklin Twp) is an in-zone independent picture frame shop that is missing. No framing, upholstery (none in-zone found), shoe repair (none in-zone found) or pet-supply category was checked.",
+  "fix": "Add a framing/specialty-retail pass; add CustomPictureFrames.com."
+ },
+ {
+  "claim": "Website column is empty for nearly every entry",
+  "problem": "At least 18 listed businesses publish websites on the very Google listings the mapper cited (venusjewelers.com, totaram.com, lolasblooms.com, lattanziolumber.com, thebrennercompany.com, orionprecision.com, carteretdiecasting.com, fortune-cnc.com, clearyproducts.com, palacesomersetpark.com, plintoncurry.com, modernmotion.org, centraljerseydriving.com, myfamilyappliances.com, gildedravengames.com, lorrainesembroidery.com, mintybuy.com, flowerstation.com, bilcobikes.com), yet the field is blank. The data_gaps note says websites were 'not guessed' - they did not need to be guessed, they were visible on the source listing.",
+  "fix": "Re-capture the website field from each Maps listing; it is the main value for outreach."
+ },
+ {
+  "claim": "The Palace at Somerset Park - phone recorded as \"Unknown\"",
+  "problem": "The Google listing for 333 Davidson Ave shows (877) 725-2234; several other entries also have phones recorded as Unknown while Maps shows numbers.",
+  "fix": "Fill in published phone numbers from the listings (Palace: 877-725-2234)."
+ },
+ {
+  "claim": "Inconsistent treatment of multi-site manufacturers",
+  "problem": "MRP Solutions, MICRO, United Plastics Group, Betar Inc and Ardena US are multi-site or corporate-owned plants (the mapper itself flags size/ownership doubts for three of them) but were kept, while LGE US, Ferguson and Terumo were excluded on the same reasoning. Inference: the list mixes independent shops with branch plants of larger corporations.",
+  "fix": "Apply one rule - either include all manufacturing branch sites or only owner-operated independents - and document it."
+ },
+ {
+  "claim": "Food-adjacent B2B entries vs the 'food' exclusion",
+  "problem": "Ziyad Distribution (food import/distribution warehouse) and W. A. Cleary Corporation (Google category 'Food manufacturer') are B2B food operations. Judgment call: the exclusion most likely targets restaurants/retail food, but the mapper did not state which reading it used.",
+  "fix": "Confirm the intended scope of the food exclusion with the orchestrator and keep or drop both consistently."
+ }
+]

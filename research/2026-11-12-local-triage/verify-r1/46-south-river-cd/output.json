@@ -1,0 +1,499 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Aquatic Service Inc, 550 Hartle St Ste F, town recorded as South River",
+      "problem": "Google Maps place page for 550 Hartle St Ste F shows 'Sayreville, NJ 08872', not South River. The mapper flagged the pin as falling outside the borough line but still recorded the town as South River. One checked entry is wrong on town.",
+      "fix": "Move to the Sayreville zone (or delete from this list). If kept, town must be Sayreville and the row should not count toward the South River territory."
+    },
+    {
+      "claim": "Aqua-Therm Plumbing & Heating, 31 Willett Ave, phone (732) 910-8492",
+      "problem": "The business's own contact page (aquathermnj.com/contact) publishes 7 Beryl Street, South River and 732-313-2345. The list's address and phone match current Google Maps, so the entry is not wrong, but the phone/address it will be dialled on differs from the company's own site.",
+      "fix": "Note both numbers/addresses in the row (site: 7 Beryl St, 732-313-2345; Maps: 31 Willett Ave, 732-910-8492) and verify before outreach."
+    },
+    {
+      "claim": "Coverage of general/roofing contractors",
+      "problem": "Ammi Construction LLC (37 Constitution Way, South River, 732-613-8598, 5.0 on Maps, own site ammiconstruction.com, BBB South River profile) is absent from the list. It ranked 3rd in my Maps 'general contractor South River' search.",
+      "fix": "Add Ammi Construction LLC as a Group C general contractor/roofer."
+    },
+    {
+      "claim": "Coverage of HVAC contractors",
+      "problem": "Tavares HVAC LLC (104 William St, South River; tavareshvac.com) and Hanco Service (52 Maple St, South River, 34 reviews on Birdeye) are in-borough and not in the list. Hanco shares 52 Maple St with Silverback Heating, so the two may be one operation or a former/current name pair.",
+      "fix": "Verify Tavares HVAC and add it; check whether Hanco Service is a duplicate of Silverback before adding."
+    },
+    {
+      "claim": "Coverage of painting contractors",
+      "problem": "Precise Custom Painting (104 Whitehead Ave, South River, 848-256-8472) appears on South River painting directories but is not in the list. (On The Mark Custom Painting and F J Reale Painting also surfaced but I could not confirm a South River street address.)",
+      "fix": "Add Precise Custom Painting to Group C after a quick Maps check; ignore the two unconfirmed firms."
+    },
+    {
+      "claim": "Barbershops and hair salons are entirely absent from a Group C/D list that otherwise includes personal services (cleaning, pet grooming, dry cleaning, laundromats)",
+      "problem": "Four in-borough shops are confirmed on the NJTGO South River business page I opened: Blendz & Beyond Barbershop (17 Main St), LX Factory Barber Studio (10 Ferry St A), Tribal Barbers South River (712 Old Bridge Tpke) and Emy Beauty salon (295 Main St). Searches also returned Reny's Hair Salon (91 Jackson), M J Hair Salon (44 Main), Trendz Hair & Nail (1 Ferry) and La Femme Spa Salon (95 Whitehead). Either the mapper skipped a whole personal-care category, or salons sit in a group outside this zone.",
+      "fix": "Confirm whether barber/salon belongs to group D. If it does, add the four NJTGO-confirmed shops at minimum; if it belongs to another group, state that explicitly in the file so the omission is not read as a gap."
+    },
+    {
+      "claim": "Laundromat coverage",
+      "problem": "A&Q Laundry Room (56 Jackson St, South River) is listed on the NJTGO South River page but is not in the list, even though three other laundromats are.",
+      "fix": "Add A&Q Laundry Room as a Group D laundromat."
+    },
+    {
+      "claim": "S&B Electric, 11 Rose St, 'not found on Maps'",
+      "problem": "Understated evidence: Birdeye carries an 'S & B Electric Inc' profile for South River with about 20 reviews, so the business is more established than 'one bulk directory only' suggests. No phone is published in the list.",
+      "fix": "Upgrade active_evidence and look up the phone/website before triage deprioritises it."
+    },
+    {
+      "claim": "Website column is left blank for several businesses that do have sites",
+      "problem": "I found live sites for at least three listed businesses: Yuhas Plumbing (yuhasplumbing.com, quotes NJ plumbing licence #7275), Carlos Heating & AC (carlosheatingandair.com) and Big River Lawn & Landscape (bigriverlawn.com). The list records no website for any of them.",
+      "fix": "Fill the website field for these three (and re-check the other blanks) so triage does not have to redo it."
+    },
+    {
+      "claim": "Borderline excluded types still in the list",
+      "problem": "Millwood, Inc. (7 Brick Plant Rd), Trap Rock Industries (369 Whitehead Ave) and VIGO (9D Brick Plant Rd) are multi-site corporate operations rather than local owner-run businesses, and Silver Key Music School (8 Old Bridge Tpke) is a school-type business. None is a food, bank, worship, government or hospital listing, and the mapper argues each site-level operation is small, so I do not treat these as exclusion failures - but the chain/school question is a judgement call.",
+      "fix": "Orchestrator to decide whether site-level plants of larger companies and a private music school stay in scope; if not, drop those four rows."
+    },
+    {
+      "claim": "Duplicate addresses",
+      "problem": "52 Maple St appears twice in the source data (Silverback Heating, and Hanco Service outside the list); 396 Whitehead Ave carries Mr Concrete, Custom Landscaping, Punjab Truck and Reldan Metals #402; 427 Whitehead Ave carries Park Roofing Unit 1, SPE Contracting and Value King #4. These look like shared industrial/multi-tenant addresses rather than duplicates, but the rows are worth a sanity check.",
+      "fix": "Spot-check the shared-address clusters during triage; no action needed on the list structure itself."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Z&Z Roofing & Siding General Contracting is a roofing contractor at 28 Main St, South River (732) 651-7810, 4.1",
+      "source_url": "https://www.google.com/maps/search/roofing+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PeakPulse Roofing at 64 Main St Ste 530, South River, (732) 743-9849, 5.0",
+      "source_url": "https://www.google.com/maps/search/roofing+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "All American Roofing of South River at 22 Main St, (732) 314-5091",
+      "source_url": "https://www.google.com/maps/search/roofing+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Park Roofing & Sheet Metal Co at 427 Whitehead Ave Unit 1, (732) 257-4570, 4.8",
+      "source_url": "https://www.google.com/maps/search/roofing+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Trusted HomeShield Roofing is a South River roofing contractor at 19 Mako Ct, (551) 405-1461",
+      "source_url": "https://www.google.com/maps/search/Trusted+HomeShield+Roofing+South+River+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ammi Construction LLC is a South River contractor at 37 Constitution Way",
+      "source_url": "https://www.ammiconstruction.com/roofing-siding-gutters",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Carlos Heating & Air Conditioning at 47 Gordon St, (732) 213-1093, 4.7",
+      "source_url": "https://www.google.com/maps/search/hvac+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Alpine Refrigeration at 125 Hillside Ave, (732) 238-9300, 4.8",
+      "source_url": "https://www.google.com/maps/search/hvac+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Air By Alex, Inc at 17 Watts St, (848) 448-1185, 5.0",
+      "source_url": "https://www.google.com/maps/search/hvac+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Aqua-Therm Plumbing & Heating, Air Conditioning is at 31 Willett Ave, South River with (732) 910-8492",
+      "source_url": "https://www.google.com/maps/search/hvac+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "aquathermnj.com is the Aqua-Therm business's own site",
+      "source_url": "https://aquathermnj.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Yuhas Plumbing & Heating at 33 Jackson St, (732) 257-7013, 28 reviews",
+      "source_url": "https://www.google.com/maps/search/plumber+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Harrelson Electric LLC at 20 Grand Ave, (800) 732-0585, NJ licence #15918",
+      "source_url": "https://www.harrelsonelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Harrelson Electric has 51 Google reviews",
+      "source_url": "https://www.google.com/maps/search/electrician+08882+South+River+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "S&B Electric (S & B Electric Inc) operates in South River at 11 Rose St",
+      "source_url": "https://reviews.birdeye.com/s-b-electric-inc-166910872268073",
+      "result": "confirmed"
+    },
+    {
+      "claim": "South River Automotive Repair at 178 Hillside Ave with 46 reviews",
+      "source_url": "https://www.google.com/maps/search/auto+repair+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Prospect Auto Service at 165 E Prospect St with 34 reviews",
+      "source_url": "https://www.google.com/maps/search/auto+repair+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Matecki's Service Center at 91 Jackson St with 23 reviews",
+      "source_url": "https://www.google.com/maps/search/auto+repair+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "T & Z Auto Services at 113 Whitehead Ave with 29 reviews",
+      "source_url": "https://www.google.com/maps/search/auto+repair+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Quality Car Mechanic at 69 Jackson St with two reviews",
+      "source_url": "https://www.google.com/maps/search/auto+repair+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Knoblock Auto Body at 178 E Prospect St, (732) 254-4540, 4.2",
+      "source_url": "https://www.google.com/maps/search/auto+body+shop+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Black Star Auto Repair and Collision at 70 Causeway St, 4.8",
+      "source_url": "https://www.google.com/maps/search/auto+body+shop+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cosmetic Auto Repair Inc at 22 Old Bridge Tpke, 5.0",
+      "source_url": "https://www.google.com/maps/search/auto+body+shop+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Acacio Construction at 109 Whitehead Ave, 5.0",
+      "source_url": "https://www.google.com/maps/search/general+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wolff General Contractors LLC at 13 Hollywood St, 5.0",
+      "source_url": "https://www.google.com/maps/search/general+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CS Construction Improvement at 127 William St, 4.5",
+      "source_url": "https://www.google.com/maps/search/general+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Breniz Home Improvement LLC at 116 E Prospect St, 4.6",
+      "source_url": "https://www.google.com/maps/search/general+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "E. Andre Construction Services at 223 William St, 4.8",
+      "source_url": "https://www.google.com/maps/search/concrete+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SPE Contracting LLC at 427 Whitehead Ave, 5.0",
+      "source_url": "https://www.google.com/maps/search/concrete+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vieira Contracting at 411 Whitehead Ave Ste 1, 5.0",
+      "source_url": "https://www.google.com/maps/search/concrete+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Mr Concrete Corporation at 396 Whitehead Ave, 3.5",
+      "source_url": "https://www.google.com/maps/search/concrete+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "GMT Construction LLC at 22 Darrow St, 5.0",
+      "source_url": "https://www.google.com/maps/search/concrete+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Stephen DM General Construction LLC at 39 Reid St, 5.0",
+      "source_url": "https://www.google.com/maps/search/masonry+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "L F Masonry at 20 Obert St, 5.0",
+      "source_url": "https://www.google.com/maps/search/masonry+contractor+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Color Impact Painting Co. at 27/31 June St, 5.0",
+      "source_url": "https://www.google.com/maps/search/painter+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Foran Painting is at 21 Darrow St, South River (not 43 Roosevelt St as one directory shows)",
+      "source_url": "https://www.google.com/maps/search/painter+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "JMJ Painting and Remodeling at 1 Jeffrie Ave, 5.0",
+      "source_url": "https://www.google.com/maps/search/painter+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Roberto Martinez Painting LLC at 240 Old Bridge Tpke, 5.0",
+      "source_url": "https://www.google.com/maps/search/painter+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Different Strokes Painting is a South River painter with a 4.2 rating",
+      "source_url": "https://www.google.com/maps/search/painter+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Adrian's Landscaping at 63 Willett Ave, 5.0",
+      "source_url": "https://www.google.com/maps/search/landscaping+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Carr & Son Landscaping is a South River landscaper with posted hours, no street address",
+      "source_url": "https://www.google.com/maps/search/landscaping+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Custom Landscaping and Lawn Care at 396 Whitehead Ave, 2.3",
+      "source_url": "https://www.google.com/maps/search/landscaping+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Xperience Cleaning Service NJ|NY at 192 Old Bridge Tpke, 5.0",
+      "source_url": "https://www.google.com/maps/search/house+cleaning+service+South+River+NJ+08882",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Aquatic Service Inc is in South River at 550 Hartle St Ste F",
+      "source_url": "https://www.google.com/maps/search/Aquatic+Service+Inc+South+River+NJ",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Alpine Refrigeration Co is listed at 125 Hillside Ave, South River",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Silverback Heating and Air Conditioning is listed at 52 Maple St, South River",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Harrelson Electric is listed at 20 Grand Ave, South River",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Big River Lawn & Landscape is listed at 21 Tice Ave, South River",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Truck-Repair & Collision Inc is listed at 26 Elizabeth St, South River",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "J M Ahle Co is listed at 2 Herman St, South River",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Envirochem Inc is listed at 425 Whitehead Ave, South River",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Millwood Inc is listed at 7 Brick Plant Rd, South River",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Reldan Metals Inc is listed at 396 Whitehead Ave #402, South River",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Westwood Products Inc is listed at 330 William St, South River",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Direct Fastening Service Corp is listed at 49 Main St, South River",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CVS Service Equipment Distributors is listed at 81 Division St, South River and is unrelated to the CVS pharmacy chain",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kinder Kastle Child Care Learning Center is at 544 Old Bridge Tpke, South River",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Michaelson's Foreign Car Parts is at 56 Causeway St, South River",
+      "source_url": "https://njbusinessdirectory.org/listing-region/south-river/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Trygar's Hardware Locksmith Store is at 44 Ferry St, South River",
+      "source_url": "https://www.njtgo.com/towns/S/South_River/Business%20and%20Shopping/South_River_Business_and_Shopping.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Pride Cleaners is at 97 Main St, South River",
+      "source_url": "https://www.njtgo.com/towns/S/South_River/Business%20and%20Shopping/South_River_Business_and_Shopping.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Decorations de la Luz is at 51-53 Jackson St, South River with a 4.5 rating",
+      "source_url": "https://www.njtgo.com/towns/S/South_River/Business%20and%20Shopping/South_River_Business_and_Shopping.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Eden Farm Fresh LLC is at 29 Ferry St, South River",
+      "source_url": "https://www.njtgo.com/towns/S/South_River/Business%20and%20Shopping/South_River_Business_and_Shopping.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SuperWash Laundromat & Dry Cleaning is at 148 Whitehead Ave, South River",
+      "source_url": "https://www.njtgo.com/towns/S/South_River/Business%20and%20Shopping/South_River_Business_and_Shopping.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Rainbow Tailors & Cleaners is at 23 Jackson St, South River",
+      "source_url": "https://www.njtgo.com/towns/S/South_River/Business%20and%20Shopping/South_River_Business_and_Shopping.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Globo Auto BMW Specialist is at 190 William St #1C, South River",
+      "source_url": "https://www.njtgo.com/towns/S/South_River/Business%20and%20Shopping/South_River_Business_and_Shopping.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Main Street Florist and Gifts is at 181 Main St, South River, (732) 257-2357, and mainstreetfloristsouthriver.com is its site",
+      "source_url": "https://www.mainstreetfloristsouthriver.com/about-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Maliszewski Funeral Home is at 218 Whitehead Ave, South River, (732) 254-0428",
+      "source_url": "https://www.spezzifuneralhome.com/south-river",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Envichem, Inc. is a South River manufacturer and envichem-tec.com is its own site",
+      "source_url": "https://www.envichem-tec.com/about.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A Candle Co. is at 5 Water St, South River, (732) 554-5339, 5.0",
+      "source_url": "https://www.google.com/maps/search/A+Candle+Co+Water+St+South+River+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "South River Distribution Services is at 5 Brick Plant Rd D, South River, (732) 257-4014",
+      "source_url": "https://www.google.com/maps/search/South+River+Distribution+Services+Brick+Plant+Rd+South+River+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A-1 Specialized Services & Supplies Inc is listed at 369 Whitehead Ave, South River",
+      "source_url": "https://start.cortera.com/company/research/k3q7mrl7o/a1-specialized-services--supplies-inc/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "www.mainstreetfloristsouthriver.com could be opened directly to read its hours",
+      "source_url": "https://www.mainstreetfloristsouthriver.com/",
+      "result": "could not open"
+    },
+    {
+      "claim": "The mapper's cited Google Maps search URLs can be re-opened with a plain page fetch",
+      "source_url": "https://www.google.com/maps/search/roofing+contractor+South+River+NJ+08882",
+      "result": "could not open"
+    }
+  ],
+  "coverage": {
+    "searches": [
+      "roofing contractor South River NJ 08882 (Google Maps, in browser)",
+      "hvac contractor South River NJ 08882 (Google Maps, in browser)",
+      "plumber South River NJ 08882 (Google Maps, in browser)",
+      "electrician 08882 South River NJ (Google Maps, in browser)",
+      "auto repair South River NJ 08882 (Google Maps, in browser)",
+      "auto body shop South River NJ 08882 (Google Maps, in browser)",
+      "general contractor South River NJ 08882 (Google Maps, in browser)",
+      "concrete contractor South River NJ 08882 (Google Maps, in browser)",
+      "masonry contractor South River NJ 08882 (Google Maps, in browser)",
+      "painter South River NJ 08882 (Google Maps, in browser)",
+      "landscaping South River NJ 08882 (Google Maps, in browser)",
+      "house cleaning service South River NJ 08882 (Google Maps, in browser)",
+      "barber shop South River NJ Main Street (web search + NJTGO page)",
+      "hair salon South River NJ 08882 (web search)",
+      "dentist South River NJ 08882 (web search - out of scope for groups C/D)",
+      "landscaping company South River NJ 08882 (web search)",
+      "painting contractor South River NJ 08882 (web search)",
+      "cleaning service South River NJ 08882 (web search)"
+    ],
+    "eligible_found": 37,
+    "already_listed": 28,
+    "missing": [
+      {
+        "name": "Ammi Construction LLC",
+        "town": "South River",
+        "source_url": "https://www.ammiconstruction.com/roofing-siding-gutters"
+      },
+      {
+        "name": "Tavares HVAC LLC",
+        "town": "South River",
+        "source_url": "https://reviews.birdeye.com/tavares-hvac-llc-159474444391848"
+      },
+      {
+        "name": "Hanco Service",
+        "town": "South River",
+        "source_url": "https://reviews.birdeye.com/hanco-service-165355753453716"
+      },
+      {
+        "name": "Precise Custom Painting",
+        "town": "South River",
+        "source_url": "https://local.yahoo.com/consumer-services/home-and-garden-services/painting-services/nj/south-river/"
+      },
+      {
+        "name": "Blendz & Beyond Barbershop",
+        "town": "South River",
+        "source_url": "https://www.njtgo.com/towns/S/South_River/Business%20and%20Shopping/South_River_Business_and_Shopping.html"
+      },
+      {
+        "name": "LX Factory Barber Studio",
+        "town": "South River",
+        "source_url": "https://www.njtgo.com/towns/S/South_River/Business%20and%20Shopping/South_River_Business_and_Shopping.html"
+      },
+      {
+        "name": "Tribal Barbers South River",
+        "town": "South River",
+        "source_url": "https://www.njtgo.com/towns/S/South_River/Business%20and%20Shopping/South_River_Business_and_Shopping.html"
+      },
+      {
+        "name": "Emy Beauty (hair/beauty salon)",
+        "town": "South River",
+        "source_url": "https://www.njtgo.com/towns/S/South_River/Business%20and%20Shopping/South_River_Business_and_Shopping.html"
+      },
+      {
+        "name": "A&Q Laundry Room",
+        "town": "South River",
+        "source_url": "https://www.njtgo.com/towns/S/South_River/Business%20and%20Shopping/South_River_Business_and_Shopping.html"
+      }
+    ]
+  },
+  "confidence": "Medium"
+}

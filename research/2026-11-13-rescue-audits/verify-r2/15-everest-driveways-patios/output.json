@@ -1,0 +1,138 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "audit_md: \"Birdeye lists the same brand at 153 Joyce Kilmer Ave ... also linking www.everestdriveways.com. Its last archived capture, 14 February 2026, was a stub page redirecting to `/lander`.\"",
+      "problem": "The fact is true of everestdriveways.com (verified: the 14 Feb 2026 capture's whole source is window.onload -> '/lander'), but the sentence's grammatical subject is Birdeye, so an owner can read it as Birdeye's own capture having been a parking stub. Ambiguous attribution in the one document the business sees.",
+      "fix": "Name the domain explicitly: \"The last archived capture of everestdriveways.com, 14 February 2026, was a stub page that redirected to /lander.\""
+    },
+    {
+      "claim": "audit_md / severity_reason: \"Both listings still display a phone number, so calls can get through.\"",
+      "problem": "True for Google (digits (732) 688-7413 shown). On Birdeye the digits are not printed in the page text; the profile shows a \"Call us\" button and (732) 784-2976 only appears after it is clicked (verified in the live page). The number is real and reachable, but \"display\" overstates what a visitor sees.",
+      "fix": "Say \"Birdeye shows a 'Call us' button that reveals (732) 784-2976\", keeping the point that calls can still get through."
+    },
+    {
+      "claim": "fix_steps[0]: \"check whether the name is still renewable, in redemption or already released\" (source_url rdap.org)",
+      "problem": "Tension with the finding: rdap.org and rdap.verisign.com both return HTTP 404, i.e. the name is not currently registered, so it cannot be renewable or in redemption as those terms are normally used. The step sends the owner looking for a registrar of record that the audit itself says does not exist, and its cited source is a page that returns nothing.",
+      "fix": "Reorder: state first that the name is currently unregistered, so check the old registrar account / billing email for a cancellation or expiry notice, and treat re-registration as the likely path; keep recovery as a question to ask the registrar rather than a step whose answer the owner must dig out."
+    },
+    {
+      "claim": "Tone / plain English in audit_md (\"no RDAP record\", \"in redemption\", raw `DNS_PROBE_FINISHED_NXDOMAIN`)",
+      "problem": "Not fear language and not wrong, but three technical terms a paving contractor is unlikely to know. Body already runs to roughly 286 words, so any plain-English gloss must replace wording, not add it.",
+      "fix": "Swap for \"the official .com registry has no record of the name\", \"already deleted / still recoverable / free to re-register\", and \"a DNS error\"; the error code can stay in brackets once, if at all."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "everestdriveways.com still does not resolve (NXDOMAIN) at desktop and phone width",
+      "source_url": "https://everestdriveways.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Screenshots of the NXDOMAIN error exist at desktop and phone width",
+      "source_url": "shot-everestdriveways-desktop.png / shot-everestdriveways-phone.png",
+      "result": "confirmed"
+    },
+    {
+      "claim": "rdap.org holds no record for everestdriveways.com (HTTP 404)",
+      "source_url": "https://rdap.org/domain/everestdriveways.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "rdap.verisign.com also returns HTTP 404 for everestdriveways.com",
+      "source_url": "https://rdap.verisign.com/com/v1/domain/everestdriveways.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Maps shows 'Everest Driveways & Patios', Masonry contractor, 4.4, 4400 US-9 #1000 Freehold NJ 07728, (732) 688-7413, website everestdriveways.com, 'Claim this business'",
+      "source_url": "https://www.google.com/maps/place/Everest+Driveways+%26+Patios/@40.2843163,-74.2956776,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3d3fe1a0bc865:0x3d74131bf71a78e4!8m2!3d40.2843163!4d-74.2956776!16s%2Fg%2F11v9vsbz_z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The business is open, not closed (status 'operating')",
+      "source_url": "https://www.google.com/maps/place/Everest+Driveways+%26+Patios/@40.2843163,-74.2956776,17z/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye profile lists 153 Joyce Kilmer Ave, New Brunswick NJ 08901, 5.0 from 395 reviews, category 'Contractors'",
+      "source_url": "https://reviews.birdeye.com/everest-driveways-patios-167046484373661",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye lists the website as https://www.everestdriveways.com/ with a 'Google' source badge",
+      "source_url": "https://reviews.birdeye.com/everest-driveways-patios-167046484373661",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye profile is unclaimed, with a 'Claim this profile' button",
+      "source_url": "https://reviews.birdeye.com/everest-driveways-patios-167046484373661",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye phone (732) 784-2976",
+      "source_url": "https://reviews.birdeye.com/everest-driveways-patios-167046484373661",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The two listings disagree on address and phone",
+      "source_url": "https://www.google.com/maps/place/Everest+Driveways+%26+Patios/@40.2843163,-74.2956776,17z/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived capture of everestdriveways.com on 14 Feb 2026 is a stub whose whole content redirects to /lander",
+      "source_url": "https://web.archive.org/web/20260214160714id_/http://www.everestdriveways.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CDX index shows 404s 2013-2018, 301s and 403s through 2024-2025, one 200 on 2026-02-14",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=everestdriveways.com&output=json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A Google Maps search for (732) 784-2976 New Brunswick NJ returns \"Google Maps can't find ...\"",
+      "source_url": "https://www.google.com/maps/search/(732)+784-2976+New+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "everestdrivesandpatios.com is an unrelated UK company in Middlesex: 0800 474 8868, copy about 'Welsh weather'",
+      "source_url": "https://everestdrivesandpatios.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "That look-alike's RDAP: GoDaddy.com, LLC, registered 2017-01-25, expires 2028-01-25, last changed 2026-10-07",
+      "source_url": "https://rdap.org/domain/everestdrivesandpatios.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "HomeAdvisor profile could not be loaded (HTTP 403)",
+      "source_url": "https://www.homeadvisor.com/rated.everestdrivewaysandpati.116130426.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BuildZoom profile could not be loaded (HTTP 403)",
+      "source_url": "https://www.buildzoom.com/contractor/everest-driveways-patios-corp",
+      "result": "confirmed"
+    },
+    {
+      "claim": "dcontrol.com returns HTTP 403, so (732) 784-0041 stays unverified and unused",
+      "source_url": "https://dcontrol.com/profile/03QrmVy1tMNcgKivQ9DUzVVvQUGjrKai",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile shows a rating with no visible review count (4.4 without a count)",
+      "source_url": "https://www.google.com/maps/place/Everest+Driveways+%26+Patios/@40.2843163,-74.2956776,17z/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cause 'parked' is labelled an inference and no person or party is blamed",
+      "source_url": "https://web.archive.org/web/20260214160714id_/http://www.everestdriveways.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "audit_md body is at most 300 words",
+      "source_url": "rescue.json (audit_md)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,188 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "retainedsearch.ajuliaexecutivesearch.com: \"No business content visible; not signed in and no credentials entered.\"",
+      "problem": "Contradicted. The page shows the Ajulia Executive Search logo with the tagline \"Bridging the gap between possibility and reality\" above the Email Address / Password / LOGIN fields - the auditor's own screenshot_retainedsearch_login_1440.png shows it, and my live view at 1280 px shows it too. It is a branded sign-in screen, not an unbranded one. Nothing else in the sentence is wrong (Email Address, Password, LOGIN, Forgotten your password?, English US all confirmed).",
+      "fix": "Reword to something like \"Ajulia-branded sign-in screen (logo and tagline only, no services or contact details): Email Address, Password, LOGIN, Forgotten your password?, English US. Not signed in; no credentials entered.\""
+    },
+    {
+      "claim": "likely_cause: \"Apex and www resolve to Cloudflare addresses (172.64.80.1 for the apex, 172.67.213.38 / 104.21.45.105 for www)\"",
+      "problem": "Not reproducible. dns.google today returns 172.67.213.38 and 104.21.45.105 for BOTH the apex and www; 172.64.80.1 does not appear for the apex. The value is not in audit_md or founder_md, but as written it is a specific, checkable number that no longer holds (resolver/anycast variation or a later DNS change - either way it cannot be stated as fact).",
+      "fix": "Drop the specific apex address or write: \"apex and www both answer with Cloudflare addresses (today 172.67.213.38 / 104.21.45.105), while jobs answers 69.167.165.235\" - which still supports the point that the names are decided in Cloudflare's configuration."
+    },
+    {
+      "claim": "retainedsearch: \"Loads a JavaScript-driven sign-in screen (browser title 'Loading')\"",
+      "problem": "The browser title today reads \"Login\", not \"Loading\" (the title changes as the app boots). As recorded it is a moment-in-time artefact presented as a property of the page.",
+      "fix": "Remove the title from the description, or note it as \"title read 'Loading' while the page initialised, then 'Login'\"."
+    },
+    {
+      "claim": "audit_md length",
+      "problem": "The body is 302 words by a straight whitespace count (markdown markers excluded), i.e. marginally over the 300-word limit.",
+      "fix": "Trim about five words - e.g. shorten \"The website link on the Google listing, ajuliaexecutivesearch.com, redirects to\" and the closing 'Prepared from publicly available information' line."
+    },
+    {
+      "claim": "audit_md never mentions the NJDOL stop-work order while the record says status \"operating\" and severity_reason says \"the business is not represented online today\"",
+      "problem": "Not false, and not hidden - the order, its date and the unconfirmed entity link are set out in caveats, fix_steps and the founder_md source list. But the owner-facing page reads as if the firm is simply trading with a broken website. If the April 2025 order is still in force (the NJDOL release says it stays until the liability is paid in full, and no later notice was found), that is the most important fact about this business today.",
+      "fix": "Optional but recommended: one neutral line in audit_md or a flag to the founder that the stop-work order should be checked before any contact, e.g. \"We also saw a state labour notice from May 2025 about an affiliated payroll entity; we have not verified its current status.\" Keep the existing 'not confirmed' labelling."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "www and apex ajuliaexecutivesearch.com redirect to https://www.airbase1.com/, an aviation web-design agency; no Ajulia content",
+      "source_url": "https://www.ajuliaexecutivesearch.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The served page at that address is AIRbase One's aviation design site (title 'AIRbase One | Aviation Website Design, Hosting, E-commerce, SEO'), and it is Airbase1 content rather than a 404",
+      "source_url": "https://www.airbase1.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "An old Ajulia path (/specialized-search-and-placement/) lands on that same homepage",
+      "source_url": "https://www.ajuliaexecutivesearch.com/specialized-search-and-placement/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Over plain HTTP the apex returns a short HTML page that refreshes to /cgi-sys/defaultwebpage.cgi, a cPanel 'Default Web Site Page' placeholder reading 'SORRY!'",
+      "source_url": "http://ajuliaexecutivesearch.com/cgi-sys/defaultwebpage.cgi",
+      "result": "confirmed"
+    },
+    {
+      "claim": "jobs.ajuliaexecutivesearch.com stops with net::ERR_CERT_COMMON_NAME_INVALID",
+      "source_url": "https://jobs.ajuliaexecutivesearch.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The jobs certificate detail says the server could not prove it is jobs.ajuliaexecutivesearch.com and that the certificate is from airbase1.com",
+      "source_url": "screenshot_jobs_subdomain_cert_error_1440.png",
+      "result": "confirmed"
+    },
+    {
+      "claim": "jobs.ajuliaexecutivesearch.com resolves to 69.167.165.235",
+      "source_url": "https://dns.google/resolve?name=jobs.ajuliaexecutivesearch.com&type=A",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Over plain HTTP the jobs host returns the cPanel default placeholder page",
+      "source_url": "http://jobs.ajuliaexecutivesearch.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "retainedsearch.ajuliaexecutivesearch.com is a JavaScript sign-in screen with Email Address, Password, LOGIN, 'Forgotten your password?' and language 'English US'",
+      "source_url": "https://retainedsearch.ajuliaexecutivesearch.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No business content is visible on retainedsearch",
+      "source_url": "https://retainedsearch.ajuliaexecutivesearch.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "The browser title on retainedsearch is 'Loading'",
+      "source_url": "https://retainedsearch.ajuliaexecutivesearch.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "retainedsearch reaches an AWS host through a CNAME via i-intro.net / kubocloud.io",
+      "source_url": "https://dns.google/resolve?name=retainedsearch.ajuliaexecutivesearch.com&type=A",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 2012-06-14, expires 2029-06-14, last changed 2026-06-16, registrar GoDaddy.com, LLC (IANA ID 146)",
+      "source_url": "https://rdap.org/domain/ajuliaexecutivesearch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP shows client delete/renew/transfer/update prohibitions, nameservers kara.ns.cloudflare.com and rory.ns.cloudflare.com, and redacts registrant details",
+      "source_url": "https://rdap.org/domain/ajuliaexecutivesearch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The apex resolves to Cloudflare address 172.64.80.1",
+      "source_url": "https://dns.google/resolve?name=ajuliaexecutivesearch.com&type=A",
+      "result": "contradicted"
+    },
+    {
+      "claim": "www resolves to 172.67.213.38 / 104.21.45.105",
+      "source_url": "https://dns.google/resolve?name=www.ajuliaexecutivesearch.com&type=A",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile 'Ajulia Executive Search': 2.5 stars, 'Temp agency', website field ajuliaexecutivesearch.com, phone (732) 993-6810, 2 King Arthur Ct #10, North Brunswick Township, NJ 08902",
+      "source_url": "https://www.google.com/maps/search/Ajulia+Executive+Search+East+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Google listing shows 'Claim this business', 'Add hours' and 'Add a photo', and has no hours or photos",
+      "source_url": "https://www.google.com/maps/search/Ajulia+Executive+Search+East+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ClearlyRated profile 'Ajulia Executive Search of New Brunswick, NJ' is unclaimed ('Claim Your Profile'), gives 1440 How Lane Suite 2E New Brunswick and 732-993-6810, and carries a 'Visit Their Website' link to https://www.ajuliaexecutivesearch.com",
+      "source_url": "https://www.clearlyrated.com/staffing/nj-usa/new-brunswick-nj/ajulia-executive-search-new-brunswick-nj",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye profile: 3.5 from 85 reviews, 1440 How Ln #2e Suite 2E, 'This profile has not been claimed', website link to https://www.ajuliaexecutivesearch.com/",
+      "source_url": "https://reviews.birdeye.com/ajulia-executive-search-154981789494430",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LeadIQ's FAQ answer gives ajuliaexecutivesearch.com as the company's official website",
+      "source_url": "https://leadiq.com/c/ajulia-executive-search/5a1da10f2300005e0092469a",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A Wayback capture of the old Ajulia homepage exists at 19 Apr 2025 19:15:00 and shows the firm's WordPress site",
+      "source_url": "http://web.archive.org/web/20250419191500/https://www.ajuliaexecutivesearch.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No capture of the www homepage exists after 19 April 2025 (basis for 'no capture of the main site after 14 May 2025')",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=www.ajuliaexecutivesearch.com&output=json&from=20250401&to=20261113&limit=40&fl=timestamp,original,statuscode",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The old jobs board was still serving job pages on 17 June 2025",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=ajuliaexecutivesearch.com&matchType=domain&output=json&from=20250515&to=20261113&limit=20&fl=timestamp,original,statuscode",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDOL stop-work order issued 21 April 2025 and announced 13 May 2025 against 'Ajulia Executive Payroll L.L.C.' at 51 West Prospect Street, Suite 204, East Brunswick, described as a staffing, executive search and recruitment firm",
+      "source_url": "https://www.nj.gov/labor/lwdhome/press/2025/20250513_Stop_Work.shtml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The NJDOL release does not say the order has been lifted, and no later notice was found",
+      "source_url": "https://www.nj.gov/labor/lwdhome/press/2025/20250513_Stop_Work.shtml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A review dated 11 September 2026 appears on the Birdeye profile (used as evidence the firm is still trading)",
+      "source_url": "https://reviews.birdeye.com/ajulia-executive-search-154981789494430",
+      "result": "not found"
+    },
+    {
+      "claim": "A career.com posting at /job/ajulia-executive-search/division-manager/j202608060553049580162 has a page title naming Ajulia Executive Search",
+      "source_url": "https://www.career.com/job/ajulia-executive-search/division-manager/j202608060553049580162",
+      "result": "could not open"
+    },
+    {
+      "claim": "The cause is presented as an inference, registrant is redacted, and no party is accused",
+      "source_url": "https://rdap.org/domain/ajuliaexecutivesearch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Fix steps contain no prices, and the stated hour ranges match the sum of the underlying steps (1-4 h, 2-6 h, 1-2 h, 8-20 h)",
+      "source_url": "https://rdap.org/domain/ajuliaexecutivesearch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business identity: same name, town and phone across Google, ClearlyRated, Birdeye and LeadIQ; the listing is live with no closed/sold-out flag",
+      "source_url": "https://www.google.com/maps/search/Ajulia+Executive+Search+East+Brunswick+NJ",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

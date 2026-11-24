@@ -1,0 +1,27 @@
+[
+ {
+  "claim": "His bio heading says \"Partner\", the body president; Google and Bing differ on category and services. (Audit \u00a73)",
+  "problem": "The Google listing and the Bing listing give the SAME category: Google shows 'Insurance agency' (re-checked in the live place panel) and Bing shows 'Insurance agency in Highland Park, NJ'. They differ on the service list (Bing lists auto / workers-comp / life insurance, Google lists none) and on hours, but not on category. The researcher's own profile.json also records both as 'Insurance agency', so the audit introduced the disagreement. As written the sentence is contradicted by the cited sources.",
+  "fix": "Reword to 'the listings describe the practice only as an insurance agency and Bing adds a service list of auto, workers-comp and life insurance, which does not match a financial-planning practice' \u2014 i.e. listings vs. the firm, not Google vs. Bing."
+ },
+ {
+  "claim": "at $28.69/hr (CSR median NJ, O*NET 2024, $47,740 x1.25 benefits) (repeated in all three impact lines)",
+  "problem": "The figure is right and the arithmetic checks out (47,740 x 1.25 = 59,675 / 2,080 = 28.69), but the data year is wrong. The cited O*NET New Jersey wages page states its source is 'Bureau of Labor Statistics 2025 wage data' and shows $47,740 as the NJ annual median. Labelling it 'O*NET 2024' misattributes the vintage in a citation that will be read by a compliance-sensitive client.",
+  "fix": "Change to 'O*NET / BLS 2025 NJ median' (or 'BLS May 2025 data via O*NET'), and state the 1.25 benefits load as our assumption rather than presenting it as part of the sourced figure."
+ },
+ {
+  "claim": "Audit body length",
+  "problem": "The body (from the opening paragraph through 'Prepared from publicly available information...') is about 530-540 words by count, against the brief's ~450-word ceiling. It is roughly 18% over.",
+  "fix": "Trim ~85 words: the 'Why this works' bullets and the 'Suggested first step' paragraph can be cut without losing evidence, and the three impact lines repeat the same wage parenthetical that could be stated once."
+ },
+ {
+  "claim": "no CRM, chat or booking tool is loaded \u2014 Google Tag Manager and GA4 only (Audit \u00a72)",
+  "problem": "Substantively correct (no chat/CRM/booking script is present, and GTM-PDR56SM plus GA4 G-FEGRJ7CK5E are), but 'only' overstates it: the pages also load Drupal 10 core JS, Foundation, AddToAny share buttons and an AccessAble accessibility widget. A client who views source will read 'only' as wrong.",
+  "fix": "Say 'the only marketing/advertising tags are Google Tag Manager and GA4' and keep the point that no CRM, chat or booking tool is present."
+ },
+ {
+  "claim": "Impact ranges: ~$1,030-$3,090 (\u00a71), ~$516-$1,377 (\u00a72), ~$344-$688 (\u00a73)",
+  "problem": "Not an error \u2014 every range reproduces from the stated assumptions \u2014 but they are materially lower than the ranges in analysis.json ($1,400-$4,100, $830-$2,200 and $275-$1,100) because the audit applies an extra 60%/50% 'handled by the agent' factor and a benefits load. Two documents in the same pack now quote different numbers for the same opportunity.",
+  "fix": "No change needed in the audit text if this is the intended conservative framing, but flag the choice in the discovery note so the analysis and the audit are not quoted side by side."
+ }
+]

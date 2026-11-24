@@ -1,0 +1,17 @@
+[
+ {
+  "claim": "after_fix.opportunity / caveats: \"Birdeye/HomeAdvisor show 153 Joyce Kilmer Ave, New Brunswick, (732) 784-0041\", repeated in founder_md as one of two numbers the owner should confirm",
+  "problem": "Contradicted by the source the audit itself cites. The live Birdeye page (opened today) lists the phone as (732) 784-2976 - I read it from the page data block for this profile (name 'Everest Driveways & Patios', 153 Joyce Kilmer Ave) and it is the number behind the page's 'Call us' link. (732) 784-0041 appears only on dcontrol.com, which the audit lists as HTTP 403 / not loaded, so it is attributed to the wrong sources. HomeAdvisor is still Cloudflare-blocked, so nothing there supports it either.",
+  "fix": "Replace the claim with what the pages actually show: Birdeye gives (732) 784-2976; Google gives (732) 688-7413; treat (732) 784-0041 as unverified (dcontrol blocked) or drop it. Update founder_md's open-question numbering to match, so the founder does not quote or dial the wrong number."
+ },
+ {
+  "claim": "founder_md and domains[0].screenshot_files cite shot-everestdriveways-desktop.png and shot-everestdriveways-phone.png, and the email draft offers to send screenshots of what customers see",
+  "problem": "Neither file is present in the delivered output, so the screenshots cannot be checked or attached. The underlying fact is true - I reproduced it myself in Chrome today - but the cited artefacts are missing from the package the founder would use.",
+  "fix": "Regenerate and store the two screenshots (desktop and 390 px) next to rescue.json, or drop the file names from the sources list and reword the offer only if the images exist."
+ },
+ {
+  "claim": "audit_md length",
+  "problem": "The client-facing body is 308 words against the 300-word limit (headings included); everything else in the tone is calm, plain and non-accusatory.",
+  "fix": "Trim roughly 10-15 words, e.g. shorten the 'What it means for customers' paragraph and the 'After the fix' paragraph."
+ }
+]

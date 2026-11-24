@@ -1,0 +1,144 @@
+{
+  "results": [
+    {
+      "ref": "B00705",
+      "name": "Distinct Engineering Solutions, Inc. (DESI)",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-verified independently. Google Maps panel for 425 Old Georges Rd shows a 2.1 rating, no review count and no photos (only an 'Add photos & videos' prompt). Home page and /contact/ both have an empty meta description and zero JSON-LD blocks. The contact form is a Forminator form with labelled required fields (Name, Email Address, Phone No., Company Name, City, Message) plus the hidden honeypot input_7 ('Please do not fill in this field') - and also a Google reCAPTCHA widget, a second reason unattended agent submission is unsafe. The home page contains no mention of reviews or testimonials, so the reputation framing holds. At 390 px the layout does fit the viewport (documentElement.scrollWidth 390) but the hero is white text over a busy construction photo, so the contrast criticism is fair. Corporate summary confirms 30+ staff, founded 2008, NY/CT satellites, AASHTO/NYSDOB lab and ACEC NY Diamond awards. Scores (3/5/4/5) look reasonable for a strong site with narrow, quick-win gaps."
+    },
+    {
+      "ref": "B00737",
+      "name": "Hidden Lake Dental Associates (Dr. Grasso & Dr. Liao)",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Hours appear only on the booking page (top issue) / 'no hours on the homepage' (out-of-date signs)",
+          "what_is_true": "The home page carries a full 'GET IN TOUCH / Opening Hours' block listing per-day hours (Mon 11-7, Tue 9-4, Wed 10-6, Thu 9-2, Fri closed, Sat 9-2 alternating, Sun closed), so hours are published on the home page as well as on /book-online.",
+          "source_url": "https://www.hiddenlakedental.org/"
+        },
+        {
+          "claim": "'No review content or rating badge anywhere on the site'",
+          "what_is_true": "The home page has a 'PATIENT TESTIMONIALS' section with three named patient quotes. There is no rating badge or review widget, but review-like content does exist on the site.",
+          "source_url": "https://www.hiddenlakedental.org/"
+        },
+        {
+          "claim": "'Only five internal pages exist ... so individual services have no pages'",
+          "what_is_true": "Individual service pages exist and are linked from /book-online, e.g. /service-page/dental-implants, /service-page/cosmetic, /service-page/root-canals, /service-page/dentures.",
+          "source_url": "https://www.hiddenlakedental.org/service-page/dental-implants"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 5,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 3
+      },
+      "notes": "Core findings hold: zero <form> elements and zero tel: links on the home page and doctor page; the header's 'Book an Appointment' and 'Call Now' both link to /book-online, a brochure page with no calendar; LocalBusiness JSON-LD exists with name, address (4-02 Towne Center Drive) and phone but no openingHours, services or geo, plus a redundant WebSite block; copyright reads '(c) 2025'; hiddenlakedentalnj@gmail.com appears in page content and /dr-grasso still renders the Wix 'I'm always looking for new and exciting opportunities' template copy. At 390 px the header is confirmed broken - logo pushed right under a large white band, nav row clipped at 'About'. robots.txt (which the record said was unchecked) exists and allows all crawlers except PetalBot, with sitemaps, so crawling is not blocked. Scores: gap 5, ability 3, ease 5 stand; evidence lowered from 4 to 3 because three checked statements were wrong."
+    },
+    {
+      "ref": "B00784",
+      "name": "ReCreations Salon",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "At 390px everything collapses into a ~240px column down the left of the screen with a large blank strip to the right - the mobile layout is genuinely broken",
+          "what_is_true": "Could not reproduce. At a 390 px viewport (visualViewport.width 390, max-width:480px media query matching, body width 390) the page renders full width edge to edge - full-width black header band, full-width red promo banner, full-width hero image, no narrow left column and no blank right strip. The mobile header does show only hamburger plus logo, which the record states correctly.",
+          "source_url": "https://recreationssalon.com/"
+        },
+        {
+          "claim": "Two navigation links 404 (SHOP, REVIEWS) / '/shop/ and /reviews/ both return HTTP 404 and both are in the main menu'",
+          "what_is_true": "Neither menu item points at those paths. SHOP links to the external store https://shop.saloninteractive.com/store/ReCreationsSalonSpa and REVIEWS links to https://recreationssalon.com/testimonials/, which loads normally (title 'Testimonials Archive - ReCreations Salon'). The unlinked paths /shop/ and /reviews/ do return 404, but a visitor using the menu never reaches them.",
+          "source_url": "https://recreationssalon.com/testimonials/"
+        },
+        {
+          "claim": "'no H1 at all' / 'page source has no ... H1'",
+          "what_is_true": "The home page contains nine H1 elements, including 'Welcome to ReCreations Salon', 'Our Latest Offers', 'From the Blog' and 'Our Pricing Plans'.",
+          "source_url": "https://recreationssalon.com/"
+        },
+        {
+          "claim": "A promo pop-up whose banner copy renders clipped/garbled on desktop",
+          "what_is_true": "The red 'Prom 2026' banner reads cleanly on desktop and on mobile. The only visible type glitch is inside the hero slider, where 'LOOK FABULOUS FOR YOUR WEDDING DAY!' overlaps the smaller bridal sub-line.",
+          "source_url": "https://recreationssalon.com/"
+        },
+        {
+          "claim": "Posted hours (Tue 9-6, Wed-Fri 9-9, Sat 9-5) are not stated anywhere obvious on the home page",
+          "what_is_true": "The home page footer has an 'HOURS' block listing exactly those hours next to the 1626 US-130 address and phone.",
+          "source_url": "https://recreationssalon.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 4,
+        "ease": 4,
+        "evidence": 2
+      },
+      "notes": "Real findings that do hold: no LocalBusiness/HairSalon JSON-LD (only CollectionPage, BreadcrumbList and WebSite), the 'Book a Service' button goes to login.meevo.com and lands on na0.meevo.com CustomerPortal/login with Returning Client log-in / New Client signup before any service list, the contact page has a Name/Phone/Email/Message form yet still tells guests to book by telephone, the price list really does say 'Please call' for highlights, balayage and waxing and 'price upon consultation' for bridal and extensions, the 'Newletter Sign Up' typo is real, and the contact page map iframe still carries a 2016 embed id. 4.7 across ~122-127 reviews matches directory listings. But the headline mobile breakage - both the first top issue and the first top opportunity - does not reproduce, and the dead-nav-link claim misnames the URLs. The site is also less stale than described: posts from 2023 and 2026 sit alongside 2017-18 ones and the footer says (c) 2026. Gap therefore 5 to 3, evidence 4 to 2. The second top opportunity (fix dead nav links) should be replaced - there is no broken menu link to fix."
+    },
+    {
+      "ref": "B00959",
+      "name": "North Brunswick Foreign & Domestic Auto Repairs",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Operating and correctly identified: the Google Maps panel for 590 Georges Rd, North Brunswick Township NJ 08902 ('Located in: bp') shows 4.5 from 47 reviews, phone (732) 846-8122, hours Mon-Fri 9-6 / Sat 8-2, and an 'Add website' prompt under 'Add missing information' - confirming there is no owned site and no owned services or pricing text. Review themes match: Google's topic tags are 'pricing' (12), 'fair pricing' (6) and 'honesty'/'honest staff', and reviews name the long-time owner 'PJ'. I sorted the Google reviews lowest-first and the negative-review claim checks out in substance: a reviewer four months ago reports paying over $2,000 and then the car would not start, requiring a tow. The negative set is larger than 'one damaging review' though - Birdeye's aggregate shows 6 one-star and 1 two-star of 51 reviews (4.4 overall) and its lowest-rated review (7 Nov 2026) is a one-line 'don't go'. SureCritic shows 4.7 from 16 reviews as recorded, though it labels the business 'Inactive Business'. No website link on the profile; Birdeye shows 'Claim this profile'. Scores (5/3/5/4) are reasonable for a total absence of owned web presence with a cheap fix."
+    },
+    {
+      "ref": "B01066",
+      "name": "Federation Logistics, LLC",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Everything material checks out on the live site today. Home page nav really does send 'About us', 'Services' and 'Contact' to '#'. No meta description and zero JSON-LD; H1 is 'Hundreds of customers trust our company'. The template placeholder is live in the markup (visible link text info@fedlogistics.com pointing at mailto:help@company.com). Stat counters render '0 Locations across NJ / OVER 0K pallets' until JS runs. Home text confirms 500,000 sq ft combined, 250,000 sq ft East Coast, fleet of over 16 drivers, 30 miles from the ports, and the '40 Years' / 'over 45 years of experience' inconsistency, plus certifications FDA, USDA, UIIA, US Customs, SQF and ABC. quote.php holds one form with 75 inputs (17 free-text), 19 of them volume/pallet/EDI related - the '~70 field' characterisation is fair. robots.txt returns HTTP 404, so nothing is blocked. At 390 px the hero area is blank white and the vertical 'GET A FREE QUOTE' tab is clipped at the right screen edge (right edge measured at 693 px) - exactly as recorded. Maps shows 3.6 with 'Claim this business' and no photos. Scores (5/3/4/5) are defensible; ability_to_pay at 3 is on the conservative side for a 500k sq ft 3PL with port drayage, so a 4 would also be arguable, but 3 is not unreasonable."
+    },
+    {
+      "ref": "B01085",
+      "name": "Hendricks & Hendricks",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "'No JSON-LD and no individual practice-area pages (practice areas are headings on the home page)' (top issue) and 'practice areas have no individual pages' (out-of-date signs)",
+          "what_is_true": "The no-JSON-LD half is right, but six individual practice-area pages exist and are linked from the home page's 'LEARN MORE ABOUT ...' buttons: /personal-injury/, /workers-compensation/, /employment-law/, /criminal-defense-municipal-court/, /social-security-appeals/ and /family-law/ (plus /auto-and-motorcycle-accidents/ and /truck-accidents/), together with individual attorney pages /george-hendricks/, /peter-hendricks/, /patricia-m-love/ and a /testimonials/ page.",
+          "source_url": "https://hendrickslaw.com/personal-injury/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 5,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 3
+      },
+      "notes": "The headline finding is fully confirmed on the live contact page: it tells visitors to 'call the firm or complete the intake form below' while the DOM contains zero <form> elements and zero iframes, so leads have no way through the site. Also confirmed: title is just 'Hendricks & Hendricks', no meta description, zero JSON-LD, no H1 on home or contact, home page text about 3,360 characters, six practice areas listed, Google category generic 'Attorney' with no photos (Maps shows 4.5), no review count displayed, footer has no copyright year, 3 tel: links and a staff@hendrickslaw.com mailto, and robots.txt allows all crawlers with a wp-sitemap. Two knock-on corrections: because real practice-area and attorney pages exist, the search-foundation gap is somewhat smaller than described even though the missing form keeps gap_size at 5; the record also understates the site ('a team section' - there are three individual attorney bios). Evidence lowered from 4 to 3 for the practice-area error."
+    },
+    {
+      "ref": "B01136",
+      "name": "Premier Properties of New Brunswick",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Confirmed live. At a 390 px viewport the page reports document/body scrollWidth 772 against visualViewport 390 - not responsive - and the viewport meta tag is the cause: it reads 'initial-scale=1,minimum-scale=1,maximum-scale=5,viewport-fit=cover' with no width=device-width. The 390 px screenshot shows the header nav running off the right edge and a full-bleed hero photo with no headline or sentence of text above the fold, exactly as recorded. JSON-LD is a single WebSite node (name and URL only); there is an H1 in the DOM ('PREMIER PROPERTIES OF NEW BRUNSWICK') but it is not above the fold. Footer says '(c) 2022 All Rights Reserved'. The contact form has First Name, Last Name, Email and Message only - no phone field - and submissions post to a hidden dmformsendto. robots.txt sets 'Content-Signal: search=yes, ai-input=yes, ai-train=yes' with a sitemap. /pricing-list is live with 'Now Leasing for the Spring Semester!' and '**CALL FOR DETAILS**' above per-building prices from $1,275 to $4,200 with availability dates; no application or tour-booking path. Maps shows 4.5 with no photos and no review count in the panel view. One nuance on top issue 3: the menu item 'AVAILABILITY AND PRICING' actually points at /pricing-list and works, so the /availability-and-pricing 404 the record cites is a guessed URL with no link pointing to it - it should not count toward the gap. Scores (4/4/4/5) remain reasonable; gap 4 is fair on the strength of the non-responsive layout and the missing above-fold offer alone."
+    },
+    {
+      "ref": "B01139",
+      "name": "Bussel Realty Corp (New Brunswick office)",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Listing: 'No Google Business Profile or map listing verified' - rating unknown, reviews unknown",
+          "what_is_true": "A Google Maps profile does exist: 'Bussel Realty Corporation', 4.5, at 2 Ethel Rd #202a, Edison NJ 08817 ('Located in: Durham Center'), open to 4 PM, linking bussel.com and (732) 287-3777, with an 'Add a photo' prompt and no review count shown in the panel view.",
+          "source_url": "https://www.google.com/maps/search/Bussel+Realty+Corp+2+Ethel+Road+Edison+NJ"
+        },
+        {
+          "claim": "Name/location framing 'Bussel Realty Corp (New Brunswick office)'",
+          "what_is_true": "This is the right company but not a New Brunswick business: the only address published on the site is 2 Ethel Road, Suite 202A, Edison NJ 08817, and the New Brunswick pages are service-area landing pages titled 'Office Property, New Brunswick NJ' for a broker directory. There is no New Brunswick office to visit.",
+          "source_url": "https://bussel.com/contact-us/office-property/new-brunswick-nj"
+        }
+      ],
+      "notes": "The security finding reproduces exactly: bussel.com's home page contains a div at position:absolute; left:-9999px whose text is Vietnamese Binomo/binary-options copy linking to vietnam-millionaire.me, portuguese-passport.online, top10binary.ru and (not mentioned in the record) top10shops.ru. /contact-us/ really does return 'IIS 10.0 Detailed Error - 404.0' with the physical path C:\\www\\bussel\\contact-us\\ exposed. Zero JSON-LD, zero tel: links. The site's own menu 'Contact Us' goes to the /contact-us/commercial-real-estate/central-new-jersey broker directory (25 brokers with direct mobiles and emails, Edison address at top) and the only forms on the home page are /login.asp (username/password) and the property-search box, so 'no web enquiry path, only a directory plus a CRM login' holds. robots.txt is the permissive classic-ASP file listed. Extra dead nav parents worth noting: 'About' and 'Contact' in the main menu are also '#'. Scores (5/5/3/4) are reasonable and evidence 4 is still fair given how precisely the main findings check out; the missed GBP is a listing-quality gap rather than a scoring problem. Flag for the owner: if the batch is meant to be New Brunswick businesses, this one is Edison-based."
+    }
+  ],
+  "data_gaps": [
+    "ReCreations Salon: Google's own review count could not be read directly (Maps panel did not render a count); 4.7 / ~122-127 comes from BestProsInTown, Loc8NearMe and a search summary, so the record's '122-165' range is only partly verified.",
+    "Bussel Realty: the Google profile shows 4.5 but no review count in the panel view; no review text was read.",
+    "Hidden Lake Dental and Hendricks & Hendricks: no Google rating or review count is shown in the Maps panel view for either, so listing strength for those two could not be compared with the site.",
+    "Distinct Engineering Solutions: reCAPTCHA on the contact form means the form could not be tested end to end (and was not submitted, per the read-only rule).",
+    "Federation Logistics quote.php was inspected but not submitted, so whether it returns an acknowledgement to the sender is unverified."
+  ]
+}

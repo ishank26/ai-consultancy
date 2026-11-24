@@ -1,0 +1,158 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Founder email: \"the Services page is a one-screen bullet list with no stock, sizes, turnaround or price\"",
+      "problem": "The absence of stock, sizes, turnaround and prices is confirmed, and the page is indeed a single undifferentiated bullet list. But \"one-screen\" is a layout impression, not something verified: the page carries a hero image plus five service blocks and runs to several phone screens. Low severity, but it is an unmeasured visual claim inside an email to the owner, who can check it in one glance.",
+      "fix": "Drop the measurement word: \"the Services page is a short bullet list with no stock, sizes, turnaround or price\"."
+    },
+    {
+      "claim": "\"Your data: documents stay in your hands.\"",
+      "problem": "Stated as a property of the offer, not an inference. If any part of the build relies on a third-party model or hosted index, \"documents stay in your hands\" can read as a data-residency promise the engagement may not keep. Nothing in the sources or the analysis establishes it.",
+      "fix": "Soften to a control-and-no-publication commitment, e.g. \"your documents stay under your control and are never published\", or state the actual deployment model once it is known."
+    },
+    {
+      "claim": "Sources line: Google Maps search URL cited as evidence for \"Western Union money-transfer desk at the same address\"",
+      "problem": "This URL is JavaScript-rendered and could not be opened by a signed-out fetch, so the citation itself cannot be re-checked by the reader. The underlying fact is solid: directory listings (loc8nearme Western Union page, location.com, miquest) all place a Western Union money-transfer agent at 46 Paterson St, and the shop's own Services page lists Western Union. Citation precision only, not a factual error.",
+      "fix": "Cite a fetchable listing page (e.g. loc8nearme's Western Union entry at 46 Paterson St) alongside or instead of the Maps search URL."
+    },
+    {
+      "claim": "Section 2 pilot: \"three to four weeks in shadow mode on 30-50 past jobs\"",
+      "problem": "Tone/jargon: \"shadow mode\" is internal tech vocabulary and is the one term in the audit a print-shop owner may not parse. Not a factual problem.",
+      "fix": "\"three to four weeks running quietly in the background on 30-50 of your past jobs, with every draft price checked by you\"."
+    },
+    {
+      "claim": "Framing of the 2016 consent order inside an opportunity section",
+      "problem": "Accurately stated and neutral, and no individual is named, but a regulator's order is sensitive material to put in front of an owner in a sales document; it is placed under \"questions on tap\" rather than being used as a lever, which reads as respectful. Flagged only so the orchestrator can confirm the account team is comfortable sending it.",
+      "fix": "No change required; if the team wants to be more conservative, move the sentence to the walk-in conversation and keep the written audit to the observed website gaps."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Downtown Printing Center has printed in downtown New Brunswick since 1977",
+      "source_url": "https://downtownprint.com/about-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sits at 46 Paterson St.",
+      "source_url": "https://downtownprint.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Digital, offset, apparel and counter services (digital, offset, screen/apparel, signs, binding, Western Union, passport photos)",
+      "source_url": "https://downtownprint.com/services",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Four-page site (Home, Services, About Us, Contact)",
+      "source_url": "https://downtownprint.com/sitemap.website.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "© 2022 GoDaddy build",
+      "source_url": "https://downtownprint.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Home page carries only a logo, one stock photo and the footer",
+      "source_url": "https://downtownprint.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No address, hours or services appear as text on the home page (address and hours exist only in JSON-LD, not visible copy)",
+      "source_url": "https://downtownprint.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No prices appear anywhere on the site",
+      "source_url": "https://downtownprint.com/services",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Intake form is Name/Email/Message with no size, quantity or artwork field",
+      "source_url": "https://downtownprint.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hours differ across listings: 9:00-6:00 vs 8:30-5:30",
+      "source_url": "https://reviews.birdeye.com/downtown-printing-center-inc-552901184",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Shop's own contact page shows 8:30 am - 5:30 pm",
+      "source_url": "https://downtownprint.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2016 consent order ended its authorization to print state prescription blanks after verification failures",
+      "source_url": "https://www.nj.gov/oag/newsreleases16/Downtown-Printing_Final-Consent-Order.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "O*NET NJ Customer Service Representative median is $47,740 (BLS 2025 wage data)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "$47,740 / 2,080 x 1.25 = $28.69/hour",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 1: 50 weeks x 1-3 hrs/week x 80-100% = 40-150 hours, i.e. about $1,147-$4,303 at $28.69/hour",
+      "source_url": "https://downtownprint.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2: 50 weeks x 3-8 hrs/week x 25-40% = 37-160 hours, i.e. about $1,061-$4,590 at $28.69/hour",
+      "source_url": "https://downtownprint.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 3: 20-40 questions/week x 2 min x 50% handled x 50 weeks = 16-33 hours, i.e. about $459-$946 at $28.69/hour",
+      "source_url": "https://downtownprint.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The counter also runs money transfers and passport photos; a Western Union money-transfer desk sits at 46 Paterson St.",
+      "source_url": "https://www.loc8nearme.com/new-jersey/new-brunswick/western-union/142652/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sources line cites Google Maps search URL for the Western Union desk at the same address",
+      "source_url": "https://www.google.com/maps/search/Downtown+Printing+Center+46+Paterson+St+New+Brunswick+NJ",
+      "result": "could not open"
+    },
+    {
+      "claim": "Founder email: home page carries no address or hours as text",
+      "source_url": "https://downtownprint.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder email: form asks for a message rather than a quantity or file",
+      "source_url": "https://downtownprint.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder email: Services page lists no stock, sizes, turnaround or price",
+      "source_url": "https://downtownprint.com/services",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder email: \"one-screen\" bullet list",
+      "source_url": "https://downtownprint.com/services",
+      "result": "not found"
+    },
+    {
+      "claim": "Review profile is unclaimed and shows 3.8 stars from 29 reviews (supporting the hours-conflict comparison)",
+      "source_url": "https://reviews.birdeye.com/downtown-printing-center-inc-552901184",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body length at most ~450 words",
+      "source_url": "file://audit.md",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

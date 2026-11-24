@@ -1,0 +1,248 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Postmark transactional email: 'Basic, $15/month for 10,000 emails' with 'inbound reply parsing and per-thread tracking', and phase 4 'reply parser'",
+      "problem": "The price is right but the tier is wrong for the design. Postmark's pricing page lists 'Inbound email processing' only on Pro ($16.50/mo) and Platform ($18.00/mo); the $15 Basic plan's feature list does not include it. The document-chase module as designed (reply parser, tracked thread) cannot run on the quoted tier.",
+      "fix": "Change the cost line to Postmark Pro at $16.50/month for 10,000 emails (extra $1.80/1,000 is Basic only; Pro's overage is $1.30/1,000), or drop the inbound reply parser and describe reply handling as manual/forwarding."
+    },
+    {
+      "claim": "suggested_pricing.reasoning: 'Year one for the firm is about $11,600 ($2,000 pilot + $4,500 set-up + 9 x $550)'",
+      "problem": "The arithmetic does not give that total. $2,000 + $4,500 + (9 x $550 = $4,950) = $11,450, not ~$11,600.",
+      "fix": "Restate as 'about $11,450 a year one ($2,000 + $4,500 + 9 x $550)', and check the derived ratio against the $13,600 low end (it is 0.84x, not 0.85x)."
+    },
+    {
+      "claim": "monthly_fee: '$550 per month covering up to 5 books, plus $75 per additional book per month (about $18 per book at 25 books)'",
+      "problem": "The per-book figure is wrong by roughly 4.5x. At 25 books the fee is $550 + (20 x $75) = $2,050/month, i.e. about $82 per book, not $18. No combination of the quoted rates produces $18/book at 25 books.",
+      "fix": "Either correct to 'about $82 per book at 25 books', or re-price the add-on step (for example $20-25 per additional book) if $18/book at scale is the intended target."
+    },
+    {
+      "claim": "suggested_pricing.reasoning: 'Botkeeper would be about $447-$745/month for 3-5 client licenses'",
+      "problem": "Botkeeper's own volume bands break at 5 licenses: 1-4 licenses are $149/monthly-billed, 5-9 are $109. So 3-5 licenses costs $447 (3 x $149), $596 (4 x $149) or $545 (5 x $109) - a range of $447-$596, not up to $745. The $745 figure silently applies the 1-4 band rate to 5 licenses.",
+      "fix": "Replace with '$447-$596/month for 3-5 licenses at monthly billing ($149 each for 3-4, $109 each at 5), i.e. about $447-$596 before configuration'."
+    },
+    {
+      "claim": "current_tools: the Senior Accounting Manager posting 'lists these as the expected tool landscape' (Bill.com, NetSuite, CCH ProSystem fx, Reach Reporting, Power BI/Tableau, HubSpot), and leverage: 'Bill.com is in its named tool landscape, so the pilot needs no new software on the client side'",
+      "problem": "The cited LinkedIn job page (4488398710) opens only as a shell for me - title and 'Edison, NJ' confirmed, but the description body is not retrievable, so the tool list cannot be verified from that source. Secondary search results quoting the firm's posting describe NetSuite, Bill.com and CCH ProSystem as nice-to-have tools, and name QBO and Reach Reporting as the tools actually used. Plan wording ('expected tool landscape', 'clients pay bills in Bill.com') is stronger than that evidence supports.",
+      "fix": "Downgrade to 'named in the posting as nice-to-have tools' and make Bill.com client usage an explicit discovery question/exit condition; do not treat Bill.com as a confirmed client-side integration surface until a pilot book is confirmed to use it."
+    },
+    {
+      "claim": "'it has two senior roles open' / 'two senior roles open at once'",
+      "problem": "Only one Senior Accounting Manager opening could be located (LinkedIn job pages 4488398710 and 4458639021, same title, Edison NJ); the firm's careers.htm page failed to fetch. The 'two roles' figure is not supported by anything I could open.",
+      "fix": "Either cite the second posting explicitly or soften to 'a senior accounting manager role is open'."
+    },
+    {
+      "claim": "running_costs model inference at gpt-5.4-mini list rates, with 'the account can be configured for ... US data residency'",
+      "problem": "Price per token is correct, but OpenAI's data-residency documentation states that data-residency endpoints carry a 10% uplift for models released on or after 5 March 2026, which the running-cost line does not mention. The $40-90/month band absorbs it, so this is a note rather than a contradiction.",
+      "fix": "Add a half-sentence: 'add 10% if US data residency is enabled on the project'."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Intuit Builder tier: no program fee, 500,000 CorePlus calls/month, Core calls unmetered, CorePlus above the cap blocked rather than billed; Silver = US$300/month with 1M CorePlus credits",
+      "source_url": "https://static.developer.intuit.com/resources/Intuit_App_Partner_Program_Guide.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "QuickBooks Online JournalEntry CRUD and multipart Attachable upload at POST /v3/company/{realmId}/upload",
+      "source_url": "https://static.developer.intuit.com/output_html/qbo/docs/workflows/attach-images-and-notes.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "developer.intuit.com JournalEntry entity page (cited as source for the reviewer-queue component and the write-path risk)",
+      "source_url": "https://developer.intuit.com/app/developer/qbo/docs/api/accounting/all-entities/journalentry",
+      "result": "could not open"
+    },
+    {
+      "claim": "Intuit's quickbooks-online-mcp-server is MIT-licensed, implements create/get/update/delete/search for Journal Entry and Attachable (docs table lists ~29 entity rows, more than the plan's '26'), and exposes QUICKBOOKS_DISABLE_WRITE/UPDATE/DELETE flags",
+      "source_url": "https://github.com/intuit/quickbooks-online-mcp-server",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BILL v3 API: POST /v3/login with username/password/organizationId/devKey returns a sessionId, sandbox then production, AP operations (vendor, bill, payment)",
+      "source_url": "https://developer.bill.com/reference/api-reference-overview",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No separate BILL API fee is published on BILL's API page (pricing not public)",
+      "source_url": "https://www.bill.com/product/api",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NetSuite SuiteTalk REST Web Services exist as documented REST record operations; cost not public",
+      "source_url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/book_1559132836.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CCH Axcess / ProSystem fx developer programme could not be read (plan already marks it confirmed_in_docs: false, cost unknown)",
+      "source_url": "https://developers.cchaxcess.com/",
+      "result": "could not open"
+    },
+    {
+      "claim": "ProtectedXchange has no public API documentation, so document intake is a manual hand-off",
+      "source_url": "https://www.gainescpacfo.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Postmark Basic: $15.00/month for 10,000 emails, extra emails $1.80 per 1,000",
+      "source_url": "https://postmarkapp.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Postmark Basic includes inbound reply parsing",
+      "source_url": "https://postmarkapp.com/pricing",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Hetzner Cloud Regular Performance from EUR 5.49 per month per server, excluding VAT",
+      "source_url": "https://www.hetzner.com/cloud/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OpenAI gpt-5.4-mini priced at $0.75 per 1M input tokens and $4.50 per 1M output tokens",
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Model cost arithmetic: 30 books x 800 tx = 24,000 tx; 2,000 input tokens each = 48M input ($36) and 150 output tokens each = 3.6M output ($16.20), about $52/month",
+      "source_url": "https://platform.openai.com/docs/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OpenAI: API data not used for training since 1 March 2023; abuse-monitoring logs retained up to 30 days; Zero Data Retention and Modified Abuse Monitoring available to eligible customers; US data residency available to approved customers",
+      "source_url": "https://platform.openai.com/docs/guides/your-data",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Docling is an open-source (MIT) document conversion/parsing library",
+      "source_url": "https://github.com/docling-project/docling",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Langfuse is open source and self-hostable (Docker Compose/Helm), so no licence fee for the self-hosted OSS deployment",
+      "source_url": "https://github.com/langfuse/langfuse",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Botkeeper: $149 per license/month monthly-billed and $134 annual for 1-4 licenses; $109/$98 for 5-9; $79/$71 for 10-24; $59/$53 for 25+; no free trial - and the price is properly labelled as a third-party transcription",
+      "source_url": "https://aiaccountingvendors.com/vendors/botkeeper/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Botkeeper would cost about $447-$745/month for 3-5 client licenses",
+      "source_url": "https://aiaccountingvendors.com/vendors/botkeeper/pricing",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Double: Core $10, Plus $25, Scale $50 per connected client per month with unlimited users (third-party transcription of a JS-rendered page)",
+      "source_url": "https://practice.getverticalos.com/pricing/keeper",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Double vendor-page add-ons: Autoclose $500/month, Emails $10 per connected team email per month, Tax Suite included with $200/month annual commitment",
+      "source_url": "https://doublehq.com/pricing-plans/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Uncat: $9/month/client with unlimited accountant and client users, unlimited transactions and requests; syncs QuickBooks Online, QuickBooks Desktop and Xero",
+      "source_url": "https://www.uncat.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FloQast publishes no price (Close Management and Close AI are both Contact Sales) and states it does not charge per user",
+      "source_url": "https://www.floqast.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Numeric's pricing page lists modules and features with no dollar figures (sold by quote)",
+      "source_url": "https://www.numeric.io/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Xendoo: Essential $395 ($355 annual), Growth $695 ($625), Scale $995 ($895), catch-up bookkeeping from $295/month, fractional CFO from $2,500/month",
+      "source_url": "https://xendoo.com/xendoo-pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bookkeeper360 bookkeeping price not rendered ('From / month'); anchors on the same page are business returns from $1,200, individual returns from $550, catch-up from $1,000",
+      "source_url": "https://www.bookkeeper360.co/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BLS OEWS New Jersey Bookkeeping, Accounting and Auditing Clerks annual median $58,300 (May 2025)",
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000043303113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BLS OEWS New Jersey Accountants and Auditors annual median $100,830 (May 2025)",
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000013201113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Clerk arithmetic: $58,300 / 2,080 = $28.03/hour; x1.25 = about $35/hour loaded; 225-720 hours = about $7,900-$25,200",
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000043303113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Accountant arithmetic: $100,830 / 2,080 = $48.48 x1.25 = $60.61/hour; 225 and 720 hours = about $13,600-$43,600",
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000013201113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 13:29-3.7(a): a licensee or the licensee's firm shall not, without the client's consent, disclose confidential information obtained in the course of professional services",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-29-3-7",
+      "result": "confirmed"
+    },
+    {
+      "claim": "16 CFR 314.4(f) requires selecting and retaining capable service providers, requiring safeguards by contract, and periodically assessing them",
+      "source_url": "https://www.govinfo.gov/content/pkg/CFR-2024-title16-vol1/pdf/CFR-2024-title16-vol1-sec314-4.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A CPA/tax-preparation firm is a 'financial institution' under the FTC Safeguards Rule (an accountant or other tax preparation service completing income tax returns)",
+      "source_url": "https://www.govinfo.gov/content/pkg/CFR-2026-title16-vol1/pdf/CFR-2026-title16-vol1-sec314-2.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "IRS Publication 4557 (Rev. 5-2024) directs preparers to select providers that maintain appropriate safeguards, require it by contract, and oversee provider handling as part of the WISP",
+      "source_url": "https://www.irs.gov/pub/irs-pdf/p4557.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "26 U.S.C. 7216 makes knowing or reckless unauthorised disclosure/use of return information a misdemeanour, with section 6713 civil exposure; 26 CFR 301.7216-2 lists disclosures permitted without consent, including to contractors/service providers",
+      "source_url": "https://uscode.house.gov/us/usc/119-118/t26/s7216/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Gaines sells outsourced accounting incl. AP/AR, credit-card and bank reconciliations, month-end closings, payroll; separate QuickBooks setup/support line",
+      "source_url": "https://www.gainescpacfo.com/outsourced-accounting-and-bookkeeping.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site header carries a 'Send Files' link to protectedxchange.com/gainescfo (footer 'Send a File'), with no branded task/e-signature portal; address 105 Fieldcrest Ave, Suite 501, Edison NJ 08837",
+      "source_url": "https://www.gainescpacfo.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Consultation page is a plain web form with reCAPTCHA and no calendar link",
+      "source_url": "https://www.gainescpacfo.com/consultation.htm",
+      "result": "could not open"
+    },
+    {
+      "claim": "Senior Accounting Manager posting at Gaines & Associates exists and names the tool landscape (QBO, Bill.com, NetSuite, CCH ProSystem fx, Reach Reporting, Power BI/Tableau, HubSpot)",
+      "source_url": "https://www.linkedin.com/jobs/view/senior-accounting-manager-at-gaines-associates-pc-4488398710",
+      "result": "could not open"
+    },
+    {
+      "claim": "The firm has two senior roles open at once",
+      "source_url": "https://www.gainescpacfo.com/careers.htm",
+      "result": "not found"
+    },
+    {
+      "claim": "suggested_pricing, effort estimates (founder_days) and feasibility scores are labelled as inference and consistent with the evidence - NetSuite/CCH/ProtectedXchange excluded from the pilot, technical 3 rather than 4-5",
+      "source_url": "https://www.gainescpacfo.com/outsourced-accounting-and-bookkeeping.htm",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

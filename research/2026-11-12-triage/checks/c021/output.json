@@ -1,0 +1,150 @@
+{
+  "results": [
+    {
+      "ref": "B00140",
+      "name": "The Mountaintop Group LLC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No individual service pages exist (services collapsed onto one /services page); opportunity to create one page per service",
+          "what_is_true": "The site already has separate, substantive service pages listed in sitemap.website.xml but not linked from the main nav (which links only /services): /commercial-leasing, /commercial-re-advisor, /consulting-services, /com-debt-capital-markets, /property-management-1, /residential-sales, /real-estate-agent. The /commercial-leasing page alone runs several thousand words with process and who-we-work-with sections. The real gap is that these pages are orphaned from navigation and carry no schema, not that they are missing.",
+          "source_url": "https://mountaintop.group/sitemap.website.xml"
+        }
+      ],
+      "notes": "Re-confirmed operating: home page and GBP both live; GBP shows category 'Real estate agency', 75 N Bridge St Somerville, 'Open - Closes 5 PM', website and phone, with 'Add photos & videos' prompts and no visible rating or reviews - matches the record's listing data. Also confirmed: 0 ld+json scripts on the home page; only one form on the site (single-field Peak Insights newsletter); two tel: links with (908) 888-0040 rendering correctly at 390px; contact page is address + phone + email only with no intake form; robots.txt disallows only /404. At 390px the home page is a stock hero (title, service line, phone) then the newsletter block, so the claim that services and coverage are not readable on the home page holds. Scores left as-is: no intake form, no structured data and a stale directory address still justify gap_size 4 even though service pages exist."
+    },
+    {
+      "ref": "B00141",
+      "name": "North Star Title Agency",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Hero renders blank/white-on-white and 'Desktop and 390px screenshots both show a blank white hero', hiding any mobile CTA",
+          "what_is_true": "Only the desktop hero washes out: at 1440px the headline and subtitle are white text over a near-white slide and barely legible. At 390px the hero renders white text on a solid black slide with a clearly visible Get a Quote button linking to /contact-us. The hero failure is desktop-only, and the no-mobile-CTA implication is wrong.",
+          "source_url": "https://northstartitle.com/"
+        },
+        {
+          "claim": "click_to_call: false, and 'no visible click-to-call ... on phone above the fold - only a hamburger and a Get Estimate float'",
+          "what_is_true": "A tel: link is visible at desktop width: the header shows 732.589.7250 / Call Us (tel:7325897250) beside the PLACE AN ORDER and EARNEST MONEY DEPOSIT buttons. At 390px the header collapses and those tel links become hidden (the only visible tel links sit in the footer, roughly 12,700px down), so no click-to-call above the fold on phone holds even though click_to_call: false as a site-wide statement does not. The mobile first screen also carries a hero Get a Quote button, not just a hamburger and the Get Estimate float.",
+          "source_url": "https://northstartitle.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 4,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Everything else re-checked and holds: robots.txt disallows only /wp-admin and /wp-includes; the single ld+json block contains WebPage/WebSite/Organization/BreadcrumbList/SearchAction only, with no streetAddress and no openingHours; /contact-us/ carries all three office addresses in plain text plus a contact form; PLACE AN ORDER goes to form.jotform.com/252244898348066 and EARNEST MONEY DEPOSIT to an http:// (not https) certifid.com URL; GBP North Star Title Agency LLC shows 5.0, category Title company, 214 Highway 18 3rd Floor, Open, phone, and Add missing information / Add website prompts (no website linked, review count not shown). Evidence reduced from 4 to 3 because a key visual claim (mobile hero) was wrong, consistent with a screenshot taken from a shared browser session."
+    },
+    {
+      "ref": "B00188",
+      "name": "ACS IT Support",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "All four top issues re-verified on the live site today. No GBP: a Maps search for 'ACS IT Support East Brunswick NJ' returns only unrelated ACS-named businesses (ACS Investigations, ACS Cleaning, ACS Logistics); the firm has no listing. Title is 'ACS IT SUPPORT - ACS IT SUPPORT', meta description absent, zero H1 elements, zero ld+json blocks. At 390px the first screen is a blank white hero under the logo - the same blank slider is visible at 1440px, so the problem is at least as bad as described. Contact page: two Contact Form 7 forms, every visible field placeholder-only with no label element and no aria-label, reCAPTCHA v2 iframe present, plus a Calendly 30min inline embed at calendly.com/acsitsupport/30min and a clickconnector chat widget. Footer reads 'Copyright 2024(c) ACS IT SUPPORT, Inc'. robots.txt is 'User-agent: * / Disallow: /wp-admin/ / Allow: /wp-admin/admin-ajax.php' with /wp-sitemap.xml, so AI crawlers are not blocked. tel:732.385.8000 works (icon only at mobile width). Scores accepted: no GBP plus no meta, H1 or hero is a large, cheap-to-close gap (gap_size 4); an MSP selling SMB retainers with a suite/mailbox address justifies ability_to_pay 3; ease 4 for standard GBP and SEO work; evidence 4 since every claim is directly observable."
+    },
+    {
+      "ref": "B00259",
+      "name": "Dental Magik East Brunswick",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Opportunity to 'rewrite the top of the homepage so service and town are stated plainly above the fold', on the evidence that the 390px first screen shows only the headline and a small town tag",
+          "what_is_true": "At 390x844 the first screen already carries the EAST BRUNSWICK, NJ tag, the headline, a body paragraph naming dental practices, a Book Your Appointment button, an Our Services button and a tel: button reading (732) 247-2211. Town and a phone CTA are plainly present above the fold; only the headline itself omits the word dentist/dental, so the recommendation overstates the gap.",
+          "source_url": "https://dentalmagik.com/"
+        }
+      ],
+      "notes": "Everything else holds. Hours conflict confirmed word for word: home page lists Mon 8-1, Tue 9-7, Wed closed, Thu 10-7, Fri 8-3, Sat 8-2 (2nd and 4th only); /contact/ lists Mon-Fri 9-6, Sat 9-2. GBP Dental Magik shows 4.9, category Dentist, E7 Brier Hill Ct, website link and 'Open - Closes 2 PM', which matches neither site hours block - a third version worth flagging. Home-page ld+json is WebPage/WebSite/Organization/BreadcrumbList/SearchAction only, no LocalBusiness or Dentist node. No scheduler anywhere: all four Book links go to /contact/, /magik-start/ or /magik-verify/, and neither /contact/ nor /magik-start/ loads a booking iframe (only a Google Maps embed). The contact form has real labels (Name, Email, Phone, When Are you looking to visit select, Message, emergency checkbox) and a Submit button, with reCAPTCHA badge assets loaded. Footer reads (c) 2026. robots.txt is a Yoast block, fully open. Scores unchanged: gap_size 3, ability_to_pay 4, ease 4 and evidence 4 still fit a modern site with an hours conflict, no local schema and no scheduler."
+    },
+    {
+      "ref": "B00685",
+      "name": "Minieri Realty LLC",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Operating, but reachable only through portals. The GBP Minieri Realty is live at 735 Georges Rd, North Brunswick Township, category Real estate agency, 'Open - Closes 9 PM', phone (732) 354-1957 - and it still points roysellsnj.com at prospects as the website link. That domain fails in Chrome today with net::ERR_NAME_NOT_RESOLVED, confirming the record's central claim, while search indexes still return roysellsnj.com URLs (home, /agents/roy-minieri/, /local-resources/), so the domain lapsed rather than never existing. No replacement site exists: searches surface only the dead domain, portal and directory profiles. The record's listing data (realtor.com 5.0 from 8 reviews) could not be reopened - realtor.com returned HTTP 429 and the Nestfully office page serves a Cloudflare bot check - but nothing contradicts it, and GBP shows no rating of its own. Scores accepted: site down is the maximal gap (5), a one-broker shop caps ability_to_pay at 2, restore plus lead response is straightforward (ease 4), evidence is directly observable (4). Worth adding for the owner: the GBP is actively sending prospects to a dead domain, which makes a minimal rebuild more urgent than 'no site' implies."
+    },
+    {
+      "ref": "B00891",
+      "name": "Addicted To Color",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "website: none - 'no website at all', no owned source of truth, nothing to index",
+          "what_is_true": "The business runs a live, modern single-page site at addicted-to-color.com, linked from its Google Business Profile. It has a real hero H1 (Transform Your Space With Color), a meta description, about 6,300 characters of body copy, nine services written out, an About section naming owner Brian G., an Our Work gallery of six described jobs, a Yelp 5.0 reviews block, and two ld+json blocks - a HousePainter/PostalAddress graph with Service and Offer entries plus an FAQPage. There is no robots.txt (404), so crawlers are unrestricted.",
+          "source_url": "https://addicted-to-color.com/"
+        },
+        {
+          "claim": "No visible quote-request path; no form, email or booking anywhere - inquiries can only arrive by phone",
+          "what_is_true": "The home page carries a labelled free-quote form (NAME, PHONE, EMAIL, SERVICE NEEDED dropdown of nine services, optional brief description) promising a same-day reply, plus six tel: links and Get My Free Quote buttons. At 390px the form and the call button both sit on the first screen.",
+          "source_url": "https://addicted-to-color.com/"
+        },
+        {
+          "claim": "No photo gallery of finished work and services (decks, power washing) not explained in text",
+          "what_is_true": "The site has an Our Work section listing six completed jobs (staircase wainscoting, sunroom brick and paneling, fireplace whitewash, mahogany deck stain, cedar fence and deck stain, new-construction warm whites) and a nine-service section including decks, power washing, epoxy floors and popcorn ceiling removal, each with a paragraph of copy.",
+          "source_url": "https://addicted-to-color.com/"
+        },
+        {
+          "claim": "Google listing could not be opened, so only directory data was available",
+          "what_is_true": "A public Google Business Profile exists: Addicted To Color, 4.6, category Painter, 501 3rd Ave, North Brunswick Township, open 8-8, phone (908) 616-4211, website addicted-to-color.com. The Birdeye mirror at 4.6 from 8 reviews is consistent, and that Birdeye profile is indeed unclaimed - that part of the record stands.",
+          "source_url": "https://www.google.com/maps/search/Addicted+To+Color+501+3rd+Ave+North+Brunswick+NJ"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 2,
+        "ability_to_pay": 2,
+        "ease": 3,
+        "evidence": 1
+      },
+      "notes": "The business is correctly identified and operating, but the record's premise - no website, no form, no gallery - is wrong throughout; the site is one of the stronger ones in this batch, with local business and FAQ schema already in place. Genuine remaining gaps are narrow: the Birdeye profile is unclaimed, review volume is thin (8 reviews at 4.6 against the Yelp 5.0 the site leads with), the site is single-page with no per-service or service-area pages, and there is no robots.txt or sitemap. That is a small engagement for a one-person owner-operator shop, so gap_size drops 5 to 2, ease 5 to 3 (the easy build is done), ability_to_pay stays 2, and evidence drops 3 to 1 because the record's central factual claim about the website is false - consistent with stale or misattributed research rather than an inspection of this business."
+    },
+    {
+      "ref": "B01042",
+      "name": "Little Spring Montessori Academy",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "GBP 'looks unclaimed: no hours, no rating, no category detail'",
+          "what_is_true": "The listing does have a category - it is published as 'Little Spring Montessori', category Montessori school, at 1460 Livingston Ave ('Located in: Brunswick Business Campus'), with littlespringmontessori.com linked and phone (908) 818-9668. It is indeed unclaimed, with no hours, no rating and Claim this business / Add hours prompts, so the substance of the issue stands; only the no-category-detail part is wrong.",
+          "source_url": "https://www.google.com/maps/search/Little+Spring+Montessori+Academy+1460+Livingston+Ave+North+Brunswick+NJ"
+        }
+      ],
+      "notes": "Central claim re-confirmed directly: littlespringmontessori.com fails in Chrome with net::ERR_CERT_COMMON_NAME_INVALID, and a direct HTTPS GET reports 'certificate verify failed: Hostname mismatch, certificate is not valid for littlespringmontessori.com', so the site is unreachable for visitors, Google and AI crawlers alike - robots.txt and JSON-LD remain uncheckable. Both http:// variants were blocked by the client before loading. Search-index snippets independently corroborate the record's indexed-content claims: the admission page tells families to schedule a tour and gives (908) 818-9668 or (732) 640-1588 plus littlespringacademy@gmail.com, matching the numbers the record quotes from /contact-us/ and confirming no scheduler exists in the indexed content. GBP confirmed unclaimed with no hours or reviews. Scores accepted: an offline site plus an unclaimed profile is the maximum gap (5), a single small preschool caps ability_to_pay at 2, certificate plus GBP claim plus a tour form is days of work (ease 5), and evidence stays 3 because the page content could only be read through the search index rather than from the site."
+    },
+    {
+      "ref": "B05542",
+      "name": "Meky Accounting Firm LLC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No appointment booking or scheduling anywhere (agent_readiness bookable: 0); website_review says 'no scheduling or client portal visible'",
+          "what_is_true": "The site has a Request Appointment page at /contact/request-appointment/ carrying a Contact Form 7 form with preferred-day and preferred-time fields (placeholders 'ex: Mon the 8th or Wed the 10th' and 'ex: Between 7-9am or after 4pm') plus message fields, linked from the home page and the nav. A Client Portal also exists at /portal/, advertised on the home page as 'Secure File Portal - securely access all of your important tax information 24/7'. So an appointment can be requested online and a client portal is published; only fee ranges and true self-scheduling are absent.",
+          "source_url": "https://mekyaccounting.com/contact/request-appointment/"
+        },
+        {
+          "claim": "contact_form: false; 'no form on the homepage and no scheduling anywhere'",
+          "what_is_true": "/contact/ has a working form with Name (required), Your Email (required) and Your Message fields. It is accurate that the home page itself carries no form and that the phone number is plain text with no tel: link anywhere on the pages checked.",
+          "source_url": "https://mekyaccounting.com/contact/"
+        },
+        {
+          "claim": "Out-of-date signs include 'no copyright year visible'",
+          "what_is_true": "Every page footer reads 'Copyright (c) 2026 MEKY ACCOUNTING FIRM and/or its licensors', so the year is present and current; the template-copy problem is real but the copyright point is not.",
+          "source_url": "https://mekyaccounting.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 2
+      },
+      "notes": "Confirmed as recorded: GBP Meky Accounting Firm shows 3.3, category Accountant, 50 Main St South River, open, phone (732) 967-0068, with Claim this business and Add website prompts and no website linked, so the strongest free asset is still unconnected. Home page title is 'Home | MEKY ACCOUNTING FIRM', no meta description, zero ld+json, zero tel: links, no form on the home page, body copy is untouched template text ('This website exists to provide clients ... our unique, low-pressure approach'), and there are no fee ranges. robots.txt is permissive for unnamed crawlers (blocks Yandex, Baidu, MJ12bot, DotBot, AhrefsBot, aiHitBot, spbot, MauiBot and /wp-admin). Gap stays large but is smaller than recorded because an appointment request path and a client portal already exist; evidence drops to 2 because three verifiable claims about the site (no scheduling, no portal, contact_form false) were wrong, which suggests the site was skimmed rather than opened page by page."
+    }
+  ],
+  "data_gaps": [
+    "acsitsupport.com returns HTTP 403 to non-browser fetchers (bot protection), so everything about that site had to be checked through the browser; a plain fetch or agent crawl of the site fails even though robots.txt permits it.",
+    "Google Maps limited view does not display review counts, so review counts (Dental Magik 57, Minieri 8) could only be checked via Birdeye/portal mirrors, not Google directly.",
+    "realtor.com returned HTTP 429 and Nestfully serves a Cloudflare bot check, so Minieri Realty's realtor.com rating (5.0, 8 reviews) could not be independently reopened.",
+    "littlespringmontessori.com could not be loaded in any form (TLS hostname mismatch over https, other http variants blocked before load), so its robots.txt, schema and page content remain unchecked beyond search-index snippets."
+  ]
+}

@@ -1,0 +1,186 @@
+{
+  "results": [
+    {
+      "ref": "B00741",
+      "name": "Magic Smile of NJ",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No contact form anywhere; prospective patients either book or call (top_issue), and the opportunity evidence 'there are zero form elements'",
+          "what_is_true": "/contact/ carries a working Elementor contact form with 9 inputs and screen-reader labels (name/email/phone/message). Zero forms are true of the home page only, so the 'add a short contact form' work is already half done.",
+          "source_url": "https://www.magicsmileofnj.com/contact/"
+        },
+        {
+          "claim": "The meta description names no town or service",
+          "what_is_true": "It does name the services: 'We offer comprehensive general, cosmetic and implant dentistry using advanced technology and personalized care.' Only the town is missing.",
+          "source_url": "https://www.magicsmileofnj.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Operating and correctly identified (622 Georges Rd, North Brunswick; 732-249-1020). Verified in the browser and in raw HTML: title is exactly 'Home - Magic Smile of NJ', the page has two empty H1 elements, /services/ is the only service page and its items are anchor-only, the site email is magicsmileofnj@gmail.com in header and footer, the nav 'Appointment' link goes to app.nexhealth.com/appt/magic-smiles-of-nj, one Yoast JSON-LD graph (WebPage/Organization), robots.txt disallows only /imunify-bot-check. Google Maps shows 4.9 with a 'Book online' action pointing at nexhealth.com and 'Closes 2 PM' on a Thursday where the site says Thur 10-6 — the hours mismatch in agent_readiness holds. At 390 px the header tel: link is visibility:hidden and the first visible tappable number sits at y≈5,353 px; the mobile hero also paints as a solid black band before its asset/animation fires, and body copy overflows the right edge. Evidence lowered 4→3 for the two wrong claims."
+    },
+    {
+      "ref": "B00767",
+      "name": "Farrington Pediatrics (Rashida Saif, MD)",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Stray horse emoji in the title tag ('🐴 Farrington Pediatrics')",
+          "what_is_true": "The raw HTML title is 'Farrington Pediatrics - Dr. Rashida Saif, MD' with no emoji and no 'horse' anywhere in the source. The 🐴 is injected into document.title/tab titles by this browser profile — it also appeared on a Better Business Bureau Cloudflare page and on every other site checked.",
+          "source_url": "https://farringtonpediatrics.com/"
+        },
+        {
+          "claim": "No LocalBusiness/Physician structured data with address, hours and phone, 'so assistants must scrape the HTML'",
+          "what_is_true": "No Physician/MedicalClinic/LocalBusiness entity and no address or openingHours exist, but the Organization node does include telephone +17322974100. Address and hours are the missing parts, not the phone.",
+          "source_url": "https://farringtonpediatrics.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Operating and correctly identified (1574 US-130; 732-297-4100). Confirmed: real H1 'From First Steps to Big Dreams, We Are Here', meta description naming pediatric care and North Brunswick, per-service pages, zero forms and zero inputs on home and /contact/ (only Maps iframes), two published numbers 732-297-4100 (tel: links) and 732-422-7243 (footer, plain text), Zocdoc Book Online link plus Healow portal, robots.txt allows all but /wp-admin with sitemaps, alternating Wednesday/Saturday hours written as text. Google Maps shows 5.0 with a 'Book online' action and 'Closes 4 PM', matching the record. I did not enter the Zocdoc flow, so 'no CAPTCHA before booking' is unverified. At 390 px the page still lays out ~1,265 px wide and hero copy is clipped at the right edge; the header shows only a hamburger, first visible tel link ~1,390 px down. Evidence lowered to 3 because one title claim was wrong and the schema claim was overstated."
+    },
+    {
+      "ref": "B00853",
+      "name": "Bob Blaine Plumbing & Heating",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 2,
+        "ease": 3,
+        "evidence": 3
+      },
+      "notes": "Operating and correctly identified. Live Google Maps shows 'Bob Blaine Plumbing & Heating', 4.2 from 15 reviews, Plumber, (732) 246-5488, North Brunswick Township — with 'Claim this business', 'Add hours', 'Add website' and 'Add missing information' prompts, i.e. unclaimed, no hours and no website, which reinforces (rather than contradicts) the thin-profile gap. The record's 4.1 / 14 comes from the Birdeye mirror, which lags the live 4.2 / 15 by one review — worth correcting at the next refresh but not a top-issue error. Birdeye also confirms Mon–Fri 9:00–6:00, Sat/Sun closed and that the profile is unclaimed (hence no owner responses). Second number (732) 690-4579 also appears on a NJ contractor licence list. No real website exists — the only URL in directories is a localsearch.com stub (blainebobplumbingheating.localsearch.com) — so website 'none' and bookable 0 stand. experience.com adds 'Owner Operated. Charge by Job. No travel or trip charges.', year started 1982, free estimates and warranties. Score changes: ability_to_pay 3→2 (owner-operator, free estimates, low review volume, no digital spend evident) and ease 4→3 (one decision-maker, but no online channel at all makes reaching and onboarding harder than claimed)."
+    },
+    {
+      "ref": "B01103",
+      "name": "Shaw Divorce & Family Law LLC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Contact form includes a human-check field (top_issue), and the 'create' human-verification field could stop automated submission",
+          "what_is_true": "The WPForms form has no CAPTCHA or challenge of any kind (no reCAPTCHA/hCaptcha/Turnstile script and no badge). The extra text input is a hidden honeypot (1px, visibility:hidden, aria-hidden, tabindex -1) plus an attorney-client-relationship disclaimer checkbox. A naive auto-filler could trip the honeypot, but nothing verifies a human.",
+          "source_url": "https://shawdivorce.com/contact/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Operating and correctly identified (317 George St Suite 320, New Brunswick; New Brunswick line 732-993-7449; plus Bedminster and Morristown). Confirmed live: zero tel: links on home and contact at both 1280 and 390 px, no phone in header or hero, no meta description on the home page, title 'Shaw Divorce & Family Law LLC | Strategic & Aggressive Divorce Lawyers' with no town, three Calendly links all http://calendly.com/shawdivorce, contact-page title naming 'Bedminster, Flemington & New Brunswick' while the office list includes Morristown, LocalBusiness JSON-LD carrying (908) 516-8689 (Bedminster), free consultation and WPForms form, robots.txt allows everything except /wp-content/uploads/wpforms/ with a sitemap. Google Maps shows 5.0 (6) with a calendly.com link and 'Closes 5 PM', matching the record. Evidence lowered to 3 for the human-check mis-read."
+    },
+    {
+      "ref": "B00018",
+      "name": "Lowenthal & Abrams, PC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Primary CTA is 'Free Consultation (888) 342-4745'",
+          "what_is_true": "The site's numbers are (888) 926-6063 and (888) 979-7298 — the tel: bar, header and body use 888-926-6063. (888) 342-4745 appears nowhere on the home or contact pages; it looks like a number carried over from a different record.",
+          "source_url": "https://lowenthalabrams.com/"
+        },
+        {
+          "claim": "Lawyers.com shows a 3.4/5 communication sub-score across 18 reviews",
+          "what_is_true": "Overall is 4.3 across 18 reviews (Lawyers.com 8 client reviews, Martindale 1, Avvo 9), and the 3.4 communication score comes from the 8 Lawyers.com client reviews only, not all 18.",
+          "source_url": "https://www.lawyers.com/cherry-hill/new-jersey/lowenthal-and-abrams-p-c-42870681-f/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 2,
+        "ability_to_pay": 5,
+        "ease": 3,
+        "evidence": 3
+      },
+      "notes": "Operating and correctly identified as a Philadelphia-based plaintiff PI firm. Confirmed on the live home page: title and H1 'Philadelphia Personal Injury Lawyer', Philadelphia-centric meta description, 0 mentions of 'East Brunswick' and only 1 of 'New Jersey', JSON-LD limited to Organization and WebSite (no LegalService/local node), reCAPTCHA present with 3 forms on home and 2 on contact (20 fields), no self-serve calendar, SMS consent language in the hero form, and an Ngage/Intelle messenger widget plus CallRail call tracking (so 'live-chat/contact-centre stack' holds). robots.txt explicitly allows GPTBot and OAI-SearchBot. Google Maps surfaced no East Brunswick listing at all — only Lowenthal & Abrams Philadelphia listings (4.3/78 and 4.7/93) and a Cherry Hill 'Social security attorney' entry with no reviews — which strengthens the NJ-invisibility finding; the Route 18 NJ address is not published anywhere on the site (the NJ number is (732) 658-0590), so the East Brunswick office claim rests only on the batch record."
+    },
+    {
+      "ref": "B00094",
+      "name": "Gary Mehta, CPA, EA",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 2,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Operating and correctly identified — Google Maps shows 'Gary Mehta, CPA, EA: Accountant of East Brunswick', 3.0, Certified public accountant, 197 NJ-18 Suite 3000, East Brunswick 08816, site link fourbrothersfinancial.com, phone (732) 829-6395, 'Closes 5 PM'. The site itself remains Jersey City-branded: title 'Jersey City Accounting Firm | Gary Mehta, CPA, EA | NJ & NY Licensed', H1 'Certified Public Accountant with Jersey City Roots', 10 mentions of Jersey City vs 5 of East Brunswick (only as a meeting location), and LocalBusiness JSON-LD with the 101 Hudson Street address and geo but no telephone, openingHours or services — all as recorded. Also confirmed: single click-to-call number 732-829-6395, two forms (a 5-field contact form plus a one-input search), and 'BOOK TODAY' buttons simply link to /contact-us#form — no calendar, so 'no online booking' holds. New information for agent_readiness: robots.txt now checked and it is effectively open ('User-agent: *' with no rules). Google review count is not shown in the limited Maps view, so the '3.0 with no review-request system' point is only partly verifiable. Scores stand."
+    },
+    {
+      "ref": "B00212",
+      "name": "DK Solutions",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "robots.txt could not be retrieved either",
+          "what_is_true": "robots.txt returns normally: 'User-agent: * / Disallow: /wp-admin/ / Allow: /wp-admin/admin-ajax.php' plus sitemap.xml and sitemap.rss. Only HTML pages are gated.",
+          "source_url": "https://dksmo.com/robots.txt"
+        },
+        {
+          "claim": "Cloudflare blocked fetch and Chrome 'so neither customers' agents nor crawlers can read the site', and services/prices 'cannot be read by an agent'",
+          "what_is_true": "The Cloudflare interstitial does loop for an automated Chrome tab and for direct fetches (re-confirmed today: 'Performing security verification', Ray ID, and HTTP 403 on /contact/), but the site is readable by search crawlers and readers: indexed titles/descriptions exist for every page, and a reader proxy returned the full /contact/ page with the nav (Direct Mail, Lead Generation, Data Modeling, Industries, Blog, Team), the HQ address 1 Tower Center Blvd East Brunswick plus a Boca Raton office, and (855) 755-9008. So the gap is real for agent browsers, but the content is not invisible to machines.",
+          "source_url": "https://dksmo.com/contact/"
+        },
+        {
+          "claim": "No visible online quote path (site content unreadable, no form could be confirmed)",
+          "what_is_true": "Every page's header and footer carry a 'Get A Quote' button pointing at /contact/, and the contact page says 'Complete our contact form or call us at (855) 755-9008'. A quote request path exists; it just is not a self-serve pricing/booking flow.",
+          "source_url": "https://dksmo.com/contact/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 3,
+        "ease": 3,
+        "evidence": 2
+      },
+      "notes": "Operating and correctly identified. Google Maps confirms the listing 'DK Solutions', Marketing agency, 1 Tower Center Blvd (Princeton Corporate Campus), East Brunswick 08816, (855) 755-9008, site link dksmo.com, 'Open · Closes 5 PM', with no rating, 'Add missing information', 'Add a photo' and 'Write a review' prompts — the empty-GBP claims hold. The Cloudflare challenge on this site is real and reproducible in an automated Chrome, which is a genuine agent-readiness issue, but three supporting claims were wrong (robots retrieval, crawler invisibility, no quote path), so gap_size drops 4→3 and evidence 3→2. The site is WordPress with a full service/industry/blog structure and a named team page, so the remediation is narrower than 'make the site machine-readable'."
+    },
+    {
+      "ref": "B00224",
+      "name": "CLIXX Digital Marketing",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No Google listing with a rating surfaced (listing field empty; Storeboard/ProvenExpert used instead)",
+          "what_is_true": "Google Maps has a CLIXX Digital Marketing listing: Marketing agency, 65 Milltown Rd, East Brunswick 08816, 5.0 rating, (347) 770-7787, site link, 'Closes 5 PM', including an owner post about review generation. The record's findable score of 2 and the 'no reviews' framing understate this.",
+          "source_url": "https://www.google.com/maps/search/CLIXX+Digital+Marketing+65+Milltown+Rd+East+Brunswick+NJ"
+        },
+        {
+          "claim": "A second phone number, (732) 763-5996, is listed on the About page / 'two different phone numbers on the site and About page'",
+          "what_is_true": "No occurrence of 763-5996 in the rendered text or raw HTML of the home, About or contact pages today; every tel: link and address block uses (347) 770-7787. Either the page has been updated or the number came from a stale index — the 'consolidate two numbers' item is not supportable as written.",
+          "source_url": "https://clixxdigitalmarketing.com/about/"
+        },
+        {
+          "claim": "Mobile hero copy renders very low-contrast at first paint (used as evidence in a top opportunity)",
+          "what_is_true": "At 390 px the H1 is rgb(17,17,17) on white with opacity 1 and the hero paints cleanly with the sticky 'Book a Free Consultation' bar; no low-contrast text is reproducible. At most this is a transient fade-in artefact.",
+          "source_url": "https://clixxdigitalmarketing.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 2,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Operating and correctly identified (65 Milltown Rd, East Brunswick; (347) 770-7787; site email is a Gmail address, clixxdigitalmarketing@gmail.com, which the record did not note). Confirmed: real meta description, page-per-service and per-case-study, four tel: links, 'Book a Free Consultation' in header, hero and a fixed sticky bar at 390 px, and a Contact Form 7 consultation form whose fields are placeholder-only (your-name, your-email, your-phone, company, budget, subject, message — all label count 0) with no CAPTCHA and no calendar, exactly as the record says. The pre-call audit promise is on /free-consultation/ ('we look at your search visibility before we speak... three things we would fix first'). JSON-LD is richer than recorded: Organization plus a WebSite/WebPage/ProfessionalService/FAQPage graph. robots.txt is standard WP plus one extra Disallow (/8ae500623f4ff77b). Evidence lowered 4→3 because two supporting claims did not reproduce."
+    }
+  ],
+  "data_gaps": [
+    "Google Maps review counts are mostly hidden in the limited (no-JS-interaction) view, so review counts for Magic Smile, Farrington, Gary Mehta and CLIXX remain unconfirmed even though ratings were re-read.",
+    "bbb.org blocks both fetch (HTTP 403) and a real Chrome tab (Cloudflare interstitial), so the Bob Blaine BBB record was corroborated only through search snippets of that page.",
+    "The Zocdoc booking flow for Farrington Pediatrics was not entered, so 'bookable with no CAPTCHA' is unverified.",
+    "dksmo.com pages could only be read through a reader proxy, not as a browser would see them, so form fields, labels and any booking behaviour on DK Solutions remain unverified.",
+    "This browser profile injects a horse emoji (🐴) into document.title for every site, including third-party pages. Title-tag claims in any record must be checked against raw HTML, never document.title."
+  ]
+}

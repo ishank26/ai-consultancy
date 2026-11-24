@@ -1,0 +1,188 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "\"different service lines arrive through it into one general inbox\" (section 1, \"Now\")",
+      "problem": "Stated as fact. The form's delivery address cannot be observed; what is verifiable is that there is one form, no service field, and only one published general inbox (info@distinctengineering.com). The routing conclusion is a strong inference from those facts, not a directly sourced statement.",
+      "fix": "Reword to the observable fact, e.g. \"one form with no service field, and a single general inbox published on the page\" (or mark it as an inference)."
+    },
+    {
+      "claim": "Section 2 impact: \"250 working days x 2-3 hours a day x 30% automated\"",
+      "problem": "Internally consistent and clearly labelled as an assumption, but it does not match the researcher's own analysis.json (which assumed about 1-1.6 hrs/day of scheduling and report chasing at 25-40% automation). The audit's baseline is roughly double, so the range is lower than the analysis figure but built on a different, unexplained assumption.",
+      "fix": "Either use the analysis assumption (1-1.6 hrs/day) or note that 2-3 hrs/day is a fresh assumption; keep the decimal-hours phrasing so the reader can test it."
+    },
+    {
+      "claim": "Impact headline ranges (e.g. \"= about $1,434-$2,869 a year\")",
+      "problem": "The headline ranges are computed with the 1.25 benefits-loaded rate ($28.69), not the $22.95 base rate quoted first. A reader who multiplies 50-100 hours by $22.95 gets a lower figure and may read the range as inflated.",
+      "fix": "State the rate used for the headline range, e.g. \"= about $1,434-$2,869 a year at the loaded rate\"."
+    },
+    {
+      "claim": "\"Thirty-plus staff\" (opening line)",
+      "problem": "Accurate, but the page that carries it (corporate-summary) is not in the Sources list, so the claim is untraceable from the document alone. Same for the lab accreditation, which is only partly covered by the qualifications link.",
+      "fix": "Add https://distinct-esi.com/corporate-summary/ to Sources; optionally cite the qualifications page for the AASHTO/A2LA lab accreditation explicitly."
+    },
+    {
+      "claim": "Base volumes: \"100-200 enquiries\" (section 1) and \"30-50 submissions\" (section 3)",
+      "problem": "No published source exists for either volume; they are unlabelled inputs rather than sourced figures. The audit's own caveat (\"Estimates are illustrative\") covers this, but the volume figures sit outside the parentheses that say \"our assumption\".",
+      "fix": "Mark the volume itself as an assumption, e.g. \"(assumed 100-200 enquiries a year, our assumption)\"."
+    },
+    {
+      "claim": "Missing town/location",
+      "problem": "The audit names the firm correctly but never states that it is in North Brunswick, NJ or that its site shows no street address. Nothing wrong is said; the location is simply absent, which weakens the walk-in opener.",
+      "fix": "Add \"North Brunswick, NJ\" to the title or opening line (confirmed by corporate-summary and the PERM postings page)."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "\"Thirty-plus staff\"",
+      "source_url": "https://distinct-esi.com/corporate-summary/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"seven service lines\"",
+      "source_url": "https://distinct-esi.com/services/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"an accredited lab\" (AASHTO-accredited, NYC DOB Class I / A2LA ISO 17020 lab)",
+      "source_url": "https://distinct-esi.com/qualifications/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"DBE/MBE certification in four states\"",
+      "source_url": "https://distinct-esi.com/qualifications/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"one six-field contact form\" (Name, Email, Phone, Company, City, Message)",
+      "source_url": "https://distinct-esi.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"no service picker\" on the contact form",
+      "source_url": "https://distinct-esi.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"no booking link\" on the site / in navigation",
+      "source_url": "https://distinct-esi.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"no street address\" on the contact page",
+      "source_url": "https://distinct-esi.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Service-line enquiries reach a single general inbox",
+      "source_url": "https://distinct-esi.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"your careers page plans 14-plus hires\"",
+      "source_url": "https://distinct-esi.com/careers/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"four NICET II/III construction inspectors\"",
+      "source_url": "https://distinct-esi.com/careers/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"citing workload and backlog from existing contracts\"",
+      "source_url": "https://distinct-esi.com/careers/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A posted Proposal Coordinator role covers RFP requirements, deadlines and portal submissions",
+      "source_url": "https://www.mediabistro.com/jobs/3542836748-proposal-coordinator",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"prequalifications in three states\"",
+      "source_url": "https://distinct-esi.com/qualifications/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"$22.95/hour (NJ median, customer service reps, BLS May 2025)\"",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BLS May 2025 is the current OEWS vintage behind that wage figure",
+      "source_url": "https://www.bls.gov/news.release/ocwage.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"$28.69 with 1.25 benefits load\" (0.25 loaded overhead)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 1 arithmetic: 100-200 enquiries x 1 hr x 50% = 50-100 hrs; loaded = $1,434-$2,869",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2 arithmetic: 250 days x 2-3 hrs x 30% = 150-225 hrs; loaded = $4,303-$6,455",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 3 arithmetic: 30-50 submissions x 12 hrs x 40% = 144-240 hrs; loaded = $4,131-$6,885",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"100-200 enquiries\" a year baseline",
+      "source_url": "https://distinct-esi.com/contact/",
+      "result": "not found"
+    },
+    {
+      "claim": "\"30-50 submissions\" a year baseline",
+      "source_url": "https://www.mediabistro.com/jobs/3542836748-proposal-coordinator",
+      "result": "not found"
+    },
+    {
+      "claim": "\"the figures above use one conservative benchmark\"",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"checked November 2026\"",
+      "source_url": "https://distinct-esi.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email: seven service lines behind one six-field form with no service picker or booking link",
+      "source_url": "https://distinct-esi.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email: \"a Proposal Coordinator role is open for RFP compliance work\"",
+      "source_url": "https://www.mediabistro.com/jobs/3542836748-proposal-coordinator",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Walk-in opener: site lists seven service lines but a single contact form with no service picker",
+      "source_url": "https://distinct-esi.com/services/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business name \"Distinct Engineering Solutions, Inc. (DESI)\"",
+      "source_url": "https://distinct-esi.com/corporate-summary/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Contact details referenced (open form and public inbox, no address)",
+      "source_url": "https://distinct-esi.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body is at most ~450 words",
+      "source_url": "file://audit.md",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

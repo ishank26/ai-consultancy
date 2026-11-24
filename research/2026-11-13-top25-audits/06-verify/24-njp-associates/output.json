@@ -1,0 +1,158 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "His bio heading says \"Partner\", the body president; Google and Bing differ on category and services. (Audit §3)",
+      "problem": "The Google listing and the Bing listing give the SAME category: Google shows 'Insurance agency' (re-checked in the live place panel) and Bing shows 'Insurance agency in Highland Park, NJ'. They differ on the service list (Bing lists auto / workers-comp / life insurance, Google lists none) and on hours, but not on category. The researcher's own profile.json also records both as 'Insurance agency', so the audit introduced the disagreement. As written the sentence is contradicted by the cited sources.",
+      "fix": "Reword to 'the listings describe the practice only as an insurance agency and Bing adds a service list of auto, workers-comp and life insurance, which does not match a financial-planning practice' — i.e. listings vs. the firm, not Google vs. Bing."
+    },
+    {
+      "claim": "at $28.69/hr (CSR median NJ, O*NET 2024, $47,740 x1.25 benefits) (repeated in all three impact lines)",
+      "problem": "The figure is right and the arithmetic checks out (47,740 x 1.25 = 59,675 / 2,080 = 28.69), but the data year is wrong. The cited O*NET New Jersey wages page states its source is 'Bureau of Labor Statistics 2025 wage data' and shows $47,740 as the NJ annual median. Labelling it 'O*NET 2024' misattributes the vintage in a citation that will be read by a compliance-sensitive client.",
+      "fix": "Change to 'O*NET / BLS 2025 NJ median' (or 'BLS May 2025 data via O*NET'), and state the 1.25 benefits load as our assumption rather than presenting it as part of the sourced figure."
+    },
+    {
+      "claim": "Audit body length",
+      "problem": "The body (from the opening paragraph through 'Prepared from publicly available information...') is about 530-540 words by count, against the brief's ~450-word ceiling. It is roughly 18% over.",
+      "fix": "Trim ~85 words: the 'Why this works' bullets and the 'Suggested first step' paragraph can be cut without losing evidence, and the three impact lines repeat the same wage parenthetical that could be stated once."
+    },
+    {
+      "claim": "no CRM, chat or booking tool is loaded — Google Tag Manager and GA4 only (Audit §2)",
+      "problem": "Substantively correct (no chat/CRM/booking script is present, and GTM-PDR56SM plus GA4 G-FEGRJ7CK5E are), but 'only' overstates it: the pages also load Drupal 10 core JS, Foundation, AddToAny share buttons and an AccessAble accessibility widget. A client who views source will read 'only' as wrong.",
+      "fix": "Say 'the only marketing/advertising tags are Google Tag Manager and GA4' and keep the point that no CRM, chat or booking tool is present."
+    },
+    {
+      "claim": "Impact ranges: ~$1,030-$3,090 (§1), ~$516-$1,377 (§2), ~$344-$688 (§3)",
+      "problem": "Not an error — every range reproduces from the stated assumptions — but they are materially lower than the ranges in analysis.json ($1,400-$4,100, $830-$2,200 and $275-$1,100) because the audit applies an extra 60%/50% 'handled by the agent' factor and a benefits load. Two documents in the same pack now quote different numbers for the same opportunity.",
+      "fix": "No change needed in the audit text if this is the intended conservative framing, but flag the choice in the discovery note so the analysis and the audit are not quoted side by side."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "NJP Associates has advised retirees, families and business owners from one Highland Park office for over 40 years",
+      "source_url": "https://www.politziner.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site advertises a free, no-obligation first meeting and 'welcome your call or email'",
+      "source_url": "https://www.politziner.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Phone and info@ address are plain text with no tappable link (no tel: or mailto: in the DOM)",
+      "source_url": "https://www.politziner.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Online route is a four-field form (Your Name, Your Email, Subject, Message) with a 'Send message' button and no scheduling or qualifying question",
+      "source_url": "https://www.politziner.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The firm's own site publishes no opening hours",
+      "source_url": "https://www.politziner.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile is unclaimed ('Claim this business') and categorised 'Insurance agency'",
+      "source_url": "https://www.google.com/maps/search/NJP+Associates+47+Raritan+Ave+Highland+Park+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google shows 'Closes 9 PM' (i.e. open in the evening per Google)",
+      "source_url": "https://www.google.com/maps/search/NJP+Associates+47+Raritan+Ave+Highland+Park+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bing lists 8 AM-9 PM weekday hours (also Sunday 8 AM-9 PM, Saturday closed) and services auto, workers-comp and life insurance",
+      "source_url": "https://www.bing.com/maps?q=NJP+Associates+47+Raritan+Ave+Highland+Park+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google and Bing differ on category",
+      "source_url": "https://www.bing.com/maps?q=NJP+Associates+47+Raritan+Ave+Highland+Park+NJ",
+      "result": "contradicted"
+    },
+    {
+      "claim": "No CRM, chat or booking tool is loaded; GTM and GA4 are present",
+      "source_url": "https://www.politziner.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Footer calls Norman Politziner an Investment Adviser Representative of Koehler Asset Management, with advisory services offered through Koehler Asset Management",
+      "source_url": "https://www.politziner.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SEC/FINRA IAPD record last updated 18 May 2026 says he is not currently registered as an Investment Adviser Representative",
+      "source_url": "https://reports.adviserinfo.sec.gov/reports/individual/individual_711308.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bio heading says 'Partner' while the body says president of NJP Associates",
+      "source_url": "https://www.politziner.com/team-member/norman-j-politziner",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ali Okoh holds an operations / senior branch-office administrator role",
+      "source_url": "https://www.politziner.com/team-member/ali-okoh",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Four blog posts, all dated 7 March 2024",
+      "source_url": "https://www.politziner.com/blog",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CPA continuing-education credit requests are routed to the generic contact page",
+      "source_url": "https://www.politziner.com/njp-difference",
+      "result": "confirmed"
+    },
+    {
+      "claim": "$47,740 is the New Jersey annual median wage for customer service representatives",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The wage figure is 'O*NET 2024' data",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "contradicted"
+    },
+    {
+      "claim": "$47,740 x 1.25 = $28.69/hr fully loaded, applied to 36-108, 18-48 and 12-24 hours gives about $1,030-$3,090, $516-$1,377 and $344-$688",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email draft: contact page shows phone and email as plain text with no tap-to-call",
+      "source_url": "https://www.politziner.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email draft: online route is a four-field form with no scheduling",
+      "source_url": "https://www.politziner.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email draft: Google profile is unclaimed and filed under 'Insurance agency'",
+      "source_url": "https://www.google.com/maps/search/NJP+Associates+47+Raritan+Ave+Highland+Park+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email draft: home page offers a free no-obligation first meeting",
+      "source_url": "https://www.politziner.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Walk-in opener: a visitor on a phone cannot tap the firm's number",
+      "source_url": "https://www.politziner.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body is at most ~450 words",
+      "source_url": "local file: audit.md",
+      "result": "contradicted"
+    }
+  ],
+  "confidence": "High"
+}

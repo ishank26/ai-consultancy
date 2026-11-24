@@ -1,0 +1,32 @@
+[
+ {
+  "claim": "Measured outcome: 2015 on-board video study (158 systems, 7 sites, ~237,000 trigger events, RR 0.47 p<0.001 vs control RR 0.93 p=0.44) is labelled study_type \"peer-reviewed\".",
+  "problem": "The numbers are correct, but the cited CDC Stacks record for this item explicitly lists \"Peer Reviewed: False\" and is a two-page conference abstract (NIOSH NOIRS 2015, pp. 62-63), not a peer-reviewed paper.",
+  "fix": "Change study_type to \"conference abstract\" (or \"industry/academic abstract\") and keep strength at Low/Medium; do not describe it as peer-reviewed."
+ },
+ {
+  "claim": "Measured outcome: Kodiak/Drivewyze/Texas DPS enhanced-inspection findings (1,000+ assets, 525+ defects, 95% on trailers, 59% vs 70% pass rates) are rated strength \"Medium\".",
+  "problem": "The figures are confirmed verbatim, but this is a vendor self-report on its own blog about its own pilot - a vendor outcome claim. Per the review rule, vendor outcome claims must be rated Low.",
+  "fix": "Downgrade strength to Low, keep the numbers, and note it is Kodiak's own account (no independent audit or peer review)."
+ },
+ {
+  "claim": "Samsara pricing \"roughly $40-60/vehicle/month for an AI dash-cam bundle\"; Lytx \"about $36/vehicle/month on a 36-month lease\"; Motive \"about $40/vehicle/month camera plus about $37.50/month gateway\".",
+  "problem": "None of these figures appear on the cited source_urls (samsara.com DVIR page, lytx.com home, gomotive.com driver-experience page); all three pages are quote-based with no prices. The numbers are hedged as Low confidence but are still attached to a link that does not support them, and data_gaps already states no public price exists.",
+  "fix": "Drop the numeric estimates or cite the specific third-party listing each figure came from (with its own URL and date); otherwise replace with \"Unknown - quote-based\"."
+ },
+ {
+  "claim": "Legal item \"Biometric identifiers and facial recognition\" is marked confirmed:true and asserts \"New Jersey has no standalone biometric privacy statute in force\".",
+  "problem": "The cited source is the introduced text of A1488, which says nothing about whether a statute is or is not in force. An absence claim presented as confirmed without a source that supports it.",
+  "fix": "Keep the A1488 content (correct, including \"introduced, not enacted\"), but move the \"no standalone statute in force\" sentence to an explicit inference/unverified note or support it with a source that states it."
+ },
+ {
+  "claim": "\"Exempt only for carriers operating a single CMV, driveaway-towaway and private motor carriers of passengers\" (49 CFR 396.11), and DVIR as a report required every day on every vehicle.",
+  "problem": "49 CFR 396.11 as fetched also excludes intermodal equipment tendered by an intermodal equipment provider from the daily driver report (a(1), with parallel IEP duties in (b)), and (a)(2)(i) states drivers are not required to prepare a report if no defect or deficiency is discovered. \"Exempt only\" and the blanket every-day-on-every-vehicle framing overstate the rule, which matters because the demand thesis rests on nightly DVIRs.",
+  "fix": "Add the intermodal-equipment exclusion and the no-defect carve-out, and describe the requirement as a report covering 11 parts/accessories at completion of each day's work, with no report required where no defect is found."
+ },
+ {
+  "claim": "fit_score legal_risk_low = 11 (of an implied 20).",
+  "problem": "The legal section itself lists four live constraints - NJ written-notice statute with per-violation penalties, Wiretap Act one-party-consent limits on audio, Illinois BIPA settlement exposure via in-cab cameras, and a pending biometric bill carrying a criminal penalty - while the rationale calls legal risk \"moderate but manageable\". 11/20 reads more like \"low-moderate\" than the section supports; the sub-scores otherwise add correctly (15+13+8+12+11+8 = 67).",
+  "fix": "Consider 7-9 for legal_risk_low (total 63-65) or state explicitly in the rationale which of the four constraints is considered immaterial to the pilot scope."
+ }
+]

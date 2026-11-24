@@ -1,0 +1,76 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "price_ranges.low_cost_self_serve: 'about $1.45\u2013$1.99 per door/month where a $700 minimum is reachable (HappiNest)'",
+      "problem": "Contradicts the vendor page and the brief's own HappiNest entry. happinest.ai/pricing publishes only $1.45 (Digital) and $1.95 (Hybrid); there is no $1.99 rate. The brief's own offerings list HappiNest at $1.45\u2013$1.95, so the range misstates the price it cites.",
+      "fix": "Change to '$1.45\u2013$1.95 per door/month (HappiNest Digital/Hybrid)', and state that at the $700 minimum the per-door rate is only reached at ~483 doors \u2014 at 100 doors the floor makes the effective rate about $7/door, as the brief's own inference_note says."
+    },
+    {
+      "claim": "one_line and price_ranges.full_service_or_custom: human answering at '$0.99\u2013$2.99 per minute' and '$1.60\u2013$3.00 per call'",
+      "problem": "The upper bounds have no source anywhere in the brief. AnswerAide's re-opened page shows $0.99\u2013$1.59 per minute only ($1.59 at the $79 tier down to $0.99 at $9,499). No cited source states $2.99/min or $1.60/call; the only per-call figure in the brief is a ~$3/call Reddit anecdote.",
+      "fix": "Restate as '$0.99\u2013$1.59 per minute on AnswerAide's published tiers ($79\u2013$9,499/month)', and either drop per-call pricing or cite the exact source for it. If a higher per-minute figure is wanted, it should be attributed to the effective rate of small-bundle human plans (e.g. Ruby $250/50 min = $5.00/min) with that arithmetic shown."
+    },
+    {
+      "claim": "price_ranges.full_service_or_custom: 'per-ticket maintenance coordination at $35\u2013$75 per work order'",
+      "problem": "Unsupported upper bound. The two cited sources show $35 (PMI Los Angeles 'Warranty Dispatch $35 per work order') and $45 (Foursquare's flat MCC per dispatched work order). The $75 on the PMI LA page is a video walk-through tour add-on, not coordination, so it does not support a $75 coordination price.",
+      "fix": "Change to '$35\u2013$45 per work order (PMI Los Angeles $35 warranty dispatch; Foursquare $45 maintenance coordination)', or add a source that actually prices coordination at $75."
+    },
+    {
+      "claim": "implications_for_consultancy #5: 'A 60-door Milltown-area manager pays $8/door effective on Vendoroo and $7/door on HappiNest purely from floors. A flat $350\u2013$600/month bundle \u2026 undercuts the effective rate'",
+      "problem": "The arithmetic contradicts the sourced minimums. Vendoroo's $400 floor at 60 doors is $6.67/door (and $8/door only at 50 doors); HappiNest's $700 floor at 60 doors is $11.67/door (and $7/door only at 100 doors). A $350\u2013$600 bundle does not undercut a $400 Vendoroo floor at 60 doors, so the pricing conclusion drawn from it is wrong.",
+      "fix": "Recompute at a stated door count: at 60 doors Vendoroo floats at $400 (\u2248$6.67/door) and HappiNest at $700 (\u2248$11.67/door). Rebuild the bullet so the bundle price is justified by the correct effective rate, or move the example to 100 doors where the stated rates hold."
+    },
+    {
+      "claim": "price_ranges mid_market and derived_from: 'TenantVibe $1.99', 'MAP ($49 + $1.37/min)', 'Ruby ($250/50 min, $395/100, $720/200, $1,725/500)', 'Abby ($164/50 min, $329/100, $599/200, $1,380/500)', 'Smith.ai ($150\u2013$500/month)'",
+      "problem": "None of these vendors appears in offerings and none has a cited URL in the brief, so the ranges do not follow from sourced prices. TenantVibe's $1.99 could not be found at all. The other figures are plausible (MAP's $49 base with $1.37/min and Abby's $164/50-min starter check out) but are unverifiable from anything in the brief; Smith.ai's '$150\u2013$500/month' also conflicts with the brief's own cited Rentive page, which puts Smith.ai at 'From $300 for 30 calls'.",
+      "fix": "Either add each vendor as an offering entry with a source_url and retrieval date, or delete the unsourced entries and the derived per-minute arithmetic that depends on them (including the '$2.46\u2013$5.00/minute' conversion) and rebuild price_ranges from the offerings only. Drop '$1.99' and reconcile Smith.ai against the cited page."
+    },
+    {
+      "claim": "Buildium offering: Essential $65 / Growth $202 / Premium $420 and the Lumina AI Workforce add-on, attributed to source_url https://www.buildium.com/maintenance-contact-center/",
+      "problem": "Prices are correct but the cited page does not contain them \u2014 it only shows the contact-center per-unit rates, the $140 minimum and the $300 setup fee. The plan tiers and Lumina's 'account specific pricing' note sit on buildium.com/pricing, which the brief cites only in what_is_included_vs_extra.",
+      "fix": "Re-point the Buildium offering's source_url to https://www.buildium.com/pricing/ for the three plans and the Lumina add-on, and keep the contact-center URL for the $1.10/$0.70 per-unit rates, $140 minimum and $300 setup fee (all confirmed there)."
+    },
+    {
+      "claim": "one_line / implications: '$140\u2013$700 floor' and 'buyers already accept four-figure annual commitments'",
+      "problem": "Minor. The floors are correct (Buildium $140, Property Meld $200, Vendoroo $400, HappiNest $700), but at per-door rates of $1.45\u2013$6 a year of service is four to five figures per year, not 'four-figure annual commitments'; a $140\u2013$700 monthly floor is $1,680\u2013$8,400 a year.",
+      "fix": "Say 'five-figure annual run rates at 100+ doors and $1,680\u2013$8,400 a year at the floors' to match the sourced arithmetic."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "HappiNest Digital is $1.45 per door per month", "source_url": "https://happinest.ai/pricing", "result": "confirmed"},
+    {"claim": "HappiNest Hybrid is $1.95 per door per month with $0.20/minute over the included voice pool", "source_url": "https://happinest.ai/pricing", "result": "confirmed"},
+    {"claim": "HappiNest: $700 monthly minimum, no setup/implementation fee, month to month with 30 days' notice, first month free for Rent Manager and Rentvine customers", "source_url": "https://happinest.ai/pricing", "result": "confirmed"},
+    {"claim": "HappiNest two-way PMS sync limited to Rent Manager, ResMan, Rentvine (no AppFolio/Buildium), screening billed separately at cost", "source_url": "https://happinest.ai/pricing", "result": "confirmed"},
+    {"claim": "Property Meld Ops is $2.00 per unit per month and MAX On-Call is a $1.50 per unit add-on", "source_url": "https://propertymeld.com/pricing/", "result": "confirmed"},
+    {"claim": "Property Meld has a $200/month minimum and is positioned at 100+ doors, under 100 reviewed case by case", "source_url": "https://propertymeld.com/pricing/", "result": "confirmed"},
+    {"claim": "Buildium Maintenance Contact Center is $1.10/unit (all calls) and $0.70/unit (missed calls), plans start at a $140 monthly minimum, one-time $300 setup fee", "source_url": "https://www.buildium.com/maintenance-contact-center/", "result": "confirmed"},
+    {"claim": "Buildium plans: Essential from $65/mo, Growth from $202/mo, Premium from $420/mo, with the AI gates described", "source_url": "https://www.buildium.com/pricing/", "result": "confirmed"},
+    {"claim": "Buildium Lumina AI Workforce is account-specific priced and included with Premium", "source_url": "https://www.buildium.com/pricing/", "result": "confirmed"},
+    {"claim": "Nolan: $399/month for 10 active listings, $15 per additional listing, Residents add-on at $1.59 per door at every size, ads $29/listing with $99 minimum, no setup fee, 14 days free, $800/month volume threshold, sales tax added", "source_url": "https://getnolan.ai/pricing/", "result": "confirmed"},
+    {"claim": "AppFolio plan rates $1.49/$3.20/$5.00 per unit per month read by a third party from appfolio.com/pricing in Sept 2026, with Realm-X Performers an unpriced add-on on all three plans and Leasing CRM included only on Max", "source_url": "https://messageagent.ai/blog/appfolio-leasing-performer-pricing", "result": "confirmed"},
+    {"claim": "Latchel plans: Free at $0/unit, Professional at $3.99\u2013$9.99 per unit per month", "source_url": "https://latchel.com/waitlist/", "result": "confirmed"},
+    {"claim": "Latchel Analytics+ is $0.25/unit with annual commitment and $0.30/unit without, with a $100/month minimum, checked 29 Oct 2026", "source_url": "https://landlordapps.com/software/latchel", "result": "confirmed"},
+    {"claim": "Vendoroo Engage $3/unit and Direct $6/unit with a $400 monthly minimum and annual billing, read third-party from vendoroo's pricing page", "source_url": "https://www.rentive.ai/guides/best-voice-ai-for-property-management", "result": "confirmed"},
+    {"claim": "Vendoroo post: packages range $3\u2013$8.50 per door; 120 doors at $8.50 = $1,020/month; 1,500 doors at $6 = $9,000/month and $108,000/year", "source_url": "https://vendoroo.ai/post/the-per-door-pricing-trap-of-agentic-ai-why-big-operators-suffer-while-the-small-ones-race-ahead", "result": "confirmed"},
+    {"claim": "EliseAI publishes no price card; eliseai.com/pricing returned HTTP 404 as of October 2026; $3\u2013$6/unit and ~$25,000 annual minimum are unsourced third-party figures; $1.50\u2013$3.00/unit is a competitor derivation from EliseAI's published 5\u201310x ROI and ~$15/unit return", "source_url": "https://messageagent.ai/eliseai-pricing", "result": "confirmed"},
+    {"claim": "Zuma prices per unit per month on 30-day terms based on quantity with no published amounts, includes native voice AI at no additional expense and a 30%+ bundle discount", "source_url": "https://www.getzuma.com/pricing", "result": "confirmed"},
+    {"claim": "AskProperty: Swara Chat $249/mo, Voice $399/mo, Both $549/mo per property, 2,000 conversations and/or 1,000 voice minutes, 100 knowledge sources, overage $0.35/min (Voice) and $0.30/min (Both), 14-day trial, cancel anytime", "source_url": "https://askproperty.ai/", "result": "confirmed"},
+    {"claim": "Property Answer AI: $29/mo (100 min), $199/mo (1,000 min), $450/mo (2,500 min), $1,500/mo (7,000 min), Enterprise custom volume pricing 'as low as $0.08/min'; no sales call needed to start", "source_url": "https://propertyanswerai.com/pricing", "result": "confirmed"},
+    {"claim": "AnswerAide Philadelphia tiers: $79/40 min at $1.59, $199/140 at $1.49, $579/450 at $1.39, $1,149/1,000 at $1.29, $2,579/2,500 at $1.07, $4,999/5,000 at $1.03, $9,499/10,000 at $0.99", "source_url": "https://answeraide.com/locations/philadelphia-answering-service/", "result": "confirmed"},
+    {"claim": "Inbound Booking charges $74.95/month for 100 AI minutes, then $0.3495/minute", "source_url": "https://inboundbooking.com/property-management", "result": "confirmed"},
+    {"claim": "PMI Los Angeles charges $35 per work order for warranty dispatch", "source_url": "https://www.losangelespmi.com/pricing", "result": "confirmed"},
+    {"claim": "Foursquare Property Management charges a flat $45 maintenance coordination cost per dispatched work order and puts the typical annual cost at about $185 (about 4 work orders a year)", "source_url": "https://foursquarenc.com/maintenance-coordination-cost/", "result": "confirmed"},
+    {"claim": "2026 survey: a third of operators running AI agents have no formal AI policy, 42% of vendor contracts include liability for AI errors/fair housing violations, 67% of operators tell residents they are talking to AI", "source_url": "https://insightsbyblueprint.com/2026/06/15/ai-agents-a-governance-framework-for-multifamily/", "result": "confirmed"},
+    {"claim": "TenantVibe charges $1.99 per door per month", "source_url": "", "result": "not found"},
+    {"claim": "Live human answering runs $2.99 per minute at the top of the range", "source_url": "", "result": "not found"},
+    {"claim": "Human answering runs about $1.60 per call at the bottom of the range", "source_url": "", "result": "not found"},
+    {"claim": "Maintenance coordination is available at $75 per work order", "source_url": "", "result": "not found"},
+    {"claim": "Smith.ai charges $150\u2013$500 per month", "source_url": "https://www.rentive.ai/guides/best-voice-ai-for-property-management", "result": "contradicted"},
+    {"claim": "Property managers reported after-hours answering at about $3/call and $1.79/minute on a Sept 2025 r/PropertyManagement thread", "source_url": "https://www.reddit.com/r/PropertyManagement/comments/1nbunow/how_do_you_handle_afterhours_maintenance_calls/", "result": "could not open"},
+    {"claim": "BBB complaint disputes a $1,062.67 Latchel onboarding fee", "source_url": "https://www.bbb.org/us/wa/bellevue/profile/property-management/latchel-inc-1296-1000075831/complaints", "result": "could not open"},
+    {"claim": "EliseAI priced at roughly $50\u2013$60 per property per month (r/CommercialRealEstate comment)", "source_url": "https://www.reddit.com/r/CommercialRealEstate/comments/yqyz4w", "result": "could not open"},
+    {"claim": "Property Meld reviewers score value for money around 3.5/5 on Capterra", "source_url": "https://www.capterra.com/p/149045/Property-Meld/reviews/", "result": "could not open"}
+  ],
+  "confidence": "High"
+}

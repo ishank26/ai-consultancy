@@ -1,0 +1,27 @@
+[
+ {
+  "claim": "legal_privacy: \"Friedman v. Martinez (N.J. 2020) recognized intrusion upon seclusion for hidden cameras in restrooms/locker rooms and allowed claims by employees whose images were not provably captured.\"",
+  "problem": "Misstates the holding. The opinion (A-37/81-18, decided June 16, 2020) does hold that intrusion upon seclusion does not require proof that a plaintiff's image was actually recorded (circumstantial evidence suffices as a matter of law), but it then held that the record was insufficient for the Arendt plaintiffs - the women who could not identify themselves on the footage - and it REVERSED the Appellate Division, finding summary judgment for the defendants was properly granted. The brief states the opposite outcome for exactly those plaintiffs.",
+  "fix": "Rewrite as: \"Friedman v. Martinez (N.J. 2020) held that intrusion upon seclusion does not require proof that a plaintiff's image was actually recorded - circumstantial evidence can suffice - while affirming that on the 2014 record the plaintiffs who could not identify themselves on the footage had not met the summary-judgment standard (Appellate Division reversed). Cameras must never cover restrooms, locker rooms, changing areas or break rooms.\""
+ },
+ {
+  "claim": "measured_outcomes (Ailytics): \"the page states no outcome percentage\"; caveats: \"its logistics page states no outcome percentage at all\"; data_gaps: \"Ailytics' logistics/warehousing page as fetched did not contain the 60-80% non-compliance reduction ... so neither is asserted here\"",
+  "problem": "Contradicted by the cited page. https://www.ailytics.ai/industries/logistics-and-warehousing states, as a headline stat block, \"60-80% reduction in safety non-compliance\" alongside \"400+ projects\" and \"<2 weeks to go live\", and the FAQ repeats \"50+ configurable pre-use cases\". The absence claim is wrong in three places in the brief.",
+  "fix": "Either add the 60-80% non-compliance reduction as a Low-strength vendor claim (no sample, denominator, baseline or methodology stated) and delete the 'no outcome percentage' assertions, or drop the data_gaps/caveats sentences that assert the figure is absent from the page."
+ },
+ {
+  "claim": "existing_solutions: \"NAVA DockVision AI\" (product name)",
+  "problem": "Minor naming error: the AWS Marketplace listing calls the product \"DockVision AI\" but its body and deliverables refer to the product as \"DockView\" (\"DockView uses your existing CCTV/IP camera infrastructure ... Fully deployed DockView vision analytics pipeline\"). Not a number/price/legal problem, but the vendor/product name as given is not what the page shows.",
+  "fix": "Use \"NAVA DockView (DockVision AI) - AWS Marketplace listing\" or quote the page name verbatim and note the inconsistency."
+ },
+ {
+  "claim": "evidence: \"The average medically consulted work injury cost $43,000 in 2023; total U.S. work-injury cost was $176.5B (NSC estimate)\" (source nsc.org testimony)",
+  "problem": "I could not re-open the cited NSC testimony page or injuryfacts.nsc.org - both returned HTTP 403 on repeated attempts. A web search summary attributes both figures ($43,000 average medically consulted injury; $176.5B total, 2023) to NSC, but I did not see them on a page I opened, so they remain unverified rather than confirmed or contradicted.",
+  "fix": "No change strictly required, but add to data_gaps that nsc.org blocked automated fetches, and consider citing an NSC PDF attachment or the OSHA/BLS figure instead so the number is independently checkable."
+ },
+ {
+  "claim": "hardware: \"Raspberry Pi AI Kit (Hailo-8L accelerator) ... approx $70 launch price\"",
+  "problem": "The cited raspberrypi.com URL slug says \"available-now-at-70\", but the fetched page body returned only site navigation/listing content with no article text, so the $70 price could not be read off the page itself. Not contradicted; simply unverified by me.",
+  "fix": "Cite the Raspberry Pi product/announcement page text directly, or label the $70 as \"from the announcement headline\" and add it to data_gaps."
+ }
+]

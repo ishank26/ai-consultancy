@@ -1,0 +1,113 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Airdex Inc. (HVAC, town New Brunswick, address Unknown)",
+      "problem": "No in-zone evidence survives checking. The cited Birdeye page is a city-only stub with no street address and no reviews, and the only street address carried by directories for Airdex Inc. is 385 New Brunswick Ave, Fords, NJ 08863 (Woodbridge Township). Its site airdexinc.com does not load (certificate error).",
+      "fix": "Drop unless a New Brunswick address or phone is confirmed; otherwise reclassify as an out-of-zone (Fords) firm."
+    },
+    {
+      "claim": "J Angeles Painting & Decoration LLC (website http://jangelespainting.com, town New Brunswick)",
+      "problem": "The cited website resolves to 'J.A. Painting and Decorations LLC', which advertises service in Monmouth & Ocean counties, not Middlesex/New Brunswick, and publishes no New Brunswick address. The entry's only listed source is a LocationsNear category page, so neither the site nor the zone membership is established.",
+      "fix": "Remove the website, or replace the entry with a verified New Brunswick painter (e.g. one of the missing firms below)."
+    },
+    {
+      "claim": "Kenneth & Sons HVAC, 66 Georges Rd (note says a 'Custom Construction Company' record at the same address was merged into it)",
+      "problem": "The merge conflates two separate listings. NJ Business Directory lists 'Kenneth & Sons HVAC' at 66 Georges Rd, while all-contractors.com lists 'Custom Construction CO' twice (66 Georges Rd and 118 Sandford St) as a different business. The 118 Sandford St record is missing from the output, and the combined entry is presented as one company.",
+      "fix": "Split into two entries: Kenneth & Sons HVAC (66 Georges Rd, NJBD) and Custom Construction Co (both all-contractors records)."
+    },
+    {
+      "claim": "Ster Plumbing Inc. (town New Brunswick, 24 Birdeye reviews)",
+      "problem": "Birdeye gives city only, no street address; a contractor database record for the same company shows 21 Hageman Rd, Somerset NJ 08873 and reports the plumbing licence as inactive. In-zone status and current activity are unsupported.",
+      "fix": "Verify by phone or drop; do not treat as a New Brunswick business until an in-city address or active licence is confirmed."
+    },
+    {
+      "claim": "Gillespie Plumbing Inc., 88 Huntington St, (848) 202-4509",
+      "problem": "Rests entirely on one Cylex category page that returns HTTP 403 to this environment. An independent search of New Brunswick plumber directories did not surface the firm at all.",
+      "fix": "Confirm via a phone number or map listing before outreach, or remove."
+    },
+    {
+      "claim": "Coverage of garage-door, appliance-repair and window/glass trades",
+      "problem": "The list has no garage-door, appliance-repair or window-installer entries at all, yet in-city businesses exist in all three (Affordable Overhead Doors, 77 Paterson St; Modern Appliance Repair Inc., 600 Jersey Ave; Pramukh Aluminum & Glass at 1130 Somerset St, though that one may have moved to Somerset).",
+      "fix": "Add at least one entry per missing trade, or record the gaps explicitly in categories_thin."
+    },
+    {
+      "claim": "all-contractors.com New Brunswick list was 'read in full' (37 records, 20 added)",
+      "problem": "Three in-city records from that same list are not in the output and are not mentioned as excluded: Affordable Properties (100 Jersey Ave), Carista & Remodeling LLC (375 Delavan St) and Benchmark Acoustics (3 Brookside Ave).",
+      "fix": "Add them as bulk-directory records with the same low-confidence flag, or state why each was dropped."
+    },
+    {
+      "claim": "Treatment of city-name-branded listings (NJ Commercial and Industrial Roofing New Brunswick, Greyson Furnace Repair New Brunswick)",
+      "problem": "These are city-branded marketing listings (the roofing 'address' also appears on a roofing lead-generation brand site, and a same-named furnace-repair firm operates in Green Bay, WI), yet the mapper excluded comparable city-name brands elsewhere (Sewer-Man, The LockSmith People). The rule is applied inconsistently.",
+      "fix": "Apply one rule: either keep all city-branded listings with a 'verify before outreach' flag, or drop them all."
+    },
+    {
+      "claim": "Arrow Exterminating (address Unknown)",
+      "problem": "The same Yellow Pages pest-control category cited for the entry carries a street address for Arrow (94 Loretto St, New Brunswick) — a small but avoidable gap.",
+      "fix": "Add the street address (flagged as directory-derived) or note explicitly why it was left blank."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Merlin Landscaping is at 10 Langley Place, New Brunswick, phone 732-374-3406", "source_url": "https://www.merlinlandscapingllc.com/contact-us", "result": "confirmed"},
+    {"claim": "DL Landscaping LLC is at 185 Hale St, New Brunswick, NJ 08901", "source_url": "https://dllandscapingllc.net/", "result": "confirmed"},
+    {"claim": "D&R Painting LLC is a New Brunswick painting contractor at 25 Lorain St with 43 reviews", "source_url": "https://reviews.birdeye.com/d/contractors/new-brunswick-nj/", "result": "confirmed"},
+    {"claim": "Super Tool Automotive Inc. is at 950 Somerset St, New Brunswick, phone (732) 843-6300", "source_url": "https://www.supertoolauto.com/Contact/Find-Us", "result": "confirmed"},
+    {"claim": "Rainey's Repair Center is at 79 Georges Rd, New Brunswick, phone (732) 846-4220", "source_url": "https://www.raineysrepaircenter.com/tires.html", "result": "confirmed"},
+    {"claim": "Element Water Damage Restoration is at 46 Bayard St #322, New Brunswick, phone (732) 454-5424", "source_url": "https://www.elementwaterdamagerestoration.com/contact/", "result": "confirmed"},
+    {"claim": "New Brunswick Locksmith Corp is based at 120 Albany St, phone (732) 392-7244", "source_url": "https://www.newbrunswicklocksmithcorp.com/contact-us/", "result": "confirmed"},
+    {"claim": "Carter & Sons Roofing serves New Brunswick and uses (848) 279-9090", "source_url": "https://cartersonsroofing.com/new-brunswick-nj/", "result": "confirmed"},
+    {"claim": "Carter & Sons Roofing publishes a New Brunswick street address (264 George St)", "source_url": "https://cartersonsroofing.com/new-brunswick-nj/", "result": "not found"},
+    {"claim": "ACH Commercial Cleaning Services is a commercial janitorial firm reachable at (848) 398-0897", "source_url": "https://www.achcleans.com/", "result": "confirmed"},
+    {"claim": "Schrum Plumbing & Heating is at 361 Somerset St, New Brunswick, NJ 08901", "source_url": "https://reviews.birdeye.com/schrum-plumbing-heating-148892235765897", "result": "confirmed"},
+    {"claim": "Dalton Electric Co Inc is at 318 Paul Robeson Blvd, New Brunswick, with 202 reviews", "source_url": "https://reviews.birdeye.com/dalton-electric-co-inc-166995370596518", "result": "confirmed"},
+    {"claim": "New Jersey Mold Specialist is at 92 Bayard St #203, New Brunswick, 121 reviews", "source_url": "https://reviews.birdeye.com/d/contractors/new-brunswick-nj/", "result": "confirmed"},
+    {"claim": "DGC Roofing Company is at 13 Juliet St, New Brunswick, 51 reviews", "source_url": "https://reviews.birdeye.com/d/contractors/new-brunswick-nj/", "result": "confirmed"},
+    {"claim": "Brunswick Plumbing Heating and Air Conditioning is at 99 Manor Crescent, New Brunswick", "source_url": "https://reviews.birdeye.com/d/contractors/new-brunswick-nj/", "result": "confirmed"},
+    {"claim": "Everest Driveways & Patios is at 153 Joyce Kilmer Ave, New Brunswick, 395 reviews", "source_url": "https://reviews.birdeye.com/d/contractors/new-brunswick-nj/", "result": "confirmed"},
+    {"claim": "Princeton Electrical Makeover is at 317 George St Suite 320, New Brunswick, 124 reviews", "source_url": "https://reviews.birdeye.com/d/contractors/new-brunswick-nj/", "result": "confirmed"},
+    {"claim": "T & J Stone Corporation is at 401 Jersey Ave F, New Brunswick, 122 reviews", "source_url": "https://reviews.birdeye.com/d/contractors/new-brunswick-nj/", "result": "confirmed"},
+    {"claim": "Jersey Strong Paving - New Brunswick is at 854 Livingston Ave, New Brunswick, 98 reviews", "source_url": "https://reviews.birdeye.com/d/contractors/new-brunswick-nj/", "result": "confirmed"},
+    {"claim": "Kenneth & Sons HVAC is listed at 66 Georges Rd, New Brunswick", "source_url": "https://njbusinessdirectory.org/listing-region/new-brunswick/", "result": "confirmed"},
+    {"claim": "Kenneth & Sons HVAC and 'Custom Construction Company' are one business at 66 Georges Rd", "source_url": "https://www.all-contractors.com/contractors-and-builders-in-New%2BBrunswick_NJ", "result": "contradicted"},
+    {"claim": "Sanbern Warehouse is at 120 Jersey Ave, New Brunswick, NJ 08901", "source_url": "https://www.storage24.us/city-new-brunswick-nj", "result": "confirmed"},
+    {"claim": "Airdex Inc. operates in New Brunswick (town field)", "source_url": "https://reviews.birdeye.com/airdex-inc-165413430719120", "result": "contradicted"},
+    {"claim": "jangelespainting.com is the website of a New Brunswick painting contractor", "source_url": "http://jangelespainting.com", "result": "contradicted"},
+    {"claim": "Ster Plumbing Inc. operates in New Brunswick", "source_url": "https://reviews.birdeye.com/ster-plumbing-inc-166937604268670", "result": "contradicted"},
+    {"claim": "Gillespie Plumbing Inc. is at 88 Huntington St, New Brunswick, phone (848) 202-4509", "source_url": "https://www.cylex.us.com/new-brunswick/plumbers/", "result": "could not open"},
+    {"claim": "Mustakas Contracting is listed at 164 Hamilton St, New Brunswick", "source_url": "https://www.buildzoom.com/contractor/mustakas-construction", "result": "confirmed"},
+    {"claim": "C. Earl Fisher Roofing is at 159 French St, New Brunswick, phone (732) 828-7997", "source_url": "https://www.stonelist.us/city-new-brunswick-nj", "result": "confirmed"},
+    {"claim": "Daniel's Landscaping is New Brunswick-based", "source_url": "https://www.danielslandscapingllc.com/", "result": "not found"},
+    {"claim": "Warren Thompson & Son Roofing lists a New Brunswick address (317 George St Suite 320)", "source_url": "https://thompsonroofing.net/", "result": "not found"},
+    {"claim": "Airdex Inc. site airdexinc.com is a working company website", "source_url": "https://airdexinc.com/", "result": "could not open"}
+  ],
+  "coverage": {
+    "searches": [
+      "plumber New Brunswick NJ 08901 Ward St / Somerset St plumbing heating",
+      "roofing contractor New Brunswick NJ local company",
+      "electrician New Brunswick NJ 08901 electrical contractor",
+      "landscaping company New Brunswick NJ 08901",
+      "tree service New Brunswick NJ",
+      "fence company New Brunswick NJ installation",
+      "painting contractor New Brunswick NJ 08901 interior painting",
+      "pest control exterminator New Brunswick NJ 08901 local",
+      "appliance repair / garage door / window installation New Brunswick NJ 08901 contractor",
+      "auto repair shop New Brunswick NJ 08901 Somerset Street",
+      "masonry contractor / paving / concrete contractor New Brunswick NJ 08901",
+      "commercial janitorial cleaning company New Brunswick NJ",
+      "name-level checks: Kenneth & Sons HVAC, Ster Plumbing, Gillespie Plumbing, Royal Stone Paving, Affordable Overhead Doors, Pramukh Aluminum, Capital City Electrical, Stonemade Paving, All State Paving, Airdex"
+    ],
+    "eligible_found": 30,
+    "already_listed": 22,
+    "missing": [
+      {"name": "Royal Stone Paving & Construction", "town": "New Brunswick", "source_url": "https://www.bbb.org/us/nj/new-brunswick/profile/paving-contractors/royal-stone-paving-and-construction-0221-90225070"},
+      {"name": "All State Paving & Masonry Corp.", "town": "New Brunswick", "source_url": "https://www.yellowpages.com/new-brunswick-nj/mip/all-state-paving-masonry-corp-546447787"},
+      {"name": "Stonemade Paving & Construction Corp.", "town": "New Brunswick", "source_url": "https://www.showmelocal.com/paving-contractors-in-new-brunswick-nj"},
+      {"name": "Capital City Electrical Inc.", "town": "New Brunswick", "source_url": "https://www.mylocalservices.com/Capital%2BCity%2BElectrical%2BInc-New%2BBrunswick-New%2BJersey-26198943.html"},
+      {"name": "Jersey Landscape Construction LLC", "town": "New Brunswick", "source_url": "https://www.jerseylandscape.com/contact.html"},
+      {"name": "Affordable Overhead Doors Inc.", "town": "New Brunswick", "source_url": "https://www.yellowpages.com/new-brunswick-nj/mip/affordable-overhead-doors-inc-11086583"},
+      {"name": "Modern Appliance Repair Inc.", "town": "New Brunswick", "source_url": "https://www.localsolution.com/c/new-brunswick-nj/appliances-household-service-and-repair"},
+      {"name": "Westminster Movers", "town": "New Brunswick", "source_url": "https://www.storage24.us/city-new-brunswick-nj"}
+    ]
+  },
+  "confidence": "Medium"
+}

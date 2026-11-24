@@ -1,0 +1,32 @@
+[
+ {
+  "claim": "Frigate hardware table: 'RF-DETR-nano at ~33-40 ms on Intel NPU/Arc A310 at 320px' (appears in technical_approach.models_and_tools[RF-DETR] and again in measured_outcomes detector-latency row)",
+  "problem": "Latency figures are right but attached to the wrong devices. The Frigate hardware table gives RF-DETR 320-n at 33 ms for Intel Iris XE and 40 ms for Intel NPU; the Intel Arc A310 row carries no RF-DETR figure at all (its columns are MobileNetV2 / YOLOv9 t-320,s-320 / YOLO-NAS 320,640). Naming the Arc A310 as an RF-DETR host with those latencies is a misstatement of the source.",
+  "fix": "Reword to 'RF-DETR-nano at ~33-40 ms at 320px on Intel Iris XE / Intel NPU, and 336/448px ~20-27 ms on Arc A380', or drop the Arc A310 reference."
+ },
+ {
+  "claim": "'SmolVLM-500M / SmolVLM2 (Hugging Face) ... (256M/500M, video support in SmolVLM2, Transformers/MLX/ONNX paths)' cited to https://huggingface.co/blog/smolvlm",
+  "problem": "The cited blog describes only the original SmolVLM family (SmolVLM-Base / Synthetic / Instruct, 2B) and has no 256M or 500M models and no 'SmolVLM2' name. The sizes and the SmolVLM2 video claim are true but are not in the cited page, so the number is currently unsupported by its own source.",
+  "fix": "Re-cite to https://huggingface.co/blog/smolvlm2, which states the three sizes (2.2B, 500M, 256M), day-zero MLX support and video inference; keep the original smolvlm URL only for the 2B/Transformers point (ONNX still not evidenced on either page - drop or re-source it)."
+ },
+ {
+  "claim": "'Qwen announced the small multimodal Qwen3.5 sizes in Feb 2026' cited to https://qwen.ai/blog?id=qwen3.5",
+  "problem": "The qwen.ai page is JavaScript-rendered and returns no readable content, so neither the February 2026 date nor the 2B size can be confirmed from it. Only the 4B size claim is independently supported (Liquid's comparison table lists 'Qwen3.5-4B (4.7B)').",
+  "fix": "Either source the announcement date from an openable page (Qwen/Hugging Face model card or a news release) or downgrade the sentence to what Liquid's table shows and mark the Feb 2026 timing as unverified."
+ },
+ {
+  "claim": "N.J.S.A. 2C:14-9 'makes it a crime ... to record or observe a person in a bathroom, dressing room or private dressing stall without consent' (confirmed: true)",
+  "problem": "The statute text as opened does not name bathrooms. It criminalises observing/recording exposed 'intimate parts' or 'undergarment-clad intimate parts' where a reasonable person would not expect to be observed (third/fourth degree), and separately addresses fitting/dressing rooms and private dressing stalls, with a posted-notice exception for access ways to retail fitting rooms. The practical conclusion is right; the statutory wording is being paraphrased into a stricter-sounding rule than the cited text states.",
+  "fix": "Restate as: '2C:14-9 makes it a crime (third degree for recording exposed intimate parts; fourth degree for observing, or for undergarment-clad intimate parts) to record or observe a person without consent where a reasonable person would not expect to be observed, and specifically bars cameras in fitting/dressing rooms and private dressing stalls (access-way observation is permitted only with conspicuous posted notice).' Keep 'never in restrooms/dressing rooms' as the installer's own hard rule, not as statutory text."
+ },
+ {
+  "claim": "'NLRB GC Memo 23-02 (Oct 31, 2022) took the position that intrusive electronic monitoring can violate NLRA Section 8(a)(1)'",
+  "problem": "The rescission (GC 25-05, Feb 14, 2025) is confirmed, and the page confirms GC 23-02 was 'on electronic monitoring'. The memo's date and its specific holding are not on the page the brief cites, so the date and the characterisation are carried without a checked source.",
+  "fix": "Cite the GC 23-02 memo itself (apps.nlrb.gov link from the GC 25-05 page) for the Oct 31, 2022 date and the 8(a)(1) position, or state only that GC 23-02 on electronic monitoring was rescinded on Feb 14, 2025."
+ },
+ {
+  "claim": "Illinois BIPA \u00a715 requirements (written notice of collection/storage, written statement of purpose and retention period, written release) marked confirmed: true, cited to my.ilga.gov",
+  "problem": "The cited ILGA URL would not load on two attempts (fetch failed), so this rule was not independently confirmed. The content is consistent with BIPA as generally reported, but under this brief's own standard it is currently a confirmed:true with an unopened source.",
+  "fix": "Re-cite to an openable primary or ILGA-hosted copy of 740 ILCS 14/15 and re-check the four elements, or mark confirmed:false / unverified until then."
+ }
+]

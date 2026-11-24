@@ -1,0 +1,148 @@
+{
+  "results": [
+    {
+      "ref": "B00690",
+      "name": "Gurus Information Technology Services",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No copyright year shown (out-of-date sign)",
+          "what_is_true": "The footer reads 'Copyright (c) 2026 Gurus IT Services, LLC. All Rights Reserved', so a current year is present.",
+          "source_url": "https://gurusitservices.com/"
+        }
+      ],
+      "notes": "Site is live and is a single page with anchor-only nav (Home/About/Services/Projects/Clients/Careers/Contact, all '#...'); no sitemap.xml (404), so 'single-page site with no dedicated service pages' holds. Confirmed by DOM inspection: zero ld+json scripts, zero <label> elements, two forms both posting to mail.php with repeated name=\"name\" inputs; phone 732-247-7747 and mali@gurusitservices.com appear as click-to-call/click-to-mail; address on site is 345 Plainfield Ave, Suite 304 & 305, Edison, NJ; 'Get appointment' targets the in-page anchor #getappi and the contact block only offers a date field plus a time <select> inside the mail.php form - no scheduler, no booking engine. At 390 px the header email and phone stack legibly above the logo, so phone_layout 'good' is fair. Google Maps search for 'Gurus IT Services Edison NJ' returned only an unrelated 'Cyber Gurus, LLC' (cybergurus.ai), supporting 'no GBP'. Scores 4/2/4/3 look reasonable for a one-page site with broken form markup and no listings."
+    },
+    {
+      "ref": "B00847",
+      "name": "QNS Plumbing Sewer & Drain",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No reviews found / no reviews exist for the business",
+          "what_is_true": "A Birdeye profile carries 4.6 stars from 33 reviews at 5 Brent St (29 five-star, 4 four-star, 2 two-star, 2 one-star), with weekday 9:00-6:00 hours and phone (732) 745-2500 in its LocalBusiness schema. The profile is unclaimed and points to a Google Maps place ID (ChIJvbeuEx_Ew4kRXxf2cVANFko) that no longer resolves to a live Google place.",
+          "source_url": "https://reviews.birdeye.com/qns-plumbing-sewer-drain-166900487614347"
+        },
+        {
+          "claim": "No website, no reviews and no service detail, so the business is invisible to both search and AI assistants",
+          "what_is_true": "There is no owned site, but a public third-party profile publishes an aggregate rating, 33 reviews, address, hours and phone, so a review footprint is visible to search and to assistants even though the Google listing itself is gone.",
+          "source_url": "https://reviews.birdeye.com/qns-plumbing-sewer-drain-166900487614347"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 2,
+        "ease": 4,
+        "evidence": 2
+      },
+      "notes": "Status: no website found in searches; trading evidence rests on Birdeye/BBB/Bradford White directory records. Google Maps searches by name and by name+address return unrelated plumbers only (NJ Master Sewer, Bob Blaine, Drain Care Pros), so the 'no GBP visible in Maps' claim stands. Gap lowered 5->4 because a 4.6/33-review footprint already exists and only the owned profile and site are missing; evidence stays 2 because everything traceable is an aggregator with no first-party source."
+    },
+    {
+      "ref": "B00885",
+      "name": "Ace Painting",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Birdeye profile re-read directly: 4.8 from 19 reviews (15 five-star, 4 four-star), 12 Vetter Ct, Mon-Fri 9:00-6:00, Sat/Sun closed, 'This profile has not been claimed'. Google Maps searches for 'Ace Painting painter North Brunswick NJ' returned only out-of-area namesakes (Ottawa, Calgary, Arizona, Chicago phone numbers), so 'no GBP surfaced' holds. No website found. Caveat for the owner: the Birdeye page exposes only a rating distribution and no review text, so the claim that usable painting reviews already exist cannot be fully verified. Scores 4/2/4/3 are reasonable."
+    },
+    {
+      "ref": "B01122",
+      "name": "Latino Multiservices",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Google Maps profile 'Latino MultiService LLC' re-checked: 4.5 rating, category 'Tax preparation', 218 French St, phone (732) 249-7770, website field literally displays 'facebook.com', and both 'Identifies as women-owned' and 'Identifies as Latino-owned' attributes are present. Review count is not surfaced in the limited Maps view (the same limitation the record noted). The neighbourhood directory page confirms owner Haydee Urquiza, opened 2015, 9:00-8:00 Mon-Sat and 9:00-5:00 Sunday, a cash-only payment icon, and the full service list (remittances, tax prep, notary, certified translations, ITIN, money orders, copies, fax, sportswear/shoes retail). The Facebook page still could not be read without a login, so its content remains unverified - the record already flags this. Scores 4/2/4/3 reasonable."
+    },
+    {
+      "ref": "B01123",
+      "name": "Delmy's Taxes & Reyes Multiservices",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Maps listing re-checked: 'Delmy Tax & Reyes Multiservices', primary category 'Consultant', 140 French St, phone (732) 801-7732, 'Open - Closes 7:30 PM', an 'Add website' prompt with no site, and a 'Book online' button; no rating displayed, consistent with zero reviews. The directory page confirms the 2016 opening, owner Delmy Alfaro as sole owner, the IRS-problem positioning, and card/wallet payment icons (Visa, MC, Amex, Discover, Apple Pay, Google Pay). Minor: the directory lists 9:00-8:00 Mon-Fri, Sat 10-7, Sun 10-6 while Google shows closing 7:30 PM - a data conflict, not one of the claimed issues. Scores 4/2/4/3 reasonable."
+    },
+    {
+      "ref": "B00047",
+      "name": "Antonelli Legal",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "contact_form: false - 'No contact form and no scheduling; the only route is the New York landline'",
+          "what_is_true": "/contact.cfm embeds a Lawmatics contact form in a visible iframe (app.lawmatics.com/forms/embedded/07fc1780-...), and the page copy tells visitors to fill out the contact form. There is still no scheduler and no document upload.",
+          "source_url": "https://www.antonelli-legal.com/contact.cfm"
+        },
+        {
+          "claim": "Top opportunity evidence: 'Only a one-field search box exists on the page; no contact form fields anywhere'",
+          "what_is_true": "The site-wide search box is not the only input: a third-party Lawmatics enquiry form is embedded on the contact page. The real gap is that it is a short generic enquiry form with no probate-specific fields or document upload.",
+          "source_url": "https://www.antonelli-legal.com/contact.cfm"
+        },
+        {
+          "claim": "Operations signal: 'No intake form on the site, so first contact is a phone call during New York business hours'",
+          "what_is_true": "A web intake form exists on /contact.cfm, so a prospective client can make first contact without calling.",
+          "source_url": "https://www.antonelli-legal.com/contact.cfm"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 4,
+        "ease": 2,
+        "evidence": 3
+      },
+      "notes": "Status: the site is a live New York firm (title 'New York Probate and Estate Litigation Attorneys', tel 212-227-2424, 225 Broadway #1200); an East Brunswick office is still unconfirmed - the only location page in the sitemap is /offices/new-york-city-probate-and-estate-attorneys.cfm and the batch address appears only in third-party directories. The NJ-gap issue stands: no NJ address, phone or town page anywhere in the sitemap or on the home/contact pages. robots.txt is open (only storage/utility paths disallowed). Organization JSON-LD present; copyright reads 2026. Gap lowered 4->3 and evidence raised 2->3 because a working (if thin) intake path was verified in the DOM."
+    },
+    {
+      "ref": "B00285",
+      "name": "East Brunswick Physical Therapy",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No structured data at all - 'the ld+json script is empty'",
+          "what_is_true": "The home page has one populated JSON-LD block typed LocalBusiness + MedicalBusiness + MedicalClinic with name, url, description, telephone (732) 353-6335, priceRange, PostalAddress (3 Auer Ct, Ste A), geo coordinates, openingHoursSpecification for Mon-Thu 08:30-18:00, and sameAs links to a Google Maps place and a Yelp page.",
+          "source_url": "https://www.eastbrunswickpt.com/"
+        },
+        {
+          "claim": "Top opportunity: 'Add LocalBusiness/MedicalClinic schema ... Empty JSON-LD script and no local-business markup on home or contact pages'",
+          "what_is_true": "LocalBusiness/MedicalClinic schema with hours, address and phone is already published on the home page, so this is not a gap. The remaining schema gap is narrower: no service/catalogue, insurance, FAQPage or review markup.",
+          "source_url": "https://www.eastbrunswickpt.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 2,
+        "ability_to_pay": 2,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Site re-checked: title and meta description name physical therapy and East Brunswick; the 'Request Appointment' top bar links to a labelled appointment form with a datepicker, plus a second general contact form (31 labels on the page); phone (732) 353-6335 with click-to-call. Google Maps confirms a live GBP ('Physical therapy clinic', 5.0, 3 Auer Ct A in Williamsburg Commons, website eastbrunswickpt.com) - the review count is not visible in the limited view. At 390 px the cookie-consent banner covers the lower hero until dismissed, exactly as the record says. robots.txt only blocks admin paths. Gap lowered 3->2 because schema is present and accurate; pay 2 and ease 4 stand."
+    },
+    {
+      "ref": "B00412",
+      "name": "Rainbow Plumbing & Heating",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Town pages are missing - East Brunswick appears only in the footer address, so suburb-level searches have nothing to land on",
+          "what_is_true": "Town-level pages exist and render: /new-brunswick-plumbing-heating (H1 'Plumbing & Heating Services in New Brunswick, NJ') and /freehold-township-plumbing-heating, alongside county pages for Middlesex, Monmouth and Mercer. What is actually missing is an East Brunswick town page - the town of its own office.",
+          "source_url": "https://www.rainbowplumbingnj.com/new-brunswick-plumbing-heating"
+        },
+        {
+          "claim": "Top opportunity evidence: 'service-area copy is county-level only with typos'",
+          "what_is_true": "The sitemap lists two town-level service-area pages plus three county pages, so 'county-level only' understates the site. The typos ('based our of East Brunswick', 'Monmoth County') are real.",
+          "source_url": "https://www.rainbowplumbingnj.com/sitemap.xml"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 2,
+        "ability_to_pay": 3,
+        "ease": 3,
+        "evidence": 4
+      },
+      "notes": "Verified in the DOM: Plumber JSON-LD with PostalAddress (197 State Route 18, STE 3000, East Brunswick), geo, telephone (732) 613-7320, email rphnjservice@gmail.com, plus a WebSite block and a FAQPage block (the FAQ entry is malformed - it uses a marketing paragraph as the question). levCustomerAssistantLoader.js from assistant.levitate.ai loads and a 'Chat with our AI assistant' bubble shows on mobile; no scheduler anywhere - the 'Schedule Service' button links to /contact. The /contact form has real labels (First Name, Last name, email, Phone number, Subject, free-text message, opt-in). robots.txt: User-agent * with 'Content-Signal: search=yes, ai-input=yes, ai-train=yes' plus a sitemap line, confirming the record's claim. NAP conflict confirmed: site and schema show (732) 613-7320 while the GBP at 'South Wing, 197 NJ-18 Ste 3000' shows 4.8/36 and (848) 279-8786. At 390 px the phone number and click-to-call icon are prominent, so phone_layout 'good' holds. One caution: page config sets site.widget.form.captcha.type = 'g_recaptcha', so 'no CAPTCHA' should read 'no challenge widget rendered today', not a guarantee. Scores as corrected."
+    }
+  ],
+  "data_gaps": [
+    "QNS Plumbing: the BBB profile could not be read (bot check) and the Bradford White contractor page returned HTTP 403, so trading status rests on a Birdeye profile plus search summaries; the Birdeye-attributed Google place ID no longer resolves in Google Maps.",
+    "Ace Painting: the Birdeye page exposes only a rating distribution (15x5, 4x4) with no review text, so the relevance/quality of the 19 reviews could not be verified.",
+    "Latino Multiservices: the Facebook page (the profile's website field) requires a login, so its content and hours remain unverified; the Google review count is not displayed in the limited Maps view.",
+    "Antonelli Legal: whether an East Brunswick, NJ office actually exists could not be confirmed - no NJ address on the site, in the sitemap, or in Google Maps; only third-party directories list 74 Brunswick Woods Drive.",
+    "East Brunswick PT: Google review count is not visible in the limited Maps view; the record's ~10-review figure comes from a third-party aggregator and could not be re-verified.",
+    "Rainbow Plumbing: whether the contact form's reCAPTCHA config actually renders a challenge at submit time could not be determined without submitting the form (not permitted).",
+    "Web search results were returned with a '🐴' prefix in page titles for several sites, which appears to be a session artifact rather than site content; it does not affect any finding above."
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Frigate hardware table: 'RF-DETR-nano at ~33-40 ms on Intel NPU/Arc A310 at 320px' (appears in technical_approach.models_and_tools[RF-DETR] and again in measured_outcomes detector-latency row)",
+      "problem": "Latency figures are right but attached to the wrong devices. The Frigate hardware table gives RF-DETR 320-n at 33 ms for Intel Iris XE and 40 ms for Intel NPU; the Intel Arc A310 row carries no RF-DETR figure at all (its columns are MobileNetV2 / YOLOv9 t-320,s-320 / YOLO-NAS 320,640). Naming the Arc A310 as an RF-DETR host with those latencies is a misstatement of the source.",
+      "fix": "Reword to 'RF-DETR-nano at ~33-40 ms at 320px on Intel Iris XE / Intel NPU, and 336/448px ~20-27 ms on Arc A380', or drop the Arc A310 reference."
+    },
+    {
+      "claim": "'SmolVLM-500M / SmolVLM2 (Hugging Face) ... (256M/500M, video support in SmolVLM2, Transformers/MLX/ONNX paths)' cited to https://huggingface.co/blog/smolvlm",
+      "problem": "The cited blog describes only the original SmolVLM family (SmolVLM-Base / Synthetic / Instruct, 2B) and has no 256M or 500M models and no 'SmolVLM2' name. The sizes and the SmolVLM2 video claim are true but are not in the cited page, so the number is currently unsupported by its own source.",
+      "fix": "Re-cite to https://huggingface.co/blog/smolvlm2, which states the three sizes (2.2B, 500M, 256M), day-zero MLX support and video inference; keep the original smolvlm URL only for the 2B/Transformers point (ONNX still not evidenced on either page - drop or re-source it)."
+    },
+    {
+      "claim": "'Qwen announced the small multimodal Qwen3.5 sizes in Feb 2026' cited to https://qwen.ai/blog?id=qwen3.5",
+      "problem": "The qwen.ai page is JavaScript-rendered and returns no readable content, so neither the February 2026 date nor the 2B size can be confirmed from it. Only the 4B size claim is independently supported (Liquid's comparison table lists 'Qwen3.5-4B (4.7B)').",
+      "fix": "Either source the announcement date from an openable page (Qwen/Hugging Face model card or a news release) or downgrade the sentence to what Liquid's table shows and mark the Feb 2026 timing as unverified."
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9 'makes it a crime ... to record or observe a person in a bathroom, dressing room or private dressing stall without consent' (confirmed: true)",
+      "problem": "The statute text as opened does not name bathrooms. It criminalises observing/recording exposed 'intimate parts' or 'undergarment-clad intimate parts' where a reasonable person would not expect to be observed (third/fourth degree), and separately addresses fitting/dressing rooms and private dressing stalls, with a posted-notice exception for access ways to retail fitting rooms. The practical conclusion is right; the statutory wording is being paraphrased into a stricter-sounding rule than the cited text states.",
+      "fix": "Restate as: '2C:14-9 makes it a crime (third degree for recording exposed intimate parts; fourth degree for observing, or for undergarment-clad intimate parts) to record or observe a person without consent where a reasonable person would not expect to be observed, and specifically bars cameras in fitting/dressing rooms and private dressing stalls (access-way observation is permitted only with conspicuous posted notice).' Keep 'never in restrooms/dressing rooms' as the installer's own hard rule, not as statutory text."
+    },
+    {
+      "claim": "'NLRB GC Memo 23-02 (Oct 31, 2022) took the position that intrusive electronic monitoring can violate NLRA Section 8(a)(1)'",
+      "problem": "The rescission (GC 25-05, Feb 14, 2025) is confirmed, and the page confirms GC 23-02 was 'on electronic monitoring'. The memo's date and its specific holding are not on the page the brief cites, so the date and the characterisation are carried without a checked source.",
+      "fix": "Cite the GC 23-02 memo itself (apps.nlrb.gov link from the GC 25-05 page) for the Oct 31, 2022 date and the 8(a)(1) position, or state only that GC 23-02 on electronic monitoring was rescinded on Feb 14, 2025."
+    },
+    {
+      "claim": "Illinois BIPA §15 requirements (written notice of collection/storage, written statement of purpose and retention period, written release) marked confirmed: true, cited to my.ilga.gov",
+      "problem": "The cited ILGA URL would not load on two attempts (fetch failed), so this rule was not independently confirmed. The content is consistent with BIPA as generally reported, but under this brief's own standard it is currently a confirmed:true with an unopened source.",
+      "fix": "Re-cite to an openable primary or ILGA-hosted copy of 740 ILCS 14/15 and re-check the four elements, or mark confirmed:false / unverified until then."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "NJ security guards (SOC 33-9032) median $18.69/hr, $38,880/yr, middle 50% $16.71-$23.14/hr, 2025 BLS wage data",
+      "source_url": "https://www.onetonline.org/link/localwages/33-9032.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ minimum wage $15.92/hr statewide and $15.23/hr for seasonal and small employers effective Jan 1, 2026; release does not define 'small'",
+      "source_url": "https://www.nj.gov/labor/lwdhome/press/2025/20251001_Minimum_Wage.shtml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County: 25,042 establishments; 2,282 retail; 1,752 accommodation/food; 1,305 transportation/warehousing; 5,036 health care; all-occupation median $27.55; cashiers $16.30; retail salespersons $17.29; hand packers $20.56; T&W employment +26.1% 2018-2024; report dated Feb 2026",
+      "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NRF 2023 NRSS: 1.6% shrink FY2022 = $112.1B, up from 1.4%/$93.9B in 2021; internal+external theft 65%; 177 brands, $1.6T sales, 97,000+ locations",
+      "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NRF published no 2024 edition, leaving the 2023 survey (FY2022 data) as latest",
+      "source_url": "https://www.retaildive.com/news/no-nrf-annual-retail-shrink-report-2024/729009/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CDC: food workers wash hands when they should about one in three times; ~9 activities/hr needing handwashing vs 2-3 washes/hr; only 1 in 4 washed after raw animal products; page reviewed Aug 27, 2026",
+      "source_url": "https://www.cdc.gov/restaurant-food-safety/php/practices/handwashing.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BLS CFOI 2024: 733 violent-act fatalities (470 homicides, 263 suicides) out of 5,070 total, rate 3.3 per 100,000 FTE, released Feb 19, 2026",
+      "source_url": "https://www.bls.gov/news.release/cfoi.nr0.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "General warehousing and storage (NAICS 49311) 2024 rate 4.9 total recordable, 4.3 days away/transfer/restriction",
+      "source_url": "https://www.bls.gov/web/osh/table-1-industry-rates-national.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2015 field study of CCTV operators on a 90-minute task detected about 55% of target behaviours, with declines concentrated among novices rather than specialists",
+      "source_url": "https://www.sciencedirect.com/science/article/pii/S0003687014001847",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Publisher page for the CCTV study (direct fetch of the cited URL)",
+      "source_url": "https://www.sciencedirect.com/science/article/pii/S0003687014001847",
+      "result": "could not open"
+    },
+    {
+      "claim": "Surveillance research states camera video volume is 'far exceeding the capacity for human monitoring' (arXiv:2510.23190)",
+      "source_url": "https://arxiv.org/abs/2510.23190",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Zero-shot small VLMs on UCF-Crime/RWF-2000 succeed on simple spatially-salient events, falter on noisy spatial cues; full-body GAN privacy transforms degrade accuracy; 4 models, 2 benchmarks, NeurIPS 2025 workshop",
+      "source_url": "https://arxiv.org/abs/2510.23190",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Census BTOS: 19.8% of US firms used AI as of May 3, 2026; retail trade ~14%; no significant change for firms under 20 employees; under 20% of firms with 4 or fewer employees",
+      "source_url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Rhombus MSRP: R120 $399+$149=$548; R150 $699+$149=$848; R200 $599+$149=$748; Professional licence excludes AI features and cloud archiving; all cameras require an ongoing licence; Relay Core N100 $2,999, up to 10 streams, 20 days on 2TB / 40 on 4TB; $149 per camera for AI on third-party cameras",
+      "source_url": "https://www.rhombus.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics Platform Free $0, Pro $29/seat/month with $30/seat/month credits, Enterprise custom; code/models AGPL-3.0 unless Enterprise",
+      "source_url": "https://www.ultralytics.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "AWS Rekognition Custom Labels USD 1 per training hour and USD 4 per inference hour billed even when idle; free tier 2 training + 1 inference hour per month for 12 months",
+      "source_url": "https://aws.amazon.com/rekognition/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate+ FAQ: no price and no training quota stated; base model trained on all users' submissions; tens of thousands of examples needed if trained on one site's images alone; all processing local; uniform label set (no custom classes); models keep working after subscription lapses; commercial licence needed where the installer's subscription powers customer sites",
+      "source_url": "https://docs.frigate.video/plus/faq/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate hardware table: Hailo-8 ssd mobilenet ~6 ms / YOLOv6n ~7 ms; Hailo-8L ~10 ms / ~11 ms; Intel N100 YOLOv9 s-320 30 ms; Intel NPU s-640 30 ms; Jetson typically 20-40 ms; Coral ~10 ms default model with 1000/inference-ms cap; Coral no longer recommended for new installs except low-power cases",
+      "source_url": "https://docs.frigate.video/frigate/hardware/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RF-DETR-nano ~33-40 ms at 320px on Intel NPU and Arc A310 (230 px) - device attribution",
+      "source_url": "https://docs.frigate.video/frigate/hardware/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "YOLO26n OpenVINO INT8 4.24 ms/image at mAP50-95 0.4634 on Intel Core Ultra X7 358H iGPU",
+      "source_url": "https://docs.ultralytics.com/integrations/openvino/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate GenAI docs use qwen3-vl:4b via Ollama for object descriptions and document VLM descriptions of tracked objects",
+      "source_url": "https://docs.frigate.video/configuration/genai/genai_config/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-3B: 3.1B params, SigLIP2 400M NaFlex encoder, non-reasoning, ~3GB memory, llama.cpp/MLX/vLLM/SGLang/ONNX day one; 228 tok/s M5 Max, 116 tok/s Ryzen AI Max+ 395, 20 tok/s Galaxy S26 Ultra; RefCOCO-avg 87.9; POPE 88.7; 28-benchmark average 69.4 vs 70.1 for Qwen3.5-4B (4.7B); ScreenSpot-v2 78.7/81.2/82.2 vs gemma-4-E2B 28.1/42.9/22.4 and gemma-4-E4B 45.8/60.3/47.6 (~51.2 avg); gemma-4-E2B beats it on IFEval 83.0 vs 82.3 and MM-IFEval 65.6 vs 60.6",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Openzeka benchmark: LFM2.5-VL-3B Q8_0 llama.cpp on Jetson Orin NX 16GB, 720p single image, 2.35 s first answer at 20.7 tok/s; 2 cameras stay under 3 s; 4 cameras 12.2 s",
+      "source_url": "https://whitepapers.openzeka.com/vlm-inference-benchmarks/lfm2-5-vl-3b/jetson-orin-nx-16gb/q8-0-llama-cpp/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CAPTURE (ICCV 2025): best model GPT-4o 14.75% error on real occluded counting, Molmo 32.5%, humans near-zero, all models worse under occlusion",
+      "source_url": "https://openaccess.thecvf.com/content/ICCV2025/papers/Pothiraj_CAPTURE_Evaluating_Spatial_Reasoning_in_Vision_Language_Models_via_Occluded_ICCV_2025_paper.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "UCVL: 1,829 videos from UCF-Crime and UCF-Crime Annotation, six question types, eight MLLMs 0.5B-40B, GPT-4o-assisted assessment, LLaVA-OneVision fine-tune improved scores; abstract has no per-skill breakdown",
+      "source_url": "https://arxiv.org/abs/2502.09325",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SurveillanceVQA-589K: 589,380 QA pairs, 12 question types, eight LVLMs, 'significant performance gaps, especially in causal and anomaly-related tasks'",
+      "source_url": "https://arxiv.org/abs/2505.12589",
+      "result": "confirmed"
+    },
+    {
+      "claim": "GoodTrack scan-avoidance article (YOLOv8 + ByteTrack, RetailGoods dataset), sample size and incident counts removed to data_gaps",
+      "source_url": "https://www.sciencedirect.com/science/article/abs/pii/S0952197626024930",
+      "result": "could not open"
+    },
+    {
+      "claim": "N.J.S.A. 34:6B-22 (P.L. 2021 c.449): written notice before using a vehicle tracking device on an employee; civil penalty up to $1,000 first violation, up to $2,500 each subsequent",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9: third-degree crime to record exposed intimate parts without consent where privacy reasonably expected; fourth degree in other circumstances; fitting/dressing room and private dressing stall provisions; posted-notice exception for access ways",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/2785/2918",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ one-party consent under the Wiretap Act; recordings made for a criminal or tortious purpose are illegal regardless of consent",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Data Privacy Law (P.L. 2023, c.266) defines 'consumer' as a resident acting in an individual or household context and expressly excludes 'a person acting in a commercial or employment context'",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC biometric policy statement (May 18, 2023): claims of validity/accuracy deceptive if true only for certain populations without stating the limitation; accuracy/efficacy claims must generally be supported by a high level of substantiation such as scientific or engineering tests; no false or unsubstantiated claims of particular outcomes such as reductions in theft or violent incidents",
+      "source_url": "https://www.ftc.gov/legal-library/browse/policy-statement-federal-trade-commission-biometric-information-section-5-federal-trade-commission",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC 'Operation AI Comply' sweep (2024) including DoNotPay, Ascend Ecom, Ecommerce Empire Builders, FBA Machine and Rytr, resting on unsubstantiated AI performance claims being deceptive",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC 25-05 (Feb 14, 2025) rescinded GC 23-02 on electronic monitoring along with other memos",
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/gc-25-05-rescission-of-certain-general-counsel-memoranda",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NYC Local Law 144: independent bias audit within the prior year, published audit summary, notice 10 business days before use",
+      "source_url": "https://www.nyc.gov/site/dca/businesses/faq-automated-employment-decision-tools.page",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Illinois BIPA 740 ILCS 14/15 written notice, purpose and retention statement, written release",
+      "source_url": "https://my.ilga.gov/legislation/ilcs/fulltext?DocName=074000140K15",
+      "result": "could not open"
+    },
+    {
+      "claim": "Beelink EQ13 (Intel N100, dual 1GbE) at USD 249.99",
+      "source_url": "https://www.notebookcheck.net/Beelink-EQ13-Quiet-mini-PC-now-available-for-pre-order.844642.0.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Coral USB Accelerator USD 111.00 at Seeed Studio",
+      "source_url": "https://www.seeedstudio.com/Coral-USB-Accelerator-p-2899.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jetson Orin Nano Super Developer Kit USD 249, 67 INT8 TOPS, 102GB/s",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Home Assistant Green suggested retail price now $199",
+      "source_url": "https://www.nabucasa.com/news/2026-01-08-green-pricing-change/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Raspberry Pi 5 8GB raised to USD 95 for memory-cost reasons (Dec 2025)",
+      "source_url": "https://www.raspberrypi.com/news/1gb-raspberry-pi-5-now-available-at-45-and-memory-driven-price-rises/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Gemma 4 E2B/E4B: effective 2B and 4B parameter footprint at inference, native audio and vision, 128K context on edge models, Apache 2.0, runs on phones, Raspberry Pi and Jetson Orin Nano",
+      "source_url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Unsloth QLoRA VRAM table: 3B QLoRA 3.5 GB",
+      "source_url": "https://unsloth.ai/docs/get-started/fine-tuning-for-beginners/unsloth-requirements",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cactus runtime: pip-installable, Apache 2.0, Needle 3 (tools/structured extraction), Whistle transcription, Mirage vision, LoRA fine-tuning, 'Sub-50mb' banner",
+      "source_url": "https://github.com/cactus-compute/cactus",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SmolVLM2 released in 2.2B, 500M and 256M sizes with video understanding and day-zero MLX",
+      "source_url": "https://huggingface.co/blog/smolvlm2",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SmolVLM (2B family) blog as cited for the 256M/500M sizes and the 'SmolVLM2' name",
+      "source_url": "https://huggingface.co/blog/smolvlm",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Qwen3.5 small multimodal sizes announced Feb 2026 (qwen.ai blog)",
+      "source_url": "https://qwen.ai/blog?id=qwen3.5",
+      "result": "could not open"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-8.2 lets the health authority inspect retail food establishments 'as often as it deems necessary'",
+      "source_url": "https://regulations.justia.com/states/new-jersey/title-8/chapter-24/subchapter-8/section-8-24-8-2/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fit_score sub-scores sum to the total and stay in range (15+13+9+13+10+9 = 69/100; demand 20, local_buyers 15, ability_to_pay 15, technical_feasibility 20, legal_risk_low 15, defensibility 15) and legal_risk_low (10/15, explicitly scored down for an unverified notice finding and partial negative findings) is consistent with the legal section",
+      "source_url": "file://avenue.json",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

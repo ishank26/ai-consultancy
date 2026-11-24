@@ -1,0 +1,42 @@
+[
+ {
+  "claim": "severity_reason: 'no live page describes the business's services or service area'",
+  "problem": "Contradicted by the report's own evidence: biondo-contracting.webflow.io is live and describes services (installations, repairs, skylight replacement, flashing, ventilation, siding) and a service area ('Serving Central New Jersey since 1990'). Verified by opening the page today.",
+  "fix": "Reword to what is true: no page at biondoroofing.com itself describes the services or service area, so the link on the Google profile dead-ends."
+ },
+ {
+  "claim": "founder_md outreach email: 'Your domain is still registered in your name through 2030'",
+  "problem": "Unsupported. The .com RDAP record is thin and shows no registrant; the report's own data_gaps says registrant identity is not public. The expiry date is confirmed, ownership is not. Telling an owner it is 'in your name' could be wrong (e.g. if a developer or agency holds the account).",
+  "fix": "Change to: 'the domain is still registered and paid through 7 December 2030, with GoDaddy locks in place' and ask the owner who controls the account."
+ },
+ {
+  "claim": "audit_md: 'The phone number still works'",
+  "problem": "No cited source supports it and the phone line was not (and could not be) tested. Every source only shows the number as listed. Stated as fact to the business owner.",
+  "fix": "Say 'the phone number is still listed on your profile and on other directories' or drop the sentence."
+ },
+ {
+  "claim": "domains[1].result: the Webflow page has 'No phone number, address, form or photos of its own'",
+  "problem": "The page contains a hero photo (jpeg served from its own Webflow site assets). Only the phone/address/form part is correct.",
+  "fix": "Remove 'or photos of its own'; e.g. 'no phone number, address or form, and one photo'."
+ },
+ {
+  "claim": "after_fix.evidence: 'the profile's 4.9 rating and review volume (172 reviews on Birdeye)'",
+  "problem": "Conflates two different profiles and ratings. The 4.9 is the Google Business Profile; the 172 reviews belong to the Birdeye profile, which shows 4.7, not 4.9.",
+  "fix": "Split the sentence: '4.9 on the Google profile; 4.7 from 172 reviews on Birdeye'."
+ },
+ {
+  "claim": "audit_md fix step 4 and fix_steps[3]: update the 'Houzz' link",
+  "problem": "Houzz is named as one of the places publishing the domain, but the auditor's own caveat says the Houzz profile returned 429 and was never confirmed. Only a search-result summary (which does name biondoroofing.com on a Houzz profile) supports it; I could not open the page either (JS-only/incomplete fetch).",
+  "fix": "Either mark it as 'if Houzz lists the domain' in audit_md, or drop Houzz from the customer-facing step until the page is confirmed."
+ },
+ {
+  "claim": "fix_steps[3].source_url: https://support.google.com/business/answer/3038177 used to back 'edit the website field on the Google Business Profile'",
+  "problem": "That page is titled 'Guidelines for representing your business on Google' and does not explain editing the website field. The step is fine, the citation does not support it.",
+  "fix": "Cite the Google help page on editing your Business Profile, or cite the profile URL itself as the thing to be edited."
+ },
+ {
+  "claim": "screenshot_files: screenshot-biondoroofing-desktop.png, screenshot-biondoroofing-mobile390.png, screenshot-webflow-stub.png, screenshot-google-profile.png",
+  "problem": "None of these files are present in the review folder, so the screenshots backing the visual claims (390 px layout, Play-style page, profile panel) cannot be verified.",
+  "fix": "Save the screenshots alongside rescue.json and re-check the paths before the report is used."
+ }
+]

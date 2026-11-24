@@ -1,0 +1,208 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "ProSentry: \"$4-$9 per tenant per month\" service fee and \"$60-$80 each\" sensors, sourced to https://prosentry.com/faqs",
+      "problem": "Opened the cited FAQ page in full: it contains no prices at all (no 'tenant', 'sensor', '$4', '$9', '$60' or 'per month' matches anywhere in the page body). The figures are attributed to a search-engine rendering, which is not the vendor page. Because the $4 figure is the floor of the mid_market range, that range currently has no openable source at its low end, and an independent web search could not corroborate $4-$9/tenant or $60-$80/sensor from any ProSentry source.",
+      "fix": "Either obtain the ProSentry figure from a page/PDF that can be opened and quote that URL, or drop ProSentry from offerings and restate mid_market as \"$5-$30 per unit, tenant or sensor per month\" (YouTilitics $5/device/mo and $25/mo for one device are confirmed; LeakSense $6-$14; Symmons $30) with ProSentry moved to data_gaps as an unverified vendor claim."
+    },
+    {
+      "claim": "Alert Labs: \"$150 per device per year (2021 reseller article), i.e. about $12.50/device/month\"",
+      "problem": "No URL is given for this figure, and the 2021 Alert Labs value-added-reseller article that matches the description (water-controls.com, 15 Jan 2021) does not state $150 per device per year anywhere in its text - it only describes \"a flat fee per sensor / annum\" without a number. A search summary of that article also noted prices quoted in CAD, which the brief does not flag, so treating $150 as USD and dividing to $12.50/month may be a double misstatement. There is no published Alert Labs list price to fall back on (vendor page says request a quote).",
+      "fix": "Delete the $150/device/year tier unless the exact article and currency can be cited, or re-label it: \"reseller subscription model, flat fee per sensor per year, no figure published (2021)\". Do not convert to $12.50/month."
+    },
+    {
+      "claim": "Alert Labs: \"$60 - $180 per Floodie unit at 1-10 units; $51-$155 at 100 units; $42-$125 at 1,000 units (IoT Apps estimate, reviewed September 2026)\"",
+      "problem": "No URL, no link, and the named source is not identifiable or openable. Independent search could not find these volume tiers (the only Floodie unit pricing found was an unrelated consumer guide at $85-$95/unit). Presented as a hardware price band with a review date, which makes it look verified.",
+      "fix": "Remove the tiered estimate, or cite the exact page URL and quote the tier boundaries. Otherwise state only that Alert Labs and its distributors do not publish Floodie hardware pricing."
+    },
+    {
+      "claim": "YoLink: \"Water leak starter kit - $69.99 (hub plus four sensors)\"",
+      "problem": "Vendor store now shows the hub-plus-four-sensors starter kit at $58.99, discounted from a $75.98 list price (shop.yosmart.com/products/yolink-water-leak-sensor-1-starter-kit and /products/ys1603-4ys7903, both opened). $69.99 does not appear. The kit also contains Water Leak Sensor 1 units, while the brief's per-sensor price is for Water Leak Sensor 4 ($19.99, confirmed) - so the kit contents and per-sensor price are different products.",
+      "fix": "Change to \"$58.99 current promotional price (list $75.98) for hub plus four Water Leak Sensor 1 units\" and note the kit uses Sensor 1, not Sensor 4. Also note the hub's $23.59 is a sale price against a $29.99 list."
+    },
+    {
+      "claim": "Moen Leak Protection Service: \"$17.99/month plus $49.99 activation fee, 36-month commitment\", sourced to https://flo.moen.com/products/moen-leak-protection-service",
+      "problem": "The cited URL returns HTTP 404 (page moved). The working page is https://flo.moen.com/products/moen-flo-protection-service. Terms on the working page are confirmed (initial 36-month commitment, month-to-month after, cancellation fee = 50% of remaining payments, up to $5,000 deductible coverage, 10% moen.com discount, continuous limited warranty, Alexa/Ring/Alarm.com/NICE), and a search rendering of that same URL returned $17.99/month plus $49.99 activation - but the $17.99 and $49.99 figures are not present in the page text that can be extracted, so they are only confirmable through a search rendering, not the open page.",
+      "fix": "Replace the dead URL with flo.moen.com/products/moen-flo-protection-service and keep the explicit caveat that $17.99 and $49.99 currently come from a search rendering. If exact figures must be used in pricing decisions, capture them from the live page (browser) before quoting."
+    },
+    {
+      "claim": "Moen: \"$719.64 device price shown on the Flo product page\" and installation \"about $80-$140+ for 3/4-inch to 1-inch pipe; about $120-$170+ for 1 1/4-inch\"",
+      "problem": "Neither $719.64 nor the installation bands appear in the extracted text of the cited product page or of the Flo Protection Service page (searched for '720', '719', 'price', '140', '170', 'additional charges', 'pipe': no matches). The Flo device is now sold as an enhanced bundle; the bundle price is script-rendered and could not be read.",
+      "fix": "Mark the $719.64 device price and the $80-$170 installation bands as \"not visible on the live page at review\" and remove them from any calculation until read directly off the page, or cite the specific Moen installation-pricing page that states them."
+    },
+    {
+      "claim": "buyer_reported_costs: \"About $85,000 upfront for roughly 1,200 sensors and network equipment, plus roughly $17,000/year ongoing\" (2025 podcast), used in the full_service range as the high end",
+      "problem": "The cited Buzzsprout URL opens to show notes only - no figures, no transcript, no episode summary containing $85,000 or 1,200 sensors. The brief's own note says the number came from a \"search-indexed episode summary\", and an independent search for the figure returned nothing. So this is a buyer-reported cost with no openable source, yet it is the top end of the full_service range.",
+      "fix": "Remove the $85,000/1,200-sensor figure from buyer_reported_costs and from the range, or replace the high end with the Habitat Magazine $10,000-$12,000 capital figure (confirmed) and describe the upper bound as \"large-building capital costs are not reliably published\". If kept, it must be labeled \"unverified, source not retrievable\" and must not anchor a range."
+    },
+    {
+      "claim": "buyer_reported_costs: \"an older multifamily trade article cited roughly $49 per toilet plus a gateway and a small annual monitoring fee\"",
+      "problem": "Attributed to the FireAvert blog page, which was opened in full: it contains no $49 figure, no per-toilet pricing and no gateway/monitoring-fee discussion. Searched the page for '$49', 'gateway' and 'annual monitoring fee' - no matches. It is presented with a source URL that does not support it.",
+      "fix": "Delete this finding, or cite the actual trade article that states $49 per toilet plus gateway and annual fee."
+    },
+    {
+      "claim": "Phyn: \"$579.99 (vendor store listing; an older Belkin page showed $699.99)\", sourced to https://phyn.com/products/phyn",
+      "problem": "The cited URL now renders the Phyn Smart Water Assistant/Phyn Assist marketing page with no price at all, and phyn.com/products/phyn-plus redirects to a 'Phyn Protect' page that also shows no price. No $579.99 or $699.99 is visible. Another source does support $579.99 (a California water district board packet that lists Phyn Plus 2nd Gen at $579.99), so the number is plausible but the cited listing does not show it.",
+      "fix": "Change source_url to a page that actually displays the price (or keep $579.99 with an explicit \"price not shown on the vendor page at review; corroborated by a third-party listing\" note), and remove the unverified $699.99 comparison unless the Belkin page is linked."
+    },
+    {
+      "claim": "SimpliSafe Standard monitoring \"76 cents/day (about $22.99/month)\" and the low-cost range framing \"$0-$30/month per sensor for hosted monitoring\"",
+      "problem": "76 cents/day is confirmed on the SimpliSafe plans page, but the monthly equivalent of 76 cents/day is about $23.12 ($0.76 x 365 / 12), not $22.99, and SimpliSafe bills per household/system, not per sensor - so using its daily rate inside a \"per sensor per month\" band is not like-for-like. $22.99 also does not appear on the plans page.",
+      "fix": "State \"76 cents/day (about $23/month equivalent; billed per system, not per sensor)\" and either drop SimpliSafe from the per-sensor monitoring band or add a note that its plan is per household."
+    },
+    {
+      "claim": "\"Multi-channel alerts and team notifications ... dedicated cellular network\" (Symmons) plus the page-level inference that \"the cellular path is the reason it costs more than Wi-Fi point sensors\"",
+      "problem": "The Symmons inclusions and the $30/sensor/month price are confirmed, but the causal claim about why it costs more is the brief's own reasoning placed inside what_is_included_vs_extra, which is otherwise a list of sourced facts, with no \"inference\" label.",
+      "fix": "Prefix that clause with \"Inference:\" or remove it."
+    },
+    {
+      "claim": "Caveat/attribution: buyer-reported Mercy Housing case study \"about $43,000 for leak sensors at a 106-unit property ... first-year savings about $11,606\"",
+      "problem": "The cited printpdf URL fails to fetch (fetch error, not a 404), so the figures are unsupported by anything openable. The brief does flag this as unverified second-hand, which is honest, but the numbers are still listed as a buyer-reported finding.",
+      "fix": "Keep only if the Better Buildings case-study HTML page (not the printpdf) can be opened and confirms the figures; otherwise move to data_gaps."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "LeakSense Basic Wi-Fi $6/unit/mo, Advanced $8, Complete $10; cellular Basic $10, Advanced $12, Complete $14; billed monthly per unit; free installation only for accessible copper/PEX without rerouting",
+      "source_url": "https://leaksense.io/product",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LeakSense tier gating: tenant billing from Advanced, remote valve control and IoT shutoff valves only on Complete, Google Home/Alexa on all tiers, enterprise pricing by quote",
+      "source_url": "https://leaksense.io/product",
+      "result": "confirmed"
+    },
+    {
+      "claim": "YouTilitics $349 one-time setup, $20/month platform, $5/device/month, example 1 device = $349 + $25/month, webhooks into Guesty/Hostaway/AppFolio, unlimited users",
+      "source_url": "https://www.youtilitics.com/iot/water-leak-detection",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Parker Plumbing Facility Watch $149/mo (up to 5 points), Facility Protect $249/mo (up to 15), Critical Facility $399/mo (15+), all plus installation; hub, sensors, wiring, startup and monthly reports included; boiler testing an add-on",
+      "source_url": "https://www.parker-contracting.com/services/commercial-building-monitoring/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Leak Shield line items: valve $619, two sensors $198, plumbing $300, electrical $300, programming $199, total $1,616 or $56.56/mo over 36 months; monitoring $99/month, $1,188 billed annually",
+      "source_url": "https://www.leak-shield.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Symmons Evolution commercial leak detection $30/mo per sensor, incl. AI algorithms, multi-channel alerts, dedicated cellular network, battery backup, enterprise support",
+      "source_url": "https://www.symmons.com/commercial/evolution/leak/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Monnit ALTA water detect sensor (3-ft lead) $105 each; longer leads cost more; gateway separate",
+      "source_url": "https://monnit.com/products/sensors/water-detection/water-detect/MNS2-9-W1-WS-WD-L03/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "iMonnit tiers: Basic always free (100 sensors, 100 users, 45 days history, 2-hour heartbeat); Premiere starting @ $45/yr (10-minute heartbeat, 1-year history, API, automated reporting); Express starting @ $79; SMS and voice calls cost extra",
+      "source_url": "https://www.monnit.com/software-comparison/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SimpliSafe plans priced per day: Standard 76 cents/day, Core $1.10/day, Pro & Pro Plus $1.66-$2.66/day",
+      "source_url": "https://support.simplisafe.com/pages/monitoring-plans",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SimpliSafe will not request dispatch of emergency services for water alarms; monitored plan gives an automated call",
+      "source_url": "https://support.simplisafe.com/articles/water-sensor/water-sensor-installation-guide",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SimpliSafe Water Sensor $19.99 one-time",
+      "source_url": "https://simplisafe.com/water-sensor",
+      "result": "not found"
+    },
+    {
+      "claim": "FireAvert MSRP table: leak detector $40, temp/humidity $50, toilet auto shutoff $249, auto water shutoff $330, PRO monitoring $60/year",
+      "source_url": "https://fireavert.com/blogs/multi-family-properties/how-property-managers-stop-water-claims-building-damage",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FireAvert cites a national average water claim of about $11,500 and up to $22,000 in its own portfolio",
+      "source_url": "https://fireavert.com/blogs/multi-family-properties/how-property-managers-stop-water-claims-building-damage",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Alert Labs: no published price (request a quote); subscription renews annually; subscription is not a cellular fee; one Sensor Relay covers up to 50 Floodie/Humie sensors within about 500 feet; support staffed seven days a week",
+      "source_url": "https://www.alertlabs.com/answers/how-much-does-commercial-water-leak-detection-cost",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Alert Labs case study: 40-building Chicago portfolio, sensors at 31 properties, 48% had a leak averaging $5,900, about $75,000 total savings opportunity",
+      "source_url": "https://www.alertlabs.com/answers/how-much-does-commercial-water-leak-detection-cost",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Moen Leak Protection Service includes device + one Flo Detector + pro install kit + continuous limited warranty while subscribed, dedicated support, 10% moen.com discount, up to $5,000 deductible coverage; 36-month initial term, month-to-month after, 50% of remaining payments on early cancellation; installation by independent third-party licensed plumbers in select regions",
+      "source_url": "https://flo.moen.com/products/moen-flo-protection-service",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Moen Leak Protection Service $17.99/month plus $49.99 activation",
+      "source_url": "https://flo.moen.com/products/moen-flo-protection-service",
+      "result": "not found"
+    },
+    {
+      "claim": "Moen device price $719.64",
+      "source_url": "https://flo.moen.com/products/flo-smart-water-monitor-shutoff-enhanced-bundle",
+      "result": "not found"
+    },
+    {
+      "claim": "YoLink Water Leak Sensor 4 $19.99 each; hub required for app alerts",
+      "source_url": "https://shop.yosmart.com/products/ys7906",
+      "result": "confirmed"
+    },
+    {
+      "claim": "YoLink Hub $23.59 each",
+      "source_url": "https://shop.yosmart.com/products/yolink-hub",
+      "result": "confirmed"
+    },
+    {
+      "claim": "YoLink water leak starter kit $69.99 (hub plus four sensors)",
+      "source_url": "https://shop.yosmart.com/products/yolink-water-leak-sensor-1-starter-kit",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Phyn Plus device $579.99, no subscription, pre-freeze warnings, multi-property up to 6 properties, Alexa/Google/IFTTT",
+      "source_url": "https://phyn.com/products/phyn",
+      "result": "could not open"
+    },
+    {
+      "claim": "ProSentry $4-$9 per tenant per month and $60-$80 per sensor",
+      "source_url": "https://prosentry.com/faqs",
+      "result": "not found"
+    },
+    {
+      "claim": "Habitat Magazine interview: 100-unit building with ~500 sensors, $4,000-$5,000 hardware, about $10,000-$12,000 total with gateways, roughly $2 per sensor per month monitoring; author David Zilenziger, Aware Buildings, October 2023",
+      "source_url": "https://www.habitatmag.com/Archive2/414-October-2023/Sneaky-Water-Leaks",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Phantom H2O: 161-unit property with $1,063/month monitoring cost (about $6.60/unit/month)",
+      "source_url": "https://www.phantomh2o.com/schedule-a-call",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Podcast: about $85,000 upfront for roughly 1,200 sensors plus ~$17,000/year ongoing",
+      "source_url": "https://www.buzzsprout.com/2025936/episodes/17365688-how-one-nyc-co-op-stopped-playing-whack-a-mole-with-water-leaks",
+      "result": "not found"
+    },
+    {
+      "claim": "Alert Labs reseller article (2021) states $150 per device per year",
+      "source_url": "https://www.water-controls.com/news/2021/1/15/what-to-know-before-installing-a-flowie-from-alert-labs-inc",
+      "result": "contradicted"
+    },
+    {
+      "claim": "price_ranges low_cost_self_serve and mid_market bounds follow from the sourced offerings and are labeled inference",
+      "source_url": "https://leaksense.io/product",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

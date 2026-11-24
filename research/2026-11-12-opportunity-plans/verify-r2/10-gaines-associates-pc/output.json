@@ -1,0 +1,81 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "suggested_pricing.reasoning: 'a part-time New Jersey clerk is about $35/hour loaded, so 5-10 hours a month of displaced work already covers the monthly fee'",
+      "problem": "Arithmetic contradiction. The plan's own figures give 5-10 hours x ~$35/hour = $175-$350/month of displaced clerk time, against a proposed monthly fee of $550. At $35/hour the fee needs ~16 hours a month to be covered, not 5-10. The plan's own per-book estimate (9-18 recovered hours per book per year, i.e. roughly 0.75-1.5 hours per book per month) makes 5-10 hours/month a 4-7 book outcome at best, and it still would not cover $550.",
+      "fix": "Replace with the correct break-even: '$550/month is covered at ~16 loaded clerk hours a month', or lower the monthly fee to ~$350 to match a 5-10 hour displacement, and state the per-book hours assumption explicitly (225-720 hours / 25-40 books = 9-18 hours per book per year)."
+    },
+    {
+      "claim": "suggested_pricing.reasoning: 'Year one for the firm on a 5-book engagement is about $11,450 ... against an audit value estimate of $13,600-$43,600 ... about 0.84x the low end and about 0.26x the high end'",
+      "problem": "The comparison mixes two different book counts. The audit's $13,600-$43,600 is derived from 25-40 books a month (per caveats and problem.summary), while the $11,450 year-one cost is for a 5-book engagement. Per book the audit implies roughly $545-$1,090 of recovered value a year (9-18 hours x ~$60.5), so a 5-book book of business is worth roughly $2,700-$5,450 a year - about a quarter to a half of the proposed year-one fee, not 0.84x-0.26x of it. The ratios are arithmetically correct but economically meaningless as presented, and they overstate the value case by roughly 5x-8x.",
+      "fix": "Recompute on a like-for-like basis: either compare the 5-book fee with the 5-book value ($2,700-$5,450/year), or compare the 25-book fee ($1,050/month = $12,600/year) against the 25-book value, and re-price the pilot/set-up if the 5-book case does not clear."
+    },
+    {
+      "claim": "problem.summary / caveats: recovered time is 'about $13,600-$43,600 at the BLS New Jersey accountant benchmark' ($100,830 median)",
+      "problem": "The range does not reproduce from the cited benchmark as written: $100,830 / 2,080 = $48.48/hour, and 225-720 hours at that rate is $10,900-$34,900. The stated $13,600-$43,600 only appears if a 1.25 benefits load is applied (~$60.5/hour), which the plan spells out for the clerk comparison ('roughly $35/hour loaded at the audit's 1.25 benefits factor') but not for the accountant figure. Both BLS values themselves are correct.",
+      "fix": "Show the derivation: $100,830 / 2,080 = $48.48/hour, x 1.25 benefits load = ~$60.5/hour, x 225-720 hours = $13,600-$43,600. Label the loading as the same 1.25 factor used for the clerk line."
+    },
+    {
+      "claim": "build_plan phases total 30-38 founder_days inside a '6 weeks from signed scope to first live pilot close' timeline",
+      "problem": "Effort and elapsed time are inconsistent for a solo founder: 3-4 + 6-8 + 8-10 + 4-5 + 4-5 + 5-6 = 30-38 founder-days, while 6 weeks contains 30 working days. At the high end the plan is 8 days (more than 1.5 weeks) of work inside a 6-week window, and the two monthly closes inside the 4-week pilot also consume reviewer, not founder, time.",
+      "fix": "Either raise the elapsed estimate to about 8 weeks, or cut the phase estimates (phases 2 and 3 are the largest) and state that the timeline assumes full-time solo effort with no parallel client work."
+    },
+    {
+      "claim": "edge_vs_competitors: 'Edison is roughly ten miles from Milltown'",
+      "problem": "Unsourced and unlabelled. No page in the plan supports a distance figure, and it is presented as fact inside an otherwise labelled inference section.",
+      "fix": "Mark it as an approximate inference from a map lookup with the date, or drop the mileage and keep 'same county, ~20 minutes away'."
+    },
+    {
+      "claim": "solution.components (Matching and proposal model): the 10% data-residency uplift 'on eligible models released on or after 5 March 2026' is cited to platform.openai.com/docs/pricing",
+      "problem": "The uplift statement is not on the pricing page that was cited; it lives in the OpenAI data-controls guide (platform.openai.com/docs/guides/your-data), which the plan does cite elsewhere. The fact is correct, the citation in the component is misplaced.",
+      "fix": "Point the residency-uplift sentence at https://platform.openai.com/docs/guides/your-data and keep the pricing page for the token rates only."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Hetzner Cloud Regular Performance starts at EUR 5.49 per month, excluding VAT (cheapest tier listed)", "source_url": "https://www.hetzner.com/cloud/", "result": "confirmed"},
+    {"claim": "Hetzner offers US cloud locations (Hillsboro, Oregon; Ashburn, Virginia) but publishes no separate US-region price on the cloud page", "source_url": "https://www.hetzner.com/cloud/", "result": "confirmed"},
+    {"claim": "Postmark Pro is $16.50/month for 10,000 emails with extra emails at $1.30 per 1,000", "source_url": "https://postmarkapp.com/pricing", "result": "confirmed"},
+    {"claim": "Postmark Basic ($15) does not include inbound email processing; Pro is the lowest tier that does", "source_url": "https://postmarkapp.com/pricing", "result": "confirmed"},
+    {"claim": "gpt-5.4-mini standard pricing is $0.75 per 1M input, $4.50 per 1M output, $0.075 per 1M cached input", "source_url": "https://platform.openai.com/docs/pricing", "result": "confirmed"},
+    {"claim": "OpenAI applies a 10% uplift to data-residency (regional processing) endpoints for models released on or after March 5, 2026", "source_url": "https://platform.openai.com/docs/guides/your-data", "result": "confirmed"},
+    {"claim": "Model cost arithmetic: 24,000 transactions x ~2,000 input tokens = 48M input ($36) and 3.6M output ($16.20) = about $52/month", "source_url": "https://platform.openai.com/docs/pricing", "result": "confirmed"},
+    {"claim": "Running-cost total is about $57-$107/month USD plus EUR 11-15/month hosting (model $40-90 + Postmark $16.50 + $0 open-source)", "source_url": "https://postmarkapp.com/pricing", "result": "confirmed"},
+    {"claim": "Intuit publishes an MIT-licensed QuickBooks Online MCP server with 145 tools, 29 entity types, full CRUD on Journal Entry and Attachable, and QUICKBOOKS_DISABLE_WRITE/UPDATE/DELETE flags; it is a local stdio server authenticating per company over OAuth 2.0", "source_url": "https://github.com/intuit/quickbooks-online-mcp-server", "result": "confirmed"},
+    {"claim": "Intuit Builder tier: no monthly program fee, uncapped Core (data-in) calls, 500,000 CorePlus (data-out) calls per calendar month, calls above the cap blocked rather than billed", "source_url": "https://static.developer.intuit.com/resources/Intuit_App_Partner_Program_Guide.pdf", "result": "confirmed"},
+    {"claim": "Intuit Silver tier is US$300 per month with 1 million included CorePlus API credits", "source_url": "https://static.developer.intuit.com/resources/Intuit_App_Partner_Program_Guide.pdf", "result": "confirmed"},
+    {"claim": "BILL publishes a v3 API covering BILL AP, AR and Spend & Expense, with no API pricing on that page", "source_url": "https://www.bill.com/product/api", "result": "confirmed"},
+    {"claim": "Uncat costs $9/month/client with unlimited accountant and client users, transactions, requests and receipt matching, for QBO/QBD/Xero", "source_url": "https://www.uncat.com/", "result": "confirmed"},
+    {"claim": "Botkeeper: $134 per license/mo annual and $149 monthly (1-4), $98/$109 (5-9), $71/$79 (10-24), $53/$59 (25+), no free trial, checked 15 October 2026 by a third-party price index", "source_url": "https://aiaccountingvendors.com/vendors/botkeeper/pricing", "result": "confirmed"},
+    {"claim": "Double: Core $10, Plus $25, Scale $50 per connected client per month, unlimited users; at least one connected client required (tier figures via third-party transcription, 12 October 2026)", "source_url": "https://practice.getverticalos.com/pricing/keeper", "result": "confirmed"},
+    {"claim": "Double vendor page add-ons: Autoclose $500/month, Tax Suite included with $200/month annual commitment, Emails $10 per connected team email/month", "source_url": "https://doublehq.com/pricing-plans/", "result": "confirmed"},
+    {"claim": "FloQast Close Management and Close AI are both 'Contact Sales' with no published dollar figure, and Close AI includes AI agents, AI matching, automated reconciliations, journal entry posting and COSO-aligned AI governance", "source_url": "https://www.floqast.com/pricing", "result": "confirmed"},
+    {"claim": "Numeric's pricing page publishes modules and features with no dollar figures", "source_url": "https://www.numeric.io/pricing", "result": "confirmed"},
+    {"claim": "Xendoo: Essential $395/mo ($355 annual), Growth $695/mo ($625 annual), Scale $995/mo ($895 annual), catch-up from $295/mo, Fractional CFO from $2,500/mo, no onboarding/setup fees", "source_url": "https://xendoo.com/xendoo-pricing/", "result": "confirmed"},
+    {"claim": "Bookkeeper360 bookkeeping price is not rendered ('From / month'); business tax returns from $1,200, individual from $550, catch-up and prior-period cleanup from $1,000", "source_url": "https://www.bookkeeper360.co/pricing/", "result": "confirmed"},
+    {"claim": "New Jersey Bookkeeping, Accounting and Auditing Clerks annual median is $58,300 (OEWS, 2025)", "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000043303113", "result": "confirmed"},
+    {"claim": "New Jersey Accountants and Auditors annual median is $100,830 (OEWS, 2025)", "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000013201113", "result": "confirmed"},
+    {"claim": "Clerk arithmetic: $58,300 / 2,080 = ~$28.03/hour unloaded, ~$35/hour at a 1.25 load, so 225-720 hours is worth about $7,900-$25,200", "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000043303113", "result": "confirmed"},
+    {"claim": "Accountant arithmetic: 225-720 hours is worth about $13,600-$43,600 at the BLS NJ accountant benchmark", "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000013201113", "result": "contradicted"},
+    {"claim": "Hour-count basis: 25 books x 1.5 hours x 12 months x 50% = 225 hours; 40 x 3 x 12 x 50% = 720 hours", "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000043303113", "result": "confirmed"},
+    {"claim": "N.J.A.C. 13:29-3.7(a) bars a licensee or the licensee's firm from disclosing confidential client information without the client's consent", "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-29-3-7", "result": "confirmed"},
+    {"claim": "16 CFR 314.4(f) requires selecting and retaining service providers capable of safeguarding customer information, requiring safeguards by contract, and periodically assessing them", "source_url": "https://www.govinfo.gov/content/pkg/CFR-2024-title16-vol1/pdf/CFR-2024-title16-vol1-sec314-4.pdf", "result": "confirmed"},
+    {"claim": "IRS Publication 4557 (Rev. 5-2024) tells preparers to select service providers that can maintain safeguards, require that in the contract, and oversee their handling of customer information, within a written security plan", "source_url": "https://www.irs.gov/pub/irs-pdf/p4557.pdf", "result": "confirmed"},
+    {"claim": "26 U.S.C. 7216 makes knowing or reckless unauthorised disclosure or use of return information a misdemeanour, with a higher civil penalty under 6713", "source_url": "https://uscode.house.gov/us/usc/119-118/t26/s7216/", "result": "confirmed"},
+    {"claim": "OpenAI: API data not used for training as of 1 March 2023 unless opted in; abuse-monitoring logs kept up to 30 days by default; Zero Data Retention available only to approved customers; United States available as a region with regional storage and processing", "source_url": "https://platform.openai.com/docs/guides/your-data", "result": "confirmed"},
+    {"claim": "Gaines & Associates runs a QuickBooks accounting service line (setup, support, file cleanup)", "source_url": "https://www.gainescpacfo.com/quickbooks-accounting.htm", "result": "confirmed"},
+    {"claim": "The outsourced accounting page sells payroll processing, AP/AR, credit card and bank reconciliations and month-end closings as ongoing services, with no cadence published", "source_url": "https://www.gainescpacfo.com/outsourced-accounting-and-bookkeeping.htm", "result": "confirmed"},
+    {"claim": "Site header carries a 'Send Files' link to protectedxchange.com/gainescfo; firm address is 105 Fieldcrest Ave, Suite 501, Edison, NJ 08837; no owner or managing partner is named on the home page", "source_url": "https://www.gainescpacfo.com/", "result": "confirmed"},
+    {"claim": "Oracle publishes a SuiteTalk REST Web Services API guide with prerequisites/setup (role-based access)", "source_url": "https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/book_1559132836.html", "result": "confirmed"},
+    {"claim": "Docling is MIT-licensed open source and can run locally", "source_url": "https://github.com/docling-project/docling", "result": "confirmed"},
+    {"claim": "Langfuse is MIT-licensed (except ee folders) and self-hostable", "source_url": "https://github.com/langfuse/langfuse", "result": "confirmed"},
+    {"claim": "suggested_pricing arithmetic: year one on 5 books = $2,000 + $4,500 + 9 x $550 = $11,450; at 25 books $550 + 20 x $25 = $1,050 (~$42/book); at 40 books $1,425 (~$36/book); 0.84x and 0.26x of $13,600/$43,600", "source_url": "https://aiaccountingvendors.com/vendors/botkeeper/pricing", "result": "confirmed"},
+    {"claim": "Botkeeper comparison: $447-$596/month for 3-5 licenses at monthly billing ($149 each for 3-4, $109 at 5), and $59 per license at 25+", "source_url": "https://aiaccountingvendors.com/vendors/botkeeper/pricing", "result": "confirmed"},
+    {"claim": "Double comparison: $30-$50/month for 3-5 clients on Core, $150-$250 on Scale, plus $500/month for Autoclose", "source_url": "https://doublehq.com/pricing-plans/", "result": "confirmed"},
+    {"claim": "'5-10 hours a month of displaced work already covers the $550 monthly fee' at ~$35/hour loaded", "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000043303113", "result": "contradicted"},
+    {"claim": "CCH Axcess developer programme page is not readable (plan says HTTP 403; no pricing or entitlement terms obtained)", "source_url": "https://developers.cchaxcess.com/", "result": "could not open"},
+    {"claim": "Senior Accounting Manager job posting at Gaines & Associates lists the client tool stack (QBO, Reach Reporting, Bill.com, NetSuite, CCH ProSystem fx)", "source_url": "https://www.linkedin.com/jobs/view/senior-accounting-manager-at-gaines-associates-pc-4458639021", "result": "could not open"},
+    {"claim": "ProtectedXchange publishes no public API documentation", "source_url": "https://www.gainescpacfo.com/", "result": "not found"}
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,243 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "CargoLens pricing: 'Per-site subscription, unlimited users; the exact price was not shown on the page I opened - Unknown', repeated in data_gaps as 'the CargoLens page showed a per-site/unlimited-user model but not the dollar figure.'",
+      "problem": "Contradicted by the cited page. The CargoLens page I re-opened states: Free 50 inspections/month and 2 users; Pro $599 per site per month billed annually ($749 month-to-month) with unlimited users; $499/site/month billed annually from the sixth site; one-site 30-day pilot $2,500 credited to year one. The brief reports a published price as unpublished, which also weakens the price-cluster benchmark used to size the pilot ($595/mo PalletVision, $599/mo CargoLens).",
+      "fix": "Replace with: '$599/site/month billed annually ($749 month-to-month), unlimited users; free tier 50 inspections/month; $2,500 30-day pilot; $499/site/month from the sixth site' and cite https://www.cargolens.app/receiving-inspection-app. Remove CargoLens from data_gaps."
+    },
+    {
+      "claim": "Peer-reviewed receiving-error study year: '2019-2021 (article; exact year not confirmed on the abstract page)', with data_gaps noting the year was not verified.",
+      "problem": "Year is misstated. The article is Destro et al., Production v.33 e20220077, 2023 (received June 2022, accepted Dec 2022). The 1%-10% range and the 3.50% TYP value are confirmed in Table 1, but they are model inputs drawn from WERC's 2019 DC Measures report, not a 2019-2021 publication.",
+      "fix": "Change year to '2023 (inputs from WERC DC Measures 2019)' and drop the 'exact year not confirmed' caveat."
+    },
+    {
+      "claim": "Neovia Logistics / Octave Coda: 'claims reduced by 40% ... 2024-2025 (case study date not confirmed)'.",
+      "problem": "Date contradicted. The case study says the solution was deployed in December 2025 and the 40% reduction (370+ claims disputed) was measured in 'the first four months after deploying'; the document carries a 2026 copyright. The 40% figure itself is confirmed, but 2024-2025 is the wrong period.",
+      "fix": "Change year to 'deployed December 2025; results over the following four months (2026)'."
+    },
+    {
+      "claim": "NJ LWD QCEW county report 'published 2025' (Middlesex 1,305 establishments, 49,911 employees, 13.3% vs 6.4%, +26.1% 2018-2024).",
+      "problem": "All four numbers are confirmed on the PDF, but the report is dated February 2026, not 2025.",
+      "fix": "Change the year note to '2024 QCEW, report dated February 2026'."
+    },
+    {
+      "claim": "4MP PoE turret/bullet camera at '$105-$168 per camera at a US reseller' (used in pilot cost range and assumptions: '~$105-168 each').",
+      "problem": "Not found. The cited page (usacompua.com/collections/4mp) returned only company boilerplate in my fetch; no product prices appeared, so the range cannot be sourced from the cited URL.",
+      "fix": "Either cite a page that displays those prices (product listing with visible prices) or mark the per-camera cost as an unsourced allowance/inference, consistent with how the PoE switch and cabling are already handled."
+    },
+    {
+      "claim": "NVIDIA Jetson Orin Nano Super Developer Kit at $399 (hardware line and pilot hardware list).",
+      "problem": "Could not open. The cited marketplace URL aborted/timed out on repeated attempts; the nvidia.com product page describes the kit but shows no price. A search index asserts $399 but I could not verify it on a page I opened.",
+      "fix": "Re-verify on a distributor page that displays the price (or NVIDIA store) and cite that URL; otherwise label $399 as unconfirmed, as was done for the Coral price."
+    },
+    {
+      "claim": "Hand freight/stock laborers in the NY-Newark-Jersey City metro averaged $20.66/hour and $42,970/year across 130,180 jobs, cited to https://www.bls.gov/oes/2023/may/oes435071.htm.",
+      "problem": "Numbers are correct but the citation is wrong. oes435071.htm (Shipping, Receiving, and Inventory Clerks) contains none of those figures; they appear on the Laborers and Freight, Stock, and Material Movers, Hand page, oes537062.htm.",
+      "fix": "Add the second source URL (https://www.bls.gov/oes/2023/may/oes537062.htm) or split the fact into two sourced entries."
+    },
+    {
+      "claim": "Arvist AI 'uses dock cameras plus WMS/TMS data to build visual evidence for freight and OS&D claims and to detect fraudulent or mis-timed claims.'",
+      "problem": "Partly not found. The cited page confirms dock/packing-station capture, WMS/TMS linkage, inbound and outbound claims, triage and drafted dispute letters, but says nothing about detecting fraudulent or mis-timed claims.",
+      "fix": "Drop 'fraudulent or mis-timed claims' or re-source it to a page that states it."
+    },
+    {
+      "claim": "PatchCore 99.1% image-level AUROC on MVTec AD, cited to the openaccess.thecvf.com HTML paper page.",
+      "problem": "The figure is correct (Table 1, PatchCore-25% = 99.1 AUROC; the abstract phrases it as 'up to 99.6%'), but the cited URL returns HTTP 404. Only the PDF works.",
+      "fix": "Point the URL at .../Roth_Towards_Total_Recall_in_Industrial_Anomaly_Detection_CVPR_2022_paper.pdf and state '99.1% at the 25% coreset setting (abstract: up to 99.6%)'."
+    },
+    {
+      "claim": "fit_score legal_risk_low = 12/20 while the legal section documents NJ wiretap criminal exposure for audio (2A:156A-3/-4(d)), required notice practice, mandatory bargaining at unionized sites and NLRB GC 23-02's presumption of unlawfulness.",
+      "problem": "Sub-scores are within range and sum correctly (15+12+10+14+12+8 = 71), but legal_risk_low at 60% of maximum sits high against a section that documents a third-degree crime threshold, a mandatory-bargaining obligation and a GC memo presuming always-on surveillance unlawful; the rationale itself concedes 'real friction'.",
+      "fix": "Lower legal_risk_low to about 9-10 and redistribute (e.g. +1 demand, +1 technical_feasibility) so the total still reflects the evidence, or state explicitly that 12 assumes audio disabled, no face recognition and no unionized site."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Middlesex County: 1,305 transportation and warehousing establishments, 49,911 employees (2024 QCEW)",
+      "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Transportation and warehousing = 13.3% of county private employment vs 6.4% statewide; +26.1% 2018-2024, fastest-growing sector",
+      "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Shipping, receiving and inventory clerks, NY-Newark-Jersey City metro: $23.08/hr, $48,000/yr, 40,440 jobs, May 2023",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes435071.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hand freight/stock laborers, same metro: $20.66/hr, $42,970/yr, 130,180 jobs",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes435071.htm",
+      "result": "not found (numbers confirmed on oes537062.htm instead; cited URL does not contain them)"
+    },
+    {
+      "claim": "Carrier may not set a claim window shorter than 9 months, or a lawsuit window shorter than 2 years after written denial (49 U.S.C. 14706(e))",
+      "source_url": "https://uscode.house.gov/us/usc/119-138/t49/s14706/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Carrier must pay, decline or make a firm written settlement offer within 120 days; re-advise every 60 days while pending (49 CFR 370.9)",
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/370.9",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Shortage/damage notations on delivery receipts and carrier bad-order reports do not, standing alone, satisfy minimum claim filing requirements (49 CFR 370.3(b)-(c))",
+      "source_url": "https://www.law.cornell.edu/cfr/text/49/370.3",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Survey of 300+ shippers/carriers/3PLs: most suspect they are not at fault for up to 70-90% of OS&D claims paid; Kargo with FreightWaves, 2022-2023",
+      "source_url": "https://www.freightwaves.com/news/white-paper-everyone-pays-for-osd-uncertainty",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Warehouse receiving error rate modelled at 1%-10% with 3.5% 'typical'",
+      "source_url": "https://www.scielo.br/j/prod/a/m5fWPJPb6sYv74PhTDJbnKw/abstract/?lang=en",
+      "result": "confirmed on full text (Table 1: 1.00%-10.00%, TYP 3.50%) but the stated year 2019-2021 is contradicted - the article is Production 33, e20220077, 2023"
+    },
+    {
+      "claim": "LTL damage rate 1.24% (~1 in 80) and 0.81% across 851,978 shipments for a 2-touch cross-dock",
+      "source_url": "https://www.wearewarp.com/research/ltl-damage-rates-fewer-touches",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2018 retail vendor survey: median non-trade deductions 0.5-1% of AR under $500M revenue; 48% set no time limit before write-off",
+      "source_url": "https://www.scdigest.com/NEWSVIEWS/18-05-29-1.PHP?cid=14268&ctype=content",
+      "result": "confirmed (survey firm is 'Attaining Consulting Group', not 'Attain')"
+    },
+    {
+      "claim": "Kargo/Tillamook: claims down 50% YoY, $173,000 in fees avoided in 2025, 42 claims refuted, inventory accuracy 99.6%->99.8%, read rate >99%, OCR >99%, 31s latency, 7 doors",
+      "source_url": "https://www.kargo.ai/blog/tillamook-case-study-os&d-claims",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PalletVision: $1,995 hardware per unit with 1-year warranty + $595/month per unit software, unlimited users",
+      "source_url": "https://www.palletvision.com/faq",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CargoLens pricing unknown / not shown on the page",
+      "source_url": "https://www.cargolens.app/receiving-inspection-app",
+      "result": "contradicted - page states $599/site/month billed annually ($749 monthly), unlimited users, free tier, $2,500 pilot"
+    },
+    {
+      "claim": "Sensifai DockReceive: EUR 0.05 per verified consignment, pay-as-you-go, no seat fees",
+      "source_url": "https://dockreceive-ai.sensifai.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Happ Labs: from $8,000 per project, fixed estimate after site survey, 6-10 weeks, RTSP/ONVIF existing cameras, direction tracking, on-prem server",
+      "source_url": "https://labs.happ.tools/en/engineering/vision/warehouse-pallet-counting/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "IEMI Labs DockOne: from $1,290 per dock door, labelled a 'VisionConcept' (concept pricing)",
+      "source_url": "https://iemilabs.com/industries/logistics/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Zimark: dock-door pallet/load verification with a free two-day proof of value on one gate",
+      "source_url": "https://zimark.io/solutions/shipping-control/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-450M: 242 ms at 512x512 on Jetson Orin at Q4_0, OCRBench 684, CountBench 73.31",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-450m",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PatchCore 99.1% image-level AUROC on MVTec AD (CVPR 2022)",
+      "source_url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Roth_Towards_Total_Recall_in_Industrial_Anomaly_Detection_CVPR_2022_paper",
+      "result": "confirmed from the PDF (Table 1, PatchCore-25% = 99.1); the cited HTML page returns HTTP 404"
+    },
+    {
+      "claim": "YOLOv12 damaged-parcel detector: 5,188 images, 7% test split, 93.3% precision, 93.8% recall, 93.7% mAP@0.50, 2025",
+      "source_url": "https://dergipark.org.tr/en/pub/jdaia/article/1714220",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Single-image packaging structure recognition: ~85% correct, 91% on most common package types, 2020, custom dataset",
+      "source_url": "https://arxiv.org/abs/2008.04620",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Multi-view counting of stacked objects, ICCV 2025 oral, validated on real and synthetic datasets, error rates not in abstract",
+      "source_url": "https://arxiv.org/abs/2411.19149",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SCD dataset: large public carton dataset (brief: 10k+ annotated stacking scenes)",
+      "source_url": "https://arxiv.org/abs/2102.12808",
+      "result": "confirmed (250,000 instance masks from 16,136 images)"
+    },
+    {
+      "claim": "Ultralytics YOLO is AGPL-3.0; closed-source commercial deployment needs a quoted Enterprise License",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen3-VL family includes dense 2B/4B/8B/32B plus MoE variants",
+      "source_url": "https://arxiv.org/pdf/2511.21631v2.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ wiretap act one-party consent at N.J.S.A. 2A:156A-4(d), with civil liability under 2A:156A-24 for unlawful interception",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239",
+      "result": "confirmed"
+    },
+    {
+      "claim": "P.L. 2021 c.449 (N.J.S.A. 34:6B-22): written notice before knowingly using a vehicle tracking device; penalties up to $1,000 first violation, $2,500 subsequent; effective April 18, 2022",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM",
+      "result": "confirmed (approved Jan 18, 2022; effective 90th day thereafter = April 18, 2022)"
+    },
+    {
+      "claim": "NJDPA (P.L. 2023 c.266) excludes persons acting in a commercial or employment context; thresholds 100,000 consumers or 25,000 plus data-sale revenue; effective January 15, 2025",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM",
+      "result": "confirmed (approved Jan 16, 2024, effective 365th day following enactment)"
+    },
+    {
+      "claim": "NLRB GC Memorandum 23-02 (October 31, 2022): always-on electronic surveillance presumptively violates the Act absent outweighing business need; employee disclosure sought",
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC Policy Statement on Biometric Information and Section 5, dated May 18, 2023",
+      "source_url": "https://www.ftc.gov/legal-library/browse/policy-statement-federal-trade-commission-biometric-information-section-5-federal-trade-commission",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey has no statute or regulation specifically governing employer use of workplace video; common-law intrusion tort applies",
+      "source_url": "https://www.bracheichler.com/insights/use-of-cameras-in-nj-based-ambulatory-surgery-centers/",
+      "result": "confirmed (law-firm alert dated 8/6/2023, as the brief characterises it)"
+    },
+    {
+      "claim": "Neovia Logistics (UK) claims reduced 40% with Octave Coda video insight",
+      "source_url": "https://media.ffycdn.net/us/octave/d/1386e7ef48494fae84026840f69d33b1",
+      "result": "confirmed on the 40% figure; stated period (2024-2025) is contradicted - deployment December 2025, results over the following four months"
+    },
+    {
+      "claim": "NVIDIA Jetson Orin Nano Super Developer Kit at $399",
+      "source_url": "https://marketplace.nvidia.com/en-us/enterprise/robotics-edge/?product=jetson_orin_nano",
+      "result": "could not open (page aborted on three attempts; nvidia.com product page shows no price)"
+    },
+    {
+      "claim": "4MP PoE cameras at $105-$168 per camera at a US reseller",
+      "source_url": "https://www.usacompua.com/collections/4mp",
+      "result": "not found (page content returned company boilerplate only, no product prices)"
+    },
+    {
+      "claim": "Extensiv 3PL Warehouse Manager REST /orders endpoints with RQL filters and bearer-token auth",
+      "source_url": "https://developer.extensiv.com/pages/3pl-wareshouse-manager.html",
+      "result": "could not open (HTTP 403)"
+    },
+    {
+      "claim": "Strength ratings: vendor outcome claims rated Low; no study rated High",
+      "source_url": "https://www.kargo.ai/blog/tillamook-case-study-os&d-claims",
+      "result": "confirmed - Kargo and Neovia/Octave are Low, industry surveys Low/Medium, peer-reviewed single-dataset results Medium; no rating exceeds Medium"
+    }
+  ],
+  "confidence": "High"
+}

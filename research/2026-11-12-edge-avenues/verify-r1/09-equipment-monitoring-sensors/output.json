@@ -1,0 +1,173 @@
+{
+ "verdict": "FAIL",
+ "issues": [
+  {
+   "claim": "New Jersey's 2023 OEWS estimate for Maintenance and Repair Workers, General (SOC 49-9071) in the Middlesex-Monmouth-Ocean area is $52,326 per year median, roughly $25.16/hour",
+   "problem": "Misattributed. In the cited NJ LWD PDF (2023 OEWS, Middlesex-Monmouth-Ocean, by industry sector) $52,326 is the 50th-percentile annual wage for SOC 49-9071 in the Public Administration sector row, not the area-wide occupation estimate. Other sector rows on the same table give materially different figures (e.g. Manufacturing $60,608; Accommodation and Food Services $35,986; Other Services $45,656), so the number is a sector slice presented as the area figure. The $25.16/hour figure appears nowhere in the source; it is a derived division of the annual figure by 2,080 hours and is labelled neither as derived nor as an inference (the table shows percentiles, not a median hourly rate).",
+   "fix": "State it as 'the 2023 OEWS median annual wage for SOC 49-9071 in the Public Administration sector of the Middlesex-Monmouth-Ocean area, $52,326 (NJ LWD, June 2024)'; or use the sector figure that matches the target buyer (Manufacturing $60,608; Accommodation and Food Services $35,986) and mark the hourly conversion as an inference (annual / 2,080)."
+  },
+  {
+   "claim": "An ESP32-S3 + MPU6050 vibration node running FFT features and a K-Means anomaly detector reported 96.5% detection accuracy and about 300 ms end-to-end alert latency",
+   "problem": "Partly misattributed. The 300 ms latency is confirmed ('approximately 300 ms' from data collection to alert via Node-RED/Telegram), but 96.5% accuracy in the Springer paper is the accuracy of the TinyML/DNN state classifier (stopped / average speed / high speed), not of the K-Means anomaly detector, which the authors describe as a separate and complementary algorithm. The same entry's sample descriptor ('Laboratory bench setup, not a field deployment') also conflicts with the paper, which claims a real-world validation with 98% detection accuracy over 2 months of industrial operation.",
+   "fix": "Attribute 96.5% to the TinyML classifier (K-Means was a separate anomaly detector), and correct the sample description to 'bench plus a reported 2-month field validation; single study, no independent replication'."
+  },
+  {
+   "claim": "Tractian separate CMMS product: from $60/user/month, billed annually, 5-user minimum",
+   "problem": "Not present on the cited page. tractian.com/en/solutions/pricing (and /en/pricing) only show asset-health 'get a custom quote' with no CMMS per-user price, billing cycle or seat minimum. The CMMS price is therefore unsourced in this brief.",
+   "fix": "Replace with 'Unknown - custom quote' or cite the actual Tractian CMMS pricing page and verify the $60/seat, annual-billing and 5-seat minimum there."
+  },
+  {
+   "claim": "Milesight UG65 US 915 MHz gateway at $690 one per site; Banner QM30VT2 at $320.00 Digi-Key single-unit list",
+   "problem": "Both prices are real market listings, but neither could be read off the cited page: the iotnvr.com product page rendered no price at all, and digikey.com returned HTTP 403. Both figures were only seen in search-result summaries (Digi-Key BR/MX listings; iotnvr listing) and gateway pricing varies by seller.",
+   "fix": "Keep the numbers but cite a page that actually shows the price, and note that the UG65 street price varies ($690-$777 seen) so the line item should be a range or a quote."
+  },
+  {
+   "claim": "Hailo-8L Raspberry Pi AI Kit $70",
+   "problem": "The cited source (raspberrypi.com news post on 1GB Pi 5 and memory-driven price rises) documents the Pi 5 8GB move from $80 to $95 but contains no AI Kit price. The $70 figure checks out, but at a different Raspberry Pi page.",
+   "fix": "Cite https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/ for the $70 AI Kit and keep the price-rise post for the $95 Pi 5."
+  },
+  {
+   "claim": "MaintainX: average hour of unplanned downtime about $25,000, 29% aging equipment, 60% skilled-trade shortage - rated strength Medium",
+   "problem": "All three numbers are correct, but this is a vendor-published, self-reported survey of 1,165 respondents with no methodology shown on the press release. Under the rating rule that vendor-supplied outcome data must be Low, Medium overstates it, and the brief itself elsewhere treats vendor data (Parts Town, Emerson) as Low.",
+   "fix": "Downgrade to Low, and describe it as a vendor-run survey of MRO professionals (not a measured outcome at customer sites)."
+  },
+  {
+   "claim": "1 in 3 foodservice customers experience unplanned equipment downtime every week (Parts Town, 2025)",
+   "problem": "Substance is correct, but the cited partstown.com page returned HTTP 403 on direct fetch, so the claim rests on the search-result summary of that page (which matches: ~1,800 respondents in 2025, refrigeration and fryers most frequent/disruptive). Not independently verified from the primary page in this pass.",
+   "fix": "Keep the claim but add a data_gaps note that the primary report page was blocked and the finding was read from search-indexed copy, or cite a trade-press report of the study."
+  },
+  {
+   "claim": "Only 14% of surveyed SMEs used predictive maintenance (Wiley, IET Collaborative Intelligent Manufacturing, 2023)",
+   "problem": "The cited Wiley article could not be opened (HTTP 403), so this figure could not be verified at all in this pass; the brief already concedes the survey year, n and country mix are not verifiable.",
+   "fix": "Open the paper (or an accessible mirror) and quote the sentence carrying the 14%, or move the figure to data_gaps and drop it from the evidence list."
+  },
+  {
+   "claim": "Emerson/Johns Manville case study: 44 hours downtime avoided, 50% longer MTBF, 43% fewer mechanical emergency maintenance events, 260% program ROI in six months",
+   "problem": "Numbers all confirmed exactly on the Emerson PDF, but the entry's year is given as 'undated' when the document carries a 2019 copyright (and describes a program started in early 2002), so 'undated' understates what the source shows.",
+   "fix": "Set year to '2019 document (program from 2002)' so readers can see the vintage of the result."
+  }
+ ],
+ "claims_checked": [
+  {
+   "claim": "NIST: predictive maintenance associated with 15% less downtime than preventive, 87% lower defect rate, 66% less maintenance-driven inventory increase; top-quartile reactive establishments had 3.3x more downtime",
+   "source_url": "https://www.nist.gov/news-events/news/2020/06/research-suggests-significant-benefits-investing-advanced-machinery",
+   "result": "confirmed"
+  },
+  {
+   "claim": "DOE FEMP O&M Best Practices Guide: functional PdM program yields 35-45% downtime reduction, 70-75% fewer breakdowns, 25-30% lower maintenance cost, 8-12% savings over PM alone, from 'independent surveys'",
+   "source_url": "https://www.energy.gov/sites/default/files/2020/04/f74/omguide_complete_w-eo-disclaimer.pdf",
+   "result": "confirmed"
+  },
+  {
+   "claim": "MaintainX 2024 survey of 1,165 MRO professionals: ~$25,000 average cost per hour of unplanned downtime; 29% expect aging equipment to be leading cause; 60% cite skilled-trade shortage as top barrier",
+   "source_url": "https://www.getmaintainx.com/newsroom/state-of-industrial-maintenance-report-2024",
+   "result": "confirmed"
+  },
+  {
+   "claim": "N.J.A.C. 8:24-1.5: refrigeration temperature is 41F or less, with a 45F legacy allowance for equipment in use as of January 2, 2007 that must be upgraded or replaced as of January 2, 2012",
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-1-5",
+   "result": "confirmed"
+  },
+  {
+   "claim": "N.J.A.C. 8:24-3.2 requires refrigerated potentially hazardous food to be received at 41F or below",
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-2",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Siemens True Cost of Downtime 2024: SME manufacturers up to ~$150,000/hour, automotive $2.3M/hour, and unplanned downtime costs the world's 500 biggest companies 11% of revenues",
+   "source_url": "https://vsight.io/blog/cost-of-unplanned-downtime-manufacturing/",
+   "result": "confirmed"
+  },
+  {
+   "claim": "2023 OEWS median for SOC 49-9071 in Middlesex-Monmouth-Ocean is $52,326/year, about $25.16/hour",
+   "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/employ/oeswageweb/PDFs/mid_ind.pdf",
+   "result": "contradicted"
+  },
+  {
+   "claim": "MachineCDN: $45/asset/month, no setup fee, month-to-month, $38 at 51-200 assets and $32 at 201-500, IP67 bolt-on vibration+temp sensor with 5+ year battery, LoRaWAN gateway included, MQTT/OPC-UA/Modbus",
+   "source_url": "https://machinecdn.com/pricing",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Augury: claims under 6 months payback and 1.1B+ machine-hours monitored; no public price",
+   "source_url": "https://www.augury.com/pricing/",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Tractian asset health is custom-quoted per asset by criticality; separate CMMS from $60/user/month, annual billing, 5-user minimum",
+   "source_url": "https://tractian.com/en/solutions/pricing",
+   "result": "not found"
+  },
+  {
+   "claim": "Banner QM30VT2 at $320.00 per unit at Digi-Key",
+   "source_url": "https://www.digikey.com/en/products/detail/banner-engineering-corporation/QM30VT2/10652478",
+   "result": "could not open"
+  },
+  {
+   "claim": "Shelly Pro 3EM-3CT63 at $150.99",
+   "source_url": "https://us.shelly.com/products/shelly-pro-3em-3ct63",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Raspberry Pi 5 8GB now $95 official, raised from $80; Hailo-8L AI Kit $70",
+   "source_url": "https://www.raspberrypi.com/news/1gb-raspberry-pi-5-now-available-at-45-and-memory-driven-price-rises/",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Milesight UG65 gateway at $690 per site",
+   "source_url": "https://iotnvr.com/products/milesight-ug65-semi-industrial-lorawan%C2%AE-gateway",
+   "result": "not found"
+  },
+  {
+   "claim": "LBL: 26 organizations using FDD across 550 buildings and 97M sq ft achieved median whole-building energy savings of 8% (2020, peer-reviewed)",
+   "source_url": "https://bies.lbl.gov/publications/building-fault-detection-and",
+   "result": "confirmed"
+  },
+  {
+   "claim": "ESP32-S3 + MPU6050 node: 96.5% accuracy from a K-Means anomaly detector and ~300 ms end-to-end alert latency",
+   "source_url": "https://link.springer.com/article/10.1007/s43926-025-00142-4",
+   "result": "contradicted"
+  },
+  {
+   "claim": "Emerson/Johns Manville vendor case study: 44 hours downtime avoided in first 6 months, 50% longer MTBF, 43% fewer mechanical emergency maintenance events, 260% ROI in 6 months",
+   "source_url": "https://www.emerson.com/is/content/emerson/en/systems-and-software/ams/case-studies/documents/johns-manville-expands-production-capacity-with-new-approach-to-machinery-health-management.pdf",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Middlesex County 2024 QCEW: 824 manufacturing establishments with 30,862 employees; 1,752 accommodation and food services; 1,710 other services establishments",
+   "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf",
+   "result": "confirmed"
+  },
+  {
+   "claim": "N.J.S.A. 2A:156A-4 is one-party consent, but a non-party interception and consent obtained for an injurious act fall outside the exception",
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239?f=templates&fn=document-frameset.htm",
+   "result": "confirmed"
+  },
+  {
+   "claim": "NLRB GC 23-02 (Oct 31, 2022) was rescinded on February 14, 2025",
+   "source_url": "https://www.nlrb.gov/guidance/memos-research/general-counsel-memos",
+   "result": "confirmed"
+  },
+  {
+   "claim": "NJ Data Privacy Act effective January 2025, applies at 100,000 consumers or 25,000 consumers plus revenue from selling personal data, no small-business exemption, employment data outside the consumer definition",
+   "source_url": "https://www.njconsumeraffairs.gov/ocp/Pages/NJ-Data-Privacy-Law-FAQ.aspx",
+   "result": "confirmed"
+  },
+  {
+   "claim": "N.J.A.C. 13:31-3.8 limits installing/maintaining/servicing premises wiring from the service point to an appliance to licensed electrical contractors holding a business permit",
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-31-3-8",
+   "result": "confirmed"
+  },
+  {
+   "claim": "Fluke 3563 page marks the product discontinued or reclassified",
+   "source_url": "https://www.fluke.com/en-us/product/condition-monitoring/vibration/3563",
+   "result": "confirmed"
+  },
+  {
+   "claim": "fit_score sub-scores 15/12/9/17/12/7 sum to 72 and stay within their stated maximums, consistent with a 'low but non-zero' legal risk position",
+   "source_url": "",
+   "result": "confirmed"
+  }
+ ],
+ "confidence": "Medium"
+}

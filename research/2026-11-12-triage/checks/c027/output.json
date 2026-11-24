@@ -1,0 +1,114 @@
+{
+  "results": [
+    {
+      "ref": "B07431",
+      "name": "Vic's Service Center",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked site, 390px render and the Maps listing. Confirmed: Duda site with zero tel: links (0 on home page and 0 on /contact-us); at 390px document scrollWidth is 768 (horizontal overflow) and the H1 sits 751px wide from x=17, so it is clipped; the GET A QUOTE button renders as a one-letter-per-line vertical strip; nav carries 'AIR CONDITIONO AND HEAT REPAIR'; services are hash anchors on /what-we-do; contact form fields have empty <label> elements and rely on placeholders; two form copies (desktop/mobile widgets) sit in the DOM; no prices anywhere. Google Maps (limited view) shows 4.8 / 51 reviews, 'Auto repair shop', 340 Main St, phone (732) 251-1500, 'By owner' photos. JSON-LD = WebSite + AutomotiveBusiness with address, geo and Mon-Fri 08:00-05:00 / Sat 08:00-03:00 hours. robots.txt allows all (no Disallow). Extra sellable issue not in the record: the home page still carries placeholder demo copy ('Breathtaking colors of our planet', 'Visual odyssey across continents') under each service tile, which looks unfinished to any visitor. Nuance on one claim: the duplicate contact form is a hidden desktop/mobile pair, not two forms a visitor sees at once. Scores (4/3/3/4) look fair."
+    },
+    {
+      "ref": "B00223",
+      "name": "Bender Group Public Relations",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Structured data is WebPage + site navigation only - no Organization or LocalBusiness node with address or phone",
+          "what_is_true": "The Yoast schema graph on the home page does include an Organization node (name 'Bender Group PR', url, logo, Facebook and LinkedIn sameAs). What is missing is address and telephone on that node, and there is no LocalBusiness node. So 'add address/phone to the existing Organization node' is the accurate fix, not 'add an Organization node'.",
+          "source_url": "https://bendergrouppr.com/"
+        },
+        {
+          "claim": "A labelled contact form (Phone, First, Last, Email, Subject, message) with no CAPTCHA",
+          "what_is_true": "The Gravity Form's 'Phone' field is a validation/honeypot input ('This field is for validation purposes and should be left unchanged.'), not a collectable phone field; the real fields are Name (First/Last), Email, Subject (PR Services / Job - Internship / Influencer Enquiry) and 'How Can We Help?'. The form also loads Google reCAPTCHA, so an agent cannot submit it unattended, which weakens the 'bookable 2' rating.",
+          "source_url": "https://bendergrouppr.com/contact/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 4,
+        "ease": 3,
+        "evidence": 3
+      },
+      "notes": "Business is live and current (2026 copyright, 2026 image folders, Yoast modified date 2026-06-02). No Google Business Profile independently confirmed: a Maps search on the firm name plus street address returns only the bare address '154 Fresh Ponds Rd' with no business card and an 'Add a missing place' prompt; a name+town search returns an unrelated PR firm (Fifteen East Media Group). robots.txt is the Yoast block with 'User-agent: * / Disallow:' (empty) so all crawlers are allowed. Contact page has tel: links (2), visible field labels, no address and no hours text - as recorded. At 390px the home page has no horizontal overflow and the H1 fits. Evidence marked down from 4 to 3 because two checkable claims (Organization schema, CAPTCHA) did not hold; gap/pay/ease left as recorded."
+    },
+    {
+      "ref": "B00279",
+      "name": "Chiropractic Therapy Center of NJ",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Maps card re-read directly: 'Chiropractic Therapy Center of NJ', 5.0, category 'Chiropractor', 150 Tices Ln Ste B, East Brunswick 08816, (732) 432-4149, open with 'Closes 7 PM', no website linked and an explicit 'Add website' / 'Add missing information' prompt - the record's central claim holds. Review count is still hidden in the limited Maps view. Directory listing on BestProsInTown confirms the suite address, the phone, hours (Mon/Tue/Wed/Fri 8:30 AM-7 PM, Thu 9-12, Sat 9-12) and an 'accepts insurance' tip. A targeted search found no site of any kind. So: no owned web presence, no services/insurance/pricing text, phone-only intake. Scores gap 5 / ability 2 / ease 4 / evidence 3 are reasonable; evidence 3 is if anything generous given how little confirmable detail exists, but nothing in the record is contradicted."
+    },
+    {
+      "ref": "B00314",
+      "name": "Ivy Pediatrics",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No online scheduling or appointment request form / 'online_booking_or_quote: None visible - booking is by phone or text to the office'",
+          "what_is_true": "There is an Appointment Request form at /appointment/ with First/Last name, date of birth, phone, email, 'Select Location', Appointment Date and Appointment Time fields; it says the slot is confirmed by office staff. It is in the sitemap and reachable, but it is not linked in the main navigation, which is probably why it was missed. So the gap is 'request form only, no real-time scheduling', not 'no request path at all'.",
+          "source_url": "https://www.ivypediatrics.com/appointment/"
+        },
+        {
+          "claim": "Ten offices listed (East Brunswick, Manalapan, South Amboy, Hamilton, Toms River, Holmdel, Lawrenceville, East Windsor, River Edge and others)",
+          "what_is_true": "Nine offices are listed, with the same nine in /our-offices/, /locations/ and the mobile phone menu: Manalapan, East Brunswick, South Amboy, Hamilton, Toms River, Holmdel, Lawrenceville, East Windsor and River Edge. No tenth office page exists in the sitemap (there is an Oradell tour page but no Oradell office entry).",
+          "source_url": "https://www.ivypediatrics.com/our-offices/"
+        }
+      ],
+      "notes": "The rest checked out exactly. Address conflict is real and still live: /contact-east-brunswick-office/ says 7 Brunswick Woods Drive, while /east-brunswick-office and /locations/ say 385 Route 18, Suite E. Hours conflict too - contact page Mon-Fri 10-6 with Saturday closed, office page Mon 10-7 and Saturday 'twice a month 10-6', /our-offices/ Tue/Thu 12-6 with Saturday 9-1. New-patient page still says 'download and print the forms'. robots.txt explicitly allows GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot, Google-Extended and others, and blocks only Yandex/Baidu/Bytespider - as recorded. The 403 limitation is reproducible: the real Chrome browser gets '403 Unauthorized' on ivypediatrics.com while plain HTTP fetch works, so mobile layout and JSON-LD remain unchecked. Scores unchanged: the corrections are about the size of the opportunity, not its value, and gap 3 / ability 5 / ease 3 / evidence 3 still fit."
+    },
+    {
+      "ref": "B00465",
+      "name": "TDM Sealcoating",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "All site claims re-verified in raw HTML: zero tel: links (header phone '(732) 500-1050' is plain span text); no meta description on the home page (only og:description); Yoast graph is WebSite + ImageObject + WebPage with no LocalBusiness; the quote form is Contact Form 7 with placeholder-only fields plus Google reCAPTCHA v3 and CleanTalk; retired Angie's List badge and a D-Fi Productions credit in the footer; /sealcoating-east-brunswick/ town page exists and is titled by service+town. Mobile: the home page has no viewport meta at all, so phones render the desktop layout scaled down - consistent with the 'fixed-width, tiny text' finding (the browser also reports no hamburger button outside the WPtouch wrapper). Google Maps confirms the local-SEO mismatch: 'TDM Sealcoating', 4.8, category 'General contractor', 130 Snowhill St, Spotswood NJ, website tdmconstructionnj.com, phone (732) 500-1050 - i.e. a Spotswood address and a general-contractor category while the site sells sealcoating from East Brunswick. robots.txt blocks only /wp-admin. Review count not shown in the limited Maps view. Scores 4/2/4/4 are reasonable."
+    },
+    {
+      "ref": "B00477",
+      "name": "NJ Junk Guys",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Reconfirmed the negative findings: a Maps search for the quoted name in East Brunswick returns no matching business - only 'NJ Junk' (4.7, 46 Buck Rd), 'Junk Be Gone' and 'Do Not Throw It Away', each with different phones - and a name+address search still resolves to the Yellow Pages listing (15 Gladstone Dr, 732-238-5865). No owned domain surfaced; junkguysnj.com is a different company ('Junk Guys NJ', with its own booking flow) and must not be attributed to this business. Searches also return the name on HomeYou, YellowBot, WhereOrg and Unilocal type aggregators only. I could not re-open Yellow Pages or YellowBot (Cloudflare block in both fetch and the real browser), so the '10% under any written estimate' pitch, the 3/5 aggregator rating and the missed-appointment complaint are carried over unverified - they are the weakest part of this record. Scores gap 5 / ability 2 / ease 5 / evidence 2 still fit, and evidence 2 is honest given the record could not confirm recent activity."
+    },
+    {
+      "ref": "B00714",
+      "name": "PC Abstract Group LLC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "The state registry names Premish Contractor as the contact and sole individual performing searches",
+          "what_is_true": "The NJ DOBI registry entry is the reverse: the registrant listed is 'Premish Contractor', with 'Contact: PC Abstract Group LLC', 423 Willowbrook Dr., North Brunswick NJ 08902, 732-309-1372, a Gmail address, registered 02/19/2025. There is no separate registry entry under PC Abstract Group LLC, so the company appears only as the contact for that individual.",
+          "source_url": "https://www.nj.gov/dobi/division_insurance/titlesearch/registry.html"
+        }
+      ],
+      "notes": "The registry entry exists as described in substance (same town, same 2025 registration, Gmail contact, one individual) but the company/person roles are flipped, which matters because it changes who the buyer and the licence holder actually are. Maps search for the name in North Brunswick returns unrelated abstract/title firms (Providence Abstract, Premier Abstract & Title, Professional Group Abstract) - no listing for this business, confirming no Google profile and no website. Scores gap 5 / ability 1 / ease 5 / evidence 3 left as recorded; a brand-new one-person registry entry with no web presence supports them."
+    },
+    {
+      "ref": "B00721",
+      "name": "WebTheory Media",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No Google Business Profile could be confirmed / agent_readiness findable: 1 / opportunity: 'Claim/complete Google Business Profile'",
+          "what_is_true": "A Google Maps search for the agency name returns two 'WebTheory PPC' listings, both open and both rated 5.0: an 'Advertising agency' at 14 Old Bridge Tpke Ste 203, South River NJ 08882, phone (732) 655-9038, with the website field pointing at webtheoryppc.com; and an 'Internet marketing service' at 607 Lake Ave, phone (732) 800-9867. So a profile exists (possibly as duplicates, possibly after a move from the directory NAP of 330 Constitution Cir, North Brunswick, which matches neither address). The real opportunity is fixing the profile's website link and consolidating duplicates, not claiming a profile from scratch. I could not confirm that either listing is the same legal entity as WebTheory Media LLC.",
+          "source_url": "https://www.google.com/maps/search/WebTheory+Media+North+Brunswick+NJ"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 5,
+        "ability_to_pay": 2,
+        "ease": 3,
+        "evidence": 3
+      },
+      "notes": "The hijack finding is exactly right and still live: webtheoryppc.com serves an Indonesian togel page (title 'OLI4D ... Toto Macau', Product schema for OLI4D, 'DAFTAR/LOGIN' navigation), no tel: links, nothing about PPC or North Brunswick. Worth flagging for the owner: the business's own Google listings still link prospects to that spam page. Ease lowered from 4 to 3 because recovering or rebuilding a lost domain plus de-duplicating two listings is not a quick win; gap 5, ability 2 and evidence 3 left as recorded. Status 'operating' is plausible (listings show open) but the agency's public web presence is effectively gone, so lead with that."
+    }
+  ],
+  "data_gaps": [
+    "Google Maps renders as a limited view in this browser: review counts were not shown for TDM Sealcoating, Chiropractic Therapy Center of NJ or WebTheory PPC, so review-count claims there stay unverified.",
+    "yellowpages.com and yellowbot.com returned Cloudflare blocks to both plain fetch and the real browser, so NJ Junk Guys' directory copy (services list, '10% under any written estimate'), its 3/5 aggregator rating and the missed-appointment complaint could not be re-read directly; only search snippets and third-party listings were available.",
+    "ivypediatrics.com returns '403 Unauthorized' to the headless Chrome while serving plain HTTP fetches fine, so Ivy Pediatrics' mobile layout and JSON-LD could not be inspected; page content was read via direct fetch. The record's own data gap on this stands.",
+    "Ivy Pediatrics' 4.5/236 Birdeye review figure and its East Brunswick Google profile were not re-checked.",
+    "WebTheory Media: no source ties the two 'WebTheory PPC' Google listings (14 Old Bridge Tpke, South River; 607 Lake Ave) to WebTheory Media LLC at 330 Constitution Cir, and clutch.co returned 403 to fetch, so the 2-review Clutch profile was not re-read.",
+    "PC Abstract Group LLC: only the NJ DOBI registry entry exists online; there is no way to confirm current trading activity, order volume or that the registered contact still answers."
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "price_ranges.low_cost_self_serve: \"$97-$250/hr offshore and mid-market freelancers on Upwork (worldwide median $35/hr)\"",
+      "problem": "The cited source (Upwork Insights, updated Nov 12 2026) does not show $97/hr or $250/hr anywhere. It shows a US median of $80/hr, a middle half of $60-$120/hr, a top tenth of $175/hr+, a bottom tenth of $45/hr or less, and a worldwide median of $35/hr. Attaching a $97-$250/hr band to that page is unsupported, and calling $97-$250/hr 'offshore' directly contradicts the source's own worldwide/offshore median of $35/hr.",
+      "fix": "Rewrite the low band to: \"$35/hr worldwide median on Upwork, with the US middle half at $60-$120/hr (Upwork Insights, Nov 12 2026)\". If a $97-$250/hr band is wanted, cite the actual pages that show it (The Automators $125/hr, OVAMIND $250/hr launch rate, XRAY $250/hr via AI Strike Force's 23 Oct 2026 table) and do not describe it as an Upwork/offshore rate."
+    },
+    {
+      "claim": "price_ranges.low_cost_self_serve: \"$297-$597/mo all-in productised packages with 500 voice minutes (Dominion)\"",
+      "problem": "Dominion's page attaches the 500 included minutes to the $297/month single-service voice agent only. The $597 AI Starter package lists an inbound voice agent but publishes no included-minutes figure, so '500 voice minutes' cannot be carried onto the $597 package, and $297 is a single service, not a package. As written the range misstates an inclusion.",
+      "fix": "Rewrite as: \"$297/mo single AI voice agent with 500 minutes then 25c/min, and $597-$1,997/mo packages (Dominion), minutes included only published for the $297 service\"."
+    },
+    {
+      "claim": "what_is_included_vs_extra[2]: \"Post-launch fix windows ... 30 days (TwoCore, HA Technologies, Agentomte handover docs)\"",
+      "problem": "Contradicted for Agentomte. Its pricing page states no fix window, and its AI Workforce Sprint page (agentomte.com/services/ai-workforce-sprint) says handover comes with \"two weeks of written post-handover support\", not 30 days.",
+      "fix": "Change Agentomte to \"2 weeks post-handover written support\" and keep 30 days for TwoCore (confirmed: 30 days of post-launch fixes) and HA Technologies (confirmed: team training + 30-day support)."
+    },
+    {
+      "claim": "implications_for_consultancy[1]: \"Buyers in this segment already accept a paid, credited audit at $497-$1,900. Reasoning: ... AI Strike Force's audit-inclusive entry ...\"",
+      "problem": "AI Strike Force does not publish a paid audit or an audit-inclusive entry price. Its own price section says one agent/automation starts at $2,500 with a written scope before work starts, and its FAQ says a paid discovery is not needed for one workflow (\"a written scope after a free call is enough\"). The reasoning line therefore cites a nonexistent cost point.",
+      "fix": "Drop AI Strike Force from that reasoning line (or recast it as \"AI Strike Force prices a written scope, not a paid audit\") and keep the sourced audit points: MapScale $497, NJ AI Automation $500, OVAMIND $500 strategy call, HA Technologies $1,200, Agentomte $1,900, Automaly from $6,500."
+    },
+    {
+      "claim": "price_ranges.mid_market: \"with retainers of $250-$2,500/mo (NJ AI Automation, TwoCore, AgenticIndex category medians $800-$4,500 entry)\"",
+      "problem": "Category mislabel. The AgenticIndex $800-$4,500 figures are median one-time entry prices by category, not monthly retainers, so they cannot sit inside a retainer parenthetical. The only retainer medians in that report are $5,000/mo (retainer-only, n=30) and $3,500-$5,000/mo by category.",
+      "fix": "Separate the two: \"retainers of $250-$2,500/mo (NJ AI Automation $250-$1,000, TwoCore $500-$1,500, Automaly from $2,500)\" and cite AgenticIndex's $800-$4,500 as entry-price medians in the one-time build sentence."
+    },
+    {
+      "claim": "buyer_reported_costs[3]: Clutch profile shows $100-$149/hr, $10,000+ minimum project size, and \"most common project size of $10,000-$49,999 (from 5 of 8 reviews)\"",
+      "problem": "The Clutch profile returns HTTP 403 and could not be opened. A search-result snippet independently shows $100-$149/hour and a $10,000+ minimum project size, so those two are supported. The most-common-project-size figure (5 of 8 reviews) was not returned by any snippet I saw and is unverified.",
+      "fix": "Keep the hourly band and minimum project size with a note that they come from listing metadata; either delete the $10,000-$49,999 most-common-project-size figure or explicitly mark it unverified in the finding, not only in the caveats."
+    },
+    {
+      "claim": "buyer_complaints[2]: \"buyers are surprised that model, hosting and CRM subscription costs continue after the project ends\" (sourced to superdupr.com)",
+      "problem": "The SuperDupr page does not report buyer surprise or any buyer complaint. It states that the build price is not the whole bill and advises asking for running costs before signing (\"not after the first invoice\"). The buyer sentiment is not in the source and is presented as a complaint rather than as an inference.",
+      "fix": "Either relabel as an inference (\"SuperDupr's page warns buyers to ask for the running-cost number before signing, which implies this is a common surprise\") or re-source it to a buyer-side account."
+    },
+    {
+      "claim": "buyer_reported_costs[1]: \"Four small-business AI agent builds ... $1,650, $4,000, $6,000 and $12,000 - $23,000 total\"",
+      "problem": "The four figures are confirmed on the Wealthy Tent page and its headline says $23,000, but the figures actually sum to $23,650. The brief reproduces the source's total without noting the arithmetic error, and the $23,000 total is what a reader would carry into a pricing argument.",
+      "fix": "Quote the four prices as the evidence and note \"the page states $23,000 total; the four prices sum to $23,650\"."
+    },
+    {
+      "claim": "offerings / price_ranges: MapScale Media \"Monthly Systems $897/mo\" and \"Systems Audit $497\"",
+      "problem": "Confirmed, but note the $497 audit price appears only in MapScale's comparison copy, not as a line-item price against the Systems Audit service (the four services are listed without prices except the $897). Anyone using it as a published audit price should know it is stated in prose, and the page never attaches a price to Automation Setup or Done For You.",
+      "fix": "No number change needed. Phrase it as \"$497 audit, stated in the page's price-comparison copy; Automation Setup and Done For You carry no published price\"."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Nyza Spark $99 one-time, 3-5 days, 14-day fix window, client owns code/assets", "source_url": "https://nyza.us/pricing/", "result": "confirmed"},
+    {"claim": "Nyza Starter $299 one-time (1-2 weeks), up to 3 tool integrations, 30-day fix window, one revision round", "source_url": "https://nyza.us/pricing/", "result": "confirmed"},
+    {"claim": "Nyza Growth $799 one-time (2-4 weeks), unlimited integrations, 60-day fix window, two revisions", "source_url": "https://nyza.us/pricing/", "result": "confirmed"},
+    {"claim": "Nyza Pro $1,999 one-time (4-6 weeks), 90-day fix window, unlimited revisions within scope", "source_url": "https://nyza.us/pricing/", "result": "confirmed"},
+    {"claim": "Nyza Care plans $49/$99/$199 per month, month-to-month, cancel anytime, 2/5/12 hours per month", "source_url": "https://nyza.us/pricing/", "result": "confirmed"},
+    {"claim": "Nyza billing split: Spark/Starter upfront, Growth/Pro 50% upfront and 50% on delivery; inference pass-through $0.50-$5 during build and ~$0.10/min for voice", "source_url": "https://nyza.us/pricing/", "result": "confirmed"},
+    {"claim": "Dominion AI Starter $597/month, AI Pro $1,097/month, AI Empire $1,997/month, setup/training/support included in every package", "source_url": "https://dominionaiagency.com/pricing/", "result": "confirmed"},
+    {"claim": "Dominion voice agent single service from $297/month with 500 minutes included then 25 cents a minute", "source_url": "https://dominionaiagency.com/pricing/", "result": "confirmed"},
+    {"claim": "Dominion single services: lead generation $197/mo, review management $197/mo, social automation $97/mo, website $497 one-time", "source_url": "https://dominionaiagency.com/pricing/", "result": "confirmed"},
+    {"claim": "Dominion publishes no contract, trial, refund or cancellation terms and states texting waits on A2P 10DLC approval", "source_url": "https://dominionaiagency.com/pricing/", "result": "confirmed"},
+    {"claim": "TwoCore fixed-scope build $1,500-$5,000 per workflow, 30 days post-launch fixes, 2-4 weeks to live", "source_url": "https://twocore.ai/pricing", "result": "confirmed"},
+    {"claim": "TwoCore optional retainer $500-$1,500/mo, cancel with 30 days notice and keep what was built; running cost $20-$150/mo at cost", "source_url": "https://twocore.ai/pricing", "result": "confirmed"},
+    {"claim": "NJ AI Automation audit $500, complimentary for select partners, credited toward implementation; 2-3 hour observation, 5-15 opportunities, 1-hour presentation", "source_url": "https://njaiautomation.com/", "result": "confirmed"},
+    {"claim": "NJ AI Automation implementation $1,500-$5,000 one-time; ongoing support $250-$1,000/mo; 30-90 day support included", "source_url": "https://njaiautomation.com/", "result": "confirmed"},
+    {"claim": "NJ AI Automation is NJ-based, NJ-clientele-only, uses self-hosted AI on client infrastructure (OpenAI, WhatsApp, Slack, Gmail, Google Calendar)", "source_url": "https://njaiautomation.com/", "result": "confirmed"},
+    {"claim": "HA Technologies AI Starter Audit $1,200, AI Agent Build $4,500, AI Transformation Partner $8,900/mo; retainers bill monthly and can be cancelled anytime; PayPal checkout; New York and Dubai offices", "source_url": "https://hatechnologies.us/pricing", "result": "confirmed"},
+    {"claim": "HA Technologies GenAI Strategy Sprint $1,800, GenAI Prototype & Launch $6,500, GenAI Advisory Retainer $3,500/mo, 30-day support on builds", "source_url": "https://hatechnologies.us/pricing", "result": "confirmed"},
+    {"claim": "AutomateNexus build fee from $7,500 one-time, '$30-$150/mo (AI direct)', ~30 days to live, simple single-workflow builds as fast as 5 days, 'not a subscription, not per-seat'", "source_url": "https://automatenexus.com/ai-automation-agency/new-york", "result": "confirmed"},
+    {"claim": "The Automators: projects start at $3,000+, USD $125/hour or CAD $175/hour, model usage and third-party licences separate, terms confirmed in writing after a free 30-minute consultation, Calgary base", "source_url": "https://theautomators.ai/ai-agency-new-jersey/", "result": "confirmed"},
+    {"claim": "OVAMIND strategy call $500/90 min, sprint $2,500 with 14-day post-launch support and $500 credit, retainer $10,000/mo cancel anytime, hourly $250/hr launch (normally $500/hr), 30-day notice on retainer, 24-hour cancellation refund, 48-72 hour booking", "source_url": "https://www.ovamind.com/pricing", "result": "confirmed"},
+    {"claim": "SuperDupr build prices $5,000-$10,000 (voice, chatbot, scheduling), $8,000-$15,000 (lead gen/support/sales), $8,000-$20,000 document, $10,000-$25,000 workflow, $25,000-$50,000+ multi-agent, 'as of October 2026', 2-4 weeks", "source_url": "https://superdupr.com/solutions/ai-agent-development", "result": "confirmed"},
+    {"claim": "SuperDupr ongoing support $200-$2,000/month and ~$114/month running cost for a receptionist at 400 calls of 3 minutes", "source_url": "https://superdupr.com/solutions/ai-agent-development", "result": "confirmed"},
+    {"claim": "LuMay voice plans $249/500 min/$0.23, $499/1,000/$0.22, $999/2,000/$0.21, Enterprise 5,000+ custom", "source_url": "https://lumay.ai/pricing", "result": "confirmed"},
+    {"claim": "LuMay workflow automation agents from $1,499/mo and insight/forecasting/anomaly agents from $999/mo each", "source_url": "https://lumay.ai/pricing", "result": "confirmed"},
+    {"claim": "LuMay Discovery Sprint $10K-$15K, Production Pilot $25K-$75K, AI Engineering Pod $35K-$75K/month, on-prem from $90K/yr + $75K setup", "source_url": "https://lumay.ai/pricing", "result": "confirmed"},
+    {"claim": "LuMay annual billing saves the equivalent of two months; cloud and on-prem run as annual subscriptions; model usage included within published volumes", "source_url": "https://lumay.ai/pricing", "result": "confirmed"},
+    {"claim": "Automaly assessment from $6,500 credited in full and refunded if fewer than 5 ROI-positive opportunities; build from $13,000; Revenue Engine Audit from $4,000; fractional lead from $2,500/mo; support only from $350/mo; no minimum term, bank of hours paid upfront", "source_url": "https://automaly.io/pricing/", "result": "confirmed"},
+    {"claim": "Agentomte audit $1,900 fixed with refund, content engine $4,900 setup + optional $990/mo, sprint from $9,500, fractional officer $2,900/mo cancel monthly, 'current as of July 2026', fixed-price invoiced before build, client infra excluded without markup", "source_url": "https://www.agentomte.com/pricing", "result": "confirmed"},
+    {"claim": "Agentomte fix/support window is 30 days", "source_url": "https://www.agentomte.com/services/ai-workforce-sprint", "result": "contradicted"},
+    {"claim": "AI Strike Force single agent/automation from $2,500 fixed before build, monthly plan from $1,500, 4-8 weeks for full system, fixed at no cost if it does not work as agreed", "source_url": "https://aistrikeforce.com/ai-automation-agency-pricing", "result": "confirmed"},
+    {"claim": "AI Strike Force publishes a 14-agency table with figures checked 23 October 2026 (BULDRR, Airtective, TwoCore, SuperDupr, LuMay, XRAY $250/hr in 4/10/20-hour blocks)", "source_url": "https://aistrikeforce.com/ai-automation-agency-pricing", "result": "confirmed"},
+    {"claim": "AI Strike Force has an audit-inclusive entry price", "source_url": "https://aistrikeforce.com/ai-automation-agency-pricing", "result": "contradicted"},
+    {"claim": "MapScale Monthly Systems $897/mo; audit $497; Automation Setup (up to 3 flows, 2 weeks post-build support) and Done For You carry no published price; Make.com and n8n", "source_url": "https://mapscalemedia.com/", "result": "confirmed"},
+    {"claim": "AgenticIndex: 290 agencies, 205 (71%) publish prices, 85 (29%) do not; median entry price $2,000 (n=140), 99 of 140 below $5,000; retainer-only median $5,000/mo (n=30, range $2,000-$15,000)", "source_url": "https://getagenticindex.com/reports/2026-ai-agency-pricing", "result": "confirmed"},
+    {"claim": "AgenticIndex category entry medians $800-$4,500 and Fractional AI Advisory retainer median $3,500/mo (n=13)", "source_url": "https://getagenticindex.com/reports/2026-ai-agency-pricing", "result": "confirmed"},
+    {"claim": "Upwork Insights: US automation freelancers median $80/hr, middle half $60-$120, bottom tenth $45 or less, top tenth $175/hr+, worldwide median $35/hr, 114 profiles with $10K+ earnings, updated Nov 12 2026", "source_url": "https://www.upworkinsights.com/rates/automation-freelancers/United%20States", "result": "confirmed"},
+    {"claim": "Upwork figures of $97/hr and $250/hr as offshore/mid-market freelance rates", "source_url": "https://www.upworkinsights.com/rates/automation-freelancers/United%20States", "result": "not found"},
+    {"claim": "Streamline IQ case study: 12-employee law firm paid $3,500 one-time plus $350/month for a chatbot with Clio CRM and Calendly integration, claiming $25,200/year savings", "source_url": "https://streamlineiq.biz/ai-legalfirm/", "result": "confirmed"},
+    {"claim": "Wealthy Tent: four agent builds at $1,650, $4,000, $6,000 and $12,000, headline total $23,000", "source_url": "https://wealthytent.com/ai-agent-pricing-for-small-businesses", "result": "confirmed"},
+    {"claim": "Clutch listing: $100-$149/hour and $10,000+ minimum project size", "source_url": "https://clutch.co/profile/ai-automation-agency-360", "result": "could not open"},
+    {"claim": "Clutch listing: most common project size $10,000-$49,999 from 5 of 8 reviews", "source_url": "https://clutch.co/profile/ai-automation-agency-360", "result": "not found"},
+    {"claim": "Indie Hackers post-mortem: agency lost a $2,500/month client after an n8n lead-capture workflow ran broken three days and roughly 40 leads were missed", "source_url": "https://www.indiehackers.com/post/lost-a-2-500-month-client-in-my-ai-automation-agency-in-the-worst-way-possible-T1lcOPJFmIvuMLkkSbmT", "result": "could not open"},
+    {"claim": "Reddit r/n8n thread questioning whether AI automation agencies are template resells", "source_url": "https://www.reddit.com/r/n8n/comments/1tnlfsr/ai_automation_agencies_aaa_feel_like_a_massive/", "result": "could not open"}
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,123 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"Enquiries arrive as a call or a free-text comment with no questions on building type, size, systems or deadline, while each deliverable needs scoping plus a written proposal.\"",
+      "problem": "The second half is stated as fact but is not in any cited source. https://stoneridgeeng.com/due-diligence.html says only that clients 'will be provided with a full report' and that the firm assesses budget requirements; it never mentions a proposal, a proposal fee, or a scoping step. The audit's own source annotation ('document deliverables needing scoping plus a written proposal') over-describes what that page supports. It is a reasonable inference from consulting practice, but it is unlabelled and the whole second opportunity (and its hour range) rests on it.",
+      "fix": "Either mark it as inference - e.g. 'each deliverable is a report, so it has to be scoped and priced before work starts (our inference - nothing on the site describes a proposal step)' - or trim the claim to what the page shows: 'deliverables are written reports, not fixed-price products'."
+    },
+    {
+      "claim": "\"x 25-40% automated\" - the multiplier in both hour ranges (48-307 h; 24-104 h).",
+      "problem": "Only the upper bound has a cited basis (40% faster on short professional writing tasks, Science 2023). The 25% low end has no source anywhere in the audit, and the ACEC URL listed in Sources (68% estimate AI could automate up to 29% of tasks) is never referenced in the body. The multiplier is also not listed among the stated assumptions in either parenthetical - those name only the proposal count, the hours each, the single principal and the weekly hours - so it reads as a measured figure rather than a transfer from a 20-30 minute writing-task experiment to scoping and fee-setting.",
+      "fix": "Add the multiplier to the assumptions list and name the low end's basis: 'x 25-40% (25% from the ACEC Research Institute 2025 estimate that AI could automate up to 29% of tasks, 40% from the Science 2023 writing-task study - both transfers, not measurements at this firm)'. Keep the dollar figures; the arithmetic itself is correct."
+    },
+    {
+      "claim": "\"Seen as a prospective client would, your website and Google listing are not taking new work.\"",
+      "problem": "Overstated as a factual conclusion: the site and the Google listing both display a working phone number, (732) 658-6302, and the contact page explicitly tells visitors to call for immediate assistance. The verified failure is narrower - the web form, tap-to-call and mobile menu - which the body states accurately.",
+      "fix": "Soften to what was verified, e.g. 'the only intake path that still works is the phone number; the form, the mobile menu and the listing itself are not pulling their weight.'"
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Business is Stone Ridge Engineering, LLC, a principal-led MEP/FP consulting engineering practice; 12+ years, a P.E. and an NJ electrical licence",
+      "source_url": "https://stoneridgeeng.com/about.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Positioning on word of mouth and repeat customers",
+      "source_url": "https://stoneridgeeng.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Contact page shows five fields (name, address, phone, email, comments) and a Submit button; form action is javascript:void(0)",
+      "source_url": "https://stoneridgeeng.com/contact.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "jQuery is loaded over http on an https page (blocked as mixed content) so the form's validation/ajax handlers never bind and submitting does nothing",
+      "source_url": "https://stoneridgeeng.com/contact.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "At 390 px the menu button opens nothing",
+      "source_url": "https://stoneridgeeng.com/index.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The phone number is not tappable (no tel: link; viewport meta sets format-detection telephone=no; number is a plain span)",
+      "source_url": "https://stoneridgeeng.com/index.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No analytics or call tracking exists to size today's traffic",
+      "source_url": "https://stoneridgeeng.com/index.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The site shows no portal or file-transfer tool",
+      "source_url": "https://stoneridgeeng.com/feasibility-studies.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site has no JSON-LD, no meta description, page-name-only titles, robots.txt missing (404)",
+      "source_url": "https://stoneridgeeng.com/robots.txt",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Each deliverable needs scoping plus a written proposal (due diligence page as source)",
+      "source_url": "https://stoneridgeeng.com/due-diligence.html",
+      "result": "not found"
+    },
+    {
+      "claim": "Deliverables include due diligence reports, feasibility studies and peer reviews; MEP/FP scope is mechanical, electrical, plumbing and fire protection",
+      "source_url": "https://stoneridgeeng.com/mep-engineering.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ civil engineer median wage $50.32/hour (used as x1.25 benefits = $62.90/hour)",
+      "source_url": "https://www.onetonline.org/link/localwages/17-2051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Arithmetic of opportunity 2: 48-96 proposals x 4-8 h x 25-40% = 48-307 h; x $62.90 = $3,019-$19,310",
+      "source_url": "https://www.onetonline.org/link/localwages/17-2051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Arithmetic of opportunity 3: 48-52 weeks x 2-5 h/week x 25-40% = 24-104 h; x $62.90 = $1,509-$6,541",
+      "source_url": "https://www.onetonline.org/link/localwages/17-2051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "40% faster completion on short professional writing tasks (Science 2023, Noy & Zhang; 453 professionals, preregistered experiment)",
+      "source_url": "https://www.science.org/doi/10.1126/science.adh2586",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ACEC Research Institute 2025: AI use at 81% of firms in marketing and sales versus 36% in design and project delivery",
+      "source_url": "https://www.acec.org/resource/new-acec-research-institute-report-finds-ai-is-transforming-engineering-by-accelerating-human-talent/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email draft: Submit button posts nowhere; phone-width menu does not open; Google listing shows 'Claim this business'; domain stoneridgeeng.com; contact named Mr. Cioffi",
+      "source_url": "https://www.google.com/maps/search/Stone+Ridge+Engineering+North+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Walk-in opener: website contact form does not submit; audit covers three fixes",
+      "source_url": "https://stoneridgeeng.com/contact.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body is at most ~450 words (measured: ~428 including intro, headings and the closing disclaimer; 'For the founder' and Sources excluded)",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No personal or private data on individuals; only the owner's business name, role and company contact details, all published on the firm's own site and Google listing",
+      "source_url": "https://stoneridgeeng.com/about.html",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

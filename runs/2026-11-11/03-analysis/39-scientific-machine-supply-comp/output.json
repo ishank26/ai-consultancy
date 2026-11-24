@@ -1,0 +1,82 @@
+{
+  "business": "Scientific Machine & Supply Company (SciMac)",
+  "industry": "manufacturing",
+  "town": "Middlesex, NJ",
+  "opportunities": [
+    {
+      "title": "RFQ intake and technical pre-sales agent for custom PTFE and glass-threading work",
+      "capability": "A",
+      "problem": "Every engineered-to-order inquiry leaves the website and lands on a small customer-service desk that is only staffed 8:30-5:30 EST weekdays. The request-quote page tells buyers to call or email so an associate can guide selection or judge whether custom fabrication is feasible; the FAQ repeats the same instruction for sizing, part identification and cross-referencing other makers' part numbers. The only advertised 24-hour channel is a fax line. (inference) Response speed on RFQs and after-hours leakage are therefore likely bottlenecks, and quote turnaround is the buyer's first quality signal in contract labware.",
+      "evidence": [
+        "Quote requests are taken by web form, phone or email, and the fax line is described as available 24 hours: https://scimac.com/request-quote/",
+        "Customer service hours are Monday-Friday 8:30AM-5:30PM EST, single main phone line: https://scimac.com/contact-us/",
+        "FAQ repeatedly routes sizing and competitor part-number cross-reference questions to 'email or call customer service': https://scimac.com/faqs/",
+        "Custom work spans ~4-6mm capillary through 150mm tooled glass flanges, i.e. a wide envelope of one-off specs that must be qualified before quoting: https://scimac.com/custom-products/custom-glass-threading/",
+        "Industry evidence that AI-assisted support resolves more issues per hour - +14% average, +34% for less-experienced staff - in a staggered field rollout of a generative assistant to 5,179 agents (NBER working paper w31161, not peer-reviewed; support setting, not manufacturing): https://www.nber.org/papers/w31161"
+      ],
+      "agent_design": "Agent watches the Gravity Forms quote inbox, the info@ mailbox and (optionally) a web-form webhook. On each request it extracts part type, joint size/taper, material, dimensions, drawing attachments, quantity and requested date; classifies it as catalog-match, light-custom or engineering review; proposes catalog SKUs from the WooCommerce catalog; and drafts a customer reply containing clarifying questions plus a preliminary price band and lead-time band from a rules table the shop maintains. Systems touched: Gravity Forms entries, WooCommerce product data, email, a quote log/dashboard. Human approval: a customer-service associate reviews and edits every draft quote before it is sent, and any new toolpath, tolerance call or non-standard material routes to the shop/engineering for sign-off. Agent never commits price; it stops at 'ready for approval'.",
+      "why_not_DIY": "Requires a two-way integration into Gravity Forms entries, WooCommerce catalog and the shared mailbox, plus a price/lead-time rules layer that has to be maintained and audited; a chat subscription cannot read drawings, cannot write back into the quote log, and cannot enforce an approval gate. Errors are commercial (under-quoted custom glass threading), so the reliability and audit trail matter more than the chat surface.",
+      "impact_estimate": {
+        "range": "$18,000-$42,000/yr of recovered administrative time, plus faster quote turnaround (target: same-business-day first response for in-hours RFQs, next-morning for after-hours)",
+        "assumptions": "Assumes 1-2 people spend 30-45% of their week on RFQ intake, clarification and catalog lookup (600-1,200 hours/yr); assumes 40-60% of that drafting/clarification effort is removed and 25-35% of after-hours inquiries currently wait 12+ hours. Valued at the NJ median for Production, Planning and Expediting Clerks ($62,710/yr, ~$30/hr) loaded at 1.3x. Excludes any revenue recovered from faster quotes, which is not estimable from public data. Downgraded from the +14% support-productivity figure because this setting is quoting, not high-volume ticket support.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "4 weeks: connect the quote form + info@ inbox, build the extraction and classification schema on 50-100 historical RFQs, stand up the draft-reply and catalog-match generator behind a human approval queue, and deliver a quote log dashboard plus a measured before/after first-response time for a 2-week live shadow period (agent drafts, staff send)."
+    },
+    {
+      "title": "Catalog and cross-reference knowledge agent for a large variable-SKU PTFE storefront",
+      "capability": "C",
+      "problem": "The store runs a deep variable-product catalog (joint size, color, length, price) behind Advanced Woo Search Pro, with no per-product customization fields, and the FAQ's sizing and part-identification questions all terminate in 'contact customer service'. Buyers cross-referencing another manufacturer's stopper or stopcock number have no self-serve path. (inference) This is both a deflection problem and a product-data quality problem, because search, discount rules and wishlists all depend on consistent SKU metadata.",
+      "evidence": [
+        "FAQ is dominated by sizing and part-identification questions and repeatedly routes users to customer service, including cross-referencing another manufacturer's part number: https://scimac.com/faqs/",
+        "Full WooCommerce catalog with cart, checkout, accounts, saved lists and wishlist, i.e. many SKUs with structured attributes: https://scimac.com/apply-for-credit/",
+        "Advanced Woo Search Pro installed for catalog search, suggesting a SKU set large enough to need search assistance: https://scimac.com/",
+        "Catalog pages are variable-product SKU tables with no per-product customization fields, so engineered requests leave the site: https://scimac.com/products/adapters/inlet/key-head-stopper-standard-taper-full-length-ptfe/",
+        "Product sitemap shows items modified through 2025-2026, so the data set is actively changing: https://scimac.com/product-sitemap.xml"
+      ],
+      "agent_design": "Knowledge agent grounded in the WooCommerce catalog, the FAQ, spec sheets and (once ingested) historical quote responses, exposed as an on-site 'find the right part' assistant and an internal staff lookup. Flow: buyer or staff describes a flask, joint size or a competitor part number; agent retrieves candidate SKUs, explains the sizing logic in a sentence or two, and hands off to the RFQ agent when nothing matches. A second, scheduled agent enriches and lints product records (missing taper, joint size, length, unit, attribute mismatches) and proposes corrections as a reviewable list. Systems touched: WooCommerce REST/product attributes, Advanced Woo Search index, FAQ content. Human approval: all proposed catalog edits are queued for a merchandiser/CS reviewer; the assistant never publishes a dimension it cannot cite from a product record or FAQ passage, and declines on out-of-scope questions.",
+      "why_not_DIY": "Needs retrieval over the shop's own part numbering and taper conventions plus write access to WooCommerce attributes, with guardrails so a hallucinated dimension cannot reach a buyer or a product page. Generic chatbot plugins do not enforce citation-to-record, do not lint catalog metadata, and cannot hand a structured partial request to a quoting workflow.",
+      "impact_estimate": {
+        "range": "$12,000-$30,000/yr of CS and catalog-maintenance time; target 30-45% deflection of sizing/identification inquiries that currently end in a phone call or email",
+        "assumptions": "Assumes 8-20 inbound sizing/identification contacts per business day, 8-12 minutes of staff time each (roughly 350-900 hours/yr), with 30-45% handled end-to-end by the agent, plus 100-250 hours/yr of product-data cleanup. Valued at the NJ median for Production, Planning and Expediting Clerks ($62,710/yr) as the closest available administrative-coordination benchmark; labor is loaded at 1.3x. Catalog-maintenance hours are an inference - no internal data on data-team effort.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "3 weeks: ingest the catalog, FAQ and spec sheets into a retrieval index, build the buyer-facing 'find the right part' widget plus an internal lookup, run a metadata lint across one product family (e.g. stirrer bearings or key-head stoppers) and deliver a prioritized correction list with the deflection rate measured on a two-week live deployment."
+    },
+    {
+      "title": "Wholesale account onboarding and net-terms collections agent",
+      "capability": "A",
+      "problem": "Wholesale, distributor and educator-discount relationships all start with a downloadable credit application and a manual approval, with no automated account provisioning; the store's only account capability is My Account order history, and card payments run through Authorize.Net CIM rather than any net-terms or EDI flow. (inference) That means new-account setup, credit decisions and past-due follow-up sit on the same small office team that handles quoting.",
+      "evidence": [
+        "A downloadable customer credit application supports the net-terms/wholesale flow: https://scimac.com/apply-for-credit/",
+        "Separate manual application pages exist for distributors and educator discounts: https://scimac.com/apply-to-become-a-distributor/",
+        "Authorize.Net CIM gateway handles card payments, implying conventional B2B card purchasing rather than punchout/EDI: https://scimac.com/",
+        "Gravity Forms with a zero-spam add-on powers quote, credit, distributor and educator-discount forms, with no CRM integration visible in page source: https://scimac.com/",
+        "No customer portal beyond My Account order history: https://scimac.com/contact-us/"
+      ],
+      "agent_design": "Two linked agents. (1) Onboarding: reads submitted credit/distributor/educator forms plus attached documents, extracts legal name, EIN/resale certificate fields, billing/shipping, references and requested terms, checks completeness against a required-fields policy, requests missing items by email, and assembles a one-page approval packet. (2) Collections: monitors open invoices in whatever system the office uses (spreadsheet export or accounting file until an ERP is confirmed), stages reminder sequences by aging bucket, drafts replies to 'where is my order/invoice' email, and escalates disputes. Systems touched: Gravity Forms, WooCommerce customer accounts, accounting export, email. Human approval: credit limits, terms and any write-off or hold are approved by a human; agents only assemble, draft and chase.",
+      "why_not_DIY": "Touches money and credit exposure, so it needs an approval gate, an audit trail and a documented policy the agent must follow; it also has to reconcile invoice data from a system with no visible API. Off-the-shelf chatbots cannot carry state across form intake, document parsing and a multi-touch dunning sequence, and they cannot be given write access to customer accounts safely.",
+      "impact_estimate": {
+        "range": "$8,000-$22,000/yr of administrative time plus an estimated 3-7 day reduction in days-sales-outstanding on the net-terms book",
+        "assumptions": "Assumes 15-40 new wholesale/distributor/educator accounts a year at 45-90 minutes of setup each, plus 6-15 hours/month of aging follow-up and invoice-question handling (roughly 200-420 hours/yr), valued at the NJ median for Production, Planning and Expediting Clerks ($62,710/yr, loaded 1.3x). DSO improvement is an inference from faster reminder cadence, not from measured AR data; the net-terms book size is unknown, so the cash impact is deliberately not converted to dollars.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "3-4 weeks: digitize the credit/distributor application into a structured intake with completeness checks and an approval packet, then run the collections agent in shadow mode on one aging bucket for two weeks, delivering drafted sequences, an exception list and an AR aging dashboard; no credit decisions automated."
+    }
+  ],
+  "lead_score": {
+    "pain": 24,
+    "fit": 18,
+    "ability_to_pay": 11,
+    "ease": 12,
+    "strategic": 11,
+    "total": 76,
+    "rationale": "Pain (24/30): the manual routing is documented on the company's own pages - quoting by phone/email with a 5:30pm cutoff, an FAQ that ends every sizing question in 'call customer service', applications that are downloadable PDFs, and a single info@ inbox. It is strong qualitative evidence but unquantified: no headcount, revenue, quote volume, complaint data or on-site reviews are public, so every dollar figure above is an inference from stated assumptions plus NJ wage medians. Fit (18/20): three of the four capability lines map directly onto observed gaps (A on RFQ and AR, C on catalog knowledge, D to glue Gravity Forms/WooCommerce/mail together), and the absence of a visible ERP makes integration easier rather than harder. Ability to pay (11/20): a single 10,500 sq ft plant with a few dozen staff (inference) and no disclosed financials is a modest budget; the Fortune 500 / semiconductor / pharma customer base and tight-tolerance premium work argue for real margin, but a first engagement should be priced as a pilot. Ease (12/15): public site, no gatekeeper layer, single phone line, walk-in possible in Middlesex - but no named owner, president or GM on the site, so the first conversation is qualification as much as selling. Strategic (11/15): the pattern (WooCommerce catalog + manual custom quoting + PDF credit applications) is highly repeatable across small PTFE/labware, scientific-glass and job-shop distributors, though that niche is small enough that this is a template sale rather than a vertical-defining one. Search providers were rate-limited during this analysis, so benchmarks come from the industry brief rather than fresh verification. Score reflects an estimated $3-10M revenue, family-owned business: high value density per hour, low seat count."
+  },
+  "best_evidence_signal": "The FAQ answers almost every sizing, fit and competitor part-number question by telling the buyer to email or call customer service, which is staffed only 8:30-5:30 EST with a fax line as the sole 24-hour channel - a self-serve and after-hours gap the company has documented itself: https://scimac.com/faqs/",
+  "suggested_channel": "walk-in",
+  "evidence_thin": false
+}

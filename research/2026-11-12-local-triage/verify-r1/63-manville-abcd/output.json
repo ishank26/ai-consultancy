@@ -1,0 +1,137 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Manville Dental Group LLC (group B) website: http://www.manvilledentalgroup.com/",
+      "problem": "Domain is dead - it resolves to a 'NameBright - Domain Expired' parking page. The practice is live at manvilledentalgp.com (the mapper's own note mentions the alternate domain but the expired one was kept in the website field).",
+      "fix": "Replace the website field with https://www.manvilledentalgp.com/ (opened and confirmed: Manville Dental Group, 7 Washington Ave)."
+    },
+    {
+      "claim": "Bradley Orthodontic (group B, dentist/orthodontist) website: https://bradleyortho.com/",
+      "problem": "That domain is the website of Bradley Orthodontic Laboratory, a dental lab that manufactures orthodontic appliances for other practices - not the orthodontist's patient-facing practice site. The mapper's own second entry (Bradley Orthodontic Laboratory, group D) is the business the site actually belongs to, and it was left with a blank website.",
+      "fix": "Move https://bradleyortho.com/ to the Bradley Orthodontic Laboratory entry and leave the 'Bradley Orthodontic' clinic website blank until a clinic-specific site is found (borough directory address/phone 1101 Kennedy Blvd, (908) 722-6770 stand)."
+    },
+    {
+      "claim": "Manville Chiropractic Center (group B) website: https://www.manvillechiropractic.com/",
+      "problem": "Domain does not resolve (DNS ENOTFOUND for both www and bare domain, tried twice). The business itself is real and current at 313 S Main St per the borough directory, so this is a dead-website field, not a dead business.",
+      "fix": "Blank the website field (or find a live site) before triage; keep the business."
+    },
+    {
+      "claim": "Redbear Tech Svc LLC (group A) category: 'IT services'",
+      "problem": "Opened redbeartech.com: the company sells and services medical gases and medical/dental/veterinary equipment (anesthesia machines, sterilizers, medical gas installs, ASSE 6010). Its 'Toll-free number suggests managed IT' reasoning led to the wrong category.",
+      "fix": "Recode as medical/laboratory equipment service & sales (group C or D depending on the group rules) and drop the IT framing."
+    },
+    {
+      "claim": "Polska Szkola (Polish School) (group D) - included as an eligible business",
+      "problem": "Opened polishschoolnest946.com: it is a Polish supplementary school (preschool through high school, plus adult classes) run with Polish Falcons Nest 946 under Christ the Redeemer Parish, with teachers, report-age classes and exam prep. That is a school, which the rules exclude.",
+      "fix": "Drop it, or keep only if the owner confirms private/heritage schools are in scope; do not spend triage time on it by default."
+    },
+    {
+      "claim": "Jerry Davis Early Childhood Center / The Arc of Somerset County (group D)",
+      "problem": "Boundary case on the 'schools' exclusion: this is a state-licensed child-care/preschool centre (infants to preschool) run by a nonprofit. Defensible as a service organisation, but it is the same kind of institution as the Polish school already flagged.",
+      "fix": "Get an owner ruling on childcare/preschool centres before outreach, then apply it consistently to both entries."
+    },
+    {
+      "claim": "Manville Maytag Repair, 25 S Main St #P12 (group D)",
+      "problem": "The only 'source' is the borough self-registration entry, whose website is a Somerset County appliance-repair lead-generation page, not a company site. Nothing on the open web ties a real 'Manville Maytag Repair' business to that address, and the name looks like a lead-gen keyword listing.",
+      "fix": "Verify by phone before triage; most likely remove."
+    },
+    {
+      "claim": "'Physical Therapy Movement Therapist', 608 S Main St (group B)",
+      "problem": "The name reads like a yellowpages category label rather than a business name, and nothing else corroborates it (not in the borough directory, no site).",
+      "fix": "Verify or drop; do not treat as a qualified lead until a real trading name is found."
+    },
+    {
+      "claim": "A2Z Dental Care (group B) - address 'Unknown', no website",
+      "problem": "Not wrong, just incomplete: the practice's own location page gives 255 N. Main St, Manville, NJ 08835, (908) 526-2224, https://www.a2zdentalcare.com/. It is a real Manville dental office, so the entry is usable now.",
+      "fix": "Fill address, phone and website from a2zdentalcare.com/location."
+    },
+    {
+      "claim": "Jeff Alte Roofing Inc phone (908) 850-8558",
+      "problem": "Borough directory gives (908) 850-8558 while the roof.info Manville roofing directory gives (908) 526-2111 for 229 N Main St Suite 1. One of the two is stale.",
+      "fix": "Confirm the current number during triage; keep both versions noted."
+    },
+    {
+      "claim": "Ink'n Ship Tattoo, 36 S Main St, website inknshiptattoo.com",
+      "problem": "The domain now serves the site of 'Arcadia Ink' at the same address (also how BestProsInTown lists it). The entry may be under a retired name.",
+      "fix": "Rename to Arcadia Ink (formerly Ink'n Ship) so the outreach name matches what the business calls itself."
+    },
+    {
+      "claim": "Coverage gap: computer/IT repair in the borough",
+      "problem": "A Manville-address computer repair shop, R&D PC Repair at 9 N 3rd Ave, (908) 285-4445, appears in yellowpages/superpages listings but is not in businesses.json.",
+      "fix": "Add R&D PC Repair (group A), verify by phone."
+    },
+    {
+      "claim": "Coverage gap: landscaping contractors in the borough",
+      "problem": "ABL Landscaping LLC, listed at 212 N 6th Ave, Fl 2, Manville on BuildZoom and with a Manville-based site (abllawn.com), is missing from the list.",
+      "fix": "Add ABL Landscaping LLC (group C) with a note that the address comes from a contractor registry."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Borough of Manville business directory lists Abbey Consultants, 247 N 4th Ave, (908) 722-3831", "source_url": "https://www.manvillenj.org/businessdirectoryii.aspx?ysnShowAll=1", "result": "confirmed"},
+    {"claim": "Advanced Gigahertz Tech at 137 N 7th Ave is a real business and advghztech.com is its own IT-solutions site", "source_url": "https://www.advghztech.com/", "result": "confirmed"},
+    {"claim": "AM PM Process Servers, 650 Huff Ave, is listed with its own site ampmservers.com", "source_url": "https://www.manvillenj.org/businessdirectoryii.aspx?ysnShowAll=1", "result": "confirmed"},
+    {"claim": "Advo-Serv Of New Jersey, 101 S 20th Ave - borough listing links an unrelated site (feelingsforwardwellness.com)", "source_url": "https://www.manvillenj.org/businessdirectoryii.aspx?ysnShowAll=1", "result": "confirmed"},
+    {"claim": "Central Jersey Realty, 220 S Main St, website cj-realty.com", "source_url": "https://www.cj-realty.com/", "result": "could not open"},
+    {"claim": "Power Play Consulting LLC (917 Boesel Ave) owns powerplaysolutions.com", "source_url": "http://powerplaysolutions.com/", "result": "confirmed"},
+    {"claim": "Magtech Consulting-Solutions (45 S Main St) owns magtechcorp.com", "source_url": "https://magtechcorp.com/", "result": "confirmed"},
+    {"claim": "Redbear Tech Svc LLC is an 'IT services' business", "source_url": "https://www.redbeartech.com/", "result": "contradicted"},
+    {"claim": "Nancy Otrimski Accounting Services (113 S Main St) owns otrimskias.com", "source_url": "https://www.otrimskias.com/", "result": "confirmed"},
+    {"claim": "Summit Tax Services (223 N Main St) owns summittaxservice.com", "source_url": "http://www.summittaxservice.com/", "result": "confirmed"},
+    {"claim": "Summit Ins Services is an independent agency at 223 N Main St, (908) 722-8899", "source_url": "https://www.progressiveagent.com/local-agent/new-jersey/manville/summit-ins-services/", "result": "confirmed"},
+    {"claim": "HSS Computer LLC, 320 S Main St, computer repair, hsscomputer.com", "source_url": "https://www.hsscomputer.com/", "result": "confirmed"},
+    {"claim": "Goldstein David Psyd, 221 N 7th Ave, website goldpsychological.com", "source_url": "https://goldpsychological.com/", "result": "confirmed"},
+    {"claim": "Manville Dental Group LLC website manvilledentalgroup.com", "source_url": "http://www.manvilledentalgroup.com/", "result": "contradicted"},
+    {"claim": "Manville Dental Group practice is live and operating in Manville", "source_url": "https://www.manvilledentalgp.com/", "result": "confirmed"},
+    {"claim": "Manville Family Dental, 35 S Main St, (908) 725-0900, in borough directory", "source_url": "https://www.manvillenj.org/businessdirectoryii.aspx?ysnShowAll=1", "result": "confirmed"},
+    {"claim": "Smiles Unlimited Dental Center, 60 S Main St, (908) 722-5511, in borough directory", "source_url": "https://www.manvillenj.org/businessdirectoryii.aspx?ysnShowAll=1", "result": "confirmed"},
+    {"claim": "A2Z Dental Care has no published Manville address", "source_url": "https://www.a2zdentalcare.com/location", "result": "contradicted"},
+    {"claim": "Bradley Orthodontic (group B) website bradleyortho.com", "source_url": "https://bradleyortho.com/", "result": "contradicted"},
+    {"claim": "Manville Chiropractic Center website www.manvillechiropractic.com", "source_url": "https://www.manvillechiropractic.com/", "result": "not found"},
+    {"claim": "Manville Chiropractic Center, 313 S Main St, (908) 707-0050, exists in the borough directory", "source_url": "https://www.manvillenj.org/businessdirectoryii.aspx?ysnShowAll=1", "result": "confirmed"},
+    {"claim": "Three Rivers Dojo, 106 S Main St, Manville, martial arts school, 3riversdojonj1.com", "source_url": "https://www.3riversdojonj1.com/", "result": "confirmed"},
+    {"claim": "Heirloom Tattoo, 68 S Main St, (908) 962-8899", "source_url": "https://www.manvillenj.org/businessdirectoryii.aspx?ysnShowAll=1", "result": "confirmed"},
+    {"claim": "Ink'n Ship Tattoo, 36 S Main St, website inknshiptattoo.com", "source_url": "https://www.inknshiptattoo.com/", "result": "confirmed"},
+    {"claim": "A Clock Gallery, 210 W Frech Ave, aclockgallery.com is a clock repair business", "source_url": "http://aclockgallery.com", "result": "confirmed"},
+    {"claim": "Allure Hair Studio, 109 S Main St, (908) 526-8828", "source_url": "https://www.manvillenj.org/businessdirectoryii.aspx?ysnShowAll=1", "result": "confirmed"},
+    {"claim": "Hair House International, 333 S Main St, (908) 722-3024", "source_url": "https://www.bestprosintown.com/nj/manville/", "result": "confirmed"},
+    {"claim": "Super Touch Beauty Nails, 238 S Main St #1, (908) 231-0919", "source_url": "https://www.bestprosintown.com/nj/manville/", "result": "confirmed"},
+    {"claim": "Da-Vi Nails at 100 N Main St, Manville", "source_url": "https://www.bestprosintown.com/nj/manville/", "result": "confirmed"},
+    {"claim": "Somerset Walk in Clinic at 64 S Main St, Manville", "source_url": "https://www.bestprosintown.com/nj/manville/", "result": "confirmed"},
+    {"claim": "Couch Accounting Services at 609 West Camplain Road, Manville", "source_url": "https://www.bestprosintown.com/nj/manville/", "result": "confirmed"},
+    {"claim": "ESpace Beauty Spa at 262 S Main St and Deep Sea Facial Spa at 333 S Main St, Manville", "source_url": "https://www.bestprosintown.com/nj/manville/", "result": "confirmed"},
+    {"claim": "MFA Roofing is a Manville roofer at 1101 Washington Ave, (908) 252-9660", "source_url": "https://www.roof.info/roofing-contractors/new-jersey/manville/", "result": "confirmed"},
+    {"claim": "Jeff Alte Roofing, 229 N Main St Suite 1, Manville, phone (908) 850-8558", "source_url": "https://www.roof.info/roofing-contractors/new-jersey/manville/", "result": "contradicted"},
+    {"claim": "Endeavor Auto Sales is a car dealer at 510 S Main St, Manville", "source_url": "https://www.endeavorautos.com/", "result": "confirmed"},
+    {"claim": "Polska Szkola is a school (preschool through high school Polish supplementary school)", "source_url": "https://polishschoolnest946.com/", "result": "confirmed"},
+    {"claim": "R&D PC Repair operates at 9 N 3rd Ave, Manville, (908) 285-4445", "source_url": "https://www.superpages.com/somerset-nj/business-computer-repair", "result": "could not open"},
+    {"claim": "ABL Landscaping LLC operates at 212 N 6th Ave, Fl 2, Manville", "source_url": "https://www.buildzoom.com/contractor/abl-landscaping-llc", "result": "could not open"},
+    {"claim": "Weiss & Weiss LLC, 42 S Main St, Manville, is a real law firm", "source_url": "https://www.lawyer.com/firm/weiss-weiss-llc.html", "result": "could not open"},
+    {"claim": "George Frana Jr., Attorney, 220 S Main St, Manville", "source_url": "https://www.usattorneynetwork.com/usa/new-jersey/manville", "result": "could not open"},
+    {"claim": "U R Home Realty, 609 Brooks Blvd, Manville, appears in realtor.com's agency list", "source_url": "https://www.realtor.com/realestateagency/manville_nj", "result": "could not open"},
+    {"claim": "C&S Construction LLC is a Manville roofing contractor, BBB profile", "source_url": "https://www.bbb.org/us/nj/manville/profile/roofing-contractors/cs-construction-llc-0221-90224448", "result": "could not open"}
+  ],
+  "coverage": {
+    "searches": [
+      "dentist Manville NJ office",
+      "roofing contractor Manville NJ",
+      "hair salon Manville NJ Main Street",
+      "auto repair shop Manville NJ",
+      "plumber Manville NJ licensed",
+      "insurance agency Manville NJ independent agent",
+      "chiropractor Manville NJ",
+      "tax preparer accountant Manville NJ office",
+      "landscaping lawn care company Manville NJ",
+      "tattoo studio Manville NJ",
+      "computer repair IT support Manville NJ",
+      "florist flower shop Manville NJ"
+    ],
+    "eligible_found": 28,
+    "already_listed": 26,
+    "missing": [
+      {"name": "R&D PC Repair", "town": "Manville", "source_url": "https://www.superpages.com/somerset-nj/business-computer-repair"},
+      {"name": "ABL Landscaping LLC", "town": "Manville", "source_url": "https://www.buildzoom.com/contractor/abl-landscaping-llc"}
+    ]
+  },
+  "confidence": "Medium"
+}

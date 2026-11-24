@@ -1,0 +1,233 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Evidence bullet: \"Across multi-stage service settings including restaurants, the wait before service (the entry/host-stand wait) had the largest influence on overall service evaluation of the stages studied.\" (2015, inderscience.com artid=67435)",
+      "problem": "Scope is misstated. The abstract says the service-entry wait had the largest influence in restaurant services only; in the assessment services the service-exit wait was predominant and in the dental services the in-service wait was most important. Presented as a finding across settings, it is contradicted by the source. The same over-general wording is echoed in problem.summary point (2).",
+      "fix": "Rewrite to: \"In a multi-stage field study across restaurants, assessment and dental services, the service-entry wait had the largest influence on service evaluation in the restaurant setting (elsewhere the exit or in-service wait dominated).\" Keep the restaurant-only scope in problem.summary too."
+    },
+    {
+      "claim": "measured_outcomes entry 2 (De Vries, Roy & De Koster 2018, Journal of Operations Management) strength = \"High\"",
+      "problem": "Single-site study (one Indian restaurant in Bangalore, 94,404 customer groups, Feb 2016-Jan 2017). The brief's own finding text says \"Single-restaurant setting, so treat effect sizes as site-specific\", and the brief rates another single-restaurant study (the 2025 YOLOv8 paper) only Medium. High is inconsistent with both.",
+      "fix": "Downgrade to Medium and note it is a single-restaurant field study plus simulation, not a multi-site replication."
+    },
+    {
+      "claim": "legal_privacy: \"GC 23-02 is no longer in force\" marked confirmed: true, citing only https://www.nlrb.gov/guidance/memos-research/general-counsel-memos",
+      "problem": "The cited NLRB memos index establishes GC 25-05 (\"Rescission of Certain General Counsel Memoranda\", 02/14/2025) and shows rescission tags on several Abruzzo-era memos, but the page slice I could read does not itself show GC 23-02 being rescinded. The specific rescission of GC 23-02 rests on the law-firm summary the brief mentions, and the GC 25-05 document still returns an unsupported content type (application/octet-stream) when fetched, as the brief itself notes in data_gaps. Marking it confirmed while the supporting text could not be read overstates the evidence.",
+      "fix": "Set confirmed: false (or cite the law-firm summary explicitly as the source for the rescission of GC 23-02) and keep the existing caveat text."
+    },
+    {
+      "claim": "legal_privacy GC 23-02 entry quotes the memo as covering \"intrusive or abusive electronic monitoring and automated management practices\"",
+      "problem": "Not a verbatim quote. The memo's language is \"intrusive or abusive methods of electronic surveillance and automated management\"; the subject line is \"Electronic Monitoring and Algorithmic Management of Employees Interfering with the Exercise of Section 7 Rights\".",
+      "fix": "Quote the actual phrase, or drop the quotation marks and paraphrase."
+    },
+    {
+      "claim": "measured_outcomes entry 3 (2025 JAIDA YOLOv8 table detector) sample = \"One restaurant, custom dataset, 90/10 train-test split\"",
+      "problem": "The 90/10 split in that paper applies to the 1,344-record occupancy time-series dataset used for the Exponential Smoothing / Random Forest forecasting models. The detector's metrics (mAP@0.5 0.997, mAP@0.5:0.95 0.985) are reported on a \"Custom Validation Set\", and no train/test split ratio is given for the detection dataset. The numbers themselves are correct.",
+      "fix": "Describe the sample as \"one restaurant, custom-annotated table images, metrics on a validation set\" and leave the 90/10 split to the forecasting component."
+    },
+    {
+      "claim": "buyers[0] size_where_it_matters: \"below ~10 tables the walk-around is cheaper than the system\"",
+      "problem": "The cited practitioner write-up says the dining room must be small at \"5-8 tables\" for walking the floor to be cheaper; it does not support a ~10-table cut-off. The 15+ tables threshold elsewhere in the brief is stated correctly.",
+      "fix": "Change to \"below roughly 5-8 tables the walk-around is cheaper\" or drop the number."
+    },
+    {
+      "claim": "pilot.cost_range: \"$2,500-$5,500 one-time (cameras ~$800-1,500, edge box $250-450, network/cabling $300-800, 2-4 days install and calibration at $75-125/hr)\"",
+      "problem": "The components do not reconcile with the stated band: the upper bound sums to about $6,750 (1,500 + 450 + 800 + 4 days x 8 h x $125), not $5,500; the camera range also starts at $800 while 4 cameras x $150 = $600.",
+      "fix": "Widen the envelope (e.g. $2,500-$6,500) or restate the install-hour assumption, and set the camera line to $600-1,500."
+    },
+    {
+      "claim": "data_gaps: \"LFM2.5-VL release dates were not shown on the blog pages I read\"",
+      "problem": "The LFM2.5-VL-3B post carries a citation line dated \"Aug 2026\" and the model page links fine-tuning docs, so the absence claim is inaccurate (harmless, but it is a stated gap that is not a gap).",
+      "fix": "Either cite \"Aug 2026\" from the blog's citation line or drop the item from data_gaps."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Middlesex County NJ, NAICS 722511, 2024: 587 establishments, 9,110 annual average employees, $287.8M total annual wages, $31,591 average annual pay",
+      "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Full-service respondents: salaries and wages incl. benefits a median 36.5% of sales in 2024; roughly 33% in the 2010/2013/2016 editions; survey base >900 operators",
+      "source_url": "https://www.restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-labor-costs-are-well-above-historical-averages/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Published version: approx +1% sales per check (95% CI 0.8%-1.02%), meal duration close to -10% (CI -9.94% to -9.54%), approx +11% sales per minute; Management Science 66(10):4496-4515, 2020",
+      "source_url": "https://ideas.repec.org/a/inm/ormnsc/v66y2020i10p4496-4515.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2017 working paper point estimates 2.91% / 9.74% / 10.77% and slightly over 2.6 million check-level observations",
+      "source_url": "https://faculty.wharton.upenn.edu/wp-content/uploads/2017/09/2017.9.10_Tabletop_For_Submission_WithNames.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The paper quotes a 1-7% industry profit margin attributed to Mogavero and A'agnese (2016) and elsewhere argues a ~3% sales lift matters given thin margins",
+      "source_url": "https://faculty.wharton.upenn.edu/wp-content/uploads/2017/09/2017.9.10_Tabletop_For_Submission_WithNames.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "94,404 customer groups at one Indian restaurant over a 12-month period; longer waits associated with reneging, longer time to return, shorter dining duration (2018)",
+      "source_url": "https://pure.eur.nl/ws/portalfiles/portal/47914467/1-s2.0-S0272696318300214-main.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Multi-stage waiting study: entry wait has the largest influence on service evaluation in restaurant services (2015, IJBG 14(2):187-207)",
+      "source_url": "https://www.inderscience.com/info/e_inarticle.php?artid=67435",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Trade press: PreciTaste vision system about $2,000 to install then $399/month; cameras now \"a couple hundred bucks\" each; a dominant computer-vision use case has not emerged; Presto dropped its vision product to focus on AI voice; most restaurants own cameras but lack time to review footage",
+      "source_url": "https://www.restaurantbusinessonline.com/technology/restaurants-take-closer-look-computer-vision",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ minimum wage rises to $15.92/hour for most employees effective January 1, 2026",
+      "source_url": "https://www.nj.gov/labor/lwdhome/press/2025/20251001_Minimum_Wage.shtml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Practitioner case: 22-table pizzeria, 5.8 min from \"guests left\" to \"table ready\", est. ~$2,600/week lost covers; 8-week pilot; cleanup to 1.9 min; turnover 31 to 27 min; ~$1,350/week extra; install $4,800; $380/month; YOLOv8m on 1,400 CVAT-labeled images",
+      "source_url": "https://data-metrics.pro/en/blog/computer-vision-restaurante-mesas-dodo-pizza/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Same write-up: 92-96% F1 in production, 4-8% false positives/negatives, 50-60% accuracy without fine-tuning, ~800 labeled images as the floor, 5 consecutive frames over ~10s to fire, alerts ignored within two weeks if unmanaged",
+      "source_url": "https://data-metrics.pro/en/blog/computer-vision-restaurante-mesas-dodo-pizza/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Resy publishes $289/month Platform and $459/month Platform 360",
+      "source_url": "https://resy.com/join/plans-pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SevenRooms publishes no price (quote only)",
+      "source_url": "https://sevenrooms.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Presto Vision: cameras in lobbies and dining areas, alerts on long waits and guest bounce rates, piloted at Outback Steakhouse franchisee Evergreen Restaurant Group; no price published",
+      "source_url": "https://presto.com/presto-launches-computer-vision-product-for-real-time-restaurant-operations-insights-2/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ma\u00eetre'd markets per-table state (ungreeted, not cleared, ready-but-empty, section pace), a back-office computer on a few cameras per dining room, shadow mode first, delegation in pilot, \"installation takes an afternoon\"",
+      "source_url": "https://www.maitred.restaurant/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Aldente Vision does camera-based restaurant analytics including seating time and tables to clear; no published price",
+      "source_url": "https://aldenteai.com/analytics",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NVIDIA Jetson Orin Nano Super Developer Kit: $249 (down from $499), 67 INT8 TOPS, 8GB SoM, supports up to four cameras",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate recommends the Beelink EQ13 (Intel N100, dual NICs for an isolated camera network) and prints no price for it",
+      "source_url": "https://docs.frigate.video/frigate/hardware/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate+ includes up to 12 fine-tuned models with the annual subscription, additional fine-tunings $5 each, and you cannot add your own custom labels",
+      "source_url": "https://frigate.video/plus/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate zones: presence judged from the bottom centre of the bounding box, zone inertia requires the object in the zone for consecutive frames, configurable loitering time, and required zones gate alerts, review items and snapshots",
+      "source_url": "https://docs.frigate.video/configuration/zones/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics licensing: closed-source/commercial and embedded deployment requires a paid Enterprise license rather than AGPL-3.0",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO11 model documentation page exists for the detector family",
+      "source_url": "https://docs.ultralytics.com/models/yolo11",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen2.5-VL localises objects by generating bounding boxes or points with stable JSON coordinate/attribute output",
+      "source_url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2-VL-3B is the newest addition to a family that already included 450M and 1.6B, built on a 2.6B backbone with a SigLIP2 encoder",
+      "source_url": "https://www.liquid.ai/blog/lfm2-vl-3b-a-new-efficient-vision-language-for-the-edge",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-3B follows the architecture of LFM2.5-VL-1.6B and LFM2.5-VL-450M, is a non-reasoning model answering directly for low latency, and ships with fine-tuning docs",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b",
+      "result": "confirmed"
+    },
+    {
+      "claim": "cactus-compute README: Apache 2.0, one Python package for text/speech/vision with tool calling, structured extraction and fine-tuning; a local OpenAI-compatible server exists only on the separate cactus-mlx path, which requires Apple silicon",
+      "source_url": "https://github.com/cactus-compute/cactus",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Single-restaurant YOLOv8 table detector: mAP@0.5 = 0.997 and mAP@0.5:0.95 = 0.985, with authors warning the model was trained on one restaurant's camera angles and lighting and would need recalibration",
+      "source_url": "https://dergipark.org.tr/en/download/article-file/4495676",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Wiretap Act requires one-party consent for in-person conversations (N.J.S.A. 2A:156A-2, -3, -4)",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9 makes recording intimate parts where there is a reasonable expectation of privacy a third-degree crime and does not criminalise recording in areas open to the public",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Friedman v. Martinez, 242 N.J. 449 (2020): janitor hid cameras in women's restrooms and a locker room; intrusion need not be shown by direct evidence, circumstantial proof suffices, but a plaintiff must show she used the monitored space; Court reversed the Appellate Division and reinstated summary judgment",
+      "source_url": "https://www.njcourts.gov/system/files/court-opinions/2020/a_37_81_18.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Practitioner commentary states there is no New Jersey state law or regulation governing employer use of video recording devices in the workplace",
+      "source_url": "https://www.bracheichler.com/insights/use-of-cameras-in-nj-based-ambulatory-surgery-centers/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC 23-02 dated October 31, 2022, on electronic monitoring and algorithmic management, with a committed interagency approach and a proposal to let employees respond before discipline",
+      "source_url": "https://www.govinfo.gov/content/pkg/GOVPUB-LR-PURL-gpo212857/pdf/GOVPUB-LR-PURL-gpo212857.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC memoranda index lists GC 25-05 \"Rescission of Certain General Counsel Memoranda\" dated 02/14/2025 and marks a series of earlier memos rescinded by it",
+      "source_url": "https://www.nlrb.gov/guidance/memos-research/general-counsel-memos",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC Policy Statement on Biometric Information and Section 5, dated May 18, 2023, matter P225402, treating unsubstantiated accuracy claims as deception and flagging bias/discrimination risk",
+      "source_url": "https://www.ftc.gov/legal-library/browse/policy-statement-federal-trade-commission-biometric-information-section-5-federal-trade-commission",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A3929 (2026 session) introduced text: notice for biometric surveillance systems (perimeter sign suffices), written explanation before denial/removal, bar on selling or sharing data, penalties up to $10,000 first / $20,000 subsequent plus treble damages; no vote tally in the bill PDF",
+      "source_url": "https://pub.njleg.gov/Bills/2026/A4000/3929_I1.PDF",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDPA (P.L. 2023, c.266) defines consumer as a resident acting only in an individual or household context, excluding commercial or employment context, and excludes photographs and audio/video recordings from \"biometric data\" unless generated to identify a specific individual",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fit_score sub-scores sum to the stated total (13+11+8+15+8+6 = 61) and the legal sub-score matches the rationale's \"8 of 15\"",
+      "source_url": "avenue.json (internal)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

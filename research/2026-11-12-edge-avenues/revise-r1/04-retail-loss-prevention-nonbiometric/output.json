@@ -1,0 +1,396 @@
+{
+  "avenue": "retail-loss-prevention-nonbiometric",
+  "one_line": "Camera-plus-POS exception alerts (self-checkout non-scans, back-door/receiving shrink, cash-wrap anomalies) that queue short clips for a human to review \u2014 no face recognition, no audio, no autonomous accusations.",
+  "problem": {
+    "summary": "Independent grocers, liquor stores, pharmacies, hardware stores and convenience stores lose roughly 1.6% of sales to shrink at industry-average rates, and the two largest buckets are internal and external theft plus process error at checkout and receiving. Self-checkout, which even small stores now install to save labor, measurably raises loss (mean +22% in the year after installation across 8 grocery chains / 1,300 stores), and the loss shows up as unscanned items, wrong items and walk-aways that no one sees because the attendant is also running customer service. Today the work is done by hand: a manager scrubs a DVR after a complaint, a receiver trusts the vendor's count, and a cashier's voids and no-sales are never compared to video. The expensive part is not cameras \u2014 it is the human attention needed to watch and the risk of getting it wrong when a clerk acts on a hunch.",
+    "evidence": [
+      {
+        "fact": "US retail shrink averaged 1.6% of sales in FY2022, $112.1 billion, up from 1.4% / $93.9 billion in FY2021; internal and external theft together were about 65% of shrink.",
+        "year": "2023 (FY2022 data)",
+        "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf"
+      },
+      {
+        "fact": "41% of surveyed retailers said no employee is authorized to stop or apprehend a shoplifter (up from 38%), so detection value now comes from documentation and deterrence, not confrontation.",
+        "year": "2023",
+        "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf"
+      },
+      {
+        "fact": "Self-checkout raised loss by a mean of 22% in the year after installation (range 3.19%-41.2%) across 8 grocery retailers and 1,300 test stores; the companion percentage-point estimate is +0.26pp of sales (11 grocery retailers, 1,700 test stores).",
+        "year": "2026",
+        "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/"
+      },
+      {
+        "fact": "Missed scans were the most frequent self-checkout loss behaviour, at 1%-4.8% of transactions, in frequency data returned by 12 retailers (the overall study drew on 39 retailers with combined turnover over EUR 1 trillion).",
+        "year": "2026",
+        "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/"
+      },
+      {
+        "fact": "Retailers' own estimates of how much non-scan behaviour is malicious ranged from 6% to 80%, which the authors read as evidence that intent estimates are unreliable \u2014 i.e. most alerts are not proof of theft.",
+        "year": "2026",
+        "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/"
+      },
+      {
+        "fact": "Middlesex County has 2,280 retail establishments (NAICS 44-45) with 37,013 employees and average annual pay of $45,485; grocery stores alone are 333 establishments / 7,002 employees and beer-wine-liquor stores 143 establishments / 945 employees at $30,985 average pay.",
+        "year": "2024",
+        "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv"
+      },
+      {
+        "fact": "False-positive-driven accusations are a documented, government-charged harm: the FTC alleged Rite Aid's system generated thousands of false matches from 2012-2020, and employees followed, searched, ordered out or called police on wrongly flagged customers, disproportionately people of colour.",
+        "year": "2023",
+        "source_url": "https://www.ftc.gov/news-events/news/press-releases/2023/12/rite-aid-banned-using-ai-facial-recognition-after-ftc-says-retailer-deployed-technology-without"
+      },
+      {
+        "fact": "New Jersey upgraded retail-theft crimes and directed the Attorney General to 'undertake such steps as the Attorney General deems appropriate' to promote investigation, prosecution and deterrence of organised retail theft, 'which may include establishing a retail theft unit, task force, or other appropriate office or initiative' in the Department of Law and Public Safety (P.L. 2025, c.39, s.5). The creation of a unit is discretionary, not mandated by the statute; the value signal is the state's stated priority plus a statutory notification route for merchants to report retail-theft allegations to the Division of Criminal Justice.",
+        "year": "2025",
+        "source_url": "https://pub.njleg.gov/Bills/2024/AL25/39_.HTM"
+      }
+    ]
+  },
+  "buyers": [
+    {
+      "business_type": "Independent supermarket / grocery",
+      "naics": "445110",
+      "size_where_it_matters": "8-200 staff, one or more self-checkout lanes, $3M+ annual sales",
+      "why": "Highest exposure to non-scan and produce PLU fraud; 186 supermarkets and 5,902 grocery employees in Middlesex County; already has a POS and cameras, so incremental cost is analytics only."
+    },
+    {
+      "business_type": "Beer / wine / liquor store",
+      "naics": "4453",
+      "size_where_it_matters": "3-30 staff, 2,000+ sq ft sales floor",
+      "why": "High value per item (spirits), low staff density, single-counter layout; 143 establishments / 945 employees in the county and the lowest average pay ($30,985), so there is no budget for dedicated watchers."
+    },
+    {
+      "business_type": "Independent pharmacy",
+      "naics": "45611 (pharmacies and drug retailers)",
+      "size_where_it_matters": "5-50 staff",
+      "why": "OTC and high-theft SKUs plus a controlled-substance compliance culture; 198 establishments / 2,145 employees in the county; already comfortable with camera systems and audit trails."
+    },
+    {
+      "business_type": "Hardware store / home center",
+      "naics": "444140 (hardware retailers); parent industry group 4441 building material and garden equipment dealers",
+      "size_where_it_matters": "5-100 staff with a loading dock or back-door receiving",
+      "why": "Bulky, high-ticket items and contractor traffic make receiving-count and back-door control the weak point. Middlesex County industry-group totals for 4441 are 94 establishments / 2,741 employees; the 444140 hardware-retailer line itself is much smaller, so a single-store sale is the realistic unit of demand rather than a segment-wide count."
+    },
+    {
+      "business_type": "Convenience store with fuel",
+      "naics": "457110 (gasoline stations with convenience stores)",
+      "size_where_it_matters": "3-25 staff, overnight shifts",
+      "why": "Small baskets, cash, high-turnover staff, single clerk on duty \u2014 cash-wrap voids/refunds and sweethearting are the main leaks; 96 establishments / 1,304 employees in the county."
+    },
+    {
+      "business_type": "Small general merchandise / dollar-format variety store",
+      "naics": "455",
+      "size_where_it_matters": "10-200 staff, multi-location",
+      "why": "Broad low-value assortment, self-checkout, thin staffing; 129 establishments / 7,131 employees in the county \u2014 the segment where a chain's LP software is priced out of reach."
+    }
+  ],
+  "existing_solutions": [
+    {
+      "vendor": "Everseen",
+      "product": "Checkout Intelligence (formerly Evercheck)",
+      "what_it_does": "Vision AI on existing checkout/self-checkout cameras plus POS data to detect non-scans, mis-scans and product switching, prompting the shopper or attendant in real time; extended to store-wide analytics.",
+      "pricing": "Unknown (not published; the vendor's own ROI paper describes per-lane, per-week fees)",
+      "source_url": "https://everseen.com/blog/roi-of-vision-ai-in-retail"
+    },
+    {
+      "vendor": "NCR Voyix",
+      "product": "Self-checkout vision analytics (from StopLift acquisition, 2018)",
+      "what_it_does": "Analyses self-checkout and staffed-lane video against POS transaction data to flag scan avoidance, bottom-of-basket loss and sweethearting.",
+      "pricing": "Unknown (bundled with NCR self-checkout estate)",
+      "source_url": "https://investor.ncr.com/news-releases/news-release-details/ncr-acquires-stoplift-gains-powerful-anti-theft-solution-self-0"
+    },
+    {
+      "vendor": "Rhombus",
+      "product": "Cloud-managed cameras + console licence",
+      "what_it_does": "Cloud VMS with AI people/vehicle analytics, POS overlay and alerting; the clearest public price anchor in the category.",
+      "pricing": "Public: $399 per camera (R120 mini dome) plus a $149 per-camera licence; total $548 MSRP including hardware and licence. The pricing page describes the licence as 'ongoing' and says all cameras require one to operate, but does not state a billing period (the earlier '/year' reading is withdrawn as an inference).",
+      "source_url": "https://www.rhombus.com/pricing/"
+    },
+    {
+      "vendor": "Solink",
+      "product": "Solink video + POS exception platform",
+      "what_it_does": "Cloud video with POS transaction overlay, exception search and loss-prevention case workflows aimed at multi-site retail and restaurants.",
+      "pricing": "Unknown (FAQ says quotes vary with camera count, resolution and retention)",
+      "source_url": "https://solink.com/faqs/"
+    },
+    {
+      "vendor": "Agilence",
+      "product": "Agilence Analytics (exception-based reporting)",
+      "what_it_does": "Ingests POS, inventory, HR and alarm data to surface transaction exceptions (voids, refunds, no-sales, discounts) and route them to stores for follow-up.",
+      "pricing": "Unknown (quote-based)",
+      "source_url": "https://www.agilenceinc.com/platform"
+    },
+    {
+      "vendor": "Frigate (open source) / Frigate+",
+      "product": "Local NVR with object detection, tracking, zones and a review queue",
+      "what_it_does": "Runs on your own hardware, defines zones and required-zone review items, records clips, integrates with Home Assistant/MQTT. Frigate accepts a user-supplied detector with its own label map (`model.path` + `labelmap_path`), so custom classes are possible; only the hosted Frigate+ training service refuses custom labels ('the set of labels will be consistent for all users'). The hard part is not the NVR, it is collecting and labelling checkout data and wiring item-level scan logic.",
+      "pricing": "Frigate free/open source; Frigate+ is an annual subscription (12 fine-tunes included, extra fine-tunes $5); exact subscription price not shown in the page text. Note the licence terms: a standard Frigate+ subscription does not cover deploying models at customers' sites \u2014 that needs a commercial licence, unless each customer holds their own subscription and the installer only installs.",
+      "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+    },
+    {
+      "vendor": "Ultralytics",
+      "product": "YOLO models + built-in trackers",
+      "what_it_does": "Detector-and-tracker toolkit for custom object/person models and zone analytics; the practical build block for a bespoke installer. Ships ByteTrack, BoT-SORT, OC-SORT, Deep OC-SORT, FastTracker and TrackTrack (TrackTrack is the current default, not ByteTrack).",
+      "pricing": "Public: Pro $29/seat/month; Enterprise licence custom-priced. Community licence is AGPL-3.0, so a closed commercial deployment needs the Enterprise licence (inference from the licence text, not verified in this pass)",
+      "source_url": "https://www.ultralytics.com/pricing"
+    }
+  ],
+  "gap_for_local_installer": "The named vision-AI loss vendors sell to chains: Everseen, NCR and Agilence publish no price and are built around enterprise POS/SCO estates, while Rhombus-class cloud cameras start around $548 per camera and do not do item-level scan detection. A 5-50 staff store in Middlesex County is too small for a chain contract and too complex for a $200 consumer kit. The open gap is a local integrator that (a) installs 4-12 cameras on a local box so no video leaves the store, (b) joins them to whatever POS the store already runs (Square, Clover, NCR, Lightspeed) using daily exports if there is no API, (c) tunes zone rules for that store's actual back door, receiving bay and cash wrap, and (d) delivers a short daily human-review queue with a written escalation policy that forbids acting on an unreviewed alert. That is a service business (install + calibration + monthly review support), not a product. The workflow and the local accountability are the moat; the detector and the NVR are commodity.",
+  "technical_approach": {
+    "established_pattern": "IP cameras -> local NVR running a person/object detector plus multi-object tracker -> zone and line-crossing rules per camera (each SCO lane, the bagging area, back door inside/outside, receiving dock, cash-wrap till) -> fusion with transaction events (POS export or SCO scan events) -> exception scoring and de-duplication -> short clip + still queued for human review -> reviewer confirms or rejects, and rejections feed back as training negatives. A small vision-language model is used only as a second stage on flagged clips (describe what is in the basket or hands, read a receipt or label), never as the primary alarm. This mirrors how published systems work: detection plus tracking to get stable person/object tracks, then a separate classifier over the track's trajectory or the POS-video comparison for lane-level events.",
+    "models_and_tools": [
+      {
+        "name": "Ultralytics YOLO (YOLO11/YOLO26 family) + built-in trackers",
+        "role": "Person and object detection and tracking. ByteTrack is the lightweight baseline (linear Kalman + IoU, no appearance model, no camera-motion compensation) and is the right default for static overhead cameras; BoT-SORT adds camera-motion compensation and optional ReID for moving cameras; TrackTrack is the current library default for crowded scenes.",
+        "source_url": "https://docs.ultralytics.com/modes/track/"
+      },
+      {
+        "name": "Frigate",
+        "role": "Local NVR, camera management, zones with required-zone review items, clip retention, MQTT/Home Assistant hooks. Runs stock COCO detection out of the box and can also run a custom TFLite/ONNX model with a custom label map; item-level scan detection still has to be trained and wired by the integrator.",
+        "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+      },
+      {
+        "name": "Liquid AI LFM2-VL-450M / 1.6B",
+        "role": "Small vision-language check on flagged clips (e.g. 'is there an unscanned item in the bagging area?'), built for low-latency edge use; the model card recommends fine-tuning for narrow use cases and states it is not intended for safety-critical decisions \u2014 so it belongs in a review-assist role, not as the decision-maker.",
+        "source_url": "https://huggingface.co/LiquidAI/LFM2-VL-450M"
+      },
+      {
+        "name": "Qwen3-VL-4B-Instruct",
+        "role": "Stronger VLM when the store has a Jetson-class GPU and reviewer volume justifies it; official weights with transformers support, positioned by the vendor for edge-to-cloud deployment.",
+        "source_url": "https://huggingface.co/Qwen/Qwen3-VL-4B-Instruct"
+      },
+      {
+        "name": "llama.cpp (mtmd)",
+        "role": "Runs a VLM locally on the store box or a small GPU server with no cloud dependency, which keeps footage and inferences on site; Liquid AI publishes GGUF weights with llama-mtmd-cli usage examples for its 3B model.",
+        "source_url": "https://huggingface.co/LiquidAI/LFM2-VL-3B-GGUF"
+      },
+      {
+        "name": "Cactus (optional)",
+        "role": "Quantization, kernels and inference engine for phones, wearables and small devices, with OpenAI-compatible text/speech/vision APIs \u2014 usable for a reviewer app that runs a small model on the manager's phone rather than shipping video to a cloud service.",
+        "source_url": "https://github.com/cactus-compute/cactus/"
+      }
+    ],
+    "hardware": [
+      {
+        "item": "Jetson Orin Nano Super Developer Kit (8GB, 67 TOPS) \u2014 local inference box",
+        "approx_cost": "$249",
+        "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/"
+      },
+      {
+        "item": "Google Coral USB Accelerator (Edge TPU) \u2014 cheaper detection-only option",
+        "approx_cost": "$59.99 list (often out of stock; resellers $111+)",
+        "source_url": "https://gweb-coral-full.uc.r.appspot.com/products/accelerator"
+      },
+      {
+        "item": "Raspberry Pi AI Kit (M.2 HAT+ with Hailo-8L, 13 TOPS) or Hailo-8L M.2 module",
+        "approx_cost": "$70 kit at launch; Hailo-8L M.2 module $89",
+        "source_url": "https://www.cnx-software.com/2024/06/04/70-raspberry-pi-ai-kit-combines-official-m-2-hat-with-hailo-8l-ai-accelerator/"
+      },
+      {
+        "item": "PoE IP cameras (4K dome/bullet, 4-12 per store)",
+        "approx_cost": "$100-200 each (inference from vendor store listings; Rhombus-branded equivalents list at $399 for the camera alone)",
+        "source_url": "https://www.rhombus.com/pricing/"
+      },
+      {
+        "item": "PoE switch, cabling, mini-PC/NVR storage, UPS",
+        "approx_cost": "$400-900 per store (inference \u2014 not price-verified in this research)",
+        "source_url": "https://docs.frigate.video/"
+      }
+    ],
+    "fine_tuning_needed": "Split answer. Zone, loitering, back-door and receiving rules need no fine-tuning \u2014 a stock person detector plus zones is enough, and Frigate will run either its bundled model or a custom one with its own label map. Item-level scan-bagging detection does need a custom detector trained on that store's own camera angles and packaging, plus per-store threshold calibration against a labelled week of footage; there is no off-the-shelf model that knows 'this box of cereal moved from hand to bag without a scan'. Frigate+ hosted training cannot help here because it does not accept user-defined labels. Treat VLM prompting as configuration and VLM fine-tuning as a later optimisation, not a starting requirement.",
+    "data_needed": "Two to four weeks of footage from the exact camera positions at the exact focal lengths; a POS export covering the same period (transaction-level if available, Z-reports at minimum); 500-3,000 labelled clips per camera scene, skewed to hard negatives (re-scans, hand-offs, kids, bags already in the cart, employee assistance); a documented exclusion list (uniforms, break areas, restrooms) and a named reviewer. Plan on relabelling after the first two weeks of live false positives.",
+    "difficulty": "High"
+  },
+  "measured_outcomes": [
+    {
+      "finding": "Self-checkout raises loss by a mean of 22% in year one (range 3.19%-41.2%), and by +0.26 percentage points of sales; regression on 4 case studies (3 retailers) puts the effect of each extra 1% of transactions through SCO at 0.030%-0.048% more shrink.",
+      "year": "2026",
+      "sample": "39 retailers overall (>EUR 1 trillion turnover); 8 grocery retailers / 1,300 test stores for the +22% figure, 11 retailers / 1,700 stores for +0.26pp, 4 case studies for the per-1% regression",
+      "study_type": "industry",
+      "strength": "Medium",
+      "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/"
+    },
+    {
+      "finding": "Interventions help but the evidence is thin: of 14 companies testing non-scan identification/nudge technology, 7 reported positive findings, one a 9% loss reduction, another $136m saved across 2,000 stores (0.13% sales increase) and a reported 4.5x return.",
+      "year": "2026",
+      "sample": "14 retailers testing interventions",
+      "study_type": "industry",
+      "strength": "Low",
+      "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/"
+    },
+    {
+      "finding": "In live self-checkout data, 3%-10% of transactions generated a scan-error nudge or alert, and customers self-corrected in 80%-97% of cases after a soft nudge (a hard stop was needed in the remaining 3%-20%) \u2014 a direct warning that raw alert counts massively overstate theft.",
+      "year": "2026",
+      "sample": "Nudge/alert rate: data from 2 retailers (one USA, one UK) and 2 vendors. Self-correction rate: data from 2 retailers. Partly vendor-sourced.",
+      "study_type": "industry",
+      "strength": "Low",
+      "source_url": "https://ecrloss.com/research-paper/self-checkout-loss-report-2026/"
+    },
+    {
+      "finding": "Average US shrink was 1.6% of sales ($112.1bn) with internal+external theft about 65% of it; 53% of retailers increased technology and software budgets and 46% increased their use of third-party security personnel in response.",
+      "year": "2023 (FY2022)",
+      "sample": "177 retail brands, $1.6 trillion sales, 97,000+ locations",
+      "study_type": "industry",
+      "strength": "Medium",
+      "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf"
+    },
+    {
+      "finding": "Facial-recognition alerts produced thousands of false matches over eight years and employees acted on them by following, searching, ejecting and calling police on innocent customers; the settlement banned facial recognition for five years and required notice, complaint handling and deletion.",
+      "year": "2023 (conduct 2012-2020)",
+      "sample": "Hundreds of Rite Aid stores; FTC administrative action",
+      "study_type": "government",
+      "strength": "High",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2023/12/rite-aid-banned-using-ai-facial-recognition-after-ftc-says-retailer-deployed-technology-without"
+    },
+    {
+      "finding": "A YOLOv5 + Deep SORT pipeline that converts each person's bounding-box coordinates into a time series and classifies it with time-series models (XceptionTime, MiniRocket, InceptionTime, XCM) reached a 92% F1 on shoplifting clips from UCF-Crime, beating the RTFM baseline by 3 points and running 8.45x faster at inference.",
+      "year": "2023",
+      "sample": "UCF-Crime shoplifting subset: 267 normal + 50 abnormal videos split into 544 clips (81 test clips, 14.9% abnormal). Benchmark video, not a live store.",
+      "study_type": "peer-reviewed",
+      "strength": "Low",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10347130/"
+    },
+    {
+      "finding": "Sweethearting (cashier fake-scan) can be detected from checkout video: motion-based candidate generation produces primitive events at the point of sale, spatio-temporal features and Multiple-Instance-Learning models prune the falsely alarmed candidates, and transactions are validated by temporal ordering \u2014 demonstrated on data captured in a real grocery store.",
+      "year": "2009",
+      "sample": "One real grocery store; conference paper, no field precision/recall or deployment metrics in the abstract",
+      "study_type": "peer-reviewed",
+      "strength": "Low",
+      "source_url": "https://research.ibm.com/publications/detecting-sweethearting-in-retail-surveillance-videos"
+    },
+    {
+      "finding": "Vendor-commissioned analysis claims a 374% three-year ROI (payback under six months, $88,000 recovered per store per year, 0.14% of covered-lane revenue) for checkout vision AI.",
+      "year": "2026",
+      "sample": "Forrester TEI composite of 4 interviewed retail leaders, modelled as a 200-store, $20bn-revenue grocery chain",
+      "study_type": "vendor",
+      "strength": "Low",
+      "source_url": "https://everseen.com/blog/roi-of-vision-ai-in-retail"
+    }
+  ],
+  "legal_privacy": [
+    {
+      "issue": "Automated flags acted on by staff without safeguards can be an unfair practice under Section 5 of the FTC Act.",
+      "rule_or_precedent": "FTC v. Rite Aid (Dec 2023): five-year ban on facial recognition in stores, mandated notice to consumers, written complaint investigation, deletion of images/algorithms, third-party assessments, CEO certification. The order is about biometric surveillance, but the reasoning (untested accuracy, no false-positive tracking, no employee training, disparate impact) maps onto any alert system staff act on (inference).",
+      "confirmed": true,
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2023/12/rite-aid-banned-using-ai-facial-recognition-after-ftc-says-retailer-deployed-technology-without"
+    },
+    {
+      "issue": "Biometric data collection carries separate FTC scrutiny even absent a state statute.",
+      "rule_or_precedent": "FTC Policy Statement on Biometric Information (May 2023): use of biometric information or biometric technologies can be an unfair practice where harms are not reasonably avoidable, and the agency asks whether less risky alternatives exist. A non-biometric design (no face templates, no voice prints, no gait ID) is the low-risk path.",
+      "confirmed": true,
+      "source_url": "https://search.ftc.gov/system/files/ftc_gov/pdf/p225402biometricpolicystatement.pdf"
+    },
+    {
+      "issue": "Recording audio of customers or staff conversations in the store.",
+      "rule_or_precedent": "New Jersey's Wiretapping and Electronic Surveillance Control Act (N.J.S.A. 2A:156A-1 et seq.) is generally described as one-party consent, so a store intercepting conversations it is not party to is exposed to civil liability. I could not open the statutory text in this pass (justia and findlaw both returned HTTP 403), so the specific subsection is unverified here; the operational rule stands regardless: disable camera microphones entirely and record no audio.",
+      "confirmed": false,
+      "source_url": "https://law.justia.com/codes/new-jersey/title-2a/section-2a-156a-4/"
+    },
+    {
+      "issue": "Employee and customer privacy tort exposure for camera placement and review.",
+      "rule_or_precedent": "New Jersey's intrusion-upon-seclusion tort, restated by the state Supreme Court in Friedman v. Martinez (2020), turns on intrusion into a private space plus conduct highly offensive to a reasonable person. Sales floors, checkouts, back rooms and loading docks are defensible; restrooms, changing areas and break rooms are not.",
+      "confirmed": true,
+      "source_url": "https://www.njcourts.gov/system/files/court-opinions/2020/a_37_81_18.pdf"
+    },
+    {
+      "issue": "Is there a New Jersey statute requiring notice or signage for ordinary retail/workplace cameras?",
+      "rule_or_precedent": "I could not confirm one. Secondary sources state there is no New Jersey statute or regulation governing employer video recording in ordinary work areas, and that N.J.S.A. 34:6B-22 (electronic tracking notice, $1,000/$2,500 penalties) covers only tracking devices in vehicles an employee uses. Posting signage is therefore a policy choice and a liability reducer, not a verified legal mandate.",
+      "confirmed": false,
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/"
+    },
+    {
+      "issue": "Criminal exposure for cameras in private areas.",
+      "rule_or_precedent": "N.J.S.A. 2C:14-9 criminalises recording where a reasonable person would expect not to be observed (restrooms, locker rooms, changing areas). I confirmed the existence of this offence only through secondary summaries, not by reading the statute myself.",
+      "confirmed": false,
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/"
+    },
+    {
+      "issue": "Employee monitoring and union activity.",
+      "rule_or_precedent": "NLRB General Counsel Memo GC 23-02 (31 Oct 2022) is prosecutorial guidance, not a Board holding: it urges the Board to find a presumptive Section 7 violation where an employer's surveillance and management practices, viewed as a whole, would tend to interfere with protected activity, and to require employers to disclose the technologies used, why, and how the data is used (absent a business need for covert use). Practical implication: no covert cameras aimed at organising activity, no using alerts to punish protected concerted action, and a written policy on what the system is and is not used for.",
+      "confirmed": true,
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and"
+    },
+    {
+      "issue": "State privacy-statute exposure in New Jersey (biometric and otherwise).",
+      "rule_or_precedent": "The New Jersey Data Privacy Act (P.L. 2023, c.266) treats 'genetic or biometric data that may be processed for the purpose of uniquely identifying an individual' as sensitive data, but expressly excludes photographs, audio/video recordings and data generated from them unless generated to identify a specific individual \u2014 which is exactly the line a non-biometric design stays behind. It applies only to controllers processing personal data of at least 100,000 consumers in a year (excluding data processed solely to complete a payment transaction), or at least 25,000 consumers while earning revenue from selling personal data; 'consumer' excludes a person acting in a commercial or employment context, so employee footage is largely outside it. The statute takes effect on the 365th day following enactment.",
+      "confirmed": true,
+      "source_url": "https://pub.njleg.gov/Bills/2022/AL23/266_.HTM"
+    },
+    {
+      "issue": "False accusation, defamation and false imprisonment risk when staff act on an alert.",
+      "rule_or_precedent": "No New Jersey statute or appellate case I found squarely governs AI-alert-driven accusations. The FTC complaint documents the harm pattern (public accusation, search, police call) that would ground tort claims; treat this as unconfirmed legal analysis (inference), not a cited precedent. Note the statutory shield in N.J.S.A. 2C:20-11(e) protects a merchant who detains or causes arrest on probable cause \u2014 an unreviewed algorithmic flag is not the same evidentiary basis as an observed concealment (inference).",
+      "confirmed": false,
+      "source_url": "https://pub.njleg.gov/Bills/2024/AL25/39_.HTM"
+    },
+    {
+      "issue": "Data retention and access.",
+      "rule_or_precedent": "I found no New Jersey statute setting a retail video retention period. Recommendation is a contractual policy (e.g. 30 days rolling, exceptions exported and held with a case note), role-based access, and deletion on request from the store owner \u2014 this is a design choice (inference), not a legal requirement I could confirm.",
+      "confirmed": false,
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/"
+    }
+  ],
+  "prospecting_signals": {
+    "public": [
+      "Self-checkout lanes visible in Google Maps/Street View or store photos, especially 4+ lanes with one attendant.",
+      "Job postings for 'self-checkout attendant', 'overnight receiving', 'loss prevention associate' or 'asset protection' at a single-site independent.",
+      "Google/Yelp reviews that mention being asked for receipts, waiting for an attendant, or items not scanning (inference: indicates SCO friction and unattended lanes).",
+      "Recent local police blotter or news items naming the store or its block for shoplifting.",
+      "Store assortment: spirits on open shelves, OTC, power tools, infant formula, energy drinks \u2014 categories NRF names as organised-retail-crime targets.",
+      "Number of locations and rough square footage from the operator's own site (a 2+ store independent can amortise the build across sites).",
+      "Old analog/dome cameras visible outside and no camera over the loading door (inference from street-level photos).",
+      "Public liquor-licence and business-registration records (NJ ABC / county) to size the operator and confirm ownership structure."
+    ],
+    "walk_in": [
+      "Count self-checkout lanes vs attendants at peak; note whether the attendant also covers customer service or the cigarette case.",
+      "Look for a camera directly over each SCO bagging area and over the cash-wrap till; absence is the sale.",
+      "Back door: is it propped, alarmed, on a camera, and is there a dock/count station with light?",
+      "Receiving practice: does anyone count cases against the invoice, or is it 'sign and stack'?",
+      "POS terminal type (Square, Clover, NCR, Lightspeed, legacy) and whether the manager can export transaction-level data.",
+      "Existing DVR/NVR brand and age, where the monitor sits, and who actually reviews footage (often: nobody).",
+      "High-theft SKU placement: razors, spirits, formula, OTC, tools \u2014 locked cases are a signal of prior loss pain.",
+      "Staffing and turnover: single clerk overnight, new faces weekly, posted schedules (inference: higher internal-theft and sweethearting risk).",
+      "Cash controls: who closes, how often drops happen, whether refunds/voids require a second person."
+    ]
+  },
+  "pilot": {
+    "scope": "One store, 4 weeks live after a 1-week install/calibration. Four to six cameras: two overhead on self-checkout/checkout lanes, one inside the back door, one outside the back door or on the receiving area, one on the cash-wrap/till. Local NVR and inference box on the store network; no audio; signage at the entrance stating cameras are in use for loss prevention and that alerts are reviewed by staff. Daily POS export ingested overnight (transaction-level if the POS allows, otherwise the Z-report plus void/refund/no-sale log). Output is a reviewer queue only: every alert is a short clip plus a still, marked 'unverified', and the written policy forbids staff approaching, searching or accusing anyone on the basis of an alert. Weekly 30-minute review with the owner on precision, alert volume and false-positive themes; alert types that fail precision are switched off, not tuned forever.",
+    "hardware": "4-6 PoE 4K cameras, PoE switch, Jetson Orin Nano Super (or Coral/Hailo if detection-only), 2-4 TB storage, UPS, small network cabinet. Reuse the store's existing cameras if they are IP and at least 1080p with a clean overhead view of the bagging area.",
+    "success_metric": "Precision and workload, not 'theft stopped': (1) at least 60% of alerts confirmed as genuine exceptions on human review by week 4; (2) total alerts under ~15 per day so a manager can clear the queue in under 20 minutes; (3) zero alerts that led to a customer confrontation; (4) at least one documented, clip-backed exception per week in each of the three target categories (SCO non-scan, back-door/receiving, cash-wrap). Dollar shrink impact needs a full inventory cycle and is explicitly out of scope for a 4-week pilot.",
+    "cost_range": "Roughly $5,000-$9,000 one-time plus $250-$500/month support for a single store. Assumptions: 4-6 cameras at $100-200 each ($400-1,200); compute and storage $600-1,200; switch/cabling/UPS $400-800; install and aiming 16-24 hours at $100-150/hr ($1,600-3,600); POS ingestion and rule/zone calibration 20-40 engineering hours ($2,000-4,000 at internal cost or a discounted pilot rate); monthly covers remote health checks, model/threshold updates and the weekly review call. Excludes the owner's own staff time, any POS vendor fees, and any Frigate+ commercial licence if hosted training is used.",
+    "assumptions": "Store already has a working network and at least some IP cameras; POS can export transaction or Z-report data at least daily; one named manager owns the review queue; no facial recognition, no audio, no cloud video by default; pilot pricing is discounted and hardware is resold at cost plus install margin; no claim of measured shrink reduction is made until a full inventory cycle is compared."
+  },
+  "fit_score": {
+    "demand": 16,
+    "local_buyers": 11,
+    "ability_to_pay": 8,
+    "technical_feasibility": 10,
+    "legal_risk_low": 6,
+    "defensibility": 6,
+    "total": 57,
+    "rationale": "Demand is well documented (1.6% shrink across 177 chains, mean +22% loss after self-checkout across 8 grocery retailers) but chain-weighted, and the non-biometric design removes the single biggest legal hazard in this category, which is why the earlier legal score was too generous in the other direction. The revised legal score is deliberately mid-low, not high: this design still runs live Section 5 exposure if staff act on untested flags (the Rite Aid reasoning), defamation/false-imprisonment exposure for any accusation, wiretap exposure if audio is captured at all, NLRB scrutiny of electronic monitoring of employees, and a New Jersey notice/signage gap I could not close with a verified statute. Those are residual risks that a contract and a review-only workflow can mitigate but not delete. Local buyers are small and thin-margined: Middlesex County's 2,280 retail establishments average $45k pay per worker and liquor stores $31k, so a $5-9k pilot is a real decision, and many independents run one or two SCO lanes or none. Technical feasibility is only moderate because item-level scan detection needs POS event fusion and per-store custom training; zone/back-door rules are easy, product-level accuracy is not. Defensibility is weak: Frigate, YOLO and small VLMs are commodity, and Rhombus/Everseen can move downmarket. The durable position is local install plus POS integration plus a disciplined human-review workflow and escalation policy \u2014 a service moat, not a model moat."
+  },
+  "risks": [
+    "False positives leading to a customer accusation: the exact harm pattern the FTC charged Rite Aid over. Mitigation (review-only queue, no confrontation, written policy, signage) must be contractual, not aspirational.",
+    "Employee-relations blowback: staff read 'alert system' as suspicion. NLRB GC 23-02, though only guidance, signals scrutiny of intrusive monitoring; announcing purpose and limits before switch-on is safer than a surprise rollout.",
+    "POS integration is the real project risk. Independents often run Square/Clover with limited exports, or a legacy DOS-era POS; without transaction-level data, scan-bagging detection degrades to person-in-zone analytics.",
+    "Licensing traps: the Ultralytics community licence is AGPL-3.0, so a closed commercial deployment points to the Enterprise licence (inference); and Frigate+ hosted training refuses custom labels while its standard subscription does not cover deploying models at customer sites \u2014 an installer bundling Frigate+ models needs a commercial licence.",
+    "Commodity competition: Rhombus-class cloud cameras at $399 + a $149 ongoing licence per camera and NVR apps keep improving; a local integrator must sell judgement and workflow, not just detection.",
+    "Store economics: a $5-9k pilot plus $250-500/month has to be justified against a shrink number most independents do not measure precisely \u2014 expect long sales cycles and requests for proof from a neighbouring store.",
+    "Chain-of-custody and evidential quality: if clips are handed to police under New Jersey's upgraded retail-theft law, timestamp integrity, retention logs and access records need to be right. Note that the merchant probable-cause shield in N.J.S.A. 2C:20-11(e) presumes actual probable cause, which an unreviewed algorithmic flag does not establish (inference).",
+    "Scope creep into HR: owners will ask the system to police employee breaks and productivity, which converts a loss-prevention tool into continuous employee monitoring and raises the legal and cultural risk sharply."
+  ],
+  "caveats": "Shrink and self-checkout statistics come from large-chain surveys (NRF's 177 brands; ECR's 39 retailers, with individual figures resting on 2-14 retailers) \u2014 I found no New Jersey-specific or small-independent shrink rate, so applying 1.6% and +22% to a Milltown store is an inference, not a measurement. All vendor outcome claims (Everseen's 374% ROI and the 9% loss reduction) are Low strength: vendor-produced, Forrester-modelled or self-reported by retailers. The ECR nudge/self-correction figures are partly vendor-sourced and rest on 2 retailers, so they are rated Low. Peer-reviewed detection accuracies (the 92% F1 benchmark result, the sweethearting method) are benchmark or single-store results, not live small-store performance. Pricing for Everseen, NCR, Solink and Agilence is not published and is listed as Unknown. Hardware prices are list prices at time of research and vary by reseller and stock. Nothing here is legal advice; the confirmed items are statutes I read, agency actions and one state Supreme Court opinion, and every 'confirmed: false' item is flagged where I relied on secondary summaries or on inference.",
+  "data_gaps": [
+    "No New Jersey or Middlesex County shrink rate specific to independents; NRF and ECR data are chain-weighted.",
+    "Could not query Census County Business Patterns by NAICS for establishment-size distribution (the API requires a key); used BLS QCEW annual averages instead, which give establishment and employee counts but not size bands. The 444140 hardware-retailer line reports only 13 establishments in the county with employment withheld (code N), which is too small a base to size the segment.",
+    "No peer-reviewed field study reporting a false-positive rate for self-checkout non-scan detection in small or independent stores; the closest public numbers are the ECR alert-rate range (3%-10% of transactions, from 2 retailers and 2 vendors).",
+    "Could not open the New Jersey Data Privacy Act FAQ page (bot-blocked in the earlier pass); the thresholds, sensitive-data definition and effective date now come from the enacted statute text on njleg.gov instead.",
+    "Could not open the text of N.J.S.A. 2A:156A-4 (justia and findlaw returned HTTP 403), so the wiretap entry is marked unconfirmed and rests on secondary description.",
+    "Could not confirm a Frigate+ subscription price from the pages I opened (page states subscription + $5 extra fine-tunes only).",
+    "The MDPI publisher page returned HTTP 403; the 2023 Sensors paper was read through its PMC mirror (PMC10347130) instead.",
+    "University of Leicester's 2026 self-checkout summary returned HTTP 403 and was not used.",
+    "No New Jersey case law found on liability for acting on an AI-generated alert; that section is inference.",
+    "Everseen, NCR Voyix, Solink and Agilence pricing could not be verified; no vendor would be quoted without a sales contact, which is outside read-only research.",
+    "The New Jersey Attorney General's office had not, as of this research, published any document showing whether a retail-theft unit was in fact established under P.L. 2025, c.39 \u2014 the statute makes it discretionary, so no such claim is made here."
+  ]
+}

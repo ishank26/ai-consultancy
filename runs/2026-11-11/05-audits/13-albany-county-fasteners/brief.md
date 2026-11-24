@@ -1,0 +1,1 @@
+Write the AI Opportunity Audit for Albany County Fasteners (Edison). Read profile.json and analysis.json in your folder. Use only facts present in those files, and keep every source URL you rely on in the Sources list. Write Markdown to output.md.

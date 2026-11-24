@@ -1,0 +1,148 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"Niche pages — contractor, HVAC/electrical/plumbing, pickleball, nonprofit, cyber — bring their own questionnaires.\"",
+      "problem": "Unsupported and most likely wrong. The cited source (page-sitemap1.xml) only lists URLs. I opened the pickleball, HVAC contractor, construction and cyber liability pages myself: each is marketing copy plus FAQs, and there is no questionnaire, quote form, upload field or Contact Form 7 form on any of them (a full-text search of the pickleball page HTML for 'questionnaire' and 'wpcf7-form' returned nothing). The site's only intake surface is the embedded third-party form on /request-a-quote/.",
+      "fix": "Rewrite to what is verified, e.g. \"The site has separate coverage pages for contractor, HVAC/electrical/plumbing, pickleball, nonprofit and cyber work, and each line has its own carrier supplemental questions.\" If you want to keep the intake point, add \"the questionnaires themselves aren't published, so we'd map them in discovery\" and mark it as a question rather than a finding."
+    },
+    {
+      "claim": "\"Businesses like yours often find each certificate typed by hand, then checked.\"",
+      "problem": "Unsourced generalisation about the client's internal workflow, stated as fact in a client-facing audit. Nothing in the sources says how Soden prepares certificates.",
+      "fix": "Either delete the sentence or hedge it explicitly and ask instead: \"We'd expect standard certificates to be typed against policy data and then checked by hand — please confirm.\""
+    },
+    {
+      "claim": "Impact 2 upper bound of \"$12,000–$28,000 a year\".",
+      "problem": "The top of the range does not follow from the stated basis. O*NET/BLS NJ average for Customer Service Representatives (43-4051) is $47,740/yr, i.e. $22.95/hr (confirmed on the cited page); the analysis applies a 30–35% burden, which gives roughly $29.8k–$31.0k per hour loaded, not $30–$35k. 800 recovered hours at ~$31/hr is about $24,800, so the high end is roughly 13% above what the assumptions support.",
+      "fix": "Use $12,000–$25,000, or state the loaded rate as ~$30/hr (NJ average + 30–35% burden). Keep the assumption line visible somewhere the client sees."
+    },
+    {
+      "claim": "Impact 3 range of \"$5,000–$16,000 a year\".",
+      "problem": "The audit's figure is internally consistent (150–400 hours at ~$32–$40/hr loaded = $4,800–$16,000) but analysis.json states $8,000–$25,000 for the same opportunity. Two different numbers now exist for the same work, so whoever runs the meeting could quote the wrong one.",
+      "fix": "Keep the audit's conservative $5,000–$16,000 and correct analysis.json to match, so both documents agree."
+    },
+    {
+      "claim": "\"the team behind them sits in one office\" (Opportunity 1, 'Now').",
+      "problem": "Stated as fact but it is a two-step inference: the site says the entire Account Management department is in Jamesburg, and separately that clients use the CSR24 portal for certificates. It does not say certificate work is done by that department in that office.",
+      "fix": "Add the hedge used elsewhere, e.g. \"and, since your whole Account Management team is in Jamesburg, those requests most likely land with that one team.\""
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Family-owned since 1925.",
+      "source_url": "https://sodeninsurance.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Family ownership / multi-generation (email and intro use 'family-owned').",
+      "source_url": "https://sodeninsurance.com/oliver-l-e-soden-agency-partners-with-john-b-wright-insurance",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Three locations: Jamesburg main office, Little Silver office, John B. Wright division in Manasquan.",
+      "source_url": "https://sodeninsurance.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "John B. Wright is a Manasquan, NJ agency with marine/marina specialization, partnered March 2021 (email: 'John B. Wright marine book').",
+      "source_url": "https://sodeninsurance.com/oliver-l-e-soden-agency-partners-with-john-b-wright-insurance",
+      "result": "confirmed"
+    },
+    {
+      "claim": "5.0 average across roughly 180 reviews.",
+      "source_url": "https://www.trustindex.io/reviews/sodeninsurance.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site says the entire Account Management team sits in Jamesburg.",
+      "source_url": "https://sodeninsurance.com/jamesburg-office/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Servicing for all three locations 'likely' runs through one team.",
+      "source_url": "https://sodeninsurance.com/jamesburg-office/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Certificate requests route to the CSR24 portal.",
+      "source_url": "https://sodeninsurance.com/request-a-quote/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Advertises 24-hour phone service.",
+      "source_url": "https://sodeninsurance.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Published hours are Monday-Friday 9-5.",
+      "source_url": "https://sodeninsurance.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "After-hours cover is not published.",
+      "source_url": "https://sodeninsurance.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "More than 40 carrier claim and payment portals.",
+      "source_url": "https://sodeninsurance.com/report-a-claim-pay-online/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Quoting starts from one embedded web form with no upload step visible from outside.",
+      "source_url": "https://sodeninsurance.com/request-a-quote/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Niche pages for contractor, HVAC/electrical/plumbing, pickleball, nonprofit and cyber exist.",
+      "source_url": "https://sodeninsurance.com/page-sitemap1.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Those niche pages bring their own questionnaires.",
+      "source_url": "https://sodeninsurance.com/niche-industries/pickleball-facility-insurance/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Hal Soden, Sr. is a principal (walkthrough and walk-in opener name him).",
+      "source_url": "https://sodeninsurance.com/jamesburg-office/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Certificate capacity estimate of $20,000-$50,000 / 0.4-0.8 FTE rests on NJ wage data.",
+      "source_url": "https://www.onetonline.org/link/localwages/43-9041.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Service-deflection estimate of $12,000-$28,000 rests on NJ CSR wage data.",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "not found"
+    },
+    {
+      "claim": "Renewal-intake estimate of $5,000-$16,000 rests on NJ insurance sales agent wage data.",
+      "source_url": "https://www.onetonline.org/link/localwages/41-3021.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Estimates are labelled illustrative in the audit footer.",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body is at most ~450 words.",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No personal data on private individuals; only a principal named on the company's own office page is identified.",
+      "source_url": "https://sodeninsurance.com/jamesburg-office/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business name, town, service lines and tone are accurate and non-alarmist.",
+      "source_url": "https://sodeninsurance.com/about-us/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

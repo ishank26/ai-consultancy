@@ -1,0 +1,64 @@
+{
+    "name": "Ophthalmic Consultants of NJ",
+    "town": "East Brunswick",
+    "ref": "B00297",
+    "status": "operating",
+    "website": "https://www.oc-nj.com/",
+    "what_they_do": "Single-office ophthalmology practice (Dr. Michael Su, MD) offering comprehensive eye exams, cataract surgery, laser treatment for glaucoma/retina/diabetes/macular degeneration/cornea/dry eye, and an on-site optical shop with designer frames and contact lenses.",
+    "customers": "Adults needing medical and surgical eye care (cataract, glaucoma, retina) as well as routine exams and eyewear; insurance-driven local patients.",
+    "size_signals": [
+      {"signal": "One East Brunswick office (620 Cranbury Road Ste 205) with 5-day hours, Friday closing at 3pm", "source_url": "https://www.oc-nj.com/"},
+      {"signal": "On-site optical shop with named designer brands (Longchamp, Tory Burch, Carolina Herrera, Nike, Ray-Ban)", "source_url": "https://www.oc-nj.com/"},
+      {"signal": "Separate billing and optical phone lines plus an online bill-pay portal, suggesting enough admin volume to staff distinct functions", "source_url": "https://www.oc-nj.com/"}
+    ],
+    "listing": {"platform": "Google (rating reported via Birdeye aggregator)", "rating": "4.6", "reviews": "133", "source_url": "https://reviews.birdeye.com/ophthalmic-consultants-of-nj-michael-su-md-155743256513186"},
+    "website_review": {
+      "loads": true,
+      "https": true,
+      "phone_layout": "usable",
+      "clear_offer": true,
+      "primary_cta": "'REQUEST APPOINTMENT' button scrolling to an on-site form, plus 'PAY MY BILL'",
+      "click_to_call": false,
+      "contact_form": true,
+      "online_booking_or_quote": "Request-appointment form only (name, email, phone, new-patient yes/no, message) - no calendar or real-time booking",
+      "trust_signals": "Patient testimonials on the page, board-certified ophthalmologist credentials, designer frame brands, detailed service pages, hours and full contact block in the footer",
+      "out_of_date_signs": "No obvious stale content; the phone numbers in the footer are plain text rather than tap-to-call links; the appointment form warns that submitted information is not encrypted",
+      "search_basics": "Meta description names the services and East Brunswick well, services have their own pages (cataract surgery, optical shoppe, services), but the page title is just 'Ophthalmic Consultants of NJ' with no town or service, and the H1 is a slogan",
+      "top_issues": [
+        "No click-to-call anywhere: five phone numbers appear only as plain text, so a mobile visitor must copy and dial manually",
+        "No real online booking - only an unencrypted request form that requires staff to call back",
+        "Home page title omits the town and service, weakening local search and AI answers",
+        "Squarespace robots.txt blocks a long list of AI crawlers including anthropic-ai, ClaudeBot, Google-Extended, GPTBot and CCBot"
+      ]
+    },
+    "agent_readiness": {
+      "findable": 2,
+      "answerable": 3,
+      "bookable": 1,
+      "notes": "Findable: complete contact block, hours and one address all in text, plus a sitemap, but the site's robots.txt lists GPTBot, ClaudeBot, anthropic-ai, Google-Extended, CCBot and other AI agents in a disallow block - so major AI crawlers are told not to read the site. Answerable: good - LocalBusiness/Organization JSON-LD carries the real address, phone and opening hours, and services are written as text on their own pages. Bookable: weak - only a request form with no availability, no confirmation, and an explicit notice that the data is unencrypted; the patient must wait for a callback, so no agent can complete a booking."
+    },
+    "operations_signals": [
+      {"signal": "Appointment requests and billing are separate queues (form request + mypatientvisit bill pay + separate billing and optical phone lines) - inference: front desk re-handles each request by phone", "source_url": "https://www.oc-nj.com/"},
+      {"signal": "Form disclaims encryption and discourages including medical detail, so patients still have to call to say what is wrong", "source_url": "https://www.oc-nj.com/home#appointment"},
+      {"signal": "One ophthalmologist covering exam, surgery and optical - inference: doctor time is the bottleneck and any phone triage is expensive", "source_url": "https://www.oc-nj.com/"}
+    ],
+    "top_opportunities": [
+      {"opportunity": "Replace the request form with real online scheduling (or at least a triaged intake that captures reason for visit, insurance and preferred times) so patients and their agents can self-book", "type": "agent readiness", "evidence": "Only a 5-field unencrypted request form exists; no calendar, no slot availability, no confirmation", "effort": "M"},
+      {"opportunity": "Fix the crawl/answer layer: unblock AI crawlers in robots.txt, add the town and service to the home page title, and add tel: links everywhere a phone number appears", "type": "search", "evidence": "robots.txt explicitly lists GPTBot, ClaudeBot, anthropic-ai, CCBot and Google-Extended; title is just the practice name; zero tel: links found on the page", "effort": "S"},
+      {"opportunity": "Automated intake triage and callback queue: parse form submissions, classify urgency (post-op concern vs routine), send confirmations and reminders, so the front desk stops re-keying enquiries", "type": "operations", "evidence": "Separate appointment, billing and optical phone lines plus an unencrypted form that gives staff no structured reason-for-visit", "effort": "M"}
+    ],
+    "scores": {
+      "gap_size": 3,
+      "ability_to_pay": 3,
+      "ease": 4,
+      "evidence": 3,
+      "reasons": "Gap: moderate - structured data and text content are already good, but booking, click-to-call and AI crawler access are missing or actively blocked. Pay: single-doctor surgical practice with an optical shop, so solid but not large budget. Ease: robots.txt, titles and tel: links are same-week fixes and form-to-scheduler work is well scoped. Evidence: I inspected the page, the JSON-LD, the form fields and robots.txt directly; review figures come from an aggregator."
+    },
+    "sources": [
+      "https://www.oc-nj.com/",
+      "https://www.oc-nj.com/home#appointment",
+      "https://www.oc-nj.com/robots.txt",
+      "https://reviews.birdeye.com/ophthalmic-consultants-of-nj-michael-su-md-155743256513186",
+      "https://www.healthgrades.com/physician/dr-michael-su-ykhqk"
+    ]
+}

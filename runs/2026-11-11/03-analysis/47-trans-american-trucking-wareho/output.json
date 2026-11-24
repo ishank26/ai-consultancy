@@ -1,0 +1,81 @@
+{
+ "business": "Trans American Trucking & Warehouse (Trans American Trucking Service, Inc.)",
+ "industry": "trucking-freight",
+ "town": "South Plainfield",
+ "opportunities": [
+  {
+   "title": "Quote-desk agent: turn the web/email/phone quote request into a priced draft in minutes",
+   "capability": "A",
+   "problem": "The only published intake path is a form that promises a rate specialist 'will be in contact with you shortly', plus a rates@transamer.com inbox and a toll-free line; there is no instant rate, booking or shipper portal, and each terminal runs its own dispatch/warehouse numbers and fax. Heavy-haul quotes need trailer/axle configuration, mileage, permit feasibility and accessorials, so every request waits on a person, and requests that arrive outside the published Mo-Fr 08:00-17:00 hours have no self-service fallback.",
+   "evidence": [
+    "Quote page: 'Fill out the quote request form ... one of our rates specialists will be in contact with you shortly'; alternates are a rates@ email and 800-526-7596 - no instant quote or booking (https://www.transamer.com/quote-request)",
+    "Each site publishes its own dispatch and warehouse phone line plus a fax number, implying phone/fax/email coordination rather than a shared customer-facing system (https://www.transamer.com/posts/locations)",
+    "Business hours published as Mo-Fr 08:00-17:00 with no after-hours intake described (https://www.transamer.com/our-history)",
+    "O*NET lists 'estimate freight rates and record shipment costs and weights' as a core Cargo and Freight Agent task, i.e. the work the quote desk performs manually (https://www.onetonline.org/link/summary/43-5011.00)",
+    "NJ benchmark: Cargo and Freight Agents median $28.80/hr, mean $28.54/hr ($59,360/yr) - the labor being consumed by manual quoting (https://web.archive.org/web/20250318091039/https://www.bls.gov/oes/current/oes_nj.htm)"
+   ],
+   "agent_design": "Event-driven intake agent watching the web form, the rates@ inbox and a transcribed phone line. It normalises each request into a structured load spec (origin/destination, dims, weight, commodity, HAZMAT class 3/4/8/9 flag, dates, accessorials), pulls mileage and route from PC*MILER or a routing API, proposes trailer/equipment from the 200+ trailer inventory, retrieves comparable historical rate lines and accessorial rules from the published Rules Tariff, and writes a draft quote with a margin check into the TMS/CRM plus a reply draft. Hard escalation to the rate specialist: any superload over 180,000 lbs, hazmat, new lane or new customer, or a gap in historical rates. During the pilot every price is human-approved before send; only the acknowledgement and expected-response time are automatic.",
+   "why_not_DIY": "Requires retrieval over the company's own rate history and tariff, routing/mileage computation, trailer-availability logic and write-back into a TMS that is not named publicly - plus an auditable quote record (49 CFR Part 371 style retention if any brokered freight is involved). An off-the-shelf chatbot has none of that data and cannot be trusted with pricing.",
+   "impact_estimate": {
+    "range": "$12,000-$30,000/yr of freight-agent labor, plus quote turnaround cut from hours-to-days to under 30 minutes on standard loads",
+    "assumptions": "Inference, not measured: 10-25 inbound quote requests per business day (scaled from ~2.47M annual miles, 57 power units and 300k+ sq ft of warehousing); 20-40 minutes of specialist time per request to research route, equipment and rate; the agent removes 40-60% of that clerical research and drafting, while the specialist still reviews every price. That is 700-1,100 recovered hours/yr valued at the NJ freight-agent median of $28.80/hr. Excludes any win-rate gain from faster response, which is not quantified here.",
+    "benchmark_source_url": "https://web.archive.org/web/20250318091039/https://www.bls.gov/oes/current/oes_nj.htm"
+   },
+   "complexity": "Medium",
+   "pilot_scope": "4 weeks: connect the quote form and rates@ inbox, build the load-spec extractor and a rate/accessorial retrieval layer over 12-24 months of past quotes and rate confirmations, ship a human-in-the-loop quote draft queue with approval and audit logging, and report time-per-quote, touch time and turnaround against a 2-week baseline."
+  },
+  {
+   "title": "Permit, route-survey and escort coordination agent for superloads",
+   "capability": "A",
+   "problem": "Superload work (non-divisible loads over 180,000 lbs, up to 300,000 lbs) depends on in-house permitting, company route surveys, in-house escort drivers, police notifications and road closures that must be sequenced per move and coordinated with the driver and dispatch. Each state's permit has its own application, validity window and conditions, so the work scales with headcount and one missed expiry or route condition stalls a high-value move.",
+   "evidence": [
+    "Heavy-haul page: superloads defined as non-divisible shipments over 180,000 lbs requiring special permits; the company moves up to 300,000 lbs; 'In-house permitting reduces time spent and saves money'; in-house escort drivers (https://www.transamer.com/heavy-haul)",
+    "Site FAQ states permitting is handled by an in-house permits department with company route surveys, and that permits staff, escort drivers, drivers and dispatch coordinate on each move (https://www.transamer.com/our-history)",
+    "The carrier is authorised for hazmat classes 3, 4, 8 and 9, so permit and document automation on those lanes must be conservative and human-verified (49 CFR Part 172 shipping papers) (https://www.transamer.com/our-history)",
+    "O*NET lists scheduling operational activities and relaying information between drivers, customers and facilities as a Dispatcher core task (https://www.onetonline.org/link/summary/43-5032.00)",
+    "NJ benchmark: Dispatchers median $24.32/hr, mean $26.64/hr ($55,410/yr) (https://web.archive.org/web/20250318091039/https://www.bls.gov/oes/current/oes_nj.htm)"
+   ],
+   "agent_design": "Triggered when an oversize/overweight load is booked. The agent assembles a per-move permit plan: state-by-state requirements from a maintained rules library, pre-filled application drafts built from the load spec and equipment configuration, an escort/height-car/police-notification checklist, and a live permit board (permit number, issuing state, validity window, conditions, escort assigned). It generates driver and escort briefing packets, pushes status into dispatch, and alerts when a permit would expire before the scheduled move or when route conditions contradict the survey. Permit staff review and submit every application to the state DOT themselves; the ops manager approves escort assignments and any road-closure request.",
+   "why_not_DIY": "State DOT portals, per-state rule variation, expiry tracking across concurrent moves, generated legal documents and liability exposure on loads up to 300,000 lbs. This is multi-system orchestration with a hard human-approval boundary, not a chat interface, and the rules library needs continuous maintenance (AgentOps).",
+   "impact_estimate": {
+    "range": "$10,000-$23,000/yr of permit/dispatch staff time, plus fewer permit-expiry and route-condition reworks (unquantified)",
+    "assumptions": "Inference, not measured: 1-2 in-house permit/dispatch staff spend 40-60% of their week assembling packets, chasing state status and briefing escorts; the agent removes 30-50% of that clerical work. That is 350-800 recovered hours/yr valued at $26.64-$28.80/hr (NJ dispatcher mean to freight-agent median), because permit coordination blends both roles. Excludes the value of avoided missed or expired permits, which is large per incident but not estimated here.",
+    "benchmark_source_url": "https://web.archive.org/web/20250318091039/https://www.bls.gov/oes/current/oes_nj.htm"
+   },
+   "complexity": "High",
+   "pilot_scope": "3-4 weeks on one corridor (e.g. NJ-PA-NY oversize moves): digitise the permit rules for 3 states, build the per-move permit plan and expiry alerting, run it in shadow mode beside the permits desk for 2 weeks, and report hours per move plus any missed or incorrect requirement against the current manual baseline."
+  },
+  {
+   "title": "Proactive shipment-status and detention-capture agent across the NJ/MD/NH terminals",
+   "capability": "A",
+   "problem": "The company advertises telematics and real-time asset visibility internally but offers customers no tracking or portal, so status questions land on three separate dispatch phone lines during 08:00-17:00 only. Detention is a measurable leak: drivers are held past the 2-hour free time on roughly 1 in 10 stops for 1.4 extra hours on average, and for-hire truckload carriers are detained about five times as often as private fleets - hours that are often neither billed nor recovered.",
+   "evidence": [
+    "Site claims 'smart fleet technology' with real-time asset visibility but advertises no customer-facing tracking or portal; each terminal is reachable only by its own phone/fax line (https://www.transamer.com/)",
+    "USDOT study: detention beyond the 2-hour free time on about 1 in 10 stops, averaging 1.4 extra hours (3.4 hours total at the facility), with for-hire truckload carriers detained roughly 5x as often as private carriers (https://doi.org/10.21949/1502646)",
+    "O*NET: Cargo and Freight Agents 'track delivery progress of shipments and notify consignees/customers of arrival' - the manual status-call loop (https://www.onetonline.org/link/summary/43-5011.00)",
+    "NJ benchmarks: Dispatchers median $24.32/hr and Cargo and Freight Agents median $28.80/hr for the status work being absorbed (https://web.archive.org/web/20250318091039/https://www.bls.gov/oes/current/oes_nj.htm)"
+   ],
+   "agent_design": "Agent subscribed to telematics/ELD and TMS event streams (vendor unnamed in public sources - to be confirmed in discovery), with geofences at each shipper, receiver, port and company yard. It sends proactive status and ETA notices to consignees and the sales team at pickup, in-transit milestones, arrival and exception; stamps arrival/departure at each facility against the free-time clock; opens a detention event with timestamps and drafts the accessorial line for billing review. It escalates to the responsible terminal's dispatcher when an ETA slips more than 60 minutes, when a load sits without an appointment, or when free time is about to expire. Dispatchers approve all customer-facing exception messages and accounting approves detention invoices during the pilot.",
+   "why_not_DIY": "Needs live GPS/ELD and TMS integration, geofence accuracy, per-customer notification rules and durable timestamps that survive a billing dispute. It also touches driver location data, which carrier customers and insurers expect to stay in a private or contracted environment - a public chatbot subscription cannot meet that.",
+   "impact_estimate": {
+    "range": "$12,000-$30,000/yr combined from reduced status-call handling and recovered/billed detention",
+    "assumptions": "Inference, not measured: 2-5 hours/week of dispatcher and freight-agent time per terminal goes to status and check calls (250-500 hrs/yr at $24.32-$28.80/hr = $6k-$14k); if 5-10% of roughly 3,500-7,000 annual loads incur billable detention and only part is captured today, recovering 1-2 hours per such stop at a conservative assumed $40-$60/hr billing rate yields $8k-$25k. The $40-$60/hr detention rate is an assumption, not a sourced figure. Both components overlap with existing staff, so the low end assumes only partial capture.",
+    "benchmark_source_url": "https://doi.org/10.21949/1502646"
+   },
+   "complexity": "Medium",
+   "pilot_scope": "3 weeks: integrate one terminal's telematics feed, geofence the top 10 shipper/receiver locations, run proactive ETA/arrival notices on one customer account with dispatcher approval, and produce a detention log comparing billable versus actually billed accessorials for the pilot period."
+  }
+ ],
+ "lead_score": {
+  "pain": 22,
+  "fit": 18,
+  "ability_to_pay": 15,
+  "ease": 8,
+  "strategic": 13,
+  "total": 76,
+  "rationale": "Pain (22/30): the manual intake, per-terminal phone/fax coordination and in-house permit workflow are visible on the company's own pages, and the detention leak is benchmarked by a USDOT study - but there are zero verifiable shipper complaints (Yelp blocked access, no BBB profile), so customer-side pain is inferred from site architecture rather than stated by customers. Fit (18/20): all three opportunities are core operational agents (A) touching quoting, permitting and status, squarely inside capabilities A-D with no marketing filler. Ability to pay (15/20): 90 employees, 57 power units, 300k+ sq ft of warehouse and a $33.25M asset sale in 2025 indicate real scale, but revenue is unpublished and family ownership usually means slow, consensus-based procurement. Ease (8/15): the TMS, telematics and EDI stack are all unnamed publicly, so every option needs a discovery pass; only the quote agent can be piloted from the public web form and email alone. Strategic (13/15): heavy-haul/warehouse carriers with multi-state permitting are a repeatable NJ/Northeast segment, and the permit agent is a reusable asset for carriers of this shape. No score inflation for the anniversary press release or the real-estate sale, which are growth signals but not demand signals.\n"
+ },
+ "best_evidence_signal": "The quote page routes every shipper to a form that promises a rate specialist 'will be in contact with you shortly', with only an email and an 800 number as alternates and no instant rate or booking - https://www.transamer.com/quote-request",
+ "suggested_channel": "email",
+ "evidence_thin": false
+}

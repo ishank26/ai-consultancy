@@ -1,0 +1,128 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "audit_md, 'What it means for customers': '...reaches a blank ad page or another chain's booking screen, not this salon.' Also severity_reason: 'the other into a different chain's booking flow' and the outreach email: 'hairbarnyc.com opens a different chain's booking screen'.",
+      "problem": "Stated as fact, but it is not supported and is probably wrong. The auditor's own founder_md lists the same point as an open question ('Is the North Brunswick salon still part of the Hair Bar NYC chain, or independent with an old chain link left on the profile?'), so the two documents contradict each other. Evidence points the other way: this is the salon's own first website field on its Google profile, Google returns this profile first for a search of 'Hair Bar NYC North Brunswick NJ' and shows no separate Hair Bar listing in New Jersey, the Giftly listing for the same address carries a review tip mentioning '24 K Hairbar keratin treatment', and directory listings name the business 'Hair Bar NYC @ Salon G' at 1727 US-130 (callupcontact.com, localstylist.com). None of that proves a franchise relationship, but it means 'a different chain, not this salon' cannot be printed or said to the owner.",
+      "fix": "Replace the assertion with what was actually observed and sourced: 'The link goes to Hair Bar NYC's public booking site, whose location list shows nine salons in New York and Florida and no New Jersey location, so a customer who follows it cannot book at this address.' Delete 'another chain's' / 'a different chain's' from audit_md, severity_reason and both outreach scripts, and keep the affiliation question in founder_md's open questions."
+    },
+    {
+      "claim": "The lead is treated throughout as an independent salon (role requires 'not a chain or franchise'), and fix step 3 is 'Remove hairbarnyc.com too unless the salon is still part of that chain.'",
+      "problem": "The business may be a Hair Bar NYC franchise location ('Hair Bar NYC @ Salon G'). I could not confirm or rule this out from a primary source: hairbarnyc.com/locations/ is a corporate page showing nine NY/FL salons, the booking site shows the same nine, and third-party pages that use the 'Hair Bar NYC @ Salon G' name are aggregator/directory sites I could not open for verification (Cloudflare check on localstylist.com, timeout on salonlookup.com). If it is a franchise, the website links on the profile may be controlled by the franchisor, so telling the owner to remove them would be bad advice.",
+      "fix": "Before any outreach, have someone confirm the relationship (look at the salon's own signage/materials, or the owner's answer on a first call) and record it. If it is a Hair Bar NYC franchise, either drop the lead as a chain/franchise or limit the audit to the dead domain, which is the salon's own."
+    },
+    {
+      "claim": "rescue.json, domains[2]: 'Manicure and Pedicure (listed as free, 30 min)'",
+      "problem": "The booking page lists them as two separate services: 'Manicure - Free - 30 min' and 'Pedicure - Free - 30 min' (confirmed in Chrome today and in square-booking-page.png). Minor, and it does not affect audit_md, which only cites Women Haircut & Blowout and Deep Conditioner.",
+      "fix": "Split into 'Manicure (free, 30 min)' and 'Pedicure (free, 30 min)'."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Google profile: 'SALON G AND SPA', 1727 US-130, North Brunswick Township, NJ 08902, hair salon, 4.5 stars, open, phone (732) 410-7951, two website fields hairbarnyc.com and mysalongandspa.com, 'Book online' button",
+      "source_url": "https://www.google.com/maps/place/SALON+G+AND+SPA/@40.443065,-74.4732439,17z/data=!4m6!3m5!1s0x89c3c571fbacea13:0xdb35f99b01a46995!8m2!3d40.443065!4d-74.4732439!16s%2Fg%2F11j0czt3ys",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The profile's second website link is entered as http://mysalongandspa.com/",
+      "source_url": "https://www.google.com/maps/place/SALON+G+AND+SPA/@40.443065,-74.4732439,17z/data=!4m6!3m5!1s0x89c3c571fbacea13:0xdb35f99b01a46995!8m2!3d40.443065!4d-74.4732439!16s%2Fg%2F11j0czt3ys",
+      "result": "confirmed"
+    },
+    {
+      "claim": "In Chrome, mysalongandspa.com redirects to an ad page on cf.triorook.site whose title is empty and which renders blank",
+      "source_url": "http://mysalongandspa.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The HTML served for http://mysalongandspa.com/ is a ParkLogic script posting to router.parklogic.com, naming the domain mysalongandspa.com and tenant 'oleksandr'",
+      "source_url": "http://mysalongandspa.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A non-browser HTTPS request to mysalongandspa.com fails certificate verification ('unable to get local issuer certificate')",
+      "source_url": "https://mysalongandspa.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP mysalongandspa.com: created 2026-04-20, expires 2027-04-20, last changed 2026-06-20, registrar Name SRS AB (IANA 638), nameservers NS1/NS2.653.PARKLOGIC.COM, status active",
+      "source_url": "https://rdap.org/domain/mysalongandspa.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP hairbarnyc.com: created 2013-03-08, expires 2027-03-08, last changed 2026-03-09, registrar IONOS SE (IANA 83), nameservers art/erin.ns.cloudflare.com, status client transfer prohibited",
+      "source_url": "https://rdap.org/domain/hairbarnyc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback captures show mysalongandspa.com returning HTTP 200 from 6 February 2025 through 18 January 2026",
+      "source_url": "https://web.archive.org/cdx/search/cdx?url=mysalongandspa.com&output=text&fl=timestamp,original,statuscode,digest&collapse=digest&limit=60",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The archived page of 18 January 2026 is a Square Online site (generator 'Square Online', site title 'Salon G and spa l') with custom domain www.mysalongandspa.com",
+      "source_url": "https://web.archive.org/web/20260118094405id_/https://www.mysalongandspa.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "hairbarnyc.com/locations/ lists nine salons, all in New York and Florida, none in New Jersey (3rd Avenue, Cedarhurst, Lexington, Midtown, SoHo, Boca Raton, Delray Beach, Palm Beach Gardens, Parkland)",
+      "source_url": "https://hairbarnyc.com/locations/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Hair Bar NYC booking flow's location picker lists the same nine salons and no New Jersey location",
+      "source_url": "https://book.hairbarnyc.com/webstoreNew/services",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The salon's Square page works, is titled 'Salon G and spa l | Book Appointments | N BRUNSWICK, NJ', and lists Women Haircut & Blowout $50 and Deep Conditioner $25",
+      "source_url": "https://book.squareup.com/appointments/vrvtrhybp21hn9/location/LPVEQBTCPBEVB/services",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google's 'Book online' button resolves to that same Square page for 'Salon G and spa l' in N BRUNSWICK, NJ",
+      "source_url": "https://app.squareup.com/appointments/book/vrvtrhybp21hn9/LPVEQBTCPBEVB/start",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye mirror: 4.7 stars, 117 reviews, unclaimed profile, same address, no phone shown",
+      "source_url": "https://reviews.birdeye.com/salon-g-and-spa-169813247044904",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Giftly listing exists for Salon G & Spa at 1727 US 130, North Brunswick, unclaimed",
+      "source_url": "https://www.giftly.com/gift-card/salon-g-and-spa-north-brunswick-2",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The business is open/operating, not closed (Google shows 'Open - Closes 7 PM'; Birdeye shows Friday 10:00 a.m. to 7:00 p.m.)",
+      "source_url": "https://www.google.com/maps/place/SALON+G+AND+SPA/@40.443065,-74.4732439,17z/data=!4m6!3m5!1s0x89c3c571fbacea13:0xdb35f99b01a46995!8m2!3d40.443065!4d-74.4732439!16s%2Fg%2F11j0czt3ys",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cause is labelled an inference, makes no claim about who holds the domain and accuses no one (rescue.json likely_cause.inference = true; 'Registrant details are not published and we make no claim about who holds it')",
+      "source_url": "https://rdap.org/domain/mysalongandspa.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "audit_md body is at most 300 words",
+      "source_url": "rescue.json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'another chain's booking screen, not this salon' / 'a different chain's booking flow'",
+      "source_url": "https://www.google.com/maps/place/SALON+G+AND+SPA/@40.443065,-74.4732439,17z/data=!4m6!3m5!1s0x89c3c571fbacea13:0xdb35f99b01a46995!8m2!3d40.443065!4d-74.4732439!16s%2Fg%2F11j0czt3ys",
+      "result": "contradicted"
+    },
+    {
+      "claim": "The salon is independent rather than a Hair Bar NYC franchise location",
+      "source_url": "https://hairbarnyc.com/locations/",
+      "result": "not found"
+    },
+    {
+      "claim": "Salon Lookup listing details (the auditor's own unresolved data gap)",
+      "source_url": "https://salonlookup.com/business/salon-g-and-spa-north-brunswick-township-nj",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

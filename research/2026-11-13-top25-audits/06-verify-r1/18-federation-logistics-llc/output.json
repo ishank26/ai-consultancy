@@ -1,0 +1,138 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Federation Logistics runs food-grade, bonded and liquor-licensed warehousing ... (opening paragraph)",
+      "problem": "The word \"food-grade\" does not appear on fedlogistics.com; the homepage lists FDA, USDA and SQF certification and the Port Authority directory lists the commodity \"Food Products\". The fact is reasonably supported, but it is a two-step reading presented as a direct statement, and the source note attributes \"food-grade scope\" to the homepage.",
+      "fix": "Either write \"FDA/USDA/SQF-certified warehousing\" (which is what the site says) or attribute food-grade directly to the Port Authority directory, e.g. \"...and a Port Authority directory listing food products\"."
+    },
+    {
+      "claim": "Expected impact (section 1): \"After hours a buyer finds no service page and no call button\"",
+      "problem": "Two separate exposures are merged under one condition. The missing call button is caused by the 1439px CSS breakpoint and applies at every hour on phones and most tablets, not only after hours; the missing service page applies at every hour too.",
+      "fix": "Split them: \"At any hour on a phone the header call button is hidden; out of hours there is also no service page to read and no form acknowledgement.\""
+    },
+    {
+      "claim": "Sources line: Port Authority PDF cited simply as \"0800-1700 hours\"",
+      "problem": "The figure comes from the October 2023 edition of the Warehouse Directory, i.e. it is a three-year-old third-party listing, not a current published hour. Presented without the date it can read as current business hours.",
+      "fix": "Add \"(Oct 2023 edition)\" after the PDF, as the profile does."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Business is Federation Logistics, LLC, operating warehousing, drayage, bonded and liquor-licensed storage from North Brunswick, NJ",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Top navigation About us, Services and Contact point to \"#\" and the top navigation does not open",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"four New Jersey sites\" claimed",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"500,000-plus square feet claimed\"",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Food-grade handling: only indirectly stated (homepage lists FDA, USDA, SQF; Port Authority directory lists commodity Food Products)",
+      "source_url": "https://aemdev.panynj.gov/content/dam/port/our-port/council-on-port-performance-pdf/available-warehouse-space.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Published hours disagree (header/footer Mon-Fri 8:00am-4:30pm vs mobile menu Mon-Fri 8:00-6:00 vs directory 0800-1700)",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Directory listing states 0800-1700 hours for Federation Logistics, North Brunswick",
+      "source_url": "https://aemdev.panynj.gov/content/dam/port/our-port/council-on-port-performance-pdf/available-warehouse-space.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Below 1439px the header call button is hidden",
+      "source_url": "https://www.fedlogistics.com/css/responsive.css",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The online quote route is a ~70-field form headed \"Customer Survey\"",
+      "source_url": "https://www.fedlogistics.com/quote.php",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The form posts back to quote.php (method=post, no action attribute), submit button \"Send message\"",
+      "source_url": "https://www.fedlogistics.com/quote.php",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No confirmation screen, reference number or auto-reply visible in the form page markup",
+      "source_url": "https://www.fedlogistics.com/quote.php",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site lists FDA, USDA, UIIA, US Customs bonded, SQF and ABC scope",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site publishes no upload or document-request route",
+      "source_url": "https://www.fedlogistics.com/quote.php",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Entry documents must be filed within 15 calendar days of arrival; entry summary within 10 working days",
+      "source_url": "https://www.cbp.gov/trade/programs-administration/entry-summary",
+      "result": "confirmed"
+    },
+    {
+      "claim": "O*NET NJ shipping/receiving (43-5071) median $21.85/hour ($45,440/year)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-5071.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "O*NET NJ customer service representative (43-4051) median $22.95/hour ($47,740/year)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "$27.31/hour = $21.85 x 1.25 benefits loading (labelled our assumption)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-5071.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "$28.69/hour = $22.95 x 1.25 benefits loading (labelled our assumption)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2 impact: 40-416 hours and $1,092-$11,360/year from 8-25 requests x 10-25 min x 60-80% x 50 weeks",
+      "source_url": "https://www.onetonline.org/link/localwages/43-5071.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 3 impact: 22-133 hours and $631-$3,815/year from 3-10 requests x 15-20 min x 60-80% x 50 weeks",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder/email addressee \"Les\" = Les Sokoloff, President",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Walk-in opener: services and contact links on the website do not open",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body is at most ~450 words",
+      "source_url": "audit.md (local file)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,193 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Legal item 'How long to keep records' is marked confirmed: true with the statement that 'there is no universal federal retention period for routine cooler logs; the FDA Food Code sets retention only for specific records (e.g. time-as-public-health-control records)'.",
+      "problem": "The cited source (N.J.A.C. 8:24-8.13) supports only the New Jersey half (two-year on-premises retention of inspection reports). The federal half is not in that page and was not verified from the FDA Food Code by the researcher. In substance it is broadly right - FDA Food Code 2022 does require record retention for specific records (reduced-oxygen-packaging records at least 6 months) - but the citation does not carry it, and the 'time-as-public-health-control records' example is the weaker of the two.",
+      "fix": "Add the FDA Food Code 2022 section as a second source (or drop the federal aside), and split the item so the NJ two-year rule is the only part marked confirmed."
+    },
+    {
+      "claim": "TempGenius 'what_it_does' in existing_solutions says the system includes a 'cellular option'.",
+      "problem": "The cited TempGenius page does not mention cellular anywhere; it lists WiFi 802.11, 418 MHz, 900 MHz and 923 MHz radio options only. Not a price, legal rule or outcome, but it is an unsourced product feature (the cellular claim does hold for Sensaphone, which was likely the intent).",
+      "fix": "Remove 'cellular option' from the TempGenius row or re-source it; keep the cellular point under Sensaphone where the SCD-1200 page supports it."
+    },
+    {
+      "claim": "The two-stage NJ cooling rule means 'the four-hour clock starts at 70 F, so the total allowed window is up to six hours, not four' (repeated in problem, gap_for_local_installer, technical_approach, pilot and caveats).",
+      "problem": "Correct, but the rule text itself contains no 'six hours' figure - only 'within two hours, from 135 F to 70 F' and 'within four hours, from 70 F to refrigeration temperatures'. The six-hour total is a derivation. I confirmed it separately against NJ Dept. of Agriculture HACCP SOP form 373 (135 to 70 in 2 hours, then to 41 F 'within a total of 6 hours'), but the brief presents the derivation as rule text without attribution to that guidance.",
+      "fix": "Keep the conclusion but label it as a reading of (d)1 plus NJDA/NJDOH cooling guidance, and cite the NJDA form alongside the rule."
+    },
+    {
+      "claim": "Measured outcome: 'Real-time IoT anomaly detection applied to cold-chain transport data can flag refrigeration failure events earlier than periodic checks' (MDPI Sustainability 15(3):2255, 2023, strength Medium).",
+      "problem": "mdpi.com returned HTTP 403 to me, so the finding language could not be checked against the paper itself; title, year, journal and venue (15(3):2255, 25 Jan 2023, Gillespie et al., trial in three grocery delivery vans) were confirmed only from the search index and repository listings. The 'earlier than periodic checks' comparison is the part I could not verify.",
+      "fix": "Either soften to what the title/abstract supports (rule-based real-time alerts on instrumented delivery vans) or cite an accessible copy (e.g. the Queen's University Belfast or Essex repository PDF) so the claim is checkable."
+    },
+    {
+      "claim": "Evidence entry: Middlesex County aims to inspect every food establishment at least twice a year and uses NJ-licensed REHSs, and this supports the demand sub-score.",
+      "problem": "The cited county URL still returns HTTP 403. The wording does exist in search results for that page (I reproduced it), and the brief already flags it as snippet-sourced, so this is disclosure done correctly - but it remains a non-first-hand fact carrying weight in fit_score.demand.",
+      "fix": "Keep the flag; if the orchestrator wants it load-bearing, have someone read the page in a browser and record the access date, or drop the 'twice-yearly goal' from the narrative and rely on the FDA inspection data alone."
+    },
+    {
+      "claim": "New Jersey's 45 F allowance applies to equipment 'in use before Jan 2, 2007' that had to be upgraded or replaced by Jan 2, 2012.",
+      "problem": "N.J.A.C. 8:24-1.5 reads 'in use as of January 2, 2007', not 'before'. Immaterial to the 41 F standard, but it is a wording drift from the rule text.",
+      "fix": "Change 'before' to 'as of' January 2, 2007."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "FDA observed 397 retail deli departments in 2015-2016: 70.0% out of compliance on foods requiring refrigeration held at proper temperature (data item 5), 62.9% on cooling (item 7), 91.2% on improper holding overall.",
+      "source_url": "https://www.fda.gov/media/148247/download",
+      "result": "confirmed"
+    },
+    {
+      "claim": "In 2008 only 45% of full-service restaurants and 49% of delis were in compliance with improper holding (time and temperature); ~850 establishments observed per phase across nine facility types; 2010 trend report.",
+      "source_url": "https://www.fda.gov/food/retail-food-protection/retail-food-risk-factor-study",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ defines 'refrigeration temperatures' as 41 F or less, with a 45 F allowance for equipment in use as of January 2, 2007 that is upgraded as of January 2, 2012.",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-1-5",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-3.5(d)1 reads 'i. Within two hours, from 135 degrees Fahrenheit to 70 degrees Fahrenheit; and ii. Within four hours, from 70 degrees Fahrenheit to refrigeration temperatures.'",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-5",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The two-stage cooling window totals up to six hours (2 hours to 70 F, then 4 more hours to refrigeration temperature).",
+      "source_url": "https://www.nj.gov/agriculture/documents/forms/Form%20373%20HACCP-Based%20Standard%20Operating%20Procedures.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Time as the public-health control requires written procedures submitted to and approved by the health authority and kept on site; specialized processing (e.g. reduced-oxygen packaging) also requires prior health-authority approval - N.J.A.C. 8:24-3.5(g)(4) and (h).",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-5",
+      "result": "confirmed"
+    },
+    {
+      "claim": "At least one person in charge in a Risk Type 3 establishment must be a certified food protection manager, and the person in charge must demonstrate HACCP knowledge at inspection - N.J.A.C. 8:24-2.1(b).",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-2-1",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ requires the evaluation placard from the most recent inspection to be posted conspicuously near the public entrance (N.J.A.C. 8:24-8.12), and the report kept on premises for public review for at least two years (8:24-8.13).",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-13",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey is a one-party-consent state under N.J.S.A. 2A:156A-1 et seq.; interception without a participant's consent is a third-degree crime (2A:156A-3) with a one-party exception in 2A:156A-4(d).",
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDPA (P.L. 2023, c.266) treats biometric data as sensitive data requiring opt-in consent, applies only to controllers processing 100,000+ consumers (25,000 if selling data), excludes employment-context individuals from 'consumer', and took effect January 15, 2025.",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "USDA ERS: 2005-06 supermarket loss averaged 11.4% fresh fruit, 9.7% fresh vegetables, 4.5% fresh meat/poultry/seafood, from six large national and regional retailers excluding convenience stores, megastores, club stores and mom-and-pop grocers (EIB No. 44, March 2009).",
+      "source_url": "https://ers.usda.gov/sites/default/files/_laserfiche/publications/44306/10894_eib44_reportsummary.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ERS Charts of Note (published 4/23/2019): loss rates for 24 fresh fruits ranged 4.1% (bananas) to 43.1% (papayas), from shipment-vs-purchase data for 2,900 US supermarkets in 2011-12, attributed to culling of misshapen/spoiled produce and overstocking.",
+      "source_url": "https://ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=92910",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A Lincoln, NE drive-through restaurant discarded about $1,800 of refrigerated product after an August 2024 storm outage and closed for a few days.",
+      "source_url": "https://www.klkntv.com/lincoln-restaurant-throws-out-1800-of-spoiled-food-after-power-outage/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Equipment breakdown coverage 'will pay to repair or replace the equipment that malfunctioned, but it will not cover the cost of spoiled inventory'; most insurance providers require endorsements to adequately cover spoiled inventory.",
+      "source_url": "https://www.insureon.com/small-business-insurance/commercial-property/spoilage-insurance",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County had 1,752 Accommodation and Food Services establishments employing 24,124 people in 2024 (7.0% of county establishments); Food Preparation and Serving Related employment projected 22,250 (2022) to 24,700 (2032).",
+      "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Monnit MNS2-9-W2-TS-ST is $116.00, probe add-ons +$11 (3 ft) to +$117 (100 ft), 25-month NIST +$71 (8-point +$203), line power with battery backup +$50.",
+      "source_url": "https://www.monnit.com/products/sensors/temperature/standard-temperature/MNS2-9-W2-TS-ST/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "iMonnit Basic is 'Always Free', iMonnit Premiere starts at $45/yr, and SMS alerts and voice calls require an additional charge.",
+      "source_url": "https://monnit.com/software-comparison/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "TempGenius: a small installation with fewer than five sensors costs approximately $2,000; about 20 sensors costs about $5,000; lease and subscription options available.",
+      "source_url": "https://tempgenius.com/temperature-monitoring/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ThermoWorks ThermaData WiFi Type K two-channel logger is $289.00 (meter only, probes separate; $274 at 5+, $264 at 10+) and each logger comes with a 2-point NIST-traceable calibration certificate and 18,000-reading onboard memory.",
+      "source_url": "https://www.thermoworks.com/products/thermadata-wifi-type-k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DeltaTrak FlashLink 40902 BLE reusable logger lists at $199.00 and the FlashLink Mini in-transit logger 10-pack at $60.00 (about $6.00 each).",
+      "source_url": "https://solutionsprime.com/delivery-and-transportation/data-loggers/deltatrak-flashlink-mini-in-transit-logger-10-pack-detail",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Adafruit pre-wired waterproof DS18B20 is $9.95 at 1-9 units and $8.96 at 10-99, and includes the required 4.7k pull-up resistor.",
+      "source_url": "https://www.adafruit.com/product/381",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sensaphone Sentinel SCD-1200: 12 input zones, 'supervised' connection-loss alarming, plug-in power supply that also monitors for power failure, 8-hour battery backup, text and phone notifications only with a paid subscription; no static price rendered on the page (subscription block is an image).",
+      "source_url": "https://www.absoluteautomation.com/products/sensaphone-sentinel-scd-1200-web-based-monitoring",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SmartSense's food-service page names Cafe Rio (155 locations), Wegmans, honeygrow, Sweetgreen and Lowes Foods.",
+      "source_url": "https://www.smartsense.co/food-service",
+      "result": "confirmed"
+    },
+    {
+      "claim": "YOLO11s is 9.4M parameters with 47.0 mAP at 640px, 90.0 ms CPU ONNX inference and 2.5 ms on a T4.",
+      "source_url": "https://github.com/ultralytics/ultralytics/blob/main/docs/en/models/yolo11.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sensire Hotel Arthur case study: deviations down from about one per week to about one per month, ~30% less breakfast-buffet food waste, ~30 minutes/day staff time and ~2 hours/week manager time saved, 203 rooms, in use since 2018, document undated.",
+      "source_url": "https://www.sensire.com/hubfs/Website/Linked%20Documents/Case%20Examples%203.19/ENG/Sensire%20Oy_CaseHotel-Arthur%2011-21-eng.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kelsius/Hastings Hotels: six hotels plus one gastro pub, on average each property saves three hours per day for all food staff, and stock was being lost 'due to no notifications of faulty appliances'.",
+      "source_url": "https://kelsius.com/hastings-hotel/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Peer-reviewed single-site study: 4 ESP8266 boards and 9 DS18B20 probes across 10 refrigerated cabinets (6 freezers, 2 dairy display cabinets, 2 vitrines) in one medium-sized supermarket, 2020.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7038712/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Peer-reviewed 2023 study of real-time IoT anomaly detection in cold-chain transportation (Sustainability 15(3):2255).",
+      "source_url": "https://www.mdpi.com/2071-1050/15/3/2255",
+      "result": "could not open"
+    },
+    {
+      "claim": "Middlesex County aims to inspect every food establishment at least twice a year using NJ-licensed Registered Environmental Health Specialists.",
+      "source_url": "https://www.middlesexcountynj.gov/government/departments/department-of-public-safety-and-health/office-of-health-services/health-inspections",
+      "result": "could not open"
+    },
+    {
+      "claim": "fit_score sub-scores sit inside their stated ranges (demand 0-20, local_buyers 0-15, ability_to_pay 0-15, technical_feasibility 0-20, legal_risk_low 0-15, defensibility 0-15) and sum to the stated total.",
+      "source_url": "",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL-450M exists as a documented 450M edge vision-language model (Liquid AI), consistent with the brief's tool list.",
+      "source_url": "https://docs.liquid.ai/lfm/models/lfm25-vl-450m",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

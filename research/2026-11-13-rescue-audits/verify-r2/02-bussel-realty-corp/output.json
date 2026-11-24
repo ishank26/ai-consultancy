@@ -1,0 +1,128 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "audit_md: 'the tab title starts with a horse emoji'; severity_reason: 'the page title is altered across the pages we opened'; founder_md email and Sources: 'a horse emoji added to the browser tab title'.",
+      "problem": "Not a property of bussel.com. The served HTML of https://bussel.com/, https://bussel.com/news.asp and https://bussel.com/contact-us/ contains clean titles with no emoji. In the same Chrome session the emoji also appears on pages that cannot be serving it: https://example.com (served title 'Example Domain') and the Google Maps profile page. So the prefix comes from the browser used for the check, not from the business's site. Quoting it to the owner in the outreach email as something on their site is wrong.",
+      "fix": "Delete the emoji claim from audit_md, severity_reason and founder_md (email, phone opener and Sources). If a title check is kept, base it only on the HTML the server returns (plain fetch), which is clean on every page tested."
+    },
+    {
+      "claim": "audit_md: 'A plain fetch of the same page returns clean HTML with no emoji, so the altered version is served selectively; the emoji also appears on IIS's own 404 page'; likely_cause: 'whatever adds it acts on responses rather than only inside one page file'.",
+      "problem": "Contradicted twice. (1) The IIS 404 page as actually served (raw HTTP response for https://bussel.com/contact-us/) has the plain title 'IIS 10.0 Detailed Error - 404.0 - Not Found' with no emoji and no scripts on it. (2) Nothing is served selectively: a real browser fetch of https://bussel.com/ (same origin, cache disabled) returned 31,291 characters of HTML identical in substance to the plain fetch, with no emoji and no spam block; a navigation with page JavaScript disabled showed the same clean document. There is no server-side response modification to find.",
+      "fix": "Remove the 'served selectively' and 'acts on responses' conclusions, and remove the IIS module / ISAPI filter lead in fix step 2, or restate them as untested possibilities only after a clean-client re-test confirms the finding."
+    },
+    {
+      "claim": "audit_md: 'the home page also carries an off-screen block of Vietnamese, Hebrew and Russian spam with four outbound links'; founder_md: 'the DOM holds div.dc at left:-9999px with 1,618 characters ... linking to vietnam-millionaire.me, portuguese-passport.online, top10binary.ru and top10shops.ru'.",
+      "problem": "The site does not serve that block. The HTML returned for https://bussel.com/ contains no such element and none of those four URLs, whether fetched plainly or from inside the browser (HTML length 31,286 vs 31,291 characters, no match). It appears only in the DOM of this particular Chrome after page scripts run, and it is not traceable to anything the page loads: no extra network request appears in the page's resource list, and none of the eight /js files the page loads contains the text. With page JavaScript disabled the element is absent, while other pages on the same site (news.asp, the contact directory, contact-us.asp) never show it. It is therefore not established as content of the business's site. The character count is also not reproducible: the block measured 1,615 characters of text (1,621 as rendered text).",
+      "fix": "Before the owner is told anything, re-test the home page in a separate clean browser or from a server-side renderer and an independent network. If the block is not there, drop the finding entirely; if it is, quote the exact response it arrives in and the request that returns it, and drop the fixed character count."
+    },
+    {
+      "claim": "likely_cause: 'hacked' - 'the home page serves an off-screen block of gambling, passport and Russian-retail links' (also severity_reason and the email draft, which states it as something found on the site).",
+      "problem": "The reasoning is labelled an inference, which is correct, but every piece of evidence offered for it (emoji on the 404 page, selective serving, content added to the site's own pages) is contradicted above, so the conclusion 'injected spam on the business's own domain' is not supported by the audit's own tests. Telling a firm it has been hacked on this evidence is a false-alarm risk.",
+      "fix": "Re-open the question with an independent client first. Only if the block or emoji is still present there should audit_md say the site is compromised, and then with that specific evidence and the inference label kept."
+    },
+    {
+      "claim": "fix_steps 1-3: change hosting, FTP, database, staff-login and mailbox passwords, hunt templates, /js files, IIS modules and ISAPI filters, then trace the entry point in host logs (1-2, 3-8 and 2-4 hours).",
+      "problem": "The sequence presumes a confirmed server-side compromise and points the developer at server components that the evidence does not implicate; the hours are plausible but would be spent on a fault that may not exist on the site. Step 5 also states that '/contact-us/' is the contact path, while https://bussel.com/contact-us.asp loads a working contact page.",
+      "fix": "Put 'confirm the finding in a clean browser and from a second network' as step 1, and gate the password changes and log tracing on that confirmation. When referring to the contact path, note both the working /contact-us.asp page and the 404 on /contact-us/."
+    },
+    {
+      "claim": "Body length of audit_md.",
+      "problem": "The body runs to roughly 340 words, above the 300-word limit for what the owner reads.",
+      "fix": "Cut about 40 words, starting with the emoji and selective-serving material once it is removed."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "bussel.com registered 1996-04-23, expires 2028-08-01, last changed 2026-07-29, GoDaddy.com, LLC (IANA 146), client delete/renew/transfer/update prohibited, NS49/NS50.DOMAINCONTROL.COM, no registrant details published",
+      "source_url": "https://rdap.org/domain/bussel.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The genuine site loads normally: logo, 732-287-3777, property search, featured listings, deal news",
+      "source_url": "https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The tab title is prefixed with a horse emoji on bussel.com pages",
+      "source_url": "https://bussel.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "The horse emoji is in the title of IIS's own 404 page, hence added to responses by the server",
+      "source_url": "https://bussel.com/contact-us/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "The same horse emoji appears on unrelated sites in the browser used for the check",
+      "source_url": "https://example.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The home page serves an off-screen div.dc block of Vietnamese, Hebrew and Russian spam with four outbound links",
+      "source_url": "https://bussel.com/",
+      "result": "not found"
+    },
+    {
+      "claim": "The block contains 1,618 characters",
+      "source_url": "https://bussel.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "A plain fetch of the home page returns clean HTML with no emoji and no block",
+      "source_url": "https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The altered version is served selectively (server sends different HTML to a browser than to a plain fetch)",
+      "source_url": "https://bussel.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "/contact-us/ returns IIS 404.0 - Not Found",
+      "source_url": "https://bussel.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "On the contact directory page there are 0 tel: links and the only form posts to /login.asp",
+      "source_url": "https://bussel.com/contact-us/commercial-real-estate/central-new-jersey",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile 'Bussel Realty Corporation': 4.5 rating, 2 Ethel Rd #202a Edison NJ 08817, 'Located in: Durham Center', lists bussel.com, (732) 287-3777, 'Add missing information' and 'Add a photo' shown, no review count visible; closed at the time of check",
+      "source_url": "https://www.google.com/maps/place/Bussel+Realty+Corporation/@40.5412402,-74.3948696,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3b7fb806a6985:0xb89cb9047c768c11!8m2!3d40.5412402!4d-74.3948696!16s%2Fg%2F1tcx_scb",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The 4 August 2026 Wayback capture has a clean title and no spam block",
+      "source_url": "https://web.archive.org/web/20260804094057/https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google's guidance confirms hacked content can be dropped from results or labelled, and that owners can request a review",
+      "source_url": "https://support.google.com/webmasters/answer/6347750",
+      "result": "confirmed"
+    },
+    {
+      "claim": "app.agencysonar.com (a tracker the home page loads) does not resolve",
+      "source_url": "https://app.agencysonar.com/js/tracker.php",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Right business, town and phone: Bussel Realty Corp, 2 Ethel Road Suite 202A, Edison NJ, 732-287-3777, an independent New Jersey brokerage still trading",
+      "source_url": "https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The site's news feed lists 2026 transactions, i.e. the business is active",
+      "source_url": "https://bussel.com/news.asp",
+      "result": "confirmed"
+    },
+    {
+      "claim": "/contact-us.asp is a working contact page (not mentioned in the audit)",
+      "source_url": "https://bussel.com/contact-us.asp",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,85 @@
+{
+  "business": "Jersey Soft Play",
+  "industry": "kids-party-rental",
+  "town": "East Brunswick",
+  "opportunities": [
+    {
+      "title": "Own the booking path: an availability-aware quote page instead of a hand-off to a 64-field third-party form",
+      "capability": "G",
+      "problem": "The site has no form, no calendar, no hours and no town names, so the only way to buy is to leave jerseysoftplay.com for a separate HoneyBook tab, fill 64 fields behind a reCAPTCHA, and then wait for a human to confirm availability and price. A parent (or an AI assistant) browsing at 9pm on a Sunday cannot tell whether a date is open, what delivery costs, or whether East Brunswick/Edison is even covered.",
+      "evidence": [
+        "The rendered site contains zero form elements and all five 'Check Availability' links resolve to /booking/, which itself has no form and hands the visitor to a separate HoneyBook subdomain (https://jerseysoftplay.com/booking/)",
+        "The linked inquiry form asks for 64 labelled inputs and loads a reCAPTCHA; it renders 402 px wide at a 390 px phone viewport, i.e. it overflows on a phone (https://jerseysoftplay214395.hbportal.co/public/65006c3fbfa9e900855328fb/1-Inquiry_form)",
+        "'East Brunswick' and every served town name are absent from the entire site; /locations/ names only four regions - North, Central, South Jersey and Jersey Shore (https://jerseysoftplay.com/locations/)",
+        "No hours appear on any page, while the Google listing carries 9 AM-6 PM daily; the 4.8/22 Google rating is never displayed on the site and the JSON-LD has no address, openingHours or priceRange (https://jerseysoftplay.com/)",
+        "Every quote still needs a manual step: the booking page says dates are held only 'after the quote and next booking step are complete' (https://jerseysoftplay.com/booking/)"
+      ],
+      "agent_design": "A booking agent layer in front of the existing HoneyBook back office: (1) a real quote/booking form embedded on /booking/ - date, town, indoor venue, package, add-ons, colours - posting to a small service that holds the owner's availability calendar; (2) an instant indicative all-in price (package + add-ons + a published per-zone delivery band) with the option to hold the date; (3) a 24/7 question agent on the site, SMS and Instagram DM that answers coverage, space (12x14 ft vs 14x16 ft), hours and surface-rule questions from the company's own pages and escalates anything unusual (outdoor, non-first-floor, XXL bounce house) to a human; (4) publish hours, served towns with real town pages, and Service/Offer/openingHours/service-area JSON-LD so assistants can read and quote the business. Human approves every non-standard quote and every date hold; the agent only sends the indicative price.",
+      "why_not_DIY": "A HoneyBook subscription is a manual form, not an agent: it cannot answer coverage or hours questions, cannot quote delivery from a distance, cannot see whether a date is open, and it lives on a subdomain the main site's CTA abandons visitors into. This needs a real availability source of truth, a delivery-pricing rule, an unbroken on-site path, and structured answer content that search and AI assistants can read - i.e. integration plus published content, not a plugin.",
+      "impact_estimate": {
+        "range": "No revenue is claimed from the site itself. Arithmetic on the business's published prices: each booking is $550-$750, so 1-3 extra bookings/month that currently die at the hand-off would be $6,600-$27,000/yr; the delivery-fee band alone removes one manual pricing step per enquiry.",
+        "assumptions": "Assumes the current hand-off loses roughly 1-3 enquiries a month - an assumption, not a measurement (no analytics, enquiry counts or abandoned-form data are visible). The pilot must baseline enquiries before claiming recovery. Labour value priced at the New Jersey mean annual wage for Counter and Rental Clerks ($52,020, May 2025, BLS OEWS as republished by Factanker), i.e. about $25/hr, not the business's own $40/hr attendant rate.",
+        "benchmark_source_url": "https://factanker.com/occupation/41-2021/nj"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: an embedded, mobile-first quote form with date/town/package picker on /booking/; a published delivery band by zone; hours + served-town pages (East Brunswick first) and richer JSON-LD; the 4.8/22 rating shown on site; a chat/SMS answer agent restricted to coverage, price, space and safety questions; before/after enquiry counts.",
+      "walk_in_checks": []
+    },
+    {
+      "title": "Intake-to-quote agent: parse each 64-field enquiry, draft the quote, hold the date, and run pre-event and post-event follow-up",
+      "capability": "A",
+      "problem": "Every enquiry arrives as a long structured submission and every reply is a hand-built quote: the package plus add-ons plus a delivery fee that is never published and has to be priced per trip. Reviews praise fast, personal replies, which is exactly the sign that one person is absorbing that work - and the product is weekend and evening parties while the only staffed window is 9 AM-6 PM.",
+      "evidence": [
+        "Each quote requires a human: 'we confirm availability, delivery, setup needs, and total price', and the date is held only after 'the next booking step' (https://jerseysoftplay.com/booking/)",
+        "Delivery is sold statewide but no delivery fee, minimum spend or service radius in miles is published - the fee is 'confirmed with your event quote' after the customer supplies town and venue (https://jerseysoftplay.com/)",
+        "Reviewers repeatedly credit one person (first name 'Antoinette') for answering 'the many questions I had', for timing and for setup - i.e. quotes, colours and follow-up are all one-to-one manual work (https://exa.ai/library/place/tb1v2ykg8jd)",
+        "Listed hours are 9 AM-6 PM every day, while the events sold are weekend and evening parties, so enquiries arrive outside the answering window (https://findpartyrental.com/company/jersey-soft-play-77464/)",
+        "Only 22 Google reviews have accumulated on a 4.8-rated service since the earliest visible review (Sept 2023), and the site never asks for or displays a review (https://exa.ai/library/place/tb1v2ykg8jd)"
+      ],
+      "agent_design": "An event-driven agent behind the existing HoneyBook webhook: on submission, parse the 64 fields into a structured event (date, start/end, town, venue, first-floor answer, package, add-ons, colour choices, kids' ages), look up availability, compute the price from the published rate card plus the delivery zone, and draft the customer reply with a hold/pay link; ask only the 2-3 questions actually missing; chase 24h and 72h on unanswered quotes; send pre-event reminders with the right setup checklist for that package (space dimensions, flat dry surface, no shoes/food/face paint) plus load-in time; after the event, send a thank-you and a review request. Human approves every quote before it sends (or approves-only-exceptions once accuracy is proven), and every discount, reschedule or weather/venue exception routes to a person.",
+      "why_not_DIY": "The work spans four systems that don't talk to each other - HoneyBook for enquiries, the calendar for holds, Gmail/SMS for replies, and the published rate card for pricing - and the delivery fee is a business rule, not a field. It also needs to run unattended on a Sunday night, keep a full audit trail per booking, and never send an unapproved price. A chatbot subscription has no access to HoneyBook, no calendar, and no memory of which date is already held.",
+      "impact_estimate": {
+        "range": "Roughly 2.5-13 hours of owner/administrative time per month recovered (about $60-$340/month, $750-$4,000/yr), plus fewer double-booked or mis-quoted dates, plus a review request after every party instead of none.",
+        "assumptions": "Assumes 10-20 enquiries/month and 15-40 minutes of human time per enquiry including the follow-up thread and delivery pricing - inferred from the 64-field submission and the unpublished delivery fee, not measured. Priced at the NJ mean annual wage for Counter and Rental Clerks ($52,020, May 2025) approximately $25/hr; enquiry volume must be confirmed in week 1 of the pilot.",
+        "benchmark_source_url": "https://factanker.com/occupation/41-2021/nj"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: parse-and-draft on live HoneyBook enquiries with human approval on every send; a written delivery-zone table replacing per-trip pricing; pre-event checklist and post-event review-request sequences; a simple dashboard of enquiry -> quote -> booked, and a measured before/after response time.",
+      "walk_in_checks": []
+    },
+    {
+      "title": "Kit-level operations console: one source of truth for inventory, per-event packing lists, delivery runs and condition/deposit tracking",
+      "capability": "D",
+      "problem": "The product is a physically itemised kit - four package configurations, colour choices (slides, rockers, tiles), two bounce-house sizes, plus fencing, foam flooring, shoe bin and rules sign - delivered and installed by one small team across all of New Jersey, with no storefront or warehouse published. Nothing on the public side reconciles the kit list with the booking: the site and the booking form already disagree on the large bounce house, which is exactly the class of error a packing sheet is supposed to prevent.",
+      "evidence": [
+        "Inventory is itemised per package down to ball-pit size, slide colour options, soft blocks and foam tiles in four colours (https://jerseysoftplay.com/packages/)",
+        "The site prices an 'XL' bounce house at 7.5x7x6 ft for +$200 while the inquiry form offers an 'XXL Bounce House 10x10x11.5 ft' at the same +$200 - two sources of truth for one SKU (https://jerseysoftplay214395.hbportal.co/public/65006c3fbfa9e900855328fb/1-Inquiry_form)",
+        "Space requirements differ by package (12x14 ft vs 14x16 ft) and the form asks whether the setup is on a first floor, so fit and access are judged per booking by a human (https://jerseysoftplay.com/packages/)",
+        "Delivery covers all of New Jersey with the fee priced per enquiry, and the site publishes no warehouse or yard address, so the kit is staged and loaded ad hoc (https://jerseysoftplay.com/locations/)",
+        "An attendant is sold at $40/hour and set-up is described by reviewers as fast and early, i.e. each event is a small two-person logistics job (https://exa.ai/library/place/tb1v2ykg8jd)"
+      ],
+      "agent_design": "An internal tool built by the agent, with an agent maintaining it: a kit database (SKU, colour option, quantity, condition) that every booking draws from; on a confirmed booking it auto-generates the packing list (including chooser selections and the right space requirement), a load plan and a one-page run sheet the attendant opens on a phone; it blocks a second booking that would exceed kit or crew capacity; it estimates the delivery window from the base town and venue and feeds that into the customer reminder; after the event the attendant checks off items and flags damage with a photo, which opens a condition/damage-deposit record. Human (owner) approves any override of an allocation conflict and every damage/deposit decision - the agent never charges anyone on its own.",
+      "why_not_DIY": "This is cross-system state that a spreadsheet or a booking app cannot hold: it needs a real inventory model with colour variants, reservation logic against dates, a mobile run sheet for per-event staff, and an integration path from HoneyBook/calendar into that model. A chatbot has no inventory and no memory of which kit left the building on Saturday.",
+      "impact_estimate": {
+        "range": "Avoids roughly 2-4 mis-packed, mis-specified or double-booked events a year; at the published $550-$750 package price that is $1,100-$3,000/yr of comps and repeat trips avoided, plus 15-30 minutes of per-event packing/admin time (about $6-$13 per event at $25/hr).",
+        "assumptions": "Assumes a mis-specification or re-delivery on 2-4 events a year - inferred from the site/form bounce-house mismatch and from setup being re-checked by hand per booking; the pilot should log actual incidents for 4 weeks before any number is promised. Does not assume new revenue.",
+        "benchmark_source_url": "https://factanker.com/occupation/41-2021/nj"
+      },
+      "complexity": "High",
+      "pilot_scope": "2-4 weeks: consolidate the four packages plus add-ons into a single kit/SKU list with colour variants (fixing the XL/XXL mismatch); auto-generated packing list and mobile run sheet for 5-10 real bookings; a capacity check against existing bookings; a photo-based condition/damage log; one dashboard for the owner.",
+      "walk_in_checks": []
+    }
+  ],
+  "lead_score": {
+    "pain": 22,
+    "fit": 17,
+    "ability_to_pay": 8,
+    "ease": 12,
+    "strategic": 12,
+    "total": 71,
+    "rationale": "Pain 22/30: the front-door gap is directly observed, not inferred - zero forms on the site, the CTA abandons visitors into a 64-field third-party tab, no hours, no towns, no availability, and a 4.8/22 rating never shown - and the operational pain (manual per-enquiry quoting, unpublished delivery fee, one person answering everything, 9-6 hours against weekend parties) is strongly indicated by the site, form and reviews. It is not at the top of the band because no enquiry counts, abandoned-form data, margin or complaint text could be read. Fit 17/20: A, D and G map almost one-to-one onto the observed gaps and onto a HoneyBook-plus-calendar stack. Ability to pay 8/20: a single-location, owner-operated rental business with $550-$750 tickets, one phone line, a Gmail address and an attendant bought in at $40/hr - real but modest budget; no owner name or title is published, so the buyer is unidentified (first name Antoinette appears only in reviews). Ease 12/15: small static site with 7 pages, a permissive robots.txt and a well-labelled existing form, so a pilot is days of work and needs no platform migration. Strategic 12/15: mobile party-rental operators are numerous and near-identical (same HoneyBook flow, same manual delivery pricing, same seasonal calendar), so the same three builds resell across the industry. No E opportunity is proposed: avenues.json is not present in this folder, the business publishes no premises, warehouse or storefront to instrument, and the only camera-shaped use case here (monitoring customers' homes and venues) would carry NJ alarm-business licensing exposure under N.J.S.A. 45:5A-2 (as amended by P.L.2021, c.2) for no operational gain. Evidence gaps: the Google Business Profile and full review text were only readable through third-party directories, delivery fee and service radius are unpublished, and no financials, headcount or owner identity were available - so dollar ranges are arithmetic on published prices and BLS wages, not forecasts."
+  },
+  "best_evidence_signal": "The site's own primary CTA hands visitors to a 64-field HoneyBook form on a separate subdomain, while the site itself has zero forms, no hours, no served towns and never shows its 4.8/22 rating - https://jerseysoftplay.com/booking/",
+  "suggested_channel": "email (address published on the site) with a short phone follow-up; no walk-in is possible because no premises are published",
+  "evidence_thin": false
+}

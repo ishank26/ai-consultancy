@@ -1,0 +1,650 @@
+{
+  "batch": "b078",
+  "businesses": [
+    {
+      "name": "HighPoint Health Center",
+      "town": "Highland Park",
+      "ref": "B05337",
+      "status": "operating",
+      "website": "https://www.highpointhealth.com/",
+      "what_they_do": "Multi-disciplinary chiropractic clinic offering chiropractic adjustments, spinal decompression, neurofeedback, neuropathy care, PEMF, cupping, weight loss and nutrition, plus what the site calls chiropractic rehabilitation. Run by Dr. Harry Schick, DC, who the site says has been in central NJ private practice for over 35 years.",
+      "customers": "Local Highland Park / central NJ patients: families, prenatal and pediatric patients, sports and neuropathy cases, weight-loss and anti-aging clients (inference from listed services).",
+      "size_signals": [
+        {"signal": "35+ years in practice (Dr. Harry Schick)", "source_url": "https://www.highpointhealth.com/"},
+        {"signal": "5,000 sq ft clinic, described on site", "source_url": "https://www.highpointhealth.com/"},
+        {"signal": "Three providers named: Dr. Harry Schick, Dr. Sophie Schick, Honey Sterzer", "source_url": "https://www.highpointhealth.com/"},
+        {"signal": "~15 distinct service lines, each with its own page", "source_url": "https://www.highpointhealth.com/"}
+      ],
+      "listing": {"platform": "Aggregator reporting Google data (not verified on Google directly)", "rating": "4.9", "reviews": "64", "source_url": "https://www.chiropractordirectories.com/new-jersey/highland-park"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": false,
+        "primary_cta": "\"Request Appointment\" button -> contact-us page form; phone number in header",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "none - request-a-callback form only, no calendar or booking platform",
+        "trust_signals": "Reviews and testimonials pages, 35+ years and 5,000 sq ft stated, named doctors with bios, podcast/radio links, insurance page",
+        "out_of_date_signs": "Home-page hero slider renders blank (white space and a loading spinner) at both desktop and phone widths; three images including the clinic photo and Google/Yelp badge logos are broken (naturalWidth 0, files dated 2017); design and photography date from 2013-2017",
+        "search_basics": "Title and meta description name chiropractor + Highland Park and list services; separate page per service; only WebPage JSON-LD, no LocalBusiness/MedicalBusiness schema; robots.txt allows all crawlers",
+        "top_issues": [
+          "Hero area is blank on load at desktop and mobile - first impression is an empty screen",
+          "Broken images (clinic photo, Google/Yelp badges) and 2013-2017 dated assets",
+          "No online booking, only an email form that explicitly says it is not secure and must not carry health information",
+          "Hours are buried on the contact page and split by provider/patient type, hard for a customer or an AI agent to parse"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 2,
+        "answerable": 3,
+        "bookable": 1,
+        "notes": "Findable: robots.txt disallows nothing so OAI-SearchBot/PerplexityBot/Googlebot are fine, but JSON-LD is only WebPage and I could not confirm the Google Business Profile itself (Google blocked automated access). Answerable: services and hours exist as real text with a description naming town and service, but hours sit only on the contact page and no prices are published. Bookable: one Gravity Form with properly labeled fields and no CAPTCHA, but it is a message form, not booking, and it warns against sending health details."
+      },
+      "operations_signals": [
+        {"signal": "All scheduling is by phone - site says \"Call to Request an Appointment\" and the Request Appointment button just opens a message form", "source_url": "https://www.highpointhealth.com/contact-us/"},
+        {"signal": "Provider hours split across three schedules (new patient, established patient, second doctor), which implies staff time spent triaging appointment requests by hand (inference)", "source_url": "https://www.highpointhealth.com/contact-us/"},
+        {"signal": "Patient forms are a separate page, suggesting paper/PDF intake rather than digital pre-visit forms", "source_url": "https://www.highpointhealth.com/patient-forms/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Add real online scheduling (self-serve booking or a booking-platform link) plus digital intake so new patients can book without a phone call", "type": "agent readiness", "evidence": "Site only offers \"Call to Request an Appointment\" and a message form that disclaims secure transmission; new-patient vs established-patient hour blocks are handled manually.", "effort": "M"},
+        {"opportunity": "Fix the blank hero slider and broken images, and refresh the home page so the first screen says what they do and offers a clear next step", "type": "website", "evidence": "Desktop and phone screenshots show an empty white hero; clinic photo and Google/Yelp badge images return zero-size/broken on the live page.", "effort": "S"},
+        {"opportunity": "Answer-engine cleanup: add LocalBusiness/MedicalClinic JSON-LD matching the page, put full hours on the home page and keep the Google Business Profile identical", "type": "search", "evidence": "Only WebPage schema found via document.querySelectorAll('script[type=\"application/ld+json\"]'); hours appear only on /contact-us/ and differ by provider.", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 4,
+        "ability_to_pay": 4,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Gap: blank hero, broken images, no booking, no LocalBusiness schema. Ability: 5,000 sq ft multi-provider clinic with 35+ years and 4.9/64 reviews. Ease: WordPress/Yoast site, fixes are small and self-contained. Evidence: directly observed page, schema and form."
+      },
+      "sources": [
+        "https://www.highpointhealth.com/",
+        "https://www.highpointhealth.com/contact-us/",
+        "https://www.highpointhealth.com/robots.txt",
+        "https://www.chiropractordirectories.com/new-jersey/highland-park"
+      ]
+    },
+    {
+      "name": "Park Chiropractic & Posture",
+      "town": "Highland Park",
+      "ref": "B05338",
+      "status": "operating",
+      "website": "https://www.painsolutionsnj.com/",
+      "what_they_do": "Single-doctor chiropractic office practicing the Gonstead method: chiropractic exam, adjustment, physiotherapy and kinesiotaping, plus X-ray-based assessment. Lists conditions from lower-back and neck pain to sciatica, scoliosis, car-accident injuries, TMJ and sports injuries.",
+      "customers": "Highland Park area adults and families with back/neck/joint pain, car-accident and sports injuries; Spanish-speaking patients (site links \"Se habla Espanol\").",
+      "size_signals": [
+        {"signal": "In practice in Highland Park since 2006; Dr. Park, DC (Sherman College, 2005)", "source_url": "https://www.painsolutionsnj.com/"},
+        {"signal": "One doctor, one office (Suite 430, 85 Raritan Ave)", "source_url": "https://www.painsolutionsnj.com/"},
+        {"signal": "5 pages: home, about, services, conditions, contact", "source_url": "https://www.painsolutionsnj.com/"}
+      ],
+      "listing": {"platform": "Birdeye aggregated listing (Google reviews not directly verified)", "rating": "4.8", "reviews": "154", "source_url": "https://reviews.birdeye.com/park-chiropractic-posture-155725913807880"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "broken",
+        "clear_offer": true,
+        "primary_cta": "None above the fold - the phone number sits in the header as plain text, and the only button-like link is \"Contact\" pointing back to the same page",
+        "click_to_call": false,
+        "contact_form": true,
+        "online_booking_or_quote": "none - bare contact form only; an unclaimed-looking Fresha profile exists but shows no bookable services",
+        "trust_signals": "Practice-since-2006 statement, doctor bio with credentials and association membership, real photos of the treatment rooms and equipment",
+        "out_of_date_signs": "Desktop layout overflows horizontally (visible scrollbar at 1440px); on phone the page does not reflow - logo is clipped, nav squeezes into one line, no hamburger menu; template-era styling with serif display type",
+        "search_basics": "Title is \"Posture | Park Chiropractic & Posture | United States\" - the service and town are missing from the title; meta description lists conditions but not the town; whole site is one long page with anchor sections, so no separate service pages; only WebSite JSON-LD, no LocalBusiness; robots.txt allows all",
+        "top_issues": [
+          "Phone number is not click-to-call anywhere, and there is no booking or appointment CTA",
+          "Mobile layout is broken (no responsive reflow, clipped logo, cramped nav)",
+          "Contact form is a GET form to the same page with no field labels - looks likely to fail or land nowhere",
+          "No service pages and weak title tags, so almost nothing to rank for beyond the brand name"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 2,
+        "answerable": 2,
+        "bookable": 1,
+        "notes": "Findable: robots.txt allows all crawlers including OAI-SearchBot/PerplexityBot; sitemap present; Google Business Profile not verifiable (Google blocked automated access). Answerable: hours, services, address and conditions are real text, but the site is one page and the doctor's name appears only as \"Dr. Park\" with no full name or schema. Bookable: a single unlabeled GET form and no online scheduling; the Fresha profile I opened listed only an address and a call-to-book button, no services."
+      },
+      "operations_signals": [
+        {"signal": "Scheduling is phone or fax only - fax number is published and there is no online booking", "source_url": "https://www.painsolutionsnj.com/"},
+        {"signal": "The site's only form has no labels and submits via GET to the same page, so inquiries may never reach the office (inference from markup)", "source_url": "https://www.painsolutionsnj.com/"},
+        {"signal": "Hours are four-and-a-half days a week with Thursday closed, so missed calls during closed hours have no online fallback (inference)", "source_url": "https://www.painsolutionsnj.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Rebuild the site as a responsive, multi-page site with click-to-call, a working labeled appointment form and online booking", "type": "website", "evidence": "Broken phone layout with clipped logo, no tel: links, no CTA above the fold, and a label-less GET contact form.", "effort": "M"},
+        {"opportunity": "Claim and activate the Fresha (or a booking-platform) profile and link it from the site so patients can self-book", "type": "agent readiness", "evidence": "A Fresha page already exists for this practice at 85 Raritan Ave but showed no services and only a \"Call to book\" button.", "effort": "S"},
+        {"opportunity": "Add LocalBusiness/Physician JSON-LD and per-service pages (Gonstead exam, physiotherapy, kinesiotaping, car-accident care) with town-level titles", "type": "search", "evidence": "Only WebSite schema; single-page site; title reads \"Posture | Park Chiropractic & Posture | United States\".", "effort": "M"}
+      ],
+      "scores": {
+        "gap_size": 5,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Gap: broken mobile layout, no click-to-call, non-working-looking form, no booking, thin search presence - almost everything needs fixing. Ability: solo doctor, established 20 years, 154 reviews, but a small single-location practice. Ease: small static site, quick win possible in a week. Evidence: page, form markup, robots and screenshots all inspected."
+      },
+      "sources": [
+        "https://www.painsolutionsnj.com/",
+        "https://www.painsolutionsnj.com/robots.txt",
+        "https://www.fresha.com/lvp/park-chiropractic-posture-raritan-avenue-highland-park-zn59MM",
+        "https://reviews.birdeye.com/park-chiropractic-posture-155725913807880"
+      ]
+    },
+    {
+      "name": "Rebarber Family Chiropractic",
+      "town": "Highland Park",
+      "ref": "B05339",
+      "status": "operating",
+      "website": "https://www.rebarberchiro.com/",
+      "what_they_do": "Family chiropractic practice with two offices (Highland Park and Princeton) treating back, neck, hip, knee, shoulder and other joint pain with adjustments, corrective exercise and massage-style therapy. Site explicitly says no walk-ins and publishes separate provider schedules.",
+      "customers": "Families and pain patients in Highland Park and Princeton; regular well visits implied by newsletter and member wellness section.",
+      "size_signals": [
+        {"signal": "Two doctors (Dr. Wayne Rebarber, Dr. Kim Oman) and two offices", "source_url": "https://www.rebarberchiro.com/"},
+        {"signal": "Highland Park plus Princeton (1000 Herrontown Rd) location", "source_url": "https://www.rebarberchiro.com/contact"},
+        {"signal": "Split provider schedules by day and office, four treatment days a week in Highland Park", "source_url": "https://www.rebarberchiro.com/contact"}
+      ],
+      "listing": {"platform": "Birdeye aggregated listing (Google count not directly verified)", "rating": "5.0", "reviews": "41", "source_url": "https://reviews.birdeye.com/rebarber-family-chiropractic-275284832"},
+      "website_review": {
+        "loads": false,
+        "https": true,
+        "phone_layout": "usable",
+        "clear_offer": true,
+        "primary_cta": "\"Call us today\" / phone link (732) 246-4242",
+        "click_to_call": true,
+        "contact_form": false,
+        "online_booking_or_quote": "none - no booking and no contact form anywhere; contact page is addresses and hours only",
+        "trust_signals": "Two named doctors, two offices, patient-education content, established practice",
+        "out_of_date_signs": "Major template copy-paste error: pain-topic sections repeatedly say \"At Anderson Chiropractic\" instead of this practice; office-hours blocks are duplicated three times with inconsistent Princeton times (e.g. Tuesday 08:00-06:00 vs 08:00-11:30); contact page has no form; the site returned HTTP 403 to my browser",
+        "search_basics": "Home title names the practice, Highland Park and \"NJ Chiropractor\"; but service content is thin and generic, the pain sections carry another practice's brand, and no JSON-LD was readable because the server blocked the browser",
+        "top_issues": [
+          "Body copy names a different practice (\"Anderson Chiropractic\") across the pain sections - direct credibility and possibly trademark risk",
+          "No appointment form and no online booking; contact page is address and hours only",
+          "Hours appear three times with conflicting values, which will confuse patients and AI agents",
+          "Server returns 403 to some clients, so crawlers and link previews may see nothing"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 2,
+        "answerable": 2,
+        "bookable": 0,
+        "notes": "Findable: robots.txt allows everything and a sitemap exists, but the host returned 403 to my headless browser on repeated attempts, so automated agents may be refused; Google Business Profile not verifiable (Google blocked access). Answerable: hours and locations are real text but duplicated/inconsistent and the practice name in the body is wrong in places; schema could not be read because the page would not render. Bookable: zero - no form, no booking link, phone only."
+      },
+      "operations_signals": [
+        {"signal": "Website instructs patients to call to schedule; no form or booking path, so all intake runs through the front desk phone (inference)", "source_url": "https://www.rebarberchiro.com/"},
+        {"signal": "\"NO WALK-IN'S\" plus per-doctor, per-office hour blocks mean staff must triage which doctor and which office each caller needs (inference)", "source_url": "https://www.rebarberchiro.com/contact"},
+        {"signal": "Newsletter signup and a patient-education member section exist, implying a list maintained outside the site", "source_url": "https://www.rebarberchiro.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Content cleanup: strip the leftover \"Anderson Chiropractic\" copy from every pain section and consolidate hours to one correct block per office", "type": "website", "evidence": "Fetched page copy repeatedly names Anderson Chiropractic; the same hours table is repeated three times with conflicting Princeton Tuesday/Friday times.", "effort": "S"},
+        {"opportunity": "Add online appointment requests or real booking (with doctor/office selection) plus a working contact form", "type": "agent readiness", "evidence": "Contact page has no form at all and the only scheduling path is the phone number.", "effort": "M"},
+        {"opportunity": "Fix crawler access and add LocalBusiness JSON-LD with both locations, hours and services so answer engines quote the right practice", "type": "search", "evidence": "Site returned a 403 page to the browser; no structured data could be read.", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 3,
+        "reasons": "Gap: wrong-brand copy, no form or booking, conflicting hours, blocked crawlers. Ability: two doctors and two offices, 5.0/41 reviews, but a small family practice. Ease: content fixes are hours of work; booking is a small add-on. Evidence: full page text read, but browser was blocked so schema and mobile rendering could not be checked."
+      },
+      "sources": [
+        "https://www.rebarberchiro.com/",
+        "https://www.rebarberchiro.com/contact",
+        "https://www.rebarberchiro.com/robots.txt",
+        "https://reviews.birdeye.com/rebarber-family-chiropractic-275284832"
+      ]
+    },
+    {
+      "name": "Prime Health & Wellness Center",
+      "town": "Highland Park",
+      "ref": "B05340",
+      "status": "operating",
+      "website": "https://www.primehealthrehab.com/",
+      "what_they_do": "Outpatient physical therapy and rehabilitation clinic: post-surgical rehab, sports injuries, chronic pain and general aches, plus additional therapies shown as equipment photos (vibration plate, electrotherapy units, traction-type devices). Accepts workers' comp, PIP/auto, Medicare, BCBS, Aetna and Cigna per its insurance section.",
+      "customers": "Injury and post-surgery patients, plus auto-accident and workers'-comp cases in Highland Park and nearby towns.",
+      "size_signals": [
+        {"signal": "Site describes itself as a small practice that is \"more nimble and responsive\"", "source_url": "https://www.primehealthrehab.com/"},
+        {"signal": "One suite (85 Raritan Ave, Ste 460), phone plus fax, single email address", "source_url": "https://www.primehealthrehab.com/"},
+        {"signal": "One clinician named in third-party reviews (Dr. Choi); no team page on the site", "source_url": "https://localitybiz.com/new-jersey/holistic-wellness-programs-in-highland-park"}
+      ],
+      "listing": {"platform": "LocalityBiz aggregated listing (Google count not verified)", "rating": "5.0", "reviews": "~30", "source_url": "https://localitybiz.com/new-jersey/holistic-wellness-programs-in-highland-park"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "usable",
+        "clear_offer": true,
+        "primary_cta": "None - no appointment or call button; the nav \"CONTACT\" and \"READ MORE\" links both just reload the home page",
+        "click_to_call": false,
+        "contact_form": true,
+        "online_booking_or_quote": "none - a Wix contact form in the footer, no scheduling",
+        "trust_signals": "Two real photos of the clinic gym, insurance list, FAQ page, testimonials page; no review widget or credentials on the home page",
+        "out_of_date_signs": "Footer reads \"(c) 2020 by Primehealth & Wellness Center\"; social icons still point to facebook.com/wix and a Wix Lounge Yelp page (unedited template); treatment section is eight equipment photos with heading labels only, no text descriptions; hero is generic stock imagery with no address",
+        "search_basics": "Title is \"Physical Therapy Rehab | Prime Health & Wellness Center | New Jersey\" - no town in title; meta description has no town; LocalBusiness JSON-LD present with name, street address, city, ZIP and telephone but no hours, geo, price range or sameAs, and typed only as LocalBusiness rather than a physiotherapy type; robots.txt allows all",
+        "top_issues": [
+          "No click-to-call and no appointment CTA; CONTACT and READ MORE links are dead ends back to the home page",
+          "No online booking or appointment request flow beyond a footer form",
+          "Site unchanged since 2020, with template social links to Wix's own accounts",
+          "Treatments and therapies exist only as equipment photos, with no readable text for patients or AI crawlers"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 2,
+        "answerable": 2,
+        "bookable": 1,
+        "notes": "Findable: robots.txt allows all; Wix setup; Google Business Profile not verified because Google blocked automated access. Answerable: hours, address, insurance list and FAQ are real text, but the service list is images only and the LocalBusiness JSON-LD omits hours. Bookable: a Wix form with placeholder-only fields (Name/Email/Phone/Subject/Message) and a real submit button, no CAPTCHA, but it is an inquiry form, not booking."
+      },
+      "operations_signals": [
+        {"signal": "FAQ tells patients to call to schedule and to call to check insurance, so every new patient needs a phone conversation (inference)", "source_url": "https://www.primehealthrehab.com/faq"},
+        {"signal": "Fax number published alongside phone, indicating paper-based referral/records handling", "source_url": "https://www.primehealthrehab.com/"},
+        {"signal": "\"Same day appointments\" are offered, which requires someone to answer and triage quickly - a candidate for automated intake (inference)", "source_url": "https://www.primehealthrehab.com/faq"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Add an online appointment-request/booking flow with insurance capture, linked from a sticky call button", "type": "agent readiness", "evidence": "Only a footer Wix form exists; nav CONTACT and READ MORE both reload the home page; FAQ says call to schedule.", "effort": "M"},
+        {"opportunity": "Rewrite the site with text descriptions of each therapy (and a real address/phone block above the fold) to replace the 2020 template, including new social links and copyright year", "type": "website", "evidence": "Footer says (c) 2020, social icons go to facebook.com/wix, and the treatments section is photos with headings only.", "effort": "M"},
+        {"opportunity": "Complete the LocalBusiness schema with hours, geo, price range and physiotherapy type, and put the town in the title tag", "type": "search", "evidence": "JSON-LD has only name/address/telephone; title and meta description omit Highland Park.", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 4,
+        "ability_to_pay": 2,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Gap: no CTA or booking, dead nav links, 2020 template with Wix social links, image-only services. Ability: self-described small single-suite PT clinic with insurance-dependent revenue. Ease: small Wix site, quick rebuild of a few pages. Evidence: home, FAQ and footer inspected directly, form fields and JSON-LD read."
+      },
+      "sources": [
+        "https://www.primehealthrehab.com/",
+        "https://www.primehealthrehab.com/faq",
+        "https://www.primehealthrehab.com/robots.txt",
+        "https://localitybiz.com/new-jersey/holistic-wellness-programs-in-highland-park"
+      ]
+    },
+    {
+      "name": "Acupuncture & Natural Healing Center",
+      "town": "Highland Park",
+      "ref": "B05345",
+      "status": "operating",
+      "website": "https://www.acupuncture-naturalhealing.com/",
+      "what_they_do": "Single-practitioner acupuncture and Chinese-medicine wellness practice treating acute and chronic pain, gastrointestinal and gynecological complaints, immune issues and stress. Site also lists FAQs, treated conditions, success stories and an articles section.",
+      "customers": "Highland Park adults seeking drug-free pain relief, stress and women's-health support; insurance status not stated on the site.",
+      "size_signals": [
+        {"signal": "One practitioner: Carole Bishop, LAc", "source_url": "https://www.acupuncture-naturalhealing.com/"},
+        {"signal": "Suite 140, 47 Raritan Ave - single small office", "source_url": "https://www.acupuncture-naturalhealing.com/"},
+        {"signal": "Hours \"by appointment\" Monday-Friday only", "source_url": "https://www.acupuncture-naturalhealing.com/"}
+      ],
+      "listing": {"platform": "AcuLocator aggregated listing (Google count not verified)", "rating": "5.0", "reviews": "18", "source_url": "https://aculocator.com/states/nj/highland-park/clinics/"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "usable",
+        "clear_offer": true,
+        "primary_cta": "None visible - the phone number sits as plain text inside the paragraph, not as a button",
+        "click_to_call": true,
+        "contact_form": false,
+        "online_booking_or_quote": "none - phone only; a Fresha profile exists but offers only \"Call to book\", no services or times",
+        "trust_signals": "Named practitioner with credential (LAc), success-stories page, archive of articles; no photos, reviews or certifications on the home page",
+        "out_of_date_signs": "Home page is a single paragraph followed by \"Comments are closed.\" and a theme credit (\"Founder WordPress Theme by Compete Themes\"); Drupal-era URLs (2016 post slugs) and a stock 2008 Drupal robots.txt; the Forms page is effectively empty; no address or hours in the main column",
+        "search_basics": "Title is \"About Acupuncture & Natural Healing - Acupuncture & Natural Healing\" - no town, no service keyword; meta description names Highland Park and the center; schema is a Place node with street address, not LocalBusiness/MedicalBusiness; robots.txt allows crawling but disallows /contact/",
+        "top_issues": [
+          "Home page has no images, no address above the fold, no CTA, and ends with \"Comments are closed.\"",
+          "No contact form and no online booking; the only path is phone",
+          "Forms page appears empty, so intake is presumably paper at the office",
+          "Page titles and structure do not target acupuncture + Highland Park queries"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 2,
+        "answerable": 2,
+        "bookable": 1,
+        "notes": "Findable: robots.txt allows Googlebot and AI crawlers (it is a stock Drupal file, and /contact/ is disallowed); no LocalBusiness entity. Answerable: address, hours policy (\"Open M-F, hours by appointment\") and treated conditions are text, but there are no prices, no service pages, and the main column is one paragraph. Bookable: no form, no booking; the Fresha profile shows only an address and a call-to-book button, so a customer's agent cannot book online."
+      },
+      "operations_signals": [
+        {"signal": "Scheduling is phone-only with \"hours by appointment\", so every booking needs a call or callback (inference)", "source_url": "https://www.acupuncture-naturalhealing.com/"},
+        {"signal": "The site's Forms page has no downloadable or fillable forms, implying paper intake at the visit", "source_url": "https://www.acupuncture-naturalhealing.com/forms/"},
+        {"signal": "Fresha listing exists at the same address but is set to \"Call to book\" with no services configured - likely unclaimed or unconfigured (inference)", "source_url": "https://www.fresha.com/lvp/acupuncture-natural-healing-raritan-avenue-highland-park-n6AKq9"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Convert the Fresha profile into real online booking (services, durations, prices) and link it from the site header", "type": "agent readiness", "evidence": "Fresha page for this exact address shows only \"Call to book\" and no services; the website offers no booking path.", "effort": "S"},
+        {"opportunity": "Replace the one-paragraph home page with a proper landing page: service sections, practitioner bio, office photos, address/hours block and a call/appointment button", "type": "website", "evidence": "Home page is roughly 1,250 characters with no images, ends with \"Comments are closed.\", and shows a theme credit.", "effort": "M"},
+        {"opportunity": "Add LocalBusiness/MedicalBusiness schema and retitle pages for \"acupuncture Highland Park NJ\" plus condition-specific pages", "type": "search", "evidence": "Title says \"About Acupuncture & Natural Healing\" with no town; schema is a bare Place node; site still uses 2016-dated post URLs.", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 5,
+        "ability_to_pay": 1,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Gap: essentially a placeholder website - no images, CTA, form or booking. Ability: solo practitioner with very limited budget expectation. Ease: small WordPress site, a focused rebuild plus Fresha setup is quick. Evidence: home page, forms page, robots and Fresha listing all opened."
+      },
+      "sources": [
+        "https://www.acupuncture-naturalhealing.com/",
+        "https://www.acupuncture-naturalhealing.com/forms/",
+        "https://www.acupuncture-naturalhealing.com/robots.txt",
+        "https://www.fresha.com/lvp/acupuncture-natural-healing-raritan-avenue-highland-park-n6AKq9",
+        "https://aculocator.com/states/nj/highland-park/clinics/"
+      ]
+    },
+    {
+      "name": "Salon Envy",
+      "town": "Highland Park",
+      "ref": "B05348",
+      "status": "operating",
+      "website": "https://www.salonenvy.com/",
+      "what_they_do": "Hair salon and barber shop on Raritan Ave (Route 27) serving women and men: cuts, blow-dry styling, color, highlights/balayage, perms, relaxers, keratin and waxing, with a published price menu. Site says established 2000 and markets itself to Rutgers/New Brunswick/Edison customers.",
+      "customers": "College-age and adult women and men from Highland Park, New Brunswick (Rutgers) and Edison; mid-market pricing ($35 men's cut up, $75+ women's cut).",
+      "size_signals": [
+        {"signal": "\"Est. 2000\" on home page hero", "source_url": "https://www.salonenvy.com/"},
+        {"signal": "Separate Women's and Men's service pages plus a gallery", "source_url": "https://www.salonenvy.com/"},
+        {"signal": "Full price menu across cutting, chemical and color services", "source_url": "https://www.salonenvy.com/list-of-salon-envy-hair-services-hair-salon-highland-park-nj"},
+        {"signal": "BusinessRate 2024 recognition badge page", "source_url": "https://www.salonenvy.com/business-rate-2024"}
+      ],
+      "listing": {"platform": "Birdeye aggregated listing (Google count not verified)", "rating": "4.7", "reviews": "156", "source_url": "https://reviews.birdeye.com/salon-envy-168127760971472"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "broken",
+        "clear_offer": true,
+        "primary_cta": "\"Call Us\" button with phone icon in the header (click-to-call)",
+        "click_to_call": true,
+        "contact_form": false,
+        "online_booking_or_quote": "none - no booking platform, no appointment form, phone only",
+        "trust_signals": "Est. 2000, 2024 local business recognition badge, gallery page, real salon/portfolio photos, social links to Facebook/Instagram/Yelp",
+        "out_of_date_signs": "Mobile layout is broken: at 390px the document still lays out at 768px wide, so the header \"Call Us\" button and the hero headline are cut off at the right edge; no hours on the home page (only on contact); no review widget despite 150+ reviews",
+        "search_basics": "Title and meta description name the salon, hair/beauty service and Highland Park; separate pages for services, women, men, gallery, contact; HairSalon JSON-LD with address, geo, phone, email, logo, images and sameAs, but no openingHours; robots.txt allows all and a sitemap exists",
+        "top_issues": [
+          "Broken mobile layout (768px page on a 390px screen) with clipped call button",
+          "No online booking or appointment request - phone only",
+          "Opening hours missing from the home page and from the schema",
+          "No visible reviews on the site even though 150+ exist"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 3,
+        "answerable": 3,
+        "bookable": 1,
+        "notes": "Findable: sitemap, schema with geo and sameAs, robots.txt open to all crawlers; Google Business Profile not directly verifiable. Answerable: full price list and service descriptions are real text, hours are on the contact page; the HairSalon JSON-LD omits hours. Bookable: no form and no booking platform anywhere - the only conversion path is a phone call, so an agent cannot book."
+      },
+      "operations_signals": [
+        {"signal": "Salon is closed Monday and Tuesday, so calls during those days have no online booking fallback (inference)", "source_url": "https://www.salonenvy.com/contact-salon-envy-hair-salon-highland-park-near-edison-new-brunswick-nj"},
+        {"signal": "No contact form or booking platform, so every appointment is taken by phone during business hours (inference)", "source_url": "https://www.salonenvy.com/"},
+        {"signal": "Published email address (salonenvy@aol.com) suggests manual email handling for inquiries (inference)", "source_url": "https://www.salonenvy.com/contact-salon-envy-hair-salon-highland-park-near-edison-new-brunswick-nj"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Fix the mobile layout so the page actually fits a phone and the Call Us button is reachable", "type": "website", "evidence": "document.documentElement.scrollWidth is 768 while the viewport is 390; the phone screenshot shows the call button and headline clipped off-screen.", "effort": "S"},
+        {"opportunity": "Add online booking (Booksy, Fresha, Vagaro or similar) with per-service durations and link it in the header, keeping phone as fallback", "type": "agent readiness", "evidence": "No booking widget or form exists on any page; contact page lists only phone, email and hours.", "effort": "M"},
+        {"opportunity": "Surface hours and recent reviews on the home page and add openingHours to the HairSalon schema", "type": "search", "evidence": "Hours appear only on the contact page; JSON-LD has no openingHours; the site shows a 2024 badge but no customer reviews.", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Gap: broken mobile layout, no booking, hours hidden. Ability: 25-year-old salon with 156 reviews and mid-market pricing - can afford a modest booking setup. Ease: Duda site, CSS fix plus a booking link is quick. Evidence: screenshots at both widths, schema, form and hours pages inspected."
+      },
+      "sources": [
+        "https://www.salonenvy.com/",
+        "https://www.salonenvy.com/contact-salon-envy-hair-salon-highland-park-near-edison-new-brunswick-nj",
+        "https://www.salonenvy.com/list-of-salon-envy-hair-services-hair-salon-highland-park-nj",
+        "https://www.salonenvy.com/robots.txt",
+        "https://reviews.birdeye.com/salon-envy-168127760971472"
+      ]
+    },
+    {
+      "name": "Muse Salon",
+      "town": "Highland Park",
+      "ref": "B05349",
+      "status": "operating",
+      "website": "https://www.musesalon.net/",
+      "what_they_do": "Boutique hair salon doing cuts, styling, custom color and blonding, gloss, scalp and conditioning treatments, keratin/Brazilian blowout and extensions, with a published price menu ($85 stylist cut, custom color from $285, blonding from $450).",
+      "customers": "Style- and color-focused clients in Highland Park and nearby, willing to pay premium boutique prices; younger/professional clientele (inference from Instagram-led marketing).",
+      "size_signals": [
+        {"signal": "\"Est. 2015\" on home page", "source_url": "https://www.musesalon.net/"},
+        {"signal": "Two stylists named on Team page: Kristin (owner/colorist) and Melissa", "source_url": "https://www.musesalon.net/our-team"},
+        {"signal": "Four-day week (Wed-Sat) with set hours", "source_url": "https://www.musesalon.net/about"}
+      ],
+      "listing": {"platform": "Birdeye aggregated listing (Google count not verified)", "rating": "4.4", "reviews": "35", "source_url": "https://reviews.birdeye.com/muse-salon-170109807982959"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "\"Book an Appointment\" in the nav (Meevo portal); no phone CTA",
+        "click_to_call": false,
+        "contact_form": false,
+        "online_booking_or_quote": "yes - Meevo customer portal (login.meevo.com/musesalonnj) reached from the nav; new clients must enter an email and create an account",
+        "trust_signals": "Real interior and client-work photos, est. 2015, named team with Instagram handles, price menu, parking/location note",
+        "out_of_date_signs": "None serious; the home page carries only a short quote and Instagram feed, so services and hours live on subpages",
+        "search_basics": "Title is just \"Muse Salon\" - no service or town; meta description lists services but not Highland Park; LocalBusiness JSON-LD with address, phone, email, sameAs but an empty openingHours value; robots.txt allows all; sitemap present",
+        "top_issues": [
+          "No click-to-call anywhere on the site, including mobile",
+          "Booking is buried in the hamburger menu on phones and requires an email account to start",
+          "Page titles omit both the service and the town",
+          "openingHours in the LocalBusiness schema is empty"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 3,
+        "answerable": 2,
+        "bookable": 3,
+        "notes": "Findable: LocalBusiness JSON-LD, sitemap, robots open to all crawlers; no Google Business Profile verification possible here. Answerable: prices, services and hours are real text, but hours are only on the About page and openingHours in the schema is blank, and the title tag says nothing about hair or Highland Park. Bookable: the Meevo customer portal loads with no CAPTCHA and offers booking for returning clients or an email step for new ones - a real online booking path, not a message form."
+      },
+      "operations_signals": [
+        {"signal": "Booking runs through the Meevo platform, so scheduling data already lives in salon software (source: nav booking link)", "source_url": "https://www.musesalon.net/"},
+        {"signal": "Salon is closed Sunday-Tuesday, so four days of demand compress into a short week and missed calls are lost (inference)", "source_url": "https://www.musesalon.net/about"},
+        {"signal": "Marketing depends on Instagram posts and DMs, which usually means manual reply handling (inference)", "source_url": "https://www.musesalon.net/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Put a persistent Book button and click-to-call number in the mobile header instead of burying booking in the menu", "type": "website", "evidence": "Mobile screenshot shows only a hamburger; there are zero tel: links on the site.", "effort": "S"},
+        {"opportunity": "Set up automated review requests and a review display to lift the 4.4 rating (35 reviews) toward peers at 4.7-5.0", "type": "operations", "evidence": "Aggregated rating 4.4/35 versus 4.7-5.0 with 41-156 reviews for nearby Highland Park salons.", "effort": "S"},
+        {"opportunity": "Fill in title tags, openingHours and service-level schema so answer engines can quote price and availability correctly", "type": "search", "evidence": "Title is \"Muse Salon\"; openingHours is empty in the LocalBusiness JSON-LD.", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 2,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Gap: small - site is polished and already bookable; missing mobile call button, review growth, metadata. Ability: premium price menu ($285-450 color) with two stylists - healthy ticket sizes. Ease: Squarespace plus Meevo, all quick edits. Evidence: pages, nav links, schema and booking portal all inspected."
+      },
+      "sources": [
+        "https://www.musesalon.net/",
+        "https://www.musesalon.net/about",
+        "https://www.musesalon.net/services",
+        "https://www.musesalon.net/our-team",
+        "https://login.meevo.com/musesalonnj/ob?locationId=106860",
+        "https://reviews.birdeye.com/muse-salon-170109807982959"
+      ]
+    },
+    {
+      "name": "The Loft Salon (also listed as Park Salon)",
+      "town": "Highland Park",
+      "ref": "B05350",
+      "status": "operating",
+      "website": "https://www.theloftsalonnj.com/",
+      "what_they_do": "Boutique hair salon in Highland Park with a sister location in Palm Coast, Florida; \"by appointment only\", offering cut, color and styling services plus a small online product shop and gift cards.",
+      "customers": "Appointment-based salon clients in Highland Park and, separately, Palm Coast FL; product buyers through the online shop.",
+      "size_signals": [
+        {"signal": "Two locations: 440 Raritan Ave, Highland Park NJ and 7 Florida Park Drive N, Palm Coast FL", "source_url": "https://www.theloftsalonnj.com/"},
+        {"signal": "Two brand names on the logo: The Loft Salon and The Park Salon", "source_url": "https://www.theloftsalonnj.com/"},
+        {"signal": "Hours in schema: Wed 12-21, Thu 13-21, Fri 9-15, Sat 9-17", "source_url": "https://www.theloftsalonnj.com/"}
+      ],
+      "listing": {"platform": "Demandforce aggregated listing (Google count not verified)", "rating": "4.9", "reviews": "233", "source_url": "https://local.demandforce.com/d/nj/highland-park/salon"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "None functional - the page says \"Book your appointment today\" but has no booking link or button; the only buttons are Shop (403 error) and Buy a Gift Card",
+        "click_to_call": false,
+        "contact_form": false,
+        "online_booking_or_quote": "none - no booking link anywhere on the site despite \"by appointment only\"",
+        "trust_signals": "Professional photography, two-location branding, gift-card purchase, schema with hours and address",
+        "out_of_date_signs": "The \"Shop\" button points to theloftsalonnj.mysalon2me.com, which returns a 403 Forbidden page; the site is a single page with no service or price pages; both locations share one page with no clear location switching",
+        "search_basics": "Title is \"The Loft Salon | The Park Salon\" - no service or town; meta description does name boutique hair salon in Highland Park; no services page at all, so key services are not separately indexed; LocalBusiness JSON-LD has address and openingHours but no service list; robots.txt is the Squarespace default (allows crawlers)",
+        "top_issues": [
+          "\"Book your appointment today\" has no booking mechanism - the main conversion path is missing",
+          "Only other action links are Shop (403 Forbidden) and gift cards",
+          "No services or prices anywhere on the site",
+          "Phone number is plain text, not click-to-call"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 2,
+        "answerable": 2,
+        "bookable": 1,
+        "notes": "Findable: Squarespace defaults allow crawlers, schema present with address and hours, but the site has no service pages to rank. Answerable: hours and addresses are text, but services and prices are absent entirely. Bookable: nothing to click - no booking platform link, no form, no click-to-call, so neither a person nor an agent can book from the site."
+      },
+      "operations_signals": [
+        {"signal": "\"By appointment only\" with no online booking means all scheduling happens by phone or DM during salon hours (inference)", "source_url": "https://www.theloftsalonnj.com/"},
+        {"signal": "Gift cards are sold through a third-party form (SalonClouds) that must be reconciled by hand (inference)", "source_url": "https://www.theloftsalonnj.com/"},
+        {"signal": "Product shop link is down (403), so online retail orders are currently impossible (inference from the live link)", "source_url": "https://theloftsalonnj.mysalon2me.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Wire the \"Book your appointment today\" section to a real booking platform (or a Meevo/Booksy link) and add a sticky Book button", "type": "agent readiness", "evidence": "No book link or button exists on the page; the only actions are Shop and Gift Card.", "effort": "S"},
+        {"opportunity": "Fix or remove the broken Shop link and add services/prices pages for the NJ salon", "type": "website", "evidence": "theloftsalonnj.mysalon2me.com returns 403 Forbidden; site has no service pages.", "effort": "M"},
+        {"opportunity": "Clarify the NJ vs FL split and add click-to-call plus location-specific landing content so local search lands on Highland Park", "type": "search", "evidence": "One page serves both addresses; title has no town or service; phone is unlinked text.", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Gap: no booking despite appointment-only model, broken shop, no services. Ability: two-location salon with 4.9/233 reviews - can pay for a modest setup. Ease: Squarespace, mostly links and content. Evidence: live links tested, schema read, mobile and desktop screenshots."
+      },
+      "sources": [
+        "https://www.theloftsalonnj.com/",
+        "https://theloftsalonnj.mysalon2me.com/",
+        "https://www.theloftsalonnj.com/robots.txt",
+        "https://local.demandforce.com/d/nj/highland-park/salon"
+      ]
+    },
+    {
+      "name": "Tina's Hair",
+      "town": "Highland Park",
+      "ref": "B05351",
+      "status": "operating",
+      "website": "https://tinashair.com/",
+      "what_they_do": "Casual full-service hair salon for women, men and kids: haircuts, color, highlights and perms, marketed on value (\"prices that are gentle on your wallet\").",
+      "customers": "Local families, kids and value-conscious adults on Raritan Ave (Route 27) between Highland Park and Edison.",
+      "size_signals": [
+        {"signal": "Owner-stylist \"Tina\" profiled on the About page", "source_url": "https://tinashair.com/about/"},
+        {"signal": "One location at 1172 Raritan Ave, five treatment days (Tue-Sat)", "source_url": "https://tinashair.com/"},
+        {"signal": "Testimonials page with client quotes", "source_url": "https://tinashair.com/testimonials/"}
+      ],
+      "listing": {"platform": "BestProsInTown / directory listing (Google count not verified)", "rating": "5.0", "reviews": "10-32 depending on directory", "source_url": "https://www.bestprosintown.com/nj/highland-park/hair-salons/"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "usable",
+        "clear_offer": true,
+        "primary_cta": "Phone number only, as plain text (no button, no tel: link)",
+        "click_to_call": false,
+        "contact_form": false,
+        "online_booking_or_quote": "none - \"To schedule an appointment, please call 732-253-7577\"",
+        "trust_signals": "Owner bio, testimonials page, hours and a map embedded on the home page, current copyright (2025)",
+        "out_of_date_signs": "Late-2000s design: red damask background, fixed ~1200px layout, hero images with words baked into the image (\"Women's Cuts\"), a \"Search this website\" box, tiny text on phones",
+        "search_basics": "Title is just \"Tina's Hair\"; meta description names the salon, services and Highland Park/Edison; separate Services, Testimonials, About, Contact pages; schema is CollectionPage + BreadcrumbList only (with an \"Uncategorized\" breadcrumb), no LocalBusiness; robots.txt is a short default that allows all",
+        "top_issues": [
+          "No click-to-call: phone number is plain text on desktop and mobile",
+          "No contact form and no online booking; contact page explicitly says call",
+          "Fixed-width, dated design with text baked into hero images and tiny type on phones",
+          "No LocalBusiness schema and a breadcrumb trail that surfaces \"Uncategorized\""
+        ]
+      },
+      "agent_readiness": {
+        "findable": 2,
+        "answerable": 2,
+        "bookable": 1,
+        "notes": "Findable: robots.txt allows crawlers and there are separate service pages, but schema is only breadcrumb/collection markup and the title is just the brand. Answerable: hours, service descriptions and a map are text, but there is no price list and the hero service names are inside images. Bookable: nothing online - no form, no booking, no tel link; a customer's agent would have to dial."
+      },
+      "operations_signals": [
+        {"signal": "Salon is closed Sunday and Monday and takes bookings only by phone, so off-hours demand is lost (inference)", "source_url": "https://tinashair.com/"},
+        {"signal": "Contact page exists purely to state the phone number - no inquiry form, so all questions hit the phone (inference)", "source_url": "https://tinashair.com/contact/"},
+        {"signal": "Testimonials are hand-curated page quotes rather than a live review feed, implying manual collection (inference)", "source_url": "https://tinashair.com/testimonials/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Make the phone number click-to-call and add a simple appointment request form or booking link", "type": "agent readiness", "evidence": "No tel: links on any page; contact page says only \"please call 732-253-7577\"; no form except a site search box.", "effort": "S"},
+        {"opportunity": "Modernise the theme: responsive layout, real photos of the salon, service text instead of words baked into images", "type": "website", "evidence": "Home hero is a stock image with \"Women's Cuts\" lettering inside the graphic; layout is fixed-width and text renders tiny at 390px.", "effort": "M"},
+        {"opportunity": "Add LocalBusiness JSON-LD with hours, services and town, and put \"Hair Salon Highland Park NJ\" in the title", "type": "search", "evidence": "Only BreadcrumbList/CollectionPage schema with an Uncategorized breadcrumb; title is just \"Tina's Hair\".", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 4,
+        "ability_to_pay": 2,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Gap: no click-to-call, no form, no booking, dated fixed-width site. Ability: small value-priced neighborhood salon, owner-operated. Ease: standard WordPress theme, quick fixes. Evidence: desktop and mobile screenshots, contact page and schema inspected."
+      },
+      "sources": [
+        "https://tinashair.com/",
+        "https://tinashair.com/contact/",
+        "https://tinashair.com/services/",
+        "https://tinashair.com/robots.txt",
+        "https://www.bestprosintown.com/nj/highland-park/hair-salons/"
+      ]
+    },
+    {
+      "name": "BLOOM Custom Hair Color",
+      "town": "Highland Park",
+      "ref": "B05352",
+      "status": "operating",
+      "website": "https://bloomcustomhair.glossgenius.com/",
+      "what_they_do": "Color-focused hair salon: fashion color, custom lightening, single and double process color, glaze/toner, haircuts and styling, extensions, makeup and consultations. Services are listed with prices and durations and book online, with deposits required from new clients.",
+      "customers": "Color-seeking clients (bold fashion color, blonding, corrective color) in Highland Park and surrounding towns; new clients pay a $50-60 deposit.",
+      "size_signals": [
+        {"signal": "Multiple stylists - the review carousel names at least one (Jada Haynes)", "source_url": "https://bloomcustomhair.glossgenius.com/"},
+        {"signal": "Team page plus portfolio and shop sections in the site nav", "source_url": "https://bloomcustomhair.glossgenius.com/"},
+        {"signal": "Open six days: Tue-Sat 8am-7pm, Monday closed (footer hours)", "source_url": "https://bloomcustomhair.glossgenius.com/"}
+      ],
+      "listing": {"platform": "Magicpin aggregated listing (Google count not verified); the site itself displays 197 GlossGenius reviews", "rating": "5.0", "reviews": "14", "source_url": "https://magicpin.com/usa/Highland-Park/Highland-Park-Nj/Restaurant/Bloom-Custom-Hair-Color-And-Design/store/2511514/reviews"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "\"Book Now\" / per-service Book buttons (GlossGenius checkout)",
+        "click_to_call": false,
+        "contact_form": false,
+        "online_booking_or_quote": "yes - GlossGenius booking with service list, prices, durations and deposits",
+        "trust_signals": "197 reviews embedded on site, real client portfolio photos, team page, published prices and deposits, hours in footer",
+        "out_of_date_signs": "Slight horizontal overflow on desktop (document 1440px vs 1425px viewport); no phone number anywhere on the site (only address and hours); the whole web presence lives on a glossgenius.com subdomain rather than their own domain",
+        "search_basics": "Title is \"BLOOM | Hair Salon in Highland Park, NJ\" - good; HairSalon JSON-LD present; services, prices and durations in text; but pages are client-rendered and the site sits on a booking-platform subdomain, and a robots.txt was not readable at the subdomain root",
+        "top_issues": [
+          "No phone number or click-to-call anywhere - clients with questions must book or hunt for contact info",
+          "No owned domain: everything sits on a glossgenius.com subdomain",
+          "Booking button is inside the hamburger menu on mobile",
+          "Content renders client-side, which makes it harder for crawlers and answer engines to read"
+        ]
+      },
+      "agent_readiness": {
+        "findable": 2,
+        "answerable": 3,
+        "bookable": 3,
+        "notes": "Findable: HairSalon JSON-LD present and title names the town, but the site is a booking-platform subdomain (weaker for local search) and the Google Business Profile could not be verified. Answerable: services, prices, durations, deposits, address and hours are all real text. Bookable: GlossGenius checkout with per-service Book buttons and no CAPTCHA in the way - the closest to agent-bookable in this batch."
+      },
+      "operations_signals": [
+        {"signal": "New clients pay a deposit at booking, which suggests no-shows and deposit control (inference)", "source_url": "https://bloomcustomhair.glossgenius.com/"},
+        {"signal": "No phone published, so intake is funneled into online booking (inference)", "source_url": "https://bloomcustomhair.glossgenius.com/"},
+        {"signal": "Shop section in the nav suggests retail/product orders handled alongside appointments (inference)", "source_url": "https://bloomcustomhair.glossgenius.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Add a visible phone number/click-to-call and a contact option for pre-booking color questions", "type": "website", "evidence": "No phone number appears anywhere on the site; only address and hours.", "effort": "S"},
+        {"opportunity": "Move to an owned domain with a GlossGenius booking widget, and put Book Now in the mobile header", "type": "search", "evidence": "Site is hosted at bloomcustomhair.glossgenius.com; mobile header shows only cart and hamburger icons.", "effort": "M"},
+        {"opportunity": "Automate post-visit review requests so the 197 GlossGenius reviews also accumulate on Google", "type": "operations", "evidence": "Site shows 197 reviews while the third-party listing shows only 14 ratings.", "effort": "S"}
+      ],
+      "scores": {
+        "gap_size": 2,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 4,
+        "reasons": "Gap: small - already bookable with priced services; missing phone/contact and own domain. Ability: color-led menu with $120-450 services and deposits, plus 197 reviews. Ease: GlossGenius handles booking, so changes are content and domain work. Evidence: site, service pages, schema and mobile view inspected."
+      },
+      "sources": [
+        "https://bloomcustomhair.glossgenius.com/",
+        "https://magicpin.com/usa/Highland-Park/Highland-Park-Nj/Restaurant/Bloom-Custom-Hair-Color-And-Design/store/2511514/reviews"
+      ]
+    }
+  ],
+  "caveats": [
+    "Google blocks automated access from this environment, so ratings and review counts come from third-party aggregators (Birdeye, Demandforce, ChiropractorDirectories, AcuLocator, LocalityBiz, Magicpin, BestProsInTown) rather than the Google listing itself, and counts differ across those sources.",
+    "The browser adds a small emoji prefix to some page titles; titles quoted here were taken from the raw HTML title where it differed."
+  ],
+  "data_gaps": [
+    "rebarberchiro.com returned HTTP 403 to the headless browser on three attempts; page content was read via direct fetch, so mobile rendering and JSON-LD could not be checked.",
+    "Google Business Profile completeness (claimed status, categories, photos, services) could not be verified for any business.",
+    "The Loft Salon and BLOOM sit on platform subdomains where a robots.txt was not readable, so crawler rules for those hosts are unknown.",
+    "Fresha profiles for Park Chiropractic and Acupuncture & Natural Healing showed no services or times, so it is unknown whether the owners have claimed them."
+  ]
+}

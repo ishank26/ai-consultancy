@@ -1,0 +1,14 @@
+done — `output.json` rewritten with all 10 verifier fixes applied:
+
+1. **NJ retail-theft law** — now quotes the actual statutory language ("may include establishing a retail theft unit, task force, or other appropriate office or initiative") and cites the enacted bill text (`pub.njleg.gov/Bills/2024/AL25/39_.HTM`); the dead nj.gov link is gone.
+2. **ECR nudge/self-correction** — sample corrected to "2 retailers + 2 vendors (nudges); 2 retailers (self-correction)", strength downgraded to Low.
+3. **Missed-scan 1–4.8%** — attributed to the 12 retailers that returned frequency data, with 39 kept as the overall study base.
+4. **Frigate** — restated: custom label maps *are* supported via `model.path`/`labelmap_path`; only Frigate+ hosted training refuses custom labels. Cites the object_detectors and plus/faq pages.
+5. **NJDPA** — re-sourced to the statute (P.L. 2023 c.266) I opened this pass; thresholds, sensitive-data definition, video/photograph carve-out, employment-context exclusion and the 365th-day effective clause all from the text.
+6. **444140 vs 4441** — target listed as NAICS 444140; the 94/2,741 counts stay attached to 4441 only, with a note the 444140 line is too small to size.
+7. **Rhombus** — "$149 per-camera licence, ongoing; billing period not stated", with the earlier "/year" explicitly withdrawn as an inference.
+8. **Sweethearting** — replaced the unsupported false-alarm-labour clause with what the abstract actually says.
+9. **fit_score** — legal_risk_low cut 12 → 6, total recomputed to 57 (16+11+8+10+6+6), rationale now names the residual legal risks rather than implying near-harmlessness.
+10. **NRF 46%** — now "increased their use of third-party security personnel".
+
+Also self-corrected two claims I could not re-verify: Ultralytics' default tracker is TrackTrack (not ByteTrack), and the 92% F1 result belongs to time-series classifiers over YOLOv5+DeepSORT bounding-box features, read from the PMC mirror. Wiretap entry marked `confirmed:false` since the statute text was 403-blocked, with that limitation added to `data_gaps`.

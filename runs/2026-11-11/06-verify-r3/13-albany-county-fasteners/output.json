@@ -1,0 +1,123 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "\"Ratings split: 4.6 stars over 429 reviews on Birdeye, 2.5 over 21 on Yelp excerpts, where complaint reviews cite packaging and one an unresolved order.\"",
+      "problem": "Minor precision risk, not a factual error: the syndicated excerpt that can be opened (Yahoo Local) shows the long-time customer saying management \"refused to make good\" and then truncates at \"More\"; the full Yelp review returns HTTP 403, so the words \"unresolved order\" are our own reading rather than the visible text. Packaging complaints are directly supported (bag/cardboard-envelope remarks).",
+      "fix": "Reword to what the excerpt says, e.g. \"...cite packaging, and one a customer who says management would not make good on a problem.\" Keeps the point and is verbatim-safe."
+    },
+    {
+      "claim": "\"(... 15–25% absorbed — ... kept below the 34% novice figure from a large software vendor's support desk)\"",
+      "problem": "Framing, not error: the 15–25% band is below the 34% novice figure but above the 14% all-agent average the same paper reports, and NBER 31161 measures a gain in issues resolved per hour, not the share of inquiries an agent can absorb. Citing only the 34% figure makes the estimate look more conservative than it is.",
+      "fix": "Add \"versus 14% average / 34% novice in NBER 31161 (a productivity gain, used here as a loose upper bound)\" and, if space allows, say plainly that the band is set by our assumption about absorbed volume, not by the study."
+    },
+    {
+      "claim": "\"...and target order errors below 0.5% of shipped orders.\"",
+      "problem": "The source states the target as \"below 0.5% of shipped orders per quarter\". Dropping the period makes the target read as an all-time rate and slightly stricter than published.",
+      "fix": "Restore the qualifier: \"below 0.5% of shipped orders per quarter\" (adds three words; see the length note)."
+    },
+    {
+      "claim": "Audit body length (title through the \"Worth checking together\" close, with the disclaimer; excluding the \"For the founder\" block and Sources)",
+      "problem": "Approximately 450–460 words by my count, i.e. at or marginally over the ~450-word cap, with no headroom once the fixes above are applied.",
+      "fix": "Trim ~20–30 words before sending: e.g. shorten the impact-parentheticals (\"volume, time and share are our assumption\" appears three times) and cut \"and certificates\" / \"for approval\" duplication in section 1. Keeping the fixes above then fits under 450."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Founded in 2010 in a two-car garage in New York State; now a 25,000 sq ft warehouse in Edison, NJ",
+      "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Weekday business hours 8:00AM–5:00PM EST",
+      "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Phone 866-573-0445 and 100 Newfield Ave, Suite D, Edison, NJ 08837 (business name, town, contact details)",
+      "source_url": "https://www.albanycountyfasteners.com/Contact-Us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "B2B page lists quotes on unlisted parts, C of C/MTR packets and \"Stock & Release programs\", handled by a sales team",
+      "source_url": "https://www.albanycountyfasteners.com/B2B/Request-A-Quote/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Piece/pack/bulk price tiers are published",
+      "source_url": "https://www.albanycountyfasteners.com/B2B/Request-A-Quote/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Order error target below 0.5% of shipped orders",
+      "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bob (Robert) Cominos is owner/president and is personally reachable (email and walk-in opener address him)",
+      "source_url": "https://www.albanycountyfasteners.com/blog/about-albany-county-fasteners/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sells through its own store and an Amazon storefront (second channel claim)",
+      "source_url": "https://www.amazon.com/stores/AlbanyCountyFasteners/page/7B1D54CC-242B-4E4F-A20A-CE6E32705A64",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Order clerk NJ 2025 median $46,270; $46,270 x 1.25 / 2,080 = $27.81/hour",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4151.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Customer service rep NJ 2025 median $47,740; $47,740 x 1.25 / 2,080 = $28.69/hour",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye shows 4.6 stars across 429 reviews",
+      "source_url": "https://reviews.birdeye.com/albany-county-fasteners-171344557997627",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Yelp listing shows 2.5 stars from 21 reviews, with packaging complaints",
+      "source_url": "https://local.yahoo.com/info-195846697-albany-county-fasteners-edison/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "One Yelp excerpted complaint is about an unresolved order",
+      "source_url": "https://local.yahoo.com/info-195846697-albany-county-fasteners-edison/",
+      "result": "could not open"
+    },
+    {
+      "claim": "Full Yelp review text (for the 'unresolved order' phrasing)",
+      "source_url": "https://www.yelp.com/biz/albany-county-fasteners-sayreville",
+      "result": "could not open"
+    },
+    {
+      "claim": "NBER WP 31161: +14% average and +34% for novices in issues resolved per hour, at a large software vendor's support desk (paper: \"a Fortune 500 enterprise software company\", 5,179 agents)",
+      "source_url": "https://www.nber.org/papers/w31161",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact 1 arithmetic: 500-1,500 hours/yr (50-100/wk x 50 wk x 30 min x 40-60%) x $27.81 = $13,900-$41,700",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4151.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact 2 arithmetic: 300-750 hours/yr (40-60/day x 250 days x 12 min x 15-25%) x $28.69 = $8,600-$21,500",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact 3 arithmetic: 250-700 hours/yr (10-20 h/wk x 50 wk x 50-70%) x $28.69 = about $7,100-$20,000",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'After-hours voicemail' as an agent surface",
+      "source_url": "https://www.albanycountyfasteners.com/Contact-Us/",
+      "result": "not found"
+    }
+  ],
+  "confidence": "High"
+}

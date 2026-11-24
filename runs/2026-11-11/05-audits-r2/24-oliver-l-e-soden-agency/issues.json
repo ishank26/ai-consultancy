@@ -1,0 +1,27 @@
+[
+ {
+  "claim": "\"Niche pages \u2014 contractor, HVAC/electrical/plumbing, pickleball, nonprofit, cyber \u2014 bring their own questionnaires.\"",
+  "problem": "Unsupported and most likely wrong. The cited source (page-sitemap1.xml) only lists URLs. I opened the pickleball, HVAC contractor, construction and cyber liability pages myself: each is marketing copy plus FAQs, and there is no questionnaire, quote form, upload field or Contact Form 7 form on any of them (a full-text search of the pickleball page HTML for 'questionnaire' and 'wpcf7-form' returned nothing). The site's only intake surface is the embedded third-party form on /request-a-quote/.",
+  "fix": "Rewrite to what is verified, e.g. \"The site has separate coverage pages for contractor, HVAC/electrical/plumbing, pickleball, nonprofit and cyber work, and each line has its own carrier supplemental questions.\" If you want to keep the intake point, add \"the questionnaires themselves aren't published, so we'd map them in discovery\" and mark it as a question rather than a finding."
+ },
+ {
+  "claim": "\"Businesses like yours often find each certificate typed by hand, then checked.\"",
+  "problem": "Unsourced generalisation about the client's internal workflow, stated as fact in a client-facing audit. Nothing in the sources says how Soden prepares certificates.",
+  "fix": "Either delete the sentence or hedge it explicitly and ask instead: \"We'd expect standard certificates to be typed against policy data and then checked by hand \u2014 please confirm.\""
+ },
+ {
+  "claim": "Impact 2 upper bound of \"$12,000\u2013$28,000 a year\".",
+  "problem": "The top of the range does not follow from the stated basis. O*NET/BLS NJ average for Customer Service Representatives (43-4051) is $47,740/yr, i.e. $22.95/hr (confirmed on the cited page); the analysis applies a 30\u201335% burden, which gives roughly $29.8k\u2013$31.0k per hour loaded, not $30\u2013$35k. 800 recovered hours at ~$31/hr is about $24,800, so the high end is roughly 13% above what the assumptions support.",
+  "fix": "Use $12,000\u2013$25,000, or state the loaded rate as ~$30/hr (NJ average + 30\u201335% burden). Keep the assumption line visible somewhere the client sees."
+ },
+ {
+  "claim": "Impact 3 range of \"$5,000\u2013$16,000 a year\".",
+  "problem": "The audit's figure is internally consistent (150\u2013400 hours at ~$32\u2013$40/hr loaded = $4,800\u2013$16,000) but analysis.json states $8,000\u2013$25,000 for the same opportunity. Two different numbers now exist for the same work, so whoever runs the meeting could quote the wrong one.",
+  "fix": "Keep the audit's conservative $5,000\u2013$16,000 and correct analysis.json to match, so both documents agree."
+ },
+ {
+  "claim": "\"the team behind them sits in one office\" (Opportunity 1, 'Now').",
+  "problem": "Stated as fact but it is a two-step inference: the site says the entire Account Management department is in Jamesburg, and separately that clients use the CSR24 portal for certificates. It does not say certificate work is done by that department in that office.",
+  "fix": "Add the hedge used elsewhere, e.g. \"and, since your whole Account Management team is in Jamesburg, those requests most likely land with that one team.\""
+ }
+]

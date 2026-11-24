@@ -1,0 +1,2 @@
+INPUT: zone = Sayreville (incl. Parlin), New Jersey. Category groups to cover: A (as defined in your role).
+Today is 2026-11-12. List every eligible independent business in this zone and these groups per your role. Use "zone": "Sayreville (incl. Parlin) | groups A". Write the JSON to output.json.

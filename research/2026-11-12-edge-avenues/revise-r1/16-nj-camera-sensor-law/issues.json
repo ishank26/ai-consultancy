@@ -1,0 +1,57 @@
+[
+ {
+  "claim": "Shrink was reported at 1.6% of sales, or $112.1 billion industry-wide for FY2022 (measured_outcomes, source_url nrf.com/blog/the-misperception-of-shrink-and-its-impact-on-organized-retail-crime)",
+  "problem": "The cited NRF blog page does not contain either figure (searched for '1.6', '112', 'billion' - no match). It only says NRF ceased publishing an industry shrink figure in 2023. The 1.6% / $112.1B FY2022 numbers are real but live on a different NRF page (NRF National Retail Security Survey 2023 / the 'Shrink accounted for over $112 billion' press release), so the citation does not support the number.",
+  "fix": "Re-point the source_url to https://nrf.com/research/national-retail-security-survey-2023 (or the Nov 2023 press release) and keep the existing caveat that it should not be treated as current."
+ },
+ {
+  "claim": "measured_outcomes entry on Rite Aid: 'An unmanaged AI flagging system generated thousands of false-positive matches... produced more false positives in plurality-Black and Asian communities', strength 'High', study_type 'government'",
+  "problem": "These are the FTC's allegations in a complaint resolved by a stipulated order, not adjudicated findings, and the brief restates them as established fact and grades the entry High. It is a single enforcement case against one retailer, not a study; the FTC press release itself attributes every finding to 'the complaint says/charges'. A single case is not High-strength evidence under the brief's own ranking logic.",
+  "fix": "Reframe as 'the FTC alleged' throughout, set strength to Low (or Medium at most), and drop 'study_type: government' in favour of 'enforcement complaint/consent order'."
+ },
+ {
+  "claim": "Rite Aid 'year: 2023 (complaint/order), 2024 (modified order)' (repeated in problem summary as 'Dec 2023, modified 2024')",
+  "problem": "Partly misstated. The facial-recognition stipulated order was entered by the district court in 2024; the FTC's March 5, 2024 'modified order' is a modification of the separate 2010 administrative data-security order, not a modification of the facial-recognition order. As written the brief implies the FRT order itself was modified in 2024.",
+  "fix": "Write '2023 complaint; stipulated order entered 2024; separate 2010 order modified March 2024' and keep the two proceedings distinct."
+ },
+ {
+  "claim": "fit_score.legal_risk_low = 10 (out of 15), total 70",
+  "problem": "Arithmetic checks out (13+13+8+17+10+9 = 70 and every sub-score is inside its range), but the score is inconsistent with the evidence in the same document: the legal section records an unresolved contractor-licensing gate that the brief itself calls 'a hard gate', an unverified criminal-statute design surface (2C:14-9, wiretap), and UPL exposure. 10/15 sits above the midpoint of a 15-point 'legal risk is low' scale, which reads as low-to-moderate legal risk despite three open legal questions.",
+  "fix": "Drop legal_risk_low to roughly 6-7 and reduce the total to about 66-67, or resolve the licensing question before scoring it that high."
+ },
+ {
+  "claim": "Rhombus 'R120: $399 hardware + $149 one-year Professional licence = $548 first year'",
+  "problem": "Hardware $399, licence $149 and total $548 (MSRP) are all confirmed on the pricing page, as is the 10-year warranty and the exclusion of AI features/cloud archiving from the Professional licence. But the page never states that the $149 licence is a one-year term - it only says cameras 'require an ongoing license' and products are available through resellers with 'flexible payment options'. 'One-year' is an unlabelled inference.",
+  "fix": "Either label the one-year term an inference or write '$149 per-camera licence (term not stated on the pricing page)'."
+ },
+ {
+  "claim": "Google Coral USB Accelerator '$59.99 USD (listed)', source_url https://www.coral.withgoogle.com/products/accelerator/",
+  "problem": "The cited product page now resolves to a Coral developer landing page (coral.ai) with no product price at all. The $59.99 figure only appears in search-result listings and third-party resellers, so the cited URL no longer supports the number.",
+  "fix": "Cite a page that currently shows the price (e.g. a reseller listing) or note that the official product page no longer lists a price."
+ },
+ {
+  "claim": "Risks bullet: 'a county that is 36.4% foreign-born and 48.2% non-English-speaking-at-home'",
+  "problem": "The 36.4% foreign-born figure matches the Middlesex County labour-market report, but 48.2% is '% of Language Other Than English Spoken at Home', which is not the same as 'non-English-speaking at home'. The bullet also carries no citation even though the county report (2024 ACS 1-year estimates) is the source.",
+  "fix": "Reword to '48.2% speak a language other than English at home' and cite the Middlesex County report."
+ },
+ {
+  "claim": "legal_privacy signage item: retail food establishments must post the placard and 'keep the inspection report on premises for two years (N.J.A.C. 8:24-8.12/-8.13)', source_url = the 2C:14-9 statute page",
+  "problem": "The rule exists (8:24-8.12 requires conspicuous posting of the evaluation placard near the public entrance), but the attached source_url is the hidden-camera statute, which says nothing about food-establishment placards; the 'two years' element was not confirmed on any page opened here.",
+  "fix": "Attach the N.J.A.C. 8:24 source (e.g. law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-12) and confirm or drop the two-year retention detail."
+ },
+ {
+  "claim": "measured_outcomes shoplifting-detection study: 83.6% accuracy / 82.5% precision / 84.6% recall, 2025, peer-reviewed (Wiley, 10.1155/int/1947582)",
+  "problem": "The cited Wiley page returns HTTP 403 and could not be opened, so the numbers could not be verified at the source. A search summary of the same article reports 83.59% accuracy, 82.46% precision and 84.62% recall on the UCF shoplifting dataset, which is consistent, but that is not a direct read of the paper.",
+  "fix": "Verify against an accessible copy (preprint/repository) or keep it flagged as unverified in data_gaps; the Low strength rating is appropriate either way."
+ },
+ {
+  "claim": "Risks bullet: 'NJ has pending biometric-surveillance notice bills (A1494/S3182 in 2024-25, reintroduced as A3929/S1464 in 2026-27)'",
+  "problem": "Bill numbers are given with no source URL. They do check out (A1494 and S3182 were 2024-25 companions requiring conspicuous notice of biometric surveillance; A3929/S1464 are the 2026-27 successors), but the brief presents them without any citation.",
+  "fix": "Add the njleg.state.nj.us bill-search URLs for A3929/S1464 (and A1494) so the claim is traceable."
+ },
+ {
+  "claim": "gap_for_local_installer: 'New Jersey licenses alarm/security businesses, and the state's advisory committee FAQ indicates installing or servicing CCTV falls under that licensing framework'",
+  "problem": "The Division of Consumer Affairs FAQ page still cannot be rendered (extraction fails), so this remains unverified. The brief flags it in data_gaps and marks the legal_privacy entry confirmed:false, but the gap section states the licensing premise as fact before the hedge.",
+  "fix": "Soften to 'New Jersey is reported to license alarm/security businesses; scope for CCTV is unverified' and make the licence question a precondition of the pilot rather than a footnote."
+ }
+]

@@ -1,0 +1,173 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Audit intro and section 2: \"one long survey form that sends no reply\"; \"posting to quote.php with no acknowledgement and no CRM behind it\"; and in the founder email \"a 70-field 'Customer Survey' that sends no confirmation\".",
+      "problem": "The page evidence supports only what is observable: the form is a plain method=\"post\" form with no action attribute (so it posts back to quote.php), no client-side confirmation handler, and script.js contains no success/alert handling (SweetAlert2 is loaded but unused in the visible scripts). What the server returns, and whether a human reply or a CRM sits behind it, cannot be observed without submitting the form, which is out of scope. \"Sends no reply\" and \"no CRM behind it\" are therefore assertions about behaviour and internal systems with no source, and they are the hook of the outreach email - if the company does send a confirmation the opener damages credibility.",
+      "fix": "Restrict to the observable: \"a ~70-field form headed 'Customer Survey' that posts back to quote.php with no confirmation screen, no reference number and no auto-reply visible anywhere on the site\". Drop \"no CRM behind it\" from the audit, or add \"(our inference - no CRM or acknowledgement is visible on the site)\"."
+    },
+    {
+      "claim": "Founder email: \"the only quote path is a 70-field 'Customer Survey'\".",
+      "problem": "Not accurate as written: the main line (732) 422-4090 is a second quote path, and the audit's own opening paragraph names it (a phone number hidden on phones). \"Only\" also contradicts the audit body's framing of a phone-first front door.",
+      "fix": "Say \"the only online quote path\" or \"the only quote form\"; keeps it true and still makes the point."
+    },
+    {
+      "claim": "Section 3: \"against 15-day and 10-working-day filing clocks\".",
+      "problem": "The CBP page does say entry documents must be filed within 15 calendar days of arrival and the entry summary plus estimated duty within 10 working days of entry/release - but those duties fall on the importer of record or its broker, not on a bonded warehouse. Stated next to the company's lack of an upload route, it reads as if the clocks are the company's own, which is an unlabelled inference.",
+      "fix": "Attribute and label it: \"the clocks your importer clients work to (CBP: entry documents within 15 calendar days of arrival, entry summary within 10 working days of entry)\", or mark the link to Federation's own paperwork as an inference."
+    },
+    {
+      "claim": "Audit body length.",
+      "problem": "Body (title through the \"Prepared from publicly available information\" line, excluding the sources list) counts to roughly 470 words, a little over the ~450 limit; the sources block adds about 45 more.",
+      "fix": "Trim about 25 words - e.g. shorten the section-1 and section-3 \"what's happening now\" lines - or move the sources list into an appendix."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Federation Logistics runs food-grade, bonded and liquor-licensed warehousing from North Brunswick with four NJ sites and 500,000-plus sq ft claimed",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"About us\", \"Services\" and \"Contact\" all point to \"#\", so no service pages exist",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Days/hours: published hours cover 42.5 of the week's 168 (Mon-Fri 8:00am-4:30pm)",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Three different closing times are published (site footer 4:30pm, mobile menu 6:00pm, Port Authority directory 1700)",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The phone number is hidden on phones / call button hidden below 1439px",
+      "source_url": "https://www.fedlogistics.com/css/responsive.css",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Below 1023px the address/e-mail/hours bar is also hidden (so no number is visible until the hamburger menu opens)",
+      "source_url": "https://www.fedlogistics.com/css/responsive.css",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The only online quote path is a form headed \"Customer Survey\" with about 70 fields (monthly volumes, pallet grades, EDI mix) posting to quote.php",
+      "source_url": "https://www.fedlogistics.com/quote.php",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The form field count is about 70",
+      "source_url": "https://www.fedlogistics.com/quote.php",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The form sends no reply / no acknowledgement",
+      "source_url": "https://www.fedlogistics.com/quote.php",
+      "result": "not found"
+    },
+    {
+      "claim": "No CRM behind the form",
+      "source_url": "https://www.fedlogistics.com/quote.php",
+      "result": "not found"
+    },
+    {
+      "claim": "The site lists FDA, UIIA, bonded, SQF and ABC scope",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No upload or document-request route exists; info@ is the only document-adjacent channel",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Port Authority warehouse directory lists Federation Logistics, North Brunswick 08902, hours 0800-1700",
+      "source_url": "https://aemdev.panynj.gov/content/dam/port/our-port/council-on-port-performance-pdf/available-warehouse-space.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CBP filing clocks: 15 calendar days for entry documents, 10 working days for the entry summary and duty deposit (benchmark behind the section-3 urgency)",
+      "source_url": "https://www.cbp.gov/trade/programs-administration/entry-summary",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ clerk median wage is $21.85/hour (43-5071), used as the basis of the $27.31/hour loaded rate",
+      "source_url": "https://www.onetonline.org/link/localwages/43-5071.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ customer service representative median wage is $22.95/hour (43-4051), used as the basis of the $28.69/hour loaded rate",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact range 1: 40-416 staff hours a year from 8-25 requests/week x 10-25 min x 60-80% automated x 50 weeks",
+      "source_url": "https://www.fedlogistics.com/quote.php",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact range 1 in dollars: $1,092-$11,362 a year at $27.31/hour (21.85 x 1.25)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-5071.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact range 2: 22-133 staff hours a year from 3-10 requests/week x 15-20 min x 60-80% automated x 50 weeks",
+      "source_url": "https://www.fedlogistics.com/quote.php",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact range 2 in dollars: $631-$3,815 a year at $28.69/hour (22.95 x 1.25)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Each impact range labels the request-volume and automation-share figures as the authors' own assumption, and no throughput or win-rate uplift is claimed",
+      "source_url": "https://www.fedlogistics.com/quote.php",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 1 claims no dollar figure",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder email opener: \"Hi Les\" - Les is the named principal",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder email: \"I looked through fedlogistics.com this week\" - site domain and content are as described",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder email: About us, Services and Contact links go nowhere",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Walk-in opener: the site's services and contact links don't open",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business name, town and phone-dependent details: Federation Logistics, LLC, North Brunswick NJ, info@fedlogistics.com, main line (732) 422-4090",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Port drayage from North Brunswick (drayage service, fleet, containers from NJ ports to its facilities)",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No personal or private-individual data appears in the audit or the outreach copy beyond the president's name, which the company publishes",
+      "source_url": "https://www.fedlogistics.com/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,42 @@
+[
+ {
+  "claim": "Running cost line: '10DLC brand and campaign registration (one-time, not monthly)' at '$4.50 brand fee + $15 per campaign submission'",
+  "problem": "Contradicted by the cited Telnyx page. The page lists the $4.5 brand application fee and $15 per campaign review, but also a recurring 'Monthly cost: $1.5/mo for Low Volume Mixed - $10/month for standard volume Campaigns... Campaign fees are billed for three months initially, then subsequently on a monthly recurring basis.' The plan labels the item 'one-time, not monthly', which the source does not support.",
+  "fix": "Relabel as 'one-time $4.50 brand fee + $15 per campaign review, plus a recurring campaign fee of about $1.50-$10/month depending on use case (billed 3 months up front)'. Add the recurring fee to the monthly running-cost total."
+ },
+ {
+  "claim": "Build effort: 'the build is 13-16 founder-days (phases 0-3)' and feasibility 'About 3 weeks of build (13-16 founder-days)'",
+  "problem": "Arithmetic does not match the plan's own phase table. Phases 0-3 are 2-3, 3-4, 6-7 and 3-4 founder-days, which sum to 14-18, not 13-16. The underpinning of the $4,500 setup fee rationale is therefore understated by one to two days.",
+  "fix": "Change to '14-18 founder-days (phases 0-3)' and quote roughly 3-3.5 weeks of build; or reduce a phase range so the total actually equals 13-16."
+ },
+ {
+  "claim": "Integrations: Agency Revolution/FMG website forms - 'Webhook added to nominated forms by Agency Revolution support (webhook key supplied by the destination system)', marked confirmed_in_docs: true",
+  "problem": "Overstated. The cited help article documents adding a webhook key to nominated Forge website forms only for one named destination (AgencyZoom's Web Lead Integration). It does not document posting a form to an arbitrary endpoint of the builder's choosing, which is what the pilot design needs. The mechanism (vendor-configured webhook on specified forms) is confirmed; the destination flexibility is not.",
+  "fix": "Keep confirmed_in_docs true only for 'Agency Revolution adds a webhook key to nominated Forge forms on request' and add an explicit unconfirmed item: whether a webhook can be pointed at a non-AgencyZoom endpoint, to be confirmed with Agency Revolution support in discovery (this is already the right fallback in the risks section - keep the pilot contract conditional on it)."
+ },
+ {
+  "claim": "Integrations: 'Agency Revolution's Zapier path is outbound-only and cannot write back into Fuse'",
+  "problem": "Not found in the cited Agency Revolution article, which does not mention Zapier or Fuse at all. The statement is presented as fact but is unsupported by any source in the plan.",
+  "fix": "Either cite an Agency Revolution or FMG page that documents the Zapier/Fuse limitation, or soften to 'Zapier path documented only as outbound from Fuse (unverified for reverse sync)' and move it to data_gaps."
+ },
+ {
+  "claim": "Risks: 'GLBA Safeguards Rule: an insurance agency is generally a financial institution...', marked confirmed: true",
+  "problem": "The rule content is confirmed on the cited FTC page (information security programme, Qualified Individual, encryption, MFA, service-provider oversight, incident response), but the page never states that insurance agencies are financial institutions. That characterisation is an inference, not something the cited source says.",
+  "fix": "Keep confirmed: true for the rule elements, and label the 'insurance agency = financial institution' linkage as an inference (or cite an FTC/16 CFR 314.2 or state-regulator page that names insurance)."
+ },
+ {
+  "claim": "Running cost: 'Telnyx $0.004 per outbound message part plus carrier passthrough (Telnyx's own example uses ~$0.0038 blended per part)' cited to https://telnyx.com/pricing/elastic-sip",
+  "problem": "The figures are correct but the citation is the wrong page: the Elastic SIP trunking page carries no SMS rates. Both figures ($0.004/part and the $0.0038 blended carrier passthrough example) appear on Telnyx's SMS API pricing page. The same mismatched citation is used for SMS $0.004/part in the Telnyx integrations entry.",
+  "fix": "Re-cite the SMS figures to https://telnyx.com/pricing/messaging and leave the elastic-sip URL for the $0.0032/$0.005 per-minute voice rates."
+ },
+ {
+  "claim": "Risks: 'FCC Declaratory Ruling FCC 24-17 (Feb 8, 2024)' and the cited PDF https://docs.fcc.gov/public/attachments/FCC-24-17A4.pdf",
+  "problem": "Minor: the holding is confirmed (the cited file is Commissioner Gomez's statement in FCC 24-17, which confirms that the TCPA's 'artificial or prerecorded voice' prohibition includes AI-generated voices), but the file itself is a one-page concurring statement dated February 2, 2024, not the ruling text, and its date differs from the 'Feb 8, 2024' in the plan.",
+  "fix": "Cite the Declaratory Ruling document itself (FCC 24-17 main text) rather than the 24-17A4 statement, or keep the statement as corroboration and align the date with the ruling's release date."
+ },
+ {
+  "claim": "Business facts sourced to fraserbrothers.com/contact and /claims-center: weekday-only hours per office, office closing times (Edison 4:15 PM, Belford 5:00 PM), separate phone/fax lines, 'call the office during regular business hours' claims guidance",
+  "problem": "Neither page's body content could be retrieved - both returned only the Agency Revolution footer/copyright text, so the hours, closing times and claims guidance could not be re-verified from the cited URLs. These facts rest on audit.md rather than on a page a verifier can open.",
+  "fix": "No change to the substance, but flag in caveats that the hours/phone/claims facts come from audit.md only; if a verifier or the buyer checks them, cite a retrievable page (e.g. a Google Business Profile or a saved snapshot) or ask the principal to confirm hours in discovery."
+ }
+]

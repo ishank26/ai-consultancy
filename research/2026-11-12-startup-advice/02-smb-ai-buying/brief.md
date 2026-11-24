@@ -1,0 +1,2 @@
+INPUT: question = How do small US businesses (5-200 staff) decide to buy AI tools and services in 2024-2026: adoption rates, who decides, budgets, main objections (trust, data privacy, cost, accuracy), and what makes them say yes. Use Census Business Trends and Outlook Survey, US Chamber, SBA, NFIB or similar surveys with samples.
+Today is 2026-11-12. Research it per your role. Use "question": "smb-ai-buying". Write the JSON to output.json.

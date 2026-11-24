@@ -1,0 +1,173 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Email to founder: \"It cites the public pages behind each point.\"",
+      "problem": "Contradicted by the deliverable itself. The client-facing audit body contains no citations or URLs; the only sources list sits inside the section headed \"For the founder (not part of the audit)\", which by its own label is not sent to the prospect. The sentence tells the prospect the one-pager is sourced when it is not.",
+      "fix": "Either add a short 'Sources' footnote (3-6 URLs) to the client-facing page and keep the sentence, or change it to something like \"I can send the sources behind each point if it's useful.\""
+    },
+    {
+      "claim": "Section 1 \"Now\": \"the open Senior Accounting Manager role owns multi-client close across QuickBooks, Bill.com and NetSuite\"; Section 3 \"Now\": the Tax Director posting \"calls for building a new tax practice, setting workflow standards and overseeing technology adoption\".",
+      "problem": "Both postings are live and match on title, employer and location (Tax Director, Edison NJ, posted ~4 weeks ago; Senior Accounting Manager, Edison NJ, posted ~20 hours ago), but the job descriptions could not be re-opened: LinkedIn serves the body only behind a sign-in wall (public job API, job view page and guest endpoint all returned the top card plus 'similar jobs' with no description text). The substance of both claims therefore rests on the analyst's notes, not on a source a reader can open.",
+      "fix": "Re-check the two descriptions in a browser session and confirm the exact tool names and phrasing, then soften the audit wording to what the posting literally says (e.g. \"your posting lists QBO/Bill.com/NetSuite among the client systems\" rather than \"owns multi-client close across\"). If that cannot be re-confirmed, fall back to the firm's own service page and drop the specific tool names from the 'Now' line."
+    },
+    {
+      "claim": "\"hours are 9–5 weekdays\" (Section 2).",
+      "problem": "Cited to a Google Maps search URL that returns a JavaScript-rendered shell to an automated fetch; the firm's own site publishes no office hours anywhere (checked home, contact, consultation pages). Not independently confirmable, and it is load-bearing for the after-hours opportunity.",
+      "fix": "Replace the Maps search URL with a stable, openable listing (or the Google Business profile's direct place URL) and confirm hours, or reword to what is verifiable: \"no after-hours line is published; intake is a 9–5 phone line plus a web form\"."
+    },
+    {
+      "claim": "Section 1 and 2 valuation: 225–720 close hours and 78–156 triage hours valued at $60.59/hour (accountants and auditors NJ median, loaded x1.25).",
+      "problem": "The wage figure itself is correct, but the occupation is a stretch for the work described. Transaction matching, exception chasing and call triage are closer to bookkeeping/accounting/auditing clerk work, whose NJ median is $58,300 ($28.03/hour, ~$35/hour loaded) - roughly 40% below the rate used. Only the 'x1.25 for benefits' step is labelled as an assumption; the choice of occupation is not, so the ranges read as firmer than they are.",
+      "fix": "Either add a clerk-benchmark low end ($35/hour loaded) alongside the $60.59 figure, or explicitly label the occupation choice as an assumption (e.g. \"valued at the accountant rate because a manager reviews the output, our assumption\")."
+    },
+    {
+      "claim": "Section 2 impact \"= about $4,700–$9,400 a year\".",
+      "problem": "Arithmetic rounding error at the top of the range: 156 hours x $60.59 = $9,452, which rounds to about $9,500, not $9,400. Low end ($4,726 -> $4,700) and both other sections' arithmetic check out.",
+      "fix": "Change to \"about $4,700–$9,500\"."
+    },
+    {
+      "claim": "Opening line: \"You've moved from an Edison tax practice into outsourced accounting and fractional CFO work nationwide\".",
+      "problem": "Half-confirmed and half-inference presented as fact. Edison and 'nationwide' are sourced (home page: virtual CFO/business turnaround focus; careers page: \"serving clients nationwide\"), but nothing public says the firm 'moved from' a tax practice - its site still sells tax planning and preparation, and its metadata still carries the legacy Gaines Goldenfarb name and an old Woodbridge address. It reads as a change of business model the firm has not stated.",
+      "fix": "Reword as observation, not history: \"You run an Edison CPA firm that now leads with virtual CFO and outsourced accounting for clients nationwide, while still doing tax work - a lot of judgment on a small bench.\""
+    },
+    {
+      "claim": "Section 3 \"Now\": \"tax work compresses into filing season\"; impact assumes \"3–5 seasonal staff ... about 500 seasonal hours each\".",
+      "problem": "The seasonality point is a general industry fact, not a fact about this firm, and the audit's source list gives no citation for it (the industry brief's O*NET seasonality data would support it). The 3-5 seasonal staff figure is not public anywhere and is at least labelled 'our assumption', which is acceptable but should be visible as a guess about the client rather than a finding.",
+      "fix": "Add a one-line citation for seasonality (O*NET work context for tax preparers) or drop the clause; keep the staff-count labelled and consider phrasing it as a question the discovery call settles."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Business name, town, service mix (outsourced accounting, virtual CFO/controller, tax, payroll, QuickBooks)",
+      "source_url": "https://www.gainescpacfo.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"You sell recurring reconciliation and month-end close\"",
+      "source_url": "https://www.gainescpacfo.com/outsourced-accounting-and-bookkeeping.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Firm serves clients nationwide",
+      "source_url": "https://www.gainescpacfo.com/careers.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"hiring senior tax and accounting leadership\" - Tax Director and Senior Accounting Manager open in Edison, NJ",
+      "source_url": "https://www.linkedin.com/jobs/view/tax-director-at-gaines-associates-pc-4478121016",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Senior Accounting Manager posting is live (~20 hours old), Edison NJ",
+      "source_url": "https://www.linkedin.com/jobs/view/senior-accounting-manager-at-gaines-associates-pc-4488398710",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Senior Accounting Manager role owns multi-client close across QuickBooks, Bill.com and NetSuite",
+      "source_url": "https://www.linkedin.com/jobs/view/senior-accounting-manager-at-gaines-associates-pc-4488398710",
+      "result": "could not open"
+    },
+    {
+      "claim": "Tax Director posting calls for building a new tax practice, workflow standards and overseeing technology adoption",
+      "source_url": "https://www.linkedin.com/jobs/view/tax-director-at-gaines-associates-pc-4478121016",
+      "result": "could not open"
+    },
+    {
+      "claim": "\"The consultation page is a form with no calendar or qualifier\"",
+      "source_url": "https://www.gainescpacfo.com/consultation.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"a free consultation is advertised\"",
+      "source_url": "https://www.gainescpacfo.com/our-accounting-services.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"hours are 9-5 weekdays\"",
+      "source_url": "https://www.google.com/maps/search/Gaines+Goldenfarb+%26+Associates+Edison+NJ",
+      "result": "could not open"
+    },
+    {
+      "claim": "Client documents move through ProtectedXchange",
+      "source_url": "https://www.gainescpacfo.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Stack fits QuickBooks Online (site) - Bill.com, CCH ProSystem and HubSpot appear only in the unopenable posting",
+      "source_url": "https://www.gainescpacfo.com/quickbooks-accounting.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bill.com, CCH ProSystem and HubSpot are part of the firm's stated stack",
+      "source_url": "https://www.linkedin.com/jobs/view/senior-accounting-manager-at-gaines-associates-pc-4488398710",
+      "result": "could not open"
+    },
+    {
+      "claim": "Accountants and auditors, NJ, 2025 median $100,830 = $48.48/hour; x1.25 = $60.59",
+      "source_url": "https://www.onetonline.org/link/localwages/13-2011.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Tax preparers, NJ, 2025 median $43,420 = $20.88/hour; x1.25 = $26.09",
+      "source_url": "https://www.onetonline.org/link/localwages/13-2082.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BLS API series URLs cited in the audit return the medians",
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000013201113",
+      "result": "could not open"
+    },
+    {
+      "claim": "Section 1 arithmetic: 300-480 closes (25-40 books x 12) x 1.5-3 h x 50% = 225-720 h; x $60.59 = $13,600-$43,600",
+      "source_url": "https://www.gainescpacfo.com/outsourced-accounting-and-bookkeeping.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2 arithmetic: 52 weeks x 3-6 h x 50% = 78-156 h",
+      "source_url": "https://www.gainescpacfo.com/consultation.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2 dollar range $4,700-$9,400 for 78-156 h at $60.59",
+      "source_url": "https://www.onetonline.org/link/localwages/13-2011.00?st=NJ",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Section 3 arithmetic: 3-5 staff x ~500 h x 10-20% = 150-500 h; x $26.09 = $3,900-$13,000",
+      "source_url": "https://www.onetonline.org/link/localwages/13-2082.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Firm closes 25-40 client books monthly (basis of Section 1 hours)",
+      "source_url": "https://www.gainescpacfo.com/outsourced-accounting-and-bookkeeping.htm",
+      "result": "not found"
+    },
+    {
+      "claim": "Firm runs 3-5 seasonal tax staff (basis of Section 3 hours)",
+      "source_url": "https://www.gainescpacfo.com/careers.htm",
+      "result": "not found"
+    },
+    {
+      "claim": "Email: \"I read your service pages and your open Senior Accounting Manager posting\"",
+      "source_url": "https://www.linkedin.com/jobs/view/senior-accounting-manager-at-gaines-associates-pc-4488398710",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email: audit \"cites the public pages behind each point\"",
+      "source_url": "https://www.gainescpacfo.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Email opener and walk-in script contain no invented names, titles or quotes; placeholders used throughout",
+      "source_url": "https://www.gainescpacfo.com/contact.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No personal or private data on individuals; only business contact details on the firm's own pages",
+      "source_url": "https://www.gainescpacfo.com/contact.htm",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "Medium"
+}

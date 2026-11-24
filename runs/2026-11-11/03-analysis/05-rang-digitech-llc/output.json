@@ -1,0 +1,82 @@
+{
+  "business": "Rang Digitech LLC",
+  "industry": "b2b-services (digital marketing agency, NJ/NY SMB and real-estate verticals)",
+  "town": "Piscataway, NJ",
+  "opportunities": [
+    {
+      "title": "Inbound-to-discovery intake agent that qualifies, books and follows up across five time zones",
+      "capability": "A",
+      "problem": "Every inbound lead lands in one generic web form (name/email/phone/message), one hello@ inbox and one published phone number, with no scheduling calendar, no chat, no visible CRM and no published hours or after-hours policy, yet the firm advertises clients in the US, UK, Canada, India and Luxembourg. In practice a human must read each enquiry, decide if it is a real retainer versus a one-off, reply, and then trade emails/phone tag to find a slot - work that queues overnight for a 10-50 person agency.",
+      "evidence": [
+        "Contact page is a single free-text web form plus hello@rangdigitech.com and one phone number; no booking calendar, live chat or business hours are published - https://www.rangdigitech.com/contact-us/",
+        "No CRM, chat or scheduling widget appears in the contact page markup, and the form still carries a reCAPTCHA placeholder (profile tech_footprint) - https://www.rangdigitech.com/contact-us/",
+        "Stated service areas include the United States, India, Canada, United Kingdom and Luxembourg, so enquiry coverage cannot match one NJ business day - https://www.rangdigitech.com/",
+        "Both packaged AI products (Google review-response automation, AI email verifier) route to the same generic contact form instead of a demo booking or trial signup - https://www.rangdigitech.com/solutions/google-review-response-automation/",
+        "Company's own count shows 19+ projects actively running against 100+ delivered, i.e. a small live book where each missed enquiry is a large share of pipeline - https://www.rangdigitech.com/company/about-us/"
+      ],
+      "agent_design": "Trigger: a new form submission, hello@ email or missed call. The agent (1) enriches the enquiry from the domain and public sources, (2) classifies it as retainer / productized-AI SKU / one-off / vendor-spam against a written qualification rubric, (3) replies within minutes with the right next step (discovery slot, product demo, or scope questions), (4) writes to a lightweight lead store because no CRM exists, (5) books directly into a shared calendar, sends reminders and re-books no-shows, (6) escalates anything above a value or ambiguity threshold - enterprise, RFQ, partnership or complaint - to Jigar Patel or an account lead with a one-screen brief. Human approves: all pricing, all enterprise/enterprise-scale replies, and any message the agent is less than confident about; auto-send is limited to acknowledgement, qualification questions and scheduling.",
+      "why_not_DIY": "Cal.com plus a form webhook is genuinely within this team's reach, so the moat is not the booking link - it is the qualification rubric, multi-time-zone SLA handling, de-duplication across form/email/phone, a state store that survives the absence of a CRM, and exception routing that does not spam the CEO. This is the weakest of the three on defensibility: expect them to benchmark us against their own automation claims, and to in-source the calendar piece once it works.",
+      "impact_estimate": {
+        "range": "$3,000-$9,000 per year of recovered administrative time, plus an unquantified gain in lead-response speed",
+        "assumptions": "Baseline of 5-10 hours/week currently spent on enquiry triage, back-and-forth scheduling and reminders (260-520 hrs/yr), valued at the NJ customer-service-representative median of $47,740/yr (~$22.95/hr; 25th-75th percentile $39,410-$59,070). Assumes the agent removes 50-70% of that time, i.e. 130-365 hrs/yr. Excludes any revenue effect from faster first reply, which is directionally supported but not measured for this firm. Inference, not a company-stated figure: the profile documents the funnel gap (no booking/CRM/chat) but publishes no internal response times.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "Weeks 1-2: audit two weeks of real form/email enquiries, codify the qualification rubric and escalation thresholds with the CEO, stand up the lead store and calendar. Weeks 3-4: live agent on the contact form and hello@ only, human-approved drafting for all replies, plus a weekly scorecard (response time, qualified-enquiry rate, bookings held). Deliverable: an intake agent running in production behind an approval queue, with a written rubric the team can edit."
+    },
+    {
+      "title": "Pre-publish QA gate for the content and service pages served from their custom CMS",
+      "capability": "D",
+      "problem": "The firm's own site ships public defects on exactly the asset it sells: the FAQ page still renders template placeholder text, the testimonials page repeats one hospital quote twice and includes an unrelated app review, and ~100 blog posts are published in same-day batches of six to eight. That pattern says pages go live through a manual, unreviewed copy-paste flow, which for a content-and-AI agency is a credibility leak in front of the same buyers it pitches.",
+      "evidence": [
+        "FAQ page is live but renders placeholder copy ('Service Feature / Description pending...') - https://www.rangdigitech.com/company/faq/",
+        "Testimonials page duplicates the same hospital quote and includes an unrelated 'progress tracker' app review - https://www.rangdigitech.com/company/testimonials/",
+        "Knowledge Center holds roughly 100 posts with bursty batch timestamps (six dated 2026-10-21, eight dated 2026-09-24) - https://www.rangdigitech.com/post-sitemap.xml",
+        "Page and content data are served from a custom CMS at administration.rangdigitech.com, i.e. in-house tooling rather than a standard marketing CMS with built-in review states - https://www.rangdigitech.com/company/about-us/",
+        "Site JSON-LD publishes a 5.0 rating with 200 reviews while the About page reports 100+ projects delivered - an inconsistency a claim-check would catch before publish - https://www.rangdigitech.com/"
+      ],
+      "agent_design": "Trigger: a CMS publish or draft-submit event (webhook) for any blog post, service, solution or company page. The agent runs a fixed checklist over the draft: leftover template/placeholder strings, duplicated or unattributed testimonial blocks, numbers that contradict the canonical stats file, internal links and 404s, missing or malformed JSON-LD (Organization/Service/FAQPage), meta/title length, and brand-tone drift against a style sheet. It returns a pass/fail with exact offending passages and suggested fixes, blocks publish on hard failures, and logs every decision. A second knowledge-agent mode answers team questions from the accumulated SOP and style sheet. Human approves: an editor can override any block; nothing is auto-published or auto-deleted.",
+      "why_not_DIY": "This has to plug into a bespoke Next.js front end and a custom admin CMS that no marketing CMS plugin targets, and it must hold a house rulebook (claim consistency, schema shape, tone) rather than generic grammar checks. Off-the-shelf SEO or grammar tools catch spelling, not a duplicated testimonial or a 200-vs-100 claim conflict, and a generic chatbot cannot gate a publish event.",
+      "impact_estimate": {
+        "range": "$2,000-$6,000 per year of content-production and review time, plus avoided credibility loss",
+        "assumptions": "Baseline of ~100 posts plus a handful of templated service/solution pages per year, at 20-30 minutes of check-and-fix per page (33-50 hrs/yr), valued at roughly 40% of the NJ marketing-manager median ($180,040/yr, ~$86.56/hr) to proxy a mid-level content specialist (~$35/hr): about $1,200-$1,750/yr of pure review time. The wider range adds first-draft editing time at the 40% faster-writing rate measured by Noy & Zhang (Science, 2023) on 20-30 minute professional writing tasks - a simulated-task result, not live agency work, so treat the upper half of the range as a transfer. Dollar range is deliberately small; the real value here is that a live placeholder page and a duplicated testimonial are the kind of defect that loses a retainer, which is not monetised in the range.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/11-2021.00?st=NJ"
+      },
+      "complexity": "Low",
+      "pilot_scope": "Weeks 1-2: codify the checklist and canonical-stats file, dry-run against the existing ~100 posts and every service/solution page (the run doubles as a public-site audit report they can act on immediately). Weeks 3-4: webhook installed on the custom CMS so every publish is checked, with a review dashboard and an editor override. Deliverable: a publish gate in production plus a prioritised list of the defects already live."
+    },
+    {
+      "title": "Event and account-based business-development research agent with proposal first drafts",
+      "capability": "B",
+      "problem": "Demand generation runs on manual relationship work: a 2025-2026 calendar of NJ/NY/VA networking events (real-estate investor groups, chamber happy hours, the Javits Small Business Expo) plus a high-volume blog. Each event implies attendee research, pre-event target lists, post-event follow-up and a tailored proposal, and there is no CRM in evidence, so that work is almost certainly living in inboxes and spreadsheets while the team also carries 19+ live projects.",
+      "evidence": [
+        "Events page lists in-person appearances at MREIA (Clark, NJ), the Small Business Expo at Javits Center, a Jersey City real-estate networking event and a Greater Westfield Area Chamber happy hour - https://www.rangdigitech.com/company/events/",
+        "Demand generation depends on in-person networking plus a high-volume blog rather than inbound alone (profile operations_signals) - https://www.rangdigitech.com/company/events/",
+        "Blog cadence jumps in mid/late 2026 around AEO/GEO and AI-search themes, which creates a fresh, time-limited pitch angle for the same SMB and real-estate audiences - https://www.rangdigitech.com/knowledge-center/blog/",
+        "Service firms' sales reps spend core time developing proposal and presentation content to explain service specifications (O*NET 41-3091.00, importance 81, Core) - https://www.onetonline.org/link/details/41-3091.00",
+        "No CRM was detected on the site or in page markup, so BD follow-up has no system of record behind it (profile tech_footprint) - https://www.rangdigitech.com/contact-us/"
+      ],
+      "agent_design": "Two triggers. (1) Event trigger: an event is added to the calendar; the agent builds an attendee/company target list from the event's public exhibitor and speaker pages, ranks it against the firm's best-fit verticals (real estate, healthcare, manufacturing, e-commerce per DesignRush), drafts a per-target talking point tied to a matching case study or AEO/GEO post, and produces a printable one-page brief plus a post-event follow-up sequence staged in draft. (2) Signal trigger: a weekly sweep monitors target accounts and the local bid/market landscape for triggers (new location, funding, a site with no AEO/GEO structure, a competitor's client win) and queues a short outreach brief. The agent drafts proposals by assembling approved scope, hourly-rate and deliverable blocks; a human always sends, prices and signs. Human approves: every outbound message and every number in a proposal.",
+      "why_not_DIY": "This needs live web research with judgement about which accounts fit (not a keyword alert), a persistent account record without a CRM, and proposal assembly from the firm's own approved scope and rate blocks - plus a human-in-the-loop send path so nothing goes out unchecked. A chatbot subscription cannot watch a calendar, sweep the web weekly, and hold a target list across months. Caveat: the sourcing/personalisation half is the most commoditised of the three, and if they already run an outbound tool, the differentiator shrinks to proposal assembly and event-specific research.",
+      "impact_estimate": {
+        "range": "$2,000-$7,000 per year of business-development research and follow-up time, before any conversion effect",
+        "assumptions": "Baseline of 3-6 hours/week of pre-event research, list building, follow-up drafting and proposal assembly (156-312 hrs/yr), valued at the NJ services-sales median of $79,200/yr (~$38.08/hr; 25th percentile $55,640 = ~$26.75/hr). Assumes 40-60% of that time is removed: 62-187 hrs/yr, i.e. roughly $1,700-$7,100 depending on which percentile is used; the stated range takes the conservative band. Excludes pipeline won. Inference: the profile documents the event cadence and the absence of a CRM, but not actual hours spent on follow-up.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/41-3091.00?st=NJ"
+      },
+      "complexity": "Low",
+      "pilot_scope": "Weeks 1-2: pick the next two calendar events, have the agent build ranked target lists and one-page briefs, and score them against the CEO's judgement to calibrate fit. Weeks 3-4: run the post-event follow-up sequence as drafts, add the weekly account-signal sweep, and assemble two real proposals from approved scope blocks. Deliverable: two event playbooks, a recurring signal digest, and a proposal-assembly template with measured draft-vs-final edit time."
+    }
+  ],
+  "lead_score": {
+    "pain": 16,
+    "fit": 15,
+    "ability_to_pay": 12,
+    "ease": 11,
+    "strategic": 9,
+    "total": 63,
+    "rationale": "Pain (16/30): the funnel gaps and content defects are visible on public pages - no booking, chat or CRM, a live placeholder FAQ, duplicated testimonials, batch-published posts - but they are symptoms read from outside; there is no independent review corpus, no job postings, no confirmed headcount and no client-side complaint, so nothing quantifies internal hours lost. Fit (15/20): three of the six capabilities land directly (intake automation, research, CMS integration), and the firm already thinks in agent terms, which shortens the education phase; the deduction is that they sell automation themselves and will push back hard on scope and price. Ability to pay (12/20): 10-50 employees at a ~$50/hr blended rate with a parent group claiming six Inc. fastest-growing appearances and an NJ Fastest 50 listing gives real backing, but the group is a small agency in a contracting sector (NJ professional and business services employment down 0.9% year over year) with only 19+ live projects, so budgets are tight and the buyer will want a fixed-fee pilot. Ease (11/15): small team, two co-founders, one obvious entry point (hello@), no legacy CRM to displace and a public site we can audit before the first call; friction comes from there being no named ops contact, no published address or hours (so no walk-in) and no booking link to shortcut the conversation. Strategic (9/15): agency funnel gaps are a highly repeatable pattern across hundreds of NJ/NY marketing shops and this account would be a credible, AI-literate reference - but a reference whose public claims (5.0/200 reviews vs 100+ projects delivered) need care, and who may in-source what we build. Total 63/100: worth a personalised approach, not a priority tier-1 target."
+  },
+  "best_evidence_signal": "A live FAQ page on a site that sells content and AI services still renders 'Description pending...' placeholder copy, and the testimonials page repeats the same hospital quote twice - public proof that pages publish without review (https://www.rangdigitech.com/company/faq/)",
+  "suggested_channel": "email",
+  "evidence_thin": true
+}

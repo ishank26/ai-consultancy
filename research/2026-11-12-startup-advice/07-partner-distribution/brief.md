@@ -1,0 +1,2 @@
+INPUT: question = Partner and referral routes for a small AI agent builder: voice AI platform partner or agency programs (for example Retell, Vapi, Telnyx), software marketplaces and integration partner programs in target verticals (Clio, MyCase, Vantaca, Applied Systems, QuickBooks), referral partnerships with IT managed service providers, web agencies, bookkeepers and phone system installers, and what these programs require and pay.
+Today is 2026-11-12. Research it per your role. Use "question": "partner-distribution". Write the JSON to output.json.

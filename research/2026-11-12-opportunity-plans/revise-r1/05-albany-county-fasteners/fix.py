@@ -1,0 +1,1 @@
+Scratch note: no script was executed. This folder is read-only research plus output.json; the JSON below was hand-edited and checked against the schema keys (business, opportunity, problem, solution, build_plan, competitors, running_costs, suggested_pricing, leverage, edge_vs_competitors, risks_compliance, feasibility, discovery_questions, caveats, data_gaps).

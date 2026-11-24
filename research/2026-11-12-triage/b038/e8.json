@@ -1,0 +1,42 @@
+{
+  "name": "DannLaw (New York/New Jersey office)",
+  "town": "North Brunswick",
+  "ref": "B00673",
+  "status": "operating",
+  "website": "https://dannlaw.com/",
+  "what_they_do": "Consumer-protection and civil-litigation firm founded in 2008, headquartered in Cleveland, Ohio, with a New York/New Jersey office in North Brunswick. Work is foreclosure defence, consumer class actions and individual suits against banks, lenders, debt collectors and servicers; the firm says it has resolved thousands of individual cases and hundreds of class actions and recovered over $100M for consumers. This North Brunswick office is one of four, and the site markets nationwide representation.",
+  "customers": "Homeowners facing foreclosure, consumers with lender/servicer or debt-collection disputes, and small businesses; also class-action plaintiff groups nationwide.",
+  "size_signals": [
+    {"signal": "Four offices listed: Cleveland OH (HQ), Dublin OH, Covington KY, and 825 Georges Road, Second Floor, North Brunswick NJ", "source_url": "https://dannlaw.com/"},
+    {"signal": "Home page claims 2008 establishment, $100M+ recovered, 2,000+ business/home owners protected and 1,200+ attorneys trained", "source_url": "https://dannlaw.com/"},
+    {"signal": "Dedicated Case Results, Testimonials, Blog and Practice Areas sections plus a live web chat widget", "source_url": "https://dannlaw.com/"}
+  ],
+  "listing": {"platform": "Google (as reported by Birdeye)", "rating": "3.7", "reviews": "12", "source_url": "https://reviews.birdeye.com/the-dann-law-firm-156228439916522"},
+  "website_review": {
+    "loads": true,
+    "https": true,
+    "phone_layout": "good",
+    "clear_offer": true,
+    "primary_cta": "Sticky 'Free Consultation 216-366-7173' bar plus 'Discuss Your Case' buttons",
+    "click_to_call": true,
+    "contact_form": true,
+    "online_booking_or_quote": "Case-details form (name, phone, e-mail, state, message) with 18 labels; live-chat widget offers 'Free Consultation' - no calendar booking",
+    "trust_signals": "Case results, testimonials, named practice areas, firm history since 2008, recovery totals, attorney profiles",
+    "out_of_date_signs": "No copyright year displayed; a cookie-consent modal covers the form on a 390px screen until accepted",
+    "search_basics": "Title and description name consumer protection nationally but not the North Brunswick office; schema is a LegalService/Organization graph pointing at the Cleveland address only, with no New Jersey location; practice areas have their own pages on a separate contact-us subdomain for intake",
+        "top_issues": [
+      "Local schema and phone are Cleveland-only, so the North Brunswick office is invisible in local search",
+      "Main phone number is an Ohio area code for a New Jersey office",
+      "Cookie banner sits on top of the case form on mobile",
+      "No appointment scheduling - a phone call or form is still required"
+    ]
+  },
+  "agent_readiness": {"findable": 2, "answerable": 2, "bookable": 2, "notes": "Findable: Google reviews exist (3.7 from 12 per Birdeye) and Yoast robots.txt allows all crawlers with a sitemap index, but the JSON-LD Place/LegalService entity carries only the Cleveland address and geo-coordinates, so the NJ office has no local entity. Answerable: practice areas, firm history and case results are real text, and the contact page lists all four office addresses, but there are no hours and no fee/consultation terms beyond 'free consultation'. Bookable: Forminator form with 18 labels and no visible CAPTCHA (hidden iframes are about:blank), so an agent can submit case details - but there is no calendar and a chat widget, not a booking system, handles the rest."},
+  "top_opportunities": [
+    {"opportunity": "Give the North Brunswick office its own local entity: NJ address, local phone or tracking number, hours and LocalBusiness schema, plus a dedicated New Jersey landing page", "type": "search", "evidence": "JSON-LD Place uses 15000 Madison Ave, Cleveland OH with Ohio geo-coordinates; the header phone is 216-366-7173 and the NJ office appears only as text in the footer", "effort": "S"},
+    {"opportunity": "Replace the two duplicated case forms and chat hand-off with one intake flow that screens case type, captures documents and auto-routes to the NJ attorney", "type": "operations", "evidence": "Contact page renders two identical Forminator forms and a chat widget offering 'Free Consultation' / 'I have a question'; no scheduling or document upload", "effort": "M"},
+    {"opportunity": "Add consultation scheduling so foreclosure clients (a time-sensitive, high-anxiety enquiry) can pick a slot without a phone call", "type": "agent readiness", "evidence": "Only phone, form and chat exist; no calendar or booking platform on the site", "effort": "S"}
+  ],
+  "scores": {"gap_size": 3, "ability_to_pay": 4, "ease": 4, "evidence": 4, "reasons": "Gap: technically solid site with forms and chat; the local-search and scheduling gaps are the real misses. Ability to pay: four-office firm with class-action revenue, well funded relative to the rest of this batch. Ease: WordPress stack with existing schema - adding an NJ entity and booking is quick. Evidence: read home and contact pages, JSON-LD, robots.txt and the 390px render."},
+  "sources": ["https://dannlaw.com/", "https://dannlaw.com/contact/", "https://dannlaw.com/robots.txt", "https://reviews.birdeye.com/the-dann-law-firm-156228439916522", "https://contact-us.dannlaw.com/civil-litigation-info"]
+}

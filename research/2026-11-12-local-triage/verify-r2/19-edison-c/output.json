@@ -1,0 +1,233 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "List-wide evidence standard: nearly every entry cites only a Google Maps search URL (e.g. https://www.google.com/maps/search/plumber+edison+nj) as its source_url",
+      "problem": "Those search URLs are JavaScript-rendered and could not be opened or re-read (fetch returned 'Page appears to be JavaScript-rendered'), and they are query pages, not per-business records. For roughly 150 of the ~200 entries there is no per-business citation at all, so existence, address and town rest on the mapper's transcription of a dynamic page that no one else can reproduce. The mapper's own active_evidence column says 'not re-verified' on the large majority.",
+      "fix": "Re-cite every Maps-derived entry to a stable per-business page (Maps place URL, the firm's own site, a chamber or directory profile, or a state licence record). Until then treat those entries as unverified leads, not qualified prospects."
+    },
+    {
+      "claim": "Hollander Electric, listed as an Edison business (address Unknown, town Edison, phone (732) 940-0101, website https://hollanderelectric.com)",
+      "problem": "The firm's own site positions it as an East Brunswick company and lists Edison only among the areas it serves; the entry has no Edison address and none could be found. Wrong-town entry under the mapper's own rule, even though the mapper's note asked for the local address to be verified and it was not.",
+      "fix": "Drop Hollander Electric from the Edison zone, or move it to a service-area / other-town list."
+    },
+    {
+      "claim": "Standard Tile - Edison NJ, 810 US-1, Edison, (732) 248-0600",
+      "problem": "Excluded type retained: the company's own site says it runs six retail showrooms plus a wholesale division across New Jersey. That is a regional chain, which the mapper's own caveats list as an exclusion criterion (they removed The Tile Shop and Floor & Decor on the same basis). The note already flagged 'other NJ branches; ownership to verify' but the entry stayed in.",
+      "fix": "Remove Standard Tile, or record an explicit, documented exception if a six-showroom regional chain is in scope for this campaign."
+    },
+    {
+      "claim": "Derr Flooring Co, 49 Executive Ave, Edison, (732) 287-6599",
+      "problem": "Excluded type retained: Derr's locations page lists eight branches (five in Pennsylvania plus Edison NJ, New Castle DE, Sterling VA, Ashland VA) with a corporate office in Willow Grove PA, and it sells to the trade. Multi-state regional distributor and warehouse branch, not a local Edison business.",
+      "fix": "Remove Derr Flooring Co as a regional chain / non-local branch, or justify keeping it."
+    },
+    {
+      "claim": "Several entries have no footprint anywhere outside the mapper's Maps search: Trusted Safe Roof Company (22 Jersey Ave), ShieldSafe Roof Company (528 Main St), Copperforge Drywall Patching (1791 Lincoln Hwy), Qelvon Marvex Chimney Sweep Care (1701 Oak Tree Rd), Firesterling Chimney Sweep, Inverbrook HVAC Repair Company, Hawthorne HVAC Repair Services, Carrano AC & Heating Repair Edison, Central HVAC, Apex Plumbers LLC",
+      "problem": "Targeted searches on the distinctive names returned no business page, directory profile or website for them (searching 'Copperforge Drywall' Edison surfaced only an unrelated Edison Drywall site; 'Qelvon Marvex' returned no sources at all). Combined with suite/residential addresses and shared phone prefixes (Trusted Safe 848-361-5501 vs ShieldSafe 848-361-5544), these read as SEO/lead-generation listings rather than operating local firms. Not proven non-existent, but unverified.",
+      "fix": "Check each Maps place page (owner replies, hours, photos, street view) before any outreach and drop anything that cannot be tied to a real operator."
+    },
+    {
+      "claim": "Duplicate / alias pairs carried as separate prospects: Dan Locksmith and Express Auto Keys (both Bartlett St, both (802) 225-0502); Trusted Safe Roof Company and ShieldSafe Roof Company (consecutive 848-361-55xx numbers); Champion Pool Distributors and The Pool Factory (both 51 Saw Mill Pond Rd); Todd Harris Company and Spa & Pool Store (both 2 Sutton Place)",
+      "problem": "Four pairs are likely one operator each, and two are already annotated 'likely the same operator' in the notes yet still occupy separate rows. This inflates the list and risks contacting the same firm twice.",
+      "fix": "Merge each pair after confirming, or mark one of each pair as a duplicate."
+    },
+    {
+      "claim": "Edison Heating & Cooling, 191 Vineyard Rd, Edison, phone (732) 372-4977",
+      "problem": "The site confirms an Edison HVAC contractor whose directions point to Vineyard Rd, but every number on edisonhvac.com is 732-372-7161, not the listed 372-4977, and the street number 191 is not shown on the site.",
+      "fix": "Correct the phone to (732) 372-7161 or record 372-4977 as an unconfirmed second line, and confirm the street number."
+    },
+    {
+      "claim": "Phil's Plumbing LLC, website http://www.m.plumbersedison.com",
+      "problem": "The page carries the Phil's Plumbing name but is a single-page generic plumber template with no address, no phone, no licence number and no company history; it reads as a directory / lead-gen landing page rather than the firm's own site (the mapper's note says as much).",
+      "fix": "Blank the website field until a genuine company site is confirmed."
+    },
+    {
+      "claim": "Coverage: three eligible Edison businesses surfaced by my own searches are absent from the list",
+      "problem": "Multi Roofing System Inc (651 King Georges Post Rd, Edison 08837), Dependable Electric Co Inc (28 May St, Edison 08837) and D&S Landscaping Inc (Edison-based landscape/hardscape firm since 1989) are all in-scope trades with Edison addresses and none appears in businesses.json. A further set of candidates could not be resolved either way (Edison Electric LLC, Family Termite & Pest Control, Ideal Edison Appliance Repair, Able Metro Moving & Storage).",
+      "fix": "Add Multi Roofing System, Dependable Electric and D&S Landscaping; resolve the unresolved candidates on the next pass."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Ken's Plumbing, Aaron Sewer, Casper Heating - 1606 Route 27, Edison, website https://kensplumbingaaronsewer.com",
+      "source_url": "https://kensplumbingaaronsewer.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Plumb-Rite Plumbing Heating and Cooling - Edison office on Gibian St, (732) 417-4444",
+      "source_url": "https://www.plumb-rite.com/edison",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Edison Plumbing - Edison NJ plumber, (732) 548-6318, website https://www.edisonplumbingyb.com",
+      "source_url": "https://www.edisonplumbingyb.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Phil's Plumbing LLC - website http://www.m.plumbersedison.com is really the firm's own site",
+      "source_url": "http://www.m.plumbersedison.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Sam's Air Control - 1217 US 1, Edison 08837, Edison Chamber member",
+      "source_url": "https://www.edisonchamber.com/list/category/contractors-23",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Klima New Jersey (KNJ HVAC) - 275 Raritan Center Pkwy, Edison 08837",
+      "source_url": "https://www.klimanj.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Edison Heating & Cooling - Edison HVAC contractor at Vineyard Rd, listed phone (732) 372-4977",
+      "source_url": "https://www.edisonhvac.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hollander Electric - operates in the Edison zone (town field 'Edison')",
+      "source_url": "https://www.hollanderelectric.com/edison-nj.php",
+      "result": "contradicted"
+    },
+    {
+      "claim": "AG Electrical Contractors Inc - website https://agelectric-inc.com is the firm's own site (industrial/commercial electrical contractor)",
+      "source_url": "https://agelectric-inc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Aura Home Exteriors LLC - 180 Talmadge Rd, Edison 08817, (833) 498-0928",
+      "source_url": "https://www.edisonchamber.com/list/category/contractors-23",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Edison Roofing Experts - Edison roofing firm, (732) 201-7090, website https://edisonroofingexperts.com",
+      "source_url": "https://edisonroofingexperts.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nivelo Construction LLC - 34 Lydia Ln, Edison, (732) 200-9520",
+      "source_url": "https://www.niveloconstruction.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Milano Contracting - 946 Inman Ave, Edison 08820, (732) 558-1009",
+      "source_url": "https://www.edisonchamber.com/list/category/contractors-23",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Lenguy Construction - 3 Stephenville Pkwy Suite 2A, Edison 08820, (732) 632-9250",
+      "source_url": "https://www.edisonchamber.com/list/category/contractors-23",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Gulberg Builders - 3830 Park Ave Suite 205, Edison 08820, no phone published",
+      "source_url": "https://www.edisonchamber.com/list/category/contractors-23",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Paver - 34 Heritage Dr, Edison, (732) 627-4453",
+      "source_url": "https://www.edisonchamber.com/list/category/contractors-23",
+      "result": "confirmed"
+    },
+    {
+      "claim": "J&A PRO PAINTING LLC - 19 Sunrise Dr, Edison 08817, (908) 356-9882",
+      "source_url": "https://www.edisonchamber.com/list/category/contractors-23",
+      "result": "confirmed"
+    },
+    {
+      "claim": "MP Construction & Decorations LLC - Edison suite address 2505 Woodbridge Ave Unit 18M",
+      "source_url": "https://mpconstructionanddecorationsllc.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Standard Tile - Edison NJ, 810 US-1, (732) 248-0600, qualifies as a local (non-chain) business",
+      "source_url": "https://standardtilenj.com/pages/about-us",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Derr Flooring Co - 49 Executive Ave, Edison 08818, qualifies as a local (non-chain) business",
+      "source_url": "https://derrflooring.com/locations/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Todd Harris Company - 2 Sutton Place, Edison 08817, website https://www.toddharris.com",
+      "source_url": "https://www.toddharris.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Spa & Pool Store - Edison NJ pool/spa retailer, (732) 287-5406, website https://njpoolstore.com",
+      "source_url": "https://njpoolstore.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Brothers Lock & Safe, Inc. - 2161 Woodbridge Ave, Edison 08817, (732) 985-3326",
+      "source_url": "https://brotherslock.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Worldwide Flooring Design Center - Edison showroom, (732) 906-1400",
+      "source_url": "https://www.worldwidefloors.com/pages/edison",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Freedman Auto Service - 1690 NJ-27, Edison 08817, (732) 985-2211",
+      "source_url": "https://www.freedmanautoservice.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "1800HEATERS - Edison-based water heater contractor (not merely a national brand)",
+      "source_url": "https://www.1800heaters.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Trusted Safe Roof Company, 22 Jersey Ave, Edison - an operating local roofing firm",
+      "source_url": "https://www.angi.com/companylist/us/nj/edison/roofing.htm",
+      "result": "not found"
+    },
+    {
+      "claim": "Copperforge Drywall Patching, 1791 Lincoln Hwy, Edison - an operating local drywall firm",
+      "source_url": "https://edisondrywall.com/",
+      "result": "not found"
+    },
+    {
+      "claim": "Cited Google Maps search URLs can be opened and re-read as per-business evidence",
+      "source_url": "https://www.google.com/maps/search/plumber+edison+nj",
+      "result": "could not open"
+    }
+  ],
+  "coverage": {
+    "searches": [
+      "plumber Edison NJ licensed plumbing company",
+      "roofing contractor Edison NJ local",
+      "electrician Edison NJ contractor",
+      "landscaping company Edison NJ",
+      "pest control Edison NJ",
+      "garage door repair Edison NJ",
+      "tree service Edison NJ company",
+      "appliance repair Edison NJ local company",
+      "house cleaning service Edison NJ local",
+      "flooring store Edison NJ Route 1",
+      "moving company Edison NJ local movers",
+      "water damage restoration Edison NJ company"
+    ],
+    "eligible_found": 29,
+    "already_listed": 26,
+    "missing": [
+      {
+        "name": "Multi Roofing System Inc.",
+        "town": "Edison",
+        "source_url": "https://www.gaf.com/en-us/roofing-contractors/residential/usa/nj/edison/multi-roofing-system-inc-1000574"
+      },
+      {
+        "name": "Dependable Electric Co. Inc.",
+        "town": "Edison",
+        "source_url": "https://dependable-electric.com/services"
+      },
+      {
+        "name": "D&S Landscaping, Inc.",
+        "town": "Edison",
+        "source_url": "https://www.dslandscapinginc.com/"
+      }
+    ]
+  },
+  "confidence": "Medium"
+}

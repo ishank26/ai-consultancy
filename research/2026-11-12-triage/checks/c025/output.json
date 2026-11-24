@@ -1,0 +1,131 @@
+{
+  "results": [
+    {
+      "ref": "B01072",
+      "name": "The Allen Law Firm",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Three different phone numbers circulate: site (732) 231-5500, a second on-site number (732) 828-9200, Google profile (732) 887-5739",
+          "what_is_true": "Four numbers appear in the page source: (732) 231-5500, (732) 887-5739 and (646) 817-2020 as visible text, plus 732-828-9200, which appears only inside a tel: href. Two tel: links dial a different number from the text they show (the '(732) 887-5739' link dials 732-828-9200 and the '(646) 817-2020' link dials 732-231-5500), so tap-to-call can reach the wrong line.",
+          "source_url": "https://theallenlawfirmnj.com/"
+        },
+        {
+          "claim": "Title names criminal defense and immigration for New Jersey but not New Brunswick; meta description is generic boilerplate",
+          "what_is_true": "Meta description is boilerplate, but the record missed that the title starts with a horse emoji ('🐴 Criminal Defense and Immigration Attorneys | New Jersey'); New Brunswick is indeed absent.",
+          "source_url": "https://theallenlawfirmnj.com/"
+        }
+      ],
+      "notes": "Operating: site live over HTTPS, 292 Livingston Ave address, '24 Hours a Day, 7 Days a Week'. Re-checked at 390px: header band renders completely blank (no logo, name, phone or visible nav) and the hero headline breaks 'Representatio n'. Zero JSON-LD scripts; body text ~1,990 characters. robots.txt allows all crawlers and lists a sitemap. Contact page has a form that posts to a thank-you state; no booking anywhere. Scores as filed (4/2/5/3) are reasonable - the tel: mismatch makes the gap marginally worse, not better."
+    },
+    {
+      "ref": "B01170",
+      "name": "Moda Salon and Barbershop (Moda Hair Salon)",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Color menu item points to a blank page",
+          "what_is_true": "The menu item links to /blank (a default Wix slug), but that URL renders a complete Color page: single-process color, highlights/lowlights, balayage, gloss and toner, each described. It is not empty; it simply has no booking button and no tel: link.",
+          "source_url": "https://www.modasalonnj.com/blank"
+        },
+        {
+          "claim": "Directory mirror of Google shows 4.6 from about 230 reviews (HairSalonDirectories)",
+          "what_is_true": "The HairSalonDirectories New Brunswick page lists an unnamed salon at 16 Easton Ave with no rating or review count in its text, so it does not support 4.6/230. Birdeye shows Moda Hair Salon at 4.5 from 282 reviews, and the Google widget on Moda's own home page reads 4.7 from 10 reviews - three different numbers, none of them 4.6/230.",
+          "source_url": "https://reviews.birdeye.com/moda-hair-salon-165519991765548"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 2,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Operating: 16 Easton Ave, Mon-Fri 10-9, Sat 10-6, Sun closed; authorized Aveda partner, established 1995. Confirmed live: zero tel: links and zero forms on the home page (phone and email are plain text on /contact), LocalBusiness JSON-LD present, robots.txt allows all with a sitemap, and the Phorest link resolves to a working 'Make an Appointment' page carrying the salon's address, phone and cancellation policy. At 390px the home page is a hamburger plus 'MODA / EST. 1995, NEW BRUNSWICK, NJ' with no services, phone or booking button above the fold. Prices, the 3.0% card surcharge and the 50% late-cancellation charge are confirmed on the contact page. Because the Color page is real, that opportunity shrinks to adding a booking CTA; gap 3 stands, ease drops 5->4 and evidence 3 because one listing source was misread. The Fresha opportunity (listing with no reviews) could not be verified."
+    },
+    {
+      "ref": "B01173",
+      "name": "Barbie Nails",
+      "verdict": "confirmed",
+      "wrong_claims": [
+        {
+          "claim": "237 reviews at 4.3 on Birdeye",
+          "what_is_true": "The Birdeye profile now shows 4.3 from 242 reviews (count drifted by five; rating matches). Birdeye hours are Mon-Fri 9-6, closed Saturday and Sunday.",
+          "source_url": "https://reviews.birdeye.com/barbie-nails-168127813894249"
+        }
+      ],
+      "notes": "Operating: Birdeye lists 713 Livingston Ave with hours; Fresha lists the salon with Dip Powder Nails, Gel Nail Extensions and Manicure and Pedicure categories and no prices or durations, as described. Re-loaded barbienailsnj.com in a real browser: it redirects to a Vagaro BusinessWidget URL that renders only an Imperva 'Access denied / Error 15' wall (926-character stub, Incapsula iframe, empty body). The domain carries no owned content, and automated booking is blocked from this network; the block looks IP/proxy-based, so ordinary customers may still see the calendar (inference). Scores (4/3/4/3) are reasonable."
+    },
+    {
+      "ref": "B01201",
+      "name": "Brunswick Hair Style Salon",
+      "verdict": "confirmed",
+      "wrong_claims": [
+        {
+          "claim": "Google 4.6 rating, review count unknown",
+          "what_is_true": "Directories carry the listing at 4.6 from 16 reviews (another aggregator shows 4.8/11), so the rating holds and a count of roughly 16 is available.",
+          "source_url": "https://www.hairsalondirectories.com/new-jersey/new-brunswick"
+        }
+      ],
+      "notes": "Operating: Square site live at 212 Talmadge St with phone +1 732-640-2766, email, hours ('Open until 8:00 pm'), stylists Rafelina and Griselda, colour $80+, barbershop $5+, and hair styling priced 'Price varies. Contact us for more information'. Confirmed: title is 'NJ📍 | Brunswick Beauty Salon' with no town and no JSON-LD; Google/LocalStylist/YellowPages name it 'Brunswick Hair Style Salon' / 'Brunswick Hair Styles Salon' while the site says 'Brunswick Beauty Salon'; robots.txt allows crawlers apart from checkout/cart paths with crawl-delay 5; the Square booking flow opens cleanly at book.squareup.com/appointments/... with a services list and no CAPTCHA. At 390px the header shows the wordmark plus search/account/cart icons (cart on a service business, as noted) and a 'Join us' email-capture popup covers the page. Two additions: the click-to-call href is malformed ('tel: +1 732-640-2766', with a space) so it may not dial on some phones, and that popup is a second conversion blocker. Scores 3/3/4/4 stand."
+    },
+    {
+      "ref": "B01234",
+      "name": "Viola Barry F, DDS (Dr. Barry Viola)",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Status operating; open six days a week including Saturday mornings; walk-in and referral patients",
+          "what_is_true": "Operating status could not be confirmed and is doubtful. The record itself cites the WebMD profile; search summaries of that URL report it shows his New Jersey dental licence expired in 2025 (WebMD itself blocked automated viewing behind Cloudflare, so this is unverified first-hand). The NPI registry still lists Barry Francis Viola, DDS, NPI 1417177098, status Active, at 149 Livingston Avenue with phone (732) 846-2643 - but NPI records persist after retirement, so that only proves the entry exists. No site, hours or appointment evidence exists anywhere I could open.",
+          "source_url": "https://doctor.webmd.com/doctor/barry-viola-7a3a503f-b3fa-45ec-97d3-0f3add9afcaa-overview"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 5,
+        "ability_to_pay": 2,
+        "ease": 4,
+        "evidence": 2
+      },
+      "notes": "Identity confirmed, operating status not. The federal NPI registry API (opened directly) returns 149 Livingston Avenue, New Brunswick 08901, (732) 846-2643, Dentist, NJ licence 22DI01475400, status 'A'. The record's Google 4.0 from 8 reviews is corroborated by a search summary of DentistsRanked, though that page returned HTTP 429. DentistsRanked, WebMD, YellowPages and npiprofile all blocked direct fetches and Maps was not readable. Recommendation: hold this record until the owner confirms the practice is open and licensed - pitching a practice whose licence may have lapsed is a credibility risk. Evidence lowered 3->2; the other scores are plausible but moot until status is settled."
+    },
+    {
+      "ref": "B01300",
+      "name": "Genie Tree Service",
+      "verdict": "wrong business or closed",
+      "wrong_claims": [
+        {
+          "claim": "Status: operating",
+          "what_is_true": "The New Jersey Board of Tree Experts business directory lists 'Genie Tree Service, LLC' with LTCO Eugenio Amador, registration 768400, New Brunswick NJ, phone 732-207-2067, status 'Suspended'. Under NJ rules a suspended registration bars advertising and performing tree care for hire, so the record's status field is wrong and the business cannot safely be sold to as operating. (Suspension is a licensing status, not proof the crew has stopped working.)",
+          "source_url": "https://treeexpert.sna-apps.com/businessdirectory"
+        }
+      ],
+      "notes": "Verdict is driven by the status field, not by the website analysis, which holds: no site, phone-only intake, and bestprosintown's hours blurb confirmed (Mon-Sat 8 AM-7 PM, credit cards, 'fast estimates'). The domain listed on its Google profile, genietreeservicesllc.com, still fails DNS resolution - fetching it returns getaddrinfo EAI_AGAIN, so the Maps 'Website' button is dead; the registry phone 732-207-2067 matches the record, confirming it is the same business. Recommend pulling this record from the ranked list or holding it until the registration is reinstated: there is no point pitching a site rebuild to a business that cannot legally quote work. Google's 5.0 rating and the 'Add missing information' prompts could not be re-verified because Maps was not readable here."
+    },
+    {
+      "ref": "B01304",
+      "name": "Nieto Landscaping",
+      "verdict": "confirmed",
+      "wrong_claims": [
+        {
+          "claim": "No website of any kind - a customer searching the name finds only third-party directories",
+          "what_is_true": "There is no working site, but there is a domain: nietolandscapingllc.com now lands on a GoDaddy Auctions 'this domain is available' page, and BestProsInTown still links to it as the business's website. A customer searching the name can therefore hit a for-sale lander, which is worse for credibility than finding no site at all. A Facebook page (facebook.com/NietoLC) is also linked from that directory.",
+          "source_url": "https://nietolandscapingllc.com/"
+        }
+      ],
+      "notes": "Operating: BestProsInTown lists Nieto Landscaping at 21 Baldwin St, New Brunswick 08901, phone (732) 762-2096, hours Mon-Sat 6 AM-5 PM and Sunday 8 AM-3:30 PM, categories landscaper / lawn services / snow removal, 4 reviews and 24 photos, with a June 2021 review praising punctuality, pricing and plant advice. That matches the record's '4 reviews, 24 photos' and the phone. Searches report the Google rating as 4.3, though counts vary by directory (one shows 6). No forms, booking or schema anywhere, as stated. The correction strengthens rather than weakens the opportunity: a one-page site plus pointing the lapsed domain and the GBP link at it. Scores 5/2/4/3 are reasonable."
+    },
+    {
+      "ref": "B01328",
+      "name": "Grizzlies General Construction LLC",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Operating: WordPress site live over HTTPS, phone +1 (908) 307-1833 matching the listing, 86 Plum St address on the page, robots.txt allows all with a wp-sitemap. Re-checked in a browser: zero ld+json scripts, no meta description element, title carries a leading horse emoji and no town, tel: links present, Contact Form 7 form with name/email/location/message fields and no CAPTCHA (nothing schedules or confirms). Confirmed at 390px: no phone above the fold (hamburger plus CONTACT US), 'ABOUT RUFFER' heading and 'Years of Experience 0+' counter visible, and the counter is still 0 after scrolling it into view; a broken image (alt 'Grizzlies General Construction LLC') sits at the foot of the hero at 1440px. Stats 200 projects / 15+ workers / 350 clients / 20k remodeled surface all appear as text; testimonials name 'Gilberto and his crew'. Angi shows 4.5 from 12 reviews (83% five-star) per Angi's own page summary - Angi returned HTTP 403 to direct fetch. Google's 5.0 rating and the 'one photo' detail could not be re-verified. Scores 3/3/4/4 reasonable."
+    }
+  ],
+  "data_gaps": [
+    "Google Maps / Business Profile pages could not be opened in this environment; ratings, review counts, photo counts, categories and 'Book online' buttons were only cross-checked through third-party directories or sites' own embedded Google widgets.",
+    "doctor.webmd.com is behind Cloudflare, dentistsranked.com returned HTTP 429, and yellowpages.com / angi.com / npiprofile.com returned HTTP 403, so the reported 2025 expiry of Dr. Viola's NJ dental licence and Angi's review counts could not be inspected first-hand.",
+    "Moda's Fresha listing (the record's third opportunity) could not be located or verified.",
+    "barbienailsnj.com's Vagaro booking backend sits behind an Imperva wall from this network, so it is unknown whether the customer-facing calendar actually loads.",
+    "Genie Tree Service's Google rating and profile prompts, and Nieto Landscaping's Google rating, rest on search-result summaries rather than pages opened directly."
+  ]
+}

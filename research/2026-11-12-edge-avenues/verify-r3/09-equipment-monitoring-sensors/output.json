@@ -1,0 +1,223 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "MDPI measured outcome: 'In factory vibration data covering 11 bearing-failure cases over four years, degradation speed varied widely - some faults developed over months, one became detectable only days before bearing replacement.'",
+      "problem": "The cited page (mdpi.com/2306-5729/8/7/115) returns HTTP 403 on every attempt, so the numbers were never read at source - the brief admits this in data_gaps yet still states them as fact in measured_outcomes with strength Medium. Independent search results describing the paper say 11 cases were selected of which 10 were bearing faults and 1 an external event, plus the dataset covers 2019-2022 in a pulp mill; '11 bearing-failure cases' is therefore misstated, and the 'months vs days' lead-time finding could not be confirmed anywhere.",
+      "fix": "Either reword to '11 selected vibration cases (10 bearing faults, 1 external event), 2019-2022, single pulp mill' after actually reading the paper, or delete the entry. Do not keep a specific case count and a lead-time finding that rest on a search snippet. If kept, lower strength to Low and say in the finding that it is unverified."
+    },
+    {
+      "claim": "Hardware: 'Raspberry Pi 5 8GB $95 official (raised from $80); Hailo-8L Raspberry Pi AI Kit $70 (announced June 2024)' with source_url = raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/",
+      "problem": "The cited page confirms only the $70 AI Kit (published 4 June 2024). It contains no $80 or $95 Pi 5 price. The $95 figure is a price with no source in the brief. Separately, Raspberry Pi announced further memory-driven rises after December 2025, so $95 may already be stale.",
+      "fix": "Cite the actual price announcement (e.g. raspberrypi.com/news/1gb-raspberry-pi-5-now-available-at-45-and-memory-driven-price-rises/ for the $80 -> $95 move) and check for later rises, or change the Pi 5 line to 'Unknown / quote' and keep only the $70 AI Kit figure on this URL."
+    },
+    {
+      "claim": "Problem evidence: 'N.J.A.C. 8:24-1.5 defines refrigeration temperature as 41 degrees Fahrenheit or below, and 8:24-3.2 requires refrigerated potentially hazardous food to be received at 41F or below' with a single source_url to the 8:24-1.5 definitions page.",
+      "problem": "The 41F definition and the 45F legacy exception with the January 2, 2012 upgrade date are confirmed verbatim on the cited 8:24-1.5 page. But the receiving-temperature rule is not on that page; it is N.J.A.C. 8:24-3.2(f)(1), which I verified separately. A reader checking the cited URL would find half the claim.",
+      "fix": "Add https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-2 as the source for the 8:24-3.2 sentence (the rule as stated is accurate)."
+    },
+    {
+      "claim": "Sensorfact pricing: 'quote-based; subscription model with a base package covering five devices plus per-device licensing (per ABB-distributed brochure)' with source_url = sensorfact.eu/products/",
+      "problem": "The cited products page shows no pricing and no base-package or five-device structure; it only lists electricity, vibration, OEE, gas, compressed-air, water and temperature products with email/SMS/WhatsApp alerts. The 'five devices' detail is attributed to an uncited brochure.",
+      "fix": "Either add the ABB brochure URL, or reduce the pricing line to 'Unknown - quote-based; no public list price on the products page'. The 'zero list price' conclusion itself is supported."
+    },
+    {
+      "claim": "Measured outcome strength rating: DOE O&M Best Practices Guide figures (35-45% downtime reduction, 70-75% fewer breakdowns, 25-30% lower maintenance cost, 8-12% over preventive) rated Medium.",
+      "problem": "The guide does state every one of those numbers (Release 3.0, August 2010, verified) but attributes them to unspecified 'independent surveys' with no study, n or method given. That is weaker evidence than a single named study and is closer to the vendor-survey tier than to Medium; the brief itself calls it 'an aggregate of unnamed independent surveys' in the sample field and still rates it Medium.",
+      "fix": "Downgrade the strength to Low (or Medium-Low with an explicit 'no primary study identifiable, 2010 vintage' caveat) so the strength label matches the sample description already in the entry."
+    },
+    {
+      "claim": "N.J. Data Privacy Act: effective January 15, 2025; applies at 100,000 consumers or 25,000 consumers plus revenue from selling personal data; no small-business exemption; employment/job-applicant data outside the consumer definition.",
+      "problem": "Cited source (njconsumeraffairs.gov FAQ) is behind an Incapsula challenge and could not be opened from here. The substance (effective date, both thresholds, employment/commercial-context exclusion, no small-business exemption) is corroborated by search results quoting the same FAQ and by the statute P.L.2023 c.266, but not from the cited page in this pass.",
+      "fix": "Add the statute as a second source (pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM) so the claim does not depend on a bot-blocked FAQ page, and note the effective date and thresholds come from the statute."
+    },
+    {
+      "claim": "A3929/S1464 biometric bills: passed the Assembly March 23, 2026 and referred to a Senate committee May 4, 2026; S1463 introduced January 13, 2026.",
+      "problem": "The cited bill-text URL returns an incomplete extraction (432 of 1,997 visible characters) so the legislative history could not be read directly. The March 23, 2026 Assembly passage (56-16-1) and the May 4, 2026 Senate referral are corroborated only by search results pointing at njleg.state.nj.us/bill-search/2026/A3929, not by the cited page.",
+      "fix": "Cite the bill-status page (njleg.state.nj.us/bill-search/2026/A3929) alongside the bill text so the status claim is checkable, and confirm the S1463 January 13, 2026 introduction date on its own bill page."
+    },
+    {
+      "claim": "fit_score.legal_risk_low = 12/15 alongside a legal section that includes the NLRB GC 23-02 rescission and two unresolved 'Unknown' questions (video retention limits, landlord consent for attachments).",
+      "problem": "Sub-scores do sum correctly to 71 (14+12+9+17+12+7) and all sit inside plausible ranges, and the legal section does not show a confirmed rule that would bite (audio and face recognition are avoided, panel work is subcontracted), so 12 is defensible. The inconsistency is presentational: two open 'confirmed: false' items are not reflected anywhere in the rationale's risk accounting.",
+      "fix": "In the fit_score rationale, note that two legal questions (retention period, landlord consent) remain open and are handled by contract terms rather than by law, so the 12/15 is explicitly a 'managed residual risk' score."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "NIST AMS 100-34: predictive maintenance associated with 15% less downtime, 87% lower defect rate, 66% less inventory increase; top-quartile reactive establishments 3.3x downtime, 16.0x defects, 4.89x inventory increases",
+      "source_url": "https://www.nist.gov/news-events/news/2020/06/research-suggests-significant-benefits-investing-advanced-machinery",
+      "result": "confirmed"
+    },
+    {
+      "claim": "MaintainX 2024: 1,165 MRO professionals; average hour of unplanned downtime ~$25,000; 29% name aging equipment as leading expected cause; 60% cite skilled-trade shortage as leading challenge",
+      "source_url": "https://www.getmaintainx.com/newsroom/state-of-industrial-maintenance-report-2024",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Parts Town: ~1,800 chain and institutional respondents, fielded 2025, published June 30 2026; one in three hit unplanned downtime weekly; refrigeration and fryers most frequently failing and most disruptive; blog title is 'New Research Highlights the Real Impact of Equipment Downtime'",
+      "source_url": "https://www.partstownunlimited.com/blog/rethinking-downtime",
+      "result": "confirmed"
+    },
+    {
+      "claim": "MachineCDN pricing: $45/asset/month, no setup fee, month-to-month, volume tiers $38 (51-200 assets) and $32 (201-500)",
+      "source_url": "https://machinecdn.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Siemens True Cost of Downtime 2024: ~$150,000/hour top end for SME manufacturers vs $2.3M/hour automotive; unplanned downtime costs the 500 biggest companies 11% of revenues",
+      "source_url": "https://vsight.io/blog/cost-of-unplanned-downtime-manufacturing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DOE O&M Best Practices Guide (Release 3.0, August 2010): 8-12% savings over preventive maintenance; independent surveys show 35-45% downtime reduction, 70-75% elimination of breakdowns, 25-30% maintenance cost reduction",
+      "source_url": "https://www.energy.gov/sites/default/files/2020/04/f74/omguide_complete_w-eo-disclaimer.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OEWS Middlesex-Monmouth-Ocean industry-sector table: SOC 49-9071 median annual $60,608 in Manufacturing (410 employed, mean hourly $28.72), $35,986 in Accommodation and Food Services (620 employed, mean hourly $19.85), $52,326 in Public Administration (810 employed)",
+      "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/employ/oeswageweb/PDFs/mid_ind.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County 2024 QCEW: 824 manufacturing establishments / 30,862 employees; 1,752 accommodation and food services / 24,124; 1,710 other services / 12,941",
+      "source_url": "https://www.nj.gov/labor/labormarketinformation/assets/PDFs/Pub/County%20Reports/Middlesex%20County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-1.5: refrigeration temperature 41F or less, with a 45F legacy allowance for equipment in use as of January 2, 2007 that must be upgraded or replaced by January 2, 2012",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-1-5",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-3.2 requires refrigerated potentially hazardous food to be received at 41F or below",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-2",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Banner QM30VT2 at $325.00 per unit at Shingle & Gibb, in stock",
+      "source_url": "https://www.shingle.com/itemdetail/BAN%20QM30VT2",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Choovio LoRaWAN vibration page: Dragino IVS-LN $203.00, Netvox R313DA $61.00, R718DA2 $129.00, R718EC $99.00, LHT65N/S-VIB $66-$71, overall $56-$203, no Advantech WISE-2410",
+      "source_url": "https://www.choovio.com/product-category/lorawan-vibration-sensors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Milesight UG65 US915 $550.00 in stock at Emergent Metering",
+      "source_url": "https://emergentmetering.com/products/milesight-ug65-indoor-lorawan-gateway",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Shelly Pro 3EM 3CT63 $150.99 and Shelly EM Gen3 50A $69.99 on the Shelly US store",
+      "source_url": "https://us.shelly.com/products/shelly-pro-3em-3ct63",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Raspberry Pi AI Kit with Hailo-8L $70, announced June 2024",
+      "source_url": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Raspberry Pi 5 8GB $95 official (raised from $80), cited to the AI Kit announcement",
+      "source_url": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/",
+      "result": "not found"
+    },
+    {
+      "claim": "LBNL FDD study: 26 organizations, 550 buildings, 97 million sq ft, median savings 8%, 2020",
+      "source_url": "https://bies.lbl.gov/publications/building-fault-detection-and",
+      "result": "confirmed"
+    },
+    {
+      "claim": "MDPI Data 8(7):115 - 11 bearing-failure cases over four years, single pulp-mill dataset, lead time from months to days",
+      "source_url": "https://www.mdpi.com/2306-5729/8/7/115",
+      "result": "could not open"
+    },
+    {
+      "claim": "Springer TinyML paper: 96.5% accuracy / 96.19% precision / 97.11% recall for stopped-average-high speed classes; ~300 ms total latency (80 ms collection, 25 ms inference, 195 ms transmission/alert); 98% detection accuracy over 2 months; K-Means separate from the DNN",
+      "source_url": "https://link.springer.com/article/10.1007/s43926-025-00142-4",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Emerson/Johns Manville case study: 44 hours downtime avoided in first 6 months, 50% longer MTBF, 43% fewer mechanical emergency maintenance events, 260% program ROI",
+      "source_url": "https://www.emerson.com/is/content/emerson/en/systems-and-software/ams/case-studies/documents/johns-manville-expands-production-capacity-with-new-approach-to-machinery-health-management.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Augury: under 6 months payback and 1.1B+ machine-hours monitored as vendor claims; no public list price",
+      "source_url": "https://www.augury.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Tractian asset-health pricing publishes only a custom quote; no per-asset or CMMS list price",
+      "source_url": "https://tractian.com/en/solutions/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Emerson AMS Wireless Vibration Monitor third-party estimate of roughly $150-$600 per unit on a 10-unit U.S. order, excluding gateway, install, shipping and tax",
+      "source_url": "https://www.iot-apps.com/hardware/ams-wireless-vibration-monitor.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Fluke 3563 marked discontinued or reclassified, no current published price",
+      "source_url": "https://www.fluke.com/en-us/product/condition-monitoring/vibration/3563",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d): one-party consent exception, excluded where the interception is for a criminal, tortious or other injurious act, and subscriber status alone is not consent",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239?f=templates&fn=document-frameset.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC 25-05 (February 14, 2025) rescinds GC 23-02 on electronic monitoring",
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/gc-25-05-rescission-of-certain-general-counsel-memoranda",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 13:31-3.8: installing, maintaining or servicing premises wiring only by a licensed electrical contractor holding a business permit, exceptions at N.J.S.A. 45:5A-18",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-31-3-8",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC advertising substantiation policy: advertisers and agencies need a reasonable basis before dissemination; failure is an unfair or deceptive act under Section 5",
+      "source_url": "https://www.ftc.gov/legal-library/browse/ftc-policy-statement-regarding-advertising-substantiation",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC September 2024 Operation AI Comply: 'no AI exemption from the laws on the books', including fake-review generation and AI 'robot lawyer' cases",
+      "source_url": "https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO is AGPL-3.0 by default with a paid Enterprise licence required for proprietary/closed embedded deployment and for custom-trained models used commercially",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate: single CPU detector by default; Hailo detector auto-downloads YOLOv6n; 320x320 is the recommended default resolution",
+      "source_url": "https://docs.frigate.video/configuration/object_detectors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Liquid AI LFM2.5-VL comes in 450M / 1.6B / 3B; the 3B integrates a SigLIP2 400M NaFlex vision encoder",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen3-VL dense variants include 2B and 4B",
+      "source_url": "https://arxiv.org/abs/2511.21631",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hennessey v. Coastal Eagle Point Oil Co., 129 N.J. 81 (1992): employee privacy interests balanced against employer business/safety interests; employer prevailed on a safety-sensitive rationale",
+      "source_url": "https://law.justia.com/cases/new-jersey/supreme-court/1992/129-n-j-81-1.html",
+      "result": "could not open"
+    },
+    {
+      "claim": "fit_score sub-scores sum to the stated total (14+12+9+17+12+7 = 71) and pilot cost arithmetic (8 x $203 to 12 x $325 sensors, 60-100 hours at $75-$125) supports $7,000-$18,000",
+      "source_url": "N/A - internal arithmetic check of avenue.json",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

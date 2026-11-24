@@ -1,0 +1,17 @@
+[
+ {
+  "claim": "\"result\": the redirect lands on an unrelated Indonesian-language online gambling site ('MEDUSA88', slot-deposit promotions) \u2014 repeated in the same wording in the domain entry and implied by the audit's screenshots.",
+  "problem": "The redirect itself is real and the page is Indonesian-language gambling, but the brand name is not reproducible: the page's own title is 'Slot Depo 10k Link Situs Geometrys Spot Gacor Deposit 10rb Via QRIS Hari Ini', the visible text brands the site 'Slot Depo 10K' / 'Geometry Spot', and the string 'MEDUSA88' appears zero times in the served HTML of both https://geometrysspot.com/activities/ and https://geometrysspot.com/ (checked twice, including in real Chrome). The screenshots that would document it (rickardsdentistry-desktop-2026-11-13.png, rickardsdentistry-phone390-2026-11-13.png) are not present in this folder, so the name cannot be traced to a source. These portals rotate brand names, so the auditor may have seen a different variant \u2014 but as written the name is unsupported.",
+  "fix": "Delete 'MEDUSA88' and describe what is on the page today: an Indonesian-language online slot/gambling page ('Slot Depo 10k' / 'Geometry Spot', QRIS deposit promotions, 18+ notice). Alternatively keep the brand only if a screenshot showing it is filed with the deliverable. The business-facing audit_md and founder_md are already correct on this point and need no change."
+ },
+ {
+  "claim": "\"Renew or confirm auto-renew now\" (fix step 2), effort 0.25-0.5 hours, who: practice owner.",
+  "problem": "GoDaddy RDAP shows the domain in clientDeleteProhibited, clientRenewProhibited, clientTransferProhibited and clientUpdateProhibited status. A registrar-applied renewal lock means the owner may not be able to renew from the account dashboard at all, which makes a 15-30 minute self-service renewal optimistic. Not a false statement, but the effort estimate and step description omit it.",
+  "fix": "Add one clause: 'the registration currently shows registrar locks, so a renewal may have to be done with GoDaddy support rather than online', and widen the estimate to roughly 0.5-1.5 hours if the account is not accessible. Do not speculate about why the lock is there."
+ },
+ {
+  "claim": "Screenshot traceability (\"screenshot_files\": rickardsdentistry-desktop-2026-11-13.png, rickardsdentistry-phone390-2026-11-13.png; gmb-desktop-2026-11-13.png).",
+  "problem": "None of the three referenced screenshot files are in this task folder, so a checker cannot confirm they show what is claimed; every claim had to be re-derived from the live URLs instead.",
+  "fix": "Ship the PNGs with rescue.json so the desktop, phone-width and Google-profile views can be checked against the text."
+ }
+]

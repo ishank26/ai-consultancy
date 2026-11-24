@@ -1,0 +1,42 @@
+[
+ {
+  "claim": "feasibility: technical_1_5 3, commercial_1_5 4",
+  "problem": "Scores and the verdict carry a reasoning paragraph but are not labeled as inference, unlike founder_days ('(inference)'), running_costs ('INFERENCE') and suggested_pricing.reasoning ('INFERENCE').",
+  "fix": "Add 'INFERENCE' to the feasibility.reasoning label and to both scores."
+ },
+ {
+  "claim": "Problem summary: 'a small salaried sales team inside a roughly 20-person family firm' and 'purchasing, fulfillment, QC and marketing each sit on a single family member'",
+  "problem": "Neither the About page nor the B2B/Contact pages state headcount or that named functions are run by individual family members. The About page only says 'family business' and names 'Bob, our owner'. No cited source supports the 20-person figure or the one-person-per-function claim.",
+  "fix": "Either attribute the headcount and staffing pattern to the audit's own research, or mark them as inference from the site's 'family business' wording plus warehouse size; do not present them as sourced fact."
+ },
+ {
+  "claim": "current_tools: 'Tawk.to live chat widget ... toggled from header and footer during weekday business hours'",
+  "problem": "The storefront HTML shows Tawk_API.toggle() in the desktop header and a 'Live chat' link in the mobile nav strip; no footer toggle and no business-hours gating are visible in the served HTML. The widget exists (confirmed), the placement/hours detail is not.",
+  "fix": "Describe it as a Tawk.to live chat widget linked from the site header (and mobile nav), and drop the footer and weekday-hours specifics unless verified in the widget config."
+ },
+ {
+  "claim": "integrations: inbound email / Postmark, confirmed_in_docs true, source_url https://postmarkapp.com/pricing",
+  "problem": "The integration itself is confirmed, but the cited URL is the pricing page: it shows 'Inbound email processing' is included in Pro (and absent from Basic), not the webhook mechanics the method describes.",
+  "fix": "Cite https://postmarkapp.com/developer/user-guide/inbound/parse-an-email (unique inbound hash mailbox, email forwarding, JSON POST to your webhook URL including attachments) as the doc source, and keep the pricing URL only for cost."
+ },
+ {
+  "claim": "integrations: 'Shopware advanced/customer-group prices and piece-pack-bulk tiers ... confirmed_in_docs true' citing the integrations API guide",
+  "problem": "The integrations-api page documents OAuth integration tokens and POST /api/search/{entity} for products, customers and orders, but does not document advanced prices, customer-group price rules or quantity tiers. Those are documented elsewhere in Shopware 6 (advanced prices tied to a customer-group rule with quantity ranges; product_price records in the ERD).",
+  "fix": "Point this row at the Shopware product-price/advanced-price documentation (or the Admin API product entity schema) rather than the integrations quick start, and keep the existing caveat that the client's exact tier mapping must be checked on one live product."
+ },
+ {
+  "claim": "risks_compliance: ITAR row - 'If a customer sends controlled defense drawings for a custom part, handling them can trigger DDTC registration ... uploading them to a third-party model API could be a deemed export', marked confirmed true",
+  "problem": "22 CFR 122.1(a) triggers registration for persons in the business of manufacturing, exporting or temporarily importing defense articles, or furnishing defense services - it does not reach 'handling' drawings as such. The deemed-export point is a separate ITAR doctrine and is not in 122.1, though the registration rule and the exemption for unclassified technical data are stated there.",
+  "fix": "Reword to 'a manufacturer or exporter of defense articles, or a furnisher of defense services, must register with DDTC (22 CFR 122.1(a)); work on controlled drawings can put the firm in that business', and cite the ITAR deemed-export provision separately."
+ },
+ {
+  "claim": "risks_compliance: platform drift - 'Shopware Admin API documentation (versioned endpoints; behaviour tied to the instance version)', confirmed true",
+  "problem": "The cited integrations page does not describe endpoint versioning or version-pinned behaviour; it only gives /api/* base paths and a local Stoplight reference. The underlying risk is real, but the 'confirmed' flag rests on wording the source does not contain.",
+  "fix": "Soften to 'Admin API surface and behaviour depend on the running Shopware version' and mark confirmed false (or commercial/technical risk rather than a documented rule), keeping the regression-test mitigation."
+ },
+ {
+  "claim": "running_costs: model inference 'USD 5-20 per month'",
+  "problem": "Not contradicted, but the stated basis computes to about USD 2.80/month (325 requests x 25k input at USD 0.20/1M = USD 1.63; 325 x 3k output at USD 1.20/1M = USD 1.17), and prompt caching on the cached-input price of USD 0.02/1M would lower it further. The published range is roughly 2-7x the arithmetic.",
+  "fix": "Show the computed base (~USD 3/month) and state explicitly that USD 5-20 is a padded envelope for retries, photo/PDF OCR passes and weekly evals, so the reader can see the padding."
+ }
+]

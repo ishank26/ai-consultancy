@@ -1,0 +1,163 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Email: \"I looked at how Bussel Realty appears to someone searching for New Brunswick industrial space: the contact page returns a 404\" and walk-in opener: \"the contact page 404s\".",
+      "problem": "Contradicted for the context given. The New Brunswick contact page (bussel.com/contact-us/office-property/new-brunswick-nj) returns 200 with the broker directory; so does the site's own Contact Us menu target (bussel.com/contact-us.asp and /contact-us/commercial-real-estate/central-new-jersey). Only the bare /contact-us/ path 404s, and I found no page on the site that links to it. A founder checking the Contact menu will find a working page, which discredits the whole note.",
+      "fix": "Name the exact URL and drop the generalisation: \"bussel.com/contact-us/ returns a raw server error page\" (or \"the /contact-us/ address on your site throws an IIS error page\"). Same for the opener."
+    },
+    {
+      "claim": "\"Listings read '[-address on file-]'\" (audit) and \"listings hide the street address\" (email, opener).",
+      "problem": "Over-generalised from one listing. Listing #23253 and #27516 do print '[-address on file-]', but listing #26961 (an exclusive) prints a street address (Prestige Plaza, 334 Roue 31, Flemington). So \"listings\" tout court is wrong; a founder will check a listing that shows an address.",
+      "fix": "Scope it: \"open listings such as #27516 and #23253 print '[-address on file-]' instead of a street address; exclusives such as #26961 carry one.\" If the email keeps it, say \"many listings\"."
+    },
+    {
+      "claim": "Section 1 agent scope: \"fix the error and contact pages\".",
+      "problem": "Implies the contact page itself is broken. The contact pages work (200, directory + map); the fault is one orphan path plus no enquiry form, no tel: links and no structured data.",
+      "fix": "Say \"fix the orphan /contact-us/ path, add a branded 404, and give the working contact page an enquiry path\"."
+    },
+    {
+      "claim": "Founder note: \"there is no New Brunswick office\".",
+      "problem": "Stated as fact but it is an inference from the absence of a published New Brunswick address. Strong inference, still an inference and unverifiable from outside.",
+      "fix": "Hedge: \"no New Brunswick address is published — the only office on the site is 2 Ethel Road, Suite 202A, Edison.\""
+    },
+    {
+      "claim": "Section 2 impact range \"about $6,240–$12,480 a year\".",
+      "problem": "Arithmetic is right, but the figure no longer matches the hand-off: analysis.json states \"≈$5,000-$12,000/yr\" for the same item, so two documents in the pack disagree.",
+      "fix": "Use one number in both, and align analysis.json to the audit's $6,240–$12,480."
+    },
+    {
+      "claim": "Section 3 \"at $30/hour\".",
+      "problem": "The $30 rate (NJ secretaries median $24.16 × 1.25) is explained in section 2 but appears unexplained here, and it is the top of the loaded range implied by the posted $42,000–$50,000 (about $20–24/hour unloaded, ≈$25–30 loaded). Using the ceiling at both ends of an already illustrative range invites an inflation challenge.",
+      "fix": "Add \"(at the $30/hour loaded rate used above)\" and note that a loaded $25/hour lower bound would put the low end near $13,000."
+    },
+    {
+      "claim": "Audit body length.",
+      "problem": "About 455 words from the title through the \"Prepared from publicly available information\" line (roughly 440 excluding the title and that closing line), so marginally at or over the ~450-word target.",
+      "fix": "Trim ~15 words, e.g. drop \"so we looked at the public front door as a whole\" and \"Plainly:\"."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "BRC founded 1984 and states it handles over three million square feet of corporate/industrial property annually",
+      "source_url": "https://bussel.com/history/real-estate-brokerage/edison-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Marketed industrial and office space across Central and North Jersey (not only Edison)",
+      "source_url": "https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The New Brunswick pages point to the Edison suite (2 Ethel Road, Suite 202A, Edison NJ 08817)",
+      "source_url": "https://bussel.com/contact-us/office-property/new-brunswick-nj",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Contact page is a 23-broker directory plus one admin extension (x223)",
+      "source_url": "https://bussel.com/contact-us/office-property/new-brunswick-nj",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Main number 732-287-3777 appears as plain text, no tel: links anywhere on the home page",
+      "source_url": "https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No enquiry form, no booking and no tap-to-call on the contact page (only a broker-side /login.asp form)",
+      "source_url": "https://bussel.com/contact-us/office-property/new-brunswick-nj",
+      "result": "confirmed"
+    },
+    {
+      "claim": "/contact-us/ returns an IIS 404 error page",
+      "source_url": "https://bussel.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email/opener: \"the contact page returns a 404\" for a New Brunswick visitor",
+      "source_url": "https://bussel.com/contact-us.asp",
+      "result": "contradicted"
+    },
+    {
+      "claim": "The site's served Contact Us pages work (200) — /contact-us.asp and /contact-us/commercial-real-estate/central-new-jersey",
+      "source_url": "https://bussel.com/contact-us/commercial-real-estate/central-new-jersey",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Listing #23253 prints '[-address on file-]' and 'OPEN LISTING'",
+      "source_url": "https://bussel.com/listing/23253",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Blanket claim that \"listings\" hide the street address",
+      "source_url": "https://bussel.com/listing/26961",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Search results page ships 'Data Loading...' plus lorem-ipsum placeholder and loads inventory only via JavaScript",
+      "source_url": "https://bussel.com/property-result.asp",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Enquiries reach 23 broker mobiles or one admin extension",
+      "source_url": "https://bussel.com/contact-us/office-property/new-brunswick-nj",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The only structured capture is seller-side: 'What Is Your Property Worth?' opens /whatismypropertyworth.asp",
+      "source_url": "https://bussel.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ median for secretaries and administrative assistants is about $24/hour ($50,260/yr; hourly median $24.16, 2025 BLS data)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2 impact arithmetic: 4-8 h/wk x 52 = 208-416 hours; at $30/hour = $6,240-$12,480",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Open full-time Marketing / Administrative Assistant in Edison at $42,000-$50,000 covering brochures, flyers, research/content creation, social media, branding and press announcements",
+      "source_url": "https://www.indeed.com/q-entry-level-marketing-assistant-l-union,-nj-jobs.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Indeed company page https://www.indeed.com/cmp/Bussel-Realty-Corp opens directly",
+      "source_url": "https://www.indeed.com/cmp/Bussel-Realty-Corp",
+      "result": "could not open"
+    },
+    {
+      "claim": "Quarterly Report news category exists but renders no items",
+      "source_url": "https://bussel.com/news.asp?c=Quarterly_Report",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 3 impact arithmetic: 40 h/wk x 52 x 25-50% = 520-1,040 hours; at $30/hour = $15,600-$31,200",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 1 correctly declines to put a dollar figure on the front-door fix (no benchmark)",
+      "source_url": "https://www.nber.org/papers/w31161",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"There is no New Brunswick office\"",
+      "source_url": "https://bussel.com/contact-us/office-property/new-brunswick-nj",
+      "result": "not found"
+    },
+    {
+      "claim": "Business name, town and contact details used in the audit (Bussel Realty Corp; Edison suite; New Brunswick landing pages)",
+      "source_url": "https://bussel.com/contact-us/office-property/new-brunswick-nj",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Privacy: no home addresses, personal mobiles or private-individual data in the audit; only Steve Bussel's name, which the firm publishes as president",
+      "source_url": "https://bussel.com/history/real-estate-brokerage/edison-nj/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,149 @@
+{
+  "results": [
+    {
+      "ref": "B00256",
+      "name": "Dr. Gina Tanios-Rafla, DMD",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Only three clinical days a week: Mon 9:30-6, Tue 8:30-4, Wed 8:30-5, closed Thursday, Friday and weekends (used as a top issue and as the basis of the after-hours/operations opportunity)",
+          "what_is_true": "The site's own office-hours block lists five open days: Mon 9:30am-7:30pm, Tue 8:30am-4:00pm, Wed 8:30am-5:00pm, Thu 9:00am-4:00pm, Fri 9:00am-4:00pm, Sat/Sun closed. Google's listing for 'D&G Smile II, Laser Dentistry' also shows open today (Thursday) closing 3 PM. Only the weekend closure holds.",
+          "source_url": "https://www.laserdentistnj.com/"
+        },
+        {
+          "claim": "No schema.org markup found in the fetched HTML / 'no schema' in the agent-readiness notes",
+          "what_is_true": "Every page carries a JSON-LD Dentist block - but it still describes 'Gina Tanios-Rafla, DMD - East Brunswick Dentist' with her old photo and '3 decades' biography, a misspelled city ('East Brunswic') and 'Suite 14' rather than 114. The fair criticism is that the schema names the retired dentist, not that schema is missing.",
+          "source_url": "https://www.laserdentistnj.com/"
+        },
+        {
+          "claim": "No doctor bio, credentials or photo for the current dentist",
+          "what_is_true": "There is a dedicated page titled 'Meet Dr. Aziz' with a multi-paragraph biography of Dr. Ehab Aziz (Montclair State biochemistry degree, Temple Kornberg DMD 2016, implant training at the Rasner Institute, diode laser training, ADA/NJDA/Academy of General Dentistry memberships, family detail) and an on-page photo file 'dr. aziz.png'. What is missing is that bio on the homepage and any bio framed around the D&G Smile II practice - not a bio at all.",
+          "source_url": "https://www.laserdentistnj.com/east-brunswick-practice/meet-the-doctor/"
+        },
+        {
+          "claim": "Homepage title is generic ('Family Dentist East Brunswick NJ | 08816 Dentist') and 'nothing names D&G Smile II or Dr. Aziz in titles'",
+          "what_is_true": "The current title tag is 'Dentist East Brunswick NJ | Ehab G Aziz, DMD', and the Meet the Doctor page carries 'D&G SMILE II, LLC' in its meta description. The real title problem is inconsistency: the title names Aziz, the meta description still pitches a consultation with Dr. Tanios-Rafla, and the footer signs off as 'Gina Tanios-Rafla, DMD'.",
+          "source_url": "https://www.laserdentistnj.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 2,
+        "ease": 3,
+        "evidence": 2
+      },
+      "notes": "Business and site confirmed live. The identity mess is real and worse than written: domain 'Laser Dentistry', Google/Zocdoc 'D&G Smile II', body copy Dr. Ehab Aziz, footer and schema still Dr. Gina Tanios-Rafla. Google shows 'D&G Smile II, Laser Dentistry', 4.9, 646 NJ-18 #114, (732) 238-1760, with a 'Book online' action; the Zocdoc widget (practice 125996) is embedded on the homepage. robots.txt confirmed exactly as described (named allow-list with OAI-SearchBot, Claude-SearchBot, Perplexity-User but not PerplexityBot or GPTBot; 'User-agent: * Disallow: /'; 'Disallow: /*?*' with utm/gad exceptions). The 403 is real: an automated Chrome navigation returns a 13-character page titled '403 Forbidden'. Scores: gap_size 5 was defensible but with a full bio page, a live Zocdoc booking path and a five-day week 4 fits better; ability_to_pay 2 is right for a single-suite practice; ease 3 is right (ProSites template, Zocdoc and ownership records out of scope); evidence 3 is too high given four wrong specifics - 2 is fair."
+    },
+    {
+      "ref": "B00257",
+      "name": "Kendall Road Family Dentistry",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Every top issue and opportunity I could test held. Homepage JSON-LD is MedicalBusiness named 'BRK Dental PC' at 704 State Route 18, East Brunswick 08816, telephone (732) 257-4400, email bkdds2002@me.com, priceRange 'Call for pricing options', openingHoursSpecification Mon/Tue/Thu/Fri 08:00-17:00 and Sat 08:30-13:00 (no Wednesday, matching the printed 'Wednesday: Closed'), plus a second WebSite block also named 'BRK Dental PC'. Slider alt text really is 'sdwwd', 'deeeg', 'qweqeqweqw', 'weqrqbb'; the home page still ends with 'Testimonial Coming Soon!'; COVID-19 is still a main nav item; an IE9 conditional warning is still in the source; the contact form is script-injected from smbleads.ibsmb.com behind a reCAPTCHA site key, and the raw HTML contains no form element. robots.txt does allow GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-Web, PerplexityBot, Googlebot, Google-Extended, CCBot and more - only Yandex, Baidu and Bytespider are blocked, so 'allows every AI crawler' is very slightly overstated but not misleading. An automated Chrome navigation returns a 16-character page reading '403 Unauthorized', confirming the agent-blocking claim. Hours, both dentists, the 50+ years and the 2004/2014 retirements all appear in the copy as described. Scores (4/3/3/3) look right. Visual and mobile review is impossible because of the 403."
+    },
+    {
+      "ref": "B00297",
+      "name": "Ophthalmic Consultants of NJ",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "robots.txt lists GPTBot, ClaudeBot, anthropic-ai, Google-Extended and CCBot 'in a disallow block' so 'major AI crawlers are told not to read the site' (top issue 4 and the first half of an opportunity)",
+          "what_is_true": "The Squarespace robots.txt does name those agents, but only to apply path-level rules that also apply to '*': /config, /search, /api/, /static/ and query-string variants. There is no 'Disallow: /' for any agent, so GPTBot, ClaudeBot and the rest are free to crawl the whole site. The premise of the 'unblock AI crawlers' opportunity is false.",
+          "source_url": "https://www.oc-nj.com/robots.txt"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 2,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Everything else checks out. Zero tel: links on the page while five numbers appear as plain text - Appointments (732) 708-3937, Billing (732) 708-3921 and (732) 708-3704, Optical (732) 708-3931, Fax (732) 228-6336. Hours block Mon-Thu 9-5, Fri 9-3, matching the 'Friday closing at 3pm' signal. Page title is just 'Ophthalmic Consultants of NJ' with no town or service. The request form is Name/Email/Phone/New patient/Message with the on-page notice that submissions are not encrypted, and no availability or confirmation. JSON-LD is present and good: Organization with (732) 708-3937 and 620 Cranbury Road Ste 205, plus LocalBusiness with Mon-Fri 09:00-17:00 opening hours. Patient testimonials, the optical-shop brands and full contact block are all real text. At 390 px the layout does not overflow. With one of four top issues invalid, gap_size 3 should drop to 2; ability_to_pay 3, ease 4 and evidence 3 are reasonable."
+    },
+    {
+      "ref": "B00568",
+      "name": "Total Party",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Instagram embed is broken, leaving a large blank panel on the homepage",
+          "what_is_true": "The Instagram feed loads and displays the latest posts (verified at 390 px - @totalparty profile, post images and captions render). The blank grey panel above the call-to-action buttons is a separate element: a Slider Revolution hero module that renders empty at 195 px tall. There is a blank panel, but it is the hero slider, not Instagram.",
+          "source_url": "https://www.total-party.com/"
+        },
+        {
+          "claim": "The quote form has no CAPTCHA / 'an agent can submit ... with no CAPTCHA, which is a real win'",
+          "what_is_true": "The Contact Form 7 quote form loads Google reCAPTCHA v3 (api.js?render=...&ver=3.0) with a hidden _wpcf7_recaptcha_response field and the CF7 recaptcha module, so submissions are scored invisibly and unattended agent submission is exactly what v3 is designed to filter. The form is also richer than described: name, email, event-type select, event date, time-of-day, whether the date is known, venue/location and indoor/outdoor.",
+          "source_url": "https://www.total-party.com/contact-us/"
+        },
+        {
+          "claim": "Only 3 reviews exist, so review depth is a gap worth fixing ('3 reviews on the directory I checked')",
+          "what_is_true": "The directory figure is 3, but the homepage embeds live Google reviews - five dated September-October 2026 from named customers (including a business account) - so the practice has a current Google review stream and 'only 3 reviews' understates it. A review-generation push is still reasonable, but not because the business has three reviews.",
+          "source_url": "https://www.total-party.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 2,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Business confirmed: founded 2002, Dori Saypol named as owner/Certified Balloon Artist, Master Balloon Professional post dated October 2025, East Brunswick Regional Chamber Small Business of the Year 2023, ILIA Event Planner of the Year 2015, delivery roster of 60+ named municipalities. JSON-LD confirmed as WebPage/WebSite/Organization/BreadcrumbList with no LocalBusiness and no hours; no hours block anywhere on the site; no prices anywhere on the homepage (only a $0 cart). Three tel: links to 732-723-3555 confirm click-to-call. robots.txt only blocks /wp-admin. At 390 px the layout does not overflow, and the top utility-bar social icons are unlabelled as noted. Scores: gap_size 2, ability_to_pay 3 and ease 4 hold; evidence 4 is too high with two wrong specifics, so 3."
+    },
+    {
+      "ref": "B00603",
+      "name": "Solution Prep",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "All three top issues verified. Form fields are placeholder-only with no labels or aria-labels (Student Name, Parent Name, Parent E-mail, Parent Phone, Town, Current School, Grade, plus interest checkboxes and an optional message). The 'SELECT' buttons on the small-group page anchor to '#which-days-times-works-best' and '#which-start-works-best' - preference sections, not live availability, and no calendar widget. The NAP mismatch is real: the East Brunswick location page and its tel: links use 732-556-8220, while the Google listing for 746 NJ-18 shows (732) 427-8819 (rating 4.9, category 'Tutoring service', 'Open - Closes 9:30 PM'). Pricing confirmed on the program page as 'Basics program = 3 payments of $495' for small group and '3 payments of $895' for 1-on-1. robots.txt only disallows calendar query strings. JSON-LD includes PostalAddress, GeoCoordinates, OpeningHoursSpecification and a FAQPage. Page title names SAT/ACT prep and East Brunswick, and the page carries Google reviews dated November 2026. The 61-review count on the Google listing could not be read in the limited Maps view. Scores (2/4/3/4) are reasonable."
+    },
+    {
+      "ref": "B00913",
+      "name": "Van Dyk Construction LLC",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Claims held. Title is 'Home - Van Dyk Construction' with no service or town and there is no meta description at all. JSON-LD contains only WebPage/WebSite/Organization/BreadcrumbList - no LocalBusiness and no hours anywhere on the site (dateModified 2021-03-23). The estimate form is Contact Form 7 with name, email, phone and a free-text message, guarded by an invisible reCAPTCHA v3 (api.js?render=...&ver=3.0), and the fields do have visible labels plus placeholders. Four tel: links all point to 732-745-1360, none in the mobile header. /kitchens carries roughly 100-180 words of prose with no prices or FAQ, though it does already hold a substantial before/after project gallery - so the 'add real job photos' half of that opportunity is largely done. The 'Meet Jeff' real-estate section with an eXp Realty link is live as described. Two additions worth knowing: a Google Business Profile does exist - 'Van Dyk Construction LLC', General contractor, 5.0, 1490 Jersey Ave, North Brunswick, (732) 745-1360, open and closing 5 PM - so the site's phone matches its map listing, and the rating is better than the record implies. Ability/ease/gap/evidence scores (3/4/3/3) are reasonable."
+    },
+    {
+      "ref": "B01267",
+      "name": "Brunswick Plumbing Heating and Air Conditioning",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Reproduced independently. Google Maps returns 'Brunswick Plumbing Heating', category Plumber, at 14 Laurel Pl, New Brunswick 08901, 'Open 24 hours', with 'Claim this business', 'Add place's phone number' and 'Add website' prompts, no photos and no rating or reviews. The Birdeye profile is for 99 Manor Crescent, New Brunswick 08901, rated 5.0 from 1 review, described as open 24/7, and is marked as claimed by the owner or a representative - which is the one small bright spot against 'unclaimed everywhere'. Status remains 'operating but unconfirmed': the map pin is live but nothing on it proves current trading, so the evidence score of 2 is fair. gap_size 5, ability_to_pay 2 and ease 4 are reasonable; the 'missed-call text-back' idea still rests on an inference and should be labelled as such."
+    },
+    {
+      "ref": "B01368",
+      "name": "Elite Lawn Sprinklers, Pools & Spas LLC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No website at all / no owned property to inspect (top issue 1, the whole website_review block, agent_readiness findable 0, and the 'build a small site with one page per service' opportunity)",
+          "what_is_true": "The business has a website at elitelawnsprinklerspoolsandspas.com, branded 'ELSPS'. It states 30+ years of servicing New Jersey pools, lists nine services (weekly pool service, pool openings and closings, leak detection and repair, equipment repair, liner repair and replacement, safety fences, inspections, sprinkler service), carries four named customer testimonials and a service-area list that includes New Brunswick, East Brunswick, Milltown, Spotswood, North Brunswick and Monmouth Junction. Individual service pages exist with location-flavoured titles (e.g. 'Pool Openings & Closings in Middlesex, Monmouth & Ocean'). The 'build the site from scratch' opportunity is largely already done.",
+          "source_url": "https://elitelawnsprinklerspoolsandspas.com/"
+        },
+        {
+          "claim": "Phone-only contact: (732) 257-0702 from directories, not confirmed by any owned property",
+          "what_is_true": "The owned site is actually harder to act on than phone-only: the homepage and the pool-openings page publish no phone number at all (no digits, no tel: link anywhere in the rendered DOM), no email, no contact form (0 form elements, 0 mailto links) and no contact page; the 'Contact Us' control is a button that opened no form, link or dialog in my session. The only route is the directory-sourced phone number.",
+          "source_url": "https://elitelawnsprinklerspoolsandspas.com/"
+        },
+        {
+          "claim": "No Google Business Profile found, so the business does not surface on Maps for its own name - paired with an assessment that the site/presence gap is total (gap_size 5, ease 5)",
+          "what_is_true": "The Maps part holds - searching the full name in New Brunswick returns unrelated companies (Elite Lawn Sprinkler Service 4.4, Elite Lawn Sprinklers LLC in a 636 area code, Elite Landscapes & Pools, and Florida/Nebraska 'Elite Sprinkler' firms) with no match for this LLC. But the presence is not total: there is a website, a claimed-looking BestProsInTown profile (6 reviews, 13 photos) and a Birdeye profile, so gap_size 5 and ease 5 overstate the starting point.",
+          "source_url": "https://www.google.com/maps/search/Elite+Lawn+Sprinklers+Pools+%26+Spas+LLC+New+Brunswick+NJ"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 2
+      },
+      "notes": "Directory claims reproduce: Birdeye shows 394-A Sandford St, New Brunswick 08901, 4.2 from 5 reviews, Mon-Fri 8:30-4:30, Sat/Sun closed, and the profile is explicitly 'not been claimed'; BestProsInTown shows 6 reviews, 13 photos and the same 'trusted name in pool repair for over 30 years' copy. Two cautions on the correction: the site never publishes the (732) 257-0702 phone or a street address, so I identify it as the same business from the exact trading name, the 30-year claim and a service area that includes New Brunswick - not from a phone match; and a search-engine summary also asserted a 554 Cranbury Road, East Brunswick address, which I could not verify on the site itself and therefore do not adopt. The record's three empty score keys (no 'evidence' value) should be filled. gap_size 4, ability_to_pay 3, ease 4, evidence 2."
+    }
+  ],
+  "data_gaps": [
+    "Google review counts could not be read for any record - the limited Maps view shows the star rating but not the number of reviews, so figures such as 61 for Solution Prep and the counts for Kendall Road, D&G Smile II and Total Party remain unverified.",
+    "Kendall Road Family Dentistry and laserdentistnj.com both refuse automated Chrome with 403, so neither could be reviewed visually at desktop or 390 px; all fields, schema and layout claims for those two rest on raw HTML.",
+    "The Elite Lawn Sprinklers website publishes no phone number, email or address, so its identification as the New Brunswick LLC rests on name, 30-year claim and service area rather than on a phone match; the site's 'Contact Us' button produced no form, link or dialog when activated.",
+    "Third-party directory pages (Yellowbot for Total Party, agreatertown for Solution Prep) either returned 403 or were not opened, so those specific listing figures were not re-checked."
+  ]
+}

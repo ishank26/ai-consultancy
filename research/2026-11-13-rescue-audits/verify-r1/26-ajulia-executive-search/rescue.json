@@ -1,0 +1,126 @@
+{
+ "ref": "B00225",
+ "name": "Ajulia Executive Search",
+ "town": "North Brunswick / East Brunswick, NJ",
+ "category": "Staffing, executive search and recruitment (Google category: temp agency)",
+ "status": "operating",
+ "domains": [
+  {
+   "domain": "ajuliaexecutivesearch.com",
+   "role": "listed on Google",
+   "final_url": "https://www.airbase1.com/",
+   "result": "The link on the Google profile is http://ajuliaexecutivesearch.com/; followed in Chrome it lands on https://www.airbase1.com/, an aviation website-design and marketing agency, showing its aviation marketing homepage with no Ajulia content. Old Ajulia paths tried (e.g. /specialized-search-and-placement/our-team/) return the same Airbase1 homepage. A plain HTTP request to the bare domain instead returns a cPanel 'Default Web Site Page' placeholder ('SORRY!' / 'If you are the owner of this website, please contact your hosting provider'). No certificate warning on the domain itself.",
+   "screenshot_files": [
+    "screenshot_ajulia_desktop_1440.png",
+    "screenshot_ajulia_mobile_390.png"
+   ],
+   "checked_at": "2026-11-13",
+   "source_url": "https://www.google.com/maps/search/Ajulia+Executive+Search+East+Brunswick+NJ"
+  },
+  {
+   "domain": "jobs.ajuliaexecutivesearch.com",
+   "role": "old job board",
+   "final_url": "https://jobs.ajuliaexecutivesearch.com/",
+   "result": "Chrome error net::ERR_CERT_COMMON_NAME_INVALID - 'Your connection is not private' for jobs.ajuliaexecutivesearch.com; page not loaded, no bypass attempted. A plain HTTP request to the same host returns the cPanel default placeholder page.",
+   "screenshot_files": [
+    "screenshot_jobs_subdomain_cert_error_1440.png"
+   ],
+   "checked_at": "2026-11-13",
+   "source_url": "http://web.archive.org/cdx/search/cdx?url=ajuliaexecutivesearch.com&matchType=domain&output=json&from=20250501&to=20261113&collapse=urlkey&limit=40"
+  },
+  {
+   "domain": "retainedsearch.ajuliaexecutivesearch.com",
+   "role": "alternate",
+   "final_url": "https://retainedsearch.ajuliaexecutivesearch.com/",
+   "result": "Loads a JavaScript-driven sign-in screen: title 'Loading', fields 'Email Address', 'Password', buttons 'LOGIN', 'Forgotten your password?'. No business content visible; not signed in and no credentials entered.",
+   "screenshot_files": [
+    "screenshot_retainedsearch_login_390.png"
+   ],
+   "checked_at": "2026-11-13",
+   "source_url": "https://retainedsearch.ajuliaexecutivesearch.com/"
+  }
+ ],
+ "links_to_broken_domain": [
+  {
+   "place": "Google Business Profile - 'Ajulia Executive Search' (2.5, temp agency, 2 King Arthur Ct #10, North Brunswick Township; website field links to http://ajuliaexecutivesearch.com/)",
+   "url": "https://www.google.com/maps/search/Ajulia+Executive+Search+East+Brunswick+NJ"
+  }
+ ],
+ "rdap": [
+  {
+   "domain": "ajuliaexecutivesearch.com",
+   "registered": "2012-06-14",
+   "expires": "2029-06-14",
+   "last_changed": "2026-06-16",
+   "registrar": "GoDaddy.com, LLC (IANA ID 146); registrant details redacted in RDAP",
+   "source_url": "https://rdap.org/domain/ajuliaexecutivesearch.com"
+  }
+ ],
+ "likely_cause": {
+  "cause": "unclear",
+  "reasoning": "Two candidate explanations, and the public record does not separate them. (1) Lapsed and re-registered or acquired: the real Ajulia WordPress site was archived as recently as 19 April 2025 (homepage) and 14 May 2025 (blog pages), no capture of the root domain exists after that, and today the paths tried serve another company's site; the RDAP record was last changed on 16 June 2026 and the expiry moved out to 14 June 2029, which is also what a fresh multi-year registration in 2026 would look like. (2) Still the firm's but the site is gone or mis-pointed: RDAP shows one continuous record created in 2012 with the domain locked (client delete, renew, transfer and update prohibited) and DNS at Cloudflare (kara/rory.ns.cloudflare.com), while the apex and the jobs subdomain return a cPanel default placeholder page and the jobs subdomain fails its certificate check - the pattern of a hosting account with no site configured and a missing certificate, which can happen when hosting is cancelled or records are repointed. Registrant contact is redacted, so we cannot see who holds the domain; we are not accusing any party.",
+  "inference": true
+ },
+ "fix_steps": [
+  {
+   "step": "Open the GoDaddy account that holds ajuliaexecutivesearch.com and confirm who controls it, that the contact email is one the firm still reads, and that registration stays paid to 14 June 2029. Note the 16 June 2026 change date in the registrar's history.",
+   "who": "Owner or office manager, with whoever handled the website",
+   "effort_hours": "1-2",
+   "source_url": "https://rdap.org/domain/ajuliaexecutivesearch.com"
+  },
+  {
+   "step": "Open the Cloudflare account that holds the domain's DNS (nameservers kara.ns.cloudflare.com and rory.ns.cloudflare.com) and read the records for www, @ and jobs: where each points, and when they last changed. This shows whether the domain was repointed or the old host simply stopped serving the site.",
+   "who": "Whoever holds the DNS login, or the firm's web person",
+   "effort_hours": "1-3",
+   "source_url": "https://dns.google/resolve?name=ajuliaexecutivesearch.com&type=A"
+  },
+  {
+   "step": "Decide based on those two logins: if the domain is no longer the firm's, take the link off the Google profile and directories and register a new domain; if it is still the firm's, repoint www to a host the firm controls, restore the site from the April-May 2025 archive captures, and re-issue the certificate for jobs.ajuliaexecutivesearch.com.",
+   "who": "Owner decides; web person or hosting provider executes",
+   "effort_hours": "2-6",
+   "source_url": "http://web.archive.org/web/20250419191500/https://www.ajuliaexecutivesearch.com/"
+  },
+  {
+   "step": "Claim the Google Business Profile and set one website link, hours, photos and a single address and phone. The profile today is unclaimed, has no hours or photos, shows 2.5 stars, and gives 2 King Arthur Ct #10, North Brunswick, while the state filing lists 51 West Prospect Street, Suite 204, East Brunswick.",
+   "who": "Owner (claiming requires business verification)",
+   "effort_hours": "1-2",
+   "source_url": "https://www.google.com/maps/search/Ajulia+Executive+Search+East+Brunswick+NJ"
+  },
+  {
+   "step": "Publish a small site on the working domain: home, services for employers, current open roles, and a contact page with tap-to-call and a form. Pages archived in April-May 2025 can be reused as a starting point.",
+   "who": "Web person or agency",
+   "effort_hours": "8-20",
+   "source_url": "http://web.archive.org/web/20250419191500/https://www.ajuliaexecutivesearch.com/"
+  },
+  {
+   "step": "Add basic monitoring: uptime and broken-link checks on the website and job board, auto-renew on a card that does not expire, two-factor login on both the registrar and DNS accounts, and a quarterly check of address and phone on the Google profile and main directories.",
+   "who": "Web person sets it up; owner holds the logins",
+   "effort_hours": "1-2",
+   "source_url": "https://rdap.org/domain/ajuliaexecutivesearch.com"
+  }
+ ],
+ "after_fix": {
+  "opportunity": "Claim the Google Business Profile and complete it - hours, photos, services and a working website link - so candidates and employers can find and call the firm directly.",
+  "evidence": "The live listing shows 'Claim this business', 'Add hours', 'Add a photo', no photos, a 2.5 average, a website link that leaves the business entirely, and an address that differs from the state filing.",
+  "source_url": "https://www.google.com/maps/search/Ajulia+Executive+Search+East+Brunswick+NJ"
+ },
+ "severity": "High",
+ "severity_reason": "The website address on the firm's Google profile sends visitors to an unrelated aviation web-design agency, and the old job board subdomain throws a certificate warning, so we found no live page that tells a candidate or an employer what Ajulia does or how to reach it. The domain itself is still registered and paid to 2029, so the situation is fixable, but the business is not represented online today.",
+ "audit_md": "# Website Health Check: Ajulia Executive Search\n\n**What we saw on 13 November 2026**\n- The website address on the Google listing, ajuliaexecutivesearch.com, opens an aviation web-design agency, Airbase1 (https://www.airbase1.com/), on desktop and at phone width. Old Ajulia addresses such as /specialized-search-and-placement/ show the same Airbase1 page.\n- A plain HTTP request to the bare domain, and the old job board at jobs.ajuliaexecutivesearch.com, return a hosting \"Default Web Site Page\"; the job board also stops with a Chrome certificate warning (\"Your connection is not private\").\n- The domain record is current: registered 2012, paid to 14 June 2029, last changed 16 June 2026, registrar GoDaddy, DNS at Cloudflare.\n- The Google profile (2.5, temp agency, 2 King Arthur Ct #10, North Brunswick) still says \"Claim this business\" and has no hours or photos.\n\n**What it means for customers**\nAn employer or candidate who clicks the website link reaches another company's sales page instead of Ajulia, and anyone trying the old job board is stopped by a browser warning. We found no live page that tells a visitor what Ajulia does, which roles it fills, or how to reach a recruiter.\n\n**How to fix it**\n1. Sign in to the GoDaddy account, confirm who controls the domain, and keep it paid to 2029 (1-2 h).\n2. Check the Cloudflare DNS records for www, @ and jobs, and when they last changed (1-3 h).\n3. If the domain is no longer yours, stop linking to it and register a new one; if it is, repoint www and re-issue the job board certificate (2-6 h).\n4. Claim the Google profile and set one website link, hours, photos, address and phone (1-2 h).\n5. Rebuild a small site with services, open roles and tap-to-call, reusing your archived 2025 pages (8-20 h).\n\n**After the fix**\nA claimed profile unlocks hours, photos and posts; today the listing has none of them and a 2.5 average.\n\nPrepared from publicly available information on 13 November 2026. We did not log in to or change anything.",
+ "founder_md": "**Outreach email (draft)**\n\nSubject: Your Google listing's website link goes to an aviation design company\n\nHi [name] - I looked up Ajulia Executive Search today and noticed the website link on your Google listing opens an unrelated aviation web-design agency, while the old job board address stops with a certificate warning. I saved phone and desktop screenshots of exactly what a customer sees, and I can send them over or show you on a screen. If it helps, I can also list which places still point at that domain so you can decide whether to recover it or move to a new address.\n\n**Walk-in / phone opener**\n\nHi - I was checking your Google listing and the website link takes people to an aviation design company instead of Ajulia; I have screenshots of it, can I show you?\n\n**Sources**\n- Google Business Profile: https://www.google.com/maps/search/Ajulia+Executive+Search+East+Brunswick+NJ\n- Domain registration record (RDAP): https://rdap.org/domain/ajuliaexecutivesearch.com\n- Public DNS for the apex: https://dns.google/resolve?name=ajuliaexecutivesearch.com&type=A\n- Wayback capture of the old homepage (19 Apr 2025): http://web.archive.org/web/20250419191500/https://www.ajuliaexecutivesearch.com/\n- Wayback index of old pages and the jobs subdomain: http://web.archive.org/cdx/search/cdx?url=ajuliaexecutivesearch.com&matchType=domain&output=json&from=20250501&to=20261113&collapse=urlkey&limit=40\n- Live break: https://www.ajuliaexecutivesearch.com/ (lands on https://www.airbase1.com/); https://jobs.ajuliaexecutivesearch.com/ (certificate error); https://retainedsearch.ajuliaexecutivesearch.com/ (sign-in screen)\n- NJDOL stop-work order, 13 May 2025: https://www.nj.gov/labor/lwdhome/press/2025/20250513_Stop_Work.shtml\n- Career.com posting (title only, human check): https://www.career.com/job/ajulia-executive-search/division-manager/j202608060553049580162\n- Directory records checked: https://www.clearlyrated.com/staffing/nj-usa/new-brunswick-nj/ajulia-executive-search-new-brunswick-nj and https://reviews.birdeye.com/ajulia-executive-search-154981789494430\n- Screenshots in this folder: screenshot_ajulia_desktop_1440.png, screenshot_ajulia_mobile_390.png, screenshot_google_maps_listing_1440.png, screenshot_jobs_subdomain_cert_error_1440.png, screenshot_retainedsearch_login_390.png\n\n**Open questions**\n- Who holds the GoDaddy login for ajuliaexecutivesearch.com, and who paid the renewal that runs to 14 June 2029?\n- Who holds the Cloudflare DNS account, and what changed on 16 June 2026?\n- Was the domain ever allowed to lapse, or was it sold or handed to a web vendor at some point?\n- Is web hosting still being paid for, and by whom?\n- Is the firm trading now, and what is the status of the April 2025 stop-work order?\n- Which address and phone number are correct for customers today?\n- Does the retainedsearch sign-in portal still matter, and does the jobs board need to exist?",
+ "caveats": [
+  "The registrant of ajuliaexecutivesearch.com is redacted in RDAP, so who holds the domain today is unknown; the likely cause is an inference from public records, not a finding.",
+  "Whether the New Jersey stop-work order of 21 April 2025 is still in force could not be confirmed from public sources; the NJDOL release says an order stays in place until the liability is paid in full, and no later notice was found.",
+  "Current trading activity is inferred from a live 2026 job posting page at career.com (title only; the page itself sat behind a human check) and from the Google place page; no dated 2026 statement from the firm was found.",
+  "Screenshots show the pages as a logged-out visitor saw them on 13 November 2026."
+ ],
+ "data_gaps": [
+  "LinkedIn company page (linkedin.com/company/ajuliaexecutivesearch) returned a Cloudflare 'Performing security verification' page; its website field could not be checked.",
+  "BBB profile (bbb.org .../ajulia-executive-search-0221-90207584) returned a 'Just a moment...' bot check; its website field could not be read.",
+  "Indeed company page and YellowPages returned HTTP 403; their site fields are unverified.",
+  "career.com job page sits behind a human-verification screen; only the page title was readable, so the posting date is unconfirmed.",
+  "No public Wayback capture of ajuliaexecutivesearch.com exists after 14 May 2025, so the date the site changed could not be established.",
+  "Registrant and admin contacts are redacted in RDAP; the GoDaddy and Cloudflare account histories are not public.",
+  "retainedsearch.ajuliaexecutivesearch.com is a login screen; we did not sign in, so what it holds is unknown."
+ ]
+}

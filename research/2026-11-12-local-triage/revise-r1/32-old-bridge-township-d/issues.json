@@ -1,0 +1,67 @@
+[
+ {
+  "claim": "Five listed businesses are presented as Old Bridge Township addresses but sit in Sayreville Borough: Carmen F. Spezzi Funeral Home (15 Cherry Lane, Parlin), Paul's Toy Room (3322 Washington Road, Parlin), Priscilla Jewelry (3225 Washington Road, Parlin), Kidzland Child Care Center (777 Washington Road, Parlin), The Peace Rose Montessori School (3079 Bordentown Avenue, Parlin).",
+  "problem": "Out of zone. The US Census Geocoder returns county subdivision 'Sayreville borough' for all five addresses, and OpenStreetMap address points agree (15 Cherry Ln, 3322 and 777 Washington Rd, 3079 Bordentown Ave all tag 'Sayreville'). Sayreville is a separate municipality from Old Bridge Township, so these are not zone-D prospects for this town. The zone file's own caveat already conceded Washington Road 'is generally Sayreville' and kept the entries anyway.",
+  "fix": "Remove all five from this zone file (or move them to a Sayreville/Parlin zone). For comparison, 3008 and 3018 Bordentown Avenue in the same file DO geocode to Old Bridge township, so the municipal line on that road falls between the low 3000s and 3079."
+ },
+ {
+  "claim": "Happy Home Appliances, 1071 US Highway 9, Old Bridge, (732) 952-5260.",
+  "problem": "One of the mapper's own cited sources contradicts the location: the NJTGO Old Bridge directory entry states 'Location under review: official website lists Sayreville, not the Old Bridge shopping plaza.' No opened source shows this dealer at 1071 Route 9.",
+  "fix": "Verify the storefront directly (or drop). If the official site says Sayreville, treat as out of zone."
+ },
+ {
+  "claim": "Old Bridge Chemicals Inc (Old Bridge Minerals), 554 Waterworks Road, website https://oldbridgeminerals.com/.",
+  "problem": "Address is fine (Census Geocoder: 554 Water Works Rd = Old Bridge township), but the website attribution is unverified. oldbridgeminerals.com brands itself 'Old Bridge Minerals', carries no address or corporate identification on the pages opened, and never names 'Old Bridge Chemicals Inc'. The chemical maker at 554 Waterworks Road is separately documented (EPA label listing, DOJ references to it as a predecessor at the CPS/Madison site) without any website.",
+  "fix": "Either cite a page that ties the domain to the 554 Waterworks Road entity, or set website to blank/Unknown for Old Bridge Chemicals."
+ },
+ {
+  "claim": "Ink'd Greetings, 1183 Englishtown Road, Old Bridge, phone (480) 672-2262, evidence 'map listing (no reviews yet)'.",
+  "problem": "The only cited source is a Google Maps search URL, which is not a business page and cannot be re-opened as evidence. No directory, site or listing returned by my searches shows this shop at that address, and the phone is an Arizona area code. Appears to be an unverifiable or home-based listing.",
+  "fix": "Drop unless a real business page (own site, chamber, licence or current directory profile) is found."
+ },
+ {
+  "claim": "Forman Industries, Old Bridge, no address, no phone, sources Nextdoor page plus a Yellow Pages record.",
+  "problem": "No address, phone, website or trade is established; it cannot be confirmed as an operating business in the zone, and an entry with no address cannot be triaged or contacted.",
+  "fix": "Drop, or hold in a 'needs identification' bucket until an address and trade are found."
+ },
+ {
+  "claim": "Best Home Furnishings, 1038 US Highway 9, Old Bridge, (732) 721-5401.",
+  "problem": "The mapper's own primary source (NJTGO Old Bridge directory) lists 1038 Route 9 as the Dollar Tree store. The only evidence for this entry is one iBegin category page; no furniture retailer at 1038 Route 9 could be confirmed on any opened page.",
+  "fix": "Drop unless a current listing or storefront evidence shows a furniture store at that address."
+ },
+ {
+  "claim": "Circle Motor Lodge (1 Victory Court) and Desi Inn (39 Thomas Street) as independent Old Bridge lodging.",
+  "problem": "Both rest on a single Yellow Pages category page; Desi Inn appears only inside a bed-and-breakfast category list and no site, review set or booking page confirms it operates. Both addresses are correctly in Old Bridge township, but current activity is unproven.",
+  "fix": "Keep only if a current listing with hours/reviews or a working phone confirms operation; otherwise drop from the outreach list."
+ },
+ {
+  "claim": "Old Bridge Columbian Club, 61 Pine Street, 'event / hall rental'.",
+  "problem": "It is the Knights of Columbus hall - a Catholic fraternal organisation renting its hall - and the site's newest promoted events are 2021 (pro wrestling) and a February 2024 dinner, so current activity is unproven. Borderline against the worship / religious-organization exclusion.",
+  "fix": "Verify it is still booking events before including; if kept, label it explicitly as a fraternal-org hall so triage can make the exclusion call knowingly."
+ },
+ {
+  "claim": "Good Shepherd Children's Center, 3139 County Road 516 (church-linked preschool).",
+  "problem": "Licensed and operating (NJDCF list of 11/1/2026: capacity 150, ages 2.5-13, phone matches), but the site links to its parent church (gs4nj.org), i.e. it is a church-run program. Not a church itself, so probably eligible, but the exclusion call should be made explicitly.",
+  "fix": "Keep as a child-care business but record the church affiliation in notes."
+ },
+ {
+  "claim": "Chain / franchise exposure: PetCenter Old Bridge and Old Bridge Cardsmart.",
+  "problem": "PetCenter is a multi-store New Jersey pet chain (the file itself calls it 'a locally owned small NJ pet-store group') and Cardsmart & Gift describes itself as having grown from its first corporate store - both are small regional chains rather than one-shop independents.",
+  "fix": "Decide explicitly whether the chain rule means national brands only; if so, keep both but tag them 'regional chain' so scoring is consistent across zones."
+ },
+ {
+  "claim": "Coverage of independent retail and services.",
+  "problem": "Coverage clears the 70% bar but leaves obvious independents in categories the file already covers: Academy of Music in Old Bridge (3883 Highway 516) alongside the single music school listed; Evergreen Production (4970 Bordentown Ave) and Aarius Studios (4420 Bordentown Ave) in photography; and the independent pharmacy cluster on Route 516/Route 9 (Southwood Pharmacy, ACE-Rx Specialty Pharmacy, Woodlane Pharmacy, Old Bridge Drugs & Surgicals, Wellness Center Pharmacy) is absent entirely.",
+  "fix": "Add the music school and the two photography/video studios (verify first); confirm whether independent pharmacies belong to group D and, if so, add the Route 516/Route 9 independents."
+ },
+ {
+  "claim": "Contact-data completeness on otherwise sound entries.",
+  "problem": "Several confirmed entries omit published contact data: Mervat's Bridal shows 732-696-2816 on its own contact page while the file says 'Unknown'; Eye Atelier Eyewear has its own site (eyeatelier.com) while the file leaves website blank; MuSen Photography's listed URL is only its booking subdomain (main site musenphotos.com); Grooming by Jessie has groomingbyjessie.com while the file leaves website blank.",
+  "fix": "Fill these in from the businesses' own pages - this directly affects outreach readiness."
+ },
+ {
+  "claim": "Judgement calls in the file that checked out (recorded so they are not re-litigated).",
+  "problem": "Nothing wrong: Route 34 addresses here really are Old Bridge Township despite Matawan mailing addresses (Census Geocoder puts 419, 432 and 443 State Route 34 in 'Old Bridge township'), so Old Bridge School of Dance, Matawan Montessori Academy and BridgeLife Thrift are correctly in zone; Tots & Blocks, Good Shepherd, Mae Field, Parents Choice, Happy Days and Garden Friends all match the state licensed-centre list exactly; A1A and All Over driving schools match the 2025 MVC list including licence numbers.",
+  "fix": "No action."
+ }
+]

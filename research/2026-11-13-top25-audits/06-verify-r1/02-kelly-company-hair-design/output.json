@@ -1,0 +1,178 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Section 1: \"five footer links are dead\"",
+      "problem": "Miscount. The footer \"Quick Menu\" has six links (Home/index.html, About Us/about.html, Services/services.html, Special Offers/special-offers.html, Contact Us/contact.html, Book Online/booking.html) and every one of them returns the WordPress 404 page (verified by fetching all six root .html paths: about.html, index.html, services.html, special-offers.html, contact.html, booking.html). The header logo link also points at index.html.",
+      "fix": "Change to \"six footer links are dead (home, about, services, special offers, contact and booking)\" or \"all six footer-menu links\"; the analysis.json count needs the same correction."
+    },
+    {
+      "claim": "For-the-founder notes: \"No booking volume, menu price, headcount or review count is published\"",
+      "problem": "Overstated. Review counts are publicly visible: Bing's card for the address shows a Yelp listing at 4.0/5 from 4 reviews, and the salon's Facebook page shows \"100% recommend (11 reviews)\" (both already recorded in profile.json). Only Google's review count is hidden in the signed-out Maps view.",
+      "fix": "Say \"no menu prices, booking volumes or headcount are published, and Google's review count is not visible in the signed-out view\"."
+    },
+    {
+      "claim": "Section 2: \"two ways in — the phone and a callback-only request form\"",
+      "problem": "Incomplete. /contact-us/ also carries a general \"Send a Message\" form (Contact Form 7), so a visitor has a third way to send an enquiry; the researcher's own profile notes this second form.",
+      "fix": "Say \"for bookings, two ways in — the phone and a callback-only request form\" (and note the general contact form on /contact-us/)."
+    },
+    {
+      "claim": "Section 3 impact: \"10–26 staff hours ... = about $217–$564\"",
+      "problem": "Minor arithmetic inconsistency: 0.2 hrs/week x 52 weeks = 10.4 hours, so the low end is $225.89 at $21.72/hr, not $217.20 (that figure uses a flat 10 hours). The error understates, so it is safe, but the two endpoints imply different hour counts.",
+      "fix": "Use 10.4 hours -> about $226–$565, or state the assumption as \"0.2–0.5 hours a week, i.e. roughly 10–26 hours a year\"."
+    },
+    {
+      "claim": "Method framing of the dollar ranges (1.25x benefits on saved staff hours; \"100% share automated\")",
+      "problem": "Transparently labelled as assumptions, but loading 25% benefits onto saved hours and assuming 100% automation of the estimated time presents a labour-cost equivalent rather than cash the salon would keep; a reader could read it as realisable savings.",
+      "fix": "Keep the arithmetic but relabel as \"labour-cost equivalent of about $X, if the time is fully automated and hours are actually cut\" — one clause is enough."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Business name \"Kelly & Company Hair Design\" at Milltown, NJ",
+      "source_url": "https://www.google.com/maps/search/Kelly+%26+Company+Hair+Design+89+N+Main+St+Milltown+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nine services, from haircuts to lash extensions, manicure and pedicure",
+      "source_url": "https://kellyhairdesign.com/services/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "4.8-star Google rating, category \"Hair salon\"",
+      "source_url": "https://www.google.com/maps/search/Kelly+%26+Company+Hair+Design+89+N+Main+St+Milltown+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google listing still offers \"Claim this business\"",
+      "source_url": "https://www.google.com/maps/search/Kelly+%26+Company+Hair+Design+89+N+Main+St+Milltown+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site was rebuilt in August 2026",
+      "source_url": "https://kellyhairdesign.com/page-sitemap.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "11 of 11 booking-page images fail",
+      "source_url": "https://kellyhairdesign.com/booking/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Five footer links are dead",
+      "source_url": "https://kellyhairdesign.com/about.html",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Home page has no title",
+      "source_url": "https://kellyhairdesign.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A \"Hello world!\" post is live",
+      "source_url": "https://kellyhairdesign.com/hello-world/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Only two ways in: phone and a callback-only request form",
+      "source_url": "https://kellyhairdesign.com/booking/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "No prices or live availability published",
+      "source_url": "https://kellyhairdesign.com/services/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Closed Sunday and Monday (Tue-Fri 10-8, Sat 9-4)",
+      "source_url": "https://kellyhairdesign.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Services page says every hair treatment starts with a hair analysis",
+      "source_url": "https://kellyhairdesign.com/services/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Page source shows no client-record tool",
+      "source_url": "https://kellyhairdesign.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The one visible complaint is colour and length, not billing",
+      "source_url": "https://www.bing.com/maps?q=Kelly+%26+Company+Hair+Design+89+N+Main+St+Milltown+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "O*NET NJ receptionist median $20.02/hour, BLS 2025 wage data",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "O*NET NJ hairdresser median $17.38/hour, BLS 2025 wage data",
+      "source_url": "https://www.onetonline.org/link/localwages/39-5012.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "$25.02/hour = $20.02 x 1.25 (benefits, our assumption), rounded down",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "$21.72/hour = $17.38 x 1.25 (benefits, our assumption), rounded down",
+      "source_url": "https://www.onetonline.org/link/localwages/39-5012.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Opportunity 1: 52-156 hours a year = about $1,301-$3,903",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Opportunity 2: 208-520 hours a year = about $5,204-$13,010",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Opportunity 3: 10-26 hours a year = about $217-$564",
+      "source_url": "https://www.onetonline.org/link/localwages/39-5012.00?st=NJ",
+      "result": "not found"
+    },
+    {
+      "claim": "Audit check date \"13 Nov 2026\" and email \"On 13 November\"",
+      "source_url": "https://kellyhairdesign.com/booking/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email: booking-page images, empty home-page title and dead footer links were still there on 13 November after the August rebuild",
+      "source_url": "https://kellyhairdesign.com/booking/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Walk-in opener: booking-page images broken and Google profile invites visitors to claim it",
+      "source_url": "https://www.google.com/maps/search/Kelly+%26+Company+Hair+Design+89+N+Main+St+Milltown+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Notes: opportunity 1's 1-3 hours a week sit inside opportunity 2's 4-10, so alternatives not add-ons",
+      "source_url": "https://kellyhairdesign.com/booking/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Notes: no booking volume, menu price, headcount or review count is published",
+      "source_url": "https://www.bing.com/maps?q=Kelly+%26+Company+Hair+Design+89+N+Main+St+Milltown+NJ",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Audit body length at most ~450 words (counted body only, headings included, excluding the founder section and sources): ~437 words",
+      "source_url": "https://kellyhairdesign.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Privacy: no names, phone numbers or review quotes of private individuals in audit or founder section",
+      "source_url": "https://www.bing.com/maps?q=Kelly+%26+Company+Hair+Design+89+N+Main+St+Milltown+NJ",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

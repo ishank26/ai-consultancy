@@ -1,0 +1,444 @@
+{
+ "avenue": "other-local-physical-services",
+ "one_line": "Pick: AI gate-and-after-hours monitoring for independent self-storage facilities (NAICS 531130) - local installer runs an on-prem vision stack over the operator's existing cameras and access-control log; runner-ups are 24/7 unstaffed gyms/studios and unattended laundromats.",
+ "problem": {
+  "summary": "THREE MINI-BRIEFS. (1) SELF-STORAGE - STRONGEST. A facility is a locked box of other people's property staffed by roughly two people, often one, usually 9-5, while tenants have gate codes and drive in alone. The recurring failure is an access-control bypass: one tenant's code admits a second vehicle (tailgate), a man-door is propped, or a code survives a move-out. Nobody sees it live, so the only control is a post-incident footage review that takes hours and usually ends in 'file it with your tenant insurance'. Operators already own cameras (about 99% of surveyed facilities) but not detection, so the product is not cameras - it is an exception feed tied to the gate log plus someone to call. (2) 24/7 GYMS AND STUDIOS. Unstaffed hours plus a posted occupant load create two problems: nobody knows live headcount against the certificate-of-occupancy limit, and nobody knows a member is down on the floor at 2am. Vendors already sell camera-based occupancy cheaply, so the opening is the emergency/after-hours exception layer and the incident record, not the counting. (3) LAUNDROMATS. Unattended stores, cash, and machines that sit out of service for days. Attendant rules are municipal, not statewide, so many stores run unattended overnight; the value is after-hours exception detection (loitering/sleeping in store, spill, door propped, dumpster) plus a camera-based out-of-service flag, because machine telemetry is already owned by the payment vendors. Full evidence and numbers in the evidence array, tagged by candidate.",
+  "evidence": [
+   {
+    "fact": "[SELF-STORAGE] The U.S. has roughly 58,000 self-storage facilities totaling about 2.7 billion rentable square feet (2025 Self Storage Almanac, cited in a public REIT's SEC filing).",
+    "year": "2025",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1585389/000119312526170672/d63368dars.pdf"
+   },
+   {
+    "fact": "[SELF-STORAGE] 18,564 employer establishments with 48,382 paid employees in 2023 - about 2.6 employees per facility, with 91.4% of establishments having fewer than five employees. (Secondary analysis of Census County Business Patterns; establishments with no payroll are not counted.)",
+    "year": "2023",
+    "source_url": "https://mmcganalytics.com/articles/self-storage-demand-analysis/"
+   },
+   {
+    "fact": "[SELF-STORAGE] Operator survey of 100+ facilities (Sept 2025): ~99% already use surveillance cameras, ~54% are 'extremely concerned' about crime, 32% said crime at their facility had increased over the year, and 89% said crime hurts the sector's public image. Concerns are self-reported, not an incident rate.",
+    "year": "2025",
+    "source_url": "https://www.modernstoragemedia.com/msm-exclusives/crime-crackdown-msm-survey-reveals-fewer-incidents-more-security?hs_amp=true"
+   },
+   {
+    "fact": "[SELF-STORAGE] One Memphis facility generated 146 reported burglary claims in 44 months - roughly 3.3 per month - equal to over $255,000 in claims payouts, before hasp/door repairs and staff time (tenant-insurance claims data reported by OpenTech/Xercor).",
+    "year": "2022",
+    "source_url": "https://opentechalliance.com/blog/devon-self-storage-sees-67-100-decrease-in-burglary-claims-with-insomniac-smarteye/"
+   },
+   {
+    "fact": "[SELF-STORAGE] Counting is structurally understated: under the FBI NIBRS 'hotel rule', police report one burglary for a rental-storage facility even when many units are hit (up to 99 units per event), so a 20-unit break-in looks like one crime.",
+    "year": "2025",
+    "source_url": "https://www.modernstoragemedia.com/msm-exclusives/crime-crackdown-msm-survey-reveals-fewer-incidents-more-security?hs_amp=true"
+   },
+   {
+    "fact": "[SELF-STORAGE] Trade cost benchmarks for a new facility: $300-$400 per camera installed, $7,700-$30,000 per access-control system installed, $50-$250 per door for alarms/electronic locks, and $95-$150 per month for security software.",
+    "year": "2024 (page undated; author is PTI Security Systems)",
+    "source_url": "https://www.insideselfstorage.com/security/planning-your-self-storage-security-budget"
+   },
+   {
+    "fact": "[SELF-STORAGE] Ability to pay anchor: Public Storage same-store 2025 results of about $21.50 revenue and $16.15 net operating income per rentable square foot per year. A 50,000 sq ft independent facility at that rate would be roughly $1.0M revenue and $800k NOI (inference - arithmetic on REIT portfolio figures, not an independent-facility average).",
+    "year": "2025",
+    "source_url": "https://www.sec.gov/Archives/edgar/data/1393311/000119312526129096/d49333dars.pdf"
+   },
+   {
+    "fact": "[SELF-STORAGE] Middlesex County had 43 self-storage establishments in 2023 (secondary market-summary page citing Census data - not verified against the Census table itself).",
+    "year": "2023",
+    "source_url": "https://feasibility-study-company.com/states/new-jersey/middlesex-county/"
+   },
+   {
+    "fact": "[GYMS] U.S. fitness-facility members averaged 81 visits in 2023 (about 6.8/month), up from 72 in 2021 but well below 119 in 2019 - so most members are absent most days, which is exactly why per-visit detection, not membership count, is the usable signal.",
+    "year": "2023 data, reported 2024",
+    "source_url": "https://ebs.publicnow.com/view/7D452B9FB54426FF9ABC479313A6ED69FBD8340D"
+   },
+   {
+    "fact": "[GYMS] In a 12-month study of 1,726 new members, average attendance fell from 7.48 visits in month one to 0.92 in month 12; attending at least once in a month was associated with a ~20% lower likelihood of cancelling.",
+    "year": "2020",
+    "source_url": "https://doi.org/10.1016/J.PSYCHSPORT.2020.101771"
+   },
+   {
+    "fact": "[LAUNDROMATS] About 29,500 U.S. coin laundries generating roughly $5B in annual gross revenue (industry association estimate); the association's 2024 operator survey reported median gross revenue of $335,000 for 2023 and a 25.5% average net margin.",
+    "year": "2023 data / 2024 survey",
+    "source_url": "https://laundryassociation.org/for-investors/industry-overview/"
+   },
+   {
+    "fact": "[LAUNDROMATS] No statewide New Jersey attendant requirement was found; attendant rules appear in municipal ordinances (e.g. an attendant required while open in one town, an attendant present-or-on-call in another), so unattended overnight operation is common and legally uneven by town.",
+    "year": "2022-2025 (ordinances)",
+    "source_url": "https://orangetwpnjcc.org/wp-content/uploads/2022/10/Ordinance-57-2022-Laundries-Dry-Cleaning-Establishments.pdf"
+   },
+   {
+    "fact": "[ALL] New Jersey minimum wage rose to $15.92/hour for most employees on January 1, 2026 - the labor-cost baseline for any shift (night attendant, front desk, monitoring) that the system is meant to reduce.",
+    "year": "2026",
+    "source_url": "https://nj.gov/labor/lwdhome/press/2025/20251001_Minimum_Wage.shtml"
+   }
+  ]
+ },
+ "buyers": [
+  {
+   "business_type": "Independent self-storage / mini-warehouse operators (strongest; scored below)",
+   "naics": "531130 - Lessors of miniwarehouses and self-storage units",
+   "size_where_it_matters": "1-10 facilities per owner, 30k-100k rentable sq ft per site, 1-5 staff per site. Matters as soon as the site offers gate-code or 24/7 access, because that is when a staffed desk stops being the control.",
+   "why": "Already spent capital on cameras and access control (roughly $300-400/camera installed, $7.7k-30k on access control), already buys tenant insurance, has a documented dollar loss per burglary claim, and has nobody on site at night to act on an alert."
+  },
+  {
+   "business_type": "24/7 unstaffed gyms, CrossFit boxes, martial-arts and dance studios",
+   "naics": "713940 - Fitness and recreational sports centers",
+   "size_where_it_matters": "1,500-15,000 sq ft, 3-25 staff, key-fob or app entry outside staffed hours. Matters when the owner has removed the front desk at night or is running multiple small studios off one manager.",
+   "why": "Occupant-load limits and emergency response both become unobservable once staff leave; attendance data is also the retention signal owners already pay software for."
+  },
+  {
+   "business_type": "Coin laundromats and wash-and-fold stores",
+   "naics": "812310 - Coin-operated laundries and drycleaners",
+   "size_where_it_matters": "1-3 stores per owner, 20-80 machines, 0-3 staff, often unattended overnight or early morning. Matters when the store is unattended, which is the norm where no municipal ordinance requires an attendant.",
+   "why": "Cash on site, no staff overnight, machines sitting out of service, and insurance treatment that penalizes unattended operation; but the machine-telemetry layer is already owned by payment vendors, so the opening is after-hours exceptions and out-of-service flags."
+  },
+  {
+   "business_type": "Veterinary clinics and boarding/daycare kennels (considered, not shortlisted)",
+   "naics": "541940 - Veterinary services",
+   "size_where_it_matters": "3-20 vets, overnight boarding or hospitalization wards.",
+   "why": "Real overnight monitoring need, but clinical vital-sign monitoring already has specialist vendors (e.g. contactless kennel monitors) and the liability of a missed patient event is high; wrong first avenue for a generalist installer."
+  },
+  {
+   "business_type": "Garden centers and retail nurseries (considered, not shortlisted)",
+   "naics": "444240 - Nursery, garden center, and farm supply retailers",
+   "size_where_it_matters": "1-5 acres retail yard, seasonal staffing.",
+   "why": "Plant counting from imagery is a genuinely hard dense-scene vision problem, and existing tools are photo-upload or drone based rather than fixed-camera; better as a later specialty than a first product."
+  },
+  {
+   "business_type": "Parking lots and self-storage-adjacent surface parking (considered, not shortlisted)",
+   "naics": "812930 - Parking lots and garages",
+   "size_where_it_matters": "50-500 spaces.",
+   "why": "LPR and occupancy analytics are already a mature, cheap vendor category ($20-$45/camera/month for LPR), leaving little room for a local integrator beyond install labor."
+  }
+ ],
+ "existing_solutions": [
+  {
+   "vendor": "OpenTech Alliance",
+   "product": "INSOMNIAC SmartEye (AI detection + live Virtual Security Team)",
+   "what_it_does": "Runs on a facility's existing CCTV, detects suspicious activity, and has staff speak through facility speakers and dispatch police; used at 350+ self-storage facilities. Tiers from core overnight coverage on four cameras up to unlimited-camera portfolios.",
+   "pricing": "From $279/month, plus onboarding fees; varies by tier and term",
+   "source_url": "https://opentechalliance.com/blog/new-ai-security-monitoring-tiers/"
+  },
+  {
+   "vendor": "Rhombus",
+   "product": "Cloud-managed smart cameras + AI analytics + alarm monitoring",
+   "what_it_does": "Purpose-built cloud cameras with on-device analytics, sensors, access control and Five Diamond dispatcher monitoring; StorQuest uses it to support unstaffed 24/7 'Express' sites.",
+   "pricing": "MSRP $399 (R120 dome) + $149 license = $548 per camera; higher models to $1,699 + license",
+   "source_url": "https://www.rhombus.com/pricing/"
+  },
+  {
+   "vendor": "Surveillant",
+   "product": "AI video surveillance on existing RTSP/ONVIF cameras",
+   "what_it_does": "Cloud analysis of existing camera streams for detection, alerts and natural-language video search; publishes a self-storage solution page.",
+   "pricing": "$75/camera/month on multi-camera plans ($149/mo for 2, $449/mo for 6); single camera $49/mo; about $24-25/camera/month billed yearly",
+   "source_url": "https://surveillant.ai/pricing"
+  },
+  {
+   "vendor": "Agentinosaurus",
+   "product": "Self-storage camera monitoring",
+   "what_it_does": "Monitors existing network cameras for events such as propped doors and vehicles following through gates, using a local station plus the customer's own AI-provider key.",
+   "pricing": "$9/camera/month (plus local station and own AI key)",
+   "source_url": "https://www.agentinosaurus.com/en/industries/self-storage"
+  },
+  {
+   "vendor": "CountPort",
+   "product": "Gym/studio occupancy and zone analytics",
+   "what_it_does": "Reads the gym's existing entrance and floor cameras for visits, peak hours, live headcount against a capacity limit, zone use and dwell; states no facial recognition and in-store analysis.",
+   "pricing": "From $29/camera/month; $39 on Pro; example 3-camera gym $117/month monthly, $96/month billed yearly",
+   "source_url": "https://countport.com/industries/gyms-fitness"
+  },
+  {
+   "vendor": "PayRange",
+   "product": "Laundry cashless payment + machine management",
+   "what_it_does": "Machine-level cashless payment and remote management; the de facto owner of laundromat machine telemetry and therefore of the machine-status data an AI layer would want.",
+   "pricing": "About $0.99-$1.50 per machine per week plus $35 one-time activation per new device (roughly $4.29-$6.50/machine/month)",
+   "source_url": "https://payrange.com/payrange-pricing-plans/"
+  },
+  {
+   "vendor": "The Laundry Boss",
+   "product": "Machine Interface Boards (MIBs)",
+   "what_it_does": "Boards that expose real-time machine status, cycle tracking and remote start for route and self-service laundry operations.",
+   "pricing": "$5 per machine per month",
+   "source_url": "https://thelaundryboss.com/products/mibs/"
+  },
+  {
+   "vendor": "V-Count",
+   "product": "Dedicated people-counting sensors + analytics",
+   "what_it_does": "Purpose-built 3D/AI sensors for entrance counting and occupancy, an alternative when existing cameras are badly placed.",
+   "pricing": "$299-$799 per sensor plus $9-$49/sensor/month",
+   "source_url": "https://v-count.com/pricing/"
+  }
+ ],
+ "gap_for_local_installer": "The cloud analytics vendors are cheap per camera ($9-$75/camera/month) and deliberately hardware-agnostic, which means they never fix the two things that actually decide whether a self-storage operator gets value: (a) camera placement and night image quality at the gate, the man-doors and the drive aisles, and (b) the join between the vision events and the access-control log, so a 'person at the gate with no credentialed entry' becomes an exception instead of another clip to scrub. A local installer can own site survey, mounting, lighting, an on-prem box that keeps video on site, the access-log join, and a call list / escalation agreement - sold as a project plus a small support retainer rather than a per-camera SaaS. The vendors will not send a technician to East Brunswick for a 30-camera site, and the operator does not want to become an integrator. Do not compete on per-camera analytics price and do not compete with the access-control incumbents (PTI, QuikStor) on gates and keypads - sell into their install base.",
+ "technical_approach": {
+  "established_pattern": "RTSP/ONVIF cameras -> local recorder with an object detector on an edge accelerator -> multi-object tracking -> zone and line-crossing rules (gate lane, man-door, drive aisle, dumpster) -> event correlated against the access-control entry log -> alert to a phone/intercom/dispatcher, plus a short clip and a plain-language description for triage. Video stays on the box; only events and clips leave. A small vision-language model is used only to describe or rank review clips, never to decide an enforcement action, and a human confirms before anyone is confronted.",
+  "models_and_tools": [
+   {
+    "name": "Frigate (open-source NVR)",
+    "role": "The whole local pipeline: camera ingest, detectors, zones, object tracking, review items, notifications, and optional GenAI descriptions and semantic search over recorded clips.",
+    "source_url": "https://docs.frigate.video/"
+   },
+   {
+    "name": "Hailo-8 / Hailo-8L accelerator, default model YOLOv6n",
+    "role": "Edge detector; Frigate's Hailo integration auto-selects YOLOv6n as the default model and reports roughly 7 ms (Hailo-8) / ~11 ms (Hailo-8L) inference for it, so one box keeps up with many 1080p streams.",
+    "source_url": "https://docs.frigate.video/frigate/hardware/"
+   },
+   {
+    "name": "Qwen3-VL (e.g. qwen3-vl:4b) served by Ollama",
+    "role": "The vision-language layer Frigate documents for object descriptions, review summaries and chat; the docs recommend pulling the model first and warn that CPU-only inference is impractical, so budget a GPU or a small discrete card.",
+    "source_url": "https://docs.frigate.video/configuration/genai/genai_config/"
+   },
+   {
+    "name": "LFM2.5-VL-3B (Liquid AI)",
+    "role": "Alternative small VLM for clip description and false-alert triage; vendor states about 3 GB memory and lists llama.cpp/GGUF, MLX, vLLM and ONNX runtimes, with 1.6B and 450M variants for tighter edge boxes.",
+    "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b"
+   },
+   {
+    "name": "Cactus (on-device inference framework)",
+    "role": "Option for a phone/tablet side app (manager walkthroughs, on-site verification) running small vision models locally without a server round trip.",
+    "source_url": "https://github.com/cactus-compute/cactus"
+   },
+   {
+    "name": "OpenVINO detector (Intel iGPU/NPU)",
+    "role": "Frigate detector path that runs on Intel integrated graphics/NPU, letting a single N100/N305-class mini PC do detection without a discrete accelerator.",
+    "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+   },
+   {
+    "name": "Google Coral EdgeTPU",
+    "role": "Still supported but Frigate now says it is no longer recommended for new installs except under low-power or hardware constraints - a reason to standardize on Hailo instead.",
+    "source_url": "https://docs.frigate.video/frigate/hardware/"
+   },
+   {
+    "name": "Ultralytics YOLO11",
+    "role": "Detector family if you ship a custom model rather than the default; vendor documentation compares it against YOLOv8. Treat vendor accuracy comparisons as marketing.",
+    "source_url": "https://docs.ultralytics.com/compare/yolo11-vs-yolov8"
+   }
+  ],
+  "hardware": [
+   {
+    "item": "4MP PoE turret camera (Dahua/EmpireTech IPC-T54IR-AS class, 1/1.8in sensor for night)",
+    "approx_cost": "$160-$220 each (retail listings, Nov 2026)",
+    "source_url": "https://empiretech01.com/products/empiretech-ipc-t54ir-as-1-1-8-cmos-4mp-ir-fixed-focal-eyeball-network-camera"
+   },
+   {
+    "item": "Camera installed, contractor benchmark for self-storage",
+    "approx_cost": "$300-$400 per camera installed (camera + labor)",
+    "source_url": "https://www.insideselfstorage.com/security/planning-your-self-storage-security-budget"
+   },
+   {
+    "item": "Raspberry Pi AI Kit (M.2 HAT+ with 13 TOPS Hailo-8L)",
+    "approx_cost": "$70 at launch",
+    "source_url": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/"
+   },
+   {
+    "item": "Mini PC host (Beelink EQi13 class, dual NIC for an isolated camera VLAN)",
+    "approx_cost": "$539 list on Beelink's US store; the Frigate doc author's N100-class Beelink EQ13 was reported around $249.99 on pre-order",
+    "source_url": "https://us.bee-link.com/products/beelink-eqi13"
+   },
+   {
+    "item": "Managed PoE switch, UPS, cabling, small SSD/NAS for 30-day retention",
+    "approx_cost": "Unknown publicly; budget $300-$900 per site (inference - no source for a packaged price)",
+    "source_url": "https://docs.frigate.video/frigate/hardware/"
+   },
+   {
+    "item": "Cloud-camera alternative for comparison (Rhombus R120)",
+    "approx_cost": "$548 per camera MSRP including license",
+    "source_url": "https://www.rhombus.com/pricing/"
+   }
+  ],
+  "fine_tuning_needed": "No, not for the core product. Person/vehicle detection plus zone geometry plus the access-control log covers gate tailgating, propped doors, after-hours presence and dumpster/loitering rules with pretrained COCO-class models. Fine-tuning or a small custom classifier is only justified for one or two site-specific classes (e.g. a vehicle stopped in a lane beyond N seconds, or distinguishing a tenant with a hand truck from someone loitering near a unit), and even then the honest design is 'flag it for human review', not 'decide it'. Budget calibration, not training.",
+  "data_needed": "Per camera: 2-4 weeks of night-and-day footage to set zones, exposure and thresholds. Per site: the access-control entry/exit log (CSV export or API) for the same window so gate events can be paired with credentialed entries, and about 200-500 hand-labelled clips of true vs false events to set thresholds. For the VLM triage layer: a few hundred reviewed clips with a one-line human description to check the wording, not to train from scratch. Also the certificate of occupancy / posted occupant load for gyms.",
+  "difficulty": "Medium"
+ },
+ "measured_outcomes": [
+  {
+   "finding": "StorQuest (William Warren Group, 260+ locations, ~25 unstaffed 24/7 'Express' sites) reports a 30% reduction in break-ins, about 90% faster incident response and over 50% fewer maintenance visits after moving to cloud cameras with AI analytics and dispatcher monitoring.",
+   "year": "Undated case study (accessed 2026)",
+   "sample": "One operator, 260+ facilities, before/after, no control group",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://www.rhombus.com/case-studies/william-warren-group-storquest/"
+  },
+  {
+   "finding": "Four Devon Self Storage facilities in Memphis saw a 67-100% decrease in burglary claims after AI-plus-live-monitoring was installed; two of them saved over $4,000 in claims per month. Claims data came from the tenant-insurance administrator, not an independent auditor.",
+   "year": "2022",
+   "sample": "4 facilities, insurance claims count",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://opentechalliance.com/blog/devon-self-storage-sees-67-100-decrease-in-burglary-claims-with-insomniac-smarteye/"
+  },
+  {
+   "finding": "A multi-camera overhead fisheye people-counting method reduced common counting-error metrics by 54-83% versus comparison methods, in a controlled 2,000 sq ft space - not a live business.",
+   "year": "2024",
+   "sample": "Single 2,000 sq ft instrumented room",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://www.sciencedirect.com/science/article/pii/S0378778824000525"
+  },
+  {
+   "finding": "A 2024 review of overhead fisheye occupancy work reports that in a large classroom a single camera's count was off by about 6 people on average, exact in only 46-55% of frames and within 10 people in 76-79% - i.e. one camera is not enough for a big open space, and 'live headcount' should be sold as a band, not a number.",
+   "year": "2024",
+   "sample": "Review of multiple studies; classroom case",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://www.frontiersin.org/journals/imaging/articles/10.3389/fimag.2024.1387543/full"
+  },
+  {
+   "finding": "An embedded tailgating/piggybacking detection system using an IP camera and video analytics reported 90.8% accuracy - but at 320x240 and 7 fps, so it is evidence the concept works, not a deployable benchmark.",
+   "year": "2012",
+   "sample": "Single prototype",
+   "study_type": "peer-reviewed",
+   "strength": "Low",
+   "source_url": "https://www.researchgate.net/publication/261054766_Embedded_based_tailgatingpiggybacking_detection_security_system"
+  },
+  {
+   "finding": "Comparing detectors on visitor counting across nine videos at five tourist sites, YOLOv11 averaged 84.02% counting accuracy versus 77.15% for YOLOv8, with lower mean absolute error (7.22 vs 10.67 visitors per video).",
+   "year": "2025 data in a 2026 issue",
+   "sample": "9 videos, 5 sites",
+   "study_type": "peer-reviewed",
+   "strength": "Low",
+   "source_url": "https://ejournal.nusamandiri.ac.id/index.php/jitk/article/download/7759/1756/33981"
+  },
+  {
+   "finding": "Operator survey of 100+ U.S. self-storage facilities: 32% reported crime had increased in the past year (down from 37%), 43% said it was flat, and ~54% described themselves as extremely concerned - a demand signal, not an outcome measure.",
+   "year": "2025",
+   "sample": "100+ operators, Sept 2025",
+   "study_type": "industry",
+   "strength": "Medium",
+   "source_url": "https://www.modernstoragemedia.com/msm-exclusives/crime-crackdown-msm-survey-reveals-fewer-incidents-more-security?hs_amp=true"
+  }
+ ],
+ "legal_privacy": [
+  {
+   "issue": "Audio capture on cameras",
+   "rule_or_precedent": "New Jersey's Wiretap Act permits interception of an oral communication only where the interceptor is a party or a party has given prior consent, with further limits where the purpose is criminal or injurious. An unattended camera microphone in a lobby is not a party to a tenant's conversation, so ship video-only by default and physically disable or cover microphones.",
+   "confirmed": true,
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239?f=templates&fn=document-frameset.htm"
+  },
+  {
+   "issue": "Cameras in private spaces / changing areas",
+   "rule_or_precedent": "N.J.S.A. 2C:14-9 makes it a crime to observe or record another person where a reasonable person would not expect to be observed, with an affirmative defense of prior posted notice plus a lawful purpose. Camera plans must exclude restrooms, changing areas and (for gyms) locker rooms and any view into them; posted notice is also the practical defense for everything else.",
+   "confirmed": true,
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/2785/2918?f=templates&fn=document-frameset.htm"
+  },
+  {
+   "issue": "Face recognition / biometrics of tenants (consumers)",
+   "rule_or_precedent": "The New Jersey Data Privacy Act (P.L.2023, c.266) defines biometric data to include facial geometry and templates used to identify a specific person, and expressly excludes ordinary photographs and audio/video recordings unless used to identify someone. Biometric data is listed as sensitive data, and controllers may not process sensitive data without the consumer's consent and must complete a data protection assessment for sensitive-data processing. A self-storage tenant is a consumer, so adding face recognition to tenants is a materially different legal posture from plain video analytics.",
+   "confirmed": true,
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2022/AL23/266_.PDF"
+  },
+  {
+   "issue": "Employee monitoring under the NJDPA",
+   "rule_or_precedent": "The Act's protections run to individuals acting in an individual or household context and exclude the employment context, so NJDPA consumer rights (including the biometric consent duty) generally do not cover employee data. The Division of Consumer Affairs FAQ that states this was blocked to direct fetch (bot protection); the content was read through the search index.",
+   "confirmed": true,
+   "source_url": "https://www.njconsumeraffairs.gov/ocp/Pages/NJ-Data-Privacy-Law-FAQ.aspx"
+  },
+  {
+   "issue": "Facial recognition and false accusation (the binding precedent for this product category)",
+   "rule_or_precedent": "FTC v. Rite Aid (announced Dec 19, 2023) banned the company for five years from using facial-recognition or facial-analysis systems in its retail stores and pharmacies after false matches led employees to follow, search, eject or accuse shoppers, with the FTC alleging false positives were more likely in stores in predominantly Black and Asian communities. The order also requires deleting facial-recognition data. This is the reason to sell detection-of-events, never identification-of-people.",
+   "confirmed": true,
+   "source_url": "https://search.ftc.gov/news-events/news/press-releases/2023/12/rite-aid-banned-using-ai-facial-recognition-after-ftc-says-retailer-deployed-technology-without"
+  },
+  {
+   "issue": "Biometric data as an unfair practice even without a state biometric statute",
+   "rule_or_precedent": "The FTC's Policy Statement on Biometric Information and Section 5 of the FTC Act (May 18, 2023) flags privacy, security, bias and discrimination concerns and describes practices the FTC may treat as unfair or deceptive. New Jersey has no Illinois-style biometric statute, so Section 5 is the realistic federal backstop.",
+   "confirmed": true,
+   "source_url": "https://www.ftc.gov/legal-library/browse/policy-statement-federal-trade-commission-biometric-information-section-5-federal-trade-commission"
+  },
+  {
+   "issue": "Demographic accuracy differences and bias in face systems",
+   "rule_or_precedent": "NIST's FRVT Part 3: Demographic Effects (NISTIR 8280, Dec 2019) tested nearly 200 algorithms on more than 18 million images and found demographic differences in accuracy in most, varying in size and direction by algorithm, task and dataset. If a client insists on face recognition, demand NIST-tested algorithms and documented error rates; the default recommendation is no face recognition at all.",
+   "confirmed": true,
+   "source_url": "https://www.nist.gov/publications/face-recognition-vendor-test-part-3-demographic-effects"
+  },
+  {
+   "issue": "Employee monitoring notice in New Jersey",
+   "rule_or_precedent": "New Jersey has no general statute requiring notice before an employer monitors employees. S-4075 (2026, the 'Fair Act') would require at least 60 days' written notice before electronic monitoring or covered AI decision systems, plus limits on monitoring in private areas; as of Nov 12, 2026 it had been referred to the Senate Budget and Appropriations Committee and is not law. Give written notice anyway - it costs nothing and forecloses the argument.",
+   "confirmed": true,
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2026/S4500/4075_I1.HTM"
+  },
+  {
+   "issue": "Biometric-privacy bill status in New Jersey",
+   "rule_or_precedent": "No enacted New Jersey biometric-surveillance statute was confirmed. A1494 (2024-2025 session), proposing restrictions on business use of biometric surveillance systems including facial recognition, was an introduced bill, not law. Treat 'New Jersey has no BIPA' as a 2025-2026 snapshot, not a permanent fact.",
+   "confirmed": false,
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2024/A1500/1494_I1.PDF"
+  },
+  {
+   "issue": "Video retention limits and tenant notice",
+   "rule_or_precedent": "No New Jersey statute was found that sets a retention schedule or notice requirement for private commercial video surveillance, and the NJDPA text reviewed did not impose a fixed retention period. Set a contractual retention window (e.g. 30 days rolling) with documented deletion, and post notice at the gate and office, as the defensible practice. Not confirmed as a legal requirement - it is a risk posture.",
+   "confirmed": false,
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2022/AL23/266_.PDF"
+  },
+  {
+   "issue": "Duty to respond once you flag an event",
+   "rule_or_precedent": "No statute or precedent was confirmed on point, but a system that tells an operator 'unauthorized person at gate' creates an expectation of response, and the self-storage literature already notes small-claims exposure over security after repeated burglaries. Contract the escalation path explicitly: who is called, in what window, and what happens if nobody answers. (inference)",
+   "confirmed": false,
+   "source_url": "https://opentechalliance.com/blog/devon-self-storage-sees-67-100-decrease-in-burglary-claims-with-insomniac-smarteye/"
+  }
+ ],
+ "prospecting_signals": {
+  "public": [
+   "Website or Google listing advertises 24/7 or extended gate hours while the office hours are 9-5 - the gap between the two is the product.",
+   "Reviews or local news mentioning a break-in, a gate left open, a propped door, an empty office, or 'couldn't reach anyone' (search review text for 'break-in', 'gate', 'stolen', 'no one answered').",
+   "Owner-operator with 2-10 sites (a single contract covers multiple gates) but not a national REIT - check the 'locations' page and the facility count.",
+   "Online-only / contact-free rental, kiosk rental, or 'rent now, move in today' flows, which imply an unstaffed counter.",
+   "Recent capital events that reset a security budget: new gate, new keypads, repaving, new buildings, or a change of management company.",
+   "Aerial/satellite view shows multiple buildings, one gate, and long drive aisles - the classic coverage-gap layout.",
+   "Local police blotter or the trade press 'Storage Blotter' shows incidents at or near the site.",
+   "Job postings for a part-time or floating assistant manager covering two sites, or for a 'night patrol' vendor - evidence they are paying humans to be the sensor.",
+   "Age of the camera system: analog domes or a 2010s DVR in listing photos/Google images, versus new LED lighting.",
+   "Tenant-insurance provider: sites marketing tenant protection have a claims counterparty that already prices their loss rate."
+  ],
+  "walk_in": [
+   "Count cameras at the gate (both directions), office door, each building entrance, and the dumpster; note whether any camera can see a vehicle AND the driver side at the gate.",
+   "Walk the drive aisles at night or dusk: is there a camera at each aisle end, and is the lighting even?",
+   "Ask the manager what happens when the gate is left open or a door is propped - and who is called at 11pm.",
+   "Ask to see the access-control report: can they list every credentialed entry yesterday, and does it carry a name and unit?",
+   "Ask how they investigate a 'something is missing from my unit' complaint and how long the footage review takes - that number is your baseline metric.",
+   "Look for a notice-of-video-surveillance sign at the gate and office; absence is both a compliance gap and an easy first deliverable.",
+   "Check for an intercom/kiosk and whether anyone answers it after hours.",
+   "Ask whether they have had a false alarm in the last 90 days, and what it cost them (police response, staff callout).",
+   "Note the property-management software and access-control brand on the office screen - that determines integration effort.",
+   "Note the unit count and building count so you can size a 20-40 camera scope on the spot."
+  ]
+ },
+ "pilot": {
+  "scope": "One self-storage facility, 4 weeks of live operation after a 2-week install, on 8 cameras: gate in, gate out, office/man-door, two drive-aisle ends, two building entrances, dumpster. Deliverables: (a) nightly exception report pairing every gate-open with a credentialed entry from the access log and flagging unmatched openings, propped doors and after-hours presence; (b) a searchable event log so 'was unit 214 approached on Tuesday' takes under 2 minutes; (c) written notice signage and a 30-day retention policy; (d) a measured baseline vs. their current manual footage review time.",
+  "hardware": "8x 4MP PoE turret cameras on the gate and man-doors, 1x 8-port managed PoE switch, 1x UPS, 1x N100/N305-class mini PC with dual NIC running the recorder on an isolated camera VLAN, 1x Hailo-8L M.2 accelerator, 2 TB SSD for 30-day local retention, existing access-control system left in place (read-only log export or webhook). No audio, no face recognition.",
+  "success_metric": "Primary: in weeks 3-4, at least 95% of gate-open events are paired to a credentialed entry within 60 seconds, and every unmatched opening is surfaced to the manager the same night. Secondary: no more than 2 false alerts per night by week 4 (so the manager does not start ignoring it); median time to answer 'did anyone approach unit X on date Y' under 2 minutes versus the measured manual baseline; manager rates at least 80% of flagged events as worth looking at; zero tenant complaints about privacy.",
+  "cost_range": "About $6,000-$11,000 one-time for the pilot, and $0-$150/month recurring if self-hosted. Assumptions: hardware $2,000-$3,500 (8 cameras at $160-$220 = $1,280-$1,760; mini PC ~$540; Hailo-8L AI Kit $70; switch/UPS/SSD/cable budgeted at $300-$900 as an inference), installation and commissioning 32-48 hours at $100-$150/hour = $3,200-$7,200, plus $300-$600 for survey, notice signage and documentation. If the client prefers a resold cloud or live-monitoring layer instead of self-hosting, add roughly $279/month (small monitoring tier) to $75/camera/month ($600/month for 8 cameras) and treat the pilot as a reseller motion with thinner margin.",
+  "assumptions": "Existing cameras are IP/ONVIF and mostly reusable (if they are analog, add $300-$400 per camera for replacement); the site has usable night lighting at the gate; the access-control system can export or push an entry log (PTI/QuikStor-class systems generally can, per-vendor check required); one decision-maker at the owner level who can sign in under two weeks; the facility is within a 30-minute drive of Milltown for the install and two follow-up visits; and the pilot is sold as a paid engagement, not free, because the baseline measurement is most of the work."
+ },
+ "fit_score": {
+  "demand": 16,
+  "local_buyers": 11,
+  "ability_to_pay": 12,
+  "technical_feasibility": 16,
+  "legal_risk_low": 12,
+  "defensibility": 8,
+  "total": 75,
+  "rationale": "Demand (16/20): a documented, recurring, dollar-quantified loss with 99% camera penetration already in place and about half of operators extremely concerned about crime - the wallet exists and the hardware is already bolted to the wall. Local buyers (11/15): roughly 43 self-storage establishments in Middlesex County, dense along the Route 1/18/130 corridors within a short drive of Milltown, but that is a finite list of a few dozen doors, so this is a beachhead for a multi-county route, not a county-sized business. Ability to pay (12/15): facilities of 50k sq ft plausibly clear seven figures of revenue and already budget $300-$400 per installed camera plus $95-$150/month of security software, so a $6k-$11k project is inside normal spend; the cap is that many sites are single-asset LLCs with thin reserves. Technical feasibility (16/20): the open-source stack is mature and documented, detection is a solved problem on commodity accelerators, and the hard part - pairing events with access logs - is integration work a local firm is well placed to do; points off for night image quality and per-brand access-control quirks. Legal risk (12/15): video-only detection of events, with no audio and no face recognition, sits in a well-understood zone, and notice plus retention policy covers most of it; the residual risk is a client demanding identification, which is exactly where the NJDPA sensitive-data and Rite Aid precedent bite. Defensibility (8/15): the analytics layer is commoditized at $9-$75/camera/month, so the moat is only site survey quality, integration, response service and relationships; a competitor with a ladder can copy it, but not quickly at 30 sites. Total 75/100 - build it as the first product, priced as a project plus retainer, and use the self-storage relationships to open the gym and laundromat variants."
+ },
+ "risks": [
+  "Per-camera analytics is already priced at $9-$75/month by cloud vendors, so any 'AI subscription' framing gets compared to a $72/month bill and loses; the revenue has to be install, integration and response.",
+  "False-alert fatigue is the real failure mode: a system that pings 10 times a night gets muted in week three, and then the operator believes they are covered when they are not.",
+  "Night image quality at gates and drive aisles, not model accuracy, usually determines whether detection works; under-lit sites may need lighting capital the client did not budget.",
+  "Every access-control brand (PTI, QuikStor, DoorKing, OpenTech) exposes logs differently, so integration effort is unpredictable and can consume the pilot's margin.",
+  "Selling 'occupancy' as a hard number is a credibility trap - single-camera counts in large spaces were off by about 6 people in published work; sell a band plus an alert threshold.",
+  "If a flagged event is not acted on and a burglary follows, the installer is in the argument about whether the system worked; the escalation contract has to be explicit and the client has to own the response decision.",
+  "Face recognition is the obvious client ask and the single worst idea here - FTC v. Rite Aid plus NJDPA sensitive-data consent makes it a legal exposure for a few points of accuracy.",
+  "Small local TAM: roughly 43 facilities in Middlesex County means the model only works if it travels to Mercer, Somerset, Monmouth and Ocean counties, or if the same stack is resold into gyms and laundromats.",
+  "Hardware pricing is volatile (memory and component shortages have moved mini-PC and camera prices); quote with a validity window.",
+  "Cheap consumer cameras and DIY NVR kits let a motivated owner self-install, which caps what a small site will pay; target the 20+ camera sites and multi-site owners."
+ ],
+ "caveats": "Nearly all self-storage outcome numbers come from vendor case studies (Rhombus/StorQuest, OpenTech/Devon) with no control group; the strongest independent evidence is the operator survey (n>100) and the peer-reviewed counting literature, which measures counting accuracy rather than business outcomes. The Middlesex County establishment count (43) is a secondary page citing Census data and was not verified against the Census table because the Census API requires a key. Most per-camera prices were read from vendor pricing pages on the date of research and change frequently; treat the cost range as a planning band, not a quote. Several hardware prices ($160-$220 cameras, ~$250-$540 mini PC, $70 AI kit) are retail/list prices and exclude switch, cabling, mounting and labor, which the $300-$400 installed-camera benchmark does include. The laundromat fire statistics available are residential-only and were deliberately not used as a laundromat risk figure. Where a fact required a page that was blocked (NJ DCA FAQ, Newegg, IP Cam Talk store), the content was taken from the search index and that is noted in the item.",
+ "data_gaps": [
+  "U.S. Census Bureau API requires a key, so county-level County Business Patterns counts for NAICS 531130, 812310, 713940 and 541940 in Middlesex County could not be pulled directly; the 43-facility figure is a secondary citation.",
+  "No independent (non-vendor) published measurement of self-storage AI monitoring outcomes was found - no academic or municipal evaluation of gate-tailgating detection in a live facility.",
+  "No New Jersey-specific self-storage crime statistics exist in public form; the FBI NIBRS 'hotel rule' makes unit-level burglary counts unrecoverable from national data.",
+  "The New Jersey Division of Consumer Affairs NJDPA FAQ page blocked automated fetch; the employment-context exclusion is reported from the search index only.",
+  "No New Jersey statute or rule was found requiring notice, signage or a retention schedule for private commercial video surveillance; absence of a requirement is an inference from not finding one, not a confirmed negative.",
+  "Could not confirm current live availability or pricing for several self-storage-adjacent vendors (Agentinosaurus $9/camera/month, ParkPow, Areonic) beyond their marketing pages.",
+  "No public per-site data on how many cameras a typical Middlesex County facility actually has; the 20-40 camera planning figure is a trade guidance estimate, not a measurement.",
+  "Laundromat fire and theft loss data specific to coin laundries is not published; only residential dryer-fire statistics and insurance-industry commentary were available.",
+  "Could not confirm whether any Milltown-adjacent municipality imposes an attendant or video-surveillance condition on laundromats or self-storage licenses; municipal ordinance review per town was out of scope here."
+ ]
+}

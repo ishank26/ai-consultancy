@@ -1,0 +1,96 @@
+{
+  "ref": "B00075",
+  "name": "U.S. Eagle Financial Center, Payroll & Tax Services, LLC",
+  "town": "East Brunswick",
+  "category": "Payroll, tax preparation and bookkeeping",
+  "status": "operating",
+  "domains": [
+    {
+      "domain": "1040taxless.com",
+      "role": "old site",
+      "final_url": "https://1040taxless.com/",
+      "result": "Loaded over HTTPS in Chrome with no certificate warning and no redirect. Page title is a single horse emoji. Visible page is a Network Solutions placeholder reading 'This Page Is Under Construction ? Coming Soon!' with a 'Related Searches:' list of auto-generated ad links (e.g. 'Payroll Software Solutions', 'Payroll & Tax Software') and a 'Do Not Sell or Share My Personal Information' notice. No business name, address, phone, services or hours appear. A plain non-browser request to the same URL returned HTTP 403, i.e. the page only rendered in a real browser.",
+      "screenshot_files": ["screenshot-1040taxless-desktop.png", "screenshot-1040taxless-mobile-390.png"],
+      "checked_at": "2026-11-13",
+      "source_url": "https://1040taxless.com/"
+    },
+    {
+      "domain": "www.1040taxless.com",
+      "role": "alternate",
+      "final_url": "https://www.1040taxless.com/",
+      "result": "Same Network Solutions under-construction placeholder as the apex domain, same 'Related Searches' ad links, no business content, no redirect to the apex and no certificate warning.",
+      "screenshot_files": ["screenshot-1040taxless-www-desktop.png"],
+      "checked_at": "2026-11-13",
+      "source_url": "https://www.1040taxless.com/"
+    }
+  ],
+  "links_to_broken_domain": [],
+  "rdap": [
+    {
+      "domain": "1040taxless.com",
+      "registered": "2017-01-27",
+      "expires": "2027-01-27",
+      "last_changed": "2026-01-19",
+      "registrar": "Domain.com - Network Solutions, LLC (IANA 886)",
+      "source_url": "https://rdap.org/domain/1040taxless.com"
+    }
+  ],
+  "likely_cause": {
+    "cause": "hosting or certificate",
+    "reasoning": "RDAP shows a single registration event on 2017-01-27 and an expiry of 2027-01-27, last changed 2026-01-19, with nameservers NS1/NS2.IPAGE.COM, so the domain is still registered under a Domain.com/Network Solutions (Newfold) account rather than lapsed and re-registered by a stranger. A Wayback capture from 31 March 2025 shows a real 'U.S. EAGLE TAX' site on the same domain (payroll, income tax and accounting pages, Calendly booking, client portal, BBB seal), and a 30 January 2024 capture returned a 404. Today the apex and www both serve the registrar's default 'Under Construction' page, which is what a hosting account with no published site returns. That pattern is consistent with the site being unpublished or the hosting plan dropped while the domain kept renewing; no gambling, spam or for-sale content was seen.",
+    "inference": true
+  },
+  "fix_steps": [
+    {
+      "step": "Find out who holds the registrar account for 1040taxless.com (Domain.com/Network Solutions) and the iPage hosting plan behind it, and confirm the renewal is genuine and paid.",
+      "who": "Owner, or whoever pays the web/hosting bill",
+      "effort_hours": "0.5-1",
+      "source_url": "https://rdap.org/domain/1040taxless.com"
+    },
+    {
+      "step": "Decide on a single public domain: republish on 1040taxless.com, or standardise on useagletax.com which the Google profile already uses, and stop promoting the other.",
+      "who": "Owner with the web developer",
+      "effort_hours": "1-2",
+      "source_url": "https://www.google.com/maps/search/U.S.+Eagle+Financial+Center+Payroll+Tax+East+Brunswick"
+    },
+    {
+      "step": "Publish at least a one-page site on the chosen domain: services, hours, tap-to-call phone, quote form and booking link (the old site carried a Calendly booking and a client portal), and remove the under-construction placeholder.",
+      "who": "Web developer, with copy supplied by the owner",
+      "effort_hours": "4-10",
+      "source_url": "https://web.archive.org/web/20250331130652/https://1040taxless.com/index.html"
+    },
+    {
+      "step": "Update directory and social listings to the chosen domain, and put one name, address and phone everywhere (directory data mixes 10 Auer Ct in East Brunswick, an older 177 Main St entry, and the Freehold address).",
+      "who": "Owner or an assistant",
+      "effort_hours": "2-4",
+      "source_url": "https://www.bestprosintown.com/nj/bayonne/u-s-eagle-financial-center-payroll-and-tax-services-llc-/"
+    },
+    {
+      "step": "Make sure the verified Google Business Profile points at the chosen domain, and add a simple uptime check plus a renewal reminder in the calendar.",
+      "who": "Owner",
+      "effort_hours": "1-2",
+      "source_url": "https://www.google.com/maps/search/U.S.+Eagle+Financial+Center+Payroll+Tax+East+Brunswick"
+    }
+  ],
+  "after_fix": {
+    "opportunity": "Settle on one claimed Google Business Profile and one consistent set of name, address and phone details across listings.",
+    "evidence": "A Google Maps search for the East Brunswick name returns only 'U.S. Eagle Tax' at 98 Village Center Dr, Freehold, (833) 833-1831, with useagletax.com and Calendly booking, rather than a profile under this business name. The Nextdoor page that used to carry the East Brunswick name now shows the Freehold brand and its details, and BestProsInTown still lists the long East Brunswick LLC name at the Freehold address, so the two identities are mixed in public data.",
+    "source_url": "https://nextdoor.com/pages/us-eagle-financial-center-payroll-tax-services-east-brunswick-nj/"
+  },
+  "severity": "Medium",
+  "severity_reason": "The domain is still registered and is not serving gambling, spam or a for-sale page, and the firm has a working site at useagletax.com. But the old address that customers and directories still associate with the business now shows an under-construction page with unrelated ad links and no phone, hours or services, so anyone following it has no way to call or book.",
+  "audit_md": "# Website Health Check: U.S. Eagle Financial Center, Payroll & Tax Services, LLC\n\n**What we saw on 13 November 2026**\n\n- 1040taxless.com, the domain tied to this business in directory listings, loads over HTTPS and shows a Network Solutions page, \"This Page Is Under Construction ? Coming Soon!\", followed by auto-generated \"Related Searches\" ad links. No name, phone, hours or services.\n- www.1040taxless.com shows the same placeholder; screenshots saved at desktop and 390 px phone width.\n- The domain is still registered: created 27 Jan 2017, expires 27 Jan 2027, registrar Domain.com/Network Solutions, nameservers at iPage.\n- A 31 March 2025 archive capture shows a real U.S. Eagle Tax site there, with payroll, tax and accounting pages, booking and a client portal.\n- A Google Maps search for the East Brunswick name returns only \"U.S. Eagle Tax\", 98 Village Center Dr, Freehold, linking to useagletax.com.\n\n**What it means for customers**\n\nAnyone following the old address meets a construction page with unrelated ad links and no way to call, book or check hours. The working site sits on a different domain and name, so customers searching the East Brunswick name may not connect the two.\n\n**How to fix it**\n\n1. Confirm who holds the registrar account and iPage hosting for 1040taxless.com, and check the renewal (owner; 0.5-1 h).\n2. Choose one public domain: republish on 1040taxless.com or standardise on useagletax.com (owner with developer; 1-2 h).\n3. Publish a one-page site with services, hours, tap-to-call, quote form and booking link (developer; 4-10 h).\n4. Bring directory and social listings onto that domain and one name/address/phone (owner or assistant; 2-4 h).\n5. Point the Google profile at that domain and add uptime and renewal reminders (owner; 1-2 h).\n\n**After the fix**\n\nSettle on one claimed Google Business Profile and one consistent name, address and phone. Today the East Brunswick name has no profile of its own and listings mix the East Brunswick and Freehold identities.\n\nPrepared from publicly available information on 13 November 2026. We did not log in to or change anything.",
+  "founder_md": "# Founder notes - B00075\n\n**Email draft**\n\nSubject: What customers see at 1040taxless.com today\n\nHi [name], I looked up U.S. Eagle Financial Center after seeing the East Brunswick name in a few directories, and 1040taxless.com currently shows a Network Solutions \"This Page Is Under Construction\" page with auto-generated ad links and no phone or hours. The domain is still registered to 2027, and archive captures show your payroll and tax pages were live on it as recently as March 2025, so this looks like a publishing or hosting problem rather than a lost domain. I have desktop and phone screenshots of exactly what a customer sees and a short list of the steps to get the address working again - happy to send them over if useful.\n\n**Walk-in / phone opener**\n\nHi, I was checking how U.S. Eagle Financial Center shows up online and the old 1040taxless.com address currently lands on an under-construction page - would it help if I showed you the screenshots?\n\n**Sources**\n\n- Domain check (browser, desktop and 390 px): https://1040taxless.com/ - screenshots screenshot-1040taxless-desktop.png, screenshot-1040taxless-mobile-390.png\n- Alternate hostname: https://www.1040taxless.com/ - screenshot screenshot-1040taxless-www-desktop.png\n- RDAP registration record: https://rdap.org/domain/1040taxless.com\n- Archived live site (31 March 2025 capture): https://web.archive.org/web/20250331130652/https://1040taxless.com/index.html\n- Older archived homepage (2023 capture): https://web.archive.org/web/20230128021619/https://www.1040taxless.com/index.html\n- Wayback capture index for the domain: http://web.archive.org/cdx/search/cdx?url=1040taxless.com&output=text&fl=timestamp,original,statuscode,mimetype&collapse=timestamp:6&limit=200\n- Google Maps result for the East Brunswick search: https://www.google.com/maps/search/U.S.+Eagle+Financial+Center+Payroll+Tax+East+Brunswick\n- Nextdoor page (now showing the Freehold brand): https://nextdoor.com/pages/us-eagle-financial-center-payroll-tax-services-east-brunswick-nj/\n- BestProsInTown listing (East Brunswick LLC name, Freehold address, links useagletax.com): https://www.bestprosintown.com/nj/bayonne/u-s-eagle-financial-center-payroll-and-tax-services-llc-/\n- Invoice24 listing (Freehold details, useagletax.com): https://i24app.com/us/find-an-accountant/profile/u-s-eagle-tax-7728\n- Current brand site: https://useagletax.com/\n- Company WordPress page (East Brunswick, names the CEO): https://minagarascom.wordpress.com/\n\n**Open questions**\n\n- Who holds the registrar (Domain.com/Network Solutions) and iPage hosting logins for 1040taxless.com, and is the hosting plan still paid?\n- Was the old site deliberately retired in favour of useagletax.com, or did it stop by accident?\n- Does the business still operate from East Brunswick, or only from the Freehold office now?\n- Which Google profile is verified by the owner, and should there be a separate East Brunswick profile?\n- Is there an email account on the old domain that client correspondence still uses?",
+  "caveats": [
+    "The East Brunswick street address (10 Auer Ct) comes from directory search results only; the pages themselves sat behind bot checks, so today's office location is unconfirmed. The Freehold address (98 Village Center Dr) is the one on the Google profile and on recent listings.",
+    "The domain is not for sale, does not show gambling or spam, and has no visible hijack markers; the 'hosting or certificate' cause is an inference from RDAP plus archive captures, not a statement by the business.",
+    "The 2025-03-31 Wayback capture is the most recent capture showing real content; the handover to the placeholder happened after that date, and the exact date is unknown.",
+    "Google Maps showed a 5.0 rating for the Freehold profile without a visible review count in the limited view used."
+  ],
+  "data_gaps": [
+    "No live public page I could open still links to 1040taxless.com: the Google profile, Nextdoor, Invoice24 and BestProsInTown now point to useagletax.com. Directories whose search snippets tie this business to the old domain (Manta, PTIN Directory, LocalityBiz, Cylex, YellowPages, BBB) all returned Cloudflare or bot-check pages, so what website field they currently show could not be verified.",
+    "The Junior Accountant job posting on career.com was blocked by a human-check page; only the page title ('Junior Accountant Job Opening in Freehold, NJ at US EAGLE FINANCIAL CENTER LLC') was readable.",
+    "Search engines (Google, DuckDuckGo) served CAPTCHA pages, so no search-results listing test could be run.",
+    "Who holds the registrar account, whether the iPage hosting plan is active, and whether the site was retired on purpose can only be answered by the owner."
+  ]
+}

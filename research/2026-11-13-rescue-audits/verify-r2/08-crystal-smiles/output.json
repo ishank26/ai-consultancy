@@ -1,0 +1,103 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "rescue.json domains[0].role: archived copies show \"tel link 732-257-4444\"",
+      "problem": "Reference metadata is slightly imprecise: in the 7 June 2023 Wayback capture the number appears as plain text in a \"Phone\" block and there is no tel: hyperlink in that page's HTML. The number itself, the Crystal Smiles branding, the services section and the /insurances-accepted/ page are all confirmed. Nothing in audit_md or founder_md states this as a click-to-call link, and founder_md's \"with tel 732-257-4444\" reads as shorthand for the phone number, so the business-facing text is unaffected.",
+      "fix": "In the internal role field, write \"phone number 732-257-4444 shown on the archived home page\" instead of \"tel link\"."
+    },
+    {
+      "claim": "founder_md sources list quotes a \"'Request an Appointment'\" link; after_fix.evidence says that link \"is now gone\"",
+      "problem": "The quoted wording does not match the capture exactly: the 7 June 2023 page shows buttons reading \"Request A Appointment\", \"MAKE AN APPOINTMENT\" and \"Book an Appointment\", all pointing to /contact-us/. The substance (an appointment-request path existed and no longer does) is correct, so this is only a quotation-accuracy nit.",
+      "fix": "Paraphrase without quote marks (e.g. \"appointment-request buttons that pointed to its contact page\") or quote one of the actual labels."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "crystalsmilesnj.com still redirects to HugeDomains and serves a Cloudflare bot-verification page ('Performing security verification', tab title 'Just a moment...') with no readable dental or reseller content",
+      "source_url": "https://www.crystalsmilesnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "notearsdental.com lands on /lander showing 'notearsdental.com is parked free, courtesy of GoDaddy.com', a 'Get This Domain' button and 'Related Search Topics' ad links (real estate, apartment rental, personals)",
+      "source_url": "https://notearsdental.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP crystalsmilesnj.com: registered 2018-09-27, expires 2027-09-27, last changed 2026-09-28, registrar TurnCommerce, Inc. DBA NameBright.com",
+      "source_url": "https://rdap.org/domain/crystalsmilesnj.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP notearsdental.com: registered 2007-09-14, expires 2029-09-14, last changed 2022-11-18, registrar GoDaddy.com, LLC",
+      "source_url": "https://rdap.org/domain/notearsdental.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Business Profile shows Crystal Smiles LLC, 65 Rues Ln, East Brunswick, NJ 08816, (732) 257-4444, rated 4.8, with no website field - only 'Add website' under 'Add missing information' - and no review count or booking action visible",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=Crystal+Smiles+LLC+65+Rues+Ln+East+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The practice is open: the Google profile is not marked permanently or temporarily closed and shows current opening hours",
+      "source_url": "https://www.google.com/maps/search/?api=1&query=Crystal+Smiles+LLC+65+Rues+Ln+East+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Correct business, town and phone - Crystal Smiles LLC, East Brunswick NJ, (732) 257-4444, single East Brunswick office rather than a chain or franchise",
+      "source_url": "https://www.carecredit.com/doctor-locator/east-brunswick-nj/crystal-smiles-nng269/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nextdoor business page titled 'Crystal Smiles - East Brunswick, NJ' carries a website link to notearsdental.com, the (732) 257-4444 number and an 'Is this your business? Claim page' prompt",
+      "source_url": "https://nextdoor.com/pages/crystal-smiles-llc-formerly-no-tears-dental/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BizArchive gives www.crystalsmilesnj.com as the website (Q&A item 4) and hours Mon 9-7, Tue/Wed 9-6, Thu 9-7, Fri 9-6, Sat 9-2, Sun closed",
+      "source_url": "https://www.bizarchive.com/business/crystal-smiles-llc",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived crystalsmilesnj.com on 7 June 2023 was the practice's own WordPress site, titled 'Crystal Smiles - Your Smile is our Top Priority', with the 732-257-4444 number, a services section and an 'INSURANCES ACCEPTED' page (/insurances-accepted/)",
+      "source_url": "https://web.archive.org/web/20230607220355/https://crystalsmilesnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "By 31 October 2023 crystalsmilesnj.com served a GoDaddy parking-lander page (GoDaddy 'parking-lander' script assets)",
+      "source_url": "https://web.archive.org/web/20231031054326id_/http://www.crystalsmilesnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback capture index shows 2023 captures on 5 April, 3 June, 5 June, 7 June and 31 October",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=crystalsmilesnj.com&from=20230101&to=20231231&output=json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived notearsdental.com (19 Jan 2021) was No Tears Dental Center at a Franklin Township, Somerset NJ office with a different phone, (732) 509-9287",
+      "source_url": "https://web.archive.org/web/20210119215005id_/https://notearsdental.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye profile, unclaimed, shows 4.4 with 155 reviews and Thursday closing at 6 p.m. (differs from BizArchive's 7 p.m.)",
+      "source_url": "https://reviews.birdeye.com/crystal-smiles-llc-155337938710403",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No working website of the practice's own exists today (searches for Crystal Smiles East Brunswick and No Tears Dental East Brunswick surfaced only third-party directories pointing at crystalsmilesnj.com)",
+      "source_url": "https://www.bizarchive.com/business/crystal-smiles-llc",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Likely cause (lapsed and then re-registered name) is labelled an inference and accuses no one",
+      "source_url": "https://rdap.org/domain/crystalsmilesnj.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "HugeDomains listing text or any asking price for crystalsmilesnj.com",
+      "source_url": "https://www.hugedomains.com/domain_profile.cfm?d=crystalsmilesnj.com",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

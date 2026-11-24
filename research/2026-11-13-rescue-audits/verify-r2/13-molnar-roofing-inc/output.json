@@ -1,0 +1,163 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "audit_md, 'What it means for customers': \"The phone number on that profile works.\"",
+      "problem": "Unsupported. No cited source states the line is live, and the auditor could not have tested it without calling, which is out of scope. It is an assertion of current function in the customer-facing document, and it matters here because a same-named company is shown in an unresolved Chapter 7 case.",
+      "fix": "Replace with what the profile actually shows, e.g. \"The profile does list a phone number, (732) 846-0466\" - a statement about the listing, not about whether the line answers. If the intent is reassurance for customers, drop the sentence."
+    },
+    {
+      "claim": "rescue.json 'status': \"operating\" (and the matching caveat that this rests on listings plus an active licence)",
+      "problem": "Stated as a plain field while a Chapter 7 business liquidation by 'Molnar Roofing, Inc.' in the District of New Jersey (case 26-18658, filed 31 July 2026, trustee Daniel E. Straffi) is still unresolved on identity - re-checked today and it is still listed that way, with no debtor address. Directory listings and a state licence that stays active after trading stops are not evidence of current trading, and 'operating' can be read downstream as 'safe to contact'. The founder_md does gate outreach correctly; the status field does not carry that gate.",
+      "fix": "Change the field to something self-limiting, e.g. \"operating - unverified: Chapter 7 case 26-18658 under the same name unresolved; do not contact until checked\" and keep the founder_md instruction as the gate. Alternatively set status to \"unknown\" until the docket or the owner settles it."
+    },
+    {
+      "claim": "Fix step 2 (and audit_md step 2): services to publish include \"roof replacement\"",
+      "problem": "Minor accuracy drift. The archived site the step cites lists 'Roof Installation' and repairs, slate maintenance, flat roofs/Yankee gutters, gutters and leaders, siding repairs, flashing - it does not say roof replacement. The rest of the service list matches the archived site.",
+      "fix": "Either use the archived site's own wording ('roof installation'), or mark 'roof replacement' as a suggested addition rather than as something they already advertise."
+    },
+    {
+      "claim": "founder_md open question: \"Is the person who answers (732) 846-0466 the owner of record on the state licence, and what name do they want used?\"",
+      "problem": "Completeness, not error: the licence record the founder_md already cites displays an owner name field (Jacqueline Molnar), so part of this open question was answerable from a page already in the source list.",
+      "fix": "Note the owner name shown on the licence record as a public-record detail and narrow the open question to confirming who actually runs the business today."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "The domain root serves a small stub whose script sends the browser to /lander",
+      "source_url": "https://molnarroofinginc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Same stub on the http:// and www hosts",
+      "source_url": "http://www.molnarroofinginc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The lander is GoDaddy's parking lander (window.LANDER_SYSTEM=\"PW\", img1.wsimg.com/parking-lander assets)",
+      "source_url": "https://molnarroofinginc.com/lander",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A visitor ends on a third-party article page at dot-services.org showing an Akamai 'Access Denied' error; recorded final_url with psystem=PW, domain=molnarroofinginc.com, trafficTarget=gd",
+      "source_url": "https://molnarroofinginc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No certificate warning; HTTPS on the domain itself is not the failure",
+      "source_url": "https://molnarroofinginc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Screenshots of the failure exist at desktop width and at 390 px phone width",
+      "source_url": "shot-desktop-molnarroofinginc.png / shot-mobile390-molnarroofinginc.png (in task folder)",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 2008-08-06",
+      "source_url": "https://rdap.org/domain/molnarroofinginc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: expires 2027-08-06",
+      "source_url": "https://rdap.org/domain/molnarroofinginc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: last changed 2022-09-12",
+      "source_url": "https://rdap.org/domain/molnarroofinginc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registrar GoDaddy.com, LLC",
+      "source_url": "https://rdap.org/domain/molnarroofinginc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: GoDaddy nameservers NS21/NS22.DOMAINCONTROL.COM and client delete/renew/transfer/update holds",
+      "source_url": "https://rdap.org/domain/molnarroofinginc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile lists molnarroofinginc.com, 513 3rd Ave, North Brunswick Township, NJ 08902, (732) 846-0466, a 5.0 rating and 'Add hours'",
+      "source_url": "https://www.google.com/maps/place/Molnar+Roofing+Inc/@40.4683503,-74.4479622,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c67c201ffef9:0x358a52857264f48!8m2!3d40.4683503!4d-74.4479622!16s%2Fg%2F1tdrg9f9",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The phone number on that profile works",
+      "source_url": "no source cited; not verifiable without calling",
+      "result": "not found"
+    },
+    {
+      "claim": "Archived copy shows the real site live on 13 November 2025; the next capture, 17 July 2026, is the parking stub",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=molnarroofinginc.com&output=json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The archived 2025-11-13 site was a GoDaddy Website Builder site",
+      "source_url": "https://web.archive.org/web/20251113060336/https://www.molnarroofinginc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived services list: slate maintenance/repairs, roofing repairs, flat roofs and Yankee gutters, roof installation, siding repairs, gutters and leaders, flashing",
+      "source_url": "https://web.archive.org/web/20251113060336/https://www.molnarroofinginc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Fix step lists 'roof replacement' among the services the old site advertised",
+      "source_url": "https://web.archive.org/web/20251113060336/https://www.molnarroofinginc.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "CLAD Siding listing links molnarroofinginc.com and shows 513 3rd Ave, North Brunswick Township, NJ and (732) 846-0466",
+      "source_url": "https://www.cladsiding.com/contractors/new-jersey/north-brunswick-township/molnar-roofing-inc/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye profile stated as not claimed, 4.8 from 5 reviews, with hours, no appointment/quote request",
+      "source_url": "https://reviews.birdeye.com/molnar-roofing-inc-165459006575678",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BestProsInTown reviews Dec 2019 and Jun 2017; the name 'Steve' appears in the Dec 2019 review",
+      "source_url": "https://www.bestprosintown.com/nj/north-brunswick/molnar-roofing-inc-/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bankruptcy-record page lists 'Molnar Roofing, Inc.', Chapter 7, filed 31 July 2026, case 26-18658, District of New Jersey, trustee Daniel E. Straffi, no debtor address printed",
+      "source_url": "https://whofiledbankruptcy.com/case/njb/26-18658/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PACER/CourtListener could not be opened from the auditor's session",
+      "source_url": "https://www.courtlistener.com/?q=%22Molnar+Roofing%22",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Division of Consumer Affairs: MOLNAR ROOFING, INC., 513 3rd Ave North Brunswick NJ 08902, licence 13VH00774800, Active, expires 3/31/2027, 'Accurate as of November 13, 2026'",
+      "source_url": "https://newjersey.mylicense.com/verification/Details.aspx?result=d5b4ddae-6e7d-4bbd-a3c4-187875292857",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ business-name register returns one 'Molnar Roofing, Inc.' (0100746999, North Brunswick, formed 27 May 1998)",
+      "source_url": "https://www.njportal.com/DOR/BusinessNameSearch/Search/BusinessName",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Status is 'operating' today",
+      "source_url": "active licence + live listings (see above); no source confirming current trading; Chapter 7 filing under the same name unresolved",
+      "result": "not found"
+    },
+    {
+      "claim": "Likely cause (parked domain, website/hosting lapsed, not a lost domain) is labelled an inference with no source stating why, and accuses nobody",
+      "source_url": "https://rdap.org/domain/molnarroofinginc.com + wayback captures cited above",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Fix steps are in sensible order, effort is realistic and no prices are quoted",
+      "source_url": "https://rdap.org/domain/molnarroofinginc.com (fix-step source cited)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

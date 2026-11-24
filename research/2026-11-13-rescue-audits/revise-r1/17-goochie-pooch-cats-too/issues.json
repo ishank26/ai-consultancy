@@ -1,0 +1,32 @@
+[
+ {
+  "claim": "audit_md: \"RDAP: registered 2011-05-13, expires 2031-05-13\" (and founder_md sources: \"registration 2011-05-13, expiry 2031-05-13\", cited to rdap.org)",
+  "problem": "Not what the cited URL shows. https://rdap.org/domain/goochie-pooch.com redirects to the registry record at rdap.verisign.com, which reads registration 2011-05-14T00:55:19Z and expiration 2031-05-14T00:55:19Z. The 13 May dates appear only on GoDaddy's own RDAP view (rdap.godaddy.com, 2011-05-13T19:55:19Z), which renders the timestamp about five hours off UTC. Anyone who opens the cited link in the report sees a different day from the one printed, so the citation and the number do not match.",
+  "fix": "Print the date as the cited source shows it - registered 14 May 2011, expires 14 May 2031 (UTC) - or, if the local date is preferred, write \"13 May 2011 local time (RDAP shows 2011-05-14T00:55:19Z)\" and cite rdap.godaddy.com for the Godaddy-rendered date. Update the same figure in the fix step 5 reminder and in founder_md's source list."
+ },
+ {
+  "claim": "audit_md: Google's website link \"stops at a Cloudflare \\\"verify you are human\\\" wall\"",
+  "problem": "Quoted as if it were the page's wording, but the page does not say that. In a real Chrome the tab title is \"Just a moment...\" and the visible text is \"Performing security verification\" / \"this website verifies you are not a bot\", and it was still on that screen after 15 seconds. The substance (a Cloudflare check that stalls) is right; the quoted phrase is not.",
+  "fix": "Drop the quotation marks and describe it: \"stops on a Cloudflare security-verification page ('Performing security verification') that did not clear for us\". Use the same wording in founder_md's opener so the phrase the owner hears matches the screenshot."
+ },
+ {
+  "claim": "audit_md: \"goochie-pooch.com, the salon's domain registered in 2011\" (also founder_md: \"your domain goochie-pooch.com\")",
+  "problem": "States present-day ownership as fact, while rescue.json's own caveat says who holds the domain is unknown because the registrant record is redacted. The domain was the salon's site until 2020-11-30; that it is still theirs today is not supported by any source I could open.",
+  "fix": "Say \"the domain the salon used for its website until 2020\" in audit_md, and in the email draft use \"the domain that used to be your website\" until the owner confirms they still hold the GoDaddy account. Keep the ownership question in the open questions."
+ },
+ {
+  "claim": "audit_md: \"A name search can land on a parking page offering the domain for sale instead of services, hours or booking.\"",
+  "problem": "An inference presented as fact. The page states only \"parked free, courtesy of GoDaddy.com\" plus a \"Get This Domain\" button; nothing on it states a sale, price or listing, and GoDaddy uses that button on parked domains generally. Since the owner is being told their own domain may be for sale, this reads as an accusation of sorts without a source.",
+  "fix": "Describe what is on the page and let the reader draw the conclusion: \"a GoDaddy parking page with a 'Get This Domain' button, so a name search can look as if the domain is up for grabs instead of leading to services, hours or booking\"."
+ },
+ {
+  "claim": "audit_md and founder_md reference saved screenshots: goochie-pooch-desktop.png, goochie-pooch-mobile390.png, tpaw-gmb-website-destination.png, google-profile.png",
+  "problem": "Those files are not in the handover folder alongside rescue.json, so neither the claims nor the offer to \"show you the two screenshots\" can be backed from the record as delivered. I re-took the desktop and 390 px views myself and the parking page looks the same at both widths, so the claim itself holds; only the evidence files are missing.",
+  "fix": "Attach the four files to rescue.json (or to a screenshots/ subfolder) before the report or the email goes out, and fix the mobile file name to whatever is actually saved."
+ },
+ {
+  "claim": "audit_md tone: \"RDAP: ... registrant redacted\" / \"nameservers\" in the fix steps",
+  "problem": "Minor readability, not accuracy: \"RDAP\", \"registrant\" and \"nameservers\" are unexplained technical words in a report written for a groomer. Everything else in the body is plain English, contains no fear language, and comes to about 272 words of body text (about 290 with the footer line), inside the 300-word limit.",
+  "fix": "Gloss them once in plain words: \"the public domain record (RDAP) shows it was registered in 2011 and paid up to 2031; the owner's name and email are hidden\"."
+ }
+]

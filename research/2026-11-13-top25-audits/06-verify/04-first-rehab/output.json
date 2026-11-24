@@ -1,0 +1,198 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Sources: \"Page sitemap, 14 pages, no Spotswood page, March 2026 page updates\"",
+      "problem": "The page sitemap served today contains 15 <url> entries, not 14: /, testimonials, faqs, schedule-an-appointment, about-us, physical-therapy, other, occupational-therapy, conditions-we-treat, locations, hand-therapy, new-patients, staff, mission-statement, careers-at-first-rehab. The 'no Spotswood page' and 'March 2026 updates' parts are correct.",
+      "fix": "Change '14 pages' to '15 pages' (or drop the count and say 'no Spotswood location page'). analysis.json contains the same '14-page sitemap' figure and should be corrected too."
+    },
+    {
+      "claim": "Intro: \"Its website describes Lakewood only.\" (repeated in the founder email: 'a site that describes Lakewood only')",
+      "problem": "Overstated. Visibly, every page body, the footer and the NAP block are Lakewood-only, but the home page title tag reads 'First Rehab: Physical / Occupational Therapy Lakewood & Spotswood, NJ' and its meta description says '...in Spotswood & Lakewood NJ'. The site therefore names Spotswood in metadata while publishing no Spotswood content, which is a distinct and weaker claim than 'describes Lakewood only'.",
+      "fix": "Say what is verifiable: 'Its website names both towns in its page titles but publishes the Lakewood clinic only - no Spotswood page, address, hours or phone.' Apply the same wording to the email line."
+    },
+    {
+      "claim": "\"Spotswood's reviews read years old\" and the Google listing has 5.0 from 10 reviews",
+      "problem": "Confirmed, but the audit does not say that the ten reviews are all that exist and that the two most recent visible ones are ~4 years old with a ~7-year-old one behind them; as written a reader could think only some reviews are old. No error of fact - just under-specified.",
+      "fix": "Optional: 'all ten visible reviews are four to seven years old'. No factual change required."
+    },
+    {
+      "claim": "Impact 3: \"...x 9-39% recovered\"",
+      "problem": "The band is correct against the cited review, but the 39% ceiling comes from predictive-model phone-call reminders (median RR 0.61, moderate certainty) - i.e. a human-voice contact rate - while 9% is the text-message figure (median RR 0.91, high certainty). The audit presents the band without that distinction, which can read as if a text/SMS agent reaches 39%.",
+      "fix": "Add a half-sentence: '9% is the text-reminder effect; 39% assumes phone-call-level contact, the ceiling we would test towards.'"
+    },
+    {
+      "claim": "Audit body length",
+      "problem": "The body (intro through the closing line, headings included, sources and founder section excluded) is ~460 words, marginally over the ~450 target.",
+      "fix": "Trim ~15 words, e.g. shorten the opening line and the 'What we would build' list in opportunity 1."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Two New Jersey clinics - Lakewood and Spotswood",
+      "source_url": "https://first-rehab.com/locations/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Six clinicians on staff (Baruch Gottlieb DPT Clinical Director plus four DPTs and one OTR/L)",
+      "source_url": "https://first-rehab.com/staff/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Spotswood Google listing shows 5.0 from 10 reviews",
+      "source_url": "https://www.google.com/maps/place/First+Rehab+Physical+Therapy/data=!4m7!3m6!1s0x89c3cfeb48f5c7cd:0x42c4ba0e56c437fb!8m2!3d40.3946113!4d-74.3869628!16s%2Fg%2F1tj3421x!19sChIJzcf1SOvPw4kR-zfEVg66xEI?authuser=0&hl=en",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Spotswood Google listing links to first-rehab.com and carries phone (732) 251-6640 and address 404 Main St # A, Spotswood NJ 08884",
+      "source_url": "https://www.google.com/maps/place/First+Rehab+Physical+Therapy/data=!4m7!3m6!1s0x89c3cfeb48f5c7cd:0x42c4ba0e56c437fb!8m2!3d40.3946113!4d-74.3869628!16s%2Fg%2F1tj3421x!19sChIJzcf1SOvPw4kR-zfEVg66xEI?authuser=0&hl=en",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"Its website describes Lakewood only\"",
+      "source_url": "https://first-rehab.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "No Spotswood page, address, hours or phone anywhere on the site",
+      "source_url": "https://first-rehab.com/locations/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Page sitemap has 14 pages and no Spotswood location page",
+      "source_url": "https://first-rehab.com/page-sitemap.xml",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Page sitemap lastmod dates show March 2026 page updates",
+      "source_url": "https://first-rehab.com/page-sitemap.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Header call button on every page dials Lakewood 732.884.2020",
+      "source_url": "https://first-rehab.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Booking form offers Lakewood as the only location",
+      "source_url": "https://first-rehab.com/schedule-an-appointment/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Form asks for diagnosis and referral source, shows no availability, then relies on a callback",
+      "source_url": "https://first-rehab.com/schedule-an-appointment/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Insurance verification is routed to the phone",
+      "source_url": "https://first-rehab.com/faqs/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A duplicate Google listing exists for Spotswood (second First Rehab entity, no reviews, no website)",
+      "source_url": "https://www.google.com/maps/place/First+Rehab+Outpatient+Therapy+Provider+Spotswood/data=!4m7!3m6!1s0x89c3cfe680383f41:0x2c68f87c27052bf0!8m2!3d40.3957801!4d-74.3873749!16s%2Fg%2F11fsw1_93m!19sChIJQT84gObPw4kR8CsFJ3z4aCw?authuser=0&hl=en",
+      "result": "confirmed"
+    },
+    {
+      "claim": "An unclaimed profile exists (Birdeye, Spotswood address)",
+      "source_url": "https://reviews.birdeye.com/first-rehab-286008032",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Zero location-specific structured data on the site (Organization JSON-LD: name, url, logo, LinkedIn sameAs only; no address/telephone/openingHours, no LocalBusiness or MedicalClinic, no Spotswood entity)",
+      "source_url": "https://first-rehab.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FAQ describes 2-3 visits a week for 4-8 weeks",
+      "source_url": "https://first-rehab.com/faqs/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No booking engine, patient portal or messaging is visible on the site",
+      "source_url": "https://first-rehab.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"Spotswood's reviews read years old\"",
+      "source_url": "https://www.google.com/maps/place/First+Rehab+Physical+Therapy/data=!4m7!3m6!1s0x89c3cfeb48f5c7cd:0x42c4ba0e56c437fb!8m2!3d40.3946113!4d-74.3869628!16s%2Fg%2F1tj3421x!19sChIJzcf1SOvPw4kR-zfEVg66xEI?authuser=0&hl=en",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Baruch Gottlieb, DPT, is listed as Clinical Director",
+      "source_url": "https://first-rehab.com/staff/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dental Assistant median wage in NJ, May 2023, is $22.50/hr",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes_nj.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Physical Therapist median wage in NJ, May 2023, is $50.00/hr (mean annual $109,280)",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes_nj.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Missed-visit reduction band 9%-39% is supported by the cited review (text reminders median RR 0.91, high certainty; phone calls median RR 0.61, moderate certainty)",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/36508503/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Rescheduled-visit pilot (720 patients; +2.83pp completed rescheduled visits, 95% CI 1.66-4.00, OR 1.86; rescheduling alone not significant) is correctly described and excluded from the range",
+      "source_url": "https://pubmed.ncbi.nlm.nih.gov/38852906/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Clerical task set behind the intake estimate (schedule appointments, complete insurance forms, maintain records) is documented for Dental Assistants 31-9091",
+      "source_url": "https://www.onetonline.org/link/summary/31-9091.00",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Arithmetic: 480-1,200 patients x 10-15 min x 50-70% = 40-210 hours; at $22.50 x 1.25 = $28.125 => $1,120-$5,900",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes_nj.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Arithmetic: 2-5 missed visits x 2 clinics x 52 weeks x 1 hour x 9-39% = 18-202 hours; at $50.00 x 1.25 = $62.50 => $1,125-$12,625",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes_nj.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New-patient volume (480-1,200 a year) and the 50-70%/10-15 minute factors are flagged as our assumptions, and the dental-assistant wage as a proxy",
+      "source_url": "https://first-rehab.com/schedule-an-appointment/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact 1 claims no dollar figure because no sourced benchmark exists, and instead counts observable defects",
+      "source_url": "https://first-rehab.com/locations/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder email: the Spotswood Google listing sends people to first-rehab.com",
+      "source_url": "https://www.google.com/maps/place/First+Rehab+Physical+Therapy/data=!4m7!3m6!1s0x89c3cfeb48f5c7cd:0x42c4ba0e56c437fb!8m2!3d40.3946113!4d-74.3869628!16s%2Fg%2F1tj3421x!19sChIJzcf1SOvPw4kR-zfEVg66xEI?authuser=0&hl=en",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder email: no Spotswood page, address, hours or phone, and a booking form offering Lakewood as the sole location",
+      "source_url": "https://first-rehab.com/schedule-an-appointment/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder email wording 'a site that describes Lakewood only'",
+      "source_url": "https://first-rehab.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Tone, framing and privacy: inferences labelled as assumptions, no clinical or alarmist language, no personal data beyond the clinical director named on the company's own staff page, no review text reproduced",
+      "source_url": "https://first-rehab.com/staff/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Supporting page: new patients complete paper paperwork 15 minutes early and the scheduling team arranges follow-ups before they leave (background to the intake claims)",
+      "source_url": "https://first-rehab.com/new-patients/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

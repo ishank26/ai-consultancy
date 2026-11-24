@@ -1,0 +1,22 @@
+[
+ {
+  "claim": "audit_md: \"The home and feedback pages carry about 118 unrelated links (handbags, 'instagram followers', chatgpt) pushed off-screen by an injected script.\" rescue.json: \"a block of about 118 unrelated 'prada / gucci / instagram followers / chatgpt' anchors\".",
+  "problem": "The number is wrong and ambiguous. Measured in the page DOM: the home page spam block holds 110 links (page total 119), and the feedback page block holds 87 links (page total 91), so the two pages together carry about 197 injected links. The figure 118 matches neither block; it is closest to the home page's total anchor count (119), which includes the site's own navigation, mailto links and footer. An owner who counts will find the number does not add up.",
+  "fix": "Replace with a measured figure, e.g. \"about 110 unrelated links on the home page and about 90 on the feedback page\", or drop the count and say \"a block of unrelated handbag, 'instagram followers' and chatgpt links\"."
+ },
+ {
+  "claim": "founder_md: \"I have screenshots at desktop and phone width showing exactly what a customer sees today\" and \"Screenshots in this folder: screenshot-protecsystems-https-privacy-error.png, screenshot-protecsystems-desktop.png, screenshot-protecsystems-mobile-390.png, screenshot-protecsystems-org-coming-soon-desktop.png, screenshot-google-maps-listing.png\".",
+  "problem": "None of those image files exist in this folder (only rescue.json, brief.md, log.jsonl, session/ and stderr.txt are present), so the promise of screenshots cannot be verified here. The email would refer the owner to files they may not receive.",
+  "fix": "Confirm the PNGs exist and are attached to the deliverable before the email or call is used; if they are missing, retake them (private-error interstitial, http home at desktop and 390 px, protecsystems.org holding page, Maps panel) or remove the screenshot sentence."
+ },
+ {
+  "claim": "audit_md body length.",
+  "problem": "Body runs to roughly 300-305 words depending on whether headings and the closing line are counted, so it sits at or just over the 300-word limit.",
+  "fix": "Trim one bullet by about 15 words (the first bullet's address/phone detail can be shortened) to leave clear headroom."
+ },
+ {
+  "claim": "audit_md: \"Google lists Pro-Tec Systems Inc ... rated 5.0\".",
+  "problem": "The 5.0 rating is confirmed in the Maps panel, but no review count is shown there, so a reader may assume a body of reviews. The caveat says this, the customer-facing text does not.",
+  "fix": "Optional: write \"rated 5.0 (no review count shown in this view)\" or leave the rating out of the first bullet."
+ }
+]

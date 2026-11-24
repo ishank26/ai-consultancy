@@ -1,0 +1,42 @@
+[
+ {
+  "claim": "LFM2-VL entry: \"Note: the brief's 'LFM2.5-VL' does not appear to exist; the shipping family is LFM2-VL.\"",
+  "problem": "Contradicted. Liquid AI's own site documents LFM2.5-VL-450M, LFM2.5-VL-1.6B and LFM2.5-VL-3B (LFM2.5-VL-3B blog post; Hugging Face LiquidAI/LFM2.5-VL-3B). The note is an inference from the single (now deprecated) LFM2-VL page cited, and it is false as written.",
+  "fix": "Delete the 'does not exist' note or rewrite it as: LFM2-VL-450M/1.6B (2025) and LFM2.5-VL-450M/1.6B/3B (2026) both ship. Cite https://www.liquid.ai/blog/lfm2-5-vl-3b for LFM2.5-VL and https://www.liquid.ai/blog/lfm2-vl-3b-a-new-efficient-vision-language-for-the-edge for the LFM2-VL-3B member of the 450M/1.6B/3B family, since the cited lfm2-vl blog page lists only 450M and 1.6B."
+ },
+ {
+  "claim": "A3929: \"Reported as passed by the Assembly 56-16-1 on 2026-03-23 and referred to the Senate Law and Public Safety Committee\" (confirmed: true)",
+  "problem": "The cited source (3929_I1.PDF) is only the introduced bill text with sponsorship updated 2/19/2026; it contains no vote tally, no March 23, 2026 date and no committee referral. The legislative-status claim is presented as confirmed but is not supported by the URL given. (The underlying facts do check out against the NJ Legislature bill status page, which is a different source.)",
+  "fix": "Add the bill status URL (https://njleg.state.nj.us/bill-search/2026/A3929) as the source for the passage/referral sentence, or mark the status as unverified. Keep 3929_I1.PDF only for the bill's text and penalty amounts."
+ },
+ {
+  "claim": "fit_score: legal_risk_low = 10",
+  "problem": "Sub-scores add to 63 correctly (13+11+8+15+10+6) and all sit inside plausible ranges, but a maximum legal score contradicts the brief's own legal section, which lists live exposure: wiretap exposure from audio, an absolute restroom/staff-area exclusion under 2C:14-9, the Friedman v. Martinez intrusion tort, a pending NJ biometric-surveillance bill, and unconfirmed notice/retention rules. Two of ten legal items are recorded as 'could not confirm'.",
+  "fix": "Drop legal_risk_low to about 7-8 (or state explicitly that 10 means 'risk manageable by design, not absence of exposure') and re-balance the total, so the score reflects that the risk is avoidable rather than nil."
+ },
+ {
+  "claim": "published version reports approximately +1% per check, -10% duration, +11% sales per minute",
+  "problem": "The cited URL is the 2017 working paper, which reports 2.91% / 9.74% / 10.77%. It does not contain the +1% figure. The published (Management Science/2019) numbers are corroborated only by secondary trade coverage (Restaurant Dive, Aug 2019), not by anything in the document cited.",
+  "fix": "Cite the published article (or the trade summary) for the +1% figure, or drop the parenthetical and quote the working paper's 2.91% / 9.74% / 10.77% only."
+ },
+ {
+  "claim": "Restaurant industry net margin between 1% and 7%, \"which is the paper's own stated reason technology investment is hard to justify in this sector\"",
+  "problem": "The 1%-7% figure is verbatim in the paper, but the paper does not argue that low margins make technology investment hard to justify; it argues the opposite - that a 2.91% sales lift is practically significant 'given the low-margin nature of the casual dining business'. The framing inverts the source's point.",
+  "fix": "Rephrase: the paper cites 1%-7% margins as the reason a ~3% sales lift is economically meaningful, not as a reason investment is hard to justify."
+ },
+ {
+  "claim": "NLRB GC 23-02 'announced intent to ... route such cases to the Division of Advice'",
+  "problem": "The cited NLRB news page confirms the Oct 31, 2022 memo, its intent to urge a new Section 7 framework and an interagency approach, but does not mention routing cases to the Division of Advice; that language is in the memo itself, not the page cited.",
+  "fix": "Cite GC 23-02 directly (apps.nlrb.gov document) for the Division of Advice routing, or drop that clause."
+ },
+ {
+  "claim": "NJ data-privacy law excludes employment-context data (source: njconsumeraffairs.gov FAQ)",
+  "problem": "That page returned only a stub (~550 characters) and its content did not substantiate the employment-exclusion statement, so the citation does not carry the claim it is attached to.",
+  "fix": "Replace with the statutory text (N.J.S.A. 56:8-166 or the Act's definitional scope) or the Attorney General FAQ text that actually addresses employment data; the item is already marked confirmed:false, so label it as unverified."
+ },
+ {
+  "claim": "Kimes 2004: 100-seat restaurant, $20 average check, 60->50 minutes, 400->480 covers, +20% revenue",
+  "problem": "The cited Cornell PDF would not open for me (HTTP 405/429 across several attempts); the numbers were corroborated only from search excerpts quoting that PDF. Not a contradiction - a source-access gap that should be closed before quoting.",
+  "fix": "Re-fetch the ecommons PDF (or the published Cornell Hotel and Restaurant Administration Quarterly version) and confirm the 400/480 example verbatim, or attach the quote used."
+ }
+]

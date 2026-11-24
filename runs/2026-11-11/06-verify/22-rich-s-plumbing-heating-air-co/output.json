@@ -1,0 +1,72 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Audit intro and email/opener: \"all of that demand still arrives through one phone number and a callback form — with no online booking anywhere on the site\"; email \"no online booking\"; walk-in opener \"there's no way to book online\".",
+      "problem": "Contradicted by a page the audit itself cites. The company's emergency page states: \"Online scheduling is available for service requests, but homeowners facing an active emergency should call us directly.\" There is no calendar/slot picker on the site (contact form posts to /api/lead, sitemap has no booking page), so \"no real-time scheduler\" is defensible, but \"no online booking anywhere\" / \"no way to book online\" is stated as fact and is wrong on the company's own wording. Said to the founder's face, this is the first thing they will correct, which undermines the rest of the audit.",
+      "fix": "Reword to what is verifiable: \"no online scheduler or time-slot picker — requests still come by phone or a two-step callback/estimate form\" (intro), email: \"...with no way to pick a time online — it's a phone number and a callback form\", opener: \"...and the web form is a request, not a slot you can pick — is the after-hours phone the part that's hardest to keep up with?\" Optionally note the site's own \"online scheduling\" wording and that it resolves to the form."
+    },
+    {
+      "claim": "Audit body length.",
+      "problem": "Over the ~450-word limit. Counted from the opening paragraph through \"Suggested first step\": roughly 630 words; sections 1-3 alone are roughly 475 words. This is roughly 40% over.",
+      "fix": "Cut to ~450 words by trimming the three \"What's happening now\" paragraphs (each currently 60-80 words) and shortening \"Why this works\" to three one-line bullets; drop repeated restatements of the 60-minute promise (it appears in the intro and section 1)."
+    },
+    {
+      "claim": "Section 3: \"Long-tenure customers in your reviews mean those histories run years deep, and right now that knowledge lives with whoever can find it.\"",
+      "problem": "The long-tenure reviews are sourced; \"that knowledge lives with whoever can find it\" is an assertion about internal record systems with no source. The maintenance-plan page says the opposite on its face (\"we can even keep all records and schedule maintenance of our customers on file\"). Presented as fact about how the business currently operates.",
+      "fix": "Frame as inference from outside: \"we can't tell from the outside whether those records sit in software, spreadsheets or paper — if it's spreadsheets, the knowledge is only as findable as the person who built them.\""
+    },
+    {
+      "claim": "Section 1: \"Businesses like yours often find that same 60-minute promise strains a small office team overnight.\"",
+      "problem": "Unsourced generalisation dressed as a finding (\"often find\"). No study, survey or comparable-business source is cited anywhere in the audit or the source list to support it.",
+      "fix": "Make it a question rather than a claim — \"a 60-minute promise is a hard thing to hold overnight with a small office team — is that where it bites?\" — or drop the sentence and let the sourced facts carry it."
+    },
+    {
+      "claim": "Section 1 agent design: \"anything hazardous is transferred straight to your on-call technician\" (also in email: \"hand real emergencies straight to the on-call tech\").",
+      "problem": "\"Your on-call technician\" assumes an existing on-call rotation. The site advertises 24/7 emergency service but does not state how after-hours coverage is staffed (schema openingHoursSpecification is empty). Inference stated as fact about the business.",
+      "fix": "Use \"whichever technician is on call\" or \"your after-hours contact, whoever that is today\" — it is a design choice, not a claim about their staffing."
+    },
+    {
+      "claim": "Section 2: \"Estimates are given on site and explained in person — and for most jobs that appears to be the only conversation.\"",
+      "problem": "First half is supported (on-site estimate and explanation of findings, plus a testimonial describing an on-site estimate). Second half is a hedged inference (\"appears\") but reads as a finding about their sales process; nothing in the sources shows whether a follow-up call or email already happens.",
+      "fix": "Label it explicitly: \"...and as far as the public site shows, that conversation is the only documented step.\" Keeps the point without asserting internal process."
+    },
+    {
+      "claim": "Intro: \"an advertised 60-minute emergency response\".",
+      "problem": "Accurate as advertising, but the source carries a qualifier the audit drops: \"we state a fast 60-minute response time, although timing can vary by conditions and call location.\" A founder may read the unqualified version as a misquote.",
+      "fix": "Either add \"(timing varies by conditions and location, as your page notes)\" once, or keep the qualifier in section 1 where the promise is discussed."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Family owned and operating since 1989.", "source_url": "https://www.richsplumbing.com/about-us/", "result": "confirmed"},
+    {"claim": "Three offices — East Brunswick, Elizabeth, Bayville.", "source_url": "https://www.richsplumbing.com/about-us/", "result": "confirmed"},
+    {"claim": "All three offices publish the same phone number (one phone line).", "source_url": "https://www.richsplumbing.com/about-us/", "result": "confirmed"},
+    {"claim": "4.7 Google rating in East Brunswick.", "source_url": "https://www.richsplumbing.com/", "result": "confirmed"},
+    {"claim": "Advertised 60-minute emergency response.", "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/", "result": "confirmed"},
+    {"claim": "Every page sends customers to the office staff.", "source_url": "https://www.richsplumbing.com/contact-us/", "result": "confirmed"},
+    {"claim": "Emergency page tells callers to phone in.", "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/", "result": "confirmed"},
+    {"claim": "Staff ask where the leak is, whether water is still flowing, whether the shutoff is closed, whether there is an electrical hazard.", "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/", "result": "confirmed"},
+    {"claim": "No online booking anywhere on the site.", "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/", "result": "contradicted"},
+    {"claim": "No scheduler, calendar or time-slot picker exists; contact path is a form posting to /api/lead.", "source_url": "https://www.richsplumbing.com/contact-us/", "result": "confirmed"},
+    {"claim": "Two-step lead form with SMS consent checkbox.", "source_url": "https://www.richsplumbing.com/contact-us/", "result": "confirmed"},
+    {"claim": "No booking/scheduling or careers URL in the sitemap.", "source_url": "https://www.richsplumbing.com/sitemap-0.xml", "result": "confirmed"},
+    {"claim": "Six coupons with codes RICH50, BOILER500, HVAC300 (plus TUNE189, WATER50, DRAIN75).", "source_url": "https://www.richsplumbing.com/", "result": "confirmed"},
+    {"claim": "Synchrony financing offered.", "source_url": "https://www.richsplumbing.com/", "result": "confirmed"},
+    {"claim": "Maintenance plan sells seasonal check-ups, priority scheduling, and records of equipment, serial numbers and service history.", "source_url": "https://www.richsplumbing.com/hvac-services/maintenance-plan/", "result": "confirmed"},
+    {"claim": "Plan markets peace of mind.", "source_url": "https://www.richsplumbing.com/hvac-services/maintenance-plan/", "result": "confirmed"},
+    {"claim": "Estimates available for most services and discussed on site.", "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/", "result": "confirmed"},
+    {"claim": "Reviews call pricing fair but \"a little high\".", "source_url": "https://www.richsplumbing.com/reviews/", "result": "confirmed"},
+    {"claim": "Long-tenure and repeat customers in reviews (20 years, third-time caller).", "source_url": "https://www.richsplumbing.com/reviews/", "result": "confirmed"},
+    {"claim": "Office staff already call when a tech is en route (\"tech on the way\").", "source_url": "https://www.richsplumbing.com/", "result": "confirmed"},
+    {"claim": "Legal name \"Rich's Plumbing Heating & Air Conditioning, Inc.\" and services (plumbing, heating, air conditioning) in East Brunswick.", "source_url": "https://www.richsplumbing.com/about-us/", "result": "confirmed"},
+    {"claim": "NJ customer service representative annual median $47,740 (43-4051).", "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000043405113", "result": "could not open"},
+    {"claim": "NJ customer service representative annual median $47,740 (43-4051), cross-checked on a BLS 2025 wage mirror.", "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ", "result": "confirmed"},
+    {"claim": "NJ dispatcher annual median $54,590 (43-5032).", "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000043503213", "result": "could not open"},
+    {"claim": "NJ dispatcher annual median $54,590 (43-5032), cross-checked on a BLS 2025 wage mirror.", "source_url": "https://www.onetonline.org/link/localwages/43-5032.00?st=NJ", "result": "confirmed"},
+    {"claim": "Impact range $20,000-$50,000/yr (opportunity 1) is plausible against the two wage medians and is labelled \"Illustrative\".", "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ", "result": "confirmed"},
+    {"claim": "\"Your on-call technician\" exists today.", "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/", "result": "not found"},
+    {"claim": "Maintenance-plan records currently live with \"whoever can find it\" (scattered/paper).", "source_url": "https://www.richsplumbing.com/hvac-services/maintenance-plan/", "result": "not found"},
+    {"claim": "\"Businesses like yours often find\" a 60-minute promise strains a small office team overnight.", "source_url": "https://www.richsplumbing.com/plumbing/emergency-plumbing/", "result": "not found"}
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,123 @@
+{
+ "ref": "B05573",
+ "name": "Girgis Family Medicine (Dr. Moris Girgis / Dr. Linda Girgis)",
+ "town": "South River, NJ",
+ "category": "Family medicine / primary care practice",
+ "status": "operating",
+ "domains": [
+  {
+   "domain": "girgismd.com",
+   "role": "listed on Google (Dr Linda Girgis Google Business Profile, 'Website' button)",
+   "final_url": "https://penn-medaltoona.com/home-care/ (reached via https://www.eyesonolympia.com/)",
+   "result": "HTTPS loads with no certificate warning, then a cross-origin redirect chain (girgismd.com -> www.eyesonolympia.com -> penn-medaltoona.com) delivers an Indonesian online-slot gambling landing page (PRAGMATIC88) with LOGIN / DAFTAR buttons. No practice content, no practice name, no address or phone anywhere on the page.",
+   "screenshot_files": [
+    "shot-girgismd-desktop.png",
+    "shot-girgismd-mobile390.png"
+   ],
+   "checked_at": "2026-11-13",
+   "source_url": "https://girgismd.com/"
+  },
+  {
+   "domain": "travelclinicsofamerica.com",
+   "role": "listed on Google (Dr Moris Girgis Google Business Profile, 'Website' button, path /profiles/mgirgis.html)",
+   "final_url": "https://www.travelclinicsofamerica.com/profiles/mgirgis.html",
+   "result": "HTTP 404. Browser title 'Not Found'; page text 'HTTP Error 404. The requested resource is not found.' (IIS server). The domain root also returns HTTP 404.",
+   "screenshot_files": [
+    "shot-travelclinics-404.png"
+   ],
+   "checked_at": "2026-11-13",
+   "source_url": "http://www.travelclinicsofamerica.com/profiles/mgirgis.html"
+  },
+  {
+   "domain": "drlinda-md.com",
+   "role": "alternate (Dr. Linda Girgis's personal blog)",
+   "final_url": "https://drlinda-md.com/",
+   "result": "Loads normally (WordPress blog, 'Dr. Linda - Just a family doctor speaking up from the frontlines of medicine'). No practice address, hours, services or appointment path on the home page; no link to girgismd.com found on the home page.",
+   "screenshot_files": [],
+   "checked_at": "2026-11-13",
+   "source_url": "https://drlinda-md.com/"
+  }
+ ],
+ "links_to_broken_domain": [
+  {
+   "place": "Google Business Profile - Girgis Family Medicine - Dr Linda Girgis (Website field)",
+   "url": "https://www.google.com/maps/search/Girgis+Family+Medicine+South+River+NJ"
+  },
+  {
+   "place": "Google Business Profile - Girgis Family Medicine - Dr Moris Girgis (Website field -> travelclinicsofamerica.com profile, 404)",
+   "url": "https://www.google.com/maps/search/Girgis+Family+Medicine+South+River+NJ"
+  }
+ ],
+ "rdap": [
+  {
+   "domain": "girgismd.com",
+   "registered": "2023-01-31",
+   "expires": "2027-01-31",
+   "last_changed": "2026-04-20",
+   "registrar": "GoDaddy.com, LLC (IANA ID 146); nameservers MCKENZIE.NS.CLOUDFLARE.COM and NICO.NS.CLOUDFLARE.COM; registrant details not published",
+   "source_url": "https://rdap.org/domain/girgismd.com"
+  }
+ ],
+ "likely_cause": {
+  "cause": "unclear",
+  "reasoning": "Three facts point away from a simple lapse: the current registration record was created 2023-01-31, expires 2027-01-31 (so it has been renewed past today), and was last changed 2026-04-20. The Wayback Machine shows the practice's own site ('Girgis Family Medicine', 123 Main Street, services, both physicians) served from this same domain on 2024-04-07, so the 2023 registration that is still on file was the one carrying their site. Two explanations fit what is visible now: (a) control of the registration or DNS moved to someone else - a sale, or a transfer/account change consistent with the 2026-04-20 'last changed' date - and the domain is now used as part of a spam redirect network; or (b) the registrar/DNS/hosting account was compromised and the domain repointed. The present behaviour (girgismd.com -> eyesonolympia.com -> penn-medaltoona.com, serving a slot-gambling page built from a TeePublic-derived template) is typical of a domain used purely as a redirector, not of a live medical site with spam injected into it. Which of the two it is cannot be settled from public records alone. Separately, the 2021-12-05 capture shows a hosting default page ('defaultsite' meta refresh), which suggests the domain or its hosting had lapsed once before, years earlier.",
+  "inference": true
+ },
+ "fix_steps": [
+  {
+   "step": "Log in to the registrar account (GoDaddy) and confirm who controls girgismd.com: renewal date, contact email on the account, and any recent changes to nameservers or DNS records. RDAP shows Cloudflare nameservers and a 'last changed' date of 2026-04-20.",
+   "who": "Practice owner, with whoever set up or maintained the 2024 site",
+   "effort_hours": "1-2",
+   "source_url": "https://rdap.org/domain/girgismd.com"
+  },
+  {
+   "step": "Same day, change the 'Website' field on both Google Business Profiles so no patient is sent to the gambling redirect or the 404 page - point at a working page, or clear the field until one exists.",
+   "who": "Owner or front-desk manager with access to the profiles",
+   "effort_hours": "0.5-1",
+   "source_url": "https://www.google.com/maps/search/Girgis+Family+Medicine+South+River+NJ"
+  },
+  {
+   "step": "Decide between recovering the domain (registrar support, account recovery, and a report to the registrar's abuse contact if DNS was changed without permission) and moving to a new domain; then rebuild a small site: home, services, both physicians, insurance accepted, hours, address, phone, and an appointment-request form.",
+   "who": "Owner decides; web developer executes",
+   "effort_hours": "8-20",
+   "source_url": "https://web.archive.org/web/20240407002718/https://girgismd.com/"
+  },
+  {
+   "step": "Reset passwords and enable two-factor authentication on the registrar account, DNS, hosting, the Google Business Profiles and the practice's Google account; check for unfamiliar users or forwarding rules.",
+   "who": "Owner, or web developer with the owner present",
+   "effort_hours": "1-2",
+   "source_url": "https://rdap.org/domain/girgismd.com"
+  },
+  {
+   "step": "Put monitoring in place: an uptime/link check on the practice domain and a monthly check that each profile's website link still resolves to the practice site.",
+   "who": "Web developer, then front desk for the monthly check",
+   "effort_hours": "1",
+   "source_url": "https://www.google.com/maps/search/Girgis+Family+Medicine+South+River+NJ"
+  }
+ ],
+ "after_fix": {
+  "opportunity": "Consolidate the two Google Business Profiles for the same office into one managed listing with hours, services, insurance list, photos and the working website.",
+  "evidence": "Two live Google profiles list the same office and phone (732) 254-9494 at 123 Main St - Dr Linda Girgis 4.3 and Dr Moris Girgis 4.1 - and each has its own Website button; one currently leads to the gambling redirect, the other to a 404 page (see shot-gmaps-desktop-2.png).",
+  "source_url": "https://www.google.com/maps/search/Girgis+Family+Medicine+South+River+NJ"
+ },
+ "severity": "High",
+ "severity_reason": "The website field on the Dr Linda Girgis profile, the practice's higher-rated listing, sends patients to an Indonesian slot-gambling page, and the second profile sends them to a 404. A medical practice is judged on what its own site says about services, insurance and hours, and there is no working practice page anywhere; patients are left with the phone only.",
+ "audit_md": "# Website Health Check: Girgis Family Medicine\n\n**What we saw on 13 November 2026**\n\n- girgismd.com, the website on the Dr Linda Girgis Google profile, no longer shows the practice: it redirects through eyesonolympia.com to penn-medaltoona.com and shows an Indonesian slot-gambling page (screenshots: desktop, 390 px).\n- The practice's own site is last archived in April 2024 - \"Girgis Family Medicine\", 123 Main Street, with services, both physicians and a \"Create An Appointment\" button.\n- The Dr Moris Girgis profile points to a travelclinicsofamerica.com page that returns \"404 Not Found\".\n- Both profiles are live with the same office and phone (732) 254-9494: Dr Linda 4.3, Dr Moris 4.1.\n\n**What it means for customers**\n\nPatients tapping \"Website\" on the Dr Linda Girgis profile land on a gambling page, not a medical practice. Hours, services, insurance and appointment requests exist only by phone.\n\n**How to fix it**\n\n1. Confirm who controls girgismd.com at the registrar (GoDaddy) and any recent DNS changes - owner plus whoever built the 2024 site; 1-2 hours.\n2. Change the website link on both profiles the same day - owner or front desk; under 1 hour.\n3. Recover the domain or register a new one, then rebuild a short site (services, providers, insurance, hours, contact, appointment request) - web developer; 8-20 hours.\n4. Reset passwords and add two-factor on registrar, DNS, hosting and Google - owner or developer; 1-2 hours.\n5. Add link monitoring and re-check each profile monthly - developer; about 1 hour.\n\n**After the fix**\n\nMerge the two Google profiles for one office, so hours, services and the website sit in one place instead of being split between Dr Linda (4.3) and Dr Moris (4.1).\n\nPrepared from publicly available information on 13 November 2026. We did not log in to or change anything.",
+ "founder_md": "**Email draft (3 sentences)**\n\nHello Dr. Girgis, I'm [name] from [consultancy]. While checking how Girgis Family Medicine appears online, I noticed that the website link on your Google profile (girgismd.com) now redirects to an Indonesian gambling page, and the second profile's link returns a 404 error. I have screenshots of what a patient sees on desktop and on a phone, plus a one-page summary, and I would be glad to walk you through them if that is useful. You can reply here if you would like me to send them.\n\n**Walk-in / phone opener (1 sentence)**\n\nHi, I'm [name] - I was checking family practices in South River online and saw that the website link on Dr. Girgis's Google listing takes visitors to a gambling page instead of your office; could I show you two screenshots of what patients see?\n\n**Sources**\n\n- https://www.google.com/maps/search/Girgis+Family+Medicine+South+River+NJ (two profiles, ratings, phone, hours; Website buttons)\n- https://girgismd.com/ (redirect chain to https://penn-medaltoona.com/home-care/, screenshots shot-girgismd-desktop.png and shot-girgismd-mobile390.png)\n- https://rdap.org/domain/girgismd.com (registration 2023-01-31, expiry 2027-01-31, last changed 2026-04-20, GoDaddy, Cloudflare nameservers)\n- https://web.archive.org/cdx/search/cdx?url=girgismd.com (captures 2011-2024)\n- https://web.archive.org/web/20240407002718/https://girgismd.com/ (the practice's own site, April 2024)\n- https://web.archive.org/web/20211205191305/https://girgismd.com/ (2021 capture = hosting default page)\n- http://www.travelclinicsofamerica.com/profiles/mgirgis.html (404, screenshot shot-travelclinics-404.png)\n- https://drlinda-md.com/ (Dr. Linda's blog, live)\n- https://www.saintpetershcs.com/physician/moris-girgis and https://www.saintpetershcs.com/physician/linda-girgis (171 Main Street, Suite 4; (732) 254-9494; no website field)\n- https://ccphp.net/girgis (membership programme page describing the practice as operating in South River)\n\n**Open questions**\n\n- Who holds the GoDaddy account for girgismd.com, and did anyone change the nameservers or DNS around April 2026?\n- Does the practice still consider the domain theirs, or was it sold or handed to a web vendor?\n- Is the office at 123 Main St (Google, the 2024 site) or 171 Main Street, Suite 4 (Saint Peter's directory)?\n- Do the files and photos from the 2024 site still exist, and does anyone have a backup?\n- Who has admin access to the two Google Business Profiles, and are either of them claimed?\n- Are there other places still showing girgismd.com (insurer print directories, business cards, letterhead) that we cannot see online?",
+ "caveats": [
+  "Address differs by source: Google Maps and the 2024 archived site say 123 Main St, South River NJ 08882; the Saint Peter's HealthCare System physician pages say 171 Main Street, Suite 4, South River NJ 08882. Both list (732) 254-9494. The move date is unknown, so the health check asserts no single address.",
+  "The registrant is not published in RDAP, so ownership of girgismd.com cannot be confirmed from public records.",
+  "Google Maps served a limited view; rating values (4.3 and 4.1) were visible but review counts were not.",
+  "The exact date the domain stopped showing the practice is unknown: the last Wayback capture of the site is 2024-04-07 and there are no later captures.",
+  "Cause is labelled as inference: public records show a continuously registered domain renewed to 2027 and changed on 2026-04-20, which fits either a change of control or a compromised account.",
+  "No Yelp, BBB or Facebook page for the practice could be confirmed, so it is unknown whether they carry a girgismd.com link."
+ ],
+ "data_gaps": [
+  "npiprofile.com returned a Cloudflare block page for both physician NPI records.",
+  "DuckDuckGo HTML search returned a CAPTCHA, so a full list of inbound links to girgismd.com could not be assembled.",
+  "The Facebook page facebook.com/DrLIndaMD could not be read (JavaScript-rendered / not retrievable without login).",
+  "Insurer provider-directory PDFs (Fidelis, WellCare, UnitedHealthcare, Aetna Better Health) were not opened individually to check for a listed website field.",
+  "Whether the two Google Business Profiles are claimed, and who administers them, is not visible from a signed-out Google Maps view.",
+  "No Wayback capture exists between 2024-04-07 and today, so the month the domain flipped to the gambling redirect is unknown."
+ ]
+}

@@ -1,0 +1,99 @@
+{
+  "results": [
+    {
+      "ref": "B01384",
+      "name": "Super Tool Automotive Inc.",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Site live at supertoolauto.com; AAA Approved listing and Birdeye profile both active, so status holds. Checked in browser: /Auto-Repair/Schedule-My-Service is a two-choice date/time request form with reCAPTCHA present, text explicitly says the chosen time is not guaranteed and staff reply within 24 hours - confirmed. Homepage has exactly one JSON-LD block, an Organization stub with name/logo/alternateName only, no LocalBusiness, hours, geo or aggregateRating - confirmed. /Reviews page shows no ratings or review text, only 'READ OUR GOOGLE REVIEWS' and 'LEAVE US A REVIEW ON SURECRITIC' links - confirmed. Site hours Mon-Fri 8:00-5:30, Sat/Sun closed; AAA shop page and Birdeye both list 9:00-6:00 Mon-Fri - the stated inconsistency is real. robots.txt re-read: wildcard group allows search bots plus explicit allow groups for Claude-User/ChatGPT-User/Google-Agent, blocks Bytespider/Amazonbot/Diffbot/Meta-ExternalAgent - matches. Birdeye shows 4.7 with 123 reviews. Scores look fair: narrow but real gaps on a decent template site, established 1996 business with fleet/Penske revenue, evidence directly observed."
+    },
+    {
+      "ref": "B05352",
+      "name": "BLOOM Custom Hair Color",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "contact_form: false, and 'no contact option' - clients must book or hunt for contact info",
+          "what_is_true": "The site has a /contact page with an 'Ask us a question' form (Name, Email, Message, confirmation that an email is sent), protected by reCAPTCHA. There is still no phone number or tel: link anywhere on the site, so only the phone half of the claim holds, and opportunity 1 shrinks to phone/click-to-call plus removing the CAPTCHA rather than adding a contact option.",
+          "source_url": "https://bloomcustomhair.glossgenius.com/contact"
+        },
+        {
+          "claim": "a robots.txt was not readable at the subdomain root",
+          "what_is_true": "robots.txt is served: 'User-agent: *' with Disallow for /not-found/, /a/, /r/, /review/, /add-card/ and a sitemap - so crawling is open apart from the review and account paths.",
+          "source_url": "https://bloomcustomhair.glossgenius.com/robots.txt"
+        },
+        {
+          "claim": "Slight horizontal overflow on desktop (document 1440px vs 1425px viewport)",
+          "what_is_true": "At a 1440px viewport document.documentElement.scrollWidth equals 1440 and at 390px it equals 390, so no horizontal overflow in either layout today.",
+          "source_url": "https://bloomcustomhair.glossgenius.com/"
+        },
+        {
+          "claim": "Open six days: Tue-Sat 8am-7pm, Monday closed",
+          "what_is_true": "The footer lists Monday closed then Tuesday through Sunday 8 AM - 7 PM, i.e. six open days including Sunday, not Tuesday-Saturday.",
+          "source_url": "https://bloomcustomhair.glossgenius.com/"
+        }
+      ],
+      "notes": "Status holds: site live, 197 GlossGenius reviews embedded (review carousel reads 1/197), HairSalon JSON-LD present with a real postal address (407 Raritan Ave, Highland Park NJ 08904), prices and deposits in text ($50 deposit for fashion color, $60 for single process, $120-150 service prices). Confirmed top issues: no phone number or tel: link on home or contact pages; the whole presence sits on bloomcustomhair.glossgenius.com; at 390px the header shows only the bag and hamburger with no Book Now (verified by screenshot); content is client-rendered. Only the contact-form part was wrong. magicpin shows 5.0 from 14 ratings as stated; a third-party directory (njtgo.com) lists a phone for the salon, but none is on the site, so opportunity 1 stands in reduced form. Gap 2, ability 3, ease 4 remain reasonable; evidence 4 is still defensible since the rest was verified first-hand, but the record's contact and robots fields should not be trusted as written."
+    },
+    {
+      "ref": "B05559",
+      "name": "Reboot It Tech Service - South River",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Site live at rebootitnj.com (single Google Sites page). Confirmed in browser: no phone number and no tel: or sms: links anywhere on the page; page text says text is the best contact and that it is 'a one-woman show' and a part-time business alongside a full-time job, established 2017, appointment-only home-office with pickup/drop-off; service-area list matches the record exactly. Title is brand-only with no meta description and zero JSON-LD. robots.txt returns 404 - confirmed. Booking button links to form.jotform.com/rebootit.nj/appointmentform and the cited form ID https://form.jotform.com/222208234519047 still loads with the title 'Reboot It Appointment Request + Repair & Service Agreement and Liability Waiver', so the paperwork-per-job signal holds; that form carries the phone 732-955-4789, which is how the number exists without being on the site. Review base of 4.9 from 19 reviews is corroborated by a BestProsInTown listing for the same business. Scores gap 3 / ability 2 / ease 4 / evidence 4 remain reasonable - the work is real but low-value for a part-time owner."
+    },
+    {
+      "ref": "B05686",
+      "name": "Globo Auto BMW Specialist",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Everything checked holds. Home page has JSON-LD of type ['AutoRepair','LocalBusiness'] with street address 190 William St #1C, telephone +1-732-387-2281, openingHoursSpecification Mon-Fri 10:00-20:00 and sameAs instagram; four tel:+17323872281 links plus 'WALK-INS WELCOME' / 'NO APPOINTMENT NEEDED'. /contact has one form with fields name, phone, email, vehicle, service, message and no action/method attribute and no onsubmit handler, so delivery is unproven without submitting - as recorded. robots.txt is Cloudflare-managed: User-agent: * Allow: /, with Disallow for GPTBot, ClaudeBot, Claude-Web, Google-Extended, anthropic-ai, CCBot, Bytespider and others - matches. Google Maps panel showed 4.9 with 278 reviews, category 'Auto repair shop', open until 8 PM, services section listing only instagram.com, an explicit 'Add website' prompt under 'Add missing information', and owner photos 27 days old - so the missing-website and recent-owner-activity claims are both correct. Mobile at 390px: no horizontal overflow, but a stray blue vertical bar runs down the left edge of the hero (visible in the screenshot), matching the recorded cosmetic issue. Gap 2, ability 4, ease 3, evidence 4 are reasonable - the remaining gap is narrow but the GBP website field is a real, cheap win for a shop with 278 reviews and high-ticket build work."
+    },
+    {
+      "ref": "B07147",
+      "name": "R.A. Nichols Home Services (R.A. Nichols Plumbing, Heating & Air)",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Confirmed with one nuance. Google Maps: 4.9 / 734 reviews, category Plumber, 13 Lake Ave Helmetta, 'Open 24 hours', website link, phone (732) 896-2821, Book online action, owner post 4 days ago - all as recorded. Site: JSON-LD @graph with ['LocalBusiness','Plumber','HVACBusiness'], licence numbers and 24/7 emergency text; every visible 'Book Online' anchor is href='#' (the ServiceTitan scheduler is JS-injected), confirmed. robots.txt explicitly allows GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, Claude-User and PerplexityBot - confirmed. The contact page has a 'Business Hours' block whose only content is '24/7 Emergency Service', so no actual opening hours are published - the claim holds, though the site does imply around-the-clock availability. Helmetta service-area page images carry Monroe Township alt text - confirmed verbatim. Phone spread: visible site numbers are all (732) 927-1945 today, GBP shows (732) 896-2821, and the site's own JSON-LD lists telephone +16096403394; the (609) 640-3394 number survives only in the page's React payload as tel:6096403394 links that no longer render visibly. So 'three numbers' is correct, but the 609 one is stale markup rather than visible text - worth phrasing that way for the owner. Birdeye confirms 4.9 from 895 reviews on an unclaimed profile with 7:30-4 hours, so the GBP vs Birdeye vs site hours conflict is real. No prices on the home page except a '$50 off drain cleaning' coupon, so 'no price ranges or diagnostic fee' holds. Scores gap 2 / ability 4 / ease 3 / evidence 4 are reasonable."
+    },
+    {
+      "ref": "B00235",
+      "name": "Cranbury Dental Care",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "All claims hold. Site cranburydentalcare.com is a single page: title 'Cranbury Dental', no JSON-LD at all, nav is purely anchor links (#hero, #aboutUs, #Services, #meetOurDentists, #gallery) and the only internal link is '/', so no service pages exist. robots.txt is a template leftover - Host: https://example.com and Sitemap: https://example.com/sitemap.xml - confirmed verbatim. Contact form has three fields (from_name, reply_to, message), no phone field, no service picker, no calendar; public contact is cranburydentalcare@gmail.com; footer credits Neevistudio. Hours are in the footer as text (Mon-Thu 8:00-5:00, Fri-Sat 8:00-1:00), so the size signal is right. Google Maps shows 4.5 with a 'Dentist' category, the correct address and phone, and an 'Add photos & videos' prompt but no booking action and no review count in the limited view - matches. Scores gap 4 / ability 2 / ease 4 / evidence 3 are reasonable for a one-page template site with no growth signals."
+    },
+    {
+      "ref": "B00319",
+      "name": "TKI The Kaga Institute",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Form inputs lack programmatic labels / are placeholder-only, with no label-for associations, which hurts screen readers and form-filling agents (top issue and the evidence behind opportunity 3)",
+          "what_is_true": "Every input on /request-appointment/ is wrapped in a <label> element containing visible text, e.g. <label class=\"field\"><span>First name</span><input name=\"firstName\" autocomplete=\"given-name\" ...></label>. There are no for= attributes and no placeholders, but implicit wrapping labels are valid, screen-reader-friendly labelling, and the fields carry name attributes plus autocomplete hints (given-name etc.), so an agent can fill the form. The label/accessibility issue should be dropped; the real remaining gap is no real-time availability.",
+          "source_url": "https://drkaga.com/request-appointment/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 2,
+        "ability_to_pay": 4,
+        "ease": 3,
+        "evidence": 3
+      },
+      "notes": "Status and most claims hold. MedicalClinic JSON-LD @graph present with name, url, description naming both towns; robots.txt is 'User-agent: * Allow: /' with Disallow for /preview/, /newsletter/, /editor/ and a sitemap. The request-appointment flow is a four-step form (name, phone, email, contact methods, birth date, patient status, location select, service checkboxes) with no calendar - the page itself says they will call or text to confirm a time, so 'request, not real-time availability' is correct. Locations page lists both addresses with suite numbers (555 NJ-18 S, Suite 101 aesthetics / Suite 102 dental) and per-location hours, plus 'call or text 848-837-5242' and info@drkaga.com. Home page shows dated promotional offers ($1,300 for 100 units, usually $1,560, Oct 30 - Dec 31 2026; $99 new-patient special, usually $512) so the pricing/gift-card signal is right. 'Modest review volume' holds: Birdeye shows TKI The Kaga Institute at 4.6 with 29 reviews at 555 NJ-18. The front-desk job posting is live at $20-30/hr with duties covering calls, scheduling, insurance verification and claims. Only the form-label claim failed, so gap 2 and ability 4 stand, but evidence drops to 3 because one of the three top issues was misdescribed."
+    },
+    {
+      "ref": "B00346",
+      "name": "Kris Lash & Beauty Studio",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Confirmed. Title is exactly 'KRIS Lash $ Beauty Studio' (dollar sign instead of ampersand) with no meta description and no JSON-LD; copyright in the footer is 2025; robots.txt returns 404; there are zero tel: or sms: links and no form on the home page. At 390px the first screen is the logo plus oversized gradient-pink text with no service, price or call button and no phone - the mobile screenshot matches the recorded issue. Phone numbers do exist as plain text in the footer location blocks (609-336-7547 East Windsor, 732-414-9785 East Brunswick) next to 'CALL TO BOOK APPOINTMENT', so a visitor can find them by scrolling but not tap them. Two Booker links are live (go.booker.com/location/KrisLash and .../KRISLASHBEAUTYSTUDIO). Google Maps shows 4.5, category 'Beauty salon', 43 W Prospect St, booker.com as the booking action plus krislash.com and the phone, with no 'Claim this business' prompt - consistent with the record. One nuance: prices are on the individual service pages (e.g. /eyelash-extensions.html has a PRICE LIST starting at $115) rather than on /servicespricing.html, which carries no dollar figures at all; so 'prices are readable' is true but not on the page named. Scores gap 3 / ability 3 / ease 3 / evidence 4 are reasonable."
+    }
+  ],
+  "data_gaps": [
+    "BLOOM: Google Business Profile rating/review count could not be verified; magicpin is the only rating source found (5.0, 14 ratings).",
+    "Reboot It: the 4.9/19 Google count was not read directly from Maps; it was corroborated through a third-party listing page.",
+    "Cranbury Dental Care: Google review count is not visible in Maps' limited view; only the 4.5 rating was confirmed.",
+    "Kris Lash: Google review count is not visible in Maps' limited view; only the 4.5 rating was confirmed."
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "\"The current site also lays out at 980 px wide on a 390 px phone, so it appears shrunk instead of fitted\" (audit_md), and \"the browser scales it down at phone width\" (domains[2].result).",
+      "problem": "The 980 px fixed layout is correct (document scrollWidth = 980 at every width). The \"shrunk\" appearance is supported by the saved screenshot nordlaw-mobile-390.png, which shows the whole desktop page fitted into 390 px. But when I re-ran it in this browser at a 390 px viewport (Chrome emulation, mobile, scale factor 3, navigation after emulation was set), the page kept its 980 px layout at visualViewport.scale = 1 and the right-hand content (nav, headline) was cut off rather than shrunk. So \"shrunk to fit\" is device-dependent: some phones show a tiny full-width page, others show a cut-off page. The audit states one of the two behaviours as fact.",
+      "fix": "Say \"the page keeps its 980-pixel desktop layout on a phone, so it is scaled down to tiny text on some phones and cut off on others, instead of fitting the screen\" - and keep the phone screenshot as the example of one case."
+    },
+    {
+      "claim": "founder_md outreach draft: \"Your current site at nordlaw.legal and your Google profile are fine, so the loose end is the old domain plus the listings that still point at it.\"",
+      "problem": "Plural \"listings\" implies more than one place still links the old domain. I could only find one: the Lawyers.com East Brunswick profile. The Martindale profile shows no website field, the Lawyers.com Toms River profile (228 Main Street) carries no external link, and the firm's own site links nothing to nord-demaio.com. audit_md correctly says \"One directory\".",
+      "fix": "Change to \"the Lawyers.com profile that still points at it\" so the email matches audit_md and is exactly true."
+    },
+    {
+      "claim": "audit_md: \"the site cites nearly 40 years of practice\".",
+      "problem": "The site's own words are \"a wealth of nearly 40 years' experience navigating... the law\", which is experience rather than 40 years of the firm's practice. Close, but the audit's paraphrase says slightly more than the source does.",
+      "fix": "Quote it as the site does: \"cites nearly 40 years' experience\"."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "https://nord-demaio.com/ refuses the HTTPS connection",
+      "source_url": "https://nord-demaio.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Plain HTTP on nord-demaio.com serves a Chinese-language page for a dehumidifier manufacturer whose title and meta description promote an online gambling brand; no law-firm content and no mention of Nord & DeMaio",
+      "source_url": "http://nord-demaio.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "www.nord-demaio.com serves the same page as the apex host",
+      "source_url": "http://www.nord-demaio.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Chrome in this environment returned net::ERR_BLOCKED_BY_CLIENT for the old domain and the saved screenshot is blank",
+      "source_url": "http://nord-demaio.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "nord-demaio.com registration 2025-03-27, expiry 2027-03-27, last changed 2026-02-21, registrar Gname.com Pte. Ltd., Cloudflare nameservers",
+      "source_url": "https://rdap.org/domain/nord-demaio.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "nordlaw.legal registration 2019-01-09, expiry 2027-01-09, last changed 2026-08-12, registrar Tucows Domains Inc., Wix nameservers",
+      "source_url": "https://rdap.org/domain/nordlaw.legal",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Registrar lock is already on for nordlaw.legal",
+      "source_url": "https://rdap.org/domain/nordlaw.legal",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The firm's own page (phone 732-214-0303, 190 State Highway 18 Suite 201) is the last archived capture of www.nord-demaio.com on 26 January 2019",
+      "source_url": "http://web.archive.org/web/20190126173023/http://www.nord-demaio.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Chinese lottery-keyword pages were on www.nord-demaio.com by the 17 November 2019 capture",
+      "source_url": "http://web.archive.org/web/20191117043635/http://www.nord-demaio.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback capture list shows the firm's page digest JCJGHO76V52MUDY4QFHNZAP4JZHSTB3M ending at the 2019-01-26 capture and a different digest from 2019-11-17",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=nord-demaio.com&output=json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "nordlaw.legal is live: phone 732-214-0303, East Brunswick office Turnpike Metroplex 190 State Highway 18 Suite 201 NJ 08816, New York office 315 Madison Ave. 3rd FL, footer '2026 (c) NordLaw created by The True Marketing Agency'",
+      "source_url": "https://www.nordlaw.legal/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Home page has 0 forms; Contact page has one 'Request a Consultation' form with five fields (Full Name, Email, Phone, an option select, message)",
+      "source_url": "https://www.nordlaw.legal/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sitemap lists eight pages including /copy-of-* URLs",
+      "source_url": "https://www.nordlaw.legal/pages-sitemap.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The site shows four practice areas (Commercial Litigation, Commercial Collection, Construction Law, Corporate/Partnership Law) and cites nearly 40 years",
+      "source_url": "https://www.nordlaw.legal/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The current site's 980 px layout width",
+      "source_url": "https://www.nordlaw.legal/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "At 390 px the same browser scales the 980 px page down so it appears shrunk rather than fitted",
+      "source_url": "https://www.nordlaw.legal/",
+      "result": "not found"
+    },
+    {
+      "claim": "Lawyers.com East Brunswick profile lists http://www.nord-demaio.com under Additional Links and shows no website field",
+      "source_url": "https://www.lawyers.com/east-brunswick/new-jersey/nord-and-demaio-42135761-f/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No other directory checked still links the old domain (Martindale profile has no website field; Lawyers.com Toms River profile has no external links)",
+      "source_url": "https://www.martindale.com/organization/nord-demaio-27646348/east-brunswick-new-jersey-42135761-f/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Lawyers.com lists a second, Toms River office at 228 Main Street (basis of the founder_md open question)",
+      "source_url": "https://www.lawyers.com/toms-river/new-jersey/nord-and-demaio-158452935-f/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile: name NordLaw, 3.0 from 2 reviews, category Legal services, website field http://www.nordlaw.legal/, phone (732) 214-0303, address Metroplex 190 NJ-18 Ste 201 East Brunswick NJ 08816, one review carries a 'Response from the owner'",
+      "source_url": "https://www.google.com/maps/search/NordLaw+190+State+Highway+18+East+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business is operating, not marked permanently closed",
+      "source_url": "https://www.google.com/maps/search/NordLaw+190+State+Highway+18+East+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No 'Claim this business' / 'Own this business' prompt is shown, so the profile appears managed by the firm (stated as an inference)",
+      "source_url": "https://www.google.com/maps/search/NordLaw+190+State+Highway+18+East+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye listing states it has not been claimed by the business and shows 3.7 from 3 reviews for the same Metroplex address, with office hours",
+      "source_url": "https://reviews.birdeye.com/nordlaw-169686194010701",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The firm's own site links nothing to nord-demaio.com",
+      "source_url": "https://www.nordlaw.legal/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cause (lapsed and re-registered) is labelled an inference and names no one",
+      "source_url": "https://rdap.org/domain/nord-demaio.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "audit_md body is at most 300 words",
+      "source_url": "rescue.json",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,58 @@
+{
+  "name": "Sellari Chiropractic Center",
+  "town": "North Brunswick",
+  "ref": "B00756",
+  "status": "operating",
+  "website": "https://www.sellarichiropractic.com/",
+  "what_they_do": "Single-doctor chiropractic practice at 1594 US-130 (Lake Farrington Plaza) that has served North Brunswick since 1989. Dr. Robert Sellari offers chiropractic adjustments, spinal decompression, EPAT shockwave-style therapy, cold laser, Graston and kinesio taping, focused on back/neck/headache/joint pain, plantar fasciitis and auto-accident/personal-injury recovery.",
+  "customers": "Local adults and families with musculoskeletal pain, personal-injury and auto-accident claimants, athletes and plantar fasciitis/joint-pain patients in North Brunswick Township.",
+  "size_signals": [
+    {"signal": "Sole practitioner (Dr. Robert Sellari); 'since 1989' stated in every page intro", "source_url": "https://www.sellarichiropractic.com/about-us"},
+    {"signal": "Part-time clinic schedule - closed Tuesdays and Thursdays, Saturday mornings only", "source_url": "https://www.sellarichiropractic.com/appointment"},
+    {"signal": "Google rating 4.9 and an active owner post (Veterans Day, published days before this review)", "source_url": "https://www.google.com/maps/search/Sellari+Chiropractic+Center+1594+US+130+North+Brunswick"}
+  ],
+  "listing": {"platform": "Google Maps / Google Business Profile", "rating": "4.9", "reviews": "count not displayed in the limited logged-out Maps view", "source_url": "https://www.google.com/maps/search/Sellari+Chiropractic+Center+1594+US+130+North+Brunswick"},
+  "website_review": {
+    "loads": true,
+    "https": true,
+    "phone_layout": "unknown",
+    "clear_offer": true,
+    "primary_cta": "'Call (732) 821-5900' repeated across pages plus a 'click here' link to an Appointment Request page",
+    "click_to_call": true,
+    "contact_form": true,
+    "online_booking_or_quote": "Request only - the /appointment form says 'your appointment is not fully booked until you get a confirmation from us', with hours listed above the form. No live availability.",
+    "trust_signals": "37 years in practice, doctor-led care plan description, treatment pages for each modality, FAQ and auto-accident FAQ pages, 3D spine simulator, blog, published hours",
+    "out_of_date_signs": "Content is refreshed (sitemap last modified 2026-11-10, active Google posts), but the site returned HTTP 403 Unauthorized to my Chrome browser, so I could not see the rendered design or mobile layout",
+    "search_basics": "Page titles name chiropractor + North Brunswick Township, ~35 crawlable pages in the sitemap including per-condition and per-treatment pages; no schema.org JSON-LD at all (0 nodes) and hours appear only on the appointment page",
+    "top_issues": [
+      "Home page returned 403 to a browser session, blocking visual review and possibly some crawlers",
+      "No structured data; hours missing from the home page",
+      "Booking is a request form followed by manual confirmation"
+    ]
+  },
+  "agent_readiness": {
+    "findable": 2,
+    "answerable": 2,
+    "bookable": 1,
+    "notes": "Findable: robots.txt explicitly allows GPTBot, OAI-SearchBot, PerplexityBot, Googlebot and ClaudeBot, and the GBP is actively maintained with recent owner posts; but the site answered my Chrome request with HTTP 403 Unauthorized (a plain HTTP fetch succeeded), which suggests datacenter/IP filtering - inference: AI crawlers on cloud IPs could be refused even though robots.txt says yes. Answerable: hours, address and phone are plain text on the appointment page and services are richly described, but there is no JSON-LD (0 nodes on the home page) and no prices. Bookable: appointment request form with a clear confirmation caveat = a callback, not a booking."
+  },
+  "operations_signals": [
+    {"signal": "Appointment requests must be confirmed by staff, and the form explicitly says the slot is not held until then - inference: front desk re-checks the calendar manually for every request", "source_url": "https://www.sellarichiropractic.com/appointment"},
+    {"signal": "Two phone numbers are published ((732) 821-5900 and 821-7580) and the office is closed two weekdays, so missed-call handling matters", "source_url": "https://www.sellarichiropractic.com/appointment"},
+    {"signal": "Personal-injury/auto-accident work is a stated specialty, which carries lien paperwork, insurance follow-up and progress documentation", "source_url": "https://www.sellarichiropractic.com/auto-accident-injury"}
+  ],
+  "top_opportunities": [
+    {"opportunity": "Add LocalBusiness/Chiropractor JSON-LD with hours, address and services, and surface hours on the home page - currently zero structured data and hours live only on one subpage", "type": "agent readiness", "evidence": "JSON-LD node count is 0 on the home page; hours (Mon/Wed/Fri split shifts, Sat morning, closed Tue/Thu) exist only on /appointment", "effort": "S"},
+    {"opportunity": "Investigate and fix the HTTP 403 returned to browser clients, then confirm the site answers OAI-SearchBot/PerplexityBot - a blocked origin defeats the permissive robots.txt", "type": "agent readiness", "evidence": "Browser navigation to https://www.sellarichiropractic.com/ and /index.html returned 403 Unauthorized, while a plain HTTP fetch returned full content", "effort": "S"},
+    {"opportunity": "Replace the request-only form with real online scheduling against actual open slots, cutting the manual confirmation loop for a two-day-a-week-closed office", "type": "operations", "evidence": "'your appointment is not fully booked until you get a confirmation from us' on the appointment page", "effort": "M"}
+  ],
+  "scores": {"gap_size": 3, "ability_to_pay": 3, "ease": 4, "evidence": 3, "reasons": "Gap: fresh content and an active profile, but no schema, no real booking and a 403 to browsers. Pay: 37-year single-doctor practice with insured and personal-injury patients - steady but small. Ease: schema and hours are a same-day fix; scheduling is a modest project. Evidence: full text of home/about/appointment pages and an active Google profile, but the browser was blocked so no visual or mobile review."},
+  "sources": [
+    "https://www.sellarichiropractic.com/",
+    "https://www.sellarichiropractic.com/about-us",
+    "https://www.sellarichiropractic.com/appointment",
+    "https://www.sellarichiropractic.com/contact-us",
+    "https://www.sellarichiropractic.com/robots.txt",
+    "https://www.google.com/maps/search/Sellari+Chiropractic+Center+1594+US+130+North+Brunswick"
+  ]
+}

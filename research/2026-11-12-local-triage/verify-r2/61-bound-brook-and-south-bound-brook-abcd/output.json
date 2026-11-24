@@ -1,0 +1,378 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Coverage of the zone's business groups",
+      "problem": "The list is dominated by professional/medical/personal-care categories and omits whole eligible categories that the mapper's own sources (the NJTGO Bound Brook and South Bound Brook business pages, both re-opened) list in-town: home and building trades (plumbing, electrical, roofing, HVAC, fireproofing, glass, painting, garage doors, carpet cleaning), auto repair and body shops, laundromats/dry cleaning, printing, computer repair, pet grooming and several tax offices. I found only about 6 of the 48 eligible in-zone independents I identified already listed (~12%), far below the 70% bar.",
+      "fix": "Expand the list to cover the trade/auto/everyday-service categories, e.g. Jeffrey Burke Plumbing (418 Talmadge Ave), JDP Electric (305 E High St Ste 4), Mineo Electric (120 E Union Ave), DeWitt Van Nest Electrical (365 Talmage Ave), Fisher Automotive (506 E Main St), Nerger's Auto Express (101 W Main St), W&W Truck Center (432 Talmage Ave), Carter & Sons Roofing (87 Main St, SBB), Colonial Door Co (169 Canal Rd, SBB), Dunn's Printing (28 Main St, SBB), Safe Haven Computers (34 Main St, SBB), Aeromundo LLC (9 W Main St), Kissel Agency (643 Central Ave)."
+    },
+    {
+      "claim": "Zone label 'Bound Brook and South Bound Brook | groups ABCD'",
+      "problem": "Every entry in businesses.json carries group 'A' or 'B'; there are no group C or D entries, and sources_used/categories_thin/caveats/data_gaps are all empty arrays despite thin single-source entries. The file does not deliver what its zone label claims.",
+      "fix": "Either populate groups C and D, or relabel the zone to 'groups AB' and fill in categories_thin / caveats / data_gaps so downstream triage knows what was not covered."
+    },
+    {
+      "claim": "Bound Brook Smiles, 123 E Maple Ave, Bound Brook",
+      "problem": "The cited contact page (boundbrooksmiles.com/contact-us) shows the practice and its hours but the address and phone fields render empty on the page, and the homepage I opened contains no street number; the 123 E Maple Ave address rests on the BBB profile alone, which I did not open.",
+      "fix": "Open the BBB profile or another source to confirm 123 E Maple Ave before outreach; mark the address as single-source if BBB is the only support."
+    },
+    {
+      "claim": "Brook Dental (Dr. Ely and Dr. Scibelli), 373 Vosseller Ave, phone Unknown",
+      "problem": "The business and address are confirmed on brook-dental.com, but the site publishes a phone number, (732) 469-6662, that the list records as Unknown. The site's own name is 'Brook Dental Associates'.",
+      "fix": "Set phone to (732) 469-6662 and note the trading name Brook Dental Associates."
+    },
+    {
+      "claim": "Gloss & Glow Beauty Salon, 60 Main St, South Bound Brook, website blank",
+      "problem": "The salon has its own site (glossandglowbeautysalon.com) with address, hours and phone; leaving the website field empty understates the entry and drops a useful outreach signal.",
+      "fix": "Add https://glossandglowbeautysalon.com/contact/ as the website."
+    },
+    {
+      "claim": "'Staff Management', 16 Hamilton St, Bound Brook",
+      "problem": "This is almost certainly a duplicate of Staffing Alternatives at the same address; Staffing Alternatives' own contact page (saworks.com) gives 16 Hamilton St and 908-791-5800. 'Staff Management' also collides with the national Staff Management | SMX brand, so the NJTGO label is unreliable.",
+      "fix": "Drop the Staff Management row and keep Staffing Alternatives as the verified business at that address."
+    },
+    {
+      "claim": "Toro Taxes Bound Brook, 303 E 2nd St",
+      "problem": "Address and phone are confirmed on its own site, but Toro Taxes is a branded tax-prep network whose national site (torotaxes.com/locations) lists this office as a location. Inference (not stated in a source): this looks like a franchise/branded outlet, which the mapper's exclusion rule for chains and franchises would rule out.",
+      "fix": "Confirm whether this office is an independent franchisee; if the exclusion applies, remove it and note the decision."
+    },
+    {
+      "claim": "Sandoval Express Services, LLC note ('the earlier Sandoval Express Insurance name was wrong')",
+      "problem": "The note mischaracterises the cited source: the NJTGO Bound Brook page I opened lists this business as 'Sandoval Express Insurance' at 409-B East Main St, while Progressive lists 'Sandoval Express Services, LLC' at the same address. Both names are in the cited sources, so calling one 'wrong' without saying which source it came from is misleading.",
+      "fix": "Reword the note as 'NJTGO uses Sandoval Express Insurance; Progressive uses Sandoval Express Services, LLC' and keep one entry."
+    },
+    {
+      "claim": "Robert D. Spengler, Attorney at Law, 59 W Union Ave",
+      "problem": "Address confirmed on the borough municipal directory, but the only role the borough lists is Municipal Public Defender / Assistant Prosecutor, i.e. a publicly appointed position. Government is an excluded type; the private practice is asserted in the notes but not evidenced by any source in the file.",
+      "fix": "Add a source for the private practice (or a second, non-government listing) or flag the entry as government-adjacent and deprioritise it."
+    },
+    {
+      "claim": "Jeffrey Kaladas, MD, 141 Main St, Suite 1, South Bound Brook",
+      "problem": "The only source is an RWJBarnabas MyChart provider page, which I could not open (JavaScript-gated system portal). The entry itself calls the practice part of a large health system, which is borderline for the independent-business rule.",
+      "fix": "Re-source to an open directory page or drop; if kept, mark as health-system-employed rather than independent."
+    },
+    {
+      "claim": "Group A entries sourced only to the 08805 tax-preparation directory (Auletta, Licari, David R. Morris, Bottom Line Bookkeeping, Vecchio, Miriam's Services)",
+      "problem": "All were confirmed at the listed address on that page, but the page is a thin aggregator and several of the addresses (595 Watchung Rd, 266 Nagle St) look residential. Inference: these are likely home-based practices, which risks publishing personal/residential addresses.",
+      "fix": "Corroborate with a second source or omit the street number for apparently home-based practitioners; note the single-source risk in caveats."
+    },
+    {
+      "claim": "Yellow Pages, Super Lawyers and FindLaw citations (Dicellis & Faccone, Herbert M. Benton, Petraske Castillo and Notarangelo, Law Office of John E. Bruder, and the South Bound Brook CPA page)",
+      "problem": "Those URLs return HTTP 403 to automated fetches, so they cannot be independently re-opened. I could only re-confirm Dicellis & Faccone and Herbert M. Benton through other pages/search results; the two law firms could not be verified at all.",
+      "fix": "Replace 403-blocked citations with an open source (e.g. the njnewjerseytax.com 08805 page for the CPAs) or mark the two law firms as unverified single-source entries."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "The Allongo Law Firm operates at 231 E Main St, Bound Brook",
+      "source_url": "https://www.njtgo.com/towns/B/Bound%20Brook/Business%20and%20Shopping/Bound_Brook_Business_and_Shopping.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Law Office of Petro R. Stawnychy at 35 Main St, South Bound Brook, 732-627-0080",
+      "source_url": "https://www.njtgo.com/towns/S/South%20Bound%20Brook/Business%20and%20Shopping/South_Bound_Brook_Business_and_Shopping.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Petraske, Castillo and Notarangelo, P.C. at 2 W Union Ave, Bound Brook",
+      "source_url": "https://profiles.superlawyers.com/new-jersey/bound-brook/lawfirm/petraske-castillo-and-notarangelo-pc/600fa994-bd73-4be5-86a4-19989e5245f4.html",
+      "result": "could not open"
+    },
+    {
+      "claim": "Law Office of John E. Bruder at 2 W Union Ave, Bound Brook",
+      "source_url": "https://lawyers.findlaw.com/new-jersey/bound-brook/3408692_1/",
+      "result": "could not open"
+    },
+    {
+      "claim": "Robert D. Spengler, attorney, at 59 W Union Ave, Bound Brook",
+      "source_url": "https://www.boundbrook-nj.org/borough-hall-directory",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dicellis & Faccone CPAs at 120 E Union Ave, 732-868-8606",
+      "source_url": "https://www.njnewjerseytax.com/tax-preparation/08805",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Joseph R. Petracca CPA at 18 Hamilton St Suite 2, 732-748-9000",
+      "source_url": "https://www.njnewjerseytax.com/tax-preparation/08805",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Spinner & Spinner CPAs at 35 W Union Ave, 732-560-9519",
+      "source_url": "https://www.njnewjerseytax.com/tax-preparation/08805",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bernales & Associates at 440 W Union Ave Ste A, 732-271-3934",
+      "source_url": "https://www.njnewjerseytax.com/tax-preparation/08805",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Auletta Financial LLC at 44 W Union Ave, 732-469-7778",
+      "source_url": "https://www.njnewjerseytax.com/tax-preparation/08805",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Alexander A. Licari CPA at 321 W Union Ave, 732-469-2552",
+      "source_url": "https://www.njnewjerseytax.com/tax-preparation/08805",
+      "result": "confirmed"
+    },
+    {
+      "claim": "David R. Morris CPA LLC at 595 Watchung Rd, 732-266-7846",
+      "source_url": "https://www.njnewjerseytax.com/tax-preparation/08805",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bottom Line Bookkeeping and Tax Service at 266 Nagle St, 732-302-1858",
+      "source_url": "https://www.njnewjerseytax.com/tax-preparation/08805",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Joseph P. Vecchio, Jr., CPA at 305 E High St Suite 1, 732-764-1600",
+      "source_url": "https://www.njnewjerseytax.com/tax-preparation/08805",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Miriam's Services at 428 E Main St, 732-868-1719",
+      "source_url": "https://www.njnewjerseytax.com/tax-preparation/08805",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Herbert M. Benton and Associates at 305 E High St Suite 2, 732-667-3416",
+      "source_url": "https://www.yellowpages.com/bound-brook-nj/mip/herbert-m-benton-and-associates-5923300",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Toro Taxes Bound Brook at 303 E 2nd St, 908-934-0030",
+      "source_url": "https://torotaxesboundbrook.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Toro Taxes Bound Brook is listed in the Toro Taxes national location directory",
+      "source_url": "https://www.torotaxes.com/locations/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sky Brook Realty is a Bound Brook brokerage (100 W Main St)",
+      "source_url": "https://www.njtgo.com/towns/B/Bound%20Brook/Business%20and%20Shopping/Bound_Brook_Business_and_Shopping.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hope Insurance Services LLC at 215 W Union Ave, 732-377-9645",
+      "source_url": "https://www.progressiveagent.com/local-agent/new-jersey/bound-brook/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Viva Agency Inc. at 19 Hamilton St, 732-319-2434",
+      "source_url": "https://www.progressiveagent.com/local-agent/new-jersey/bound-brook/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sandoval Express Services, LLC at 409 B East Main St, 732-667-7218",
+      "source_url": "https://www.progressiveagent.com/local-agent/new-jersey/bound-brook/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Brickforce Staffing, Staff Right Solutions, Delta Staffing, Strategic Staffing and Staff Management all at the listed Bound Brook addresses",
+      "source_url": "https://www.njtgo.com/towns/B/Bound%20Brook/Business%20and%20Shopping/Bound_Brook_Business_and_Shopping.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Staffing Alternatives at 16 Hamilton St, 908-791-5800",
+      "source_url": "https://saworks.com/contact-us-21",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Central New Jersey Structural Engineers at 235 W Prospect St, South Bound Brook, 732-595-7775",
+      "source_url": "https://www.centralnjse.net/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dr. Nicole Padovan, DMD at 105 E Union Ave, 732-469-4424 (same address/phone as Somerset Family Dentistry)",
+      "source_url": "https://www.drnicolepadovan.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Brook Dental at 373 Vosseller Ave, Bound Brook",
+      "source_url": "https://www.brook-dental.com/reviews.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Zora Stefanovski, DMD at 106 E Union Ave, 732-356-0412",
+      "source_url": "https://www.dentistboundbrook.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Comprehensive Pediatric Dentistry & Orthodontics at 111 E Union Ave",
+      "source_url": "https://comprehensivepediatricdentistry.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bound Brook Smiles at 123 E Maple Ave, Bound Brook",
+      "source_url": "https://www.boundbrooksmiles.com/contact-us",
+      "result": "not found"
+    },
+    {
+      "claim": "Raritan Dental Center at 421 W Union Ave, 732-356-6500",
+      "source_url": "https://www.cigna.com/static/www-cigna-com/docs/medicare/plans-services/2024/provider-pharmacy-directory-new-jersey-hmo.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Urgent Care Dentistry is a dental practice in Bound Brook at 11 Maiden Ln",
+      "source_url": "https://reviews.birdeye.com/urgent-care-dentistry-168757854706971",
+      "result": "confirmed"
+    },
+    {
+      "claim": "South Bound Brook Dental, LLC operates at 120 Main St, South Bound Brook",
+      "source_url": "https://npiprofile.com/npi/1922506831",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dr. Carlos Javier Martinez, Dr. John Murphy DC, Dr. Ujjwal Datta, Family Vision Center's building, Comprehensive Center for Psychotherapy, Healthy Behaviors, Dr. Ayanna Towers, Jenasis Massage, Health Fairs Direct, Vitalidad Vida y Fortaleza, CJVA Volleyball, United Fitness, United Soccer Academy, Geomatrix Software, Graphic Concepts, Carnegie Evaluations, Valey Multi-Service, Miriam's Services, International Check Cashing, Ely's Check Cashing and the listed salons are all at the listed Bound Brook addresses",
+      "source_url": "https://www.njtgo.com/towns/B/Bound%20Brook/Business%20and%20Shopping/Bound_Brook_Business_and_Shopping.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Happy Pets Veterinary, Essence Massage & Spa, Gloss & Glow, Millennium Nail Salon, Sherry's New Image, Ortiz Barbershop 593, Megan Kilkenny APN, Union Anesthesia Associates and Signed by Cesily are South Bound Brook businesses at the listed addresses",
+      "source_url": "https://www.njtgo.com/towns/S/South%20Bound%20Brook/Business%20and%20Shopping/South_Bound_Brook_Business_and_Shopping.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kynetex Chiropractic & Physical Therapy at 222 Hamilton St, 732-469-7777",
+      "source_url": "https://kynetex.com/clinic/chiropractor-bound-brook-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dr. James Bremner, DC at 515 Church St Suite 1, Bound Brook",
+      "source_url": "https://drbremner.chiroplanet.net/",
+      "result": "not found"
+    },
+    {
+      "claim": "Turning Point Medspa at 515 Church St Suite 3, Bound Brook",
+      "source_url": "https://turningpointmedspa.com/nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Alex Wilkie's Martial Arts Academy at 16 Church St, 732-748-1580",
+      "source_url": "https://gymsnj.com/business/alex-wilkies-martial-arts-academy/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bienetra Psychotherapy at 120 E Union Ave, Bound Brook",
+      "source_url": "https://www.bienetrapsychotherapy.com/",
+      "result": "confirmed"
+    }
+  ],
+  "coverage": {
+    "searches": [
+      "roofing contractor Bound Brook NJ",
+      "plumber Bound Brook NJ",
+      "electrician Bound Brook NJ",
+      "dentist South Bound Brook NJ",
+      "auto repair shop Bound Brook NJ",
+      "accountant CPA Bound Brook NJ",
+      "hair salon South Bound Brook NJ Main Street",
+      "physical therapy Bound Brook NJ clinic",
+      "\"Herbert M. Benton\" CPA Bound Brook NJ",
+      "\"Urgent Care Dentistry\" Bound Brook NJ address",
+      "\"Raritan Dental Center\" Bound Brook 421 W Union",
+      "Toro Taxes franchise locations Bound Brook NJ"
+    ],
+    "eligible_found": 48,
+    "already_listed": 6,
+    "missing": [
+      {
+        "name": "Jeffrey Burke Plumbing, Heating & Cooling",
+        "town": "Bound Brook",
+        "source_url": "https://jeffburkeplumbing.com/contact-us/"
+      },
+      {
+        "name": "JDP Electric, Electricians LLC",
+        "town": "Bound Brook",
+        "source_url": "https://www.jdpelectricnj.com/contact"
+      },
+      {
+        "name": "Mineo Electric (Frank Mineo Electrical Contractor)",
+        "town": "Bound Brook",
+        "source_url": "https://mineoelectric.com/contact-us/"
+      },
+      {
+        "name": "DeWitt Van Nest Electrical Contractors",
+        "town": "Bound Brook",
+        "source_url": "https://www.njtgo.com/towns/B/Bound%20Brook/Business%20and%20Shopping/Bound_Brook_Business_and_Shopping.html"
+      },
+      {
+        "name": "Nerger's Auto Express",
+        "town": "Bound Brook",
+        "source_url": "https://www.njtgo.com/towns/B/Bound%20Brook/Business%20and%20Shopping/Bound_Brook_Business_and_Shopping.html"
+      },
+      {
+        "name": "Fisher Automotive",
+        "town": "Bound Brook",
+        "source_url": "https://www.njtgo.com/towns/B/Bound%20Brook/Business%20and%20Shopping/Bound_Brook_Business_and_Shopping.html"
+      },
+      {
+        "name": "W&W Truck Center",
+        "town": "Bound Brook",
+        "source_url": "https://www.njtgo.com/towns/B/Bound%20Brook/Business%20and%20Shopping/Bound_Brook_Business_and_Shopping.html"
+      },
+      {
+        "name": "KAS Auto Service",
+        "town": "Bound Brook",
+        "source_url": "https://www.njtgo.com/towns/B/Bound%20Brook/Business%20and%20Shopping/Bound_Brook_Business_and_Shopping.html"
+      },
+      {
+        "name": "Carter & Sons Roofing",
+        "town": "South Bound Brook",
+        "source_url": "https://www.njtgo.com/towns/S/South%20Bound%20Brook/Business%20and%20Shopping/South_Bound_Brook_Business_and_Shopping.html"
+      },
+      {
+        "name": "Colonial Door Co.",
+        "town": "South Bound Brook",
+        "source_url": "https://www.njtgo.com/towns/S/South%20Bound%20Brook/Business%20and%20Shopping/South_Bound_Brook_Business_and_Shopping.html"
+      },
+      {
+        "name": "Dunn's Printing Co.",
+        "town": "South Bound Brook",
+        "source_url": "https://www.njtgo.com/towns/S/South%20Bound%20Brook/Business%20and%20Shopping/South_Bound_Brook_Business_and_Shopping.html"
+      },
+      {
+        "name": "Safe Haven Computers",
+        "town": "South Bound Brook",
+        "source_url": "https://www.njtgo.com/towns/S/South%20Bound%20Brook/Business%20and%20Shopping/South_Bound_Brook_Business_and_Shopping.html"
+      },
+      {
+        "name": "Tri-Tech Tool & Design Co.",
+        "town": "South Bound Brook",
+        "source_url": "https://www.njtgo.com/towns/S/South%20Bound%20Brook/Business%20and%20Shopping/South_Bound_Brook_Business_and_Shopping.html"
+      },
+      {
+        "name": "Aeromundo LLC (tax preparation)",
+        "town": "Bound Brook",
+        "source_url": "https://www.njnewjerseytax.com/tax-preparation/08805"
+      },
+      {
+        "name": "Fjbc & Co International (tax preparation)",
+        "town": "Bound Brook",
+        "source_url": "https://www.njnewjerseytax.com/tax-preparation/08805"
+      },
+      {
+        "name": "Kissel Agency (insurance)",
+        "town": "Bound Brook",
+        "source_url": "https://www.njnewjerseytax.com/tax-preparation/08805"
+      },
+      {
+        "name": "Turning Point Sports Physical Therapy",
+        "town": "Bound Brook",
+        "source_url": "https://www.tpsphysicaltherapy.com/"
+      },
+      {
+        "name": "Phoenix Electric HVAC",
+        "town": "Bound Brook",
+        "source_url": "https://www.njtgo.com/towns/B/Bound%20Brook/Business%20and%20Shopping/Bound_Brook_Business_and_Shopping.html"
+      }
+    ]
+  },
+  "confidence": "Medium"
+}

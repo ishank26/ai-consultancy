@@ -1,0 +1,218 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Calendar booking (Google Calendar) integration cost: \"Google states that all standard use of the Calendar API is available at no additional cost\" (integrations entry, and again in running_costs 'Scheduling ... $0 in licence fees').",
+      "problem": "Overstated paraphrase. The cited quota page does not say \"all standard use ... at no additional cost\"; it says usage under a 1,000,000-request/day per-project threshold \"doesn't incur extra charges\", that billing details will be shared later in 2026 with 90 days' notice, and that quotas changed on May 1, 2026. The $0 conclusion is still right at pilot volume (a few hundred requests a month), so no number is wrong - only the attribution.",
+      "fix": "Reword to: \"no charge below Google's 1,000,000 requests/day billing threshold; Google states full billing details will follow later in 2026\", and drop the phrase \"all standard use\"."
+    },
+    {
+      "claim": "Leverage point 3: \"DigitalOcean from $12/month\".",
+      "problem": "Misstates the vendor's entry price. The DigitalOcean Droplet page lists Basic Droplets from $4.00/mo (512 MiB) and $6.00/mo (1 GiB); $12.00 is the 2 GiB size. The plan's own running-cost row is correct (\"$12-$24\", basis lists $6/$12/$24), so this is a wording error in one bullet, not in the cost model.",
+      "fix": "Change to \"DigitalOcean Basic Droplets from $6/month, with the plan sizing at $12-$24/month\"."
+    },
+    {
+      "claim": "Running costs: phase 2 voice \"about $26 per month for 300 minutes at the cheapest published configuration\".",
+      "problem": "Two small imprecisions, neither changing the decision: (a) $0.055 infra + $0.015 platform voice + $0.0032 LLM + $0.015 telephony = $0.0882/min x 300 = ~$26.46, which excludes the $2.00/mo Retell number mentioned in the same basis (so ~$28.4 all-in); (b) Claude 5.5 Haiku at $0.0032/min is not the cheapest published LLM on the Retell page (GPT 5 nano is $0.0016/min), so \"cheapest published configuration\" is not strictly accurate.",
+      "fix": "Say \"about $26-29/month for 300 minutes including the $2 number, using Claude 5.5 Haiku at $0.0032/min; cheaper LLM options exist and the published overall range is $0.07-$0.31/min\"."
+    },
+    {
+      "claim": "Integrations, Anthropic Claude API: method includes \"no training on client data\", cited to platform.claude.com pricing page.",
+      "problem": "The cited pricing page says nothing about training or data use, so this supporting claim is unattributed. (The Messages API and all three per-MTok prices on that page are correct.)",
+      "fix": "Either cite Anthropic's data-usage/privacy page for the training statement or move it to the risk/mitigation section as an unverified vendor representation to confirm in the DPA."
+    },
+    {
+      "claim": "Feasibility block (technical_1_5 4, commercial_1_5 3, weeks_to_pilot, founder_days in each build phase).",
+      "problem": "suggested_pricing is labelled inference throughout, but the feasibility scores and the per-phase founder_days carry no inline inference label (founder-days are only covered generically in caveats). Scores and effort are the consultancy's judgement, not sourced numbers.",
+      "fix": "Tag the feasibility block and each founder_days value as inference, e.g. \"founder_days: 3-4 (inference)\" and \"feasibility: inference based on the two unconfirmed integration gates\"."
+    },
+    {
+      "claim": "Business facts about Fraser Brothers used as the premise (17 staff, Edison 8:15-4:15 / Belford close 5:00 / Tinton Falls 4:30, three published office numbers, ~10 commercial niches, ~40 carrier appointments, crm.bridge.insure upload link).",
+      "problem": "Not verifiable from any page either the author or I can open: fraserbrothers.com/contact returns only Agency Revolution boilerplate and a copyright line, and /claims-center behaves the same; the homepage does render and is consistent with \"quote/contact forms only, no booking or chat widget\", but does not carry hours or headcount. The plan discloses this in caveats and in current_tools, so it is not presented as sourced - it remains an open risk for the value case.",
+      "fix": "Get the principal (or a Google Business Profile / site JSON-LD) to confirm hours, phone lines and the secure-upload link before the pilot fee is quoted, and keep the existing caveat text."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "RingReady: \"$39 flat per month\", \"no setup fees, no contracts\", \"Unlimited calls on every plan\", page also says \"Starts at $39\"; insurance AI receptionist that captures line of business, books consultations, forwards calls, texts/emails a summary.",
+      "source_url": "https://www.ring-ready.com/industries/insurance",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Awava: AI Pro $1,997 one-time setup + $397/mo; AI Receptionist $97/mo on Website or Core; Core $1,297 setup + $297/mo; Website $2,497 one-time + $29/mo; month-to-month, 30 days' notice, setup fee charged once; \"never quotes or binds\".",
+      "source_url": "https://awava.ai/insurance-agents",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Smith.ai: Free $0/mo for 25 calls ($3.00/call after); Pro $150/mo at $2.00 real call for 75 calls ($1.80 at 150, $1.67 at 300); Enterprise $500/mo at $1.67 for 300 calls ($1.60 at 500, custom at 1000+); month-to-month, 30 days' notice; custom prompting/integrations only on Enterprise.",
+      "source_url": "https://smith.ai/pricing/ai-receptionist",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ruby receptionist plans $250/50 min, $395/100, $720/200, $1,725/500; chat plans $143/10 chats, $335/30, $520/50; \"no additional or hidden fees for activation, onboarding, setup, customization\".",
+      "source_url": "https://www.ruby.com/plans-and-pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Structurely/21X: platform fee not published (Small Team / Large Team / Enterprise comparison only); usage \"as low as\" $0.07/min voice (BYOC), $0.02/message SMS, $0.02/AI email.",
+      "source_url": "https://www.structurely.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bridge: $25 per user per month struck through, $35 per user per month; upper tier $65 \"Call For Pricing\" with automated call summaries, sentiment monitoring and AI coaching; Custom plan (API access, live chat, chatbot) with \"20 User Minimum for Customization\", price on request.",
+      "source_url": "https://www.bridge.insure/resources/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ customer service representatives (BLS 2025 via O*NET): median $47,740/yr and $22.95/hr; 10th percentile $35,520; 90th percentile $72,040.",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Loaded-wage arithmetic: $22.95 x 1.25 = $28.69/hr; 0.4-1.0 FTE = 832-2,080 hrs; $28.6875 x 832 = $23,868 and x 2,080 = $59,670; $47,740 x 1.25 = $59,675/yr = $4,973/mo.",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Anthropic Claude Haiku 5.5: $0.10/MTok input, $0.50/MTok output up to 100k-token prompts, $0.50/$2.50 above 100k; Claude Sonnet 5.5 $2/$10 per MTok.",
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LLM usage arithmetic: 600 enquiries x 8k input tokens = 4.8M tokens (~$0.48 at $0.10/MTok) + 0.7M output (~$0.35 at $0.50/MTok) = under $1 raw, $3-$10 band with headroom.",
+      "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Telnyx SMS: $0.004 per outbound message part + carrier fee; $0.004 inbound + carrier fee; example blended US carrier passthrough $0.0038/part; volume tiers above 100M parts; $0 platform fee.",
+      "source_url": "https://telnyx.com/pricing/messaging",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Telnyx voice: inbound local from $0.0032/min, outbound local from $0.005/min, call recording $0.002/min with $0 storage, $0 platform fee.",
+      "source_url": "https://telnyx.com/pricing/elastic-sip",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Telnyx numbers: $1.00 per local number per month, +$0.10/mo to add SMS/MMS, emergency calling $1.5/mo per number; therefore $2.60 per number and $7.80 for three.",
+      "source_url": "https://telnyx.com/pricing/numbers",
+      "result": "confirmed"
+    },
+    {
+      "claim": "10DLC: $4.50 brand registration fee, $15 per campaign review, recurring $1.50/mo (low volume mixed) up to $10/mo for standard-volume use cases incl. Customer Care, billed three months initially then monthly; Telnyx passes carrier 10DLC fees at cost.",
+      "source_url": "https://support.telnyx.com/en/articles/5634625-10dlc-fees-and-charges",
+      "result": "confirmed"
+    },
+    {
+      "claim": "10DLC risk: US 10DLC local numbers require brand + campaign registration before outbound texting, and campaign registration requires a \"Message Flow\" description of how users opt in.",
+      "source_url": "https://support.telnyx.com/en/articles/6339152-how-to-create-a-10dlc-campaign",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SMS running-cost arithmetic: 1,500 parts x ($0.004 + $0.0038) = $11.70/month.",
+      "source_url": "https://telnyx.com/pricing/messaging",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DigitalOcean Basic Droplets: $6 (1 GiB/1 vCPU), $12 (2 GiB/1 vCPU), $24 (4 GiB/2 vCPU) per month.",
+      "source_url": "https://www.digitalocean.com/pricing/droplets",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Pilot running-cost totals: low $12+$3+$11.70+$1+$2.60+$1.50 = $31.80 (~$32); high $24+$10+$11.70+$3+$7.80+$10 = $66.50 (~$67).",
+      "source_url": "https://telnyx.com/pricing/messaging",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Retell AI: published overall range $0.07-$0.31/min; voice infra $0.055/min; platform voices $0.015/min; Claude 5.5 Haiku $0.0032/min; telephony $0.015/min; Retell phone numbers $2.00/month; SMS $0.01/message.",
+      "source_url": "https://www.retellai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Agency Revolution Forge forms: the customer experience team adds a webhook key (created in AgencyZoom's Web Lead Integration) to the specific nominated website forms, and you specify which key goes on which form; multiple keys per form allowed.",
+      "source_url": "https://help.agencyrevolution.com/en/agencyzoom-integration-forge-website-forms",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Agency Revolution webhook pointed at a third-party/non-AgencyZoom endpoint is NOT documented (plan marks it confirmed_in_docs false and makes the pilot conditional on it).",
+      "source_url": "https://help.agencyrevolution.com/en/agencyzoom-integration-forge-website-forms",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bridge AMS360 integration is a documented Bridge-side setup: AMS360 Web Service API user, then Bridge Settings > Agency Setup > Integration Setup with username/password/Agency ID/version; Open Client on Call/Answer screen pop, automatic activity export, and an AMS360 Notification Service feed.",
+      "source_url": "https://portal.bridge.insure/knowledge/ams360-integration",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Third-party write-back into Bridge/AMS360 from the consultancy's service is NOT documented, and API access appears only on the Bridge Custom plan (price on request).",
+      "source_url": "https://www.bridge.insure/resources/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Calendar API events.insert exists as POST https://www.googleapis.com/calendar/v3/calendars/{calendarId}/events (plan cites POST /calendar/v3/calendars/{calendarId}/events).",
+      "source_url": "https://developers.google.com/workspace/calendar/api/v3/reference/events/insert",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Calendar API quotas: 10,000 requests/min per project, 600/min per user per project, 1,000,000 requests/day billing threshold before charges apply.",
+      "source_url": "https://developers.google.com/workspace/calendar/api/guides/quota",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cal.diy is the MIT-licensed community edition relaunched by Cal.com, \"only for self-hosting and use at your own risk\".",
+      "source_url": "https://cal.com/blog/calcom-v6-4",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 11:17A-1.3: a single act of soliciting/negotiating/selling requires a producer licence; no licensed producer may permit an unlicensed person to transact; subsection (e) covers employees who communicate directly with the public by mail, fax, computer or telephone.",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17A-1-3",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FCC 24-17 (CG Docket 23-362, adopted Feb 2 2024, released Feb 8 2024) confirms the TCPA's \"artificial or prerecorded voice\" restriction encompasses current AI-generated human voices and requires prior express consent absent an exemption.",
+      "source_url": "https://docs.fcc.gov/public/attachments/FCC-24-17A1.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC Safeguards Rule (16 CFR 314) requires a written information security program, a designated Qualified Individual, risk assessment, encryption, MFA, service-provider oversight and incident response; the guide's list of 13 financial-institution examples does not name insurance agencies (plan flags coverage as inference).",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/ftc-safeguards-rule-what-your-business-needs-know",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d): interception by a party, or with one party's prior consent, is lawful unless used to commit a criminal, tortious or other injurious act - i.e. New Jersey one-party consent.",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ DOBI Bulletin 25-03 is addressed to \"ALL INSURERS AUTHORIZED OR ADMITTED IN NEW JERSEY\", requires a written AIS Program, and section 1.8 covers AI Systems \"whether developed by the insurer or a third-party vendor\" (plan flags any downstream producer obligation as inference).",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt25_03.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDPA (P.L.2023, c.266): applies at 100,000 consumers, or 25,000 consumers plus revenue from selling personal data; section 10 exempts GLBA Title V financial institutions and insurance institutions subject to C.17:23A-1 et seq.",
+      "source_url": "https://pub.njleg.gov/Bills/2022/PL23/266_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "suggested_pricing arithmetic: $550 x 12 = $6,600 = ~28% of $23,868 and ~11% of $59,670; $4,500 over 14-18 founder-days = ~$250-$321/day; $2,500 is ~1.25x Awava's $1,997 and $4,500 is ~2.25x it; Bridge uplift $65-$35 = $30 x 17 staff = ~$510/month.",
+      "source_url": "https://awava.ai/insurance-agents",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Build-plan effort sums: phases 0-3 (2-3, 3-4, 6-7, 3-4 founder-days) = 14-18 founder-days, i.e. ~3-3.5 weeks before a 4-week pilot.",
+      "source_url": "https://www.digitalocean.com/pricing/droplets",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fraserbrothers.com shows quote/contact paths only (\"Learn More & Get A Quote\" per line) with no booking, instant-quote or chat widget visible.",
+      "source_url": "https://www.fraserbrothers.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fraserbrothers.com/contact carries office hours, separate phone/fax lines, and a crm.bridge.insure secure-upload link.",
+      "source_url": "https://www.fraserbrothers.com/contact",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

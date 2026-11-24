@@ -1,0 +1,84 @@
+{
+  "business": "Oliver L.E. Soden Agency",
+  "industry": "insurance (independent P&C agency)",
+  "town": "Jamesburg, NJ",
+  "opportunities": [
+    {
+      "title": "Certificate & policy-change service desk agent (COI/endorsement intake-to-draft)",
+      "capability": "A",
+      "problem": "The agency's own commercial-lines job description defines the daily work as processing policy change requests, issuing certificates and evidence of insurance, re-verifying contact details on every contact, and documenting the result in the agency management system. That role has been re-posted repeatedly across Jamesburg, Little Silver and Monroe at $30K-$35K up to $60K-$90K, and every version demands prior commercial-lines experience. Meanwhile the entire Account Management department sits in the Jamesburg office, so certificate and endorsement volume for three offices and two brands (Soden and John B. Wright) queues in one small team.",
+      "evidence": [
+        "Job description lists processing policy changes, issuing certificates/evidence of insurance, verifying contact details and documenting in AMS360 as core duties — https://app.idealtraits.com/career/Oliver-L-E-Soden-Agency/270618IND",
+        "Same account manager/CSR role re-posted across three towns at ranges from $30K-$35K to $50K-$85K, always requiring prior commercial lines CSR/AM experience — https://app.idealtraits.com/career/Oliver-L-E-Soden-Agency/338418gog",
+        "Entire Account Management department plus principals are located in the Jamesburg main office, serving all locations — https://sodeninsurance.com/jamesburg-office/",
+        "Certificates and service requests are currently deflected into a CSR24 self-service portal — https://sodeninsurance.com/request-a-quote/",
+        "Recent postings listed Commercial Lines Account Manager at $60K-$90K and CSR/Assistant AM at $50K-$60K, now expired (turnover or unfilled capacity) — https://www.glassdoor.com/job-listing/commercial-lines-account-manager-oliver-le-soden-agency-JV_KO0,32_KE33,55.htm?jl=1010021607512",
+        "Niche commercial lines are expanding (contractor, HVAC/electrical/plumbing, janitorial, boutique gym, pickleball facility), which raises certificate and endorsement volume — https://sodeninsurance.com/page-sitemap1.xml"
+      ],
+      "agent_design": "Triggers: inbound email to the service inbox, CSR24 request, web form, or a staff-created task. The agent parses the request into a structured object (insured, certificate holder, project/job address, coverage lines, required wording, additional-insured and waiver-of-subrogation flags, deadline), looks up the policy and current forms in AMS360/Applied Epic, and classifies it as standard or exception. Standard COIs are drafted from the agency's templates plus live policy data and queued for a one-click approval by an account manager; the agent then delivers, logs to the policy file, and starts an SLA timer (escalate at 4 business hours). Exception requests (manuscript wording, additional insureds requiring carrier endorsement, limits changes, anything touching coverage) are routed to a human with a drafted carrier submission packet the staffer reviews and sends. Cancellation/ reinstatement and anything that could bind or alter coverage never auto-executes.",
+      "why_not_DIY": "The value is in write-back, not conversation. It requires authenticated read/write access to the agency management system (AMS360 today, possibly Applied Epic during a migration), a per-carrier rule and form library, certificate template control, and an audit trail for E&O defense. Client files contain nonpublic personal information under GLBA/Safeguards, so the deployment needs access controls, no-training-on-client-data terms and retained transcripts. A chatbot subscription cannot generate a certificate, check a policy's actual additional-insured endorsement, or prove who approved what.",
+      "impact_estimate": {
+        "range": "$20,000-$50,000/yr of account-management capacity released (roughly 0.4-0.8 FTE), not a headcount cut",
+        "assumptions": "Assume 2-4 account management/CSR staff touch certificate and change work daily; 25-45% of that touch time is standard, template-driven work the agent can draft (inference — no time study exists for this agency); loaded cost of a $50K-$60K CSR is roughly $60K-$75K including burden, and NJ average hourly for the clerk occupation is $28.76, so 700-1,700 recovered hours land in the stated range. Excludes E&O-loss reduction and faster turnaround, which are unquantified. If certificate volume is lower than inferred, the low end is the realistic case.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-9041.00?st=NJ"
+      },
+      "complexity": "High",
+      "pilot_scope": "3-4 weeks: pick one book (John B. Wright marine/marina is the cleanest, since certificates there are highly standardized). Connect the service inbox and CSR24 queue, build the parse-and-classify step plus the standard-COI draft template, ship a one-click approval screen, log every action to a spreadsheet/AMS note for the pilot, and report measured touch time per certificate vs. the current baseline plus exception rate."
+    },
+    {
+      "title": "After-hours client answer agent for billing, claims-status and 'where do I pay' routing",
+      "capability": "C",
+      "problem": "The agency markets '24/7 services online or through our telephone customer service' and says its phone lines stay open around the clock, but published office hours are Monday-Friday 9am-5pm and job ads advertise evenings off with no evening shift — so after-hours callers most likely reach voicemail or an unnamed service. Clients also have to choose the right carrier portal out of roughly 30 for claims and payments, which is precisely the question a front desk answers all day. Intake is split across a sitewide chat widget, a separate lead form on a marketing subdomain, the CSR24 portal and a still-published fax line.",
+      "evidence": [
+        "Claims reporting and payments are spread across roughly 30 separate carrier portals, each with its own claim and payment link — https://sodeninsurance.com/report-a-claim-pay-online/",
+        "Agency claims 24-hour phone lines and 24/7 online service — https://sodeninsurance.com/about-us/",
+        "Published hours are Mon-Fri 9am-5pm with a fax line still listed as a contact channel — https://sodeninsurance.com/contact-us/",
+        "Benefits and scheduling in the CSR posting are Mon-Fri with 'evenings off', i.e. no evening or weekend service shift — https://app.idealtraits.com/career/Oliver-L-E-Soden-Agency/338418gog",
+        "Three uncoordinated intake channels exist: sitewide third-party chat widget, an iframe quote form on go.sodeninsurance.com, and the CSR24 portal — https://sodeninsurance.com/ and https://sodeninsurance.com/request-a-quote/",
+        "The John B. Wright division's live chat carries a disclaimer that coverage cannot be bound, altered or cancelled via chat — an existing policy on chat scope the agent should inherit — https://johnbwright.com/client-portal"
+      ],
+      "agent_design": "A grounded answer agent on web chat, email and SMS (voice optional in phase two). It identifies the client by name plus policy number, address or carrier, then answers only from a curated knowledge base: the carrier routing map (which of the ~30 portals handles billing, payments and FNOL for each carrier), agency SOPs, office hours and directions, and CSR24 instructions. It deep-links to the correct carrier portal, walks the client through payment or FNOL steps, and for anything not in the knowledge base it captures the details and creates a callback task in the AMS/CRM with a timestamped transcript. Any coverage interpretation, binding, cancellation or claim-coverage question is handed to a licensed staffer — mirroring the existing 'cannot bind via chat' disclaimer. Weekly transcript review feeds new answers back into the knowledge base; unanswered-question rate is the monitored metric.",
+      "why_not_DIY": "The hard part is retrieval discipline and integration, not chat. The carrier routing map changes as carriers migrate portals, answers must be scoped to what the agency is licensed to say, and every conversation has to land in the agency's system of record so staff can pick up where the client left off. Transcripts contain nonpublic personal information, which puts GLBA/Safeguards data-handling and vendor review in scope. An off-the-shelf chatbot bolted to the website will happily guess at coverage, which is the one failure mode an agency cannot absorb.",
+      "impact_estimate": {
+        "range": "$12,000-$28,000/yr of CSR time deflected, plus unquantified after-hours lead capture",
+        "assumptions": "Assume 8-15 routine billing/claims-status/payment inquiries per business day across the three offices (inference from an 11-50 person agency with heavy phone-based servicing; not published), 30-50% deflectable to self-service answers, and 400-800 hours recovered. Valued at the NJ average of $47,740/yr (about $22.95/hr) with a 30-35% burden, i.e. roughly $30-$35/hr loaded. The NBER working paper on generative-AI support assistants (published version in QJE 2025) reports a 14% average rise in issues resolved per hour, with the largest gains for less-experienced staff — used here only as directional support, since it is customer-support work generally and not insurance agencies.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: build the 30-carrier routing map and the top ~40 questions from existing phone/email traffic, deploy on the website chat and after-hours email, run every answer in draft mode with staff review for week one, then live with handoff rules. Deliverable is a deflection report (questions answered without staff touch), an unanswered-question list for the next sprint, and a measured after-hours capture count."
+    },
+    {
+      "title": "Commercial submission and renewal intake pipeline (secure client portal + document extraction + carrier packet assembly)",
+      "capability": "D",
+      "problem": "Commercial quoting and renewal shopping is manual and information-hungry: the account manager role includes developing quotes and shopping renewals, yet the website offers only a single embedded web form with no online commercial data collection, no rater and no upload path for loss runs or schedules. Staff therefore chase missing ACORD fields, supplemental questionnaires and loss runs by email and phone, then re-key the data into the AMS and each carrier portal. Expanding into contractor, marine, pickleball facility, nonprofit and cyber niches multiplies the number of distinct supplemental questionnaires per submission.",
+      "evidence": [
+        "Account manager job copy opens with 'Oliver L.E. Soden Agency is growing' and describes adding account managers to a growing commercial book — https://app.idealtraits.com/career/Oliver-L-E-Soden-Agency/270618IND",
+        "The only online new-business intake is one embedded third-party form; there is no rating, bind or self-service quoting path — https://sodeninsurance.com/request-a-quote/",
+        "Product line expansion into contractor, HVAC/electrical/plumbing, janitorial, boutique gym, pickleball facility, nonprofit and cyber liability — https://sodeninsurance.com/page-sitemap1.xml",
+        "Documentation duties run through the AMS (AMS360 in older postings, Applied Epic preferred in newer ones), i.e. the data has to land in a system of record, not a spreadsheet — https://dashboard.idealtraits.com/career/oliver-l-e-soden-agency/15664765844ind",
+        "Industry constraint: quoting and binding must follow each carrier's filed appetite and supplemental requirements, so automation has to be retrieval-grounded in carrier guidelines rather than free-form — https://arxiv.org/abs/2607.07858"
+      ],
+      "agent_design": "A secure commercial intake portal (tokenized link, no account creation required) that asks line-of-business-specific questions, lets the client or producer upload ACORD apps, loss runs, vehicle/equipment schedules and subcontractor COIs, and then runs an extraction-and-validation agent: pull fields from PDFs and images, map them to the AMS schema, check completeness against the supplemental requirements of each targeted carrier, and produce a gap list the agent emails to the client or producer. When complete, it assembles a per-carrier submission packet and a comparison worksheet tracking what was sent, to whom, when, and what came back. Renewals trigger at 120/90/60/30 days with expiring data pre-filled for confirmation. A licensed account manager reviews and binds every quote; the agent never submits a binding instruction.",
+      "why_not_DIY": "This is an integration and data-quality product: PDF/image extraction across dozens of loss-run and schedule formats, carrier-specific supplemental questionnaires, bidirectional sync with the agency management system, and a client-facing upload surface that has to satisfy GLBA/Safeguards encryption and access-control expectations. Accuracy has to be measured per field and reviewed, because an extracted limit or address error propagates into a bound policy. Off-the-shelf form builders capture text but cannot validate against carrier requirements or write structured data into the AMS.",
+      "impact_estimate": {
+        "range": "$8,000-$25,000/yr of account-manager time, plus faster quote turnaround (unquantified)",
+        "assumptions": "Assume 50-100 shopped commercial submissions/renewals per year (inference from an 11-50 person agency with a growing commercial book and no published premium volume), 2-5 hours saved per submission on data collection, chasing and re-keying, i.e. 150-400 hours. Valued at the NJ insurance sales agent average of $81,640/yr (about $39/hr) or the agency's own $60K-$90K posting band, roughly $32-$40/hr loaded. Deliberately excludes win-rate or retention uplift; if the agency shops far fewer accounts than assumed, this drops to the low end.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/41-3021.00?st=NJ"
+      },
+      "complexity": "High",
+      "pilot_scope": "4 weeks: one line of business (contractor or marine), one carrier set. Build the intake questionnaire and upload portal, run extraction against 20 historical submission packets to measure field-level accuracy, produce the gap list and one carrier packet end to end with an account manager approving, and report hours per submission vs. the current manual baseline."
+    }
+  ],
+  "lead_score": {
+    "pain": 24,
+    "fit": 19,
+    "ability_to_pay": 13,
+    "ease": 9,
+    "strategic": 13,
+    "total": 78,
+    "rationale": "Pain is unusually well documented for a small agency: the agency's own job postings name the exact repetitive tasks (certificates, policy changes, contact verification, AMS documentation), the same role has been re-advertised across three towns with a $30K-$85K spread, and all servicing is centralized in one Jamesburg department covering three offices and two brands. Fit is strong across A, C and D, with the management system as the natural integration point. Ability to pay is moderate: 11-50 employees, three locations, active hiring at $60K-$90K and steady content marketing imply budget capacity, but no revenue, premium volume or client counts are public, so this is capped. Ease of pilot is the weak sub-score — family-owned with a named principal (Hal Soden, Sr.) means few approval layers, but AMS/CSR24 integration and GLBA/E&O review slow a 2-4 week build, and certificate work is the highest-liability task to automate. Strategic value is high: everything built here (COI desk, carrier routing map, commercial intake pipeline) resells to thousands of independent agencies with the same AMS stack."
+  },
+  "best_evidence_signal": "Repeated re-posting of the same commercial-lines account manager/CSR role, whose stated duties are certificates, policy changes and AMS documentation, while the entire account management team sits in one office — https://app.idealtraits.com/career/Oliver-L-E-Soden-Agency/270618IND",
+  "suggested_channel": "walk-in",
+  "evidence_thin": false
+}

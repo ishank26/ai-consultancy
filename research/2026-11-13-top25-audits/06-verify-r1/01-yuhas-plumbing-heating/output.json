@@ -1,0 +1,49 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"Outside 9-6 weekdays nothing answers: calls go to voicemail, email waits until the next business day.\" (Section 2, Impact)",
+      "problem": "Stated as fact but unsupported: no source says what happens to calls after hours. Published hours (Mon-Fri 9-6, weekends closed) and the absence of a published after-hours route only support a likelihood, not that the line goes to voicemail or when email is read. The '(our inference)' label is attached to the preceding sentence only, so this reads as an observed fact about the owner's phone system - and it is the very thing the paid pilot is sold on.",
+      "fix": "Either label it, e.g. \"Outside 9-6 weekdays the published route is silent, so an unanswered call most likely goes to voicemail and an email waits for the next business day (our inference)\", or drop the voicemail claim and say only that no after-hours route is published."
+    },
+    {
+      "claim": "\"Dropped: Birdeye (page returned HTTP 404 on verification, so hours are cited to Nextdoor).\" (Sources note)",
+      "problem": "The Birdeye profile URL loads normally now (HTTP 200), shows 'This profile has not been claimed', 4.2 / 28 reviews and the same hours (Mon-Fri 9:00 a.m.-6:00 p.m., Sat/Sun closed). The 404 was likely transient or a bad fetch, so the note misdescribes the source state; the underlying hours claim is unaffected.",
+      "fix": "Re-check the URL and, if it loads, cite Birdeye alongside Nextdoor as the second corroborating source for hours; if you want to keep the note, phrase it as 'returned 404 at the time of checking' and note it was reachable on review."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Thirty-five-plus years in business", "source_url": "https://www.yuhasplumbing.com/home", "result": "confirmed"},
+    {"claim": "Address at 33 Jackson St (South River, NJ 08882)", "source_url": "https://www.yuhasplumbing.com/home", "result": "confirmed"},
+    {"claim": "Licensed plumbing #7275 and HVAC #147600", "source_url": "https://www.yuhasplumbing.com/home", "result": "confirmed"},
+    {"claim": "Carrier Factory Authorized Dealer", "source_url": "https://www.yuhasplumbing.com/home", "result": "confirmed"},
+    {"claim": "Contact routes are one phone line (732) 257-7013 and a Gmail address; no form anywhere", "source_url": "https://www.yuhasplumbing.com/home", "result": "confirmed"},
+    {"claim": "Google Maps shows 'Claim this business' with no hours and no website link", "source_url": "https://www.google.com/maps/search/Yuhas+Plumbing+%26+Heating+33+Jackson+St+South+River+NJ", "result": "confirmed"},
+    {"claim": "Two of the three call buttons dial wrong numbers: tel:732577013 (nine digits) and tel:7323577013 (transposed digits)", "source_url": "https://www.yuhasplumbing.com/home", "result": "confirmed"},
+    {"claim": "Hero phone number is unlinked plain text (sources line)", "source_url": "https://www.yuhasplumbing.com/home", "result": "confirmed"},
+    {"claim": "/contact returns 404", "source_url": "https://www.yuhasplumbing.com/contact", "result": "confirmed"},
+    {"claim": "/about returns 404 and the site is three pages (home, plumbing-services, private-policy)", "source_url": "https://www.yuhasplumbing.com/sitemap.xml", "result": "confirmed"},
+    {"claim": "Hours sit on third-party listings: Mon-Fri 9-6, weekends closed", "source_url": "https://nextdoor.com/pages/yuhas-plumbing-heating-south-river-nj/", "result": "confirmed"},
+    {"claim": "Nextdoor page is unclaimed ('Is this your business? Claim page')", "source_url": "https://nextdoor.com/pages/yuhas-plumbing-heating-south-river-nj/", "result": "confirmed"},
+    {"claim": "Neighborhood Favorite 2022-2024", "source_url": "https://nextdoor.com/pages/yuhas-plumbing-heating-south-river-nj/", "result": "confirmed"},
+    {"claim": "Google listing has 4.2 stars from 28 reviews", "source_url": "https://www.google.com/maps/search/Yuhas+Plumbing+%26+Heating+33+Jackson+St+South+River+NJ", "result": "confirmed"},
+    {"claim": "One review describes a reasonable estimate cancelled after a question", "source_url": "https://www.google.com/maps/search/Yuhas+Plumbing+%26+Heating+33+Jackson+St+South+River+NJ", "result": "confirmed"},
+    {"claim": "Responsiveness is praised in third-party reviews (arrival within ~15 minutes)", "source_url": "https://www.bestprosintown.com/nj/south-river/yuhas-plumbing-and-heating-/", "result": "confirmed"},
+    {"claim": "Dedicated emergency line (908) 482-8296 with urgent work at additional cost, no booking tool", "source_url": "https://www.yuhasplumbing.com/plumbing-services", "result": "confirmed"},
+    {"claim": "No published after-hours route for the emergency number (site publishes no hours or process)", "source_url": "https://www.yuhasplumbing.com/plumbing-services", "result": "confirmed"},
+    {"claim": "No scheduling, invoicing or customer-record tool visible publicly; contact is by Gmail", "source_url": "https://www.yuhasplumbing.com/home", "result": "confirmed"},
+    {"claim": "Google's own claim/verification flow is how a profile is claimed", "source_url": "https://support.google.com/business/answer/2911778?hl=en", "result": "confirmed"},
+    {"claim": "NJ dispatcher annual median $54,590, May 2025 (x1.25 for benefits)", "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000043503213", "result": "confirmed"},
+    {"claim": "NJ plumber/pipefitter annual median $78,240, May 2025 (x1.25 for benefits)", "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000047215213", "result": "confirmed"},
+    {"claim": "Section 2 arithmetic: 52x20x25-50% = 260-520 h; 54,590/2,080x1.25 = $32.81/h; 260x32.81 = $8,530; 520x32.81 = $17,061; range rounded down to $8,500-$17,000", "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000043503213", "result": "confirmed"},
+    {"claim": "Section 3 arithmetic: 52x1.5-4.5 = 78-234 h; 78,240/2,080x1.25 = $47.02/h; 78x47.02 = $3,668; 234x47.02 = $11,003; range rounded down to $3,600-$11,000", "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000047215213", "result": "confirmed"},
+    {"claim": "Benefits load lifts the third range above analysis.json's unloaded $3,000-$9,000 (stated, not hidden)", "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000047215213", "result": "confirmed"},
+    {"claim": "Calls outside 9-6 go to voicemail and email waits until the next business day", "source_url": "https://www.yuhasplumbing.com/plumbing-services", "result": "not found"},
+    {"claim": "Birdeye page returned HTTP 404 on verification", "source_url": "https://reviews.birdeye.com/yuhas-plumbing-heating-166609342213442", "result": "contradicted"},
+    {"claim": "Email and walk-in opener: 'Mr. Yuhas' as owner", "source_url": "https://www.bestprosintown.com/nj/south-river/yuhas-plumbing-and-heating-/", "result": "confirmed"},
+    {"claim": "Email opener: two of three call buttons on yuhasplumbing.com dial wrong numbers, Google listing unclaimed with no hours or site link", "source_url": "https://www.yuhasplumbing.com/home", "result": "confirmed"},
+    {"claim": "Audit body is at most ~450 words", "source_url": "", "result": "confirmed"},
+    {"claim": "Business name, town, services and contact numbers as stated", "source_url": "https://www.yuhasplumbing.com/home", "result": "confirmed"}
+  ],
+  "confidence": "High"
+}

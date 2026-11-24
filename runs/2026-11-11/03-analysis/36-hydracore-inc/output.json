@@ -1,0 +1,86 @@
+{
+  "business": "Hydracore Inc",
+  "industry": "manufacturing (precision CNC machining / contract manufacturing)",
+  "town": "Metuchen, NJ",
+  "opportunities": [
+    {
+      "title": "RFQ intake and quote-drafting agent with an ITAR-safe file drop",
+      "capability": "A (operational agent), with D for the intake portal",
+      "problem": "Every inbound quote request lands in one generic info@ inbox or a phone call, with no RFQ form, no drawing/file upload, no NDA step and no routing by inquiry type. The same channel also absorbs supplier questions, recruiters and job seekers, so a drawing package from a prime buyer competes for attention with a resume. For a shop quoting everything from one-off prototypes to high-volume runs, each inquiry needs a human to open drawings and price it, and nothing measures how long that takes.",
+      "evidence": [
+        "No online quote/RFQ portal, no booking tool and no live chat anywhere on the site; the only inbound web path is a generic Squarespace form plus a published email and phone (https://www.hpmmi.com/contact)",
+        "Contact page funnels new jobs, supplier questions and careers into one address, with no routing by inquiry type (https://www.hpmmi.com/contact)",
+        "Quoting appears to start from drawings/part files sent by email or discussed by phone; no uploaded-file intake, NDA flow or instant-estimate tool is offered (https://www.hpmmi.com/contact)",
+        "Service mix spans one-off prototypes through high-volume runs, implying frequent re-quoting and per-job estimating rather than repeat-only work (https://www.hpmmi.com/capabilities)",
+        "Website is a six-page Squarespace brochure with no CRM or customer portal visible, i.e. no system of record to fall back on (https://www.hpmmi.com/sitemap.xml)",
+        "Manual-task analogue in the industry brief: compiling job progress and requisitioning material to meet demand is core work of Production, Planning, and Expediting Clerks, SOC 43-5061 (https://www.onetonline.org/link/summary/43-5061.00)"
+      ],
+      "agent_design": "An agent sits behind a small gated upload page (or watches the info@ mailbox). On a new inquiry it: (1) classifies the sender and intent into customer RFQ / supplier / recruiting / other, and routes accordingly; (2) extracts part geometry attributes, material, quantity, tolerances, finish and due date from drawings/STEP files into a structured quote-intake record; (3) matches the part against the shop's published machine list (5-axis, mill-turn, boring mill, CMM envelope) and flags 'cannot make here' features; (4) drafts a quote packet — routing candidate, setup/cycle estimate range, and a suggested price band from historical quote/job data — and opens a task in a lightweight tracker with an aging clock. A human (owner/estimator) reviews and approves or edits every price before anything is sent; the agent never sends commercial terms unattended. Outbound sends and NDA acceptance are human-approved steps; drawings stay inside a private deployment, no public-model upload.",
+      "why_not_DIY": "It is not a chatbot on the website. It must parse CAD/PDF drawings, hold a per-part quote history, and stay inside ITAR/EAR controls for customer-owned defense drawings — which rules out pasting files into a consumer LLM. It also needs structured intake, routing, aging/reminder logic and a record of who approved which price, i.e. integration and audit trail rather than a chat widget. Getting the price band wrong once on a defense part costs more than the whole tool.",
+      "impact_estimate": {
+        "range": "$5,000–$18,000 per year in recovered estimating/admin hours, before any revenue effect",
+        "assumptions": "Inference, not a measured result. Assumes 5–10 inbound RFQs/week, 1–2 hours of human time each to screen, route and price, and that the agent removes 50–70% of the non-judgment portion (classification, intake transcription, routing, reminder chasing) = 2.5–10 hours/week. Valued at the NJ median for Production, Planning, and Expediting Clerks ($62,710/yr ≈ $30.15/hr) as a conservative proxy; if the owner or a first-line supervisor ($81,110, NJ median) is the one quoting, the value is about 30% higher. Revenue upside from faster turnaround is real but unquantified and deliberately excluded.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2–3 week pilot: a gated drawing-upload page plus mailbox triage on one inbox, working classification and routing for all inbound mail, structured quote-intake records built by replaying the last 20 real RFQs as a backtest, a draft quote packet for 5 live RFQs reviewed by the estimator, and an aging dashboard showing response time before vs. after. No pricing sent without human approval."
+    },
+    {
+      "title": "AS9102 / first-article quality documentation agent on a private deployment",
+      "capability": "C (knowledge agent over the shop's own QMS documents), with E for private/on-prem hosting",
+      "problem": "The shop carries ISO 9001:2015 and AS9100:2016 certification plus ITAR registration, and is trying to hire one person to be both CMM programmer and quality inspector — first-article inspection, dimensional reporting and AS9100 records all in a single seat. That paperwork scales with part numbers and characteristics, not with headcount, so a roughly 15-person shop is exposed every time a new part or a design revision arrives.",
+      "evidence": [
+        "Holds ISO 9001:2015 and AS9100:2016 from NQA and is ITAR registered/compliant for defense work (https://www.hpmmi.com/about)",
+        "Company post lists a combined CMM Programmer/Quality Inspector role, concentrating first-article inspection, AS9100 documentation and dimensional reporting in one hire (https://www.linkedin.com/posts/hydracore-inc_hydracore-inc-jobs-and-careers-activity-7488003627324780544-LxZs)",
+        "Second simultaneous opening is a CNC Machinist/Programmer, i.e. the quality slot is not being backfilled from slack capacity (https://www.linkedin.com/company/hydracore-inc)",
+        "No downloadable quality manual, certificate PDFs or spec sheets are published — certifications appear only as logo images, so there is no document library to query today (https://www.hpmmi.com/capabilities)",
+        "Equipment includes a Zeiss Contura CMM, so dimensional results exist digitally but with no visible reporting layer (https://www.hpmmi.com/capabilities)",
+        "Industry brief: recording inspection/test data and writing inspection reports with corrective actions is core work of Inspectors, Testers, Sorters, Samplers, and Weighers, SOC 51-9061 (https://www.onetonline.org/link/summary/51-9061.00)",
+        "Industry brief constraint: ITAR/EAR work makes customer drawings, process parameters and BOM data unsuitable for public cloud models (inference in the brief, consistent with the shop's defense customer logos at https://www.hpmmi.com/sitemap.xml)"
+      ],
+      "agent_design": "A private-hosted knowledge agent indexed on the shop's own material: AS9100 quality manual and procedures, customer flow-down requirements, prior AS9102 forms and inspection reports, CMM program notes. Triggers: a new work order or drawing revision opens a documentation task. The agent balloons drawing characteristics into an AS9102-style characteristic list, maps each to the inspection method and gauge available on the floor, drafts the FAI report and nonconformance/corrective-action text for the inspector to check, and answers floor questions ('what does procedure X require for a rework tag?') with a citation to the exact document and revision. Human approval: the inspector or QA lead signs every FAI and every NCR; the agent only drafts, and every output is stamped with source document, revision and reviewer.",
+      "why_not_DIY": "Three blockers: (1) the data is ITAR/EAR-controlled customer IP, so a hosted consumer chatbot is out — this needs private or on-prem inference with access control; (2) the value depends on ingesting the shop's actual procedures and prior reports, not general knowledge, and on revision control so an obsolete procedure is never cited; (3) AS9100 records need an audit trail of who generated and who approved what, which no off-the-shelf chatbot provides. A wrong ballooned characteristic is a quality escape on a defense part.",
+      "impact_estimate": {
+        "range": "$3,000–$12,000 per year of inspector/CMM-programmer time, plus reduced documentation rework",
+        "assumptions": "Inference, not a measured result. Assumes 8–20 new or revised part numbers per month at 1–2 hours of report assembly each (ballooning, mapping to gauges, typing results) = 8–40 hours/month, of which the agent removes roughly 40–50% (drafting and transcription, not measurement or sign-off) = 3–20 hours/month. Valued at the NJ median for Inspectors, Testers, Sorters, Samplers, and Weighers ($49,140/yr ≈ $23.63/hr). Excludes the harder-to-price benefit of faster FAI turnaround on new awards and fewer documentation findings in audits.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/51-9061.00?st=NJ"
+      },
+      "complexity": "High",
+      "pilot_scope": "3–4 week pilot on one product family: private deployment (on-prem or dedicated tenant) with the quality manual and 10–15 historical FAI packages indexed, agent-drafted AS9102 characteristic lists and FAI reports for 3–5 real parts checked line-by-line by the inspector, a floor Q&A assistant answering procedure questions with revision-cited answers, and a measured before/after on hours per FAI package. Explicitly out of scope: touching CMM software, changing any procedure, or any output leaving the building unapproved."
+    },
+    {
+      "title": "Careers intake and candidate pipeline agent for the hard-to-fill machinist and CMM seats",
+      "capability": "A (operational agent), with D for the intake page",
+      "problem": "Recruiting runs entirely off job boards and a free-text web form. The careers page has no listings and no ATS — it asks every candidate to fill out the form — so resumes, supplier notes and customer inquiries all land in the same inbox. The same machinist seat looks like it has been advertised twice inside roughly three months, consistent with slow, manual pipeline handling by a small team with no spare admin capacity.",
+      "evidence": [
+        "Careers page has no job listings or ATS; it only invites candidates to submit a general form for current or future positions (https://www.hpmmi.com/careers)",
+        "Careers intake is a free-text form with no application tracking or role-specific routing, so resumes land in the same inbox as customer messages (https://www.hpmmi.com/careers)",
+        "Company post (about 3 months old) names a CNC Machinist/Programmer and a CMM Programmer/Quality Inspector opening and routes applicants to Indeed and a LinkedIn job poster (https://www.linkedin.com/posts/hydracore-inc_hydracore-inc-jobs-and-careers-activity-7488003627324780544-LxZs)",
+        "Current LinkedIn job board shows a single CNC Machinist and Programmer role, Metuchen NJ, entry level, about 2 weeks old — a repeat/refreshed posting for the same seat (https://www.linkedin.com/jobs/hydracore-inc-jobs-worldwide?f_C=5427600)",
+        "LinkedIn lists 11–50 employees with 15 visible employee profiles, so no internal recruiter capacity is assumed (https://www.linkedin.com/company/hydracore-inc)",
+        "Industry brief trend: hiring friction persists nationally with 7.5 million job openings and 3.4 million quits in September 2026, consistent with continued difficulty filling skilled trades (BLS JOLTS, as summarized in the brief)"
+      ],
+      "agent_design": "An agent behind a role-specific application page (two tracks: machinist/programmer, CMM/quality). On submission it parses the resume, extracts CNC control experience (Fanuc/Mazak/Mori Seiki), 5-axis and mill-turn exposure, GD&T and CMM programming skills, and shift/commute fit, then scores against the posted requirements and writes a one-screen summary. It auto-acknowledges the candidate, schedules interviews against a small set of hiring-lead time slots, sends reminders and no-show recovery, and keeps a warm pipeline of previously seen applicants for when a seat reopens. It also filters recruiter and vendor email out of the shared inbox. Human approval: every interview invite, rejection and offer message is approved by the hiring lead; the agent never makes a hiring decision or negotiates pay.",
+      "why_not_DIY": "The pain is not 'write a job post'. It is structured intake, resume parsing against machine-specific requirements, scheduling with reminders across two open roles, and separating recruiting mail from customer RFQs in a single shared inbox — plus handling candidate data properly. That is workflow, calendar and mailbox integration with an audit trail, which a stand-alone chatbot subscription cannot do. It also compounds with the RFQ agent, since it is the same inbox and the same triage logic.",
+      "impact_estimate": {
+        "range": "$1,200–$3,000 per hire in recovered screening and scheduling hours, plus a shorter vacancy window",
+        "assumptions": "Inference, not a measured result. Assumes 40–100 applications per machinist/CMM opening and 5–10 minutes of human screening, scheduling and follow-up each (about 3–17 hours per hire), with the agent covering most of the coordination load, plus a small allowance for re-advertising the same seat. Valued at the NJ median for Machinists ($63,190/yr ≈ $30.38/hr). One to two hires per year are visible in public postings. The larger prize — days shaved off a vacancy where a first-line production supervisor costs $81,110/yr in NJ — is inferred and not counted.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/51-4041.00?st=NJ"
+      },
+      "complexity": "Low",
+      "pilot_scope": "2-week pilot: a two-track application page with structured screening questions, live triage of the shared inbox separating candidates from customers, parsed and scored summaries for the next 25 applicants, calendar-based interview scheduling with reminders, and a re-engagement list of previously seen machinist applicants. Deliberately the smallest, fastest visible win of the three."
+    }
+  ],
+  "lead_score": {
+    "pain": 21,
+    "fit": 17,
+    "ability_to_pay": 12,
+    "ease": 9,
+    "strategic": 13,
+    "total": 72,
+    "rationale": "Pain (21/30): quote intake, careers intake and quality documentation are all documented from the company's own pages and job posts, not guessed — no RFQ portal, one info@ inbox, no ATS, and a single combined CMM/inspector hire carrying AS9100 paperwork. Held below 25 because nothing internal (quote volume, backlog, scrap, turnover) is observable, so severity is inferred from design signals rather than measured. Fit (17/20): three capabilities map cleanly (A, C, D) and the ITAR/AS9100 constraint pulls in E's private-deployment model, which is squarely the kind of work the consultancy sells; the gap is that no physical/edge sensor opportunity is evidenced. Ability to pay (12/20): a 20,000 sq ft plant, aerospace/defense prime logos, an unusual net-zero solar capex, ongoing equipment additions and two skilled hires all suggest real cash flow, but headcount is 11–50 with 15 visible profiles, revenue is unknown, and job-shop margins are thin against unit labor costs rising 2.7% while productivity grew 0.3% (BLS Q3 2026, per the brief) — budget exists but will be scrutinized. Ease of pilot (9/15): no owner, president or GM is named on the site and LinkedIn shows no titles, so entry is a general line and a gatekeeper; there is no CRM, no data room and a six-page Squarespace site, so scoping needs a discovery call. Offsetting that, the shop is a short drive from Milltown and the quoting pain is visible from outside. Strategic value (13/15): the RFQ-intake and AS9102-documentation patterns repeat across thousands of small NJ/PA machine shops with the same certifications and the same spreadsheet-and-paper reality, so the first build becomes a reusable vertical product. Net: strong enough to pursue, but a call-first, walk-the-floor sale rather than an inbound one."
+  },
+  "best_evidence_signal": "Every inbound inquiry — customer RFQ, supplier, recruiter, job applicant — terminates in one info@ inbox and one generic contact form, with no RFQ portal, file upload or routing: https://www.hpmmi.com/contact",
+  "suggested_channel": "phone",
+  "evidence_thin": false
+}

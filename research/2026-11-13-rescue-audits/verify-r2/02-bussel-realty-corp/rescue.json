@@ -1,0 +1,103 @@
+{
+ "ref": "B01139",
+ "name": "Bussel Realty Corp",
+ "town": "Edison, NJ (with New Brunswick service pages)",
+ "category": "Commercial real estate brokerage",
+ "status": "operating",
+ "domains": [
+  {
+   "domain": "bussel.com",
+   "role": "listed on Google / old site / alternate",
+   "final_url": "https://bussel.com/",
+   "result": "HTTP 200. The genuine brokerage site loads normally in Chrome (logo, 732-287-3777, property search, featured listings, deal news newer than the August 2026 archive). On the home page the DOM contains an off-screen block (div.dc, position absolute, left:-9999px) holding 1,618 characters of Vietnamese, Hebrew and Russian spam with four outbound links (vietnam-millionaire.me, portuguese-passport.online, top10binary.ru, top10shops.ru), and the tab title is prefixed with a horse emoji - on the home page, /news.asp, the contact directory page and even IIS's own 404 error page. A plain HTTP fetch of the home page returns clean HTML with no emoji and no block. /contact-us/ returns IIS 404.0.",
+   "screenshot_files": [
+    "bussel-home-desktop-1440.png",
+    "bussel-home-mobile-390.png",
+    "google-maps-profile.png"
+   ],
+   "checked_at": "2026-11-13",
+   "source_url": "https://bussel.com/"
+  }
+ ],
+ "links_to_broken_domain": [
+  {
+   "place": "Google Maps / Search profile 'Bussel Realty Corporation' (4.5, 2 Ethel Rd #202a, Edison NJ 08817, (732) 287-3777, 'Located in: Durham Center') - lists bussel.com as the website",
+   "url": "https://www.google.com/maps/place/Bussel+Realty+Corporation/@40.5412402,-74.3948696,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3b7fb806a6985:0xb89cb9047c768c11!8m2!3d40.5412402!4d-74.3948696!16s%2Fg%2F1tcx_scb"
+  },
+  {
+   "place": "The site itself: the logo, menu and footer links are relative paths that resolve to bussel.com, and info@bussel.com is the published email address",
+   "url": "https://bussel.com/"
+  }
+ ],
+ "rdap": [
+  {
+   "domain": "bussel.com",
+   "registered": "1996-04-23",
+   "expires": "2028-08-01",
+   "last_changed": "2026-07-29",
+   "registrar": "GoDaddy.com, LLC (IANA registrar ID 146); status client delete/renew/transfer/update prohibited; nameservers ns49/ns50.domaincontrol.com; no registrant details published in the record",
+   "source_url": "https://rdap.org/domain/bussel.com"
+  }
+ ],
+ "likely_cause": {
+  "cause": "hacked",
+  "reasoning": "The live page is the genuine Bussel site (its own brokers, listings and deal news newer than the 4 August 2026 archive), so the site has not been replaced or parked. What differs is content added to it: an off-screen block of Vietnamese, Hebrew and Russian spam with four outbound links, plus a horse emoji in the tab title. Nothing of that appears in a plain HTTP fetch of the same home page nor in the 4 August 2026 Wayback copy, and the emoji also sits in the <title> of an IIS-generated 404 error page that the site's templates do not produce - so whatever adds it acts on responses rather than only inside one page file (inference). RDAP shows the name created in 1996 and paid to 1 August 2028 with client locks, so it has not lapsed and been re-registered since 1996 (inference from the unchanged creation date); whose GoDaddy account holds it cannot be seen from outside. Inference: injected spam on the business's own domain, served selectively; the entry point and how requests are chosen are not visible from outside.",
+  "inference": true
+ },
+ "fix_steps": [
+  {
+   "step": "Change the hosting/IIS, FTP, database, /login.asp admin and mailbox passwords and enable two-factor where offered. Ask whoever manages the domain to confirm the GoDaddy account and its contact email are the ones the business expects; RDAP already shows it paid to 2028 and locked, so there is no renewal emergency.",
+   "who": "Owner plus whoever administers the hosting account",
+   "effort_hours": "1-2",
+   "source_url": "https://rdap.org/domain/bussel.com"
+  },
+  {
+   "step": "Diff the live home page against the clean Wayback copy of 4 August 2026, then hunt the injected block and emoji title. Start with the .asp templates, includes and shared header/footer, but widen it: also check the /js directory, server-side components (the altered title also appears on IIS's own 404 page, which the templates do not generate - so IIS modules, ISAPI filters and global includes are candidates) and the third-party tags the page loads (agencysonar tracker, Google Tag Manager/GA, FontAwesome kit). Re-test in a normal browser, not only a text fetch.",
+   "who": "Web developer (classic ASP) with the hosting provider",
+   "effort_hours": "3-8",
+   "source_url": "https://web.archive.org/web/20260804094057/https://bussel.com/"
+  },
+  {
+   "step": "Ask the host for access/FTP logs around the last template change to find the entry point, patch it (outdated component, weak FTP or admin password) and keep IIS and the ASP stack updated.",
+   "who": "Hosting provider with the developer",
+   "effort_hours": "2-4",
+   "source_url": "https://bussel.com/"
+  },
+  {
+   "step": "Check Google Search Console for Security Issues and Manual Actions on bussel.com, request a review once the spam is gone, and set up a weekly alert on outbound links and the page title.",
+   "who": "Developer, then owner for the weekly check",
+   "effort_hours": "1-2",
+   "source_url": "https://support.google.com/webmasters/answer/6347750"
+  },
+  {
+   "step": "Fix the contact path while the developer is in: /contact-us/ returns a bare 404 and the contact page's only form is the CRM login. Point /contact-us/ at the directory page and add a public enquiry route.",
+   "who": "Web developer",
+   "effort_hours": "2-4",
+   "source_url": "https://bussel.com/contact-us/"
+  }
+ ],
+ "after_fix": {
+  "opportunity": "Add a public enquiry/requirement form (property type, size, location, timeline) and click-to-call on the phone number, so a tenant or landlord can reach the right broker without the staff login or copying a number by hand.",
+  "evidence": "On the contact directory page there are 0 tel: links and the only form posts to /login.asp (the staff login); 732-287-3777 appears as plain text in the header and footer.",
+  "source_url": "https://bussel.com/contact-us/commercial-real-estate/central-new-jersey"
+ },
+ "severity": "Medium",
+ "severity_reason": "Customers see a normal, working brokerage site with no browser warning, and the domain registration is paid to 1 August 2028, so there is no outage. The damage is to search visibility and trust: the home page serves an off-screen block of gambling, passport and Russian-retail links, the page title is altered across the pages we opened, and /contact-us/ returns a 404.",
+ "audit_md": "# Website Health Check: Bussel Realty Corp\n\n**What we saw on 13 November 2026**\n\n- bussel.com is registered through GoDaddy, paid to 1 August 2028 and registrar-locked, so it has not lapsed; whose GoDaddy login holds it is not visible from outside.\n- The site loads normally in Chrome (logo, 732-287-3777, property search, listings, news), but the home page also carries an off-screen block of Vietnamese, Hebrew and Russian spam with four outbound links, and the tab title starts with a horse emoji.\n- A plain fetch of the same page returns clean HTML with no emoji, so the altered version is served selectively; the emoji also appears on IIS's own 404 page.\n- Google's profile (4.5, 2 Ethel Rd #202a, Edison NJ 08817) lists bussel.com; /contact-us/ returns a 404.\n\n**What it means for customers**\n\nVisitors see a normal, working site and no browser warning appeared; the text sits out of view. Google documents that hacked content can be dropped from results or labelled, so the risk is to visibility and trust.\n\n**How to fix it**\n\n1. Change hosting, FTP, database and staff-login passwords and add two-factor; have the GoDaddy account holder confirm the domain sits where expected (1-2 hours).\n2. Compare the home page with the clean 4 August 2026 Wayback copy, then remove the block and emoji: templates and includes first, then /js files, server components, third-party tags (3-8 hours).\n3. Ask the host to trace the entry point in access and FTP logs, then patch it (2-4 hours).\n4. Check Search Console's Security Issues and Manual Actions, request a review once clean, add a weekly title and link check (1-2 hours).\n5. Repair /contact-us/ and add a public enquiry route (2-4 hours).\n\n**After the fix**\n\nAdd click-to-call on 732-287-3777 and a short requirement form; the contact page has no tel: link and its only form is the staff login.\n\nPrepared from publicly available information on 13 November 2026. We did not log in to or change anything.",
+ "founder_md": "# Founder notes - Bussel Realty Corp (B01139)\n\n**Outreach email draft (3 sentences)**\n\nSubject: Something on bussel.com you might not be able to see\n\nHi [name], while looking at commercial brokerages in Middlesex County I opened bussel.com in an ordinary browser and found an off-screen block of Vietnamese, Hebrew and Russian spam text with four outbound links on the home page, plus a horse emoji added to the browser tab title on the pages I opened. The site looks completely normal to a visitor, so I saved screenshots of the desktop and phone view along with the page code, and I am happy to send them to you or your developer. If it is useful, I can walk you through what I saw and where a developer would start looking.\n\n**Walk-in / phone opener (1 sentence)**\n\n\"I was on bussel.com this morning and spotted hidden spam links on the home page that a visitor would never see - can I show you the screenshots?\"\n\n**Sources**\n\n- https://bussel.com/ - live home page, HTTP 200; in Chrome the DOM holds div.dc at left:-9999px with 1,618 characters of Vietnamese, Hebrew and Russian text linking to vietnam-millionaire.me, portuguese-passport.online, top10binary.ru and top10shops.ru, and the title carries a horse emoji (13 Nov 2026)\n- Screenshots: bussel-home-desktop-1440.png (1440px), bussel-home-mobile-390.png (390px), google-maps-profile.png\n- https://bussel.com/news.asp - title carries the horse emoji, no off-screen block in the DOM\n- https://bussel.com/contact-us/ - HTTP 404; the IIS error page title also carries the emoji\n- https://rdap.org/domain/bussel.com - registration 1996-04-23, expiry 2028-08-01, last changed 2026-07-29, GoDaddy.com LLC (IANA 146), client delete/renew/transfer/update prohibited, NS49/NS50.DOMAINCONTROL.COM; no registrant details published\n- https://web.archive.org/cdx/search/cdx?url=bussel.com&output=json&from=2024&filter=statuscode:200&collapse=timestamp:6 - monthly HTTP 200 captures from Feb 2024 to 4 Aug 2026\n- https://web.archive.org/web/20260804094057/https://bussel.com/ - 4 Aug 2026 capture; clean title without emoji and no spam block\n- https://www.google.com/maps/place/Bussel+Realty+Corporation/@40.5412402,-74.3948696,17z - profile: 4.5, 2 Ethel Rd #202a, Edison NJ 08817, \"Located in: Durham Center\", closed at the time of check, lists bussel.com, (732) 287-3777; screenshot google-maps-profile.png\n- https://bussel.com/contact-us/commercial-real-estate/central-new-jersey - employee directory page; 0 tel: links; only form action /login.asp\n- https://support.google.com/webmasters/answer/6347750 - Google guidance on hacked content, labels and review requests\n\n**Open questions**\n\n- Who holds the GoDaddy login for bussel.com, and which email address is on that account?\n- Who holds the hosting/IIS login, and when were those passwords last changed?\n- Who builds and maintains the classic ASP site - in-house, a web firm, or the host?\n- When did the home page last change, and has anyone seen a rankings or traffic drop in Search Console?\n- Is there a Google Business Profile login for \"Bussel Realty Corporation\", or is the profile unclaimed (the panel still shows \"Add missing information\" and \"Add a photo\")?\n- Is there a New Brunswick office at all, or are those pages only service-area landing pages (the only address published on the site is Edison)?",
+ "caveats": [
+  "The spam block appeared in a Chrome navigation on the home page only of the four pages opened (home, /news.asp, the contact directory page, a 404); a plain HTTP fetch of the home page returned clean HTML with no emoji, and the emoji does appear in the <title> of an IIS-generated 404 page. How the server decides which version to send is not visible from outside (inference: selective serving).",
+  "There is no New Brunswick address: the only address published on the site is 2 Ethel Road, Suite 202A, Edison NJ 08817, so this audit covers that business and its New Brunswick service pages.",
+  "The Google panel showed a 4.5 rating but no review count, plus 'Add missing information' prompts; whether the profile is claimed cannot be confirmed without logging in.",
+  "The site was read, not exercised: property search and the staff login were not used.",
+  "RDAP publishes no registrant details for bussel.com, so who controls the registrar account is unknown from outside; the 'not lapsed' statement rests on the unchanged 1996 creation date, the 2028 expiry and the client locks only."
+ ],
+ "data_gaps": [
+  "A crawler-style request (Googlebot user agent) was not tested, so whether search engines are served the altered page is unknown.",
+  "app.agencysonar.com, a tracker script the home page loads, did not resolve when we requested it, so its code could not be inspected; the code behind the injection was not identified.",
+  "No server logs or Search Console data, so the entry point of the injection and any ranking impact are unknown.",
+  "MyEListing listing could not be opened: browser returned net::ERR_CERT_COMMON_NAME_INVALID. Clutch returned HTTP 403 and other directory pages failed to fetch, so whether those directories link to bussel.com is unverified.",
+  "No BBB or Yelp profile was located in search; none verified.",
+  "Google review count not shown in the limited Maps panel view."
+ ]
+}

@@ -1,0 +1,32 @@
+[
+ {
+  "claim": "price_ranges.mid_market = \"$240-$720/month for a small firm's live coverage (Alert Basic $240 to Advanced $590, LEX $375-$675, Ruby $250-$720, Abby $164-$599, A Message Center $145-$490)\"; one_line repeats \"roughly $240-$700/month\".",
+  "problem": "Every individual price in the bracket is correct, but the stated floor is not the minimum of the prices the file itself lists in that bracket. A Message Center Standard is $145/mo (pricing page) and Abby Essential is $164/mo, both below $240. By the convention used in the other two ranges (min-to-max of the cited members), the floor should be $145, not $240. As written the range overstates the entry price of small-firm live coverage by about $95/month, and the one_line figure ($240-$700) does not match the range object ($240-$720).",
+  "fix": "Either retitle to \"about $145-$720/month\" (A Message Center $145 \u2192 Ruby $720), or keep $240 as the anchor but relabel it (e.g. \"$240-$720 for the legal-only / 24-7 legal vendors (Alert $240-$590, LEX $375-$675, Ruby $250-$720); cheaper general-market options start at $145 (A Message Center Standard)\"). Make one_line use the same numbers as price_ranges."
+ },
+ {
+  "claim": "Ruby contract_terms: \"chat bundles sold separately (e.g., 10 chats $115, 30 chats $268, 50 chats $416)\".",
+  "problem": "Those three figures are the discounted add-on prices shown on ruby.com/pricing as \"Bundled \u2026 up to 10 chats for $115 (a 20% savings)\" when chat is added to a receptionist plan. They are not standalone chat plans: the page's separate chat-only plans are $143 (10 chats), $335 (30) and $520 (50) per month. \"Sold separately\" misdescribes what the number buys.",
+  "fix": "Reword to: \"chat added to a receptionist plan at a 20% discount: 10 chats $115, 30 chats $268, 50 chats $416 per month; chat-only plans are $143 / $335 / $520 per month\"."
+ },
+ {
+  "claim": "Lawmatics setup_fee \"$399 onboarding (standard cost discounted from $1,500 on a 12-month agreement); early-exit charge capped at $1,101\", contract terms (annual, 3-user minimum, prices may change) and the Essential/Premium feature limits, all cited to https://www.lawmatics.com/pricing/sms-mms.",
+  "problem": "The cited URL only supports the SMS ladder, MMS add-on and overage rates. The $399 / $1,500 / $1,101 figures and the annual-contract terms come from the Cancellation section of Lawmatics' Terms of Use, and the plan grid from lawmatics.com/pricing \u2014 neither is the cited page. The numbers themselves check out (CaseAgent's Lawmatics analysis quotes the clause verbatim and attributes it to the Terms of Use last updated May 28, 2025), so this is a citation defect, not a wrong number.",
+  "fix": "Add the second source URL (https://caseagent.com/blog/lawmatics-pricing, which quotes the Terms of Use clause) and/or the Lawmatics Terms of Use page, and change source_type to \"vendor pricing page + vendor SMS page + vendor terms (via third-party quote)\"."
+ },
+ {
+  "claim": "Smith.ai offering titled \"Human-first virtual receptionists (legal intake trained)\".",
+  "problem": "The smith.ai/pricing/receptionists page sells general virtual receptionists (\"trained in your field, fluent in your workflows\"); it does not describe a legal-intake-specific product or training tier. The legal framing is the brief's characterisation, and it is not labelled as an inference.",
+  "fix": "Retitle e.g. \"Human-first virtual receptionists (general market, marketed to law firms)\" or add \"(inference: Smith.ai markets to law firms but sells one general human-first product)\"."
+ },
+ {
+  "claim": "Legal Intaker \"Starting at $13/hr\" as the product's headline price, and low_cost_self_serve \"add ~$13/hr if you staff intake with a placed specialist\".",
+  "problem": "$13/hr is real (the page's structured data lists a Philippines specialist at $13.00/hour and a Latin America specialist at $15.00/hour), but the page's own title and description lead with \"From $2,227/mo\" and the pricing chart is an image. Presenting $13/hr alone understates the commitment and drops the $15/hr nearshore tier.",
+  "fix": "Write \"from $13/hr (Philippines) or $15/hr (Latin America); page headline is 'from $2,227/mo', which appears to be the full-time monthly equivalent \u2014 inference, since the chart is an image\"."
+ },
+ {
+  "claim": "Implication 8: \"bilingual intake is a paid add-on in this market (Smith.ai $1.00/call for a dedicated Spanish line; Alert's blog cites $30-$50/month for bilingual tiers)\".",
+  "problem": "Both cited charges are real, but the generalisation is contradicted by another vendor in the same file: A Message Center's legal page states bilingual English/Spanish support \"at no additional charge for standard calls\", and Abby's pricing page lists bilingual support among features included in every plan. The implication is correctly labelled as inference but overstates how the market prices Spanish.",
+  "fix": "Soften to \"some vendors meter bilingual intake (Smith.ai $1.00/call dedicated Spanish line; Alert's blog cites $30-$50/month tiers) while others include it (A Message Center, Abby), so quoting it as a line item is defensible but should be checked against the incumbent\"."
+ }
+]

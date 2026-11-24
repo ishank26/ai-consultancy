@@ -1,0 +1,109 @@
+{
+  "ref": "B00795",
+  "name": "Villalona Hair Salon",
+  "town": "North Brunswick, NJ",
+  "category": "Hair salon",
+  "status": "operating",
+  "domains": [
+    {
+      "domain": "villalonahairsalon.com",
+      "role": "old site (former brand domain)",
+      "final_url": "https://villalonahairsalon.com/",
+      "result": "A plain HTTP fetch returns only a small script page that reloads the same URL with a tracking parameter; once that script runs in the browser the page renders a parking lander titled \"villalonahairsalon.com\" reading \"Find information, resources and relevant links for villalonahairsalon.com. This domain may be for sale.\" with only Terms of Service and Privacy Policy links, plus a black banner \"villalonahairsalon.com may be for sale, click to inquire\" that links to above.com/marketplace/villalonahairsalon.com. No salon name, address, phone, hours or services. Loaded over https with no certificate warning shown in Chrome; no clickable content was followed.",
+      "screenshot_files": [
+        "shot-parked-desktop.png",
+        "shot-parked-mobile390.png"
+      ],
+      "checked_at": "2026-11-13",
+      "source_url": "https://villalonahairsalon.com/"
+    },
+    {
+      "domain": "vagaro.com/villalonahairsalon",
+      "role": "listed on Google (website field and Book online button)",
+      "final_url": "https://www.vagaro.com/villalonahairsalon",
+      "result": "Blocked for our browser: Imperva served \"Access denied - Error 15\" (\"This request was blocked by our security service\") at 2026-11-13 21:34 UTC, inside an Incapsula iframe with no page content. A plain HTTP fetch of the same URL did return the page's HTML, titled \"Villalona Hair Salon - North Brunswick Township NJ | Vagaro\" with the description \"Villalona Hair Salon has been providing exceptional hair services since 2005.\", so the business page exists; its service list and prices could not be read by us. The Google listing's website field and Book online button both point here.",
+      "screenshot_files": [
+        "shot-vagaro-blocked.png"
+      ],
+      "checked_at": "2026-11-13",
+      "source_url": "https://www.vagaro.com/villalonahairsalon"
+    }
+  ],
+  "links_to_broken_domain": [],
+  "rdap": [
+    {
+      "domain": "villalonahairsalon.com",
+      "registered": "2010-04-14",
+      "expires": "2027-04-14",
+      "last_changed": "2026-04-15",
+      "registrar": "GoDaddy.com, LLC",
+      "source_url": "https://rdap.org/domain/villalonahairsalon.com"
+    }
+  ],
+  "likely_cause": {
+    "cause": "parked",
+    "reasoning": "RDAP shows a single registration created 2010-04-14 and paid to 2027-04-14, last changed 2026-04-15, at GoDaddy, with nameservers 3927.NS1.ABOVEDOMAINS.COM and 3927.NS2.ABOVEDOMAINS.COM; Above.com is a domain parking/monetisation service and the live page's for-sale banner links to above.com/marketplace. Because the creation date has not reset, the domain was not dropped and re-registered by a stranger. Wayback shows the salon's own GoDaddy Website Builder page (title \"VILLALONA HAIR SALON\", phone (732) 640-2800) on 2022-03-26 and a parking lander (window.park / adblock page) by 2024-05-27. So the registration still carries its original creation date but its nameservers now point at a parking service. Whether the salon's own registrar account still controls it, or the registration moved to whoever parked it, only the account holder can confirm.",
+    "inference": true
+  },
+  "fix_steps": [
+    {
+      "step": "Confirm who holds the login to the GoDaddy account that owns villalonahairsalon.com (RDAP shows it paid to 2027-04-14, so it has not expired).",
+      "who": "Owner, with whoever built or registered the site in 2010",
+      "effort_hours": "1-2",
+      "source_url": "https://rdap.org/domain/villalonahairsalon.com"
+    },
+    {
+      "step": "If the account is still the salon's: in the registrar's DNS settings, replace the ABOVEDOMAINS nameservers with the host's nameservers and switch off any \"sell this domain\" / parking setting; keep auto-renew on.",
+      "who": "Owner plus web person",
+      "effort_hours": "1-2",
+      "source_url": "https://rdap.org/domain/villalonahairsalon.com"
+    },
+    {
+      "step": "If the domain cannot be recovered: choose a new domain, and stop printing or posting the old one anywhere it still appears (cards, signage, social bios).",
+      "who": "Owner plus web person",
+      "effort_hours": "1-4",
+      "source_url": "https://villalonahairsalon.com/"
+    },
+    {
+      "step": "Get a small site live on the domain: one page with the salon name, address, hours, phone, service menu with prices, stylist names and a button linking to the Vagaro booking page.",
+      "who": "Web designer/developer",
+      "effort_hours": "8-20",
+      "source_url": "https://web.archive.org/web/20220326152229/https://villalonahairsalon.com/"
+    },
+    {
+      "step": "Change the website field on the Google Business Profile (today it points to vagaro.com) to the salon's own address, and correct the same field on older directory listings.",
+      "who": "Owner or the person who manages the Google profile",
+      "effort_hours": "1-2",
+      "source_url": "https://www.google.com/maps/search/villalona+hair+salon+631+Georges+Rd+North+Brunswick+NJ"
+    },
+    {
+      "step": "Add simple monitoring: an uptime/renewal reminder for the domain and a quarterly check that the site still resolves to the salon's host.",
+      "who": "Web person",
+      "effort_hours": "1",
+      "source_url": "https://rdap.org/domain/villalonahairsalon.com"
+    }
+  ],
+  "after_fix": {
+    "opportunity": "Publish the service menu and starting prices as plain text on the salon's own page, with HairSalon structured data, so search engines and AI assistants can answer \"how much is a blowout?\" from the salon's own site rather than only from the booking platform.",
+    "evidence": "The Google Business Profile's website field points at a third-party booking platform (vagaro.com/villalonahairsalon) rather than a domain the salon controls, and the brand domain serves only a for-sale notice. The Vagaro page could be confirmed only by plain fetch, so any service and price text the salon has published sits on that platform's page, not on their own.",
+    "source_url": "https://www.google.com/maps/search/villalona+hair+salon+631+Georges+Rd+North+Brunswick+NJ"
+  },
+  "severity": "Medium",
+  "severity_reason": "The salon is open (Google profile showed it open at check time, 4.6 rating, hair salon at 631 Georges Rd), and the Google profile's website field and Book online button both go to Vagaro, not to the parked domain. The damage is limited to anyone who types or follows the old brand domain, which shows a for-sale page with no salon information.",
+  "audit_md": "## Website Health Check: Villalona Hair Salon\n\n### What we saw on 13 November 2026\n- villalonahairsalon.com now serves a parking page saying the domain may be for sale, with no salon name, phone or hours (desktop and phone screenshots).\n- The Google profile (hair salon, 4.6, 631 Georges Rd) lists its website as vagaro.com; its Book online button also goes there.\n- Domain records: one registration from 14 April 2010, paid to 14 April 2027 at GoDaddy, with nameservers at Above.com.\n- Wayback Machine: the salon's own page (\"VILLALONA HAIR SALON\", (732) 640-2800) on 26 March 2022; a parking page by 27 May 2024.\n\n### What it means for customers\nAnyone who types the old address lands on a for-sale page with no salon information, and we found no public page that still links to it. The Google profile's website field and Book online button both go to Vagaro, so customers who find the salon through Google do not reach the parked domain.\n\n### How to fix it\n1. Confirm who can log in to the GoDaddy account holding the domain; it is paid to April 2027 (1-2 hrs, owner).\n2. If it is still yours, replace the Above.com nameservers with your host's and turn off parking; if not, choose a new domain (1-2 hrs, web person).\n3. Put a one-page site on it: name, address, hours, phone, services with prices, stylists, Vagaro booking link (8-20 hrs, web designer).\n4. Point the Google profile's website field at that address (1-2 hrs, owner).\n5. Add an uptime and renewal reminder (1 hr, web person).\n\n### After the fix\nPublish the menu and starting prices as text on the salon's own page, so search results and AI assistants can answer price questions without the booking platform.\n\nPrepared from publicly available information on 13 November 2026. We did not log in to or change anything.",
+  "founder_md": "## Outreach draft\n\nSubject: Your old domain villalonahairsalon.com now shows a \"for sale\" page\n\nHi — I was looking up Villalona Hair Salon on Georges Road and noticed that villalonahairsalon.com, which by the Wayback Machine was your site in 2022, now shows a page that says the domain may be for sale, with no salon information on it. Your Google listing's website field and Book online button both go to your Vagaro page, so people who find you through Google still get to the booking page; the for-sale page is what someone sees if they type the old address. I have screenshots from a desktop and a phone if you would like to see exactly what that looks like, and I can walk you through who to ask about the domain account.\n\n## Walk-in / phone opener\n\n\"Hi — I noticed villalonahairsalon.com now shows a 'domain may be for sale' page instead of your salon; I have screenshots of what it looks like on a phone if that's useful.\"\n\n## Sources\n- https://villalonahairsalon.com/ (live parking/for-sale page, checked 13 Nov 2026; screenshots shot-parked-desktop.png, shot-parked-mobile390.png)\n- https://www.google.com/maps/search/villalona+hair+salon+631+Georges+Rd+North+Brunswick+NJ (name, hair salon, 4.6 rating, 631 Georges Rd, open at check time, (732) 640-2800; website field https://www.vagaro.com/villalonahairsalon; Book online button to vagaro.com/googlemap/.../services; shot-google-profile.png)\n- https://rdap.org/domain/villalonahairsalon.com (registration 2010-04-14, expiry 2027-04-14, last changed 2026-04-15, GoDaddy.com LLC, Above.com nameservers)\n- https://web.archive.org/web/20220326152229/https://villalonahairsalon.com/ (GoDaddy Website Builder page, title \"VILLALONA HAIR SALON\", phone (732) 640-2800)\n- http://web.archive.org/web/20240527063352id_/https://villalonahairsalon.com/ (parking lander with window.park script, 27 May 2024)\n- https://www.vagaro.com/villalonahairsalon (browser blocked by Imperva \"Error 15\" at 2026-11-13 21:34 UTC, shot-vagaro-blocked.png; plain fetch returned page title and description only)\n- https://reviews.birdeye.com/villalona-hair-salon-170189478317752 (4.6, 84 reviews, address, hours; profile shows as unclaimed)\n\n## Open questions\n- Does the salon still have the login for the GoDaddy account that owns villalonahairsalon.com, and did anyone deliberately point it at a parking service?\n- Was the 2010 site set up by the owner or by an outside person who kept the account?\n- Does the salon still want this exact domain, or would it rather start fresh?\n- Who currently updates the Google Business Profile and the Vagaro listing, and are the Vagaro services and prices up to date?",
+  "caveats": [
+    "Vagaro blocks our browser with an Imperva \"Access denied - Error 15\" page, while a plain HTTP fetch did return the page's HTML and title; so the booking page exists, but we could not read its services, prices or availability in a browser.",
+    "Which registrar account controls villalonahairsalon.com cannot be seen from public records; the \"still held but parked\" reading is an inference from the unchanged 2010 registration date, the 2027 expiry and the Above.com nameservers.",
+    "A plain HTTP fetch of villalonahairsalon.com returns a small script page that reloads the URL with a tracking parameter; the for-sale wording and banner appear only once that script runs, so a reader without JavaScript sees neither the salon nor the parking text.",
+    "Wayback coverage between March 2022 and May 2024 is sparse, so the exact date the salon site was replaced by a parking page is unknown.",
+    "The 4.6 rating was read on the Google profile, which showed a limited view without a review count; the 84-review figure came from the Birdeye listing, not from Google directly.",
+    "No public place we could open still links to villalonahairsalon.com (links_to_broken_domain is empty); cards, signage or email signatures may still carry it, which we cannot see."
+  ],
+  "data_gaps": [
+    "yellowpages.com returned a Cloudflare \"Sorry, you have been blocked\" page and unilocal.net a Cloudflare \"Just a moment...\" challenge, so any website field on those listings could not be checked.",
+    "No Facebook or Yelp page for the salon was found in search, so whether either profile links to villalonahairsalon.com is unknown.",
+    "The Vagaro booking page's services and prices could not be read (browser blocked), so what a customer sees there after clicking Book online is unverified by us.",
+    "The Google profile showed a limited view with no review count, so the review total is taken from a third-party listing rather than Google."
+  ]
+}

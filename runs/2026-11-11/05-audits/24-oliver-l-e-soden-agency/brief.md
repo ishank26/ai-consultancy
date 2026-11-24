@@ -1,0 +1,1 @@
+Write the AI Opportunity Audit for Oliver L.E. Soden Agency (Jamesburg). Read profile.json and analysis.json in your folder. Use only facts present in those files, and keep every source URL you rely on in the Sources list. Write Markdown to output.md.

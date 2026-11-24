@@ -1,0 +1,118 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "The Food Architects is an 'architectural/engineering services' business at 1665 Stelton Rd, Suite B",
+      "problem": "It is a food business - gourmet catering plus a pizzeria/cafe (own site, Toast ordering page, DoorDash listing). Food is an excluded type, the category is wrong, and the address is wrong: the firm's own site gives 121 Ethel Road West, Suite 5, Piscataway.",
+      "fix": "Remove the entry. If its only evidence was a Yellow Pages 'architectural engineers' category page, treat that source as unreliable for this zone."
+    },
+    {
+      "claim": "Primerica (Piscataway representative office) - 'financial services (brand-franchised)'",
+      "problem": "Excluded type under the mapper's own rules (State Farm, Allstate, Nationwide and Travelers agency offices were dropped as brand franchises). The township directory record is a single Primerica representative at 516 William St, which property records show as a residential parcel, and the row carries no address or phone.",
+      "fix": "Drop it, or park it in an excluded-brand bucket. National brands sold through independent reps should be handled the same way as the insurance-brand agencies already excluded."
+    },
+    {
+      "claim": "Consumers Title Agency Inc is at 216 Stelton Rd, Piscataway",
+      "problem": "The firm's own site lists 30 Knightsbridge Road, Suite 525, Piscataway (phone 732-752-9299 does match). 216 Stelton Rd is an old directory address.",
+      "fix": "Update to 30 Knightsbridge Rd, Suite 525 and confirm the suite is staffed before outreach."
+    },
+    {
+      "claim": "Law Offices of Jonathan F. Marshall - Piscataway office, evidenced by its own website",
+      "problem": "The 'Piscataway office' page is a service-area/SEO page about Piscataway Township with no street address, and the firm's contact page lists no Piscataway address either. A local office is not evidenced, and the firm is a multi-office 15-lawyer practice.",
+      "fix": "Drop it, or move it to a 'serves Piscataway, no local office' bucket so nobody visits a non-existent office."
+    },
+    {
+      "claim": "Patel Home Finance (31 Stelton Rd) and 'Edge Home Finance (Patel Home Finance)' are two separate entries",
+      "problem": "The township directory text for 'Edge Home Finance' describes the person as a mortgage advisor at Patel Home Finance - the same adviser listed twice.",
+      "fix": "Merge into one row, keeping the map-listing address and the Edge Home Finance affiliation in notes."
+    },
+    {
+      "claim": "Mavinkurve & Patel LLC, phone (908) 222-7966",
+      "problem": "mplegal.org is the right firm, but the number the site itself publishes is 908-360-2300; 908-222-7966 comes from a third-party directory flagged unverified.",
+      "fix": "Use the site number and mark the directory number stale."
+    },
+    {
+      "claim": "Red Door Real Estate, website https://www.goredoor.com/",
+      "problem": "goredoor.com did not resolve (DNS ENOTFOUND) on two attempts, so the listed website could not be confirmed live. The business itself is real (township directory, realtor.com and Nextdoor listings, 14 Plainfield Ave, 732-893-8339).",
+      "fix": "Blank or annotate the website ('not resolving as of check') rather than citing a dead domain; confirm the business via listing/phone."
+    },
+    {
+      "claim": "Repeated 'suite' addresses: 30 Knightsbridge Rd Suite 525 (Consumers Title, Red Dash Media, Dayton Realty, NJ Real Estate Appraisal Group, Sage ATC, Futurism Technologies) and 371 Hoes Ln Suite 200 (A-List, Abnet, Clarity & Synergy, Gliasis, Harvest Wealth, Prominence, QSP Infotech, Sparking Media, Stone Building Solutions, Luminance, DDS)",
+      "problem": "That pattern is typical of a shared/virtual office or mail-drop suite. The businesses may still be real, but the address is not evidence of a staffed local office.",
+      "fix": "Flag every suite-525 and 371-Hoes-suite-200 row for address verification before any visit or mailer."
+    },
+    {
+      "claim": "Coverage of professional/technical services in the zone",
+      "problem": "My searches surfaced five eligible Piscataway businesses absent from the list: KMC Spark (web design/SEO, states it is 'based in Piscataway'), Complete Solutions (IT services, 1 Corporate Place South), and three environmental/engineering consultancies - Geo-Enviro Consulting & Remediation (372 Hoes Ln), Prestige Environmental Inc., and EcoTerra Consulting LLC. Environmental consulting is the list's thinnest category (only Sage ATC).",
+      "fix": "Add these after confirming addresses, and run a dedicated environmental/LSRP-consultant search, which the mapper clearly under-covered."
+    },
+    {
+      "claim": "Source quality: roughly 70 of ~120 entries cite only a generic Google Maps search URL",
+      "problem": "A Maps search URL is not a per-business citation - it cannot be re-opened to verify a specific business, and bulk directories and Yellow Pages category pages (the source of the Food Architects error) are demonstrably inaccurate.",
+      "fix": "Require one business-specific URL (own site, state licence record, or per-business directory listing) before an entry enters an outreach queue."
+    },
+    {
+      "claim": "Truncated phone numbers on 'The Elmer D. Arroyo Home Selling Team' ((732) 733-) and 'Computer Management Corporation' ((732) 985-01)",
+      "problem": "A partial number was copied through instead of being marked Unknown.",
+      "fix": "Set to Unknown and resolve in triage."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Bond & Posluszny Law Offices is a Piscataway law firm; njlaw123.com is its site", "source_url": "https://www.njlaw123.com/", "result": "confirmed"},
+    {"claim": "Mavinkurve & Patel LLC is a Piscataway real estate/family/business firm; mplegal.org is its site", "source_url": "https://www.mplegal.org/", "result": "confirmed"},
+    {"claim": "Mavinkurve & Patel's phone is (908) 222-7966", "source_url": "https://www.mplegal.org/", "result": "contradicted"},
+    {"claim": "Stanton & Stieh, PA is a Piscataway firm, phone 732-752-4000; stantonandstieh.net is its site", "source_url": "https://www.stantonandstieh.net/", "result": "confirmed"},
+    {"claim": "Rubin, Kaplan & Associates is located in Piscataway; rkalaw.com is its site", "source_url": "https://www.rkalaw.com/attorneys/", "result": "confirmed"},
+    {"claim": "A F Paredes & Co., CPAs LLP, 250 Stelton Rd Suite 8, Piscataway, phone 732-752-9530", "source_url": "https://paredescpa.com/home.html", "result": "confirmed"},
+    {"claim": "Clarity & Synergy Accounting Group, 371 Hoes Ln, phone 732-848-0084; csynergytax.com is its site", "source_url": "https://www.csynergytax.com/", "result": "confirmed"},
+    {"claim": "William J. Drumgould & Associates LLC, 1801 West 7th St, Piscataway, phone 732-926-8781", "source_url": "https://wjdrumgouldcpa.com/", "result": "confirmed"},
+    {"claim": "Omsum Engineering LLC HQ at 15 Corporate Place South Suite 102, Piscataway, phone 732-659-4824", "source_url": "https://omsumeng.com/", "result": "confirmed"},
+    {"claim": "Seva Engineering Services LLC, 242 Old New Brunswick Rd Suite 370, Piscataway, phone 732-707-7382", "source_url": "https://www.sevaengineering.com/contact.html", "result": "confirmed"},
+    {"claim": "North East Title Agency, 1096 Stelton Rd, Piscataway, phone 732-400-8608", "source_url": "https://netitleagency.com/index.html", "result": "confirmed"},
+    {"claim": "Consumers Title Agency Inc is at 216 Stelton Rd, Piscataway, phone 732-752-9299", "source_url": "http://consumerstitleagency.com/contact.php", "result": "contradicted"},
+    {"claim": "A-List Realty is at 371 Hoes Ln Suite 200, Piscataway; alistrealtynj.com is its site", "source_url": "https://www.alistrealtynj.com/about/", "result": "confirmed"},
+    {"claim": "abnetincnj.com is Abnet Inc's insurance agency site (personal and commercial lines)", "source_url": "https://www.abnetincnj.com/personal-insurance", "result": "confirmed"},
+    {"claim": "Abnet Inc. Insurance Services is at 371 Hoes Ln Suite 200, Piscataway, phone 732-424-0121", "source_url": "https://www.abnetincnj.com/personal-insurance", "result": "confirmed"},
+    {"claim": "cindiellc.com is the site of Cindie LLC / Cindie Professional Group (CPG), a CPA firm", "source_url": "https://cindiellc.com/", "result": "confirmed"},
+    {"claim": "CINDIE CPA Firm / CPG is at 200 Centennial Ave, Suite 106, Piscataway", "source_url": "https://cindiellc.com/contact-us/", "result": "not found"},
+    {"claim": "Red Dash Media is at 30 Knightsbridge Rd #525, Piscataway; reddashmedia.us is its site", "source_url": "https://www.reddashmedia.us/contact/", "result": "confirmed"},
+    {"claim": "Nextgencia Technology and Solutions is at Gemma Ct, Piscataway; nextgencia.com is its site", "source_url": "https://www.nextgencia.com/contact.html", "result": "confirmed"},
+    {"claim": "Red Door Real Estate (14 Plainfield Ave, Piscataway) is reachable via https://www.goredoor.com/", "source_url": "https://www.goredoor.com/", "result": "could not open"},
+    {"claim": "The Food Architects is an architectural/engineering services business at 1665 Stelton Rd Suite B, Piscataway", "source_url": "https://www.thefoodarchitectsnj.com/", "result": "contradicted"},
+    {"claim": "Primerica maintains a Piscataway office (township business directory member)", "source_url": "https://www.piscatawaynj.org/business_detail_T33_R77.php", "result": "contradicted"},
+    {"claim": "Law Offices of Jonathan F. Marshall has a Piscataway street address", "source_url": "https://middlesexcountycriminallaw.com/contact/", "result": "contradicted"},
+    {"claim": "James F. Clarkin III, attorney, 1100 Centennial Ave Suite 203, Piscataway, phone 732-463-3900", "source_url": "https://lawyers.justia.com/lawyer/james-f-clarkin-1065960", "result": "confirmed"},
+    {"claim": "Dubal Law Offices, 15 Corporate Place South Suite 319, Piscataway, phone 732-465-0465", "source_url": "https://lawyers.findlaw.com/new-jersey/piscataway/4086940_1/", "result": "confirmed"},
+    {"claim": "Brunswick Surveying, Inc., 61 Stelton Rd, Piscataway, phone 732-752-0100", "source_url": "https://njspls.org/members/?id=26061807", "result": "confirmed"},
+    {"claim": "Senon Associates, Inc., 255 Old New Brunswick Rd, Piscataway, phone 732-562-1600", "source_url": "https://cisleads.com/company/details/48390", "result": "confirmed"},
+    {"claim": "Bryant Staffing, 377 Hoes Ln, Piscataway, phone 732-981-0440", "source_url": "https://nj.allpages.com/piscataway/business-services/staffing-support-services/", "result": "confirmed"},
+    {"claim": "TJB Web Media is Piscataway-based with 14 Beverly Rd and 732-463-7835 on its site", "source_url": "https://tjbwebmedia.com/about/", "result": "confirmed"},
+    {"claim": "KMC Spark is a web design/development agency based in Piscataway, NJ", "source_url": "https://kmcspark.com/", "result": "confirmed"}
+  ],
+  "coverage": {
+    "searches": [
+      "bookkeeping services Piscataway NJ accountant firm",
+      "structural engineering firm Piscataway NJ Old New Brunswick Road",
+      "staffing agency Piscataway NJ Hoes Lane",
+      "web design agency Piscataway NJ small business website",
+      "personal injury lawyer Piscataway NJ Stelton Road office",
+      "insurance broker Piscataway NJ independent agency",
+      "IT managed services company Piscataway NJ Corporate Place",
+      "land surveyor Piscataway NJ licensed",
+      "real estate brokerage Piscataway NJ Hoes Lane office",
+      "title agency Piscataway NJ settlement services",
+      "environmental consulting firm Piscataway NJ remediation",
+      "architecture firm Piscataway NJ architect office"
+    ],
+    "eligible_found": 29,
+    "already_listed": 24,
+    "missing": [
+      {"name": "KMC Spark", "town": "Piscataway", "source_url": "https://kmcspark.com/"},
+      {"name": "Complete Solutions (completesol.com)", "town": "Piscataway", "source_url": "https://completesol.com/about/"},
+      {"name": "Geo-Enviro Consulting & Remediation", "town": "Piscataway", "source_url": "https://www.linkedin.com/company/geo-enviro-consulting-remediation"},
+      {"name": "Prestige Environmental, Inc.", "town": "Piscataway", "source_url": "https://www.linkedin.com/company/prestige-environmental-inc."},
+      {"name": "EcoTerra Consulting LLC", "town": "Piscataway", "source_url": "https://www.ecoterrainc.com/environment"}
+    ]
+  },
+  "confidence": "Medium"
+}

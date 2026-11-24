@@ -1,0 +1,32 @@
+[
+ {
+  "claim": "Rite-Hite states roughly 25% of warehouse injuries occur at or near the loading dock, attributing the figure to OSHA/NSC (problem.evidence[6]).",
+  "problem": "Misstated on three counts. The Rite-Hite page actually says 'The National Safety Council estimates ... that up to 25% of all industrial accidents occur at the loading dock.' (a) 'up to 25%' became 'roughly 25%'; (b) 'all industrial accidents' became 'warehouse injuries'; (c) the figure is attributed to NSC only, not OSHA/NSC. The caveat at the end of the brief half-concedes this, but the evidence entry itself, which an orchestrator may quote, overstates the number and its scope.",
+  "fix": "Rewrite as: 'Rite-Hite (vendor blog), citing NSC, estimates that up to 25% of all industrial accidents occur at the loading dock (no primary OSHA/NSC publication located).' Keep the vendor and 'up to' qualifiers in the fact string itself, not only in caveats."
+ },
+ {
+  "claim": "Ailytics claims 60-80% reduction in safety non-compliance across 400+ projects and 6,000+ cameras (measured_outcomes[2]).",
+  "problem": "The cited page (ailytics.ai/industries/logistics-and-warehousing) states '400+ projects worldwide', '60-80% reduction in safety non-compliance' and '<2 weeks', but contains no '6,000+ cameras' figure anywhere on the page. The camera count appears on Ailytics' company LinkedIn, not on the cited URL.",
+  "fix": "Drop '6,000+ cameras', or re-cite to a page that actually states it (e.g. the Ailytics projects page or company LinkedIn) and label it company-reported."
+ },
+ {
+  "claim": "'$11.5B lost productivity' from driver detention (problem.evidence[5] and measured_outcomes[6]).",
+  "problem": "ATRI reports $3.6 billion in unreimbursed direct expenses and, separately, $11.5 billion in lost revenue to the for-hire trucking industry ('lost as much as $11.5 billion in revenue due to detention in 2023'), with 135.9 million hours lost. Calling the $11.5B 'lost productivity' is a mislabel of the study's own category.",
+  "fix": "Change to '$3.6B in unreimbursed direct expenses plus $11.5B in lost revenue (135.9M driver hours)'. All other ATRI numbers (39.3% of stops, 117.5-209.4 hours per driver) are correct as written."
+ },
+ {
+  "claim": "Americold attributed a ~70% reduction in injuries, with lost-time days falling from 288 to zero and $1.1M annual savings, at one cold-storage facility (measured_outcomes[1]).",
+  "problem": "Partly supported. The 288-to-zero days and $1.1M savings are in the body of the Voxel page, but the body credits 'up to 90% reduction in unsafe behaviors' and does not state a 70% injury reduction. The 70% appears only in the page headline/URL slug ('Reduced Injures By 70%'). The page also says losses were 'at several of its distribution centers', so 'one facility' is the author's framing, not the source's.",
+  "fix": "Restate as: 'Voxel case study headline claims a 70% injury reduction; body text reports up to 90% reduction in unsafe behaviours, zero days missed (down from 288) and $1.1M annual savings; site count not specified.' Keep strength Low."
+ },
+ {
+  "claim": "fit_score: legal_risk_low = 11 of 20, while the rationale says 'Legal risk is moderate-low'.",
+  "problem": "Sub-scores do sum correctly (17+14+10+15+11+8 = 75) and sit in plausible ranges, but 11/20 is a middling score that does not match the 'moderate-low' characterisation. The legal section itself documents real residual risk (wiretap exposure on audio, a retraining duty created by the near-miss log, Section 7 surveillance objections), all of which are avoidable by design.",
+  "fix": "Either raise legal_risk_low to ~14-15 and keep the 'moderate-low' rationale, or keep 11 and restate the rationale as 'moderate, managed by design constraints' (video only, no biometrics, no discipline automation)."
+ },
+ {
+  "claim": "N.J.S.A. 2A:156A-4(d) cited as the one-party-consent provision.",
+  "problem": "The cited RCFP page supports the rule (one party's consent suffices; N.J. Stat. Ann. sections 2A:156A-2, -3, -4) and the criminal penalties, but it does not pin the rule to subsection (d). That subsection letter is unverified.",
+  "fix": "Cite the section generally (N.J.S.A. 2A:156A-4) unless a primary copy of the statute confirming subsection (d) is opened."
+ }
+]

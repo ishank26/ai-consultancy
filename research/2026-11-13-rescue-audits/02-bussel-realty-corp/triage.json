@@ -1,0 +1,118 @@
+{
+ "name": "Bussel Realty Corp (New Brunswick office)",
+ "town": "New Brunswick",
+ "ref": "B01139",
+ "status": "operating",
+ "website": "https://bussel.com/",
+ "what_they_do": "Commercial real estate brokerage specialising in industrial, warehouse, office, retail and investment property across New Jersey, with tenant and landlord representation. The 'New Brunswick NJ' pages are service-area landing pages; the only office address published anywhere on the site is 2 Ethel Road, Suite 202A, Edison NJ.",
+ "customers": "Industrial and office tenants, landlords, developers and investors across Central/North Jersey; also government and institutional occupiers.",
+ "size_signals": [
+  {
+   "signal": "Employee directory lists 25 broker emails with direct mobile numbers (Steve Bussel SIOR, Gregory Irving SIOR and others)",
+   "source_url": "https://bussel.com/contact-us/commercial-real-estate/central-new-jersey"
+  },
+  {
+   "signal": "Separate site sections per property type (industrial, office, warehouse, investment, retail) and a property-search system",
+   "source_url": "https://bussel.com/"
+  },
+  {
+   "signal": "Dun & Bradstreet estimates 25-99 employees across all sites (third-party estimate)",
+   "source_url": "https://bussel.com/contact-us/real-estate-brokerage/edison-nj"
+  }
+ ],
+ "listing": {
+  "platform": "No Google Business Profile or map listing verified",
+  "rating": "unknown",
+  "reviews": "unknown",
+  "source_url": "https://bussel.com/contact-us/real-estate-brokerage/edison-nj"
+ },
+ "website_review": {
+  "loads": true,
+  "https": true,
+  "phone_layout": "usable",
+  "clear_offer": true,
+  "primary_cta": "'Search Inventory' / 'What Is Your Property Worth?' and a property-search box; phone number in the header",
+  "click_to_call": false,
+  "contact_form": false,
+  "online_booking_or_quote": "No enquiry form and no booking - the 'Contact' page is a broker directory plus a CRM login; all contact is by phone or individual broker email",
+  "trust_signals": "Twenty-five named brokers with SIOR designations, 20+ years in the market, property inventory and press/news sections - strong for the category",
+  "out_of_date_signs": "Home page contains hidden injected spam: a div positioned at left:-9999px with Vietnamese, Hebrew/Portuguese and Russian gambling and passport text linking to vietnam-millionaire.me, portuguese-passport.online and top10binary.ru - a classic hacked-site SEO injection. The stack is classic ASP (.asp URLs) and /contact-us/ returns a raw IIS 404 page exposing server paths (C:\\www\\bussel\\contact-us\\).",
+  "search_basics": "Titles follow 'Real Estate Broker <Type> - <Place> NJ' which is workable, but there is no schema markup at all (0 JSON-LD blocks), no meta-description-driven landing pages, and the injected spam will actively damage rankings",
+  "top_issues": [
+   "Site is compromised: hidden spam links in three languages on the home page",
+   "Raw IIS error pages leaking filesystem paths; /contact-us/ 404s",
+   "No structured data anywhere and no tel: links, so phone numbers are not clickable",
+   "No web enquiry path for a prospective tenant or landlord - only a CRM login form on the contact page"
+  ]
+ },
+ "agent_readiness": {
+  "findable": 1,
+  "answerable": 1,
+  "bookable": 0,
+  "notes": "robots.txt is a permissive classic-ASP file (blocks admin/login paths only), so nothing is deliberately blocked. But there is zero schema markup, phone numbers are plain text, there is no service-area text on the New Brunswick page beyond the Edison office address, and the hacked spam injection makes the site a poor citation source. No form or booking exists for an agent to act on."
+ },
+ "operations_signals": [
+  {
+   "signal": "Property enquiries route to 25 individual broker mobiles with no central form or CRM-facing intake, so leads are hand-dispatched (inference from the directory-only contact page)",
+   "source_url": "https://bussel.com/contact-us/commercial-real-estate/central-new-jersey"
+  },
+  {
+   "signal": "Listing inventory is managed through a classic ASP property search, and there is no online tour or requirement-submission path",
+   "source_url": "https://bussel.com/property-search.asp"
+  },
+  {
+   "signal": "The compromised home page has been live long enough for a third-party directory crawl to pick up the spam, suggesting no routine site monitoring",
+   "source_url": "https://bussel.com/"
+  }
+ ],
+ "top_opportunities": [
+  {
+   "opportunity": "Incident response on the hacked site: remove the injected hidden spam block and outbound links, then add monitoring - this is a security and rankings emergency, not a nice-to-have",
+   "type": "website",
+   "evidence": "Hidden div at left:-9999px with Vietnamese/Hebrew/Russian spam linking to vietnam-millionaire.me, portuguese-passport.online and top10binary.ru",
+   "effort": "S"
+  },
+  {
+   "opportunity": "Replace raw IIS errors with real 404/contact pages, add tel: links, and publish LocalBusiness/RealEstateAgent JSON-LD with the Edison address and service areas so agents can answer and route enquiries",
+   "type": "agent readiness",
+   "evidence": "/contact-us/ returns 'IIS 10.0 Detailed Error - 404.0' with the physical path shown; no JSON-LD; phone is plain text",
+   "effort": "M"
+  },
+  {
+   "opportunity": "Add a structured requirement/enquiry form (property type, size, location, budget, timeline) that routes to the right broker - replacing 'call the office or email a broker'",
+   "type": "operations",
+   "evidence": "Contact page offers only an employee directory and a username/password login form",
+   "effort": "M"
+  }
+ ],
+ "scores": {
+  "gap_size": 5,
+  "ability_to_pay": 5,
+  "ease": 3,
+  "evidence": 4,
+  "reasons": "Gap: compromised site with spam injection, no schema, no click-to-call, no enquiry form, raw server errors - every layer is broken. Ability to pay: 25-broker commercial brokerage with big industrial commissions, clearly able to fund a project. Ease: classic ASP and a hack cleanup need a real developer, so slower than a WordPress fix. Evidence: opened the home, New Brunswick, contact and search pages and inspected the DOM for the injection."
+ },
+ "sources": [
+  "https://bussel.com/",
+  "https://bussel.com/contact-us/office-property/new-brunswick-nj",
+  "https://bussel.com/contact-us/commercial-real-estate/central-new-jersey",
+  "https://bussel.com/contact-us/",
+  "https://bussel.com/robots.txt",
+  "https://bussel.com/contact-us/real-estate-brokerage/edison-nj"
+ ],
+ "batch": "b059",
+ "rank": 20,
+ "check": "corrected",
+ "wrong_claims": [
+  {
+   "claim": "Listing: 'No Google Business Profile or map listing verified' - rating unknown, reviews unknown",
+   "what_is_true": "A Google Maps profile does exist: 'Bussel Realty Corporation', 4.5, at 2 Ethel Rd #202a, Edison NJ 08817 ('Located in: Durham Center'), open to 4 PM, linking bussel.com and (732) 287-3777, with an 'Add a photo' prompt and no review count shown in the panel view.",
+   "source_url": "https://www.google.com/maps/search/Bussel+Realty+Corp+2+Ethel+Road+Edison+NJ"
+  },
+  {
+   "claim": "Name/location framing 'Bussel Realty Corp (New Brunswick office)'",
+   "what_is_true": "This is the right company but not a New Brunswick business: the only address published on the site is 2 Ethel Road, Suite 202A, Edison NJ 08817, and the New Brunswick pages are service-area landing pages titled 'Office Property, New Brunswick NJ' for a broker directory. There is no New Brunswick office to visit.",
+   "source_url": "https://bussel.com/contact-us/office-property/new-brunswick-nj"
+  }
+ ]
+}

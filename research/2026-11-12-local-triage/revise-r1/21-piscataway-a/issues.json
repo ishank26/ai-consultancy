@@ -1,0 +1,57 @@
+[
+ {
+  "claim": "The Food Architects is an 'architectural/engineering services' business at 1665 Stelton Rd, Suite B",
+  "problem": "It is a food business - gourmet catering plus a pizzeria/cafe (own site, Toast ordering page, DoorDash listing). Food is an excluded type, the category is wrong, and the address is wrong: the firm's own site gives 121 Ethel Road West, Suite 5, Piscataway.",
+  "fix": "Remove the entry. If its only evidence was a Yellow Pages 'architectural engineers' category page, treat that source as unreliable for this zone."
+ },
+ {
+  "claim": "Primerica (Piscataway representative office) - 'financial services (brand-franchised)'",
+  "problem": "Excluded type under the mapper's own rules (State Farm, Allstate, Nationwide and Travelers agency offices were dropped as brand franchises). The township directory record is a single Primerica representative at 516 William St, which property records show as a residential parcel, and the row carries no address or phone.",
+  "fix": "Drop it, or park it in an excluded-brand bucket. National brands sold through independent reps should be handled the same way as the insurance-brand agencies already excluded."
+ },
+ {
+  "claim": "Consumers Title Agency Inc is at 216 Stelton Rd, Piscataway",
+  "problem": "The firm's own site lists 30 Knightsbridge Road, Suite 525, Piscataway (phone 732-752-9299 does match). 216 Stelton Rd is an old directory address.",
+  "fix": "Update to 30 Knightsbridge Rd, Suite 525 and confirm the suite is staffed before outreach."
+ },
+ {
+  "claim": "Law Offices of Jonathan F. Marshall - Piscataway office, evidenced by its own website",
+  "problem": "The 'Piscataway office' page is a service-area/SEO page about Piscataway Township with no street address, and the firm's contact page lists no Piscataway address either. A local office is not evidenced, and the firm is a multi-office 15-lawyer practice.",
+  "fix": "Drop it, or move it to a 'serves Piscataway, no local office' bucket so nobody visits a non-existent office."
+ },
+ {
+  "claim": "Patel Home Finance (31 Stelton Rd) and 'Edge Home Finance (Patel Home Finance)' are two separate entries",
+  "problem": "The township directory text for 'Edge Home Finance' describes the person as a mortgage advisor at Patel Home Finance - the same adviser listed twice.",
+  "fix": "Merge into one row, keeping the map-listing address and the Edge Home Finance affiliation in notes."
+ },
+ {
+  "claim": "Mavinkurve & Patel LLC, phone (908) 222-7966",
+  "problem": "mplegal.org is the right firm, but the number the site itself publishes is 908-360-2300; 908-222-7966 comes from a third-party directory flagged unverified.",
+  "fix": "Use the site number and mark the directory number stale."
+ },
+ {
+  "claim": "Red Door Real Estate, website https://www.goredoor.com/",
+  "problem": "goredoor.com did not resolve (DNS ENOTFOUND) on two attempts, so the listed website could not be confirmed live. The business itself is real (township directory, realtor.com and Nextdoor listings, 14 Plainfield Ave, 732-893-8339).",
+  "fix": "Blank or annotate the website ('not resolving as of check') rather than citing a dead domain; confirm the business via listing/phone."
+ },
+ {
+  "claim": "Repeated 'suite' addresses: 30 Knightsbridge Rd Suite 525 (Consumers Title, Red Dash Media, Dayton Realty, NJ Real Estate Appraisal Group, Sage ATC, Futurism Technologies) and 371 Hoes Ln Suite 200 (A-List, Abnet, Clarity & Synergy, Gliasis, Harvest Wealth, Prominence, QSP Infotech, Sparking Media, Stone Building Solutions, Luminance, DDS)",
+  "problem": "That pattern is typical of a shared/virtual office or mail-drop suite. The businesses may still be real, but the address is not evidence of a staffed local office.",
+  "fix": "Flag every suite-525 and 371-Hoes-suite-200 row for address verification before any visit or mailer."
+ },
+ {
+  "claim": "Coverage of professional/technical services in the zone",
+  "problem": "My searches surfaced five eligible Piscataway businesses absent from the list: KMC Spark (web design/SEO, states it is 'based in Piscataway'), Complete Solutions (IT services, 1 Corporate Place South), and three environmental/engineering consultancies - Geo-Enviro Consulting & Remediation (372 Hoes Ln), Prestige Environmental Inc., and EcoTerra Consulting LLC. Environmental consulting is the list's thinnest category (only Sage ATC).",
+  "fix": "Add these after confirming addresses, and run a dedicated environmental/LSRP-consultant search, which the mapper clearly under-covered."
+ },
+ {
+  "claim": "Source quality: roughly 70 of ~120 entries cite only a generic Google Maps search URL",
+  "problem": "A Maps search URL is not a per-business citation - it cannot be re-opened to verify a specific business, and bulk directories and Yellow Pages category pages (the source of the Food Architects error) are demonstrably inaccurate.",
+  "fix": "Require one business-specific URL (own site, state licence record, or per-business directory listing) before an entry enters an outreach queue."
+ },
+ {
+  "claim": "Truncated phone numbers on 'The Elmer D. Arroyo Home Selling Team' ((732) 733-) and 'Computer Management Corporation' ((732) 985-01)",
+  "problem": "A partial number was copied through instead of being marked Unknown.",
+  "fix": "Set to Unknown and resolve in triage."
+ }
+]

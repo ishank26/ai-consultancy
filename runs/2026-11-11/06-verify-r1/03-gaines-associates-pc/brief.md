@@ -1,0 +1,2 @@
+Verify the audit for Gaines & Associates, PC (Edison). Files in your folder: audit.md, profile.json, analysis.json, industry.json. Check every factual claim in the audit section AND the "For the founder" email/opener. Re-open the business pages and each cited URL yourself; for any benchmark behind an impact range, open the original source. Check the audit body is at most ~450 words. Record each check in claims_checked. Write the JSON to output.json.
+

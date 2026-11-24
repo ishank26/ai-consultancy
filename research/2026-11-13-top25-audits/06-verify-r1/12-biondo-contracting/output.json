@@ -1,0 +1,148 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Sources line: \"https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000047218113 — NJ first-line-supervisor median, May 2025\" (supports the $63.41/hour used in section 3)",
+      "problem": "Wrong series cited. Opening that URL myself returns year 2025 value 76600, which is occupation 47-2181 (Roofers, NJ), not 47-1011. The first-line-supervisor series is OEUS340000000000047101113 and returns 105510 — the figure the audit body actually uses. The $63.41 rate is arithmetically right for $105,510, but the citation attached to it does not support it, and the same swapped URL was carried into analysis.json.",
+      "fix": "Replace that source URL with https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000047101113 (returns 105510, 2025) and label it \"NJ first-line supervisors of construction trades (47-1011)\". Keep OEUS340000000000047218113 only if roofers ($76,600) are being cited for something."
+    },
+    {
+      "claim": "Impact line, section 2: \"about 117–364 staff hours a year (… 780–1,560 inquiries x 0.25–0.33 h each x 60–70% handled) = about $3,356–$10,443 a year\"; prep note \"1,560 x 0.33 x 70% = 364 h\"",
+      "problem": "The stated top of the range does not follow from the stated inputs. 1,560 x 0.33 x 0.70 = 360.36 h, i.e. ~360 h and ~$10,339 at $28.69/h, not 364 h and $10,443. A reader who redoes the multiplication finds the top of the range overstated by about 1%. (364 h is only reachable if handling time is 20 minutes = 0.333 h.) The low end is correct: 780 x 0.25 x 0.60 = 117 h and $3,356.",
+      "fix": "Either state 0.33 h as 20 minutes / one-third hour and derive 364 h explicitly, or change the top to 360 h and about $10,339. Add the rounded figures actually used, as the other two sections do."
+    },
+    {
+      "claim": "Prep note: \"Hours are the inline products, rounded down: 12 x 0.25 x 100% = 3 h and 24 x 0.33 x 100% = 8 h\"",
+      "problem": "Internal inconsistency. 24 x 0.33 = 7.92, which is 7 h if rounded down; 8 h is a round-up. The audit text itself (\"about 3–8 staff hours\") is defensible, but the stated rounding rule is not what was applied.",
+      "fix": "Reword to \"rounded to the nearest hour\" and note the effect: 7.92 → 8 h, so the top figure ($229) is a slight overstatement of 7.92 x $28.69 ≈ $227."
+    },
+    {
+      "claim": "Section 2, \"Now\": intake is one number, \"with no form, chat or booking visible\"",
+      "problem": "Overstated. The ProvenExpert profile the audit cites offers a public message form (\"Your message to Biondo Contracting\": name, email, phone, plus a \"Callback request\" checkbox and an \"Arrange an appointment\" link). It is not a quote form and its handling is unknown, but the audit should not tell the owner there is no form at all when one exists on a listing it names two lines later.",
+      "fix": "Narrow to: no quote form, chat or booking exists on the business's own website (the domain serves spam); the only non-phone channel is a generic message box on the ProvenExpert listing, which we could not confirm anyone reads."
+    },
+    {
+      "claim": "\"Suggested first step: A 20-minute walkthrough at your Monroe address (call (732) 257-2926 first; we have not confirmed it is staffed)\" and the walk-in opener",
+      "problem": "Not a factual error — the address is publicly listed as the business address on Google and ProvenExpert, and the audit is honest that staffing is unconfirmed. But 38 Spotswood Ave may be a home/shopfront, and the only route offered is an unannounced walk-in at an address the audit itself says may be unstaffed.",
+      "fix": "Keep the call-first hedging and add a line to the prep notes: if the call is unanswered and the address looks residential, send the email instead of walking up. Do not present the address as a confirmed office."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Google profile is \"Biondo Contracting-Roofing Specialists\", shows 4.9 stars, website link is biondoroofing.com, phone (732) 257-2926",
+      "source_url": "https://www.google.com/maps/search/Biondo+Contracting+Roofing+Specialists+Monroe+Township+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile hours read as open until midnight (\"Closes 12 AM\") and the address is 38 Spotswood Ave, Monroe Township",
+      "source_url": "https://www.google.com/maps/search/Biondo+Contracting+Roofing+Specialists+Monroe+Township+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "biondoroofing.com serves a Thai-language slot-game page on desktop and at phone width (390 px), checked 13 November 2026",
+      "source_url": "https://biondoroofing.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google, ProvenExpert and Webflow all still link to biondoroofing.com",
+      "source_url": "https://www.provenexpert.com/en-us/biondo-contracting/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Webflow page is a bare brand page with no navigation, services or form",
+      "source_url": "https://biondo-contracting.webflow.io/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "April 2026 archive capture still shows the roofing homepage and state license 13VH01287400",
+      "source_url": "https://web.archive.org/web/20260420032126/https://biondoroofing.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Domain is registered 2010-12-07, expires 2030-12-07 (\"December 2030\"), registrar GoDaddy with client locks",
+      "source_url": "https://rdap.verisign.com/com/v1/domain/biondoroofing.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Registrant identity is not public (email hedges ownership as a guess)",
+      "source_url": "https://rdap.verisign.com/com/v1/domain/biondoroofing.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye publishes Mon-Fri 8:30-7:30 hours that disagree with Google's midnight close",
+      "source_url": "https://birdeye.com/biondo-contracting-east-brunswick-nj-149586765701051",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Reviews describe leak re-checks, a next-day shingle repair and free plywood replacement",
+      "source_url": "https://birdeye.com/biondo-contracting-east-brunswick-nj-149586765701051",
+      "result": "confirmed"
+    },
+    {
+      "claim": "One review complains that calls were not returned after payment",
+      "source_url": "https://birdeye.com/biondo-contracting-east-brunswick-nj-149586765701051?page=9",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Owner is named Sam / Sam Biondo in public reviews (used in \"Sam-approved slots\" and the email/opener)",
+      "source_url": "https://birdeye.com/biondo-contracting-east-brunswick-nj-149586765701051",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No quote form, chat or booking visible across the business's intake surfaces",
+      "source_url": "https://www.provenexpert.com/en-us/biondo-contracting/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "BLS NJ customer-service-representative median, May 2025 = $47,740, giving $22.95/h and $28.69/h after the x1.25 benefits assumption",
+      "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000043405113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BLS NJ first-line-supervisor median = $105,510, giving $50.73/h and $63.41/h after x1.25",
+      "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000047101113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The source URL listed in the audit for the first-line-supervisor rate (OEUS340000000000047218113) is the supervisor series",
+      "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000047218113",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Section 1 arithmetic: 12 x 0.25 = 3 h, 24 x 0.33 = 7.92 h (~8 h), = ~$86 to ~$229/yr",
+      "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000043405113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2 arithmetic: 780 x 0.25 x 60% = 117 h and 1,560 x 0.33 x 70% = 364 h, = $3,356 to $10,443",
+      "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000043405113",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Section 3 arithmetic: 52 x 2 x 60% = 62 h and 52 x 4 x 70% = 146 h (~145), = $3,931 to $9,194; record-keeping labor only",
+      "source_url": "https://api.bls.gov/publicAPI/v1/timeseries/data/OEUS340000000000047101113",
+      "result": "confirmed"
+    },
+    {
+      "claim": "X1.25 benefits load, 60-70% automated share, 100% capture and the inquiry volumes are labelled as the authors' assumptions, not measured",
+      "source_url": "https://biondoroofing.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email/opener: Google profile website link opens a Thai gambling page (checked 13 November 2026); domain registered and locked at GoDaddy, expiry December 2030; registrant not public but looks like the owner's; April 2026 archive shows roofing pages and license",
+      "source_url": "https://rdap.verisign.com/com/v1/domain/biondoroofing.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Services described as roofing (\"your roofing site\", roof details, roof passport) match the business's published services",
+      "source_url": "https://web.archive.org/web/20260420032126/https://biondoroofing.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body (excluding the \"For the founder\" section) is at most ~450 words",
+      "source_url": "local file audit.md, word count run locally (446 tokens, 433 excluding pure punctuation)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

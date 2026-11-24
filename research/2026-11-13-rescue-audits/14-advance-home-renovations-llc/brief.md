@@ -1,0 +1,1 @@
+Write the Website Health Check for Advance Home Renovations LLC (New Brunswick), ref B01329. Read triage.json in your folder first. Today is 2026-11-13. Follow your role's steps and safety rules, save screenshots into your folder, and write the JSON to output.json (save it after each step).

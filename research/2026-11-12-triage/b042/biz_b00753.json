@@ -1,0 +1,55 @@
+{
+  "name": "Back To Wellness Chiropractic",
+  "town": "North Brunswick",
+  "ref": "B00753",
+  "status": "operating",
+  "website": "https://www.bwchiro.com/",
+  "what_they_do": "Wellness center at 525 Milltown Rd, Suite 201 offering chiropractic care (Dr. Lucien Eid) alongside acupuncture, massage therapy and a same-address physical therapy clinic. Takes personal-injury cases and most health insurance, and publishes a monthly newsletter plus wellness articles. Site also lists a satellite 'Spine & Wellness Center' office in Zalka, Lebanon.",
+  "customers": "Local North Brunswick residents with back/neck pain, headaches and injury recovery, personal-injury claimants, insured patients; plus a second client base in Lebanon through the satellite office.",
+  "size_signals": [
+    {"signal": "Multiple disciplines under one roof (chiropractic, acupuncture, massage) and a sister 'Back to Wellness Physical Therapy' listing at the same address", "source_url": "https://www.google.com/maps/search/Back+To+Wellness+Chiropractic+525+Milltown+Rd+North+Brunswick+NJ"},
+    {"signal": "Second location listed in Zalka, Lebanon with local phone numbers", "source_url": "https://www.bwchiro.com/"},
+    {"signal": "Ratings of 4.9 (chiropractic) and 5.0 (physical therapy) on Google for the same address", "source_url": "https://www.google.com/maps/search/Back+To+Wellness+Chiropractic+525+Milltown+Rd+North+Brunswick+NJ"}
+  ],
+  "listing": {"platform": "Google Maps / Google Business Profile", "rating": "4.9", "reviews": "count not displayed in the limited logged-out Maps view", "source_url": "https://www.google.com/maps/search/Back+To+Wellness+Chiropractic+525+Milltown+Rd+North+Brunswick+NJ"},
+  "website_review": {
+    "loads": true,
+    "https": true,
+    "phone_layout": "no site",
+    "clear_offer": true,
+    "primary_cta": "'Request Appointment' link in the top bar plus a phone number repeated in body copy; no booking calendar",
+    "click_to_call": false,
+    "contact_form": true,
+    "online_booking_or_quote": "No online booking. The site relies on a phone number (732-545-3300) and an email/contact path; the request-appointment URL I tried returned 404, so I could not verify a working form.",
+    "trust_signals": "Doctor bio, testimonials page, newsletter archive with an October 2026 article, insurance and personal-injury acceptance, member wellness area, multi-service team",
+    "out_of_date_signs": "Template chiropractic site with no structured data; several nav URLs I tried returned 404 (contact-us.html, appointment-request.html), suggesting dead links or renamed pages; the live site returned HTTP 403 to my Chrome browser while a plain fetch succeeded",
+    "search_basics": "Title names chiropractor + North Brunswick, service and article pages exist, monthly newsletter keeps content fresh; no JSON-LD, and the 403 response may stop crawlers that render like a browser",
+    "top_issues": [
+      "Home page returned '403 Unauthorized' to a real Chrome browser (both / and /index.html)",
+      "No schema.org markup at all (0 JSON-LD scripts)",
+      "No online scheduling, and some internal links 404"
+    ]
+  },
+  "agent_readiness": {
+    "findable": 2,
+    "answerable": 1,
+    "bookable": 1,
+    "notes": "Findable: robots.txt is unusually explicit and permissive - GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot, PerplexityBot, Googlebot and Google-Extended are all Allow: / - but the site itself answered my Chrome session with HTTP 403 Unauthorized, so any crawler that looks like a browser may be shut out (counter-evidence: a plain HTTP fetch returned the full page, so filtering is UA/IP based - inference). Answerable: address, phone, doctor name and service descriptions are text, but there is no JSON-LD (0 nodes), hours are not stated on the home page and no prices are published. Bookable: phone-plus-email only; the contact and appointment-request URLs I tried both returned 404."
+  },
+  "operations_signals": [
+    {"signal": "Three service lines (chiro, acupuncture, massage) plus a physical therapy clinic share one phone number and one contact path - inference: staff manually sort requests across providers", "source_url": "https://www.bwchiro.com/"},
+    {"signal": "Personal-injury cases are a stated focus, which normally means document collection, lien paperwork and progress reporting", "source_url": "https://www.bwchiro.com/"},
+    {"signal": "Monthly newsletter and article archive exist and are current (October 2026), so a content pipeline is already in place to feed automated follow-up emails", "source_url": "https://www.bwchiro.com/"}
+  ],
+  "top_opportunities": [
+    {"opportunity": "Fix the site's availability to browsers and add LocalBusiness/Chiropractor schema with hours and both locations - being 403 to a Chrome user-agent is a direct revenue and crawlability risk", "type": "agent readiness", "evidence": "Both / and /index.html returned HTTP 403 Unauthorized in the browser while a plain HTTP request succeeded; JSON-LD count is 0", "effort": "S"},
+    {"opportunity": "Add online scheduling that routes by provider (chiropractor, acupuncturist, massage therapist, PT) with intake questions for personal-injury cases, replacing the phone-only booking", "type": "operations", "evidence": "Site instructs visitors to 'call 732-545-3300' or email; no calendar anywhere and the appointment-request URL 404s", "effort": "M"},
+    {"opportunity": "Repair dead internal links (contact-us.html, appointment-request.html 404) and put a click-to-call bar plus reviews on the mobile layout", "type": "website", "evidence": "Two internal URLs returned HTTP 404 from the origin server", "effort": "S"}
+  ],
+  "scores": {"gap_size": 4, "ability_to_pay": 3, "ease": 3, "evidence": 2, "reasons": "Gap: multi-service practice on a template site with a 403 to browsers, no schema, no booking and some 404s. Pay: several providers and a physical-therapy arm plus a second country office, but the practice is small and consumer-ticket. Ease: schema and link fixes are quick; booking across four provider types is a bigger job. Evidence: browser was blocked (403), so the site review rests on a text fetch plus Maps - weakest evidence in this batch."},
+  "sources": [
+    "https://www.bwchiro.com/",
+    "https://www.bwchiro.com/robots.txt",
+    "https://www.google.com/maps/search/Back+To+Wellness+Chiropractic+525+Milltown+Rd+North+Brunswick+NJ"
+  ]
+}

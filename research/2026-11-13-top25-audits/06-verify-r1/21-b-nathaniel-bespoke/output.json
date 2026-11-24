@@ -1,0 +1,168 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Section 3: \"the site lists no prices ... starting prices appear on the older site ($495 suits, $595 tuxedos)\" and founder email: \"your live site lists no starting prices while the older one shows $495 suits\".",
+      "problem": "Contradicted. The current site's own shop page (https://www.bnathanielbespoke.com/shop-mens-suits/Mens-Suits-c139701855) contains six product cards (Men's Suit, Wedding Suit) each priced $495.00, and in one browser session, once the storefront script had hydrated, those prices were visibly rendered on the page (6/6 price elements with layout, body text containing '$495.00'). On cold loads the store grid sits hidden until the Ecwid store script runs, which is probably why the researcher saw no prices, but the price is in the live page and can appear to a visitor. So the audit's central contrast - prices survive only on the abandoned site - is wrong, and the $495 figure in the email is attributed to the wrong site.",
+      "fix": "Rewrite Section 3 to: \"the current site publishes no price on its home, contact or alterations pages; the only price in its shop are $495.00 suit/wedding-suit cards, and no alteration rates or turnaround anywhere; the older site still lists $150 vests and $595 tuxedos.\" Change the email line to something like \"your live site's only price is $495 for a suit, with no alteration rates\", and drop the claim that prices exist only on the older site."
+    },
+    {
+      "claim": "Section 2 impact total: \"at $25.03/hour ... = about $6,507-$15,618 a year\".",
+      "problem": "Arithmetic slip. $20.02 x 1.25 = $25.025; 624 hours x $25.025 = $15,615.60, i.e. about $15,616, not $15,618. The low end ($6,507) and Section 1 and 3 totals recompute correctly.",
+      "fix": "Change the top of the range to $15,616, or round both ends (e.g. \"about $6,500-$15,600\")."
+    },
+    {
+      "claim": "Volume inputs in all three impact lines: \"780-1,560 inquiries a year\", \"1,040-1,664 appointments a year\", \"624-1,040 price questions a year\".",
+      "problem": "These volumes are invented for this audit, but only the minutes and handled-share carry \"our assumption\" and no basis is shown, so a reader cannot see where 15-30 inquiries or 20-32 appointments a week comes from. Ranges should show their assumptions.",
+      "fix": "State the weekly equivalent and the fact that no call, booking or analytics data exists, e.g. \"(assumed 15-30 inquiries a week - our assumption; no call or web data available)\". Keep dollar ranges rounded."
+    },
+    {
+      "claim": "Section 2 \"Now\": \"home and office visits add travel\".",
+      "problem": "Presented as an observed fact about the page. The site only states that tailors come to the customer; that this creates travel coordination is an inference.",
+      "fix": "Mark it: \"home and office visits mean scheduling travel (our inference from the visit service they advertise)\"."
+    },
+    {
+      "claim": "Intro and email: \"4.8 from 497 reviews\".",
+      "problem": "Verified only on a claimed Birdeye profile that mirrors Google review data; Google's own listing could not be opened. The audit states it as a bare fact of the business and the email does not say where the number comes from.",
+      "fix": "Attribute it: \"4.8 from 497 reviews on its claimed review profile\" (keep it attributed in the email too), or drop the count."
+    },
+    {
+      "claim": "\"Why this works\": \"It works with your tools - the form, Gmail, your calendar.\"",
+      "problem": "The form and Gmail address are sourced; a calendar is assumed - nothing on the site shows which calendar the shop uses.",
+      "fix": "Say \"the form and Gmail inbox, plus whatever calendar you already use\" so the calendar is not presented as a known fact."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Business is a custom clothier and alterations shop in New Brunswick selling suits, wedding packages and alterations.",
+      "source_url": "https://www.bnathanielbespoke.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Contact details: 28 Paterson St, New Brunswick NJ 08901; 732-735-1480; bnatbespoke@gmail.com; Mon-Fri 9:00am-6:30pm, Sat 9:00am-2:00pm.",
+      "source_url": "https://www.bnathanielbespoke.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"Book Now\" opens a free-text form with no calendar, slots or prices (Name, Email, Phone, Message only).",
+      "source_url": "https://www.bnathanielbespoke.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No confirmation step visible: the form's only button is a link to a separate page.",
+      "source_url": "https://www.bnathanielbespoke.com/review",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Weekday opening 9:00am on the current site (first of the three conflicting times).",
+      "source_url": "https://www.bnathanielbespoke.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Older site still live, same 28 Paterson St address and same Gmail, but weekday hours 9:30am-6:30pm and a different phone (732-626-5007).",
+      "source_url": "https://www.bnatbespoke.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Review profile shows 4.8 from 497 reviews with weekday opening 10:00am.",
+      "source_url": "https://reviews.birdeye.com/b-nathaniel-bespoke-149051208081829",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site's stated process has staff calling the customer for the first fitting.",
+      "source_url": "https://www.bnathanielbespoke.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Home and office visits are a sold service (tailors come to the customer).",
+      "source_url": "https://www.bnathanielbespoke.com/alterations",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Alterations page carries no rates.",
+      "source_url": "https://www.bnathanielbespoke.com/alterations",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Home, contact and alterations pages list no prices.",
+      "source_url": "https://www.bnathanielbespoke.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"The site lists no prices\" / \"your live site lists no starting prices\".",
+      "source_url": "https://www.bnathanielbespoke.com/shop-mens-suits/Mens-Suits-c139701855",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Older site shows starting prices: men's suits $495 and up, tuxedos $595 and up (also vests $150 and up).",
+      "source_url": "https://www.bnatbespoke.com/shop",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The FAQ carries general answers but no prices or turnaround.",
+      "source_url": "https://www.bnathanielbespoke.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ receptionist median hourly wage $20.02, 2025 (used in Sections 1 and 2).",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ tailor/dressmaker median hourly wage $20.75, 2025 (used in Section 3).",
+      "source_url": "https://www.onetonline.org/link/localwages/51-6052.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Benefits load calculation: $20.02 x 1.25 = $25.03 and $20.75 x 1.25 = $25.94.",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 1 impact math: 780-1,560 inquiries x 20 min x 60% = 156-312 hours = $3,904-$7,809.",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2 impact math: 1,040-1,664 appointments x 30-45 min x 50% = 260-624 hours = $6,507-$15,618.",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Section 3 impact math: 624-1,040 questions x 20 min x 50-75% = 104-260 hours = $2,697-$6,744.",
+      "source_url": "https://www.onetonline.org/link/localwages/51-6052.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email: \"4.8 from 497 reviews\".",
+      "source_url": "https://reviews.birdeye.com/b-nathaniel-bespoke-149051208081829",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email: weekday opening reads 9:00am on the site, 9:30am on the older site at the same address, 10:00am on the review profile.",
+      "source_url": "https://www.bnatbespoke.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email: \"your live site lists no starting prices while the older one shows $495 suits\".",
+      "source_url": "https://www.bnathanielbespoke.com/shop-mens-suits/Mens-Suits-c139701855",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Email: founder walk-in opener asks only to leave a one-page audit of how booking and listings read from outside; no claim about results.",
+      "source_url": "https://www.bnathanielbespoke.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body length at most ~450 words.",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Privacy: no personal data on private individuals, nothing obtained improperly (no forms submitted, no logins).",
+      "source_url": "https://www.bnathanielbespoke.com/contact",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "Medium"
+}

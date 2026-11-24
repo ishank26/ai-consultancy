@@ -1,0 +1,158 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Fix step 4 and audit context: \"the state filing lists 51 West Prospect Street, Suite 204, East Brunswick\" (stated as the address on file).",
+      "problem": "No state filing is cited, and the source_url attached to that fix step is the Google Maps search, which does not contain this address. The only state source I could find giving that address is the NJDOL release of 13 May 2025, and it names \"Ajulia Executive Payroll L.L.C.\" as the employer, not Ajulia Executive Search. As written the claim is unsupported and attributes another entity's recorded work location to this business.",
+      "fix": "Cite the NJDOL page (https://www.nj.gov/labor/lwdhome/press/2025/20250513_Stop_Work.shtml) and say plainly that the labor department's May 2025 notice lists 51 West Prospect Street, Suite 204, East Brunswick for Ajulia Executive Payroll L.L.C., which appears to be an affiliated entity; or drop the address comparison from the fix steps. Also note that ClearlyRated and Birdeye both list 1440 How Lane, New Brunswick, so the address picture is not a simple two-way difference."
+    },
+    {
+      "claim": "likely_cause reasoning: the jobs subdomain shows \"the pattern of a hosting account with no site configured and a missing certificate\".",
+      "problem": "The certificate is not missing. When I opened https://jobs.ajuliaexecutivesearch.com/ Chrome reported NET::ERR_CERT_COMMON_NAME_INVALID and stated the certificate presented is issued to airbase1.com. jobs.ajuliaexecutivesearch.com resolves to 69.167.165.235, i.e. it is served by the same host as the Airbase1 site. That is a mismatched/foreign certificate, not an absent one, and it points more strongly at repointed hosting than the audit's wording suggests.",
+      "fix": "Reword to \"the jobs subdomain presents a certificate issued to airbase1.com and fails its name check\", and keep the inference label. This detail appears only in the internal reasoning, so it does not need to change audit_md, but the internal record should be accurate."
+    },
+    {
+      "claim": "founder_md: \"I saved phone and desktop screenshots\" and the screenshot list \"Screenshots in this folder: screenshot_ajulia_desktop_1440.png, screenshot_ajulia_mobile_390.png, screenshot_google_maps_listing_1440.png, screenshot_jobs_subdomain_cert_error_1440.png, screenshot_retainedsearch_login_390.png\".",
+      "problem": "None of those five PNG files exist in the delivered folder, which contains only rescue.json, brief.md, log.jsonl, session/ and stderr.txt. The audit also lists screenshot_files for each domain. The owner is being invited to send files I cannot find.",
+      "fix": "Attach the actual screenshot files to the delivery, or remove the screenshot promise from founder_md and the screenshot_files fields until the files exist. Do not offer to send screenshots that are not saved."
+    },
+    {
+      "claim": "audit_md length (requirement: body at most 300 words).",
+      "problem": "The body of audit_md is about 337 words including headings, and still about 307 words with the headings and the Airbase1 URL removed. It exceeds the 300-word limit either way.",
+      "fix": "Cut roughly 40-50 words: the closing \"After the fix\" paragraph repeats the 2.5 average already given above, and the five numbered steps repeat detail that is already in rescue.json. Keep the four observations, the customer-impact paragraph and a shorter numbered list."
+    },
+    {
+      "claim": "founder_md sources: \"NJDOL stop-work order, 13 May 2025\".",
+      "problem": "13 May 2025 is the press-release date; the order itself was issued 21 April 2025, as the audit's own caveats correctly say. The two statements in the same document disagree, and a reader could take 13 May as the order date.",
+      "fix": "Relabel to \"NJDOL stop-work order issued 21 April 2025 (announced 13 May 2025)\" so the sources list and the caveats agree."
+    },
+    {
+      "claim": "links_to_broken_domain lists a single place (the Google Business Profile).",
+      "problem": "The audit found and lists only one place that still points at the broken domain, yet founder_md offers the owner a count of \"which places still point at that domain\". The directory pages the audit says it checked (ClearlyRated, Birdeye) do not show a website link to the domain in what is publicly visible, so the list of affected links is thin evidence for the \"High\" severity and for the outreach promise.",
+      "fix": "Either check two or three more directories/profiles for a visible website link and record what each shows, or soften founder_md to \"the Google listing is the one place I confirmed links to it\". Note the pages that could not be read (LinkedIn, BBB, Indeed, YellowPages) as blocked checks, as the audit already does in data_gaps."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "ajuliaexecutivesearch.com opens Airbase1's aviation web-design site, on desktop and at phone width",
+      "source_url": "https://www.ajuliaexecutivesearch.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Old Ajulia paths such as /specialized-search-and-placement/our-team/ return the same Airbase1 homepage",
+      "source_url": "https://ajuliaexecutivesearch.com/specialized-search-and-placement/our-team/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A plain HTTP request to the bare domain returns a cPanel \"Default Web Site Page\" placeholder with \"SORRY!\" and \"If you are the owner of this website, please contact your hosting provider\"",
+      "source_url": "http://ajuliaexecutivesearch.com/cgi-sys/defaultwebpage.cgi",
+      "result": "confirmed"
+    },
+    {
+      "claim": "jobs.ajuliaexecutivesearch.com returns the hosting default page and stops with a Chrome \"Your connection is not private\" warning (net::ERR_CERT_COMMON_NAME_INVALID)",
+      "source_url": "https://jobs.ajuliaexecutivesearch.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The jobs subdomain's certificate is missing",
+      "source_url": "https://jobs.ajuliaexecutivesearch.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "retainedsearch.ajuliaexecutivesearch.com loads a JavaScript sign-in screen with Email Address / Password / LOGIN / Forgotten your password, no business content",
+      "source_url": "https://retainedsearch.ajuliaexecutivesearch.com/",
+      "result": "could not open"
+    },
+    {
+      "claim": "RDAP: registered 2012-06-14, expires 2029-06-14, last changed 2026-06-16, registrar GoDaddy.com, LLC (IANA ID 146), registrant redacted",
+      "source_url": "https://rdap.org/domain/ajuliaexecutivesearch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Domain is locked (client delete/renew/transfer/update prohibited) and DNS is at Cloudflare nameservers kara and rory",
+      "source_url": "https://rdap.org/domain/ajuliaexecutivesearch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Apex DNS resolves (dns.google shows A records), consistent with Cloudflare-held DNS",
+      "source_url": "https://dns.google/resolve?name=ajuliaexecutivesearch.com&type=A",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile: 2.5 rating, category \"Temp agency\", 2 King Arthur Ct #10, North Brunswick Township NJ 08902, website field ajuliaexecutivesearch.com, shows \"Claim this business\", \"Add hours\", \"Add a photo\"",
+      "source_url": "https://www.google.com/maps/search/Ajulia+Executive+Search+East+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile phone (732) 993-6810 is consistent with other business records",
+      "source_url": "https://www.clearlyrated.com/staffing/nj-usa/new-brunswick-nj/ajulia-executive-search-new-brunswick-nj",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile is not marked permanently or temporarily closed",
+      "source_url": "https://www.google.com/maps/search/Ajulia+Executive+Search+East+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ClearlyRated record for Ajulia Executive Search exists at the cited URL",
+      "source_url": "https://www.clearlyrated.com/staffing/nj-usa/new-brunswick-nj/ajulia-executive-search-new-brunswick-nj",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye record for Ajulia Executive Search exists at the cited URL",
+      "source_url": "https://reviews.birdeye.com/ajulia-executive-search-154981789494430",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDOL stop-work order of 21 April 2025, announced 13 May 2025, naming Ajulia Executive Payroll L.L.C. at 51 West Prospect Street, Suite 204, East Brunswick",
+      "source_url": "https://www.nj.gov/labor/lwdhome/press/2025/20250513_Stop_Work.shtml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The address 51 West Prospect Street, Suite 204, East Brunswick comes from a \"state filing\" for this business",
+      "source_url": "https://www.nj.gov/labor/lwdhome/press/2025/20250513_Stop_Work.shtml",
+      "result": "not found"
+    },
+    {
+      "claim": "Career.com Division Manager posting for Ajulia Executive Search exists but the page sits behind a human check, title readable only",
+      "source_url": "https://www.career.com/job/ajulia-executive-search/division-manager/j202608060553049580162",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback has a homepage capture of ajuliaexecutivesearch.com on 19 April 2025 (20250419191500) showing the real Ajulia site",
+      "source_url": "http://web.archive.org/web/20250419191500/https://www.ajuliaexecutivesearch.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No Wayback capture of the root domain exists after 19 April 2025; blog pages are captured up to 14 May 2025",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=ajuliaexecutivesearch.com/&output=json&from=20250101&to=20261113&limit=50",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Screenshots named in rescue.json and founder_md are saved in the folder",
+      "source_url": "file:///home/ishank/work/consultancy/research/2026-11-13-rescue-audits/verify-r1/26-ajulia-executive-search",
+      "result": "not found"
+    },
+    {
+      "claim": "Business is the same Ajulia Executive Search in the North Brunswick / East Brunswick area, independent (not a chain or franchise), and currently trading",
+      "source_url": "https://www.google.com/maps/search/Ajulia+Executive+Search+East+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business is definitely still trading in November 2026 (status \"operating\")",
+      "source_url": "https://rdap.org/domain/ajuliaexecutivesearch.com",
+      "result": "not found"
+    },
+    {
+      "claim": "Likely cause is stated as an inference, not as fact, and accuses no one",
+      "source_url": "https://rdap.org/domain/ajuliaexecutivesearch.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No prices are quoted in the fix steps",
+      "source_url": "https://rdap.org/domain/ajuliaexecutivesearch.com",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

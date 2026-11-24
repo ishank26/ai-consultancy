@@ -1,0 +1,425 @@
+{
+ "avenue": "warehouse-receiving-damage-count",
+ "one_line": "Proof-of-condition at the dock door: cameras plus a small vision model that count pallets and cartons, capture damage photos, read labels and BOLs, and reconcile against the WMS before the driver leaves.",
+ "problem": {
+  "summary": "Receiving is still counted by hand and documented with a clipboard or a phone camera roll. When a shortage or damage surfaces days later, the freight claim clock is already running and the only evidence is a clean signature on the delivery receipt. Federal rules require a written claim with shipment-identifying facts and a stated amount within at least nine months, and explicitly say that notations on a delivery receipt or a bad-order report do not by themselves constitute a claim. Small 3PLs and distributors therefore absorb chargebacks they could have disproven, or they pay staff to reconstruct what happened from video that has already looped over.",
+  "evidence": [
+   {
+    "fact": "Middlesex County has 1,305 transportation and warehousing establishments employing 49,911 people in 2024 - 13.3% of county private employment versus 6.4% statewide - and the sector grew 26.1% from 2018 to 2024, the fastest of any sector in the county.",
+    "year": "2024 QCEW; report dated February 2026",
+    "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf"
+   },
+   {
+    "fact": "Shipping, receiving and inventory clerks in the New York-Newark-Jersey City metro (which contains Middlesex County) averaged $23.08/hour and $48,000/year across 40,440 jobs.",
+    "year": "May 2023",
+    "source_url": "https://www.bls.gov/oes/2023/may/oes435071.htm"
+   },
+   {
+    "fact": "Hand freight/stock laborers in the same metro averaged $20.66/hour and $42,970/year across 130,180 jobs.",
+    "year": "May 2023",
+    "source_url": "https://www.bls.gov/oes/2023/may/oes537062.htm"
+   },
+   {
+    "fact": "A carrier may not set a claim filing window shorter than 9 months, or a lawsuit window shorter than 2 years after a written denial (Carmack Amendment, 49 U.S.C. 14706).",
+    "year": "current (statute)",
+    "source_url": "https://uscode.house.gov/us/usc/119-138/t49/s14706/"
+   },
+   {
+    "fact": "Carriers must pay, decline or make a firm written settlement offer within 120 days of receiving a cargo claim, and re-advise the claimant every 60 days while it stays pending (49 CFR 370.9).",
+    "year": "current (regulation)",
+    "source_url": "https://www.law.cornell.edu/cfr/text/49/370.9"
+   },
+   {
+    "fact": "Notations of shortage or damage on a freight bill or delivery receipt, and carrier bad-order or inspection reports, 'standing alone' do not meet the minimum federal claim filing requirements - a written claim with a specified or determinable amount is required (49 CFR 370.3(b)-(c)).",
+    "year": "current (regulation)",
+    "source_url": "https://www.law.cornell.edu/cfr/text/49/370.3"
+   },
+   {
+    "fact": "A survey of more than 300 shippers, carriers and 3PLs found most believe they are not at fault for up to 70-90% of the OS&D claims they pay; the survey was run by Kargo with FreightWaves, so treat the figure as vendor-sponsored.",
+    "year": "2022-2023",
+    "source_url": "https://www.freightwaves.com/news/white-paper-everyone-pays-for-osd-uncertainty"
+   },
+   {
+    "fact": "A peer-reviewed simulation model of warehouse performance uses receiving error rates of up to 10% for a 'Major Opportunity' warehouse and reports 3.50% as its 'Typical' scenario input. These are inputs the authors took from WERC's 2019 DC Measures benchmark report, not a measured field rate.",
+    "year": "2023 (article, Production v.33 e20220077; input values from WERC 2019)",
+    "source_url": "https://www.scielo.br/j/prod/a/m5fWPJPb6sYv74PhTDJbnKw/abstract/?lang=en"
+   },
+   {
+    "fact": "Vendor research puts the LTL industry damage rate at about 1.24% of shipments (roughly 1 in 80), and reports a 0.81% rate across 851,978 shipments for a two-touch cross-dock model versus the five-touch terminal model. Company research, not an independent audit.",
+    "year": "2026",
+    "source_url": "https://www.wearewarp.com/research/ltl-damage-rates-fewer-touches"
+   },
+   {
+    "fact": "A 2018 survey of retail vendors (Attain Consulting Group with the Credit Research Foundation) found median non-trade deductions at 0.5-1% of accounts receivable for vendors under $500M revenue, and 48% of vendors set no time limit before writing a chargeback off entirely.",
+    "year": "2018",
+    "source_url": "https://www.scdigest.com/NEWSVIEWS/18-05-29-1.PHP?cid=14268&ctype=content"
+   }
+  ]
+ },
+ "buyers": [
+  {
+   "business_type": "Third-party logistics / contract warehousing (multi-client)",
+   "naics": "493110",
+   "size_where_it_matters": "10-200 staff, 2-20 dock doors; pain starts at the second client and the second door",
+   "why": "Every OS&D dispute is billed back to a client relationship, not just to insurance; the 3PL is presumed liable at origin without condition evidence. Multi-client sites also need per-client photo/claim packages, which is exactly what manual phone photos fail to produce consistently."
+  },
+  {
+   "business_type": "Wholesale distributors (grocery, building materials, auto parts, industrial supply)",
+   "naics": "4231-4238 (durable goods), 4244-4245 (grocery)",
+   "size_where_it_matters": "15-200 staff, 3+ inbound loads/day",
+   "why": "They both receive from vendors and ship to retail DCs. Retail compliance programs fine on-time/in-full and labeling/pallet defects, so a receiving count that does not reconcile to the PO shows up later as a chargeback or a short-ship to the retailer."
+  },
+  {
+   "business_type": "E-commerce fulfillment / DTC brands running their own ship-from-stock",
+   "naics": "493110 (fulfillment) or 454110 (e-commerce merchants)",
+   "size_where_it_matters": "5-100 staff, 1-8 doors, 500+ outbound parcels/day",
+   "why": "Small-parcel carrier claims and customer damage complaints are decided on photos and timestamps; a dock-level photo record per outbound pallet/tote is the cheapest evidence to produce."
+  },
+  {
+   "business_type": "Freight forwarders, cross-dock and container devanning operations",
+   "naics": "488510 (freight transportation arrangement), 484121/484122 (truckload/LTL)",
+   "size_where_it_matters": "5-75 staff, 2-12 doors or a devanning bay",
+   "why": "Container devanning and cross-docking have the shortest dwell time and the worst evidence trail; damage is discovered after the container is empty and the driver is gone."
+  },
+  {
+   "business_type": "Food and beverage distributors with cold/dry receiving",
+   "naics": "4244 / 4245",
+   "size_where_it_matters": "20-200 staff",
+   "why": "Damage and temperature exposure on inbound pallets is a rejection decision made at the door; a photo record plus time stamp supports both rejection and the vendor chargeback."
+  }
+ ],
+ "existing_solutions": [
+  {
+   "vendor": "Kargo",
+   "product": "Kargo Towers (dock-door camera towers)",
+   "what_it_does": "Cameras at each outbound dock door read SKUs, LPNs and lot codes as pallets load, flag damaged cases/broken pallets/unexpected SKUs, and validate against WMS order data (flat-file/SFTP or API integration).",
+   "pricing": "Unknown (quote only)",
+   "source_url": "https://www.kargo.ai/blog/tillamook-case-study-os&d-claims"
+  },
+  {
+   "vendor": "PalletVision",
+   "product": "Pallet verification unit (stretch-wrap station)",
+   "what_it_does": "Fixed unit at a wrap station that counts and verifies pallets, captures images and dimensions, keeps raw video on-site and sends only results and metadata to the cloud. Aimed at pallet manufacturing/repair operations as much as shipping docks.",
+   "pricing": "$1,995 hardware per unit with 1-year warranty + $595/month per unit software (unlimited users)",
+   "source_url": "https://www.palletvision.com/faq"
+  },
+  {
+   "vendor": "Arvist AI",
+   "product": "Dock camera shipment inspection / claims management",
+   "what_it_does": "Time-stamped capture at the packing station and the dock door, linked to WMS/TMS shipment data; inbound OS&D inspections can be turned into claims against supplier or carrier; claims arriving by email, PDF or phone get an automated triage assessment and a drafted OS&D dispute letter with evidence attached.",
+   "pricing": "Unknown (quote only)",
+   "source_url": "https://arvist.ai/claims-management/"
+  },
+  {
+   "vendor": "Sensifai",
+   "product": "DockReceive AI",
+   "what_it_does": "Phone or fixed-bay photos/video of an inbound consignment are turned into carton counts, PO line matching, crush/puncture/moisture checks and a WMS exception ticket; arithmetic reconciliation is done in code rather than by the model.",
+   "pricing": "EUR 0.05 per verified consignment, pay-as-you-go, no seat fees",
+   "source_url": "https://dockreceive-ai.sensifai.com/"
+  },
+  {
+   "vendor": "Happ Labs",
+   "product": "Custom warehouse pallet counting on existing cameras",
+   "what_it_does": "Connects to existing RTSP/ONVIF dock cameras, counts pallets per door with direction tracking, reconciles camera counts to WMS scans, sends a photo alert when a pallet leaves unscanned, runs an on-site analysis server. Sold as a fixed-price project, 6-10 weeks.",
+   "pricing": "From $8,000 per project (fixed estimate after site survey)",
+   "source_url": "https://labs.happ.tools/en/engineering/vision/warehouse-pallet-counting/"
+  },
+  {
+   "vendor": "IEMI Labs",
+   "product": "DockOne",
+   "what_it_does": "Dock-door concept device mounted on the door track guards that counts and photographs every pallet, calls open edges/trailer creep and slows forklifts. The vendor labels it a 'VisionConcept', so the price is a target, not a shipping product.",
+   "pricing": "From $1,290 per dock door (concept pricing)",
+   "source_url": "https://iemilabs.com/industries/logistics/"
+  },
+  {
+   "vendor": "CargoLens",
+   "product": "Receiving inspection app",
+   "what_it_does": "Phone/tablet receiving inspections with photos, counts, signatures, AI damage flagging for the receiver to confirm, offline capture, and a PDF claims packet per inspection; damage rates by carrier, vendor and site.",
+   "pricing": "$599 per site per month billed annually ($749 month-to-month), unlimited users and inspections; free tier 50 inspections/month and 2 users; $2,500 one-site 30-day pilot credited to year one; $499 per site per month billed annually from the sixth site",
+   "source_url": "https://www.cargolens.app/receiving-inspection-app"
+  },
+  {
+   "vendor": "Zimark",
+   "product": "Dock-door pallet tracking / shipping control",
+   "what_it_does": "Dock-door pallet identification and load verification with a free two-day proof of value on one gate, aimed at missed pallets and wrong loadings.",
+   "pricing": "Unknown (quote only)",
+   "source_url": "https://zimark.io/solutions/shipping-control/"
+  }
+ ],
+ "gap_for_local_installer": "The market splits into two unattractive halves for a 5-200 person Middlesex County operator. Enterprise dock-vision (Kargo, Arvist, Zimark) is quote-only, multi-week, and priced per door per month for national fleets; app-only tools (CargoLens at $599-$749 per site per month, generic inspection apps) still depend on a human remembering to photograph and count, which is the failure mode in the first place. Published prices cluster around $1,290-$1,995 of hardware per door plus $595/month, a ~$8,000 fixed project, or $599-$749 per site per month for an app-only tier - small enough to sell, but the products are either single-purpose (pallet counting only) or oriented to pallet manufacturing, not to a 3PL's inbound PO/ASN reconciliation. Nobody local is doing camera + model + WMS wiring as a fixed-price, on-prem install with a service contract. The wedge is: reuse the customer's existing RTSP dock cameras where possible, one on-prem box per site (no per-door cloud fee, no raw video leaving the building), integrate to whatever the customer actually runs (Extensiv 3PL Warehouse Manager REST API, ShipHero GraphQL, Fishbowl, or a nightly CSV), and produce two artifacts the incumbent tools under-serve: a per-receipt exception ticket with a photo bundle, and a per-pallet evidence packet that matches federal claim requirements. Local presence is the moat: same-day site visits, install in a weekend, and a human who answers when the count disputes a client.",
+ "technical_approach": {
+  "established_pattern": "Fixed PoE camera per dock door (overhead or 30-45 degrees off the door line), RTSP into an on-prem edge box. A fine-tuned YOLO-family detector finds pallets and carton faces per frame; a tracker assigns IDs and gives direction so the system counts a pallet once as it crosses the door line (zone rule per door) rather than per frame. On each crossing the box grabs a few high-resolution frames, runs a small vision-language model to read the pallet label / BOL / PO number and to write a short damage description, then reconciles the extracted text and count against the WMS expected shipment in ordinary code (regex plus arithmetic), never trusting the model to do math. Exceptions become a ticket plus an evidence bundle (frames, timestamps, JSON) posted to the WMS; clean receipts auto-commit. Frigate is a reasonable off-the-shelf front end for stream handling, recording and detector plumbing if you do not build your own.",
+  "models_and_tools": [
+   {
+    "name": "YOLO11 / YOLOv12 (Ultralytics)",
+    "role": "Pallet and carton detection backbone; fine-tune on the site's own cartons and wrap. Note the AGPL-3.0 license: closed-source commercial deployment needs a quoted Enterprise License.",
+    "source_url": "https://www.ultralytics.com/license"
+   },
+   {
+    "name": "SCD - Stacked Carton Dataset",
+    "role": "Large-scale public carton detection/segmentation dataset (10k+ annotated stacking scenes) to pretrain or sanity-check a carton detector before site fine-tuning.",
+    "source_url": "https://arxiv.org/abs/2102.12808"
+   },
+   {
+    "name": "Qwen3-VL (2B / 4B dense variants)",
+    "role": "Reading labels, BOLs and packing slips at the door, and generating a short damage description. The technical report lists dense 2B/4B/8B/32B and MoE variants; the small dense models are the ones that fit an edge box.",
+    "source_url": "https://arxiv.org/pdf/2511.21631v2.pdf"
+   },
+   {
+    "name": "LFM2.5-VL-450M (Liquid AI)",
+    "role": "Ultra-small VLM alternative for on-device label/damage checks. Vendor benchmarks: 242 ms at 512x512 on Jetson Orin at Q4_0, OCRBench 684, CountBench 73.31 - the low count score is a reason to count with a detector, not the VLM.",
+    "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-450m"
+   },
+   {
+    "name": "llama.cpp",
+    "role": "Local serving of the quantized VLM on the edge box, no cloud dependency and no per-image API cost.",
+    "source_url": "https://github.com/ggml-org/llama.cpp"
+   },
+   {
+    "name": "PaddleOCR",
+    "role": "Cheap deterministic OCR baseline for printed labels and BOL fields; run it before the VLM and only escalate crops it fails on, which cuts compute and hallucination.",
+    "source_url": "https://github.com/PaddlePaddle/PaddleOCR"
+   },
+   {
+    "name": "PatchCore (anomaly detection)",
+    "role": "Damage detection trained only on undamaged carton images - no need to collect examples of every damage type. Table 1 of the CVPR 2022 paper reports 99.1% image-level AUROC on MVTec AD at the 25% coreset setting (the abstract phrases it as up to 99.6%). Lab benchmark, not a dock result.",
+    "source_url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Roth_Towards_Total_Recall_in_Industrial_Anomaly_Detection_CVPR_2022_paper.pdf"
+   },
+   {
+    "name": "Frigate",
+    "role": "Open-source NVR: RTSP/ONVIF stream handling, motion-triggered detection on a low-res stream plus high-res recording, hardware detectors (Coral Edge TPU, OpenVINO, TensorRT, Hailo, Rockchip, MemryX, AMD ROCm/ONNX), and LPR for yard/door cameras.",
+    "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+   },
+   {
+    "name": "Cactus",
+    "role": "Open-source on-device inference framework for phones (sub-50MB class agents, vision/audio) if the capture step should run on the receiver's phone instead of a fixed camera.",
+    "source_url": "https://github.com/cactus-compute/cactus"
+   },
+   {
+    "name": "Extensiv 3PL Warehouse Manager API",
+    "role": "The realistic WMS target for small-to-mid NJ 3PLs: REST order endpoints (POST/GET /orders) with RQL filters and bearer-token auth, so expected quantities can be pulled and exception notes written back.",
+    "source_url": "https://developer.extensiv.com/pages/3pl-wareshouse-manager.html"
+   },
+   {
+    "name": "ShipHero GraphQL API",
+    "role": "Alternative WMS target for e-commerce fulfillment: inventory_add, purchase_order_update (increment quantity_received) and purchase_order_close cover the receiving write-back path.",
+    "source_url": "https://developer.shiphero.com/getting-started/"
+   }
+  ],
+  "hardware": [
+   {
+    "item": "NVIDIA Jetson Orin Nano Super Developer Kit (edge compute per site, 1-3 doors)",
+    "approx_cost": "$249 at the price NVIDIA announced when it launched the Super kit in December 2024 (down from $499); distributor and street prices moved after that, so confirm the actual price at purchase before quoting",
+    "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/"
+   },
+   {
+    "item": "Google Coral USB Accelerator (detector offload if not using Jetson GPU)",
+    "approx_cost": "About $60 vendor-listed; resellers quoted higher (about $111 at Seeed). Confirm before quoting.",
+    "source_url": "https://coral.ai/products/accelerator/"
+   },
+   {
+    "item": "4MP PoE turret/bullet camera, one per dock door (Hikvision class)",
+    "approx_cost": "Carried as an unsourced allowance, not a verified price: I could not open a US reseller listing that displayed a unit price (one reseller collection page returned only boilerplate, and a B&H product page returned HTTP 403). Budget roughly $100-$250 per camera at 2026 US reseller prices (inference) and confirm with a live quote.",
+    "source_url": ""
+   },
+   {
+    "item": "Existing dock cameras via RTSP/ONVIF",
+    "approx_cost": "$0 if already installed and the angle clears the forklift; Happ Labs reports many sites can reuse existing cameras",
+    "source_url": "https://labs.happ.tools/en/engineering/vision/warehouse-pallet-counting/"
+   },
+   {
+    "item": "Managed PoE switch, cabling, mount arms, small UPS",
+    "approx_cost": "Unknown from a primary source; budget as an allowance (inference: a few hundred dollars per door at typical 2026 US trade prices)",
+    "source_url": ""
+   }
+  ],
+  "fine_tuning_needed": "Partly. A detector fine-tuned on the site's own cartons, pallet wrap and lighting is normally required - generic COCO models do not separate 'same SKU carton stack' reliably, and the published packaging-recognition work needed its own custom logistics dataset to reach 85-91% structure accuracy. The VLM side usually needs no fine-tuning: prompt the small VLM with a fixed schema ('extract PO number, pallet count, carrier, damage keywords') and validate the output with regex and a PO lookup, escalating failures to a human. Damage detection is best treated as anomaly detection trained on good cartons only, which needs no labelled damage examples. Ongoing drift (new packaging, new wrap) means a re-label and re-train loop every few months - that recurring work is the service contract.",
+  "data_needed": "Per door: roughly 300-2,000 labelled frames covering that site's carton families, pallet patterns, wrap and lighting (a few hours of video, labelled by drawing boxes, ideally with a week of active learning). Per label type: 50-100 photographed labels/BOLs with ground-truth fields to measure exact-match extraction. Per site: 2-4 weeks of WMS PO/ASN and receipt records so reconciliation can be validated against what actually happened, plus the customer's damage/claim definitions (what counts as 'damaged' is a business rule, not a vision rule). Also needed: a written retention and access policy signed by the customer before go-live.",
+  "difficulty": "Medium"
+ },
+ "measured_outcomes": [
+  {
+   "finding": "Tillamook (dairy co-op, 7 outbound doors): damage claims down 50% year-over-year, $173,000 in fees and chargebacks avoided in 2025, 42 customer claims refuted with photo/sensor evidence, inventory accuracy 99.6% to 99.8%, vendor-reported read rate >99% and OCR accuracy >99%, 31-second event-to-alert latency.",
+   "year": "2025-2026",
+   "sample": "One facility, 7 outbound dock doors",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://www.kargo.ai/blog/tillamook-case-study-os&d-claims"
+  },
+  {
+   "finding": "Neovia Logistics (UK, BMW Group UK parts operation) reported claims reduced by 40% and 370+ claims successfully disputed in the first four months after deploying Octave Coda Video Insight across 65 packing-area cameras.",
+   "year": "deployed December 2025; results measured over the following four months (case study carries a 2026 copyright)",
+   "sample": "One client warehouse in Northampton, UK; 65 cameras across ground and mezzanine packing areas",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://media.ffycdn.net/us/octave/d/1386e7ef48494fae84026840f69d33b1"
+  },
+  {
+   "finding": "YOLOv12 damaged-parcel detector trained on 5,188 labelled images reached 93.3% precision, 93.8% recall and 93.7% mAP@0.50 on a 7% held-out test split.",
+   "year": "2025",
+   "sample": "5,188 images, 7% test split; single dataset, no field deployment",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://dergipark.org.tr/en/pub/jdaia/article/1714220"
+  },
+  {
+   "finding": "Automated packaging-structure recognition from a single image (count and arrangement of packaging units on a transport unit) correctly recognized the structure in about 85% of test cases, rising to 91% when restricted to the most common package types.",
+   "year": "2020",
+   "sample": "Custom realistic logistics image dataset; size not confirmed from the abstract",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://arxiv.org/abs/2008.04620"
+  },
+  {
+   "finding": "PatchCore anomaly detection reached 99.1% image-level AUROC on the MVTec AD industrial defect benchmark at the 25% coreset setting (the abstract rounds this to 'up to 99.6%') using only normal, undamaged training images.",
+   "year": "2022",
+   "sample": "MVTec AD benchmark (15 categories); lab data, not dock cartons",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Roth_Towards_Total_Recall_in_Industrial_Anomaly_Detection_CVPR_2022_paper.pdf"
+  },
+  {
+   "finding": "Multi-view geometric counting of stacked objects (ICCV 2025 oral) reports accurate counting of identical objects in containers even when irregularly stacked, validated on real-world and large-scale synthetic datasets.",
+   "year": "2024-2025",
+   "sample": "Multiple real and synthetic datasets; exact error rates not stated in the abstract",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://arxiv.org/abs/2411.19149"
+  },
+  {
+   "finding": "Most respondents to a 300+ person shipper/carrier/3PL survey believe they are not at fault for up to 70-90% of the OS&D claims they pay - i.e. the dispute is an evidence problem, not a damage problem.",
+   "year": "2022-2023",
+   "sample": "300+ shippers, carriers and 3PLs",
+   "study_type": "industry",
+   "strength": "Low",
+   "source_url": "https://www.freightwaves.com/news/white-paper-everyone-pays-for-osd-uncertainty"
+  },
+  {
+   "finding": "Median non-trade (logistics) retail deductions equal 0.5-1% of accounts receivable for vendors under $500M revenue, and 48% of vendors never time-limit how long a chargeback stays open before write-off.",
+   "year": "2018",
+   "sample": "Retail vendor survey (Attain Consulting Group / Credit Research Foundation); respondent count not stated on the summary page",
+   "study_type": "industry",
+   "strength": "Medium",
+   "source_url": "https://www.scdigest.com/NEWSVIEWS/18-05-29-1.PHP?cid=14268&ctype=content"
+  }
+ ],
+ "legal_privacy": [
+  {
+   "issue": "Audio capture on dock cameras",
+   "rule_or_precedent": "New Jersey's Wiretapping and Electronic Surveillance Control Act is one-party consent, N.J.S.A. 2A:156A-4(d); intercepting an oral communication without consent of a party is a third-degree crime under 2A:156A-3, with civil liability under 2A:156A-24. A camera picking up a conversation the operator is not part of is the risk. Design decision: disable audio in the hardware profile and document it.",
+   "confirmed": true,
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239"
+  },
+  {
+   "issue": "Notice to employees for silent video",
+   "rule_or_precedent": "New Jersey has no statute or regulation specifically governing an employer's use of video recording devices in the workplace; silent video falls outside the wiretap act, but employees retain a common-law right against offensive intrusion, so handbook notice and staying out of break rooms/restrooms is the practical control. This is from a law-firm summary, not from a statute I read directly.",
+   "confirmed": true,
+   "source_url": "https://www.bracheichler.com/insights/use-of-cameras-in-nj-based-ambulatory-surgery-centers/"
+  },
+  {
+   "issue": "Direction of NJ notice law (adjacent, not directly applicable)",
+   "rule_or_precedent": "P.L. 2021, c.449 (N.J.S.A. 34:6B-22, effective April 18, 2022) requires an employer to give written notice before knowingly using a tracking device in a vehicle an employee uses, with penalties up to $1,000 first violation and $2,500 for each subsequent one. It covers vehicle tracking, not fixed dock cameras, but it is the clearest sign that NJ expects written notice before monitoring.",
+   "confirmed": true,
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM"
+  },
+  {
+   "issue": "NJ Data Privacy Act and worker video",
+   "rule_or_precedent": "The NJDPA (P.L. 2023, c.266) took effect January 15, 2025, but defines 'consumer' as a resident acting only in an individual or household context and expressly excludes a person acting in a commercial or employment context. Warehouse worker footage is therefore largely outside the NJDPA, and the Act's thresholds (100,000 consumers, or 25,000 plus data sale revenue) are far above a small 3PL anyway. Customer/shipper personal data pulled in through BOLs could still be in scope.",
+   "confirmed": true,
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM"
+  },
+  {
+   "issue": "Biometrics and face recognition",
+   "rule_or_precedent": "New Jersey has no standalone biometric privacy statute; bills to restrict business use of biometric surveillance (e.g. S3182, 2024-2025 session) were introduced but I could not confirm enactment. The FTC's May 18, 2023 Policy Statement on Biometric Information and Section 5 warns that unexpected collection, inadequate vendor oversight, and unsupported accuracy claims can be unfair or deceptive practices. Practical rule for this avenue: do not do face recognition or person identification at all; count objects, not people.",
+   "confirmed": false,
+   "source_url": "https://www.ftc.gov/legal-library/browse/policy-statement-federal-trade-commission-biometric-information-section-5-federal-trade-commission"
+  },
+  {
+   "issue": "Employee monitoring and unionized warehouses",
+   "rule_or_precedent": "NLRB General Counsel Memorandum GC 23-02 (October 31, 2022) states the GC will argue that always-on electronic surveillance and algorithmic management of employees is presumptively unlawful absent a narrowly tailored business need, and will seek employee disclosure. For a unionized site, adding cameras that can produce discipline is a mandatory subject of bargaining. A receiving-accuracy system that produces footage of named workers should be scoped, noticed and, where a union exists, bargained before install.",
+   "confirmed": true,
+   "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and"
+  },
+  {
+   "issue": "Claim evidence standards (federal)",
+   "rule_or_precedent": "Under 49 U.S.C. 14706 and 49 CFR 370.3, a claim must be in writing, identify the shipment, assert liability and state a specified or determinable amount; damage notations on a delivery receipt or a carrier bad-order report do not, standing alone, satisfy the filing requirement. This is the design requirement for the evidence bundle: photo + count + timestamp + written claim value, not just a photo library. 49 CFR 370.9 sets the 120-day carrier response clock.",
+   "confirmed": true,
+   "source_url": "https://www.law.cornell.edu/cfr/text/49/370.3"
+  },
+  {
+   "issue": "False accusation / wrongful discipline from model errors",
+   "rule_or_precedent": "No New Jersey statute or reported case I could find addresses AI-generated dock evidence in a discipline or claim dispute. The practical exposure is contractual and reputational: a miscount that blames a named employee or accuses a carrier of a shortage that never happened. Controls: human confirmation before any exception is attributed to a person, 'unknown' as a first-class model output, per-door accuracy reporting, and no automated discipline triggers.",
+   "confirmed": false,
+   "source_url": ""
+  },
+  {
+   "issue": "Video retention",
+   "rule_or_precedent": "I could not confirm any New Jersey or federal rule setting a retention period for private warehouse video. Retention is a contract and insurance question: long enough to support the federal claim window (claim filing at least 9 months, carrier response 120 days), short enough to limit exposure (inference).",
+   "confirmed": false,
+   "source_url": "https://uscode.house.gov/us/usc/119-138/t49/s14706/"
+  }
+ ],
+ "prospecting_signals": {
+  "public": [
+   "Google/Yelp reviews that mention short shipments, crushed cartons, or 'they said it was damaged in transit' - a direct proxy for OS&D disputes reaching customers.",
+   "Job postings for receiving clerk, inventory control, OS&D clerk, claims analyst, deduction analyst or 'vendor compliance' - a dedicated chargeback/deduction role means the volume is already large enough to staff.",
+   "Number of dock doors and square footage from LoopNet/Crexi listings and satellite view of the building - 2+ doors with a paved yard is the minimum viable install.",
+   "Middlesex County scale check: 1,305 transportation and warehousing establishments and 49,911 employees in 2024, the county's fastest-growing sector (NJ LWD QCEW report dated February 2026).",
+   "Whether the company's site names a WMS or EDI provider (Extensiv/3PL Central, ShipHero, Fishbowl, Descartes, SPS Commerce) - determines integration difficulty and is often on the careers or integrations page.",
+   "Private fleet or carrier relationships via FMCSA SAFER/SMS lookups, and OSHA establishment inspection history via OSHA's establishment search (I attempted osha.gov and received HTTP 403, so this signal is unverified for now).",
+   "Customer base type: if they ship to Walmart/Target/Amazon, the retail compliance penalty structure (on-time/in-full, label and pallet defects) means receiving reconciliation errors convert directly into fines.",
+   "Whether they advertise 'same-day shipping' or tight cut-off times - speed pressure is where manual counts get skipped."
+  ],
+  "walk_in": [
+   "Count the dock doors and look up: is there already a camera over each door, and does its angle see the pallet face or just the trailer?",
+   "Watch one receiving event end to end: is someone counting cartons by hand, with a scan gun, or not at all before the driver leaves?",
+   "Look for the damage documentation habit - clipboard binder, Sharpie notes on the BOL, or a phone camera roll with no structure. Ask to see what a claim packet looks like today.",
+   "Ask where PO/ASN reconciliation happens: WMS module, Excel, or a person's head.",
+   "Ask 'how many chargebacks or deductions did you eat last quarter, and who chases them?' and 'what did the last carrier damage claim cost you in staff time?'",
+   "Check infrastructure at the doors: PoE switch capacity, cabling, Wi-Fi dead spots, and whether IT is in-house or an MSP (determines install timeline and who signs off).",
+   "Note whether workers are unionized and whether there is an existing camera/monitoring policy in the handbook.",
+   "Check the yard and staging: is there space for a fixed camera mount and an on-prem box that will not be forklift-bumped?"
+  ]
+ },
+ "pilot": {
+  "scope": "One facility, two dock doors, inbound receiving only. Camera captures each pallet crossing; system counts cartons/pallets, photographs damage, OCRs the pallet label and BOL, reconciles to the WMS PO/ASN, and auto-generates an exception ticket plus an evidence packet. One WMS integration (Extensiv 3PL Warehouse Manager REST, ShipHero GraphQL, or a scheduled CSV if there is no API). Human confirms every exception before anything is attributed to a person or a carrier. Runs 4 weeks of install + 2 weeks of parallel running against the manual process.",
+  "hardware": "2 x 4MP PoE cameras (or reuse existing RTSP cameras), 1 x NVIDIA Jetson Orin Nano Super ($249 at NVIDIA's December 2024 launch price; confirm current pricing) or a small x86 edge box on premises, PoE switch + mounts + UPS, optional Coral USB for detector offload. On-prem only: raw video stays in the building, only exception frames and metadata sync out.",
+  "success_metric": "Primary: count agreement with a manual control count of at least 99% of pallets and within +/-1 carton per pallet on a 100-pallet control sample. Secondary: at least 90% of damage events a supervisor independently agrees are real, each with a usable photo and timestamp; label/PO-number exact-match extraction at least 95%; time from driver arrival to a finished claim evidence packet under 5 minutes (versus a manual reconstruction that typically happens days later - inference); zero pallets leaving with no record.",
+  "cost_range": "$6,000-$15,000 for the pilot build (2 doors, hardware, install, model tuning, one WMS integration, 30 days of support), then $300-$800/month per site for monitoring, retraining and support. The range is anchored on published competitor prices: Happ Labs projects from $8,000, PalletVision at $1,995 hardware + $595/month per unit, IEMI DockOne concept at $1,290/door, CargoLens at $599-$749 per site per month with a $2,500 30-day one-site pilot, Sensifai at EUR 0.05 per verification.",
+  "assumptions": "Existing network and power at the doors; cameras can be reused, or added at a per-camera allowance of roughly $100-$250 that is an unsourced inference rather than a verified quote; the customer can export or expose PO/ASN data; one facility and one WMS; the customer supplies 2-4 weeks of historical receipts for validation and a supervisor for 2-3 hours of labelling review; damage definitions are agreed in writing before go-live; audio recording stays disabled; no face recognition; pricing excludes the customer's own staff time and any WMS vendor integration fees."
+ },
+ "fit_score": {
+  "demand": 16,
+  "local_buyers": 12,
+  "ability_to_pay": 10,
+  "technical_feasibility": 15,
+  "legal_risk_low": 9,
+  "defensibility": 8,
+  "total": 70,
+  "rationale": "Demand is the strongest dimension: federal claim rules (49 CFR 370.3, 370.9, 49 U.S.C. 14706) put the burden of proof on whoever holds the freight, Middlesex County has 1,305 transportation/warehousing establishments growing 26.1% since 2018 (QCEW 2024), and vendor surveys suggest most paid OS&D claims are disputed on evidence rather than on facts. Local buyers are dense but the specific 493110 subset is unverified, and a 5-200 staff 3PL's willingness to pay is capped by a labor cost of roughly $23/hour for the clerk being augmented - which is why published competitor prices sit at $1,290-$8,000 per site/project, or $599-$749 per site per month for app-only software, rather than $50,000. Technical feasibility is good: off-the-shelf detectors, small VLMs that run in ~240ms on a ~$249 Jetson, and documented WMS APIs mean no research breakthrough is needed; the hard part is site-specific data and integration, which is exactly the service. Legal risk is scored low-to-moderate (9/15) rather than safe: audio is a third-degree-crime threshold under N.J.S.A. 2A:156A-3, NLRB GC 23-02 treats always-on surveillance as presumptively unlawful, and a unionized site must bargain before install - the score assumes audio disabled, no face recognition and no unionized site, and drops further if any of those assumptions fail. Defensibility is the weakest score: Kargo, Arvist, Zimark, CargoLens and Sensifai already sell this, and a competent integrator could copy the build, so the moat is local service, on-prem data handling, and the claims-packet workflow rather than the model itself."
+ },
+ "risks": [
+  "Incumbent dock-vision vendors (Kargo, Arvist, Zimark, PalletVision) and app vendors (CargoLens at $599-$749 per site per month) are already selling to this buyer type and can drop price or add a channel program.",
+  "Accuracy liability: a missed damaged pallet or a false 'short' accusation damages the customer's carrier and client relationships; a human-in-the-loop step is mandatory and slows the sales pitch.",
+  "Small VLMs are weak at counting (LFM2.5-VL-450M scores 73.31 on CountBench), so any design that lets the language model produce counts will fail in the field.",
+  "Ultralytics YOLO is AGPL-3.0; closed-source commercial deployment requires a quoted enterprise license, an unplanned cost that must be priced in or avoided with a different detector.",
+  "WMS integration is the schedule risk: small 3PLs often run a TMS plus spreadsheets, or a WMS with restricted API access, and the write-back path is where projects slip.",
+  "Worker-monitoring blowback: NLRB GC 23-02 signals hostility to always-on surveillance, and unionized warehouses must bargain before install.",
+  "Low price ceiling: the labor being replaced costs about $23/hour and per-door competitor pricing is already $595/month, which caps what a small operator will sign.",
+  "Damage is subjective; without a written definition agreed up front, every disputed exception becomes an argument about the model rather than about the carton.",
+  "Hardware/edge support burden: cameras get bumped by forklifts, lenses get dusty, and PoE runs fail - a service contract must be priced to absorb truck rolls.",
+  "Hardware pricing is unstable: the Jetson kit launched at $249 but distributor and street prices have moved, and the per-camera cost in this file is an allowance rather than a quote, so a fixed-price bid carries margin risk."
+ ],
+ "caveats": "Vendor outcome numbers (Kargo/Tillamook, Neovia/Octave) are self-reported and unaudited; I rated them Low deliberately. The LTL damage rate of 1.24% and the 70-90% 'not our fault' figure both come from companies selling into this problem. The 3.5%-10% receiving error rates are inputs a peer-reviewed simulation drew from WERC's 2019 benchmark report, not measured field rates. PatchCore's 99.1% is the 25%-coreset row of Table 1 (the abstract says 'up to 99.6%') on a lab benchmark with 224x224 product images, not dock cartons. Hardware prices were read in late 2026 and move quickly; the Coral price was not shown on the vendor page I opened and came from a reseller listing, the Jetson figure is NVIDIA's December 2024 launch price rather than a live quote, and the camera figure is an unsourced allowance. Every legal point marked confirmed:false is a place where I could not find a primary rule and the design should assume the conservative reading. This is research, not legal advice - camera placement, notice language and retention policy should be reviewed by a NJ employment lawyer before the first install.",
+ "data_gaps": [
+  "Could not retrieve the Census County Business Patterns count of NAICS 493110 establishments specifically in Middlesex County - the Census API requires a key and returned 'Missing Key'. A third-party page citing Census CBP 2022 reports 1,548 establishments and 46,639 employees for the broader 48-49 sector, which is not the same measure.",
+  "No public pricing for Kargo, Arvist or Zimark; all three are quote-only.",
+  "Could not open OSHA's establishment inspection search (HTTP 403), so the OSHA-record prospecting signal is unverified.",
+  "No per-camera price from a page I could open: the usacompua.com 4MP collection returned only boilerplate and a B&H product page returned HTTP 403, so the camera line is an allowance, not a sourced quote.",
+  "Could not open NVIDIA's marketplace listing for the Jetson Orin Nano Super (timeout/abort), so the $249 figure rests on NVIDIA's December 2024 launch blog rather than a live distributor price.",
+  "No peer-reviewed study of a deployed dock-door VLM system at a small 3PL was found; the strongest peer-reviewed numbers are lab/benchmark results (packaging structure 85%, damaged parcel mAP 93.7%, PatchCore 99.1% AUROC at 25% coreset on MVTec AD) which do not transfer directly to a dusty dock.",
+  "No New Jersey case law or statute found on the evidentiary weight of AI-generated count/photo records in a freight claim or an employee discipline dispute.",
+  "Could not confirm whether NJ biometric surveillance bill S3182 (2024-2025 session) was enacted.",
+  "Install labor, PoE switch, cabling and UPS costs have no primary source in this file; they are carried as allowances inside the pilot cost range."
+ ]
+}

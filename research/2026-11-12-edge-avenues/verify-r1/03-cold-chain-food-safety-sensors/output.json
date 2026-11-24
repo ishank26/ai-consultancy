@@ -1,0 +1,218 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "NJ cooling rule is two-stage and time-boxed: 135 F to 70 F within 2 hours, then to refrigeration temperature within a total of 4 hours (N.J.A.C. 8:24-3.5(d)).",
+      "problem": "Misstated legal rule. N.J.A.C. 8:24-3.5(d)1 reads: 'i. Within two hours, from 135 degrees Fahrenheit to 70 degrees Fahrenheit; and ii. Within four hours, from 70 degrees Fahrenheit to refrigeration temperatures.' The second stage is four hours FROM 70 F, i.e. up to six hours total - not 'a total of 4 hours'. 'Total of 4 hours' is the wording of other jurisdictions' codes, not this one.",
+      "fix": "Rewrite as '135 F to 70 F within 2 hours, then 70 F to 41 F within 4 more hours (up to 6 hours total)', quote 8:24-3.5(d)1.i and ii verbatim, and align the alert/degree-minute thresholds and any customer-facing comparison table to the 6-hour total."
+    },
+    {
+      "claim": "Standard business owner policies exclude spoilage from mechanical/refrigeration breakdown by default; coverage requires a spoilage endorsement or equipment-breakdown extension, often capped around $10,000.",
+      "problem": "Two problems with the cited Insureon page. (1) 'Often capped around $10,000' appears nowhere on the page - the figure is unsourced. (2) The page states the opposite of the 'equipment-breakdown extension' framing: equipment breakdown coverage 'will pay to repair or replace the equipment that malfunctioned, but it will not cover the cost of spoiled inventory'; only a spoilage endorsement / utility service interruption endorsement covers lost perishables.",
+      "fix": "Delete the $10,000 cap or replace it with a sourced figure from a carrier/broker page that states a limit. Reword to 'commercial property policies usually need a spoilage (or utility service interruption) endorsement; equipment breakdown coverage by itself repairs the box, not the inventory', and keep the caveat that these are broker summaries."
+    },
+    {
+      "claim": "USDA ERS supermarket shrink estimates put retail loss at 11.4% for fresh fruit and 9.7% for fresh vegetables (2005-06 data)... ERS publications 2015 and 2019, source_url chartId=92910.",
+      "problem": "The numbers are real but the citation does not support them. The cited Charts of Note page (4/23/2019) covers only the 2011-12 data (2,900 stores; 4.1% bananas to 43.1% papayas) and contains no 11.4%/9.7% figures. Those figures come from ERS Economic Information Bulletin No. 44, March 2009 ('annual supermarket losses for 2005 and 2006 averaged 11.4 percent for fresh fruit, 9.7 percent for fresh vegetables, and 4.5 percent for fresh meat, poultry, and seafood'). No 2015 ERS publication was found carrying them.",
+      "fix": "Split the entry into two citations - the 2009 EIB-44 report summary for 11.4%/9.7% (https://ers.usda.gov/sites/default/files/_laserfiche/publications/44306/10894_eib44_reportsummary.pdf) and the chartId=92910 page for the 2011-12 4.1%-43.1% range - and correct the year label to '2005-06 data, ERS EIB-44 (2009); 2011-12 data, ERS charts of note (2019)'."
+    },
+    {
+      "claim": "SmartSense by Digi pricing: a public school-district bid shows ~$175/sensor, ~$400/gateway per site, ~$25/site/year monitoring (source_url smartsense.co/food-service).",
+      "problem": "The cited page contains no pricing at all (it is a marketing page that does name Wegmans, sweetgreen, Cafe Rio and honeygrow as customers, which is confirmed). The bid-derived prices are unattributed in the brief, so a reader cannot check them; the figures do appear in third-party district documents found by search but not at the cited URL.",
+      "fix": "Add the actual bid/proposal document URL that lists ~$175 per display sensor, ~$400 per gateway, and $25/site/year, and label these as 'one district's proposal pricing, not a list price'. Keep smartsense.co/food-service for the customer-name claim only."
+    },
+    {
+      "claim": "Reported single-incident losses: ... a Chicago restaurant reported nearly $20,000 of loss from back-to-back equipment failures (2026 press release).",
+      "problem": "No source_url is given for this number (the entry's source_url is the Lincoln, NE article only). Independently, the underlying July 2026 press release (Smack Dab, Rogers Park) reports about $19,500 total impact, of which food spoilage was only roughly $2,000-$3,000; the rest is a convection-oven replacement and lost revenue. Presenting it as a refrigeration/spoilage loss overstates the spoilage figure.",
+      "fix": "Give the press release URL, and restate as 'about $19,500 total impact, of which roughly $2-3k was spoiled cooler product' - or drop the incident, since the Lincoln, NE $1,800 case is cleaner."
+    },
+    {
+      "claim": "Monnit ALTA standard temperature sensor: $116 each; probe add-ons $24-$117; NIST certification +$71.",
+      "problem": "The $116 sensor and the $71 NIST upcharge are exactly right, but the probe add-on range is wrong at the low end: the Monnit product page lists a 3-foot probe at +$11, then $24 (5 ft), $31, $35, $62 and $117 (100 ft). The stated range starts at $24.",
+      "fix": "Change to 'probe add-ons +$11 to +$117 depending on lead length'."
+    },
+    {
+      "claim": "Open-source stack parts cost: $15-$25 in parts per cooler (ESP32 $8-$12, waterproof DS18B20 $3-$6, reed switch, resistor).",
+      "problem": "Could not be verified: the cited guide (imakethings.fyi) returned HTTP 403 on every attempt, so neither the $15-$25 total nor the component prices are checkable from the cited source. This price also drives the pilot budget and the 'commodity hardware' risk, so it is load-bearing.",
+      "fix": "Replace with an openable source (e.g. an ESP32 and DS18B20 product page or an accessible build guide) and cite component prices individually, or mark the figure explicitly as an estimate (inference) rather than a sourced price."
+    },
+    {
+      "claim": "Sensaphone Sentinel SCD-1200 roughly $553-$800 depending on reseller; WEB600 about $392 (source_url absoluteautomation.com collection page).",
+      "problem": "The cited collection page renders no prices (only a shipping/returns banner), so the range is unsupported at the cited URL. Reseller listings found by search put SCD-1200 at about $553.50-$615 and WEB600 at about $391.50-$435; the $800 top of the range was not found anywhere.",
+      "fix": "Cite a live product page with a price, narrow the range to what a reseller actually lists (e.g. 'about $554-$615'), and note that cellular variants are much higher (~$1,560)."
+    },
+    {
+      "claim": "ThermoWorks ThermaData WiFi: $205 (ambient) to $335 (removable external probe); thermocouple versions $289.",
+      "problem": "The cited ambient product page confirms $205.00, 18,000 readings and an included NIST-traceable calibration certificate, but contains none of the probe or thermocouple prices, so most of the stated range is uncited.",
+      "fix": "Cite the probe and thermocouple product pages separately for $335 and $289, or state only the verified $205 ambient price and label the rest as unverified."
+    },
+    {
+      "claim": "Roughly 1,650 restaurant/bar establishments in Middlesex County alone per Census CBP figures (fit_score rationale).",
+      "problem": "Not verified from a primary source (Census API requires a key, and the brief admits the count came from secondary aggregations). A secondary CBP-derived figure found in verification is 1,746 NAICS 722 establishments for 2022, about 6% higher; 'roughly 1,650' is not wrong by much but is not a number the orchestrator can quote.",
+      "fix": "Either state 'approximately 1,700-1,750 paid-employee food service establishments (CBP 2022, via secondary analysis)' with the secondary URL, or drop the figure and say 'well over 1,000' pending a direct CBP pull."
+    },
+    {
+      "claim": "'Does the food code require automated logs? ... confirmed: true' (a negative finding: no NJ provision mandating a log format or cadence).",
+      "problem": "The substance is honest and correctly cautious, but marking an absence-of-rule finding as 'confirmed: true' overstates it - the source (8:24-2.1) shows the person in charge must supervise routine monitoring and have scaled/calibrated thermometers, which is not the same as a searched-and-verified absence across Chapter 24.",
+      "fix": "Set confirmed to false (or add a 'nature: negative finding' field) and say 'no provision found in the subchapters reviewed; absence not exhaustively verified'."
+    },
+    {
+      "claim": "fit_score: demand 15, local_buyers 13, ability_to_pay 9, technical_feasibility 19, legal_risk_low 12, defensibility 7, total 75.",
+      "problem": "Arithmetic is correct (sums to 75) and the direction of each sub-score is consistent with the evidence, but the brief never states the scale/maximum for sub-scores, so 'within range' cannot be audited, and legal_risk_low = 12 reads low against a rationale that calls legal risk 'genuinely low' (12 is 60% on a /20 scale).",
+      "fix": "State the scale explicitly (e.g. each sub-score 0-20, total /120) and either raise legal_risk_low to match 'genuinely low' or qualify the rationale ('low on audio/face-recognition risk, medium on unsettled employee-monitoring questions')."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "FDA observed 397 retail deli departments in 2015-2016; 70.0% out of compliance on 'foods requiring refrigeration are held at proper temperature' (278/397); improper holding risk factor out of compliance in 91.2% of delis.",
+      "source_url": "https://www.fda.gov/media/148247/download",
+      "result": "confirmed"
+    },
+    {
+      "claim": "In 2008 only 45% of full-service restaurants and 49% of delis were in compliance with improper holding (time and temperature); ~850 establishments observed per phase; report is the 2010 Trend Analysis.",
+      "source_url": "https://www.fda.gov/food/retail-food-protection/retail-food-risk-factor-study",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'Refrigeration temperatures' means 41 F or less, with a 45 F allowance only for equipment in use as of Jan 2, 2007 that must be upgraded or replaced as of Jan 2, 2012.",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-1-5",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ cooling rule: 135 F to 70 F within 2 hours, then to refrigeration temperature within a total of 4 hours (8:24-3.5(d)).",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-5",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Time as a public health control and specialized processing (incl. ROP) require written procedures submitted to and approved by the health authority and maintained on site (8:24-3.5(g)(4), (h)).",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-5",
+      "result": "confirmed"
+    },
+    {
+      "claim": "At least one person in charge in Risk Type 3 establishments must be a certified food protection manager, and the person in charge must demonstrate HACCP knowledge at inspection (8:24-2.1(b)).",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-2-1",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24 readopted effective November 17, 2021, with a new expiration date of November 17, 2028.",
+      "source_url": "https://nj.gov/health/legal/documents/adoption/(F)%20DOH%208_24%20Notice%20of%20Readoption.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Most recent inspection report must be kept on the premises for public review for a minimum of two years (8:24-8.13), and the evaluation placard must be posted near the public entrance (8:24-8.12).",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-13",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County Office of Health Services aims to inspect every food establishment at least twice a year, using NJ-licensed Registered Environmental Health Specialists.",
+      "source_url": "https://www.middlesexcountynj.gov/government/departments/department-of-public-safety-and-health/office-of-health-services/health-inspections",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ERS supermarket shrink: 11.4% for fresh fruit and 9.7% for fresh vegetables on 2005-06 data.",
+      "source_url": "https://ers.usda.gov/sites/default/files/_laserfiche/publications/44306/10894_eib44_reportsummary.pdf?v=30953",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ERS chart (cited): fresh fruit loss rates from 4.1% (bananas) to 43.1% (papayas) across 2,900 U.S. supermarkets in 2011-12, and equipment malfunction/faulty cold storage named as a retail-level cause of loss.",
+      "source_url": "https://ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=92910",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A Lincoln, NE restaurant discarded about $1,800 of food after a storm outage in 2024.",
+      "source_url": "https://www.klkntv.com/lincoln-restaurant-throws-out-1800-of-spoiled-food-after-power-outage/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A Chicago restaurant reported nearly $20,000 of loss from back-to-back equipment failures (2026 press release).",
+      "source_url": "https://www.einnews.com/pr_news/926945010/smack-dab-temporarily-closes-after-back-to-back-equipment-failures-create-nearly-20-000-loss",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Spoilage coverage requires an endorsement and is 'often capped around $10,000'; equipment-breakdown coverage can serve as the extension.",
+      "source_url": "https://www.insureon.com/small-business-insurance/commercial-property/spoilage-insurance",
+      "result": "not found"
+    },
+    {
+      "claim": "TempGenius: a small installation with less than five sensors costs approximately $2,000, and about $5,000 for roughly 20 sensors.",
+      "source_url": "https://tempgenius.com/temperature-monitoring/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Monnit MNS2-9-W2-TS-ST is $116, probe add-ons run $24-$117, and 25-month NIST certification is +$71.",
+      "source_url": "https://www.monnit.com/products/sensors/temperature/standard-temperature/MNS2-9-W2-TS-ST/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "ThermoWorks ThermaData WiFi ambient logger costs $205, holds 18,000 readings, includes a NIST-traceable calibration certificate.",
+      "source_url": "https://www.thermoworks.com/products/thermadata-wifi-ambient-temp",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sensaphone Sentinel SCD-1200 roughly $553-$800 depending on reseller; WEB600 about $392.",
+      "source_url": "https://www.absoluteautomation.com/collections/food-cold-storage-remote-monitoring",
+      "result": "not found"
+    },
+    {
+      "claim": "SmartSense food service page names Wegmans, sweetgreen and Cafe Rio as customers.",
+      "source_url": "https://www.smartsense.co/food-service",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SmartSense bid-derived pricing of ~$175 per sensor, ~$400 per gateway per site, ~$25 per site per year.",
+      "source_url": "https://www.smartsense.co/food-service",
+      "result": "not found"
+    },
+    {
+      "claim": "Hotel case study: HACCP deviations down from about one per week to about one per month (Sensire, Hotel Arthur, 2021).",
+      "source_url": "https://www.sensire.com/hubfs/Website/Linked%20Documents/Case%20Examples%203.19/ENG/Sensire%20Oy_CaseHotel-Arthur%2011-21-eng.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hastings Hotels case study: each property saves on average three hours per day for all food staff; group of six hotels plus one gastro pub.",
+      "source_url": "https://kelsius.com/hastings-hotel/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wendy's franchisee (67 restaurants) piloted remote temperature monitoring in five locations; reported qualitatively, no effect size.",
+      "source_url": "https://www.foodlogistics.com/safety-security/food-safety/article/22327213/wendys-remote-temperature-monitoring-system-helps-wendys-franchisee-save-time-money-product",
+      "result": "confirmed"
+    },
+    {
+      "claim": "YOLO11s benchmarks: 47.0 mAP@50-95 at 640 px, 90.0 ms CPU ONNX, 2.5 ms T4 TensorRT10, 9.4M params.",
+      "source_url": "https://github.com/ultralytics/ultralytics/blob/main/docs/en/models/yolo11.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey is a one-party-consent state; intercepting an oral communication without a participant's consent is a third-degree crime under N.J.S.A. 2A:156A-3, with the exception in 2A:156A-4(d).",
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDPA treats biometric data as sensitive data requiring consent, took effect January 15, 2025, and applies only to controllers processing 100,000+ consumers (25,000 if selling data), with 'consumer' limited to individual/household contexts.",
+      "source_url": "https://www.njconsumeraffairs.gov/ocp/Pages/NJ-Data-Privacy-Law-FAQ.aspx",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A 2020 peer-reviewed study monitored a retail refrigerated cabinet with an ESP8266 + DS18B20 open-hardware IoT stack, demonstrating feasibility and data capture rather than spoilage reduction.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7038712/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A 2023 Sustainability paper (15(3):2255, 'Real-Time Anomaly Detection in Cold Chain Transportation Using IoT Technology') tests IoT anomaly alerting on instrumented cold-chain transport (grocery delivery vans), not static walk-ins.",
+      "source_url": "https://www.mdpi.com/2071-1050/15/3/2255",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Open-source build parts cost $15-$25 per cooler (ESP32 $8-$12, DS18B20 $3-$6, reed switch, resistor).",
+      "source_url": "https://imakethings.fyi/esp-projects/guides/esp32-freezer-temperature-alarm/",
+      "result": "could not open"
+    },
+    {
+      "claim": "LFM2.5-VL-450M exists as a 450M-parameter edge VLM (with GGUF/ONNX builds) suitable as the exception-triage model.",
+      "source_url": "https://docs.liquid.ai/lfm/models/lfm25-vl-450m",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

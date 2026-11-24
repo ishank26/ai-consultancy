@@ -1,0 +1,3 @@
+done — wrote `output.json` (8 O*NET task hotspots, 8 NJ wage benchmarks, 8 automation evidence items).
+
+Note for the orchestrator: `web_search` and `source_check` were rate-limited (Exa 429 / OpenAI quota) for the entire session, so everything was built by directly fetching BLS, O*NET, NBER, LSE-CEP, arXiv, PMC and FDA pages. Key consequences recorded in `data_gaps`: BLS state/metro OEWS HTML pages redirect to an index page, so wages are NJ statewide medians (from O*NET's BLS 2025 wage pages) with NY–Newark–JC metro as the nearest proxy — no Edison/New Brunswick division or Middlesex County figures.

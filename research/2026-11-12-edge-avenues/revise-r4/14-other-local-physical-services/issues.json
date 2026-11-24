@@ -1,0 +1,27 @@
+[
+ {
+  "claim": "[SELF-STORAGE] \"Public Storage same-store 2025 results of about $21.50 revenue ... per rentable square foot per year\" (evidence array, ability-to-pay anchor)",
+  "problem": "The cited source does not say $21.50. The Public Storage 2025 Annual Report (SEC ARS) prints same-store REVPAF of $20.74 for 2025 ($20.72 in 2024, $20.85 in 2023). Neither 21.50 nor 16.15 appears anywhere in the document. The figure is therefore misstated against its own citation, and the downstream $1.0M revenue line in the same item is built on it.",
+  "fix": "Replace $21.50 with the printed $20.74 same-store REVPAF for 2025 (and note realized annual rental income per occupied square foot of $22.54 if that is the intended metric), then re-run the 50,000 sq ft arithmetic (about $1.04M revenue) or state which alternative metric produced $21.50 and cite the page that prints it."
+ },
+ {
+  "claim": "[SELF-STORAGE] \"... and $16.15 net operating income per rentable square foot per year\" attributed to the same 2025 filing",
+  "problem": "No NOI-per-square-foot dollar figure is printed in the cited annual report; it states only qualitatively that Public Storage had the highest same-store revenue and NOI per square foot among peers. $16.15 is an unlabelled derivation (2025 same-store NOI divided by same-store square footage, roughly $16.14). The item labels only the 50,000 sq ft step as inference, so a computed figure is presented as a stated source result.",
+  "fix": "Either delete the $16.15 line, or keep it and label it explicitly as arithmetic (2025 same-store NOI divided by same-store rentable square feet), with a citation to the NOI and square-footage line items used."
+ },
+ {
+  "claim": "fit_score legal_risk_low = 12/15",
+  "problem": "Sub-scores are in range and the total is arithmetically correct (16+11+12+15+12+8 = 74), but 12/15 is high relative to a legal section that documents a live consent duty for biometric data (NJDPA sensitive data), the FTC v. Rite Aid five-year facial-recognition ban, and a pending NJ monitoring-notice bill that would add a 60-day notice duty. The score is only defensible if the no-audio, no-face-recognition design is treated as a hard product constraint.",
+  "fix": "Drop to about 10/15, or keep 12 but state in the rationale that the score assumes the brief's own prohibition on audio and face recognition is contractually enforced at every install."
+ },
+ {
+  "claim": "[SELF-STORAGE] \"One Memphis facility generated 146 reported burglary claims in 44 months ... over $255,000 in claims payouts\" and the 67-100% decrease",
+  "problem": "Verified and accurate, but the brief cites the same vendor page for 2022 results without noting that the claims administrator (Xercor) is a commercial counterparty to the vendor relationship, which is why Low strength is right. No correction needed to the numbers; recorded here so the orchestrator does not use the figures as independent.",
+  "fix": "No change to numbers. Keep the Low rating and the 'claims data from the tenant-insurance administrator' caveat wherever these figures are reused."
+ },
+ {
+  "claim": "[LAUNDROMATS] 29,500 U.S. coin laundries / nearly $5 billion; [GYMS] fitness visit averages; [COUNTING] fisheye error reduction figures",
+  "problem": "Three numeric claims could not be re-opened from the cited URL by this check: the CLA industry-overview page returned HTTP 403 again, the ebs.publicnow syndication returned HTTP 403, and the ScienceDirect paper returned HTTP 403. The laundromat figures remain search-index only, as the brief itself discloses; the gym figures were confirmed from the underlying Health & Fitness Association page instead.",
+  "fix": "For the CLA figures, cite the association's rendered page or the survey PDF that prints the store count, or keep the explicit 'search index only' flag. For gym visits, cite the Health & Fitness Association article rather than the publicnow syndication that blocks fetches."
+ }
+]

@@ -1,0 +1,198 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Hardware: 'Wireless LoRaWAN triaxial vibration sensor (Dragino IVS-LN / Advantech WISE-2410 class) - $203-$420 per unit depending on model', source https://www.choovio.com/product-category/lorawan-vibration-sensors/",
+      "problem": "The cited page does not support the range. Re-opened 2026-11: it lists Dragino IVS-LN at $203.00, Netvox R718E $119.00, Dragino LHT65N/S-VIB $66-$71, Netvox R718EC $99 (sale), R718DA2 $129, R313DA $61, SL500US $56. Highest price on the page is $203; no Advantech WISE-2410 and no $420 unit appears. So the top of the range is unsupported and the bottom misstates what the page shows (it starts at $56, not $203).",
+      "fix": "Either cite a distributor page that actually shows an ~$420 triaxial unit (e.g. an Advantech WISE-2410 listing) or restate as 'Dragino IVS-LN $203.00 (Choovio); comparable LoRaWAN vibration sensors on the same page run $56-$203'. Re-derive the pilot hardware line ($1,600-$3,900) from whichever figures survive."
+    },
+    {
+      "claim": "Legal/privacy: 'FTC guidance (Keep your AI claims in check, 2023)', source https://www.ftc.gov/business-guidance/blog/2023/02/keep-your-ai-claims-check",
+      "problem": "The cited URL returned HTTP 404 when opened in this pass, so neither the document nor its title/year could be confirmed from the citation given.",
+      "fix": "Re-verify the current FTC URL (the post is widely cited as a Feb 27, 2023 FTC Business Blog item) and replace the dead link; if it cannot be opened, drop the citation rather than link a 404."
+    },
+    {
+      "claim": "Buyers/why: 'Middlesex County has 824 manufacturing establishments with 30,862 employees (2024 QCEW)', '1,752 accommodation and food services establishments', and rationale/caveats '1,710 other-services establishments'",
+      "problem": "No source_url is given for any of these counts, so as written they are unsourced facts. The numbers themselves verify: NJ LWD Middlesex County report (2024 QCEW) shows 824 establishments / 30,862 employees manufacturing, 1,752 / 24,124 accommodation and food services, 1,710 / 12,941 other services.",
+      "fix": "Add the citation https://www.nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf (2024 QCEW) to each of the three counts."
+    },
+    {
+      "claim": "Hardware: 'Shelly Pro 3EM three-phase energy meter with CTs - $150.99 (63A CT); $154.99 (120A); $329.99 (400A)'",
+      "problem": "Only the $150.99 63A variant is supported (us.shelly.com product page, price confirmed via the product page's own listing). The $154.99 120A and $329.99 400A variant prices could not be confirmed; the page's price block did not render as extractable text and no variant listing was verifiable.",
+      "fix": "Confirm the 120A and 400A variant prices on the Shelly page (or a collection page) and cite that specific URL, or quote only the 63A price and mark the other variants as unverified."
+    },
+    {
+      "claim": "models_and_tools: 'Frigate's default detector model is YOLOv6n'",
+      "problem": "Imprecise per Frigate's own object-detectors page: Frigate defaults to a single CPU detector (OpenVINO/ONNX auto-detected on Intel), and YOLOv6n is the default model specifically for the Hailo-8/Hailo-8L detectors, not the universal default.",
+      "fix": "Reword to 'YOLOv6n is the default model for Frigate's Hailo-8/Hailo-8L detector (Frigate's overall default detector is CPU/OpenVINO)'."
+    },
+    {
+      "claim": "Existing solutions / evidence: Parts Town study described as a '2025 survey of approximately 1,800 chain and institutional foodservice respondents' named 'Rethinking Downtime'",
+      "problem": "Survey size, year and the one-in-three-weekly and refrigeration/fryer findings are confirmed, but the respondent base is wider than foodservice (chain respondents included grocery and convenience stores; institutional respondents covered education, healthcare, hospitality and corporate facilities), and the page itself does not carry the name 'Rethinking Downtime' - its titles are 'New Research Highlights the Real Impact of Equipment Downtime' and 'New Whitepaper Explores the Cost of Downtime'. The page also carries a June 30, 2026 date, not 2025.",
+      "fix": "Describe it as 'Parts Town survey of ~1,800 chain (restaurant, grocery, convenience) and institutional (education, healthcare, hospitality, corporate) respondents, fielded 2025, published 2026' and drop or footnote the 'Rethinking Downtime' label unless a page using that title is cited."
+    },
+    {
+      "claim": "measured_outcomes: NIST Machinery Maintenance Survey findings rated strength 'High'",
+      "problem": "Numbers are confirmed verbatim, but 'High' overstates the design: NIST AMS 100-34 is a cross-sectional establishment survey reporting associations ('associated with 15% less downtime'), and the brief's own caveats call it an establishment-level association. The rest of the brief correctly rates vendor claims Low, so this rating is the outlier in an otherwise disciplined scale.",
+      "fix": "Downgrade to Medium, or keep High only if the strength key explicitly allows cross-sectional government surveys as High and says so in the brief."
+    },
+    {
+      "claim": "pilot.assumptions: 'Recurring $300-$900/month assumes 8-12 assets at roughly $25-$75 per asset per month'",
+      "problem": "Arithmetic at the low end does not reach the stated floor: 8 assets x $25 = $200/month, not $300.",
+      "fix": "Change the floor to ~$200/month, or raise the per-asset floor to $30-$75, or state the range as 'roughly $200-$900 depending on asset count'."
+    },
+    {
+      "claim": "legal_privacy: 'The NLRB's own memo index shows GC 23-02 was rescinded on February 14, 2025'",
+      "problem": "Partly confirmed: the NLRB GC memo index does show GC 25-05 'Rescission of Certain General Counsel Memoranda' dated 02/14/2025 with many earlier memos marked rescinded 2/14/2025. However the visible index page did not show a GC 23-02 entry (list truncated at the 20 most recent), and the GC 25-05 PDF would not open (binary content type), so the specific inclusion of GC 23-02 in that rescission could not be verified here.",
+      "fix": "Cite the GC 25-05 memo text (or a page listing GC 23-02 with a 'Rescinded 2/14/2025' note) and state the rescission finding as sourced to that document rather than to the index page."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "NIST 2020: predictive maintenance associated with 15% less downtime, 87% lower defect rate, 66% less maintenance-driven inventory increase; top-quartile reactive establishments 3.3x downtime, 16.0x defects, 4.89x inventory increases",
+      "source_url": "https://www.nist.gov/news-events/news/2020/06/research-suggests-significant-benefits-investing-advanced-machinery",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DOE FEMP O&M Best Practices Guide (Release 3.0): predictive maintenance 8-12% savings over preventive alone; industrial averages 35-45% downtime reduction, 70-75% fewer breakdowns, 25-30% lower maintenance cost, cited to 'independent surveys'",
+      "source_url": "https://www.energy.gov/sites/default/files/2020/04/f74/omguide_complete_w-eo-disclaimer.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "MaintainX 2024: average hour of unplanned downtime about $25,000; 29% expect aging equipment to be leading cause in next 12 months; 60% cite skilled-trade shortage; 1,165 MRO professionals; no methodology shown on release",
+      "source_url": "https://www.getmaintainx.com/newsroom/state-of-industrial-maintenance-report-2024",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Parts Town 2025 survey (~1,800 chain and institutional respondents): one in three experience unplanned equipment downtime every week; refrigeration and fryers identified as most frequently failing and most disruptive",
+      "source_url": "https://www.partstownunlimited.com/blog/rethinking-downtime",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-1.5 'refrigeration temperatures' = 41F or less, with a legacy 45F allowance for equipment in use as of January 2, 2007 that had to be upgraded or replaced as of January 2, 2012",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-1-5",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-3.2(f)1 requires refrigerated potentially hazardous food to be received at 41F or below",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-2",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 13:31-3.8: installing/maintaining/servicing premises wiring to an appliance must be done by a licensed electrical contractor holding a business permit, except as provided at N.J.S.A. 45:5A-18",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-31-3-8",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Siemens True Cost of Downtime 2024 (via third-party summary): ~$150,000/hour top end for SME manufacturers, $2.3 million/hour automotive, unplanned downtime equals 11% of revenues for the world's 500 biggest companies",
+      "source_url": "https://vsight.io/blog/cost-of-unplanned-downtime-manufacturing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2023 OEWS Middlesex-Monmouth-Ocean industry rows for SOC 49-9071: median annual $60,608 (Manufacturing, 410 employed), $35,986 (Accommodation and Food Services, 620 employed), $52,326 (Public Administration, 810 employed); mean hourly $28.72 manufacturing and $19.85 food service",
+      "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/employ/oeswageweb/PDFs/mid_ind.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "MachineCDN: $45/asset/month with no setup fee and month-to-month; volume tiers $38 (51-200 assets) and $32 (201-500); IP67 sensor, 5+ year battery, LoRaWAN gateway, MQTT/OPC-UA/Modbus included",
+      "source_url": "https://machinecdn.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Banner QM30VT2 at $325.00 per unit, in stock, single unit, at distributor Shingle & Gibb",
+      "source_url": "https://www.shingle.com/itemdetail/BAN%20QM30VT2",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Milesight UG65 LoRaWAN gateway priced at/from $550.00 at Emergent Metering",
+      "source_url": "https://emergentmetering.com/products/milesight-ug65-indoor-lorawan-gateway",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Shelly Pro 3EM-3CT63 (63A CT) at $150.99 and Shelly EM Gen3 50A at $69.99 on Shelly USA",
+      "source_url": "https://us.shelly.com/products/shelly-pro-3em-3ct63",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Raspberry Pi AI Kit (M.2 HAT+ with Hailo-8L) at $70, announced June 2024; Raspberry Pi 5 8GB at $95 after an increase from $80",
+      "source_url": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LBNL/Building and Environment 2020 FDD study: 26 organizations, 550 buildings, 97 million square feet, median whole-building savings of 8%",
+      "source_url": "https://bies.lbl.gov/publications/building-fault-detection-and",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Emerson/Johns Manville case study: 44 hours of downtime avoided in first six months, 50% longer MTBF, 43% fewer mechanical emergency maintenance events, 260% program ROI in six months; 2019 document, program started early 2002",
+      "source_url": "https://www.emerson.com/is/content/emerson/en/systems-and-software/ams/case-studies/documents/johns-manville-expands-production-capacity-with-new-approach-to-machinery-health-management.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ESP32-S3 + MPU6050 node: 96.5% accuracy, 96.19% precision, 97.11% recall three-class classifier; ~300 ms total latency (80 ms collection, 25 ms inference, 195 ms transmission); author-reported 98% over 2 months of industrial operation",
+      "source_url": "https://link.springer.com/article/10.1007/s43926-025-00142-4",
+      "result": "confirmed"
+    },
+    {
+      "claim": "MDPI Data 2023 dataset: 11 bearing-failure cases over four years from a single pulp mill, with fault development varying widely (including one detectable only days before replacement)",
+      "source_url": "https://www.mdpi.com/2306-5729/8/7/115",
+      "result": "could not open"
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d): one-party consent interception is lawful unless done for a criminal/tortious/other injurious purpose; being the subscriber does not amount to consent to intercept conversations not including that person",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239?f=templates&fn=document-frameset.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Data Privacy Act (P.L. 2023, c.266) effective January 15, 2025; applies at 100,000 consumers or 25,000 consumers plus revenue from selling personal data; no small-business exemption; 'consumer' excludes individuals acting in a commercial or employment context",
+      "source_url": "https://www.njconsumeraffairs.gov/ocp/Pages/NJ-Data-Privacy-Law-FAQ.aspx",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A3929/S1464 (premises biometric recognition) passed the Assembly March 23, 2026 and was referred to a Senate committee May 4, 2026; S1463 (common-entryway biometric notice) introduced January 13, 2026 - both pending, not law",
+      "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A3929/bill-text?f=A4000&n=3929_I1",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Augury: vendor claims under 6 months payback and 1.1B+ machine-hours monitored; pricing page shows no public list price",
+      "source_url": "https://www.augury.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Tractian: asset-health pricing page offers only a custom quote, no published per-asset price",
+      "source_url": "https://tractian.com/en/solutions/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Fluke 3563 marked discontinued/reclassified on Fluke's product page",
+      "source_url": "https://www.fluke.com/en-us/product/condition-monitoring/vibration/3563",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO is AGPL-3.0 by default and a paid Enterprise licence is required for proprietary/closed deployments, embedded appliances and commercially used custom-trained models",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Liquid AI LFM2.5-VL-3B uses a SigLIP2 400M NaFlex vision encoder on an LFM2.5 backbone, with 450M and 1.6B variants in the same family",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Choovio LoRaWAN vibration sensor category page supports a $203-$420 per-unit range",
+      "source_url": "https://www.choovio.com/product-category/lorawan-vibration-sensors/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "FTC guidance 'Keep your AI claims in check' (2023) requires substantiation of AI performance claims",
+      "source_url": "https://www.ftc.gov/business-guidance/blog/2023/02/keep-your-ai-claims-check",
+      "result": "could not open"
+    },
+    {
+      "claim": "Middlesex County 2024 QCEW: 824 manufacturing establishments / 30,862 employees; 1,752 accommodation and food services establishments; 1,710 other services establishments",
+      "source_url": "https://www.nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

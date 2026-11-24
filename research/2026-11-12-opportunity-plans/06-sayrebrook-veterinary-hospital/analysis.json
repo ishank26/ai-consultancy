@@ -1,0 +1,85 @@
+{
+  "business": "Sayrebrook Veterinary Hospital",
+  "industry": "healthcare (veterinary services)",
+  "town": "Sayreville, NJ",
+  "opportunities": [
+    {
+      "title": "24/7 intake, urgency-triage and booking agent for phone, web form and email",
+      "capability": "A",
+      "problem": "Every booking depends on a human. Clients submit an appointment-request form and then wait for a staff member to call back, same-day and urgent slots are explicitly 'availability dependent', and the practice advertises a 24-hour emergency line routed to the main number even though the building is staffed 8am-7pm on weekdays. A roughly dozen-person team is therefore the single funnel for routine calls, urgent calls, cancellations and new-client intake, seven days a week.",
+      "evidence": [
+        "Appointment requests go through a web form; the page states a team member will then contact the client to confirm availability and scheduling — https://sayrebrookvet.com/about-our-clinic/appointment-request/",
+        "Practice states it is available 24 hours a day for emergencies and directs after-hours emergencies to the main phone number, while posted hours are Mon-Thu 8-7, Fri/Sat 8-5, Sun 8-2 — https://sayrebrookvet.com/about-our-clinic/ and https://sayrebrookvet.com/locations/sayrebrook-veterinary-hospital/",
+        "Same-day and urgent appointments are 'availability dependent' and clients are told to call early or ask about a cancellation list — https://sayrebrookvet.com/faqs/",
+        "Intake is split across a phone number, a request form, a general Gmail address, a new-client form, a patient-history form and Spanish versions of those forms — https://sayrebrookvet.com/",
+        "No live chat, SMS or online-booking widget observed anywhere on the site — https://sayrebrookvet.com/",
+        "Technicians staff the hospital 8am to at least 7pm seven days a week including many holidays, i.e. a thin after-hours margin — https://sayrebrookvet.com/employment-application/"
+      ],
+      "agent_design": "An event-driven voice + text + web intake agent sits in front of the existing channels (main line, request form, Gmail) and runs one pipeline: (1) captures the request and the pet record basics conversationally in English or Spanish; (2) classifies urgency against a written red-flag symptom protocol supplied and signed off by the practice's veterinarians, routing true emergencies to an immediate human/on-call page with a warm transfer, and deferring everything else to the next open slot; (3) proposes bookable slots and holds them for staff confirmation if no scheduling-system write access is granted in phase one; (4) sends confirmations, pre-visit instructions and reminders, and works the cancellation list automatically when a slot frees; (5) logs every interaction with a transcript and an exception queue. Human approval points: all clinical triage above the written protocol, any new-client or surgical/dental booking, any fee or payment question the knowledge base does not cover, and a daily staff review of the exception queue. Systems touched: telephony/SMS provider, the web form, the Gmail mailbox, and the practice-management system (vendor unknown at this stage — see data gap).",
+      "why_not_DIY": "Off-the-shelf chatbots cannot answer a phone, cannot make an urgency decision that has clinical and liability consequences, cannot write to a scheduling system, and cannot hand off mid-call to an on-call technician. This requires telephony integration, a versioned clinical triage protocol with audit logging, PMS/calendar integration, multilingual handling, and a human-approval boundary that a subscription builder does not provide.",
+      "impact_estimate": {
+        "range": "$7,000-$16,000/yr of recovered front-desk and technician time, plus reduced abandoned/missed urgent calls that are not quantified here (deliberately excluded to keep the range conservative)",
+        "assumptions": "Inference, not measured: repetitive call and form handling consumes 3-5 staff hours per open day across seven open days (21-35 hrs/week); an agent resolves or deflects 30-40% of that volume directly; the remaining work is unchanged. Loaded at the New Jersey veterinary technologist/technician median of $22.66/hr (May 2023, 3,660 employed statewide). Excludes any revenue effect from after-hours calls that currently go unanswered, because no call-volume data is public.",
+        "benchmark_source_url": "https://www.bls.gov/oes/2023/may/oes_nj.htm"
+      },
+      "complexity": "High",
+      "pilot_scope": "2-4 weeks: after-hours and overflow-only deployment on one number plus the web form, a knowledge base built from the practice's own FAQ/services/payment pages, a written red-flag triage protocol the veterinarians approve, warm-transfer to on-call, and a weekly transcript-and-exception review with Dr. Chiosi or the lead technician. No PMS write access required for phase one; success measured as call-capture rate, triage-accuracy against staff audit, and hours returned."
+    },
+    {
+      "title": "Unified intake hub and dispatch board replacing the form/email/fax handoff chain",
+      "capability": "D",
+      "problem": "Client information arrives through at least six disconnected surfaces — a phone line, a WordPress appointment form, a general Gmail address, a LifeLearn-hosted new-client form, a LifeLearn patient-history form, and printable/fax-era pages — and there is no patient portal or visible online payment portal. Staff re-key and reconcile that data by hand. On top of clinic appointments, housecalls, pet transportation, boarding and medical boarding all need coordination with no booking mechanism of their own beyond the general request form or phone.",
+      "evidence": [
+        "Forms and the Pet Health Checker are hosted on LifeLearn (web5q.lifelearn.com) rather than the main domain, while other pages remain printable — https://sayrebrookvet.com/locations/sayrebrook-veterinary-hospital/",
+        "A patient-history form and printable pages remain in the navigation alongside newer digital forms — https://sayrebrookvet.com/patient-history-form/",
+        "General Gmail address (SayrebrookVet@gmail.com) is the published client email channel instead of a branded mailbox — https://sayrebrookvet.com/about-our-clinic/our-team/",
+        "Housecalls and pet transportation are advertised services with no booking mechanism beyond the general appointment request form or phone — https://sayrebrookvet.com/services-we-offer/",
+        "Boarding and medical boarding are offered alongside clinical care, adding kennel scheduling and medication administration to staff duties — https://sayrebrookvet.com/faqs/",
+        "Website is WordPress/WebDVM with VetSource home delivery and CareCredit/ScratchPay widgets, but no online payment portal for invoices was observed — https://sayrebrookvet.com/"
+      ],
+      "agent_design": "An ingestion agent watches the mailbox, the web form endpoint and the LifeLearn form exports, extracts client/pet/medication fields, de-duplicates against existing clients, flags incomplete submissions, and produces one reviewable daily queue that staff approve into the practice-management system rather than retyping. A second agent maintains an internal dispatch board for housecalls, pet transport, boarding and medical boarding: it proposes routes and kennel assignments from postcode, requested window and medication schedule, and blocks double-bookings. A third, small component drafts invoice/payment-link style follow-up from the PMS export, with every send requiring staff release. Human approval: all data written to the system of record, all route and kennel assignments, and all outbound billing messages.",
+      "why_not_DIY": "The value is in the joins, not a form. It needs read/write integration to a practice-management system whose vendor is not publicly identifiable, document extraction from inconsistent inbound formats, de-duplication logic across overlapping client lists, and an internal dashboard that staff actually use at the counter. A no-code form builder cannot touch the system of record and cannot enforce the medication-schedule constraints that make boarding assignments safe.",
+      "impact_estimate": {
+        "range": "$4,000-$11,500/yr of staff administrative time, plus fewer dropped or incomplete intake requests (not quantified)",
+        "assumptions": "Inference, not measured: 2-4 staff hours per open day are spent reviewing submissions, re-keying into the PMS, chasing incomplete forms and coordinating housecall/transport/boarding logistics; the hub removes 25-35% of that. Valued at the NJ veterinary technologist/technician median of $22.66/hr (May 2023), which understates the cost if the work falls to licensed veterinarians at the NJ median of $63.93/hr. Assumes the PMS exposes any usable export or API; if it does not, phase one is file-and-screen automation only and the saving is roughly halved.",
+        "benchmark_source_url": "https://www.bls.gov/oes/2023/may/oes_nj.htm"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: map the actual intake chain with the front desk, build the ingestion-and-review queue for the web form plus Gmail only, ship the boarding/housecall dispatch board as a screen staff can use on day one, and produce a written integration spec for the PMS vendor. Deliverable is a working queue and board plus measured minutes-per-request before and after."
+    },
+    {
+      "title": "Staff knowledge and onboarding agent for a multi-role, high-churn technician team",
+      "capability": "C",
+      "problem": "A dozen people cover clinic, boarding, pharmacy, lab, housecalls and holiday shifts, and staff visibly rotate across those roles. The practice never closes its application pipeline, screens applicants specifically for holiday and overtime availability, and has no posted openings — the signature of continuous replacement hiring rather than growth hiring. Every new or rotating technician therefore re-asks the same questions about protocols, boarding medication schedules, controlled-drug logs and front-desk rules, and the answers live in people's heads.",
+      "evidence": [
+        "Employment page states the hospital always accepts applications and holds them on file, and asks directly about holiday availability and willingness to work beyond posted hours — https://sayrebrookvet.com/employment-application/",
+        "Job-board profile showed zero live postings at review time, suggesting hiring runs through the site form rather than paid ads — https://www.ihireveterinary.com/orgs/446375/sayrebrook-veterinary-hospital",
+        "Employee-of-the-month profiles show staff progressing from boarding technician to outpatient/pharmacy technician to lab technician — multi-role, cross-trained staffing typical of a small hospital — https://sayrebrookvet.com/employee-of-the-month/",
+        "LinkedIn lists 12 employees against an 11-50 band while the practice runs a seven-day schedule with a stated 24-hour emergency line — https://www.linkedin.com/company/sayrebrook-veterinary-hospital",
+        "Maintaining controlled drug inventory and related log books, and maintaining laboratory/treatment records, are explicit veterinary-technician duties — https://www.onetonline.org/link/summary/29-2056.00",
+        "The site's own FAQ and services pages already contain the recurring policy answers (hours, payments, what to bring, same-day availability) that staff repeat — https://sayrebrookvet.com/faqs/"
+      ],
+      "agent_design": "A retrieval agent over the practice's own material — employee handbook, SOPs, drug and anesthesia protocols, boarding medication schedules, controlled-substance log procedure, front-desk scripts, the public FAQ — answering staff questions in chat or SMS with a cited passage and a 'not covered here, ask the lead technician' fallback rather than a guess. Two modes: an onboarding path that walks a new hire through role-specific checklists (boarding tech, outpatient tech, lab tech, pharmacy) and logs completion, and a daily-operations path used at the counter. A controlled-substance log checker reviews entries against required fields and flags gaps for the technician to fix. Human approval: no clinical dosing advice is generated; anything outside the approved corpus escalates; a veterinarian or practice manager owns corpus edits and signs off on protocol changes.",
+      "why_not_DIY": "A general chatbot cannot be trusted with drug-log or boarding-medication questions because a confident wrong answer is a patient-safety and recordkeeping event. This needs a closed, version-controlled corpus owned by the practice, retrieval with citations back to the exact SOP page, access control so boarding staff and licensed technicians see different material, an audit trail, and a hard refusal boundary. That is document governance and integration work, not prompt engineering.",
+      "impact_estimate": {
+        "range": "$1,500-$5,000/yr of directly countable staff time, with the larger and unquantified value in faster ramp-up and audit-ready controlled-substance logs",
+        "assumptions": "Inference, not measured: 2-4 replacement/rotation hires per year (suggested by continuous application intake and multi-role profiles), each consuming 30-60 hours of colleague time for repeated questions in the first 90 days, of which 30-40% is avoided; plus 1-3 questions per staff member per week thereafter. Valued at the NJ veterinary assistant median of $17.82/hr and veterinary technician median of $22.66/hr (May 2023). Deliberately small: the dollar case here is weak and the case rests on compliance risk and retention, so this should not be sold as a time-saving project.",
+        "benchmark_source_url": "https://www.bls.gov/oes/2023/may/oes_nj.htm"
+      },
+      "complexity": "Low",
+      "pilot_scope": "2-4 weeks: interview the lead technician and practice manager, assemble and permission an SOP/handbook corpus, deploy the Q&A agent on one role (boarding and medical boarding, where medication scheduling is the highest-risk repeated question), and run the controlled-substance log completeness check against the last 90 days of entries as a free audit finding. Success measured as answer-accuracy against a staff-rated test set and time-to-answer for new hires."
+    }
+  ],
+  "lead_score": {
+    "pain": 24,
+    "fit": 18,
+    "ability_to_pay": 13,
+    "ease": 10,
+    "strategic": 13,
+    "total": 78,
+    "rationale": "Pain (24/30): the operational evidence is unusually concrete for a small business — no self-serve booking, a call-back confirmation loop, a stated 24-hour emergency line over an 8-7 staffed building, a cancellation list, six-way fragmented intake, and continuous replacement hiring. Discounted because there are no verified call volumes, no third-party review themes, and no no-show or abandoned-call data, so the size of the pain is inferred rather than measured. Fit (18/20): all three opportunities land in capabilities A, C and D with no hardware dependency; the practice's problem set (intake triage, scheduling, records, staff knowledge) is the consultancy's core. Ability to pay (13/20): owner-operated single site with roughly a dozen staff, AAHA accreditation, a visiting board-certified oncologist and a broad specialty menu imply a real revenue base and willingness to invest in service quality, but there is no published revenue, IT budget or software-spend signal, and independents are price-sensitive. Ease (10/15): a named owner in Dr. Chiosi and cheap access, but the practice-management system is unidentified, client email runs on a general Gmail account, and no single staff member is publicly identified as an operational decision maker — all of which lengthen discovery. Strategic (13/15): veterinary is a highly repeatable vertical with shared vendors (WebDVM/LifeLearn, VetSource), near-identical intake patterns and an accreditation network to sell through; a working reference here is reusable across hundreds of small-animal practices and adjacent dental/PT clinics. Evidence thin: no — business-level operational evidence is solid; financial and outcome evidence is thin and the impact ranges say so."
+  },
+  "best_evidence_signal": "The practice advertises 24-hour emergency availability to its main phone number while staffing the building only 8am-7pm on weekdays and shorter weekend hours, with all booking still requiring a staff call-back — https://sayrebrookvet.com/about-our-clinic/ and https://sayrebrookvet.com/about-our-clinic/appointment-request/",
+  "suggested_channel": "walk-in (drop a one-page note addressed to Dr. Chiosi at the 1400 Main St front desk, ideally mid-morning on a weekday), followed by an email to the practice address within 48 hours referencing the note and the after-hours gap",
+  "evidence_thin": false
+}

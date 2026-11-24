@@ -1,0 +1,113 @@
+{
+ "name": "Pro-Tec Systems",
+ "town": "North Brunswick",
+ "ref": "B00934",
+ "status": "operating",
+ "website": "http://www.protecsystems.net/ (HTTPS certificate fails)",
+ "what_they_do": "Engineered fire alarm, security and low-voltage systems contractor for commercial, industrial, educational, institutional and multi-family residential buildings across central NJ, southern NY and eastern PA, in business since 1988. Sells service contracts or time-and-materials work, with in-house support staff and warehoused parts.",
+ "customers": "Commercial, industrial, school/institutional and multi-family property owners and facility managers; a PO Box in Somerset handles mail.",
+ "size_signals": [
+  {
+   "signal": "Operating since 1988 with field technicians plus in-house support staff and a central parts warehouse",
+   "source_url": "http://www.protecsystems.net/"
+  },
+  {
+   "signal": "Separate sales and support mailboxes listed (sales@, support@, info@)",
+   "source_url": "http://www.protecsystems.net/"
+  },
+  {
+   "signal": "Coverage stated as NJ, southern NY and eastern PA",
+   "source_url": "http://www.protecsystems.net/"
+  }
+ ],
+ "listing": {
+  "platform": "Google Maps",
+  "rating": "5.0",
+  "reviews": "review count not shown; listing is unclaimed and has no photos",
+  "source_url": "https://www.google.com/maps/search/Pro-Tec+Systems+607+Georges+Rd+North+Brunswick+NJ"
+ },
+ "website_review": {
+  "loads": true,
+  "https": false,
+  "phone_layout": "broken",
+  "clear_offer": true,
+  "primary_cta": "none",
+  "click_to_call": false,
+  "contact_form": false,
+  "online_booking_or_quote": "none",
+  "trust_signals": "Since 1988, service contracts, vendor logos (Siemens, Telecor, Faraday, Lathem)",
+  "out_of_date_signs": "Site is a Microsoft FrontPage 5.0 build on the 'breeze' theme with table layout and gif buttons; page title is just 'Home' with no meta description; footer says Copyright 2008 and Last modified 03/25/08; an 'Under Construction' graphic is still live; the Feedback page form posts to FrontPage's _derived/nortbots.htm so it cannot actually deliver; the footer mailto points at protecsystems.org instead of .net; dozens of injected 'prada/gucci/instagram followers' spam links are hidden on every page, which points to the site being compromised and used as a link farm (inference)",
+  "search_basics": "The visible text does name fire alarm/security services and the three-state service area, but there are no service-specific pages beyond a contents page, no town targeting, no meta description and no structured data; robots.txt returns a 404",
+  "top_issues": [
+   "HTTPS certificate fails (ERR_CERT_COMMON_NAME_INVALID), so Chrome warns visitors off and some tools cannot load the site at all",
+   "Site is compromised with hidden injected spam links - a reputation and search-spam risk",
+   "Contact form is broken and the footer email address is a different domain",
+   "No mobile layout (no viewport meta, 1990s table design)",
+   "Google Business Profile unclaimed with the wrong category ('General contractor') and no hours or photos"
+  ]
+ },
+ "agent_readiness": {
+  "findable": 0,
+  "answerable": 1,
+  "bookable": 0,
+  "notes": "There is a Google listing but it is unclaimed, categorised as a general contractor, with no hours and no photos - so it is barely a signal. robots.txt is a 404 (no blocking, but no sitemap either). Crawlable prose does describe services and territory, but there is no JSON-LD, no published hours, no price or contract detail, and the only form is non-functional."
+ },
+ "operations_signals": [
+  {
+   "signal": "Support runs on generic mailboxes (info@/support@) with no ticket system or portal",
+   "source_url": "http://www.protecsystems.net/"
+  },
+  {
+   "signal": "Service contracts and T&M work imply recurring dispatch, scheduling and renewal admin",
+   "source_url": "http://www.protecsystems.net/"
+  }
+ ],
+ "top_opportunities": [
+  {
+   "opportunity": "Emergency site rescue: restore a valid SSL certificate and strip the injected spam link farm",
+   "type": "website",
+   "evidence": "Chrome reports a certificate name mismatch, and every page hides dozens of unrelated link-farm anchors",
+   "effort": "S"
+  },
+  {
+   "opportunity": "Claim and complete the Google Business Profile (hours, categories, service area, photos of installs)",
+   "type": "search",
+   "evidence": "Maps shows 'Claim this business', category 'General contractor', no hours, no photos",
+   "effort": "S"
+  },
+  {
+   "opportunity": "Replace the dead FrontPage form with a working quote/service-request form plus one page per customer segment",
+   "type": "agent readiness",
+   "evidence": "Feedback form posts to _derived/nortbots.htm; all segments share one paragraph on the home page",
+   "effort": "M"
+  }
+ ],
+ "scores": {
+  "gap_size": 5,
+  "ability_to_pay": 4,
+  "ease": 4,
+  "evidence": 4,
+  "reasons": "A 35-year-old commercial contractor with real revenue and a badly broken digital front door; the highest-value fixes (cert, spam cleanup, GBP claim) are small jobs that a solo consultant can deliver in days."
+ },
+ "sources": [
+  "http://www.protecsystems.net/",
+  "http://www.protecsystems.net/feedback.htm",
+  "http://www.protecsystems.net/robots.txt",
+  "https://www.google.com/maps/search/Pro-Tec+Systems+607+Georges+Rd+North+Brunswick+NJ"
+ ],
+ "batch": "b148",
+ "rank": 45,
+ "check": "corrected",
+ "wrong_claims": [
+  {
+   "claim": "HTTPS certificate fails with ERR_CERT_COMMON_NAME_INVALID (name mismatch)",
+   "what_is_true": "The certificate does fail, but with an incomplete chain ('unable to get local issuer certificate'), not a name mismatch; the hostname on the cert is fine, the intermediate issuer is missing.",
+   "source_url": "https://www.protecsystems.net/"
+  },
+  {
+   "claim": "dozens of injected spam links are hidden on every page",
+   "what_is_true": "The injected prada/gucci/'instagram followers'/chatgpt anchors are rendered visibly - 16px inline links with non-zero bounding boxes on the home and feedback pages (119 anchors on the home page) - not hidden. The compromise and link-farm risk still stands, and it is arguably worse because visitors see it.",
+   "source_url": "http://www.protecsystems.net/feedback.htm"
+  }
+ ]
+}

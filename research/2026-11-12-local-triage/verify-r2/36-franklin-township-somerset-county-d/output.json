@@ -1,0 +1,108 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Coverage of whole local-retail/service categories",
+      "problem": "My own searches turned up several clearly in-zone independent businesses that are not on the list: Fama's Nursery & Landscaping (1613 NJ-27, Somerset, family-owned garden centre, own website), Dolan Inc. / Jack Dolan & Sons (696 Franklin Blvd, Somerset, flooring + plumbing/remodeling, own website), Diamond Autoshop (636 Hamilton St, Somerset, own website), Country Cobbler (3035 State Route 27, Franklin Park - i.e. Franklin Township - shoe repair). Only about 60% of the eligible businesses my searches found are already listed, below the 70% bar.",
+      "fix": "Add the four businesses above and run dedicated auto-repair, flooring, garden-centre and shoe-repair passes before the list is used."
+    },
+    {
+      "claim": "Caveat: 'Shoe repair: the dedicated query returned only shops in Raritan, Old Bridge and Piscataway/Edison - zero inside Franklin Township.'",
+      "problem": "Contradicted. Country Cobbler, a shoe-repair and leather-goods shop, is listed at 3035 State Route 27, Franklin Park NJ 08823, which is inside Franklin Township (Franklin Park is a Franklin Twp section), and it has its own site countrycobbler.net (which returned HTTP 403 to our fetcher).",
+      "fix": "Correct the caveat and add Country Cobbler (Franklin Park) to group D."
+    },
+    {
+      "claim": "Shof Studio, 3031 NJ-27 Suite A, Somerset, phone (640) 267-5202",
+      "problem": "The business exists at that Route 27 address but its own contact page gives Franklin Park, NJ 08823 as the town and (929) 275-1119 as the phone. The town field is wrong (still Franklin Twp, so zone is fine) and the listed phone is contradicted by the business's own site.",
+      "fix": "Set town to Franklin Park and phone to (929) 275-1119, or drop the phone."
+    },
+    {
+      "claim": "Dry cleaning is now adequately covered (Jem, La Ritz, Plaza, Evergreen, Dependable)",
+      "problem": "Directory listings show additional Hamilton St cleaners not on the list: Value Dry Cleaner Inc. (920 Hamilton St, Ste A5), Drive In Cleaners (522 Hamilton St) and Vincent's Cleaners (847 Hamilton St). Evidence is directory-only and current operating status is unconfirmed, so these are candidates rather than confirmed misses.",
+      "fix": "Confirm status by phone or a place page and add the operating ones."
+    },
+    {
+      "claim": "New Journey MMA phone (908) 304-9444",
+      "problem": "Search results for the gym's own contact page show (732) 357-1112; the listed number could not be corroborated.",
+      "fix": "Re-check the phone on the place page or the gym's contact page before outreach."
+    },
+    {
+      "claim": "Totaram Jewelers Online as a retail prospect",
+      "problem": "Address and phone are right (17 Clyde Rd Ste 201, 732-228-6300), but the company states on its own site that it has no physical US showroom - it is an online-only jeweller with an office.",
+      "fix": "Keep, but label as online/office-only so it is not treated as a storefront prospect."
+    },
+    {
+      "claim": "W. A. Cleary (food-ingredient manufacturer) and Ziyad Distribution (food import warehouse) kept despite the food exclusion",
+      "problem": "Both are food-sector businesses; the mapper applied a B2B reading of the food exclusion and flagged it openly, but the client's intended reading is not documented in the file.",
+      "fix": "Get the exclusion reading confirmed; if 'anything food-related' is excluded, drop both."
+    },
+    {
+      "claim": "Ukrainian Cultural Center as a group D business",
+      "problem": "It is a nonprofit cultural/membership organisation that rents its hall; it is not on the literal exclusion list but sits closer to a membership body than a business.",
+      "fix": "Confirm the client wants nonprofits/community halls, otherwise drop."
+    },
+    {
+      "claim": "Township of School of the Arts Dance Education Center (202 N Center Dr) unconfirmed",
+      "problem": "The US Census geocoder resolves 202 N Center Dr, Somerset NJ 08873 to county subdivision 'Franklin township' (Franklin Center CDP), so the zone question is settled. The business itself was not independently confirmed at that address.",
+      "fix": "Replace the 'unconfirmed township' gap with a note that the address geocodes to Franklin Twp; verify the school's presence separately."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Venus Jewelers is a Somerset NJ jeweller and venusjewelers.com is its site", "source_url": "http://www.venusjewelers.com/", "result": "confirmed"},
+    {"claim": "Totaram Jewelers Online is at 17 Clyde Rd Ste 201, Somerset, phone (732) 228-6300, site totaram.com", "source_url": "https://www.totaram.com/contacts/", "result": "confirmed"},
+    {"claim": "Ada's Boutique & Multiservices is at 522 Hamilton St, Somerset, phone (640) 252-0901", "source_url": "https://www.moncheribridals.com/store-locator/US/NJ/Franklin-Township", "result": "confirmed"},
+    {"claim": "Lola's Blooms Flower & Co. is at 745 Hamilton St Ste 2, Somerset, phone (732) 509-6763, site lolasblooms.com", "source_url": "https://lolasblooms.com/", "result": "confirmed"},
+    {"claim": "Biagio's Florist is at 2135 Amwell Rd, Somerset, phone (732) 246-1850, site biagiosflorist.com", "source_url": "https://www.biagiosflorist.com/", "result": "confirmed"},
+    {"claim": "2135 Amwell Rd lies in Franklin Township", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=2135+Amwell+Rd%2C+Somerset%2C+NJ+08873&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "confirmed"},
+    {"claim": "Flower Station is a Somerset NJ florist on 9 Veronica Ave and flowerstation.com is its site", "source_url": "https://www.flowerstation.com/", "result": "confirmed"},
+    {"claim": "Lattanzio Lumber Co is at 11 Springfield Ave, Somerset, phone (732) 545-5026, site lattanziolumber.com", "source_url": "https://www.lattanziolumber.com/", "result": "confirmed"},
+    {"claim": "11 Springfield Ave lies in Franklin Township", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=11+Springfield+Ave%2C+Somerset%2C+NJ+08873&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "confirmed"},
+    {"claim": "Bilco Bike Repair is at 1695 Amwell Rd, Somerset, phone (732) 873-0212, site bilcobikes.com", "source_url": "https://www.bilcobikes.com/", "result": "confirmed"},
+    {"claim": "Gilded Raven Games is at 120 Cedar Grove Ln (Unit T13), Somerset, phone (908) 547-5440, site gildedravengames.com", "source_url": "https://gildedravengames.com/", "result": "confirmed"},
+    {"claim": "Mintybuy Furniture is a Somerset NJ furniture warehouse showroom with site mintybuy.com", "source_url": "https://www.mintybuy.com/", "result": "confirmed"},
+    {"claim": "Lorraine's Custom Embroidery and Screen Printing is at 873 Hamilton St Unit A, Somerset, phone (732) 249-8228, site lorrainesembroidery.com", "source_url": "https://www.lorrainesembroidery.com/", "result": "confirmed"},
+    {"claim": "CustomPictureFrames.com runs a framing workshop at 6 Shirley Ave, Somerset, phone 1-800-916-8770, site custompictureframes.com", "source_url": "https://www.custompictureframes.com/contact", "result": "confirmed"},
+    {"claim": "The Gleason Funeral Home is at 1360 Hamilton St, Somerset, phone (732) 545-0700", "source_url": "https://www.gleasonfuneralhome.com/", "result": "could not open"},
+    {"claim": "Plinton Curry Funeral Home runs a Somerset location at 428 Elizabeth Ave on phone (732) 469-3300 (in addition to Westfield)", "source_url": "https://www.plintoncurry.com/", "result": "confirmed"},
+    {"claim": "The Imperia by Dhaba is a Somerset NJ banquet venue and imperianj.com is its site", "source_url": "https://imperianj.com/", "result": "confirmed"},
+    {"claim": "The Marigold is an event venue at 315 Churchill Ave, Somerset, phone (732) 214-9095, site marigoldnj.com", "source_url": "https://www.marigoldnj.com/", "result": "confirmed"},
+    {"claim": "palacesomersetpark.com is the website of The Palace at Somerset Park venue", "source_url": "http://www.palacesomersetpark.com/", "result": "confirmed"},
+    {"claim": "Modern Motion Dance School is a Somerset / Franklin Township dance school, site modernmotion.org", "source_url": "https://www.modernmotion.org/", "result": "confirmed"},
+    {"claim": "Central Jersey Driving School is at 802 Hamilton St, Somerset, phone (732) 853-2375, site centraljerseydriving.com", "source_url": "https://www.nj.gov/mvc/pdf/license/drs.pdf", "result": "confirmed"},
+    {"claim": "Hikmah Books & Gifts is at 1320 Hamilton St, Somerset, phone (732) 249-7323", "source_url": "https://uecnj.org/listing/hikmah-books-gifts/", "result": "confirmed"},
+    {"claim": "Growing Seeds Learning Academy has a Somerset NJ location (site gsl.academy/somerset)", "source_url": "https://gsl.academy/somerset/", "result": "confirmed"},
+    {"claim": "Shof Studio is at 3031 NJ-27 Suite A with phone (640) 267-5202", "source_url": "https://www.shofstudio.com/contact-us", "result": "contradicted"},
+    {"claim": "202 N Center Dr, Somerset lies in Franklin Township", "source_url": "https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address=202+N+Center+Dr%2C+Somerset%2C+NJ+08873&benchmark=Public_AR_Current&vintage=Current_Current&format=json", "result": "confirmed"},
+    {"claim": "Country Cobbler, an independent shoe repair, operates at 3035 State Route 27, Franklin Park NJ", "source_url": "https://www.yellowpages.com/franklin-park-nj/shoe-repair", "result": "confirmed"},
+    {"claim": "Fama's Nursery & Landscaping is a family-owned garden centre at 1613 NJ-27, Somerset", "source_url": "https://www.famanursery.com/about-us", "result": "confirmed"},
+    {"claim": "Diamond Autoshop is an independent auto repair shop at 636 Hamilton St, Somerset", "source_url": "https://www.diamondautoshopnj.com/Somerset-auto-repair-shop-location.html", "result": "confirmed"},
+    {"claim": "Dolan Inc. / Jack Dolan & Sons is an independent flooring and home-services business at 696 Franklin Blvd, Somerset", "source_url": "https://www.jackdolanandsons.com/", "result": "confirmed"},
+    {"claim": "New Journey MMA is at 2 JFK Blvd, Somerset and still operating", "source_url": "https://newjourneymma.wixsite.com/trainmmanj/contact-us", "result": "confirmed"},
+    {"claim": "Warrior Martial Arts is at 34 Worlds Fair Dr, Somerset, phone (908) 895-6644", "source_url": "https://warriormafit.com/somerset/", "result": "confirmed"},
+    {"claim": "Mattress and Furniture Gallery trades at 853 Hamilton St, Somerset", "source_url": "https://local.yahoo.com/retail-shopping/beds-and-mattresses/nj/somerset/", "result": "confirmed"}
+  ],
+  "coverage": {
+    "searches": [
+      "garden center nursery Somerset NJ 08873",
+      "paint store Somerset NJ 08873",
+      "hardware store Somerset NJ 08873 independent",
+      "locksmith Somerset NJ 08873",
+      "mattress store Somerset NJ 08873",
+      "flooring carpet store Somerset NJ 08873",
+      "auto repair shop Somerset NJ 08873 Hamilton St",
+      "dry cleaner Somerset NJ 08873 Hamilton Street",
+      "florist Somerset NJ 08873 Hamilton Street",
+      "martial arts school Somerset NJ 08873",
+      "shoe repair Somerset NJ 08873"
+    ],
+    "eligible_found": 10,
+    "already_listed": 6,
+    "missing": [
+      {"name": "Country Cobbler", "town": "Franklin Park (Franklin Township)", "source_url": "https://www.yellowpages.com/franklin-park-nj/shoe-repair"},
+      {"name": "Fama's Nursery & Landscaping", "town": "Somerset", "source_url": "https://www.famanursery.com/about-us"},
+      {"name": "Dolan Inc. (Jack Dolan & Sons)", "town": "Somerset", "source_url": "https://www.jackdolanandsons.com/"},
+      {"name": "Diamond Autoshop", "town": "Somerset", "source_url": "https://www.diamondautoshopnj.com/Somerset-auto-repair-shop-location.html"}
+    ]
+  },
+  "confidence": "Medium"
+}

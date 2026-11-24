@@ -1,0 +1,90 @@
+{
+  "business": "B. Nathaniel Bespoke (B. Nathaniel Custom Clothier)",
+  "industry": "custom-tailoring-menswear",
+  "town": "New Brunswick",
+  "opportunities": [
+    {
+      "title": "Fix the front door and keep it fixed: one canonical listing, a phone-width site, and a booking path that confirms",
+      "capability": "G",
+      "problem": "The business is invisible and contradictory at the exact moment a customer tries to book. Every 'Book Now' button leads to a free-text contact form with no calendar, slots, prices or confirmation, so the inquiry ends with nothing shown to the visitor. The same shop publishes two phone numbers on two live websites, and three different weekday opening times across the new site, the legacy site and the review profile, so an AI assistant or a customer comparing sources gets a different answer depending on where they look. Triage also measured the site staying 768px wide on a 390px phone, cutting off nav and hero, and found no LocalBusiness structured data, so address, hours and phone are unparseable by assistants.",
+      "evidence": [
+        "'Book Now' resolves to /contact, which is Name/Email/Phone/Message only - no calendar, time slots, price list or quote builder (https://www.bnathanielbespoke.com/contact)",
+        "The contact page's button after the form resolves to /review rather than an obvious submit or confirmation, so the inquiry path ends with no next step (https://www.bnathanielbespoke.com/review)",
+        "Legacy Squarespace site still live at the same address and same Gmail, but with a different phone (732-626-5007) and weekday hours 9:30am-6:30pm vs the new site's 732-735-1480 and 9:00am (https://www.bnatbespoke.com/contact-us)",
+        "Review profile lists weekday opening at 10:00am - a third version of the hours (https://reviews.birdeye.com/b-nathaniel-bespoke-149051208081829)",
+        "No LocalBusiness structured data on the contact page; the only JSON-LD is a WebSite block, so hours/address/phone are page text only (https://www.bnathanielbespoke.com/contact)",
+        "Triage browser test: 390px viewport, document scrollWidth 768px, nav and hero cut off (https://www.bnathanielbespoke.com/) - carried over from triage.json, not re-tested in this session",
+        "The nav's 'FAQs' item anchors to /#FAQs but no question-and-answer content rendered, so the section is a heading only (https://www.bnathanielbespoke.com/)",
+        "Heritage mark reads 'EST. 1976' on the logo; the earlier note of 1974 is contradicted by the logo and legacy header (https://irp.cdn-website.com/1f72f422/dms3rep/multi/opt/bnat-logo-web-c1c43006-372w.png)"
+      ],
+      "agent_design": "Two parts. (1) A one-time repair the consultancy does: collapse the two web presences to one canonical set of facts (phone, hours, address, service menu), make the Duda site render at 390px, add LocalBusiness + Service JSON-LD matching the visible page, and replace /contact-only booking with a real scheduler that offers consultation slots (shop and home/office visit) and returns a written confirmation. (2) An agent that keeps it true: a scheduled crawler (weekly) fetches the Duda site, the legacy Squarespace site, the Birdeye/Google profile and the directory listings, diffs phone/hours/address/services against the canonical record, and files a ticket plus a one-click fix list when drift appears. Any change to hours or phone is approved by the owner before it is written to any listing; the agent never edits public listings on its own. Systems touched: Duda site, legacy Squarespace site, Birdeye profile, Google Business Profile (owner-mediated), DNS/redirects, calendar and confirmation email.",
+      "why_not_DIY": "A chatbot subscription cannot fix a 768px-locked layout, cannot write LocalBusiness schema, cannot own a redirect from the obsolete Squarespace site, and cannot reconcile hours and phone numbers across four third-party listings. The drift-keeping part needs a scheduled job with write access behind human approval, i.e. an operated agent, not a widget bolted onto one page.",
+      "impact_estimate": {
+        "range": "No revenue dollar figure is claimed - no sourced conversion benchmark exists for this trade. The measurable impact is what customers see today: a page that does not fit a phone, an inquiry that ends without a confirmation, an empty FAQ, and three conflicting opening times. The one quantifiable side is front-desk time spent answering 'what do you charge / when can I come in' calls: an assumed 3-6 staff hours a week at $20.02/hr is roughly $3,100-$6,200 a year of addressable receptionist time.",
+        "assumptions": "Hours per week of routine inquiry handling is an assumption; no call volume, web analytics or booking data was available. The $20.02/hr figure is the New Jersey mean for Receptionists and Information Clerks (BLS OES May 2025, published through O*NET local wages). Mobile-width, empty-FAQ and missing-schema findings come from triage.json and profile.json and were not re-measured here; the 768px finding should be re-checked before it is shown to the owner.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-3 weeks: one canonical facts record signed off by the owner; responsive fix verified at 390px; LocalBusiness + Service JSON-LD live and validated; one scheduler embedded on the site and on the contact page with confirmation email/SMS; obsolete-site redirect decided; a weekly drift report running across the four listings, with the first two reports delivered.",
+      "walk_in_checks": []
+    },
+    {
+      "title": "Fitting-intake and follow-up agent: turn phone-and-Gmail booking into a booked, reminded, rescheduled appointment",
+      "capability": "A",
+      "problem": "Every appointment starts as a phone call or a free-text form, and the site's own description of the process has staff calling the customer to arrange the first fitting - so scheduling, reminders and reschedules are manual outbound calls in a single-shift, single-location shop whose reviews credit named individual tailors. Home and office visits add travel coordination on top. Inquiry mail lands in a shared Gmail inbox, so there is no queue, no owner and no record of who was called back; in the spring wedding/prom peak that is exactly when an unreturned message costs a booking.",
+      "evidence": [
+        "Stated process: customer books, speaks with staff, 20+ measurements, then 'We call you for your first fitting' - fittings are initiated by outbound call (https://www.bnathanielbespoke.com/)",
+        "Pricing/booking CTA on the alterations page is 'Call Now', not an online request (https://www.bnathanielbespoke.com/alterations)",
+        "Home and office visits are a sold service, implying staff-level coordination of travel, fitting and follow-up (https://www.bnathanielbespoke.com/)",
+        "Business correspondence runs through bnatbespoke@gmail.com rather than a domain mailbox (https://www.bnathanielbespoke.com/contact)",
+        "One address, single shift (Mon-Fri to 6:30pm, Sat to 2:00pm) and reviews naming individual tailors - a small, person-dependent team where one absence bottlenecks fittings (https://www.bnathanielbespoke.com/contact)",
+        "Demand concentrates in wedding/prom season: groomsmen party packages, gown alterations and reviews describing last-minute wedding work (https://www.bnathanielbespoke.com/alterations)"
+      ],
+      "agent_design": "An intake-and-follow-up agent sitting on the inbox, the form and the phone. Triggers: new /contact submission, missed call or voicemail, unanswered email, a fitting that is 48h out with no confirmation, and a garment whose promised date is 3 days away. It classifies the request (new suit vs alteration vs wedding party vs home visit), extracts garment, date needed and budget, replies within minutes with next available consultation slots, books the slot, writes a ticket with due dates, sends reminder and 'your garment is ready' messages, and re-offers a slot when someone does not confirm. Systems touched: Duda form webhook, Gmail/Google Calendar (or the shop's existing calendar), SMS, a simple ticket board. Human approval: any price quoted outside the published starting bands, any rush promise, any discount, and any reschedule the customer pushes back on go to a person as a draft, not an auto-send. No customer ever receives a firm price the staff has not sanctioned for that garment.",
+      "why_not_DIY": "It needs write access to a live calendar and mailbox, phone/missed-call handling, retry and escalation logic, and a per-garment ticket record that survives staff turnover - plus a hard rule that no price or rush commitment leaves without a human. That is integration and autonomy, not a chatbot on the website. A no-code reminder tool also cannot classify bridal vs alteration vs groomsmen-party work, which is what determines how long the job actually takes.",
+      "impact_estimate": {
+        "range": "5-12 staff hours a week of booking, reminder and follow-up work handled with a person only on exceptions; at $20.02/hr that is roughly $5,200-$12,500 a year of admin time. The larger effect - fewer unreturned spring inquiries - is real but unquantified because no inquiry volume is published.",
+        "assumptions": "The 5-12 hours a week is an inference from the stated phone-first process, the sold home/office visit service and a single-shift front desk; no call logs or inbox data exist. $20.02/hr is the New Jersey mean for Receptionists and Information Clerks (BLS OES May 2025 via O*NET). Assumes the shop will let an agent book directly into its calendar for standard consultations and keep only exceptions for humans.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ"
+      },
+      "complexity": "High",
+      "pilot_scope": "3-4 weeks: connect the form inbox and one calendar; agent drafts and books consultations for one service line (alterations or men's suits), with all outbound customer messages reviewed for the first week and auto-send only for confirmations and reminders afterwards; reminder cadence for fittings; a shared ticket board with due dates and a nightly 'at risk this week' list; measured counters for inquiries received, replied within 15 minutes, booked, no-showed. Wedding-party and home-visit work stays manual in the pilot.",
+      "walk_in_checks": []
+    },
+    {
+      "title": "Price, turnaround and alteration-triage knowledge agent that answers the question staff answer all day",
+      "capability": "C",
+      "problem": "The current site publishes no prices and no rate card at all - not for suits, not for the 24 alteration and repair services directories attribute to the shop. Prices survive only on the abandoned legacy site ($495+ suits, $595+ tuxedos, $150+ vests), so every 'how much to take in these trousers / hem this gown / do a groomsman party of six' question is a staff conversation. The FAQ section that should absorb exactly these questions renders as an empty heading. The result: the two people who should be measuring and sewing spend their day quoting, and customers get no answer at 8pm when they are actually shopping.",
+      "evidence": [
+        "No prices anywhere on the current site; the alterations page lists services with no rates (https://www.bnathanielbespoke.com/alterations)",
+        "Starting prices exist only on the legacy site: men's suits $495+, vests $150+, tuxedos $595+ (https://www.bnatbespoke.com/shop)",
+        "Directory listing attributes 24 alteration/repair services to the shop, including bridal, bridesmaid, leather repair, uniform alterations and embroidery (https://www.newbrunswick.com/pub/listing/profile/320/shopping_amp_services/B.%2BNathaniel%2BCustom%2BClothier)",
+        "The 'FAQs' nav anchor resolves to /#FAQs but no Q&A content renders - the section is a heading only (https://www.bnathanielbespoke.com/)",
+        "Legacy site's broader menu (women, teen, kids, prom, uniforms, bulk orders) shows the range of quote questions the shop actually fields (https://www.bnatbespoke.com/)",
+        "Inquiry path is a free-text Message box, so unstructured 'how much / how long' questions land unparsed in a Gmail inbox (https://www.bnathanielbespoke.com/contact)"
+      ],
+      "agent_design": "A knowledge agent over the shop's own material: the legacy price list, the alteration service catalogue, wedding-package terms, fabric and garment-care notes, and a written turnaround table the owner signs off. It answers chat, form replies and email with a price band and a realistic earliest-ready date, asks the two or three questions that actually change the price (garment type, number of garments, does it need taking in or just shortening, date needed), and hands off to a person whenever the request falls outside the bands - a gown rebuild, a rush job, a bulk order. It also drafts the FAQ page it answers from, so the empty FAQ section finally has content. Systems touched: site chat/form, Gmail, the ticket board from the intake agent (so an answered question becomes a booked job). Human approval: every price band in the knowledge base is signed off by the owner, and the agent is never allowed to invent a number - if no band exists, it says a person will confirm.",
+      "why_not_DIY": "A generic chatbot does not know that a hem and a gown rebuild are different jobs, has no access to the price bands, cannot check the workshop's current queue to give a real ready date, and will hallucinate prices on high-ticket wedding work if ungrounded. Credibility here depends on grounded retrieval over the shop's own documents plus a hard refusal path, which is a knowledge agent with a maintained source of truth - and someone has to keep that source of truth current as fabric and labor costs move.",
+      "impact_estimate": {
+        "range": "The first reply on most price and turnaround questions, including after hours, instead of waiting for a call back: an assumed 2-5 staff hours a week at $20.75/hr is roughly $2,150-$5,400 a year of tailoring-side time, plus the current dead end where no price appears anywhere on the live site is removed. No revenue uplift is claimed; no inquiry or conversion data exists.",
+        "assumptions": "The 2-5 hours a week is an inference from 24 listed services with no published rates and a shop that sells across men's, women's, bridal, uniform and bulk work. $20.75/hr is the New Jersey mean for Tailors, Dressmakers, and Custom Sewers (BLS OES May 2025 via O*NET), used as the cost of the time currently answering these questions; if an owner or manager answers instead, the true cost is higher. Assumes the owner will sanction price bands and a turnaround table, which is the main delivery risk.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/51-6052.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-3 weeks: a signed-off price-band and turnaround table for the 10-15 highest-volume services (men's suit, hem, take-in, gown, bridesmaid, uniform, groomsmen party); the agent answering site chat and email in shadow mode for week one and live for weeks two to three; a drafted FAQ page from the same knowledge base; a weekly log of every question it could not answer, which becomes the expansion list.",
+      "walk_in_checks": []
+    }
+  ],
+  "lead_score": {
+    "pain": 24,
+    "fit": 17,
+    "ability_to_pay": 9,
+    "ease": 11,
+    "strategic": 12,
+    "total": 73,
+    "rationale": "Pain (24/30): unusually concrete for a shop this size - a Book Now path that dead-ends, three conflicting opening times, two live sites with two phone numbers, missing LocalBusiness schema and (per triage) a page that does not fit a phone. Deducted because the operational side of the pain - how many calls, how many missed inquiries - is inferred; there is no call or analytics data. Fit (17/20): the three opportunities land squarely on G (front door), A (intake, scheduling, follow-up) and C (grounded price/turnaround knowledge), and the same agent stack can be sold to the next tailor. Ability to pay (9/20): high-ticket product ($495+ suits, $595+ tuxedos, wedding parties) and 497 reviews at 4.8 show real demand, but it is one storefront on a single shift, and the 2021 NJEDA record of a $22,500 working-capital loan plus a $2,500 forgivable loan for inventory, rent and utilities reads as a thin cash buffer - budget will be small and staged. Ease (11/15): the front-door fixes are contained and fast, but the decision maker is unpublished (no owner, GM or manager named on either site, contact only via phone, Gmail or a walk-in), which adds discovery friction before any pilot is signed. Strategic (12/15): independent tailors and alteration shops are a fragmented, low-tech, high-ticket segment with near-identical front-door and intake gaps, so the G+A+C package is a repeatable template; it is not a category with hundreds of local buyers in one county, which caps it slightly. Physical/edge (E): not pursued. There is no avenues.json in this folder to build a verified camera/sensor design from, and the footprint - one showroom with a fitting area, single shift, no dock, fleet, shop floor or inventory-scale signal - gives a sensor pilot little to measure; anything touching security or theft would also fall under New Jersey's alarm-business licensing (N.J.S.A. 45:5A-2) and require a licensed contractor, which is cost without evidence of need here."
+  },
+  "best_evidence_signal": "Every 'Book Now' on the site lands on a free-text form with no calendar or confirmation, while the same shop publishes two phone numbers and three weekday opening times across its two live sites and its review profile - https://www.bnathanielbespoke.com/contact",
+  "suggested_channel": "walk-in",
+  "evidence_thin": false
+}

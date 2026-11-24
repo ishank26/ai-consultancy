@@ -1,0 +1,248 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Finding 9 evidence: 'Separately, 65% of small businesses that introduced new technology said it only allowed them to \"stay competitive\" (14% catch up, 11% get ahead)' attributed to the U.S. Chamber 2025 report.",
+      "problem": "Searching the cited Chamber 2025 PDF for 'stay competitive', 'catch up', 'get ahead', 'introduced' and '65%' does not surface this question. The 65/14/11 figures are NFIB 2025 survey data ('Did this new technology put you ahead of the competition, allow you to stay competitive, or let you catch up to the competition?' - 11% ahead, 65% stay competitive, 14% catch up), i.e. the brief attributes them to the wrong report. Numbers are right, source is wrong.",
+      "fix": "Reattribute this sentence to the NFIB 2025 Technology Survey PDF (already cited in finding 11) or delete it from the Chamber finding."
+    },
+    {
+      "claim": "Finding 17 evidence: vendor-improvement list 'better access to phone support 39%, better real-time online chat 31%, consistent experience across online/mobile/phone 29%'.",
+      "problem": "The SMB Group PDF (p.74 and the p.13-14 summary) states: consistent experience across online/mobile/phone 39%, better access to phone support 31%, better real-time chat 29%. Two labels are shifted by one slot, so 39% is mislabelled as phone support (it is channel consistency) and 31% as chat (it is phone support).",
+      "fix": "Correct to: consistent experience across channels 39%, better access to phone support 31%, better real-time chat 29%."
+    },
+    {
+      "claim": "Resource: National Restaurant Association 'Research Insight: The Future of Restaurant Technology', cost 'Not public'.",
+      "problem": "The cited landing page (restaurant.org/research-and-media/research/research-reports/research-insight-restaurant-technology/) offers a public 'Download your copy now' for the paper rather than describing it as member-only or paid. I did not submit the download form, so I could not confirm whether the PDF is ungated, but 'Not public' is not supported by the page.",
+      "fix": "Change cost to 'Free download from the report page (gating not verified)' or verify the download without registering; keep the press release as the source for the figures either way."
+    },
+    {
+      "claim": "Resource: NJSBDC entry says 'the Rutgers center is the nearest option to Milltown'.",
+      "problem": "Not on the cited page. NJSBDC's about-us page says the State Office is hosted at Rutgers Business School in Newark and that there are seven regional centers at public colleges and universities; it gives no proximity guidance for Milltown (Middlesex County). This is an inference presented as fact inside a resources entry.",
+      "fix": "Either label it '(inference: nearest listed center not verified; confirm via the county lookup)' or drop the location claim and keep 'clients can request virtual appointments', which is on the page."
+    },
+    {
+      "claim": "Chamber 2026 report rated strength 'High'.",
+      "problem": "Rating is inconsistent with the brief's own data_gaps entry ('sample size and field dates are not stated on the report page I opened') and with the Medium rating given to SMB Group's fully documented 738-interview survey. The role rule is that a survey is rated by its sample; an advocacy survey with an unpublished sample should not outrank a documented one.",
+      "fix": "Drop the Chamber 2025/2026 findings to Medium (or Medium-High) and note 'sample size/field dates not published' inline, or find the methodology page."
+    },
+    {
+      "claim": "Pitfall 5: 'About a quarter of firms have staff using AI in tasks even where the firm has not formally adopted it' (cited to CES-WP-26-25).",
+      "problem": "The paper reports that in 23% (41% employment-weighted) of firms workers use AI in work-related tasks - that is all firms, not only non-adopters. The 'even where the firm has not formally adopted it' qualifier is a separate qualitative claim about both diffusion channels.",
+      "fix": "Rewrite as: '23% of firms (41% employment-weighted) report workers using AI in tasks, and the data show worker-level use sometimes occurs without formal firm-level adoption.'"
+    },
+    {
+      "claim": "Caveat 1: 'Census created a new time series because of the level shift' after broadening the AI question wording on Nov 17, 2025.",
+      "problem": "The cited Census story confirms the wording change ('in producing goods or services' to 'in any business function') on that date but does not state that a new time series was created or that the change caused a level shift.",
+      "fix": "Soften to 'Census revised the wording in November 2025, so pre- and post-November figures are not a like-for-like series (inference from the wording change)' or cite a Census page that says so."
+    },
+    {
+      "claim": "Finding 10 evidence: NFIB survey 'fielded Mar 6-31, 2025, N=521 employers'.",
+      "problem": "N=521 is on the PDF (all bands sum to 521). The March 6-31 field dates are not in the PDF text; nfib.com article/press-release pages returned HTTP 403, so the dates are supported only by search-result summaries.",
+      "fix": "Keep N=521, and either drop the exact field dates or mark them '(dates per NFIB release, page not retrievable)'."
+    },
+    {
+      "claim": "Recommendation 2: 'at 5-19 staff firms cost-effectiveness is the single biggest factor (52-57%)'.",
+      "problem": "The by-size shortlist chart (p.71) extracts as a scrambled column of percentages, so 52% at 5-9, 57% at 10-19, 48% ease of use at 5-9 and 43% at 20-49 could not be individually confirmed. The report's summary text does support the direction ('the smaller the SMB, the more likely they are to rate easier to use and more cost-effective in the top 3').",
+      "fix": "Either quote the qualitative summary line or re-open p.71 and transcribe per-band values before using 52-57% as a number."
+    },
+    {
+      "claim": "Pitfall 5 wording: insurance-agency research 'warns staff may already be pasting client data into outside tools'.",
+      "problem": "The Insurance Business article says that even in agencies that have not formally adopted AI, employees may already be using outside tools, raising risk and data-security concerns, and that a policy protects client information. The specific act of 'pasting client data' is not stated.",
+      "fix": "Replace with 'staff may already be using outside AI tools with client information'."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "BTOS Dec 14 2025-May 3 2026: AI use hovered 17-20%, 19.8% as of May 3 2026; 37% at 250+ employees, 32% at 100-249; <20% at 4 or fewer; Information 39.7%, Finance 33.9%, Retail ~14%",
+      "source_url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BTOS: AI use rose among firms with 20+ employees and did not change significantly below 20",
+      "source_url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BTOS core question reworded from 'producing goods or services' to 'any business function' on Nov 17 2025; second supplement covers 15 functions",
+      "source_url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CES-WP-26-25: 18% of firms used AI in a business function, 32% employment-weighted, 22% expected within six months",
+      "source_url": "https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-25.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CES-WP-26-25: 57% of users integrate AI in three or fewer functions; Sales/Marketing 52%, Strategy 45%, IT 41%",
+      "source_url": "https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-25.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CES-WP-26-25: workers use AI in tasks in 23% of firms (41% employment-weighted); both top-down and bottom-up channels; 66% augment only; 2% employment decreases",
+      "source_url": "https://www.census.gov/library/working-papers/2026/adrm/CES-WP-26-25.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SBCS Third District: 37% of Third District firms used AI vs 46% nationally; 57% experimenting; 3% fully integrated",
+      "source_url": "https://www.philadelphiafed.org/community-development/credit-and-capital/how-is-ai-impacting-small-business-performance-evidence-from-the-third-district",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SBCS: 71% reported productivity increases while over 70% saw no change in labor costs, outside services, quality or sales; nationally 79% no employment change, 11% decreases, 10% increases",
+      "source_url": "https://www.philadelphiafed.org/community-development/credit-and-capital/how-is-ai-impacting-small-business-performance-evidence-from-the-third-district",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SBCS: over 20% of AI users cite accuracy, adapting to business needs, data security/privacy, training time and costs; District use-case mix 79% writing/marketing, 56% individual productivity, 51% planning, ~1/3 admin and customer service, 16% process automation, 12% coding",
+      "source_url": "https://www.philadelphiafed.org/community-development/credit-and-capital/how-is-ai-impacting-small-business-performance-evidence-from-the-third-district",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SBCS: 44% of District AI users said AI not important to core goods/services vs 37% nationally; 5,248 national and 679 District responses, fielded Sept 3-Nov 14 2025",
+      "source_url": "https://www.philadelphiafed.org/community-development/credit-and-capital/how-is-ai-impacting-small-business-performance-evidence-from-the-third-district",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Chamber 2026 (published Oct 2 2026): 66% use AI, up 8 points from 2025, ~3x the 23% of 2023; 84% plan to increase technology use over 2-3 years; 78% limiting access would slow growth; 75% hurt bottom line; six in ten worry about state privacy/AI law patchwork; 47% say AI creating jobs, 6% enabling headcount cuts",
+      "source_url": "https://www.uschamber.com/technology/2026-empowering-small-business-report",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Chamber 2025: 58% self-identified generative AI users (40% 2024, 23% 2023)",
+      "source_url": "https://www.uschamber.com/assets/documents/Empowering-Small-Business-Report-2025.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Chamber 2025: 63% mostly/entirely rely on externally developed AI, 30% balanced, 8% homegrown",
+      "source_url": "https://www.uschamber.com/assets/documents/Empowering-Small-Business-Report-2025.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Chamber 2025: 86% adopted generative AI within past two years, 55% using a year or less, 98% working to upskill employees",
+      "source_url": "https://www.uschamber.com/assets/documents/Empowering-Small-Business-Report-2025.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Chamber 2025: 80% sped up AI plans because of competitors' use (24% significantly, 56% somewhat, 18% no impact)",
+      "source_url": "https://www.uschamber.com/assets/documents/Empowering-Small-Business-Report-2025.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Chamber 2025: 65% said new technology only let them 'stay competitive', 14% catch up, 11% get ahead",
+      "source_url": "https://www.uschamber.com/assets/documents/Empowering-Small-Business-Report-2025.pdf",
+      "result": "not found"
+    },
+    {
+      "claim": "Same 65%/14%/11% 'stay competitive / catch up / ahead' figures exist in the NFIB 2025 survey (11% ahead, 65% stay competitive, 14% catch up)",
+      "source_url": "https://www.nfib.com/wp-content/uploads/2025/06/2025-NFIB-Technology-Survey.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NFIB 2025: 24% currently use AI; 21% of 1-9, 24% of 10-24, 28% of 25-49, 48% of 50+; N=521",
+      "source_url": "https://www.nfib.com/wp-content/uploads/2025/06/2025-NFIB-Technology-Survey.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NFIB 2025: 75% of non-users do not plan to use AI in next 12 months, 14% plan soon; 42% not at all familiar; 63% say AI important to industry in five years, 56% for own business",
+      "source_url": "https://www.nfib.com/wp-content/uploads/2025/06/2025-NFIB-Technology-Survey.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NFIB 2025: uses communications 29%, marketing/advertising 27%, customer service 9%, process automation 4%; 98% report no headcount change; 30% higher productivity, 8% lower operating costs",
+      "source_url": "https://www.nfib.com/wp-content/uploads/2025/06/2025-NFIB-Technology-Survey.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NFIB 2025: idea source vendor 28%, another owner 13%, employee 13% (8% at 1-9, 13% at 10-24, 21% at 25-49), other 37%; 20% too expensive, 7% too complicated, 5% financing too expensive",
+      "source_url": "https://www.nfib.com/wp-content/uploads/2025/06/2025-NFIB-Technology-Survey.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NFIB survey field dates March 6-31, 2025",
+      "source_url": "https://www.nfib.com/wp-content/uploads/2025/06/2025-NFIB-Technology-Survey.pdf",
+      "result": "not found"
+    },
+    {
+      "claim": "SMB Group 2024: 738 interviews, June 2024, 1-2,500 employees, finance/technology decision-makers; 69% sole decision-makers, 28% joint, 3% influence-only; by size 60% at 5-9, 62% at 10-19, 64% at 20-49, 58% at 50-99",
+      "source_url": "https://www.smb-gr.com/wp-content/uploads/2024/08/2024-SMB-Buying-Journey-Final.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SMB Group: tech budget determined by previous year's spend 33%, specific projects 25%, profitability 18%, ad hoc 16%, headcount 7% (N=735); stack re-evaluated every year 41%, as needed 22%, more than once a year 17%, every two years 11%",
+      "source_url": "https://www.smb-gr.com/wp-content/uploads/2024/08/2024-SMB-Buying-Journey-Final.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SMB Group shortlist drivers: most cost-effective 43%, compatibility/integration 34%, easier to use 33%, features 31%, customize 24%, faster deploy 24%, customer service 23%, reviews 22%, pre-sales trial/demo 12%",
+      "source_url": "https://www.smb-gr.com/wp-content/uploads/2024/08/2024-SMB-Buying-Journey-Final.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SMB Group by-size shortlist figures: cost-effectiveness 52% at 5-9 and 57% at 10-19; ease of use 48% at 5-9 and 43% at 20-49",
+      "source_url": "https://www.smb-gr.com/wp-content/uploads/2024/08/2024-SMB-Buying-Journey-Final.pdf",
+      "result": "not found"
+    },
+    {
+      "claim": "SMB Group vendor improvements: 39% phone support, 31% chat, 29% consistent experience across channels",
+      "source_url": "https://www.smb-gr.com/wp-content/uploads/2024/08/2024-SMB-Buying-Journey-Final.pdf",
+      "result": "contradicted"
+    },
+    {
+      "claim": "SMB Group top challenges: data privacy/security 47%, figuring out which solutions 45%, integration 44%, lack of budget 32%, takes too long to get productive 28%, not enough time to try 25%",
+      "source_url": "https://www.smb-gr.com/wp-content/uploads/2024/08/2024-SMB-Buying-Journey-Final.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SMB Group renewal drivers 52% support quality, 52% met goals, 48% cost vs budget, 44% SLAs, 43% responsiveness, 33% alternatives; success metrics 51% project goals, 49% productivity, 46% ease of integration",
+      "source_url": "https://www.smb-gr.com/wp-content/uploads/2024/08/2024-SMB-Buying-Journey-Final.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Paychex: 65% already use AI; 72% plan to invest at least $1,000 in AI in the next year; 54% cite data privacy/security as a primary challenge, 45% worry about how tech companies use data, 17% do not trust them with data; 53% accurate data would improve trust; 18% report poor data-quality difficulties; 1,129 respondents (500+ owners, 500+ HR leaders), Feb 7-17 2025, unweighted",
+      "source_url": "https://www.paychex.com/newsroom/news-releases/survey-finds-ai-is-empowering-small-businesses",
+      "result": "confirmed"
+    },
+    {
+      "claim": "National Restaurant Association: 212 operators surveyed June 18-July 18 2026; 38.6% use AI; 20% small pilots; 3.2% companywide; 42.4% cautious / 26.2% excited; barriers 48.8% cost, 43.8% fit, 41.3% workforce, 38.8% integration; concerns complexity 46.1%, cost 43.5%, customer acceptance 41.9%; training 56.5%; 77.9% expect tech at least moderately critical",
+      "source_url": "https://restaurant.org/research-and-media/media/press-releases/new-research-from-the-national-restaurant-association-identifies-connected-technology-as-restaurants/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Resource cost: restaurant research report is 'Not public'",
+      "source_url": "https://restaurant.org/research-and-media/research/research-reports/research-insight-restaurant-technology/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "CES-WP-24-16: most common reason for non-adoption is inapplicability of AI (80.9% of firms not expecting to use AI); ~164,500-business analysis sample; BTOS AI questions from September 2023 to February 2024",
+      "source_url": "https://www.census.gov/hfp/btos/downloads/CES-WP-24-16.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJSBDC: SBA-funded, one-on-one counseling and workshops, 'nearly all of our services are provided at no cost', clients must file an eRFC before service, state office hosted at Rutgers Business School Newark, seven regional centers at public colleges and universities, virtual appointments available",
+      "source_url": "https://njsbdc.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJSBDC Rutgers center is the nearest option to Milltown",
+      "source_url": "https://njsbdc.com/about-us/",
+      "result": "not found"
+    },
+    {
+      "claim": "SBA: it and its partner network 'offer free or low-cost counseling and training in your area', searchable by ZIP",
+      "source_url": "https://www.sba.gov/counseling/local-assistance/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Census BTOS data page offers AI-use downloads and visualizations by state, sector and firm size",
+      "source_url": "https://www.census.gov/hfp/btos/data",
+      "result": "could not open"
+    },
+    {
+      "claim": "Liberty Mutual 2025 Independent Agents at Work Study: more than 1,200 agency leaders and staff; over half of employees interested in AI; over one-third already integrating AI tools; three priorities - create AI policy, start from practical needs/check existing agency management system, involve employees",
+      "source_url": "https://www.insurancebusinessmag.com/us/news/technology/insurance-agents-warm-to-ai-but-uptake-remains-uneven-liberty-mutual-547648.aspx",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

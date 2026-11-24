@@ -1,0 +1,132 @@
+{
+  "business": "Emporium International Foods",
+  "website": "https://emporiumfoods.com/",
+  "town": "Old Bridge",
+  "industry": "ecommerce-retail",
+  "summary": "Emporium International Foods is a single-location Eastern European specialty market at 2280 U.S. Highway 9 in Old Bridge, NJ, open since 1995, combining a full-service deli, in-house prepared-food kitchen, bakery, catering platters and imported grocery aisles. It runs a custom multilingual online store (English, Russian, Polish, Ukrainian, German) with self-pickup and five local delivery zones, plus phone-only catering and seasonal holiday pre-orders. The operation is phone-centric for anything non-catalog (catering, urgent order help, advertising), while the storefront already publishes a read-only MCP server for product and fulfillment data.",
+  "facts": [
+    {
+      "fact": "Founded in 1995 and still trading as a single Old Bridge location at 2280 U.S. Highway 9, Old Bridge, NJ 08857; open Monday–Sunday 9:00am–8:00pm.",
+      "source_url": "https://emporiumfoods.com/pages/about-us"
+    },
+    {
+      "fact": "Store departments: full-service deli (European deli meats, kielbasa, salami, smoked meats), European dairy and farmer cheese, smoked fish/herring/caviar, in-house prepared foods, imported grocery, bread baked on premises, frozen specialties, and catering platters.",
+      "source_url": "https://emporiumfoods.com/"
+    },
+    {
+      "fact": "Online ordering offers in-store self pickup or local delivery; the FAQ states the store does not ship groceries to other states.",
+      "source_url": "https://emporiumfoods.com/faq"
+    },
+    {
+      "fact": "Local delivery is split into five distance zones (0–5, 5–11, 11–16, 16–25, 25–34 miles) with minimum carts of $110, $150, $225, $290 and $350 respectively; delivery is free in zones 1–2 and costs $20–$30 in zones 3–5.",
+      "source_url": "https://emporiumfoods.com/delivery-areas"
+    },
+    {
+      "fact": "Catering 'is ordered by phone, not through the website' — customers must call (732) 679-3100 to plan a menu or place a custom platter order.",
+      "source_url": "https://emporiumfoods.com/catering"
+    },
+    {
+      "fact": "Seasonal pre-orders run as a separate 14-item catalog (e.g., stuffed suckling pig at $395, stuffed whole goose at $325, stuffed duck, whole baked sturgeon, gefilte fish) with lead times and pickup-only flags on some items.",
+      "source_url": "https://emporiumfoods.com/pre-orders"
+    },
+    {
+      "fact": "Weekend specials are featured Friday through Sunday, and the shop homepage also promotes Thanksgiving turkey and holiday catering.",
+      "source_url": "https://emporiumfoods.com/shop"
+    },
+    {
+      "fact": "The store publishes a public, read-only MCP server ('emporium-foods-storefront', v2.0.0) at /mcp exposing tools for product search, store hours, pickup slots, delivery ZIP checks, specials and pre-orders, with a linkset catalog at /.well-known/api-catalog.",
+      "source_url": "https://emporiumfoods.com/.well-known/mcp/server-card.json"
+    },
+    {
+      "fact": "The storefront is available in five languages — English, Russian, Polish, Ukrainian and German — and publishes schema.org GroceryStore structured data with founding date 1995 and daily 09:00–20:00 hours.",
+      "source_url": "https://emporiumfoods.com/"
+    },
+    {
+      "fact": "The About page links two press features about the store: an NJ.com dining article (2007) and a New York Times Jersey/region piece (2007).",
+      "source_url": "https://emporiumfoods.com/pages/about-us"
+    },
+    {
+      "fact": "The store sells in-store advertising (commercials, banners, 3'x3' lightbox posters) and directs interested businesses to call and ask for Mark or Lenny.",
+      "source_url": "https://emporiumfoods.com/pages/about-us"
+    },
+    {
+      "fact": "Product assortment has widened from Russian specialties to foods from Poland, Germany, Ukraine, the Baltics, the Balkans and beyond, serving towns including Manalapan, Marlboro, Morganville, Englishtown, Matawan, East Brunswick, Monroe Township, Sayreville and Freehold.",
+      "source_url": "https://emporiumfoods.com/pages/about-us"
+    }
+  ],
+  "operations_signals": [
+    "Contact page pushes phone as 'fastest for same-day help' for urgent order changes, pickup questions and availability, with a fallback web form that asks for an order reference and a topic dropdown (general, product, order help, delivery/pickup, catering, feedback) — no live chat widget visible on the page (https://emporiumfoods.com/contact-us).",
+    "Catering and custom platters cannot be ordered online at all; the catering page and FAQ both route customers to the phone line (732) 679-3100 (https://emporiumfoods.com/catering).",
+    "Pickup is customer-collected: shoppers choose a time slot at checkout, then come inside to the counter and give a name or order number; staff do not bring orders to cars (https://emporiumfoods.com/.well-known/mcp/server-card.json).",
+    "Delivery is governed by ZIP-zone logic with per-zone fees and minimum carts checked before shopping, i.e. a rules-based fulfillment decision made at the cart step (https://emporiumfoods.com/delivery-areas).",
+    "Store is open seven days 9am–8pm with holiday closures tracked separately; income-generating hours run late into the evening with no stated after-hours phone coverage (https://emporiumfoods.com/faq).",
+    "Self-service account features exist online: reorder a previous order, saved/bookmarked products, and order history (https://emporiumfoods.com/faq).",
+    "Items sold by weight are ordered with an estimated weight and re-priced on actual packed weight, with a temporary authorization buffer — a reconciliation step handled on the store side (https://emporiumfoods.com/faq).",
+    "Manual workaround for custom requests: the pre-orders page tells customers to 'call the store for a custom date or large order' (https://emporiumfoods.com/pre-orders)."
+  ],
+  "hiring_signals": [
+    "No careers or employment page exists: /careers returns HTTP 404 and the XML sitemap (which lists store, shop, category, policy and pre-order pages) contains no jobs/employment URL (https://emporiumfoods.com/sitemap.xml).",
+    "Job-board checks were blocked during research (Indeed company page returned HTTP 403; LinkedIn/ZipRecruiter unreachable), so current openings could not be verified (https://www.indeed.com/cmp/Emporium-International-Foods/jobs).",
+    "Structural hints of coordination-heavy roles on the site: phone-only catering intake, phone-based advertising sales, kitchen/deli production, and per-order weight reconciliation (https://emporiumfoods.com/catering)."
+  ],
+  "review_themes": [
+    "No review content could be retrieved: Yelp returned HTTP 403 and Google/BBB/TripAdvisor and search-engine result pages were blocked or returned unusable output, so no themes are asserted (https://www.yelp.com/biz/emporium-international-foods-old-bridge)."
+  ],
+  "tech_footprint": [
+    "Custom Laravel/Livewire + Alpine.js storefront (compiled build/assets/app-*.js, Livewire runtime styles) rather than a hosted SaaS cart such as Shopify (https://emporiumfoods.com/).",
+    "Public read-only MCP server v2.0.0 plus an RFC-style api-catalog linkset, meaning the catalog, hours, pickup slots, delivery zones and specials are already exposed as agent-readable data (https://emporiumfoods.com/.well-known/mcp/server-card.json).",
+    "Multilingual storefront with per-language routes (/language/ru, /pl, /uk, /de) and localized product names in the API (https://emporiumfoods.com/).",
+    "schema.org GroceryStore JSON-LD on the homepage, plus per-product pages and category taxonomy under /product and /category (https://emporiumfoods.com/).",
+    "Cloudflare in front of the site (cdn-cgi email obfuscation) and a separate product-image CDN at cdn.emporiumfoods.com (https://emporiumfoods.com/).",
+    "Bunny Fonts CDN for webfonts; newsletter capture promoted as 'The weekly market note' (https://emporiumfoods.com/pages/secure-payment).",
+    "Content maintenance gap: the legacy /pages/delivery page still carries generic 'dispatched within 2 days ... shipped via UPS with tracking' boilerplate that contradicts the current no-out-of-state-shipping FAQ (https://emporiumfoods.com/pages/delivery)."
+  ],
+  "growth_signals": [
+    "Assortment expanded over three decades from Russian-only specialties to Poland, Germany, Ukraine, Baltics, Balkans and 'beyond', per the company's own history (https://emporiumfoods.com/pages/about-us).",
+    "Digital expansion on top of the physical market: full online store with pickup slots, five delivery zones reaching ~34 miles, pre-orders, weekend specials and a reorder flow (https://emporiumfoods.com/delivery-areas).",
+    "Holiday demand peaks are explicitly planned for: Thanksgiving turkey/holiday catering banner, seasonal pre-order campaigns with pickup windows 'and whether each still has room' (https://emporiumfoods.com/shop).",
+    "Catalog is refreshed frequently — sitemap lastmod timestamps for /new-products, /best-sellers and /specials read 2026-11-10 (https://emporiumfoods.com/sitemap.xml).",
+    "Earned media history: NJ.com and New York Times features from 2007 are still linked from the About page as credentials (https://emporiumfoods.com/pages/about-us).",
+    "Advertising inventory inside the store (wall lightbox posters, banners, in-store commercials) is sold to local businesses, an added revenue line beyond groceries (https://emporiumfoods.com/pages/about-us)."
+  ],
+  "decision_maker": "Unknown (no owner/GM title published). The About page names 'Mark' and 'Lenny' as the contacts for in-store advertising inquiries — call and ask for Mark or Lenny — but gives no titles: https://emporiumfoods.com/pages/about-us",
+  "inferences": [
+    {
+      "inference": "Phone volume is likely the main operational bottleneck, especially for catering and holiday orders.",
+      "reasoning": "The entire catalog is orderable online, yet catering, custom platters, custom pre-order dates, urgent order changes and advertising are all explicitly phone-only and all route to one number. During Friday–Sunday specials and Thanksgiving/Christmas peaks this concentrates work on whoever answers the phone."
+    },
+    {
+      "inference": "Catering intake is a strong fit for an AI agent that drafts menus and quotes, with a human approving.",
+      "reasoning": "The catering menu is large and mostly customizable (smoked-fish, deli, cheese, salad and pickled-vegetable platters, plus special-order suckling pig, goose and sturgeon), and staff currently gather guest count, occasion and date verbally on every call."
+    },
+    {
+      "inference": "They are more tech-forward than a typical independent grocer, so the sell should be back-office and operations, not a new website.",
+      "reasoning": "They already run a custom multilingual storefront, delivery-zone logic, weight reconciliation, reorder flows and even a public MCP server for agent access — the customer-facing stack is modern; the manual seams are in phone intake, menu/price maintenance and seasonal campaign setup."
+    },
+    {
+      "inference": "Merchandising and pricing updates are probably manual and small-team driven.",
+      "reasoning": "Specials are limited to a Friday–Sunday window, the specials page in this crawl showed only a single discounted product, and catalog lastmod dates move day to day — consistent with a person hand-editing prices rather than a PIM/ERP feed."
+    },
+    {
+      "inference": "After-hours enquiries go unanswered until the next morning.",
+      "reasoning": "Hours are 9am–8pm seven days with no stated after-hours line or chat; the contact form is the only non-phone channel and its confirmation text does not promise a response time. Inference, not stated by the store."
+    },
+    {
+      "inference": "Stale policy pages indicate there is no owner for content QA.",
+      "reasoning": "The /pages/delivery page still describes UPS shipping and 2-day dispatch while the FAQ says they do not ship out of state — two live pages giving contradictory answers to the same customer question."
+    },
+    {
+      "inference": "Estimated size: a single-store independent market with an in-house kitchen, deli, bakery and delivery operation — likely in the low tens of employees.",
+      "reasoning": "One address since 1995, no second location listed anywhere on the site, but eight departments including prepared foods and a delivery service. No headcount is published, so this is an estimate only."
+    }
+  ],
+  "data_gaps": [
+    "No employee count, revenue or ownership entity information published on the site; corporate registration/ownership not verified.",
+    "No customer reviews captured — Yelp returned 403, and Google, BBB and TripAdvisor were blocked or unusable; review themes therefore unknown.",
+    "No current or recent job postings found — the site has no careers page (/careers 404) and Indeed/LinkedIn/ZipRecruiter blocked automated access.",
+    "Decision-maker names beyond the two advertising contacts (Mark, Lenny) and any titles are unknown.",
+    "The linked 2007 NJ.com and New York Times articles could not be opened (HTTP 403), so their content is unverified.",
+    "No visibility into POS, ERP/inventory, CRM or email-marketing vendors, or whether delivery is in-house or third-party.",
+    "No information on kitchen/deli staffing levels, supplier relationships, or B2B/wholesale activity."
+  ]
+}

@@ -1,0 +1,454 @@
+{
+ "avenue": "construction-site-vision",
+ "one_line": "Locally installed, self-hosted camera + edge-vision systems for small NJ general and specialty contractors: PPE/fall-hazard alerts, timestamped progress and delivery logs, and after-hours intrusion alerts, priced as a fixed monthly service instead of per-camera enterprise contracts.",
+ "problem": {
+  "summary": "Small contractors carry two uninsured-in-practice risks on every active site: fall and struck-by exposure that federal OSHA fines and state workers' comp rates price directly, and theft/vandalism of tools, materials and equipment that is rarely recovered. Today both are handled by hand: a superintendent walking the site, a phone camera roll for progress photos, paper delivery tickets, and (if anything) a consumer camera pointed at the gate that nobody reviews until after a loss. The evidence that cameras change safety behaviour in construction specifically is thin and mostly vendor-reported; the evidence that falls dominate both fatalities and citation exposure is strong and government-published.",
+  "evidence": [
+   {
+    "fact": "1,075 of 5,283 U.S. work fatalities in 2023 were in construction (about 1 in 5); falls, slips and trips accounted for 421 of the 1,075 (39.2%).",
+    "year": "2023 data, published 2025",
+    "source_url": "https://www.bls.gov/opub/ted/2025/fatal-falls-in-the-construction-industry-in-2023.htm"
+   },
+   {
+    "fact": "Construction accounted for 47.8% of all fatal falls, slips and trips in the U.S. in 2023; within construction, roofing contractors had 110 fall deaths (26.0%) and residential building construction 62 (14.7%).",
+    "year": "2023 data, published 2025",
+    "source_url": "https://www.bls.gov/opub/ted/2025/fatal-falls-in-the-construction-industry-in-2023.htm"
+   },
+   {
+    "fact": "Other construction sub-trades with fall fatalities in 2023: painting and wall covering 29, framing 27, electrical 27, plumbing/HVAC 24, commercial and institutional building 18, drywall and insulation 13, masonry 12.",
+    "year": "2023 data, published 2025",
+    "source_url": "https://www.bls.gov/opub/ted/2025/fatal-falls-in-the-construction-industry-in-2023.htm"
+   },
+   {
+    "fact": "OSHA issued 26,005 construction citations in FY2024 (Oct 2023-Sep 2024); the single most-cited construction standard was duty to have fall protection (29 CFR 1926.501) with 6,557 citations, and fall-protection citations carried about $48 million in penalties.",
+    "year": "FY2024",
+    "source_url": "https://www.equipmentworld.com/regulations/safety-compliance/article/15707920/oshas-top-10-construction-violations-in-2024"
+   },
+   {
+    "fact": "The maximum federal OSHA penalty for a serious violation rose to $16,550 per violation effective 15 January 2025 (willful/repeated violations are far higher).",
+    "year": "2025",
+    "source_url": "https://www.osha.gov/news/newsreleases/osha-trade-release/20250114"
+   },
+   {
+    "fact": "A study of more than 15,000 construction-site theft incidents in the FBI's NIBRS data found contractors lost about $6,000 per incident on average, trucks averaged about $42,000, and recovery across all stolen targets was under 7%.",
+    "year": "2019",
+    "source_url": "https://etsu.elsevierpure.com/en/publications/an-exploratory-look-at-thefts-from-construction-sites/"
+   },
+   {
+    "fact": "NICB and the National Equipment Register estimate theft of heavy construction equipment costs $300 million to $1 billion per year in the U.S., excluding tool theft and damage during the theft.",
+    "year": "estimate cited in 2022 article (underlying NICB/NER data older)",
+    "source_url": "https://usassure.com/resources/articles/tracking-high-value-construction-equipment/"
+   },
+   {
+    "fact": "A survey of 739 construction workers and managers found 78% said their organization had experienced jobsite theft. Vendor-run survey; directionally useful only.",
+    "year": "2020",
+    "source_url": "https://www.truelook.com/blog/construction-site-security/key-findings-from-truelooks-jobsite-security-survey"
+   },
+   {
+    "fact": "Employers with 10 or fewer employees company-wide in the prior calendar year are generally exempt from keeping OSHA 300/300A/301 logs, which weakens the compliance-recordkeeping argument for the smallest contractors but does not remove fatality/severe-injury reporting duties.",
+    "year": "current regulation (29 CFR 1904.1)",
+    "source_url": "https://www.osha.gov/laws-regs/regulations/standardnumber/1904/1904.1"
+   },
+   {
+    "fact": "Progress and delivery documentation is still largely manual photo capture: the low end of the market is phone-based photo apps priced per user (CompanyCam Core $79/month for 1-2 users, Crew $149/month for 3 users).",
+    "year": "2026 pricing page",
+    "source_url": "https://help.companycam.com/en/articles/14477655-companycam-plans-explained"
+   }
+  ]
+ },
+ "buyers": [
+  {
+   "business_type": "Roofing contractors",
+   "naics": "238160",
+   "size_where_it_matters": "5-50 staff; matters from the first crew working at height on more than one site at a time",
+   "why": "Largest single share of construction fall deaths in 2023 (110 of 423 construction fall deaths), and the trade most exposed to 1926.501 fall-protection citations. Progress-photo logging is also a core need for insurance and warranty disputes."
+  },
+  {
+   "business_type": "Residential building construction / homebuilders and remodelers",
+   "naics": "236115, 236118",
+   "size_where_it_matters": "10-100 staff with 2-10 active addresses",
+   "why": "62 fall deaths in 2023 (14.7% of construction fall deaths). Multiple scattered sites is exactly where a superintendent cannot walk every site daily, which is where remote visual checks pay."
+  },
+  {
+   "business_type": "Framing contractors",
+   "naics": "238130",
+   "size_where_it_matters": "10-75 staff",
+   "why": "27 fall deaths in 2023; work is inherently at height and open-edge, and fall protection is frequently cited (29 CFR 1926.501 is OSHA's #1 construction citation)."
+  },
+  {
+   "business_type": "Electrical and plumbing/HVAC specialty contractors",
+   "naics": "238210, 238220",
+   "size_where_it_matters": "20-200 staff with multiple crews and service vans",
+   "why": "27 and 24 fall deaths respectively in 2023; larger specialty firms also have equipment yards and van/tool inventory at theft risk and are more likely to have a safety director who owns a budget."
+  },
+  {
+   "business_type": "Commercial and institutional building contractors (small GCs/CMs)",
+   "naics": "236220",
+   "size_where_it_matters": "20-200 staff running 1-5 concurrent projects",
+   "why": "A GC is the party that controls site access, so it is the natural camera buyer; also the party most exposed to multi-employer citation and to owner/insurer requirements for site documentation."
+  },
+  {
+   "business_type": "Site preparation, excavation and utility contractors",
+   "naics": "238910",
+   "size_where_it_matters": "10-100 staff with a yard full of iron",
+   "why": "Highest-value mobile equipment per employee; theft of machines and trailers is the loss this segment actually feels, and yard + gate cameras are the cheapest available mitigation."
+  },
+  {
+   "business_type": "Masonry, drywall, painting and wall covering",
+   "naics": "238140, 238310, 238320",
+   "size_where_it_matters": "10-50 staff",
+   "why": "Smaller fall-death counts (12, 13, 29 in 2023) but very high head-count per site, so PPE compliance imaging covers many workers per camera; lowest ability to pay, so best served by the cheapest tier."
+  }
+ ],
+ "existing_solutions": [
+  {
+   "vendor": "Evercam",
+   "product": "Construction camera software (TLC package), PPE Detection Software, 4K camera kits",
+   "what_it_does": "4K time-lapse and live view, project documentation, BIM compare, drone/360 capture, gate monitoring with ANPR, PPE detection software, plus rented camera kits (mains, solar, generator, PTZ, mobile security unit).",
+   "pricing": "Public price list: software $500/month per camera; PPE detection software $750/month; 4K fixed kit $3,700/month; installed 4K mains $4,850/month; gate report kit $10,750/month installed",
+   "source_url": "https://www.evercam.com/pricing-list"
+  },
+  {
+   "vendor": "Samsara",
+   "product": "Site Visibility + SG1-G site gateway",
+   "what_it_does": "Puts AI on third-party IP camera streams without replacing them; real-time alerts for restricted-zone entry and equipment damage, AI video search, at least 30 days local recording with clips saved to cloud, coaching library.",
+   "pricing": "Unknown (quote via sales)",
+   "source_url": "https://www.samsara.com/products/cameras/site-visibility"
+  },
+  {
+   "vendor": "EarthCam",
+   "product": "ConstructionCam (4K)",
+   "what_it_does": "Managed construction site cameras, live streaming, time-lapse, project documentation and monitoring services.",
+   "pricing": "Unknown (quote only on product page); a third-party cost guide estimates $130-$600+ per camera per month for proprietary construction camera services",
+   "source_url": "https://client.earthcam.com/products-solutions/constructioncam/"
+  },
+  {
+   "vendor": "CompanyCam",
+   "product": "Photo documentation app",
+   "what_it_does": "Timestamped, GPS-tagged job photos organized by project, reports, client sharing, AI credits on higher tiers; phone-based, no fixed cameras.",
+   "pricing": "Core $79/month (1-2 users), Crew $149/month (3 users), Scale $299/month; extra users $34/month",
+   "source_url": "https://help.companycam.com/en/articles/14477655-companycam-plans-explained"
+  },
+  {
+   "vendor": "OpenSpace",
+   "product": "360 capture / visual documentation platform",
+   "what_it_does": "Walks the site with a 360 camera to build a navigable visual record tied to plans; used for progress and dispute documentation.",
+   "pricing": "Custom quote; reported $10,000 minimum for the SMB tier",
+   "source_url": "https://www.openspace.ai/pricing/"
+  },
+  {
+   "vendor": "ARSA",
+   "product": "Basic Safety Guard (software or AI Box appliance)",
+   "what_it_does": "On-prem PPE detection (hard hat present/absent, vest, restricted area) on existing ONVIF/RTSP cameras; alerts on site, 3-day default continuous recording, anonymous by default, optional face recognition of own workers with a consent record; vendor claims 98.2% of hard-hat decisions correct on the SHWD benchmark (vendor claim, Low).",
+   "pricing": "$48 per camera per month for the software tier; 3-, 12- and 25-camera appliance options (appliance price Unknown)",
+   "source_url": "https://arsa.technology/products/arsa-ai-video-analytics-software/basic-safety-guard/"
+  },
+  {
+   "vendor": "Silarius Security",
+   "product": "Silarius Cloud hard hat detection",
+   "what_it_does": "Real-time \"no hard hat\" alerts and event search on Silarius X or existing cameras; managed in the same app as live view and playback.",
+   "pricing": "$8.00 per camera per month",
+   "source_url": "https://silariussecurity.com/use-cases/hard-hat-detection"
+  },
+  {
+   "vendor": "NationCam",
+   "product": "Axis-based managed construction camera service",
+   "what_it_does": "Rented or customer-owned Axis cameras with a hosted platform, time-lapse, live view; cellular/satellite connectivity add-on per site.",
+   "pricing": "Platform from $79/camera/month; camera rental $39/month fixed, $89 PTZ, $139 panoramic; cellular from $60/month per site; installation quoted",
+   "source_url": "https://nationcam.com/construction"
+  },
+  {
+   "vendor": "Triax Technologies",
+   "product": "Spot-r (wearable)",
+   "what_it_does": "Waist-worn clip that detects worker falls and lets workers raise alarms over an on-site mesh network; zone-level worker location, mustering, plus EquipTag equipment tracking. Not a camera product; the main substitute for fall-event detection where cameras cannot see the worker.",
+   "pricing": "Unknown (quote)",
+   "source_url": "https://docs.lib.purdue.edu/ectfs/236/"
+  }
+ ],
+ "gap_for_local_installer": "The market is split between enterprise managed services that publish per-camera prices a small contractor cannot absorb (Evercam $500/camera/month software, $3,700/month kits; EarthCam and Samsara quote-only) and cheap self-serve detectors ($8/camera/month Silarius, $48/camera/month on-prem ARSA) that assume the customer has cameras, networking, someone to tune thresholds, and someone to read alerts. Nobody local does the middle: site survey, camera placement for the actual fall/PPE geometry, calibration on that customer's footage for a week, a human-reviewed weekly report, and a truck that shows up when a camera dies. A Milltown-based installer can also bundle the things a cloud vendor will not: yard and gate cameras at the shop, delivery-ticket photo capture tied to the ticket, and integration with whatever phone-photo habit the crew already has (CompanyCam-class tools), at a flat $300-$900/site/month instead of $2,000+. Second-order gap: general contractors who must document safety for owners and insurers but have no in-house safety staff.",
+ "technical_approach": {
+  "established_pattern": "ONVIF/RTSP cameras -> PoE switch -> edge box on site running an object detector per frame (YOLO-family person/PPE classes) -> multi-object tracker to keep identities across frames -> zone and association rules (e.g. person with no hard-hat class overlapping them inside a defined work zone for more than N seconds) -> event clip + snapshot -> alert to supervisor phone/email -> nightly or on-demand review of low-confidence events by a small vision-language model, which writes a plain-language description for the log -> local recording with 14-30 day retention and a weekly PDF report. Recording and detection stay on site (no per-camera cloud bill); only alert clips and report images leave the network. This mirrors what Samsara, ARSA and Evercam do architecturally, minus the cloud per-camera pricing.",
+  "models_and_tools": [
+   {
+    "name": "Frigate (open source NVR)",
+    "role": "Camera ingest, motion gating, object detection, zones, event recording and MQTT alerts; supports ONNX/YOLO exports and OpenVINO/Hailo/NVIDIA accelerators. Note: it detects objects, it does not decide PPE compliance - the person-to-PPE association logic has to be written on top.",
+    "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+   },
+   {
+    "name": "Frigate hardware planning guidance",
+    "role": "Sizing rules for an on-site box: Intel CPU with AVX2, 4 GB RAM minimum with a dedicated detector, 8 GB practical, 16 GB for larger systems; hardware video decode matters as much as detection.",
+    "source_url": "https://docs.frigate.video/frigate/planning_setup/"
+   },
+   {
+    "name": "YOLO-family detectors (Ultralytics YOLOv8/YOLO11 and derivatives)",
+    "role": "The workhorse for person, hard-hat, hi-vis vest, harness and lanyard classes; published PPE studies use YOLO variants, YOLACT and Efficient-YOLOv5 backbones.",
+    "source_url": "https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/ipr2.12696"
+   },
+   {
+    "name": "Qwen3-VL-2B-Instruct",
+    "role": "Small vision-language model for exception review: describe an alert clip in words (\"two workers on the second-floor edge, neither appears to have a lanyard attached\") so a non-technical superintendent can triage on a phone; 2B dense variant is the edge-friendly size.",
+    "source_url": "https://arxiv.org/abs/2511.21631"
+   },
+   {
+    "name": "LFM2.5-VL-3B (Liquid AI)",
+    "role": "Alternative edge VLM for the same exception-review role, with 1.6B and 450M variants for tighter devices; Liquid AI documents local deployment via llama.cpp, MLX and vLLM.",
+    "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b"
+   },
+   {
+    "name": "llama.cpp",
+    "role": "Runtime to serve the quantised VLM on the on-site box or a small office GPU, keeping exception descriptions local.",
+    "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b"
+   },
+   {
+    "name": "Home Assistant",
+    "role": "Optional glue for small contractors who want alerts, dashboards and automations (SMS, siren, gate relay) without a custom app; Frigate integrates via MQTT.",
+    "source_url": "https://docs.frigate.video/frigate/installation/"
+   }
+  ],
+  "hardware": [
+   {
+    "item": "NVIDIA Jetson Orin Nano Super Developer Kit (edge inference box)",
+    "approx_cost": "$249 (NVIDIA launch price, 2025)",
+    "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/"
+   },
+   {
+    "item": "Raspberry Pi AI Kit (Hailo-8L 13 TOPS accelerator + M.2 HAT+)",
+    "approx_cost": "$70 launch price",
+    "source_url": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/"
+   },
+   {
+    "item": "Rented fixed construction camera (managed-service reference price)",
+    "approx_cost": "$39/month fixed, $89/month PTZ, $139/month panoramic; platform $79/camera/month; cellular from $60/month per site",
+    "source_url": "https://nationcam.com/construction"
+   },
+   {
+    "item": "PoE IP camera (UniFi G5 Bullet, outdoor PoE) - unit price not confirmed from the store page",
+    "approx_cost": "Unknown",
+    "source_url": "https://store.ui.com/us/en/products/uvc-g5-bullet"
+   },
+   {
+    "item": "Enterprise comparison point for a full installed 4K camera position",
+    "approx_cost": "$4,850/month installed (Evercam 4K mains); $3,700/month for the 4K fixed kit alone",
+    "source_url": "https://www.evercam.com/pricing-list"
+   }
+  ],
+  "fine_tuning_needed": "Partly. Generic person detection works out of the box. Everything that makes money - hard-hat vs. no hard-hat, hi-vis colour, harness worn vs. lanyard clipped to an anchor, 'person in the excavation exclusion zone' - needs either a fine-tuned detector or per-site rule calibration. Public PPE datasets (e.g. SHWD, used by ARSA for its 98.2% claim) get you 80-90% of the way; the last 10-20% comes from 1-2 weeks of footage from the customer's own cameras, angles and lighting. A small VLM can cover exceptions without fine-tuning but is too slow/expensive per frame on a Jetson-class box to replace the detector.",
+  "data_needed": "500-2,000 labelled frames per site from the actual camera positions, stratified across morning/afternoon/night, sun glare, rain, and winter low sun; hard negatives (workers carrying hard hats, hoods, bicycle helmets, hi-vis on a truck seat) to cut false positives; 2-4 weeks of unlabelled footage for threshold tuning and zone masks; ground-truth spot audits by the superintendent to measure precision/recall against reality rather than a benchmark. Labelling effort is the main variable cost.",
+  "difficulty": "Medium"
+ },
+ "measured_outcomes": [
+  {
+   "finding": "Computer-vision harness detection reached 80% precision and 98% recall for identifying workers not wearing a harness, with worker detection at 99% precision / 95% recall.",
+   "year": "2018",
+   "sample": "Construction-site image dataset; abstract does not state dataset size",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://doi.org/10.1016/j.autcon.2018.02.018"
+  },
+  {
+   "finding": "An Efficient-YOLOv5 harness-use detector reported 97.7% precision, 89.3% recall and 94% mAP.",
+   "year": "2022",
+   "sample": "3,300 images",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://ietresearch.onlinelibrary.wiley.com/doi/10.1049/ipr2.12696"
+  },
+  {
+   "finding": "PPE detection on surveillance-camera footage scored 92.36% mAP on one test set but only 66.70% on a second - a concrete demonstration that accuracy collapses when the site, camera or lighting changes.",
+   "year": "2024",
+   "sample": "Two test sets of surveillance-camera footage (sizes per paper)",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://ieeexplore.ieee.org/abstract/document/10654263"
+  },
+  {
+   "finding": "A YOLACT + DeepSORT PPE-monitoring framework reached 91.3% accuracy for PPE-wearing status and 66.4 mAP@50 for detection.",
+   "year": "2023",
+   "sample": "Construction-site PPE dataset (sizes per paper)",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://academic.oup.com/jcde/article/10/2/905/7069329"
+  },
+  {
+   "finding": "A drone-plus-deep-learning work-at-height system reported 90% overall accuracy (97.2% precision, 90.2% recall) for harness, lifeline and helmet checks, with roughly 12 seconds average violation-detection time.",
+   "year": "2023 (published)",
+   "sample": "Lab and field trials described in the paper",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://khazna.ku.ac.ae/en/publications/real-time-monitoring-of-work-at-height-safety-hazards-in-construc/"
+  },
+  {
+   "finding": "A systematic review of CCTV found a 51% reduction in crime in car parks across six evaluations - mostly vehicle crime, and five of six schemes combined CCTV with other measures, so the effect is not attributable to cameras alone.",
+   "year": "2009",
+   "sample": "Six car-park evaluations within a larger meta-analysis of 44 studies",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://doi.org/10.4073/csr.2008.17"
+  },
+  {
+   "finding": "Construction theft recovery across all stolen targets was under 7% of incidents (trucks the outlier at 55%), which is the baseline cameras would have to beat for theft to be a paying use case.",
+   "year": "2019",
+   "sample": "15,000+ NIBRS construction-site theft incidents",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://etsu.elsevierpure.com/en/publications/an-exploratory-look-at-thefts-from-construction-sites/"
+  },
+  {
+   "finding": "Smartvid.io reported that its model predicted 20% of incidents at about 80% accuracy on three years of unseen data, and the customer (Suffolk) estimated $1.4M-$3.6M in annual avoided incident costs across a 50-project portfolio. This is a projected saving, not an observed incident reduction.",
+   "year": "2021 (case study)",
+   "sample": "One contractor, 50-project portfolio, 3 years of historical data",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://www.casestudies.com/company/smartvidio/case-study/how-suffolk-smartvidio-learned-to-predict-and-prevent-construction-incidents"
+  },
+  {
+   "finding": "No study found that isolates a construction-site camera installation and reports a measured reduction in injuries or OSHA recordables; vendor claims of 28-50% incident reductions are unattributed to a specific deployment with a control group.",
+   "year": "n/a",
+   "sample": "n/a",
+   "study_type": "industry",
+   "strength": "Low",
+   "source_url": "https://www.prnewswire.com/news-releases/smartvidio-raises-5m-from-sony-innovation-fund-ia-capital-and-others-to-sharply-reduce-accidents-on-architecture-engineering--construction-jobsites-301189031.html"
+  }
+ ],
+ "legal_privacy": [
+  {
+   "issue": "Audio recording of workers on site",
+   "rule_or_precedent": "N.J.S.A. 2A:156A-4(d) makes interception lawful only where the person is a party to the communication or one party has given prior consent. A fixed camera with a live microphone recording conversations among workers, with no party consent, is the risky configuration. Default recommendation: disable audio entirely.",
+   "confirmed": true,
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239"
+  },
+  {
+   "issue": "Cameras covering areas where people undress or expect privacy (site trailers, porta-john approaches, changing areas)",
+   "rule_or_precedent": "N.J.S.A. 2C:14-9 makes it a crime of the third or fourth degree to observe, film or record a person without consent where a reasonable person would not expect to be observed and intimate parts may be exposed; prior notice plus a lawful purpose is an affirmative defense. Cameras must be aimed away from these areas.",
+   "confirmed": true,
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/2785/2918"
+  },
+  {
+   "issue": "Whether New Jersey requires employers to give notice before ordinary video-only workplace cameras",
+   "rule_or_precedent": "No New Jersey statute or regulation requiring general employer notice for ordinary fixed video cameras was located. Notice is still recommended as the practical defense under 2C:14-9(d) and as the cheapest way to avoid a monitoring grievance. Treat as unconfirmed rather than settled.",
+   "confirmed": false,
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/2785/2918"
+  },
+  {
+   "issue": "Face recognition / biometric identification of workers",
+   "rule_or_precedent": "No enacted New Jersey biometric-privacy statute specific to employers was found as of November 2026. A4981/S4075 (workplace electronic monitoring including biometric tools) is pending, and A3929 (biometric surveillance at business premises, consumer-facing) passed the Assembly in March 2026 and was referred to a Senate committee. ARSA's product design (anonymous by default, optional face recognition with a consent record) is a reasonable template. Recommendation: do not sell face recognition in this pilot.",
+   "confirmed": true,
+   "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A4981/bill-text"
+  },
+  {
+   "issue": "Tracking devices on employee-used vehicles (relevant if cameras are mounted on trucks or equipment)",
+   "rule_or_precedent": "New Jersey P.L. 2021, c.449 requires written notice for use of a tracking device on a vehicle; a fixed jobsite camera is outside that rule, a camera/telematics unit on a company truck an employee takes home is not.",
+   "confirmed": true,
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM"
+  },
+  {
+   "issue": "Using cameras in a way that chills organizing or complaints about working conditions",
+   "rule_or_precedent": "Section 7 of the NLRA protects concerted activity; surveillance or the impression of surveillance of union or protected activity is an unfair labor practice. Cameras aimed at the gate or laydown yard are fine; cameras used to identify who talks to whom are not.",
+   "confirmed": true,
+   "source_url": "https://www.nlrb.gov/about-nlrb/rights-we-protect/the-law/employees/concerted-activity-0"
+  },
+  {
+   "issue": "Which OSHA rules apply in New Jersey",
+   "rule_or_precedent": "New Jersey's OSHA-approved State Plan (PEOSH) covers state and local government employees only; private-sector contractors in Middlesex County are under federal OSHA jurisdiction, so 29 CFR 1926 and 1904 apply directly.",
+   "confirmed": true,
+   "source_url": "https://www.osha.gov/stateplans/nj"
+  },
+  {
+   "issue": "Reporting obligations that a camera system could help or hurt",
+   "rule_or_precedent": "29 CFR 1904.39 requires reporting work-related fatalities within 8 hours and in-patient hospitalizations, amputations or eye loss within 24 hours. Footage that shows the delay between an incident and the report becomes relevant evidence.",
+   "confirmed": true,
+   "source_url": "https://www.osha.gov/report"
+  },
+  {
+   "issue": "Drone-based progress capture over a site",
+   "rule_or_precedent": "Commercial drone flights fall under FAA Part 107: remote pilot certificate, aircraft registration, visual line of sight, generally at or below 400 ft AGL, and no flight directly over people unless the operation meets an allowed category. Airspace authorization may be needed near Middlesex County airports/heliports.",
+   "confirmed": true,
+   "source_url": "https://www.faa.gov/newsroom/small-unmanned-aircraft-systems-uas-regulations-part-107"
+  },
+  {
+   "issue": "Whether an NJ municipality or insurer can require site cameras",
+   "rule_or_precedent": "No statewide New Jersey camera mandate was found; the Uniform Construction Code (N.J.A.C. 5:23) does not impose a general camera requirement. A municipal ordinance, permit condition, fire official, owner or insurer can still require one, and NJ DCA fire-watch requirements for certain large new construction can be combined with site-security duties. Unconfirmed at the Milltown level.",
+   "confirmed": false,
+   "source_url": "https://www.nj.gov/dca/codes/codreg/ucc.shtml"
+  },
+  {
+   "issue": "Discoverability of footage in injury litigation and workers' comp claims",
+   "rule_or_precedent": "Footage becomes a record the contractor must keep and may have to produce; a system that records selectively, overwrites quickly and logs who accessed clips is safer than unlimited retention. (inference - no specific NJ rule verified on retention periods; no statutory retention period for private workplace video was located)",
+   "confirmed": false,
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239"
+  },
+  {
+   "issue": "False accusation risk from automated PPE alerts",
+   "rule_or_precedent": "An alert that names a worker as non-compliant when the detector is wrong is a discipline and defamation exposure. Published cross-site accuracy drops (92% to 67% mAP) make this a live risk; mitigation is human review before any disciplinary use and never using the system as the sole basis for discipline. (inference from measured accuracy figures)",
+   "confirmed": false,
+   "source_url": "https://ieeexplore.ieee.org/abstract/document/10654263"
+  }
+ ],
+ "prospecting_signals": {
+  "public": [
+   "Trade mix: roofing (NAICS 238160) and residential builders (236115/236118) are the highest fall-death categories in BLS data - prioritize them.",
+   "Multiple active project addresses on the company website (a scattered-site contractor cannot walk every site daily).",
+   "Job postings for a safety director, site safety coordinator or CHSO - a company already spending on safety has a budget line to redirect.",
+   "OSHA inspection or citation history for the establishment (public enforcement data) - cited contractors are motivated buyers right after a citation.",
+   "Any public severe-injury report or news item about a fall or struck-by at one of their sites.",
+   "Google/Yelp reviews that mention jobsite mess, unsafe crews, no-shows, or damaged property - a proxy for supervision gaps (inference).",
+   "Equipment listings or fleet pages showing owned iron (excavators, skid steers, trailers) - yard value at risk from theft.",
+   "Insurance or owner requirements published in bid documents (some public bids require site documentation or monitoring).",
+   "Company size 15-200 employees: big enough to have multiple crews and a real workers' comp premium, small enough to have no in-house IT."
+  ],
+  "walk_in": [
+   "Are the cameras on the fence/trailer real and recording, or dummy housings? Ask who reviewed the last incident.",
+   "Is there a written log of what happened after the last near-miss, or just a phone camera roll?",
+   "Who signs delivery tickets, and is there a photo of the load attached to the ticket?",
+   "Are hard hats and hi-vis actually worn at the gate at 7am, or only when the owner visits?",
+   "Is anyone working at height without a visible tie-off point, ladder extension or guardrail?",
+   "Is equipment left overnight at the site or hauled to a yard, and is the yard lit and covered?",
+   "Does the site trailer have power and internet, or would the system need LTE and solar?",
+   "How many active sites does the superintendent cover in a week, and how many hours are spent driving between them?"
+  ]
+ },
+ "pilot": {
+  "scope": "One active site selected with the customer, 4-6 weeks. Install 3-4 PoE cameras: one at the gate/entrance, one covering the primary work-at-height face, one covering the material laydown/delivery area, one covering the equipment parking area. Deliver four functions: (1) hard-hat/hi-vis zone alerts to the superintendent's phone with a 60-second review clip; (2) a timestamped daily progress photo set at fixed camera positions plus a weekly time-lapse; (3) delivery verification - a timestamped gate photo of every truck and load, attached to the delivery ticket number; (4) after-hours person/vehicle alerts in the equipment zone. Audio disabled, face recognition off, signage posted, 30-day retention, weekly 1-page report with alert counts and reviewed outcomes.",
+  "hardware": "4 outdoor PoE IP cameras on a small PoE switch; on-site edge box (Jetson Orin Nano Super class or a mini-PC with Intel iGPU/OpenVINO) running Frigate with a fine-tuned YOLO PPE model plus a small VLM (Qwen3-VL-2B or LFM2.5-VL-3B quantised under llama.cpp) for exception descriptions; 2 TB SSD for 30-day retention; LTE router or customer Wi-Fi if the site has no service; small UPS; a mount/mast solution that does not require penetration where the site forbids it. Materials roughly $1,200-$2,500 at current component prices (Jetson $249, Hailo kit $70, cameras and PoE switch the main variable) - inference from component prices, not a quote.",
+  "success_metric": "Measured against a 1-week manual baseline on the same site: (a) alert precision of at least 80% on human-reviewed alerts (i.e. no more than 1 in 5 alerts judged wrong), (b) at least 90% of gate entries during work hours captured with a usable photo, (c) 100% of deliveries logged with a timestamped gate photo and ticket number, (d) median alert-to-phone latency under 60 seconds, (e) at least 3 supervisor interventions traceable to an alert in 4 weeks, (f) superintendent reports the weekly report saves at least 1 hour of walking/documenting per week. These are pilot design targets, not benchmarks from a published study.",
+  "cost_range": "Roughly $6,000-$12,000 for a 4-6 week single-site pilot including hardware, install, labelling/calibration and weekly reporting (assumes 60-100 hours of setup and tuning at $75-$125/hour, 4 cameras, one site within 20 miles of Milltown). If the customer owns the cameras and network, $2,500-$5,000. Ongoing run rate after pilot: $400-$900 per site per month for hosting-free local operation plus monthly review and one truck roll, compared with Evercam's published $500/camera/month software plus $3,700/month kit. Assumptions: no union site-access complications, site has power, customer provides a superintendent for 2 hours per week of ground truth.",
+  "assumptions": "One site; 4 cameras; daylight and dusk operation only (no night PTZ work in pilot); site has 120V power at the trailer; cellular data plan available if no internet; customer can name one accountable reviewer; footage stays local; no audio; no face recognition; no drone flights."
+ },
+ "fit_score": {
+  "demand": 15,
+  "local_buyers": 12,
+  "ability_to_pay": 10,
+  "technical_feasibility": 14,
+  "legal_risk_low": 10,
+  "defensibility": 8,
+  "total": 69,
+  "rationale": "Demand is real and government-documented (falls = 39% of construction deaths, 6,557 fall-protection citations in FY2024, $16,550 per serious violation) but it is demand for compliance, not for cameras - small contractors buy guardrails and training before they buy vision. Buyers are plentiful locally (about 1,556 construction establishments in Middlesex County, CBP 2023) but the addressable slice is firms with 15-200 staff and multiple concurrent sites; below 10 employees OSHA's recordkeeping exemption removes the paperwork motive and budgets are thin. Ability to pay is the weak link: construction margins are thin, existing enterprise pricing ($500/camera/month at Evercam) is far above what a 25-person roofer will approve, which is exactly why a $400-$900/site/month local service can win - but the sale is long and evidence-based, and theft ROI depends on beating a 7% recovery baseline that cameras alone have not been shown to move. Technical feasibility is good with open tools (Frigate, YOLO PPE models, small VLMs) but published cross-site accuracy drops (92% to 67% mAP) mean calibration labour is unavoidable, and site power/network/weather are recurring service costs. Legal risk is moderate-low: video-only with signage is comparatively safe in NJ, but audio recording (2A:156A-4), face recognition (pending A4981/S4075) and discoverability of footage all require discipline. Defensibility is low-to-moderate: hardware and models are commodity and vendors sell $8-$48/camera/month self-serve software; the moat is local installation, calibration on the customer's own footage, human-reviewed reporting and truck-roll reliability."
+ },
+ "risks": [
+  "Alert fatigue and false positives: published PPE accuracy falls sharply across sites (92.36% to 66.70% mAP), so an untuned deployment will annoy the superintendent within a week and get unplugged.",
+  "False accusation exposure: an automated 'no hard hat' flag on the wrong worker creates discipline and defamation risk; human review must gate any disciplinary use.",
+  "Footage is discoverable evidence: a camera that captures a fall it did not prevent, or shows a supervisor ignoring a violation, can hurt the contractor in litigation and in the workers' comp claim.",
+  "Audio: any always-on microphone recording worker conversations is likely unlawful in NJ without consent (2A:156A-4) - a single mis-specified camera can create statutory civil liability.",
+  "Face recognition: no NJ employer biometric statute today, but pending bills (A4981/S4075, A3929) could retrofit obligations onto an installed base.",
+  "Camera hardware on an active site gets hit, stolen, unplugged or painted; uptime is a service cost, not a one-time install.",
+  "Power and connectivity: many small sites have no live service drop, so LTE data plans and solar/battery add recurring cost and failure modes.",
+  "Buyer ambiguity: on a GC-controlled site the specialty subcontractor cannot mount cameras, so the buyer is often the GC - a different (and slower) sales motion than the trade contractor.",
+  "Union sites: camera placement and any use that looks like productivity surveillance can trigger grievances even where safety is the stated purpose.",
+  "Seasonality and project churn: cameras must move every few months, which is labour-heavy and hard to price as a subscription.",
+  "Competition from cheap self-serve software ($8-$48/camera/month) and from camera-agnostic platforms (Samsara SG1-G) that make existing cameras smart.",
+  "Value proof is thin: no study isolates a construction camera deployment and shows measured injury reduction, so the sales case leans on citations, insurance and documentation rather than safety outcomes."
+ ],
+ "caveats": "The strongest numbers here are about the size and cost of the problem (BLS fatalities, OSHA citations and penalties, NIBRS theft losses), not about cameras fixing it. Every construction-specific PPE accuracy figure comes from curated research datasets, and the one paper that tested on two surveillance sets showed a 25-point mAP drop between them - so a vendor's benchmark number should never be repeated as an expectation on a real site. The theft ROI case is weak on current evidence: recovery is under 7% overall, and the systematic-review CCTV evidence (51% crime reduction) is from car parks and mostly bundled with other measures, not construction sites. Several key vendor prices (EarthCam, Samsara, Triax) are quote-only and could not be confirmed. OSHA.gov pages returned HTTP 403 from this environment, so OSHA-sourced facts are cited to the osha.gov URLs surfaced in search rather than to text I read on the page, except where a secondary source (Equipment World, eCFR mirrors) quoted them. Legal points are research findings, not legal advice, and the NJ legislative picture (biometric bills) is moving.",
+ "data_gaps": [
+  "Could not retrieve Census County Business Patterns 2023 by employment-size class for Middlesex County (API requires a key; the county-level 1,556 establishment figure for NAICS 23 comes from a search summary of CBP 2023, not a table I opened).",
+  "No published, construction-specific study measuring injury or citation reduction from a camera/AI deployment with a control group.",
+  "No New Jersey county-level construction theft statistics; the only usable theft numbers are national NIBRS (2019) and NICB/NER estimates whose vintage is unclear.",
+  "Could not confirm a street price for a specific PoE IP camera (Ubiquiti store price did not render); camera hardware cost is inferred from managed-service rental prices.",
+  "osha.gov returned HTTP 403 for direct fetches, so OSHA penalty and state-plan pages were not read in full.",
+  "EarthCam, Samsara and Triax pricing are all quote-only and unconfirmed.",
+  "No Milltown-specific municipal ordinance on construction-site cameras was found or ruled out; a permit condition could exist at the town level.",
+  "No statutory retention period for private workplace video in New Jersey was located.",
+  "Could not verify CPWR's per-claim fall cost figures ($20,883 same-level, $40,159 from elevation) in the source PDF, so they were excluded rather than cited second-hand.",
+  "No source found quantifying delivery-discrepancy losses or the effect of photo evidence on delivery disputes in construction."
+ ]
+}

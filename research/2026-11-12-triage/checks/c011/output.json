@@ -1,0 +1,110 @@
+{
+  "results": [
+    {
+      "ref": "B00166",
+      "name": "Aesculapius Consulting, Inc.",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Contact page has no phone, email or hours in readable text and no click-to-call (top_issue 3)",
+          "what_is_true": "The contact page prints 'Phone: 732-690-6918' as a tel: link and 'Email: acirfg@comcast.net' as a mailto: link, plus 'PO Box 6908, East Brunswick, NJ 08816'; the same phone and email sit in the footer. Only opening hours are genuinely missing from the site.",
+          "source_url": "http://www.aesculapiusconsultinginc.com/contact/"
+        },
+        {
+          "claim": "No tel: or mailto: links anywhere on the contact page",
+          "what_is_true": "Both exist: href=\"tel:732-690-6918\" and href=\"mailto: acirfg@comcast.net\" appear in the contact widget and again in the footer.",
+          "source_url": "http://www.aesculapiusconsultinginc.com/contact/"
+        },
+        {
+          "claim": "Home-page service sections are image files, so the actual services are invisible to crawlers and AI assistants",
+          "what_is_true": "The four JPGs (MedicalWriting.jpg, Meetings.jpg, Biostatistics.jpg, DigitalMedia.jpg) are decorative thumbnails beside real headings and full paragraphs of text (e.g. an h3 'Medical/Regulatory Writing/Consulting' with a paragraph listing CSRs, protocols, INDs, NDAs, BLAs, CMC reports). The services are readable text.",
+          "source_url": "http://www.aesculapiusconsultinginc.com/"
+        },
+        {
+          "claim": "website_review.click_to_call: false",
+          "what_is_true": "The contact page and footer carry a working tel: link, so click-to-call does exist on the site.",
+          "source_url": "http://www.aesculapiusconsultinginc.com/contact/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 3
+      },
+      "notes": "Operating: site loads over http and the Google profile is live and claimed ('Advertising agency', 20 Crandall Dr, veteran-owned, no rating, no photos). Re-checked and TRUE: no valid HTTPS (Chrome 'Privacy error' on www, ERR_CERT_COMMON_NAME_INVALID on the bare domain); no JSON-LD and no hours on the site; the WPForms form collects only Name/Email/Message with a hidden honeypot; Google does categorise a medical-writing firm as 'Advertising agency'. robots.txt is open apart from /wp-admin/. Phone on Google and site agree at (732) 690-6918. New detail the record missed: the site publishes only a PO Box while Google maps a street address (20 Crandall Dr), so the profile-completion work should also fix that NAP mismatch. Scores: gap 4->3 and evidence 4->3 because one of three top issues and half of the 'services are images' opportunity were contrary to what the pages show; ability_to_pay and ease unchanged."
+    },
+    {
+      "ref": "B00179",
+      "name": "Jerseytech Partners",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Operating; https loads. Verified at 1280px and 390px: zero form elements on the home page and on /ai-solutions/, 'Get Started' -> '#', 'Contact Us' -> '#footer', no h1 text on the home page, no meta description, no JSON-LD, no tel:/mailto: links, home-page body text ~945 characters, footer 'Copyright (c) 2025'. The desktop hero is an image-only dark panel with no headline while the mobile hero does render 'Welcome to JTP' text plus a LEARN MORE button (href '#about'), so the desktop-hero issue holds and phone layout is tolerable. Several 'Learn more' links are '#'. Google listing matches: 5.0 rating with no count shown, 'Claim this business', no photos, phone (732) 355-7657, 'Located in: HearingLife of East Brunswick NJ'. robots.txt (Disallow: /wp-admin/) does not block AI crawlers. Scores unchanged. Side note, not a wrong claim: JerseyTech's three offices (44 Milltown Rd 2nd Floor East Brunswick, IndiQube Orbit 10th floor Hyderabad, Dubai World Trade Centre Level 19) are identical floor-for-floor to Othain Group's (B00193) published offices and both sites carry the same boilerplate paragraph, so they appear to share an address arrangement and web template - worth checking before treating them as two independent prospects."
+    },
+    {
+      "ref": "B00184",
+      "name": "Blockedge Technologies Inc.",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Zero local signals: no NJ address on the site (top_issue 2), with the follow-on opportunity 'add Organization/LocalBusiness schema with the Two Tower Center address'",
+          "what_is_true": "The site footer publishes a full NJ address: '666 Plainsboro Road, Suite 448, Plainsboro, NJ 08536, USA' with +1 9255921100 and sales@blockedge.io. There is a local signal, but it is Plainsboro, not East Brunswick - the real problem is a NAP conflict with the Google listing (2 Tower Center Blvd #804, East Brunswick), not an absent address. Schema work should first settle which office is current.",
+          "source_url": "https://www.blockedge.io/"
+        }
+      ],
+      "notes": "Operating; https loads; h1 'Scalable Blockchain Networks For Enterprises'; 'Get Started' and 'Sign up for a demo' both -> /schedule-a-demo. Re-checked and TRUE: footer 'Copyright (c) All Rights Reserved 2022'; JSON-LD is WebSite (+SearchAction) and VideoObject only, no Organization/LocalBusiness; no tel: links, phone is plain text; demo form posts to /formfill.php with fields name/email/designation/company/country/sect/terms and no label elements at all (the record said only the two selects lack labels - in fact no field has one). robots.txt disallows only /schedule-a-demo1/. Google listing: 'Software company', 2 Tower Center Blvd #804, phone (925) 592-1100 matching the site, no rating, no reviews, no photos. Scores left unchanged - the NAP conflict makes the gap at least as wide as recorded, so gap_size 4, ability_to_pay 4, ease 4 and evidence 4 remain reasonable."
+    },
+    {
+      "ref": "B00193",
+      "name": "Othain Group",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Operating; https loads. Re-checked and TRUE at desktop: title 'othain group', no h1 element, no meta description, zero ld+json blocks, zero form elements, 'Contact Us' -> '#footer', no tel: links, H2 'Smart Marketing Services for Modern Global Businesses', footer 'Copyright (c) 2025' with three country offices and three phone numbers. At 390px the hero is an empty dark panel with no headline and the section beneath it is blank, so the 'blank mobile hero' issue holds (screenshot taken). Google listing matches: 'Claim this business' (unclaimed), 'Located in: HearingLife of East Brunswick NJ' at 44 Milltown Rd, 'Add hours' with no hours shown, no photos, no rating. robots.txt disallows only /wp-admin/. Detail the record did not note: the Google phone (844) 468-4246 does not appear on the site, which lists +1 7328384110 - fold that into the profile-completion work. Scores all reasonable, unchanged."
+    },
+    {
+      "ref": "B00199",
+      "name": "Resource Logistics Inc",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Home page contains no phone number and no address anywhere in the visible text (top_issue 1); opportunity evidence says 'Home page has no phone or address in text'",
+          "what_is_true": "The home-page header shows two visible click-to-call numbers, '+1 (732)553-0566' and '+1 (732)553-0568' (href tel:+17325530566 / tel:+17325530568), and the footer prints '39 Milltown Road, East Brunswick, NJ 08816'. Both phone and address are present as readable text on the home page.",
+          "source_url": "https://resource-logistics.com/"
+        },
+        {
+          "claim": "Footer shows two stacked, conflicting copyright lines ('2025' and '2024') and a duplicated footer block",
+          "what_is_true": "Only one copyright line renders: 'Copyrights (c) Resource Logistics, Inc. 2025. All Rights Reserved.'; the string '2024' does not appear in the rendered page. Two footer elements exist, but the second is the normal mobile nav variant (d-lg-none) - not a duplicated or conflicting block.",
+          "source_url": "https://resource-logistics.com/"
+        }
+      ],
+      "notes": "Operating; https loads; title 'Best US Staffing Agency - Resource Logistics Inc'. Re-checked and TRUE: h1 is literally 'Our SERVICES'; zero ld+json; the contact page carries the 'Let's Connect' form (f_name, email, phone, state, message, consent checkbox) plus a Google reCAPTCHA field, with only the consent line as a proper label; no booking calendar. Google listing matches: 4.1, 'Employment agency', 39 Milltown Rd, hours shown, 'Add place's phone number' and no phone published there. robots.txt is fully open. Scores: gap_size 4->3 and evidence 4->3 because the headline 'no phone or address' issue is false and the footer claim does not reproduce; ability_to_pay 4 and ease 4 unchanged. The separately reported 57-review count from ProvenExpert was not re-verified."
+    },
+    {
+      "ref": "B00243",
+      "name": "TKI The Dental Suite",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Operating; https loads. Re-checked and TRUE: MedicalClinic JSON-LD @graph (name 'The Kaga Institute', two location nodes with 555 NJ-18 S. East Brunswick and 58 N. Main St. Marlboro, telephone +1-848-837-5242) carries no openingHours and no priceRange; every BOOK / SCHEDULE A CONSULTATION / BOOK A CONSULTATION link goes to /request-appointment/, whose form has name, phone, email, contact-preference checkboxes, DOB, patient status, location select, service checkboxes and no time slots or calendar; hours appear only on /media/locations/ (Marlboro Mon-Fri with 9-8 on Tue and Wed; East Brunswick Thu 9-8), not on the dental pages; at 390px the header holds only logo, Instagram, gift-card, BOOK and hamburger icons with zero tel: links (screenshot), and the site's 848-837-5242 matches the six tel: links in the body. Google listing: 'TKI The Dental Suite', 4.9, 'Cosmetic dentist', 555 NJ-18, phone (732) 873-3333, website field tkidental.com - and tkidental.com does redirect to drkaga.com/treatments-category/dental/. robots.txt as recorded (allows all, /preview/, /newsletter/, /editor/ disallowed, sitemap present). Scores and findable/answerable/bookable ratings reasonable, unchanged."
+    },
+    {
+      "ref": "B00268",
+      "name": "AC Dental",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Operating; https loads. Re-checked and TRUE: all JSON-LD is an array of ImageObject nodes (no Dentist/LocalBusiness); h1 'CHANGING LIVES, ONE SMILE AT A TIME' with no town or CTA above the fold; footer 'Copyright 2025'; no hours block on the home or contact page; /booking.php embeds a Paperform iframe (t4xj9uda.paperform.co) whose page text says to give a preferred day and time and that the front office will confirm, with no CAPTCHA on the wrapper page; robots.txt fully open. At 390px the header is logo plus hamburger only, the text phone link is hidden off-canvas (zero-size rect) and the only visible tel: link is a 'Call Us' button measured at y=7,113 - substantively the same finding as the record's ~7,500px, just re-measured today, so not counted as a wrong claim. One correction of omission rather than error: AC Dental does have a live Google Business Profile - 'AC Dental', 4.9, 'Dentist', 300 NJ-18 in Midstate Mall, phone matching the site, with an owner post two days old - so the practice is not absent from local search, and the profile is a better review surface than the WebMD page quoted in the listing field. Scores unchanged; if anything ability_to_pay is supported by the active profile and review volume."
+    },
+    {
+      "ref": "B00272",
+      "name": "Leizer Orthodontics",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Operating; https loads. Re-checked and TRUE: zero JSON-LD on the home, East Brunswick location and appointment pages; header CTA 'Schedule Now' -> /appointment-request whose form has Full_Name, Email, Phone_Number, Comment, an SMS opt-in checkbox and an antispam field, with no calendar, no location picker and a note that a scheduling coordinator will confirm; three offices with three separate tel: links on every page; East Brunswick location page gives 'C-4 Cornwall Drive ... (732) 238-4422' with no opening hours anywhere; robots.txt is the Sesame template quoted in the record (/ckeditor, /ckfinder, /domains, /site_template). Birdeye confirms 'Leizer Orthodontics ... 4.9, 48 reviews' - and the Birdeye listing itself shows 'Claim this profile' and publishes Mon-Fri 9-6 hours that the practice site does not, an extra quick win. Scores unchanged."
+    }
+  ],
+  "data_gaps": [
+    "Google Maps was read in the limited view, which shows star ratings but never review counts, so no review-count claim could be re-verified on Google; Resource Logistics' 57 reviews (ProvenExpert) and AC Dental's 45 WebMD ratings could not be independently confirmed - the fetched WebMD page showed individual reviews and '5 out of 5' quoted inside a patient comment, not an aggregate rating.",
+    "Leizer Orthodontics' competitor review counts (Dr. Karlin 947, Dr. Fleer 321) were not re-verified; they were asserted in the record without a URL.",
+    "Aesculapius Consulting's site could not be rendered in the browser over http (Chrome blocked the plain-http navigation with ERR_BLOCKED_BY_CLIENT), so its contact page was read from raw HTML rather than as a rendered page; the tel:/mailto: markup and the footer address are unambiguous in that HTML but no visual check of that page was possible.",
+    "Acuity of some listing claims (Aesculapius' 'no rating', Jerseytech's 'review count not displayed') is limited by the same Google Maps limited view."
+  ]
+}

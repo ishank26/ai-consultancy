@@ -1,0 +1,1 @@
+Smoke test. Find 2 independently owned HVAC companies based in Milltown or East Brunswick, NJ. Confirm each website loads. Write a JSON array of 2 candidates to output.json using the Market Mapper schema.

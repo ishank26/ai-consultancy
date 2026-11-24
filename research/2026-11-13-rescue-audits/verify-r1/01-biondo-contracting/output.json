@@ -1,0 +1,138 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "severity_reason: 'no live page describes the business's services or service area'",
+      "problem": "Contradicted by the report's own evidence: biondo-contracting.webflow.io is live and describes services (installations, repairs, skylight replacement, flashing, ventilation, siding) and a service area ('Serving Central New Jersey since 1990'). Verified by opening the page today.",
+      "fix": "Reword to what is true: no page at biondoroofing.com itself describes the services or service area, so the link on the Google profile dead-ends."
+    },
+    {
+      "claim": "founder_md outreach email: 'Your domain is still registered in your name through 2030'",
+      "problem": "Unsupported. The .com RDAP record is thin and shows no registrant; the report's own data_gaps says registrant identity is not public. The expiry date is confirmed, ownership is not. Telling an owner it is 'in your name' could be wrong (e.g. if a developer or agency holds the account).",
+      "fix": "Change to: 'the domain is still registered and paid through 7 December 2030, with GoDaddy locks in place' and ask the owner who controls the account."
+    },
+    {
+      "claim": "audit_md: 'The phone number still works'",
+      "problem": "No cited source supports it and the phone line was not (and could not be) tested. Every source only shows the number as listed. Stated as fact to the business owner.",
+      "fix": "Say 'the phone number is still listed on your profile and on other directories' or drop the sentence."
+    },
+    {
+      "claim": "domains[1].result: the Webflow page has 'No phone number, address, form or photos of its own'",
+      "problem": "The page contains a hero photo (jpeg served from its own Webflow site assets). Only the phone/address/form part is correct.",
+      "fix": "Remove 'or photos of its own'; e.g. 'no phone number, address or form, and one photo'."
+    },
+    {
+      "claim": "after_fix.evidence: 'the profile's 4.9 rating and review volume (172 reviews on Birdeye)'",
+      "problem": "Conflates two different profiles and ratings. The 4.9 is the Google Business Profile; the 172 reviews belong to the Birdeye profile, which shows 4.7, not 4.9.",
+      "fix": "Split the sentence: '4.9 on the Google profile; 4.7 from 172 reviews on Birdeye'."
+    },
+    {
+      "claim": "audit_md fix step 4 and fix_steps[3]: update the 'Houzz' link",
+      "problem": "Houzz is named as one of the places publishing the domain, but the auditor's own caveat says the Houzz profile returned 429 and was never confirmed. Only a search-result summary (which does name biondoroofing.com on a Houzz profile) supports it; I could not open the page either (JS-only/incomplete fetch).",
+      "fix": "Either mark it as 'if Houzz lists the domain' in audit_md, or drop Houzz from the customer-facing step until the page is confirmed."
+    },
+    {
+      "claim": "fix_steps[3].source_url: https://support.google.com/business/answer/3038177 used to back 'edit the website field on the Google Business Profile'",
+      "problem": "That page is titled 'Guidelines for representing your business on Google' and does not explain editing the website field. The step is fine, the citation does not support it.",
+      "fix": "Cite the Google help page on editing your Business Profile, or cite the profile URL itself as the thing to be edited."
+    },
+    {
+      "claim": "screenshot_files: screenshot-biondoroofing-desktop.png, screenshot-biondoroofing-mobile390.png, screenshot-webflow-stub.png, screenshot-google-profile.png",
+      "problem": "None of these files are present in the review folder, so the screenshots backing the visual claims (390 px layout, Play-style page, profile panel) cannot be verified.",
+      "fix": "Save the screenshots alongside rescue.json and re-check the paths before the report is used."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "biondoroofing.com loads over HTTPS and now shows a Thai-language slot/gambling page styled as a Google Play listing, with 4.9 star / 419K reviews / 14.2M+ Downloads and an install button, and no roofing or contact content",
+      "source_url": "https://biondoroofing.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 2010-12-07, expires 2030-12-07, last changed 2025-12-08, registrar GoDaddy.com, LLC, client delete/renew/transfer/update prohibited, nameservers NS23/NS24.DOMAINCONTROL.COM",
+      "source_url": "https://rdap.org/domain/biondoroofing.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Domain resolves to A record 160.153.0.162",
+      "source_url": "https://dns.google/resolve?name=biondoroofing.com&type=A",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hostname for 160.153.0.162 is 162.0.153.160.host.secureserver.net",
+      "source_url": "https://ipinfo.io/160.153.0.162/json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Internet Archive capture 2026-04-20 still shows the genuine Biondo roofing site (Monroe NJ, since 1990, over 30 years)",
+      "source_url": "https://web.archive.org/web/20260420032126/https://biondoroofing.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The 2026-04-20 capture is the most recent one (no captures between then and today)",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=biondoroofing.com&output=json&from=2023&to=2026",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Business Profile 'Biondo Contracting-Roofing Specialists' shows 4.9, Roofing contractor, 38 Spotswood Ave, Monroe Township, NJ 08831, (732) 257-2926, website biondoroofing.com, and is currently open",
+      "source_url": "https://www.google.com/maps/place/Biondo+Contracting-Roofing+Specialists/@40.3781711,-74.3972853,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3cffc915a5ec9:0xf5810fb2cc491782!8m2!3d40.3781711!4d-74.3972853!16s%2Fg%2F11dxddl3_9",
+      "result": "confirmed"
+    },
+    {
+      "claim": "AECinfo profile lists 163 Fresh Ponds Rd East Brunswick, phone 732-257-2926 and 'URL: http://www.biondoroofing.com'",
+      "source_url": "https://aecinfo.com/biondo-contracting/company.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FindTrustedRoofers listing for Monroe Township shows website biondoroofing.com, phone 732-257-2926 and 4.9 rating",
+      "source_url": "https://www.findtrustedroofers.com/nj/monroe-township/biondo-contracting-roofing-specialists/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "biondo-contracting.webflow.io is a single-page Webflow site headed 'Biondoroofing.com' with one paragraph and one outbound link to biondoroofing.com, no phone/address/form",
+      "source_url": "https://biondo-contracting.webflow.io/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Webflow page has no photos",
+      "source_url": "https://biondo-contracting.webflow.io/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Birdeye profile: 4.7 from 172 reviews, 163 Fresh Ponds Rd East Brunswick NJ 08816, currently open",
+      "source_url": "https://birdeye.com/biondo-contracting-east-brunswick-nj-149586765701051",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nextdoor page describes the services and the counties served",
+      "source_url": "https://nextdoor.com/pages/biondo-contracting-monroe-township-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Search Console removals tool URL is a live Google help page about removals",
+      "source_url": "https://support.google.com/webmasters/answer/9689846",
+      "result": "confirmed"
+    },
+    {
+      "claim": "support.google.com/business/answer/3038177 is the page about editing the Business Profile website field",
+      "source_url": "https://support.google.com/business/answer/3038177",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Houzz profile lists biondoroofing.com",
+      "source_url": "https://www.houzz.com/professionals/roofing-and-gutters/biondo-contracting-pfvwus-pf~1100433283",
+      "result": "could not open"
+    },
+    {
+      "claim": "audit_md body is at most 300 words",
+      "source_url": "rescue.json (audit_md)",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cause is labelled an inference, not an accusation",
+      "source_url": "rescue.json (likely_cause, caveats)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

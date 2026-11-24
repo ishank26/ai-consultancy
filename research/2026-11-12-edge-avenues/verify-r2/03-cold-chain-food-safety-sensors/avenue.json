@@ -1,0 +1,425 @@
+{
+ "avenue": "cold-chain-food-safety-sensors",
+ "one_line": "Install and run a local, monitored cold-chain system (probe temperature + door-ajar + power-loss + automatic time-stamped logs and phone alerts) for independent restaurants, delis, bakeries, caterers and small grocers in Milltown / Middlesex County, NJ, with records formatted for N.J.A.C. 8:24 inspections.",
+ "problem": {
+  "summary": "Small food businesses are legally required to hold refrigerated food at 41 F or below and to be able to show they did, but in practice that is enforced by a clipboard check once or twice a shift. FDA's own observation studies find most delis and roughly half of full-service restaurants out of compliance on holding/time-temperature, because the failure mode is not a wrong reading at 3pm - it is an unattended overnight compressor failure, a door left ajar at close, or a 40-minute power blip that nobody sees until the next open. The business then eats the inventory (low four figures in the reported case below), risks a critical violation on a twice-yearly county inspection, and has no defensible record either way.",
+  "evidence": [
+   {
+    "fact": "FDA observed 397 retail deli departments in 2015-2016: 70.0% were out of compliance on 'foods requiring refrigeration are held at proper temperature' (data item 5), 62.9% on 'foods are cooled properly' (data item 7), and the improper holding/time-and-temperature risk factor as a whole was out of compliance in 91.2% of delis.",
+    "year": "2015-2016 data (FDA deli report)",
+    "source_url": "https://www.fda.gov/media/148247/download"
+   },
+   {
+    "fact": "FDA's 10-year trend study (roughly 850 establishments observed per data-collection phase across nine facility types) found that in 2008 only 45% of full-service restaurants and 49% of delis were 'in compliance' with the improper holding (time and temperature) risk factor - i.e. a majority were not.",
+    "year": "2010 Trend Analysis Report, 2008 data",
+    "source_url": "https://www.fda.gov/food/retail-food-protection/retail-food-risk-factor-study"
+   },
+   {
+    "fact": "New Jersey defines 'refrigeration temperatures' as 41 F or less (a 45 F allowance applied only to equipment in use before Jan 2, 2007 that had to be upgraded or replaced by Jan 2, 2012), and requires potentially hazardous food to be held at refrigeration temperatures except during prep/cooking/cooling or approved time-as-control.",
+    "year": "N.J.A.C. 8:24-1.5 and 8:24-3.5(f), readopted effective 11/17/2021",
+    "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-1-5"
+   },
+   {
+    "fact": "NJ's cooling rule is two-stage and the stages are cumulative, not concurrent: N.J.A.C. 8:24-3.5(d)1 reads 'i. Within two hours, from 135 degrees Fahrenheit to 70 degrees Fahrenheit; and ii. Within four hours, from 70 degrees Fahrenheit to refrigeration temperatures.' The four-hour clock starts at 70 F, so the total allowed window is up to six hours, not four - a rule that can only be evidenced with timestamped readings.",
+    "year": "N.J.A.C. 8:24-3.5(d)1, current (readopted effective 11/17/2021)",
+    "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-5"
+   },
+   {
+    "fact": "Using time instead of temperature as the public-health control, and specialized processes such as reduced-oxygen packaging, require written procedures submitted to and approved by the health authority before use - paperwork that must be maintained on site.",
+    "year": "N.J.A.C. 8:24-3.5(g)(4) and (h), current",
+    "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-5"
+   },
+   {
+    "fact": "NJ requires the person in charge in a Risk Type 3 food establishment to be a certified food protection manager and to demonstrate HACCP knowledge at inspection - so there is an existing compliance owner to sell to, and an inspection moment that exposes gaps.",
+    "year": "N.J.A.C. 8:24-2.1(b), readoption notice 2021",
+    "source_url": "https://nj.gov/health/legal/documents/adoption/(F)%20DOH%208_24%20Notice%20of%20Readoption.pdf"
+   },
+   {
+    "fact": "Middlesex County's Office of Health Services states its goal is that every food establishment be inspected at least twice a year, by NJ-licensed Registered Environmental Health Specialists.",
+    "year": "current county page (accessed 2026)",
+    "source_url": "https://www.middlesexcountynj.gov/government/departments/department-of-public-safety-and-health/office-of-health-services/health-inspections"
+   },
+   {
+    "fact": "USDA ERS estimates of supermarket loss from supplier-shipment versus point-of-sale data for 2005 and 2006 averaged 11.4% for fresh fruit, 9.7% for fresh vegetables and 4.5% for fresh meat, poultry and seafood. The underlying sample was six large national and regional supermarket retailers and excluded convenience stores, megastores, club stores and mom-and-pop grocery stores, so it describes large-format grocery, not independents.",
+    "year": "2005-06 data, published March 2009 (ERS Economic Information Bulletin No. 44, report summary)",
+    "source_url": "https://ers.usda.gov/sites/default/files/_laserfiche/publications/44306/10894_eib44_reportsummary.pdf"
+   },
+   {
+    "fact": "For 24 fresh fruits, ERS estimated supermarket loss rates ranging from 4.1% (bananas) to 43.1% (papayas) using shipment-versus-purchase data from 2,900 US supermarkets in 2011-12; the page attributes loss to culling of misshapen and spoiled product and to overstocking, and does not attribute it to refrigeration equipment failure.",
+    "year": "2011-12 data, ERS Charts of Note published 4/23/2019",
+    "source_url": "https://ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=92910"
+   },
+   {
+    "fact": "Reported single-incident loss: a Lincoln, NE drive-through restaurant discarded about $1,800 of refrigerated product after a storm outage in August 2024, and had to close for a few days on top of the food loss. Anecdotal, one site, not a rate.",
+    "year": "2024",
+    "source_url": "https://www.klkntv.com/lincoln-restaurant-throws-out-1800-of-spoiled-food-after-power-outage/"
+   },
+   {
+    "fact": "Commercial property policies may include only a small amount of spoilage coverage; broker guidance is that most carriers require a spoilage endorsement (or a utility service interruption endorsement) to cover lost perishable inventory, and that equipment breakdown coverage by itself 'will pay to repair or replace the equipment that malfunctioned, but it will not cover the cost of spoiled inventory.' I found no sourced policy limit, so treat the exposure as operator-retained-capped-at-Unknown rather than at a specific dollar cap.",
+    "year": "2026 (broker summary, Insureon)",
+    "source_url": "https://www.insureon.com/small-business-insurance/commercial-property/spoilage-insurance"
+   },
+   {
+    "fact": "Scale of the local buyer pool: Middlesex County had 1,752 Accommodation and Food Services establishments employing 24,124 people in 2024 (7.0% of county establishments), and Food Preparation and Serving Related employment is projected to grow from 22,250 (2022) to 24,700 (2032).",
+    "year": "2024 (NJDOL QCEW), projections 2022-2032",
+    "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf"
+   }
+  ]
+ },
+ "buyers": [
+  {
+   "business_type": "Full-service restaurants with a walk-in cooler and reach-ins",
+   "naics": "722511",
+   "size_where_it_matters": "Starts at roughly 8-15 staff and one walk-in; acute at 20-80 staff with dinner service and $5k-$20k of perishable inventory on hand (inference from stated inventory reasoning, not a sourced figure)",
+   "why": "Lowest in-compliance rate on holding in the FDA trend study (45% in compliance, 2008 data), twice-yearly county inspections, and thin margins so a single spoiled walk-in hurts"
+  },
+  {
+   "business_type": "Delis, prepared-food counters and small independent grocers",
+   "naics": "445110 / 445210 / 445220",
+   "size_where_it_matters": "Matters from one deli case plus a walk-in; strongest at 10-200 staff, multiple cases",
+   "why": "FDA measured 70.0% of delis out of compliance on cold holding, 62.9% on cooling, and 91.2% on improper holding overall (2015-2016); grab-and-go and sliced-product cases get opened constantly"
+  },
+  {
+   "business_type": "Caterers and commissary kitchens",
+   "naics": "722320",
+   "size_where_it_matters": "5-50 staff; one commissary cooler serving many events",
+   "why": "Inventory value spikes before events, product moves in and out of refrigeration for hours, and cooling/transport records are exactly what inspectors ask for"
+  },
+  {
+   "business_type": "Retail bakeries and pastry shops",
+   "naics": "311811",
+   "size_where_it_matters": "5-40 staff with retarders/proofers plus a cream/custard cooler",
+   "why": "Temperature-sensitive fermentation and dairy fillings; a retarder drift ruins a day of production rather than just inventory"
+  },
+  {
+   "business_type": "Limited-service restaurants / fast casual with 1-5 units",
+   "naics": "722513",
+   "size_where_it_matters": "Multi-unit from 3 locations; 15-200 staff total",
+   "why": "Owner is not on site; a per-site remote dashboard and alert escalation replaces a manager physically checking each store"
+  },
+  {
+   "business_type": "Food distributors and refrigerated warehouses (small, independent)",
+   "naics": "424410 / 424420 / 493120",
+   "size_where_it_matters": "20-200 staff; multiple rooms and docks",
+   "why": "Customer audits and receiving-temperature requirements; higher hardware count per site, but longer sales cycle and often corporate-mandated vendors"
+  }
+ ],
+ "existing_solutions": [
+  {
+   "vendor": "SmartSense by Digi",
+   "product": "SmartSense food safety monitoring (sensors + gateway + cloud HACCP workflows)",
+   "what_it_does": "Wireless temperature/humidity sensors and gateways with cloud dashboards, automated HACCP logs, alerts, and task/checklist workflows; the vendor's food-service page names Cafe Rio (155 locations), Wegmans, honeygrow, Sweetgreen and Lowes Foods",
+   "pricing": "Unknown - no list price; the vendor's how-to-buy page describes an asset-based subscription with no published rate, and a public school district Master Services Agreement I opened contains a pricing exhibit that is blank/image-only in the fetched document. Treat any per-sensor figure as quote-specific.",
+   "source_url": "https://www.smartsense.co/food-service"
+  },
+  {
+   "vendor": "TempGenius (Compliance Control Inc.)",
+   "product": "Wireless refrigeration temperature monitoring, installed",
+   "what_it_does": "Wireless sensors, receivers/repeaters, cloud alerts, lease or purchase; cellular option",
+   "pricing": "~$2,000 for a small install under 5 sensors; ~$5,000 for about 20 sensors (vendor-published)",
+   "source_url": "https://tempgenius.com/temperature-monitoring/"
+  },
+  {
+   "vendor": "Sensaphone",
+   "product": "Sentinel SCD-1200 (12-zone cloud monitor) and WEB600 (6-zone)",
+   "what_it_does": "Hard-wired zone inputs for temperature probes, power-failure and dry-contact (door) sensors; email/text/phone alarms; cloud logging; the SCD-1200 also alarms on loss of connection to the Sensaphone cloud, ships with an 8-hour battery backup, and monitors its own power supply for failure",
+   "pricing": "Unknown - I could not get a static price off any page I opened (the Absolute Automation product pages, Absolute Automation's Sensaphone collection page, the Sensaphone product page and CDW listings all render price dynamically or show none). Search snippets suggested roughly $554-$615 for the SCD-1200 and roughly $392 for the WEB600, but I could not confirm those on a page I opened, so treat them as unconfirmed (inference). Note: text and phone-call notifications require a paid subscription on the SCD-1200.",
+   "source_url": "https://www.absoluteautomation.com/products/sensaphone-sentinel-scd-1200-web-based-monitoring"
+  },
+  {
+   "vendor": "Monnit",
+   "product": "ALTA wireless temperature sensors (MNS2-9-W2-TS-ST) + gateway + iMonnit",
+   "what_it_does": "Battery wireless sensors (900 MHz), probe options, gateway to cloud, alerting; iMonnit Basic free, Premiere paid annual",
+   "pricing": "$116.00 per standard wireless temperature sensor; probe add-ons +$11 (3 ft) to +$117 (100 ft) depending on lead length; 25-month NIST certification +$71 (8-point NIST +$203); line power with battery backup +$50",
+   "source_url": "https://www.monnit.com/products/sensors/temperature/standard-temperature/MNS2-9-W2-TS-ST/"
+  },
+  {
+   "vendor": "ThermoWorks",
+   "product": "ThermaData WiFi loggers (ambient, thermistor probe, thermocouple)",
+   "what_it_does": "Wi-Fi loggers on the existing router, no separate gateway, 18,000 readings of onboard memory, NIST-traceable calibration certificate included, cloud viewing of walk-ins and cases",
+   "pricing": "$289.00 for the two-channel Type K thermocouple logger (meter only, probes sold separately; $274 at 5+, $264 at 10+). The ambient and single-removable-probe logger prices did not render on the pages I opened, so those are Unknown here rather than a range.",
+   "source_url": "https://www.thermoworks.com/products/thermadata-wifi-type-k"
+  },
+  {
+   "vendor": "DeltaTrak",
+   "product": "FlashLink BLE / reusable data loggers",
+   "what_it_does": "Reusable and single-use loggers for in-transit and storage temperature records, PDF/USB and BLE readout",
+   "pricing": "Reusable BLE loggers roughly $199-$209 retail; single-use in-transit loggers about $6-$18 (reseller listing)",
+   "source_url": "https://solutionsprime.com/delivery-and-transportation/data-loggers"
+  },
+  {
+   "vendor": "Kelsius",
+   "product": "FoodCheck 2.0 digital HACCP",
+   "what_it_does": "Wireless temperature monitoring plus digital HACCP paperwork, probes, and audit-ready reports; strong in hotels/hospitality in UK/Ireland",
+   "pricing": "Unknown (quote-based)",
+   "source_url": "https://kelsius.com/hastings-hotel/"
+  },
+  {
+   "vendor": "Open source stack (self-built)",
+   "product": "ESPHome/ESP32 + DS18B20 probes + reed switches -> Home Assistant/MQTT; optional Frigate NVR",
+   "what_it_does": "DIY temperature, door and power sensing with local dashboards, automations and notifications; no subscription",
+   "pricing": "Estimated roughly $15-$25 in parts per cooler (inference: Adafruit lists the pre-wired waterproof DS18B20 at $9.95 single-unit, $8.96 at 10-99, including the required 4.7k resistor; an ESP32 dev board plus a reed switch and enclosure make up the rest). I could not confirm an ESP32 board price on a page I opened, so the total is an estimate, not a quoted build cost.",
+   "source_url": "https://www.adafruit.com/product/381"
+  }
+ ],
+ "gap_for_local_installer": "Almost every product above is either (a) a national SaaS sold as self-install with an annual per-asset or per-sensor fee and no published price, or (b) a DIY parts list with no support. What an independent 40-seat restaurant or a 3-unit deli actually lacks is someone local to (1) pick freezer-rated probes and get the sensor inside a metal walk-in box where Wi-Fi does not reach, (2) wire door-ajar and power-loss detection rather than just air temperature, (3) route alerts to the right two phones with escalation so a 2am excursion reaches the owner, not a login nobody checks, (4) turn the data into a printable/exportable log that matches what a Middlesex County REHS asks for - including the two-stage cooling window (2 hours to 70 F, then 4 more hours to refrigeration temperature) - and (5) show up or dispatch when something fails. None of that is a hardware problem; it is an installation, calibration and service problem. The other defensible wedge is refrigeration-contractor partnership: they already get the 2am 'cooler is warm' call and have no monitoring line item.",
+ "technical_approach": {
+  "established_pattern": "Three independent signals per refrigerated unit, not one: (1) product-simulating temperature probe (probe in a glycol bottle or a buffered simulant, not just air temperature, because air temp swings on every door open and every defrost cycle), (2) magnetic reed/door contact to catch a door left ajar and to suppress nuisance alarms during stocking, (3) power/compressor state from a current clamp or a gateway on a UPS, so a power loss is reported even when the sensor itself is dead. Gateway publishes to MQTT, a local database keeps the immutable series, and a rules engine fires on persistence (e.g. product temp >41 F for >30 min) plus degree-minutes accumulation, with escalation tiers. The same rules engine must model NJ's cooling curve as two sequential deadlines - 135 F to 70 F inside 2 hours, then 70 F to refrigeration temperature inside 4 further hours (up to 6 hours total) per N.J.A.C. 8:24-3.5(d)1 - because a simpler '4 hours total' alarm would flag compliant batches. Cameras are added only where the question is 'who/what kept the door open' - Frigate person/zone detection on a cooler-entrance zone is the standard open-source way to do that, and a small VLM is used to triage exception photos (reading the unit's own display, describing a spill, captioning a shift log) rather than to make safety decisions.",
+  "models_and_tools": [
+   {
+    "name": "ESPHome + ESP32 + DS18B20",
+    "role": "Cheapest reliable sensor node: waterproof 1-Wire probe, door reed switch on a GPIO, Wi-Fi or wired uplink, publishes to MQTT/Home Assistant",
+    "source_url": "https://www.adafruit.com/product/381"
+   },
+   {
+    "name": "Home Assistant + MQTT",
+    "role": "Local hub for sensor state, automations, alert routing and long-term history; keeps working when the vendor cloud does not",
+    "source_url": "https://docs.frigate.video/integrations/mqtt/"
+   },
+   {
+    "name": "Frigate",
+    "role": "Optional camera layer: object detection with zones/filters so only person-in-cooler-zone events are recorded; avoids 24/7 recording of staff",
+    "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+   },
+   {
+    "name": "Ultralytics YOLO11 (n/s)",
+    "role": "Detector behind person/zone logic; YOLO11s is 9.4M params, 47.0 mAP at 640px, ~90 ms CPU ONNX / ~2.5 ms on a T4 - a Jetson or N100-class box is ample",
+    "source_url": "https://github.com/ultralytics/ultralytics/blob/main/docs/en/models/yolo11.md"
+   },
+   {
+    "name": "Liquid AI LFM2.5-VL-450M / 1.6B / 3B",
+    "role": "Small VLM for exception triage: OCR of the cooler's own digital display, reading a thermometer photo, captioning an alert image; 450M and 1.6B variants run on CPU/llama.cpp-class runtimes",
+    "source_url": "https://docs.liquid.ai/lfm/models/lfm25-vl-450m"
+   },
+   {
+    "name": "Qwen3-VL-2B-Instruct (GGUF)",
+    "role": "Fallback VLM when better OCR/grounding is needed; 2B fits edge boxes, 4B if a GPU is present",
+    "source_url": "https://huggingface.co/Qwen/Qwen3-VL-2B-Instruct-GGUF/blob/main/README.md"
+   },
+   {
+    "name": "llama.cpp (llama-server / mtmd)",
+    "role": "Runtime to serve the VLM locally with an OpenAI-compatible multimodal endpoint, so photos never leave the building",
+    "source_url": "https://docs.liquid.ai/deployment/on-device/llama-cpp/multimodal"
+   },
+   {
+    "name": "Cactus",
+    "role": "If a phone-side app is wanted (owner reading alerts, snapping a thermometer photo offline), Cactus runs small models on-device on iOS/Android",
+    "source_url": "https://github.com/cactus-compute/cactus/"
+   }
+  ],
+  "hardware": [
+   {
+    "item": "ESP32 board + waterproof DS18B20 probe + reed switch + resistor (per unit, DIY)",
+    "approx_cost": "Estimated $15-$25 (inference); only the DS18B20 is price-verified at $9.95 each (1-9 qty, includes 4.7k resistor)",
+    "source_url": "https://www.adafruit.com/product/381"
+   },
+   {
+    "item": "Monnit ALTA wireless temperature sensor (commercial, battery, 900 MHz)",
+    "approx_cost": "$116.00 each; probe add-ons +$11 to +$117 by lead length; +$71 for 25-month NIST certification; +$50 for line power with battery backup",
+    "source_url": "https://www.monnit.com/products/sensors/temperature/standard-temperature/MNS2-9-W2-TS-ST/"
+   },
+   {
+    "item": "Sensaphone Sentinel SCD-1200 12-zone cloud monitor (handles temp + power + door contacts, monitors its own AC power, 8-hour battery backup)",
+    "approx_cost": "Unknown - no static price on the reseller/vendor pages I opened; search snippets suggested roughly $554-$615 but this is unconfirmed. Text and phone alerts need a paid subscription.",
+    "source_url": "https://www.absoluteautomation.com/products/sensaphone-sentinel-scd-1200-web-based-monitoring"
+   },
+   {
+    "item": "ThermoWorks ThermaData WiFi logger (NIST-traceable cal cert included)",
+    "approx_cost": "$289.00 for the two-channel Type K thermocouple logger, meter only, probes sold separately; ambient/probe logger prices not captured (Unknown)",
+    "source_url": "https://www.thermoworks.com/products/thermadata-wifi-type-k"
+   },
+   {
+    "item": "TempGenius installed small system (<5 sensors) as a turnkey benchmark",
+    "approx_cost": "~$2,000 installed (vendor-published)",
+    "source_url": "https://tempgenius.com/temperature-monitoring/"
+   }
+  ],
+  "fine_tuning_needed": "No, for the core product. Temperature thresholds, the two-stage cooling deadlines from N.J.A.C. 8:24-3.5(d)1, degree-minute accumulation and door-ajar persistence are deterministic rules, and a 450M-2B VLM reads a seven-segment cooler display or a dial thermometer zero-shot well enough for triage. Fine-tuning only becomes worth it if we sell camera-based product-state classification (is that pan of sliced turkey in the case or on the prep table) - that needs a few hundred labeled frames per site and per camera angle. Start with rules + zero-shot VLM, add a trained classifier only after a site generates real exception photos.",
+  "data_needed": "Per unit: make/model, setpoint, defrost schedule (defrost causes legitimate air spikes and is the #1 source of false alarms), normal open/close times, and 2-4 weeks of baseline at 1-5 minute cadence before alarms go live. Per site: delivery windows and receiving check times, shift schedule, and the two-to-three phone numbers for escalation. For the VLM/OCR layer: 20-50 photos per cooler display model under real lighting. For a camera layer: labeled frames from each camera angle, plus a written policy on what is never recorded.",
+  "difficulty": "Low"
+ },
+ "measured_outcomes": [
+  {
+   "finding": "70.0% of delis were out of compliance on 'foods requiring refrigeration are held at proper temperature', 62.9% on proper cooling, and 91.2% were out of compliance on the improper holding/time-temperature risk factor overall.",
+   "year": "2015-2016",
+   "sample": "397 retail deli departments observed by FDA",
+   "study_type": "government",
+   "strength": "High",
+   "source_url": "https://www.fda.gov/media/148247/download"
+  },
+  {
+   "finding": "In 2008, only 45% of full-service restaurants and 49% of delis were in compliance with the improper holding (time and temperature) risk factor; compliance improved statistically from 1998 but improper holding remained one of three risk factors still needing improvement.",
+   "year": "2010 report (2008 data)",
+   "sample": "roughly 850 establishments observed per phase across 9 facility types",
+   "study_type": "government",
+   "strength": "High",
+   "source_url": "https://www.fda.gov/food/retail-food-protection/retail-food-risk-factor-study"
+  },
+  {
+   "finding": "Supermarket loss for 2005-06 averaged 11.4% for fresh fruit, 9.7% for fresh vegetables and 4.5% for fresh meat, poultry and seafood - material baseline shrink before any equipment failure. Caveat: the sample is six large supermarket chains, not independents, and the report does not break out refrigeration failure as a cause.",
+   "year": "2005-06 data, published March 2009",
+   "sample": "Six large national and regional supermarket retailers (supplier-shipment vs point-of-sale data)",
+   "study_type": "government",
+   "strength": "High",
+   "source_url": "https://ers.usda.gov/sites/default/files/_laserfiche/publications/44306/10894_eib44_reportsummary.pdf"
+  },
+  {
+   "finding": "Item-level supermarket loss rates for 24 fresh fruits ranged from 4.1% (bananas) to 43.1% (papayas), illustrating how much of the loss is perishability-driven rather than failure-driven.",
+   "year": "2011-12 data, published 2019",
+   "sample": "2,900 US supermarkets",
+   "study_type": "government",
+   "strength": "High",
+   "source_url": "https://ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=92910"
+  },
+  {
+   "finding": "A low-cost open-hardware IoT node (ESP-based) monitoring retail refrigerated cabinets can deliver continuous temperature visibility at a parts cost far below commercial loggers; the paper demonstrates feasibility and data capture, not spoilage reduction.",
+   "year": "2020",
+   "sample": "Single retail refrigerated cabinet deployment (proof of concept)",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7038712/"
+  },
+  {
+   "finding": "Real-time IoT anomaly detection applied to cold-chain transport data can flag refrigeration failure events earlier than periodic checks; the work is on transport containers, so transfer to a static walk-in is an inference.",
+   "year": "2023",
+   "sample": "Instrumented cold-chain transport trial (small, method-focused)",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://www.mdpi.com/2071-1050/15/3/2255"
+  },
+  {
+   "finding": "Hotel group reports HACCP deviations falling from about one per week to about one per month after adopting a digital temperature monitoring system.",
+   "year": "2021 case example",
+   "sample": "One hotel (vendor-published case study)",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://www.sensire.com/hubfs/Website/Linked%20Documents/Case%20Examples%203.19/ENG/Sensire%20Oy_CaseHotel-Arthur%2011-21-eng.pdf"
+  },
+  {
+   "finding": "Hotel group reports each property saving about three hours per day for all food staff after moving from manual checks to wireless monitoring with digital HACCP records; the same page also states stock had been lost 'due to no notifications of faulty appliances', which is a vendor claim, not a measured loss figure.",
+   "year": "2025 case example",
+   "sample": "Six hotels plus one gastro pub (vendor case study)",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://kelsius.com/hastings-hotel/"
+  }
+ ],
+ "legal_privacy": [
+  {
+   "issue": "Audio recording in the cooler or kitchen",
+   "rule_or_precedent": "New Jersey is a one-party-consent state under the wiretapping statute, N.J.S.A. 2A:156A-1 et seq.; intercepting an oral communication without a participant's consent is a third-degree crime (2A:156A-3), with the one-party exception in 2A:156A-4(d). Practical consequence: ship video-only cameras or no cameras at all; disable microphone hardware. (Secondary legal summary quoting the statute, not the statute text as read by me.)",
+   "confirmed": true,
+   "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/"
+  },
+  {
+   "issue": "Video of employees in a walk-in or back-of-house",
+   "rule_or_precedent": "No New Jersey statute specifies where an employer may place cameras or requires written notice; courts look to reasonable expectation of privacy, and recording in restrooms/locker rooms is criminal under N.J.S.A. 2C:14-9. Best practice is signage plus a written policy, which is what most NJ employers do even though no statute compels it. (Secondary legal summary.)",
+   "confirmed": true,
+   "source_url": "https://www.recordinglaw.com/united-states-recording-laws/one-party-consent-states/new-jersey-recording-laws/video/"
+  },
+  {
+   "issue": "Biometrics / face recognition",
+   "rule_or_precedent": "The New Jersey Data Privacy Act (P.L. 2023, c.266) treats biometric data as sensitive data requiring opt-in consent, effective January 15, 2025. But 'consumer' is defined as a resident acting in an individual or household - not employment - context, so employee biometrics are outside the NJDPA's consumer definition; and the Act only applies to controllers processing 100,000+ consumers (25,000 if selling data), which no local restaurant does. Bottom line: do not offer face recognition; there is no need for it and the optics/ethics risk outweighs any gain.",
+   "confirmed": true,
+   "source_url": "https://www.njconsumeraffairs.gov/ocp/Pages/NJ-Data-Privacy-Law-FAQ.aspx"
+  },
+  {
+   "issue": "Does the food code require automated logs? (negative finding)",
+   "rule_or_precedent": "No provision found in the subchapters I reviewed. N.J.A.C. 8:24 requires the person in charge to supervise routine monitoring and to have appropriate temperature-measuring devices available/scaled and calibrated, and requires written procedures for time-as-control and specialized processing - but I found no NJ provision mandating a specific log format or cadence for routine cold holding, and I did not exhaustively search all of Chapter 24. Marked unconfirmed because it is an absence-of-rule finding, not a verified prohibition. Our pitch must be 'defensible record + early warning', not 'you are required to buy this'.",
+   "confirmed": false,
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-2-1"
+  },
+  {
+   "issue": "How long to keep records",
+   "rule_or_precedent": "There is no universal federal retention period for routine cooler logs; the FDA Food Code sets retention only for specific records (e.g. time-as-public-health-control records). NJ separately requires the most recent inspection report to be kept on premises for public review for at least two years (N.J.A.C. 8:24-8.13). A 2-year default retention covers the NJ requirement; anything longer is a customer choice (inference).",
+   "confirmed": true,
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-13"
+  },
+  {
+   "issue": "Public inspection results as a data source",
+   "rule_or_precedent": "NJ requires the evaluation placard from the most recent inspection to be posted conspicuously near the public entrance (N.J.A.C. 8:24-8.12) and the report kept on premises for public review (8:24-8.13) - so inspection outcomes are legitimately public and usable for prospecting.",
+   "confirmed": true,
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-12"
+  },
+  {
+   "issue": "False accusation / blaming a named employee for an excursion",
+   "rule_or_precedent": "The technical design should prevent this rather than the legal design: attribute events to a unit and a time window, not to a person, and never present camera-derived 'who did it' as a finding. If a customer pushes for individual attribution, that becomes an employment matter with NJ Law Against Discrimination exposure if applied unevenly. I could not find NJ case law specifically on sensor/camera-based discipline in food service - treat as unsettled.",
+   "confirmed": false,
+   "source_url": ""
+  },
+  {
+   "issue": "Data ownership and who can see the dashboard",
+   "rule_or_precedent": "Sensor data here is business data, not personal data, under NJDPA; but if we attach camera images of identifiable staff we create a personal-data set with retention and access obligations. Default: local-first storage, no cloud video, customer owns exports.",
+   "confirmed": false,
+   "source_url": "https://www.cliclaw.com/library/us-state-laws/new-jersey/new-jersey-data-protection-act-%E2%80%9Cnjdpa%E2%80%9D-nj-rev-stat-%C2%A7-568-1664-et"
+  }
+ ],
+ "prospecting_signals": {
+  "public": [
+   "Middlesex County / municipal health inspection results: look for repeat critical items on cold holding, cooling, or 'food not held at 41 F' - this is the single strongest predictor",
+   "Posted evaluation placard level (Conditionally Satisfactory / Unsatisfactory) visible in storefront photos or Google Street View (placard posting is required by N.J.A.C. 8:24-8.12)",
+   "Google/Yelp reviews mentioning warm beer, soft or melted ice cream, 'the milk was off', 'salad was wilted', or a sudden multi-day closure",
+   "A 'temporarily closed' or reduced-hours gap followed by a reopening - often an equipment event",
+   "Job postings for a 'food safety' or 'HACCP' responsibility, or for a maintenance/facilities person, at a single-unit independent",
+   "Multi-location independents (2-5 units, same name) - each added site multiplies the unmonitored overnight risk and the owner's inability to be present",
+   "Large walk-in footprint visible in listing photos or a drive-through alley: outdoor condensing units, 2+ walk-ins, a separate freezer box",
+   "Business type mix in Milltown/Spotswood/Monroe/East Brunswick strip centers: pizzerias with walk-in dough retarders, delis, Indian/Asian grocers with frequent door openings",
+   "Any public mention of a power outage affecting the block (utility outage maps, local news) followed by a promo or 'sorry we're closed' post",
+   "County baseline for sizing a territory: 1,752 Accommodation and Food Services establishments and 24,124 of their employees in Middlesex County (NJDOL QCEW 2024)"
+  ],
+  "walk_in": [
+   "Clipboard or paper 'temperature log' sheet on the walk-in door, with gaps, same-pen-filled columns, or identical numbers - the classic tell",
+   "A standalone thermometer hanging on a hook and no probe thermometer visible at the prep line",
+   "Door gaskets torn or a door that does not self-close; a propped-open walk-in during delivery",
+   "Condensation, ice build-up on the ceiling/floor of the freezer, or frost on the evaporator coil - signs of defrost or door problems",
+   "Cases over-packed above the load line, blocking airflow, and product stacked on the floor",
+   "No visible monitoring hardware at all (no probe, no gateway, no antenna) plus a Wi-Fi router far from the cooler - installation difficulty, which is our differentiator",
+   "Refrigeration contractor sticker on the unit with a recent service date - they had a failure recently and may already have been quoted a monitoring add-on",
+   "Manager mentions 'we lost everything in the freezer last summer' - the cheapest possible discovery conversation"
+  ]
+ },
+ "pilot": {
+  "scope": "One independently owned site in the Milltown / Middlesex County area (target: a deli or full-service restaurant with 2-4 refrigerated units: one walk-in cooler, one walk-in or reach-in freezer, one prep/deli case). 2-6 weeks: week 1 site survey and baseline instrumentation with alarms suppressed; weeks 2-4 live alerting with a weekly review call; weeks 5-6 hand-off, log export in inspection-ready format (including a two-stage cooling report: 2 hours to 70 F, then 4 more hours to refrigeration temperature), and a go/no-go on a paid monthly plan. Optional add-on in week 3: one video-only camera on the walk-in entrance with person-zone detection to test door-ajar attribution.",
+  "hardware": "Per unit: probe-style temperature sensor with a buffered simulant (freezer-rated to at least -10 F), magnetic door contact, and power/compressor sensing via current clamp or a UPS-backed gateway. Commercial grade: Monnit ALTA sensors at $116 each plus probe (+$11 to +$117) and optional NIST certification (+$71), or a 12-input Sensaphone-class panel (price Unknown; note text/phone alerts on the SCD-1200 need a paid subscription); budget build: ESP32 + DS18B20 + reed switch (estimated ~$15-$25 per unit in parts). Either way, publish to a local Home Assistant/MQTT instance on a small always-on box and put a UPS or LTE failover on the gateway so a power cut still produces an alert. Optional camera: one PoE camera plus a small N100/Jetson-class box running Frigate with YOLO11n (this hardware tier is unpriced here - see data_gaps).",
+  "success_metric": "Primary: 100% of excursions >41 F lasting more than 30 minutes on a product-simulating probe are detected and alerted to a named phone within 5 minutes, with zero missed days of record, over 4 consecutive weeks. Secondary: false-alert rate under 2 per unit per week (measured against defrost and stocking windows), staff time on manual temperature checks reduced from baseline (baseline measured in week 1), and an export that the owner confirms matches what the inspector asks for. Do not promise spoilage reduction in a 6-week pilot; measure mean time to detect instead (inference: spoilage reduction follows detection time but will not be statistically visible in one site over six weeks).",
+  "cost_range": "Roughly $1,200-$4,100 for a 2-6 week pilot at one site, all-in. Assumptions: 3-4 monitored units; commercial sensors at $116 each plus $11-$117 per probe and optional $71 NIST cert (= $130-$300 per unit), or an estimated $15-$25 per unit for the DIY build; gateway/controller $200-$800 (assumed, not a price I verified); optional camera + edge box $400-$900 (unverified estimate); installation and commissioning 6-10 hours at $85-$125/hour (our own rate assumption, not a market survey); monitoring/support during the pilot included; travel within 10 miles of Milltown. Excludes any refrigeration repair and excludes the customer's own IT changes. Ongoing after pilot (inference, benchmarked to the vendor price points above rather than to a published service rate): $45-$120/month per site for monitoring, alert escalation and quarterly verification, plus hardware.",
+  "assumptions": "Site has functional Wi-Fi or we run Ethernet/LTE to the gateway; probe access through an existing port or gasket is possible without modifying the box; the owner will name two escalation contacts and actually answer; the refrigeration contractor will not treat our probe as tampering; and the pilot is priced as a paid evaluation, not free, because free installs do not convert and the hardware is a real cost."
+ },
+ "fit_score": {
+  "demand": 15,
+  "local_buyers": 13,
+  "ability_to_pay": 9,
+  "technical_feasibility": 18,
+  "legal_risk_low": 12,
+  "defensibility": 7,
+  "total": 74,
+  "rationale": "Scale used here, per the brief: demand 0-20, local_buyers 0-15, ability_to_pay 0-15, technical_feasibility 0-20, legal_risk_low 0-15 (15 = least legal risk), defensibility 0-15; maximum 100. Sub-scores: 15+13+9+18+12+7 = 74/100. Demand is real and government-documented: 70.0% of delis out of compliance on cold holding and 91.2% on improper holding (FDA 2015-2016), 45% of full-service restaurants in compliance with holding rules (FDA 2008 data), twice-yearly county inspections, and a failure cost the operator largely eats because spoilage usually needs a specific endorsement on a commercial property policy. Local buyer density is high - NJDOL QCEW counts 1,752 Accommodation and Food Services establishments employing 24,124 people in Middlesex County in 2024 - plus delis, bakeries, caterers and independent grocers concentrated in strip centers around Milltown, Spotswood, Monroe and East Brunswick. Ability to pay is the weak link: independents run thin margins and already resent subscription fees, so this must be sold as a $50-$120/month service with hardware bundled, and the ROI story has to be made concrete with the customer's own inventory value (the only single-incident data point I could source is an $1,800 loss). Technical feasibility is the strongest dimension - this is deterministic rules on 1-Wire probes plus MQTT, the models needed (YOLO11n, LFM2.5-VL-450M/1.6B, Qwen3-VL-2B) are small and free, and the hard part is physical (getting a probe into a metal box, wiring door and power sensing), which is exactly what a local installer is for. It is scored 18 rather than 20 because the bill of materials I can actually verify is partial: the DS18B20 ($9.95), Monnit ($116+) and ThermoWorks Type K logger ($289) are priced, but the ESP32 board, Sensaphone panels, PoE camera and edge computer were not priceable from pages I opened. Legal risk is low on the questions that kill projects - we stay off audio (NJ one-party wiretap statute) and skip face recognition (NJDPA, and employee biometrics are outside its consumer definition) - but it is not zero: no NJ statute compels or forbids workplace-camera notice, and sensor/camera-based discipline of employees is unsettled, so 12 of 15 (80%) rather than full marks. Defensibility is the real problem - SmartSense, TempGenius, Sensaphone, Monnit and ThermoWorks all sell this, hardware is commodity, and a national SaaS could bundle a free gateway. The moat is service: installation in ugly physical environments, alert routing that actually reaches a human, inspection-ready exports including the 2h/4h cooling curve, and a refrigeration-contractor channel - not the software."
+ },
+ "risks": [
+  "Commodity hardware: an estimated $15-$25 of ESP32 + DS18B20 + reed switch does most of what a $2,000 installed system does, so a technically confident owner can and will build it themselves once they see the parts list.",
+  "National SaaS vendors (SmartSense/Digi, TempGenius, Sensaphone) already own the category and can undercut on hardware while charging per asset; a local installer competing on price alone loses.",
+  "False alarms from defrost cycles, door openings during stocking, and probe placement will destroy trust in week one if commissioning is sloppy - this is the #1 way the pilot fails, and it is a configuration problem, not a hardware problem.",
+  "Wi-Fi does not propagate through a metal walk-in box; every install needs a probe run or an external-mount design, and retrofits on old boxes can require drilling (customer approval, sanitation concerns about penetrations).",
+  "Payment ability: a 12-seat deli with a $4k monthly food spend cannot justify $120/month without a concrete loss story; churn risk is high after the first quiet quarter.",
+  "If we add cameras, we inherit employee-relations noise ('you're watching us') and the audio-wiretap trap under N.J.S.A. 2A:156A; the safest product is sensor-only, which also makes us less differentiated.",
+  "Refrigeration contractors may view probe installation as encroachment; the partnership pitch must be that we generate service calls for them, not replace them.",
+  "Liability framing: if we alert and the owner ignores it, or if we fail to alert, who owns the spoiled inventory? Needs a clear contract term limiting remedy to service fees, reviewed by an NJ attorney.",
+  "Data retention and access: if we host the dashboard, a customer leaving takes their inspection history with them - build export-first or lose renewals.",
+  "Vendor lock-in risk on the commercial-grade path: the Sensaphone SCD-1200 gates text/phone alerts behind a paid subscription, and SmartSense sells an asset-based subscription with no published price - both make the monthly cost hard to quote to a small operator before signing."
+ ],
+ "caveats": "Most of the quantitative outcome evidence is government inspection data (strong) or vendor case studies (weak); I found no peer-reviewed study measuring spoilage reduction from continuous monitoring in small US restaurants, and there is no reliable industry figure for refrigeration-failure loss as a percent of restaurant revenue. Quantities in the buyers and pilot sections ($5k-$20k of inventory, installed hours, monthly service rates) are our own operating assumptions, labelled as such, not observed figures. The NJ regulatory picture is solid but slightly stale: N.J.A.C. 8:24 was readopted effective November 17, 2021, and NJDOH's readoption notice says rulemaking to conform to the newer federal Model Food Code was still in development - so the state rule in force is not the 2022 FDA Food Code, and a 41 F cold-holding standard plus the two-stage cooling rule (2 hours to 70 F, then 4 hours from 70 F) are what actually get cited. The USDA ERS loss figures describe large-chain supermarkets, not independent restaurants or delis, so they size the category, not our customer. Pricing was the weakest part of this revision: several vendor pages render prices dynamically, so SmartSense, Sensaphone and two ThermoWorks models are recorded as Unknown rather than with figures I could not re-open. My legal points on NJ wiretap and workplace video rest on secondary legal summaries that quote the statutes, not on the statute text itself; anything material should be re-checked by an NJ attorney.",
+ "data_gaps": [
+  "No authoritative count of licensed retail food establishments for Middlesex County or Milltown specifically. The replacement figure used here (1,752 Accommodation and Food Services establishments, NJDOL QCEW 2024) is a primary government source but is the broader NAICS 72 sector, not NAICS 722 restaurants alone, and I did not pull Census CBP directly (API returned no usable content without a key).",
+  "No published NJDOH or county statistic on how often cold-holding is the cited critical item in Middlesex County inspections specifically; the 70.0% and 45% figures are national FDA observations.",
+  "No peer-reviewed US study quantifying spoilage or waste reduction from continuous temperature monitoring in small restaurants or delis.",
+  "No public list pricing for SmartSense by Digi (asset-based subscription, quote only) or Kelsius for a single independent site, and the school-district Master Services Agreement I opened had a blank/image-only pricing exhibit.",
+  "Sensaphone SCD-1200 and WEB600 prices could not be read off any page I opened - reseller and CDW listings render price dynamically; the ~$554-$615 and ~$392 figures in search snippets are unconfirmed. ThermoWorks ambient and single-probe logger prices likewise not captured; only the $289 Type K thermocouple logger is confirmed.",
+  "Could not confirm an ESP32 development board price from a page I opened, so the per-cooler DIY parts cost is an estimate built on the one verified component (DS18B20 at $9.95).",
+  "Did not verify current retail prices for a suitable PoE camera, an industrial current clamp, a UPS/LTE failover module, or a small edge computer (N100/Jetson), so the optional camera-layer cost is an estimate.",
+  "Could not confirm whether NJ has any specific record-retention period for routine temperature logs (as opposed to inspection reports and time-as-control procedures).",
+  "Could not confirm any NJ case law or AG guidance on using sensor or camera evidence to discipline food-service employees.",
+  "A trade-press article on a Wendy's franchisee's remote temperature monitoring pilot returned HTTP 403 on re-check and was removed from measured_outcomes rather than cited unverified.",
+  "No sourced policy limit for spoilage endorsements was found, so the 'operator self-insures the loss' argument is stated qualitatively rather than with a dollar cap.",
+  "Did not confirm FSMA Section 204 traceability compliance dates as a potential driver for distributor buyers - unverified, omitted from the analysis."
+ ]
+}

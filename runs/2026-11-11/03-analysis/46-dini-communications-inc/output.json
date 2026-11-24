@@ -1,0 +1,79 @@
+{
+  "business": "DINI Communications, Inc.",
+  "industry": "software-it",
+  "town": "Edison",
+  "opportunities": [
+    {
+      "title": "24x7 help desk triage and NOC escalation agent",
+      "capability": "A",
+      "problem": "DINI sells a 24-hour toll-free help desk, 24x7 remote diagnostics and a NOC that logs into client systems and escalates through client, vendor and carrier contacts, and it promises clients 'real time access via the web' to incident tracking. That is a ticket queue that has to be read, classified, documented and routed around the clock across NYC agency clients. The company publishes no workforce-management, on-call scheduling or AI tooling on its site, and its public stack is a 2022-era WordPress/Contact Form 7 build, which suggests incident classification, ticket notes and escalation hand-offs are still done by hand by technicians between shifts.",
+      "evidence": [
+        "DINI advertises a 24-hour toll-free help desk, 24x7 remote diagnostics and a 24-hour NOC that logs into client systems and escalates through client/vendor contacts (https://dini.net/contact-center-support/).",
+        "Service incidents are tracked and reported with 'real time access via the web', implying an existing ticketing system with a client-facing view that an agent could read from and write to (https://dini.net/contact-center-support/).",
+        "'Answer user inquiries ... to resolve problems' and 'maintain records of daily data communication transactions, problems and remedial actions' are core O*NET task statements for Computer User Support Specialists 15-1232, the occupation floor this service line staffs (https://www.onetonline.org/link/summary/15-1232.00).",
+        "A staggered rollout to 5,179 support agents raised issues resolved per hour by 14% on average and 34% for novice/low-skilled agents (NBER Working Paper 31161, reported as published in QJE 2025) (https://www.nber.org/papers/w31161)."
+      ],
+      "agent_design": "An event-driven triage agent subscribes to the existing ticketing/PSA queue (email-to-ticket and web form intake first, then API/webhook if the ticketing product exposes one). On each new ticket or NOC alert it: deduplicates against open incidents, classifies severity and affected client/service, proposes a resolution from DINI's own runbooks and past closed tickets (retrieval-grounded, per-client index so no cross-client leakage), writes the structured ticket note, and drafts the client-facing status update. For NOC alerts it correlates related alerts into one incident and assembles the escalation contact chain (client contact, vendor TAC, carrier) with the diagnostic evidence attached. Human approval gates: any change to client systems, any ticket closed as resolved, and any escalation outside business hours route to an on-call technician for one-click approve/edit before send. Draft-only for the first 60 days, then auto-send for a whitelist of low-risk categories.",
+      "why_not_DIY": "Off-the-shelf chatbot subscriptions cannot read or write a multi-tenant ticketing system, cannot join alert streams from several client monitoring consoles, and cannot enforce per-client data isolation across a shared PSA. The value is in the integration plus the grounding corpus (DINI's runbooks and closed tickets) plus the approval and audit trail for write actions; a generic assistant would need to be re-fed the same context by hand on every shift, which defeats the point at 3am.",
+      "impact_estimate": {
+        "range": "$45,000-$95,000/yr of technician time, plus an unquantified reduction in after-hours escalation delay",
+        "assumptions": "Assumes roughly 3-5 support/NOC staff (headcount is not published, so this is anchored on the profile's inference of a firm well under 50 staff) at about 1,800 productive hours each, i.e. 5,400-9,000 hours of ticket work per year. Applies a deliberately narrow 10-20% reduction in handle-plus-documentation time rather than the 14%-34% resolve-rate uplift in the benchmark, because that study covers contact-center agents, not multi-client IT help desks. Hours valued at the NJ Computer User Support Specialist median of $64,470 (about $31/hr) with a 1.3x loaded-cost factor, i.e. about $40/hr.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/15-1232.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: connect one ticketing/email intake path and one client's alert feed; build a per-client runbook index from 200-500 historical tickets; ship a triage-and-draft agent that classifies, suggests a fix, and writes the ticket note; a weekly accuracy report (severity misclassification rate, note-rewrite rate, draft acceptance rate) so DINI can decide whether to widen scope."
+    },
+    {
+      "title": "Public-sector solicitation scout and bid-packet assembler",
+      "capability": "B",
+      "problem": "DINI's revenue is anchored on New York State OGS and New York City agency work - clients include NYC DOE, DoITT, FDNY, HRA, the NYC Law Department, OCME and the Port Authority - and it holds NJ and NY OGS contract vendor approvals. Winning that work means continuously watching multiple state and municipal procurement channels and then producing response packets with MWBE participation, certification evidence, references and pricing schedules, often on short turnarounds. The company has no marketing content, no published case studies and no bid/news cadence on its site (two news posts total), which points to a very small back-office doing this watching and assembling manually alongside delivery work.",
+      "evidence": [
+        "DINI is an approved New Jersey State and New York State OGS contractor for computer consulting, systems integration and training, and its client roster is dominated by NYC/NY State agencies and the Port Authority (https://dini.net/ and https://dini.net/our-clients/).",
+        "The company announced a partnership with Aviva Services Inc., a NY State/NYC-certified Minority/Women Owned Business, effective March 2016, positioned to extend public-sector reach - i.e. MWBE participation is already part of how it bids (https://dini.net/news-events/).",
+        "The entire news feed contains only two posts (the Aviva partnership and the 28-year anniversary), and the newest page edit is October 2025, consistent with no dedicated business-development or marketing function (https://dini.net/wp-sitemap-posts-page-1.xml).",
+        "'Monitor or track project milestones and deliverables, and confer with project personnel to identify and resolve problems' is a core O*NET task for IT Project Managers 15-1299.09, the role that typically also owns bid and status paperwork (https://www.onetonline.org/link/summary/15-1299.09)."
+      ],
+      "agent_design": "A scheduled discovery agent sweeps a configured list of public procurement sources (NY OGS and NYC/NY agency solicitation listings, the Port Authority, NJ state vehicles, plus NY State and NYC contract-award notices) and scores each notice against DINI's NAICS/service taxonomy (help desk, NOC, network/security engineering, staging, web dev) and its certifications. Qualified hits land in a daily digest with deadline, agency, incumbent and a short fit rationale. A second agent, triggered when a bid is marked 'pursuing', assembles the response skeleton from a maintained library of DINI's own past responses: company boilerplate, certification and OGS numbers, reference list, staff certification matrix (CCNA/CCNP/CCIE, MCSE, CCA, PMP), and an MWBE/partner section pre-filled from the Aviva arrangement. Human approval: a principal approves go/no-go on every digest item and signs off on every submitted packet; the agent never submits to a procurement portal or contacts a contracting officer.",
+      "why_not_DIY": "This is not a chat prompt. It requires persistent watching of several unstructured public procurement sites, a fit-scoring model tuned to DINI's service lines and contract vehicles, and a document store of past responses with per-solicitation template assembly. A subscription chatbot has no scheduler, no crawl target list, no memory of which certifications apply to which agency, and no version control over a packet that three people edit before submission.",
+      "impact_estimate": {
+        "range": "$20,000-$45,000/yr of bid research and packet-assembly labor, plus an uncounted upside in submitted-bid volume",
+        "assumptions": "Assumes 6-10 hours a week currently spent scanning solicitations and re-assembling boilerplate, i.e. 300-500 hours per year, valued at the NJ Computer Systems Analyst median of $122,890 (about $59/hr) with a 1.3x loaded factor, about $77/hr. Excludes any win-rate improvement, which cannot be estimated without DINI's historical bid/submit/win counts - those numbers are not public.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/15-1211.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: a working daily solicitation digest across 3-5 named public sources with fit scoring tuned to DINI's service lines, plus one auto-assembled response skeleton generated from a supplied set of three past bid packets - enough to show whether the digest finds anything DINI's manual process would have missed."
+    },
+    {
+      "title": "Staging and asset-tracking portal that replaces spreadsheet reports",
+      "capability": "D",
+      "problem": "DINI's staging and warehousing service does receiving, configuration, barcode asset tagging and asset tracking, and it delivers the result to clients as spreadsheets. In parallel, the firm has no client login, no portal and no booking anywhere on its site - inquiry channels are a phone line, a fax, info@dini.net and a five-field form. So the same asset data a client asks about by phone or email is maintained in a spreadsheet and re-sent manually, and the staging job (a billable, differentiated service line against CDW, Northrop Grumman and agency buyers) has no client-visible system behind it.",
+      "evidence": [
+        "Staging and warehousing services include receiving, configuration, asset tagging with barcode labels and asset tracking reports delivered as spreadsheets (https://dini.net/warehousing-and-staging-services/).",
+        "There is no booking widget, no client login, no portal and no e-commerce on the public site; intake is phone, email and a five-field Contact Form 7 form (https://dini.net/contact-us/).",
+        "The company already advertises web-based incident tracking for clients, showing it is willing to expose a web view to customers but has not extended that to assets or staging (https://dini.net/contact-center-support/).",
+        "Named clients include Northrop Grumman, CDW and Computer Aid Inc. alongside public agencies, i.e. buyers who will expect serialized asset reporting as a deliverable rather than a spreadsheet attachment (https://dini.net/our-clients/)."
+      ],
+      "agent_design": "An intake-and-reconciliation agent plus a thin client portal. Triggers: a staging request arrives by email or the web form and is parsed into a job record (client, site, quantity, SKUs, configuration spec, ship-to, required date); barcode scans during configuration append to the asset record; the agent reconciles received vs. configured vs. shipped and flags shortfalls and duplicate serials. The portal exposes a per-client asset list with warranty and configuration fields, a staging job status page, and a one-click export in the format each client asks for - replacing the manual spreadsheet send. A knowledge-agent layer (capability C, same build) answers 'where is asset X / what is its spec' from the same records. Human approval: a technician confirms every reconciled job before it is marked complete or invoiced, and no client-visible record goes live without that confirmation.",
+      "why_not_DIY": "Requires a real data model (asset, job, client, serial), barcode scan ingestion at the bench, per-client access control so one agency cannot see another's asset list, and an export/billing hook. A no-code form tool or chatbot subscription cannot hold serialized inventory state or enforce client isolation - and the multi-tenant isolation problem is exactly the constraint that makes public-agency buyers nervous.",
+      "impact_estimate": {
+        "range": "$18,000-$45,000/yr of administrative rework and manual reporting, plus a defensive bid advantage on staging RFPs",
+        "assumptions": "Assumes 8-15 hours a week spent on asset tagging records, spreadsheet report regeneration and answering 'where is this asset' queries, i.e. 400-780 hours per year, valued at the NJ Computer User Support Specialist median of $64,470 (about $31/hr) with a 1.3x loaded factor, about $40/hr, because this work is technician/admin-level rather than engineering-level. Any revenue uplift from offering a client portal in staging bids is excluded from the range - it is plausible but unmeasured.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/15-1232.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: a single-tenant prototype portal for one staging job - parse the intake email, scan-tag 50-200 assets, produce the client-facing asset list and export, and reconcile received vs. shipped - measured against the spreadsheet process on time-to-report and error count."
+    }
+  ],
+  "lead_score": {
+    "pain": 18,
+    "fit": 16,
+    "ability_to_pay": 11,
+    "ease": 9,
+    "strategic": 13,
+    "total": 67,
+    "rationale": "Pain (18/30): the operating model is real and specific - a 24x7 help desk, a NOC, staging and multi-agency public-sector contracts - but every pain signal is either self-reported marketing copy or the researcher's inference. There are no customer reviews, no BBB profile, no headcount, no revenue and no named owner or manager, so we cannot show a measured problem, only a structurally obvious one. Fit (16/20): the work maps almost entirely onto capabilities A, B and D, with C folded into the help desk; nothing here demands hardware or on-prem infrastructure, which is the one capability we would be stretching. Ability to pay (11/20): 28 years in business, state contract vehicles and a second revenue line in the Pearson VUE test center argue for stability, but public-sector consulting at this size is margin-thin, the public site still runs a 2022-era stack, and nothing published suggests an internal automation budget. Ease (9/15): one office plus a branch, small team, single decision point if we can find it - but the decision maker is unnamed, there is no published tech stack beyond a claimed web ticketing view, and public-sector procurement habits mean a slow, relationship-led sale. Strategic (13/15): the help desk plus multi-tenant asset portal pattern is close to a product for the MSP/IT-services vertical and would transfer to thousands of similar NJ and NY firms nearly unchanged; this is the strongest single argument for pursuing DINI. One caution for the orchestrator: DINI is itself an IT services firm with Cisco/Microsoft engineering depth, so a subset of this work is something they could hire for or build in-house - the pitch must lean on agent operations and grounding, not on generic 'AI for IT'. Evidence is thin enough that the score does not go higher; if a decision maker and a headcount were confirmed, pain and ease would both rise."
+  },
+  "best_evidence_signal": "DINI runs a 24-hour toll-free help desk, 24x7 remote diagnostics and a 24-hour NOC that escalates through client, vendor and carrier contacts, with incident reporting surfaced to clients 'real time via the web' - a live ticket queue we could plug an agent into immediately: https://dini.net/contact-center-support/",
+  "suggested_channel": "walk-in",
+  "evidence_thin": true
+}

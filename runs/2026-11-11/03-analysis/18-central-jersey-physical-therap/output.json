@@ -1,0 +1,85 @@
+{
+  "business": "Central Jersey Physical Therapy Associates",
+  "industry": "healthcare",
+  "town": "Old Bridge, NJ",
+  "opportunities": [
+    {
+      "title": "Front-door intake agent: web/phone request to verified benefits quote to booked slot",
+      "capability": "A",
+      "problem": "New-patient demand arrives through an embedded third-party form or a phone call, with no calendar and no self-service booking, and every new patient triggers a manual insurer call before the first visit. One admin covers intake, verification, scheduling and billing for seven clinical staff, so requests that land after 5-6 PM or on Sunday simply wait, and weekend capacity (Saturday until noon) is under-used for booking.",
+      "evidence": [
+        "Appointment requests are collected through an embedded third-party form widget (link.rehabceos.com), not a scheduling calendar — https://cjpta.com/request-an-appointment/",
+        "Clinic states staff verify benefits by calling the patient's plan before the first appointment 'without any exception' so exact benefits can be quoted — https://cjpta.com/insurance/",
+        "Staff page lists four PTs, two PTAs and a single admin staff member — https://cjpta.com/staff/",
+        "Hours end 5:00 PM Mon/Wed/Fri and 6:00 PM Tue/Thu, noon Saturday, closed Sunday, with no published after-hours line — https://cjpta.com/request-an-appointment/",
+        "FAQ notes New Jersey direct access, so patients can self-refer without a physician prescription, widening the unassisted front-door funnel — https://cjpta.com/",
+        "Stated in-network payers span Medicare, Horizon BCBS, United Health, Cigna, Oxford plus motor-vehicle and workers-comp plans, i.e. at least six distinct verification rule sets — https://cjpta.com/insurance/"
+      ],
+      "agent_design": "Triggers: a submitted intake form, an inbound GoHighLevel/SMS chat message, or a missed call. The agent extracts referral and plan details, runs an eligibility/benefit check through the clearinghouse (X12 270/271 via the practice-management system) and checks the payer against the clinic's in-network list, drafts a plain-language benefits summary with estimated patient responsibility, and proposes two or three slots that match therapist templates and discipline (vestibular vs ortho vs geriatric). It confirms by SMS/email, sends the intake-link and paperwork instructions, and chases incomplete forms until the day before the visit. Human approval: the admin sees a single review card with the drafted quote and slot options and approves before anything is written to the scheduling system; any MVA/workers-comp case, out-of-network plan, Medicare-secondary situation or missing referral is escalated without a draft quote. Phase 2 adds a retrieval layer over payer contract summaries and the clinic's SOPs so quotes cite the rule they came from.",
+      "why_not_DIY": "It has to read and write the practice-management system, speak clearinghouse eligibility transactions, hold state across SMS/email/phone over several days, and encode payer-specific exceptions. It also touches PHI and payer data, so it needs a BAA, audit logging and encrypted storage. A GoHighLevel chatbot can capture a form but cannot verify eligibility, compute a benefit estimate or put a patient on the schedule.",
+      "impact_estimate": {
+        "range": "2.5-8 front-office hours/week (~130-430 hours/year, roughly $3,000-$9,700/year of admin time) plus earlier booking of after-hours requests; the revenue side is deliberately not valued.",
+        "assumptions": "Inference: 15-25 new patients/week at a single site with 3.5 FTE clinical staff. Inference: 10-20 minutes of staff time per verification and quote, including insurer hold time. Admin time valued at the NJ dental-assistant median of $22.50/hr used as a clerical proxy (no NJ front-desk/medical-secretary figure was available). 2-5 after-hours requests/week are assumed lost or delayed today; no fee schedule, payer mix or visit value is public, so no revenue figure is claimed.",
+        "benchmark_source_url": "https://www.bls.gov/oes/2023/may/oes_nj.htm"
+      },
+      "complexity": "High",
+      "pilot_scope": "2-4 weeks in shadow mode on live web and chat submissions: agent drafts eligibility results, a benefits summary and three candidate slots for the admin to approve. Deliverables are the payer exception rulebook, a weekly dashboard of requests handled, minutes saved and after-hours requests recovered, and an accuracy audit comparing agent quotes against the staff's own insurer calls."
+    },
+    {
+      "title": "No-show, cancellation and waitlist-backfill agent across the weekly schedule",
+      "capability": "A",
+      "problem": "With no portal and no online scheduling, every reminder, confirmation and reschedule is a phone call made by the same single admin, and a cancellation leaves an empty treatment slot in a clinic whose patients specifically notice flow ('no wait between exercises'). There is no visible mechanism to offer a freed slot to another patient on the plan of care.",
+      "evidence": [
+        "Systematic review of predictive-model no-show interventions (7 RCTs + 1 non-RCT): text reminders reduced no-shows (median RR 0.91, high certainty), phone-call reminders median RR 0.61, patient navigators RR 0.55; indexed at PubMed PMID 36508503 and reported in the industry brief, which labels it peer-reviewed — I could not re-open the abstract this run, so treat the peer-review label as unverified — https://pubmed.ncbi.nlm.nih.gov/36508503/",
+        "RCT in an urban pediatric resident clinic: adding a text reminder to the standard voice reminder cut no-shows from 38.1% to 23.5% (14.6 pp, p=0.04); small single-site study on 2014-15 data — https://pubmed.ncbi.nlm.nih.gov/28127311/",
+        "Pilot RCT of 720 patients who had no-showed: up to three texts raised completed rescheduled visits by 2.83 pp (95% CI 1.66-4.00; OR 1.86) — https://pubmed.ncbi.nlm.nih.gov/38852906/",
+        "No online scheduling or patient portal observed; requests and changes run through a form or the phone during business hours only — https://cjpta.com/request-an-appointment/",
+        "Patient testimonial highlights 'no wait between exercises', indicating session flow and equipment capacity are part of the clinic's promise — https://cjpta.com/testimonial/",
+        "Business model is in-network Medicare and post-joint-replacement care, where a missed visit inside a plan of care is both lost billing and a clinical setback — https://cjpta.com/"
+      ],
+      "agent_design": "Nightly, the agent reads the next 10 days of appointments from the practice-management system and scores each for no-show risk using visit history, prior cancellations and lead time to booking. It runs an escalating two-way SMS sequence at 72h/24h/2h with a 'confirm / reschedule / call me' reply path, updates the status itself, and on a cancellation offers the freed slot in minutes to a ranked waitlist (patients due for their next visit under a plan of care, same discipline and therapist). Replies that mention new symptoms, insurance changes or hardship go to a human. Human approval: clinical judgement stays with the PT — the agent drafts the waitlist order and any frequency change, and the admin approves reassignments during the pilot; once accuracy is stable, only exceptions route to staff.",
+      "why_not_DIY": "Two-way SMS requires consent capture and opt-out handling, and the value comes from writing reschedules back into the schedule and re-ranking the waitlist against each patient's plan-of-care frequency. Off-the-shelf reminder add-ons broadcast messages but do not close the loop into scheduling, and cannot apply clinic-specific waitlist rules or produce an audit trail for HIPAA.",
+      "impact_estimate": {
+        "range": "2-8 recovered visit slots/month (about 1.5-6 PT-hours, roughly $0.9k-$3.6k/year of clinical capacity at the NJ PT median) plus 1-3 admin hours/week of reminder and reschedule calls (~$1.2k-$3.5k/year). Billable revenue per recovered visit is not estimated.",
+        "assumptions": "Inference: 200-350 visits/month at a single site. Assumption: no-show plus late-cancellation rate of 10-15% (no clinic data exists publicly). Assumption: a conservative 8-15% relative reduction, well below the 14.6 pp absolute drop in the single small pediatric RCT and in line with the RR 0.91 text-reminder finding. Slot length assumed 45 minutes and valued at the NJ PT median of $50.00/hr as capacity, not as cash. Front-desk time valued at the NJ dental-assistant median of $22.50/hr as a proxy.",
+        "benchmark_source_url": "https://www.bls.gov/oes/2023/may/oes_nj.htm"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks on one therapist's schedule: live reminder and two-way reschedule flow, a daily waitlist backfill run, and a baseline-vs-pilot comparison of no-show rate, slots refilled and staff minutes spent on the phone. Delivered with the message templates, consent language and escalation rules the clinic keeps afterwards."
+    },
+    {
+      "title": "Front-desk knowledge agent over payer rules, paperwork and clinic policy",
+      "capability": "C",
+      "problem": "The site's chat widget answers with a promise that 'a care coordinator will get right back to you', and the clinic publishes no FAQ depth, blog or resource library; so coverage questions, direct-access rules, MVA/workers-comp handling and paperwork instructions all land on one admin and the owners, in the middle of patient care.",
+      "evidence": [
+        "GoHighLevel/LeadConnector chat widget installed with copy promising that 'a care coordinator will get right back to you' plus SMS/email consent language — https://cjpta.com/",
+        "One admin staff member for the whole clinic, alongside six clinical staff — https://cjpta.com/staff/",
+        "Six-plus payer relationships plus motor-vehicle and workers-comp plans, each with different referral, authorization and documentation rules — https://cjpta.com/insurance/",
+        "New-patient paperwork is collected through a second embedded third-party form with no portal, so instructions are re-explained to each patient — https://cjpta.com/paperwork/",
+        "No blog or resource library: the sitemap contains only service, condition, staff, testimonial and utility pages — https://cjpta.com/sitemap.xml",
+        "Direct-access rules and 'do I need a prescription' are already FAQ-level questions the clinic fields — https://cjpta.com/"
+      ],
+      "agent_design": "Retrieval agent over the clinic's own corpus — payer contract summaries and benefit sheets, intake and paperwork instructions, MVA/workers-comp checklists, direct-access and scheduling policies, service descriptions. Two surfaces: a staff copilot (browser side panel or chat) that answers 'does this Horizon plan need a referral for this CPT' or 'what goes in the workers-comp packet' with the source passage cited, and a patient-facing layer inside the existing chat widget that answers logistics-only questions and hands off. Guardrails: no clinical advice, no coverage guarantees, no PHI in prompts; anything about cost, coverage confirmation or symptoms is escalated to a human, and every unanswered question is logged as a content gap for the admin to fill.",
+      "why_not_DIY": "The answers must come from the clinic's actual contracts and SOPs with citations and a hard refusal boundary, because a confident wrong coverage answer is a billing and compliance problem, not a bad chat. That needs document ingestion and permissions, PHI-safe logging, an escalation contract and a tuning loop — more than a chatbot subscription pointed at a website.",
+      "impact_estimate": {
+        "range": "1-3 front-office hours/week returned (~$1.2k-$3.5k/year at the clerical proxy), faster first response to chats and after-hours enquiries, and a reusable SOP corpus that later feeds the intake agent. Conversion uplift is not estimated.",
+        "assumptions": "Inference: the admin and owners spend 2-5 hours/week answering repeat coverage, paperwork and scheduling questions. Assumption: 40-60% of those questions are answerable from documents once written down. Time valued at the NJ dental-assistant median of $22.50/hr as a proxy; no NJ medical-secretary wage was available. Document set (contracts, SOPs) is assumed to exist but was not observable publicly.",
+        "benchmark_source_url": "https://www.bls.gov/oes/2023/may/oes_nj.htm"
+      },
+      "complexity": "Low",
+      "pilot_scope": "2-4 weeks: ingest roughly 30-50 documents, deploy the staff copilot first, then switch on the patient-facing logistics answers in the existing chat widget with a full escalation path. Delivered with a labelled answer library, an accuracy spot-check on 50 real questions, and a log of gaps to close."
+    }
+  ],
+  "lead_score": {
+    "pain": 22,
+    "fit": 17,
+    "ability_to_pay": 13,
+    "ease": 10,
+    "strategic": 12,
+    "total": 74,
+    "rationale": "Pain (22/30): unusually explicit first-party evidence — the clinic itself says it calls every insurer before the first visit 'without any exception', intake is a form embed rather than a calendar, and one admin covers a seven-person clinical team. It loses points because review, job-board and volume data are unverified, no critical feedback exists in the record, and the clinic's own marketing agency already owns part of the front-door stack. Fit (17/20): three of the strongest opportunities are capability A with a natural C extension; there is no evidence of inventory, safety or equipment-monitoring pain, so E is not in play, and only weak signals for B. Ability to pay (13/20): 29 years trading, six-plus in-network payers, a benefits-bearing full-time PT hire and a paid marketing agency imply real cash flow, but PT margins are thin, revenue is undisclosed and the buyer is a clinician-owner who will compare any fee to an admin salary. Ease (10/15): single site, one clear decision maker (co-owner Ajay Kalola), simple stack (WordPress/Divi, GoHighLevel), but HIPAA BAA and an unidentified practice-management system are real integration unknowns. Strategic (12/15): a homogeneous, fragmented PT-clinic segment with identical payer, direct-access and front-desk patterns, so the intake and no-show agents are close to product after two or three deployments. Patient-balance and collections automation is an obvious phase-2 expansion that was not scored here because no A/R or revenue data was public."
+  },
+  "best_evidence_signal": "The clinic states it phones each patient's insurer before the first appointment 'without any exception' to quote benefits — a manual, per-patient task run by a single admin — https://cjpta.com/insurance/",
+  "suggested_channel": "email",
+  "evidence_thin": false
+}

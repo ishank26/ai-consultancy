@@ -1,0 +1,158 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"the map is an empty frame\" (Section 1, Now)",
+      "problem": "Contradicted by the page itself. Opened https://menloeng.com/projects/project-map/ in Chrome at 500px width: the WP Go Maps container initialises (600px tall) and renders a live Google map with 85 project marker images in the DOM, most of them inside the viewport (screenshot shows dozens of red pins across NJ/PA). The page is not an empty frame - it is the one part of the portfolio that actually works. The researcher's profile made the same error (\"only an empty iframe container\"), which the audit repeated.",
+      "fix": "Delete the empty-map claim everywhere, or replace with the accurate point: \"the Project Map plots the firm's projects on a live map, but the Projects and News indexes that should list the same work print raw shortcode instead.\" If a map point is wanted, verify in a browser again first."
+    },
+    {
+      "claim": "\"the phone number is not tappable\" (Section 1, Now)",
+      "problem": "Contradicted. The home page has zero literal <a href=\"tel:\"> links, but the footer phone sits in a theme 'clickable' blurb bound to tel:732-846-8585 (cursor:pointer, and the theme script applies window.et_link_options_data = [{class:'et_pb_blurb_0_tb_footer', url:'tel:732-846-8585'}]). Tapping the footer number on a phone dials. A founder checking this in ten seconds would find the audit wrong about his own site.",
+      "fix": "Reword to what is verifiable: \"the only call-to-action is the phone number in the footer - there is no headline, no tel: link in the body copy and no 'start a project' button above the fold.\""
+    },
+    {
+      "claim": "\"two principals are stepping back to advisory roles\" (Section 3, Now)",
+      "problem": "Only half-supported. The firm's announcement says Fred Coco and Jule Szalay \"have taken new part time, advisory roles ... as they begin the move to retirement\" - confirmed. But neither the announcement nor the leadership page (opened via browser; Coco does not appear on it, and 'Szalay' on that page is Christopher Szalay, key personnel) calls either of them a principal or officer. The 'principals' label is unsourced.",
+      "fix": "Say \"two long-serving staff named in the firm's own announcement have moved to part-time advisory roles ahead of retirement\". Do not upgrade them to principals without a source."
+    },
+    {
+      "claim": "\"work arrives by referral and board appearances\" (Section 2, Now)",
+      "problem": "Stated as fact in the 'Now' line but it is an inference from absence (no online funnel, plus one board appearance). No opened source says how Menlo wins work. This is the one place where an inference is presented as established fact.",
+      "fix": "Frame it: \"from the outside, work looks like it arrives by referral and board appearances - there is no visible pipeline, and a principal testified as the applicant's expert at Riverdale in November 2025.\""
+    },
+    {
+      "claim": "Audit body length",
+      "problem": "The audit body (title through the 'Prepared from publicly available information' line, excluding the founder section and Sources) runs to roughly 465 words, slightly over the ~450-word target. Counting method is manual, so treat as approximate.",
+      "fix": "Trim 15-25 words - the repeated O*NET parenthetical in all three Impact lines can be shortened to \"$62.90/hour (see note)\" after the first use."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Established 1966; over 3,000 planning and design projects to its credit (also used in the founder email)",
+      "source_url": "https://menloeng.com/our-company/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A 281,215-SF Class A industrial facility at 169 Lackawanna Avenue, Parsippany, posted June 26, 2026, with completion anticipated early 2027 and Menlo on the design team",
+      "source_url": "https://menloeng.com/congratulations-to-greek-real-estate-partners-on-169-lackawanna-avenue/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Home page has no headline (no h1)",
+      "source_url": "https://menloeng.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Projects index and News index print page-builder code instead of any project or news item",
+      "source_url": "https://menloeng.com/projects/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "News index prints page-builder code, so the June 2026 project post is not listed",
+      "source_url": "https://menloeng.com/news/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The map is an empty frame",
+      "source_url": "https://menloeng.com/projects/project-map/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "The phone number is not tappable",
+      "source_url": "https://menloeng.com/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Inquiries arrive with no municipality, lot, timeline or upload (contact form fields are Name, Email, Phone, Message only)",
+      "source_url": "https://menloeng.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Address 261 Cleveland Avenue, Highland Park, NJ 08904; phone 732-846-8585",
+      "source_url": "https://menloeng.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Two senior roles open at $75k-$135k (Project Engineering Designer $75k-$90k; Project Manager P.E. $120K-$135K)",
+      "source_url": "https://menloeng.com/our-company/careers/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The designer posting asks for NJDEP stormwater rules",
+      "source_url": "https://menloeng.com/our-company/careers/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Six service lines published (Site Engineering, Land Planning, Landscape Architecture, Wetland & Environmental, Highway Design, Construction Administration)",
+      "source_url": "https://menloeng.com/services/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Two principals are stepping back to advisory roles",
+      "source_url": "https://menloeng.com/menlo-engineering-proudly-announces-our-new-executive-team/",
+      "result": "not found"
+    },
+    {
+      "claim": "Scott Turner was sworn in as an applicant's expert at Riverdale's Planning Board, November 2025",
+      "source_url": "https://www.riverdalenj.gov/_Content/pdf/minutes/2025-11-13-PB-Minutes.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Work arrives by referral and board appearances",
+      "source_url": "https://www.riverdalenj.gov/_Content/pdf/minutes/2025-11-13-PB-Minutes.pdf",
+      "result": "not found"
+    },
+    {
+      "claim": "N.J.A.C. 7:8 is the NJDEP stormwater rule that review-letter responses turn on",
+      "source_url": "https://dep.nj.gov/wp-content/uploads/rules/rules/njac7_8.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The cited NJDEP rule page itself",
+      "source_url": "https://dep.nj.gov/stormwater/stormwater-management/stormwater-management-rule-n-j-a-c-78/",
+      "result": "could not open"
+    },
+    {
+      "claim": "NJ maintains a statewide legal-notices directory (usable as an opportunity feed)",
+      "source_url": "https://www.nj.gov/state/statewide-legal-notices-list.shtml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "O*NET/BLS 2025 New Jersey civil engineer hourly median $50.32; x1.25 benefits = $62.90/hour (labelled as our assumption)",
+      "source_url": "https://www.onetonline.org/link/localwages/17-2051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact math: 3-6 inquiries/week x 15-20 min / 60 x 50-70% x 46 weeks = 17-64 hours; x $62.90 = $1,069-$4,025",
+      "source_url": "https://www.onetonline.org/link/localwages/17-2051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact math: 6-12 senior hours/week x 30-40% x 46 weeks = 82-220 hours; x $62.90 = $5,157-$13,838",
+      "source_url": "https://www.onetonline.org/link/localwages/17-2051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact math: 24-48 review cycles x 4-8 hours x 25-40% = 24-153 hours; x $62.90 = $1,509-$9,623",
+      "source_url": "https://www.onetonline.org/link/localwages/17-2051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Public review volume is very small (cited in Sources but not argued in the body)",
+      "source_url": "https://reviews.birdeye.com/menlo-engineering-associates-inc-144684430385065",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder email: Projects and News pages print page-builder code instead of projects; home page has no headline; June 2026 post shows current work; 3,000 projects since 1966; 261 Cleveland Avenue",
+      "source_url": "https://menloeng.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Assumption-based inputs (3-6 inquiries/week; 6-12 senior hours/week; 24-48 review cycles at 4-8 hours) are flagged as assumptions rather than presented as firm data",
+      "source_url": "https://menloeng.com/contact-us/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

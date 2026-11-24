@@ -1,0 +1,128 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Consumers Title Agency Inc — website https://consumerstitlesagency.com/",
+      "problem": "Wrong website URL. consumerstitlesagency.com does not resolve (DNS ENOTFOUND); the agency's live domain is consumerstitleagency.com (no 's' after 'title'), which appeared in search results. The entry also says the 30 Knightsbridge Rd Suite 525 address and (732) 752-9299 come from that contact page, so the address correction is currently resting on an unopenable URL.",
+      "fix": "Change the website to consumerstitleagency.com, then re-verify the suite/phone by opening consumerstitleagency.com/contact.php in a browser (fetch fails / TLS error)."
+    },
+    {
+      "claim": "A-List Realty — 371 Hoes Ln, Suite 200, Piscataway",
+      "problem": "The firm's own site contradicts itself: /about/ gives 371 Hoes Ln STE 200 while /career/ gives 44 Stelton Rd STE 215 (same phone 732-339-4701). The township profile does not contain an address block.",
+      "fix": "Open the firm's contact page or call with the listed number to fix one address before outreach; note the 371 Hoes Ln Suite 200 cluster is a shared/virtual suite."
+    },
+    {
+      "claim": "Clarity Accounting & Tax Group, LLC — 154 Stelton Rd, Suite 4, phone (732) 733-6988",
+      "problem": "The two cited chamber URLs do not display an address or phone (the member page renders only news/app widgets), so the pairing is unverified. Google Maps shows the same phone (732) 733-6988 against 'Clarity & Wealth Accounting Group, LLC' at 371 Hoes Ln Ste 304, and claritywealthaccountinggroup.com is live and Piscataway-branded — so this may be one firm under two names with a stale address, i.e. a duplicate risk next to the existing row.",
+      "fix": "Decide one canonical name/address: open claritywealthaccountinggroup.com/contact-us/ or the Maps listing, then merge or separate this row and the 'Clarity & Synergy' row accordingly."
+    },
+    {
+      "claim": "James F. Clarkin III — 1100 Centennial Ave, Suite 203, Piscataway (WhereOrg only)",
+      "problem": "Could not confirm. Google Maps shows his firm as 'Clarkin & Vignuolo, PC' at 86 Washington Ave, Milltown NJ (unclaimed listing, no phone), and the Justia profile that allegedly gives the Piscataway suite returned HTTP 403. The row may be an old office or a Milltown firm recorded in the wrong town.",
+      "fix": "Verify against a per-business source (NJ bar record, clarkinlaw.com, or a call). If it is Milltown, move it to that zone; if unconfirmed, drop it rather than queue it."
+    },
+    {
+      "claim": "Cheryl Li CPA LLC — 15 Plane St, (732) 699-0576",
+      "problem": "Still unconfirmable: only bulk Yellow Pages / Superpages category rows mention the name and phone, no per-business page opened, and a Google Maps search for the business returns no such listing. Not shown to be false, but not evidence of an operating local firm either.",
+      "fix": "Keep flagged as unverified and out of the outreach queue until a per-business page (state CPA licence lookup, own site or a call) confirms it — or drop the row."
+    },
+    {
+      "claim": "Abnet Inc. Insurance Services — 371 Hoes Ln, Suite 200, Piscataway",
+      "problem": "abnetincnj.com opens but is a generic Trusted Choice/Medicare template page with no address (it says 'By Appointment Only'), and the township profile page carries no contact block, so the address in the row is not confirmed by either cited source.",
+      "fix": "Confirm the suite via the Progressive agent page or a call, and label the row as a virtual/shared suite if 371 Hoes Ln is only a mail address."
+    },
+    {
+      "claim": "M & M Realty Partners (1260 Stelton Rd, 732-985-1900) and Edgewood Properties (444 Hoes Ln Suite 200, same phone)",
+      "problem": "The Google Maps listing for M & M Realty Partners at 1260 Stelton Rd (Charleston Center) links to edgewoodproperties.com as its website and shows the same phone as Edgewood, and 1260 Stelton is Edgewood's former corporate address. These look like one organisation under two names, so the list risks two 'separate' leads into the same company.",
+      "fix": "Treat M & M as an Edgewood-affiliated entity; merge or cross-reference the two rows and contact once. Also settle which address Edgewood uses now (its own contact/terms pages disagree internally: 444 Hoes Ln vs 1260 Stelton Rd)."
+    },
+    {
+      "claim": "Coverage gap — financial planning category",
+      "problem": "Indus Financial Planners (9 Suttie Avenue, Piscataway NJ 08854, (732) 322-1975) has its own website with an explicit Piscataway address and is not in the list.",
+      "fix": "Add it to the financial planning category."
+    },
+    {
+      "claim": "Coverage gap — staffing and township members",
+      "problem": "KNM Resources (30 Knightsbridge Rd, Bldg 5, #525, (732) 867-9595) appears in an employment-agency directory but not in the list; the township business-partnership directory also lists two group-A-type members that were skipped, FamDesk and Lolo Berry Shoppe (B2B marketing/signage).",
+      "fix": "Spot-check KNM Resources on a per-business page and add it if real; decide whether the two township micro-businesses belong in group A scope."
+    },
+    {
+      "claim": "Row-level citations",
+      "problem": "Roughly 60-70 rows cite a Google Maps category-search URL or a bulk directory rather than a per-business page (the mapper discloses this). Spot checks show the underlying listings are usually real (Weingarten at 444 Hoes Ln/732-393-0048, Carty at 371 Hoes Ln Suite 200/732-424-9000, CINDIE at 200 Centennial Ave #106/732-896-0272 all matched), but the citations themselves do not evidence the individual business.",
+      "fix": "Replace category-search citations with per-business URLs (Maps place link, own site, carrier/professional directory) as each row is triaged; keep the current 'needs a business-specific citation' label until then."
+    },
+    {
+      "claim": "Website fields left blank where a site exists",
+      "problem": "Red Door Real Estate has a live Piscataway site at goreddoor.com (independent brokerage, broker/owner named), and the Law Office of Michael P. Otto has its own site at ottolawoffice.com; both rows show no website. The Red Door note ('domain did not resolve') is true only of the previously recorded domain.",
+      "fix": "Fill in https://www.goreddoor.com/ and the Otto site URL, and correct the Red Door note."
+    },
+    {
+      "claim": "Mavinkurve & Patel phone (908) 360-2300",
+      "problem": "The cited contact page confirms 1094 Stelton Road, Piscataway but renders no phone digits in the page text, so the number the entry says 'the firm's site publishes' could not be seen there.",
+      "fix": "Confirm the number on the site's header/footer (or the Maps listing) before dialling; drop the claim that the site publishes it if it does not."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Bond & Posluszny Law Offices is an operating Piscataway law firm and njlaw123.com is its own site (practice areas match the note)", "source_url": "https://www.njlaw123.com/", "result": "confirmed"},
+    {"claim": "Mavinkurve & Patel LLC is located at 1094 Stelton Road, Piscataway", "source_url": "https://www.mplegal.org/contact-us/", "result": "confirmed"},
+    {"claim": "Mavinkurve & Patel's own site publishes phone (908) 360-2300", "source_url": "https://www.mplegal.org/contact-us/", "result": "not found"},
+    {"claim": "Stanton & Stieh, PA is a Piscataway law firm reachable at 732-752-4000", "source_url": "https://www.stantonandstieh.net/", "result": "confirmed"},
+    {"claim": "Rubin Kaplan and Associates is a Piscataway law firm at 200 Centennial Ave Suite 110, (732) 463-7511", "source_url": "https://www.rkalaw.com/attorneys/", "result": "confirmed"},
+    {"claim": "A F Paredes & Co., CPAs LLP is at 250 Stelton Road, Suite 8, Piscataway, (732) 752-9530", "source_url": "https://paredescpa.com/home.html", "result": "confirmed"},
+    {"claim": "Clarity & Synergy Accounting Group, L.L.C. is a Piscataway firm at 371 Hoes Ln, (732) 848-0084", "source_url": "https://www.csynergytax.com/", "result": "confirmed"},
+    {"claim": "William J. Drumgould & Associates is at 1801 West 7th St, Piscataway, (732) 926-8781, doing tax/bookkeeping/payroll", "source_url": "https://wjdrumgouldcpa.com/", "result": "confirmed"},
+    {"claim": "CINDIE CPA Firm (Cindie Professional Group) is at 200 Centennial Ave #106, Piscataway, (732) 896-0272, and cindiellc.com is its site", "source_url": "https://cindiellc.com/", "result": "confirmed"},
+    {"claim": "Clarity Accounting & Tax Group, LLC is at 154 Stelton Rd, Suite 4, Piscataway with phone (732) 733-6988 (chamber source)", "source_url": "https://www.mcrcc.org/business-directory/clarity-accounting-tax-group/", "result": "not found"},
+    {"claim": "Abnet Inc. Insurance Services is at 371 Hoes Ln, Suite 200, Piscataway", "source_url": "https://abnetincnj.com/home", "result": "not found"},
+    {"claim": "A-List Realty is a Piscataway brokerage at 371 Hoes Ln, Suite 200", "source_url": "https://www.alistrealtynj.com/about/", "result": "confirmed"},
+    {"claim": "A-List Realty's own website gives one consistent address", "source_url": "https://www.alistrealtynj.com/career/", "result": "contradicted"},
+    {"claim": "North East Title Agency is at 1096 Stelton Road, Piscataway, (732) 400-8608", "source_url": "https://netitleagency.com/index.html", "result": "confirmed"},
+    {"claim": "consumerstitlesagency.com resolves and is Consumers Title Agency's website", "source_url": "https://consumerstitlesagency.com/contact.php", "result": "not found"},
+    {"claim": "Consumers Title Agency Inc is a Piscataway title agency at 30 Knightsbridge Rd, Suite 525, (732) 752-9299", "source_url": "https://consumerstitleagency.com/contact.php", "result": "could not open"},
+    {"claim": "Omsum Engineering LLC is headquartered at 15 Corporate Place South, Suite 102, Piscataway, (732) 659-4824", "source_url": "https://omsumeng.com/contact", "result": "confirmed"},
+    {"claim": "Seva Engineering Services LLC is at 242 Old New Brunswick Road, Suite 370, Piscataway, 732-707-7382", "source_url": "https://www.sevaengineering.com/contact.html", "result": "confirmed"},
+    {"claim": "Brunswick Surveying, Inc. is at 61 Stelton Road, Piscataway, (732) 752-0100", "source_url": "https://www.brunswicksurveying.com/contact", "result": "confirmed"},
+    {"claim": "Gliasis Engineering Consulting is at 371 Hoes Lane, Suite 200, Piscataway, 732-354-5134", "source_url": "https://www.gliasis.com/contact", "result": "confirmed"},
+    {"claim": "Geo-Enviro Consulting & Remediation uses 732-377-2028 and publishes no street address on its own site", "source_url": "https://gecr.org/contact.html", "result": "confirmed"},
+    {"claim": "EcoTerra Consulting LLC's contact page lists its Piscataway address and phone", "source_url": "https://ecoterrainc.com/contact-us", "result": "could not open"},
+    {"claim": "Complete Solutions (completesol.com) is a Piscataway IT services firm", "source_url": "https://completesol.com/about/", "result": "not found"},
+    {"claim": "The Law Offices of Lee R. Lederman is a Piscataway real-estate law practice, attorney with 30+ years and support staff", "source_url": "https://www.piscatawaynj.org/business_detail_T33_R12.php", "result": "confirmed"},
+    {"claim": "Thakkar Family Law LLC is a Piscataway divorce/family-law firm", "source_url": "https://www.piscatawaynj.org/business_detail_T33_R16.php", "result": "confirmed"},
+    {"claim": "Red Door Real Estate is a Piscataway brokerage dating to 1984 led by a broker-owner", "source_url": "https://www.piscatawaynj.org/business_detail_T33_R24.php", "result": "confirmed"},
+    {"claim": "Red Door Real Estate has no working website (entry leaves website blank on that basis)", "source_url": "https://www.goreddoor.com/", "result": "contradicted"},
+    {"claim": "ReCloud IT LLC is at 1531 S Washington Avenue, Piscataway, (732) 424-6104, website recloudit.com", "source_url": "https://www.piscatawaynj.org/business_detail_T33_R82.php", "result": "confirmed"},
+    {"claim": "General Autonomy Inc. is an active Piscataway business-partnership member doing AI/robotics consulting", "source_url": "https://www.piscatawaynj.org/business_detail_T33_R29.php", "result": "confirmed"},
+    {"claim": "The township entry 'Edge Home Finance' describes one mortgage adviser at Patel Home Finance, not two businesses", "source_url": "https://www.piscatawaynj.org/business_detail_T33_R46.php", "result": "confirmed"},
+    {"claim": "The Weingarten Law Firm is at 444 Hoes Ln, Piscataway, (732) 393-0048", "source_url": "https://www.google.com/maps/search/Weingarten+Law+Firm+Piscataway+NJ", "result": "confirmed"},
+    {"claim": "James E. Carty III, PC is at 371 Hoes Ln, Suite 200, (732) 424-9000", "source_url": "https://www.google.com/maps/search/James+F.+Clarkin+III+attorney+Piscataway+NJ", "result": "confirmed"},
+    {"claim": "James F. Clarkin III operates at 1100 Centennial Ave, Suite 203, Piscataway", "source_url": "https://www.google.com/maps/search/Clarkin+%26+Vignuolo+Piscataway", "result": "not found"},
+    {"claim": "Cheryl Li CPA LLC operates in Piscataway at 15 Plane St, (732) 699-0576", "source_url": "https://www.google.com/maps/search/Cheryl+Li+CPA+Piscataway+NJ", "result": "not found"},
+    {"claim": "M & M Realty Partners is at 1260 Stelton Rd, Piscataway, (732) 985-1900", "source_url": "https://www.google.com/maps/search/M+%26+M+Realty+Partners+1260+Stelton+Rd+Piscataway", "result": "confirmed"},
+    {"claim": "Edgewood Properties' current corporate office is 444 Hoes Ln, Suite 200, Piscataway", "source_url": "https://www.edgewoodproperties.com/contact-edgewood-properties/", "result": "could not open"}
+  ],
+  "coverage": {
+    "searches": [
+      "accounting firm Piscataway NJ CPA",
+      "insurance agency Piscataway NJ independent agent",
+      "law firm Piscataway NJ attorneys Stelton Road",
+      "staffing agency Piscataway NJ recruiting",
+      "real estate brokerage Piscataway NJ office",
+      "IT managed services company Piscataway NJ",
+      "civil engineering firm Piscataway NJ office",
+      "title agency settlement Piscataway NJ",
+      "marketing agency Piscataway NJ web design",
+      "financial advisor Piscataway NJ wealth management firm",
+      "Google Maps spot checks: Weingarten Law Firm, Clarkin & Vignuolo, Cheryl Li CPA / Clarity group, James E. Carty III, M & M Realty Partners",
+      "Piscataway Township business-partnership directory (full member list)"
+    ],
+    "eligible_found": 26,
+    "already_listed": 22,
+    "missing": [
+      {"name": "Indus Financial Planners", "town": "Piscataway", "source_url": "https://indusfinancialplanners.com/"},
+      {"name": "KNM Resources", "town": "Piscataway", "source_url": "https://www.cylex.us.com/piscataway/employment-agencies/"},
+      {"name": "FamDesk", "town": "Piscataway", "source_url": "https://www.piscatawaynj.org/departments/administration/business_directory.php"},
+      {"name": "Lolo Berry Shoppe", "town": "Piscataway", "source_url": "https://www.piscatawaynj.org/departments/administration/business_directory.php"}
+    ]
+  },
+  "confidence": "Medium"
+}

@@ -1,0 +1,491 @@
+{
+ "avenue": "edge-vlm-stack",
+ "one_line": "A reusable, fully on-premise vision stack - YOLO/RF-DETR detector on a cheap accelerator, Frigate for tracking and zones, and a 0.5B-4B vision-language model (LFM2.5-VL, Qwen3.5 small, SmolVLM2) for exception reasoning - that a two-person NJ shop can assemble into roughly $5k-$15k vertical pilot kits for grocery, food service, warehouse and clinic clients, with no cloud video and no per-camera SaaS fee.",
+ "problem": {
+  "summary": "Small businesses around Milltown already own cameras but cannot watch them. A 5-200 staff business runs 4-40 streams and relies on a manager glancing at a monitor, a clipboard log, or a part-time guard paid near the NJ median of $18.69/hr. The work that actually needs eyes is repetitive and intermittent - was the sink used before gloves went on, did the pallet leave the dock unscanned, was that a customer putting an item in a bag or a staff member restocking - so it is either not done, done after the fact from recorded footage, or done by an outside service at a per-visit price. Published surveillance research states plainly that camera output already exceeds human monitoring capacity, and the one field study of CCTV operators found they detected about half of target behaviours (50% in the reported result, with false alarms high). The technical gap is no longer detection (YOLO-family detectors run in single-digit to low-tens of milliseconds per frame on a low-cost accelerator) but the last 10%: telling a real exception from a lookalike, which is exactly what a small VLM on the event thumbnail can do, and where VLM accuracy is currently weak.",
+  "evidence": [
+   {
+    "fact": "New Jersey security guards (SOC 33-9032) median wage is $18.69/hour ($38,880/year), middle 50% $16.71-$23.14/hour - the baseline cost of paying a human to watch screens.",
+    "year": "2025 (BLS OEWS May 2025, NJ)",
+    "source_url": "https://www.onetonline.org/link/localwages/33-9032.00?st=NJ"
+   },
+   {
+    "fact": "New Jersey's minimum wage rose to $15.92/hour on Jan 1, 2026, and to $15.23/hour for employees of 'seasonal and small employers' (the NJDOL release does not state the size definition of 'small' in this release), so any manual checking task has a hard labor floor.",
+    "year": "2026",
+    "source_url": "https://www.nj.gov/labor/lwdhome/press/2025/20251001_Minimum_Wage.shtml"
+   },
+   {
+    "fact": "Middlesex County had 25,042 employer establishments in 2024, including 2,282 retail trade, 1,752 accommodation and food services, 1,305 transportation and warehousing and 5,036 health care and social assistance. County median wage across all occupations was $27.55/hour; cashiers $16.30, retail salespersons $17.29, hand packers $20.56.",
+    "year": "2024 (QCEW/OEWS, published Feb 2026)",
+    "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf"
+   },
+   {
+    "fact": "The 2023 National Retail Security Survey (NRF) reports average shrink of 1.6% of sales in FY2022, equal to $112.1 billion in losses, up from 1.4% and $93.9 billion in 2021; internal and external theft accounted for 65% of shrink. Sample: 177 retail brands, $1.6 trillion of 2022 sales, more than 97,000 US retail locations.",
+    "year": "2023 survey on FY2022 data",
+    "source_url": "https://nrf.com/media-center/press-releases/shrink-accounted-over-112-billion-industry-losses-2022-according-nrf"
+   },
+   {
+    "fact": "No fresher national shrink benchmark exists: NRF did not publish a 2024 edition comparable to earlier National Retail Security Surveys, leaving the 2023 survey (FY2022 data) as the latest figure.",
+    "year": "2024",
+    "source_url": "https://www.retaildive.com/news/no-nrf-annual-retail-shrink-report-2024/729009/"
+   },
+   {
+    "fact": "CDC, summarising four of its own observational studies, reports that restaurant food workers wash their hands when they should 'about one in three times'; workers did about nine activities an hour that should involve handwashing but washed only about 2-3 times an hour, and only 1 in 4 washed after preparing raw animal products or handling dirty equipment.",
+    "year": "2026 (CDC page reviewed Aug 27, 2026)",
+    "source_url": "https://www.cdc.gov/restaurant-food-safety/php/practices/handwashing.html"
+   },
+   {
+    "fact": "There were 733 fatal work injuries from violent acts in the US in 2024, including 470 homicides and 263 suicides (out of 5,070 total fatal work injuries, a rate of 3.3 per 100,000 FTE).",
+    "year": "2024 (BLS CFOI, released Feb 19, 2026)",
+    "source_url": "https://www.bls.gov/news.release/cfoi.nr0.htm"
+   },
+   {
+    "fact": "General warehousing and storage had a 2024 total recordable injury/illness rate of 4.9 per 100 full-time-equivalent workers (4.3 with days away, transfer or restriction).",
+    "year": "2024",
+    "source_url": "https://www.bls.gov/web/osh/table-1-industry-rates-national.htm"
+   },
+   {
+    "fact": "A 2015 Applied Ergonomics field study of full-time CCTV surveillance operators (Donald, Donald & Thatcher) reports that 'fifty percent of target behaviours were detected and false alarms were high' (stage two, total N=73 after adding 31 novices and splitting the existing operators into generalists and specialists). No vigilance decrement was found for the stage-one sample of 42 full-time operators as a whole; in stage two decrements appeared for novices and generalists, while specialists maintained performance for the first hour and then increased it.",
+    "year": "2015",
+    "source_url": "https://ro.ecu.edu.au/ecuworkspost2013/922/"
+   },
+   {
+    "fact": "Surveillance researchers state that camera deployment has produced video volume 'far exceeding the capacity for human monitoring', which is the framing this avenue sells against.",
+    "year": "2025",
+    "source_url": "https://arxiv.org/abs/2510.23190"
+   },
+   {
+    "fact": "Only 19.8% of US firms used AI in any business function as of May 3, 2026; retail trade was about 14%. Adoption rose for firms with 20+ employees but did not change significantly for firms under 20, and fewer than 20% of firms with four or fewer employees used AI.",
+    "year": "2026 (Census BTOS, Dec 2025-May 2026)",
+    "source_url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html"
+   }
+  ]
+ },
+ "buyers": [
+  {
+   "business_type": "Supermarkets and grocery (including ethnic/independent grocers)",
+   "naics": "445110",
+   "size_where_it_matters": "10-200 staff, 2-12 checkout lanes or self-checkout stations, 8-40 cameras (inference from typical staffing and lane counts)",
+   "why": "Scan-avoidance and sweethearting are the classic measurable exception, and a 2026 Elsevier journal article (GoodTrack, YOLOv8 + ByteTrack) describes exactly this lane-level detection task - though its reported sample numbers could not be opened and are listed in data_gaps. Also shelf-gap and spill detection on the same cameras. Highest willingness to pay per site of the retail set."
+  },
+  {
+   "business_type": "Limited-service restaurants / quick service",
+   "naics": "722513",
+   "size_where_it_matters": "5-50 staff per unit, 1-4 locations (inference)",
+   "why": "CDC's own summary of its observation studies puts compliant handwashing at about one in three opportunities, and NJ retail food code inspections plus complaint-driven reinspection make a dated compliance log worth money. Drive-thru and prep-line exceptions are visually checkable."
+  },
+  {
+   "business_type": "Full-service restaurants and retail bakeries",
+   "naics": "722511 / 311811",
+   "size_where_it_matters": "10-100 staff, single site to 3 sites (inference)",
+   "why": "Closing procedures, cooler-door openings, back-door propping, after-hours intrusion. Owner-operators buy on insurance and health-inspection anxiety rather than on shrink."
+  },
+  {
+   "business_type": "General warehousing and storage / 3PL",
+   "naics": "493110",
+   "size_where_it_matters": "20-200 staff, 1-6 dock doors, 20-60 cameras (inference)",
+   "why": "Highest injury rate of the target set (4.9 TRC per 100 FTE) so PPE, forklift-pedestrian proximity and dock-dwell alerts map to real OSHA exposure; Middlesex County is unusually warehouse-heavy (transportation and warehousing employment +26.1% 2018-2024)."
+  },
+  {
+   "business_type": "Nursing care and assisted living facilities",
+   "naics": "623110",
+   "size_where_it_matters": "50-200 staff, 40-120 beds (inference)",
+   "why": "Hand hygiene and PPE compliance, fall and wander events, and documentation. Highest budget of the local set but also the most legally sensitive - restrict to corridor/common-area and de-identified event review, never resident rooms or face recognition."
+  },
+  {
+   "business_type": "New car dealers and general automotive repair",
+   "naics": "441110 / 811111",
+   "size_where_it_matters": "10-100 staff, 1-3 acre lots (inference)",
+   "why": "Lot inventory movement, after-hours lot intrusion, bay utilisation, key-cabinet and write-up exceptions. Dealers already spend on cameras and have a named person responsible for lot inventory."
+  },
+  {
+   "business_type": "Convenience retailers and fuel stations with convenience stores",
+   "naics": "445120",
+   "size_where_it_matters": "5-30 staff, 4-16 cameras (inference)",
+   "why": "After-hours loitering, till-area incidents, and the retail-violence exposure that BLS counts nationally (470 workplace homicides across all industries in 2024). Small ticket size per site, so only works as a multi-site package or a low-cost 4-camera kit."
+  },
+  {
+   "business_type": "Property/facility operators running parking lots and garages (secondary fit)",
+   "naics": "812930",
+   "size_where_it_matters": "5-50 staff, 100-1,500 spaces (inference)",
+   "why": "Occupancy counting and permit/zone compliance where a licence-plate or vehicle-count rule is enough; include only because the same detector-plus-zone stack serves it with no new models. Note: a vehicle-count rule that reads plates is closer to the regulated tracking-device/ANPR edge, so scope it as a count, not an identity."
+  }
+ ],
+ "existing_solutions": [
+  {
+   "vendor": "Frigate (open source NVR)",
+   "product": "Frigate NVR + Frigate+ model service",
+   "what_it_does": "Local NVR: hardware-decoded RTSP streams, motion gating, pluggable detector (Coral, Hailo-8/8L, OpenVINO on Intel iGPU/NPU, NVIDIA, RKNN, MemryX), zones, object tracking, MQTT/Home Assistant integration, and since 0.16 optional vision-language descriptions of tracked objects via a GenAI provider (docs use qwen3-vl:4b served by Ollama).",
+   "pricing": "Software free. Frigate+ price and training allowance: Unknown - the FAQ page I opened lists no price and no per-subscription training quota (both were previously quoted from search results and are now listed in data_gaps as unverified). What the FAQ does confirm: models are fine-tuned from a base model trained on a sample across all users' submissions (your own images alone would need tens of thousands of examples); all processing is local; labels are the same for all users so custom classes are not currently possible; trained models keep working after a subscription lapses; professional installers are fine under standard subscriptions when each customer holds their own, but a commercial licence is required where the installer's subscription powers customer sites.",
+   "source_url": "https://docs.frigate.video/plus/faq/"
+  },
+  {
+   "vendor": "Rhombus",
+   "product": "Cloud-managed cameras + Relay N100 appliance",
+   "what_it_does": "Cloud console with AI features, 10-year camera warranty, on-site relay for up to 10 camera streams and 20-40 days storage per camera, AI features licensable on third-party ONVIF cameras.",
+   "pricing": "MSRP per camera, hardware + licence: R120 Mini Dome $399 + $149 = $548 all-in; R150 Mini Split Camera $699 + $149 = $848; R200 Mini Dome $599 + $149 = $748. The Professional licence does not include AI features or cloud archiving (per the page's own tooltip), and all cameras require an ongoing licence. Relay Core N100 $2,999 per unit (up to 10 camera streams; 20 days storage per camera on 2TB, 40 days on 4TB), plus $149/camera to enable AI on third-party cameras.",
+   "source_url": "https://www.rhombus.com/pricing/"
+  },
+  {
+   "vendor": "Verkada",
+   "product": "Cloud camera + per-camera licence",
+   "what_it_does": "Cloud-managed cameras with built-in edge analytics and people/vehicle search, sold through resellers with multi-year licences.",
+   "pricing": "Unknown on the vendor site (quote-based). A 2025 public-sector reseller/co-op price list surfaced in search showed $199 (1-year), $549 (3-year), $899 (5-year), $1,799 (10-year) per camera licence; I could not parse the PDF, so treat as unverified.",
+   "source_url": "https://www.omniapartners.com/suppliers-files/A-D/Bluum_USA__Inc/Contract_Documents/R250202/R250202_Bluum_MAD_2025_04_01.pdf"
+  },
+  {
+   "vendor": "Ultralytics",
+   "product": "YOLO26 / YOLO11 detectors + Ultralytics Platform",
+   "what_it_does": "The default detector family for this stack: detect/segment/pose/OBB/classify, NMS-free heads in YOLO26, export to OpenVINO/ONNX/TensorRT/EdgeTPU. Platform handles annotate-train-export in a browser.",
+   "pricing": "Platform Free $0, Pro $29/seat/month (includes $30 monthly credits/seat), Enterprise custom. Code and models are AGPL-3.0 unless you buy an Enterprise licence - AGPL reaches private and SaaS deployments.",
+   "source_url": "https://www.ultralytics.com/pricing"
+  },
+  {
+   "vendor": "Cactus Compute",
+   "product": "Cactus runtime (Needle 3, Whisper-class 'Whistle', vision model 'Mirage')",
+   "what_it_does": "pip-installable on-device runtime for text, speech and image understanding with tool calling and structured extraction, plus LoRA fine-tuning for its own models; README banner markets 'sub-50mb' models for consumer devices. Aimed at phones/tablets rather than camera servers.",
+   "pricing": "Free, Apache 2.0.",
+   "source_url": "https://github.com/cactus-compute/cactus"
+  },
+  {
+   "vendor": "NVIDIA",
+   "product": "DeepStream SDK / Metropolis (Jetson + x86 GPU)",
+   "what_it_does": "Production video-analytics pipeline (decode, batched inference, tracking, message broker) with TensorRT; the natural upgrade path when a Frigate box outgrows one mini PC.",
+   "pricing": "Unknown - the EULA I opened (Software License Agreement for NVIDIA SDKs plus the DeepStream supplement, v. September 14, 2021) sets the use and distribution terms but states no fee and no 'free of charge' term anywhere in its six pages, and NVIDIA's DeepStream SDK landing page redirects to the GitHub repository, which carries no pricing statement. What the EULA does establish: the licence is non-exclusive and non-transferable with no sublicensing except as stated; only runtime '.so' files (and the SDK to Jetson-platform SDK developers) are distributable, and the SDK may not be distributed as a stand-alone product; Graph Composer is internal-use only; the SDK is licensed only for systems with NVIDIA GPU hardware and NVIDIA drivers; results of benchmarking or competitive analysis may not be disclosed without prior written permission; and the SDK may not be used in a way that subjects it to an open-source licence.",
+   "source_url": "https://developer.nvidia.com/deepstream-eula"
+  },
+  {
+   "vendor": "Amazon Web Services",
+   "product": "Rekognition Custom Labels",
+   "what_it_does": "Train a custom detector on labelled images and call it as a managed endpoint - the cloud alternative a client may already be paying for.",
+   "pricing": "USD 1 per training hour (one-time) and USD 4 per inference hour while the model runs, billed even when idle. New accounts get 2 training + 1 inference hour/month for 12 months.",
+   "source_url": "https://aws.amazon.com/rekognition/pricing/"
+  },
+  {
+   "vendor": "Home Assistant / Nabu Casa",
+   "product": "Home Assistant Green + Frigate integration",
+   "what_it_does": "Local automation hub that turns Frigate events into notifications, sirens, lights, relays and staff-facing dashboards without a cloud subscription; Frigate talks to it over MQTT.",
+   "pricing": "Home Assistant Green hardware about USD 199; software free/open source.",
+   "source_url": "https://www.nabucasa.com/news/2026-01-08-green-pricing-change/"
+  }
+ ],
+ "gap_for_local_installer": "Every layer of this stack is free or cheap and none of it is sold as an installed, tuned, supported system to a 20-person Middlesex County business. Cloud vendors (Verkada, Rhombus) charge per camera for hardware plus a recurring licence - Rhombus is $548 all-in MSRP for an R120 dome and the licence is explicitly ongoing - put video in someone else's cloud, and will not build a custom 'gloves on before entering prep area' rule for one deli. Open source (Frigate, YOLO, llama.cpp) is powerful but assumes Linux, Docker, ONNX/OpenVINO export and ML judgement. Frigate+ explicitly will not let you label arbitrary custom classes, and its own FAQ says training a model from your images alone would need tens of thousands of examples - so the site-specific calibration and labelling work is left entirely to whoever installs it. That leaves a real, defensible niche: camera placement and lighting, per-site calibration data, vertical rule packs with a human-in-the-loop confirmation step, on-prem boxes so no customer video leaves the building, and a monthly 'we review the exceptions with you' service. The installer's moat is the labelled dataset per client and per vertical, not the models.",
+ "technical_approach": {
+  "established_pattern": "Two-stage, cheapest-first: (1) hardware-decode camera substreams and use motion/small-model gating to cut frame volume; (2) run a detector (YOLO26/YOLO11 or RF-DETR) on an accelerator at 2-10 fps per camera, track objects (ByteTrack-style) and apply zone/line/dwell rules - this catches the great majority of candidate events at single-digit to low-tens of milliseconds per frame; (3) only when a rule fires, send 1-8 frames or a thumbnail to a small vision-language model to describe and classify the exception in plain language and reject lookalikes; (4) route the result to a human confirmation step (dashboard, SMS, Home Assistant) and write an audit record. Never let step 3 accuse anyone. This is exactly the split Frigate documents: detector and tracker identify and track, VLM describes images collected during the track.",
+  "models_and_tools": [
+   {
+    "name": "LFM2.5-VL-3B (Liquid AI)",
+    "role": "Primary exception-reasoning VLM. 3.1B params, SigLIP2 400M NaFlex encoder, non-reasoning (answers directly, low latency), ~3GB memory, open weights, day-one llama.cpp/GGUF, MLX, vLLM, SGLang and ONNX support. Liquid reports 228 tok/s on Apple M5 Max, 116 tok/s on Ryzen AI Max+ 395, 20 tok/s on a Galaxy S26 Ultra. Grounding is strong (RefCOCO-avg 87.9) and hallucination is low on POPE (88.7) - what matters for 'is this really an exception'. On Liquid's own 28-benchmark average it scores 69.4 vs 70.1 for the larger 4.7B Qwen3.5-4B (Liquid's text: 'comes within 0.7%'). On screen understanding it leads its size class: 80.7 average on ScreenSpot-v2, ahead of gemma-4-E4B (51.2) and Qwen3.5-4B (78.5) and behind InternVL-3.5-4B (84.1), with per-benchmark desktop/mobile/web 78.7/81.2/82.2 against 28.1/42.9/22.4 for gemma-4-E2B-it and 45.8/60.3/47.6 for gemma-4-E4B-it (InternVL-3.5-4B scores 82.0/87.8/82.6 and InternVL-3.5-2B is ahead on desktop at 79.9, so it does not lead the column outright). Note Liquid also reports gemma-4-E2B-it beating LFM2.5-VL-3B on instruction-following items in the same table (IFEval 83.0 vs 82.3; MM-IFEval 65.6 vs 60.6).",
+    "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b"
+   },
+   {
+    "name": "Qwen3.5-4B / Qwen3.5-2B (Qwen)",
+    "role": "Alternative VLM, and the model family Frigate's own docs use for object descriptions (qwen3-vl:4b via Ollama). Qwen publishes Qwen3.5-4B and Qwen3.5-2B as image-text-to-text models; the 4B model card lists 4B parameters, a vision encoder and 262,144-token native context, and its own citation block gives February 2026 as the Qwen3.5 release month (the Hugging Face Qwen3.5 collection lists the 2B and 4B entries dated Mar 2 - the exact publication date of the two small sizes is not stated on any page I could read, so treat 'Feb 2026' as the series date). In Liquid's comparison table Qwen3.5-4B is listed as a 4.7B model scoring 70.1 average vs 69.4 for the 3.1B LFM2.5-VL-3B. Practical note for latency: the card says Qwen3.5 thinks by default and documents enable_thinking=false for direct answers, which is what an event-triage call wants.",
+    "source_url": "https://huggingface.co/Qwen/Qwen3.5-4B"
+   },
+   {
+    "name": "SmolVLM2 500M / 256M (Hugging Face)",
+    "role": "Cheapest tier for always-on captioning or a first-pass filter on very weak hardware. Released in three sizes (2.2B, 500M, 256M) with video understanding, Transformers and MLX (Python and Swift) support from day zero; the 500M and 256M are presented as the smallest video LMs, with the 256M described as an experimental release. Expect noticeably weaker counting/grounding than the 3B class - use for routing, not verdicts. (An ONNX path is not evidenced on either Hugging Face page, so plan on Transformers or MLX.)",
+    "source_url": "https://huggingface.co/blog/smolvlm2"
+   },
+   {
+    "name": "Gemma 4 E2B (Google)",
+    "role": "Fallback / on-device comparator. Google's launch post describes the E2B and E4B edge models as activating 'an effective 2 billion and 4 billion parameter footprint' during inference, native audio and vision input, a 128K context window, Apache 2.0, and runs on phones, Raspberry Pi and Jetson Orin Nano. Liquid's side-by-side benchmark numbers for gemma-4-E2B-it (listed there as a 5.1B model) are quoted in the LFM2.5-VL-3B entry above.",
+    "source_url": "https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/"
+   },
+   {
+    "name": "YOLO26 / YOLO11 (Ultralytics)",
+    "role": "Detector. YOLO26n OpenVINO INT8 runs 4.24 ms/image at mAP50-95 0.4634 on an Intel Core Ultra X7 358H iGPU, i.e. ~235 fps of headroom on a laptop-class chip - detection is not the bottleneck.",
+    "source_url": "https://docs.ultralytics.com/integrations/openvino/"
+   },
+   {
+    "name": "RF-DETR (via Frigate)",
+    "role": "Transformer detector for harder classes/small objects. On Frigate's own inference-time table, RF-DETR 320-n runs ~33 ms on an Intel Iris XE and ~40 ms on an Intel NPU, RF-DETR at 336/448px runs 20/27 ms on an Intel Arc A380, and RF-DETR Nano-320 runs ~90 ms on an AMD 9060XT 16G - usable where accuracy beats latency. (That table carries no RF-DETR figure for the Arc A310; its Arc A310 columns cover MobileNetV2, YOLOv9 and YOLO-NAS only.)",
+    "source_url": "https://docs.frigate.video/frigate/hardware/"
+   },
+   {
+    "name": "Frigate NVR (with zones + GenAI descriptions)",
+    "role": "The integration spine: streams, motion gating, detector plugins, zones, tracking, recordings, MQTT, and optional VLM descriptions of tracked objects. Documented detectors include Hailo-8/8L, Coral, OpenVINO (Intel iGPU/NPU/Arc), NVIDIA, RKNN, MemryX and Jetson via TensorRT.",
+    "source_url": "https://docs.frigate.video/configuration/genai/genai_config/"
+   },
+   {
+    "name": "Frigate zones",
+    "role": "The rule layer that turns detections into business events (prep-area entry without glove colour, dock door open after hours, till-zone dwell). Zones are configured per camera and used to filter which objects generate events.",
+    "source_url": "https://docs.frigate.video/configuration/zones/"
+   },
+   {
+    "name": "llama.cpp (GGUF) / ONNX Runtime / OpenVINO",
+    "role": "Runtimes. llama.cpp is the reference path for LFM2.5-VL on CPU/ARM; OpenVINO is the fast path on Intel iGPU/NPU hardware the client already owns; ONNX Runtime bridges to NVIDIA and anything else.",
+    "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+   },
+   {
+    "name": "Cactus",
+    "role": "Optional phone/tablet-side runtime (Apache 2.0) when a client wants a supervisor's phone to describe a photo or run structured extraction offline; includes LoRA fine-tuning for its own models.",
+    "source_url": "https://github.com/cactus-compute/cactus"
+   },
+   {
+    "name": "Label Studio + Unsloth/TRL (LoRA)",
+    "role": "Labelling (Apache 2.0) and fine-tuning. Unsloth's requirements page gives QLoRA VRAM minimums for text models (a 3B model at 3.5GB); it says nothing about vision or multimodal training, so the 24GB floor quoted here for 2-4B vision LoRA is an inference from those text figures with headroom for the image encoder, not a vendor statement.",
+    "source_url": "https://unsloth.ai/docs/get-started/fine-tuning-for-beginners/unsloth-requirements"
+   }
+  ],
+  "hardware": [
+   {
+    "item": "Beelink EQ13 (Intel N100, dual 1GbE) mini PC - the default Frigate host, dual NICs let you put cameras on an isolated network with no internet",
+    "approx_cost": "USD 249.99",
+    "source_url": "https://www.notebookcheck.net/Beelink-EQ13-Quiet-mini-PC-now-available-for-pre-order.844642.0.html"
+   },
+   {
+    "item": "Raspberry Pi 5 (8GB) - note the AI Kit is no longer in production per Raspberry Pi docs, so plan on the AI HAT+ family or an x86 M.2 slot; current AI HAT+ price could not be retrieved",
+    "approx_cost": "Pi 5 8GB USD 95; AI Kit/HAT+ price Unknown (unverified)",
+    "source_url": "https://www.raspberrypi.com/news/1gb-raspberry-pi-5-now-available-at-45-and-memory-driven-price-rises/"
+   },
+   {
+    "item": "Hailo-8 M.2 module (26 TOPS) - best detector throughput per watt in the Frigate table (YOLOv6n ~7 ms, ssd mobilenet ~6 ms)",
+    "approx_cost": "approx, unverified - no retailer or distributor listing could be opened at research time (retailer pages returned HTTP 403/timeouts), so no exact figure is quoted here",
+    "source_url": "https://hailo.ai/products/ai-accelerators/hailo-8-m2-ai-acceleration-module/"
+   },
+   {
+    "item": "Google Coral USB Accelerator (4 TOPS) - still the cheapest path but Frigate no longer recommends it for new installs except very low-power cases",
+    "approx_cost": "USD 111.00 at Seeed Studio (listing price at research date, Nov 2026; retailer prices vary and no Google list price exists - the old coral.withgoogle.com product page now redirects to a developer landing page)",
+    "source_url": "https://www.seeedstudio.com/Coral-USB-Accelerator-p-2899.html"
+   },
+   {
+    "item": "NVIDIA Jetson Orin Nano Super Developer Kit (8GB, 67 INT8 TOPS, 102GB/s) - the box that can run both detector and a 3B VLM",
+    "approx_cost": "USD 249",
+    "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/"
+   },
+   {
+    "item": "Dahua 4MP IR turret (IPC-T54IR-AS-S3 class) - wired, multi-substream, ONVIF S/G/T, H.264/H.265, PoE, the camera class Frigate's docs recommend (specs confirmed on the vendor page; no price shown there)",
+    "approx_cost": "approx, unverified - no live retailer price page could be opened (403/404), so no exact figure is quoted here",
+    "source_url": "https://empiretech01.com/products/empiretech-ipc-t54ir-as-1-1-8-cmos-4mp-ir-fixed-focal-eyeball-network-camera"
+   },
+   {
+    "item": "Home Assistant Green - local automation/dashboard hub so alerts land on a phone without a cloud plan",
+    "approx_cost": "about USD 199",
+    "source_url": "https://www.nabucasa.com/news/2026-01-08-green-pricing-change/"
+   }
+  ],
+  "fine_tuning_needed": "Almost never for the VLM, usually yes for the detector. Prompt-and-schema work plus zone rules gets a 3B VLM to a usable description/verdict on day one; LoRA is only worth it when you need rigid JSON output, a house vocabulary ('gloves', 'hairnet', 'dock door'), or consistency across sites. For the detector, the COCO class set does not contain what clients care about (hairnet, glove, pallet jack, spill), so you either pick a class set someone already trained or fine-tune. Frigate's own FAQ says a model trained on your images alone would need tens of thousands of examples, which is why the practical route is fine-tuning an existing base on a few hundred to a few thousand site frames.",
+  "data_needed": "Per camera angle: 200-2,000 labelled frames spanning day/night/seasonal lighting, plus deliberate hard negatives (a white hat that looks like a hairnet, a customer crouching that looks like a fall). One to two weeks of continuous footage to mine those frames, one held-out week for evaluation, and a labelled 'confusion set' of the false positives the client complains about. Annotate with Label Studio or CVAT; keep the labels per client site (they are the asset). For VLM evaluation, 100-300 event thumbnails hand-labelled true/false exception is enough to measure precision before you trust an alert.",
+  "difficulty": "High"
+ },
+ "measured_outcomes": [
+  {
+   "finding": "A 2026 Elsevier journal article titled 'A vision-based system for monitoring scan-avoidance and anomalies at retail checkouts' (GoodTrack) describes a YOLOv8 + ByteTrack pipeline for flagging scan-avoidance at the lane, using a custom RetailGoods dataset. I could not open the article (the publisher page returns HTTP 403) and its reported sample size and incident counts are unverified, so they are listed in data_gaps rather than quoted here. Shows lane-level exception detection is an active research target; shows nothing about shrink falling.",
+   "year": "2026",
+   "sample": "Unknown (publisher page paywalled/403)",
+   "study_type": "peer-reviewed",
+   "strength": "Low",
+   "source_url": "https://www.sciencedirect.com/science/article/abs/pii/S0952197626024930"
+  },
+  {
+   "finding": "On occluded object counting, the best model (GPT-4o) still had a 14.75% error rate on real occluded images and Molmo 32.5%, while human participants made almost no errors; every model got worse under occlusion. Direct evidence that VLM counts must never be treated as authoritative - especially with overlapping people in a shop aisle. Rated Medium because this is a single peer-reviewed ICCV 2025 benchmark, not a body of field evidence, so it should not on its own carry a market-level conclusion.",
+   "year": "2025",
+   "sample": "CAPTURE benchmark, real and synthetic occluded-counting splits (ICCV 2025)",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://openaccess.thecvf.com/content/ICCV2025/papers/Pothiraj_CAPTURE_Evaluating_Spatial_Reasoning_in_Vision_Language_Models_via_Occluded_ICCV_2025_paper.pdf"
+  },
+  {
+   "finding": "UCVL benchmark: 1,829 surveillance videos rebuilt from UCF-Crime and UCF-Crime Annotation, six question types, eight multimodal LLMs from 0.5B to 40B, scored with GPT-4o-assisted assessment. Fine-tuning LLaVA-OneVision on the benchmark's training set improved its scores, which the authors present as evidence of the data's quality. The abstract does not report a per-skill breakdown, so the claim that temporal grounding is the weakest skill (and the ~26% figure previously attached to it) is not supported by the source I opened and has been removed.",
+   "year": "2025 (arXiv preprint, Feb 2025)",
+   "sample": "1,829 videos (UCF-Crime + UCF-Crime Annotation), 8 MLLMs 0.5B-40B",
+   "study_type": "preprint",
+   "strength": "Medium",
+   "source_url": "https://arxiv.org/abs/2502.09325"
+  },
+  {
+   "finding": "SurveillanceVQA-589K: 589,380 open-ended surveillance QA pairs across 12 question types (temporal reasoning, causal inference, spatial understanding, anomaly interpretation); eight LVLMs evaluated, with 'significant performance gaps, especially in causal and anomaly-related tasks'. Supports the point that the failure mode is reasoning about why something happened, not seeing it.",
+   "year": "2025 (arXiv preprint, May 2025)",
+   "sample": "589,380 QA pairs; 8 LVLMs",
+   "study_type": "preprint",
+   "strength": "Medium",
+   "source_url": "https://arxiv.org/abs/2505.12589"
+  },
+  {
+   "finding": "Zero-shot small VLMs used as anomaly detectors on UCF-Crime and RWF-2000 succeed on simple spatially-salient events and falter on noisy spatial cues; privacy filters - especially full-body GAN transforms - introduced inconsistencies that degraded accuracy. Direct warning: naive anonymisation can quietly break your detector.",
+   "year": "2025 (NeurIPS 2025 workshop paper)",
+   "sample": "4 open VLMs, 2 benchmarks (UCF-Crime, RWF-2000)",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://arxiv.org/abs/2510.23190"
+  },
+  {
+   "finding": "Independent benchmark of LFM2.5-VL-3B at Q8_0 in llama.cpp on a Jetson Orin NX 16GB: 2.35 s to first answer on one 720p image at 20.7 tok/s, but only 2 cameras stay under the 3-second response target; at 4 cameras response time jumps to 12.2 s. This is the single most important number for scoping: one 3B VLM cannot serve a 16-camera store as an always-on reviewer.",
+   "year": "2026",
+   "sample": "1 model, 1 device, 1-32 images per request, 720p and 2K",
+   "study_type": "industry",
+   "strength": "Medium",
+   "source_url": "https://whitepapers.openzeka.com/vlm-inference-benchmarks/lfm2-5-vl-3b/jetson-orin-nx-16gb/q8-0-llama-cpp/"
+  },
+  {
+   "finding": "Detector latencies that make the economics work, from Frigate's table: Hailo-8L YOLOv6n ~11 ms and ssd mobilenet ~10 ms; Intel N100 YOLOv9-s at 320px 30 ms; Intel NPU YOLOv9-s at 640px 30 ms; RF-DETR-nano 33 ms on Intel Iris XE and 40 ms on Intel NPU at 320px (RF-DETR at 336/448px is 20/27 ms on an Arc A380); Jetson typically 20-40 ms. For the Coral the docs give no benchmarked millisecond latency at all - they use an inference speed of 10 ms only as their worked example, stating that at an inference speed of 10 a Coral tops out at 100 frames per second, i.e. the cap rule (1000/inference-ms fps) rather than a measured Coral latency. Frigate separately states a single Coral handles many cameras on the default model and is sufficient for most users. At these speeds one low-cost accelerator can gate a dozen cameras.",
+   "year": "2026 (docs current at research date)",
+   "sample": "Multi-device comparison table maintained by the Frigate project",
+   "study_type": "industry",
+   "strength": "Medium",
+   "source_url": "https://docs.frigate.video/frigate/hardware/"
+  },
+  {
+   "finding": "Vendor benchmark for the primary VLM: Liquid AI reports LFM2.5-VL-3B decoding 228 tok/s on an Apple M5 Max, 116 tok/s on an AMD Ryzen AI Max+ 395 and 20 tok/s on a Galaxy S26 Ultra while staying in about 3 GB of memory, plus roughly 11K output tokens/s at high concurrency on a single H100 SXM5 (vLLM 0.26, BF16, 512x512 image plus 1,024 input tokens). Vendor-run, single-model, hardware-specific, and says nothing about accuracy on a shop-floor exception - useful only for sizing a box.",
+   "year": "2026 (Liquid AI blog, Aug 2026)",
+   "sample": "One model, several device classes; vendor harness",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b"
+  },
+  {
+   "finding": "Vendor benchmark for the comparison model, kept as a separate entry because it comes from a different source: in NVIDIA's TensorRT Edge-LLM v0.10.0 tables, Qwen3-VL-2B-Instruct decodes at 135.3 tok/s on Jetson AGX Thor (BS=1, INT4 AWQ/FP16, llm_bench component run, prefill 2,048, past-KV 2,048), 88.7 tok/s on Jetson AGX Orin 64GB, 52.6 tok/s on Jetson Orin NX 16GB and 32.3 tok/s on Jetson Orin Nano 8GB, with 133.9 (INT4 AWQ) and 119.9 (NVFP4) tok/s on DGX Spark. Figures from different releases must not be mixed: a ~180.8 tok/s result for this model appears only in an older release section of the same page, in a differently formatted table with per-token ViT notes, not in the current v0.10.0 tables quoted here. Vendor run, decode-only, one model - used only for hardware sizing, never for an outcome claim.",
+   "year": "2026 (TensorRT Edge-LLM 0.10.0; JetPack 7.2, CUDA 13.2, TensorRT 10.16)",
+   "sample": "One model, five NVIDIA platforms, BS=1",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://nvidia.github.io/TensorRT-Edge-LLM/user_guide/performance/performance-benchmarks.html"
+  }
+ ],
+ "legal_privacy": [
+  {
+   "issue": "Workplace video recording without notice",
+   "rule_or_precedent": "Unverified - secondary source only. A secondary legal summary says New Jersey has no general statute requiring notice or signage for ordinary workplace video cameras, and I could not confirm that negative finding against any primary New Jersey statute, so it is not marked confirmed. The only employer-notice statute I did confirm is narrower (vehicle tracking devices, next row). Treat any 'no notice needed' statement as counsel-reviewable, not settled.",
+   "confirmed": false,
+   "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/"
+  },
+  {
+   "issue": "Vehicle/tracking devices used on employees",
+   "rule_or_precedent": "N.J.S.A. 34:6B-22: an employer that knowingly uses a tracking device in a vehicle used by an employee without written notice faces civil penalties up to $1,000 for the first violation and up to $2,500 for each subsequent violation. Relevant if a kit ever includes vehicle telematics.",
+   "confirmed": true,
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2020/PL21/449_.HTM"
+  },
+  {
+   "issue": "Cameras capturing exposed intimate parts, fitting/dressing rooms and private dressing stalls",
+   "rule_or_precedent": "N.J.S.A. 2C:14-9, as the statute text opened: it is a fourth-degree crime to observe another person without consent where a reasonable person would not expect to be observed, a third-degree crime to photograph/film/record the image of another person whose intimate parts are exposed (or who is engaged in sexual penetration or sexual contact) without consent under those circumstances, and a fourth-degree crime to record the undergarment-clad intimate parts of another person. Subsection (f) separately makes it a violation to observe or record a person in a private dressing stall of a retail fitting or dressing room, and subsection (e)(1) allows observation only of the access way, foyer or entrance to a retail fitting/dressing room, and only where the actor conspicuously posts prior notice. The statute as opened does not name bathrooms; 'never in restrooms, fitting rooms or private dressing stalls' is the installer's own hard rule, not statutory wording. Write it into the site plan.",
+   "confirmed": true,
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/2785/2918"
+  },
+  {
+   "issue": "Audio capture on cameras",
+   "rule_or_precedent": "New Jersey's Wiretap Act requires the consent of at least one party before recording an in-person, telephone or electronic communication in which a person has a reasonable expectation that the communication is not subject to recording - i.e. one-party consent, at N.J. Stat. Ann. 2A:156A-2, -3 and -4 as cited by the Reporters Committee guide. That guide's statement of the carve-out is that recordings made 'for the purpose of committing any criminal or tortious act' are illegal regardless of consent (the guide does not qualify it further, and I did not read the statute text of subsection (d)). Practical rule for the stack: disable camera microphones by default.",
+   "confirmed": true,
+   "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/"
+  },
+  {
+   "issue": "Whether employees/customers can demand access to footage of themselves",
+   "rule_or_precedent": "New Jersey's Data Privacy Law, P.L. 2023, c.266, defines 'consumer' as a resident acting only in an individual or household context and expressly excludes 'a person acting in a commercial or employment context' - so employee footage sits largely outside that law's consumer rights. Customer footage may be in scope for covered businesses (the act has size/revenue thresholds I did not verify).",
+   "confirmed": true,
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM"
+  },
+  {
+   "issue": "Biometric identifiers and face recognition",
+   "rule_or_precedent": "Federally confirmed from the primary source: the FTC's May 18, 2023 Policy Statement on Biometric Information and Section 5 states that false or unsubstantiated marketing claims about the validity, reliability, accuracy or fairness of biometric technologies can be deceptive under Section 5, that accuracy claims are deceptive if true only for certain populations without that limitation being stated, and that companies should not claim particular outcomes such as reductions in theft or violent incidents without substantiation. The New Jersey half of this row is a negative finding I could not verify from a primary legislative page (no enacted NJ biometric-specific employee statute found; the 2025 data privacy law excludes employment-context data) - treat as unverified. Practical stance: no face recognition, no gait/voice identification, in any NJ deployment.",
+   "confirmed": true,
+   "source_url": "https://www.ftc.gov/legal-library/browse/policy-statement-federal-trade-commission-biometric-information-section-5-federal-trade-commission"
+  },
+  {
+   "issue": "Marketing claims about what the AI can do",
+   "rule_or_precedent": "The FTC's September 2024 'Operation AI Comply' sweep (DoNotPay, Ascend Ecom, Ecommerce Empire Builders, FBA Machine, Rytr) rests on the position that unsubstantiated AI performance claims are deceptive. The FTC's 2023 biometric policy statement adds that substantive accuracy claims 'must generally be supported by a high level of substantiation, such as scientific or engineering tests'. Any pitch deck quoting accuracy must carry the measured sample it came from.",
+   "confirmed": true,
+   "source_url": "https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes"
+  },
+  {
+   "issue": "Employee monitoring and concerted activity (federal labor law)",
+   "rule_or_precedent": "NLRB GC Memo 23-02 (announced Oct 31, 2022) set out the then-General Counsel's position that intrusive electronic surveillance and algorithmic management of employees can interfere with the exercise of Section 7 rights, that she would urge the Board to treat surveillance and management practices which, viewed as a whole, would tend to interfere with or prevent a reasonable employee from engaging in protected activity as presumptively unlawful, and that employers should generally have to disclose the monitoring technologies, their reasons and their use. The NLRB announced on Feb 14, 2025 (GC 25-05) that GC 23-02, on electronic monitoring, was among the memos rescinded - so that General Counsel enforcement position no longer stands as guidance. The Section 7 right itself is unchanged, so camera or camera-rule deployments that could chill organizing remain a live risk (inference).",
+   "confirmed": true,
+   "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and"
+  },
+  {
+   "issue": "Selling into neighbouring states (biometrics)",
+   "rule_or_precedent": "Illinois BIPA, 740 ILCS 14/15, as described by the Seventh Circuit in Svoboda v. Amazon.com (amended Mar 6, 2026): section 15(a) requires a written, published retention schedule and destruction guidelines, and section 15(b) bars collecting or obtaining biometric data unless the entity first (1) gives written notice that biometric data will be collected or stored, (2) informs the person of the length and reason for which it will be collected, stored and used, and (3) obtains a written release signed by the person. Statutory damages are $1,000 per negligent and $5,000 per intentional or reckless violation. Note the citation is the court's description of the section - the Illinois General Assembly page for 14/15 would not load at research time (see data_gaps). Any face or voice feature sold to a multi-state chain drags this in - another reason to stay with non-identifying attributes (glove, hairnet, pallet).",
+   "confirmed": true,
+   "source_url": "https://www.govinfo.gov/content/pkg/USCOURTS-ca7-25-01361/pdf/USCOURTS-ca7-25-01361-2.pdf"
+  },
+  {
+   "issue": "Automated tools that feed employment decisions",
+   "rule_or_precedent": "NYC Local Law 144 requires an independent bias audit within the prior year, published audit summary, and 10 business days' notice before using an automated employment decision tool. It does not bind NJ sites, but a stack that scores employee productivity would be an AEDT if sold into NYC - design productivity features as coaching, not scoring.",
+   "confirmed": true,
+   "source_url": "https://www.nyc.gov/site/dca/businesses/faq-automated-employment-decision-tools.page"
+  }
+ ],
+ "prospecting_signals": {
+  "public": [
+   "Local health department retail food inspection reports and reinspection history - N.J.A.C. 8:24-8.2 lets the authority inspect 'as often as it deems necessary', so repeated visits signal a compliance problem",
+   "Review text mentioning specific operational failures (self-checkout errors, empty shelves, waits, 'nobody at the counter', 'saw an employee on their phone') rather than generic star ratings",
+   "Job postings for loss prevention, quality/compliance associates, inventory control, or 'monitor CCTV' - and any posting that mentions shifts or coverage gaps",
+   "Number of locations and approximate square footage from the operator's own site, Google Business listings, or commercial real-estate listings",
+   "OSHA establishment-specific inspection and citation history (osha.gov establishment search) for warehouses and manufacturers",
+   "FMCSA SAFER/CSA records for any client running delivery vehicles or a dock fleet",
+   "Existing camera footprint: cloud-camera brands visible on the building or in photos (Verkada/Rhombus) mean budget exists but a multi-year licence lock-in you can displace at renewal",
+   "County-level establishment counts by NAICS (25,042 establishments in Middlesex County, 2,282 retail, 1,752 food service, 1,305 transportation/warehousing) to size a territory before door-knocking"
+  ],
+  "walk_in": [
+   "Count cameras, note height, angle, backlight from windows, and whether any camera actually sees the sink/prep line/dock door/till",
+   "Ask what the NVR is and how old; look for a monitor nobody watches, or a TV showing a 16-way split nobody can resolve",
+   "Look for paper: clipboards for temperature logs, handwash sign-off sheets, key logs - a manual log is a buying signal",
+   "Check self-checkout lane count and where the attendant stands relative to the bagging area",
+   "Walk the back: propped back doors, dock doors left open, PPE station position relative to the camera view",
+   "Notice who the decision maker is - an owner-operator signs in a week; a regional manager needs a corporate pilot process",
+   "Check network reality: is there a PoE switch with spare ports, is there conduit, is there power at the camera locations",
+   "Ask the last time footage was actually pulled after an incident, and how long it took - that story is the sales pitch"
+  ]
+ },
+ "pilot": {
+  "scope": "One site, 2-6 weeks, 4-8 cameras on a single edge box, one vertical rule pack (recommended first pack: prep-area handwash/glove compliance for food service, or after-hours dock-door and PPE for warehouse). Reuse existing ONVIF/RTSP cameras where they are adequate; add 2-4 cameras only where the current view cannot see the target. Deliverables: on-prem NVR with 14-30 day retention, 3-5 event rules with VLM confirmation, phone/dashboard alerts, a weekly exception report, and a labelled evaluation set handed to the client. No cloud video, no face recognition, no audio.",
+  "hardware": "Beelink EQ13 N100 mini PC ($249.99, verified price) as the Frigate host + a Coral USB Accelerator ($111 at Seeed Studio, verified price) as the detector, on an isolated camera VLAN via the second NIC; add a Jetson Orin Nano Super ($249, verified price) only if the VLM needs to run continuously rather than on-demand. 4-6 Dahua 4MP turrets (price unverified - budget $150-250 each as an estimate, flagged below), PoE switch, cabling, 2-4TB SSD and a small UPS (approx $250-$400, inference - no single source). Home Assistant Green ($199) only if the client wants local automation and a wall dashboard. Estimated hardware total for a 6-camera pilot: roughly $1,200-$2,500, of which only the N100 host, the Coral and the Jetson are individually price-verified.",
+  "success_metric": "On a held-out week of footage: (a) at least 80% precision on the pilot's target events, verified by the client's own staff labelling each alert true/false; (b) at least 90% recall of the events they would have caught by hand, measured against a manual review of the same week's footage; (c) under 1 false alert per camera per day after the calibration pass; (d) manager review time under 10 minutes per day; (e) VLM description correct or acceptably generic on at least 85% of sampled alerts. Report precision and recall with the sample size attached - do not quote a percentage without it.",
+  "cost_range": "Approx $5,000-$15,000 for the 2-6 week pilot, assuming: hardware $1,200-$2,500 (partly estimated - see hardware note); 40-80 hours of install, calibration, labelling and evaluation at $100-$150/hour ($4,000-$12,000, inference on both rate and hours); $0 software licence (Frigate, YOLO under AGPL or an Enterprise licence if the client needs closed source, LFM2.5-VL open weights); labelling done in-house with Label Studio. Excludes any camera-cabling electrical work by a licensed electrician (unknown, quote locally) and excludes an ongoing service contract, which should be priced separately at roughly $150-$400/site/month (inference).",
+  "assumptions": "Client owns or will buy wired IP cameras with RTSP and a substream; site has power and network at camera locations; the target behaviour is visible from a fixed camera (not inside a closed cooler); the client will supply one staff member for 2-4 hours of labelling and weekly feedback; night-time lighting is adequate or IR is acceptable; the pilot is deliberately scoped to 1-3 rules so precision can be measured honestly; and the installer is not selling face recognition, audio, or employee scoring."
+ },
+ "fit_score": {
+  "demand": 15,
+  "local_buyers": 13,
+  "ability_to_pay": 9,
+  "technical_feasibility": 13,
+  "legal_risk_low": 9,
+  "defensibility": 9,
+  "total": 68,
+  "rationale": "Demand is real and measurable (labor at $15.23-$18.69/hr, 1.6% / $112.1B shrink on FY2022 data, handwashing compliant about one time in three, 4.9 warehouse TRC rate) but AI adoption among small firms is genuinely low (19.8% of all firms, ~14% in retail, flat for firms under 20 employees), so this is a sell-education market, not a sell-into-demand market - hence 15/20 not higher. Local buyers are plentiful and countable (2,282 retail, 1,752 food service, 1,305 transportation/warehousing, 5,036 health care establishments in Middlesex County) with a warehouse-heavy county economy - 13/15. Ability to pay is the weak link: a 10-person deli flinches at $10k, so the roughly $5k-$15k pilot will close mostly with 50-200 staff warehouses, dealerships, care facilities and multi-site food operators - 9/15. Technical feasibility is good on detection (YOLO and RF-DETR at single-digit to low-tens of milliseconds per frame on low-cost Intel/Hailo accelerators, per the Frigate hardware table) and constrained on the VLM tier: an independent benchmark puts a single 3B VLM at only ~2 cameras inside a 3-second budget on a Jetson Orin NX, so the architecture must be detect-first, VLM-on-exception only - 13/20. Legal risk is moderate: 9/15 sits above the midpoint of that scale, and is deliberately kept below the level the other sub-scores suggest, because ordinary workplace camera notice in NJ is an unverified negative finding resting on a secondary summary, the NJ biometric position and the NLRA monitoring position are partly negative findings (GC 23-02 was rescinded in Feb 2025 while Section 7 itself stands), N.J.S.A. 2C:14-9 carries criminal exposure, and false-accusation plus FTC substantiation duty remain live - all manageable by design (no face recognition, no audio, human confirmation, measured claims only, no cameras in restrooms or dressing stalls), but not a clean legal position, hence 9/15. Defensibility is only moderate: every component is open source and copyable, and cloud vendors already own the per-camera-per-year budget line; what cannot be copied quickly is the per-client labelled dataset, the vertical rule vocabulary and the service relationship - 9/15. Every sub-score sits inside its range (15/20, 13/15, 9/15, 13/20, 9/15, 9/15) and the total is their sum: 15+13+9+13+9+9 = 68 of 100."
+ },
+ "risks": [
+  "False accusation: an alert that names a person or a shift can trigger discipline or a defamation claim. Design every output as 'review this clip', require human confirmation, and keep the VLM's role to describing what it sees.",
+  "VLM unreliability under occlusion and in counting - the best model in a 2025 ICCV benchmark still miscounted 14.75% of real occluded images and small models were far worse, so never put a VLM count in a report or a bonus calculation.",
+  "The 3B VLM tier does not scale cheaply: an independent Jetson Orin NX benchmark shows 2 cameras inside a 3-second budget, so a 16-camera store needs detect-first architecture or a bigger GPU, which changes the hardware bill.",
+  "Licensing traps: Ultralytics YOLO is AGPL-3.0 and that reaches private and SaaS deployments, so a closed-source client product needs an Enterprise licence; Frigate+ requires a commercial licence if the installer's subscription powers customer sites; NVIDIA's DeepStream EULA forbids disclosing benchmark results without written permission.",
+  "Hardware supply and cost volatility: Raspberry Pi raised prices for memory reasons in Dec 2025, the Pi AI Kit is out of production, Coral stock has been unreliable (Seeed listed USD 111 at research time), no live listing could be opened for the Hailo-8 module or the Dahua camera, and US tariffs have been noted on Coral listings - margin on a fixed-price kit can evaporate.",
+  "Camera reality dominates model quality: night-time noise, backlight from windows, and 4K Reolink-style stream problems are documented pain points, and no model fixes a bad view.",
+  "Support burden: a Linux box with Docker, an accelerator driver, an ONNX/OpenVINO export and an LLM server is a lot of failure surface for a two-person shop; without remote monitoring and a spare-parts kit, truck rolls eat the margin.",
+  "Privacy backfire: naive anonymisation (full-body GAN transforms) has been shown to degrade anomaly-detection accuracy, and face-blurring may create a false sense of compliance while still collecting biometric-adjacent data.",
+  "Client data governance: 30 days of retained video with no retention policy is a liability in any dispute; write retention and access rules into the contract rather than leaving defaults.",
+  "Cloud vendors discounting: Rhombus is $548/camera all-in MSRP (R120 hardware plus the Professional licence, which excludes AI features and is recurring), and Verkada-style multi-year licences are quote-based - either can still look cheaper than a ~$10k custom pilot to a client who does not value custom rules.",
+  "Model drift as the site changes (new shelving, new lighting, seasonal staff uniforms) silently degrades precision; budget a recalibration visit per quarter or the pilot's numbers will not hold.",
+  "Legal exposure is less settled than it looks: the NJ 'no camera-notice statute' position is a secondary-source negative finding, and the FTC has said outcome claims such as reductions in theft need substantiation - do not put an unmeasured efficacy claim in a proposal."
+ ],
+ "caveats": "Research date is November 2026; prices and model line-ups in this stack move monthly. Several figures are vendor-run or docs-maintained benchmarks, not independent studies, and are rated Low/Medium accordingly - both throughput entries (Liquid LFM2.5-VL-3B and NVIDIA TensorRT Edge-LLM Qwen3-VL-2B) are vendor runs rated Low and are used only for sizing, never for an outcome claim, and each carries its own source URL rather than being bundled. Frigate's hardware table carries no benchmarked Coral latency, so the Coral is described by its documented cap rule rather than a millisecond figure. I found no peer-reviewed controlled field study showing computer-vision deployment reduced shrink by a stated percentage - what exists measures detection accuracy or incident counts, and I have rated outcomes on that basis. The single most decision-relevant number (a 3B VLM serving ~2 cameras inside 3 seconds on a Jetson Orin NX) comes from one third-party benchmark site, not a peer-reviewed paper. The one field study of human CCTV monitoring (2015) is quoted from the open Edith Cowan University repository abstract because the ScienceDirect record returns HTTP 403; that abstract reports 50% detection with high false alarms at N=73. Hardware prices are the weakest part of the bill of materials: only the Beelink EQ13 ($249.99), the Coral USB Accelerator ($111 at Seeed Studio) and the Jetson Orin Nano Super ($249) are confirmed from pages I opened, and the Hailo-8 module and Dahua camera are carried as 'unverified' with no dollar figure - see data_gaps. Verkada and Frigate+ pricing could not be verified from any page I could read, and NVIDIA states no DeepStream price on any page I opened (pricing recorded as Unknown). The 'no NJ workplace camera notice statute' conclusion rests on a secondary legal summary, not an exhaustive statutory search - get NJ counsel sign-off before using it in a contract. Two citations are deliberately one step away from the statute they describe: N.J.S.A. 2C:14-9 is quoted from the statute text itself (which does not mention bathrooms - the restroom ban is our own rule), and the Illinois BIPA section 15 elements are taken from the Seventh Circuit's description of the statute, because the Illinois General Assembly page would not load. The CAPTURE occluded-counting benchmark is a single peer-reviewed study and is rated Medium rather than High for that reason. Costs assume Middlesex County labor rates and that no licensed electrical work is needed.",
+ "data_gaps": [
+  "The 2015 CCTV vigilance study (Donald, Donald & Thatcher, Applied Ergonomics) cannot be opened at the publisher: the ScienceDirect record returns HTTP 403. The figures now quoted are from the open Edith Cowan University repository abstract (https://ro.ecu.edu.au/ecuworkspost2013/922/), which states 'Fifty percent of target behaviours were detected and false alarms were high' at total N=73 and no vigilance decrement for the stage-one 42-operator sample as a whole. The previously stated 'about 55%' could not be tied to any accessible copy of the paper and was removed.",
+  "Verkada's public-sector price list PDF (Bluum/MAD co-op) failed to parse, so the $199/camera/year licence figure is unverified - no vendor-page price could be confirmed.",
+  "Frigate+ subscription price and any per-subscription training allowance (previously stated as USD 50/year and 12 trainings/year) are unverified: the FAQ page I opened states neither a price nor a training quota. Only the base-model/tens-of-thousands-of-examples explanation, local processing, uniform label set, post-cancellation model use and the commercial-licence terms are confirmed.",
+  "NVIDIA DeepStream SDK: no price or 'free of charge' term appears on any NVIDIA page I could open. The EULA (developer.nvidia.com/deepstream-eula, v. September 14, 2021, six pages incl. the DeepStream supplement) sets use, distribution and benchmarking-disclosure terms but no fee, so pricing is recorded as Unknown rather than as free.",
+  "Hailo-8 M.2 module (26 TOPS): no price confirmed - the vendor page shows specs but directs buyers to inquire, and retailer/distributor pages returned HTTP 403 or timeouts.",
+  "Dahua IPC-T54IR-AS-S3 turret: the vendor product page loads and confirms the specs (wired, substreams, ONVIF, H.264/H.265, PoE) but shows no price, and the retailer/distributor price pages I tried returned 403/404 - so the camera is carried with no dollar figure. (An earlier draft wrongly described the vendor page itself as 404.)",
+  "Raspberry Pi AI Kit / AI HAT+ current price could not be retrieved (the documentation page returned HTTP 403); the AI Kit is discontinued, so only the Pi 5 8GB USD 95 reference price is confirmed.",
+  "GoodTrack scan-avoidance study: the reported sample (previously '632 POS-integrated orders') and the incident count (previously '26 confirmed scan-avoidance incidents') could not be verified - the ScienceDirect article returns HTTP 403 and no accessible preprint or author copy was found, so both numbers were removed from measured_outcomes.",
+  "UCVL benchmark: the claim that temporal grounding is the weakest skill, and the '~26%' figure previously attached to it, are not in the abstract of arXiv:2502.09325 and could not be traced to an accessible results table, so they were removed.",
+  "The Green et al. 2006 Journal of Food Protection observation study (reported as 321 food workers washing appropriately in 27% of activities) could not be opened: the ScienceDirect page returns HTTP 403 and no mirror of that specific paper was found. The handwashing evidence now relies on CDC's own summary of four of its studies ('about one in three times').",
+  "Retail-trade workplace homicide count: the previously stated '80 retail trade homicides' could not be verified - BLS CFOI Table A-1 reports 733 violent-act fatalities nationally but combines homicide and suicide by industry, and no opened page gave a retail-only homicide split, so the figure was dropped.",
+  "Qwen3-VL-2B throughput: only vendor numbers were available, and only from the llm_bench component tables of TensorRT Edge-LLM v0.10.0 at BS=1 - no independent replication on Jetson, and no measurement of end-to-end time-to-answer including vision-encoder time for a 720p event thumbnail. The ~180.8 tok/s row on that page belongs to an older release table and is not comparable with the current figures, so it is not used anywhere in this brief.",
+  "No peer-reviewed controlled field study was found quantifying shrink, incident or compliance improvement from an edge vision deployment at a small business - only detection-accuracy studies.",
+  "No New Jersey-specific AI adoption data for 5-200 staff firms; the closest is the national Census BTOS cut by firm size and sector.",
+  "The status of New Jersey biometric privacy bills (e.g. A1488/S3181) could not be confirmed from a primary legislative page - the NJ Legislature bill pages did not extract cleanly.",
+  "No NJ statute or regulation was found that requires employers to post notice of workplace video cameras; the negative finding rests on a secondary legal summary only and is marked unconfirmed.",
+  "The definition of a 'small employer' used in the NJDOL minimum-wage release ($15.23 rate) is not stated on that page; the statutory definition was not separately verified.",
+  "Illinois BIPA: the Illinois General Assembly full-text page for 740 ILCS 14/15 would not load on repeated attempts (fetch failures on both my.ilga.gov and ilga.gov), so the section 15 requirements are cited from a Seventh Circuit opinion that describes and pinpoints them, not from the statute text itself.",
+  "New Jersey Wiretap Act: the RCFP guide cites N.J. Stat. Ann. 2A:156A-2, -3 and -4 and states the carve-out as recordings made 'for the purpose of committing any criminal or tortious act'; I did not open the statute text of subsection (d), so no subsection pinpoint or additional statutory limb is asserted here.",
+  "Qwen3.5: the qwen.ai blog post is JavaScript-rendered and returned no readable content, so the February 2026 release month comes from the Qwen3.5-4B model card's own citation block; the exact publication date of the 2B and 4B variants (the Hugging Face collection shows Mar 2) is not stated on any page I could open.",
+  "RF-DETR latency: Frigate's table gives RF-DETR figures for Intel Iris XE, Intel NPU, Arc A380, AMD 9060XT and several Nvidia GPUs, but not for the Arc A310; no separate first-party RF-DETR benchmark was opened, so per-device numbers are quoted exactly as that table states them.",
+  "Coral latency: no benchmarked millisecond figure appears on Frigate's hardware page, so no Coral latency is asserted anywhere in this brief - only the docs' worked example and its 1000/inference-ms cap rule.",
+  "Unsloth's requirements page documents QLoRA VRAM minimums for text models only (3B at 3.5GB) and does not discuss vision, image or multimodal training; the 24GB floor used for 2-4B vision LoRA is an explicit inference from those text figures, not a vendor statement.",
+  "PoE switch, cabling, storage and UPS costs in the pilot are estimates without a source (marked inference), as is the $150-250 per-camera hardware estimate used for the 6-camera pilot total.",
+  "No reliable count of businesses located specifically in Milltown borough; only county-level QCEW establishment counts are available.",
+  "No measured data on how many NJ small businesses already run ONVIF cameras that could be reused, which materially changes pilot cost."
+ ]
+}

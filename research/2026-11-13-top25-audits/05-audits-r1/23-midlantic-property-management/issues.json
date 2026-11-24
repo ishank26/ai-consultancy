@@ -1,0 +1,22 @@
+[
+ {
+  "claim": "Wage rate cited three times as \"$30.20/hour (O*NET Secretaries and Administrative Assistants median, NJ, 2026 ...)\" and \"$35.04/hour (O*NET Bookkeeping, Accounting and Auditing Clerks median, NJ, 2026 ...)\".",
+  "problem": "The dollar rates are right, but the data year is wrong. Both O*NET New Jersey pages state \"Source: Bureau of Labor Statistics 2025 wage data\" (NJ median $50,260 / $24.16 per hour for 43-6014.00; NJ median $58,300 / $28.03 per hour for 43-3031.00). Labelling the benchmark \"2026\" attributes a 2026 wage survey that the cited page does not contain, and it also contradicts the industry brief, which records these as May 2025 OEWS medians.",
+  "fix": "Change \"NJ, 2026\" to \"NJ, BLS May 2025 data published by O*NET\" (or \"NJ, 2025\") in all three impact blocks; keep $30.20 and $35.04 unchanged, since $24.16 x 1.25 = $30.20 and $28.03 x 1.25 = $35.04."
+ },
+ {
+  "claim": "Section 1: \"No form, no tap-to-call link\"; section 2: work orders arrive only by phone or free-text email template.",
+  "problem": "Accurate for the proposal and contact pages (0 form elements, 0 tel: links, verified in the DOM), but the work-order page is not form-free: it carries an empty Weebly form that posts to weebly.com/apps/formSubmit.php with a visible \"Submit\" button and no visible input fields, and its banner text reads \"General work order requests are accepted online or you may call (732) 828-7200.\" A client who opens that page will see a Submit button and an \"accepted online\" claim, so a flat \"no form\" is easy to challenge even though nothing can actually be submitted.",
+  "fix": "Say \"no working form / no input fields\" rather than \"no form\", and if space allows add \"an empty Weebly form with a Submit button on the work-order page submits nothing\". This is arguably a stronger point than \"no form\"."
+ },
+ {
+  "claim": "Audit body must be at most ~450 words.",
+  "problem": "The body (title through the \"Prepared from publicly available information\" line, excluding the \"For the founder\" block and Sources) is 487 words, roughly 8% over the limit.",
+  "fix": "Trim about 40 words: the repeated \"(O*NET ... x1.25 for benefits - our assumption)\" phrase appears three times and the \"Why this works\" bullets partly restate the section text; cut one of them."
+ },
+ {
+  "claim": "\"Midlantic has managed New Jersey community associations since 1995 ...\"",
+  "problem": "Traceable to the home page (\"Since 1995 ... has been a recognized leader among Association management firms\"), but the company's own Meet the President page says Mr. Polos \"formed Midlantic Property Management, Inc. in 1993\". The audit presents 1995 as settled fact without noting the firm dates itself two ways, and the founder will notice.",
+  "fix": "Optional but cheap: \"since 1995 (its president page says he formed the firm in 1993)\" - or just keep 1995 and let the source citation stand."
+ }
+]

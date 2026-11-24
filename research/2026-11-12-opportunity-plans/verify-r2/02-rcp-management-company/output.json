@@ -1,0 +1,88 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Deepgram \"states it does not store transcripts, so the build must persist each transcript itself for the audit log\" (solution.components, speech-to-text)",
+      "problem": "Contradicted by Deepgram's own data-handling page: Speech-to-Text requests participate in the Model Improvement Program by default and both request audio and transcript are \"retained to improve our models\". Zero retention only applies when mip_opt_out=true is set per request (or enforced account-wide). For recordings of HOA homeowner calls this is a compliance-relevant misstatement, not a pricing detail.",
+      "fix": "Rewrite as: by default Deepgram retains audio and transcripts for model improvement; the build must send mip_opt_out=true (and ask Deepgram to enforce opt-out at account level) and persist its own transcript copy regardless. Optionally add a vendor data-retention item to risks_compliance."
+    },
+    {
+      "claim": "Vantaca integration marked confirmed_in_docs: true, with ticket creation in Vantaca via \"Vantaca standard API\" as a phase-2 build step and in pilot scope",
+      "problem": "No Vantaca API reference, endpoints, write scopes or ticket objects are shown anywhere in the cited source. The partner page only advertises a dedicated point of contact, technical integration support and structured onboarding, and says partners are given API docs after onboarding. The plan's own prose admits \"no public API reference\", so the confirmed_in_docs flag contradicts the plan's body. This is the load-bearing integration for phase 2 and for the monthly-fee story.",
+      "fix": "Set confirmed_in_docs to false (description: vendor-advertised, provisioned through the partner program, API surface unverified), add the missing API reference to data_gaps, and make phase 2 ticket creation conditional on a sandbox test against a test association before any set-up fee is quoted."
+    },
+    {
+      "claim": "BuildingLink integration marked confirmed_in_docs: true",
+      "problem": "The cited help page shows only a contact list (Integration@BuildingLink.com, Support@, TrainingRequest@) with no API, endpoints or documentation. \"Confirmed in docs\" overstates what exists, even though the plan's method text correctly says there is no public developer documentation.",
+      "fix": "Set confirmed_in_docs to false with method \"integration request only via Integration@BuildingLink.com; no published API\", which matches the plan's existing design of queueing BuildingLink writes to an export file until scope is confirmed."
+    },
+    {
+      "claim": "\"RCP already runs Vantaca\" / current_tools item \"Vantaca owner portal (portal.rcpmanagement.com / home.rcpmanagement.com)\"",
+      "problem": "No source in the plan (or found independently) states that RCP uses Vantaca. The cited portal page only shows the sign-up review promise; the Vantaca identification appears to be an inference from the /Home_v2/Login path, which resembles Vantaca's own portal path. Two searches for a public RCP-Vantaca link returned nothing. This is an unlabeled inference about the system the whole build-on-platform design writes into, and it is not in data_gaps.",
+      "fix": "Label it explicitly as an inference from the portal URL structure and add to data_gaps/discovery questions: \"confirm which association management platform RCP runs (Vantaca or other) and its API availability\" - the plan names HOAi status but never the platform itself."
+    },
+    {
+      "claim": "The site publishes \"no general-purpose mailbox\" (problem.summary) and the current_tools note that \"there is no general info@ address\"",
+      "problem": "RCP's own press release on rcpmanagement.com lists info@rcpmanagement.com as RCP's e-mail address (and info@primemanagementinc.com for Prime). The claim is true only of the contact page, which lists just kmunson@ and careers@. As written, \"publishing no general-purpose mailbox\" is contradicted by a document on the same domain.",
+      "fix": "Scope the claim to the contact page (\"the contact page lists only two named mailboxes and no general info@ address\") and drop the site-wide wording, or flag that an info@ mailbox exists per the 2023 press release."
+    },
+    {
+      "claim": "Gemini paid tier \"$2.00 per 1M input tokens and $10.00 per 1M output tokens\" presented as the Gemini Developer API price",
+      "problem": "The figures are correct as read (including the doubling to $4.00/$20.00 on 2026-12-01), but on the pricing page they are the Standard paid-tier rows for one specific model (Gemini 4 Carbon), not a single API-wide rate; other models on the same page carry different prices. The token cost model therefore has an unstated model dependency.",
+      "fix": "Name the model (\"Gemini 4 Carbon standard paid tier\") next to the rate in components, integrations and running_costs so the cost line is reproducible, and note that a cheaper model would lower it."
+    },
+    {
+      "claim": "\"about 48 town-level pages\" (leverage) and \"a 51-200 person firm with an investment-company parent\" (feasibility)",
+      "problem": "The area-we-serve sitemap I opened lists 46 URLs (lastmod dates through 2026-10-13, so \"new ones added through 2026\" is correct). The 51-200 headcount has no cited source in the plan; the merger press release supports only a Continuum Companies parent plus 125 associations / 15,000+ doors, not headcount.",
+      "fix": "Change \"about 48\" to \"about 46\" (or \"40-plus\") and either cite a source for the headcount or label it inference."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Telnyx Voice API $0.002/min, $0 platform fee", "source_url": "https://telnyx.com/pricing/voice-api", "result": "confirmed"},
+    {"claim": "Telnyx inbound local SIP trunk from $0.0032/min", "source_url": "https://telnyx.com/pricing/elastic-sip", "result": "confirmed"},
+    {"claim": "Telnyx call recording $0.002/min and recording storage $0/min", "source_url": "https://telnyx.com/pricing/voice-api", "result": "confirmed"},
+    {"claim": "Telnyx local numbers from $1.00 per number per month, one API inventory", "source_url": "https://telnyx.com/pricing/numbers", "result": "confirmed"},
+    {"claim": "Deepgram Nova-3 monolingual pre-recorded $0.0043/min pay-as-you-go, billed per second with no block rounding", "source_url": "https://deepgram.com/pricing", "result": "confirmed"},
+    {"claim": "Deepgram REST endpoint POST https://api.deepgram.com/v1/listen?model=nova-3 with API-key (token) auth", "source_url": "https://developers.deepgram.com/docs/pre-recorded-audio", "result": "confirmed"},
+    {"claim": "Deepgram does not store transcripts", "source_url": "https://developers.deepgram.com/trust-security/your-data", "result": "contradicted"},
+    {"claim": "Gemini paid tier $2.00/1M input and $10.00/1M output through 2026-11-30, $4.00/$20.00 from 2026-12-01", "source_url": "https://ai.google.dev/gemini-api/docs/pricing", "result": "confirmed"},
+    {"claim": "DigitalOcean 1 GiB Basic Droplet $6.00/mo, 2 GiB $12.00/mo", "source_url": "https://www.digitalocean.com/pricing/droplets", "result": "confirmed"},
+    {"claim": "Smith.ai Starter 30 calls $300/mo (overage $11.50), Basic 90 calls $810 ($10.50), Pro 300 calls $2,100 ($8.50), no setup fees", "source_url": "https://smith.ai/pricing/receptionists", "result": "confirmed"},
+    {"claim": "Ruby 50 min $250, 100 min $395, 200 min $720, 500 min $1,725 per month, no activation/onboarding/setup fees", "source_url": "https://www.ruby.com/plans-and-pricing/", "result": "confirmed"},
+    {"claim": "InsertChat Pro $98/mo (one number, 3 seats, 3 assistants), Growth $198/mo up to 20 assistants, whole-minute credit billing, does not connect to association management or accounting software", "source_url": "https://insertchat.com/industries/hoa-management", "result": "confirmed"},
+    {"claim": "Agent on Call $99 flat per month, unlimited standard inbound calls and minutes, no per-call or per-minute billing", "source_url": "https://agentoncall.com/industries/hoa-condominium-management.html", "result": "confirmed"},
+    {"claim": "Anchor Co AI Full Office $1,497/mo incl. 24/7 AI phone receptionist activated in first 30 days; Foundation $497, Growth $997, Done for you $349, self-serve $29-$199", "source_url": "https://www.anchorcoai.com/pricing", "result": "confirmed"},
+    {"claim": "Vantaca HOAi quoted at $0.54 per door per month on Vantaca's own page", "source_url": "https://www.vantaca.com/blog/how-to-grow-your-hoa-management-business-without-adding-staff", "result": "confirmed"},
+    {"claim": "HOAi Voice answers resident calls live and creates a work order in Vantaca when a homeowner replies to a text", "source_url": "https://www.vantaca.com/hoai-voice", "result": "confirmed"},
+    {"claim": "Vantaca partner program advertises a dedicated point of contact, technical integration support, structured onboarding and co-marketing, with no published API reference or integration fee", "source_url": "https://www.vantaca.com/become-a-vantaca-partner-vantaca-partner-program", "result": "confirmed"},
+    {"claim": "Vantaca API / ticket-creation endpoints appear in public documentation", "source_url": "https://www.vantaca.com/become-a-vantaca-partner-vantaca-partner-program", "result": "not found"},
+    {"claim": "BuildingLink publishes only an integration mailbox (Integration@BuildingLink.com), no developer documentation", "source_url": "https://help-staff.buildinglink.com/en/support/solutions/articles/42000099790-contact-information-and-training-requests", "result": "confirmed"},
+    {"claim": "Gmail API is a REST API with read, send and a drafts resource", "source_url": "https://developers.google.com/workspace/gmail/api/guides", "result": "confirmed"},
+    {"claim": "Microsoft Graph exposes a mail REST API with no separate API charge published", "source_url": "https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview", "result": "confirmed"},
+    {"claim": "FCC 24-17, released 2024-02-08, treats AI-generated voices as artificial/prerecorded voice; prior express consent required absent an emergency purpose or exemption", "source_url": "https://docs.fcc.gov/public/attachments/FCC-24-17A1.pdf", "result": "confirmed"},
+    {"claim": "N.J.S.A. 2A:156A-4(d) permits interception where the person is a party or one party has given prior consent (NJ effectively one-party consent)", "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239", "result": "confirmed"},
+    {"claim": "Twilio: sending SMS/MMS over 10DLC from an application to US numbers requires A2P 10DLC brand and campaign registration, and unregistered traffic attracts additional carrier fees", "source_url": "https://www.twilio.com/docs/messaging/compliance/a2p-10dlc", "result": "confirmed"},
+    {"claim": "NJ Data Privacy Act applies only to controllers processing at least 100,000 consumers, or 25,000 consumers while deriving revenue from selling personal data", "source_url": "https://pub.njleg.gov/Bills/2022/PL23/266_.HTM", "result": "confirmed"},
+    {"claim": "CAI lists Alaska, Connecticut, Florida, Georgia, Illinois, Nevada, Virginia as licensure states; New Jersey is not among them; NJ A 2450 did not pass in the 2024-2025 session", "source_url": "https://advocacy.caionline.org/manager-licensing-outcomes25/", "result": "confirmed"},
+    {"claim": "NJ receptionist median $41,650/yr and $20.02/hr; Trenton-Princeton metro median $40,550/yr (BLS 2025 data via O*NET)", "source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ", "result": "confirmed"},
+    {"claim": "RCP's Princeton part-time onsite administrator posting pays $26/hour and covers answering all incoming calls, entering work orders, back-charging owner accounts and maintaining BuildingLink records", "source_url": "https://hoa-jobs.com/onsite-administrator-part-time", "result": "confirmed"},
+    {"claim": "Contact page lists (609) 683-7980, a second HQ number, Manahawkin (609) 693-0090, kmunson@ and careers@ mailboxes, 2 Commerce Drive Cranbury, and no office hours", "source_url": "https://rcpmanagement.com/contact/", "result": "confirmed"},
+    {"claim": "Homepage advertises 24/7 emergency services \"including a manager and supervisor\", lists documentation and follow-up on maintenance requests and homeowner inquiries, and an \"Aggressive Collection Procedure\"", "source_url": "https://rcpmanagement.com/", "result": "confirmed"},
+    {"claim": "Owner-portal sign-up: a team member reviews each request and replies within 2 business days", "source_url": "https://home.rcpmanagement.com/Home_v2/Login", "result": "confirmed"},
+    {"claim": "The portal page itself identifies Vantaca or RCP's use of Vantaca", "source_url": "https://home.rcpmanagement.com/Home_v2/Login", "result": "not found"},
+    {"claim": "Payments are processed by Zego (formerly PayLease) as a third party and deposited directly into the association's operating account", "source_url": "https://rcpmanagement.com/payments/", "result": "confirmed"},
+    {"claim": "RCP's site publishes no general-purpose info@ mailbox", "source_url": "https://rcpmanagement.com/wp-content/uploads/2023/09/PRIME-RCP-Press-Release-09.20.2023-Final72.pdf", "result": "contradicted"},
+    {"claim": "Continuum Companies is the parent company of RCP; offices in Bloomfield, Manahawkin and Cranbury; RCP serves 125 associations and 15,000+ doors", "source_url": "https://rcpmanagement.com/wp-content/uploads/2023/09/PRIME-RCP-Press-Release-09.20.2023-Final72.pdf", "result": "confirmed"},
+    {"claim": "Infrastructure total $71.55/mo (14.04 + 5.40 + 3.00 + 11.61 + 31.50 + 6.00) and $103.05/mo at the December 2026 Gemini rates (40.05 non-token + 63.00 tokens)", "source_url": "https://telnyx.com/pricing/elastic-sip", "result": "confirmed"},
+    {"claim": "Voice arithmetic: 300 calls x 3 min x 3 communities = 2,700 min; 2,700 x $0.0052 = $14.04; recording 2,700 x $0.002 = $5.40; Deepgram 2,700 x $0.0043 = $11.61", "source_url": "https://deepgram.com/pricing", "result": "confirmed"},
+    {"claim": "Token arithmetic: 600 x 8k + 2,700 x 2k = 10.2M input; 600 x 500 + 2,700 x 300 = 1.11M output; $20.40 + $11.10 = $31.50 now, $40.80 + $22.20 = $63.00 after 2026-12-01", "source_url": "https://ai.google.dev/gemini-api/docs/pricing", "result": "confirmed"},
+    {"claim": "Founder effort sums to 18 days (2+3+4+3+2+4); $6,000/18 is about $330/day; $750/mo is $250 per community; $5,000 equals 8-10 days at $500-$625", "source_url": "https://smith.ai/pricing/receptionists", "result": "confirmed"},
+    {"claim": "Value band: 3 x $2,535-$10,140 = $7,605-$30,420 a year, with $750/mo ($9,000/yr) inside it", "source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ", "result": "confirmed"},
+    {"claim": "Doors assumption: 15,000 doors across 125 associations is about 120 doors per association, so 3-5 communities is roughly 360-600 doors", "source_url": "https://rcpmanagement.com/wp-content/uploads/2023/09/PRIME-RCP-Press-Release-09.20.2023-Final72.pdf", "result": "confirmed"},
+    {"claim": "\"About 48\" town-level area-we-serve pages, with new ones still being added through 2026", "source_url": "https://rcpmanagement.com/wp-sitemap-posts-areaweserve-1.xml", "result": "contradicted"},
+    {"claim": "Google rating 3.9 for RCP Management", "source_url": "https://www.propertymanagementsearch.com/hoa-management/monmouth-county-nj", "result": "confirmed"},
+    {"claim": "Google review count of 206", "source_url": "https://www.propertymanagementsearch.com/hoa-management/monmouth-county-nj", "result": "not found"},
+    {"claim": "Yelp 1.5 average across 23 reviews (aggregator snippet only; plan already caveats this)", "source_url": "https://www.propertymanagementsearch.com/hoa-management/monmouth-county-nj", "result": "not found"}
+  ],
+  "confidence": "High"
+}

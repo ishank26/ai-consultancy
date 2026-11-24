@@ -1,0 +1,128 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "links_to_broken_domain[2], caveats[2] and data_gaps say the Facebook page's About/contact block 'now sits behind a login wall', so the website field 'could not be re-read today' and is 'carried over from the earlier pass'; founder_md repeats this as an open question.",
+      "problem": "Contradicted on 13 November 2026. Opened https://www.facebook.com/people/Greenhouse-Loft/100076522939012/ in a clean, logged-out browser: the Intro/About block rendered directly with 'A unique venue perfect for private events.', 'Page · Event', '431 Raritan ave 2nd Floor, Highland Park, NJ', email greenhouselofthp@gmail.com and the website field 'greenhouselofthp.com', plus 'Not yet rated (4 reviews)' and a September 2022 post. Only the scroll-triggered 'See more from Greenhouse Loft' gate requires login (the auditor's screenshot shows that gate). So the website field is verifiable without login and does still point at the old domain.",
+      "fix": "Re-read the Facebook page logged out, record the website field as greenhouselofthp.com (confirmed, visible without login), move it out of data_gaps, delete the corresponding founder_md open question, and remove the 'carried over from the earlier pass' caveat."
+    },
+    {
+      "claim": "audit_md bullet 2 ('its canonical tag still names greenhouselofthp.com') and fix step 3 ('Drop the greenhouselofthp.com canonical from Squarespace').",
+      "problem": "Accurate but not plain English for a venue owner: 'canonical tag' and 'canonical' are unexplained technical terms in the document the business reads.",
+      "fix": "Say it plainly, e.g. 'a setting on your site still tells search engines your main address is greenhouselofthp.com'."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "greenhouselofthp.com loads over HTTPS with no certificate warning and redirects off-domain to an Indonesian/Malay-language MEGA888 online-casino page at cavaliercorneronline.com (login/register buttons, game thumbnails, rupiah jackpot).",
+      "source_url": "https://www.greenhouselofthp.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The served casino page's canonical and og:url both name https://cavaliercorneronline.com/.",
+      "source_url": "https://cavaliercorneronline.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "At 390 px phone width the casino page does not fit: content sits in a narrow column with a large blank area beside it (document scroll width 887 px against a 390 px viewport).",
+      "source_url": "https://www.greenhouselofthp.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Squarespace site loads normally with Photos, Our Space, Pricing&FAQ, Contact and Tours pages.",
+      "source_url": "https://arnold-weinberg-zgc3.squarespace.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Squarespace homepage's canonical tag and JSON-LD 'url' point to https://www.greenhouselofthp.com/, and the JSON-LD telephone and openingHours fields are empty.",
+      "source_url": "https://arnold-weinberg-zgc3.squarespace.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "/pricing lists day rates for Friday, Saturday, Sunday and Monday-Thursday plus hourly photoshoot rates.",
+      "source_url": "https://arnold-weinberg-zgc3.squarespace.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "/contact-us carries an enquiry form with an email address and a 48-hour reply note.",
+      "source_url": "https://arnold-weinberg-zgc3.squarespace.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nextdoor public page (no login) shows website https://www.greenhouselofthp.com/, phone (732) 339-8044 as a tel: link, email greenhouseloft@gmail.com and a short 'Our story' block.",
+      "source_url": "https://nextdoor.com/pages/greenhouse-loft-highland-park-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Green Bowtie 'Visit website' leads to greenhouselofthp.com with tracking parameters; listing shows 4.7 from 52 reviews and 'On Green Bowtie since Mar 2026'.",
+      "source_url": "https://www.greenbowtie.com/venues/new-jersey/greenhouse-loft-highland-park",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Facebook page title 'Greenhouse Loft | Highland Park NJ' and 382 followers are visible without login.",
+      "source_url": "https://www.facebook.com/people/Greenhouse-Loft/100076522939012/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Facebook page's About/contact block sits behind a login wall, so its website field could not be re-read.",
+      "source_url": "https://www.facebook.com/people/Greenhouse-Loft/100076522939012/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Google Maps profile has no website link at all ('Add website' prompt), and shows 4.6, Event venue, 431 Raritan Ave Second Floor, identifies as women-owned, with 'Add place's phone number' and 'Add hours' prompts.",
+      "source_url": "https://www.google.com/maps/search/Greenhouse+Loft+431+Raritan+Ave+Highland+Park+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 2017-01-30, expires 2027-01-30, last changed 2026-03-15, registrar GoDaddy.com, LLC, Cloudflare nameservers (gannon/nelson), client delete/renew/transfer/update prohibited.",
+      "source_url": "https://rdap.org/domain/greenhouselofthp.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback: venue site captured 2026-03-16 and 2026-04-02, casino content 2026-05-12, 301 responses from 2026-07-06.",
+      "source_url": "https://web.archive.org/cdx/search/cdx?url=greenhouselofthp.com&output=json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The 2 April 2026 capture is the venue site and the 12 May 2026 capture is a MEGA888 page.",
+      "source_url": "https://web.archive.org/web/20260512010315id_/http://www.greenhouselofthp.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A separate domain, culturenightmarket.com, opens the same cavaliercorneronline.com casino page.",
+      "source_url": "https://culturenightmarket.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Instagram @greenhouse_loft returns 'Profile isn't available'.",
+      "source_url": "https://www.instagram.com/greenhouse_loft/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "greenhouseloft.com is a different venue of the same name at 2545 W Diversey Ave, Chicago, IL 60647.",
+      "source_url": "https://greenhouseloft.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A public event was held at the venue (431 Raritan Ave, 2nd Floor, Highland Park) on 24 May 2025.",
+      "source_url": "https://gregoryburrusproductions.com/event/lynette-sheard-and-glenn-merritt-trio-in-2025-icmad-evening-of-soul-fundraiser/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The business is operating, not closed, and is an independent Highland Park venue rather than a chain or franchise.",
+      "source_url": "https://www.somactr.com/projects-6",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No Yelp listing and no BBB profile exist for Greenhouse Loft Highland Park.",
+      "source_url": "https://arnold-weinberg-zgc3.squarespace.com/",
+      "result": "not found"
+    },
+    {
+      "claim": "Likely cause ('control of the domain's DNS or hosting used without the business's intent') is labelled an inference, names no one, and the alternative is kept open.",
+      "source_url": "https://rdap.org/domain/greenhouselofthp.com",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,83 @@
+{
+  "business": "Epic Management, Inc. (Epic Incorporated)",
+  "industry": "construction",
+  "town": "Piscataway, NJ",
+  "opportunities": [
+    {
+      "title": "Prevailing-wage / certified-payroll compliance agent for public work",
+      "capability": "A",
+      "problem": "Epic runs NJ public work across state, county, municipal, parking-authority, K-12 and higher-ed clients, and its affiliate Epic Interiors self-performs with a union crew of ~75 expanding to 200+. NJ requires weekly certified payroll filed both through the NJ Wage Hub and in hard copy to the contracting public body, and the records are then published in a searchable statewide database. Collecting, checking and filing those records for a self-performing affiliate plus dozens of subcontractors is repetitive, rules-based and deadline-driven work currently absorbed by a small, long-tenured back office with no visible compliance tooling.",
+      "evidence": [
+        "NJ Prevailing Wage Act requires weekly certified payroll records, and since Aug 15 2024 filing both online through NJ Wage Hub and in hard copy to the contracting public body (industry brief, citing NJDOL 2024) — https://njwages.nj.gov",
+        "Compiling and reconciling weekly timecards, craft classifications, wage rates and deductions into certified payroll is a listed core task of Payroll and Timekeeping Clerks (SOC 43-3051) — https://www.onetonline.org/link/summary/43-3051.00",
+        "Affiliate Epic Interiors self-performs demolition, framing, drywall, ceilings and carpentry with a regular union crew of ~75 that expands to 200+ — https://www.epicbuilds.com/affiliates/",
+        "Public-sector practice (state, county, municipal, parking authority, K-12, higher ed) implies formal bid, PLA and prevailing-wage compliance workflows handled by in-house staff (profile operations signal) — https://www.epicbuilds.com/our-company/our-team/",
+        "Accounting, HR and IT all sit with one executive (CFO Miguel Alayón also heads IT and HR), so compliance reporting has no dedicated systems owner — https://www.epicbuilds.com/our-company/our-team/",
+        "Clerical construction roles are projected to decline ~1%+ over 2025-2035 with ~11,400 national openings, i.e. the work stays but staffing shrinks (industry brief, O*NET/BLS projections 2025) — https://www.onetonline.org/link/summary/43-3051.00"
+      ],
+      "agent_design": "A scheduled + event-driven agent that watches payroll and timekeeping exports (currently Dexter + Chaney and whatever time-capture feeds it), flags missing or late weekly submissions per project, classifies hours by trade and wage determination, pre-fills the certified-payroll statement and NJ Wage Hub upload file, and reconciles subcontractor submissions against the subcontract's required classifications. Triggers: weekly payroll close, new subcontract execution, project reaching substantial completion. Human approval: a payroll/compliance clerk reviews every statement before the Wage Hub submission and hard-copy filing; the agent never files unapproved records. Escalation to the CFO on any classification or rate mismatch above a set threshold.",
+      "why_not_DIY": "It must read and write into payroll/ERP data and produce a state-portal-format file, not draft text in a chat window. It also handles SSNs, I-9 data and union deduction details, so it needs tenant-controlled deployment and audit logs, and errors are legally exposed (fines, public-record publication), which demands deterministic validation and a hard human gate rather than a general chatbot.",
+      "impact_estimate": {
+        "range": "$10,000-$20,000/yr of clerical time plus reduced late-filing and rework exposure (inference; no observed baseline)",
+        "assumptions": "Inference, stated as assumptions: 4-8 clerk hours per week currently spent chasing and assembling certified payroll across the project mix; ~50 working weeks; loaded cost ~$35/hr derived from the NJ median of $60,750 for Payroll and Timekeeping Clerks plus ~20% burden; 30-50% of that time removed once the agent drafts and reconciles (conservative, since approval stays human). Penalty and rework savings are not quantified because the applicable penalty schedule was not verified in the industry brief.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-3051.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: map one or two active NJ public projects, connect read access to payroll/timekeeping exports, build the wage-determination lookup and validation rules for the trades actually used (e.g. carpentry, drywall, ceilings), generate draft certified-payroll statements and a Wage Hub-ready file for two payroll cycles, and run the clerk sign-off workflow side by side with the current manual process so accuracy can be compared before any filing change."
+    },
+    {
+      "title": "Preconstruction agent: bid intake, subcontractor solicitation and bid leveling",
+      "capability": "A",
+      "problem": "Estimating is centralized behind one Chief Estimator who is also Director of Purchasing, so bid volume from three offices funnels through a single queue while the firm pursues both hard-bid public work and concept/design-build estimates. Soliciting and selecting subcontractors, running the tendering process and comparing/leveling competing estimates are exactly the tasks that consume estimator hours and do not scale by hiring, especially with an affiliate bidding work from $50,000 to $25 million alongside the parent.",
+      "evidence": [
+        "Solicit and select vendors/subcontractors, run the tendering process, compare and level competing estimates are listed core tasks of Cost Estimators (SOC 13-1051) — https://www.onetonline.org/link/summary/13-1051.00",
+        "The Chief Estimator also serves as Director of Purchasing, a combined preconstruction/purchasing workload common where back-office capacity is thin (profile hiring signal) — https://www.epicbuilds.com/our-company/our-team/",
+        "Subcontractor bid solicitation and document distribution already run through a public BuildingConnected portal, so solicitation is digital but manual — https://www.epicbuilds.com/bid-opportunities/",
+        "Vendor-reported: across 4,000+ US MEP contractors, estimate comparison fell from 60 to 10 minutes (83% faster) with AI assistance; self-reported product telemetry, no control group (Trimble 2026, low strength) — https://www.trimble.com/en/blog/construction/article/actual-results-mep-estimators-ai-assisted-takeoff",
+        "Affiliate Epic Interiors bids work from $50,000 to $25 million, widening the range of packages the single estimating queue must cover — https://www.epicbuilds.com/affiliates/"
+      ],
+      "agent_design": "A pipeline agent per bid: on a new bid decision it drafts trade scopes from the drawing/spec set, queries BuildingConnected plus the firm's historical subcontractor list to shortlist bidders by trade, geography and prior performance, issues invitations and reminders, watches for addenda and re-notifies, then normalizes incoming quotes into a leveling matrix (scope gaps, alternates, exclusions, unit prices) and flags outliers and missing scopes. Human approval: the estimator validates the shortlist before invitations go out and signs off on every leveling matrix before pricing is used; the agent never submits a bid. Escalation where coverage is thin (fewer than N quotes for a trade package).",
+      "why_not_DIY": "Requires write access into the BuildingConnected workflow, ongoing ingestion of drawings, specs and mid-cycle addenda, and state that persists across weeks per bid. Reliability matters because a dropped addendum or missed scope gap is a direct dollar loss, and bid documents, unit-price build-ups and subcontractor quotes are commercially sensitive — which rules out routing them through consumer chat tools.",
+      "impact_estimate": {
+        "range": "$12,000-$35,000/yr of estimator time (inference; highly sensitive to bid-volume assumptions)",
+        "assumptions": "Inference: 15-30 bids per year across three offices and the affiliate; 15-30 estimator hours per bid on solicitation, follow-up and leveling; 25-40% of that removed by the agent; loaded estimator cost ~$48/hr from the NJ median of $80,570 for Cost Estimators plus burden. Quantity takeoff is excluded from the savings claim because the only quantified evidence available is vendor self-report and the industry brief found no independent measurement for office workflows.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/13-1051.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: run the agent on two live bids in parallel with the current manual process — automated trade-scope extraction, shortlist suggestions from the existing subcontractor list, invitation and reminder issuance through BuildingConnected, and a leveling matrix for one trade package each. Deliverable is a side-by-side comparison of hours spent and scope gaps caught versus the manual run, so the estimator can judge coverage and accuracy."
+    },
+    {
+      "title": "Pursuit knowledge agent: public bid discovery plus reusable proposal/prequalification assembly",
+      "capability": "C",
+      "problem": "All qualifications and proposal submissions are produced in-house by a single Director of Marketing, and public-sector work (state, county, municipal, parking authority, K-12, higher ed) means repeating the same safety statistics, award history, project sheets and prequalification answers for every pursuit. The firm's differentiators — EMR 0.663, zero lost workdays 2013-2025, zero incidence on 50,000+ hours 2017-2025, 65+ awards, 55+ years — live on web pages rather than in a queryable, versioned library, and no published pipeline tool exists for tracking which public advertisements are worth pursuing.",
+      "evidence": [
+        "A Director of Marketing handles proposals and qualifications submissions in-house, pointing to a heavy recurring proposal/RFQ production load (profile hiring signal) — https://www.epicbuilds.com/our-company/our-team/",
+        "Safety documentation is deep and recurring: OSHA 30 for all field staff, weekly safety meetings, daily planning sessions, drug testing, plus year-by-year zero-incidence statistics and a 2019 NJ Governor's OSHA award — https://www.epicbuilds.com/our-company/safety/",
+        "Firm states EMR of 0.663, 65+ awards, 55+ years and multi-state experience (NJ, NY, CT, GA, FL) — figures that must be re-assembled and re-verified for each submission — https://www.epicbuilds.com/service/consulting-services/",
+        "Public-sector prequalification and safety reporting create recurring compliance documentation work that could be largely automated (profile inference) — https://www.epicbuilds.com/our-company/our-team/",
+        "No blog cadence, project data or downloadable content is published, and the news page is essentially a single image-only post — pursuit collateral is not maintained in reusable form — https://www.epicbuilds.com/our-company/news/"
+      ],
+      "agent_design": "Two linked agents over one private document index. (1) Discovery: a scheduled sweep of nominated public advertisement sources (municipal, county, parking authority, higher-ed postings) that filters by trade, value band, geography and prequalification fit and produces a weekly shortlist with deadline and requirement call-outs. (2) Knowledge: an indexed library of past proposals, project sheets, safety statistics, licenses, insurance and surety letters that drafts RFQ/RFP narrative responses with citations back to source documents, flags any figure it cannot source, and assembles the prequalification package. Human approval: the Director of Marketing reviews and edits every draft; nothing is submitted and no portal responses are filed by the agent. Stale figures (e.g. a prior-year incidence rate) are blocked from reuse until a human refreshes them.",
+      "why_not_DIY": "The value is in the retrieval layer over the firm's own proposals, safety records and contract documents with per-claim citations, plus scheduled monitoring across many public sources — neither is available from a chatbot subscription, and a general model will happily invent an award year or an EMR. Public-sector deadlines and prequalification currency make wrong-fact risk material, so provenance tracking and a human gate are required. Safety and compliance statistics are also the firm's competitive asset, favoring a private index over public model uploads.",
+      "impact_estimate": {
+        "range": "$6,000-$18,000/yr of pursuit staff time, plus 2-4 additional qualified pursuits per year (inference)",
+        "assumptions": "Inference: 30-60 submissions per year (qualifications, prequalification packages, RFP/RFQ responses across three offices); 1.5-4 hours saved per submission on locating, verifying and formatting boilerplate; loaded cost ~$48/hr using the NJ Cost Estimator median of $80,570 as a proxy because the industry brief contains no marketing/BD wage benchmark. Additional-pursuit value is left unquantified — no source measures win-rate lift from faster proposal production, and the brief found no study quantifying revenue recovered.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/13-1051.00?st=NJ"
+      },
+      "complexity": "Low",
+      "pilot_scope": "2-4 weeks: ingest the existing proposal library, project sheets and safety statistics into a private cited index; draft two live responses (one qualifications/prequalification package, one public RFP) for the Director of Marketing to edit; stand up the weekly public-advertisement shortlist for one region (central NJ / Piscataway). Success is measured as factual accuracy against source documents and time-to-first-draft versus the current process."
+    }
+  ],
+  "lead_score": {
+    "pain": 18,
+    "fit": 17,
+    "ability_to_pay": 15,
+    "ease": 9,
+    "strategic": 14,
+    "total": 73,
+    "rationale": "Pain (18/30): the structural evidence is strong and specific — a centralized Chief Estimator/Purchasing queue, a single in-house proposal owner, no ATS, a legacy FTP client login alongside BuildingConnected, and a verified NJ certified-payroll regime layered on a self-performing union affiliate — but no review corpus, interview or internal metric confirms where the hours actually go, so the heaviest claims rest on inference. Fit (17/20): all three are software-and-integration agents in capabilities A and C with clear human-approval points; no cameras or edge hardware, where the brief's own evidence (zero-shot hazard F1 ~0.30) argues for caution. Ability to pay (15/20): $400M surety capacity, 55+ years, three offices and an affiliate bidding $50k-$25M indicate a firm that can fund a pilot, but revenue, headcount and backlog are unpublished, so size is estimated rather than known. Ease (9/15): IT, HR and finance concentrate in one CFO, shortening the stakeholder path, offset by a conservative multi-state public-works contractor with sensitive payroll and bid data and no visible software budget or modern stack. Strategic (14/15): the certified-payroll, bid-leveling and pursuit-knowledge patterns repeat directly across NJ/NY public-works contractors, a large local market. Total 73 — a qualified lead that needs a discovery call to convert inference into a confirmed baseline before pricing a pilot."
+  },
+  "best_evidence_signal": "Subcontractor solicitation runs through a public BuildingConnected portal while the firm's only estimator also runs purchasing and one in-house marketing director produces all proposals — a concentrated preconstruction/pursuit bottleneck this consultancy can instrument: https://www.epicbuilds.com/our-company/our-team/",
+  "suggested_channel": "LinkedIn",
+  "evidence_thin": true
+}

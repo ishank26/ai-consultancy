@@ -1,0 +1,84 @@
+{
+  "business": "Integrity Ironworks, Inc.",
+  "industry": "manufacturing",
+  "town": "Sayreville, NJ",
+  "opportunities": [
+    {
+      "title": "Estimating & proposal co-pilot for custom steel take-offs",
+      "capability": "A",
+      "problem": "Every quote depends on a human estimator reading blueprints and specs, doing material take-offs, pricing time/cost/labor, and assembling a proposal by hand. The firm is hiring a second Estimator/Project Manager for exactly those tasks while calling itself \"a small, but growing\" shop, which points to estimating desk capacity as the binding constraint on winning work.",
+      "evidence": [
+        "Live posting for Steel Fabrication Estimator/Project Manager listing material take-offs, proposal prep, blueprint/spec review, time-cost-material-labor estimates, field measurements, estimate and material-order submission (https://www.integrityironworksnj.com/project-manager-estimator)",
+        "Company describes itself as \"a small, but growing, custom steel fabrication shop\" - capacity strain, not a lull (https://www.integrityironworksnj.com/project-manager-estimator)",
+        "Estimating, budgeting, technical design and layout are sold as in-house services performed by staff estimators and detailers, i.e. no configurator or online quoting path exists (https://www.integrityironworksnj.com/services)",
+        "Inbound work arrives only by phone 732-254-2200, fax, or a generic customerservice@ inbox during weekday 7am-4pm; no web quote form or portal (https://www.integrityironworksnj.com/contact)",
+        "NJ cost-estimator wage benchmark: median $80,570/yr (10th pct $50,390), mean $38.74/hr, 2025 OEWS data (https://www.onetonline.org/link/localwages/13-1051.00?st=NJ)"
+      ],
+      "agent_design": "Event-driven agent watching customerservice@ and a new web RFQ form. On a new inquiry it extracts the attachment set, classifies the scope (stairs, railings, platforms, catwalks, ladders, mezzanines), builds a take-off worksheet with line items and quantities, pulls comparable past quotes and current supplier/subcontractor pricing from the directory the posting says must be maintained, and drafts a proposal plus an internal checklist of missing information (field measurements, finish, erection scope, spec sections). Estimator approves or overrides every price and line item before anything is sent; the agent then logs the quote, sets a follow-up reminder, and reports win/loss reasons back into the library. Field-measurement scheduling is drafted, not booked, so a human confirms site visits.",
+      "why_not_DIY": "The value is in joining three things a chatbot subscription cannot reach: drawing/PDF ingestion, the shop's private historical quote and supplier pricing data, and the outbound email/spreadsheet systems where quotes actually live. It also has to be deterministic and auditable on price math - a plausible-sounding wrong number on a $50k fabrication quote is worse than no draft - and customer-owned drawings and supplier pricing are commercially sensitive, so inference should run in a controlled or private deployment rather than a consumer AI tool.",
+      "impact_estimate": {
+        "range": "roughly 150-400 estimator hours/yr returned, about $6,000-$15,500/yr at the NJ cost-estimator median hourly rate; faster quote turnaround is an additional, unquantified upside",
+        "assumptions": "Assumes one to two estimating/detailing staff at roughly 2,080 hrs each; assumes 20-25% of their estimating hours are drafting, transcribing take-offs, re-keying supplier prices and assembling proposals - the reviewable, repeatable portion - not the judgement on scope, risk or margin; values hours at the unloaded $38.74/hr mean (loaded cost would be higher, but the agent does not eliminate the role, so unloaded is the conservative unit); excludes any win-rate gain from faster response, which is inference from the capacity-strain signal, not measured.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/13-1051.00?st=NJ"
+      },
+      "complexity": "High",
+      "pilot_scope": "2-4 weeks: ingest the last 12-24 months of quotes and the supplier directory; build the take-off worksheet schema; run the agent in draft-only mode on live inbound RFQs alongside the estimator; deliver a side-by-side accuracy report (agent draft vs. human final) and a go/no-go on auto-drafting the standard stair/railing/platform families."
+    },
+    {
+      "title": "Project expediting, material-order and supplier-directory agent",
+      "capability": "A",
+      "problem": "The estimator/PM role the firm is hiring also carries material-order submission and upkeep of a supplier/contractor/subcontractor directory - classic expediting work that competes for the same hours as quoting. Fabrication jobs slip when material status, submittals and vendor follow-ups are tracked in someone's inbox rather than a system.",
+      "evidence": [
+        "Posting requires submitting estimates and material orders and maintaining a supplier/contractor/subcontractor directory (https://www.integrityironworksnj.com/project-manager-estimator)",
+        "Role also covers field measurements and blueprint/spec review, so one person is splitting quoting and job execution admin (https://www.integrityironworksnj.com/project-manager-estimator)",
+        "Industry brief hotspot: production/expediting clerks revise schedules after design changes and material shortages and compile job-progress and material-requisition reports (https://www.onetonline.org/link/summary/43-5061.00)",
+        "NJ benchmark: Production, Planning, and Expediting Clerks median $62,710/yr, 10th pct $42,440 (https://www.onetonline.org/link/localwages/43-5061.00?st=NJ)",
+        "No customer portal or client login appears anywhere in site navigation or contact content, so job status is asked for by phone and email (https://www.integrityironworksnj.com/contact)"
+      ],
+      "agent_design": "Agent on a daily and event trigger (new PO, delivery-date change, RFI received) that keeps one job record per project: line items ordered vs. received, vendor confirmation dates, submittal/RFI log, promised ship date. It reads supplier confirmations and delivery notices out of email, flags slips against the customer's required date, drafts the chase email to the vendor and a weekly status summary for the owner. Material orders above a threshold and any customer-facing schedule commitment require human approval; the agent never commits a date or a spend on its own.",
+      "why_not_DIY": "This is not a writing task - it needs read access to the shop's email and job records, persistent per-job state across weeks, scheduled triggers, and a reliable escalation path when a date slips. Off-the-shelf chat assistants cannot hold that state or act on it, and the shop shows no ERP/MRP front end on its public footprint to plug into, so the integration (email, spreadsheets, PDFs, possibly file drops from a shop system) is the actual build.",
+      "impact_estimate": {
+        "range": "roughly 250-360 hours/yr of expediting admin absorbed, about $7,800-$10,900/yr at the NJ expediting-clerk median hourly rate, plus fewer late material lines",
+        "assumptions": "Assumes one office/PM person spends roughly 0.5 FTE (about 1,040 hrs) on order chasing, status reporting and directory upkeep and that 25-35% of that is mechanical - transcribing confirmations, drafting chase emails, assembling status lists - rather than deciding priorities; values hours at the $30.15/hr implied by the $62,710 NJ median; the avoided-cost of a missed material-delivery date is left out because no shop-level downtime or delay figure is available for this firm.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: memo-inbox connection plus a single job-tracking sheet; run 5-10 live jobs through the agent; deliver a weekly slip report and a vendor-follow-up queue, and measure how many late lines were caught by the agent before the PM noticed."
+    },
+    {
+      "title": "Shop knowledge and bid-library agent built from 70 years of project history",
+      "capability": "C",
+      "problem": "The firm's strongest proof - a removable hoist built so the 9/11 Memorial Museum could move FDNY Ladder 3 inside, plus chemical-plant and Hurricane Sandy work - sits on pages whose narrative exists only inside images, so it is invisible to search engines, uncitable by AI assistants, and unusable as a bid library. Estimators, welders and office staff also hold specs, finishes, weld and QC practice in heads and shared folders rather than in something answerable.",
+      "evidence": [
+        "Case-study pages (/911, /njchemicalplant, /hurricanesandy) carry their narrative in images only; text extraction returns no body copy (https://www.integrityironworksnj.com/911)",
+        "Sitemap lastmod is 2023-10-23 for every page and the footer still reads Copyright 2020, so no text refresh is available to mine (https://www.integrityironworksnj.com/pages-sitemap.xml)",
+        "Capability surface is broad and spec-heavy - carbon, stainless, galvanized, aluminum and hastelloy; galvanizing, painting, erecting, burning, rolling, grinding - which is a large body of finish and procedure knowledge to answer from (https://www.integrityironworksnj.com/services)",
+        "Site already publishes an llms.txt advertising a Wix MCP endpoint for AI agents to query business details, so the owner is receptive to machine-readable structure (https://www.integrityironworksnj.com/llms.txt)",
+        "Testimonials come from purchasing managers and GMs citing long tenure (one 10+ years), i.e. reference material that gets requested in RFQ responses (https://www.integrityironworksnj.com/)",
+        "Working paper (not peer-reviewed): staggered rollout of a generative-AI assistant to 5,179 support agents raised issues resolved per hour 14% on average, 34% for novices (https://www.nber.org/papers/w31161)",
+        "Margin context: US manufacturing unit labor costs +2.7% in Q3 2026 while productivity rose 0.3%, so throughput gains from existing desk staff are worth more than added headcount (https://www.bls.gov/news.release/prod2.nr0.htm)"
+      ],
+      "agent_design": "Two-sided knowledge agent over a curated corpus: past proposals and take-offs, project and QC records, finish/procedure notes, subcontractor lists, and OCR'd text from the image-only project pages. Staff side answers natural-language questions with citations to the source document and flags when the corpus does not cover the question instead of guessing. Customer/prospect side runs on the same corpus but is restricted to approved, non-priced content: it answers capability questions, drafts case-study text and RFQ response sections (project scope, materials, finish, years in business), and proposes the right past project as a reference. Owner approves anything that leaves the building; nothing price- or customer-name-bearing is ever retrievable from the public-facing surface.",
+      "why_not_DIY": "Requires ingestion and OCR of decades of mixed documents plus image-only web pages, retrieval that cites its source so no weld procedure or spec claim is invented, two permission tiers so priced quote history never leaks to a prospect, and a publishing path back into the Wix site. A generic chatbot cannot hold the corpus, respect the tiering, or distinguish \"the documents don't say\" from a confident answer - and the price data makes data handling, not the model, the hard part.",
+      "impact_estimate": {
+        "range": "roughly 125-375 staff hours/yr returned, about $4,000-$14,500/yr, plus case studies and RFQ response material that currently cannot be cited at all",
+        "assumptions": "Assumes 2-3 office/estimating desk roles at 2,080 hrs (headcount is unverified, see evidence_thin); applies a deliberately discounted 3-6% recoverable share rather than the working paper's 14% average, because that study covered high-volume support queues and this is a low-volume custom shop; values hours at the $30.15-38.74/hr range implied by the NJ expediting-clerk and cost-estimator medians; the marketing value of making the 9/11 and chemical-plant work machine-readable is an inference and is not monetised.",
+        "benchmark_source_url": "https://www.nber.org/papers/w31161"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks: OCR and index the image-only project pages plus 20-30 representative past proposals and procedure documents; stand up a staff-only Q&A surface with citations; deliver three draft case studies (9/11 hoist, chemical plant, Sandy) as reviewed text and a short test set showing where the corpus is thin."
+    }
+  ],
+  "lead_score": {
+    "pain": 24,
+    "fit": 18,
+    "ability_to_pay": 11,
+    "ease": 10,
+    "strategic": 13,
+    "total": 76,
+    "rationale": "Pain evidence is strong and first-party: the firm is actively hiring for the exact function (estimating plus material orders plus supplier directory) that a co-pilot would support, and it self-describes as small but growing, so the bottleneck is admitted rather than inferred. Intake is phone/fax/generic email in a 7am-4pm window with no form or portal, which compounds the same constraint. Fit is high because custom steel fabrication is document-bound desk work with clean human-approval points (price, schedule commitment) and no compliance regime forcing validated-system writes. Ability to pay is the weak leg: a 70-year-old firm with museum, chemical-plant and utility-grade institutional clients signals real revenue and willingness to invest in capability, but no employee count or revenue figure is public and the self-description 'small' caps confidence - hence 11/20. Ease is middling: one owner-president (James Zagata) means fast decisions, but there is no visible ERP or MRP to integrate, the site is a stale Wix build, and the real data sits in inboxes, spreadsheets and paper, so discovery will cost more than in a shop with JobBOSS or Epicor. Strategic repeatability is good - the estimator co-pilot and bid library generalise to any miscellaneous-steel or job-shop fabricator in the NJ/NY metro, and the site's own llms.txt/MCP endpoint shows an owner already thinking about AI-readable structure, which shortens the education phase."
+  },
+  "best_evidence_signal": "Live job posting requiring blueprint take-offs, proposals, time-cost-material-labor estimates, material-order submission and a supplier/subcontractor directory - the manual work is documented by the company itself, not inferred: https://www.integrityironworksnj.com/project-manager-estimator",
+  "suggested_channel": "email",
+  "evidence_thin": true
+}

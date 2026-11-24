@@ -1,0 +1,57 @@
+[
+ {
+  "claim": "Audit opener: \"You run roughly 125 associations and 15,000 doors across three New Jersey offices\" (also the email: \"RCP now covers about 125 associations across Cranbury, Bloomfield and Manahawkin\").",
+  "problem": "The 15,000 doors / 125 associations figures come from the September 20, 2023 press release and describe RCP alone before the Prime Management merger; the three-office structure only exists after that merger, so the combined firm's current count is unknown and almost certainly larger. Presenting a 2023 pre-merger count as today's figure (\"now\") understates scale and misdates the number. The researcher's own profile flags it as possibly stale.",
+  "fix": "Date and attribute it, e.g. \"At the time of your 2023 merger announcement RCP reported 125 associations and 15,000 doors, and the combined firm now runs three offices\" \u2014 and in the email: \"I saw your 2023 merger announcement put RCP at about 125 associations\". Never say \"now\"."
+ },
+ {
+  "claim": "Email: \"your onsite administrators still hand-build work orders and back-charges\".",
+  "problem": "The evidence is a single part-time Onsite Administrator posting for one Princeton property. Plural \"administrators\" across the firm is an extrapolation, and \"still\" implies current knowledge of firm-wide practice the audit does not have.",
+  "fix": "Narrow to the artifact: \"I saw a posting for one of your Princeton onsite administrator roles that lists preparing work orders, entering them and back-charging owner accounts by hand\"."
+ },
+ {
+  "claim": "\"your own job posting shows...\" / \"Your Princeton administrator posting describes exactly this\".",
+  "problem": "The posting is read on hoa-jobs.com, a third-party job board, not on RCP's own site (their careers page is an evergreen blurb with no postings). Calling it \"your own job posting\" to the President is a small but checkable inaccuracy.",
+  "fix": "Say \"a public posting for one of your Princeton properties\" or \"an RCP posting on a community-management job board\"."
+ },
+ {
+  "claim": "\"Your contact page is a list of phone numbers and mailboxes, offices are open Monday\u2013Friday 9\u20135\".",
+  "problem": "Two problems: the contact page does not state office hours (the 9\u20135, weekends-closed hours come from the Yahoo Local / Yelp listing, which the Sources list also separately cites as the source of hours); and the contact page is not only a directory \u2014 it carries a working contact form (association, unit, contact fields). The Sources line attributing \"office hours of operation\" to https://rcpmanagement.com/contact/ is therefore wrong.",
+  "fix": "Split the sentences and re-attribute: \"Your contact page is a directory of phone numbers and mailboxes plus one web form, and your public listing shows offices open Monday\u2013Friday 9\u20135.\" Move the hours citation to the Yahoo Local entry in Sources."
+ },
+ {
+  "claim": "\"public staff reviews mention inconsistent training and communication. Managers already spend their weeks on calls, email and meeting prep.\"",
+  "problem": "Both statements rest on Indeed employer pages, which return HTTP 403 to automated fetches \u2014 I could not open them either, and the researcher's own data_gaps note they were used only from search snippets. They are stated as fact about working conditions at a named firm, in a document that will be read by the subject.",
+  "fix": "Either drop them, or hedge and keep the claim to what is openable: \"two firms merged in 2023 into three offices, which usually means two sets of procedures\" (inference, from the merger release). If retained, write \"staff reviews on Indeed describe...\" and accept the citation gap knowingly."
+ },
+ {
+  "claim": "Section 3 expected impact: \"conservatively $17k\u2013$50k a year in recovered capacity\".",
+  "problem": "No assumptions are shown in the audit. The figure silently depends on an invented 20\u201330 staff in manager/assistant roles each losing 1\u20132 hours a week, valued at the NJ manager median ($39.83/hr) and cut to 40% of gross. The analysis file compounds this by describing the discount as a \"40% realization haircut\" when the arithmetic actually applies a 60% discount \u2014 the outputs match the 60% version, so the audit number is the conservative one, but the reasoning is not visible or internally consistent.",
+  "fix": "Add one clause: \"assumes 20\u201330 managers and assistants each lose 1\u20132 hours a week to document hunting (NJ manager median $39.83/hour), then cuts the gross by 60%\". Correct the \"40% realization haircut\" wording in analysis.json to \"60% discount\" so the two files agree."
+ },
+ {
+  "claim": "Section 1 expected impact: \"15\u201330% less time... roughly 1.5\u20136 staff hours a week each, or $2.4k\u2013$9.7k a year per community.\"",
+  "problem": "The arithmetic is right (15\u201330% of an assumed 10\u201320 hours a week, at $26/hour loaded 1.2x = $2,434\u2013$9,734), but neither the 10\u201320 hour baseline nor the 1.2x loading appears in the audit, so a reader cannot reproduce the number. The 15\u201330% band is also wider and lower-anchored than the study it points to (14% average, 34% only for novices).",
+  "fix": "Show the basis in the line, e.g. \"against an assumed 10\u201320 hours a week of inquiry handling at $26/hour plus 20% overhead\"; keep the NBER reference and note the 14%/34% figures it brackets."
+ },
+ {
+  "claim": "\"Businesses like yours often find that the follow-up promise on the homepage becomes the first thing to slip when a manager is in board meetings.\"",
+  "problem": "An unsourced generalization stated as fact about the firm's own operation, and it is the only thing carrying the section's problem statement. The openable evidence (Yelp reviews surfaced on Yahoo Local about unreturned calls) is not cited at all, even though the researcher documented it.",
+  "fix": "Either label it (\"in our experience...\") or replace with the sourced version: \"reviews on your public listing complain about calls not being returned\" \u2014 the Yahoo Local page shows exactly that."
+ },
+ {
+  "claim": "Heading: \"A front desk that never misses a callback\".",
+  "problem": "Tone/overclaim: \"never misses\" is a guarantee the described system (human approval on money, fines, legal) cannot make, in a document whose own footnote says estimates are illustrative.",
+  "fix": "Retitle, e.g. \"A front desk with a callback queue that closes\"."
+ },
+ {
+  "claim": "Audit body length.",
+  "problem": "The body from the title through the \"Prepared from publicly available information\" footnote is roughly 570\u2013600 words, about 30% over the ~450-word limit.",
+  "fix": "Cut ~130\u2013150 words: drop the \"Businesses like yours...\" sentence, compress the three \"What the agent would do\" paragraphs to one sentence each, and trim the \"Why this works\" bullets and the closing walkthrough sentence."
+ },
+ {
+  "claim": "Sources list entry: \"https://rcpmanagement.com/ \u2014 contact routes, maintenance follow-up promise, 24/7 emergency line\".",
+  "problem": "Not an error, but the 24/7 emergency line is cited and never used in the body, and the body says nothing about evenings/weekends falling to that line, which is the natural lead-in to a callback agent. Source list should match the text.",
+  "fix": "Add one clause to section 1 on evenings and weekends running through the emergency line, or remove that line from Sources."
+ }
+]

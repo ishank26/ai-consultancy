@@ -1,0 +1,47 @@
+[
+ {
+  "claim": "Hardware: 'Wireless LoRaWAN triaxial vibration sensor (Dragino IVS-LN / Advantech WISE-2410 class) - $203-$420 per unit depending on model', source https://www.choovio.com/product-category/lorawan-vibration-sensors/",
+  "problem": "The cited page does not support the range. Re-opened 2026-11: it lists Dragino IVS-LN at $203.00, Netvox R718E $119.00, Dragino LHT65N/S-VIB $66-$71, Netvox R718EC $99 (sale), R718DA2 $129, R313DA $61, SL500US $56. Highest price on the page is $203; no Advantech WISE-2410 and no $420 unit appears. So the top of the range is unsupported and the bottom misstates what the page shows (it starts at $56, not $203).",
+  "fix": "Either cite a distributor page that actually shows an ~$420 triaxial unit (e.g. an Advantech WISE-2410 listing) or restate as 'Dragino IVS-LN $203.00 (Choovio); comparable LoRaWAN vibration sensors on the same page run $56-$203'. Re-derive the pilot hardware line ($1,600-$3,900) from whichever figures survive."
+ },
+ {
+  "claim": "Legal/privacy: 'FTC guidance (Keep your AI claims in check, 2023)', source https://www.ftc.gov/business-guidance/blog/2023/02/keep-your-ai-claims-check",
+  "problem": "The cited URL returned HTTP 404 when opened in this pass, so neither the document nor its title/year could be confirmed from the citation given.",
+  "fix": "Re-verify the current FTC URL (the post is widely cited as a Feb 27, 2023 FTC Business Blog item) and replace the dead link; if it cannot be opened, drop the citation rather than link a 404."
+ },
+ {
+  "claim": "Buyers/why: 'Middlesex County has 824 manufacturing establishments with 30,862 employees (2024 QCEW)', '1,752 accommodation and food services establishments', and rationale/caveats '1,710 other-services establishments'",
+  "problem": "No source_url is given for any of these counts, so as written they are unsourced facts. The numbers themselves verify: NJ LWD Middlesex County report (2024 QCEW) shows 824 establishments / 30,862 employees manufacturing, 1,752 / 24,124 accommodation and food services, 1,710 / 12,941 other services.",
+  "fix": "Add the citation https://www.nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf (2024 QCEW) to each of the three counts."
+ },
+ {
+  "claim": "Hardware: 'Shelly Pro 3EM three-phase energy meter with CTs - $150.99 (63A CT); $154.99 (120A); $329.99 (400A)'",
+  "problem": "Only the $150.99 63A variant is supported (us.shelly.com product page, price confirmed via the product page's own listing). The $154.99 120A and $329.99 400A variant prices could not be confirmed; the page's price block did not render as extractable text and no variant listing was verifiable.",
+  "fix": "Confirm the 120A and 400A variant prices on the Shelly page (or a collection page) and cite that specific URL, or quote only the 63A price and mark the other variants as unverified."
+ },
+ {
+  "claim": "models_and_tools: 'Frigate's default detector model is YOLOv6n'",
+  "problem": "Imprecise per Frigate's own object-detectors page: Frigate defaults to a single CPU detector (OpenVINO/ONNX auto-detected on Intel), and YOLOv6n is the default model specifically for the Hailo-8/Hailo-8L detectors, not the universal default.",
+  "fix": "Reword to 'YOLOv6n is the default model for Frigate's Hailo-8/Hailo-8L detector (Frigate's overall default detector is CPU/OpenVINO)'."
+ },
+ {
+  "claim": "Existing solutions / evidence: Parts Town study described as a '2025 survey of approximately 1,800 chain and institutional foodservice respondents' named 'Rethinking Downtime'",
+  "problem": "Survey size, year and the one-in-three-weekly and refrigeration/fryer findings are confirmed, but the respondent base is wider than foodservice (chain respondents included grocery and convenience stores; institutional respondents covered education, healthcare, hospitality and corporate facilities), and the page itself does not carry the name 'Rethinking Downtime' - its titles are 'New Research Highlights the Real Impact of Equipment Downtime' and 'New Whitepaper Explores the Cost of Downtime'. The page also carries a June 30, 2026 date, not 2025.",
+  "fix": "Describe it as 'Parts Town survey of ~1,800 chain (restaurant, grocery, convenience) and institutional (education, healthcare, hospitality, corporate) respondents, fielded 2025, published 2026' and drop or footnote the 'Rethinking Downtime' label unless a page using that title is cited."
+ },
+ {
+  "claim": "measured_outcomes: NIST Machinery Maintenance Survey findings rated strength 'High'",
+  "problem": "Numbers are confirmed verbatim, but 'High' overstates the design: NIST AMS 100-34 is a cross-sectional establishment survey reporting associations ('associated with 15% less downtime'), and the brief's own caveats call it an establishment-level association. The rest of the brief correctly rates vendor claims Low, so this rating is the outlier in an otherwise disciplined scale.",
+  "fix": "Downgrade to Medium, or keep High only if the strength key explicitly allows cross-sectional government surveys as High and says so in the brief."
+ },
+ {
+  "claim": "pilot.assumptions: 'Recurring $300-$900/month assumes 8-12 assets at roughly $25-$75 per asset per month'",
+  "problem": "Arithmetic at the low end does not reach the stated floor: 8 assets x $25 = $200/month, not $300.",
+  "fix": "Change the floor to ~$200/month, or raise the per-asset floor to $30-$75, or state the range as 'roughly $200-$900 depending on asset count'."
+ },
+ {
+  "claim": "legal_privacy: 'The NLRB's own memo index shows GC 23-02 was rescinded on February 14, 2025'",
+  "problem": "Partly confirmed: the NLRB GC memo index does show GC 25-05 'Rescission of Certain General Counsel Memoranda' dated 02/14/2025 with many earlier memos marked rescinded 2/14/2025. However the visible index page did not show a GC 23-02 entry (list truncated at the 20 most recent), and the GC 25-05 PDF would not open (binary content type), so the specific inclusion of GC 23-02 in that rescission could not be verified here.",
+  "fix": "Cite the GC 25-05 memo text (or a page listing GC 23-02 with a 'Rescinded 2/14/2025' note) and state the rescission finding as sourced to that document rather than to the index page."
+ }
+]

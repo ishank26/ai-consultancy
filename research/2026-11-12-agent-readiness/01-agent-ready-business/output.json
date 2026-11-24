@@ -1,0 +1,324 @@
+{
+  "question": "agent-ready-business",
+  "summary": "As of November 2026, being \"agent-ready\" for a small local business is mostly a discipline of publishing facts in machine-readable, accessible form and letting agents complete a booking or quote on the business's own site or a booking platform the big assistants already integrate with. What is officially documented: Google says AI Overviews/AI Mode need no special files or markup, points site owners at semantics-and-accessibility work because browser agents read screenshots, the DOM and the accessibility tree, and runs agentic local actions through booking partners (OpenTable, Resy, Booksy, Fresha, Vagaro) plus automated AI phone calls to businesses to confirm hours, prices and availability. Apple (Apple Business, free since 14 April 2026), Google Business Profile and Bing Places are the free listing surfaces, and Google and Apple each let a business attach a booking or reserve action that customers and agents can follow. Proposed or speculative: llms.txt (ignored by Google; ~4.7% of ranked domains publish one and 97% of existing files got zero requests in May 2026), WebMCP (Chrome 149 origin trial), and OpenAI's Agentic Commerce Protocol (product checkout, onboarding limited to approved partners, not a local-service booking rail).",
+  "findings": [
+    {
+      "finding": "Google's official position: there is no special \"AI SEO\" markup or file. AI Overviews and AI Mode have no additional technical requirements beyond being indexed and snippet-eligible, and Google explicitly ignores llms.txt.",
+      "evidence": "Google's AI features doc states: \"There are no additional requirements to appear in AI Overviews or AI Mode, nor other special optimizations necessary\" and \"You don't need to create new machine readable files, AI text files, or markup to appear in these features. There's also no special schema.org structured data that you need to add.\" The AI optimization guide adds that Google Search \"doesn't use\" llms.txt files and that creating one \"will neither harm nor help your site's visibility or rankings in Google Search, as Google Search ignores them.\" It also says to ignore \"chunking\" content and buying inauthentic mentions.",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide"
+    },
+    {
+      "finding": "Google's stated eligibility bar for AI surfaces is ordinary indexability plus structured data that matches visible text; structured data is still worth doing, but for rich results rather than for AI features.",
+      "evidence": "The AI features doc requires a page to be \"indexed and eligible to be shown in Google Search with a snippet\" and lists \"Making sure your structured data matches the visible text on the page\" and \"Checking that your Merchant Center and Business Profile information is up-to-date\" among best practices. The optimization guide says \"Structured data isn't required for generative AI search, and there's no special schema.org markup you need to add. However, it's a good idea to continue using it ... as it helps with being eligible for rich results.\"",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://developers.google.com/search/docs/appearance/ai-features"
+    },
+    {
+      "finding": "Agents read a site three ways - screenshots, raw HTML/DOM, and the accessibility tree - so \"agent-friendly\" is largely semantic HTML, labelled controls, no overlay tricks and a stable layout.",
+      "evidence": "Google's guide says browser agents gather data by \"analyzing visual renderings (like screenshots), inspecting the DOM structure, and interpreting the accessibility tree\" and links to web.dev's agent best practices. That article recommends: avoid transparent overlays (\"ghost elements\") that cover interactive elements; use <button> and <a> instead of styled <div>/<span>, or add role and tabindex; add the for attribute so labels are tied to inputs; keep required interactive elements larger than 8 square pixels; and keep layout stable so screenshot agents are not confused. It notes the accessibility tree is previewable in Chrome DevTools.",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://web.dev/articles/ai-agent-site-ux"
+    },
+    {
+      "finding": "WebMCP - the proposal to let a website declare callable \"tools\" (e.g. check availability, submit booking) instead of making agents click - exists but is experimental, and its own docs list discoverability and headless-use limits.",
+      "evidence": "web.dev's \"Why WebMCP?\" (published 18 May 2026, updated 7 Oct 2026) calls it \"a proposed web standard\" with an origin trial from Chrome 149, two APIs (imperative JavaScript and declarative HTML form annotations), and a caution that \"WebMCP is in active development and may change.\" Stated limitations: it is \"primarily designed for local browser workflows with a human in the loop\"; complex interfaces need refactoring; and \"Clients and browsers must visit a site directly to know if it has callable tools.\"",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://developer.chrome.com/docs/ai/webmcp/"
+    },
+    {
+      "finding": "Agentic booking inside Google AI Mode runs through booking-platform partners and ends with a link the user (or agent) follows; the business does not need to build an agent integration, but it does need to be on one of the platforms.",
+      "evidence": "Google's 17 Nov 2025 post: agentic booking for restaurants rolled out in the U.S. with no Labs opt-in, and \"agentic booking for event tickets and local appointments is available to all U.S. Labs users.\" AI Mode searches reservation platforms for real-time availability and shows \"direct links so you can finalize your booking through partners like OpenTable, Resy, Tock, Ticketmaster, StubHub, SeatGeek, Vivid Seats, Booksy, Fresha and Vagaro.\" The earlier (21 Aug 2025) post describes the same flow: AI Mode \"links you directly to the booking page, so you can easily take the last step and finalize your reservation.\"",
+      "source_type": "vendor",
+      "year": "2025",
+      "strength": "High",
+      "source_url": "https://blog.google/products-and-platforms/products/search/agentic-plans-booking-travel-canvas-ai-mode/"
+    },
+    {
+      "finding": "Google already places automated AI phone calls to local businesses on customers' behalf - to book appointments, check wait times and confirm price and availability - and the business can opt out only through its Business Profile settings.",
+      "evidence": "Google Business Profile help: \"When customers use Google Search or Maps to connect with your business for various requests, Google might contact your business on their behalf through an automated phone call\"; requests include \"Booking appointments\" (\"If your business works with online booking providers, Google may book through the partner or by calling your business directly\"), restaurant wait times, and confirming \"pricing and availability of in-store products and services.\" \"Businesses and customers can use this feature at no charge.\" In the US it is available in all states except Indiana, Louisiana, Minnesota, Montana and Nebraska. Opt-out is by telling the caller or changing Business Profile settings. Calls are monitored and recorded.",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://support.google.com/business/answer/16190256?hl=en"
+    },
+    {
+      "finding": "Google Business Profile completeness is the documented local input (relevance, distance, prominence) and Google states there is no way to pay for better local ranking; name and description have explicit accuracy rules.",
+      "evidence": "\"Businesses with complete and accurate info are more likely to show up in local search results\"; local results are \"mainly based on relevance, distance, and popularity\"; \"There's no way to request or pay for a better local ranking on Google.\" The representation guidelines require the name to \"reflect your business's real-world name, as used consistently on your storefront, website, stationery, and as known to customers\" and forbid links, promotions and prices in the business description.",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://support.google.com/business/answer/7091?hl=en"
+    },
+    {
+      "finding": "Google already runs an AI agent on some Business Profiles: RCS-based AI messaging answers common questions and helps with bookings, drawn from the profile plus verified website URLs - but only for Restaurant, Beauty Services and Vehicle Services in four countries.",
+      "evidence": "\"This feature uses AI to answer common customer questions, such as 'What are your hours?'\" and \"You can allow an agent to instantly handle common customer questions and help with bookings.\" Sources are \"Google Business Profile: Core details such as business hours, address, phone number, and listed services\" plus \"verified website URLs.\" Availability: \"France, Germany, the United Kingdom, and the United States (select mobile carriers) to merchants in the Restaurant, Beauty Services, and Vehicle Services categories.\" Enabling requires an additional review process; handoff triggers include high-risk topics (allergies, health), complex quotes, unanswered questions and a request for a person.",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://support.google.com/business/answer/17003851?hl=en"
+    },
+    {
+      "finding": "Google's customizable \"Business Agent\" (brand chat in Search) is gated to U.S. e-commerce sellers, so a law firm, contractor or agency cannot use it today.",
+      "evidence": "Eligibility requires: \"Have a US-based e-commerce store\", \"a verified Google Merchant Center account\", \"at least 50 free listings approved\", and \"a claimed brand profile.\" It answers product questions using Merchant Center data \"in addition to your shopping data\", with \"agentic checkout ... coming soon.\"",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://support.google.com/brandprofile/answer/16410382?hl=en"
+    },
+    {
+      "finding": "OpenAI's agentic rails are product-commerce rails, not local-service booking: sellers submit a structured product feed and implement checkout endpoints, and onboarding is limited to approved partners.",
+      "evidence": "The commerce docs index describes building \"commerce flows for ChatGPT, including agentic checkout, delegated payment, and product feeds,\" with a Get Started path of SFTP product-feed upload plus a promotions API. Get Started states: \"Onboarding product feeds in ChatGPT is currently available to approved partners. To apply for access, fill out this form\" (chatgpt.com/merchants). There is no equivalent published booking spec for appointments or service quotes.",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://developers.openai.com/commerce/guides/get-started"
+    },
+    {
+      "finding": "OpenAI and Perplexity both publish which bot must be allowed for a site to appear in their answers - and both say user-initiated agent fetches behave differently from the crawler.",
+      "evidence": "OpenAI: OAI-SearchBot \"is used to surface websites in search results in ChatGPT's search features\"; \"Sites that are opted out of OAI-SearchBot will not be shown in ChatGPT search answers, though can still appear as navigational links.\" ChatGPT-User handles user actions and \"Because these actions are initiated by a user, robots.txt rules may not apply.\" Perplexity: allow PerplexityBot \"To ensure your site appears in search results\"; Perplexity-User is a user-requested fetcher that \"generally ignores robots.txt rules.\" Perplexity's WAF guide warns that Cloudflare Bot Fight Mode \"can't be skipped with WAF custom rules\" and \"can still challenge Perplexity bots.\"",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://platform.openai.com/docs/bots"
+    },
+    {
+      "finding": "Apple's listing surface changed in 2026: Business Connect was folded into Apple Business on 14 April 2026, still free, and place cards now surface in Maps, Safari, Spotlight and Siri with order/reserve action links that point at the business's own site or app.",
+      "evidence": "Apple's 24 March 2026 release: Apple Business is \"available starting Tuesday, April 14, in more than 200 countries and regions\" as \"a free service\"; it can \"connect with local customers across Apple Maps, Mail, Wallet, Siri, and more\"; features include \"Rich place cards\" with \"photos, detailed location information, hours\" and \"custom actions like order or reserve to direct customers to a preferred website or app.\" Apple states Business Connect \"will no longer be available once Apple Business launches\" and existing Business Connect data migrates automatically.",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://www.apple.com/newsroom/2026/03/introducing-apple-business-a-new-all-in-one-platform-for-businesses-of-all-sizes/"
+    },
+    {
+      "finding": "Apple's partner documentation shows the mechanics: \"flexible action links\" deep-link a Maps place card button to the owner's own website (no app required), and Showcases must be scheduled days in advance and run 1-365 days.",
+      "evidence": "\"Flexible Action Links (FAL) work like quicklinks but don't require an iOS app - they deep link to the business owner's website instead\"; \"Multiple flexible action links per location are allowed, but only one per action type\"; \"All links must be valid and relevant to the location's category.\" Showcases: \"Duration: 1 to 365 calendar days\"; \"Schedule at least 3 business days before the start date to allow for Apple review\"; \"Showcases are supported in 38 countries.\" Place cards are \"viewed billions of times monthly.\"",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://business.apple.com/docs/onboarding-guide/place-card"
+    },
+    {
+      "finding": "Microsoft's only documented local-business input is a claimed Bing Places listing; it governs what appears in Bing Maps results.",
+      "evidence": "\"To add or change information about your business in Bing Maps search results, use Bing Places for Business to claim or update your business listing.\" The page also notes \"Some features and functionality described here may not be available in your country or region.\" No cost, verification steps or Copilot-specific ranking guidance are published on that page.",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "Medium",
+      "source_url": "https://support.microsoft.com/en-us/bing/add-and-manage-your-business-listing"
+    },
+    {
+      "finding": "schema.org's LocalBusiness vocabulary already covers the facts an agent needs - hours, price range, offers, an action it can take, ratings - so the checklist can be expressed as concrete properties rather than vague \"AI tagging\".",
+      "evidence": "The LocalBusiness type page (version published) lists, among others: name, address (\"Physical address of the item\"), openingHours with the example `<time itemprop=\"openingHours\" datetime=\"Tu,Th 16:00-20:00\">`, priceRange (\"The price range of the business, for example $$$\"), paymentAccepted, makesOffer, aggregateRating, areaServed, sameAs, and potentialAction (\"Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role\").",
+      "source_type": "vendor",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://schema.org/LocalBusiness"
+    },
+    {
+      "finding": "FAQ markup will not earn a rich result for a normal local business, and a business cannot legitimately mark up its own reviews as LocalBusiness review snippets.",
+      "evidence": "Google, 8 Aug 2023: \"FAQ (from FAQPage structured data) rich results will only be shown for well-known, authoritative government and health websites. For all other sites, this rich result will no longer be shown regularly\"; How-To was later deprecated entirely. Google's review-snippet doc lists Local business support only \"for sites that capture reviews about other local businesses; see the guidelines about self-serving reviews\" (the same restriction applies to Organization).",
+      "source_type": "vendor",
+      "year": "2023",
+      "strength": "High",
+      "source_url": "https://developers.google.com/search/blog/2023/08/howto-faq-changes"
+    },
+    {
+      "finding": "llms.txt is the clearest example of a speculative tactic: adoption is a few percent of ranked domains and almost none of the published files are ever fetched.",
+      "evidence": "An independent registry that probed 1,000,642 domains reports 4.67% adoption \"over 999,839 domains drawn from a ranked list of the web, of which 46,741 publish a file\" (1 Nov 2026), and says \"More sites block us than publish one\" (51,666 refusing). Ahrefs, analysing 137,210 domains, found \"97% of those files received zero traffic in May 2026\" and that \"no major AI platform has ever committed to reading it.\" Google states it ignores the file entirely.",
+      "source_type": "survey",
+      "year": "2026",
+      "strength": "Medium",
+      "source_url": "https://llmstxt.studio/stats"
+    },
+    {
+      "finding": "MCP is real among AI builders but still a minority capability inside mainstream business software - so \"our tool has an MCP server\" is an integration story, not yet an acquisition channel for a local business.",
+      "evidence": "Theory Ventures' 2026 AI in Practice survey (455 respondents) found 57.4% use MCP to reach APIs or data through LLM chat clients, and 69.7% of those users build internal MCPs for their own systems. Cyclr's comparison of 816 SaaS products found verified official MCP support rose from 47 products (5.8%) in 2025 to 100 (12.3%) in 2026.",
+      "source_type": "survey",
+      "year": "2026",
+      "strength": "Medium",
+      "source_url": "https://theoryvc.com/surveys/ai-in-practice-2026"
+    },
+    {
+      "finding": "Most small employers still do not use AI at all, which is the ceiling on any \"agents will do the buying\" narrative and the reason a pilot must be sold on a specific job.",
+      "evidence": "Census BTOS, data collected 14 Dec 2025 - 3 May 2026: overall AI use hovered between 17% and 20%; \"Less than 20% of firms with four or fewer employees reported using AI\"; 37% of firms with 250+ employees and 32% of firms with 100-249 did; Finance and Insurance ran at 33.9% and Retail Trade around 14% against a 19.8% national rate. The question wording changed in November 2025 to \"in any business function\".",
+      "source_type": "government",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html"
+    },
+    {
+      "finding": "In the first target verticals, AI is common as experimentation and rare as embedded workflow - which is the gap a paid pilot sells into.",
+      "evidence": "Big \"I\" 2026 ACT Tech Trends Report (independent insurance agencies, national email survey, sample size not stated): 38% \"very likely\" and 30% \"somewhat likely\" to increase AI use in 12 months; 33% just experimenting, 31% not using AI, 22% using in limited areas, 8% \"AI is embedded in daily workflows\"; 55% have no written AI policy, 13% have a formal one; top concerns data privacy/compliance (24%) and inaccurate outputs (22%). Property management (2026 NARPM & AppFolio report, 751 property-management professionals and 554 owners/investors): 78% of screened fee managers use some AI, only 7% use \"agentic AI ... to complete a multistep task\", and \"Only 9% have measured any quantifiable improvement in business performance as a result of AI.\"",
+      "source_type": "association",
+      "year": "2026",
+      "strength": "Medium",
+      "source_url": "https://www.independentagent.com/news/two-thirds-of-independent-agents-plan-to-increase-ai-use-this-year/"
+    },
+    {
+      "finding": "Dentists' stated AI interest is concentrated in exactly the front-desk work an intake agent replaces: check-in, scheduling, analytics, note-taking.",
+      "evidence": "ADA Health Policy Institute, Q2 2026 State of the U.S. Dental Economy (invitations to 2,432 panel dentists, 589 responses, 24.3% adjusted response rate, 552 in private practice): \"One-quarter of dentists said they plan to use AI in the future. The tasks dentists are most likely to implement AI for are administrative: reception/front desk check-in, appointment scheduling, practice analytics, charting and notetaking,\" and \"Dentists were least open to AI use for treatment recommendations.\"",
+      "source_type": "association",
+      "year": "2026",
+      "strength": "High",
+      "source_url": "https://www.ada.org/-/media/project/ada-organization/ada/ada-org/files/resources/research/hpi/state_us_dental_economy_q22026.pdf"
+    }
+  ],
+  "resources": [
+    {
+      "name": "Google Rich Results Test",
+      "what_it_offers": "Validates LocalBusiness, Organization, Breadcrumb and other structured data on a live URL or code snippet, and shows which enhancements a page is eligible for.",
+      "cost": "Free; no price or paid tier is listed on the page",
+      "how_to_use_it": "Run every client homepage, service page and location page through it during the audit; Google's own housekeeping checklist is: follow the structured-data guidelines, validate with the Rich Results Test, then check the deployed page with URL Inspection.",
+      "source_url": "https://search.google.com/test/rich-results"
+    },
+    {
+      "name": "Google Search Console",
+      "what_it_offers": "Ownership verification, index status, URL Inspection, and a Generative AI performance report for AI Overviews/AI Mode visibility.",
+      "cost": "Free",
+      "how_to_use_it": "Verify the client's site, confirm key pages are indexed and snippet-eligible (Google's stated eligibility bar for AI surfaces), and screenshot the Generative AI performance report as a before/after baseline for a pilot.",
+      "source_url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide"
+    },
+    {
+      "name": "Google Business Profile",
+      "what_it_offers": "The listing that feeds Google Search, Maps, knowledge panel and the automated-call/booking features; includes hours, services, attributes, messaging inbox and settings to opt out of automated calls.",
+      "cost": "Free (Google states the automated customer calls are provided \"at no charge\")",
+      "how_to_use_it": "Claim and verify; complete category, services, hours and attributes; keep hours current so AI callers and RCS agents answer correctly; use Business Profile settings if the owner does not want Google's automated calls.",
+      "source_url": "https://support.google.com/business/answer/16190256?hl=en"
+    },
+    {
+      "name": "Apple Business (successor to Apple Business Connect)",
+      "what_it_offers": "Free brand and location management for Apple Maps place cards, plus Showcases and \"order/reserve\" action links (including flexible action links to the business's own website) that appear across Maps, Safari, Spotlight and Siri.",
+      "cost": "Free service (Apple: \"a free service in the U.S. and 200+ countries and regions\")",
+      "how_to_use_it": "Claim the location, fill hours/photos/description, then add a Reserve/Book flexible action link pointing at the client's booking page; schedule Showcases at least 3 business days ahead.",
+      "source_url": "https://www.apple.com/newsroom/2026/03/introducing-apple-business-a-new-all-in-one-platform-for-businesses-of-all-sizes/"
+    },
+    {
+      "name": "Bing Places for Business",
+      "what_it_offers": "Claim or update the listing that supplies business information in Bing Maps search results.",
+      "cost": "Not stated on the Microsoft support page we read",
+      "how_to_use_it": "Claim the listing and match name, address, phone, hours and website to the Google and Apple records as a consistency check.",
+      "source_url": "https://support.microsoft.com/en-us/bing/add-and-manage-your-business-listing"
+    },
+    {
+      "name": "OpenAI crawler documentation (OAI-SearchBot / ChatGPT-User)",
+      "what_it_offers": "The authoritative list of OpenAI user agents, what each is for, and the robots.txt consequence of blocking them.",
+      "cost": "Free documentation",
+      "how_to_use_it": "Check the client's robots.txt and CDN/WAF rules for accidental blocks on OAI-SearchBot; use it to explain why \"we block all bots\" kills ChatGPT visibility.",
+      "source_url": "https://platform.openai.com/docs/bots"
+    },
+    {
+      "name": "Perplexity crawler and WAF configuration guide",
+      "what_it_offers": "PerplexityBot vs Perplexity-User behaviour, published IP ranges, and copy-paste Cloudflare/AWS WAF allow rules.",
+      "cost": "Free documentation",
+      "how_to_use_it": "Audit the client's Cloudflare/AWS WAF for challenges that hit Perplexity bots, and note that Bot Fight Mode cannot be skipped by custom rules.",
+      "source_url": "https://docs.perplexity.ai/docs/resources/perplexity-crawlers"
+    },
+    {
+      "name": "web.dev \"How agents view your site\" + WebMCP origin trial",
+      "what_it_offers": "The documented agent-readiness checklist (semantic HTML, labels, no ghost overlays, 8px minimum targets, stable layout) and access to the WebMCP experimental APIs in Chrome 149+.",
+      "cost": "Free",
+      "how_to_use_it": "Use as the written audit rubric for a client site; optionally prototype booking/quote tools with WebMCP as a differentiator, but label it experimental in proposals.",
+      "source_url": "https://web.dev/articles/ai-agent-site-ux"
+    },
+    {
+      "name": "Chrome DevTools accessibility tree inspector",
+      "what_it_offers": "A live view of the accessibility tree an agent reads - roles, names, states of interactive elements.",
+      "cost": "Free (built into Chrome)",
+      "how_to_use_it": "Open it on the booking and contact pages and check that each field and button has a meaningful role and accessible name; this is the fastest test of whether an agent can \"see\" the form.",
+      "source_url": "https://developer.chrome.com/docs/devtools/accessibility/reference#tree"
+    },
+    {
+      "name": "schema.org LocalBusiness (and subtype) reference",
+      "what_it_offers": "The vocabulary and property list (openingHours, priceRange, paymentAccepted, aggregateRating, potentialAction, sameAs) used to write a correct JSON-LD block.",
+      "cost": "Free",
+      "how_to_use_it": "Map each client's facts to the most specific subtype (e.g. Attorney/LegalService, Plumber, InsuranceAgency, Restaurant, HairSalon) and only mark up what is visible on the page.",
+      "source_url": "https://schema.org/LocalBusiness"
+    },
+    {
+      "name": "OpenAI Agentic Commerce onboarding form",
+      "what_it_offers": "Application channel for product feeds and agentic checkout in ChatGPT.",
+      "cost": "No fee stated; access is gated (\"currently available to approved partners\")",
+      "how_to_use_it": "Relevant only for a retail/shop target; for service businesses, document that this rail does not cover appointments and keep the booking flow on the client's own site or platform.",
+      "source_url": "https://developers.openai.com/commerce/guides/get-started"
+    },
+    {
+      "name": "Census Business Trends and Outlook Survey (BTOS)",
+      "what_it_offers": "Biweekly, nationally representative AI-use data by firm size and sector, with a 15-function AI supplement running since November 2025.",
+      "cost": "Free public data",
+      "how_to_use_it": "Size the pitch honestly by sector (e.g. Finance and Insurance 33.9% vs Retail ~14%) and quote the firm-size split rather than an industry-wide average.",
+      "source_url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html"
+    }
+  ],
+  "recommendations_for_us": [
+    "Inference: sell \"findable, answerable, bookable\" in that order, because the documented surfaces (Google Business Profile, Apple Business, Bing Places, schema.org LocalBusiness) are free and finishable in days, while the agentic rails (AI Mode booking, RCS AI messaging) depend on category eligibility the client may not meet.",
+    "Inference: build the audit as a fixed 20-point visit - robots.txt and WAF allow OAI-SearchBot/PerplexityBot, indexed snippet-eligible pages, JSON-LD matching visible text, accessible labels on the booking/quote form, hours and price ranges in crawler-visible text, and a booking/reserve link on Google Business Profile and Apple Business - and score each item pass/fail with a screenshot, so the pilot has a measurable before/after.",
+    "Inference: for salons, dental and restaurants, check first whether the client is on Booksy, Fresha, Vagaro or OpenTable, because Google states AI Mode finalises local appointments through those partners; if they are not listed, listing them is a cheaper win than any custom agent.",
+    "Inference: treat a real-time online booking or quote form as the single highest-value page, since Google already has automated AI calling to confirm prices and availability and to book, and Apple place cards let you attach a reserve/book link to the owner's own site - the business that cannot be booked online gets a phone call instead, or gets skipped.",
+    "Inference: quote the client's own numbers, not industry headlines - the missed-call and no-show studies we found are vendor-produced or single-practice, so instrument answer rate, time-to-first-response, bookings and quote requests before and after the pilot and report those.",
+    "Inference: do not bill llms.txt, \"AEO/GEO\" packages, or FAQ rich-result promises as core deliverables; Google says it ignores llms.txt and restricts FAQ rich results to government and health sites, so position llms.txt as an optional freebie and put the budget into accessible markup, listings and the booking flow.",
+    "Inference: for the operational side, lead with front-desk work per vertical - insurance agencies (8% embedded, 55% no AI policy), dental (stated intent concentrated in check-in/scheduling/notes), property management (only 7% agentic, 9% measured outcomes) - and price the pilot around one measurable front-desk job with a human handoff rule, mirroring Google's own handoff triggers (allergies, health, custom quotes, request for a person).",
+    "Inference: keep a written \"what is established vs proposed\" page in every proposal (Google/Apple/Microsoft/schema.org documented vs WebMCP origin trial, llms.txt, OpenAI ACP approved-partners) so the client is not sold speculative work as compliance."
+  ],
+  "pitfalls": [
+    {
+      "pitfall": "Blocking \"all bots\" in robots.txt or a WAF silently removes the business from ChatGPT and Perplexity answers; OpenAI states opted-out sites will not be shown in ChatGPT search answers, and Perplexity documents that Cloudflare Bot Fight Mode can still challenge its bots even with allow rules.",
+      "source_url": "https://platform.openai.com/docs/bots"
+    },
+    {
+      "pitfall": "Assuming Google needs special AI files. Google states it ignores llms.txt and that no special markup or machine-readable file is required for AI Overviews or AI Mode, so time spent there is time not spent on listings, accessibility and booking.",
+      "source_url": "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide"
+    },
+    {
+      "pitfall": "Selling an \"AI agent integration\" that a platform already provides: Google's AI Mode booking is partner-based (OpenTable, Resy, Booksy, Fresha, Vagaro), and Google's RCS AI messaging is limited to Restaurant, Beauty Services and Vehicle Services in four countries.",
+      "source_url": "https://support.google.com/business/answer/17003851?hl=en"
+    },
+    {
+      "pitfall": "Marking up facts that are not on the page, or marking up the business's own reviews: Google requires structured data to match visible text and limits LocalBusiness/Organization review snippets to sites that capture reviews about other businesses.",
+      "source_url": "https://developers.google.com/search/docs/appearance/structured-data/review-snippet"
+    },
+    {
+      "pitfall": "Keyword-stuffed business names or promo text in the description on Google Business Profile - explicitly disallowed, and it puts the listing that feeds AI answers at risk.",
+      "source_url": "https://support.google.com/business/answer/3038177?hl=en"
+    },
+    {
+      "pitfall": "Booking flows an agent cannot finish: image-only price lists, PDF menus, phone-only booking, transparent overlays over buttons, unlabelled divs instead of buttons, and layouts that shift between pages - all called out as agent failure modes in web.dev's guidance.",
+      "source_url": "https://web.dev/articles/ai-agent-site-ux"
+    },
+    {
+      "pitfall": "Quoting vendor \"missed call\" or \"no-show\" statistics as fact; the contractor reports we found are vendor-modelled (e.g. a 2026 vendor analysis of 2.4M calls across 1,247 contractors that converts an assumed 41% booking rate into a dollar figure), and the effect sizes vary widely between sources.",
+      "source_url": "https://runclockwork.com/research/missed-call-crisis"
+    },
+    {
+      "pitfall": "Promising an agentic-checkout or ChatGPT-shopping result to a local service business: OpenAI's commerce onboarding is limited to approved partners and is built around product feeds and checkout sessions, not appointments or service quotes.",
+      "source_url": "https://developers.openai.com/commerce/guides/get-started"
+    }
+  ],
+  "caveats": [
+    "Timing: several of these surfaces changed inside the last 18 months and are still rolling out regionally (Apple Business replaced Business Connect on 14 April 2026; AI Mode agentic booking moved from Labs/AI Ultra to general U.S. rollout between Aug and Nov 2025; WebMCP is in origin trial). Re-check program pages before quoting a client.",
+    "Google's automated calls on behalf of customers are not available in Indiana, Louisiana, Minnesota, Montana and Nebraska, and are \"currently available only in select regions and languages\".",
+    "The llms.txt adoption figures come from two different samples and disagree in level: a registry of ~1M ranked domains reports 4.67% (1 Nov 2026), while Ahrefs' panel of 137,210 domains reports 28% publishing a file. The readership finding (97% of files got zero requests in May 2026) is the more decision-relevant number.",
+    "Survey caveats: the Big \"I\" ACT report is a national email survey of member agencies but the press release does not state a sample size or response rate; the ADA dental figures come from 552 private-practice respondents who skew toward ADA members, owners, solo/small-group and urban practices; the NARPM/AppFolio report screened for firms that already use AI, so its 78% is not an industry-wide adoption rate.",
+    "Census BTOS measures self-reported AI use \"in any business function\" and changed question wording in November 2025, so year-over-year comparisons are unsafe.",
+    "Nothing in the sources we opened quantifies how much revenue an \"agent-ready\" site earns a small local business; the link between agent legibility and won jobs is an inference, not a measured result.",
+    "MCP survey figures come from builder-community samples (455 respondents; a vendor's 816-product review), not from representative samples of small businesses."
+  ],
+  "data_gaps": [
+    "Clio's 2026 Legal Trends Report and 2026 Solo & Small Firm Report press releases returned HTTP 403 on every attempt, so the widely quoted 85%/71%/75% AI-adoption figures for law firms are not verified here and were not included as findings.",
+    "DataDome's 2026 bot/agent benchmark page returned HTTP 403; the claim that most sites fail to detect bots could not be checked against the primary report.",
+    "Bing Places for Business pages are JavaScript-rendered or behind a sign-in, so its cost, verification steps and any Copilot-specific guidance could not be read from an official page; the Microsoft support page only confirms the listing's role in Bing Maps.",
+    "ucp.dev (Universal Commerce Protocol, cited by Google as an emerging agent protocol) would not render as readable content, so no claim about its local-services capabilities is made here beyond Google calling it emerging.",
+    "Apple's Showcase help page returned HTTP 429; Showcase mechanics were instead taken from Apple's partner onboarding guide.",
+    "OpenAI's announcement posts (Instant Checkout, ChatGPT agent) returned HTTP 403; only the developer documentation was used, which is why ACP is described as approved-partner-gated product commerce rather than anything about appointments.",
+    "No source found measuring how often small-business booking flows actually fail when driven by a consumer agent; the blocking factors listed (CAPTCHAs, PDFs, image text, phone-only booking, overlays) are documented as design guidance or as generic bot-defence behaviour, not as a measured failure rate for local businesses.",
+    "No published data found on MCP or WebMCP adoption inside businesses with 5-200 staff; available MCP numbers come from AI-builder and SaaS-vendor samples.",
+    "No 2026 study found isolating AI-driven intake at law firms or home-services contractors; the closest figures are vendor call-data analyses."
+  ]
+}

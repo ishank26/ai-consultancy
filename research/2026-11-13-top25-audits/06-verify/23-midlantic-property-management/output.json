@@ -1,0 +1,60 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Wage rate cited three times as \"$30.20/hour (O*NET Secretaries and Administrative Assistants median, NJ, 2026 ...)\" and \"$35.04/hour (O*NET Bookkeeping, Accounting and Auditing Clerks median, NJ, 2026 ...)\".",
+      "problem": "The dollar rates are right, but the data year is wrong. Both O*NET New Jersey pages state \"Source: Bureau of Labor Statistics 2025 wage data\" (NJ median $50,260 / $24.16 per hour for 43-6014.00; NJ median $58,300 / $28.03 per hour for 43-3031.00). Labelling the benchmark \"2026\" attributes a 2026 wage survey that the cited page does not contain, and it also contradicts the industry brief, which records these as May 2025 OEWS medians.",
+      "fix": "Change \"NJ, 2026\" to \"NJ, BLS May 2025 data published by O*NET\" (or \"NJ, 2025\") in all three impact blocks; keep $30.20 and $35.04 unchanged, since $24.16 x 1.25 = $30.20 and $28.03 x 1.25 = $35.04."
+    },
+    {
+      "claim": "Section 1: \"No form, no tap-to-call link\"; section 2: work orders arrive only by phone or free-text email template.",
+      "problem": "Accurate for the proposal and contact pages (0 form elements, 0 tel: links, verified in the DOM), but the work-order page is not form-free: it carries an empty Weebly form that posts to weebly.com/apps/formSubmit.php with a visible \"Submit\" button and no visible input fields, and its banner text reads \"General work order requests are accepted online or you may call (732) 828-7200.\" A client who opens that page will see a Submit button and an \"accepted online\" claim, so a flat \"no form\" is easy to challenge even though nothing can actually be submitted.",
+      "fix": "Say \"no working form / no input fields\" rather than \"no form\", and if space allows add \"an empty Weebly form with a Submit button on the work-order page submits nothing\". This is arguably a stronger point than \"no form\"."
+    },
+    {
+      "claim": "Audit body must be at most ~450 words.",
+      "problem": "The body (title through the \"Prepared from publicly available information\" line, excluding the \"For the founder\" block and Sources) is 487 words, roughly 8% over the limit.",
+      "fix": "Trim about 40 words: the repeated \"(O*NET ... x1.25 for benefits - our assumption)\" phrase appears three times and the \"Why this works\" bullets partly restate the section text; cut one of them."
+    },
+    {
+      "claim": "\"Midlantic has managed New Jersey community associations since 1995 ...\"",
+      "problem": "Traceable to the home page (\"Since 1995 ... has been a recognized leader among Association management firms\"), but the company's own Meet the President page says Mr. Polos \"formed Midlantic Property Management, Inc. in 1993\". The audit presents 1995 as settled fact without noting the firm dates itself two ways, and the founder will notice.",
+      "fix": "Optional but cheap: \"since 1995 (its president page says he formed the firm in 1993)\" - or just keep 1995 and let the source citation stand."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Company says it has served New Jersey community associations \"Since 1995\".", "source_url": "https://mpm-nj.weebly.com/", "result": "confirmed"},
+    {"claim": "Offices in Highland Park and Long Branch.", "source_url": "https://mpm-nj.weebly.com/", "result": "confirmed"},
+    {"claim": "Third office: Little Egg Harbor field office.", "source_url": "https://mpm-nj.weebly.com/meet-the-president.html", "result": "confirmed"},
+    {"claim": "President page says the company was formed in 1993 (company dates itself 1993 and 1995).", "source_url": "https://mpm-nj.weebly.com/meet-the-president.html", "result": "confirmed"},
+    {"claim": "H. James Polos is President (email addresses him as \"Mr. Polos\").", "source_url": "https://mpm-nj.weebly.com/meet-the-president.html", "result": "confirmed"},
+    {"claim": "Head office at 315 Raritan Avenue, Highland Park, NJ 08904; phone (732) 828-7200.", "source_url": "https://mpm-nj.weebly.com/contact-us.html", "result": "confirmed"},
+    {"claim": "Site is a free Weebly subdomain stamped 2013 (footer \"@2013. All Rights Reserved.\").", "source_url": "https://mpm-nj.weebly.com/contact-us.html", "result": "confirmed"},
+    {"claim": "mpm-nj.com shows a GoDaddy parking page (checked 13 November 2026).", "source_url": "https://mpm-nj.com/lander", "result": "confirmed"},
+    {"claim": "City of Long Branch directory still lists mpm-nj.com as the firm's web address.", "source_url": "https://www.longbranch.org/DocumentCenter/View/1053/Directory-of-Businesses-in-the-City-of-Long-Branch-PDF", "result": "confirmed"},
+    {"claim": "Proposal requests arrive by phone or a hand-typed 11-field email; no form on the page.", "source_url": "https://mpm-nj.weebly.com/proposal-request.html", "result": "confirmed"},
+    {"claim": "No form elements and no tel: links on the proposal and contact pages.", "source_url": "https://mpm-nj.weebly.com/proposal-request.html", "result": "confirmed"},
+    {"claim": "Work-order page has no usable form (it does carry an empty Weebly form with a visible Submit button).", "source_url": "https://mpm-nj.weebly.com/submit-a-work-order.html", "result": "confirmed"},
+    {"claim": "Resident work orders go to (732) 828-7200 or a free-text email template; emergencies use the same number.", "source_url": "https://mpm-nj.weebly.com/submit-a-work-order.html", "result": "confirmed"},
+    {"claim": "After-hours calls reach a live operator who takes the facts and arranges dispatch.", "source_url": "https://mpm-nj.weebly.com/emergency-procedures.html", "result": "confirmed"},
+    {"claim": "Office hours Monday-Friday 9:00-4:30, with Friday closing at 3:00 between Memorial Day and Labor Day.", "source_url": "https://mpm-nj.weebly.com/contact-us.html", "result": "confirmed"},
+    {"claim": "FAQ documents monthly assessments, a 30-day delinquency stage, interest and late charges, lien notices and possible foreclosure.", "source_url": "https://mpm-nj.weebly.com/faqs.html", "result": "confirmed"},
+    {"claim": "Back office covers accounts payable, accounts receivable, staff accountant and community administrator roles.", "source_url": "https://mpm-nj.weebly.com/career-opportunities.html", "result": "confirmed"},
+    {"claim": "Google profile is unclaimed, shows 1.6 stars, publishes no hours, and links the Weebly subdomain.", "source_url": "https://www.google.com/maps/search/Midlantic+Property+Management+315+Raritan+Ave+Highland+Park+NJ", "result": "confirmed"},
+    {"claim": "Secretaries and Administrative Assistants, NJ: hourly $24.16, annual median $50,260; x1.25 = $30.20.", "source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ", "result": "confirmed"},
+    {"claim": "That wage benchmark is 2026 data.", "source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ", "result": "contradicted"},
+    {"claim": "Bookkeeping, Accounting and Auditing Clerks, NJ: hourly $28.03, annual median $58,300; x1.25 = $35.04.", "source_url": "https://www.onetonline.org/link/localwages/43-3031.00?st=NJ", "result": "confirmed"},
+    {"claim": "That wage benchmark is 2026 data.", "source_url": "https://www.onetonline.org/link/localwages/43-3031.00?st=NJ", "result": "contradicted"},
+    {"claim": "Impact 1 arithmetic: 5-8 hrs/week x 52 x 50%-70% = 130-291 hours; x $30.20 = $3,926-$8,788.", "source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ", "result": "confirmed"},
+    {"claim": "Impact 2 arithmetic: 20-80 hrs/month x 12 x 50%-70% = 120-672 hours; x $30.20 = $3,624-$20,294.", "source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ", "result": "confirmed"},
+    {"claim": "Impact 3 arithmetic: 20-40 hrs/month x 12 x 40%-60% = 96-288 hours; x $35.04 = $3,363-$10,091 (rounding only).", "source_url": "https://www.onetonline.org/link/localwages/43-3031.00?st=NJ", "result": "confirmed"},
+    {"claim": "Automation percentages (50-70%, 50-70%, 40-60%) are the audit's own assumptions and are labelled as such.", "source_url": "https://mpm-nj.weebly.com/proposal-request.html", "result": "confirmed"},
+    {"claim": "Email draft: proposals and work orders still route through phone and free-text email.", "source_url": "https://mpm-nj.weebly.com/submit-a-work-order.html", "result": "confirmed"},
+    {"claim": "Email draft: mpm-nj.com, still listed by the City of Long Branch, shows a GoDaddy parking page.", "source_url": "https://mpm-nj.com/lander", "result": "confirmed"},
+    {"claim": "Email draft: office hours end at 4:30, so after-hours requests are uncovered.", "source_url": "https://mpm-nj.weebly.com/contact-us.html", "result": "confirmed"},
+    {"claim": "Email draft: 315 Raritan Avenue is the firm's address.", "source_url": "https://mpm-nj.weebly.com/contact-us.html", "result": "confirmed"},
+    {"claim": "Business name, town, services and contact details are stated correctly throughout.", "source_url": "https://mpm-nj.weebly.com/about-mpm.html", "result": "confirmed"},
+    {"claim": "No personal data on private individuals appears in the audit or the founder email.", "source_url": "https://mpm-nj.weebly.com/meet-the-president.html", "result": "confirmed"}
+  ],
+  "confidence": "High"
+}

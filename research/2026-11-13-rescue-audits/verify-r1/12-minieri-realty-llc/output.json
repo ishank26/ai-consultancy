@@ -1,0 +1,113 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "\"The domain is still registered through GoDaddy until 31 Dec 2026, so the name has not lapsed - the DNS/hosting connection is what broke.\" (audit_md)",
+      "problem": "First half is a direct quote of the RDAP record; the second half is an inference about cause, stated flatly in the business-facing text. rescue.json does label it (likely_cause.inference = true, caveats[0]), and it accuses no one, so this is not a factual error - but the visible audit should hedge.",
+      "fix": "Change to \"the name has not lapsed, which points to the DNS or hosting connection\" so the cause reads as a conclusion, not a fact."
+    },
+    {
+      "claim": "domains[].screenshot_files (shot-roysellsnj-desktop.png, shot-roysellsnj-mobile390.png, shot-nj2fl-parked-desktop.png, shot-nj2fl-parked-mobile390.png) and founder_md's \"I have desktop and phone screenshots ... I can show you both\"",
+      "problem": "No image files exist in this task folder, so the screenshot evidence and the email's promise to show them cannot be verified from the delivered folder. The underlying observations themselves reproduced exactly when I re-tested, so accuracy is unaffected.",
+      "fix": "Save the four PNGs into the task folder (or drop the screenshot filenames and the \"I have screenshots\" sentence) before the audit goes out."
+    },
+    {
+      "claim": "fix_steps[5]: \"Update the website field on the Google Business Profile and the same field on the realtor.com, Zillow, LoopNet and Nestfully profiles\", source_url = Google Maps place page",
+      "problem": "Whether those portal profiles carry a roysellsnj.com website field is listed in data_gaps as unverified (all four blocked), and the cited Maps page does not show portal fields. audit_md already softens this to \"the portal profiles\", so only rescue.json overstates it.",
+      "fix": "In rescue.json, mark the portal website fields as \"unverified\" and cite the portal profile URLs rather than the Maps page."
+    },
+    {
+      "claim": "audit_md tone and length",
+      "problem": "Calm, respectful, no fear language and no prices; body is about 270 words (under 300), but about 315 including title, headings and footer. Two pieces of jargon remain in the customer-facing text: the raw error code DNS_PROBE_FINISHED_NXDOMAIN and \"apex\".",
+      "fix": "Trim the footer/one heading and gloss \"apex\" as \"the main address\", keeping the error code in brackets only if the client is technical."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "roysellsnj.com does not load; Chrome shows \"This site can't be reached\" / \"Check if there is a typo in roysellsnj.com\" / DNS_PROBE_FINISHED_NXDOMAIN on desktop",
+      "source_url": "https://roysellsnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "www.roysellsnj.com fails to resolve the same way",
+      "source_url": "https://dns.google/resolve?name=www.roysellsnj.com&type=A",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Public DNS shows the delegated Cloudflare nameservers refusing queries for the zone (lame delegation / REFUSED)",
+      "source_url": "https://dns.google/resolve?name=roysellsnj.com&type=NS",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP roysellsnj.com: registered 2014-09-17, expires 2026-12-31, last changed 2025-11-14, registrar GoDaddy.com, LLC (IANA ID 146), NS ned.ns.cloudflare.com / wanda.ns.cloudflare.com, client delete/renew/transfer/update prohibited, no redemption or pending-delete status",
+      "source_url": "https://rdap.org/domain/roysellsnj.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP newjersey2floridahomeswithroy.com: registered 2021-04-05, expires 2026-12-31, last changed 2025-11-14, registrar GoDaddy.com, LLC (IANA ID 146), NS ns63/ns64.domaincontrol.com, four client-*-prohibited statuses",
+      "source_url": "https://rdap.org/domain/newjersey2floridahomeswithroy.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "newjersey2floridahomeswithroy.com redirects to a GoDaddy parking page (\"parked free, courtesy of GoDaddy.com\", \"Get This Domain\" button, \"Related Search Topics\" keyword links), no brokerage content",
+      "source_url": "https://newjersey2floridahomeswithroy.com/lander",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Business Profile \"Minieri Realty\": 735 Georges Rd, North Brunswick Township, NJ 08902, phone (732) 354-1957, shows open (\"Open - Closes 9 PM\"), Website field still roysellsnj.com",
+      "source_url": "https://www.google.com/maps/place/Minieri+Realty/@40.4668944,-74.454509,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Maps place page showed no star rating or review count in the visible panel (limited view)",
+      "source_url": "https://www.google.com/maps/place/Minieri+Realty/@40.4668944,-74.454509,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback snapshot 2025-04-09 shows the real brokerage site live: MLS-fed search, Roy Minieri named as Broker of Record of Minieri Realty, and a mention of the NewJersey2FloridaHomeswithRoy.com site",
+      "source_url": "https://web.archive.org/web/20250409102948/https://roysellsnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No Wayback capture of roysellsnj.com after 2025-04-09",
+      "source_url": "https://web.archive.org/cdx/search/cdx?url=roysellsnj.com&output=json&from=2025&to=2026",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The second domain was already serving the GoDaddy parking redirect by 2025-07-13",
+      "source_url": "https://web.archive.org/web/20250713064103/https://newjersey2floridahomeswithroy.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The business is operating, not closed, and is an independent local brokerage rather than a chain",
+      "source_url": "https://www.google.com/maps/place/Minieri+Realty/@40.4668944,-74.454509,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Pre-fix owner name used in founder_md (\"Hello Roy\") - Roy Minieri is the Broker of Record of Minieri Realty",
+      "source_url": "https://web.archive.org/web/20250409102948/https://roysellsnj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "realtor.com agent profile (review figures and website field)",
+      "source_url": "https://www.realtor.com/realestateagents/56b8e609bb954c01006b238a",
+      "result": "could not open"
+    },
+    {
+      "claim": "Zillow profile (review figures)",
+      "source_url": "https://www.zillow.com/profile/Roy%20Minieri",
+      "result": "could not open"
+    },
+    {
+      "claim": "LoopNet broker profile and Nestfully office page (website field)",
+      "source_url": "https://www.loopnet.com/commercial-real-estate-brokers/profile/roy-minieri/j4mljc7b",
+      "result": "could not open"
+    },
+    {
+      "claim": "Reviews quoted as 5.0 from 8 on realtor.com and 5.0 from 6 on Zillow (labelled in caveats as search-result summaries only)",
+      "source_url": "https://www.realtor.com/realestateagents/56b8e609bb954c01006b238a",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

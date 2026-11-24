@@ -1,0 +1,94 @@
+{
+  "business": "Ross Management Group",
+  "industry": "property-realestate",
+  "town": "New Brunswick",
+  "opportunities": [
+    {
+      "title": "Leasing inquiry intake and tour-booking agent for loft suites and warehouses",
+      "capability": "A",
+      "problem": "The entire leasing funnel is one published phone number plus a generic Squarespace contact form. Listing pages, the contact page and the property-management page all route prospects to 732-296-1300 to 'schedule a showing', with no office hours, no online booking, no auto-response and no visible CRM. In a market where a prospect tours several Middlesex County buildings, an inquiry that lands at 7pm on a Friday waits for someone to check voicemail.",
+      "evidence": [
+        "Every suite page carries a phone-only call to action ('contact us at 732-296-1300'); no scheduling tool exists: https://www.rossmanagementgroup.com/office-listings-1/suite-111-pd9x5",
+        "Contact page offers only a phone number, a postal address and a tenant contact form - no hours, no tenant portal, no booking widget: https://www.rossmanagementgroup.com/contact-us/",
+        "Site is a Squarespace brochure with a broken newsletter block and a footer copyright of 2019, i.e. no CRM/lead-routing layer behind the form: https://www.rossmanagementgroup.com/contact-us/",
+        "Support-desk analogue: staggered rollout of a generative-AI assistant to 5,179 support agents raised issues resolved per hour 14% on average (34% for novices) - NBER working paper w31161, not peer-reviewed: https://www.nber.org/papers/w31161",
+        "Conversational property search: production A/B at QuintoAndar reported +5.3% click-through and +4.8% scheduled visits - arXiv preprint, not peer-reviewed: https://arxiv.org/abs/2607.14835"
+      ],
+      "agent_design": "Trigger: new web-form submission, missed call, or inbound email. The agent replies within minutes by SMS/email, asks the qualifying questions an owner-operator would ask (use type: office/warehouse/build-to-suit, square footage needed, headcount, target move-in, truck/dock requirements, broker or direct), matches the answer against a structured suite inventory, proposes two or three units with photos and a booking link, and writes a persistent summary into a lightweight CRM record. It also handles the broker path: captures commission-protection requests and emails the broker packet. Human approval gate: any rate quote, concession, or build-to-suit scope question is drafted by the agent and sent only after the principal approves; all tour confirmations and calendar holds are agent-executed. Systems touched: Squarespace form/email, telephony voicemail-to-text, Google/Outlook calendar, CRM (new), SMS.",
+      "why_not_DIY": "A chatbot subscription answers questions; it does not read a missed-call voicemail, check real availability across 1,065-20,702 sf units, hold a calendar slot, or keep a lead record. Doing this properly needs telephony, form, calendar and CRM integrations plus guardrails so the agent never improvises pricing or fair-housing-sensitive screening. NJ licensed-brokerage rules and TCPA-style AI-call disclosure expectations mean the voice channel must be framed as intake, with licensed/principal review on anything resembling advice.",
+      "impact_estimate": {
+        "range": "Roughly 4-8 staff-hours/week returned plus a 10-20% lift in inquiries that reach a booked tour; about $7k-$15k/yr of administrative capacity. Lease-revenue upside from one extra signed suite would exceed that but is not estimated here.",
+        "assumptions": "One to two people handle leasing and admin today (inferred from the single phone number and absent staff directory). Loaded admin cost ~$32/hr from the NJ median for secretaries/administrative assistants ($50,260) with a ~1.3 loading factor. Inquiry volume assumed at 8-20/month, an assumption, not a sourced figure. Tour-booking lift taken from the low end of the support-productivity and conversational-search evidence, discounted because neither study is inside a commercial landlord.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "Four weeks: structured suite/warehouse inventory sheet (sf, rate or 'negotiable', status, photos, dock/office split), an after-hours auto-responder on the form and voicemail, an SMS/email intake agent with the qualification script and a booking link, principal-approval queue for any rate or concession language, and a two-week shadow run scored against the owner's own judgment on 20-30 real inquiries.",
+      "secondary_benchmark_urls": [
+        "https://www.nber.org/papers/w31161",
+        "https://arxiv.org/abs/2607.14835"
+      ]
+    },
+    {
+      "title": "24/7 tenant service-request triage and maintenance dispatch, with vendor quote chasing",
+      "capability": "A",
+      "problem": "The company is both owner and manager, so every leak, pothole and faulty pipe comes straight to it - but the site publishes no hours, no after-hours or emergency path and no ticket system, only a claim that 'help is only a phone call away'. That works only while someone is awake and holding the phone, and it leaves no record of what was reported, what was dispatched, or which contractor quoted what.",
+      "evidence": [
+        "Property-management page: tenants deal directly with the owner-manager and 'help is only a phone call away' for leaks, potholes or faulty pipes - no ticket intake, no hours, no emergency routing: https://www.rossmanagementgroup.com/property-management",
+        "Contact page publishes no office hours and no after-hours arrangement, so the only channel is a live call to 732.296.1300 or a generic form: https://www.rossmanagementgroup.com/contact-us/",
+        "Industry task list: investigating complaints and resolving problems, planning/scheduling maintenance and repairs, and soliciting and analyzing contractor bids are all listed manual hotspots for property managers (O*NET 11-9141.00): https://www.onetonline.org/link/summary/11-9141.00",
+        "Benchmark wage for the coordinator role: NJ median $82,850 for property/real-estate/community association managers; NJ median $54,810 for general maintenance and repair workers: https://www.onetonline.org/link/localwages/11-9141.00?st=NJ"
+      ],
+      "agent_design": "Triggers: inbound call (transcribed), SMS, email, or web form, from a known tenant or an unknown number. The agent identifies the property and unit from the caller/record, classifies urgency with a fixed rubric (life-safety/water intrusion/no heat or AC/building access/cosmetic), asks the two or three diagnostic questions that shorten a callout, opens a ticket, texts the assigned tech or preferred vendor, and keeps the tenant updated until closed. For non-emergency work it solicits two or three vendor quotes, tabulates scope and price, and prepares a recommendation. Human approval gate: any spend above a set threshold, any after-hours emergency callout, and any vendor award require the principal's one-tap approval; the agent never commits money on its own. Recurring issues roll into a monthly digest per building (cost per unit, repeat offenders, open aging).",
+      "why_not_DIY": "This is event-driven work across telephony, SMS, email and a ticketing record, with money at stake and an audit trail needed for owner reporting. An off-the-shelf chatbot cannot answer the phone at 2am, guarantee it escalates a burst pipe rather than chatting, or produce a defensible quote comparison. Emergency classification must fail safe to a human, which is a reliability and escalation-design problem, not a prompt problem. Tenant names, unit numbers and payment disputes also make data handling and logging a real requirement.",
+      "impact_estimate": {
+        "range": "About 3-6 coordinator hours/week returned (~$6k-$13k/yr) plus fewer after-hours premium callouts and a documented vendor-quote trail that typically trims 5-10% off small repair spend. Pure coordination time, excluding avoided damage or vacancy.",
+        "assumptions": "Assumes 15-40 tickets/month across the flagship loft building plus two North Brunswick warehouse units (ticket volume is an assumption; tenant count is not published). Coordinator time valued at the property-manager NJ median $82,850 (~$40/hr) because the owner-manager does this personally today; where a lower-paid admin does the triage the saving is smaller, around $3k-$7k/yr. The 5-10% repair-spend reduction is an inference from quote comparison discipline, not a documented result.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/11-9141.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "Three to four weeks on one building (409 Joyce Kilmer Ave): an emergency rubric agreed with the principal, after-hours SMS/voice intake with fail-safe escalation, a ticket log in a sheet or lightweight tool, vendor and tenant notification templates, one month of quote-chasing on non-emergency jobs, and a reliability report showing classification accuracy and time-to-first-response versus the current phone-only process.",
+      "secondary_benchmark_urls": [
+        "https://www.onetonline.org/link/summary/11-9141.00",
+        "https://www.onetonline.org/link/localwages/49-9071.00?st=NJ"
+      ]
+    },
+    {
+      "title": "Single source of truth for suite and warehouse inventory, republished to the website and listing feeds",
+      "capability": "D",
+      "problem": "Availability, square footage and rates live as hand-written Squarespace page copy, so the published inventory has drifted: sitemap last-modification dates for suite and warehouse pages sit in mid-2020, Suite 111 copy still describes ground-floor construction as 'nearing completion', and an internal /listings link already returns 404. Prospects and brokers are therefore judging a live portfolio from stale pages, and every change is a manual page edit.",
+      "evidence": [
+        "Listings are hand-authored pages with square footage typed into the copy, e.g. Suite 119 at 1,065 sf, Suite 111 at 1,589 sf, Suite 115 at 2,071 sf: https://www.rossmanagementgroup.com/office-listings-1/suite-111-pd9x5",
+        "Sitemap lastmod dates cluster in 2020 (suite and warehouse pages 2020-06-18, gallery 2020-09-29) and the About Us '/listings' link returns HTTP 404: https://www.rossmanagementgroup.com/sitemap.xml",
+        "No CRM, portal or listing-syndication feed appears in page content or markup; marketing stack is partly broken (error text in place of the newsletter signup): https://www.rossmanagementgroup.com/contact-us/",
+        "Portfolio is growing while the publishing process stays manual - Phase 2 build-to-suit under construction at 409 Joyce Kilmer Ave plus two North Brunswick warehouse offerings: https://www.rossmanagementgroup.com/build-to-suit",
+        "Document/property-attribute extraction is automatable: an end-to-end LLM pipeline processed 2,781 submitted real-estate documents into 2,766 structured records at 0.82 Jaccard consistency - arXiv preprint, not peer-reviewed, so treat as directional: https://arxiv.org/abs/2607.06012"
+      ],
+      "agent_design": "A small agent-built internal tool: one inventory table (building, unit, floor, sf, office/warehouse split, docks, rate or 'negotiable', status: available/under construction/leased, photos, last verified date) that is the only place availability is edited. Agents then do the downstream work - generate and publish the Squarespace listing pages and the availability page from the table on change, draft broker-facing one-page flyers per unit, flag any unit whose page has not been verified in 60 days, and answer 'what do you have in the 1,500-3,000 sf range' from the table rather than from memory. Human approval gate: the principal confirms each status/rate change before publication; the agent never publishes a price it was not given. Systems touched: Squarespace (page/content publishing), the inventory store, email/PDF for flyers, optional listing-feed export format for LoopNet/Crexi-class portals.",
+      "why_not_DIY": "This is an integration and data-modeling job, not a chat interface: it needs a canonical schema, a write path into Squarespace content, stale-data detection, and a publishing guardrail. Off-the-shelf property-management suites (AppFolio-class, whose marketing claims are unverified) would replace the tool but require adopting a full platform and migrating data for a portfolio this size, so a thin custom layer over the existing site is the cheaper path. Correct, non-misleading availability and pricing is also a trust and fair-dealing issue, so published values must trace to an approved record.",
+      "impact_estimate": {
+        "range": "About 2-4 hours/week of page editing returned (~$3k-$7k/yr), plus protection of roughly $1.5k-$8k/yr of gross rent from 1-3 fewer weeks of vacancy on one or two suites. Conservative because it only counts publishing labour and a small speed-to-lease effect.",
+        "assumptions": "Assumes the principal or an admin spends 2-4 hrs/week editing listing copy and answering 'what's available' from memory (inference from the hand-authored pages, not a measured figure). Editing time valued at ~$32/hr loaded from the NJ median for secretaries/administrative assistants ($50,260). Vacancy math uses an assumed $18-$36/sf/yr gross rent on a ~2,000 sf suite - an illustrative range, not a sourced New Brunswick rate, and no rent roll or occupancy data was available to test it.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "Two to three weeks: inventory the actual current availability with the principal (the hard part, since the published data cannot be trusted), build the single table, wire generation of listing pages and one-page unit flyers from it, add a 60-day staleness check and a broken-link sweep, and hand over an edit-and-approve workflow the principal can run alone.",
+      "secondary_benchmark_urls": [
+        "https://arxiv.org/abs/2607.06012",
+        "https://www.onetonline.org/link/summary/11-9141.00"
+      ]
+    }
+  ],
+  "lead_score": {
+    "pain": 21,
+    "fit": 17,
+    "ability_to_pay": 12,
+    "ease": 12,
+    "strategic": 11,
+    "total": 73,
+    "rationale": "Pain (21/30): the operational gaps are well documented from first-party pages - phone-only leasing funnel, no hours or booking, no CRM, stale 2020 listing pages, a 404 internal link and a visibly broken newsletter block - but they are inferred from absence of features rather than from any stated complaint, and no review, job-posting or tenant-feedback evidence could be retrieved to confirm the cost. Fit (17/20): three of the six capabilities apply almost off the shelf (A for leasing intake and tenant dispatch because the firm is both owner and manager, D for the inventory/publishing layer over a static Squarespace site), and there is no incumbent property-management platform to displace. Ability to pay (12/20): an asset-owning, self-financing commercial landlord with 2,000-60,000 sf units clearly has revenue, but headcount and revenue are unknown, the decision maker is unnamed, and a one-or-two-person operation may prefer a small fixed pilot to a retainer. Ease (12/15): no legacy integration and a public site make a pilot quick, though Squarespace publishing limits and the need to reconcile actual vs published inventory add friction. Strategic (11/15): the same pattern - stale brochure site, phone-only leasing, no ticket log - recurs across small owner-operated commercial landlords in Middlesex County, so the build is repeatable, but it is a narrow vertical slice rather than a whole-industry play.",
+    "notes": "Capped by missing evidence: owner/principal name, headcount, revenue, tenant count and any customer sentiment were unobtainable (site has no team page; job boards, LinkedIn, BBB and Yelp blocked at 403). Broker/acquisition deal flow - an open invitation to submit deals with commission protection and stated acquisition mode - is a credible fourth opportunity (capability B: acquisition pipeline monitoring and deal pre-screen) and would raise the strategic score if the firm confirms it is actively transacting."
+  },
+  "best_evidence_signal": "Listing, contact and property-management pages all route every prospect and tenant to one phone number with no hours, booking or ticket system behind it (e.g. 'contact us at 732-296-1300' on Suite 111) - https://www.rossmanagementgroup.com/office-listings-1/suite-111-pd9x5",
+  "suggested_channel": "phone (732.296.1300) first, then walk-in to the 409 Joyce Kilmer Ave office - the firm publishes no email address, no named contact and no hours, and operates a phone-first culture",
+  "evidence_thin": true
+}

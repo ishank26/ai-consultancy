@@ -1,0 +1,27 @@
+[
+ {
+  "claim": "\u00a72 Impact: \"about 2\u20136 recovered jobs a month (ASSUMPTIONS: 40\u2013120 estimates a month, 2\u20135% recovery ...) at $400\u2013$1,200 a job and 30\u201340% margin = about $2,880\u2013$34,560 a year\"",
+  "problem": "The low bound does not follow from its own stated assumptions: 40 estimates x 2% = 0.8 jobs/month, not 2. The true low end of the stated range is ~0.8 jobs, so the $2,880 floor is roughly 2.5x the arithmetic (about $1,150 at 0.8 x $400 x 30%). The high end (120 x 5% = 6 jobs) is consistent with the $34,560 figure. Separately, these numbers no longer match analysis.json, which gives $6,000\u2013$28,000 for the same opportunity, so the two documents contradict each other if anyone compares them.",
+  "fix": "Restate as \"about 1\u20136 recovered jobs a month (40\u2013120 estimates a month at 2\u20135% recovery)\" and re-derive the range (roughly $1,400\u2013$34,600/yr; ~$1,150\u2013$34,500 is the strict arithmetic), then align the same range in analysis.json. Keep the note that the low end is below pilot cost, as analysis.json already does."
+ },
+ {
+  "claim": "\"For the founder\" email: \"no way to pick a time online\"; walk-in opener: \"the web form is a callback request rather than a slot you can pick\"",
+  "problem": "The site contains no calendar or slot picker anywhere I could find (all \"Schedule Now\"/\"Request service\"/\"Estimate\" buttons resolve to /contact-us/, which is a two-step /api/lead form), so the substance is right - but it is an inference from absence stated as an absolute, and the company's own emergency page says \"Online scheduling is available for service requests.\" A founder reading that sentence can reply \"we do have online scheduling,\" which costs credibility on the first contact. The audit body's narrower wording (\"no slot picker online\") is the defensible version.",
+  "fix": "Use the narrower, source-safe phrasing in both places, e.g. \"the site's scheduling path is a request form - there's no time slot a customer can pick\" and drop \"no way to pick a time online.\" If the business's \"online scheduling\" line is addressed at all, frame it as a question (\"is 'online scheduling' the form, or is there a calendar behind it?\")."
+ },
+ {
+  "claim": "Sources: the two api.bls.gov publicAPI URLs cited for the $47,740 and $54,590 medians, with the note that \"the API throttles repeat pulls, so figures may need re-checking before sending\"",
+  "problem": "Both cited URLs currently return REQUEST_NOT_PROCESSED (\"daily threshold ... has been reached\") rather than data, so a reader cannot trace the wage figures from the citation. The figures themselves are correct (verified independently), but a client-facing source list that says \"figures may need re-checking before sending\" advertises unverified numbers in the document a founder receives.",
+  "fix": "Cite a page that renders for a reader, e.g. https://www.onetonline.org/link/localwages/43-4051.00?st=NJ and https://www.onetonline.org/link/localwages/43-5032.00?st=NJ (BLS 2025 wage data: NJ median $47,740 / $22.95 hr and $54,590 / $26.25 hr), or the BLS OEWS New Jersey table. Delete the throttling caveat sentence once the numbers are confirmed."
+ },
+ {
+  "claim": "\u00a71 Impact: \"$28.69\u2013$32.81/hour ... x1.25 for benefits\"; \u00a73 Impact: \"$32.81/hour ... x1.25 for benefits\"",
+  "problem": "The 1.25 benefits/payroll load is a chosen assumption but is not labelled as one, while the adjacent FTE and hours figures are labelled \"ASSUMPTIONS\". That inconsistency invites the reader to treat 1.25 as a sourced fact.",
+  "fix": "Mark it inline, e.g. \"x1.25 (ASSUMPTION for benefits and payroll load)\", or state the assumed load range (1.2\u20131.3) so the rate reads as an estimate."
+ },
+ {
+  "claim": "Intro: \"a 4.7 Google rating for East Brunswick\"",
+  "problem": "Accurate to the site, but the site qualifies it (\"as of Oct 19, 2026\") and it is the company's own displayed figure for one location, not an independent reading of the Google profile. Dropping the date and qualifier makes a moving number look fixed.",
+  "fix": "Write \"4.7 Google rating for East Brunswick (as displayed on their site, Oct 2026)\" or drop the rating; it is not load-bearing for any recommendation."
+ }
+]

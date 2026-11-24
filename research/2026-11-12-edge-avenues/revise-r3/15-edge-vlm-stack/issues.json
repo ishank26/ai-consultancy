@@ -1,0 +1,32 @@
+[
+ {
+  "claim": "\"A 2015 field study of full-time CCTV operators on a 90-minute surveillance task found they detected about 55% of target behaviours overall, with declines concentrated among novices rather than experienced specialists.\" (problem.evidence, 2015, cited to sciencedirect.com/science/article/pii/S0003687014001847)",
+  "problem": "The cited ScienceDirect page returns HTTP 403 for me as well, so the figure cannot be checked against the source that is cited. The openly accessible record of the same paper (Edith Cowan University repository, Donald, Donald & Thatcher 2015, Applied Ergonomics) states in its abstract: 'Fifty percent of target behaviours were detected and false alarms were high' (stage two, total N=73), and reports no vigilance decrement for the stage-one sample of 42 operators as a whole. 'About 55%' does not match the accessible statement of the same result, and the brief flags two other unopenable 403 papers in data_gaps but not this one. The second half of the sentence (decrements for novices and generalists, specialists maintained performance) is supported by that abstract.",
+  "fix": "Either (a) restate as 'about half of target behaviours (50% in the reported result; false alarms were high)' cited to https://ro.ecu.edu.au/ecuworkspost2013/922/ and/or https://pubmed.ncbi.nlm.nih.gov/25479991/, or (b) keep 55% only if it can be tied to a stage-one mean in an accessible copy, and add the ScienceDirect 403 to data_gaps. Keep the novices-vs-specialists half, which is confirmed."
+ },
+ {
+  "claim": "\"...and it leads the table on screen understanding: ScreenSpot-v2 desktop/mobile/web 78.7/81.2/82.2...\" (LFM2.5-VL-3B entry, cited to liquid.ai/blog/lfm2-5-vl-3b)",
+  "problem": "Contradicted by the cited page. The individual ScreenSpot-v2 numbers are correct, but the same Liquid table lists InternVL 3.5 4B (4.7B) at 82.0/87.8/82.6 (average 84.1) and InternVL 3.5 2B at 79.9 on desktop, both above LFM2.5-VL-3B's 80.7 average. Liquid's own text says LFM averages 80.7 on ScreenSpot-v2 and is 'close behind the larger InternVL-3.5-4B (84.1)'. LFM does not lead that column.",
+  "fix": "Replace 'leads the table on screen understanding' with 'leads its size class on screen understanding (80.7 average, ahead of gemma-4-E4B at 51.2 and Qwen3.5-4B at 78.5, behind InternVL-3.5-4B at 84.1)'. Keep the per-benchmark numbers, which are confirmed."
+ },
+ {
+  "claim": "\"Unsloth documents QLoRA minimums of ~3.5GB VRAM for 3B text models and warns that training vision layers needs more headroom\" (Label Studio + Unsloth/TRL entry, cited to unsloth.ai/docs/get-started/fine-tuning-for-beginners/unsloth-requirements)",
+  "problem": "First half confirmed (the VRAM table gives 3B QLoRA 3.5 GB). Second half is not on the cited page: the page contains no mention of vision, multimodal, image or VLM training anywhere, so the 'warns that training vision layers needs more headroom' attribution is unsupported by the source given.",
+  "fix": "Drop the vision-warning clause or cite a page that actually says it. The 24GB floor for 2-4B vision LoRA is already labelled an inference and can stand on the 3.5GB/8GB text figures plus an explicit inference note."
+ },
+ {
+  "claim": "\"New Jersey is a one-party-consent state under the Wiretap Act, N.J.S.A. 2A:156A-4(d)...\" (legal_privacy, audio capture)",
+  "problem": "Substantively right but the pinpoint is not supported by the cited page. The RCFP New Jersey guide cites N.J. Stat. Ann. \u00a7\u00a7 2A:156A-2, -3, -4 without subsections, and describes the carve-out as recordings made 'for the purpose of committing any criminal or tortious act' - it does not say 'or otherwise injurious'. The specific subsection (d) attribution and the extra 'injurious' limb are neither stated nor checked against the statute text.",
+  "fix": "Cite '\u00a7\u00a7 2A:156A-2, -3, -4' as RCFP does (or add the statute text URL for subsection (d)), and drop 'otherwise injurious' unless the statutory language is quoted. Keep the practical rule (disable camera microphones)."
+ },
+ {
+  "claim": "\"No charge for the SDK; use governed by the DeepStream EULA and bundled third-party terms.\" (NVIDIA DeepStream entry)",
+  "problem": "Could not be confirmed. developer.nvidia.com/Deepstream-sdk no longer serves a product/licensing page - it redirects to the NVIDIA/DeepStream GitHub repository, whose content I read and which does not state that the SDK is free of charge or set out the EULA terms.",
+  "fix": "Either cite the NVIDIA DeepStream SDK licence/EULA page directly, or mark the pricing as 'Unknown - no licensing page could be opened' the way Verkada and Frigate+ are already handled."
+ },
+ {
+  "claim": "fit_score: legal_risk_low = 10/15 alongside a legal section that lists an unverified notice negative finding, criminal exposure under N.J.S.A. 2C:14-9, BIPA statutory damages and FTC substantiation duty",
+  "problem": "Not a factual error - the arithmetic checks out (15+13+9+13+10+9 = 69, and the sub-score maxima in the rationale sum to 100) and the brief explicitly describes legal risk as 'moderate... not a clean legal position'. Flagging only for consistency: 10/15 on a field named 'legal_risk_low' is a high score for a section containing several unverified negatives and one criminal statute.",
+  "fix": "No change required if the orchestrator reads 10/15 as 'moderate risk, manageable by design'. If the field is meant to score low risk only, consider 8-9/15 and raise another sub-score so the total still sums to 69."
+ }
+]

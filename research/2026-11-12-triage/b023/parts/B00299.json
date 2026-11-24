@@ -1,0 +1,65 @@
+{
+    "name": "Jeremy Rothfleisch, MD, PA (dermatology)",
+    "town": "East Brunswick",
+    "ref": "B00299",
+    "status": "operating",
+    "website": "https://www.dermnj.com/",
+    "what_they_do": "Solo board-certified dermatology practice offering medical dermatology (acne, psoriasis, hyperpigmentation), cosmetic treatments (Botox, fillers, IPL, laser hair removal, leg veins) and related skin care. Runs one East Brunswick office at 603 Cranbury Road, Suite 1.",
+    "customers": "Local adults seeking medical dermatology plus self-pay cosmetic patients for Botox/fillers/laser; broad insurance-based patient base.",
+    "size_signals": [
+      {"signal": "One physician (Dr. Jeremy Rothfleisch) with a suite of ten-plus named services, five-day hours", "source_url": "https://www.dermnj.com/"},
+      {"signal": "Separate online bill-payment portal and a downloadable forms section, implying an established back office", "source_url": "https://www.dermnj.com/"},
+      {"signal": "Cosmetic service lines (Botox, fillers, IPL, laser hair removal) alongside medical dermatology - inference: higher-ticket self-pay revenue mix", "source_url": "https://www.dermnj.com/services"}
+    ],
+    "listing": {"platform": "Google (rating reported via Birdeye aggregator)", "rating": "3.7", "reviews": "83", "source_url": "https://reviews.birdeye.com/jeremy-rothfleisch-md-pa-155730352863201"},
+    "website_review": {
+      "loads": true,
+      "https": true,
+      "phone_layout": "good",
+      "clear_offer": true,
+      "primary_cta": "BOOK ONLINE (modal with new/returning patient choice and scheduling) plus a tappable phone button",
+      "click_to_call": true,
+      "contact_form": true,
+      "online_booking_or_quote": "Yes - real online booking modal (new vs returning patient, then scheduling) and a contact form; the contact form is protected by Google reCAPTCHA",
+      "trust_signals": "Board-certified credential in the title, verified patient testimonials with star graphics, Healthgrades-sourced quotes, individual service pages, online bill pay",
+      "out_of_date_signs": "Hours block prints each day twice ('8:00 am - 4:30 pm' then '8:00 am to 4:30 pm'); a persistent 24-hour cancellation/$50 no-show banner sits above the header on every page; the home hero slideshow shows blank slides between photos",
+      "search_basics": "Strong: title names the doctor, credential, specialty and town; meta description carries phone and address; services each have their own page (acne, botox, psoriasis, fillers, IPL, laser hair removal, leg veins) and Physician JSON-LD is present",
+      "top_issues": [
+        "Contact form is gated by Google reCAPTCHA, so no automated agent or script can submit an enquiry",
+        "Site claims 4.93/5 from 40 reviews on-page while Google shows ~3.7 from 83 - the gap itself is a credibility risk and points to unmanaged reviews",
+        "Duplicated day-by-day hours in the contact block make hours ambiguous for both patients and parsers",
+        "A $50 no-show warning banner is the very first thing a visitor sees, ahead of the practice name"
+      ]
+    },
+    "agent_readiness": {
+      "findable": 2,
+      "answerable": 3,
+      "bookable": 2,
+      "notes": "Findable: crawlable (robots.txt allows everything) and complete, with the practice name, doctor, address and phone in text. Answerable: strong - Physician schema.org JSON-LD, per-day hours in text, a phone number in the meta description and one page per service; the duplicated hours lines slightly muddy it. Bookable: online booking really works and needs no phone call, and the contact form has proper labels, but the form is behind a reCAPTCHA wall so an agent cannot submit it - and the booking flow offers only new/returning patient before any real scheduling."
+    },
+    "operations_signals": [
+      {"signal": "Review volume is high (83 on the Google listing) but the rating sits around 3.7 with complaints about front-office staff - inference: no systematic review recovery or response process", "source_url": "https://reviews.birdeye.com/jeremy-rothfleisch-md-pa-155730352863201"},
+      {"signal": "Site still asks patients to download/submit paper forms in a Forms section despite having online booking", "source_url": "https://www.dermnj.com/contents/forms"},
+      {"signal": "A $50 late-cancellation fee is enforced and advertised site-wide - inference: no-shows are a real cost and reminders are the obvious lever", "source_url": "https://www.dermnj.com/"},
+      {"signal": "Separate 'make a payment' portal for billing means the front desk handles payment questions by phone", "source_url": "https://www.dermnj.com/"}
+    ],
+    "top_opportunities": [
+      {"opportunity": "Review-generation and response programme: request reviews post-visit, reply to the negatives, and reconcile the on-site 4.93 claim with the ~3.7 Google reality before it costs new patients", "type": "operations", "evidence": "Birdeye listing shows ~83 Google reviews at 3.7 while the practice site displays 4.93/5 from 40 reviews", "effort": "S"},
+      {"opportunity": "Remove the reCAPTCHA gate from the enquiry path (or expose a captcha-free booking/intake endpoint) so patient agents and accessibility tools can actually submit requests", "type": "agent readiness", "evidence": "Contact form posts to /contactus/send and includes a g-recaptcha-response field", "effort": "S"},
+      {"opportunity": "Clean up the conversion basics: dedupe the hours block, move the no-show banner out of the header, and add appointment reminders tied to the $50 cancellation policy", "type": "website", "evidence": "Every page prints each day's hours twice and leads with a cancellation-fee warning; policy is enforced but no reminder mechanism is evident", "effort": "S"}
+    ],
+    "scores": {
+      "gap_size": 2,
+      "ability_to_pay": 3,
+      "ease": 4,
+      "evidence": 4,
+      "reasons": "Gap: smallest in this batch - the site is genuinely well built (schema, service pages, real booking), with the gaps concentrated in review management and the CAPTCHA gate. Pay: solo practice but with cosmetic Botox/laser revenue, so moderate. Ease: review ops and form changes are quick, low-risk wins. Evidence: I verified the schema, form fields, reCAPTCHA, booking modal and mobile rendering myself."
+    },
+    "sources": [
+      "https://www.dermnj.com/",
+      "https://www.dermnj.com/contactus",
+      "https://www.dermnj.com/robots.txt",
+      "https://reviews.birdeye.com/jeremy-rothfleisch-md-pa-155730352863201",
+      "https://www.healthgrades.com/physician/dr-jeremy-rothfleisch-2hdrs"
+    ]
+}

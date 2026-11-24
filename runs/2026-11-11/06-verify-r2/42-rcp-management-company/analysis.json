@@ -1,0 +1,83 @@
+{
+  "business": "RCP Management Company",
+  "industry": "property-realestate",
+  "town": "Cranbury",
+  "opportunities": [
+    {
+      "title": "Resident inquiry triage and callback agent for front desk and after-hours",
+      "capability": "A",
+      "problem": "Every homeowner contact route is staff-mediated and time-boxed: phone, email, a web maintenance form and a manual portal-approval queue, with offices open Monday-Friday 9-5 and closed weekends. The most repeated public complaint is that calls are never returned and callers get routed to voicemail, which is the single most visible service failure for a firm selling 'personal service'.",
+      "evidence": [
+        "Reviews aggregated on Yahoo Local show 1.5 across 23 reviews, with repeated complaints about unreturned calls, voicemail routing and front-desk tone (https://local.yahoo.com/info-102658662-rcp-management-co-cranbury)",
+        "Listed office hours are Mon-Fri 9:00-5:00 and closed weekends, so evenings and weekends run through an emergency line staffed by 'a manager and supervisor' rather than a described triage process (https://rcpmanagement.com/)",
+        "The contact page is a static directory of phone numbers and mailboxes with no self-serve booking, chat or ticket status lookup (https://rcpmanagement.com/contact/)",
+        "The homepage promises 'documentation and follow-up on all maintenance requests and homeowner inquiries', i.e. follow-up is a manual administrative duty rather than a tracked SLA (https://rcpmanagement.com/)",
+        "New owner-portal accounts require staff review with a promised reply 'within 2 business days', showing access and onboarding requests enter a human queue (https://home.rcpmanagement.com/Home_v2/Login)",
+        "Ratings diverge by platform (Yelp 1.5 / 23 reviews vs Google 3.9 / 206 reviews), so the complaint pattern is concentrated rather than universal - treat it as a signal of a real queue problem, not proof of firm-wide failure (https://comparehoamanagers.com/new-jersey/companies/rcp-management)"
+      ],
+      "agent_design": "One intake agent across email, web-form and phone (transcribed) that: identifies the association and unit, classifies intent (maintenance, billing/assessment, violation, amenity or move-in/out, board matter, sales inquiry), detects urgency and emergency keywords, drafts a policy-grounded reply, and opens a ticket or callback task in Vantaca/Buildinglink with the association tagged. A second scheduling agent owns the callback queue: it books a time window, sends confirmation, chases no-shows and escalates anything past its promised response window to the community manager. Human approval points: any reply that commits money, waives a fee, discusses a violation or lien, or touches legal/board-confidential matters is drafted-for-approval only; after-hours emergencies always route to the on-call manager with a human confirming dispatch. Output: a per-community SLA dashboard (first response, callback kept, reopen rate) that RCP can show boards.",
+      "why_not_DIY": "A chatbot subscription cannot create records in Vantaca or Buildinglink, cannot see association-specific rules and fee schedules, and cannot fail safely on emergencies. The work requires telephony plus transcription, ticket writes into two systems that do not natively talk to each other, per-association data isolation across ~125 communities, and an audit trail a board can inspect. Outbound AI voice calls also raise TCPA/AI-disclosure exposure (FCC 2024 AI-voice proceeding, 89 FR 73321), so callback pacing and disclosure language have to be engineered, not improvised.",
+      "impact_estimate": {
+        "range": "15-30% reduction in inbound inquiry handling time on piloted communities; roughly 1.5-6 staff hours/week recovered per community, or about $2.4k-$9.7k/year per community at the $26/hour onsite-administrator rate loaded ~1.2x",
+        "assumptions": "Baseline of 10-20 hours/week per community of resident inquiry handling (inference - no published volume data; assumed from an onsite administrator role that is largely phone answering plus follow-up). 15-30% band brackets the 14% average / 34% novice support-agent gain in the NBER working paper, discounted because property-management inquiries need policy context and ticket creation, not just reply drafting. Loaded cost = $26/hr posting rate x 1.2 for payroll overhead. Excludes avoided manager escalations and any revenue effect from retained boards. Extrapolating per-community results to all ~125 associations is an extrapolation, not a measured result; the NBER study is a working paper about customer-support agents, not property managers.",
+        "benchmark_source_url": "https://www.nber.org/papers/w31161"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks on 3-5 communities: email + phone intake agent live behind human review, ticket creation into the existing portal, a callback scheduler, and a one-page SLA report per community comparing first-response and callback-kept rates against the 2 weeks of baseline captured in week 1."
+    },
+    {
+      "title": "Work-order and violation intake agent with owner back-charge coding",
+      "capability": "A",
+      "problem": "Work orders are still assembled by hand from resident calls, emails and manager requests, typed into the system, back-charged to the responsible owner's account and mirrored into Buildinglink. Violations and complaints are investigated and cited manually against community rules. This is high-volume, low-judgment transcription that consumes onsite administrative hours and creates billing disputes when a back-charge is coded to the wrong unit.",
+      "evidence": [
+        "Part-time Onsite Administrator posting ($26/hour, Princeton) lists preparing work orders from resident and manager requests, entering work orders into the system, back-charging owner accounts, and maintaining Buildinglink resident information (https://hoa-jobs.com/onsite-administrator-part-time)",
+        "Homeowners submit maintenance requests through a web form with no described routing or status visibility, so requests arrive unstructured and are re-keyed (https://rcpmanagement.com/maintenance-request/)",
+        "Industry task profile for the manager occupation includes investigating complaints, disturbances and violations, and planning/scheduling maintenance and repairs - both explicitly manual task categories (https://www.onetonline.org/link/summary/11-9141.00)",
+        "Property-level operations reference Buildinglink for resident records plus separate work-order systems, i.e. at least two systems of record per community to keep in sync (https://hoa-jobs.com/onsite-administrator-part-time)"
+      ],
+      "agent_design": "Triggered by new email, web-form submission or portal message: the agent extracts unit, association, asset/location, symptom, access instructions, photos and reported urgency; matches the request to a trade and the community's vendor list; creates the work order with a proposed priority; writes a draft owner back-charge with the rule reference; checks for duplicate or repeat tickets at the same address; and drafts the resident acknowledgement with an expected response window. It also drafts violation notices from inspection notes or resident reports, citing the specific rule clause. Human approval: the community or assistant manager approves any back-charge, fine or violation notice before it posts to an owner account, and approves any ticket above a spending threshold or involving structural, life-safety or insurance exposure.",
+      "why_not_DIY": "This is not text generation, it is a write path into systems of record with financial consequences. It needs document/photo extraction, vendor and trade matching, deduplication against open tickets, rule-clause citation, and per-association permissioning. A mis-coded back-charge creates an owner dispute the manager has to unwind, so the agent must produce an auditable justification and stop at a human gate - reliability and integration, not model quality, are the blockers.",
+      "impact_estimate": {
+        "range": "4-8 minutes saved per ticket; at an assumed 5,000-10,000 tickets/year that is roughly 330-1,330 staff hours, or about $8k-$32k/year",
+        "assumptions": "Ticket volume assumed at 0.3-0.7 per door/year against the ~15,000 doors stated at the 2023 merger (inference; no public volume figure, and the door count may be stale). Savings valued at the NJ median wage for Secretaries and Administrative Assistants ($50,260/yr, ~$24.16/hr) rather than the manager wage, because the re-keying work sits with onsite administrators. 4-8 minutes reflects intake plus transcription plus coding on a task that is mostly extraction, not judgment; the extraction-accuracy precedent available is an arXiv preprint (0.82 Jaccard on questionnaire documents), which is not peer-reviewed and is treated here as weak supporting evidence only. Excludes savings from faster vendor dispatch and fewer billing disputes.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-6014.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2-4 weeks on one region: structured ticket creation from email and web-form intake for 3-5 communities, draft back-charge coding with human approval, duplicate detection, and a weekly accuracy/exception report measuring re-key rate and mis-coded charges against a manually worked control group."
+    },
+    {
+      "title": "Portfolio knowledge agent for staff, boards and post-merger SOPs",
+      "capability": "C",
+      "problem": "A 2023 merger combined two operating cultures into three offices covering ~125 associations, and the recurring internal complaint is inconsistent communication and weak training - new and existing staff answer the same association-specific question (governing-document rules, assessment and collection procedure, architectural request steps, vendor terms) by asking a colleague or digging through PDFs. Managers already spend their week on phone calls, email, project management and meeting prep, and board meetings are a standing obligation.",
+      "evidence": [
+        "Indeed reviews for the Cranbury office average about 2.3/5 and cite turnover and weak training, with former employees describing inconsistent communication and a 'fend for yourself' culture (https://www.indeed.com/cmp/Rcp-Management)",
+        "Employee reviews describe the property manager role as heavy on phone calls, emails, project management and meeting prep (https://www.indeed.com/cmp/Rcp-Management/reviews?fcountry=US&floc=Cranbury%2C+NJ)",
+        "The September 2023 merger combined two firms with offices in Cranbury, Bloomfield and Manahawkin, creating three-office process harmonization work (https://rcpmanagement.com/prime-management-and-rcp-management-announce-strategic-partnership-and-merger-by-end-of-2023)",
+        "Careers page is evergreen for Property Managers, Assistant Managers, Site Managers, Bookkeepers and Administrative/Customer Service staff, so onboarding load is continuous rather than episodic (https://rcpmanagement.com/careers-at-rcp/)",
+        "RCP offers free Zoom board and annual meetings to client communities, so board-facing question volume is recurring (https://rcpmanagement.com/about-us/)",
+        "Services include monthly financial reporting packages and online invoice approval, meaning large document sets per association exist in a form that a retrieval agent can index (https://rcpmanagement.com/services/)"
+      ],
+      "agent_design": "A retrieval agent scoped per association: it indexes governing documents (bylaws, declarations, rules), management agreements, RCP SOPs, vendor contracts, board minutes and reporting packages, then answers staff and board questions with clause-level citations and a link to the source page. Access is enforced per association and per role, so a board member of community A cannot retrieve community B's documents, and financial answers respect role. Unanswerable or conflicting-document questions escalate to the community manager with the retrieved excerpts attached. A monthly 'unanswered questions' report feeds SOP repair owned by the operations controller/CPA, and the same index powers onboarding: a new assistant manager can ask 'how do I process an architectural request at this community' and get the actual procedure. Human approval: policy answers are reviewed and versioned by an ops owner before being treated as authoritative; nothing the agent says about enforcement or collections goes to an owner without manager review.",
+      "why_not_DIY": "The hard part is not the model, it is 125 document sets with conflicting versions, board-confidentiality boundaries and a legal need for citations. A generic assistant over a shared drive will happily answer with the wrong association's rule or an outdated amendment, and cannot enforce role-based isolation between client communities. Getting this right requires ingestion pipelines, versioning, per-tenant permissioning, answer-quality evaluation and an SOP-owner workflow - i.e. a maintained system with a retainer, not a subscription.",
+      "impact_estimate": {
+        "range": "20-50% reduction in internal policy and governing-document lookup time; if 20-30 managers/assistant managers each spend 1-2 hours/week on this, gross value is about $41k-$124k/year, conservatively $17k-$50k/year after a 40% realization haircut; plus faster ramp on new hires (roughly $1.4k-$3.5k per hire at 15-25% of a $50k-$60k salary)",
+        "assumptions": "20-30 staff in manager/assistant/admin roles is an inference from the 51-200 headcount band and the ~125-association portfolio, not a published org chart. 1-2 hours/week per person is an assumption; no time-tracking data exists. Valued at the NJ median for Property, Real Estate, and Community Association Managers ($82,850/yr, ~$39.83/hr) and then discounted 60% because not all lookup time converts to recovered capacity. New-hire savings assume 8-12 week ramp and 15-25% shortening, with the $50k-$60k range taken from RCP's own Assistant Property Manager posting. Savings are capacity, not cash, unless headcount or overtime is actually reduced.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/11-9141.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "3-4 weeks: index governing documents and SOPs for 3-5 communities plus RCP-wide procedures, ship a cited Q&A interface for one office's staff, run a two-week answer-accuracy review against manager-written answers, and deliver a gap report listing missing or contradictory documents found during ingestion."
+    }
+  ],
+  "lead_score": {
+    "pain": 22,
+    "fit": 16,
+    "ability_to_pay": 16,
+    "ease": 11,
+    "strategic": 14,
+    "total": 79,
+    "rationale": "Pain evidence is unusually concrete for a private firm: a documented manual work-order/back-charge workflow in RCP's own job posting, a manual portal-approval queue, 9-5-only contact channels, a 1.5 Yelp rating concentrated on unreturned calls, and staff reviews citing weak training after a merger that doubled the portfolio. Fit is strong on A and C, but capped because the two systems that matter (Vantaca and Buildinglink) are third-party platforms whose API/permission surfaces are unverified, and there is no named technology or operations executive to sponsor integration work. Ability to pay is good - 15,000 doors, 125 associations, 51-200 staff, fourth-largest in NJ, and private-equity parent Continuum Companies with a roll-up strategy - but no revenue figure was found and fees per door in HOA management are modest, so a five-figure pilot plus retainer is affordable rather than trivially so. Ease is the weakest dimension: the decision-maker is the President & Managing Partner, board consent and association-level data boundaries complicate any pilot, and public contract/procurement data is absent. Strategic value is high because the same resident-triage and document-intake pattern repeats across every HOA management firm Continuum could acquire. Deductions for unverifiable financials and review data gathered only from search snippets."
+  },
+  "best_evidence_signal": "RCP's own job posting describes onsite administrators hand-entering work orders, back-charging owner accounts and updating Buildinglink at $26/hour - a verifiable, current artifact of manual operations (https://hoa-jobs.com/onsite-administrator-part-time)",
+  "suggested_channel": "email",
+  "evidence_thin": false
+}

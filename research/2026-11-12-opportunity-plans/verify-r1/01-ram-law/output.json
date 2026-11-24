@@ -1,0 +1,102 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Smith.ai Pro: \"$510/mo for 300\" calls",
+      "problem": "Misstated tier price. The vendor pricing page's own structured data lists Pro - 300 calls/mo at $500 (and $1.67/call, i.e. ~$501); the rate table shows -17% off $2.00/call. $510 does not appear anywhere on the page.",
+      "fix": "Change to $500/mo for 300 calls ($1.67/call)."
+    },
+    {
+      "claim": "Smith.ai Enterprise: \"$835/mo for 500\" calls",
+      "problem": "Misstated tier price. The page lists Enterprise - 500 calls/mo at $800 ($1.50/call, 10% volume discount); $835 applies no discount and appears nowhere on the page.",
+      "fix": "Change to $800/mo for 500 calls ($1.50/call)."
+    },
+    {
+      "claim": "\"11 certified trial attorneys\" (feasibility reasoning)",
+      "problem": "Contradicted by the firm's own site. The Spanish homepage says the firm has 11 abogados especializados en litigios civiles (11 attorneys specialising in civil litigation) and that two of them hold National Board of Trial Advocacy certification in truck-accident law. Neither page supports \"11 certified trial attorneys\".",
+      "fix": "Reword to \"11 civil-litigation attorneys, two NBTA-certified in truck-accident law\" and cite https://ramlawnj.com/es/."
+    },
+    {
+      "claim": "Ruby cost floor of \"$3.60-$5.00 per live-answering minute implied by Ruby's plan ladder\"",
+      "problem": "Arithmetic misstated at the low end. $1,725/500 min = $3.45/min, not $3.60; $3.60 is the 200-minute tier ($720/200). Range as given is not the min-max of the ladder.",
+      "fix": "Use $3.45-$5.00/min, or state the tier each figure comes from."
+    },
+    {
+      "claim": "Voice-agent all-in cost basis: \"$0.06/min (voice engine $0.05 + local inbound telephony $0.0032 + LLM ~$0.0064)\"",
+      "problem": "Total matches the vendor's estimate ($0.06/min), but the telephony component omits the $0.002/min Voice API platform fee. Telnyx's own FAQ on the same page says inbound telephony is SIP trunking from $0.0032/min PLUS a $0.002/min Voice API platform fee, i.e. ~$0.0052/min, which puts the honest all-in near $0.062/min.",
+      "fix": "Show telephony as $0.0052/min ($0.002 platform + $0.0032 SIP) and restate all-in as ~$0.06-$0.062/min; the $108/$180 monthly figures then become ~$112/$186."
+    },
+    {
+      "claim": "Gravity Forms Webhooks is treated as already available at no incremental cost (\"already on the firm's WordPress site\")",
+      "problem": "The add-on exists in official docs (confirmed), and the page does not list an add-on price - both correct. But the page also states the Webhooks Add-On is included only with Gravity Forms Elite and Nonprofit licences. The plan neither states that licensing requirement nor flags a possible Elite upgrade cost, and installation on ramlawnj.com is unverified (only the core Gravity Forms script is present).",
+      "fix": "Add: Webhooks requires an Elite (or Nonprofit) licence, so confirm the firm's tier and price an upgrade if it is Basic/Pro; drop \"already on the firm's site\" for the add-on and mark it an open item."
+    },
+    {
+      "claim": "NJ Supreme Court AI guidelines oversight \"extend to ... nonlawyer staff and outside providers\"",
+      "problem": "Partly unsupported. The Jan 24, 2024 notice says oversight duties under RPC 5.1/5.3 apply to other lawyers, nonlawyer staff, and law students/interns, and that this \"extends to ensuring the ethical use of AI by other lawyers and nonlawyer staff\". \"Outside providers\" is not in the text.",
+      "fix": "Quote the notice's actual formulation and present the outside-provider point as an inference from RPC 5.3 and the firm's confidentiality duty."
+    },
+    {
+      "claim": "Lawbrokr: \"multilingual workflows at the top tier\"",
+      "problem": "Minor misstatement. On lawbrokr.com/pricing, Multilingual is listed inside the Pro tier (third of four) and again as a priced add-on, not only at the top (Scale) tier.",
+      "fix": "Say \"multilingual flows from the Pro tier and as an add-on\"."
+    },
+    {
+      "claim": "\"The firm publishes only two intake channels, a phone number and a web form\"",
+      "problem": "Internally inconsistent with the plan's own tools list: the contact page publishes contact@ram.law as a third channel (the plan lists that mailbox separately).",
+      "fix": "Say \"two live intake channels plus a shared mailbox\"."
+    },
+    {
+      "claim": "Feasibility ratings (technical 4/5, commercial 3/5) and founder-day effort estimates",
+      "problem": "Not labelled as inference, although both are judgement calls. suggested_pricing is correctly labelled INFERENCE, but the scores, the 18-23 total founder_days and the 7-8 week timeline are presented unlabelled.",
+      "fix": "Mark the scores and the founder_days/weeks estimates as inference in the same way suggested_pricing is."
+    },
+    {
+      "claim": "Cost of outbound SMS \"roughly $0.01 per message; ~$3/mo at 300 messages\"",
+      "problem": "Overstated at the low end of the carrier range: 300 x ($0.004 Telnyx + $0.0035-$0.005 carrier) = $2.25-$2.70/mo, not $3. Immaterial to the P&L but it is a calculation the plan presents as derived from the rate card.",
+      "fix": "Say \"~$0.008-$0.009 per part, i.e. ~$2.40-$2.70/mo at 300 messages\"."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Manalapan office page advertises 'Phone Intake Hours 24/7' against Mon-Fri 8:00 AM-8:00 PM office hours, Sat/Sun closed", "source_url": "https://ramlawnj.com/manalapan-new-jersey/", "result": "confirmed"},
+    {"claim": "Published main number is (732) 247-3600", "source_url": "https://ramlawnj.com/manalapan-new-jersey/", "result": "confirmed"},
+    {"claim": "One shared email contact@ram.law listed for all three offices; only phone/contact-form links offered", "source_url": "https://ramlawnj.com/contact/", "result": "confirmed"},
+    {"claim": "CallRail call-tracking script present on the site", "source_url": "https://ramlawnj.com/", "result": "confirmed"},
+    {"claim": "Lawbrokr legal intake widget installed and initialised (Lawbrokr.init())", "source_url": "https://ramlawnj.com/", "result": "confirmed"},
+    {"claim": "Juvo Leads tag installed", "source_url": "https://ramlawnj.com/", "result": "confirmed"},
+    {"claim": "Gravity Forms is running on the site (core plugin scripts present)", "source_url": "https://ramlawnj.com/", "result": "confirmed"},
+    {"claim": "Firm has 11 attorneys and reports $170M+ recovered; two attorneys NBTA-certified in truck-accident law", "source_url": "https://ramlawnj.com/es/", "result": "confirmed"},
+    {"claim": "Telnyx Voice API: local number $0.002/min + SIP trunking fee; call recording $0.002/min; call transfer $0.10 per invocation", "source_url": "https://telnyx.com/pricing/voice-api", "result": "confirmed"},
+    {"claim": "Telnyx voice engine $0.05/min includes orchestration, hosted STT and TTS, no monthly platform fee; vendor's own production estimate ~$0.06/min all-in", "source_url": "https://telnyx.com/pricing/voice-ai-agents", "result": "confirmed"},
+    {"claim": "Inbound telephony component is $0.0032/min", "source_url": "https://telnyx.com/pricing/voice-ai-agents", "result": "contradicted"},
+    {"claim": "1,800 min x $0.06 = ~$108/mo; 3,000 min = ~$180/mo", "source_url": "https://telnyx.com/pricing/voice-ai-agents", "result": "confirmed"},
+    {"claim": "Deepgram Nova-3 Multilingual streaming $0.0092/min PAYG, $0.0078/min Growth; BAA available on Enterprise", "source_url": "https://deepgram.com/pricing", "result": "confirmed"},
+    {"claim": "10DLC: brand $4.50 one-time, campaign review $15, campaign fee $10/mo standard or $1.50/mo low-volume mixed, carrier pass-through $0.0035-$0.005/part, US outbound SMS $0.004/part, SMS-enabled local number $1.10/mo", "source_url": "https://telnyx.com/resources/what-is-10dlc", "result": "confirmed"},
+    {"claim": "Gravity Forms Webhooks add-on posts form submission payloads to external APIs/webhooks", "source_url": "https://www.gravityforms.com/add-ons/webhooks/", "result": "confirmed"},
+    {"claim": "Webhooks add-on price is not stated on the add-on page", "source_url": "https://www.gravityforms.com/add-ons/webhooks/", "result": "confirmed"},
+    {"claim": "Lawbrokr: webhooks for custom workflows included with every plan; four tiers; billed annually; plan prices not published", "source_url": "https://lawbrokr.com/pricing", "result": "confirmed"},
+    {"claim": "Smith.ai Free: 25 calls/mo, $3.00 per extra call; Pro $150/mo for 75 calls ($2.00/call) and $270/mo for 150", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai Pro: $510/mo for 300 calls", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "contradicted"},
+    {"claim": "Smith.ai Enterprise: $500/mo for 300 calls ($1.67/call) and 1000+ custom; multi-location support is an Enterprise feature", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "confirmed"},
+    {"claim": "Smith.ai Enterprise: $835/mo for 500 calls", "source_url": "https://smith.ai/pricing/ai-receptionist", "result": "contradicted"},
+    {"claim": "AI Esquire Intake AI: Starter $497/mo (~100 calls), Growth $997/mo (~100-300), Firm $1,997/mo (300+, multi-location); monthly, no long-term contract, 30-day money-back; English and Spanish", "source_url": "https://aiesquire.io/pricing", "result": "confirmed"},
+    {"claim": "Frontdesk: $99/mo or $79/mo billed annually, including 200 voice minutes, 100 chatbot conversations, 400 SMS", "source_url": "https://myaifrontdesk.com/pricing", "result": "confirmed"},
+    {"claim": "Ruby: 50 min $250, 100 min $395, 200 min $720, 500 min $1,725; chat 10/30/50 = $143/$335/$520; 24/7 bilingual answering; HIPAA-compliant option", "source_url": "https://www.ruby.com/plans-and-pricing/", "result": "confirmed"},
+    {"claim": "Ruby implied $3.60-$5.00 per live-answering minute", "source_url": "https://www.ruby.com/plans-and-pricing/", "result": "contradicted"},
+    {"claim": "MyCase: $50/$100/$130 per user/mo billed annually; $60/$120/$150 billed monthly", "source_url": "https://www.mycase.com/pricing/", "result": "confirmed"},
+    {"claim": "Answering Legal: pricing not public / quote-based, month-to-month, no contract, bilingual receptionists, CRM integrations", "source_url": "https://www.answeringlegal.com/help-center/billing/how-does-answering-legal-s-pricing-work", "result": "confirmed"},
+    {"claim": "NJ median wage for legal secretaries/administrative assistants $30.33/hr and $63,080/yr (2025 BLS via O*NET)", "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ", "result": "confirmed"},
+    {"claim": "NJ median wage for paralegals and legal assistants $34.38/hr and $71,500/yr", "source_url": "https://www.onetonline.org/link/localwages/23-2011.00?st=NJ", "result": "confirmed"},
+    {"claim": "NJ AI guidelines dated Jan 24, 2024; duties unchanged; oversight under RPC 5.1 and 5.3 extends to ethical use of AI by nonlawyer staff", "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf", "result": "confirmed"},
+    {"claim": "Oversight extends to 'outside providers'", "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf", "result": "contradicted"},
+    {"claim": "Guidelines: RPC 1.6 requires reasonable efforts against inadvertent/unauthorised disclosure and 'a lawyer is responsible to ensure the security of an AI system before entering any non-public client information'", "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf", "result": "confirmed"},
+    {"claim": "Guidelines cite RPC 3.1, 4.1(a)(1), 8.4(c) and state a duty to check and verify all AI-generated information", "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf", "result": "confirmed"},
+    {"claim": "New Jersey is a one-party consent state for telephone recording under N.J.S.A. 2A:156A-3 and -4", "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/", "result": "confirmed"},
+    {"claim": "47 CFR 64.1200 requires prior express consent for autodialed/prerecorded calls and texts and a revocation request made by any reasonable method must be honoured within a reasonable time not to exceed ten business days", "source_url": "https://www.law.cornell.edu/cfr/text/47/64.1200", "result": "confirmed"},
+    {"claim": "45 CFR 160.103 defines covered entity as a health plan, clearinghouse, or health care provider transmitting health information electronically in a covered transaction", "source_url": "https://www.law.cornell.edu/cfr/text/45/160.103", "result": "confirmed"},
+    {"claim": "N.J.S.A. 2A:14-2 sets a two-year limitation for personal-injury actions", "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/308", "result": "confirmed"},
+    {"claim": "Gross margin ~80% at $650/mo against running cost of roughly $115-$140/mo", "source_url": "https://telnyx.com/pricing/voice-ai-agents", "result": "confirmed"},
+    {"claim": "Audit's recoverable staff time of about $2,700-$18,100 a year ($225-$1,508 a month)", "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ", "result": "not found"}
+  ],
+  "confidence": "High"
+}

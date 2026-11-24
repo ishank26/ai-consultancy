@@ -1,0 +1,131 @@
+{
+  "results": [
+    {
+      "ref": "B00048",
+      "name": "Weiner & Weiner, P.C.",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "The page has no contact details in its text and no email address - 'a visitor has to copy the number from a directory'",
+          "what_is_true": "The Contact section of the same single page publishes the full address (385 Cranbury Road, Suite 7, East Brunswick, NJ 08816), phone (732) 565-9400, fax (732) 565-0090, an email address linked three times as a mailto, and a Facebook page link. What is missing is a form and any click-to-call (zero tel: links); the phone is plain text. The earlier review appears to have read an extraction that dropped the contact <ul>.",
+          "source_url": "http://weinerandweiner.net/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 3
+      },
+      "notes": "Status re-confirmed: firm operating, 1996 founding, Jay A. Weiner sole attorney, East Brunswick office. HTTPS re-tested in Chrome: net::ERR_CERT_AUTHORITY_INVALID, and http:// also lands on the certificate warning, so the site is effectively unreachable for normal visitors and crawlers. Page is one long brochure page with anchor nav only, 0 forms, 0 JSON-LD, no tel: link, viewport meta present and no horizontal overflow at ~390-405 px, so 'phone_layout: broken' is better described as 'phone not clickable'. Google profile re-checked: Weiner & Weiner, P.C., 4.3 from 6 reviews, 'Claim this business' and 'Add hours' shown, website link present - unclaimed state confirmed. robots.txt returns 404 even over http, so 'not retrievable' is right. Gap stays large because of the certificate failure, but since phone and email are published I would not score the gap a full 5, and evidence should drop because a central detail was read wrong."
+    },
+    {
+      "ref": "B00260",
+      "name": "Oral Surgery Group (Dental Implants & Wisdom Teeth)",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "The contact page has no contact form at all (zero input fields), so every inquiry must be a phone call",
+          "what_is_true": "The page's only <form> is the site search, but the contact page embeds a third-party Liine request form in an iframe (forms.liine.com/231633500869962, rendered roughly 745x539 on screen) with Last/First Name, Email, Phone, 'scheduled with us before?', Preferred Location and Comments fields. Online enquiries can therefore be submitted; what is genuinely broken is the dead 'Schedule Consult' CTA and the 404 Forms nav item.",
+          "source_url": "https://oralsurgerygroup.com/contact-us/"
+        },
+        {
+          "claim": "The practice has 1,461 Google reviews at 4.9",
+          "what_is_true": "The Birdeye mirror of the Google profile now reads 4.9 with 1,489 reviews; the figure is drifting upward, not a fixed 1,461.",
+          "source_url": "https://reviews.birdeye.com/oral-surgery-group-146443259365815"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 5,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Confirmed separately: 'Schedule Consult' appears three times as an <a> with no href; clicking one at desktop width changed neither the URL nor the DOM and opened no modal. /forms/ soft-redirects to /404 ('404: Page Not Found'). Nav parents 'Forms' and 'About' have null hrefs while the working Doctor Referral (govos) and Patient Registration (mysecurepractice) links sit in the menu - confirmed. robots.txt is 'User-agent: *' plus one sitemap line. LocalBusiness JSON-LD contains streetAddress, telephone, openingHours and GeoCoordinates. At 390 px the first tel: link is ~9,100 px down the page and the header shows only Search and Menu, matching the mobile complaint; no horizontal overflow. No '$' figures or insurance/financing wording on the East Brunswick page. Google listing: claimed (no 'Claim this business'), 4.9, hours, phone and site link. Gap/scores: with a working (if buried) enquiry form the gap is smaller than scored and the evidence weaker, since the iframe was missed."
+    },
+    {
+      "ref": "B00665",
+      "name": "Busch and Busch, LLP",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No Google rating found",
+          "what_is_true": "A Google Business Profile exists: 'Busch & Busch', 2875 US-1, North Brunswick, Attorney, rated 3.0, showing 'Claim this business' and 'Add hours', linking to buschlaw.com. Review count is not shown in the signed-out view. So there is a GBP and it is unclaimed, with a low rating - which strengthens rather than weakens the record.",
+          "source_url": "https://www.google.com/maps/search/Busch+and+Busch+LLP+2875+US+Highway+1+North+Brunswick+NJ"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 5,
+        "ability_to_pay": 4,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "HTTPS re-tested: Chrome shows the 'Your connection is not private' interstitial and a raw client gets 'certificate has expired'; http:// redirects into the same failing certificate. After proceeding past the warning, the page confirms: document.title 'Busch and Busch, LLP', 0 h1, no viewport meta, exactly 8 images, 3 mailto links (mrb/rjb/beb@buschlaw.com), 0 tel: links, 0 forms, 0 JSON-LD, literal 'Title 1 / Title 2 / Title 3 / Title 4' and 'SECTION 4' headings, address 2875 U.S. Highway #1 at Finnegans Lane, phone 732 821-2300, fax 732 821-5588, single page with in-page anchors. Lawyers.com re-checked: 1.0 overall from 1 client review (Jan 2023, residential real estate, complaints about fees and non-response) and a Martindale peer score of 4.7 from 7 peer reviews. Gap 5 is right, but evidence should drop because the Google profile was missed; the 3.0 rating and unclaimed profile belong in the top issues."
+    },
+    {
+      "ref": "B05615",
+      "name": "Yuhas Plumbing & Heating",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Everything checked holds. Site loads over HTTPS with a CALL YUHAS PLUMBING / (732) 257-7013 button and 6 tel: links; there are no forms at all (the only two inputs are range sliders for before/after images), contact is mailto:YuhasPlumbers@gmail.com, nav is one-page anchors (/#services, /home#reviews, /home#contact), h1 reads 'No job is too small', copyright is 2025, and LocalBusiness JSON-LD carries the 33 Jackson Street address, telephone and email. No hours anywhere in the page text. /contact returns HTTP 404 from the Squarespace host. Google re-checked: Yuhas Plumbing & Heating, 4.2 from 28 reviews, with 'Claim this business', 'Add hours' and 'Add website' all shown, phone (732) 257-7013 - unclaimed state confirmed. Scores gap 5 / pay 4 / ease 5 / evidence 4 are reasonable."
+    },
+    {
+      "ref": "B07064",
+      "name": "Kelly & Company Hair Design",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Checked and holding: home page <title> is empty (a single space in the raw HTML), no meta description on home, footer links point at about.html / services.html / contact.html / booking.html and the header logo at /images/logo.png - all return HTTP 404 (about.html, booking.html and the logo tested directly). The working pages are /about-us/, /services/ and /booking/. Booking is a Contact Form 7 request form with name, phone, email, service, date and time fields plus 'We will call to confirm'; no booking platform. JSON-LD on home and services is only WebPage/BreadcrumbList/WebSite - no LocalBusiness. No '$' prices on home or /services/. Hours are real text (Tue-Fri 10-8, Sat 9-4, Mon closed). Maps: 'Kelly & Company Hair Design', 4.8, hair salon, 'Claim this business' shown, but the profile already has hours, phone, website and photos - so the 'claim and complete' opportunity is really just 'claim'. Scores are defensible, though gap_size 5 is slightly generous for a salon whose only real defects are metadata/links."
+    },
+    {
+      "ref": "B07107",
+      "name": "Hollander Electric Co LLC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Page titles carry a single emoji character as their only text ('document.title returned only an emoji')",
+          "what_is_true": "The emoji is an artefact of the browser session's tab-title handling, not the site. The raw HTML has a genuinely empty <title></title>, so the substance of the finding (no service or town text in any page title, no meta description) stands, but it is an empty title rather than an emoji one.",
+          "source_url": "https://hollanderelectric.com/"
+        }
+      ],
+      "notes": "Re-verified: raw HTML title empty, no meta description, 0 JSON-LD on the home page, 3 forms with hero/residential/quote fields (name, phone, service select, message), 8 tel: links, licence data in the top bar. Town pages: 30 distinct /electrician/<town> links on the home page (record says 31 - minor). Google: Hollander Electric, 4.8 from 207 reviews, claimed, hours, phone, owner-added photos ('By owner, a day ago'), no 'Claim this business' - so the 'claimed, complete, active profile' assessment is right. Scores gap 3 / pay 5 / ease 5 / evidence 5 remain reasonable; the only error is the emoji detail."
+    },
+    {
+      "ref": "B07370",
+      "name": "First Rehab",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-verified: the Locations page shows only 'First Rehab Lakewood' with 1352 River Avenue and footer 'in Lakewood, NJ'; both header tel: links are tel:+17328842020 (Lakewood), not the Spotswood number; page-sitemap.xml has no Spotswood page; the scheduling form's Location dropdown offers only 'Lakewood' and the form is behind reCAPTCHA. Home title does name both towns ('...Lakewood & Spotswood, NJ'), JSON-LD is a Yoast WebPage/BreadcrumbList/WebSite/Organization graph with no Spotswood NAP, copyright is 2026. Maps shows the Spotswood listing 'First Rehab Physical Therapy', 5.0 from 10 reviews, 404 Main St # A, (732) 251-6640 - plus a second, unreviewed listing 'First Rehab Outpatient Therapy Provider Spotswood', i.e. a duplicate profile the record did not flag. Scores gap 4 / pay 4 / ease 5 / evidence 5 are reasonable."
+    },
+    {
+      "ref": "B00151",
+      "name": "CME Associates (now Artheon)",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "The site's robots.txt (Cloudflare content signals) disallows GPTBot, ClaudeBot and most AI training crawlers while allowing Googlebot, OAI-SearchBot and PerplexityBot",
+          "what_is_true": "artheon.com/robots.txt is a plain Yoast block: 'User-agent: *' with an empty Disallow, plus one sitemap line. Every crawler, including GPTBot and ClaudeBot, is allowed - there is no Cloudflare content-signals policy.",
+          "source_url": "https://artheon.com/robots.txt"
+        },
+        {
+          "claim": "Page titles carry a stray emoji prefix ('🐴 Home - Artheon')",
+          "what_is_true": "The emoji comes from the browser tab session, not the site; the real title is 'Home - Artheon', with a vague slogan meta description ('transformative infrastructure solutions...').",
+          "source_url": "https://artheon.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 5,
+        "ease": 4,
+        "evidence": 4
+      },
+      "notes": "Contact page re-checked directly: 7 tel: links (Neptune, Camden, East Brunswick, Barnegat, Cape May Court House, Berlin and a 646 NYC number), no mailto links, no street addresses, no contact form (the only form is the cookie-consent panel plus a search box), literal 'Lorem ipsum dolor sit amet' post titles and visible spam comments. /market-sectors/ serves the theme's 'Page not found - Artheon' template, so the 404 complaint holds. Maps still shows 'CME Associates', Engineering consultant, cmeusa1.com, 3.9, with 'Add missing information' / 'Add a photo' prompts - rebrand gap confirmed. Ability to pay and ease are fine; evidence drops because of the robots.txt error, which also removes one of the stated reasons for the low findable score."
+    }
+  ],
+  "data_gaps": [
+    "Google Maps shows review counts only for some listings in the signed-out limited view; Kelly & Company, Oral Surgery Group, CME Associates/Artheon and Busch & Busch show a rating but no count, so those review totals could not be re-verified from Google directly.",
+    "The Oral Surgery Group contact form is a third-party iframe (forms.liine.com); I read its fields but did not submit anything, so it is unconfirmed whether a submission actually reaches the practice.",
+    "Busch and Busch's site content was only readable after clicking through Chrome's certificate interstitial; there is no HTTP fallback, so crawler behaviour is judged from the certificate failure alone.",
+    "Screenshots timed out in this browser session, so the 390 px checks were done by resizing the viewport and reading element geometry and overflow instead of visually inspecting rendered pages.",
+    "First Rehab's Spotswood Google listing did not expose its website URL in the limited Maps view, so the claim that the profile links to first-rehab.com was not independently re-confirmed."
+  ]
+}

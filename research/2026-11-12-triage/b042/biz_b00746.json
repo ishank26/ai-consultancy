@@ -1,0 +1,59 @@
+{
+  "name": "AmeriDental",
+  "town": "North Brunswick",
+  "ref": "B00746",
+  "status": "operating",
+  "website": "https://www.ameridentalnj.com/",
+  "what_they_do": "Family and cosmetic dental practice with two offices (1553 Ruth Road, Suite 3 in North Brunswick and 313 Courtyard Drive in Hillsborough), offering preventive, restorative, endodontic, periodontal, implant, Invisalign and cosmetic work. Site markets itself to families in central New Jersey with a specific nod to Indian families, publishes a special-offers page and 0% financing.",
+  "customers": "Families across North Brunswick, Hillsborough and central NJ; insurance and self-pay patients; a stated focus on Indian families.",
+  "size_signals": [
+    {"signal": "Two offices listed in the header of every page (North Brunswick and Hillsborough) with separate phone numbers", "source_url": "https://www.ameridentalnj.com/"},
+    {"signal": "One named dentist, Dr. Neelima Paladugu, on a staff page describing a wider 'team' without naming others", "source_url": "https://www.ameridentalnj.com/meet-the-doctor/"},
+    {"signal": "Careers page in the footer suggests active hiring", "source_url": "https://www.ameridentalnj.com/"},
+    {"signal": "Google rating 4.9 for the North Brunswick location", "source_url": "https://www.google.com/maps/search/AmeriDental+1553+Ruth+Rd+North+Brunswick+NJ"}
+  ],
+  "listing": {"platform": "Google Maps / Google Business Profile", "rating": "4.9", "reviews": "count not displayed in the limited Maps view I could load", "source_url": "https://www.google.com/maps/search/AmeriDental+1553+Ruth+Rd+North+Brunswick+NJ"},
+  "website_review": {
+    "loads": true,
+    "https": true,
+    "phone_layout": "broken",
+    "clear_offer": true,
+    "primary_cta": "'Make an Appointment' buttons that go to /contact/ (form only); no booking engine",
+    "click_to_call": true,
+    "contact_form": true,
+    "online_booking_or_quote": "No online booking. The contact page has a long Contact Form 7 request form (name, phone, email, preferred contact method, new/existing, desired location, appointment type, referral source, insurance provider, urgent concerns, notes) with no visible CAPTCHA.",
+    "trust_signals": "Social profiles linked (X, Facebook, Instagram), 0% interest financing, special offers page, technology page, blog, both office addresses and hours, Google rating not shown on site",
+    "out_of_date_signs": "Phone numbers disagree across the site and with Google (home 732-274-0100, contact/office pages 732-785-4019, Google 732-656-8524); mobile home page hero slider renders as a large blank panel; duplicate/overlapping service menu entries (Fillings and Cosmetic Dentistry appear twice)",
+    "search_basics": "Good titles and descriptions naming dentist + North Brunswick, ~20 service pages each with a town-targeted URL, sitemap.xml; hours and addresses are real text",
+    "top_issues": [
+      "Three different phone numbers in circulation (site header, contact page, Google listing)",
+      "No online scheduling - every appointment request is a form a human must answer",
+      "Mobile home page first screen is blank until the slider loads, with no visible CTA"
+    ]
+  },
+  "agent_readiness": {
+    "findable": 2,
+    "answerable": 2,
+    "bookable": 1,
+    "notes": "Findable: robots.txt only disallows /wp-admin, so all major crawlers including OAI-SearchBot and PerplexityBot are allowed; however the Google profile shows a different phone number than the website and no 'Book online' button, and hours across the two offices differ, which confuses both humans and agents. Answerable: hours for both offices, addresses, service list and insurance/financing text are crawlable, but the only JSON-LD is an Organization graph with no Dentist/LocalBusiness node carrying hours or price range, and the page never states prices. Bookable: form-only - no availability, no confirmation, placeholder-labelled inputs rather than proper labels."
+  },
+  "operations_signals": [
+    {"signal": "Appointment requests land in a long form covering insurance and urgency, implying staff manually triage and call back each one", "source_url": "https://www.ameridentalnj.com/contact/"},
+    {"signal": "North Brunswick office is part-time (Mon/Tue/Fri 1-7pm, Wed closed, Thu/Sat 10-3) while Hillsborough runs separate hours - staff must route patients between sites", "source_url": "https://www.ameridentalnj.com/our-dental-office-in-north-brunswick/"},
+    {"signal": "Careers link in the footer (inference: hiring/understaffed front desk), page itself not reviewed", "source_url": "https://www.ameridentalnj.com/"}
+  ],
+  "top_opportunities": [
+    {"opportunity": "Fix the name/address/phone mess and claim-complete the Google profiles: one phone number everywhere, per-location hours and services, booking link", "type": "search", "evidence": "Home header says (732) 274-0100, contact and office pages say (732) 785-4019, Google Maps shows (732) 656-8524 - three numbers for one practice", "effort": "S"},
+    {"opportunity": "Add real online scheduling (per location) so a patient's agent can book without a phone call, with the form shortened to a fallback", "type": "agent readiness", "evidence": "Every CTA points to a 9-field contact form; nothing on the site offers available times", "effort": "M"},
+    {"opportunity": "Rebuild the mobile home page: load the hero instantly, put a click-to-call and a book button above the fold, and stop stacking two office addresses at the very top", "type": "website", "evidence": "At 390px the first screen was two address lines, a logo, a hamburger and an empty white hero panel", "effort": "S"}
+  ],
+  "scores": {"gap_size": 3, "ability_to_pay": 4, "ease": 4, "evidence": 4, "reasons": "Gap: solid content depth but broken mobile hero, no scheduling and inconsistent contact data. Pay: two-location practice with implant/Invisalign mix and financing partnerships. Ease: NAP cleanup, scheduling embed and a mobile hero fix are all short engagements. Evidence: visited home, contact, office and doctor pages, robots.txt and Google Maps profile; reviewed mobile at 390px."},
+  "sources": [
+    "https://www.ameridentalnj.com/",
+    "https://www.ameridentalnj.com/contact/",
+    "https://www.ameridentalnj.com/our-dental-office-in-north-brunswick/",
+    "https://www.ameridentalnj.com/meet-the-doctor/",
+    "https://www.ameridentalnj.com/robots.txt",
+    "https://www.google.com/maps/search/AmeriDental+1553+Ruth+Rd+North+Brunswick+NJ"
+  ]
+}

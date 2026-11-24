@@ -1,0 +1,178 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Impact: about 78-156 staff hours a year ... = about $4,700-$9,400 a year (section 2)",
+      "problem": "Arithmetic rounding: 156 hours x $60.59 = $9,452, which rounds to about $9,500, not $9,400. The error is ~$52, conservative and inside the 'about' qualifier, so it does not misstate the benchmark or inflate anything.",
+      "fix": "Change the upper bound to 'about $9,500' or write '$4,700-$9,500'."
+    },
+    {
+      "claim": "Consultation requests arrive by form with no calendar (intro)",
+      "problem": "The consultation page is indeed a form, but the firm's header, every service page and the consultation sidebar also push a phone number (732-906-9277) as the primary route, so 'arrive by form' reads as form-only and understates the phone channel that section 2's agent would also need to cover.",
+      "fix": "Say 'requests arrive by phone or a form with no calendar', or qualify as 'the web route to a consultation is a form with no calendar'."
+    },
+    {
+      "claim": "25-40 books a month (section 1 impact working)",
+      "problem": "Client book count is not public anywhere; the figure sits inside a bracket that ends '...our assumption', but unlike section 3 it is not prefixed, so a reader can take 25-40 as an observed number rather than a guess.",
+      "fix": "Match the section 3 convention: '(our assumption: 25-40 books a month x 12 closes x 1.5-3 hours each x 50% handed over)'."
+    },
+    {
+      "claim": "Payroll, AP/AR, bank and card reconciliations and month-end closings are offered as ongoing outsourced services (section 1 Now)",
+      "problem": "The outsourced accounting page lists those services but publishes no cadence or frequency, so 'ongoing' is a light inference (reasonable, since month-end closings recur, but not stated). The audit's own source note already concedes 'cadence not published'.",
+      "fix": "Drop 'ongoing' or write 'offered as recurring outsourced services (cadence not published)'."
+    },
+    {
+      "claim": "Section heading 'For the founder (not part of the audit)'",
+      "problem": "The research profile records the decision-maker as Unknown and the site publishes no owner, managing partner or founder title, so the label presumes a founder addressee. The email and opener themselves are safe because they use [Name] placeholders and make no claim about the person.",
+      "fix": "Relabel 'For the owner / decision-maker' and confirm the name and title before sending; keep the placeholders as written."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Business is 'Gaines & Associates, PC', an Edison, NJ CPA firm",
+      "source_url": "https://www.gainescpacfo.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Firm 'leads with virtual CFO work'",
+      "source_url": "https://www.gainescpacfo.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Outsourced accounting forms part of that CFO offering",
+      "source_url": "https://www.gainescpacfo.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Clients are nationwide",
+      "source_url": "https://www.gainescpacfo.com/careers.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site-wide Tax Services menu lists tax planning and tax preparation",
+      "source_url": "https://www.gainescpacfo.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "our-accounting-services.htm service sections are Accounting and Bookkeeping, Financial Services, Payroll, QuickBooks, and Estate and Trust Planning",
+      "source_url": "https://www.gainescpacfo.com/our-accounting-services.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Payroll, AP/AR, credit-card and bank reconciliations and month-end closings are offered as outsourced services",
+      "source_url": "https://www.gainescpacfo.com/outsourced-accounting-and-bookkeeping.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'Ongoing' cadence of those outsourced services",
+      "source_url": "https://www.gainescpacfo.com/outsourced-accounting-and-bookkeeping.htm",
+      "result": "not found"
+    },
+    {
+      "claim": "QuickBooks service line exists and sits alongside the other services",
+      "source_url": "https://www.gainescpacfo.com/quickbooks-accounting.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Consultation page is a form with no calendar and no qualifier questions",
+      "source_url": "https://www.gainescpacfo.com/consultation.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A free initial consultation is the offer",
+      "source_url": "https://www.gainescpacfo.com/consultation.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Files come through a secure link in the site header (ProtectedXchange)",
+      "source_url": "https://www.gainescpacfo.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Accountants and auditors, NJ, May 2025 median $100,830 = $48.48/hour, x1.25 = $60.59 (section 1 and 2 rate)",
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000013201113",
+      "result": "could not open"
+    },
+    {
+      "claim": "Same accountants-and-auditors median corroborated at $100,830/year and $48.48/hour for NJ, May 2025 OEWS",
+      "source_url": "https://fedsalary.com/us/jobs/accountants-and-auditors/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Tax preparers, NJ, May 2025 median $43,420 = $20.88/hour, x1.25 = $26.09 (section 3 rate)",
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/OEUS340000000000013208213",
+      "result": "could not open"
+    },
+    {
+      "claim": "Same tax-preparer median corroborated at $43,420/year and $20.88/hour for NJ, May 2025 OEWS",
+      "source_url": "https://fedsalary.com/us/jobs/tax-preparers/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 1 hours and dollars: 25-40 books x 12 closes x 1.5-3 hrs x 50% = 225-720 hours; x $60.59 = $13,633-$43,625, stated as about $13,600-$43,600",
+      "source_url": "internal arithmetic against confirmed rates",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2 hours and dollars: 52 weeks x 3-6 hrs x 50% = 78-156 hours; x $60.59 = $4,726-$9,452, stated as about $4,700-$9,400",
+      "source_url": "internal arithmetic against confirmed rates",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 3 hours and dollars: 3-5 staff x 500 hrs x 10-20% = 150-500 hours; x $26.09 = $3,914-$13,045, stated as about $3,900-$13,000",
+      "source_url": "internal arithmetic against confirmed rates",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Impact ranges carry stated assumptions rather than asserted measurements",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No claim in the audit body rests on LinkedIn job postings, Google Maps hours or review data (none are cited in the body)",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body is at most about 450 words (counted from title through the closing disclaimer, excluding the 'For the founder' section: approx. 433 words)",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email opener describes three opportunities: multi-client close exceptions, first response to consultation requests, tax-season lookups and tie-out",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email says the estimates are labelled and show their working, and offers sources",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email says the writer read the firm's service and consultation pages (both pages exist and were read)",
+      "source_url": "https://www.gainescpacfo.com/our-accounting-services.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email/opener suggest a 20-minute walkthrough and a small paid pilot on a few client books, matching the audit's suggested first step",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email and walk-in opener contain no invented name, title, personal contact detail or insider reference (placeholders only)",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit names no owner/partner and asserts nothing about who the decision-maker is",
+      "source_url": "audit.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business contact details used anywhere in the audit are correct (audit body carries none; the site's published line is 732-906-9277 and address 105 Fieldcrest Ave, Suite 501, Edison NJ)",
+      "source_url": "https://www.gainescpacfo.com/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

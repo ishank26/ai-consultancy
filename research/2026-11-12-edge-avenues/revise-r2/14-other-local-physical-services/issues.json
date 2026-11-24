@@ -1,0 +1,22 @@
+[
+ {
+  "claim": "[LAUNDROMATS] \"the association's 2024 operator survey reported median gross revenue of $335,000 for 2023 and a 25.5% average net margin\" (source_url laundryassociation.org/for-investors/industry-overview/)",
+  "problem": "Half of this is wrong as sourced. I opened the CLA/Readex 2024 Laundry Industry Survey PDF (member.laundryassociation.org/hubfs/IndustrySurvey24.pdf, 377 respondents, fielded Apr-Jun 2024): Q16 gives median 2023 gross revenue $335,000 (mean $334,000) - that part is confirmed. But Q19 reports operating net profit (before taxes, debt service, owner compensation) for the same 2023 store year as mean 26% / median 27%, not 25.5%. The 25.5% figure belongs to a different CLA page (FullCycle, 'The Mom-and-Pop Era', which reports average margin rising from 17.9% in 2022 to 25.5% in 2023), and the cited industry-overview URL is the page that carries the 29,500 stores / ~$5B revenue figures, not the margin. The industry-overview page itself returned HTTP 403 on three fetch attempts, so its exact contents could only be read through the search index.",
+  "fix": "Split the sentence: cite the industry overview for 29,500 stores and ~$5B, cite the 2024 CLA survey PDF for median 2023 gross revenue of $335,000 and ~26% mean operating net profit (27% median), and either drop 25.5% or move it to its own item citing the CLA FullCycle article. Do not present 25.5% as a 2024-survey figure."
+ },
+ {
+  "claim": "CountPort pricing: \"From $29/camera/month; $39 on Pro; example 3-camera gym $117/month monthly, $96/month billed yearly\"",
+  "problem": "The pricing page states \"Plans start at $29 per camera a month\" and gives the 3-camera gym example ($117/mo on Pro, $96/mo billed yearly), but it never prints a $39 per-camera Pro rate. $39 is 117/3 - correct arithmetic, but it is presented as a page-stated price.",
+  "fix": "Write it as \"$117/month for a 3-camera gym on Pro (i.e. about $39/camera, derived)\" or label the per-camera Pro rate as an inference."
+ },
+ {
+  "claim": "N.J.S.A. 2C:14-9 restated as: it \"criminalises observing another person ... where the actor knows he is not licensed or privileged to do so, the person's intimate parts are exposed or they are engaged in sexual penetration or sexual contact, consent is absent, and a reasonable person would not expect to be observed.\"",
+  "problem": "The elements are merged from two different subsections. Subsection a (observing) requires circumstances in which a reasonable person would know that another may expose intimate parts or engage in sexual penetration or sexual contact - exposure at the moment of observation is not an element of the observing offence. The intimacy/exposure element the brief attaches belongs to subsection b (photographing/filming/recording). The overall conclusion (an intimate-parts offence, not a general recording ban; subsection d notice-plus-lawful-purpose affirmative defence; subsection e fitting-room carve-out only with conspicuous posting) checks out verbatim against the statute.",
+  "fix": "Split the sentence into the a. and b. prongs as the statute does; keep the existing conclusion, which is supported."
+ },
+ {
+  "claim": "S-4075 \"as of Nov 12, 2026 it had been referred to the Senate Budget and Appropriations Committee and is not law\"",
+  "problem": "The 60-day written notice, the private-area limits, the 18-month effective date and the fact that it is bill-form/not enacted are all confirmed in the bill text I opened. The committee referral and the Nov 12, 2026 'as of' status are not: the bill-text page carries no history line, and the njleg bill-search page returned incomplete extraction (legiscan returned 403).",
+  "fix": "Either drop the referral and say \"introduced in the 2026 session; not law\", or verify the referral against the njleg bill-history page before keeping the date-stamped status."
+ }
+]

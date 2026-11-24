@@ -1,0 +1,52 @@
+[
+ {
+  "claim": "suggested_pricing.reasoning: \"a first-year total of roughly USD 12,500 (3,500 set-up + 12 x 750)\"",
+  "problem": "Contradicts the plan's own monthly_fee line (\"USD 750/month for months 1-3, then USD 850/month\"). Twelve months at that schedule is 3 x 750 + 9 x 850 = USD 9,900, so first-year total is USD 13,400, not USD 12,500. The \"12 x 750\" arithmetic only holds if the price never steps up, which the fee schedule says it does.",
+  "fix": "Recompute as USD 13,400 (3,500 + 9,900) or restate the fee schedule so the number matches; use one consistent figure everywhere it appears."
+ },
+ {
+  "claim": "suggested_pricing.reasoning: \"USD 12,500 in year one ... only about 46% of the midpoint (about USD 26,000)\"",
+  "problem": "Percentage is wrong. 12,500 / 26,000 = 48.1%, not 46%; with the correct year-one figure (13,400) it is 51.5%. The midpoint itself (26,000, from 11,300-40,700) is correct.",
+  "fix": "Change to \"about 48%\" on the USD 12,500 basis, or \"about 52%\" on the USD 13,400 basis."
+ },
+ {
+  "claim": "suggested_pricing.reasoning: \"USD 12,500 in year one sits at the bottom of that range and ... survives the low case if certificate volume turns out smaller than assumed\"",
+  "problem": "Depends on the miscomputed year-one figure. On the plan's own schedule the agency pays USD 13,400 in year one, which is above the low end of the audit's own benefit range (USD 11,300) - so the low-case claim does not hold as written.",
+  "fix": "Either drop the \"survives the low case\" sentence or reword it honestly: at USD 13,400 the fee exceeds the low-case benefit estimate and only beats the midpoint/likely case."
+ },
+ {
+  "claim": "running_costs: \"Backups and off-site copy ... required because New Jersey recordkeeping rules require daily backups and off-site copies at least every 30 days\" (source_url N.J.A.C. 11:17C-2.5)",
+  "problem": "The rule is real and says what the plan claims, but it is N.J.A.C. 11:17C-2.6(c)(3) (\"electronic back ups are produced daily and, at least every 30 days, the records ... reproduced and stored off-site\"), not 11:17C-2.5, which is the minimum-recordkeeping section and contains no backup requirement. The cited page does not support the claim.",
+  "fix": "Re-point the citation to https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17C-2-6 (keep 11:17C-2.5 for the five-year client-file retention)."
+ },
+ {
+  "claim": "competitors: Direct hire \"USD 50,000-60,000/year posted for the CSR/Assistant Account Manager role (USD 60,000-90,000 for Commercial Lines Account Manager)\" (Glassdoor job listing)",
+  "problem": "Could not open: the Glassdoor URL returns HTTP 403 and searches surfaced no other copy of these bands. Two other evidence URLs in the plan are also dead (dashboard.idealtraits.com posting = HTTP 404, app.idealtraits.com posting = HTTP 410, no Wayback snapshots), so the AMS360 evidence and the stated duty list for that posting are likewise unverifiable. Nothing contradicts these figures, but no reachable source supports them either.",
+  "fix": "Re-cite from a live page (the agency's own careers page, Indeed, or an archived copy you can open) or relabel the bands as \"reported, source not currently reachable\" and stop using them as a confirmed anchor in the pricing argument."
+ },
+ {
+  "claim": "competitors: Certificate Hero price \"Not public - quoted case by case based on certificate type and level of customisation\" (source_url support.certificatehero.com/faqs)",
+  "problem": "The cited FAQ page contains no pricing information at all, and no page stating a custom-quote basis by certificate type/customisation was found (certificatehero.com/pricing returns 404). \"No published price found\" is supported; the specific quote basis is not.",
+  "fix": "Reduce to \"No published price found; quote on request\" and drop the unsupported \"based on certificate type and level of customisation\", or cite a page that actually says it."
+ },
+ {
+  "claim": "solution.components: Model access - \"Both publish no-training terms on the paid tier\" (source_url docs.claude.com/en/docs/about-claude/pricing)",
+  "problem": "Half-supported. The Gemini pricing page does show free tier \"used to improve our products: Yes\" and paid tier \"No\". The Anthropic model-pricing page cited contains no statement about training or retention, so the Claude half of \"both publish no-training terms\" is not evidenced by the cited source.",
+  "fix": "Cite Anthropic's commercial terms / privacy page for the Claude no-training point, or restrict the claim to Gemini."
+ },
+ {
+  "claim": "risks_compliance: free-tier model use - mitigation includes \"paid tier only, US-only inference where offered (1.1x price multiplier)\" (source_url Gemini API pricing)",
+  "problem": "The 1.1x US-only multiplier is a Claude (Anthropic) data-residency term; it does not appear on the cited Gemini pricing page. The rule as written for Claude is confirmed, but it is attributed to the wrong vendor page.",
+  "fix": "Attribute the 1.1x multiplier to the Anthropic pricing page and state separately what Google's US-only/residency options cost, or drop the parenthetical."
+ },
+ {
+  "claim": "competitors: Certificate Hero \"realtime AMS sync (auto-syncs every four hours)\"",
+  "problem": "\"Realtime\" is contradicted by the plan's own parenthesis and by the source (an automatic sync every 4 hours plus a manual sync button). Internally inconsistent wording in a competitor comparison.",
+  "fix": "Say \"near-real-time AMS sync (automatic every 4 hours, manual re-sync on demand)\"."
+ },
+ {
+  "claim": "competitors: Certificate Hero \"live ACORD editor with validation, endorsement library, full action logging, insured self-service portal and an open API\" (source_url support.certificatehero.com/faqs)",
+  "problem": "Only the endorsement limitations, the 4-hour sync and the certificate manager are on the cited page; the editor/validation, endorsement library, action logging, self-service portal and open-API claims are not evidenced there (they may be true but are unsourced).",
+  "fix": "Add the specific Certificate Hero pages that show those features, or trim the feature list to what the FAQ supports."
+ }
+]

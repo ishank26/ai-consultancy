@@ -1,0 +1,83 @@
+{
+  "business": "Packaging & Distribution Resources (PDR)",
+  "industry": "logistics-3pl",
+  "town": "Edison, NJ",
+  "opportunities": [
+    {
+      "title": "Order-exception triage and resolution agent across 30+ sales channels (Order Desk + Dynamics)",
+      "capability": "A",
+      "problem": "PDR routes multi-channel orders from 30+ front-end platforms through Order Desk and Microsoft Dynamics, and the org chart staffs that load with a single EDI Analyst plus Order Processing and Customer Relations roles. Order edits, bundling problems and channel-specific failures land as exceptions rather than as a triaged queue, so each one is re-read and re-keyed by a clerk before anyone ships it. With four regions now live on the same stack (Edison, Fort Worth, Valencia, Toronto), the exception volume grows while the clerk headcount does not.",
+      "evidence": [
+        "Integrates with over 30 front-end platforms on Microsoft Dynamics ERP, supported by in-house programmers and EDI experts — https://www.pdrnj.com/pdr-technology/",
+        "Order Desk order management software handles multi-channel order edits, bundling and fulfillment rules for e-commerce customers — https://www.pdrnj.com/services/e-commerce-fulfillment/",
+        "Org chart names a single EDI Analyst alongside Order Processing Manager, Inventory Clerk and Shipping Clerks — the roles most exposed to exception handling — https://www.pdrnj.com/our-people/",
+        "Toronto went live September 2026 on the same order systems as Edison, which multiplies exception surface without disclosed added corporate headcount (headcount on PDR's own pages reads 250+ vs 300+, implying rapid growth) — https://www.pdrnj.com/pdr-expands-operations-into-canada-with-fully-operational-toronto-fulfillment-facility/ and https://www.pdrnj.com/our-people/",
+        "INFERENCE (not stated by PDR): because Order Desk is described only as an order-management layer with 30+ integrations and no ticketing or exception-queue tooling appears anywhere on the site, exceptions are most likely worked from a shared inbox/spreadsheet rather than an assigned queue. Basis: technology and e-commerce pages plus absence of any help-desk tool in the page source/sitemap noted in the profile.",
+        "3PL task family is a documented manual hotspot: clerks confer with carriers and establishment reps to rectify damages, shortages and nonconformance, and revise schedules for shortages and backlogs — https://www.onetonline.org/link/summary/43-5071.00 and https://www.onetonline.org/link/summary/43-5061.00"
+      ],
+      "agent_design": "Event-driven agent subscribed to Order Desk/Dynamics order events (new order, edit request, address or SKU mismatch, out-of-stock substitution, duplicate, channel spec violation). For each event it classifies the exception, gathers the client's stored fulfillment rules and prior resolutions for that client, proposes a fix (split shipment, substitute, hold, re-rate, reship), and writes it back through the same API path a clerk uses. Auto-executes only the narrow, reversible classes (address standardization, duplicate suppression, bundle re-expansion, status notification) and routes everything else to a human approval card with the proposed action, the rule it is based on and a one-click approve/edit/reject. Every decision is logged per client for chargeback defence. Hard stop: no pricing, credit or claims decisions without a human.",
+      "why_not_DIY": "A chatbot subscription cannot subscribe to Order Desk and Dynamics events, cannot write back into the order record, and has no per-client rule memory. Making this reliable means authenticated two-way ERP/OMS integration, per-client data isolation across 100+ brand clients, idempotent retries so an approved edit never double-ships, and an audit trail per client contract. O*NET work-context data also caps autonomy: shipping/receiving clerks have only 'some freedom' to make decisions (63%), so the agent must be a proposal engine with approved exceptions, not an autonomous actor — https://www.onetonline.org/link/summary/43-5071.00",
+      "impact_estimate": {
+        "range": "$25,000–$60,000/yr of clerk time, roughly 900–2,200 hours of order-processing/expediting and EDI work",
+        "assumptions": "Assumes 1.5–3.0 FTE-equivalent of PDR staff currently touch channel exceptions (headcount by function is not disclosed, so this is an inference from the named clerk/analyst roles). Assumes 30–50% of that exception handling is automatable or deflected, and blends NJ median wages of $30.15/hr (planner/expediter), $22.95/hr (customer service rep) and $21.85/hr (shipping/receiving clerk) at ~$27–28/hr. Excludes revenue effects (faster ship confirmation, fewer chargebacks) and excludes any reduction in picking labor, which the brief shows is not where the wage case is strongest.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ"
+      },
+      "complexity": "High",
+      "pilot_scope": "2–4 weeks on one channel and one high-volume client: read-only event tap on Order Desk to measure real exception volume and types for 10 business days, then a classifier plus human-approval queue for the top three exception classes, with a before/after table of exceptions auto-resolved vs clerk-handled and average resolution hours."
+    },
+    {
+      "title": "Quote-to-onboarding intake agent for the Excel questionnaire and info@ inbox",
+      "capability": "A",
+      "problem": "Every new piece of business enters through a downloaded Excel 'New Customer Questionnaire' that the prospect fills in offline and emails to a generic info@ address, from which pricing is prepared. There is no form logic, no estimator, no CRM hand-off and no client portal on the site. That makes quote turnaround a function of who is at their desk, at exactly the moment PDR is trying to fill 150,000 sq ft of new Toronto capacity and win business away from competitors on responsiveness.",
+      "evidence": [
+        "Pricing page requires prospects to download an Excel New Customer Questionnaire and email the completed form to info@pdrnj.com for a personalised quote — https://www.pdrnj.com/pricing/",
+        "Contact page offers one phone number and one generic free-text form routed to info@; no booking, quote calculator or client login exists in the page source or sitemap — https://www.pdrnj.com/contact/",
+        "Toronto (150,000 sq ft) became fully operational September 2026 and PDR is adding a bonded/freight-forwarding component next, so new-client intake volume is rising, not flat — https://www.pdrnj.com/pdr-expands-operations-into-canada-with-fully-operational-toronto-fulfillment-facility/",
+        "PDR markets 100+ clients and a ~45-brand logo wall but publishes no self-serve intake, so the questionnaire loop is the actual front door — https://www.pdrnj.com/about-us/",
+        "INFERENCE (not stated by PDR): quote turnaround likely varies with individual staff availability rather than a standard clock. Basis: the only published path is an offline spreadsheet emailed to a shared inbox with no CRM, ticketing or SLA published anywhere on the site."
+      ],
+      "agent_design": "Two-stage agent. Stage 1 (intake): reads inbound email and web-form submissions, extracts order-profile facts (SKUs, channels, monthly volume, kitting steps, hazmat/temperature needs, ship-to regions), detects missing or contradictory answers and sends one consolidated clarification email back to the prospect in PDR's voice, then assembles a complete, validated quote packet. Stage 2 (pricing support): drafts rate scenarios from PDR's own approved rate cards and the client's region mix (NJ/TX/CA/Toronto), flags items that need a human rate decision (custom kitting, bonded Canada flows), and posts a ready-to-review quote with the assumptions listed. A human pricing owner approves every number before it leaves the building; the agent never sends a price on its own.",
+      "why_not_DIY": "Off-the-shelf form builders still leave a human to read free-text answers and reconcile them against rate cards; the value is in parsing inconsistent prospect language, checking it against PDR's own pricing logic and warehouse capability by region, and keeping per-client confidentiality. It also has to sit next to Dynamics so an approved quote becomes a client record without re-keying — that is integration and workflow engineering, not a subscription.",
+      "impact_estimate": {
+        "range": "$12,000–$25,000/yr of quote-preparation hours (roughly 500–800 hours) plus faster first response on inbound inquiries",
+        "assumptions": "Assumes 15–40 quote requests per month at 2–6 hours of prep each (volume and prep time are not published — inference from the manual spreadsheet loop). Assumes a 35–55% cut in prep and clarification time. Valued at NJ medians of $22.95/hr (customer service rep) to $30.15/hr (planner/expediter). The revenue effect of faster turnaround is deliberately excluded because no win-rate or cycle-time data exists.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2–4 weeks: replace the Excel round-trip for new inquiries with a validated intake (structured web form feeding the same agent, plus an email parser for questionnaires already in flight), auto-draft one quote packet per week for human approval, and report median inquiry-to-quote-ready hours before vs after."
+    },
+    {
+      "title": "Per-client knowledge and order-status agent for 100+ brand clients across four regions",
+      "capability": "C",
+      "problem": "PDR supports 100+ clients, most of them beauty/cosmetics and TV-shopping brands, across four regions and multiple shifts, with a single phone number, a generic info@ inbox and no chat widget, portal or published after-hours line. 'Where is my PO / why did that line ship short / what is your kitting spec for this SKU' questions therefore land on named individuals — Customer Relations, Order Processing, Returns Manager — and the answer depends on someone remembering that client's SOP. Every new site (Toronto) and every new client adds another private rulebook to memorise.",
+      "evidence": [
+        "100+ clients, 20+ assembly lines, six Edison buildings and 300+ full-time associates, with a Night Shift Manager role implying multi-shift coverage but no advertised 24/7 support line — https://www.pdrnj.com/about-us/ and https://www.pdrnj.com/our-people/",
+        "Customer-facing contact surface is a single phone number and a generic form; no chat widget, client login or portal exists in the page source or sitemap — https://www.pdrnj.com/contact/",
+        "Client-specific rules already exist in volume: 30+ channel integrations, per-client ERP configuration in Microsoft Dynamics, and client-specific returns, kitting and assembly workflows — https://www.pdrnj.com/pdr-technology/ and https://www.pdrnj.com/services/back-office-solutions/",
+        "Measured evidence for this exact task family: access to a generative-AI conversational assistant raised issues resolved per hour by 14% on average and 34% for novice/low-skilled agents, with better customer sentiment — working paper (NBER WP 31161, 2023; published version in QJE 140(2), 2025 per the NBER page), field study of 5,179 support agents in a different industry — https://www.nber.org/papers/w31161",
+        "INFERENCE (not stated by PDR): the marginal value is highest on second and third shift and at the new Toronto site, where fewer experienced people are on hand and the 48-hour dock-to-stock promise leaves little slack. Basis: 'Dock to Stock in 48 Hours' commitment at https://www.pdrnj.com/automation/ plus the Night Shift Manager title."
+      ],
+      "agent_design": "Read-only retrieval agent grounded in each client's own documents (SOPs, kitting/packaging specs, routing guides, retailer compliance notes, rate and SLA terms) plus live order status pulled from Order Desk/Dynamics. Triggers: inbound email to the client-service queue, or a staff question inside the operation. It answers only when it can cite the client document or order record, always scoped to that client's namespace; anything ambiguous, commercial or exception-flavoured escalates to the account owner with a draft reply attached. Staff-facing first (internal Slack/Teams/email), client-facing later once accuracy is measured. No writes to order records in phase one.",
+      "why_not_DIY": "A general chatbot has no access to the client's SOPs, no view of live order status and no way to enforce that Client A's answer never leaks Client B's spec — a real contractual risk with 100+ brand clients, several of them retailers' vendors. Getting this right needs per-client document isolation, retrieval accuracy measurement, citation-enforced answers and an escalation path; that is deployment engineering with a data-privacy boundary, not a seat licence.",
+      "impact_estimate": {
+        "range": "$12,000–$40,000/yr of client-service capacity, roughly 500–1,850 hours",
+        "assumptions": "Assumes 3–6 FTE-equivalents in client relations/order processing answering status and spec questions (functional headcount is not disclosed — inference from named roles). Applies 8–15% productivity gain, deliberately below the 14% average and 34% novice figure from the working paper because that study is from a different industry, involved a live chat assistant rather than document retrieval, and PDR's volumes are unknown. Valued at the NJ customer service rep median of $22.95/hr ($47,740/yr). Excludes the unpriced value of covering second/third shift and Toronto from Edison.",
+        "benchmark_source_url": "https://www.nber.org/papers/w31161"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "2–4 weeks on two clients with the richest SOP binders: ingest their specs and routing guides, stand up an internal-only Q&A agent over email/Teams, log every question with a citation and an accuracy judgement from the account owner, and deliver an accuracy score plus the top 20 questions that could be deflected from staff next quarter."
+    }
+  ],
+  "lead_score": {
+    "pain": 24,
+    "fit": 18,
+    "ability_to_pay": 15,
+    "ease": 12,
+    "strategic": 13,
+    "total": 82,
+    "rationale": "Pain (24/30): the manual quote loop (Excel questionnaire emailed to info@), the single generic contact channel and a 30+ channel order stack staffed by one named EDI Analyst are all first-party facts on PDR's own site, and the September 2026 Toronto launch adds a fourth region on the same systems. Points are withheld because there are no customer reviews, no complaints corpus and no job postings to confirm volume, so effort magnitudes are inferred. Fit (18/20): the pain sits squarely in capabilities A and C, the stack (Dynamics + Order Desk, 30+ integrations, in-house programmers and EDI experts) is integration-friendly, and automation is already a board-level theme ('Dock to Stock in 48 Hours', mobile robots, VLMs). Ability to pay (15/20): 300+ staff, 600,000+ sq ft across six Edison buildings, three U.S. regions plus Toronto and 100+ clients indicate real revenue, but it is a private, thin-margin 3PL with no disclosed revenue and QCEW shows NJ warehousing employment shrinking while wages rise — a margin-squeeze buyer, not a free spender. Ease (12/15): a single-site, single-client pilot is easy to bound, but procurement will run through an in-house programming team (a build-vs-buy objection), per-client data isolation is required, and the CEO is the identifiable decision maker with no published ops-leadership layer. Strategic (13/15): Middlesex County alone holds 251 private NAICS-493 establishments and 27,047 employees (BLS QCEW 2025 Q1), so the quote-intake and exception-triage patterns are resellable almost unchanged across the county's 3PL base; the same build serves F (AgentOps) recurring revenue. Evidence is not thin on operational facts, but it is thin on measured pain — no reviews, no hiring data, no revenue."
+  },
+  "best_evidence_signal": "Every new client must download an Excel questionnaire, fill it in offline and email it to a generic info@ inbox for pricing, while the site exposes no form logic, CRM hand-off or client portal — https://www.pdrnj.com/pricing/",
+  "suggested_channel": "email to info@pdrnj.com, then LinkedIn follow-up to Jack Sandbach (Founder & CEO, named on https://www.pdrnj.com/our-people/)",
+  "evidence_thin": false
+}

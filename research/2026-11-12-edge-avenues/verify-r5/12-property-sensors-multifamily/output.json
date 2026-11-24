@@ -1,0 +1,183 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Alert Labs pricing: 'Unknown (quote only; FAQ directs customers to request a quote)'",
+      "problem": "Minor wording imprecision, not a number error. The FAQ page does not use the word 'quote'; it says 'For questions about pricing, insurance, and choosing a system, contact us.' The substance (no public price) is correct.",
+      "fix": "Reword to 'FAQ gives no price and routes pricing questions to a contact form'."
+    },
+    {
+      "claim": "BLS loaded cost: 'an hour of manual rounds or after-hours leak response is roughly $40-50/hr fully loaded (inference: median annual wage / 2,080 hours plus ~30% burden)'",
+      "problem": "The stated arithmetic does not reproduce the stated range. $82,850 / 2,080 = $39.83/hr (this equals the O*NET hourly mean); adding a 30% burden gives about $51.80, i.e. the top of the range is understated by roughly $2/hr. The figure is explicitly labeled an inference so it is not presented as sourced fact.",
+      "fix": "Change to 'roughly $40/hr unburdened, about $50-52/hr fully loaded at a ~30% burden'."
+    },
+    {
+      "claim": "'At least 58 million packages were stolen in the US in 2024 with as much as $16 billion in financial losses, per the USPS Office of Inspector General.'",
+      "problem": "The OIG report does contain this sentence, so the number is supported, but the OIG itself attributes the 58M figure to Security.org and the $16B to SafeWise and describes the data as fragmented. Calling it an OIG figure slightly over-credits the source (the caveats section does acknowledge this).",
+      "fix": "Attribute as 'USPS OIG report, citing Security.org and SafeWise estimates'."
+    },
+    {
+      "claim": "fit_score.legal_risk_low = 8 of 15",
+      "problem": "Sub-score is slightly generous relative to the legal section, which documents a live wiretap exposure (conditional one-party consent), unresolved in-unit access/notice dependence on lease language, and two capabilities that must be declined. 8/15 sits above the midpoint. Not a factual error and the rationale itself says legal risk 'is not low either'.",
+      "fix": "Consider 6-7/15 and re-total to 67-68, or keep 8 and say explicitly that the score reflects mitigation (audio off, no face recognition), not an absence of exposure."
+    },
+    {
+      "claim": "Piza et al. (2019) entry: finding text says the effect is 'rated Medium for CCTV generally but Low for in-building apartment camera use', while strength field = 'Low'",
+      "problem": "Internal inconsistency between the finding narrative and the strength field. It errs on the conservative side (downgrade, not upgrade), so it does not inflate a claim.",
+      "fix": "Either drop the 'Medium for CCTV generally' sentence or split the entry."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Water damage and freezing = 22.6% of homeowners losses incurred in 2023 and 25.8% in 2022, second-largest cause after wind and hail",
+      "source_url": "https://www.iii.org/fact-statistic/facts-statistics-homeowners-and-renters-insurance",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Average water-damage/freezing claim severity $15,400, frequency 1.50 per 100 house-years (weighted average 2019-2023)",
+      "source_url": "https://www.iii.org/fact-statistic/facts-statistics-homeowners-and-renters-insurance",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ requires 68F from 6am-11pm and 65F from 11pm-6am, October 1 to May 15, and makes the owner maintain the heating system notwithstanding contract language; amended 55 N.J.R. 1687(a) effective 8/7/2023",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-5-10-14-4",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'At least 58 million packages were stolen in the US in 2024 with as much as $16 billion in financial losses' in USPS OIG report RISC-WP-25-002 dated May 15, 2025",
+      "source_url": "https://www.uspsoig.gov/sites/default/files/reports/2025-05/RISC-WP-25-002.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Truth in Renting: reasonable notification normally one day, tenants must give access for inspection/maintenance (N.J.A.C. 5:10-1.2); tenant consent separately required for private living quarters except emergencies or where access denied (N.J.A.C. 5:10-1.10(d))",
+      "source_url": "https://www.nj.gov/dca/codes/publications/pdf_lti/t_i_r.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Entering a tenant's unit while the tenant is away without permission is forcible entry under N.J.S.A. 2A:39-2; landlord has no right to enter without tenant consent or a Superior Court judgment",
+      "source_url": "https://www.nj.gov/dca/codes/publications/pdf_lti/t_i_r.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Multiple dwelling = building with 3+ units; all buildings with 3+ rental units must be registered with the DCA Bureau of Housing Inspection",
+      "source_url": "https://www.nj.gov/dca/codes/publications/pdf_lti/t_i_r.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Truth in Renting PDF carries no edition year, revision date or copyright date",
+      "source_url": "https://www.nj.gov/dca/codes/publications/pdf_lti/t_i_r.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SOC 11-9141 median wage $82,850 in New Jersey and $96,950 in New York-Newark-Jersey City metro (BLS May 2025)",
+      "source_url": "https://www.onetonline.org/link/localwages/11-9141.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RiverPointe Apartments: $82,000 total investment for 164 units / 328 toilets including product, installation, 5 years monitoring and 5-year warranty",
+      "source_url": "https://www.sensorindustries.com/toilet-sensor/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sensor Industries Indio case study: 394 SI-Leak sensors in 2019 at a 463-unit community; 12 leaks in first 60 days, 24 in first 6 months; $497,800 avoided remediation, $750k annualized, $40k+ (17%) premium cut, ~$790k annual NOI, payback under 2 months on a $115,000 cost for product plus 5 years monitoring",
+      "source_url": "https://www.sensorindustries.com/reducing-water-waste-and-lowering-insurance-costs-with-leak-sensors-in-commercial-real-estate/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Rhombus: cameras $399 (R120) to $3,299 (R600); $149 Professional license on single-sensor SKUs, $649 on R600; R600 total $3,948; R200 $599 + $149 = $748; 'AI-features and cloud archiving not included in the Professional License'; license term not stated",
+      "source_url": "https://www.rhombus.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Verkada: CD22 $799, CM22 $699, CD63 $2,099, CR63-TE $4,299; 'Price includes hardware. Additional license required.' on listed series with the CR63-TE exception stating 1-year license and 30 days retention; no per-license price published",
+      "source_url": "https://www.verkada.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Aqara Water Leak Sensor lists at $18.99",
+      "source_url": "https://us.aqara.com/products/water-leak-sensor",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate benchmarks: YOLOv6n ~11 ms on Hailo-8L; YOLOv9-s at 320 px 30 ms on Intel N100 iGPU with 'Can only run one detector instance'; Beelink EQ13 is the guide's current favorite; warning that many users report issues with 4K-plus Reolink and to stick with 5MP and lower",
+      "source_url": "https://docs.frigate.video/frigate/hardware/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Raspberry Pi AI HAT+ at $70 (13 TOPS, Hailo-8L) and $110 (26 TOPS, Hailo-8)",
+      "source_url": "https://www.raspberrypi.com/news/raspberry-pi-ai-hat/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "EmpireTech IPC-T54IR-AS-S3 (Dahua-OEM 4MP turret) lists at $219.99 at a US reseller",
+      "source_url": "https://shop.app/products/8665518604573/empiretech-ipc-t54ir-as-s3-1-1-8-cmos-4mp-ir-fixed-focal",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Piza et al. 2019: pooled OR 1.141 (p<.001, ~13% reduction) across 76 evaluations; housing complexes n=10 OR 1.028 p=.805; residential n=16 OR 1.133 p=.009; car parks n=8 OR 1.588 p=.027",
+      "source_url": "https://prohic.nl/wp-content/uploads/2020/11/2020-04-01-CCTVReviewPizaetal.2019pdf.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NIJ LPR Arizona experiment (Dec 7, 2011, 117 Phase 1 routes): Phase 1 16 vs 6 stolen-car hits (2.7x, p<.05), 457,369 vs 59,073 plate checks (7.74x), 4 vs 0 occupied recoveries (p<.05), 6 vs 5 unoccupied (n.s.); Phase 2 text says 6x (12 vs 2) while Table 7 shows 5 vs 2 at P=.402; 294,165 vs 30,457 plate checks (9.65x); 4 vs 2 unoccupied recoveries, 0 occupied in both",
+      "source_url": "https://www.ojp.gov/pdffiles1/nij/grants/248635.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Atlantic City fixed-ALPR expansion (2025, Justice Evaluation Journal): no reduction in violent crime but associated with reductions in shootings, motor vehicle theft and property crime; use possibly siloed in investigative units",
+      "source_url": "https://www.researchwithrowan.com/en/publications/an-evaluation-of-a-major-expansion-in-automated-license-plate-rea/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4(d): one-party consent to intercept an oral communication is excluded where the interception is used for a criminal/tortious or 'any other injurious act', and being the telephone subscriber is not consent to intercept others' conversations",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239?f=templates&fn=document-frameset.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9 criminalises observing or recording a person where a reasonable person would not expect to be observed and intimate parts may be exposed",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/2785/2918",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJDPA (P.L. 2023, c.266): applies only at 100,000 consumers processed, or 25,000 plus revenue/discount from selling personal data; biometric data for unique identification is sensitive data; biometric definition excludes photos/recordings unless generated to identify a specific individual; took effect January 15, 2025 (365th day after January 16, 2024 enactment)",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A1494 (2024-25) would bar a business entity from using a biometric surveillance system on a consumer at its premises without clear and conspicuous notice and a lawful purpose, and bar selling data so obtained; introduced bill text only",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2024/A1500/1494_I1.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Runwise/Seminole Owners Corp: $14,375/year service fee for a 349-unit co-op; installation $14,722 after a $10,578 National Grid rebate; more than $40,000/year energy savings (23.6% reduction)",
+      "source_url": "https://www.habitatmag.com/layout/set/print/Publication-Content/Green-Ideas/2024/June-2024/seminole-owners-corporation-energy-savings",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2.5-VL family includes 450M / 1.6B / 3B, with the 3B reported at about 3 GB of memory for on-device inference",
+      "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Parity advertises 20-30% utility savings (vendor claim, Low)",
+      "source_url": "https://www.paritygo.com/post/property-management-hvac-services/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Mercy Housing Decatur Place post reports no measured water reduction and no dollar savings, and states no unit count; install was first week of November, partly grant-funded by Housing Partnership Network and The Percival Stern Foundation",
+      "source_url": "https://www.mercyhousing.org/2023/03/sustainable-upgrades/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Monthly rounds/after-hours response cost 'roughly $40-50/hr fully loaded (median annual wage / 2,080 hours plus ~30% burden)'",
+      "source_url": "https://www.onetonline.org/link/localwages/11-9141.00?st=NJ",
+      "result": "not found"
+    },
+    {
+      "claim": "fit_score sub-scores 14+11+10+17+8+9 = 69 total",
+      "source_url": "",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

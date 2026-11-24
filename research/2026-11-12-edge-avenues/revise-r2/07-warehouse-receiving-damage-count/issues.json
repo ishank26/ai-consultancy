@@ -1,0 +1,37 @@
+[
+ {
+  "claim": "PalletVision: \"$1,995 hardware per unit with 1-year warranty + $595/month per unit software (unlimited users)\", cited to https://www.palletvision.com/faq",
+  "problem": "The cited FAQ page displays no dollar amounts at all. I fetched it three ways (readable, raw HTML ~148k chars, and answer-mode over the page) and searched the raw text for \"1,995\", \"1995\", \"595\", \"pricing\", \"cost\" and \"monthly\": zero matches. The page content is only the security/IT bullet points. I also opened the homepage, /product, /pilot (no prices on any of them), a distributor page (atlantictape.com/palletvision, no prices) and tried /pricing (HTTP 404). This price is therefore unsupported at the cited URL, and it is load-bearing: it anchors the \"published prices cluster around $1,290-$1,995 of hardware per door plus $595/month\" sentence in gap_for_local_installer and one of the four anchors of the $6,000-$15,000 pilot cost range.",
+  "fix": "Either cite a page that actually displays the figures (capture the URL and the exact sentence in the same session) or change the PalletVision pricing field to \"Unknown (quote only)\" and remove \"$1,995\" and \"$595/month\" from gap_for_local_installer, the pilot cost_range anchor list, the risks list and the fit_score rationale, re-basing the price band on IEMI ($1,290/door), Happ Labs ($8,000 project) and CargoLens ($599-$749/site/month) alone."
+ },
+ {
+  "claim": "Coral USB Accelerator \"About $60 vendor-listed\" (source_url https://coral.ai/products/accelerator/)",
+  "problem": "coral.ai/products/accelerator now redirects to the Coral landing page, which shows no price. The brief's own caveat says the Coral figure \"was not shown on the vendor page I opened and came from a reseller listing\", which contradicts the evidence row's \"vendor-listed\" wording.",
+  "fix": "Change the wording to \"about $60 from a reseller listing (vendor page shows no price; not verified)\" or mark the figure as unverified in the same way the camera allowance is."
+ },
+ {
+  "claim": "Legal: \"For a unionized site, adding cameras that can produce discipline is a mandatory subject of bargaining\", marked confirmed:true with the NLRB GC 23-02 news release as the only source",
+  "problem": "The cited NLRB release announces the GC's intent to argue a presumptive violation for always-on surveillance and to seek employee disclosure. It says nothing about mandatory bargaining over surveillance cameras; that proposition comes from separate Board precedent and is not on the cited page. Labeling it confirmed with this citation overstates the source.",
+  "fix": "Split the claim: keep the GC 23-02 presumption/disclosure point as confirmed to that release, and label the bargaining point as an inference from general NLRA precedent (or cite the specific Board decision) rather than attaching it to the GC memo."
+ },
+ {
+  "claim": "Extensiv 3PL Warehouse Manager REST API \"POST/GET /orders with RQL filters and bearer-token auth\" (source_url https://developer.extensiv.com/pages/3pl-wareshouse-manager.html)",
+  "problem": "Could not open: the Extensiv developer page returns HTTP 403 to this fetcher, so the endpoint path, RQL filter support and auth scheme are unverified. This gap is not listed in data_gaps.",
+  "fix": "Verify the endpoint/auth details from an openable Extensiv page (or the public API reference mirror) and add \"Extensiv developer docs returned HTTP 403\" to data_gaps if it cannot be confirmed."
+ },
+ {
+  "claim": "ShipHero GraphQL mutations \"inventory_add, purchase_order_update (increment quantity_received) and purchase_order_close\" cited to https://developer.shiphero.com/getting-started/",
+  "problem": "The getting-started page I opened does not contain these mutation names or the quantity_received field; the specific write-back path is not supported by the cited URL.",
+  "fix": "Cite the ShipHero API reference page that documents these mutations, or soften the sentence to \"ShipHero exposes purchase-order and inventory mutations\" without naming them."
+ },
+ {
+  "claim": "SciELO simulation inputs: \"3.50% as its 'Typical' scenario input\" and \"Production v.33 e20220077\"",
+  "problem": "Partially unverifiable. The full text I opened confirms the 10% receiving error rate for the Major Opportunity warehouse and that the input values come from WERC 2019 (Table 1), but Table 1 and Table 2 themselves are images in the extraction, so the 3.50% Typical value and the volume/article number could not be read.",
+  "fix": "Either read the PDF version of Table 1 to confirm 3.50%, or drop that specific figure and keep only the confirmed 10% MO input, which already carries the point."
+ },
+ {
+  "claim": "fit_score legal_risk_low = 9 (of an apparent 15), while the legal section documents a third-degree criminal exposure (audio) and a federal labor-law presumption against always-on surveillance",
+  "problem": "Arithmetic is correct (16+12+10+15+9+8 = 70) and the rationale does disclose that 9/15 is \"low-to-moderate\" and conditional on audio off / no face recognition / no union. But a score of 9 still reads as a majority-safe dimension even though two of the documented exposures are criminal-statute and federal-agency level. Borderline rather than wrong.",
+  "fix": "Either drop legal_risk_low to about 6-7 and say why, or restate it as \"9/15 only if audio is disabled in firmware, no person identification, and no unionized site; it falls to ~4 otherwise\" so the conditional is not buried in a rationale paragraph."
+ }
+]

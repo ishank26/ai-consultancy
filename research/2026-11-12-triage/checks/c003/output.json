@@ -1,0 +1,146 @@
+{
+  "results": [
+    {
+      "ref": "B00071",
+      "name": "Rakoty Nonprofit Accountants",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "The nav's 'Schedule an appointment' link 'just links to /contacts-us/ (a contact page, no scheduler)'",
+          "what_is_true": "The nav button does point to https://rakotygroup.com/contacts-us/, but that URL returns HTTP 404. The live contact page is /contacts/ (nav label 'Contacts Us'), which shows address, phone, email and a Google map but no form.",
+          "source_url": "https://rakotygroup.com/contacts-us/"
+        },
+        {
+          "claim": "website_review contact_form: true (a contact form exists)",
+          "what_is_true": "No contact form on any page checked (home, /contacts/, /non-profit-2/, /taxes/): the only <form> is the site-search box; zero Contact Form 7 widgets render even though the plugin script loads.",
+          "source_url": "https://rakotygroup.com/contacts/"
+        }
+      ],
+      "notes": "Core claim re-confirmed: at 390px the page showed only logo + '16%' after ~8s, and at desktop width it sat at 59-60% after ~113 seconds with the preloader still display:block, so nothing renders for a visitor. Content does exist in the DOM (h1, tel:+1732338807 links) but is never revealed. Meta description is the placeholder sentence; JSON-LD is WebPage/ImageObject/BreadcrumbList/WebSite/Organization with no address, phone or AccountingService. robots.txt is a Yoast block with empty Disallow. Google Maps listing 'Rakoty Accountants', 5.0, Accounting firm, 82 Brunswick Woods Dr in Brunswick Woods Office Park, phone (732) 338-8807, hours 9-5, but no review count displayed. Original scores (gap 5, pay 3, ease 5, evidence 4) are reasonable; the two factual slips above do not change the ranking."
+    },
+    {
+      "ref": "B00133",
+      "name": "Lance Bram Commercial Brokerage",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Listing 'None found - no Google rating or review count surfaced on any directory'; opportunity premised on 'No rating or review count found on any directory; no owned content to cite'",
+          "what_is_true": "A Google Business Profile exists: 'Lance Bram Commercial Brokerage', 4.5 rating, category Real estate agency, 28 Kennedy Blvd STE 800, East Brunswick NJ 08816, open until 5 PM, phone (732) 545-1850, website field lancebram.com, and it is unclaimed ('Claim this business', 'Add missing information', 'Add a photo'). So the firm is findable today and the profile needs claiming/completing rather than creation.",
+          "source_url": "https://www.google.com/maps/search/Lance+Bram+Commercial+Brokerage+East+Brunswick+NJ"
+        },
+        {
+          "claim": "'© 2026' presented as an out-of-date signal on the placeholder page",
+          "what_is_true": "The footer year is script-generated (document.write(new Date().getFullYear())), so it proves nothing about when the page was last touched.",
+          "source_url": "https://www.lancebram.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 5,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 3
+      },
+      "notes": "Website claim holds exactly: the domain serves only a 1.9 KB panel - 'UNDER CONSTRUCTION / We're building a new website', a decorative progress bar, no nav, no phone, email or address, no forms, no JSON-LD, meta description 'The Lance Bram website is being rebuilt. Check back soon.'. Business is operating per the GBP ('Open · Closes 5 PM') and LoopNet search result (28 Kennedy Blvd Suite 800, (732) 545-1850, brokerage + management). Evidence dropped to 3 because the 'no listing anywhere' premise was wrong - the ranking conclusion (build a minimal site, claim the GBP) stands."
+    },
+    {
+      "ref": "B00186",
+      "name": "Adway Services Inc",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked today: https://www.adwaytech.com/, https://adwaytech.com/, /about and /robots.txt all return Cloudflare '502: Bad Gateway'. Google Maps shows 'Adway Services INC', 3.7, Software company, 77 Milltown Rd Ste C-5, East Brunswick, open until 5 PM, phone (609) 554-1888, website link still pointing at adwaytech.com, no review count shown. Search index still holds their own contact page (same phone and suite), so the 502 is an origin outage, not a closed business. A separate listing 'Adway Services Inc' at 176 Windsong Cir is marked permanently closed - a different entity and not the record's target. Scores (gap 5, pay 3, ease 5, evidence 4) are reasonable."
+    },
+    {
+      "ref": "B00323",
+      "name": "Arora MD Longevity & Aesthetics",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "'Book a Visit' is a dead end - no scheduler, no form, just a phone number; 'orphaned Stripe widget but no visible scheduling UI'",
+          "what_is_true": "The booking page embeds a live online scheduler (a <bfx-booking> BoomerangFX widget inside a shadow DOM, which is why plain DOM/form queries miss it). It reads 'Book online - East Brunswick', 'Book a service... choose your date, time, and practitioner next', with a category selector (Body Contouring, Skin & Aesthetics, Hormones & Longevity, Laser Hair Removal, Memberships) and live services each with a 'Book' button, e.g. 'Complimentary Hormones Consult (In-Office, 15 min)' and '(Phone Call, 15 min)'. It renders at 1280px and at 390px. The Google Business Profile owner post also tells patients to 'book online'.",
+          "source_url": "https://aroramdspa.com/book-a-visit/"
+        },
+        {
+          "claim": "Office hours are not published / opportunity to 'publish hours, price ranges and consultation types as text and in schema ... pricing absent'",
+          "what_is_true": "Hours are published on /contact-us/ (Mon closed, Tue-Fri 10:00-18:00, Sat 11:00-17:00) and the homepage JSON-LD already carries openingHoursSpecification for those days plus priceRange '$$$', telephone and areaServed. Only service-level prices are absent.",
+          "source_url": "https://aroramdspa.com/contact-us/"
+        },
+        {
+          "claim": "agent_readiness 'hours and prices are not on the pages I opened'",
+          "what_is_true": "Hours and a price range are machine-readable in the site's JSON-LD on the homepage, and hours appear as text on the contact page.",
+          "source_url": "https://aroramdspa.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 4,
+        "ease": 4,
+        "evidence": 2
+      },
+      "notes": "What does hold: there is no <form> on the home, book-a-visit or contact pages (zero intake/consultation form), the booking page still tells patients to allow two weeks for blood work and that the team will contact them with a lab order, and a floating call button plus tel: links exist. JSON-LD Place + MedicalBusiness confirmed; GBP is 5.0 Medical spa with matching address and phone (review count not displayed). Gap lowered from 5 to 3 because the main conversion path works and schema/hours/price range are already in place; the real remaining work is intake capture and lab-order follow-up automation, not building a scheduler. Evidence lowered to 2: two of four listed issues are contradicted by the live page."
+    },
+    {
+      "ref": "B00437",
+      "name": "Biondo Contracting",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Confirmed: biondoroofing.com serves a Thai-language slot/gambling page styled as a Google Play listing (4.9 stars, 419K reviews, 'install'), with no trace of the roofing business. Google Maps: 'Biondo Contracting-Roofing Specialists', 4.9, Roofing contractor, 38 Spotswood Ave, Monroe Township NJ 08831, open until 12 AM, phone (732) 257-2926, website field still biondoroofing.com, photos prompt shown, no review count displayed. Business is operating; domain is the compromised asset. Opportunity and score set (gap 5, pay 4, ease 3, evidence 5) are reasonable - the Birdeye 172-review figure was not independently re-checked."
+    },
+    {
+      "ref": "B00668",
+      "name": "Deborah A. Rose, P.C.",
+      "verdict": "confirmed",
+      "wrong_claims": [
+        {
+          "claim": "Still listed on the '2025' Middlesex County family-law mediator roster",
+          "what_is_true": "The roster at that URL is now the November 13, 2026 edition, and she is on it: 'Deborah A. Rose, Esq., Deborah A. Rose, PC, 850 Carolier Lane, North Brunswick, NJ 08902, Hourly Rate $300.00, Phone (732) 821-3055, Domestic Violence Pilot Program Participant, deb@darosepc.com'. The listing is current rather than 2025-dated.",
+          "source_url": "https://njj-aocmedia-prod-general-purpose.s3.amazonaws.com/rosters/family-law/middlesex.pdf"
+        }
+      ],
+      "notes": "Domain failure re-confirmed: Google DNS returns Status 2 (SERVFAIL) with 'Name servers refused query' from all six Cloudflare nameservers, and the browser gets ERR_NAME_NOT_RESOLVED for https://www.rosedeb.com/. Credentials cross-checked: Busch Law Group page lists her as Of Counsel, practising since 1985, Certified Matrimonial Attorney 1998, Spanish-speaking clients, court-appointed mediator/GAL; Avvo shows 5.0 from 16 reviews at 850 Carolier Ln. So 'operating, but the firm domain is dead and the principal is Of Counsel elsewhere' is accurate. Scores (gap 5, pay 3, ease 5, evidence 4) are defensible; note the strategic risk that the standalone practice may be winding down, which caps how much website work she would buy - worth a qualification call before pitching a rebuild."
+    },
+    {
+      "ref": "B00703",
+      "name": "Stone Ridge Engineering, LLC",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "contact form works / 'Simple contact form (name, address, phone, email, comments)' as the live intake path",
+          "what_is_true": "The five fields and Submit button are present but the form is inert: jQuery core is loaded over plain http://code.jquery.com/jquery-1.11.3.js on an https page, the request is blocked (responseStatus 0), and typeof jQuery is undefined - so jquery.validate, jquery.form.js and the $.ajax handler that posts to contact-submit.php never initialise. Submitting does nothing.",
+          "source_url": "https://stoneridgeeng.com/contact.html"
+        },
+        {
+          "claim": "phone_layout: usable on mobile",
+          "what_is_true": "Body text is readable at 390px, but the hamburger menu does nothing (jquery.mmenu depends on the same blocked jQuery), so mobile visitors cannot navigate past the home page; the 390px home page also has a large blank band under the tagline.",
+          "source_url": "https://stoneridgeeng.com/index.html"
+        },
+        {
+          "claim": "A 'broken/empty image placeholder' renders on the contact page",
+          "what_is_true": "No broken image element exists - both images (logo, footer logo) load. What is there is roughly 550px of empty white space where hero content would sit, above the contact heading.",
+          "source_url": "https://stoneridgeeng.com/contact.html"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 5,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 4
+      },
+      "notes": "Everything else holds and was re-verified: Google Maps shows 'Stoneridge Engineering, LLC', 5.0, Engineering consultant, 1583 Livingston Ave #4, phone (732) 658-6302, with 'Claim this business', 'Add hours' and 'Add photos & videos' prompts (unclaimed); robots.txt is a 404; zero JSON-LD; no meta description; page-name-only titles; phone plain text with no tel: links. Gap raised to 5 because in addition to the listed items the only intake route is broken and mobile navigation is dead; evidence lowered to 4 because two of the four listed issues were mis-described and the more serious defects were missed."
+    },
+    {
+      "ref": "B00704",
+      "name": "Amertech Engineering, Inc.",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "All checked claims hold. Home page: title 'AMERTECH ENGINEERING, INC.' only, no meta description, no viewport meta (390px renders as a shrunken desktop page with tiny type), '© 2011 - 2016 Amertech Engineering Inc.', header mailto of 'ourname@ouraddress.com', address typo '757 Ridgewod Avenue', no tel: links, no JSON-LD, id-numbered filenames. Contact page: legacy table form posting to http://www.sitedelux.com/svcs/formproc.jsp - a third-party processor over plain http, likely defunct, an extra defect beyond those listed. Google Maps: 'Amertech Inc', 3.4, Civil engineer, 757 Ridgewood Ave, phone (732) 828-3535, unclaimed with 'Claim this business', 'Add hours', no photos. Scores (gap 5, pay 4, ease 3, evidence 5) are reasonable."
+    }
+  ],
+  "data_gaps": [
+    "Google Maps 'limited view' never displays review counts, so the review-count fields for Rakoty, Adway, Biondo, Stone Ridge, Amertech, Lance Bram and Arora MD could not be re-verified (ratings were visible).",
+    "LoopNet and Showcase returned HTTP 403 to automated fetches, so Lance Bram's company-profile details (services list, partner names such as Joe D'Agostino) could not be re-read; verification relied on the Google Business Profile and a search-engine summary of those pages.",
+    "Adway Services' site content could not be inspected at all (502 on every path including robots.txt), so the described service mix rests on search-indexed copies of their own pages, not a live read.",
+    "Birdeye's 172-review count for Biondo Contracting was not re-checked; only the 4.9 Google rating and address/phone/hours were confirmed.",
+    "Deborah A. Rose's Martindale-Hubbell and Experience.com ratings were not re-opened; only Avvo (5.0, 16 reviews) and the current court mediator roster were verified.",
+    "No Google Business Profile rating was displayed for Deborah A. Rose, P.C. in the limited Maps view, so 'no Google listing rating found' could not be confirmed either way."
+  ]
+}

@@ -1,0 +1,203 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Vantaca integration: \"partner application, NDA and partnership terms precede technical integration\" (solution.integrations[].method for Vantaca, confirmed_in_docs: true)",
+      "problem": "The cited page (vantaca.com/become-a-vantaca-partner-vantaca-partner-program) says partners get \"a dedicated point of contact, technical integration support, and a structured onboarding process\" and that the team does not \"hand you API docs and disappear\", which supports vendor-provisioned API access. It does not mention a partner application form, an NDA, or partnership terms, and a search of vantaca.com found no public partner application or public API reference. The existence of partner-gated API access is supported; the NDA/application specifics are not.",
+      "fix": "Rewrite method as \"vendor-provisioned API access through Vantaca's partner program, which advertises a dedicated point of contact, technical integration support and structured onboarding; no public API reference or fee\" and drop \"partner application, NDA\" or mark them as inference to be confirmed in discovery (phase 0 already asks for this)."
+    },
+    {
+      "claim": "Manager-licensing risk: \"CAI's 2025 state manager-licensing review: New Jersey has no dedicated community association manager licence (a bill has been introduced in the 2026-27 session but is not law)\" (risks_compliance, confirmed: true)",
+      "problem": "The cited CAI page supports the main point (NJ is not among the licensed states: Alaska, Connecticut, Florida, Georgia, Illinois, Nevada, Virginia) but describes the NJ bill as A 2450 in the 2024-2025 session, which \"did not pass\". It says nothing about a 2026-27 session bill, and the 2026-session NJ A 2450 is an unrelated motor-vehicle bill. The parenthetical is unsupported by the source and contradicted by a search of the NJ Legislature's own bill pages.",
+      "fix": "Replace the parenthetical with what the source says: \"NJ A 2450 (2024-25 session), which would have required licensure of community management entities, did not pass\", or cite a primary NJ Legislature source for any 2026-27 bill before asserting one exists."
+    },
+    {
+      "claim": "After-hours gap: \"office hours listed as Mon-Fri 9-5\" (problem.current_tools evidence, source https://rcpmanagement.com/) and an \"info@ mailbox\" on the contact directory (source https://rcpmanagement.com/contact/)",
+      "problem": "I opened both pages. The homepage advertises \"24/7 emergency services for your community, including a manager and supervisor\" and \"documentation and follow-up on all maintenance requests and homeowner inquiries\", but publishes no office hours. The contact page lists the Cranbury HQ number, the Bloomfield and Manahawkin regional offices, kmunson@ and careers@ addresses only - no info@ mailbox and no hours. Both details are load-bearing for the after-hours story and are attributed to pages that do not show them.",
+      "fix": "Either cite a page that actually states the hours and the general mailbox, or restate the gap as \"office hours are not published; the site advertises only 24/7 emergency service staffed by a manager and supervisor, and the contact page lists named mailboxes only\" - which is enough to justify the discovery questions."
+    },
+    {
+      "claim": "Competitor row \"Hire a person\": $26.00/hour RCP posting presented with source_type \"government data\" and source_url https://www.onetonline.org/link/localwages/43-4171.00?st=NJ",
+      "problem": "The $26/hour figure is real, but it comes from RCP's own job posting (hoa-jobs.com/onsite-administrator-part-time, Princeton, part-time onsite administrator), not from O*NET. O*NET supports only the BLS medians in the same row. A job-posting rate cited under a government URL risks being read as a government figure.",
+      "fix": "Point this row's source_url at https://hoa-jobs.com/onsite-administrator-part-time for the $26/hour posting and keep the O*NET URL attached to the BLS median figures (or split the row into two competitors)."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Twilio Programmable Voice US inbound local $0.0085/min, recording $0.0025/min, number $1.15/month",
+      "source_url": "https://www.twilio.com/en-us/voice/pricing/us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Twilio Programmable Voice provides REST API, webhooks and SIP/PSTN connectivity for forwarding (integration method as described)",
+      "source_url": "https://www.twilio.com/docs/voice",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Deepgram Nova-3 pre-recorded $0.0043/min and streaming $0.0077/min pay-as-you-go, billed per second with no block rounding",
+      "source_url": "https://deepgram.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Gemini Developer API paid tier $2.00 per 1M input and $10.00 per 1M output tokens through November 30, 2026",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vantaca runs a partner program giving technical integration support and a dedicated point of contact; API access is vendor-provisioned, not self-serve",
+      "source_url": "https://www.vantaca.com/become-a-vantaca-partner-vantaca-partner-program",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vantaca partner program requires a partner application, NDA and partnership terms before technical integration",
+      "source_url": "https://www.vantaca.com/become-a-vantaca-partner-vantaca-partner-program",
+      "result": "not found"
+    },
+    {
+      "claim": "BuildingLink publishes only an integration contact (Integration@BuildingLink.com) and no public developer docs",
+      "source_url": "https://help-staff.buildinglink.com/en/support/solutions/articles/42000099790-contact-information-and-training-requests",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Gmail API supports reading mailboxes and sending/drafting (integration exists as described)",
+      "source_url": "https://developers.google.com/workspace/gmail/api/guides",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Microsoft Graph Outlook mail API exists for Outlook/M365 mailboxes",
+      "source_url": "https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Twilio A2P 10DLC: anyone sending SMS from an application to US numbers over a 10DLC number must register a Brand and a Campaign, and unregistered traffic attracts extra carrier fees; exact fees not on that page",
+      "source_url": "https://www.twilio.com/docs/messaging/compliance/a2p-10dlc",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DigitalOcean droplet $6.00/month for 1 GiB and $12.00/month for 2 GiB",
+      "source_url": "https://www.digitalocean.com/pricing/droplets",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vantaca HOAi is published at $0.54 per door per month",
+      "source_url": "https://www.vantaca.com/blog/how-to-grow-your-hoa-management-business-without-adding-staff",
+      "result": "confirmed"
+    },
+    {
+      "claim": "HOAi arithmetic: $6.48 per door per year, about $65/month for 120 doors, about $8,100/month across 15,000 doors",
+      "source_url": "https://www.vantaca.com/blog/how-to-grow-your-hoa-management-business-without-adding-staff",
+      "result": "confirmed"
+    },
+    {
+      "claim": "HOAi Voice answers resident calls (24/7 positioning) and creates work orders in Vantaca",
+      "source_url": "https://www.vantaca.com/hoai-voice",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Agent on Call: $99 flat per month, unlimited standard inbound calls and minutes, no per-call billing, hands off text/email summary, does not interpret governing documents or waive fees",
+      "source_url": "https://agentoncall.com/industries/hoa-condominium-management.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "InsertChat: Pro $98/month, Growth $198/month, Scale quoted; whole-minute billing with one-minute minimum; does not connect to association management or accounting software",
+      "source_url": "https://insertchat.com/industries/hoa-management",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Smith.ai: Starter $300/30 calls (overage $11.50), Basic $810/90 ($10.50), Pro $2,100/300 ($8.50), Enterprise custom",
+      "source_url": "https://smith.ai/pricing/receptionists",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ruby: $250/50 minutes, $395/100, $720/200, $1,725/500 per month with no setup fee",
+      "source_url": "https://www.ruby.com/plans-and-pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Anchor Co AI: Full Office $1,497/month including a 24/7 AI phone receptionist activated in the first 30 days; self-serve chatbot plans $29-$199; done-for-you $349/month",
+      "source_url": "https://www.anchorcoai.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "EliseAI publishes no price (quote-based); no published per-unit rate found; third-party source rather than vendor",
+      "source_url": "https://www.reallyo.com/blog/eliseai-alternatives",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BLS 2025 data via O*NET: NJ Receptionists and Information Clerks median $41,650/year and $20.02/hour; Trenton-Princeton median $40,550/year",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4171.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RCP posts a part-time onsite administrator in Princeton at $26/hour with duties including preparing and entering work orders, back-charging owner accounts and maintaining BuildingLink resident information",
+      "source_url": "https://hoa-jobs.com/onsite-administrator-part-time",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FCC 24-17: TCPA restrictions on \"artificial or prerecorded voice\" encompass AI-generated voices, requiring prior express consent absent an emergency purpose or exemption, plus identification/disclosure and opt-out where marketing",
+      "source_url": "https://docs.fcc.gov/public/attachments/FCC-24-17A1.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2A:156A-4 allows a party to intercept or record with one party's prior consent, except where used for a criminal, tortious or other injurious act",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Data Privacy Act thresholds: 100,000 consumers, or 25,000 consumers plus revenue or a discount from the sale of personal data",
+      "source_url": "https://pub.njleg.gov/Bills/2022/PL23/266_.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CAI 2025 review: New Jersey is not among states requiring a community association manager licence",
+      "source_url": "https://advocacy.caionline.org/manager-licensing-outcomes25/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A New Jersey manager-licensing bill has been introduced in the 2026-27 session",
+      "source_url": "https://advocacy.caionline.org/manager-licensing-outcomes25/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "RCP advertises 24/7 emergency service staffed by a manager and supervisor, documentation and follow-up on all maintenance requests and homeowner inquiries, and an administrative support team answering owner inquiries",
+      "source_url": "https://rcpmanagement.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Office hours are listed as Monday-Friday 9-5 on the RCP homepage",
+      "source_url": "https://rcpmanagement.com/",
+      "result": "not found"
+    },
+    {
+      "claim": "Owner portal states a team member reviews each sign-up request and replies within 2 business days",
+      "source_url": "https://home.rcpmanagement.com/Home_v2/Login",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Payments run through Zego (formerly PayLease) as a third-party processor, deposited directly into the association's operating account",
+      "source_url": "https://rcpmanagement.com/payments/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Contact page is a phone/mailbox directory (HQ 609-683-7980, Bloomfield and Manahawkin regional offices) with no self-serve booking, chat or ticket status lookup, and an info@ mailbox",
+      "source_url": "https://rcpmanagement.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Website has a maintenance request web form collecting association, unit, contact and issue description",
+      "source_url": "https://rcpmanagement.com/maintenance-request/",
+      "result": "could not open"
+    },
+    {
+      "claim": "Running-cost arithmetic: 2,700 voice minutes at $0.0085 = ~$23; recording at $0.0025 = $6.75; Nova-3 at $0.0043 = ~$11.60; numbers $1.15-$3.45; total ~$70-$80/month including ~$25 model tokens and $6 hosting",
+      "source_url": "https://www.twilio.com/en-us/voice/pricing/us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder-day total of about 23 days and the pricing arithmetic ($580/founder-day on a $3,500 pilot over 6 days; $500-$600/day on $6,000 over 10-12 days; $250/community on $750 for three; $3,000/yr = 30-120% of a $2,535-$10,140 band)",
+      "source_url": "https://www.digitalocean.com/pricing/droplets",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,77 @@
+[
+ {
+  "claim": "\"True Cuts Barbershop\", 46 College Ave, Piscataway",
+  "problem": "Wrong town. The shop's own site gives 46 College Ave, New Brunswick, NJ 08901 (The Yard). It is also a 3-location NJ brand (College Ave + George St in New Brunswick, plus Newark), so it is a small chain as well.",
+  "fix": "Remove the entry (out of zone, and a multi-location brand)."
+ },
+ {
+  "claim": "\"AmeriCare Physical Therapy\", 1260 Centennial Ave (kept, note: 'small NJ multi-office PT group')",
+  "problem": "AmeriCare's Piscataway clinic page now lives on ivyrehab.com and trade press reports Ivy Rehab's NJ expansion via AmeriCare, i.e. this is now a national chain clinic, not a small local group. An excluded chain type remains in the list.",
+  "fix": "Drop the entry (chain), or keep only if the brief explicitly allows acquired-but-locally-branded clinics - and then document the acquisition."
+ },
+ {
+  "claim": "\"Trinity Rehab - Physical Therapy\", 1354 Centennial Ave (kept, note: 'flag for chain review')",
+  "problem": "Trinity Rehab's own site lists 24 New Jersey clinics (27 total) - this is a regional chain, the same category the mapper excluded elsewhere (Ivy Rehab, Kessler).",
+  "fix": "Remove, or apply one consistent chain threshold across PT and state it in the file."
+ },
+ {
+  "claim": "\"Dr. Ayesha Muzaffar, DMD\", 1630 Stelton Rd Ste 201, (732) 800-9524",
+  "problem": "Duplicate. icare4smiles.com is titled 'Dentist in Piscataway, NJ | Dr. Ayesha Muzaffar' and lists the same suite and the same phone as the 'iCare4Smiles Dental Piscataway' entry directly above it.",
+  "fix": "Merge into the iCare4Smiles entry (add Dr. Muzaffar as the provider) and delete the standalone entry."
+ },
+ {
+  "claim": "\"Justin Schaefers, OD\", 213 Stelton Rd (practice name 'not shown')",
+  "problem": "He is a provider at The Eye Center of Piscataway, 213 Stelton Rd, phone (732) 752-9090 - a separate practice that is missing from the list while its employee is listed as a business. The entry is also missing the publicly listed phone.",
+  "fix": "Rename to 'The Eye Center of Piscataway', add the practice phone, and treat Schaefers as a provider."
+ },
+ {
+  "claim": "\"Dr. Martin Marks, DMD (endodontist)\", 1100 Centennial Ave Ste 101",
+  "problem": "Same suite as the 'Dental Cosmetic Center of Piscataway' entry; the mapper's own note says it is likely a provider in that office, so this is a provider listing counted as a business.",
+  "fix": "Merge into Dental Cosmetic Center as a provider, or drop."
+ },
+ {
+  "claim": "\"Piscataway Dunellen Family Practice\", 24 Stelton Rd Suite A",
+  "problem": "Healthgrades lists this practice as 'RWJPE Piscataway Dunellen Family Practice' - an RWJBarnabas/RWJ Physician Enterprise practice. The mapper excluded HMH Primary Care and Saint Peter's Physician Associates as hospital groups, so this is an inconsistent keep.",
+  "fix": "Either exclude as a hospital-system practice or reinstate the other hospital-affiliated practices - apply one rule."
+ },
+ {
+  "claim": "\"Piscataway Animal Clinic\", 13 Stelton Rd",
+  "problem": "Its own site presents it as one of '4 Convenient Locations' (Raritan Animal Hospital group: Edison, South Plainfield, Fords, Piscataway) under shared branding - a multi-location group, which the mapper's chain rule targets.",
+  "fix": "Make an explicit chain call and record it, rather than listing it unqualified."
+ },
+ {
+  "claim": "\"Lissah.Nails\", 542 Longfellow Ave",
+  "problem": "Only aggregator listings (nail/style directories, no phone, no site). Longfellow Ave is a residential street - this looks like a home-based provider, which is out of scope (no residential/personal details).",
+  "fix": "Remove unless a commercial storefront or studio address can be confirmed."
+ },
+ {
+  "claim": "\"Flow Acupuncture\", 80 Kingsbridge Rd #1",
+  "problem": "Unconfirmed as named. Directories place 'Maximum Health & Wellness Piscataway LLC' at 80 Kingsbridge Rd Suite 1 ((732) 667-7797); one aggregator labels the address 'Flow acupuncture', and the flowheals.com site is a Union NJ practice, not Piscataway.",
+  "fix": "Verify the tenant name at Suite 1 before outreach; if it is Maximum Health & Wellness, relabel."
+ },
+ {
+  "claim": "\"Audiology Hearing Health PLLC (Michael Giannella, AuD)\", 200 Centennial Ave",
+  "problem": "Could not be confirmed. YellowPages is blocked in this environment and the mapper's own note says it came from a snippet only; no second source ties that practice name to 200 Centennial Ave.",
+  "fix": "Verify against NPI registry or the practice's own site; otherwise move to a lower-confidence bucket."
+ },
+ {
+  "claim": "\"Ambrose Animal Hospital\", 1636 Stelton Rd Suite 312",
+  "problem": "Address still unverified: the site renders address/hours dynamically and returned no street address to a text fetch, so 'operates in Piscataway' rests on directory snippets.",
+  "fix": "Confirm the suite from a map listing or the booking page before outreach."
+ },
+ {
+  "claim": "\"Snatched Aesthetics\", 31 Stelton Rd",
+  "problem": "The salon's own site contradicts itself: page title says '371 Hoes Lane, Suite E7' while its contact block says '31 Stelton Road, Suite 7'. The list picked one of the two.",
+  "fix": "Confirm current suite by phone/map; note the conflict in the entry."
+ },
+ {
+  "claim": "Phone/website fields left 'Unknown' or blank",
+  "problem": "Publicly listed contact data was easy to find and is missing for at least: Heights Haircutters (732-885-5550), Cassatone Massage (732-877-4534), Dina's Salon (732-529-4000, dinasnj.com), Mehndi Beauty (732-777-9212), Millenium Nails (732-981-1130), Justin Schaefers/Eye Center (732-752-9090). Websites exist but are blank for Smile Wellness, iCare4Smiles, Ohm Dental, Affordable Family Dentistry, N\u00dcVA Smile, Smile Garden, Radiant Orthodontics, In Focus Vision Center, Campana Chiropractic, Cassatone, Fit4Blast, Sonovi.",
+  "fix": "Backfill contact/website fields from the sources cited in claims_checked before outreach; these are warm-intro channels."
+ },
+ {
+  "claim": "Zone coverage of small independents (coverage searches, 14 categories)",
+  "problem": "Around 11 eligible independents found by my own searches are absent, notably two barbers on Stelton Rd (Freddie's, Chief), a second optometry practice (Dr. Madelyne Latorre, OD), three acupuncture clinics, two med spas at 371 Hoes Ln, and Island Spa & Sauna.",
+  "fix": "Add the missing entries listed in coverage.missing; re-run barber/optometry/acupuncture/med-spa passes."
+ }
+]

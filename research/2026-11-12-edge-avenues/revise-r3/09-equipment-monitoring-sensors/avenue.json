@@ -1,0 +1,429 @@
+{
+ "avenue": "equipment-monitoring-sensors",
+ "one_line": "Retrofit bolt-on vibration, current and temperature sensors onto old machines, kitchens and laundromats, then run the alerts and utilization dashboards for owners who have no reliability engineer.",
+ "problem": {
+  "summary": "Small independent operators run aging equipment with no instrumentation: a machine, walk-in cooler, compressor or fryer fails, nobody knows until product or throughput is already lost, and the fix waits on a parts order. The economics are documented at industry level (downtime cost per hour, share of firms with weekly failures) but almost never measured at the individual 5-200 staff site, because the site has no sensors and no maintenance data. Compliance adds a second, harder deadline in food settings: New Jersey requires refrigerated potentially hazardous food at 41F or below, so an unnoticed cooler drift is both a spoilage event and an inspection finding.",
+  "evidence": [
+   {
+    "fact": "A NIST analysis of U.S. manufacturing establishments found predictive maintenance was associated with 15% less downtime than preventive maintenance, 87% lower defect rates and 66% less maintenance-related inventory increase; establishments in the top quartile of reactive maintenance were associated with 3.3 times more downtime, 16.0 times more defects and 4.89 times more inventory increases due to maintenance issues. These are cross-sectional associations from a survey, not a controlled trial.",
+    "year": "2020",
+    "source_url": "https://www.nist.gov/news-events/news/2020/06/research-suggests-significant-benefits-investing-advanced-machinery"
+   },
+   {
+    "fact": "The U.S. DOE Federal Energy Management Program O&M Best Practices Guide (Release 3.0, 2010) states that past studies estimate a properly functioning predictive maintenance program provides 8-12% savings over preventive maintenance alone, and lists industrial-average savings of 35-45% reduction in downtime, 70-75% elimination of breakdowns and 25-30% reduction in maintenance costs. These are cited industrial averages, not a controlled trial.",
+    "year": "2010",
+    "source_url": "https://www.energy.gov/sites/default/files/2020/04/f74/omguide_complete_w-eo-disclaimer.pdf"
+   },
+   {
+    "fact": "MaintainX's 2024 vendor-run survey of 1,165 maintenance, repair and operations professionals reports the average hour of unplanned downtime at about $25,000, with 29% naming aging equipment as the leading expected cause of unplanned downtime in the next 12 months and 60% citing skilled-trade shortage as the top barrier to improving maintenance. This is self-reported vendor survey data; the press release shows no survey methodology.",
+    "year": "2024",
+    "source_url": "https://www.getmaintainx.com/newsroom/state-of-industrial-maintenance-report-2024"
+   },
+   {
+    "fact": "A Parts Town survey of approximately 1,800 professionals at chain and institutional organizations, fielded in 2025, reports that one in three respondents experience unplanned equipment downtime every week, and that refrigeration equipment and fryers were identified as both the most frequently failing and the most disruptive equipment. Chain respondents included restaurants, grocery and convenience stores; institutional respondents covered education, healthcare, hospitality and corporate facilities - so this is not a foodservice-only sample. The results were published on Parts Town Unlimited's blog on June 30, 2026 under the title 'New Research Highlights the Real Impact of Equipment Downtime'; the blog does not use the title 'Rethinking Downtime'.",
+    "year": "survey fielded 2025, published June 30, 2026",
+    "source_url": "https://www.partstownunlimited.com/blog/rethinking-downtime"
+   },
+   {
+    "fact": "New Jersey retail food rule N.J.A.C. 8:24-1.5 defines refrigeration temperature as 41 degrees Fahrenheit or below, and 8:24-3.2 requires refrigerated potentially hazardous food to be received at 41F or below; a narrow legacy exception for equipment in use before January 2, 2007 ended with a January 2, 2012 upgrade requirement.",
+    "year": "current rule (legacy exception sunset 2012)",
+    "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-1-5"
+   },
+   {
+    "fact": "Siemens' True Cost of Downtime 2024 puts the high end of unplanned downtime cost for SME manufacturers at about $150,000 per hour, against $2.3 million per hour in automotive; the report also says unplanned downtime costs the world's 500 biggest companies 11% of revenues. Figure read from a third-party blog summary of the Siemens report, not from the Siemens report itself.",
+    "year": "2024",
+    "source_url": "https://vsight.io/blog/cost-of-unplanned-downtime-manufacturing/"
+   },
+   {
+    "fact": "In the 2023 OEWS 'Occupational Employment and Wage Estimates for Middlesex-Monmouth-Ocean County Area by Industry Sector' table (New Jersey Department of Labor and Workforce Development, Division of Economic and Demographic Research, June 2024), SOC 49-9071 Maintenance and Repair Workers, General shows a 50th-percentile (median) annual salary of $60,608 in the Manufacturing sector row (410 employed), $35,986 in Accommodation and Food Services (620 employed) and $52,326 in Public Administration (810 employed). These are separate industry-sector rows, not one area-wide occupation estimate. The same rows give mean hourly wages of $28.72 (Manufacturing) and $19.85 (Accommodation and Food Services); the table's percentile columns are annual salaries, so any hourly figure for a median worker is a derived inference (annual / 2,080 = about $29/hour manufacturing, $17/hour food service) - the labor cost an owner pays for the person who would otherwise walk the floor with a clipboard.",
+    "year": "2023 (published June 2024)",
+    "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/employ/oeswageweb/PDFs/mid_ind.pdf"
+   }
+  ]
+ },
+ "buyers": [
+  {
+   "business_type": "Small and mid-size manufacturers - metal fabrication, plastics, food and bakery, pharma/chemical packaging, machine shops",
+   "naics": "31-33 (esp. 332, 333, 326, 311)",
+   "size_where_it_matters": "Starts to matter at roughly 10-40 machines or one bottleneck asset, typically 20-150 staff (inference from the NIST/DOE framing of maintenance-program economics)",
+   "why": "Middlesex County has 824 manufacturing establishments with 30,862 employees (2024 QCEW, NJ Department of Labor and Workforce Development county report, February 2026 edition: https://www.nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf). Downtime on a single CNC, press, compressor or chiller stops revenue immediately, and these plants usually have one or two maintenance techs rather than a reliability engineer. Wage context: the 2023 OEWS median annual wage for SOC 49-9071 in this area's Manufacturing sector row is $60,608."
+  },
+  {
+   "business_type": "Restaurants, caterers, institutional and commercial kitchens",
+   "naics": "722 (food services and drinking places); also 623/721 in-house kitchens",
+   "size_where_it_matters": "Matters from 2+ locations or a single high-volume kitchen; walk-in cooler/freezer and fryer reliability dominate",
+   "why": "1,752 accommodation and food services establishments with 24,124 employees in Middlesex County (2024 QCEW, same NJ LWD county report: https://www.nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf). Refrigeration failure creates spoilage plus a 41F cold-holding compliance problem under N.J.A.C. 8:24, and Parts Town's 2025-fielded survey (published June 2026) reports one in three respondents hitting unplanned downtime weekly, with refrigeration and fryers the worst offenders."
+  },
+  {
+   "business_type": "Coin laundries and commercial laundry/drycleaning",
+   "naics": "812310 (coin-operated laundries), 8123",
+   "size_where_it_matters": "Matters from about 30+ machines per store; a single attendant cannot see which washer is down",
+   "why": "Revenue is per cycle per machine, so a down machine is unrecoverable revenue and a customer lost to the store next door; multi-store owners need cross-store utilization to decide replacement timing. (inference - no laundromat-specific dollar study was found; see data_gaps)"
+  },
+  {
+   "business_type": "HVAC-heavy sites - mechanical/HVAC contractors, property managers, cold storage, grocery",
+   "naics": "238220 (plumbing, heating and air-conditioning contractors); 493 (warehousing and storage); 445 (grocery)",
+   "size_where_it_matters": "Matters at 5+ rooftop units or 2+ refrigeration racks, i.e. any site with a service contract",
+   "why": "These firms already sell maintenance contracts, so monitoring is a margin layer on an existing relationship rather than a new budget line; a local installer can white-label the dashboard to the contractor who owns the customer."
+  }
+ ],
+ "existing_solutions": [
+  {
+   "vendor": "MachineCDN",
+   "product": "Vibration + temperature condition monitoring bundle",
+   "what_it_does": "IP67 bolt-on vibration/temperature sensor with 5+ year battery, LoRaWAN gateway included, condition monitoring, OEE and downtime analytics, energy tracking, alerts and work-order generation, MQTT/OPC-UA/Modbus integrations.",
+   "pricing": "$45/asset/month, no setup fee, month-to-month; volume tiers $38/asset (51-200 assets) and $32/asset (201-500)",
+   "source_url": "https://machinecdn.com/pricing"
+  },
+  {
+   "vendor": "Augury",
+   "product": "Machine health / predictive maintenance (vibration + ultrasound AI)",
+   "what_it_does": "Turnkey per-machine subscription including sensors, connectivity, installation, diagnostics and analyst-backed alerts; company claims under 6 months payback and 1.1B+ machine-hours monitored (vendor claims, not independently verified, rated Low).",
+   "pricing": "Unknown - custom quote per machine; no public list price",
+   "source_url": "https://www.augury.com/pricing/"
+  },
+  {
+   "vendor": "Tractian",
+   "product": "Asset health condition monitoring + CMMS",
+   "what_it_does": "Wireless vibration/energy sensors with AI diagnostics and a maintenance work-order platform; asset-health pricing is quoted per asset based on criticality.",
+   "pricing": "Unknown - custom quote. Both tractian.com/en/solutions/pricing and tractian.com/en/pricing show only a 'get a custom quote' asset-health flow; no per-asset, per-user or CMMS list price, billing cycle or seat minimum is published there.",
+   "source_url": "https://tractian.com/en/solutions/pricing"
+  },
+  {
+   "vendor": "Sensorfact",
+   "product": "Machine-level electricity, vibration, OEE, gas, water and compressed-air sensors with consultant reports",
+   "what_it_does": "Clamp-on wireless sensors for machine-level energy and vibration, threshold alerts by email/SMS/WhatsApp, periodic consultant-written reports and OEE loss analysis.",
+   "pricing": "Unknown - quote-based; subscription model with a base package covering five devices plus per-device licensing (per ABB-distributed brochure)",
+   "source_url": "https://www.sensorfact.eu/products/"
+  },
+  {
+   "vendor": "Banner Engineering",
+   "product": "QM30VT2 vibration + temperature sensor",
+   "what_it_does": "Industrial Modbus vibration and surface-temperature sensor node; a component an integrator builds a system around rather than a finished SaaS.",
+   "pricing": "$325.00 per unit at distributor Shingle & Gibb (in stock, single unit); Digi-Key listed $320.00 in a search listing but returned HTTP 403 when opened here, so treat roughly $320-$328 as the distributor range before gateway, cabling and software",
+   "source_url": "https://www.shingle.com/itemdetail/BAN%20QM30VT2"
+  },
+  {
+   "vendor": "Emerson",
+   "product": "AMS Wireless Vibration Monitor (Plantweb Insight)",
+   "what_it_does": "Wireless triaxial vibration monitor feeding Plantweb Insight analytics; typically sold into plants that already run AMS.",
+   "pricing": "Unknown - no official published price; one third-party estimator suggests roughly $150-600 per unit for a 10-unit U.S. order, excluding gateway, install, shipping and tax",
+   "source_url": "https://www.iot-apps.com/hardware/ams-wireless-vibration-monitor.html"
+  },
+  {
+   "vendor": "Fluke",
+   "product": "3563 Analysis Vibration Sensor system",
+   "what_it_does": "Triaxial vibration sensor with cloud analysis; Fluke's page marks the system discontinued or reclassified, so it is a caution about hardware churn rather than a live option.",
+   "pricing": "Unknown - no current published price; distributor stock only",
+   "source_url": "https://www.fluke.com/en-us/product/condition-monitoring/vibration/3563"
+  },
+  {
+   "vendor": "Open source stack (Frigate + Home Assistant + Hailo)",
+   "product": "Camera-based zone/object detection and notification automation",
+   "what_it_does": "Frigate runs object detection on camera substreams with a Hailo-8/Hailo-8L or OpenVINO detector, zone rules and MQTT events; the Home Assistant integration turns those events into alerts and dashboards. Usable for cycle counting, operator presence and 'is the machine running' where there is no electrical access.",
+   "pricing": "Software free (open source); detector hardware and edge compute priced separately - see hardware list (Raspberry Pi AI Kit with Hailo-8L $70, Raspberry Pi 5 8GB $95)",
+   "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+  }
+ ],
+ "gap_for_local_installer": "Every named vendor sells a subscription plus sensors to a plant that is assumed to have someone who will act on the alert. A 15-person job shop, a two-location pizza operator and a 60-machine laundromat do not: they have no reliability engineer, no asset register, no baseline and no maintenance calendar, and the vendor's onboarding stops at 'sensor shipped'. The local installer's product is the missing middle: a two-day asset survey and nameplate inventory, per-asset baselining across real load states, per-machine thresholds rather than generic defaults, alert routing to the one person who can actually call the repair tech, and a monthly review that turns the data into a decision (repair, replace, or stop worrying). Three further local wedges: (1) refrigeration temperature plus 41F compliance logging for kitchens, which no vibration vendor sells; (2) utilization dashboards for laundromats and multi-site restaurant groups where the buyer cares about cycles and turns, not bearing frequencies; (3) coordination with the trades - licensed electrician for CT installs, the existing HVAC or kitchen-equipment contractor for the repair - which remote SaaS vendors cannot do.",
+ "technical_approach": {
+  "established_pattern": "Four layers. (1) Sensing: bolt-on triaxial vibration + surface temperature on the drive end / non-drive end of each critical rotating asset, sampled periodically (e.g. 1-15 minute intervals, short high-rate bursts for FFT); split-core CT current sensing on the machine's feeder for run/stop, duty cycle and utilization; temperature probes on refrigeration and hot-holding. (2) Transport: LoRaWAN or Wi-Fi to a gateway, then MQTT into a local broker. (3) Analysis: physics-first features (RMS velocity, acceleration, kurtosis, crest factor, envelope demodulation for bearing tones) compared against ISO 20816-style bands and a per-asset learned baseline; time-series storage plus simple anomaly models (z-score/EWMA on RMS, IsolationForest for multi-feature) before any deep learning. (4) Action: rules in Home Assistant or Node-RED, SMS/WhatsApp/email escalation, Grafana or a small web dashboard, and a weekly PDF. Vision is a secondary channel used only where electrical access is impossible or where the question is about state, not condition: Frigate + a YOLO detector for run/stop or cycle counting, and a small VLM for exceptions such as reading an HMI fault screen or a dial thermometer from a still image.",
+  "models_and_tools": [
+   {
+    "name": "YOLO (Ultralytics YOLOv8/YOLO11, e.g. yolov8n; YOLOv6n and YOLOv9 as Frigate detector models)",
+    "role": "Object detection for machine/part/operator presence, cycle counting and zone rules. Frigate's overall default is a single CPU detector (OpenVINO/ONNX auto-detected on Intel hardware); YOLOv6n is the default model specifically for the Hailo-8/Hailo-8L detector. Licence matters: AGPL-3.0 by default for Ultralytics YOLO, with a paid Enterprise Licence needed to keep a proprietary deployment closed.",
+    "source_url": "https://www.ultralytics.com/license"
+   },
+   {
+    "name": "Frigate NVR",
+    "role": "Camera ingest, motion gating, object detection, zone definitions and MQTT event publishing; runs as Docker or a Home Assistant app and is the pragmatic glue for any camera-based utilization signal. Detector choice is hardware-specific (Coral EdgeTPU, Hailo-8/8L, OpenVINO, ONNX/ROCm/TensorRT), and 320x320 models are the recommended default.",
+    "source_url": "https://docs.frigate.video/configuration/object_detectors/"
+   },
+   {
+    "name": "Home Assistant",
+    "role": "Rules engine, notification routing, local dashboards and MQTT consumer; keeps the alerting logic on the customer's site instead of in a vendor cloud.",
+    "source_url": "https://docs.frigate.video/integrations/home-assistant"
+   },
+   {
+    "name": "Liquid AI LFM2.5-VL (450M / 1.6B / 3B)",
+    "role": "Small vision-language model for exception explanation on still frames - read a fault code or gauge, describe what changed in a before/after image, classify an unusual scene the rule engine cannot. 3B uses an LFM2.5 backbone with a SigLIP2 400M NaFlex vision encoder; small sizes allow on-box inference.",
+    "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b"
+   },
+   {
+    "name": "Qwen3-VL 2B / 4B",
+    "role": "Alternative small VLM for HMI/display reading and document-style extraction from panel screens; both sizes are listed as edge-deployable targets (TensorRT Edge-LLM supports 4B, Qualcomm AI Hub lists 2B).",
+    "source_url": "https://arxiv.org/abs/2511.21631"
+   },
+   {
+    "name": "Cactus (Cactus Compute)",
+    "role": "On-device inference framework for the phone app a technician uses to photograph nameplates, capture a gauge reading offline and queue uploads; keeps photos of the customer's plant off third-party clouds when required.",
+    "source_url": "https://github.com/cactus-compute/cactus/blob/main/README.md"
+   },
+   {
+    "name": "llama.cpp",
+    "role": "Local runtime for the VLM/LLM layer on a mini PC when the site has no GPU; avoids per-image API cost for continuous camera work.",
+    "source_url": "https://github.com/ggml-org/llama.cpp"
+   },
+   {
+    "name": "ISO 20816 vibration severity bands + envelope demodulation",
+    "role": "Physics-based thresholds before any ML: overall velocity RMS against machine-class bands, plus bearing-tone envelope analysis. This is what makes a 40-year-old lathe monitorable without a training dataset.",
+    "source_url": "https://nara-iot.com/hardware/lorawan-industrial-vibration-sensor-iso-20816-1"
+   },
+   {
+    "name": "Non-intrusive load monitoring (NILM) / current-signature analysis",
+    "role": "Deriving machine on/off and duty cycle from a panel-level CT, and using motor current spectrum for fault screening. Useful when per-machine CTs are too expensive; treat as screening, not diagnosis.",
+    "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9866328/"
+   }
+  ],
+  "hardware": [
+   {
+    "item": "Banner QM30VT2 vibration + temperature sensor (per critical asset)",
+    "approx_cost": "$325.00 per unit (Shingle & Gibb distributor list, single unit, in stock); Digi-Key showed $320.00 in a search listing but its product page returned HTTP 403 when opened here",
+    "source_url": "https://www.shingle.com/itemdetail/BAN%20QM30VT2"
+   },
+   {
+    "item": "Wireless LoRaWAN vibration sensor (Dragino IVS-LN and comparable units)",
+    "approx_cost": "Dragino IVS-LN $203.00; other LoRaWAN vibration sensors on the same distributor page run $56.00-$203.00, including rolling-ball type units at $61.00 (Netvox R313DA) and $129.00 (Netvox R718DA2), Netvox R718EC $99.00 and Dragino LHT65N/S-VIB $66-$71. No ~$420 unit and no Advantech WISE-2410 listing appear on that page, so the earlier '$203-$420' range has been restated",
+    "source_url": "https://www.choovio.com/product-category/lorawan-vibration-sensors/"
+   },
+   {
+    "item": "LoRaWAN gateway (Milesight UG65, US 915 MHz)",
+    "approx_cost": "$550.00 at Emergent Metering (US distributor, in-stock offer); gateway street price varies materially by seller, variant (cellular option) and accessories, so quote the specific SKU rather than assuming a list price - other listings seen but not opened ranged lower",
+    "source_url": "https://emergentmetering.com/products/milesight-ug65-indoor-lorawan-gateway"
+   },
+   {
+    "item": "Shelly Pro 3EM three-phase energy meter with combined 63A CTs (machine-level current/utilization)",
+    "approx_cost": "$150.99 for the 3CT63 (63A) version, confirmed on the Shelly US store; the 120A and 400A variant prices carried in the earlier draft could not be confirmed on any page opened here and are dropped - treat other variants as quote items",
+    "source_url": "https://us.shelly.com/products/shelly-pro-3em-3ct63"
+   },
+   {
+    "item": "Shelly EM Gen3 single-phase energy monitor (smaller loads, kitchen equipment)",
+    "approx_cost": "$69.99",
+    "source_url": "https://us.shelly.com/products/shelly-em-gen3-50a"
+   },
+   {
+    "item": "Edge compute for on-site inference (Raspberry Pi 5 8GB + Hailo-8L AI Kit)",
+    "approx_cost": "Raspberry Pi 5 8GB $95 official (raised from $80); Hailo-8L Raspberry Pi AI Kit $70 (announced June 2024)",
+    "source_url": "https://www.raspberrypi.com/news/raspberry-pi-ai-kit-available-now-at-70/"
+   },
+   {
+    "item": "ESP32-S3 + MPU6050 accelerometer (minimum viable vibration node for pilot or low-value assets)",
+    "approx_cost": "Unknown - not verified from a primary listing in this pass; commodity dev-board pricing only",
+    "source_url": "https://link.springer.com/article/10.1007/s43926-025-00142-4"
+   },
+   {
+    "item": "Install labor and licensed electrical work for any CT inside a panel",
+    "approx_cost": "Unknown / quote - requires a New Jersey licensed electrical contractor under N.J.A.C. 13:31-3.8; do not open panels as a non-licensee",
+    "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-31-3-8"
+   }
+  ],
+  "fine_tuning_needed": "Mostly no. Vibration and current thresholds are physics-based (ISO 20816 bands, motor nameplate FLA) and need calibration - 2-6 weeks of baseline per asset across its real load states - not model training. A generic anomaly model (z-score/EWMA or IsolationForest on RMS, kurtosis and temperature) is enough for a first pilot and is far more debuggable than a neural net. Fine-tuning or at minimum prompt/example tuning does become necessary for the vision path: reading a specific HMI, gauge or dial is a per-customer visual task, and a few hundred labelled stills per camera plus a LoRA on a 2-4B VLM is the realistic route. Do not fine-tune before you have baselines and a labelled failure history - most small sites have zero recorded failures to train on.",
+  "data_needed": "Asset register with nameplate data (model, serial, kW/hp, RPM, voltage, service factor) built by walking the floor; 2-6 weeks of continuous baseline at normal operation including startup, idle, full load and shift changes; maintenance and repair history for the last 12-24 months (invoices from the service contractor are usually the only record); failure modes and their consequence cost per asset (scrap, spoilage, lost covers, overtime); for refrigeration, the cold-holding log and any past inspection findings; for the vision path, 200-500 labelled still frames per camera per state (running, stopped, faulted, empty, loaded) and, where available, screen recordings of the HMI.",
+  "difficulty": "Medium"
+ },
+ "measured_outcomes": [
+  {
+   "finding": "Predictive maintenance was associated with 15% less downtime than preventive maintenance and 87% lower defect rates and 66% less maintenance-driven inventory increase; separately, establishments in the top quartile of reactive maintenance had 3.3x more downtime, 16.0x more defects and 4.89x more inventory increases due to maintenance issues (these are the reactive-vs-rest comparisons, not the predictive-vs-preventive ones). Rated Medium, not High: this is a cross-sectional establishment survey reporting associations, not a controlled or longitudinal design.",
+   "year": "2020",
+   "sample": "NIST analysis of U.S. manufacturing establishments (NIST AMS 100-34, Machinery Maintenance Survey); exact n not stated on the summary page",
+   "study_type": "government",
+   "strength": "Medium",
+   "source_url": "https://www.nist.gov/news-events/news/2020/06/research-suggests-significant-benefits-investing-advanced-machinery"
+  },
+  {
+   "finding": "A functional predictive maintenance program is credited with 35-45% less downtime, 70-75% fewer breakdowns, 25-30% lower maintenance cost and 8-12% savings over preventive maintenance.",
+   "year": "2010",
+   "sample": "Aggregate of unnamed 'independent surveys' cited in a federal guide; no single study or n",
+   "study_type": "government",
+   "strength": "Medium",
+   "source_url": "https://www.energy.gov/sites/default/files/2020/04/f74/omguide_complete_w-eo-disclaimer.pdf"
+  },
+  {
+   "finding": "Commercial buildings using fault detection and diagnostics software achieved median whole-building energy savings of 8%.",
+   "year": "2020",
+   "sample": "26 organizations, 550 buildings, 97 million square feet",
+   "study_type": "peer-reviewed",
+   "strength": "High",
+   "source_url": "https://bies.lbl.gov/publications/building-fault-detection-and"
+  },
+  {
+   "finding": "In factory vibration data covering 11 bearing-failure cases over four years, degradation speed varied widely - some faults developed over months, one became detectable only days before bearing replacement. This is the honest counterweight to 'you always get weeks of warning'.",
+   "year": "2023",
+   "sample": "11 bearing failure cases, single pulp-mill dataset, 4 years",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://www.mdpi.com/2306-5729/8/7/115"
+  },
+  {
+   "finding": "An ESP32-S3 + MPU6050 vibration node running FFT features and a TinyML DNN reported 96.5% accuracy (96.19% precision, 97.11% recall) for a three-class motor-state classifier (stopped / average speed / high speed); the K-Means clustering component was a separate anomaly-detection algorithm in the same system, not the source of the 96.5%. Total latency from data collection to Telegram alert was about 300 ms (80 ms collection, 25 ms inference, 195 ms transmission/alert). The authors also claim 98% overall detection accuracy over 2 months of industrial operation.",
+   "year": "2025",
+   "sample": "Bench experiments plus an author-reported 2-month field validation; single study, no independent replication, sample size not stated in accessible text",
+   "study_type": "peer-reviewed",
+   "strength": "Low",
+   "source_url": "https://link.springer.com/article/10.1007/s43926-025-00142-4"
+  },
+  {
+   "finding": "Vendor-run survey reporting average cost of an hour of unplanned downtime at about $25,000, with 29% of respondents expecting aging equipment to be the leading cause in the next 12 months. Self-reported, vendor-published, no methodology shown on the release - not a measured outcome at customer sites.",
+   "year": "2024",
+   "sample": "1,165 MRO professionals worldwide, self-reported vendor survey",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://www.getmaintainx.com/newsroom/state-of-industrial-maintenance-report-2024"
+  },
+  {
+   "finding": "One in three respondents experience unplanned equipment downtime every week; refrigeration and fryers are the most frequent and most disruptive failures. Vendor-commissioned and vendor-published; no independent validation.",
+   "year": "fielded 2025, published 2026",
+   "sample": "~1,800 chain (restaurant, grocery, convenience) and institutional (education, healthcare, hospitality, corporate) respondents, vendor-commissioned survey",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://www.partstownunlimited.com/blog/rethinking-downtime"
+  },
+  {
+   "finding": "Emerson case study of a roofing/insulation plant reports 44 hours of downtime avoided in the first six months, 50% longer mean time between failures, 43% fewer mechanical emergency maintenance events and 260% program ROI in six months.",
+   "year": "2019 document (program started early 2002)",
+   "sample": "One plant (Johns Manville, Etowah, TN)",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://www.emerson.com/is/content/emerson/en/systems-and-software/ams/case-studies/documents/johns-manville-expands-production-capacity-with-new-approach-to-machinery-health-management.pdf"
+  }
+ ],
+ "legal_privacy": [
+  {
+   "issue": "Recording audio in a workplace",
+   "rule_or_precedent": "New Jersey's Wiretap Act, N.J.S.A. 2A:156A-4, is one-party consent: a participant may record, but a device left running to capture conversations you are not part of is not covered by the exception, and consent obtained for the purpose of committing a crime, tort or other injurious act is excluded. Practical rule for us: no microphones, ever. Vibration and current sensors avoid the issue entirely.",
+   "confirmed": true,
+   "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239?f=templates&fn=document-frameset.htm"
+  },
+  {
+   "issue": "Employer notice for video-only surveillance of employees",
+   "rule_or_precedent": "Could not confirm any New Jersey statute requiring an employer to post notice of video-only camera surveillance, and OSHA's employer-responsibilities page lists required postings and notices without a camera-surveillance notice requirement. Several other states do require notice (Maine, for example), so this is a state-by-state patchwork and notice is cheap insurance.",
+   "confirmed": true,
+   "source_url": "https://www.osha.gov/workers/employer-responsibilities"
+  },
+  {
+   "issue": "Employee monitoring and protected concerted activity",
+   "rule_or_precedent": "NLRB General Counsel Memorandum GC 23-02 (Oct 31, 2022) argued that surveillance or algorithmic management tending to deter Section 7 activity can violate the NLRA. That memo was rescinded: the NLRB's February 14, 2025 announcement of GC 25-05, 'Rescission of Certain General Counsel Memoranda', lists GC 23-02 on electronic monitoring among the rescinded memoranda. So it is no longer current General Counsel enforcement guidance - but the underlying NLRA theory was never overturned, and the practical advice (monitor machines, not people; disclose what you collect) still holds.",
+   "confirmed": true,
+   "source_url": "https://www.nlrb.gov/news-outreach/news-story/gc-25-05-rescission-of-certain-general-counsel-memoranda"
+  },
+  {
+   "issue": "State consumer privacy law coverage of site data",
+   "rule_or_precedent": "The New Jersey Data Privacy Act (P.L. 2023, c.266) took effect January 15, 2025 and applies at 100,000 consumers, or 25,000 consumers plus revenue from selling personal data; there is no small-business exemption. The Division of Consumer Affairs FAQ indicates employment and job-applicant data sit outside the consumer definition. Machine vibration/current data is not personal data; camera video of identifiable customers or staff is, so that is the part to keep scope-limited.",
+   "confirmed": true,
+   "source_url": "https://www.njconsumeraffairs.gov/ocp/Pages/NJ-Data-Privacy-Law-FAQ.aspx"
+  },
+  {
+   "issue": "Biometrics and face recognition",
+   "rule_or_precedent": "I could not confirm any New Jersey BIPA-style statute requiring employer consent before collecting employee biometrics. Two premises-facing bills are pending, not law: A3929/S1464 (facial or other remote biometric recognition on consumers at a physical premises, with clear and conspicuous notice, passed the Assembly March 23, 2026 and was referred to a Senate committee May 4, 2026) and S1463 (biometric identifier notice at common entryways, introduced January 13, 2026). Recommendation: no face recognition in any offering.",
+   "confirmed": true,
+   "source_url": "https://www.njleg.state.nj.us/bill-search/2026/A3929/bill-text?f=A4000&n=3929_I1"
+  },
+  {
+   "issue": "Who may install current transformers inside an electrical panel",
+   "rule_or_precedent": "N.J.A.C. 13:31-3.8 requires a licensed electrical contractor holding a business permit for installing, maintaining or servicing premises wiring; the Board's FAQ points to N.J.S.A. 45:5A-18 for the narrow exemptions. Any CT or DIN-rail meter work must be subcontracted to a licensed New Jersey electrical contractor, with permit and inspection as the local construction office requires. Battery-powered bolt-on vibration sensors avoid this entirely - a strong reason to lead with them.",
+   "confirmed": true,
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-31-3-8"
+  },
+  {
+   "issue": "Marketing claims about monitoring accuracy or savings",
+   "rule_or_precedent": "The FTC's advertising substantiation policy statement (appended to Thompson Medical Co., 104 F.T.C. 648 (1984)) requires advertisers and their agencies to have a reasonable basis for express and implied objective claims before those claims are disseminated; lacking one is an unfair or deceptive act under Section 5 of the FTC Act, and the advertiser must hold the level and type of substantiation the ad communicates. For us (inference): any accuracy, time-saving or downtime-reduction number must be supported by evidence we hold before we say it, and quoting the NIST association or the DOE range requires their caveats attached. Never promise a percentage of downtime reduction.",
+   "confirmed": true,
+   "source_url": "https://www.ftc.gov/legal-library/browse/ftc-policy-statement-regarding-advertising-substantiation"
+  },
+  {
+   "issue": "AI-specific enforcement risk in marketing",
+   "rule_or_precedent": "The FTC's September 2024 'Operation AI Comply' announcement states there is 'no AI exemption from the laws on the books', and the proposed DoNotPay order would bar claims about an AI service's ability to substitute for a professional service without evidence to back them up; the same sweep included an AI 'robot lawyer' complaint and a fake-review generation case. Inference for us: do not claim the system replaces a reliability engineer, guarantees a catch, or 'predicts failures with X% accuracy' without held evidence.",
+   "confirmed": true,
+   "source_url": "https://www.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes"
+  },
+  {
+   "issue": "Workplace privacy tort exposure for camera placement",
+   "rule_or_precedent": "Hennessey v. Coastal Eagle Point Oil Co., 129 N.J. 81 (1992) recognized that employees retain privacy interests that must be balanced against the employer's legitimate business and safety interests; the employer prevailed there because the job was safety-sensitive. It is a balancing test, not a blanket employer right - so no cameras in break rooms, restrooms, locker areas or changing rooms, and document the business justification for every camera.",
+   "confirmed": true,
+   "source_url": "https://law.justia.com/cases/new-jersey/supreme-court/1992/129-n-j-81-1.html"
+  },
+  {
+   "issue": "Data retention period for site video and sensor data",
+   "rule_or_precedent": "Unknown. I found no New Jersey statute or regulation setting a retention limit for private-employer camera footage or machine telemetry. Best practice (inference): 30 days rolling for video, 24 months for sensor time series, and a written retention clause in the contract.",
+   "confirmed": false,
+   "source_url": ""
+  },
+  {
+   "issue": "Permission to attach sensors to leased equipment or leased premises",
+   "rule_or_precedent": "Unknown - I did not find a New Jersey-specific rule. Inference: most commercial leases require landlord consent for attachments or alterations, so the pilot contract should include a landlord/lessor consent line and require reversible, adhesive or clamp mounting.",
+   "confirmed": false,
+   "source_url": ""
+  }
+ ],
+ "prospecting_signals": {
+  "public": [
+   "Google/Yelp reviews that name a specific failure: 'machine was out of order', 'cooler broke', 'closed early', 'waited a week for a part' - a review is public evidence of a downtime event the owner already knows about.",
+   "Local health department retail food inspection reports showing repeated cold-holding or thermometer violations. New Jersey has no single statewide public inspection database; reports are published by county or municipal health departments, so check the Middlesex County Office of Health Services and the specific town's portal.",
+   "Job postings for 'maintenance technician', 'reliability engineer' or 'facilities manager' - a site hiring maintenance staff has both a machine population worth monitoring and a person who can act on an alert.",
+   "OSHA establishment-specific injury and inspection data (searchable by employer on osha.gov) - a repeat-amputation or machine-guarding history signals aging equipment and stalled maintenance.",
+   "Number of locations, years in business ('serving since 19xx' on the site) and photos showing equipment vintage - a 30-year-old business on the same equipment is the best predictor of a retrofit opportunity (inference).",
+   "Square footage and machine count from the company's own site, LinkedIn headcount, or a manufacturer directory listing - needed to size the quote before the first call.",
+   "Signs of expansion or a second location (new-location announcement, hiring spree) - utilization dashboards become a purchase decision at exactly that moment.",
+   "For laundromats: the store's own review stream mentions specific numbered machines or 'half the washers are broken', which is public evidence of an unmonitored fleet."
+  ],
+  "walk_in": [
+   "Nameplates: photograph every machine's data plate for vintage, hp/kW and RPM. Pre-1995 controls with no network port are the target, not the disqualifier.",
+   "Oil weeping or puddles under gearboxes, gearmotors and hydraulic power units - a leading indicator of a bearing or seal on its way out.",
+   "Handwritten 'out of order' signs, a shelf of spare belts and motors, and a maintenance whiteboard or clipboard with downtime tallies - the site is already tracking the problem manually.",
+   "Thermometers: dial thermometers in walk-ins with no logger, ice buildup on evaporator coils, or a clipboard temperature log filled in retroactively.",
+   "The electrical room: is there 3-phase 208/480, and is there physical space on the DIN rail or panel gutter for CTs? Is the panel labeled? This determines whether the current-sensing option needs an electrician and a permit.",
+   "Wi-Fi coverage at the far end of the plant or basement - if it is bad, a LoRaWAN gateway is the answer, and that is a line item to quote on the spot.",
+   "Who fixes things: an in-house tech, a named outside contractor, or 'whoever is free'? A named contractor is a partner to coordinate with, not a competitor.",
+   "How the owner currently knows a machine is down: 'the operator tells me', 'I walk the floor at 6am', 'the customer complains'. That sentence is the whole sales case.",
+   "Ask three questions: What broke last month, and how long was it down? What does a bad week cost you in dollars or lost customers? Do you know what percentage of the time your bottleneck machine is actually running?",
+   "In a laundromat: count machines versus out-of-service tags, and watch whether the attendant has any way to know a dryer stopped heating."
+  ]
+ },
+ "pilot": {
+  "scope": "One site, 8-12 critical assets, six weeks. Week 1: walk the floor, build the asset register with nameplate photos, agree the 8-12 assets and the consequence cost of each failing. Week 2: install sensors, pull 12-24 months of repair invoices, set provisional thresholds. Weeks 3-6: monitor, tune thresholds, run a 30-minute weekly review with the owner or maintenance lead, log every alert and its outcome. Deliverable: a one-page baseline (per-asset run-time percentage, alert count, false-alarm count), at least one documented early catch or a documented decision to change a maintenance interval, and a priced recommendation for a full site.",
+  "hardware": "Option A (no electrician, fastest): 8-12 battery-powered bolt-on vibration + surface-temperature sensors (Banner QM30VT2 at $325 each, or LoRaWAN vibration units at $203 for the Dragino IVS-LN, with cheaper $56-$129 LoRaWAN vibration sensors on the same distributor page), one LoRaWAN gateway if Wi-Fi is weak ($550 at the distributor price we opened), one mini PC or Raspberry Pi 5 ($95) running the broker, time-series database and Home Assistant. Option B (utilization-first, needs an electrician): 3-6 Shelly Pro 3EM 3CT63 meters at $150.99 each with CTs plus 4-6 temperature probes. Option C (camera only, where there is no electrical access): a Raspberry Pi 5 + Hailo-8L AI Kit ($95 + $70) running Frigate against existing cameras. Most pilots will mix A with a few temperature probes.",
+  "success_metric": "Pre-registered, three parts: (1) at least one verified early catch - an alert that led to an inspection finding a real abnormal condition (loose mount, failing bearing, low refrigerant, blocked condenser) that was repaired before failure, with the repair invoice as evidence; or, if no failure occurs in six weeks, a baseline the owner accepts and acts on, such as 'the bottleneck machine runs 41% of scheduled hours and 60% of that loss is changeover'; (2) false-alarm rate below one per site per week by week 6, since alarm fatigue is the failure mode that kills these installs; (3) owner or maintenance lead says they would keep it at the stated monthly price. Do not use 'downtime reduced by X%' as a six-week metric - six weeks is too short to measure that honestly.",
+  "cost_range": "$7,000-$18,000 for a six-week pilot at one site, plus roughly $200-$900/month recurring if it continues.",
+  "assumptions": "Assumptions behind that range: single site within ~30 minutes of Milltown; 8-12 assets, not a whole plant; battery-powered sensors so no electrical permit needed for phase one; existing Wi-Fi adequate or one gateway covers the site; owner supplies the asset list and two hours a week; hardware at the list prices cited above (sensors $1,624-$3,900 = 8 x $203 at the low end to 12 x $325 at the high end; gateway $550; compute $95-$500); 60-100 hours of our labor at $75-$125/hour ($4,500-$12,500) covering survey, install, baselining, threshold tuning, weekly reviews and the report; excludes any licensed electrical work, which is quoted separately by the electrical contractor, and excludes the cost of the repairs the monitoring identifies. Recurring $200-$900/month assumes 8-12 assets at roughly $25-$75 per asset per month (8 x $25 = $200 floor; 12 x $75 = $900 ceiling), set below the $45/asset commercial benchmark because we are not providing analyst coverage at that level."
+ },
+ "fit_score": {
+  "demand": 14,
+  "local_buyers": 12,
+  "ability_to_pay": 9,
+  "technical_feasibility": 17,
+  "legal_risk_low": 12,
+  "defensibility": 7,
+  "total": 71,
+  "rationale": "Sub-scores sum to 71: 14+12+9+17+12+7. Demand is real but indirect for our buyer: the strongest numbers are a government establishment-level association (NIST, now rated Medium because it is a cross-sectional survey reporting associations rather than a trial) and a decades-old DOE aggregate of past studies, while the two site-level 'how often it breaks' figures (MaintainX $25,000/hour and the Parts Town one-in-three-weekly finding, the latter from a survey that also covers grocery, convenience, education and healthcare respondents) are vendor-run surveys rated Low - hence 14/20, not higher. Local buyers exist in volume: 824 manufacturing establishments, 1,752 accommodation and food service establishments and 1,710 other-services establishments in Middlesex County in 2024 (NJ LWD county report, 2024 QCEW), though only a slice of each has 10+ critical machines - 12/15. Ability to pay is the weak point: a 15-person job shop or a two-location restaurant compares every quote to a national bundle priced at $45/asset/month and to doing nothing - 9/15. Technical feasibility is high: commodity sensors with prices readable off distributor pages (now corrected to what those pages actually list, $56-$203 for LoRaWAN vibration sensors and $325 for the Banner unit), mature open-source (Frigate, Home Assistant, llama.cpp), physics-based thresholds that need calibration rather than training, and a clear path to a small VLM only for exception cases - 17/20. Legal risk is low if we stay away from audio and face recognition and subcontract panel work to a licensed electrician; the NLRB monitoring memo (GC 23-02) is confirmed rescinded as of 2/14/2025 and the advertising constraint rests on the FTC's substantiation policy, so residual risk is alert-driven discipline of an employee and privacy tort exposure from camera placement - 12/15. Defensibility is the real weakness: hardware is a commodity with published prices and SaaS vendors are moving downmarket, so the moat is only local presence, per-asset calibration, trade coordination and the owner's trust - 7/15. Total 71/100: a solid, buildable service with a thin margin story, best entered through refrigeration compliance and utilization dashboards rather than competing head-on with vibration-analytics SaaS."
+ },
+ "risks": [
+  "Alert fatigue: a generic threshold that fires on every shift change destroys trust in week two and the owner cancels. This is the most common failure mode and the reason per-asset baselining is the actual product.",
+  "Price anchoring from national bundles: MachineCDN publishes $45/asset/month including hardware, LoRaWAN connectivity and software, which leaves little room for a local service margin unless we sell installation, calibration and interpretation as a separate line.",
+  "The owner has no maintenance process to receive the alert. Monitoring without a named person and a repair path produces a dashboard nobody opens.",
+  "CT and panel work requires a New Jersey licensed electrical contractor (N.J.A.C. 13:31-3.8), adding cost, schedule and a dependency we do not control.",
+  "Hardware longevity in real kitchens and plants: washdown, heat, grease and vibration kill consumer-grade sensors; a 5-year battery claim is a vendor claim, not a field-verified number.",
+  "Liability if we miss a failure: a spoilage event or a stopped line after we installed 'monitoring' invites a claim that we assumed a duty of care. Contract language must state that the system is advisory, not a guarantee, and cap liability.",
+  "Licensing: Ultralytics YOLO is AGPL-3.0 by default and its models trained with its code are covered; shipping it inside a closed appliance needs the paid Enterprise Licence or a different detector.",
+  "Cybersecurity and network politics: putting any device on a small manufacturer's flat network, or asking for IT cooperation they do not have, can stall an install for weeks.",
+  "No failure history to train on: small sites often have zero recorded failures, so any 'predictive' claim beyond threshold trending is unsupported - sell condition monitoring and utilization, not failure prediction.",
+  "Scalability of the service model: 8-12 asset installs and weekly reviews do not scale past a handful of sites per technician without heavy templating and remote triage."
+ ],
+ "caveats": "Three things to hold lightly. First, the headline savings numbers are not from businesses like the ones we would serve: NIST's 15% is an establishment-level cross-sectional association (rated Medium here, not High, because it is a survey association rather than a trial), DOE's 35-45% is an aggregate of past studies cited in a 2010 federal guide, and Siemens' $150,000/hour figure is the top end of SME manufacturing read from a third-party summary of that report - none of them is a controlled trial at a 20-person job shop. Second, most of the concrete case studies with attractive numbers (Emerson/Johns Manville 260% ROI, Augury's under-6-month payback claim, Parts Town's and MaintainX's survey percentages) are vendor marketing or vendor-run surveys, rated Low here, and should never be repeated to a prospect as an expectation; the Parts Town results were fielded in 2025 and published June 30, 2026, and cover grocery, convenience and institutional respondents as well as restaurants, so they are not a restaurant-only dataset. Third, the honest technical picture from the peer-reviewed vibration literature is that warning lead time varies from months to days depending on the fault, so a pilot should promise detection and a baseline, not advance warning. Middlesex County counts are sector-level (824 manufacturing, 1,752 accommodation and food services, 1,710 other services establishments, each with the employee totals in the NJ LWD 2024 QCEW county report) and include employers far outside the 5-200 staff band; the addressable subset is smaller and unmeasured. The strength scale used here treats cross-sectional government survey associations as Medium and controlled or peer-reviewed designs as High.",
+ "data_gaps": [
+  "The Wiley/IET paper on prognostics and health management frameworks (doi 10.1049/cim2.12122) returned HTTP 403 on every attempt, so the '14% of surveyed SMEs used predictive maintenance' figure that appeared in the earliest draft remains removed rather than cited from an unread page. A search summary repeated the figure, but search summaries are not treated as a source here.",
+  "No laundromat-specific study quantifying revenue lost per machine-hour of downtime was found. The Coin Laundry Association white paper on equipment replacement was retrieved but did not yield extractable dollar figures, and the American Laundry News maintenance survey page returned HTTP 403. The laundromat case rests on inference from per-cycle revenue, not on a citable loss study.",
+  "No statewide New Jersey public retail food inspection database exists; reports are published by county and municipal health departments, so inspection-history prospecting needs a per-town list that was not built here.",
+  "Two vendor prices (VibeCloud at roughly $26/sensor/month and Chladni at $79/machine/month) appeared only in a search-result summary and were not opened on the vendor's own page, so they were left out of existing_solutions rather than cited unverified.",
+  "The MDPI factory vibration dataset page returned HTTP 403 on direct fetch; the 11-case/four-year description and the 'days to months' lead-time finding come from the search result summary of that page, not from reading the paper.",
+  "The Parts Town study's own report/whitepaper page on partstown.com returned HTTP 403 on direct fetch; all survey figures were read on Parts Town Unlimited's June 30, 2026 blog post covering the survey, which describes fieldwork in 2025 but does not state a margin of error or full methodology. The 'Rethinking Downtime' label carried in the earlier draft could not be found on that page and has been dropped.",
+  "Distributor pricing is partly blocked: Digi-Key and RS Components returned HTTP 403 for the Banner QM30VT2, so the $325.00 figure comes from Shingle & Gibb's listing and the widely repeated $320.00 Digi-Key price is marked unverified. Milesight UG65 pricing varies a lot by seller and variant; only one in-stock distributor offer ($550.00, Emergent Metering) could be opened, so treat the gateway line as a quote item.",
+  "The Choovio vibration-sensor category page opened on this pass lists $56.00-$203.00 (Dragino IVS-LN $203.00 is the most expensive item) and no Advantech WISE-2410; the earlier '$203-$420 per unit' range and the WISE-2410 class reference were therefore removed rather than replaced. No distributor page showing an approximately $420 triaxial LoRaWAN vibration sensor was located and opened.",
+  "Shelly Pro 3EM variant pricing beyond the 63A (3CT63) model at $150.99 could not be confirmed; the 120A and 400A prices carried in the earlier draft were dropped rather than re-guessed.",
+  "The FTC Business Blog post 'Keep your AI claims in check' (widely dated February 27, 2023) now returns HTTP 404 at its documented URL, so it was replaced with two sources actually opened here: the FTC advertising substantiation policy statement and the September 2024 Operation AI Comply press release. Neither is AI-claim-specific guidance in blog form.",
+  "BLS OEWS county-level detail could not be pulled directly (the county table did not render); the wage figures used are 2023 OEWS Middlesex-Monmouth-Ocean industry-sector rows from a New Jersey Department of Labor PDF, not a Middlesex-only all-industry median, and the table's percentile columns are annual salaries so any hourly median is a derived inference. The county establishment/employment counts come from a separate NJ LWD county report (2024 QCEW, February 2026 edition).",
+  "Census County Business Patterns establishment counts by employment-size band for Middlesex County could not be retrieved (the Census API response was not extractable), so the share of local establishments in the 5-200 staff band remains an estimate and is not cited.",
+  "No measured outcome was found for camera-based utilization monitoring deployed in a real laundromat, restaurant or job shop - the vision accuracy numbers available are lab or single-study results.",
+  "Fine-tuning costs and the price of a used industrial mini PC were not established from primary sources; both are marked Unknown in hardware rather than estimated.",
+  "Whether any New Jersey rule requires employer notice for video-only surveillance, or sets a video retention limit, could not be confirmed in either direction."
+ ]
+}

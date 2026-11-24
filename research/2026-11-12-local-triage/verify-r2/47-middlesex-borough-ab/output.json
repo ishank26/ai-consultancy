@@ -1,0 +1,163 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Sky Brook Realty - real estate broker, 409 Union Ave, Middlesex, 732-469-0020",
+      "problem": "Wrong town. The brokerage's own website footer gives 100 W Main St., Bound Brook, NJ 08805 and phone (908) 672-6965; the Middlesex address/phone combination appears only in a YellowPages listing. The mapper flagged this as 'confirm' but still counted it in-zone.",
+      "fix": "Remove from the Middlesex zone or move to the Bound Brook list; keep only if a phone check proves a Middlesex branch."
+    },
+    {
+      "claim": "Weapons 9 Muay Thai - 647 Bound Brook Rd, Middlesex, 609-678-6728",
+      "problem": "Wrong town. The gym's own site 'OUR LOCATION' block gives 326 North Ave, Dunellen, NJ 08812 with the same phone number; the Middlesex address comes from a third-party gym directory only.",
+      "fix": "Move to Dunellen (outside this zone) or drop."
+    },
+    {
+      "claim": "Brickforce Staffing - 440 Union Ave, Middlesex, 732-563-2622",
+      "problem": "No Middlesex location found. The company's own contact and locations pages list only a corporate office at 2 Ethel Road, Edison, plus a Bound Brook branch in search results, and the mapper's source URL was a Bound Brook category page. Entry appears created by mislabelling a Bound Brook listing as Middlesex.",
+      "fix": "Verify by phone; otherwise drop or move to Bound Brook/Edison."
+    },
+    {
+      "claim": "Schifano Construction Corporation - website https://www.schifanoconstruction.com/",
+      "problem": "The cited website does not resolve (DNS lookup fails for both www and bare domain), so the 'own website' evidence is wrong even though the business itself is real and appears in a Birdeye listing with 28 reviews.",
+      "fix": "Remove the website field or replace with the correct domain; keep the Birdeye listing as the evidence source."
+    },
+    {
+      "claim": "Osborn & Son (appraisals) - real estate appraisal, 1273 Bound Brook Rd",
+      "problem": "Category looks wrong. The directory profile behind the entry describes 'Osborn Associates (Osborn & Son)' at 1273 Bound Brook Rd Suite 15 as forensic document examination, not property appraisal; the page itself returned 403 so this is from the search result summary only.",
+      "fix": "Re-categorise as forensic/document services or drop; do not pitch appraisal-software work to them until confirmed."
+    },
+    {
+      "claim": "Vecchio Joseph Jr CPA - 601 Bound Brook Rd, phone 732-752-7000",
+      "problem": "Phone is identical to SRM Tax and Accounting Services at 1273 Bound Brook Rd Suite 11 (verified on SRM's own contact page), which is almost certainly a copy error. The 601 Bound Brook Road address itself is supported by a Birdeye listing for Joseph P. Vecchio, Jr., CPA & Associates.",
+      "fix": "Pull the correct number from the Birdeye listing or by phone before outreach."
+    },
+    {
+      "claim": "Behory-Donofrio Insurance Agency - 617 Bound Brook Rd",
+      "problem": "Address conflict between directories: one aggregator shows 617 Bound Brook Rd (the value used), another shows 540 Bound Brook Rd. 617 Bound Brook Rd is also the address given for CJM Professional Roofing, so suite/unit detail is missing.",
+      "fix": "Confirm street number and suite by phone; add unit if the building is multi-tenant."
+    },
+    {
+      "claim": "Graziano Piasecki Simko Whitelaw & Lawyer - 476 Union Ave",
+      "problem": "Firm name is garbled. The firm's own history page and Martindale give 'Graziano, Piasecki, Whitelaw & Simko, LLC'; there is no '& Lawyer' partner and the order of names is wrong.",
+      "fix": "Correct the name to Graziano, Piasecki, Whitelaw & Simko, LLC (site pwlawfirm.com)."
+    },
+    {
+      "claim": "Erica J. Mandell, Attorney at Law - address 'Unknown', Middlesex",
+      "problem": "Address is recoverable. The mapper's note that /about_us returns 404 is confirmed (I got the same 404), but the indexed version of that page and other directories give 601 Bound Brook Road, Suite 111, Middlesex, NJ 08846; leaving it 'Unknown' wastes a reachable record.",
+      "fix": "Record 601 Bound Brook Rd Suite 111 as the published address with a 'from directory, page now 404' note."
+    },
+    {
+      "claim": "Coverage gap - flooring retailers in 08846",
+      "problem": "Four searches surfaced three flooring businesses in the borough that are absent from the list: J Brothers Flooring (549 Lincoln Blvd), Kermizian Carpets (1212 Bound Brook Rd) and S&M Carpet (104 Wood Ave).",
+      "fix": "Add them (all independent local retailers, not chains) after a phone check."
+    },
+    {
+      "claim": "Coverage gap - electrical contractor Rob Robinson Electric, LLC",
+      "problem": "A Birdeye listing with 10 reviews places Rob Robinson Electric LLC at 256 Beechwood Ave, Middlesex; it is not in the list, while other electricians from the same directory pass are listed.",
+      "fix": "Add with the Birdeye listing as evidence."
+    },
+    {
+      "claim": "Advocare Mehta Pediatrics - 498 Union Ave",
+      "problem": "Network-affiliated brand practice (Advocare). The mapper excluded Evenly Orthodontics as a 'multi-site NJ brand' but kept this one, so the chain rule is applied inconsistently; Inspire PT (multi-office) and Monarch Training CrossFit (affiliate brand) are also borderline.",
+      "fix": "Apply one written rule for network/affiliate practices and re-tag these three entries."
+    },
+    {
+      "claim": "Small single-directory entries with no address (e.g. S&J Engineering LLC, J J Marill Plumbing, Hriczo's Construction)",
+      "problem": "These cannot be verified as operating in the borough: S&J Engineering appears only in a state licensing PDF with a 'Middlesex 08846' postcode and no street address, and the plumbing/HVAC ones come from Birdeye records with no street number.",
+      "fix": "Keep them out of the outreach queue until a phone or address check succeeds, or mark clearly as 'unverified, no address'."
+    },
+    {
+      "claim": "Curl Up & Dye Hair Salon - source_url is a BestProsInTown Dunellen page",
+      "problem": "Business is genuinely at 714 Union Ave, Middlesex (confirmed on its own site with phone 732-752-1196), but the cited source page is filed under Dunellen, which is the same mis-filing that produced the Sky Brook and Weapons 9 errors.",
+      "fix": "Replace the source with https://www.curl-upanddye.com/ and audit other BestProsInTown 'dunellen' pages."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Vastola & Sullivan is at 495 Union Ave, Middlesex, 732-560-0888", "source_url": "https://www.vastolaandsullivan.com/location-1", "result": "confirmed"},
+    {"claim": "Law Offices of Stacy I. Benson is a Middlesex-based firm (opened Feb 2025)", "source_url": "https://sbensonlawfirm.com/", "result": "confirmed"},
+    {"claim": "SRM Tax and Accounting Services is at 1273 Bound Brook Rd Suite 11, Middlesex, 732-752-7000", "source_url": "https://srmtaxandaccountingservices.com/contact-us/", "result": "confirmed"},
+    {"claim": "Linda M. Yu, CPA is at 576 Bound Brook Rd, Middlesex, 732-662-2215", "source_url": "https://lmycpa.com/contact.php", "result": "confirmed"},
+    {"claim": "Alan B. Douglas CPA is a Middlesex practice with phone 732-805-0100", "source_url": "https://douglascpafirm.com/", "result": "confirmed"},
+    {"claim": "Argos Insurance Group is an independent Middlesex, NJ agency, 201-449-9099", "source_url": "https://argosinsure.com/about-us/", "result": "confirmed"},
+    {"claim": "Forte Real Estate Development is at 242 Lincoln Blvd 2nd floor, Middlesex, 732-546-3812", "source_url": "https://www.buildforte.com/home/", "result": "confirmed"},
+    {"claim": "Cortland Computer Services is an active Middlesex IT services firm", "source_url": "https://www.cortlandcomputerservices.com/", "result": "confirmed"},
+    {"claim": "GCOM IT Solutions is at 145 Benart Pl, Middlesex, 908-956-5652", "source_url": "https://gcomitsolutions.com/", "result": "confirmed"},
+    {"claim": "Mark Computer Repair is a Middlesex computer repair business (550 Union Ave)", "source_url": "https://markcomputerrepair.net/contact-us/", "result": "confirmed"},
+    {"claim": "WS Consulting 4 is at 282 Lincoln Blvd, Middlesex", "source_url": "https://wsconsulting4.com/site/contact/", "result": "confirmed"},
+    {"claim": "Robb Digital is at 121 Union Ave, Middlesex, 732-486-3111", "source_url": "https://www.robbdigital.com/", "result": "confirmed"},
+    {"claim": "Footprint Marketing Solutions is based in Middlesex, NJ 08846, 732-648-5966", "source_url": "https://www.footprintmarketingsolutions.com/", "result": "confirmed"},
+    {"claim": "Mark-Anthony Bailey, attorney, is at 1309 Bound Brook Rd, Middlesex", "source_url": "https://attorneybailey.com/criminal-defense-law/", "result": "confirmed"},
+    {"claim": "Middlesex Family Dental is at 77 Main St, Middlesex, phone 732-926-1234", "source_url": "https://www.middlesexfamilydentist.com/", "result": "confirmed"},
+    {"claim": "Amaltas Dental & Implant Center is at 495 Union Ave Suite 2A, Middlesex", "source_url": "https://amaltasdental.com/", "result": "confirmed"},
+    {"claim": "Dr. Mauro & Associates is an active dental practice in Middlesex, NJ", "source_url": "https://www.drmauroandassociates.com/", "result": "confirmed"},
+    {"claim": "EyeDocs USA is a Middlesex optometry practice (also Highland Park), 877-393-3621", "source_url": "https://www.eyedocsusa.com/", "result": "confirmed"},
+    {"claim": "Your Eyes and You is at 1326 Bound Brook Road, Middlesex", "source_url": "https://www.youreyesandyou.com/", "result": "confirmed"},
+    {"claim": "Bound Brook Veterinary Clinic is a veterinary hospital in Middlesex, NJ", "source_url": "https://www.boundbrookvet.com/", "result": "confirmed"},
+    {"claim": "Inspire Physical Therapy Middlesex is at 220 Lincoln Blvd Suite C, 848-202-1439", "source_url": "https://theinspirept.com/location-physical-therapy/middlesex/", "result": "confirmed"},
+    {"claim": "B.E.S.T. Physical Therapy is at 601 Bound Brook Rd Ste 201, Middlesex, 732-968-4422", "source_url": "https://bestptnj.com/middlesex/", "result": "confirmed"},
+    {"claim": "Unna Chiropractic Care is an active Middlesex NJ chiropractic practice", "source_url": "https://unnacc.com/", "result": "confirmed"},
+    {"claim": "Curl Up & Dye is at 714 Union Ave, Middlesex, 732-752-1196", "source_url": "https://www.curl-upanddye.com/", "result": "confirmed"},
+    {"claim": "Braids Fades and Weaves LLC is at 547 Bound Brook Rd, Middlesex, 848-334-0735", "source_url": "https://braidsfadesandweaves.com/", "result": "confirmed"},
+    {"claim": "The Don's Barbershop & Shave Parlor is at 109 Harris Ave, Middlesex, 732-369-3263", "source_url": "https://www.thedonsbsxsp.com/", "result": "confirmed"},
+    {"claim": "Auto Shop of Middlesex is at 141 Lincoln Blvd, Middlesex, 732-469-0025", "source_url": "https://www.autoshopofmiddlesex.com/", "result": "confirmed"},
+    {"claim": "JEM Service Center is at 128 Wood Ave, Middlesex, 732-469-4005", "source_url": "https://www.jemservicecenter.com/", "result": "confirmed"},
+    {"claim": "Divine Autoworks is an active auto repair shop in Middlesex, NJ", "source_url": "https://www.divineautoworks.com/", "result": "confirmed"},
+    {"claim": "Stoms Automotive is a family-owned Middlesex shop opened April 2016", "source_url": "https://stomsauto.com/", "result": "confirmed"},
+    {"claim": "Izzy's Plumbing & Heating is headquartered at 744B Lincoln Blvd, Middlesex", "source_url": "https://www.izzysplumbing.com/", "result": "not found"},
+    {"claim": "CJM Professional Roofing operates from 617 Bound Brook Rd, Middlesex", "source_url": "https://cjmproroofing.com/", "result": "not found"},
+    {"claim": "Schifano Construction Corporation's website is https://www.schifanoconstruction.com/", "source_url": "https://www.schifanoconstruction.com/", "result": "could not open"},
+    {"claim": "Sky Brook Realty, 409 Union Ave, Middlesex", "source_url": "https://skybrook-realty.com/", "result": "contradicted"},
+    {"claim": "Weapons 9 Muay Thai, 647 Bound Brook Rd, Middlesex", "source_url": "https://www.weapons9muaythai.com/", "result": "contradicted"},
+    {"claim": "Brickforce Staffing has a Middlesex office at 440 Union Ave", "source_url": "https://brickforce.com/contact/", "result": "contradicted"},
+    {"claim": "Environmental Strategies & Applications Inc is defunct or dormant", "source_url": "https://askesa.com/", "result": "contradicted"},
+    {"claim": "Vecchio Joseph Jr CPA is at 601 Bound Brook Rd, Middlesex", "source_url": "https://reviews.birdeye.com/joseph-p-vecchio-jr-cpa-associates-inc-170130635222572", "result": "confirmed"},
+    {"claim": "Graziano, Piasecki, Whitelaw & Simko, LLC is at 476 Union Ave, Middlesex", "source_url": "https://pwlawfirm.com/about-us", "result": "confirmed"},
+    {"claim": "Psak & Associates is at 127 Union Ave, Middlesex, 732-560-0100", "source_url": "https://www.lawyers.com/middlesex/new-jersey/psak-and-associates-42349578-f/", "result": "confirmed"},
+    {"claim": "Erica J. Mandell's about_us page is live", "source_url": "https://www.ejmandellattorney.com/about_us", "result": "could not open"},
+    {"claim": "Tierno's Automotive is at 507 Bound Brook Rd, Middlesex", "source_url": "https://www.yellowpages.com/middlesex-nj/mip/tiernos-automotive-2323266", "result": "confirmed"},
+    {"claim": "Classic Masonry & Home Improvements is at 215 Lincoln Blvd, Middlesex", "source_url": "https://www.houzz.com/professionals/stone-pavers-and-concrete/classic-masonry-and-home-improvements-pfvwus-pf~1481902747", "result": "confirmed"},
+    {"claim": "Hands On Medical LLC is a PT provider at 601 Bound Brook Rd Suite 201B, Middlesex", "source_url": "https://painhero.ca/clinic/hands-on-medical-llc", "result": "confirmed"},
+    {"claim": "Sea Wave Beauty at 409 Union Ave Suite 2 is an active Middlesex beauty business", "source_url": "https://seawavebeauty.square.site/", "result": "contradicted"}
+  ],
+  "coverage": {
+    "searches": [
+      "dentist Middlesex NJ 08846",
+      "roofing contractor Middlesex NJ 08846",
+      "plumber Middlesex NJ 08846",
+      "accountant CPA Middlesex NJ 08846",
+      "auto repair shop Middlesex NJ 08846",
+      "attorney Union Ave Middlesex NJ",
+      "hair salon Middlesex NJ 08846",
+      "chiropractor Middlesex NJ 08846",
+      "HVAC contractor Middlesex NJ 08846",
+      "insurance agency Middlesex NJ 08846",
+      "landscaping contractor Middlesex NJ 08846",
+      "physical therapy Middlesex NJ 08846",
+      "flooring store Middlesex NJ 08846",
+      "electrician Middlesex NJ 08846",
+      "Suite 08846 Middlesex new business scan"
+    ],
+    "eligible_found": 54,
+    "already_listed": 50,
+    "missing": [
+      {"name": "J Brothers Flooring", "town": "Middlesex", "source_url": "https://jbflooring.com/contact-us/"},
+      {"name": "Kermizian Carpets", "town": "Middlesex", "source_url": "https://fermaflooring.com/retailor/nj-kermizian-carpets-inc/"},
+      {"name": "S&M Carpet, Inc.", "town": "Middlesex", "source_url": "https://www.yellowpages.com/middlesex-nj/mip/s-m-carpet-inc-5360453"},
+      {"name": "Rob Robinson Electric, LLC", "town": "Middlesex", "source_url": "https://reviews.birdeye.com/rob-robinson-electric-llc-166969206173240"}
+    ]
+  },
+  "confidence": "High",
+  "notes_on_method": [
+    "Checked 46 claims against 30+ separate sources, opening every cited page where it was reachable; entries that only exist as a single Birdeye/Loc8NearMe record were treated as unverified rather than contradicted.",
+    "Excluded from the missing list: Rubicon Roofing Systems (207 Lincoln Blvd) surfaced by roof.info, because rubiconexteriors.com is a Lincoln, Nebraska contractor, so the roof.info Middlesex record looks like bad data; Advanced Dentistry - A Dental365 Company (7 Greenbrook Rd), a national-brand chain; Allison Roy - State Farm, a branded carrier agent; Rizick & Rizick CPA (Old Bridge) and Andrew S. Turkish (Florham Park) are outside the borough.",
+    "No entry in the list is food, delivery-only, government, school, hospital, worship or a bank branch; the only chain-related ambiguity is Advocare Mehta Pediatrics (noted above).",
+    "Coverage rate of eligible businesses already listed is 50/54 (about 93%), above the 70% bar; the FAIL rests on the three wrong-town entries plus the evidence and category defects."
+  ],
+  "data_gaps": [
+    "amaltasdental.com and thedonsbsxsp.com fail direct fetch (JS-only) and were verified by driving a real browser instead; both matched the mapper's claims.",
+    "jbflooring.com returns an SSL protocol error, so the 549 Lincoln Blvd address for J Brothers Flooring comes from the search result summary rather than an opened page.",
+    "Cylex, YellowPages, SuperPages and some Birdeye pages returned 403 to direct fetches, so a few address/phone values rest on search summaries (Osborn & Son category, Kermizian Carpets, S&M Carpet, Rob Robinson Electric, Psak & Associates).",
+    "Roughly 90 list entries are supported only by one directory page with no independent confirmation; they were not individually disproven, only sampled.",
+    "No borough or county licensed-business roster was available to enumerate the borough exhaustively, so additional small home-based contractors may still be missing."
+  ]
+}

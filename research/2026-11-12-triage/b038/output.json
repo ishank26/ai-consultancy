@@ -1,0 +1,487 @@
+{
+  "batch": "b038",
+  "businesses": [
+    {
+      "name": "Campisano Law (Anthony M. Campisano, Esq.)",
+      "town": "North Brunswick",
+      "ref": "B00662",
+      "status": "operating",
+      "website": "http://amcampisanolaw.com/ (HTTPS fails; only plain HTTP responds)",
+      "what_they_do": "Solo/small-firm general practice run by Anthony M. Campisano, a NJ attorney for over 30 years per the site. Main lines of work are personal injury (car accidents, slip and fall, defective products, malpractice, workplace injuries), municipal court/DWI/traffic, real estate closings and zoning, general civil litigation, and personal documents such as wills and powers of attorney. The home page leads with a list of notable recoveries ($2.5M auto, $1.8M construction site, $1.1M defective product) and says most new clients come by referral.",
+      "customers": "Individuals and families in Middlesex County with injury, traffic/criminal or real estate matters; also small businesses with commercial disputes and contracts.",
+      "size_signals": [
+        {"signal": "Self-described as a 'small firm'; one named attorney (Anthony M. Campisano) on the site, no staff directory", "source_url": "http://amcampisanolaw.com/"},
+        {"signal": "Claims 30+ years representing NJ residents and a free consultation", "source_url": "http://amcampisanolaw.com/Contact.asp"},
+        {"signal": "Office at 2300 State Route 27, North Brunswick; single location with fax line listed", "source_url": "http://amcampisanolaw.com/Contact.asp"}
+      ],
+      "listing": {"platform": "Avvo / Martindale-Hubbell (no Google Business Profile rating found)", "rating": "Avvo: not yet reviewed; Martindale peer rating 4.4/5", "reviews": "4 peer reviews dated 2011-2014; 0 client reviews on Avvo", "source_url": "https://www.avvo.com/attorneys/nj-anthony-campisano-1609257.html"},
+      "website_review": {
+        "loads": true,
+        "https": false,
+        "phone_layout": "broken",
+        "clear_offer": false,
+        "primary_cta": "Small 'Contact Us 732-247-0009' image button in the header linking to the contact page",
+        "click_to_call": false,
+        "contact_form": true,
+        "online_booking_or_quote": "Contact/email form only; no booking or quote flow",
+        "trust_signals": "Notable recoveries table ($2.5M, $1.8M, $1.1M...), 30+ years experience claim, Martindale and CCTA seals as images, 'most new clients referred by past clients'",
+        "out_of_date_signs": "HTML 4.01 table layout with spacer gifs; navigation and headings are JPG images of text; no viewport meta (phone shows a shrunken desktop page); copyright line reads '2012-2026'; form JavaScript rejects any message containing 'http', '.com' or 'href'",
+        "search_basics": "Title 'Campisano Law | NJ - Attorney at Law' names no town and no specific service; keywords meta only, no meta description; one combined 'Practice Overview' page rather than per-service pages; no LocalBusiness schema",
+        "top_issues": [
+          "HTTPS does not respond at all - the site only loads over insecure http://",
+          "No mobile viewport: page renders as a zoomed-out desktop table on phones",
+          "Title/meta describe nothing local or specific; no individual practice-area pages",
+          "Contact form silently voids any message containing a URL or e-mail address"
+        ]
+      },
+      "agent_readiness": {"findable": 1, "answerable": 1, "bookable": 0, "notes": "Findable: no claimed Google Business Profile surfaced (only Avvo/Martindale directories); robots.txt returns 404 so nothing is blocked. Answerable: practice areas, address and phone exist as real text, but headings and nav are images, no hours/fees/service-area text, and 0 schema.org JSON-LD blocks on the page. Bookable: no online booking or quote flow and inputs are not properly labelled, so an agent would have to phone or e-mail."},
+      "operations_signals": [
+        {"signal": "Enquiries arrive through a form that posts to a static ThankYou.asp page - no CRM, ticketing or auto-reply is visible, so triage and follow-up are manual (inference from the form markup)", "source_url": "http://amcampisanolaw.com/Contact.asp"},
+        {"signal": "The form's JavaScript wipes the message and alerts 'Identified As Abuse' if the text contains a URL, '.com' or 'href', so legitimate enquiries that reference documents or other sites are lost", "source_url": "http://amcampisanolaw.com/Contact.asp"},
+        {"signal": "Site says most new clients are referrals and emphasises personal contact, implying a referral-driven pipeline with no automated nurture", "source_url": "http://amcampisanolaw.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Fix the foundation: serve HTTPS, add a mobile viewport and rebuild header/nav as text so the page is readable and crawlable on phones", "type": "website", "evidence": "https://amcampisanolaw.com returns 'This site can't be reached' in Chrome while http:// loads; no viewport meta; all nav and headings are .jpg images", "effort": "M"},
+        {"opportunity": "Split the 25-item practice list into 5-6 dedicated pages (personal injury, DWI/municipal, real estate, wills) with town-level titles and LocalBusiness schema", "type": "search", "evidence": "Single PracticeAreas.asp page; title names neither service nor town; 0 JSON-LD blocks detected", "effort": "M"},
+        {"opportunity": "Replace the brittle contact form with webhook-based intake that captures matter type, allows links, and auto-acknowledges the enquiry", "type": "operations", "evidence": "Contact.asp JavaScript blanks the message and alerts 'Identified As Abuse' when text contains 'http', '.com' or 'href'; form posts to a static ThankYou.asp", "effort": "S"}
+      ],
+      "scores": {"gap_size": 5, "ability_to_pay": 3, "ease": 3, "evidence": 4, "reasons": "Gap: HTTPS broken, no mobile layout, no schema, image-based nav - nearly everything is missing. Ability to pay: single-attorney PI practice on contingency income, moderate. Ease: static ASP/HTML site, rebuild is contained. Evidence: opened home and contact pages directly and saw each failure."},
+      "sources": ["http://amcampisanolaw.com/", "http://amcampisanolaw.com/Contact.asp", "https://www.avvo.com/attorneys/nj-anthony-campisano-1609257.html", "https://www.martindale.com/attorney/anthony-michael-campisano-1109902/"]
+    },
+    {
+      "name": "Pisciotta & Menasha, LLC",
+      "town": "North Brunswick",
+      "ref": "B00664",
+      "status": "operating",
+      "website": "https://pandmlawyers.com/",
+      "what_they_do": "Two-attorney elder law and estate firm. Core work is Medicaid planning and eligibility for long-term care, asset protection, estate planning (wills, living wills, durable powers of attorney), estate litigation, guardianship actions (contested and uncontested), probate/estate administration, and residential real estate purchases and sales. The site positions them as 'elder care attorneys' for middle-class seniors and their families facing $8,000-$10,000/month care costs (their figure).",
+      "customers": "Seniors and their adult children in Middlesex County planning for long-term care or probate; families in estate disputes and guardianship proceedings; home buyers and sellers.",
+      "size_signals": [
+        {"signal": "Two named principals only, Benjamin J. Menasha and Cathyanne A. Pisciotta, each with a bio page", "source_url": "https://pandmlawyers.com/"},
+        {"signal": "Member of the National Academy of Elder Law Attorneys; Pisciotta is Vice Chair of the NJSBA Elder Law and Disability Section (per site bios)", "source_url": "https://pandmlawyers.com/"},
+        {"signal": "Uses a downloadable Medicaid client questionnaire PDF rather than an online intake form", "source_url": "https://pandmlawyers.com/wp-content/uploads/2023/10/Client-Questionnaire-Updated-Medicaid.pdf"}
+      ],
+      "listing": {"platform": "Google (as reported by a third-party aggregator page)", "rating": "5.0", "reviews": "4", "source_url": "https://lawyer-usa.nears.me/lawyers/united-states/new-jersey/north-brunswick-township/pisciotta-menasha-llc-elder-law-attorney-in-north-brunswick-township-nj/"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "Sticky mobile bar with Call / Menu / Contact; site invites a call or an appointment request",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "Contact form plus phone/e-mail; no calendar booking",
+        "trust_signals": "Two client testimonials on the home page, attorney bios with credentials and bar-section roles, accessibility statement",
+        "out_of_date_signs": "None obvious - copyright reads 2026, page schema shows content modified 2024",
+        "search_basics": "Title 'North Brunswick New Jersey Elder Law & Estate Litigation Attorney' names service and town; no meta description; dedicated pages for elder law, estate litigation and guardianships; Organization schema with address and phone but no LocalBusiness type and no hours",
+        "top_issues": [
+          "No meta description on the home page and no visible h1 in the DOM",
+          "No hours or service-area text anywhere a crawler can read",
+          "Intake runs on a PDF questionnaire rather than a structured online form",
+          "Only about 4 reviews for a firm whose referral base is aging families"
+        ]
+      },
+      "agent_readiness": {"findable": 2, "answerable": 2, "bookable": 1, "notes": "Findable: has a Google presence (5.0/4 per aggregator), Yoast robots.txt allows all crawlers and points to a sitemap. Answerable: practice areas and address/phone are real text and there are two JSON-LD blocks (WebPage graph plus Organization with address and telephone), but no hours, fee ranges or service-area statement and no meta description. Bookable: standard contact form with 6 labelled fields and no CAPTCHA, but no calendar - an agent can only submit an enquiry or download the PDF questionnaire."},
+      "operations_signals": [
+        {"signal": "Client intake is a downloadable 'Client-Questionnaire-Updated-Medicaid' PDF, so staff collect and re-key answers by hand (inference from the artifact)", "source_url": "https://pandmlawyers.com/wp-content/uploads/2023/10/Client-Questionnaire-Updated-Medicaid.pdf"},
+        {"signal": "Home page asks clients to phone, e-mail or 'set up an appointment for a consultation' with no scheduling tool, so every consult is booked by a person", "source_url": "https://pandmlawyers.com/"},
+        {"signal": "Only two testimonials and roughly four reviews, with no review-request mechanism visible on the site", "source_url": "https://pandmlawyers.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Replace the PDF Medicaid questionnaire with structured online intake that saves answers into the case file and auto-sends next steps", "type": "operations", "evidence": "The only intake artefact on the site is 'Client-Questionnaire-Updated-Medicaid.pdf'; no online intake or booking exists", "effort": "M"},
+        {"opportunity": "Add scheduling plus written hours, service area and consultation fee so an AI agent can answer and book without a phone call", "type": "agent readiness", "evidence": "Site says call, e-mail or 'set up an appointment' with no calendar; no hours text; JSON-LD Organization has address/phone but no hours or priceRange", "effort": "S"},
+        {"opportunity": "Run a review-generation and referral-request loop aimed at the adult children who do the searching", "type": "operations", "evidence": "Only 4 reviews reported; the two testimonials are unverified quotes on the home page", "effort": "S"}
+      ],
+      "scores": {"gap_size": 3, "ability_to_pay": 4, "ease": 4, "evidence": 4, "reasons": "Gap: site is modern and mobile-friendly; it mainly lacks hours, meta description, structured intake and booking. Ability to pay: Medicaid planning and estate litigation carry solid fees at an established two-principal firm. Ease: clean WordPress/Yoast stack makes forms, schema and booking quick wins. Evidence: opened the live site at desktop and 390px, read robots.txt and the JSON-LD directly."},
+      "sources": ["https://pandmlawyers.com/", "https://pandmlawyers.com/robots.txt", "https://pandmlawyers.com/wp-content/uploads/2023/10/Client-Questionnaire-Updated-Medicaid.pdf", "https://lawyer-usa.nears.me/lawyers/united-states/new-jersey/north-brunswick-township/pisciotta-menasha-llc-elder-law-attorney-in-north-brunswick-township-nj/", "https://www.martindale.com/organization/pisciotta-menasha-llc-156152023/north-brunswick-new-jersey-157067555-f/"]
+    },
+    {
+      "name": "Busch and Busch, LLP",
+      "town": "North Brunswick",
+      "ref": "B00665",
+      "status": "operating",
+      "website": "https://www.buschlaw.com/ (SSL certificate expired - browsers block it)",
+      "what_they_do": "Three-attorney general practice, family-run and founded in 1927 per the site. Listed practice areas: trials and appeals, insurance defense, personal injury, real estate, divorce/custody/domestic violence, estate planning, trusts and estates administration, municipal court and criminal, corporate and business, elder law, education law, library law and computer law. The firm has held Martindale-Hubbell's top AV rating for more than 45 years and does insurance defense work for institutional clients alongside family and business matters.",
+      "customers": "Business entities and families in central NJ; insurers and public bodies (one partner was township attorney and school-board attorney for decades).",
+      "size_signals": [
+        {"signal": "Three active partners named with bios: Malcolm R. Busch, Ronald J. Busch, Bertram E. Busch (a fourth, Mark N. Busch, noted as retired)", "source_url": "https://www.buschlaw.com/"},
+        {"signal": "Firm founded 1927; 'AV' Martindale rating held for more than 45 years", "source_url": "https://www.buschlaw.com/"},
+        {"signal": "Office at 2875 US Highway 1 at Finnegans Lane with separate P.O. Box; individual @buschlaw.com e-mails only, no switchboard staff listed", "source_url": "https://www.buschlaw.com/"}
+      ],
+      "listing": {"platform": "Lawyers.com / Martindale-Hubbell (no Google rating found)", "rating": "Lawyers.com 1.0/5; Martindale peer 4.7/5", "reviews": "1 client review on Lawyers.com; 7 peer reviews on Martindale", "source_url": "https://www.lawyers.com/north-brunswick/new-jersey/busch-and-busch-llp-1110962-f/"},
+      "website_review": {
+        "loads": false,
+        "https": false,
+        "phone_layout": "broken",
+        "clear_offer": false,
+        "primary_cta": "None - the page has no call button, no form and only mailto: links to each partner",
+        "click_to_call": false,
+        "contact_form": false,
+        "online_booking_or_quote": "None; contact is by phone, fax or individual e-mail address",
+        "trust_signals": "Firm history since 1927, AV rating, partner awards and bar roles, address and map link",
+        "out_of_date_signs": "Expired TLS certificate produces a full-page browser warning before any content; layout has no viewport, no h1 and placeholder blocks literally reading 'Title 1 ... Title 4' under CLIENTS / MAP AND DIRECTIONS / SECTION 4; only 8 images",
+        "search_basics": "Title is just 'Busch and Busch, LLP' with no service or town; no meta description; single-page site with in-page anchors, so no per-practice-area pages; no schema markup",
+        "top_issues": [
+          "Expired SSL certificate - visitors and crawlers hit a security interstitial before the site",
+          "Placeholder 'Title 1/Title 2/Title 3' sections left live on the page",
+          "No contact form, no click-to-call, no viewport: an enquiry requires a phone call or typing an e-mail address",
+          "Single-page site with no practice-area or location content for search"
+        ]
+      },
+      "agent_readiness": {"findable": 0, "answerable": 1, "bookable": 0, "notes": "Findable: certificate expired so the site fails for agents as well as humans; no Google Business Profile rating surfaced; robots.txt could not be read because https fails and http:// redirects into the broken certificate. Answerable: the single page does state address, phone, fax and practice list as real text (a crawler that ignores the cert could read it) but there is no schema, no hours, no service area and no per-service URLs. Bookable: nothing - no form, no booking, only mailto links."},
+      "operations_signals": [
+        {"signal": "No web contact form exists; enquiries are only by phone, fax or a partner's individual e-mail address, so all intake is manual", "source_url": "https://www.buschlaw.com/"},
+        {"signal": "Live placeholder headings ('Title 1', 'Title 2', 'SECTION 4') and an expired certificate indicate no one is maintaining the site or its marketing", "source_url": "https://www.buschlaw.com/"},
+        {"signal": "The single client review on Lawyers.com criticises communication, responsiveness and fees on a 2023 real-estate matter - consistent with manual, partner-only client updates (inference)", "source_url": "https://www.lawyers.com/north-brunswick/new-jersey/busch-and-busch-llp-1110962-f/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Renew the TLS certificate and get https://www.buschlaw.com loading cleanly (fastest single fix in this batch)", "type": "website", "evidence": "Chrome returns net::ERR_CERT_DATE_INVALID on https and the http:// request fails the same way because it redirects to https", "effort": "S"},
+        {"opportunity": "Rebuild the one-page site with real navigation: per-practice-area pages, an about/contact page with hours, and working call and enquiry paths", "type": "website", "evidence": "Page contains literal 'Title 1 / Title 2 / Title 3' placeholders and only 8 images; no form, no h1, no viewport", "effort": "M"},
+        {"opportunity": "Add LocalBusiness/Attorney schema plus town-level service pages to get found for insurance defense and estate work in Middlesex County", "type": "search", "evidence": "0 JSON-LD blocks; title carries no service or town; no sitemap reachable", "effort": "S"}
+      ],
+      "scores": {"gap_size": 5, "ability_to_pay": 4, "ease": 4, "evidence": 5, "reasons": "Gap: expired certificate, placeholder content, no form, no schema, no mobile - about as incomplete as a live site gets. Ability to pay: 99-year-old three-partner firm with insurance-defense and institutional work. Ease: tiny static site, so the cert fix and a nine-page rebuild are quick. Evidence: hit the certificate error directly and read the full page text."},
+      "sources": ["https://www.buschlaw.com/", "https://www.lawyers.com/north-brunswick/new-jersey/busch-and-busch-llp-1110962-f/", "https://www.martindale.com/organization/busch-busch-llp-893448/north-brunswick-new-jersey-1110962-f/"]
+    },
+    {
+      "name": "Edward P. Shamy, Jr. Law Offices",
+      "town": "North Brunswick",
+      "ref": "B00666",
+      "status": "operating",
+      "website": "https://shamylaw.com/",
+      "what_they_do": "Personal injury and workers' compensation practice led by Edward P. Shamy, Jr., in practice more than 35 years and at the firm since 1985. Emphasis is car accidents, slip and fall, dog bites and work injuries, plus municipal court, real estate, wills and estate planning. Geography is deliberately New Brunswick-centric - the home page targets North Brunswick, New Brunswick and surrounding towns, and the contact page lists a dedicated real estate fax line.",
+      "customers": "Injured individuals and workers' comp claimants in Middlesex County; also local real estate buyers/sellers and estate-planning clients.",
+      "size_signals": [
+        {"signal": "Staff directory names the attorney plus Jillian Pizzolo (real estate) and Diane Plafcan (personal injury) - a small team with assigned matter types", "source_url": "https://shamylaw.com/contact-us/"},
+        {"signal": "In practice since 1985, 35+ years (site claim); separate real estate fax line", "source_url": "https://shamylaw.com/"},
+        {"signal": "About 79-84 Google reviews at 4.9 stars per third-party directories", "source_url": "https://thatcarhitme.com/legal-directory/firms/law-offices-of-edward-p-shamy-jr/locations/north-brunswick-nj"}
+      ],
+      "listing": {"platform": "Google (as reported by third-party directories)", "rating": "4.9", "reviews": "79-84 (sources differ)", "source_url": "https://thatcarhitme.com/legal-directory/firms/law-offices-of-edward-p-shamy-jr/locations/north-brunswick-nj"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "'Send us a Message' contact form plus prominent phone number; free consultation for PI and workers' comp cases",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "Gravity Form contact/quote request with 5 labelled fields (name, e-mail, phone, message); no appointment calendar",
+        "trust_signals": "Named client testimonials with relative dates, 'View Client Reviews' and 'See Awards' links, 'Write A Review' in the nav, 35+ years experience, named staff directory",
+        "out_of_date_signs": "None significant - copyright 2026 and the mobile layout works; the hamburger icon overlaps the logo slightly at 390px",
+        "search_basics": "Home page title/description name 'New Brunswick Personal Injury Lawyer' with the town and service; a dedicated /north-brunswick-nj/ page exists for the office town; Attorney and Organization JSON-LD present; WordPress sitemap published in robots.txt",
+        "top_issues": [
+          "The firm's own town (North Brunswick) is secondary to New Brunswick in titles and positioning",
+          "No online scheduling - every consultation still starts with a form submission or phone call",
+          "No auto-response or case-type routing visible on the form",
+          "No hours of operation in the page text"
+        ]
+      },
+      "agent_readiness": {"findable": 3, "answerable": 2, "bookable": 2, "notes": "Findable: strong Google review base (4.9, ~80 reviews per directories), robots.txt only blocks /wp-admin and publishes sitemaps, no OAI-SearchBot/PerplexityBot blocks. Answerable: title and description carry service and town; two JSON-LD blocks including an Attorney/Organization entity, but no hours, no price or fee statement and the service-area text is prose only. Bookable: labelled Gravity Form an agent could fill with no CAPTCHA wall, but no calendar or quote logic, so 'bookable' stops at enquiry."},
+      "operations_signals": [
+        {"signal": "Contact page routes matters by staff member (Jillian Pizzolo for real estate, Diane Plafcan for personal injury), so triage is done by a person reading each enquiry", "source_url": "https://shamylaw.com/contact-us/"},
+        {"signal": "'Write A Review' is a manual nav link and testimonials are static quotes, so review requests are not automated", "source_url": "https://shamylaw.com/"},
+        {"signal": "Free consultations for PI and workers' comp are advertised, which usually means a high volume of screening calls before any matter is opened (inference)", "source_url": "https://shamylaw.com/contact-us/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Add real online scheduling (consult slots for PI and workers' comp) so an agent can book instead of only leaving a message", "type": "agent readiness", "evidence": "Contact page offers only 'Send us a Message' with name/e-mail/phone/message; no calendar or booking platform anywhere on the page", "effort": "S"},
+        {"opportunity": "Automate intake triage and follow-up: auto-acknowledge, ask case type, and route PI vs real estate vs municipal enquiries to the named staff member", "type": "operations", "evidence": "Contact page already assigns staff by matter (Diane Plafcan PI, Jillian Pizzolo real estate) but the form has a single free-text message field and no routing shown", "effort": "S"},
+        {"opportunity": "Publish hours, service-area towns and consultation terms as text plus LocalBusiness schema with those fields", "type": "search", "evidence": "No hours in page text; service area only mentioned in prose on the contact page; schema is Attorney/Organization without hours or priceRange", "effort": "S"}
+      ],
+      "scores": {"gap_size": 2, "ability_to_pay": 3, "ease": 5, "evidence": 4, "reasons": "Gap: site is current, mobile-clean, schema'd and review-rich; misses scheduling, hours and intake routing. Ability to pay: established PI practice but solo-owner contingency economics. Ease: WordPress with Gravity Forms - booking and routing are days of work. Evidence: opened home, contact and mobile views and read the JSON-LD and robots.txt."},
+      "sources": ["https://shamylaw.com/", "https://shamylaw.com/contact-us/", "https://shamylaw.com/robots.txt", "https://shamylaw.com/north-brunswick-nj/", "https://thatcarhitme.com/legal-directory/firms/law-offices-of-edward-p-shamy-jr/locations/north-brunswick-nj"]
+    },
+    {
+      "name": "Deborah A. Rose, P.C.",
+      "town": "North Brunswick",
+      "ref": "B00668",
+      "status": "operating (but its website domain is dead; principal is now listed as 'Of Counsel' at The Busch Law Group)",
+      "website": "none working - rosedeb.com fails DNS resolution (SERVFAIL, nameservers refuse the query)",
+      "what_they_do": "Matrimonial and family law practice of Deborah A. Rose, a Certified Matrimonial Attorney admitted in NJ and NY and practising since 1985. Work covers divorce, custody, child support, domestic violence restraining orders, adoption and divorce/custody mediation; she is also on the 2025 Middlesex County family-law mediator roster and has appellate experience. Her firm profile also references representation of Spanish-speaking clients and court appointments as mediator and guardian ad litem.",
+      "customers": "Divorcing and separating couples and parents in Middlesex County and statewide, including Spanish-speaking litigants; mediation and guardian ad litem appointments from the courts.",
+      "size_signals": [
+        {"signal": "Solo professional corporation; one named attorney (Deborah A. Rose), office at 850 Carolier Lane", "source_url": "https://www.lawyers.com/north-brunswick/new-jersey/deborah-a-rose-1086276-a/"},
+        {"signal": "Still listed on the 2025 NJ Courts Middlesex family mediator roster at Deborah A. Rose, P.C., 850 Carolier Lane, at a $300/hour mediation rate", "source_url": "https://njj-aocmedia-prod-general-purpose.s3.amazonaws.com/rosters/family-law/middlesex.pdf"},
+        {"signal": "Bio on another firm's site says she joined The Busch Law Group as Of Counsel after years in her own private practice", "source_url": "https://www.buschlawgroup.com/deborah-a-rose/"}
+      ],
+      "listing": {"platform": "Avvo / Martindale-Hubbell / Experience.com (no Google rating found)", "rating": "Avvo 5.0; Martindale 5.0; Experience.com 3.8", "reviews": "Avvo 16; Martindale 5; Experience 10", "source_url": "https://www.avvo.com/attorneys/08902-nj-deborah-rose-870218.html"},
+      "website_review": {
+        "loads": false,
+        "https": false,
+        "phone_layout": "no site",
+        "clear_offer": false,
+        "primary_cta": "none - no working website",
+        "click_to_call": false,
+        "contact_form": false,
+        "online_booking_or_quote": "none",
+        "trust_signals": "none online; her credentials (Certified Matrimonial Attorney, ~40 years, court committees) exist only on third-party profiles",
+        "out_of_date_signs": "Domain does not resolve at all: Google DNS returns SERVFAIL with 'nameservers refused query', so every page including /contact-us/ and /attorney/deborah-a-rose/ is unreachable even though search indexes still hold copies",
+        "search_basics": "No live site, so no titles, descriptions, service pages or schema exist for crawlers; search still serves old page titles (e.g. 'North Brunswick Law Firm | Deborah A. Rose, PC') from the index",
+        "top_issues": [
+          "Entire website offline - domain/DNS failure, not a design problem",
+          "No way for a prospective client to request a consultation online",
+          "No hours, address or service detail anywhere the firm controls",
+          "Reviews are scattered across Avvo, Martindale and Experience.com with no owned profile"
+        ]
+      },
+      "agent_readiness": {"findable": 1, "answerable": 0, "bookable": 0, "notes": "Findable: directories and the 2025 court roster still list her, so she is discoverable, but the firm's own domain fails DNS and no Google Business Profile rating surfaced; robots.txt is unreachable because the host does not resolve. Answerable: nothing at the firm's own domain - no hours, services, fees or schema. Bookable: nothing; the only paths are phone (732-821-3055) or third-party directories."},
+      "operations_signals": [
+        {"signal": "With the site down and no alternative intake, every enquiry must come through a phone call or a directory listing - no intake or scheduling automation is possible", "source_url": "https://dns.google/resolve?name=rosedeb.com&type=A"},
+        {"signal": "Her mediation rate of $300/hour is published only inside a court roster PDF, so quotes and booking are handled person-to-person (inference)", "source_url": "https://njj-aocmedia-prod-general-purpose.s3.amazonaws.com/rosters/family-law/middlesex.pdf"},
+        {"signal": "Her bio on The Busch Law Group site says she joined that firm as Of Counsel, suggesting the standalone practice is being wound down or merged (inference)", "source_url": "https://www.buschlawgroup.com/deborah-a-rose/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Restore the domain and stand up a small, fast site with her credentials, practice areas and a consultation request form", "type": "website", "evidence": "rosedeb.com returns SERVFAIL at the nameservers per Google DNS; every firm URL in batch.json is dead while its indexed titles still surface in search", "effort": "S"},
+        {"opportunity": "Consolidate her strong third-party reviews (Avvo 5.0 from 16, Martindale 5.0) onto a claimed Google Business Profile and her own site", "type": "search", "evidence": "Reviews live only on Avvo/Martindale/Experience.com; no Google listing rating found in search", "effort": "S"},
+        {"opportunity": "Add an online mediation/consultation booking path (she already publishes a $300/hr mediation rate on the court roster)", "type": "agent readiness", "evidence": "The rate is published only in a court PDF, not on any firm-controlled page; no booking exists", "effort": "M"}
+      ],
+      "scores": {"gap_size": 5, "ability_to_pay": 3, "ease": 5, "evidence": 4, "reasons": "Gap: the website does not exist, so every digital gap is open. Ability to pay: solo matrimonial practice with steady mediation and court-appointed work but no firm scale. Ease: a five-page site plus GBP claim is a quick job. Evidence: confirmed the DNS failure and read her court-roster, bio and directory listings."},
+      "sources": ["https://dns.google/resolve?name=rosedeb.com&type=A", "https://njj-aocmedia-prod-general-purpose.s3.amazonaws.com/rosters/family-law/middlesex.pdf", "https://www.buschlawgroup.com/deborah-a-rose/", "https://www.avvo.com/attorneys/08902-nj-deborah-rose-870218.html", "https://www.lawyers.com/north-brunswick/new-jersey/deborah-a-rose-1086276-a/"]
+    },
+    {
+      "name": "Matthew T. Bach, Attorney at Law",
+      "town": "North Brunswick",
+      "ref": "B00669",
+      "status": "operating",
+      "website": "https://www.bach.attorney/",
+      "what_they_do": "Boutique solo law office of Matthew T. Bach, JD/MBA, who came to the US in 1976 and spent about 14 years at Bristol-Myers Squibb before opening the practice; admitted in NJ in 1995. Listed services are immigration, real estate (residential and commercial), estate planning, business formation, mergers/acquisitions, civil litigation, landlord-tenant, land use/zoning, and traffic violations. The site sells personal attention - the attorney says clients always reach him directly, and the office says it grew mainly by referral.",
+      "customers": "Individuals and small businesses in Middlesex County: immigrants and families, home and commercial property buyers/sellers, and small-business owners.",
+      "size_signals": [
+        {"signal": "One attorney, single office at 1566 US Route 130; site says 'I' throughout with no staff or paralegals named", "source_url": "https://www.bach.attorney/"},
+        {"signal": "Contact e-mail is a personal Gmail address (attorneybach@gmail.com) rather than a domain address", "source_url": "https://www.bach.attorney/"},
+        {"signal": "Memberships: American Immigration Lawyers Association, NJ Immigration Lawyers Association, NJ and Middlesex bar associations", "source_url": "https://www.bach.attorney/"}
+      ],
+      "listing": {"platform": "Avvo (no Google rating found)", "rating": "5.0", "reviews": "2", "source_url": "https://www.avvo.com/attorneys/nj-matthew-bach-1614108.html"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "'REACH OUT' button scrolling to the contact form; single-page structure",
+        "click_to_call": false,
+        "contact_form": true,
+        "online_booking_or_quote": "Contact form only (name, e-mail, subject, message); no booking or quote",
+        "trust_signals": "Attorney biography with bar and court admissions, professional memberships, 'grown mostly through referrals' copy; no reviews, no photos of work, no testimonials",
+        "out_of_date_signs": "Not dated anywhere (no copyright line); page is clean Webflow with a working mobile layout",
+        "search_basics": "Page title is simply 'Home' and there is no meta description, so search results say nothing about service or town; one long single page for nine practice areas, so no per-service URLs; 0 JSON-LD blocks",
+        "top_issues": [
+          "Title 'Home' with no meta description - invisible in search for 'immigration lawyer North Brunswick'",
+          "No LocalBusiness/Attorney schema and no per-practice-area pages",
+          "No click-to-call link and no phone number in the mobile header",
+          "Form fields rely on placeholders only, with no labels"
+        ]
+      },
+      "agent_readiness": {"findable": 0, "answerable": 1, "bookable": 1, "notes": "Findable: no Google Business Profile surfaced (Avvo only, 2 reviews), and robots.txt returns 404 so nothing is blocked but there is also no sitemap. Answerable: address, phone, fax and the service list are real text, but there is no schema, no hours and no fee information, and the title/description tell a crawler nothing. Bookable: a working contact form with an e-mail field, but fields are unlabelled (0 label elements) and it is a plain Name/Email/Subject/Message form - an agent could submit an enquiry, not book."},
+      "operations_signals": [
+        {"signal": "All enquiries land in a personal Gmail inbox (attorneybach@gmail.com) with a generic four-field form - no shared inbox, CRM or ticketing", "source_url": "https://www.bach.attorney/"},
+        {"signal": "He states clients 'will always be able to reach and speak with me directly' and that the office has no associates or paralegals, so his own time is the throughput limit (inference from site copy)", "source_url": "https://www.bach.attorney/"},
+        {"signal": "Practice is referral-driven by his own description, with no review-collection or follow-up mechanism visible", "source_url": "https://www.bach.attorney/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Rebuild the search footprint: real titles and descriptions per service, dedicated pages for immigration and real estate, and Attorney/LocalBusiness schema with address, phone and hours", "type": "search", "evidence": "document.title is 'Home', there is no meta description, 0 JSON-LD blocks, and all nine services sit on one page", "effort": "M"},
+        {"opportunity": "Turn the anonymous contact form into a labelled intake that captures matter type and auto-replies, so referrals do not sit unread in a Gmail inbox", "type": "operations", "evidence": "Form posts a generic Name/Email/Subject/Message; no labels; the public contact address is attorneybach@gmail.com", "effort": "S"},
+        {"opportunity": "Claim and complete a Google Business Profile and start collecting reviews (currently 2 on Avvo, none on Google)", "type": "agent readiness", "evidence": "Only Avvo shows reviews (5.0 from 2); no Google listing surfaced for the office at 1566 US Route 130", "effort": "S"}
+      ],
+      "scores": {"gap_size": 4, "ability_to_pay": 2, "ease": 5, "evidence": 4, "reasons": "Gap: visually modern but effectively unsearchable - title 'Home', no description, no schema, no service pages. Ability to pay: true solo with a Gmail contact address, so budget is limited. Ease: clean Webflow site, straightforward rebuild plus schema. Evidence: read the live page, form markup, robots.txt and the 390px render."},
+      "sources": ["https://www.bach.attorney/", "https://www.bach.attorney/robots.txt", "https://www.avvo.com/attorneys/nj-matthew-bach-1614108.html", "https://lawyers.findlaw.com/new-jersey/north-brunswick/1283776_1/"]
+    },
+    {
+      "name": "Qadeer & Sheikh Law (Law Office of Qadeer & Sheikh, PC)",
+      "town": "North Brunswick",
+      "ref": "B00670",
+      "status": "operating (now brands as 'Qadeer Law')",
+      "website": "https://okqlaw.com/",
+      "what_they_do": "Immigration and family law practice led by Omar K. Qadeer, with a second US office and international satellite offices. Immigration work centres on family petitions, green cards and status applications; family work on divorce, custody and related matrimonial matters. The site offers a free initial consultation, publishes a service-area section, and runs an FAQ and a reviews page.",
+      "customers": "Immigrant families and individuals across New Jersey (with referral reach to Dubai and Lahore), plus divorcing and separating clients in Middlesex County.",
+      "size_signals": [
+        {"signal": "Multiple offices listed: 517 Georges Rd North Brunswick NJ, 66 Main St Big Flats NY, plus satellite offices in Dubai (UAE) and Lahore (Pakistan)", "source_url": "https://okqlaw.com/contact-us/"},
+        {"signal": "Named attorney Omar K. Qadeer with Super Lawyers, Avvo and AIOFA listings; separate Attorneys and Awards pages", "source_url": "https://okqlaw.com/"},
+        {"signal": "Staff referenced collectively as 'the team' and 'specialists'; reviews mention staff patience and communication", "source_url": "https://okqlaw.com/contact-us/"}
+      ],
+      "listing": {"platform": "Avvo", "rating": "4.6", "reviews": "74 (immigration listing) / 75 (family listing)", "source_url": "https://www.avvo.com/immigration-lawyer/nj/north_brunswick.html"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "Phone number and 'Get in Touch' contact page, with a free initial consultation promised",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "Contact form with Name / Email / Phone / Case fields behind Google reCAPTCHA; no appointment calendar",
+        "trust_signals": "Reviews page, Awards page, FAQ page, service-area and office addresses, named attorney bio",
+        "out_of_date_signs": "Copyright reads 2025 (previous year); on the 390px contact view the hero headline 'Do You Need Help?' overlaps the 'Get In Touch' label",
+        "search_basics": "Home title 'Home - Qadeer Law | Your Trusted Legal Support and Guidance' and the description are generic rather than service/town specific; practice-area, FAQ and reviews pages exist; JSON-LD is Organization/WebSite only - no LocalBusiness with the Georges Road address",
+        "top_issues": [
+          "Google reCAPTCHA sits in front of the contact form, so an AI agent cannot submit an enquiry",
+          "No LocalBusiness schema or hours; address and service area are prose only",
+          "No online booking - the free consultation must be requested by form or phone",
+          "Home page title/description do not name 'immigration lawyer North Brunswick'"
+        ]
+      },
+      "agent_readiness": {"findable": 2, "answerable": 3, "bookable": 1, "notes": "Findable: strong directory and review presence (Avvo 4.6/74) and a WordPress Yoast robots.txt that allows all crawlers with a sitemap index; no Google Business Profile rating confirmed. Answerable: better than most in this batch - service areas, four office addresses, an FAQ page and free-consultation terms are all real text, and Organization JSON-LD exists, though it omits street address, hours and services. Bookable: blocked - the enquiry form requires Google reCAPTCHA and there is no calendar, so an agent must stop and hand over to a human."},
+      "operations_signals": [
+        {"signal": "A dedicated FAQ page exists but the only intake is a four-field form (name, e-mail, phone, case), so staff still answer the same questions by hand and phone", "source_url": "https://okqlaw.com/contact-us/"},
+        {"signal": "Four offices across three time zones (NJ, NY, Dubai, Lahore) with phone-based consultation booking means scheduling is manual and error-prone (inference)", "source_url": "https://okqlaw.com/contact-us/"},
+        {"signal": "Free initial consultations plus 74+ Avvo reviews imply a high volume of enquiries to screen before any matter is opened (inference)", "source_url": "https://okqlaw.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Put an agent-friendly path in front of the form: a labelled quote/consultation request without reCAPTCHA (or with an accessible alternative) plus written hours and intake expectations", "type": "agent readiness", "evidence": "Contact page loads https://google.com/recaptcha/api2/anchor in an iframe before submission, and only 1 label element exists for 4 fields", "effort": "S"},
+        {"opportunity": "Add LocalBusiness schema with the Georges Road address, hours, service area and practice areas, and rewrite the home title/description around immigration and family law in North Brunswick", "type": "search", "evidence": "JSON-LD @graph contains Organization and WebSite entities only; home title is 'Home - Qadeer Law | Your Trusted Legal Support and Guidance' with a generic description", "effort": "S"},
+        {"opportunity": "Automate intake triage and status follow-up for immigration enquiries (case type, deadlines, document checklist) so staff stop re-answering questions the FAQ page already covers", "type": "operations", "evidence": "Site runs a dedicated FAQ and Reviews page and promises a free consultation, but the only intake is a 4-field form that lands with staff; multiple offices and time zones make phone follow-up costly", "effort": "M"}
+      ],
+      "scores": {"gap_size": 3, "ability_to_pay": 3, "ease": 5, "evidence": 4, "reasons": "Gap: content and reviews are decent; the real gaps are the CAPTCHA wall, missing LocalBusiness schema/hours and generic home metadata. Ability to pay: multi-office firm with a healthy review base, but immigration and family fees are moderate. Ease: WordPress site where schema, labels and a booking page are days of work. Evidence: opened home and contact pages, read robots.txt and the JSON-LD, and checked the 390px layout."},
+      "sources": ["https://okqlaw.com/", "https://okqlaw.com/contact-us/", "https://okqlaw.com/robots.txt", "https://okqlaw.com/reviews/", "https://www.avvo.com/immigration-lawyer/nj/north_brunswick.html", "https://profiles.superlawyers.com/new-jersey/north-brunswick-township/lawyer/omar-k-qadeer/8a6f773d-61b8-4649-9e3f-a01d23fa7dbe.html"]
+    },
+    {
+      "name": "DannLaw (New York/New Jersey office)",
+      "town": "North Brunswick",
+      "ref": "B00673",
+      "status": "operating",
+      "website": "https://dannlaw.com/",
+      "what_they_do": "Consumer-protection and civil-litigation firm founded in 2008, headquartered in Cleveland, Ohio, with a New York/New Jersey office in North Brunswick. Work is foreclosure defence, consumer class actions and individual suits against banks, lenders, debt collectors and servicers; the firm says it has resolved thousands of individual cases and hundreds of class actions and recovered over $100M for consumers. This North Brunswick office is one of four and the site markets nationwide representation.",
+      "customers": "Homeowners facing foreclosure, consumers with lender/servicer or debt-collection disputes, and small businesses; also class-action plaintiff groups nationwide.",
+      "size_signals": [
+        {"signal": "Four offices listed: Cleveland OH (HQ), Dublin OH, Covington KY, and 825 Georges Road, Second Floor, North Brunswick NJ", "source_url": "https://dannlaw.com/"},
+        {"signal": "Home page claims 2008 establishment, $100M+ recovered, 2,000+ business/home owners protected and 1,200+ attorneys trained", "source_url": "https://dannlaw.com/"},
+        {"signal": "Dedicated Case Results, Testimonials, Blog and Practice Areas sections plus a live web-chat widget", "source_url": "https://dannlaw.com/"}
+      ],
+      "listing": {"platform": "Google (as reported by Birdeye)", "rating": "3.7", "reviews": "12", "source_url": "https://reviews.birdeye.com/the-dann-law-firm-156228439916522"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "good",
+        "clear_offer": true,
+        "primary_cta": "Sticky 'Free Consultation 216-366-7173' bar plus 'Discuss Your Case' buttons",
+        "click_to_call": true,
+        "contact_form": true,
+        "online_booking_or_quote": "Case-details form (name, phone, e-mail, state, message) with 18 labels; live-chat widget offers 'Free Consultation' - no calendar booking",
+        "trust_signals": "Case results, testimonials, named practice areas, firm history since 2008, recovery totals, attorney profiles",
+        "out_of_date_signs": "No copyright year displayed; a cookie-consent modal covers the form on a 390px screen until accepted",
+        "search_basics": "Title and description name consumer protection nationally but not the North Brunswick office; schema is a LegalService/Organization graph pointing at the Cleveland address only, with no New Jersey location; practice areas have their own pages, with intake also on a contact-us subdomain",
+        "top_issues": [
+          "Local schema and phone are Cleveland-only, so the North Brunswick office is invisible in local search",
+          "Main phone number is an Ohio area code for a New Jersey office",
+          "Cookie banner sits on top of the case form on mobile",
+          "No appointment scheduling - a phone call or form is still required"
+        ]
+      },
+      "agent_readiness": {"findable": 2, "answerable": 2, "bookable": 2, "notes": "Findable: Google reviews exist (3.7 from 12 per Birdeye) and Yoast robots.txt allows all crawlers with a sitemap index, but the JSON-LD Place/LegalService entity carries only the Cleveland address and geo-coordinates, so the NJ office has no local entity. Answerable: practice areas, firm history and case results are real text and the contact page lists all four office addresses, but there are no hours and no fee terms beyond 'free consultation'. Bookable: Forminator form with 18 labels and no visible CAPTCHA (the four iframes are about:blank), so an agent can submit case details - but there is no calendar, and a chat widget rather than a booking system handles the rest."},
+      "operations_signals": [
+        {"signal": "The contact page renders two identical case-intake forms and a chat widget with 'Free Consultation' / 'I have a question' buttons, so leads arrive through at least three uncoordinated channels (inference)", "source_url": "https://dannlaw.com/contact/"},
+        {"signal": "Foreclosure and class-action intake is document-heavy (loans, servicer letters, payment records) but the site offers no upload or document-collection step", "source_url": "https://dannlaw.com/contact/"},
+        {"signal": "A cookie-consent modal overlaps the case form on mobile, which can cost submissions before intake starts", "source_url": "https://dannlaw.com/contact/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Give the North Brunswick office its own local entity: NJ address, local or tracking phone number, hours and LocalBusiness schema, plus a dedicated New Jersey landing page", "type": "search", "evidence": "JSON-LD Place uses 15000 Madison Ave, Cleveland OH with Ohio geo-coordinates; the header phone is 216-366-7173 and the NJ office appears only as footer text", "effort": "S"},
+        {"opportunity": "Replace the duplicated case forms and chat hand-off with one intake flow that screens case type, captures documents and auto-routes to the NJ attorney", "type": "operations", "evidence": "Contact page renders two identical Forminator forms plus a chat widget offering 'Free Consultation' / 'I have a question'; no scheduling or document upload", "effort": "M"},
+        {"opportunity": "Add consultation scheduling so foreclosure clients can pick a slot without a phone call", "type": "agent readiness", "evidence": "Only phone, form and chat exist; no calendar or booking platform anywhere on the site", "effort": "S"}
+      ],
+      "scores": {"gap_size": 3, "ability_to_pay": 4, "ease": 4, "evidence": 4, "reasons": "Gap: technically solid site with forms and chat; the local-search and scheduling gaps are the real misses. Ability to pay: four-office firm with class-action revenue, well funded relative to the rest of this batch. Ease: WordPress stack with existing schema, so an NJ entity and booking are quick. Evidence: read home and contact pages, JSON-LD, robots.txt and the 390px render."},
+      "sources": ["https://dannlaw.com/", "https://dannlaw.com/contact/", "https://dannlaw.com/robots.txt", "https://reviews.birdeye.com/the-dann-law-firm-156228439916522", "https://contact-us.dannlaw.com/civil-litigation-info"]
+    },
+    {
+      "name": "PPIS Insurance",
+      "town": "North Brunswick",
+      "ref": "B00674",
+      "status": "operating",
+      "website": "https://ppisinsurance.net/",
+      "what_they_do": "Independent insurance agency (Pollution and Property Insurance Specialists) writing personal and commercial lines across New Jersey. Personal side is auto, home, renters and umbrella; commercial side covers general liability, commercial property, commercial vehicle, workers' compensation and storage-tank liability, which appears to be a specialism. The site markets quoting multiple carriers for NJ residents and small businesses.",
+      "customers": "New Jersey homeowners, renters and drivers, plus small and mid-size businesses - especially those with fuel-storage or environmental exposure, given the storage-tank liability page.",
+      "size_signals": [
+        {"signal": "Single office at 501 Adams Lane Suite 2 with one phone and one fax line; staff described only as 'our agents' with no named producers", "source_url": "https://ppisinsurance.net/contact-us/"},
+        {"signal": "Published hours Monday-Friday 9am-5pm, weekends closed", "source_url": "https://ppisinsurance.net/contact-us/"},
+        {"signal": "Six commercial coverage lines each with their own page (property, vehicle, general liability, workers comp, storage tank)", "source_url": "https://ppisinsurance.net/"}
+      ],
+      "listing": {"platform": "Google (as reported by a third-party directory)", "rating": "5.0", "reviews": "3 (review text looks unrelated to insurance, so treat with caution)", "source_url": "https://localitybiz.com/new-jersey/personal-insurance-in-north-brunswick-township"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "usable",
+        "clear_offer": true,
+        "primary_cta": "'GET A QUOTE' buttons on the auto/home and commercial sections, plus a phone number in the footer",
+        "click_to_call": false,
+        "contact_form": true,
+        "online_booking_or_quote": "Contact Form 7 quote request (name, e-mail, telephone, message); no carrier comparison, instant quote or appointment slot",
+        "trust_signals": "Named specialty, coverage-by-coverage pages, address, phone, fax and hours; no carrier logos, no testimonials, no team photos",
+        "out_of_date_signs": "Copyright reads 2026 but there is no meta description; on 390px the form inputs overflow the right edge of the viewport; no photos of staff or office",
+        "search_basics": "Home title is 'Home - PPIS Insurance' - no service, no town, no description; coverage pages exist per line of business; JSON-LD is a Yoast WebPage/Organization graph whose @id URLs still use http://, and there is no LocalBusiness with hours",
+        "top_issues": [
+          "Title 'Home - PPIS Insurance' with no meta description at all",
+          "No click-to-call tel: link anywhere - the phone is plain text",
+          "No hours, service area or price signal in schema, and JSON-LD URLs still use http://",
+          "Quote request is a generic contact form, not a coverage-aware quote intake"
+        ]
+      },
+      "agent_readiness": {"findable": 1, "answerable": 1, "bookable": 1, "notes": "Findable: robots.txt is a default allow-all with crawl-delay 1 and no Disallow; no convincing Google Business Profile rating (the only '5.0 from 3' listing shows unrelated review text). Answerable: address, phone, fax and hours are readable text on the contact page, but the home page has no description, no LocalBusiness/hours schema and no premium or price-range information. Bookable: a labelled Contact Form 7 form with no CAPTCHA, but it collects only name/e-mail/phone/message, so an agent cannot get a quote or bind a policy - everything ends in a human callback."},
+      "operations_signals": [
+        {"signal": "Every 'GET A QUOTE' button leads to the same four-field contact form, so an agent must re-key home, auto and commercial details into each carrier portal by hand (inference)", "source_url": "https://ppisinsurance.net/contact-us/"},
+        {"signal": "Office hours are 9-5 weekdays with weekends closed and no online quote, so after-hours enquiries wait until the next business day", "source_url": "https://ppisinsurance.net/contact-us/"},
+        {"signal": "Commercial lines (property, vehicle, general liability, workers comp, storage tank) need annual renewals and certificates, but the site offers no client portal or reminder mechanism", "source_url": "https://ppisinsurance.net/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Turn the generic contact form into a coverage-aware quote intake (line of business, property/vehicle details, effective date) that pre-fills carrier submissions and replies instantly", "type": "operations", "evidence": "The only form on the site is Contact Form 7 with name, e-mail, telephone and message; every 'GET A QUOTE' button leads there", "effort": "M"},
+        {"opportunity": "Fix local search basics: descriptive page titles, meta description, LocalBusiness schema with hours and area served, and click-to-call on mobile", "type": "search", "evidence": "document.title is 'Home - PPIS Insurance', description is null, JSON-LD has no LocalBusiness/hours and uses http:// @ids, and there are zero tel: links", "effort": "S"},
+        {"opportunity": "Add annual renewal reminders and cross-sell follow-up (auto to home to umbrella; business to workers comp)", "type": "operations", "evidence": "Agency sells six commercial lines plus personal lines but offers no client portal, reminders or follow-up mechanism - only a one-off contact form", "effort": "M"}
+      ],
+      "scores": {"gap_size": 4, "ability_to_pay": 3, "ease": 5, "evidence": 3, "reasons": "Gap: no meta description, no tel links, no LocalBusiness schema, and quote requests are a plain contact form. Ability to pay: small independent agency earning commissions, so moderate and tied to policy volume. Ease: WordPress with Contact Form 7, so quote intake plus schema is a short project. Evidence: opened home and contact pages, read robots.txt and JSON-LD, checked the 390px form layout; review evidence is weak."},
+      "sources": ["https://ppisinsurance.net/", "https://ppisinsurance.net/contact-us/", "https://ppisinsurance.net/robots.txt", "https://ppisinsurance.net/commercial-insurance/", "https://localitybiz.com/new-jersey/personal-insurance-in-north-brunswick-township"]
+    },
+    {
+      "name": "Agile Wealth Management",
+      "town": "North Brunswick",
+      "ref": "B00679",
+      "status": "operating",
+      "website": "https://agilewealthmanagement.com/",
+      "what_they_do": "Private wealth management and financial planning firm for high-net-worth individuals and families, plus selected non-profits and institutions. The service model starts with a comprehensive financial plan, then a risk-targeted investment strategy with ongoing monitoring and review. The firm advertises independent, objective advice (says it sells no products) and a fiduciary standard, and describes a client-to-professional ratio under 25:1.",
+      "customers": "High-net-worth individuals and families, multi-generational wealth-transfer clients, and select non-profit or institutional organisations in central New Jersey.",
+      "size_signals": [
+        {"signal": "One named professional, Arun Doddaghatta, as chief investment officer, 'supported by other members of our team'; the Employees page lists no one else", "source_url": "https://www.agilewealthmanagement.com/employees/default.html"},
+        {"signal": "Claims fewer than 25 clients per professional and that it is privately held and sells no products", "source_url": "https://agilewealthmanagement.com/about/default.html"},
+        {"signal": "SEC Form ADV CRD #161254 lists 1555 Ruth Road Suite 6, North Brunswick NJ 08902 (filing dated 2012, so current registration is unverified)", "source_url": "https://reports.adviserinfo.sec.gov/reports/ADV/161254/PDF/161254.pdf"}
+      ],
+      "listing": {"platform": "none found", "rating": "unknown", "reviews": "unknown", "source_url": "https://agilewealthmanagement.com/about/default.html"},
+      "website_review": {
+        "loads": true,
+        "https": true,
+        "phone_layout": "broken",
+        "clear_offer": false,
+        "primary_cta": "None - the phone and fax numbers in the header are plain text, with no call button, no form and no request-a-consultation path",
+        "click_to_call": false,
+        "contact_form": false,
+        "online_booking_or_quote": "None; the Contact page gives only a mailing address, phone, fax and a plain-text e-mail reference",
+        "trust_signals": "Wealth-management philosophy, fiduciary and independence statements, an SEC ADV filing exists off-site; no testimonials, no client reviews, no team photos",
+        "out_of_date_signs": "Copyright line reads 'Copyright © 0000 Agile Wealth Management' on every page; no viewport meta so phones get a zoomed-out desktop page; page titles are one word ('Firm', 'Contact Us', 'Employees'); the ZIP is wrong ('08824' in the header, '00824' on the contact page, while the ADV filing says 08902); About says 'CFA' while Employees still says 'CFA Charter Pending'",
+        "search_basics": "Home title is just 'Agile Wealth Management' with no meta description and no town or service; section pages have one-word titles; 0 JSON-LD blocks; robots.txt returns an empty body",
+        "top_issues": [
+          "No contact form and no click-to-call - the only path to the firm is copying a phone number or e-mail by hand",
+          "Broken copyright ('© 0000') and wrong ZIP code, which read as an abandoned or untrustworthy site",
+          "No mobile viewport: the site is unusable at 390px",
+          "No schema, no descriptive titles and no service pages for 'wealth management North Brunswick'"
+        ]
+      },
+      "agent_readiness": {"findable": 0, "answerable": 1, "bookable": 0, "notes": "Findable: no Google Business Profile rating or reviews found at all; robots.txt returns an empty body so nothing is blocked, but there is no sitemap or structured data to help. Answerable: hours (Mon-Fri 9-6), address and a service description exist as real text, but the ZIP is wrong, the copyright is '0000', there is no schema and titles/descriptions are empty - a crawler has little it can trust. Bookable: nothing - no form, no booking, no click-to-call; an agent could only hand the user a phone number copied from the page."},
+      "operations_signals": [
+        {"signal": "No contact form and no click-to-call anywhere on the site, so every new-client enquiry is a phone call, fax or hand-typed e-mail", "source_url": "https://agilewealthmanagement.com/contact/default.html"},
+        {"signal": "The firm targets fewer than 25 clients per professional, so onboarding capacity is deliberately limited and each new relationship is handled by the CIO personally (inference from the About page)", "source_url": "https://agilewealthmanagement.com/about/default.html"},
+        {"signal": "The site is visibly unmaintained ('© 0000', wrong ZIP, 'CFA Charter Pending' on one page), suggesting no one owns marketing or client communications (inference)", "source_url": "https://www.agilewealthmanagement.com/employees/default.html"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Replace the dead brochure site with a current one-pager: correct NAP details, working contact form, click-to-call, mobile layout and LocalBusiness/FinancialService schema", "type": "website", "evidence": "No form and zero tel: links anywhere on the site, identical '© 0000' footer on every page, wrong ZIP, and no viewport meta at 390px", "effort": "M"},
+        {"opportunity": "Create a consultation request path with compliance-safe intake (goals, investable-assets range, risk tolerance) that routes to the CIO - currently none exists", "type": "agent readiness", "evidence": "Contact page offers only mailing address, phone and fax; the firm says each client starts with a comprehensive financial plan but there is no way to start one online", "effort": "S"},
+        {"opportunity": "Claim a Google Business Profile and start collecting reviews; for a fiduciary practice with under 25 clients per professional, word-of-mouth has no digital footprint today", "type": "search", "evidence": "No Google rating or reviews surfaced in search; no testimonials on the site", "effort": "S"}
+      ],
+      "scores": {"gap_size": 5, "ability_to_pay": 4, "ease": 4, "evidence": 3, "reasons": "Gap: no form, no click-to-call, no viewport, no schema, broken copyright and wrong ZIP - the site is years out of date. Ability to pay: wealth management for high-net-worth clients is the highest ticket size in this batch. Ease: a small legacy site, though compliance review of any client-facing form adds a step. Evidence: opened home, about, employees and contact pages and read the ADV reference; review and listing data is thin."},
+      "sources": ["https://agilewealthmanagement.com/", "https://agilewealthmanagement.com/about/default.html", "https://agilewealthmanagement.com/contact/default.html", "https://www.agilewealthmanagement.com/employees/default.html", "https://reports.adviserinfo.sec.gov/reports/ADV/161254/PDF/161254.pdf"]
+    }
+  ],
+  "caveats": [
+    "Address drift in batch.json: Pisciotta & Menasha is listed at 513 Georges Road but its own site and Martindale show 1572 US Highway 130 North; DannLaw is listed at 1520 US Highway 130 Suite 101 but its site shows 825 Georges Road, Second Floor. Both records look stale.",
+    "Deborah A. Rose, P.C. is treated as operating because the 2025 NJ Courts Middlesex mediator roster lists the PC at 850 Carolier Lane, but her firm's domain no longer resolves and another firm's site says she joined it as Of Counsel - the standalone practice may be winding down (inference).",
+    "Review counts and ratings for several businesses come from third-party sites that republish Google data; Google Maps itself was not opened, so all ratings should be treated as indicative."
+  ],
+  "data_gaps": [
+    "Google Business Profile ratings could not be read directly from Google Maps for any of the ten businesses; where a rating is reported it comes from a third-party page, and no rating at all was found for Campisano Law, Busch and Busch, Bach, or Agile Wealth Management.",
+    "buschlaw.com could not be loaded normally because its TLS certificate expired; content was read only after making the research browser ignore certificate errors, so robots.txt and any sitemap could not be checked for that site.",
+    "rosedeb.com did not resolve from any resolver tried (browser, direct HTTP, Google DNS), so that firm's pages could only be described from search-index copies and third-party profiles.",
+    "PPIS Insurance's only surfaced rating (5.0 from 3) shows review text unrelated to insurance, so its true review standing is unknown.",
+    "No phone calls were made and no forms were submitted, so response times and whether the listed phone numbers are answered could not be verified for any business."
+  ]
+}

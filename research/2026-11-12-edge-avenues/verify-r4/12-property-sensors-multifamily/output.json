@@ -1,0 +1,90 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "measured_outcomes #1: 'CCTV was associated with about a 13% reduction in crime in camera areas versus control areas (odds ratio 1.141, p<.001); the effect for violent crime alone was smaller and not statistically significant.' strength: Medium",
+      "problem": "The pooled numbers are correct, but the brief applies this finding to a multifamily-building camera offering and omits the disaggregated result that matters here: in the same paper the 'housing' (housing-complex) setting had n=10 evaluations, OR 1.028, p=.805 - not significant. The 'residential' setting (n=16) was significant at OR 1.133, p=.009. As stated for apartment buildings the evidence is weaker than the brief implies. (Source confirmed from the full text PDF; the doi.org/Wiley URL in the brief returned HTTP 406/403 to me, so the citation should point at an openable copy.)",
+      "fix": "Add the subgroup result ('housing complexes: OR 1.028, n.s.; residential areas: OR 1.133' ) to the finding, restate the strength for the in-building camera use case as Low-Medium, and cite an openable full-text URL alongside the DOI."
+    },
+    {
+      "claim": "existing_solutions Verkada: \"the price page states 'Price includes hardware. Additional license required' on every camera SKU and publishes no license price\"",
+      "problem": "Contradicted for at least one camera SKU: the CR63-TE on verkada.com/pricing reads 'Price includes hardware, 1-year license, and 30 days of retention', i.e. a license is bundled on that SKU. The general point (no per-license price published for the CD/CM series) is correct.",
+      "fix": "Narrow to 'on the CD/CM/CB/CF/CY/CP series SKUs; the CR63-TE lists a bundled 1-year license', and keep the 'no license price published' statement."
+    },
+    {
+      "claim": "existing_solutions Verkada product line: 'Cloud-managed cameras (CD/CM/D series)'",
+      "problem": "No 'D series' appears on verkada.com/pricing; the series listed are CD, CD-E, CB, CM, CF, CY, CH, CP and CR. Model-name error.",
+      "fix": "Replace 'CD/CM/D series' with the actual series names (e.g. CD/CM indoor and mini, CB bullet, CP PTZ, CR remote)."
+    },
+    {
+      "claim": "existing_solutions Sensor Industries product: 'SI-Leak / SI-Flush wireless leak and toilet sensors'",
+      "problem": "SI-Leak, SI-Rope and SI-Drywall are named on the Sensor Industries case-study page I opened; 'SI-Flush' did not appear on either the homepage or that case study, so the model name is unsupported by any page in the brief.",
+      "fix": "Drop 'SI-Flush' or replace with the toilet-sensor naming used on sensorindustries.com, and cite the page that names it."
+    },
+    {
+      "claim": "pilot cost_range: '$5,000-$10,500 installed for the pilot building ... = $5,000 low end, $10,400 high end'",
+      "problem": "Internal arithmetic inconsistency: the stated components ($2,400 hardware + $7,500 labor + $500 misc) sum to $10,400, and the same paragraph says $10,400, while the headline range and the fit_score rationale/risks use $10,500. One number must be wrong.",
+      "fix": "Use $5,000-$10,400 consistently in pilot.cost_range, fit_score.rationale and risks (or explain the $100 rounding)."
+    },
+    {
+      "claim": "problem.evidence #6 and legal_privacy #3: '\"2024 edition of NJ DCA Truth in Renting\"",
+      "problem": "The PDF at the cited URL contains no edition year or revision date that I could find ('2024' and 'Revised' both returned no match across the 55-page text), so the year is unverified.",
+      "fix": "State the edition/date exactly as it appears on the document, or say 'undated edition retrieved 2026'."
+    },
+    {
+      "claim": "buyers[0]: \"Buildings with 3+ units are 'multiple dwellings' under NJ DCA rules and carry registration/inspection obligations\"",
+      "problem": "Fact is supported by the same Truth in Renting document ('All buildings with three or more rental units ... must be registered with the Bureau of Housing Inspection'), but no source is attached to it in the brief, so a factual/regulatory claim appears without a citation.",
+      "fix": "Attach the t_i_r.pdf URL (or N.J.S.A. 55:13A-3) to that sentence."
+    },
+    {
+      "claim": "measured_outcomes #2: 'Combining both phases, LPR-equipped patrols ... produced nearly 3 times as many hits for stolen vehicles'",
+      "problem": "Loose aggregation. Phase 1 was 2.7x (16 vs 6 hits); Phase 2 is reported in the report text as 6x more (12 vs 2) while its Table 7 shows 5 vs 2. 'Combining both phases' into a single 'nearly 3x' figure is not a number the report states. The other figures in the entry (8-10x plate checks = 7.74x and 9.65x; 10 vs 5 recoveries = twice; no displacement; manual patrol reduced theft; no LPR theft reduction; Dec 7 2011) all check out.",
+      "fix": "Report the two phases separately rather than a combined multiplier."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Water damage and freezing = 22.6% of homeowners losses incurred in 2023, 25.8% in 2022, second-largest cause after wind and hail (42.5%)", "source_url": "https://www.iii.org/fact-statistic/facts-statistics-homeowners-and-renters-insurance", "result": "confirmed"},
+    {"claim": "Water-damage claim severity $15,400 weighted average 2019-2023 and frequency 1.50 per 100 house-years", "source_url": "https://www.iii.org/fact-statistic/facts-statistics-homeowners-and-renters-insurance", "result": "confirmed"},
+    {"claim": "NJ requires 68F (6am-11pm) and 65F (11pm-6am) from Oct 1 to May 15, owner must maintain heating system notwithstanding contract language; amended 55 N.J.R. 1687(a) effective 8/7/2023", "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-5-10-14-4", "result": "confirmed"},
+    {"claim": "At least 58 million packages stolen in the US in 2024 with as much as $16 billion in losses, USPS OIG report RISC-WP-25-002 dated May 15, 2025", "source_url": "https://www.uspsoig.gov/sites/default/files/reports/2025-05/RISC-WP-25-002.pdf", "result": "confirmed"},
+    {"claim": "Landlord generally has no right to enter a rented dwelling without tenant consent or Superior Court judgment; entry while tenant away without permission is forcible entry under N.J.S.A. 2A:39-2", "source_url": "https://www.nj.gov/dca/codes/publications/pdf_lti/t_i_r.pdf", "result": "confirmed"},
+    {"claim": "N.J.A.C. 5:10-1.2: tenants must give access for inspection and maintenance on reasonable notification, normally one day, immediate in safety/structural emergency", "source_url": "https://www.nj.gov/dca/codes/publications/pdf_lti/t_i_r.pdf", "result": "confirmed"},
+    {"claim": "N.J.A.C. 5:10-1.10(d): tenant consent required to inspect private living quarters except emergencies or where access denied", "source_url": "https://www.nj.gov/dca/codes/publications/pdf_lti/t_i_r.pdf", "result": "confirmed"},
+    {"claim": "Truth in Renting is the 2024 edition", "source_url": "https://www.nj.gov/dca/codes/publications/pdf_lti/t_i_r.pdf", "result": "not found"},
+    {"claim": "SOC 11-9141 median wage $82,850 in NJ and $96,950 in New York-Newark-Jersey City metro, BLS May 2025 data", "source_url": "https://www.onetonline.org/link/localwages/11-9141.00?st=NJ", "result": "confirmed"},
+    {"claim": "Runwise: 349-unit Queens co-op paid $14,375/yr service fee; installation $14,722 after $10,578 National Grid rebate; more than $40,000/yr energy savings (2024)", "source_url": "https://www.habitatmag.com/layout/set/print/Publication-Content/Green-Ideas/2024/June-2024/seminole-owners-corporation-energy-savings", "result": "confirmed"},
+    {"claim": "Rhombus MSRP: R120 $399, R200 $599 + $149 license = $748, R600 $3,299 + $649 = $3,948; Professional license excludes AI features and cloud archiving; license term not stated", "source_url": "https://www.rhombus.com/pricing/", "result": "confirmed"},
+    {"claim": "Verkada CD22 indoor dome $799 MSRP, hardware only", "source_url": "https://www.verkada.com/pricing/", "result": "confirmed"},
+    {"claim": "Verkada: 'Price includes hardware. Additional license required' on every camera SKU", "source_url": "https://www.verkada.com/pricing/", "result": "contradicted"},
+    {"claim": "Verkada sells a 'D series' of cameras", "source_url": "https://www.verkada.com/pricing/", "result": "not found"},
+    {"claim": "Aqara Water Leak Sensor list price $18.99", "source_url": "https://us.aqara.com/products/water-leak-sensor", "result": "confirmed"},
+    {"claim": "EmpireTech IPC-T54IR-AS-S3 4MP turret at $219.99 from a US reseller", "source_url": "https://shop.app/products/8665518604573/empiretech-ipc-t54ir-as-s3-1-1-8-cmos-4mp-ir-fixed-focal", "result": "confirmed"},
+    {"claim": "Frigate hardware guide: Beelink EQ13 is the author's current favorite (N100, dual NIC), and states no price for it", "source_url": "https://docs.frigate.video/frigate/hardware/", "result": "confirmed"},
+    {"claim": "Frigate benchmarks: YOLOv6n ~11 ms on Hailo-8L; YOLOv9-s at 320 px 30 ms on Intel N100 with only one detector instance", "source_url": "https://docs.frigate.video/frigate/hardware/", "result": "confirmed"},
+    {"claim": "Frigate hardware guide recommends Dahua/Hikvision and warns many users report issues with 4K-plus Reolink cameras ('best to stick with 5MP and lower for Reolink')", "source_url": "https://docs.frigate.video/frigate/hardware/", "result": "confirmed"},
+    {"claim": "Raspberry Pi AI HAT+ $70 for 13 TOPS (Hailo-8L), $110 for 26 TOPS (Hailo-8)", "source_url": "https://www.raspberrypi.com/news/raspberry-pi-ai-hat/", "result": "confirmed"},
+    {"claim": "Frigate has built-in license plate recognition that adds plate characters to tracked vehicle objects", "source_url": "https://docs.frigate.video/configuration/license_plate_recognition/", "result": "confirmed"},
+    {"claim": "CCTV meta-analysis 2019: 76 studies, OR 1.141, p<.001, ~13% crime reduction; violent crime OR 1.050 not significant", "source_url": "https://prohic.nl/wp-content/uploads/2020/11/2020-04-01-CCTVReviewPizaetal.2019pdf.pdf", "result": "confirmed"},
+    {"claim": "CCTV meta-analysis cited DOI URL is openable as cited in the brief", "source_url": "https://doi.org/10.1111/1745-9133.12419", "result": "could not open"},
+    {"claim": "CCTV meta-analysis housing-complex subgroup: 10 evaluations, OR 1.028, p=.805 (nonsignificant)", "source_url": "https://prohic.nl/wp-content/uploads/2020/11/2020-04-01-CCTVReviewPizaetal.2019pdf.pdf", "result": "contradicted"},
+    {"claim": "NIJ LPR report: 117 routes, one Arizona (Mesa) jurisdiction, final report dated December 7, 2011", "source_url": "https://www.ojp.gov/pdffiles1/nij/grants/248635.pdf", "result": "confirmed"},
+    {"claim": "LPR checked 8-10x more plates than manual checking (7.74x Phase 1, 9.65x Phase 2); twice as many vehicle recoveries (10 vs 5)", "source_url": "https://www.ojp.gov/pdffiles1/nij/grants/248635.pdf", "result": "confirmed"},
+    {"claim": "LPR study: no evidence LPR patrol reduced auto theft; manual plate checking associated with less auto theft two weeks post-intervention than regular patrol; no displacement", "source_url": "https://www.ojp.gov/pdffiles1/nij/grants/248635.pdf", "result": "confirmed"},
+    {"claim": "Atlantic City fixed-ALPR expansion (2025): no reduction in violent crime, associated with reductions in shootings, motor vehicle theft and property crime; use siloed in investigative units", "source_url": "https://www.researchwithrowan.com/en/publications/an-evaluation-of-a-major-expansion-in-automated-license-plate-rea/", "result": "confirmed"},
+    {"claim": "Sensor Industries Indio CA case study: 394 sensors, 463 units, 2019; 12 leaks in first 60 days, 24 in six months; $497,800 first-half remediation savings, $750k annualized, $40k+ / 17% premium reduction, ~$790k annual NOI, payback under 2 months, $115,000 cost for product plus 5 years monitoring", "source_url": "https://www.sensorindustries.com/reducing-water-waste-and-lowering-insurance-costs-with-leak-sensors-in-commercial-real-estate/", "result": "confirmed"},
+    {"claim": "Sensor Industries homepage: leak, toilet, submeter and shut-off offerings with custom installation and monitoring; no published pricing", "source_url": "https://www.sensorindustries.com/", "result": "confirmed"},
+    {"claim": "Mercy Housing Decatur Place (post dated March 2, 2023, install first week of November): toilet leak sensors, flood sensors and real-time water meter monitoring, partly funded by Housing Partnership Network and The Percival Stern Foundation; no measured savings and no unit count stated", "source_url": "https://www.mercyhousing.org/2023/03/sustainable-upgrades/", "result": "confirmed"},
+    {"claim": "Alert Labs FAQ directs customers to a contact form for a quote and publishes no price", "source_url": "https://www.alertlabs.com/pages/faq", "result": "confirmed"},
+    {"claim": "Parity advertises cutting utility costs by 'up to 20-30%' in multifamily buildings and hotels (vendor claim)", "source_url": "https://www.paritygo.com/post/property-management-hvac-services/", "result": "confirmed"},
+    {"claim": "LFM2.5-VL-3B stays in about 3 GB of memory (vendor claim) and the family includes 450M/1.6B/3B models", "source_url": "https://www.liquid.ai/blog/lfm2-5-vl-3b", "result": "confirmed"},
+    {"claim": "NJDPA (P.L. 2023, c.266) took effect January 15, 2025", "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM", "result": "confirmed"},
+    {"claim": "NJDPA scope thresholds: 100,000 consumers, or 25,000 consumers plus revenue/discount from sale of personal data (N.J.S.A. 56:8-166.5)", "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM", "result": "confirmed"},
+    {"claim": "NJDPA treats genetic or biometric data processed to uniquely identify an individual as sensitive data and bars processing sensitive data without consent; biometric data includes facial mapping/geometry/templates but excludes photos and AV recordings", "source_url": "https://pub.njleg.state.nj.us/Bills/2022/PL23/266_.HTM", "result": "confirmed"},
+    {"claim": "N.J.S.A. 2A:156A-4(d): one-party consent interception lawful unless used for a criminal or tortious act 'or for the purpose of committing any other injurious act'; being the telephone subscriber is not consent for conversations among others", "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239", "result": "confirmed"},
+    {"claim": "N.J.S.A. 2C:14-9 criminalises observing/recording another person who may expose intimate parts or engage in sexual activity where a reasonable person would not expect to be observed", "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/2785/2918", "result": "confirmed"},
+    {"claim": "A1494 (2024-25): would make it an unlawful practice to use a biometric surveillance system on a consumer at physical premises without clear and conspicuous notice and a lawful purpose, and bars selling/shirting data so obtained; enactment status not verified", "source_url": "https://pub.njleg.state.nj.us/Bills/2024/A1500/1494_I1.HTM", "result": "confirmed"},
+    {"claim": "fit_score sub-scores (15+11+10+17+8+9) sum to the stated total of 70 and stay within the maxima implied by the rationale (20/15/15/20/15/15)", "source_url": "", "result": "confirmed"},
+    {"claim": "Pilot cost arithmetic: $5,000 low / $10,400 high from the stated components, but headline range says $5,000-$10,500", "source_url": "", "result": "contradicted"}
+  ],
+  "confidence": "High"
+}

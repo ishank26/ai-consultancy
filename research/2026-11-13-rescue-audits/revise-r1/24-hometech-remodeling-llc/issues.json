@@ -1,0 +1,17 @@
+[
+ {
+  "claim": "audit_md, Wayback bullet: \"Wayback Machine captures from 2004, 2016, 2021, 2024 and 2025 are all parking or placeholder pages; no archived Hometech Remodeling site exists.\"",
+  "problem": "The first half is true for the five captures cited, but the second half is false as written. The Wayback CDX index for hometechremodeling.com lists 42 captures from 2003 onward, including ones the audit did not sample: the 2003 capture is a real small-business site for \"Home-Tech Remodeling and Painting, Inc.\" (Atlanta area, trading since 1997) and the 2009 capture is a real Homestead-built site for a Tampa Bay area renovation business. So an archived \"Home-Tech Remodeling\" site does exist on this domain - it belongs to other companies in Georgia and Florida, not to the North Brunswick business. The rest of the report (severity_reason, likely_cause) correctly scopes this to \"no archived version of a Hometech Remodeling site ... of the business's own\", so the wording in audit_md is the outlier and an owner who checks the archive would find the sentence false.",
+  "fix": "Replace the bullet with something like: \"Archive captures of this domain (2003, 2009, 2016, 2021, 2024, 2025) belong to unrelated companies in Georgia and Florida or to parking pages; no archived site of this business exists.\" This keeps the claim true and actually strengthens the \"never theirs\" inference."
+ },
+ {
+  "claim": "founder_md, outreach draft: a Maps search for the name plus the Ridgewood Ave address \"returns no listing for your company - only similarly named firms in Pennsylvania and California\".",
+  "problem": "The core part is confirmed (two logged-out Maps searches today returned no listing for Hometech Remodeling LLC), but the state list is not reproducible. Today's results were HomeTech Renovations (PA), Hometech Construction NY (NY) and several New Jersey firms (7T Home Improvement, HomeTechnicians LLC, LifeTime Home Services, Advance Home Renovations); no California firm appeared. If the owner repeats the search in an email reply he will see NJ and NY firms, which weakens an otherwise accurate line. The sister claim that the phone search fails (\"Google Maps can't find\") is confirmed exactly.",
+  "fix": "Drop the state names from the email and walk-in text: say \"only similarly named firms elsewhere\" or \"similarly named firms, none of them yours\". The variation is already disclosed in caveats."
+ },
+ {
+  "claim": "audit_md, first bullet: the failure was seen \"at desktop and at 390px phone width (screenshots saved)\", and founder_md lists six screenshot files as sources.",
+  "problem": "No screenshot files are present in this rescue bundle (the folder holds only rescue.json, brief.md, log.jsonl, session and stderr), so \"screenshots saved\" is stated to the business but cannot be substantiated or attached as delivered. I re-verified the underlying observations live, so the substance is right; only the packaging claim is unsupported.",
+  "fix": "Either attach shot-desktop.png, shot-mobile-390.png, shot-googlemaps-name-search.png, shot-googlemaps-phone-search.png and shot-nj-license-lookup.png to the deliverable, or reword to \"captured on 13 November 2026\" without implying the reader has them."
+ }
+]

@@ -1,0 +1,123 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Caution: 'legal AI tools have been measured inventing citations 17–58% of the time'",
+      "problem": "The two figures are merged incorrectly. arXiv 2405.20362 (re-opened) measured Lexis+ AI and Westlaw AI-Assisted Research hallucinating 17–33% of the time, i.e. legal research tools. The 58% figure is from arXiv 2401.01301 (re-opened), which measured ChatGPT-4 (a general-purpose chatbot, not a legal AI tool) giving legally incorrect answers to verifiable questions about federal cases, with Llama 2 at 88%. So the 58% upper bound is attributed to the wrong category of tool, the 88% is dropped, and both studies measure 'hallucination' broadly (wrong or unsupported legal content), not specifically invented citations.",
+      "fix": "Rewrite as: 'Legal research tools from Lexis and Westlaw hallucinated 17–33% of the time in a preregistered study, and a general chatbot got roughly 58% of case-specific legal questions wrong — which is why this runs on your templates with mandatory source checks.' Keep the two sources separate and do not describe the 58% as a 'legal AI tool'."
+    },
+    {
+      "claim": "Audit body length",
+      "problem": "The body (title, intro, sections 1–3, 'Why this works', 'Suggested first step' and the closing disclaimer, excluding the 'For the founder' block and the Sources list) is approximately 500–510 words, about 12% over the ~450-word limit.",
+      "fix": "Cut ~60–70 words: drop the third 'Privacy by design' bullet or compress 'Why this works' to two lines, shorten the intro's second sentence, and trim the 'The agent:' sentences in sections 1–3 (e.g. remove 'Nothing leaves without your sign-off.', which is repeated in the closing)."
+    },
+    {
+      "claim": "'a web form that lands in your own inbox' / 'inquiries land in the partners' individual inboxes'",
+      "problem": "Presented as established fact, but it is an inference: the contact page shows a native Webflow form with a /thank-you redirect and no CRM or lead-routing script, and the site publishes larry@ and Pankaj@ addresses, but the actual form recipient is not visible anywhere public. The researcher's own profile records this as 'appear to land in email' (inference).",
+      "fix": "Soften both to inference language, e.g. 'a web form that, as far as anyone can see from outside, just emails the partners' and 'inquiries appear to land in the partners' own inboxes — there is no visible intake queue.'"
+    },
+    {
+      "claim": "Source attribution: 'clients work directly with a partner — no handoffs' cited to /our-attorneys; 'matrimonial' in the practice list cited to /attorney-details/pankaj-maknoor",
+      "problem": "The claims are true but the cited URLs do not contain them. I re-opened both pages: 'NO HANDOFFS' / 'working directly with our partners' appears on the home page (values section), and the /our-attorneys page only says 'personal attention from our partners'. Pankaj Maknoor's bio lists landlord/tenant, consumer fraud, quiet title, personal injury, debt collection and Chapter 7 — matrimonial/divorce is only on the home page services section, not that bio.",
+      "fix": "Move the 'no handoffs' citation to https://www.wileylavender.com/ and cite the home page (or /services) for the matrimonial line, keeping the Pankaj bio link for landlord-tenant, consumer fraud, quiet title, debt collection and Chapter 7."
+    },
+    {
+      "claim": "Impact arithmetic: 65–130 hours a year = $2,000–$3,900; 130–190 hours = '2.5–3.5 a week'",
+      "problem": "Minor internal inconsistency. At the cited $30.33/hr (NJ legal-secretary median, $63,080/yr), 130 hours is $3,943, not $3,900; and 190 hours a year is 3.65 hours a week, not 3.5. Neither inflates the estimate, but the table does not tie out exactly.",
+      "fix": "Change section 3 to '($2,000–$3,900)' → '($2,000–$3,950)' and section 1 to '2.5–3.5 a week' → '2.5–3.5+ a week', or state the hourly rate once ($30/hr, rounded down) so the ranges match."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Two-partner matrimonial and litigation practice on Amboy Ave, Metuchen",
+      "source_url": "https://www.wileylavender.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site says clients work directly with a partner, no handoffs",
+      "source_url": "https://www.wileylavender.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site advertises 200+ cases a year",
+      "source_url": "https://www.wileylavender.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Consultations booked only by calling or submitting the form; no calendar or self-booking",
+      "source_url": "https://www.wileylavender.com/our-attorneys",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Phone hours Monday–Friday 9 to 5, no after-hours coverage mentioned",
+      "source_url": "https://www.wileylavender.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Contact form structure (name, phone, email, seven-option service menu, message, Turnstile) with no portal, document upload or payment link",
+      "source_url": "https://www.wileylavender.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Inquiries land in the partners' individual inboxes",
+      "source_url": "https://www.wileylavender.com/contact-us",
+      "result": "not found"
+    },
+    {
+      "claim": "Practice list: landlord-tenant, consumer fraud, quiet title, debt collection, Chapter 7, matrimonial",
+      "source_url": "https://www.wileylavender.com/attorney-details/pankaj-maknoor",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Matrimonial is part of the practice list (as cited to the Maknoor bio)",
+      "source_url": "https://www.wileylavender.com/attorney-details/pankaj-maknoor",
+      "result": "not found"
+    },
+    {
+      "claim": "Larry Lavender: Rutgers JD/MBA, 20+ years, co-founded the firm after defending insurers in multimillion-dollar premises-liability and product-defect cases",
+      "source_url": "https://www.wileylavender.com/attorney-details/larry-lavender",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No careers page on the site",
+      "source_url": "https://www.wileylavender.com/careers",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No job listings for the firm on the job board checked",
+      "source_url": "https://www.simplyhired.com/search?q=%22Wiley+Lavender%22",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ legal-secretary pay used for the hourly value (~$63,080/yr, ~$30.33/hr)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Legal AI tools hallucinate 17–33% of the time",
+      "source_url": "https://arxiv.org/abs/2405.20362",
+      "result": "confirmed"
+    },
+    {
+      "claim": "58% of legal questions answered incorrectly by ChatGPT-4 (general chatbot, not a legal tool)",
+      "source_url": "https://arxiv.org/abs/2401.01301",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Firm's stated values are responsiveness and transparency",
+      "source_url": "https://www.wileylavender.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email opener first name 'Larry' and the 200+ matters/year framing",
+      "source_url": "https://www.wileylavender.com/attorney-details/larry-lavender",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'two-partner firm' (exactly two partners, no other attorneys or of counsel)",
+      "source_url": "https://www.wileylavender.com/our-attorneys",
+      "result": "not found"
+    }
+  ],
+  "confidence": "High"
+}

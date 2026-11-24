@@ -1,0 +1,2 @@
+INPUT: zone = Woodbridge Township west: Fords, Hopelawn, Keasbey (only within 10 miles), New Jersey. Category groups to cover: C, D (as defined in your role).
+Today is 2026-11-12. List every eligible independent business in this zone and these groups per your role. Use "zone": "Woodbridge Township west: Fords, Hopelawn, Keasbey (only within 10 miles) | groups CD". Write the JSON to output.json.

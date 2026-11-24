@@ -1,0 +1,181 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Coverage of the dentist category (9 dental entries listed)",
+      "problem": "My own dental sweep (dentistsranked.com New Brunswick, 32 clinics, opened page) shows at least 19 independent New Brunswick dental practices that are not in the list: Viola Barry F DDS, CosmicSmiles Dental LLC, Wonseok Jang DDS, Healing Smiles (Sandra Onukwugha DMD), Dental Health Associates PA, Kishor Kulkarni DDS, Salim Nathoo DDS, Vaibhavi Shah DDS, Vivek Nijhawan, Andrea Elchoness DDS, Luz M. Nieto DDS, Michelle Redd, Lealon Robinson DDS, Lanny Rubin DDS, Dental Implants & Surgery, Livingston Avenue Dental, Mid Jersey Endodontic Group, Confident Smiles: Brunswick, New Brunswick Dental Associates. Only 6 of the 25 eligible dental practices I found are listed, so the category is roughly one-quarter covered.",
+      "fix": "Add the missing dental practices from dentistsranked.com (each entry there carries a street address); keep the two correctly-excluded Rutgers Health entities and Eric B. Chandler out."
+    },
+    {
+      "claim": "Coverage of nail salons, massage and chiropractic",
+      "problem": "My searches surfaced four eligible New Brunswick businesses that are absent: Organic Nails and Spa (18 Elizabeth St), New Star Salon (53 Bayard St), Madeth Bodycare (active Booksy profile in New Brunswick), Heavenly Hands Massage (49 Bayard St), plus a chiropractic office at 330 Livingston Ave (732-246-4226) that only appears as an unnamed practitioner entry.",
+      "fix": "Verify these on their booking/directory pages and add them; the nail category in particular was flagged by the mapper as thin but was not backfilled."
+    },
+    {
+      "claim": "Eric B. Chandler Health Center, 277 George St (listed as a community health center)",
+      "problem": "Excluded type remains. It is operated under Rutgers Robert Wood Johnson Medical School (rwjms.rutgers.edu location page returned by search), i.e. a public university / hospital-system health centre. The mapper flagged this risk but included it anyway.",
+      "fix": "Remove the entry, or move it to an exclusions list with the reason (Rutgers/RWJMS public health system)."
+    },
+    {
+      "claim": "Garden of Healing Yoga & Wellness - source URL https://www.gardenofhealingyoga.com/connect",
+      "problem": "Cited page is dead: /connect, /ways-to-shop and the site root all return HTTP 404, so the 'own website with class schedule and WellnessLiving booking' evidence cannot be verified. The studio does still appear at 94 Church St, Suite 203 on WellnessLiving and gymsnj.",
+      "fix": "Re-source the entry to the WellnessLiving location page or gymsnj listing, and drop the dead website field."
+    },
+    {
+      "claim": "Luminous Aesthetic - website https://nj.luminousam.com/",
+      "problem": "Could not open: the nj.luminousam.com subdomain fails DNS resolution from this environment, and the opened brand page https://www.luminousam.com/services/botox/ does not mention the New Brunswick address. Search results do index the NJ page with 330 Livingston Ave Ste 232 and (732) 543-0024, matching the entry, but I could not confirm it on an opened page.",
+      "fix": "Confirm the NJ page or an active NJ booking profile before outreach; otherwise mark the town/address as unverified."
+    },
+    {
+      "claim": "New Brunswick Chiropractic Center - source https://stormrage.nyc/local-seo-audit/new-brunswick-chiropractic-center/",
+      "problem": "Cited source is an unrelated SEO-audit blog page, not a business listing, and it does not establish that the practice exists or trades in the zone. The business itself does check out elsewhere (177 Livingston Ave, 732-247-0800 on WebMD/Healthgrades provider listings), so the entry is fine but the citation is not.",
+      "fix": "Replace the source URL with the WebMD or Healthgrades provider listing that carries the address and phone."
+    },
+    {
+      "claim": "True Cuts at The Yard (46 College Ave) and True Cuts at George (353A George St)",
+      "problem": "Two entries for one brand, and the brand's own site also lists a third shop (77 Halsey St, Newark). Counting storefronts as separate businesses double-counts the same operator.",
+      "fix": "Keep both storefront addresses but flag them as one company with three locations (two in zone), or merge into a single entry with two addresses."
+    },
+    {
+      "claim": "Entries with 'Unknown' address that are actually resolvable",
+      "problem": "Nails by Wanda (Booksy: 264 Paul Robeson Blvd, New Brunswick 08901 - same address as Diane's Beauty Salon), Blessed Beauty K&M (Booksy skin-care listing: 364 Somerset St), Planeta Nuevo Barbershop (Booksy: 43/58 Georges Rd) all have public addresses that were left blank. Optical Boutique's website is also publicly listed at myopticalboutique.com and was left blank.",
+      "fix": "Fill the addresses and the Optical Boutique website from Booksy / the practice site; keep 'Unknown' only where truly unpublished."
+    },
+    {
+      "claim": "Swagger Barber Shop - address shown as '1213_255_1'",
+      "problem": "Unresolved garbled address; the only source is a single map-derived directory page, so the entry cannot be triaged or contacted as written.",
+      "fix": "Resolve the street address from a second source or drop the entry."
+    },
+    {
+      "claim": "Prestige Salon And Barbershop, 237 Hamilton St",
+      "problem": "The listing confirms the name and town but its URL slug is /carols-beauty-salon/, suggesting the shop may have traded as Carol's Beauty Salon or been renamed. Name at that address is ambiguous.",
+      "fix": "Confirm the current trading name at 237 Hamilton St before any outreach; note the possible former name."
+    },
+    {
+      "claim": "Borderline entries kept with flags: Axis Family Care (Advocare brand) and CrossFit Stealth New Brunswick (branded affiliate)",
+      "problem": "Axis trades under the Advocare network brand and CrossFit Stealth uses a franchised brand identity. Both are locally run offices rather than national chains, but they sit on the exclusion boundary the mapper itself defined.",
+      "fix": "Decide the network/franchise rule at triage level and apply it consistently; if Advocare/CROSSFIT brand offices count as franchises, remove both."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "The Brazilian Wax by An Authentic Brazilian is at 119 Somerset St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/hair-salons/", "result": "confirmed"},
+    {"claim": "Geetaz Eclectic Beauty Bar is at 101 Bayard St, New Brunswick and geetaz.com is its site", "source_url": "https://www.geetaz.com/salon", "result": "confirmed"},
+    {"claim": "Moda Hair Salon is at 16 Easton Ave, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/hair-salons/", "result": "confirmed"},
+    {"claim": "Beyond Beaute is at 264 George St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Jasmin's Beauty Salon is at 165 Remsen Ave, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/hair-salons/", "result": "confirmed"},
+    {"claim": "Barbie Nails is at 713 Livingston Ave, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/nail-salons/", "result": "confirmed"},
+    {"claim": "Nail City is at 40 Jersey Ave, Ste C, New Brunswick", "source_url": "https://reviews.birdeye.com/nail-city-170116972584229", "result": "confirmed"},
+    {"claim": "Nails by Wanda operates in New Brunswick (address originally 'Unknown')", "source_url": "https://booksy.com/en-us/1178437_nails-by-wanda_hair-salon_28625_new-brunswick", "result": "confirmed"},
+    {"claim": "Javier Salon Unisex is at 33 Georges Rd, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/hair-salons/", "result": "confirmed"},
+    {"claim": "Sieta & Co Unisex is at 806 Livingston Ave, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/hair-salons/", "result": "confirmed"},
+    {"claim": "Cantrece is at 806 Livingston Ave, New Brunswick (separate listing from Sieta & Co)", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/nail-salons/", "result": "confirmed"},
+    {"claim": "Diane's Beauty Salon is at 264 Paul Robeson Blvd, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/hair-salons/", "result": "confirmed"},
+    {"claim": "DIMENSION is at 91 Throop Ave, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/hair-salons/", "result": "confirmed"},
+    {"claim": "Johanna Beauty Salon is at 150A French St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Bueno Flores Beauty is at 48 Throop Ave, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Hairology Salons is at 266 George St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/hair-salons/", "result": "confirmed"},
+    {"claim": "Patty's Salon is at 122 French St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/hair-salons/", "result": "confirmed"},
+    {"claim": "International Hairstyling is at 140 French St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/hair-salons/", "result": "confirmed"},
+    {"claim": "Milagro's Beauty Salon is at 25 Elizabeth St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/hair-salons/", "result": "confirmed"},
+    {"claim": "Diya Beauty Studio is at 5 Elm Row, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Be Lovely Studios is at 103 Bayard St, Ste 7, New Brunswick", "source_url": "https://www.vagaro.com/belovelystudios", "result": "confirmed"},
+    {"claim": "Beauty Boutique By Yuri is at 40 Jersey Ave, Ste F, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Mayra & Olga Hair Styling LLC is at 181 French St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Azteca Estetica Latina is at 188 French St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Nereyda's LLC Beauty Salon is at 209 French St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Chicago's Southside Hair Cutters is at 222 Somerset St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Professional Beauty Salon is at 103 Remsen Ave, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "B & B Beauty Salon is at 151 Joyce Kilmer Ave, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Prestige Salon And Barbershop is at 237 Hamilton St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/carols-beauty-salon-/", "result": "confirmed"},
+    {"claim": "Doll Hair & Beauty Salon LLC is at 207 Howard St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Olga's Hair Styling is at 342 Suydam St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Maribel's Beauty Salon is at 58 Hassart St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Brunswick Hair Style Salon is at 212 Talmadge St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Revelations Hair Salon LLC is at 181 Comstock St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/beauty-salons/", "result": "confirmed"},
+    {"claim": "Mie African Hair Braiding is at 53 Bayard St, New Brunswick", "source_url": "https://hairbraidingatlas.com/new-jersey/new-brunswick/", "result": "confirmed"},
+    {"claim": "Bintou African Hair Braiding is at 35 Elizabeth St, New Brunswick (bintou-braiding.edan.io is its site)", "source_url": "https://bintou-braiding.edan.io/", "result": "confirmed"},
+    {"claim": "Blessed Beauty K&M operates in New Brunswick", "source_url": "https://booksy.com/en-us/s/skin-care/28625_new-brunswick", "result": "confirmed"},
+    {"claim": "Versailles Beauty Spa is at 93 Bayard St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/versailles-beauty-spa-/", "result": "confirmed"},
+    {"claim": "Brunswick's Finest Barbershop is at 266 George St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/barbers/", "result": "confirmed"},
+    {"claim": "Studio Hair Salon & Barbershop is at 25A Easton Ave, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/barbers/", "result": "confirmed"},
+    {"claim": "True Cuts at The Yard is at 46 College Ave and truecuts.online is its site", "source_url": "https://truecuts.online/", "result": "confirmed"},
+    {"claim": "True Cuts at George is at 353A George St, New Brunswick", "source_url": "https://truecuts.online/", "result": "confirmed"},
+    {"claim": "Victor's Barber Shop is at 275 Townsend St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/barbers/", "result": "confirmed"},
+    {"claim": "Jose Styles the Barber is at 40 Jersey Ave, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/barbers/", "result": "confirmed"},
+    {"claim": "Sosa Barber is at 734 Livingston Ave, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/barbers/", "result": "confirmed"},
+    {"claim": "College Cuts is at 162 Easton Ave, Ste 1, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/barbers/", "result": "confirmed"},
+    {"claim": "B.B. Express Barber Shop is at 247 George St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/barbers/", "result": "confirmed"},
+    {"claim": "The Eagle Sport Barbershop is at 182 Hamilton St, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/barbers/", "result": "confirmed"},
+    {"claim": "Lener Barber is at 40 Jersey Ave, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/barbers/", "result": "confirmed"},
+    {"claim": "Level Up Barber Suite is at 5 Elm Row, New Brunswick", "source_url": "https://www.bestprosintown.com/nj/new-brunswick/barbers/", "result": "confirmed"},
+    {"claim": "Planeta Nuevo Barbershop operates in New Brunswick", "source_url": "https://booksy.com/en-us/1101662_planeta-nuevo-barbershop_barber-shop_28625_new-brunswick", "result": "confirmed"},
+    {"claim": "The Spa at The Heldrich is independently operated on the 3rd floor of the Heldrich hotel, downtown New Brunswick", "source_url": "https://www.newbrunswick.com/pub/listing/profile/180/shopping_amp_services/The%2BSpa%2Bat%2Bthe%2BHeldrich", "result": "confirmed"},
+    {"claim": "Dream Spa is at 1140 Somerset St, New Brunswick", "source_url": "https://reviews.birdeye.com/dream-spa-169816267756279", "result": "confirmed"},
+    {"claim": "Luminous Aesthetic is at 330 Livingston Ave, Ste 232, New Brunswick and nj.luminousam.com is its site", "source_url": "https://nj.luminousam.com/", "result": "could not open"},
+    {"claim": "Bloom & Bloom, DMDs is at 815 Livingston Ave, New Brunswick, phone (732) 249-6386", "source_url": "https://www.bloomandbloomdmds.com/about-our-office", "result": "confirmed"},
+    {"claim": "Livy Dental is at 76 Livingston Ave, New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj", "result": "confirmed"},
+    {"claim": "Russell Schwartz, DDS is a New Brunswick practice reachable at (732) 545-2883", "source_url": "https://www.russellschwartzdds.com/", "result": "confirmed"},
+    {"claim": "University Dental Care is at 61 Livingston Ave, New Brunswick, phone 732-545-1268", "source_url": "https://www.universitydentalcare.org/", "result": "confirmed"},
+    {"claim": "Brunswick Dental Associates - Dentista Hispana is at 374 Livingston Ave, New Brunswick, phone 732-246-4443", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj", "result": "confirmed"},
+    {"claim": "Crystal Care Dental New Brunswick is a New Brunswick clinic (listed hours 24/7)", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj", "result": "confirmed"},
+    {"claim": "Oral Surgery Group is a New Brunswick oral surgery practice", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj", "result": "confirmed"},
+    {"claim": "Eric B. Chandler Health Center is at 277 George St, New Brunswick, phone (732) 235-6700", "source_url": "https://rwjms.rutgers.edu/eric-b-chandler-health-center", "result": "confirmed"},
+    {"claim": "Fatma Minhas-Kucuk, LAc is at 330 Livingston Ave, Ste 2AA, New Brunswick, phone (732) 317-4000", "source_url": "https://www.healthgrades.com/providers/fatma-minhas-kucuk-xylqfnp", "result": "confirmed"},
+    {"claim": "AdjustMe Chiropractic is at 99 Bayard St, New Brunswick, phone (732) 448-1616", "source_url": "https://doctor.webmd.com/providers/specialty/chiropractor/new-jersey/new-brunswick", "result": "confirmed"},
+    {"claim": "New Brunswick Chiropractic Center is at 177 Livingston Ave, New Brunswick, phone (732) 247-0800", "source_url": "https://www.healthgrades.com/chiropractic-directory/nj-new-jersey/north-brunswick", "result": "confirmed"},
+    {"claim": "New Brunswick Counseling Center maintains an active website with a fees/insurance page", "source_url": "https://nbcounselingcenter.org/patient-resources/fees-insurance/", "result": "confirmed"},
+    {"claim": "Axis Family Care serves New Brunswick and advocatesaxisfamilycare.com is its site", "source_url": "https://www.advocareaxisfamilycare.com/", "result": "confirmed"},
+    {"claim": "David Weininger, OD practises in New Brunswick and drdavidweininger.com is his site", "source_url": "https://drdavidweininger.com/", "result": "confirmed"},
+    {"claim": "Optical Boutique is an optometry practice at 1 Spring St, Ste 101, New Brunswick, phone (732) 246-6895", "source_url": "https://www.myopticalboutique.com/", "result": "confirmed"},
+    {"claim": "Brunswick Health & Physical Therapy Center is an active practice with a services page", "source_url": "https://www.brunswickptcenter.com/services/physical-therapy", "result": "confirmed"},
+    {"claim": "Resilience Wellness Studio runs mat Pilates, sculpt and prenatal yoga classes in New Brunswick", "source_url": "https://resiliencewellnessstudio.com/our-classes", "result": "confirmed"},
+    {"claim": "Garden of Healing Yoga & Wellness has an active website with a class schedule at /connect", "source_url": "https://www.gardenofhealingyoga.com/connect", "result": "could not open"},
+    {"claim": "The PR Lab is a personal training facility in New Brunswick and theprlabnj.com is its site", "source_url": "https://www.theprlabnj.com/", "result": "confirmed"},
+    {"claim": "CrossFit Stealth runs a New Brunswick location", "source_url": "https://www.crossfitstealth.fit/newbrunswick", "result": "confirmed"}
+  ],
+  "coverage": {
+    "searches": [
+      "nail salon New Brunswick NJ 08901",
+      "hair braiding salon New Brunswick NJ",
+      "massage spa New Brunswick NJ 08901 independent",
+      "chiropractor New Brunswick NJ 08901",
+      "independent physical therapy clinic New Brunswick NJ",
+      "acupuncture New Brunswick NJ 08901",
+      "dentist New Brunswick NJ (opened dentistsranked.com 32-clinic New Brunswick ranking)",
+      "optometrist New Brunswick NJ 08901 eye doctor",
+      "yoga studio New Brunswick NJ 08901",
+      "barber shop New Brunswick NJ George Street",
+      "\"Crystal Care Dental\" New Brunswick NJ / \"Brunswick Dental\" Livingston Ave / \"Nails by Wanda\" New Brunswick NJ",
+      "\"Be Lovely Studios\" New Brunswick NJ Bayard Street / Optical Boutique Spring St New Brunswick NJ"
+    ],
+    "eligible_found": 46,
+    "already_listed": 22,
+    "missing": [
+      {"name": "Organic Nails and Spa", "town": "New Brunswick", "source_url": "https://www.superpages.com/new-brunswick-nj/nail-salons"},
+      {"name": "New Star Salon (nail salon, 53 Bayard St)", "town": "New Brunswick", "source_url": "https://www.superpages.com/new-brunswick-nj/nail-salons"},
+      {"name": "Madeth Bodycare", "town": "New Brunswick", "source_url": "https://booksy.com/en-us/1509703_madeth-bodycare_massage_28625_new-brunswick"},
+      {"name": "Heavenly Hands Massage (49 Bayard St)", "town": "New Brunswick", "source_url": "https://locationsnear.me/massage-therapists-massage-therapy-near-new-brunswick-nj"},
+      {"name": "Chiropractic office at 330 Livingston Ave (Dr. Kevin Lynch / Dr. Kurt Lundberg, 732-246-4226)", "town": "New Brunswick", "source_url": "https://npiprofile.com/npi/1881768570"},
+      {"name": "Viola Barry F DDS", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "CosmicSmiles Dental LLC", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Wonseok Jang, DDS", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Healing Smiles: Sandra Onukwugha, DMD", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Dental Health Associates, P.A.", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Dr. Kishor Kulkarni, DDS", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Dr. Salim Nathoo, DDS", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Dr. Vaibhavi Shah, DDS", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Dr. Vivek Nijhawan", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Andrea Elchoness, DDS", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Luz M. Nieto, DDS", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Michelle Redd, DDS", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Lealon Robinson, DDS", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Lanny Rubin, DDS", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Dental Implants & Surgery", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Livingston Avenue Dental", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Mid Jersey Endodontic Group, PA", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "Confident Smiles: Brunswick", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"},
+      {"name": "New Brunswick Dental Associates", "town": "New Brunswick", "source_url": "https://www.dentistsranked.com/dentists/new-brunswick-nj"}
+    ]
+  },
+  "confidence": "Medium"
+}

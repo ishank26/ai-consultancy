@@ -1,0 +1,67 @@
+[
+ {
+  "claim": "\"Gyumolcs Insurance Agency\" \u2014 101 Interchange Plaza, Suite 103, Cranbury, phone 201-817-6127 (source: njtgo.com directory)",
+  "problem": "The agency's own website lists a single office at 602 Higgins Ave., Suite 1, Brielle, NJ 08730 with phone 732-800-0741. Nothing on the opened page supports a Cranbury address, and Brielle is far outside the 10-mile Milltown zone. Directory entry is probably stale or wrong-town.",
+  "fix": "Remove from the zone list, or downgrade to a flagged lead only if a second Cranbury office can be proven from the agency's own site or a Cranbury street address."
+ },
+ {
+  "claim": "\"Head to Tails Grooming and Doggy Daycare\" \u2014 2670 US Highway 130, Cranbury, phone 609-860-9200 (source: yellowpages pet-grooming category)",
+  "problem": "The business's own contact page gives 625 Mercer Street, Hightstown, NJ 08520 and phone 609-490-0014. The Cranbury address it was given is the same address as Love Your Dog Daycare, which looks like a directory conflation of two neighbouring businesses.",
+  "fix": "Correct town and address to Hightstown (still inside 10 miles of Milltown, so keep only if the zone is a radius, not Cranbury township), add its website headtotailsnj.com, and re-check the phone."
+ },
+ {
+  "claim": "\"Jazzercise Cranbury\" \u2014 included in Group B with the note \"owner-operated franchise studio... included with that caveat\"",
+  "problem": "A Jazzercise studio is a franchise/brand location, which the rules exclude, and the mapper applied that exclusion to RE/MAX, State Farm, Allstate, Minuteman Press, Roto-Rooter and SERVPRO. Leaving one franchise in makes the list internally inconsistent.",
+  "fix": "Delete, or reclassify to a separate 'franchise/brand' file so triage does not spend time on it."
+ },
+ {
+  "claim": "Preschool/child-care entries: Montessori Preschool Academy, HoneyBee Montessori, Leaders In Learning Academy, Cranbury Presbyterian Nursery School (Group D)",
+  "problem": "If the brief's \"schools\" exclusion covers licensed preschools and child-care centres, these four are excluded types. The mapper kept them and argued the case only for the church-based nursery school, so the decision was not applied consistently across the four.",
+  "fix": "Confirm against the mapper's rules; if schools are excluded, drop all four (or keep all four with an explicit written exception if the brief allows child-care businesses)."
+ },
+ {
+  "claim": "Branch offices / US subsidiaries of non-local corporations: Playmobil Inc., Hioki USA, Daler Rowney USA, Plymovent, Robotunits, Demarle, Main Tape, Hanwha International, Eastern Bag & Paper, Taylor Wiseman & Taylor, Prager Metis, Pine Environmental, Knapp's Cyclery (2nd store)",
+  "problem": "These are satellite offices of multi-location or foreign-parent companies. The mapper excluded L'Oreal USA, Taro, Biocon, CMIC, Stada, Kronos etc. for exactly that reason, so the multi-location rule is applied inconsistently; several are also flagged 'borderline' in the notes without a decision.",
+  "fix": "Apply one rule: either keep all multi-location/branch operations (and drop the L'Oreal/Taro-style exclusions as size-based only) or move all of these to a flagged/do-not-contact file."
+ },
+ {
+  "claim": "\"Scandinavian American World\" \u2014 categorized as \"Specialty retail (Scandinavian goods)\" at 108 N Main St",
+  "problem": "The business appears to be Scandinavian American World Tours, a travel agency (directory listing at 108 N. Main St, 609-655-1600), not a retail shop. The category is wrong, which would mis-frame any outreach.",
+  "fix": "Recategorize as a travel agency (or drop it if travel agencies fall outside the target segments) and re-verify that it is still trading."
+ },
+ {
+  "claim": "\"Abel (staffing)\" \u2014 employment agency at 2 Corporate Dr, phone unknown",
+  "problem": "The business is Abel HR Services, a professional employer organisation (HR outsourcing), with phone 609-860-0400. Name, category and phone were all left incomplete or wrong.",
+  "fix": "Rename to Abel HR Services, categorize as PEO/HR services, add 609-860-0400."
+ },
+ {
+  "claim": "\"E. Martin Davidoff, Attorney at Law\" \u2014 address/phone Unknown, no website, \"one directory only\"",
+  "problem": "The practice is easily identifiable: Davidoff Tax Law, LLC, 1249 South River Road, Suite 305, Cranbury, phone 732-274-1999, own site taxattorneydavidoff.com. He is also Co-Partner in Charge of Prager Metis's national tax controversy practice, so this entry and the \"Prager Metis CPAs\" entry at 1249 S River Rd describe overlapping people at the same building.",
+  "fix": "Fill in website/address/phone and note the Prager Metis affiliation so triage does not treat them as two unrelated prospects."
+ },
+ {
+  "claim": "Missing website fields for businesses that do have live sites",
+  "problem": "CanDo Insurance (candoinsurance.com), Head to Tails (headtotailsnj.com) and E. Martin Davidoff/Davidoff Tax Law (taxattorneydavidoff.com) are all rated low or left blank even though their own sites open fine. Several other entries were left 'one directory only' without a site check.",
+  "fix": "Re-run a quick site check for every entry with an empty website field before triage; add the domains found."
+ },
+ {
+  "claim": "\"Knapp's Cyclery (Cranbury store)\" \u2014 34 N Main St, active evidence a 2026 Patch opening but a directory marking it closed",
+  "problem": "Status is genuinely unresolved (Patch describes the September opening; bizarchive marks the Cranbury location closed; knappscyclery.com returns HTTP 403 to fetches). It is also a second location of a Lawrence Township shop.",
+  "fix": "Confirm by phone or in person before treating as an active in-zone business; mark closed / dead-lead if not trading."
+ },
+ {
+  "claim": "Duplicate addresses: Stults Realty Co. and New Jersey Realty both at 37 N Main St; Love Your Dog Daycare and Head to Tails both at 2670 US Hwy 130",
+  "problem": "Both pairs share a street address and are almost certainly one office or a directory mix-up; the mapper noted the first pair but not the second.",
+  "fix": "De-duplicate (or merge with a note) before the list goes to triage."
+ },
+ {
+  "claim": "data_gaps say \"No Cranbury Chamber of Commerce member directory exists online\"",
+  "problem": "Cranbury does have an active Cranbury Business Association with its own site (cbacranbury.com, verified open) that advertises member listings and events; the former Chamber merged into the Central NJ Chamber. The specific member page was not found at the guessed URL, so the source was not mined.",
+  "fix": "Check cbacranbury.com member pages and event-sponsor lists as an additional coverage source; correct the data_gap wording."
+ },
+ {
+  "claim": "Coverage: eligible in-zone businesses missing from the list",
+  "problem": "Four eligible, currently-operating Cranbury businesses surfaced in my own searches are absent: Muldowney & Hollingsworth LLC (law firm, 39 N Main St), J. Scuderia Automotive (18 Haypress Rd Suite 415), DeAngelis & Higgins LLC (CPA, 39 N Main St) and Andrew E. Goldstein CPA (109 S Main St). Muldowney & Hollingsworth and J. Scuderia both have live sites, so this is not a directory staleness issue.",
+  "fix": "Add the four entries (with Group A for the two firms' professionals, Group C for the auto specialist) before triage."
+ }
+]

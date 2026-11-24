@@ -1,0 +1,248 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "suggested_pricing.reasoning: \"a first-year total of roughly USD 12,500 (3,500 set-up + 12 x 750)\"",
+      "problem": "Contradicts the plan's own monthly_fee line (\"USD 750/month for months 1-3, then USD 850/month\"). Twelve months at that schedule is 3 x 750 + 9 x 850 = USD 9,900, so first-year total is USD 13,400, not USD 12,500. The \"12 x 750\" arithmetic only holds if the price never steps up, which the fee schedule says it does.",
+      "fix": "Recompute as USD 13,400 (3,500 + 9,900) or restate the fee schedule so the number matches; use one consistent figure everywhere it appears."
+    },
+    {
+      "claim": "suggested_pricing.reasoning: \"USD 12,500 in year one ... only about 46% of the midpoint (about USD 26,000)\"",
+      "problem": "Percentage is wrong. 12,500 / 26,000 = 48.1%, not 46%; with the correct year-one figure (13,400) it is 51.5%. The midpoint itself (26,000, from 11,300-40,700) is correct.",
+      "fix": "Change to \"about 48%\" on the USD 12,500 basis, or \"about 52%\" on the USD 13,400 basis."
+    },
+    {
+      "claim": "suggested_pricing.reasoning: \"USD 12,500 in year one sits at the bottom of that range and ... survives the low case if certificate volume turns out smaller than assumed\"",
+      "problem": "Depends on the miscomputed year-one figure. On the plan's own schedule the agency pays USD 13,400 in year one, which is above the low end of the audit's own benefit range (USD 11,300) - so the low-case claim does not hold as written.",
+      "fix": "Either drop the \"survives the low case\" sentence or reword it honestly: at USD 13,400 the fee exceeds the low-case benefit estimate and only beats the midpoint/likely case."
+    },
+    {
+      "claim": "running_costs: \"Backups and off-site copy ... required because New Jersey recordkeeping rules require daily backups and off-site copies at least every 30 days\" (source_url N.J.A.C. 11:17C-2.5)",
+      "problem": "The rule is real and says what the plan claims, but it is N.J.A.C. 11:17C-2.6(c)(3) (\"electronic back ups are produced daily and, at least every 30 days, the records ... reproduced and stored off-site\"), not 11:17C-2.5, which is the minimum-recordkeeping section and contains no backup requirement. The cited page does not support the claim.",
+      "fix": "Re-point the citation to https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17C-2-6 (keep 11:17C-2.5 for the five-year client-file retention)."
+    },
+    {
+      "claim": "competitors: Direct hire \"USD 50,000-60,000/year posted for the CSR/Assistant Account Manager role (USD 60,000-90,000 for Commercial Lines Account Manager)\" (Glassdoor job listing)",
+      "problem": "Could not open: the Glassdoor URL returns HTTP 403 and searches surfaced no other copy of these bands. Two other evidence URLs in the plan are also dead (dashboard.idealtraits.com posting = HTTP 404, app.idealtraits.com posting = HTTP 410, no Wayback snapshots), so the AMS360 evidence and the stated duty list for that posting are likewise unverifiable. Nothing contradicts these figures, but no reachable source supports them either.",
+      "fix": "Re-cite from a live page (the agency's own careers page, Indeed, or an archived copy you can open) or relabel the bands as \"reported, source not currently reachable\" and stop using them as a confirmed anchor in the pricing argument."
+    },
+    {
+      "claim": "competitors: Certificate Hero price \"Not public - quoted case by case based on certificate type and level of customisation\" (source_url support.certificatehero.com/faqs)",
+      "problem": "The cited FAQ page contains no pricing information at all, and no page stating a custom-quote basis by certificate type/customisation was found (certificatehero.com/pricing returns 404). \"No published price found\" is supported; the specific quote basis is not.",
+      "fix": "Reduce to \"No published price found; quote on request\" and drop the unsupported \"based on certificate type and level of customisation\", or cite a page that actually says it."
+    },
+    {
+      "claim": "solution.components: Model access - \"Both publish no-training terms on the paid tier\" (source_url docs.claude.com/en/docs/about-claude/pricing)",
+      "problem": "Half-supported. The Gemini pricing page does show free tier \"used to improve our products: Yes\" and paid tier \"No\". The Anthropic model-pricing page cited contains no statement about training or retention, so the Claude half of \"both publish no-training terms\" is not evidenced by the cited source.",
+      "fix": "Cite Anthropic's commercial terms / privacy page for the Claude no-training point, or restrict the claim to Gemini."
+    },
+    {
+      "claim": "risks_compliance: free-tier model use - mitigation includes \"paid tier only, US-only inference where offered (1.1x price multiplier)\" (source_url Gemini API pricing)",
+      "problem": "The 1.1x US-only multiplier is a Claude (Anthropic) data-residency term; it does not appear on the cited Gemini pricing page. The rule as written for Claude is confirmed, but it is attributed to the wrong vendor page.",
+      "fix": "Attribute the 1.1x multiplier to the Anthropic pricing page and state separately what Google's US-only/residency options cost, or drop the parenthetical."
+    },
+    {
+      "claim": "competitors: Certificate Hero \"realtime AMS sync (auto-syncs every four hours)\"",
+      "problem": "\"Realtime\" is contradicted by the plan's own parenthesis and by the source (an automatic sync every 4 hours plus a manual sync button). Internally inconsistent wording in a competitor comparison.",
+      "fix": "Say \"near-real-time AMS sync (automatic every 4 hours, manual re-sync on demand)\"."
+    },
+    {
+      "claim": "competitors: Certificate Hero \"live ACORD editor with validation, endorsement library, full action logging, insured self-service portal and an open API\" (source_url support.certificatehero.com/faqs)",
+      "problem": "Only the endorsement limitations, the 4-hour sync and the certificate manager are on the cited page; the editor/validation, endorsement library, action logging, self-service portal and open-API claims are not evidenced there (they may be true but are unsourced).",
+      "fix": "Add the specific Certificate Hero pages that show those features, or trim the feature list to what the FAQ supports."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Vertafore AMS360 Web Service API exists, is provisioned by the agency's admin, grants per-entity retrieve/insert/update access to vendors, and is \"provided at no additional charge\"; a separate Web Service SDK is needed",
+      "source_url": "https://help.vertafore.com/AMS360/content/contextsensitive/download-integration/cswebserviceapisetup.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Applied Epic REST APIs are documented at the Applied Dev Center; testing credentials can be generated; a production application needs approval and requires name, email, organisation name, enterprise ID and Epic database name; no fee published",
+      "source_url": "https://devcenter.myappliedproducts.com/docs/overview",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Applied Epic Service Portal is the product formerly known as Applied CSR24; it issues certificates from live account coverage on current ACORD forms or agency templates, supports account-level reissue rules, attaches a QR/secure link, and logs every certificate action; price not public",
+      "source_url": "https://www1.appliedsystems.com/en-us/platform/applied-epic/client-servicing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No public developer API documented for CSR24 / Epic Service Portal (marked confirmed_in_docs: false)",
+      "source_url": "https://www1.appliedsystems.com/en-us/platform/applied-epic/client-servicing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Postmark Pro is USD 16.50/month starting at 10,000 emails/month, USD 1.30 per extra 1,000, inbound email processing included",
+      "source_url": "https://postmarkapp.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hetzner Cloud Regular Performance from EUR 5.49/month excl. VAT",
+      "source_url": "https://www.hetzner.com/cloud/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Gemini 3.8 Flash is USD 0.75 per 1M input and USD 3.75 per 1M output tokens through 31 Dec 2026, doubling to USD 1.50/USD 7.50 from 1 Jan 2027",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Gemini free tier content is \"used to improve our products: Yes\", paid tier \"No\"",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Claude Haiku 5.5 is USD 0.10 input / USD 0.50 output per MTok for prompts up to 100,000 tokens",
+      "source_url": "https://docs.claude.com/en/docs/about-claude/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Claude US-only inference incurs a 1.1x multiplier (attributed in the plan to the Gemini page)",
+      "source_url": "https://docs.claude.com/en/docs/about-claude/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ Insurance Claims and Policy Processing Clerks: median USD 59,810/year, average USD 28.76/hour, 10th percentile USD 22.63/hour (2025 BLS data)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-9041.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Loaded rate USD 35.95/hour = USD 28.76 x 1.25 (benefits load is the plan's own assumption)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-9041.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "315-1,134 hours/year is worth USD 11,300-40,700 at USD 35.95/hour",
+      "source_url": "https://www.onetonline.org/link/localwages/43-9041.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Salience Cert Desk: USD 499/month for 150 certificates (about USD 3.33 each), first 25 free, holiday rate for sign-ups by 31 Dec 2026 held for the first 6 months; integrations AMS360, Applied Epic, HawkSoft, NowCerts; commercial property and GL only; source is a third-party directory, labelled as such",
+      "source_url": "https://www.insurtechlist.com/solutions/salience-solutions--cert-desk/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Native Base: USD 2,499 once (charged only if live by day 14), then USD 2,499/month flat, USD 4,499/month for two build lanes, month to month, no per-certificate charge; works with AMS360 and Applied Epic; parses requests, fills ACORD 25s from live AMS data, rule-checks limits/endorsements, delivers and writes back, reissues at renewal; publishes named agency clients",
+      "source_url": "https://www.nativebase.ai/services/coi-automation/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Certificate Hero auto-syncs AMS data every 4 hours, does not ingest endorsements, and cannot track which certificates included which endorsement forms",
+      "source_url": "https://support.certificatehero.com/faqs",
+      "result": "confirmed"
+    },
+    {
+      "claim": "HawkSoft Self-service Certificates: flat USD 49/month per agency, unlimited certificates, no per-certificate fees, no login for insureds; HawkSoft-only",
+      "source_url": "https://www.hawksoft.com/self-service-certificates/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ReSource Pro Certs Center: standard on-demand certificates issued within two to four hours, rush about two hours; production-based pricing per certificate or per renewal account; price quoted by volume",
+      "source_url": "https://www.resourcepro.com/resources/simplify-certificate-of-insurance-management-and-issuance/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 11:17A-1.4(b)(13) makes \"authorizing the issuance or delivery of certificates of insurance\" selling/soliciting/negotiating; (b)(14) puts coverage advice with a licensed producer",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17A-1-4",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 11:17C-2.5(h) requires a client/customer file kept at least five years after coverage terminates, including all correspondence",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17C-2-5",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey requires daily electronic backups and off-site copies at least every 30 days (cited to 11:17C-2.5)",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17C-2-5",
+      "result": "not found"
+    },
+    {
+      "claim": "N.J.A.C. 11:17C-2.6(c)(3) requires daily electronic backups and, at least every 30 days, reproduction and off-site storage",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-17C-2-6",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 11:1-44 establishes GLBA section 501/505(b)/507 safeguards standards and applies to all licensees",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-11-1-44-1",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ACORD requires all users of ACORD forms, including independent agents, to obtain an ACORD Forms End User License regardless of how forms are accessed (PIA members can get a complimentary annual licence)",
+      "source_url": "https://www.pianational.org/protect/agency-operations/acord-forms-licenses",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DOBI Bulletin No. 25-03 is addressed \"TO: ALL INSURERS AUTHORIZED OR ADMITTED IN NEW JERSEY\" and sets AI governance expectations on insurers",
+      "source_url": "https://www.nj.gov/dobi/bulletins/blt25_03.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "About 1 in 25 agency E&O claims involves a certificate, over half from CSR error/omission, main causes additional-insured failures (36%) and misrepresenting coverage",
+      "source_url": "https://www.independentagent.com/wp-content/uploads/2024/04/IIABACOI.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Docling is MIT-licensed and self-hostable",
+      "source_url": "https://github.com/docling-project/docling",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LangGraph is MIT-licensed open source",
+      "source_url": "https://github.com/langchain-ai/langgraph",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Microsoft Graph Outlook mail API supports read/send/move and attachments with application permissions granted by the tenant",
+      "source_url": "https://learn.microsoft.com/en-us/graph/api/resources/mail-api-overview",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The agency routes certificate/service requests to a CSR24 client portal (portald23.csr24.com) and quote intake is a single embedded third-party iframe with no visible upload step",
+      "source_url": "https://sodeninsurance.com/request-a-quote/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Contact page publishes 732.521.0001, a fax line 732.521.4945, and Mon-Fri 9am-5pm hours",
+      "source_url": "https://sodeninsurance.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A job posting shows AMS360 documentation duty and a newer posting prefers Applied Epic (possible migration)",
+      "source_url": "https://dashboard.idealtraits.com/career/oliver-l-e-soden-agency/15664765844ind",
+      "result": "could not open"
+    },
+    {
+      "claim": "Job copy lists processing policy changes, issuing certificates and evidence of insurance, verifying contact details and documenting in the AMS as core duties",
+      "source_url": "https://app.idealtraits.com/career/Oliver-L-E-Soden-Agency/270618IND",
+      "result": "could not open"
+    },
+    {
+      "claim": "Direct hire band USD 50,000-60,000/year (CSR/Assistant AM) and USD 60,000-90,000 (Commercial Lines AM)",
+      "source_url": "https://www.glassdoor.com/job-listing/commercial-lines-account-manager-oliver-le-soden-agency-JV_KO0,32_KE33,55.htm?jl=1010021607512",
+      "result": "could not open"
+    },
+    {
+      "claim": "Model cost arithmetic: 5,000 input + 2,000 output tokens per certificate at Gemini 3.8 Flash = about USD 0.011 per certificate, about USD 4.50 for 400 certificates/month",
+      "source_url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Model cost arithmetic alternative: same token volumes on Claude Haiku 5.5 = about USD 0.0015 per certificate, under USD 5/month at 400 certificates",
+      "source_url": "https://docs.claude.com/en/docs/about-claude/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Running-cost total of about USD 30-60/month sums the listed lines (hosting 6-20, email 16.50, models 5-20, AMS 0, backups 5)",
+      "source_url": "https://postmarkapp.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder effort of about 21 founder-days across phases 0-5 (2+5+4+5+4+1)",
+      "source_url": "https://www.hetzner.com/cloud/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

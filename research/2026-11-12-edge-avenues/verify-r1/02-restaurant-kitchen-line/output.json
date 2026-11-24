@@ -1,0 +1,248 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Multi-view hand-hygiene recognition paper dated '2021' (86.36% soap / 93.18% dry hands / 95.45% faucet-with-elbow, ~2.2-2.4 s duration error, 67.8% of frames).",
+      "problem": "Every number is correct, but the year is wrong. The cited article is Journal of Imaging 2020, 6(11), article 120 (published November 2020) - the MDPI anchor in the URL itself is jimaging-06-00120. Nothing on the page supports '2021'. An outcome carrying the wrong year is a misstatement under my brief.",
+      "fix": "Change year to '2020' and cite https://www.mdpi.com/2313-433X/6/11/120 (or https://pubmed.ncbi.nlm.nih.gov/34460564/) alongside the PMC link."
+    },
+    {
+      "claim": "Jetson Orin Nano Super Developer Kit: '$249 list (street pricing seen around $399)', source https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit.md",
+      "problem": "The cited NVIDIA product page confirms 67 INT8 TOPS and 8GB memory but contains no price at all - the string '249' does not appear anywhere on it. The price is real but is not in the cited source, so as written the number is unsupported by its citation. The '$399 street pricing' figure is also unsourced.",
+      "fix": "Cite the NVIDIA announcement that states the price: https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/ ('the price is now $249, down from $499'). Drop the $399 figure or label it as an unverified observation with a source."
+    },
+    {
+      "claim": "FTC guidance (Feb 2023, 'Keep your AI claims in check'), cited via https://cdp.cooley.com/ftc-warns-tech-keep-your-ai-claims-in-check-in-new-ai-guidance/",
+      "problem": "The cited URL returns HTTP 404 and could not be opened, so the legal claim as sourced is unverifiable. The underlying guidance does exist (FTC business blog, 27 Feb 2023), but the brief offers no working citation for it.",
+      "fix": "Cite the FTC page itself (https://www.ftc.gov/business-guidance/blog/2023/02/keep-your-ai-claims-check) or another law-firm summary URL that actually resolves; re-verify before publishing."
+    },
+    {
+      "claim": "'N.J.A.C. 8:24-2.1(i) obliges the person in charge to ensure employees clean their hands effectively through routinely monitoring the employees' handwashing.'",
+      "problem": "The rule text is confirmed verbatim, but the subsection is misnumbered: the handwashing-monitoring duty sits at N.J.A.C. 8:24-2.1(c)3.i, not 8:24-2.1(i). There is no subsection (i) in 8:24-2.1. A wrong pin cite in a compliance-product positioning document is exactly what an inspector or a client's counsel will catch.",
+      "fix": "Change to 'N.J.A.C. 8:24-2.1(c)3.i' everywhere, including the inspection-log talking point."
+    },
+    {
+      "claim": "Agot AI product: 'Kitchen camera computer vision for order accuracy and line prompts', sourced to the HME Nitro Vision AI press release.",
+      "problem": "The cited HME release (3 Apr 2025) does confirm the Agot AI acquisition and Nitro Vision AI, but it describes drive-thru/queue visibility (wait times, drive-offs, mobile pick-up zones), not prep-line order-accuracy prompts. The kitchen-order-accuracy description comes from the other source (azrestaurantpartners.com), not from HME.",
+      "fix": "Either re-describe Agot/HME as drive-thru and queue vision, or keep the kitchen description and cite https://azrestaurantpartners.com/tools/agot-ai.html for it, marked as third-party and not vendor-confirmed."
+    },
+    {
+      "claim": "Market Force finding 'about 16% of quick-service and fast-casual orders have a problem... one chain's annual cost exceeded $26 million', year '2023'.",
+      "problem": "The 16% and $26M figures are confirmed verbatim, but the page carries no 2023 publication date - it advertises 'The 2022 QSR Results are in!', so the year is unverified and possibly 2022. The brief is otherwise honest that sample size is not disclosed.",
+      "fix": "Change year to 'n.d. (page references 2022 QSR results)' or add the post date if it can be confirmed."
+    },
+    {
+      "claim": "'handwashing is consistently the worst-scoring FDA risk factor' (problem summary).",
+      "problem": "Overstated. The FDA 2010 Trend Analysis Report shows proper handwashing as the lowest-scoring data item among those listed (24% full service, 61% fast food) and the usual weak item within Poor Personal Hygiene, but the page does not establish it as the worst-scoring factor in every facility type or phase (Improper Holding was 45% in full service).",
+      "fix": "Reword to 'the lowest-scoring practice in FDA's 1998-2008 observations (24% in full-service restaurants) and the usual weak item within the poor-personal-hygiene risk factor'."
+    },
+    {
+      "claim": "N.J.A.C. 8:24-3.3 'bars bare-hand contact with exposed ready-to-eat food and requires utensils, deli tissue or single-use gloves.'",
+      "problem": "Confirmed, but incomplete in a way that matters for the pitch: 8:24-3.3(a)4 permits bare-hand contact where the establishment keeps written procedures, handwash-facility diagrams and training acknowledgement. Camera/scan logs could feed that documentation set, which the brief misses.",
+      "fix": "Add the (a)4 documented-procedure exception and note that camera or scan records can support it."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Foodservice generated 12.5M tons of surplus in 2024, valued at $156B = 11% of foodservice sales; 78.4% (9.73M tons) landfilled.",
+      "source_url": "https://refed.org/uploads/by-sector-foodservice-1.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Nearly 70% of restaurant/foodservice surplus came from plate waste; more than 43% came from full-service restaurants.",
+      "source_url": "https://refed.org/stakeholders/restaurants-and-foodservice",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Median food and non-alcoholic beverage cost 32.0% of sales (full service) and 32.4% (limited service), 2024.",
+      "source_url": "https://www.restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-operators-kept-food-cost-ratios-in-check-in-2024/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Median labor cost incl. benefits 36.5% of sales (full service) and 31.7% (limited service), 2024.",
+      "source_url": "https://restaurant.org/research-and-media/research/restaurant-economic-insights/analysis-commentary/restaurant-labor-costs-are-well-above-historical-averages/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FDA 1998-2008 study: proper handwashing in compliance in only 24% of observations at full-service and 61% at fast-food restaurants.",
+      "source_url": "https://www.fda.gov/food/retail-food-protection/retail-food-risk-factor-study",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FDA study sample: roughly 850 establishments per phase, nine facility types, data collected 1998/2003/2008.",
+      "source_url": "https://www.fda.gov/food/retail-food-protection/retail-food-risk-factor-study",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-2.1 requires the person in charge to ensure handwashing 'through routinely monitoring the employees' handwashing' (brief pin cites 8:24-2.1(i)).",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-2-1",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-3.3 bars bare-hand contact with exposed ready-to-eat food; requires utensils, deli tissue, single-use gloves.",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-3",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-8.13 requires the most recent inspection report to be kept on the premises for public review.",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-13",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Handwashing was the top FDA food-code violation area: ~6% of two million inspections (Sept 2022-Sept 2023); 15% among 17 hospitality brands.",
+      "source_url": "https://www.nrn.com/restaurant-operations/food-health-and-safety-compliance-is-not-as-vigilant-in-a-post-pandemic-world",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County had 1,752 Accommodation and Food Services establishments employing 24,124 people in 2024 (QCEW).",
+      "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hourly turnover 96% (full service) and 135% (limited service), Q3 2024, Black Box Intelligence.",
+      "source_url": "https://blackboxintelligence.com/news/state-of-restaurant-workforce-2024",
+      "result": "could not open"
+    },
+    {
+      "claim": "Winnow VisionAI approximately $10,000 per site per year baseline on AWS Marketplace; quote varies with kitchen size.",
+      "source_url": "https://aws.amazon.com/marketplace/pp/prodview-daodgjgx7t5vg",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Miso Flippy Fry Station: $5,400/month rental, no upfront cost, more than 100 baskets per hour (2025 launch).",
+      "source_url": "https://info.misorobotics.com/press-releases/miso-launches-next-generation-flippy-fry-station-the-most-significant-evolution-of-the-ai-powered-robot-since-its-inception",
+      "result": "confirmed"
+    },
+    {
+      "claim": "KDS pricing roughly $20-30 per screen per month at major vendors in 2026; Toast sells by quote.",
+      "source_url": "https://expresso.io/blog/kitchen-display-system",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ubiquiti G5 Flex 2K PoE camera list price ~$129.",
+      "source_url": "https://store.ui.com/us/zh/category/physical-security-compact/products/uvc-g5-flex",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jetson Orin Nano Super Developer Kit: 67 TOPS and 8GB confirmed on cited page, but the '$249 list' price is absent from it (it appears on NVIDIA's announcement blog instead).",
+      "source_url": "https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/jetson-orin/nano-super-developer-kit.md",
+      "result": "not found"
+    },
+    {
+      "claim": "Ultralytics YOLO is AGPL-3.0 by default; an Enterprise licence is required for commercial/proprietary/embedded deployment.",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RT-DETR is Apache-2.0 licensed.",
+      "source_url": "https://github.com/lyuwenyu/RT-DETR",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2-VL model card recommends fine-tuning on narrow use cases and states the model is not intended for safety-critical decisions; 450M and 1.6B variants.",
+      "source_url": "https://huggingface.co/LiquidAI/LFM2-VL-450M",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Two-stage hand-hygiene system: 86.36% (apply soap), 93.18% (dry hands), 95.45% (touch faucet with elbow), 2.20/2.39 s duration error, 67.8% of frames processed.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8321164/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "That hand-hygiene recognition study is dated 2021.",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8321164/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "AI-facilitated handwashing study: 46 food handlers at a university canteen, two visits, 44 completed both, and authors state the effect cannot be separated from procedural standardization, timed washing, camera observation or awareness.",
+      "source_url": "https://www.nature.com/articles/s41598-026-56516-3",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2025 peer-reviewed study: AI waste-tracking devices cut food waste per meal 23-51% at four of five foodservice sites in Germany, Greece and Switzerland.",
+      "source_url": "https://www.sciencedirect.com/science/article/pii/S0956053X25001072",
+      "result": "could not open"
+    },
+    {
+      "claim": "Winnow vendor-reported average 42% food-waste reduction in first six months, over 50% over longer periods (self-reported).",
+      "source_url": "https://650776.fs1.hubspotusercontent-na1.net/hubfs/650776/2025/Winnow%202024-25%20Impact%20Report.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "About 16% of quick-service/fast-casual orders have a problem customers notice and report; one chain's annual inaccuracy cost exceeded $26 million.",
+      "source_url": "https://www.marketforce.com/blog/the-cost-of-inaccuracy",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Third-party page attributes an 85%+ real-time order-error detection rate to Agot AI (no independent validation; labelled Low/vendor by the brief).",
+      "source_url": "https://azrestaurantpartners.com/tools/agot-ai.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey has no statute requiring employer notice/signage for ordinary workplace video cameras; N.J.S.A. 34:6B-22 covers only tracking devices in employee vehicles.",
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Under N.J.S.A. 2C:14-9(d), prior posted/provided notice is an affirmative defence only if the actor also acted with a lawful purpose.",
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey's Wiretapping Act requires at least one party's consent to record a private in-person conversation (N.J.S.A. 2A:156A).",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9 criminalises observing/recording a person without consent where a reasonable person would not expect to be observed.",
+      "source_url": "https://www.njcourts.gov/sites/default/files/charges/iopobsv.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A3929 (2026 session) bans biometric surveillance of consumers on business premises absent conspicuous notice and lawful use, addresses consumers not employees, and has passed the Assembly but not the Senate.",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2026/A4000/3929_T1.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC 23-02 (Oct 31, 2022) announced a presumptive-violation framework for intrusive electronic monitoring and urged disclosure of technologies, reasons and data use.",
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC 'Keep your AI claims in check' (Feb 2023) requires substantiation of AI performance claims; cited law-firm summary page.",
+      "source_url": "https://cdp.cooley.com/ftc-warns-tech-keep-your-ai-claims-in-check-in-new-ai-guidance/",
+      "result": "could not open"
+    },
+    {
+      "claim": "Agot AI technology acquired by HME and sold as Nitro Vision AI (April 2025).",
+      "source_url": "https://www.hme.com/news/Nitro_Vision_AI_Press_Release.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PreciTaste Vision AI: cameras over case, line, oven and pass feeding forecasts/prep plans; quote-only, no published price.",
+      "source_url": "https://precitaste.com/vision-ai/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Leanpath line includes Snap AI (tablet, one photo per dish, AI estimates food type and weight for off-site events) and a compact Scout unit; no published prices.",
+      "source_url": "https://www.leanpath.com/products/food-waste-tracking/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PathSpot scans hands, detects contaminants, logs named scan events so managers can see who washed and when; no price published.",
+      "source_url": "https://pathspot.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Frigate ingests RTSP, runs object detection locally, records with retention based on detected objects.",
+      "source_url": "https://docs.frigate.video/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fit_score sub-scores each sit within a 0-20 band and sum to the stated total (14+12+7+11+9+8 = 61).",
+      "source_url": "file:avenue.json",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

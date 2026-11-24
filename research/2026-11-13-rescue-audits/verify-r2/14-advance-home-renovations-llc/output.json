@@ -1,0 +1,113 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "audit_md body is at most 300 words (house rule)",
+      "problem": "Counted independently: the body (headings excluded, closing 'Prepared from...' line included) is 301 words; 320 if the headings are counted. It is at, or a hair over, the limit rather than comfortably inside it.",
+      "fix": "Trim 5-10 words (e.g. shorten the Snapshots bullet to 'a services page and four service pages' and drop 'None of it is reachable now.'), then recount before sending."
+    },
+    {
+      "claim": "audit_md: 'The profile and phone number still work, so calling is the practical route.'",
+      "problem": "The profile loading is verifiable and true, but 'the phone number still works' cannot be verified without calling, which we are not permitted to do. It is a sensible assumption (the live profile shows (973) 905-2129 and opening hours), not a sourced fact.",
+      "fix": "Reword to what was actually seen, e.g. 'The profile still loads and shows the phone number and opening hours, so calling is the practical route.' Same for the internal severity_reason 'working phone number'."
+    },
+    {
+      "claim": "rescue.json domains[0].screenshot_files is empty",
+      "problem": "The audit text says the desktop and phone-width screenshots of the identical error were captured at the www host, and the www entry does list both files, so the evidence exists - but the primary 'listed on Google' domain entry records no screenshot of its own while audit_md treats the desktop/phone images as the evidence for 'advancehomereno.com'.",
+      "fix": "Point domains[0].screenshot_files at the same two files (they show www.advancehomereno.com, which is the address the Google link resolves to), or state in domains[0].result that the screenshots are recorded under the www entry."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "advancehomereno.com and www.advancehomereno.com do not resolve; browser shows 'This site can't be reached ... DNS_PROBE_FINISHED_NXDOMAIN'",
+      "source_url": "https://advancehomereno.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Plain fetch of both hosts fails (no address returned)",
+      "source_url": "https://www.advancehomereno.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google Business Profile: name Advance Home Renovations LLC, 5.0 rating, category 'General contractor', New Brunswick NJ, phone (973) 905-2129, website field advancehomereno.com, opening hours; limited view banner present",
+      "source_url": "https://www.google.com/maps/place/Advance+Home+Renovations+LLC/@40.4895907,-74.4435001,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c77069010c6f:0x70c62c6d895b4976!8m2!3d40.4895907!4d-74.4435001!16s%2Fg%2F11vdp7rwtf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google profile has a single cover photo, an 'Add photos & videos' prompt and no business description in the panel",
+      "source_url": "https://www.google.com/maps/place/Advance+Home+Renovations+LLC/@40.4895907,-74.4435001,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c77069010c6f:0x70c62c6d895b4976!8m2!3d40.4895907!4d-74.4435001!16s%2Fg%2F11vdp7rwtf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "WiserMap listing links to https://www.advancehomereno.com/ and shows no reviews",
+      "source_url": "https://wisermap.com/biz/advance-home-renovations-llc-new-brunswick",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 2023-08-29, expiration 2026-08-29, last changed 2026-11-10, registrar Squarespace Domains II LLC (IANA ID 895), statuses client hold / client transfer prohibited / pending delete, Google Cloud nameservers",
+      "source_url": "https://rdap.org/domain/advancehomereno.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ICANN glossary: clientHold means the name is not activated in the DNS and will not resolve; pendingDelete without redemptionPeriod/pendingRestore means the 30-day redemption window has passed and the name will be purged and dropped from the registry after several days",
+      "source_url": "https://icann.org/epp",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback captures: 403 in 2024, 301 in July 2025, 200 captures on 16 Jan 2026 and 13 Feb 2026",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=advancehomereno.com&output=json&collapse=timestamp:6&limit=40",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived site (13 Feb 2026): nav Home / About Us / Services / Contact with Drywall, Framing, Molding and Flooring service pages - i.e. home, about, a services page, four service pages and contact",
+      "source_url": "https://web.archive.org/web/20260213235202/https://www.advancehomereno.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived site has a (973) 905-2129 tap-to-call link and a 'Get A Free Quote' form",
+      "source_url": "https://web.archive.org/web/20260213235222/https://www.advancehomereno.com/contact",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived sitemap.xml (16 Jan 2026) lists eight URLs",
+      "source_url": "https://web.archive.org/web/20260116025850id_/https://www.advancehomereno.com/sitemap.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived pages are served from cdn-website.com asset hostnames (basis for the labelled inference that it was a website-builder site)",
+      "source_url": "https://web.archive.org/web/20260213235202id_/https://www.advancehomereno.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cause (lapsed, unrenewed registration; not a hijack or parking) is labelled an inference in rescue.json and is not asserted as fact in audit_md or founder_md",
+      "source_url": "https://rdap.org/domain/advancehomereno.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Fix step 4 source - Google Business Profile help page covering editing website, description and photos",
+      "source_url": "https://support.google.com/business/answer/3039617",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No Yelp, BBB or Facebook page for this business was found in search (caveat that the list of linking places may be incomplete)",
+      "source_url": "https://wisermap.com/biz/advance-home-renovations-llc-new-brunswick",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business identity: independent Advance Home Renovations LLC, New Brunswick NJ, not a chain or franchise, profile still live (not marked closed)",
+      "source_url": "https://www.google.com/maps/place/Advance+Home+Renovations+LLC/@40.4895907,-74.4435001,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c77069010c6f:0x70c62c6d895b4976!8m2!3d40.4895907!4d-74.4435001!16s%2Fg%2F11vdp7rwtf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "localitybiz '5.0 from 14 reviews' and BuildZoom registration claims are excluded from the body (search snippets only, directory page not confirmed)",
+      "source_url": "https://localitybiz.com/new-jersey/management-and-leadership-in-new-brunswick",
+      "result": "confirmed"
+    },
+    {
+      "claim": "BuildZoom page accessible to verify NJ registration status",
+      "source_url": "https://www.buildzoom.com/contractor/advance-home-renovations-llc-new-brunswick-nj",
+      "result": "could not open"
+    }
+  ],
+  "confidence": "High"
+}

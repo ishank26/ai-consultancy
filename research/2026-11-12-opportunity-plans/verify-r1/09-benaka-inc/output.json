@@ -1,0 +1,68 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "pilot.weeks / feasibility.weeks_to_pilot: '4 weeks of pilot after a 1-2 week build; 5-6 weeks from go-ahead to pilot result'",
+      "problem": "Internally inconsistent arithmetic. Phases 0-3 (discovery, corpus, drafting agents, review queue) total 16 founder-days, which cannot be delivered in a 1-2 week (5-10 working day) build by a solo founder. Only the 24-founder-day total is consistent (2+4+6+4+5+3 = 24, matching '~24 founder-days' in suggested_pricing).",
+      "fix": "Either state a 3-4 week build (making it 7-8 weeks from go-ahead to pilot result), or cut phases 0-3 to about 8-10 founder-days and keep the 1-2 week build. Reconcile the same figure in feasibility.weeks_to_pilot."
+    },
+    {
+      "claim": "Competitor 'Hire a person': 'Benaka's own live posting advertises $100,000-$140,000 per year for QC Manager/Project Superintendent'; also the problem section's 'hiring that role externally at $100,000-$140,000'",
+      "problem": "The cited source_url (O*NET NJ wage page) contains no Benaka posting and no $100,000-$140,000 range - it only gives SOC 11-9021 wage percentiles, which the plan already quotes separately. The Benaka range comes from a job-board listing (Construction Quality Control Manager/Project Superintendent, Egg Harbor Township NJ, $100,000-$140,000/yr) that surfaced in search results but could not be opened directly (HTTP 401). benakainc.com/careers.html carries no salary. So the figure appears real but is not traceable to the URL given, and the plan presents a job-board number as if the company documented it on its own careers page.",
+      "fix": "Cite the job-board listing itself (e.g. the Indeed viewjob page) and label it 'range as advertised on a third-party job board, retrieved <date>'; keep O*NET only for the BLS comparison. Also note the posting location (Egg Harbor Township) rather than implying it is the New Brunswick office."
+    },
+    {
+      "claim": "Microsoft 365 Business Basic is '$6.00 per user per month on annual terms' (integration cost and running-cost line 'Dedicated project mailbox')",
+      "problem": "The cited page could not be opened (every fetch of microsoft.com compare-all-business-products aborted). Two independent search retrievals summarising that same page state Business Basic is $7.00 per user/month paid yearly, while Microsoft's own licensing pricelist (Update to Microsoft 365 and Teams Licensing, USD effective 1 Nov 2025) lists Microsoft 365 Business Basic at $6.00. The figure is unresolved rather than confirmed and is cited to a page that could not be verified.",
+      "fix": "Re-open the vendor page and set the current list price; if it is $7.00, update the $6.00 in both the integration cost and the running-cost table. If $6.00 still holds, cite the Microsoft licensing pricelist table instead of the marketing compare page."
+    },
+    {
+      "claim": "Trunk Tools price: 'priced on construction volume, quote required, unlimited users'",
+      "problem": "The pricing page confirms one price based on construction volume and unlimited seats, but never says a quote is required and publishes no rate, so 'quote required' is an unsupported detail stated as fact.",
+      "fix": "Say 'price set by construction volume and not published; no rate shown', and keep the unlimited-seats point, which the page does state."
+    },
+    {
+      "claim": "Procore price: 'routes to a custom quote and states annual contracts; pricing varies with products and construction volume'",
+      "problem": "Custom quote and annual contracts are confirmed, but the page does not attribute variation to construction volume; its only volume-related qualifier is that Field Productivity is priced on FTE.",
+      "fix": "Replace 'construction volume' with the page's actual wording (fully custom quote per product bundle; Field Productivity priced by FTE)."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Fieldwire Pro $39 / Business $64 / Business Plus $89 per user per month billed annually, Basic free, monthly billing higher; Business Plus is the tier that adds RFIs and submittals", "source_url": "https://www.fieldwire.com/pricing/", "result": "confirmed"},
+    {"claim": "DigitalOcean Droplet 2 GiB / 1 vCPU / 50 GiB SSD is $12.00 per month at $0.01786 per hour", "source_url": "https://www.digitalocean.com/pricing/droplets", "result": "confirmed"},
+    {"claim": "gpt-5.4-mini is $0.75 per 1M input and $4.50 per 1M output (standard tier)", "source_url": "https://developers.openai.com/api/docs/pricing", "result": "confirmed"},
+    {"claim": "gpt-transcribe is $0.0045/minute and gpt-4o-transcribe $0.006/minute", "source_url": "https://developers.openai.com/api/docs/pricing", "result": "confirmed"},
+    {"claim": "Model token arithmetic: 120 drafts x 12,000 input tokens at $0.75/1M = ~$1.08 plus 120 x 1,500 output tokens at $4.50/1M = ~$0.81, about $2/month", "source_url": "https://developers.openai.com/api/docs/pricing", "result": "confirmed"},
+    {"claim": "Transcription arithmetic: 60 field notes x 3 min = 180 min at $0.0045/min = ~$0.81/month", "source_url": "https://developers.openai.com/api/docs/pricing", "result": "confirmed"},
+    {"claim": "Azure AI Document Intelligence Read (S0 pay-as-you-go) is $1.50 per 1,000 pages for the first 1M pages and $0.60 above that", "source_url": "https://prices.azure.com/api/retail/prices?$filter=meterName%20eq%20'S0%20Read%20Pages'%20and%20armRegionName%20eq%20'eastus'", "result": "confirmed"},
+    {"claim": "The cited Azure Document Intelligence pricing page itself displays the Read price", "source_url": "https://azure.microsoft.com/en-us/pricing/details/document-intelligence/", "result": "not found"},
+    {"claim": "OCR arithmetic: ~200 scanned pages/month at $1.50 per 1,000 pages = ~$0.30/month", "source_url": "https://prices.azure.com/api/retail/prices?$filter=meterName%20eq%20'S0%20Read%20Pages'%20and%20armRegionName%20eq%20'eastus'", "result": "confirmed"},
+    {"claim": "Microsoft 365 Business Basic is $6.00 per user per month on annual terms", "source_url": "https://www.microsoft.com/en-US/microsoft-365/business/compare-all-microsoft-365-business-products", "result": "could not open"},
+    {"claim": "Microsoft's licensing pricelist (USD, effective 1 Nov 2025) lists Microsoft 365 Business Basic at $6.00 per user per month", "source_url": "https://www.microsoft.com/en-us/licensing/news/Microsoft365-Teams-2025", "result": "confirmed"},
+    {"claim": "Microsoft Graph Mail.Read exists as an application permission requiring admin consent, and an application access policy can limit app access to specific mailboxes", "source_url": "https://learn.microsoft.com/en-us/graph/permissions-reference", "result": "confirmed"},
+    {"claim": "USACE documents QCS as 'the Contractor Module of RMS that construction contractors utilize to exchange information electronically with the Government'", "source_url": "https://rms.usace.army.mil/datafiles/helpvideos/qcsabout/Advanced/Content/Topics/FAQ_COM_2/What%20Is%20RMS%2C%20QAS%2C%20and%20QCS.htm", "result": "confirmed"},
+    {"claim": "No public QCS/RMS developer API is published; the RMS documents page offers contractor user manuals and import/export help files only", "source_url": "https://rms.usace.army.mil/rms_manuals%26help_files.html", "result": "confirmed"},
+    {"claim": "python-docx / docxtpl are free open-source templating libraries for .docx rendering", "source_url": "https://docxtpl.readthedocs.io/en/latest/", "result": "confirmed"},
+    {"claim": "LiteLLM is a self-hosted, OpenAI-compatible proxy/gateway with virtual keys and cost tracking across providers", "source_url": "https://docs.litellm.ai/docs/", "result": "confirmed"},
+    {"claim": "FAR 52.204-21 (Nov 2021) applies basic safeguarding (access limitation, authentication, media sanitisation, physical access controls) to contractor systems processing Federal Contract Information", "source_url": "https://www.acquisition.gov/far/52.204-21", "result": "confirmed"},
+    {"claim": "DFARS 252.204-7012 requires NIST SP 800-171 safeguards and, for an external cloud provider storing/processing/transmitting covered defense information, must 'require and ensure' security equivalent to the FedRAMP Moderate baseline", "source_url": "https://www.law.cornell.edu/cfr/text/48/252.204-7012", "result": "confirmed"},
+    {"claim": "NIST SP 800-171 Rev. 3 is the current CUI control set for nonfederal systems", "source_url": "https://csrc.nist.gov/pubs/sp/800/171/r3/final", "result": "confirmed"},
+    {"claim": "UFGS 01 45 00: the QC Manager must perform the three phases of control, perform submittal review and approval, ensure testing is performed and provide QC certifications and documentation required in the contract, and at least three phases of control must be conducted for each definable feature of work", "source_url": "https://www.wbdg.org/FFC/DOD/UFGS/UFGS%2001%2045%2000.pdf", "result": "confirmed"},
+    {"claim": "Azure OpenAI appears in Microsoft's FedRAMP High (and DoD IL2) audit scope for Azure Government", "source_url": "https://learn.microsoft.com/en-us/azure/azure-government/compliance/azure-services-in-fedramp-auditscope", "result": "confirmed"},
+    {"claim": "Benaka's QC Manager posting covers three-phase control records, preparatory meetings and initial inspections, QC/production meeting minutes, daily production reports, RFIs with the PM, purchase orders and Office/Project proficiency, with QCS/RMS familiarity 'a BIG PLUS' and employment contingent on a federal security clearance", "source_url": "https://www.benakainc.com/careers.html", "result": "confirmed"},
+    {"claim": "Benaka is at 7 Lawrence Street, New Brunswick, NJ 08901, publishes phone/fax/email/contact-form channels and links employee webmail to an OWA path (bimail.benakainc.com/owa)", "source_url": "https://www.benakainc.com/contact-us.html", "result": "confirmed"},
+    {"claim": "Benaka was founded in 1994 and works in fully occupied facilities on concurrent projects", "source_url": "https://www.benakainc.com/about-us.html", "result": "confirmed"},
+    {"claim": "O*NET/BLS 2025 NJ wages for Construction Managers (11-9021): median $138,230, mean hourly $66.46, 25th percentile $110,230, New York-Newark-Jersey City median $158,000", "source_url": "https://www.onetonline.org/link/localwages/11-9021.00?st=NJ", "result": "confirmed"},
+    {"claim": "Benaka advertises $100,000-$140,000 per year for a Construction Quality Control Manager/Project Superintendent role", "source_url": "https://www.indeed.com/viewjob?jk=b8564862ec75de9e", "result": "could not open"},
+    {"claim": "Value arithmetic: 45 weeks x 6-10 hours x 50-70% at $72/hour = $9,720-$22,680, i.e. the plan's stated $9,700-$22,600 range (top end rounded down by about $80)", "source_url": "plan.json internal", "result": "confirmed"},
+    {"claim": "Pricing arithmetic: pilot $1,800 + net set-up $1,700 ($3,500 - $1,800) + 12 x $450 = $8,900 year one; $450 / 2-3 hours = $150-$225 per care hour", "source_url": "plan.json internal", "result": "confirmed"},
+    {"claim": "Fieldwire comparison: 5 users x $89 x 12 = $5,340 per year for Business Plus", "source_url": "https://www.fieldwire.com/pricing/", "result": "confirmed"},
+    {"claim": "Procore publishes no price; pricing routes to a custom quote and contracts are annual", "source_url": "https://www.procore.com/pricing", "result": "confirmed"},
+    {"claim": "Raken publishes no plan prices and directs purchasers to sales", "source_url": "https://help.rakenapp.com/en/articles/14447812-purchasing-raken", "result": "confirmed"},
+    {"claim": "Autodesk Forma construction bundles route every bundle to Get a Quote and include automatic submittal log, quality management and project closeout", "source_url": "https://construction.autodesk.com/pricing/", "result": "confirmed"},
+    {"claim": "FedQC refused automated retrieval with HTTP 403, so no feature or price detail could be captured", "source_url": "https://www.fedqc.com/", "result": "confirmed"},
+    {"claim": "Document Crunch pricing 'depends on use case and project volume'", "source_url": "https://marketplace.procore.com/apps/document-crunch", "result": "could not open"},
+    {"claim": "Running costs land at about $35-$40/month once the $15 token and $5 transcription budgets are used ($15 + $5 + $0.30 + $12 + $6 = $38.30)", "source_url": "plan.json internal", "result": "confirmed"}
+  ],
+  "confidence": "Medium"
+}

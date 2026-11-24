@@ -1,0 +1,138 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "audit_md length ('body at most 300 words')",
+      "problem": "Counted as delivered, audit_md is 331 words including headings, the title and the closing 'Prepared from...' line; the prose alone is about 294. It sits right on the limit rather than comfortably inside it, so any later addition pushes it over, and the 'public RDAP' wording is mild jargon.",
+      "fix": "Trim about 35 words (compress the first bullet and the 'What it means for customers' paragraph) and replace 'public RDAP' with 'public domain records'."
+    },
+    {
+      "claim": "audit_md '(screenshots attached)' and founder_md 'I have two screenshots from today'; rescue.json lists four screenshot_files",
+      "problem": "None of the four PNGs are present in the copy of the package I received (only rescue.json, brief.md, log.jsonl, session/, stderr.txt), so the attachments cannot be verified from what I was given. They may well exist in the auditor's own run folder; the risk is that the doc goes to the door claiming attachments that did not travel with it.",
+      "fix": "Confirm all four PNGs (desktop, 390px mobile, Google profile, ekotek) ship alongside rescue.json, or delete 'screenshots attached' and the screenshot count from the founder script until they do."
+    },
+    {
+      "claim": "rescue.json ekotek entry and founder_md source line: the contact page 'names Edward J. Kurczeski, NJ Electrical License 16098'",
+      "problem": "Substance is right but the page is wrong: https://ekotekelectric.com/contact-us/ shows only the Suite 3 address and 833-356-8350. The name and licence 16098 are on the homepage and https://ekotekelectric.com/about-us/.",
+      "fix": "Cite https://ekotekelectric.com/ and https://ekotekelectric.com/about-us/ for the name and licence; keep /contact-us/ for the address and phone."
+    },
+    {
+      "claim": "audit_md fix step 2: 'redirect the domain to the live site (1-3 hrs)'",
+      "problem": "The client-facing doc never names that live site. The only live site found, ekotekelectric.com, is an unlabelled inference (rescue.json flags it, audit_md does not), so read cold the step assumes the company has a working site today - which is exactly what has not been established.",
+      "fix": "Reword to 'redirect eandjelectrical.com to wherever your current site lives (or to a one-page holding site until it does)'."
+    },
+    {
+      "claim": "founder_md open question 'a state vendor record has used Ed@eandjelectrical.com' versus data_gaps 'njstart.gov ... HTTP 401 ... could not confirm ... the listed email'",
+      "problem": "Internal inconsistency: the email is asserted in one section and declared unread in the other. I also got HTTP 401 on that URL; the address and the vendor 'Active' status appear only in search-result summaries, which I could not open at source.",
+      "fix": "Either drop the email from the open questions or mark it 'seen in a search summary of the NJSTART vendor record; page itself not accessible'."
+    },
+    {
+      "claim": "fix_steps step 4 names 'the East Brunswick entry on Yellow Pages and the extra 732-599-0219 number' as facts",
+      "problem": "The caveats call those snippet-only and unverified, and yellowpages.com still returns 403 to me, so the East Brunswick entry (24 Sandra Rd, 732-960-1056) was never opened. 732-599-0219 is at least corroborated (BBB and NJSTART summaries both carry it), but the Yellow Pages entry is not.",
+      "fix": "Mark both as 'seen in search results, not opened' in fix_steps step 4, or drop the East Brunswick reference until it is checked."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "eandjelectrical.com still serves a GoDaddy parked page reading 'eandjelectrical.com is parked free, courtesy of GoDaddy.com' with a 'Get This Domain' button and mixed electrical/brandy 'Related Search Topics'",
+      "source_url": "https://www.eandjelectrical.com/lander",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The bare http://eandjelectrical.com/ (and http://www.eandjelectrical.com/, the exact URL on the CIS profile) returns a tiny page that script-redirects to /lander",
+      "source_url": "http://www.eandjelectrical.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No certificate warning appears on the parked domain",
+      "source_url": "https://www.eandjelectrical.com/lander",
+      "result": "confirmed"
+    },
+    {
+      "claim": "eandjelectrical.com RDAP: registered 2008-12-09, expires 2027-12-09, last changed 2023-08-13, registrar GoDaddy.com, LLC, status clientTransfer/Renew/Update/DeleteProhibited, nameservers NS11/NS12.DOMAINCONTROL.COM",
+      "source_url": "https://rdap.org/domain/eandjelectrical.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ekotekelectric.com RDAP: registered 2024-11-14, expires 2027-11-14, last changed 2024-11-14, registrar GoDaddy.com, LLC",
+      "source_url": "https://rdap.org/domain/ekotekelectric.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Internet Archive capture 24 Jul 2024 is the real E&J site with Services, Our Company, Our Projects, Contact and six named projects",
+      "source_url": "https://web.archive.org/web/20240224004325/https://eandjelectrical.com/our-projects",
+      "result": "confirmed"
+    },
+    {
+      "claim": "By 21 Dec 2024 the same address already served the /lander redirect page",
+      "source_url": "https://web.archive.org/web/20241221000806id_/https://eandjelectrical.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The 25 Mar 2025 and 24 Jan 2026 captures serve the same lander page (identical digest 7HMQKXUYPBZDUEQGHND5JINF6WGD5MPJ)",
+      "source_url": "https://web.archive.org/cdx/search/cdx?url=eandjelectrical.com&output=json&from=2024&to=2026&collapse=timestamp:6",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google listing 'e and j electrical' at 501 Adams Ln, North Brunswick Township NJ 08902, (732) 658-3560, 5.0, category 'Utility contractor', with 'Claim this business', 'Add website' and 'Add hours' prompts and no website",
+      "source_url": "https://www.google.com/maps/place/e+and+j+electrical/@40.4416885,-74.4803359,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c4696a8eaaab:0xffb5c90ed11df6d0!8m2!3d40.4416885!4d-74.4803359!16s%2Fg%2F11g0k0tx4p",
+      "result": "confirmed"
+    },
+    {
+      "claim": "CIS Leads profile still offers a 'Website' button pointing at http://www.eandjelectrical.com/, shows 501 Adams Lane Suite 3, North Brunswick NJ 08902 and 'In business since 2007'",
+      "source_url": "https://cisleads.com/company/details/19399/e-and-j-electrical-contractor-llc",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Procore lists E & J Electrical Contractor Limited Liability Company, North Brunswick NJ, specialty contractor specialising in Electrical, phone +1 732-658-3560",
+      "source_url": "https://network.procore.com/p/e-and-j-electrical-contractor-limited-liability-company-north-brunswick",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ekotekelectric.com contact page gives 501 Adams Lane, Suite 3, North Brunswick NJ 08902 and 833-356-8350",
+      "source_url": "https://ekotekelectric.com/contact-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Edward J. Kurczeski and 'NJ Electrical License 16098' appear on ekotekelectric.com (homepage and About Us), not on its contact page",
+      "source_url": "https://ekotekelectric.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ekotek's About/HISTORY copy is near-identical to the archived E&J 'Our Company' text, including 'Since 2007'",
+      "source_url": "https://web.archive.org/web/20240223224858/https://eandjelectrical.com/our-company",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The Ekotek link to E and J is an inference; no page on ekotekelectric.com names E and J Electrical",
+      "source_url": "https://ekotekelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "732-599-0219 is a number associated with the company",
+      "source_url": "https://www.bbb.org/us/nj/north-brunswick/profile/electrician/e-and-j-electrical-contractor-llc-0221-90078851",
+      "result": "could not open"
+    },
+    {
+      "claim": "Yellow Pages carries an East Brunswick entry at 24 Sandra Rd with (732) 960-1056",
+      "source_url": "https://www.yellowpages.com/east-brunswick-nj/mip/e-j-electrical-contractor-26992490",
+      "result": "could not open"
+    },
+    {
+      "claim": "NJSTART vendor profile V00022046 lists an @eandjelectrical.com address and shows the vendor as Active",
+      "source_url": "https://www.njstart.gov/bso/vendor/vendorProfileOrgInfo.sda?external=true&vendorId=V00022046",
+      "result": "could not open"
+    },
+    {
+      "claim": "The business is operating, not closed, and is a single local LLC rather than a chain or franchise",
+      "source_url": "https://www.google.com/maps/place/e+and+j+electrical/@40.4416885,-74.4803359,17z/data=!3m1!4b1!4m6!3m5!1s0x89c3c4696a8eaaab:0xffb5c90ed11df6d0!8m2!3d40.4416885!4d-74.4803359!16s%2Fg%2F11g0k0tx4p",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cause is labelled an inference with reasoning and accuses no one; no prices are quoted and effort ranges are marked as estimates",
+      "source_url": "https://rdap.org/domain/eandjelectrical.com",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

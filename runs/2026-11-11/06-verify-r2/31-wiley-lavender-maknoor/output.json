@@ -1,0 +1,128 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Sources bullet 1: clients working 'directly with our partners' is cited to https://www.wileylavender.com/our-attorneys",
+      "problem": "Citation precision only, not a factual error: the exact phrase 'working directly with our partners' appears on the home page (core-values section), while /our-attorneys carries only 'personal attention from our partners'. The two-attorney roster and the 'schedule a consultation by calling our office or filling out the contact form' FAQ answer are both on /our-attorneys, so the bullet mixes two pages.",
+      "fix": "Split the citation: quote 'directly with our partners' to https://www.wileylavender.com/ and keep https://www.wileylavender.com/our-attorneys for the two Partner listings and the booking-by-phone-or-form answer."
+    },
+    {
+      "claim": "Section 1 Impact: 'about 66-245 staff hours a year (400-700 inquiries, 25-35 minutes each, 40-60% removed)'",
+      "problem": "Arithmetic is correct and the low-end rate is conservative, but the 400-700 inquiry base is an assumption derived from the site's self-reported 200+ cases/year at 2-3 inquiries per case (it is labelled as an inference in analysis.json, not in the audit). A partner reading it cannot see where the base comes from.",
+      "fix": "Add four words of provenance, e.g. '400-700 inquiries (estimated from your 200+ cases a year)'. Same fix applies to Section 2's '200 matters' and Section 3's '3-5 hours a week'."
+    },
+    {
+      "claim": "Email draft: 'a two-partner firm handling 200+ matters a year'",
+      "problem": "Minor wording drift: the site says '200+ successful cases per year' (self-reported marketing) and the audit intro correctly attributes it to the site; the email restates it as unattributed fact and swaps 'cases' for 'matters'.",
+      "fix": "Use 'the 200+ cases a year your site reports' so the claim stays attributed and matches the source wording."
+    },
+    {
+      "claim": "Section 3 Impact annualisation: '62-130 staff hours a year (3-5 hours a week of chasing, 40-50% removed)'",
+      "problem": "Methodological nit, not an error: 3-5 hours x 52 weeks x 40-50% assumes 52 working weeks, so the figure is roughly 4-6% high versus a 48-49 week year.",
+      "fix": "Either say '3-5 hours a week' and leave the annual figure as an approximation, or note the 52-week basis in the parenthetical."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Two-attorney firm; Larry Lavender listed as Partner/Owner and Pankaj Maknoor as Partner",
+      "source_url": "https://www.wileylavender.com/our-attorneys",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Site reports 200+ successful cases per year (also 1K+ clients, 95% satisfaction, 50+ years)",
+      "source_url": "https://www.wileylavender.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Firm promises direct partner access / 'no handoffs'",
+      "source_url": "https://www.wileylavender.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Quote 'directly with our partners' located at the cited /our-attorneys URL",
+      "source_url": "https://www.wileylavender.com/our-attorneys",
+      "result": "not found"
+    },
+    {
+      "claim": "Consultations booked only by calling the office or filling out the contact form; no self-scheduling",
+      "source_url": "https://www.wileylavender.com/our-attorneys",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Office at 216 Amboy Ave, Metuchen, NJ 08840; phone (732) 494-6099 with hours Mon-Fri 9AM-5PM; no after-hours/24-7 line mentioned",
+      "source_url": "https://www.wileylavender.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Service menu: Matrimonial, Personal injury, Estate Planning & Administration, Business & Corporate, Real Estate/Zoning/Land Use, Liquor licenses, Litigation",
+      "source_url": "https://www.wileylavender.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Partner email published on the contact page (larry@wileylavender.com) and on the bio pages",
+      "source_url": "https://www.wileylavender.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No client portal, document upload or payment link advertised anywhere on the site",
+      "source_url": "https://www.wileylavender.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No online calendar, booking widget or scheduling tool on the site (checked home, attorneys, contact, services, Q&A)",
+      "source_url": "https://www.wileylavender.com/services",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Practice list on Pankaj Maknoor bio: landlord/tenant, consumer fraud, quiet title, personal injury, debt collection, Chapter 7 bankruptcy",
+      "source_url": "https://www.wileylavender.com/attorney-details/pankaj-maknoor",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Larry Lavender: Rutgers JD/MBA, 20+ years, co-founded the firm; office hours Mon-Fri 9-5",
+      "source_url": "https://www.wileylavender.com/attorney-details/larry-lavender",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Matrimonial/family work is part of the practice (divorce, custody, support)",
+      "source_url": "https://www.wileylavender.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ legal-secretary median $63,080/yr and $30.33/hr (BLS 2025 via O*NET); x1.25 = $37.91/hr",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Lexis+ AI and Westlaw AI-Assisted Research hallucinated 17-33% of the time in the first preregistered evaluation",
+      "source_url": "https://arxiv.org/abs/2405.20362",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 1 arithmetic: 66-245 hours -> $2,500-$9,287 at $37.91/hr",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2 arithmetic: 200 matters x 1.5-2.5 hrs x 25-40% = 75-200 hours -> $2,843-$7,582",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 3 arithmetic: 3-5 hrs/week x 52 x 40-50% = 62-130 hours -> $2,350-$4,928",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No drafting, case-management or client-portal tooling visible",
+      "source_url": "https://www.wileylavender.com/contact-us",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body length at or under ~450 words",
+      "source_url": "internal count of audit.md body (headings through the 'Prepared from publicly available information' line, excluding the For the founder section and Sources)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

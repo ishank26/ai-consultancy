@@ -1,0 +1,163 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "links_to_broken_domain lists one place only (the Google Business Profile)",
+      "problem": "The check requires the Google profile plus at least two other places. Only one entry is recorded, yet founder_md's source list shows a Birdeye listing was found. No reason is given for omitting other placements.",
+      "fix": "Add the Birdeye listing (Electric Morano Inc, 23 Serviss Ave, 4.5 from 119 reviews, unclaimed) and any other live listing to links_to_broken_domain, or state in data_gaps that no further verified listing was found."
+    },
+    {
+      "claim": "screenshot_files: site-desktop-2026-11-13.png, site-mobile-390-2026-11-13.png, robots-txt-spam-2026-11-13.png",
+      "problem": "No screenshot files accompany the delivered output, and the founder_md outreach email offers to show 'desktop and phone screenshots'. The claims themselves reproduce fine from the live pages, so this is a delivery gap, not a false statement.",
+      "fix": "Attach the three PNGs to the package, or remove the screenshot references from founder_md before it is sent."
+    },
+    {
+      "claim": "\"Ask the web host (nameservers are ns1/ns2.newwebdesign.com)\"",
+      "problem": "The nameservers are confirmed by RDAP, but equating the DNS provider with the company that hosts the website files is an unlabelled inference; the two are often different and the audit does not mark it as inferred.",
+      "fix": "Reword to: the domain's nameservers belong to newwebdesign.com, so start by confirming who currently holds the hosting account, then ask that company for the scan."
+    },
+    {
+      "claim": "\"That robots.txt was clean in a 26 January 2022 archive capture\"",
+      "problem": "True that it contained no spam entries, but the archived file was the default four-line template ('# www.robotstxt.org/', 'User-agent: *', 'Disallow:'), served while the domain was parked, not a hand-made business file. 'Clean' could be read as 'the owner's tidy file'.",
+      "fix": "Say it 'had no spam entries (it was a four-line default file)' so the reader is not misled about what changed."
+    },
+    {
+      "claim": "Tone and length of audit_md",
+      "problem": "Word count is within the 300-word limit (roughly 285) and there is no fear language, but terms like robots.txt, sitemap.xml and Search Console are unexplained for a small-business owner.",
+      "fix": "Add a few plain glosses, e.g. 'robots.txt (the file that tells search engines what to read)' and 'Search Console (Google's free dashboard for site owners)'."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "moranoelectric.com loads normally over HTTPS (HTTP 200), with services, four regional phone numbers and a callback form",
+      "source_url": "https://moranoelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "http://moranoelectric.com/ and https://www.moranoelectric.com/ serve the same page as https://moranoelectric.com/",
+      "source_url": "https://www.moranoelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "robots.txt allows all crawlers and contains 192 sitemap lines, 128 of them pointing at .php files (groupon.php, recollection.php)",
+      "source_url": "https://moranoelectric.com/robots.txt",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sampled sitemap URLs return 404 (groupon.php?sitemapindex.xml, recollection.php?sitemapindex.xml, sitemap832.xml)",
+      "source_url": "https://moranoelectric.com/sitemap832.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "groupon.php and recollection.php return 404 Not Found",
+      "source_url": "https://moranoelectric.com/groupon.php?sitemapindex.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No sitemap.xml exists on the domain",
+      "source_url": "https://moranoelectric.com/sitemap.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The existing human sitemap is sitemap.html",
+      "source_url": "https://moranoelectric.com/sitemap.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Contact page has no form; address written '23 service ave east Brunswick 08816'; title only 'MORANO Electric' with empty meta description; 'EMMERGENCY' misspelled",
+      "source_url": "https://moranoelectric.com/contact.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The published business mailbox is a free Gmail address (moranoelectric@gmail.com)",
+      "source_url": "https://moranoelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The callback form posts to a PHP mail script (send-mail.php), which exists and answers POST-only requests",
+      "source_url": "https://moranoelectric.com/send-mail.php",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The home page hero 'LEARN MORE' button points at contact.html",
+      "source_url": "https://moranoelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "At 390 px the header shows only logo and hamburger; the header phone is not displayed",
+      "source_url": "https://moranoelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "At 390 px a mobile visitor's first call button sits far down the home page",
+      "source_url": "https://moranoelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 2021-10-25, expires 2027-10-25, last changed 2025-10-26, registrar GoDaddy.com, LLC",
+      "source_url": "https://rdap.org/domain/moranoelectric.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Domain statuses are client delete/renew/transfer/update prohibited, with nameservers NS1/NS2.NEWWEBDESIGN.COM",
+      "source_url": "https://rdap.org/domain/moranoelectric.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Google listing: 23 Serviss Ave, East Brunswick NJ 08816, Electrician, 4.7 from 103 reviews, Open 24 hours, website moranoelectric.com, phone (732) 397-9969, reviews a month old",
+      "source_url": "https://www.google.com/maps/search/Morano+Electric+East+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The cited Maps place URL resolves to the live listing",
+      "source_url": "https://www.google.com/maps/place/Morano+Electric/@40.4656933,-74.4047997,17z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A 26 January 2022 capture of robots.txt was clean - four lines ending 'Disallow:' (archived 200, text/plain)",
+      "source_url": "https://web.archive.org/web/20220126162056id_/http://moranoelectric.com/robots.txt",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The injected robots.txt version was already present by 25 July 2025",
+      "source_url": "https://web.archive.org/web/20250725015011id_/https://www.moranoelectric.com/robots.txt",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A 10 December 2021 capture of the domain was a GoDaddy parking lander, so the site appears in captures only from February 2024",
+      "source_url": "https://web.archive.org/web/20211210101943id_/http://moranoelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archive capture list: three robots.txt captures (Dec 2021, Jan 2022, Jul 2025) and home-page captures only from Feb 2024",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=moranoelectric.com/robots.txt&output=json&from=2019&to=2026&fl=timestamp,original,statuscode,mimetype,digest,length",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Birdeye lists the business as 'Electric Morano Inc', same address, unclaimed, 4.5 from 119 reviews",
+      "source_url": "https://reviews.birdeye.com/electric-morano-inc-167002699129521",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cause is labelled an inference: nobody public states who edited the file or when, and no person is accused",
+      "source_url": "https://moranoelectric.com/robots.txt",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Identity: Morano Electric, East Brunswick NJ, (732) 397-9969, single-location licensed contractor, not closed",
+      "source_url": "https://www.google.com/maps/search/Morano+Electric+East+Brunswick+NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Founder claims desktop and phone screenshots exist for the owner",
+      "source_url": "https://moranoelectric.com/",
+      "result": "not found"
+    },
+    {
+      "claim": "Any second or third listing in links_to_broken_domain besides Google",
+      "source_url": "https://rdap.org/domain/moranoelectric.com",
+      "result": "not found"
+    }
+  ],
+  "confidence": "High"
+}

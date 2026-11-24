@@ -1,0 +1,52 @@
+[
+ {
+  "claim": "Finding 9 evidence: 'Separately, 65% of small businesses that introduced new technology said it only allowed them to \"stay competitive\" (14% catch up, 11% get ahead)' attributed to the U.S. Chamber 2025 report.",
+  "problem": "Searching the cited Chamber 2025 PDF for 'stay competitive', 'catch up', 'get ahead', 'introduced' and '65%' does not surface this question. The 65/14/11 figures are NFIB 2025 survey data ('Did this new technology put you ahead of the competition, allow you to stay competitive, or let you catch up to the competition?' - 11% ahead, 65% stay competitive, 14% catch up), i.e. the brief attributes them to the wrong report. Numbers are right, source is wrong.",
+  "fix": "Reattribute this sentence to the NFIB 2025 Technology Survey PDF (already cited in finding 11) or delete it from the Chamber finding."
+ },
+ {
+  "claim": "Finding 17 evidence: vendor-improvement list 'better access to phone support 39%, better real-time online chat 31%, consistent experience across online/mobile/phone 29%'.",
+  "problem": "The SMB Group PDF (p.74 and the p.13-14 summary) states: consistent experience across online/mobile/phone 39%, better access to phone support 31%, better real-time chat 29%. Two labels are shifted by one slot, so 39% is mislabelled as phone support (it is channel consistency) and 31% as chat (it is phone support).",
+  "fix": "Correct to: consistent experience across channels 39%, better access to phone support 31%, better real-time chat 29%."
+ },
+ {
+  "claim": "Resource: National Restaurant Association 'Research Insight: The Future of Restaurant Technology', cost 'Not public'.",
+  "problem": "The cited landing page (restaurant.org/research-and-media/research/research-reports/research-insight-restaurant-technology/) offers a public 'Download your copy now' for the paper rather than describing it as member-only or paid. I did not submit the download form, so I could not confirm whether the PDF is ungated, but 'Not public' is not supported by the page.",
+  "fix": "Change cost to 'Free download from the report page (gating not verified)' or verify the download without registering; keep the press release as the source for the figures either way."
+ },
+ {
+  "claim": "Resource: NJSBDC entry says 'the Rutgers center is the nearest option to Milltown'.",
+  "problem": "Not on the cited page. NJSBDC's about-us page says the State Office is hosted at Rutgers Business School in Newark and that there are seven regional centers at public colleges and universities; it gives no proximity guidance for Milltown (Middlesex County). This is an inference presented as fact inside a resources entry.",
+  "fix": "Either label it '(inference: nearest listed center not verified; confirm via the county lookup)' or drop the location claim and keep 'clients can request virtual appointments', which is on the page."
+ },
+ {
+  "claim": "Chamber 2026 report rated strength 'High'.",
+  "problem": "Rating is inconsistent with the brief's own data_gaps entry ('sample size and field dates are not stated on the report page I opened') and with the Medium rating given to SMB Group's fully documented 738-interview survey. The role rule is that a survey is rated by its sample; an advocacy survey with an unpublished sample should not outrank a documented one.",
+  "fix": "Drop the Chamber 2025/2026 findings to Medium (or Medium-High) and note 'sample size/field dates not published' inline, or find the methodology page."
+ },
+ {
+  "claim": "Pitfall 5: 'About a quarter of firms have staff using AI in tasks even where the firm has not formally adopted it' (cited to CES-WP-26-25).",
+  "problem": "The paper reports that in 23% (41% employment-weighted) of firms workers use AI in work-related tasks - that is all firms, not only non-adopters. The 'even where the firm has not formally adopted it' qualifier is a separate qualitative claim about both diffusion channels.",
+  "fix": "Rewrite as: '23% of firms (41% employment-weighted) report workers using AI in tasks, and the data show worker-level use sometimes occurs without formal firm-level adoption.'"
+ },
+ {
+  "claim": "Caveat 1: 'Census created a new time series because of the level shift' after broadening the AI question wording on Nov 17, 2025.",
+  "problem": "The cited Census story confirms the wording change ('in producing goods or services' to 'in any business function') on that date but does not state that a new time series was created or that the change caused a level shift.",
+  "fix": "Soften to 'Census revised the wording in November 2025, so pre- and post-November figures are not a like-for-like series (inference from the wording change)' or cite a Census page that says so."
+ },
+ {
+  "claim": "Finding 10 evidence: NFIB survey 'fielded Mar 6-31, 2025, N=521 employers'.",
+  "problem": "N=521 is on the PDF (all bands sum to 521). The March 6-31 field dates are not in the PDF text; nfib.com article/press-release pages returned HTTP 403, so the dates are supported only by search-result summaries.",
+  "fix": "Keep N=521, and either drop the exact field dates or mark them '(dates per NFIB release, page not retrievable)'."
+ },
+ {
+  "claim": "Recommendation 2: 'at 5-19 staff firms cost-effectiveness is the single biggest factor (52-57%)'.",
+  "problem": "The by-size shortlist chart (p.71) extracts as a scrambled column of percentages, so 52% at 5-9, 57% at 10-19, 48% ease of use at 5-9 and 43% at 20-49 could not be individually confirmed. The report's summary text does support the direction ('the smaller the SMB, the more likely they are to rate easier to use and more cost-effective in the top 3').",
+  "fix": "Either quote the qualitative summary line or re-open p.71 and transcribe per-band values before using 52-57% as a number."
+ },
+ {
+  "claim": "Pitfall 5 wording: insurance-agency research 'warns staff may already be pasting client data into outside tools'.",
+  "problem": "The Insurance Business article says that even in agencies that have not formally adopted AI, employees may already be using outside tools, raising risk and data-security concerns, and that a policy protects client information. The specific act of 'pasting client data' is not stated.",
+  "fix": "Replace with 'staff may already be using outside AI tools with client information'."
+ }
+]

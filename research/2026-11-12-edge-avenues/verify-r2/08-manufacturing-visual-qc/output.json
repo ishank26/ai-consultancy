@@ -1,0 +1,71 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "NLRB GC 23-02 was rescinded on 14 Feb 2025 by GC 25-05 (legal_privacy, confirmed: true)",
+      "problem": "The cited URL (the 31 Oct 2022 NLRB news story on GC 23-02) never mentions rescission or GC 25-05. The fact is true - nlrb.gov's 'GC 25-05 Rescission of Certain General Counsel Memoranda' page is dated 14 February 2025 and lists GC 23-02 among the rescinded memos - but the brief's citation does not support it.",
+      "fix": "Add https://www.nlrb.gov/news-outreach/news-story/gc-25-05-rescission-of-certain-general-counsel-memoranda as the source for the rescission sentence (keep the 2022 URL only for what GC 23-02 said)."
+    },
+    {
+      "claim": "legal_privacy 'Records the client is legally obliged to keep': ISO 9001:2015 clause 8.6 requires retained documented information on acceptance criteria and authorizing person - cited to sp-i.org/downloads/spi-09.pdf",
+      "problem": "SPI-09 is the AS9102 FAIR guidebook and contains no reference to ISO 9001 (searched: no match for '9001'). The clause text is correct, but the citation does not support it. The same fact is correctly cited elsewhere in the brief to the ISO 9001:2015 PDF.",
+      "fix": "Cite https://ipc11.dip.go.th/.../2a5458cc6b38553834457b0f88607459.pdf (ISO 9001:2015, 8.6) for the clause; keep SPI-09 only for AS9102C."
+    },
+    {
+      "claim": "Overview.ai OV10i is classification-only on a 1.6 MP sensor with NVIDIA Xavier NX and no software subscription - cited to https://www.overview.ai/shop/",
+      "problem": "The shop page lists only the OV80i (price, accessories); it carries no OV10i or OV20i specification. The claim is accurate, but only on the product page /products/ov10i/ (which states 'Algorithm Classification only', 1.6MP SONY IMX296, NVIDIA Xavier NX, 'No software key or subscription needed').",
+      "fix": "Point the OV10i specs to https://www.overview.ai/products/ov10i/ and keep /shop/ only for the $13,450 OV80i price."
+    },
+    {
+      "claim": "KEYENCE pricing: 'Unknown - quote only (request a quote from your local sales engineer)'",
+      "problem": "The cited IM-8000 pricing URL resolves to a sign-in / registration wall, not a pricing or quote page; the quoted phrase does not appear in it. The substantive conclusion (no public list price) stands.",
+      "fix": "Drop the quoted phrase or cite a KEYENCE page that actually displays a quote request, and describe the IM-8000 page as login-gated."
+    },
+    {
+      "claim": "Pilot cost: '$7,000-$18,000' from '50-100 engineering hours at $100-$150/hr' plus hardware $1,500-$5,000",
+      "problem": "The stated inputs imply a wider band ($6,500 at the low end, $20,000 at the high end: 100 h x $150 + $5,000), so the quoted ceiling sits below what the assumptions produce. It is an internal arithmetic inconsistency in an estimate, not a sourced fact.",
+      "fix": "Either widen the range to roughly $6,500-$20,000 or state that the top of the range assumes fewer hours / cheaper lighting than the stated maxima."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Human inspectors: 20-30% error rates 'frequently quoted', ~1 in 1,000 minimum for simple accept/reject (Swain & Guttmann 1983), 100% inspection still misses defects", "source_url": "https://www.osti.gov/servlets/purl/1055636/", "result": "confirmed"},
+    {"claim": "That review covered 212 documents published 1958-2012 (Sandia SAND2012-8590, Oct 2012)", "source_url": "https://www.osti.gov/servlets/purl/1055636/", "result": "confirmed"},
+    {"claim": "Inspectors/testers: 584,630 employed, mean $23.68/hr ($49,260), median $45,850 (May 2023)", "source_url": "https://www.bls.gov/oes/2023/may/oes519061.htm", "result": "confirmed"},
+    {"claim": "NY-Newark-Jersey City metro: 17,640 employed, mean $24.60/hr ($51,160)", "source_url": "https://www.bls.gov/oes/2023/may/oes519061.htm", "result": "confirmed"},
+    {"claim": "Plastics product mfg is 2nd by employment (31,320) and 4th by concentration (5.17%), mean $20.49/hr ($42,620); knitting 6.44%, fabric mills 5.96%, foundries 5.67% above it", "source_url": "https://www.bls.gov/oes/2023/may/oes519061.htm", "result": "confirmed"},
+    {"claim": "Middlesex County 2023: NAICS 332710 = 33 establishments (employment suppressed); 3327 = 34 establishments, 177 employees; 326199 = 18 establishments, 2,288 employees, avg annual pay $65,098", "source_url": "https://data.bls.gov/cew/data/api/2023/a/area/34023.csv", "result": "confirmed"},
+    {"claim": "New Jersey has roughly 11,000 manufacturers, many under 75 employees (NJMEP)", "source_url": "https://www.roi-nj.com/2024/11/27/industry/manufacturing-drive-meps-connolly-talks-supply-chain-tariffs-re-shoring-and-what-it-all-means-for-sector-in-the-state/", "result": "confirmed"},
+    {"claim": "ISO 9001 does not specifically require FAI; AS9100 clause 8.5.1.3 (production process validation) adds it", "source_url": "https://advisera.com/9100academy/blog/2020/10/28/first-article-inspection/", "result": "confirmed"},
+    {"claim": "ISO 9001:2015 clause 8.6 requires retained documented information on release showing conformity with acceptance criteria and traceability to the authorizing person", "source_url": "https://ipc11.dip.go.th/files/article/attachments/ipc11/2a5458cc6b38553834457b0f88607459.pdf", "result": "confirmed"},
+    {"claim": "AS9102 uses Forms 1-3 (part/product/characteristic accountability), ballooned drawings, re-accomplishment triggers; key measures are first-pass FAIR acceptance rate and findings per submission; AS9102C is the current revision dated June 2023", "source_url": "https://sp-i.org/downloads/spi-09.pdf", "result": "confirmed"},
+    {"claim": "Machine shops (33271) 2023: 2.6 total recordable, 1.2 DART per 100 FTE; 3327: 2.8 and 1.4", "source_url": "https://www.bls.gov/iif/nonfatal-injuries-and-illnesses-tables/table-1-injury-and-illness-rates-by-industry-2023-national.htm", "result": "confirmed"},
+    {"claim": "Quality costs 2.6-4% of sales (8-10% of expense), failure costs 70-80% of total, from a study of 63 manufacturing organizations", "source_url": "https://www.homeinnovation.com/documents/Insights/Reports/2010/BA-Appendix-A-Economics-of-Quality.pdf", "result": "confirmed"},
+    {"claim": "SME machine-vision barriers: limited investment capacity, labour/expertise shortage, high-variety low-volume production, insufficient training data", "source_url": "https://link.springer.com/article/10.1007/s42452-025-06923-4", "result": "confirmed"},
+    {"claim": "Cognex In-Sight 2800 is a 1.6 MP system whose ViDi EL tools train on as few as five to ten images per class; no list price published", "source_url": "https://partner.cognex.com/FileLibrary/5a534a2e0341458bb41f5df6ede81031/IS2800_Datasheet.pdf", "result": "confirmed"},
+    {"claim": "Overview.ai OV80i is $13,450.00 per unit on the vendor shop page", "source_url": "https://www.overview.ai/shop/", "result": "confirmed"},
+    {"claim": "LandingLens Free = $0, 1,000 credits/month, 3 users, 1 noncommercial model download; Enterprise quote-only", "source_url": "https://landinglens.docs.landing.ai/plans", "result": "confirmed"},
+    {"claim": "Roboflow: Free $0 with 10 credits/mo; Core $39/mo = 20 credits up to $1,399/mo = 500 credits; self-hosted Inference included; hosted models carry a commercial license", "source_url": "https://roboflow.com/pricing", "result": "confirmed"},
+    {"claim": "MVTec HALCON/MERLIC pricing is not published (Progress vs Steady editions, 30-day evaluation, quotes only)", "source_url": "https://www.mvtec.com/products/halcon/editions-licensing/get-a-license", "result": "confirmed"},
+    {"claim": "Basler a2A2590-22gcBAS listed at $319.00, 2592 x 1944, 22 fps, colour", "source_url": "https://wilcoimaging.com/collections/basler/products/a2a2590-22gcbas", "result": "confirmed"},
+    {"claim": "NVIDIA Jetson Orin Nano Super Developer Kit priced at $249", "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/", "result": "confirmed"},
+    {"claim": "Single-camera inspection stations typically $15,000-$60,000 installed, with lighting, mounting and engineering being more than half", "source_url": "https://rellingsystems.com/resources/blog/machine-vision-system-cost", "result": "confirmed"},
+    {"claim": "PatchCore: 99.1% image-level AUROC on MVTec AD, 42 misclassifications, 98.1% pixel AUROC, trained on nominal images only; MVTec AD = 15 sub-datasets, 5,354 images, 1,725 test", "source_url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Roth_Towards_Total_Recall_in_Industrial_Anomaly_Detection_CVPR_2022_paper.pdf", "result": "confirmed"},
+    {"claim": "EfficientAD-S 98.8% / EfficientAD-M 99.1% image AUROC on MVTec AD, 95.4% mean across MVTec AD/VisA/LOCO, 2.2 ms/img and 614 img/s on an RTX A6000, 5 runs", "source_url": "https://www.mvtec.com/fileadmin/Redaktion/mvtec.com/05_research_teaching/Batzner_EfficientAD_Accurate_Visual_Anomaly_Detection_at_Millisecond-Level_Latencies_WACV_2024_paper.pdf", "result": "confirmed"},
+    {"claim": "WinCLIP zero-shot 91.8% image / 85.1% pixel AUROC on MVTec-AD", "source_url": "https://doi.org/10.1109/CVPR52729.2023.01878", "result": "could not open"},
+    {"claim": "WinCLIP zero-shot 91.8% image / 85.1% pixel AUROC on MVTec-AD (alternative source)", "source_url": "https://openaccess.thecvf.com/content/CVPR2023/html/Jeong_WinCLIP_Zero-Few-Shot_Anomaly_Classification_and_Segmentation_CVPR_2023_paper.html", "result": "confirmed"},
+    {"claim": "N.J. Wiretapping Act requires only one-party consent; criminal/tortious-purpose recording illegal regardless of consent; third-degree; civil damages greater of actual, $100/day or $1,000", "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/", "result": "confirmed"},
+    {"claim": "Hidden-camera law N.J.S.A. 2C:14-9 is a third-degree crime for intimate images where privacy is expected", "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/", "result": "confirmed"},
+    {"claim": "NLRB GC 23-02 (31 Oct 2022) was guidance on electronic monitoring/algorithmic management, not a Board ruling", "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and", "result": "confirmed"},
+    {"claim": "GC 23-02 was rescinded on 14 Feb 2025 by GC 25-05", "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and", "result": "not found"},
+    {"claim": "GC 23-02 appears among memos rescinded by the 14 Feb 2025 GC 25-05 memo", "source_url": "https://www.nlrb.gov/news-outreach/news-story/gc-25-05-rescission-of-certain-general-counsel-memoranda", "result": "confirmed"},
+    {"claim": "FTC September 2024 'Operation AI Comply' sweep; FTC statement that there is 'no AI exemption from the laws on the books'", "source_url": "https://search.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes", "result": "confirmed"},
+    {"claim": "Amazon Lookout for Vision shut down 31 October 2025", "source_url": "https://docs.aws.amazon.com/general/latest/gr/full_shutdown_services.html", "result": "confirmed"},
+    {"claim": "27,599 AS9100/9110/9120 certified sites worldwide at 16 Apr 2024, 11,268 in the US (IAQG OASIS via simpleQuE)", "source_url": "https://www.simpleque.com/as9100-as9110-and-as9120-aerospace-certifications-worldwide-as-of-april-2024/", "result": "confirmed"},
+    {"claim": "NJ bill A3929 would require clear and conspicuous notice before using a biometric surveillance system on consumers, with a 30-day cure and a bar on profiting from the data; enactment not confirmed", "source_url": "https://pub.njleg.state.nj.us/Bills/2026/A4000/3929_T1.HTM", "result": "confirmed"},
+    {"claim": "Qwen2.5-VL collection lists the 3B and 7B models as 4B and 8B total parameters", "source_url": "https://huggingface.co/collections/Qwen/qwen25-vl", "result": "confirmed"},
+    {"claim": "Mitutoyo 959149 / 959150 are SPC data cables (40in/1m and 80in/2m)", "source_url": "https://www.mitutoyo.com/webfoo/wp-content/uploads/D_section.pdf", "result": "confirmed"},
+    {"claim": "Ultralytics YOLO is AGPL-3.0 and commercial/embedded deployment generally requires an enterprise licence", "source_url": "https://www.ultralytics.com/license", "result": "confirmed"},
+    {"claim": "fit_score sub-scores (15+10+8+13+13+8) sum to the stated total of 67, and legal_risk_low (13) is consistent with a video-only, no-biometrics design in the legal section", "source_url": "avenue.json", "result": "confirmed"}
+  ],
+  "confidence": "High"
+}

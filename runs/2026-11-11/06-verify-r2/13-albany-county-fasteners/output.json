@@ -1,0 +1,143 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Section 1: \"(0.75–1.0 full-time on quotes, 40–60% recovered)\"; Section 2: \"(1.5 full-time reps, 50–60% of inquiries automatable, 14–34% gain)\"; Section 3: \"(10–20 hours a week on catalog and listing admin, 50–70% recovered)\"",
+      "problem": "These are staff-allocation assumptions, not public facts. No source states how many FTE cover quotes, inquiries or catalog admin; the company only says it has 'over 20 employees'. Written unhedged inside the Impact line, they read as known internal staffing - i.e. implied insider knowledge - and they carry the entire dollar range. (The arithmetic is correct: 1,560-2,080 hrs x 40-60% = 620-1,250; 3,120 hrs x 50-60% x 14-34% = 218-636; 520-1,040 hrs x 50-70% = 260-728. All three dollar totals reproduce at $27.81/hr and $28.69/hr.)",
+      "fix": "Mark the inputs as assumptions, e.g. \"Impact (our estimate): assuming roughly one to two people handle quotes part-time...\", so the FTE/hour split is visibly an assumption rather than knowledge of their staffing."
+    },
+    {
+      "claim": "Sources: \"O*NET NJ wages, order clerk (basis of $27.81/hour = $46,270 x 1.25 / 2,080; wage year not stated on the page)\" and the identical parenthetical for the customer service rep page",
+      "problem": "Contradicted by the pages themselves: both state \"Source: Bureau of Labor Statistics 2025 wage data\" (site updated October 6, 2026). The audit asserts no wage year is given, which the client can check in one click. The $46,270 and $47,740 medians are correct.",
+      "fix": "Replace with \"2025 BLS OEWS wage data (NJ median) via O*NET\" and delete the \"wage year not stated\" clause."
+    },
+    {
+      "claim": "Section 2, \"Happening now\": \"Public ratings split by platform (4.6 stars over 429 reviews on Birdeye, 2.5 over 21 on Yelp excerpts), with packaging and order resolution the recurring complaints.\"",
+      "problem": "The ratings are correct, but the complaint theme is attached to the ratings generally when it comes only from the syndicated Yelp sample: 21 reviews, visible excerpts dated 2017-2020, three mentioning packaging and one reporting an unresolved order. 'Recurring' for order resolution rests on a single review, so the sentence overstates the pattern and its age.",
+      "fix": "Attribute and soften: \"...2.5 over 21 on Yelp excerpts, where the few complaint reviews cite packaging and, in one case, an unresolved order.\""
+    },
+    {
+      "claim": "Section 2 impact basis: \"14–34% gain\", sourced to \"NBER Working Paper 31161\"",
+      "problem": "The 14% average and 34% novice figures are confirmed, but the audit omits the setting: 5,179 agents at a Fortune 500 software vendor's support desk. As written the band looks measured for a 20-person distributor, and the 34% upper bound applies only to novice/low-skilled agents.",
+      "fix": "Add a short parenthetical: \"(measured on a large software vendor's support desk; the 34% applies to novice agents, so transfer to your team is our inference)\"."
+    },
+    {
+      "claim": "Section 1 impact total \"about $17,300–$34,700 a year\"",
+      "problem": "Correctly computed, but the underlying analysis.json states $18,000–$34,000 for the same workflow. Two different headline ranges for one opportunity is a credibility risk if both documents are read.",
+      "fix": "Use the audit's computed range ($17,300-$34,700) in both documents."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Started 2010 in a two-car garage; main warehouse is 25,000 sq ft in Edison",
+      "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Quotes for unlisted and custom parts, C of C/MTR/shop drawings and Stock & Release programs, handled by the sales team",
+      "source_url": "https://www.albanycountyfasteners.com/B2B/Request-A-Quote/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Phone, email and chat run Monday-Friday 8:00-5:00 EST",
+      "source_url": "https://www.albanycountyfasteners.com/Customer-Service/FAQs",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Contact hours 8:00am-5:00pm EST, phone 866-573-0445, 100 Newfield Ave Suite D, Edison NJ",
+      "source_url": "https://www.albanycountyfasteners.com/Contact-Us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sells piece, pack or bulk with volume pricing and no order minimum",
+      "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Quality objective: order error rate below 0.5% of shipped orders per quarter",
+      "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "4.6 stars over 429 reviews on Birdeye (Edison, NJ)",
+      "source_url": "https://reviews.birdeye.com/albany-county-fasteners-171344557997627",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2.5 stars over 21 reviews on Yelp excerpts syndicated via Yahoo Local",
+      "source_url": "https://local.yahoo.com/info-195846697-albany-county-fasteners-edison/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Packaging and order-resolution complaints appear in the public reviews",
+      "source_url": "https://local.yahoo.com/info-195846697-albany-county-fasteners-edison/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sells through an Amazon storefront as a second channel",
+      "source_url": "https://www.amazon.com/stores/AlbanyCountyFasteners/page/7B1D54CC-242B-4E4F-A20A-CE6E32705A64",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bob (Robert Cominos) is owner and president - the person the audit and the email/opener address",
+      "source_url": "https://www.albanycountyfasteners.com/blog/about-albany-county-fasteners/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Order clerk NJ median $46,270, hence $27.81/hour with x1.25 burden over 2,080 hours",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4151.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Customer service rep NJ median $47,740, hence $28.69/hour with x1.25 burden over 2,080 hours",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wage year is not stated on the O*NET wage pages",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4151.00?st=NJ",
+      "result": "contradicted"
+    },
+    {
+      "claim": "NBER WP 31161: +14% average, +34% for novice/low-skilled agents, in issues resolved per hour",
+      "source_url": "https://www.nber.org/papers/w31161",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Study setting is 5,179 agents at a Fortune 500 software vendor's support desk (not a distributor)",
+      "source_url": "https://www.nber.org/papers/w31161",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Staffing behind the impact ranges: 0.75-1.0 FTE on quotes, 1.5 FTE on inquiries, 10-20 hrs/week catalog admin",
+      "source_url": "https://www.albanycountyfasteners.com/blog/about-albany-county-fasteners/",
+      "result": "not found"
+    },
+    {
+      "claim": "Company offers custom quotes, blanket releases and stock-and-lock pricing (body and Sources note)",
+      "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "\"For the founder\" email claim: site lists quotes on unlisted/custom parts, C of C/MTR paperwork and Stock & Release, handled by their own sales team",
+      "source_url": "https://www.albanycountyfasteners.com/B2B/Request-A-Quote/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Walk-in opener reference to a public catalog that supports a draft B2B quote",
+      "source_url": "https://www.albanycountyfasteners.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Audit body (through the disclaimer, excluding the founder section and Sources) is at most about 450 words",
+      "source_url": "https://www.albanycountyfasteners.com/Customer-Service/About-Us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No personal or private data beyond the publicly published owner name; no quotes taken from non-public sources",
+      "source_url": "https://www.albanycountyfasteners.com/blog/about-albany-county-fasteners/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

@@ -1,0 +1,155 @@
+{
+  "results": [
+    {
+      "ref": "B00446",
+      "name": "Tough Built Contracting",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked 2026-11-12. Google profile is live at 14 Monroe Pl, 4.3, phone (732) 267-8353, 'Open 24 hours', linked site huntor88.chatgpt.site still returns HTTP 404, and the owner post 2 days old still addresses 'South Jersey homeowners'. The 862 number does appear in the Yahoo directory listing. No owned website found. Gap 5 / pay 2 / ease 5 / evidence 4 are reasonable."
+    },
+    {
+      "ref": "B00786",
+      "name": "Robert Stephan Hair Design",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Homepage has two dead links (testimonials and gift certificates); homepage links to /gift.asp (404)",
+          "what_is_true": "Only /testimonials.asp is a 404. The homepage gift-certificate link goes to /gift.php, which loads normally and tells customers to call the salon. /gift.asp does 404 but is not the URL linked from the homepage.",
+          "source_url": "https://www.robertstephanhair.com/gift.php"
+        },
+        {
+          "claim": "Three different hours sets (site, StyleSeat, Google)",
+          "what_is_true": "Google Maps shows 'Open - Closes 7 PM', consistent with the site's Tue-Fri 10-7. Only StyleSeat publishes 10-6. There are two conflicting sets, not three.",
+          "source_url": "https://www.google.com/maps/search/Robert+Stephan+Hair+Design+1980+Route+27+North+Brunswick+NJ"
+        },
+        {
+          "claim": "Gift certificates are ordered through the site and mailed out; automate the gift-certificate form",
+          "what_is_true": "gift.php contains no form; it instructs customers to call 732-940-6329 to order a gift certificate. Only the product pages use PayPal order forms.",
+          "source_url": "https://www.robertstephanhair.com/gift.php"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 4,
+        "ease": 4,
+        "evidence": 4
+      },
+      "notes": "Other checked claims hold: the site is fixed at a 980px layout at 390px, has no tel: link, no JSON-LD on home/services/contact, meta description still says New Brunswick, and testimonials.asp 404s. StyleSeat shows 4.9/473 and 10-6; Google shows 4.4. Contact form has name, postal address, phone, referral source and comments. Evidence lowered from 5 to 4 for the gift-link and hours errors; gap stays 3."
+    },
+    {
+      "ref": "B00799",
+      "name": "PAYAL Beauty Salon",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Re-checked 2026-11-12. /book.html and /login.html both return 404; the home/contact pages have no tel: link and no contact form; the 'appointment form' is only a link to book.html. At 390px the layout stays 980px wide with 14px text. Footer is (c) 2011, H1 is empty, no meta description and no JSON-LD. Services page lists treatments with no prices. Google profile is 4.0 with no website link and a third phone, (732) 305-6660. Birdeye confirms 4.0/343. Scores are reasonable."
+    },
+    {
+      "ref": "B00006",
+      "name": "Ahmad & Hussain Law Group",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Listing is Bing Maps with no rating or review count; opportunity to 'collect Google reviews' because there is no rating",
+          "what_is_true": "A Google Business Profile exists at 555 NJ-18 Ste 203 with category 'Law firm', 5.0 rating, published hours and site link (review count was not displayed in the limited Maps view).",
+          "source_url": "https://www.google.com/maps/search/Ahmad+%26+Hussain+Law+Group+555+Route+18+East+Brunswick+NJ"
+        },
+        {
+          "claim": "Horizontal overflow at phone width",
+          "what_is_true": "At a 390px viewport document.scrollWidth is 390 and no visible element extends past the viewport; the page does not scroll sideways. The blank header and hidden/failed images are real, but the overflow claim is not.",
+          "source_url": "https://sathlaw.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 4,
+        "ability_to_pay": 3,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "Desktop and 390px checks confirm the missing hero image, mostly blank right column/logo placeholder, and chat widget covering contact-form fields on /contact. Book Appointment goes to /contact, which embeds a LeadConnector iframe; no calendar. LegalService and FAQPage JSON-LD are present and robots.txt only blocks /error and /api/. Evidence lowered from 4 to 3 for missing the live 5.0 Google profile and the non-reproducing overflow claim; gap and ease otherwise stand."
+    },
+    {
+      "ref": "B00055",
+      "name": "Rozin | Golinder Law",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "Three different phone numbers in circulation: site 732-314-7502, footer 732-936-7878, Google 732-377-3367",
+          "what_is_true": "The site header and all click-to-call links use (732) 709-7872; the footer says (732) 936-7878; Google and the JSON-LD use (732) 377-3367. 732-314-7502 does not appear on the site today.",
+          "source_url": "https://www.rgfamilylaw.com/contact-us/"
+        },
+        {
+          "claim": "JSON-LD is Organization/Person/WebSite with no address; 'no LocalBusiness schema with address'",
+          "what_is_true": "The Organization/Person JSON-LD includes the full 197 NJ-18 Suite 303N, East Brunswick address plus telephone and logo. It is not typed LocalBusiness and carries no hours, but an address is present.",
+          "source_url": "https://www.rgfamilylaw.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 4,
+        "ease": 4,
+        "evidence": 3
+      },
+      "notes": "The Forminator form on /contact-us still renders with zero fields, there is no calendar, and the site publishes no hours. Google shows 4.7/125 and phone (732) 377-3367. Title omits the town. Evidence lowered from 4 to 3 for the wrong phone number and address claim; gap, pay and ease remain reasonable."
+    },
+    {
+      "ref": "B00069",
+      "name": "Rudnick, Addonizio, Pappa & Casazza, P.C.",
+      "verdict": "confirmed",
+      "wrong_claims": [],
+      "notes": "Google Maps returns 4.6/42 at 25 Village Ct and a second profile at 157 Broad St, but no East Brunswick profile at 197 Route 18, as recorded. Home title/H1 are Monmouth/Middletown-first. Two form fields on the page post to usebasin; LegalService JSON-LD is present; robots.txt only blocks /wp-admin and /blog/category. Extra observation not in the record: the contact page omits East Brunswick and lists New Brunswick, Hazlet and Red Bank, while the home page says 'Hazlet and East Brunswick'. Scores are reasonable."
+    },
+    {
+      "ref": "B00070",
+      "name": "I. Gitelman, CPA",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "H1 element is empty on the home page / missing H1 weakens SEO and AI answer extraction",
+          "what_is_true": "The H1 contains 'Trusted CPA & Small Business Accountant in East Brunswick, NJ' and renders white on desktop. At 390px it turns black against the navy hero, so it is visually invisible, but the markup and keywords are present.",
+          "source_url": "https://www.igcpa.com/"
+        },
+        {
+          "claim": "Fix the mobile hero and add an H1",
+          "what_is_true": "The mobile hero is blank and needs a contrast/layout fix, not a new H1; the existing heading already names the service and town.",
+          "source_url": "https://www.igcpa.com/"
+        }
+      ],
+      "corrected_scores": {
+        "gap_size": 3,
+        "ability_to_pay": 3,
+        "ease": 5,
+        "evidence": 3
+      },
+      "notes": "At 390px the hero shows no headline, offer or CTA and three images have empty src/naturalWidth 0. AccountingService JSON-LD is present, /contact has a 22-field labelled quote form with no CAPTCHA, robots.txt allows everything and sets ai-input/ai-train=yes, the public email is iggit1@gmail.com, and Google shows 4.8 with a fresh owner post. Evidence lowered from 4 to 3 for the missing-H1 claim; the rest of the scoring stands."
+    },
+    {
+      "ref": "B00119",
+      "name": "Equitas Advisors",
+      "verdict": "corrected",
+      "wrong_claims": [
+        {
+          "claim": "No Google listing verified; listing platform unknown",
+          "what_is_true": "A Google Business Profile exists: Equitas Advisors, 614 Cranbury Rd, East Brunswick, category 'Insurance agency', phone (732) 898-3288, website link and published hours (open, closes 5 PM). No rating was shown in the limited Maps view.",
+          "source_url": "https://www.google.com/maps/search/Equitas+Advisors+614+Cranbury+Road+East+Brunswick+NJ"
+        },
+        {
+          "claim": "A customer's agent can only send email",
+          "what_is_true": "The website itself has no phone or form, but the Google profile publishes (732) 898-3288, so an agent has a phone route off-site.",
+          "source_url": "https://www.google.com/maps/search/Equitas+Advisors+614+Cranbury+Road+East+Brunswick+NJ"
+        },
+        {
+          "claim": "Testimonials, Equitas Team and Contact Us all link to the same page",
+          "what_is_true": "Testimonials and Contact Us both point to /private-client, but Equitas Team points to /financial-planning-from-a-z. The menu targets are duplicated, not all identical.",
+          "source_url": "https://www.equitasadvisors.com/"
+        }
+      ],
+      "notes": "The site still has no phone link, no contact form, a 'Contact Us' item that returns to /private-client, a COVID-19 menu item, and a fixed ~980px layout at 390px with clipped text. LocalBusiness JSON-LD correctly gives 614 Cranbury Road. Gap 4 / pay 4 / ease 4 / evidence 3 remain reasonable; the listing gap is noted but does not change the scores."
+    }
+  ],
+  "data_gaps": [
+    "Google Maps limited views did not display review counts for Tough Built, Robert Stephan, Ahmad & Hussain, I. Gitelman or Equitas, so only the ratings were re-confirmed.",
+    "Robert Stephan's claimed 60 Google reviews (via Birdeye) was not independently re-opened; only the 4.4 Maps rating and StyleSeat's 4.9/473 were verified.",
+    "PAYAL's '13 salons' is taken from its own homepage; its contact page lists only five locations, so the footprint was not independently counted.",
+    "Tough Built's contractor registration/licensing was not checked; only operating status and web presence were reviewed."
+  ]
+}

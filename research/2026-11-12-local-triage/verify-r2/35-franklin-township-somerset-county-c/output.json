@@ -1,0 +1,369 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "'Right On Air Conditioning and Heating' is a Somerset (Franklin Township) HVAC contractor with a map pin inside the township.",
+      "problem": "Town is wrong as a base. I opened the BBB record and the company's own contact page metadata: BBB profiles the business under Kendall Park (South Brunswick) and it carries HVACR licence 19HC00549900; it advertises Somerset as a service town, not a base. No Somerset street address exists.",
+      "fix": "Change town to 'Kendall Park (serves Franklin Township)' and flag it out-of-area, or drop it; do not let telemarketing treat it as a township shop."
+    },
+    {
+      "claim": "'Lipari Pools' is a zone business ('Somerset County (serves Franklin Township)').",
+      "problem": "Its published base is 135 Lincoln Blvd, Middlesex NJ 08846, outside Franklin Township; the website itself is inconsistent (says Bridgewater, lists Middlesex). Only a service-area page touches the zone.",
+      "fix": "Move to an out-of-area 'serves the zone' annex or delete; do not include in the in-zone call list."
+    },
+    {
+      "claim": "'Master Attic, LLC' is a prospect for this zone because it has a Somerset attic-insulation service page.",
+      "problem": "Its own contact page lists 2486 Ridgeway Blvd, Manchester Township NJ 08759, roughly 50 miles away and far outside the 10-mile radius from central Milltown. It is a service-area landing page only.",
+      "fix": "Drop the entry from this zone; if kept, label it explicitly as an out-of-area installer with no local base."
+    },
+    {
+      "claim": "The list keeps 'Somerset Garage Door Solutions' and 'Somerset Appliance Repair Men' as entries (both self-flagged as unverified).",
+      "problem": "These are keyword-style, single-record listings with no own site, no licence and (for the garage-door one) an address shared with an unrelated national tyre outlet. They are retained inside the main businesses array, so a fast reader will treat them as leads.",
+      "fix": "Remove them from the businesses array (or keep in a clearly separated quarantine file) so the call list contains only verifiable operators."
+    },
+    {
+      "claim": "'Kleaner Image Home Services' is at 9999 Kingsberry Dr, Somerset.",
+      "problem": "Confirmed only as a bulk-directory value (Yellow Pages); 9999 is not a plausible street number and no second source exists. The entry already warns about it, but the bogus string is still in the address field.",
+      "fix": "Blank the address field to 'Unknown' and keep the phone only."
+    },
+    {
+      "claim": "'Promise Pest Control' is at an unrecorded Somerset address, phone 732-247-7416.",
+      "problem": "Two live directories disagree: Yellow Pages gives 732-247-7416, while the Yahoo Local Somerset pest-control page I opened lists 7 Waldorf St, Somerset 08873 with (732) 249-9542. One of the two records is probably stale.",
+      "fix": "Resolve the address/phone (7 Waldorf St, 732-249-9542) before adding it to a dial list."
+    },
+    {
+      "claim": "Roofing/contractor coverage is now complete after the revision.",
+      "problem": "Coverage is good but not complete: my independent searches surfaced eligible in-zone businesses that are absent, notably Adam & Sons Plumbers (698 Hamilton St #6400, 4.8-4.9 from 188-339 reviews) and Karlo & Brothers Plumbing (96 S Dover Ave).",
+      "fix": "Add Adam & Sons Plumbers and Karlo & Brothers Plumbing (plumbing is the thinnest covered trade relative to demand), plus the other six missing names listed in coverage.missing."
+    },
+    {
+      "claim": "'Hammer Exteriors' is at 370 Campus Dr, Somerset.",
+      "problem": "The address could not be re-confirmed: the company site (opened) shows the Somerset/Serving-all-NJ positioning and the 973-442-6637 number but no street address, and the BBB profile that carries 370 Campus Dr blocks fetching. Address remains single-source.",
+      "fix": "Confirm 370 Campus Dr on a second readable source before routing or mailing."
+    },
+    {
+      "claim": "Zone/10-mile test for service-area entries (Lipari, Master Attic, New Jersey Septic Management Group, Green Sun Energy Services, S & R Pool & Spa).",
+      "problem": "Several entries are service-area businesses whose base is unconfirmed or known to be outside the township. Two of them (Master Attic, Lipari) are now confirmed out-of-zone on their own sites; the rest remain unconfirmed.",
+      "fix": "Apply one rule: only entries with a confirmed 08873/08823 (or Middlebush/East Millton) base stay in the zone file; everything else goes to a separate service-area annex."
+    },
+    {
+      "claim": "Many electrician / general-contractor entries come from Cylex category pages.",
+      "problem": "Cylex, Yellow Pages, BBB, BuildZoom, Superpages and the Original YP all block automated fetching (403), so most of those rows can only be re-read in a real browser; street addresses were verified for 20 of them in the browser this pass, the rest could not be.",
+      "fix": "Treat the browser-verified rows as confirmed; re-pull any row still resting on a single blocked-directory record before outreach."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Dolan Plumbing/Heating/Cooling/Electric (Dolan Inc.) exists in Somerset at 696 Franklin Blvd with website jackdolanandsons.com and phone 732-247-2763.",
+      "source_url": "https://www.jackdolanandsons.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dolan is at 696 Franklin Boulevard, Somerset (address re-checked on a second page).",
+      "source_url": "https://www.bestprosintown.com/nj/somerset/plumbers/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Standard Air Conditioning & Refrigeration Services LLC (standardacrsnj.com) is an operating Somerset HVAC firm.",
+      "source_url": "https://standardacrsnj.com/",
+      "result": "could not open"
+    },
+    {
+      "claim": "Norman Ray Fisher Electric is at 373 Elizabeth Ave, Somerset, phone 732-873-8668, and nrfisherelectric.com is its site.",
+      "source_url": "https://nrfisherelectric.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hammer Exteriors is a Somerset-based roofing/siding contractor; hammerexteriors.com is its site; phone 973-442-6637.",
+      "source_url": "https://hammerexteriors.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Spartan Roofing is at 220 Davidson Ave #115, Somerset, NJ HIC 13VH12613900, phone 973-938-2776.",
+      "source_url": "https://www.spartanroofing-nj.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "John's Pro Roofing LLC is at 20 Emerald Pl, Somerset, phone 732-351-3518, site johnsconstructionllc.net.",
+      "source_url": "https://reviews.birdeye.com/d/roofing/somerset-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Biondo Contracting is at 13 Clyde Rd #102, Somerset (address appears on the Birdeye category page, not on its own profile page).",
+      "source_url": "https://reviews.birdeye.com/d/roofing/somerset-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Roof Services Company is at 8 Lori Ct, Somerset.",
+      "source_url": "https://reviews.birdeye.com/d/roofing/somerset-nj/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "WAL Contracting LLC is a Franklin Park roofing contractor (NJ HIC 13VH12353900) with site walcontracting.com.",
+      "source_url": "https://www.walcontracting.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DH Fence & Landscaping LLC is a Somerset County fence contractor with site dh-fence.com and the two listed numbers.",
+      "source_url": "https://dh-fence.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sudia Electric Inc. is at 2024 Amwell Rd, Somerset; Cylex shows 732-873-0657 and trade directories 848-343-2256.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/electricians.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Franklin Electric Maintenance Co. Inc. is at 602 Hamilton St, Somerset, 732-249-1359.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/electricians.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Custom Electric Design is at 458 Elizabeth Ave, Somerset, 908-413-3560.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/electricians.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ever Ready Electric is at 91 Walnut Ave, Somerset, 732-843-4833.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/electricians.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "All State Jersey Electric is at 75 Eton Way, Somerset, 908-310-2580.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/electricians.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Vetter Electric Co Inc is at 602 Hamilton St #223, Somerset, 732-828-0643.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/electricians.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jules Construction is at 500 Demott Ln Ste 1311, Somerset, 908-803-2362 (categorised as a construction/design consultant).",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/electricians.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sorge & Garthe Tile Inc is at 223 Churchill Ave, Somerset, 732-514-1500.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/electricians.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Home Built Construction LLC is at 812 Hamilton St, Somerset.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/general-contractors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "HMZ Construction is at 25 Weston Rd, Somerset, 732-735-9737.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/general-contractors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SMS Contracting is at 109 S Lawrence Ave, Somerset, 732-246-4957.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/general-contractors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hardenwerks Contracting LLC is a Somerset-listed contractor at 732-305-2939 with no street address.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/general-contractors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "OMKAR General Contractors is at 144 Cedar Grove Ln, Somerset, 732-829-8723.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/general-contractors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Calafiore Construction & Development is at 236 Treptow Rd, Somerset, 732-873-0369.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/general-contractors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Desantis Construction is at 491 Elizabeth Ave, Somerset, 732-764-1800.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/general-contractors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Celik Brothers Construction is at 1560 Amwell Rd, Somerset, 732-822-0296.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/general-contractors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DNA Home Remodeling and Repairs LLC is at 13 Grier Rd, Somerset, 732-661-8219.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/general-contractors/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Upright Land & Tree is at 458 Elizabeth Ave Ste 5347, Somerset, 732-873-8877.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/tree-service/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Miklos Tree Service is at 256 Cedar Grove Ln, Somerset, phones 732-873-2096 and 732-433-1492.",
+      "source_url": "https://miklostreeservices.com/tree-service-contact.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "3D Tree Service is at 197 Cedar Grove Ln, Somerset, 732-357-7571.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/tree-service/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Promise Tree & Landscape Service is at 11 Wycombe Pl, Somerset, 732-777-1392.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/tree-service/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Abraham Landscaping and Tree Service is at 725 Hamilton St, Somerset, 732-484-6123.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/tree-service/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sundance Tree Experts is at 2021 Amwell Rd, Somerset, 732-873-3981.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/tree-service/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Otterbein Landscaping Inc is at 310 Skillmans Ln, Somerset, 732-821-1999.",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/tree-service/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Fama Landscaping & Nursery is at 1613 Hwy 27, Somerset, 732-545-8070 (Cylex blurb is mis-pasted from an unrelated fire company; name/address/phone are consistent).",
+      "source_url": "https://www.cylex.us.com/somerset-somerset-nj/tree-service/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Any Auto Services is at 3161 NJ-27, Franklin Park 08823.",
+      "source_url": "https://www.loc8nearme.com/new-jersey/franklin/auto-repair/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hamilton Auto Body is at 530 Hamilton St, Somerset.",
+      "source_url": "https://www.loc8nearme.com/new-jersey/franklin/auto-repair/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Stankovich Auto Body is at 901 Somerset St (Route 27), Somerset.",
+      "source_url": "https://www.loc8nearme.com/new-jersey/franklin/auto-repair/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Guaranteed Motor Towing Service is at 620 Easton Ave, Somerset, 732-247-7491, operating since 1926 (site also misspells the street as 'Eason', as the notes say).",
+      "source_url": "https://www.guaranteedmotor.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Green Lawns Landscaping LLC is listed on Phillips Rd, Somerset, with 12 reviews (latest 2024), no street number.",
+      "source_url": "https://mawlawn.com/catalog/somerset/landscaper/green-lawns-landscaping-llc-8601/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ALPS Craftsman is a Franklin Township countertop/cabinetry firm with site alpscraftsman.com.",
+      "source_url": "https://alpscraftsman.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Seaman's Home Improvement is a Middlebush (Somerset St) contractor with 18 reviews.",
+      "source_url": "https://reviews.birdeye.com/seamans-home-improvement-171577094662053",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Dunn Painting & Papering is in East Millstone at 15 Simpson Rd, 732-846-7936.",
+      "source_url": "https://bizstanding.com/p/dunn%2Bpainting%2B%2Bpapering-169783051",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Hyvest Homes is a Somerset-area remodeling contractor (NJ registration 13VH13208400).",
+      "source_url": "https://www.bbb.org/us/nj/somerset/profile/remodeling/hyvest-homes-0221-90211188",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Right On Air Conditioning and Heating is a Somerset-based HVAC contractor.",
+      "source_url": "https://www.bbb.org/us/nj/kendall-park/profile/air-conditioning-repair/right-on-air-conditioning-and-heating-0221-90179608",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Lipari Pools is a Somerset County / Franklin Township business.",
+      "source_url": "https://www.liparipools.com/contact-us.html",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Master Attic is in or near the zone.",
+      "source_url": "https://masterattic.com/contact/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Kleaner Image Home Services' 9999 Kingsberry Dr address is verifiable.",
+      "source_url": "https://www.yellowpages.com/somerset-nj/house-cleaning",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Adam & Sons Plumbers is an unlisted Somerset plumbing contractor at 698 Hamilton St #6400.",
+      "source_url": "https://www.bestprosintown.com/nj/somerset/plumbers/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Superb Garage Door Repair is an unlisted Somerset garage-door company with 144 reviews.",
+      "source_url": "https://reviews.birdeye.com/superb-garage-door-repair-169873961539564",
+      "result": "confirmed"
+    }
+  ],
+  "coverage": {
+    "searches": [
+      "plumber Somerset NJ 08873 local plumbing contractor",
+      "roofing contractor Somerset NJ 08873 shingle roof repair",
+      "landscaping company Franklin Park NJ 08823",
+      "tree service Somerset NJ 08873 tree removal",
+      "electrician Somerset NJ 08873 electrical contractor",
+      "pest control Somerset NJ 08873 exterminator",
+      "auto repair Franklin Park NJ 08823 mechanic",
+      "fence company Somerset NJ 08873 installation",
+      "painting contractor Somerset NJ 08873 interior painting",
+      "deck builder Somerset NJ 08873 composite deck",
+      "garage door repair Somerset NJ 08873",
+      "house cleaning service Somerset NJ 08873",
+      "plus direct re-reads of Cylex Somerset general-contractors, electricians and tree-service category pages in a browser"
+    ],
+    "eligible_found": 56,
+    "already_listed": 49,
+    "missing": [
+      {
+        "name": "Adam & Sons Plumbers",
+        "town": "Somerset",
+        "source_url": "https://www.bestprosintown.com/nj/somerset/plumbers/"
+      },
+      {
+        "name": "Karlo & Brothers Plumbing",
+        "town": "Somerset",
+        "source_url": "https://www.bestprosintown.com/nj/somerset/plumbers/"
+      },
+      {
+        "name": "D & E Electric LLC",
+        "town": "Somerset",
+        "source_url": "https://www.buildzoom.com/contractor/d-e-electric-llc"
+      },
+      {
+        "name": "Fleetworks, LLC",
+        "town": "Somerset",
+        "source_url": "https://www.cylex.us.com/somerset-somerset-nj/general-contractors/"
+      },
+      {
+        "name": "Protex Termite & Pest Control",
+        "town": "Somerset",
+        "source_url": "https://local.yahoo.com/consumer-services/home-and-garden-services/pest-control/nj/somerset/"
+      },
+      {
+        "name": "Javier Barahona Auto Repair",
+        "town": "Somerset",
+        "source_url": "https://www.loc8nearme.com/new-jersey/franklin/auto-repair/"
+      },
+      {
+        "name": "Superb Garage Door Repair",
+        "town": "Somerset",
+        "source_url": "https://reviews.birdeye.com/superb-garage-door-repair-169873961539564"
+      }
+    ]
+  },
+  "confidence": "Medium"
+}

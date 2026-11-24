@@ -1,0 +1,57 @@
+[
+ {
+  "claim": "Machine shops (NAICS 33271) recorded a total recordable injury/illness rate of 2.6 per 100 FTE and an amputation rate of 0.3 per 10,000 FTE (BLS, 2023) [problem.evidence and prospecting_signals.public]",
+  "problem": "The cited BLS Table 1 does not contain an amputation column. In that table 33271 reads 2.6 total recordable / 1.2 DART / 0.9 days-away / 0.3 job-transfer-or-restriction / 1.4 other, all per 100 FTE. The 0.3 was taken from the job transfer or restriction column and relabeled as amputations per 10,000 FTE - a contradicted number and a changed denominator.",
+  "fix": "Rewrite as: 2.6 total recordable cases and 1.2 DART cases per 100 FTE (BLS SOII Table 1, 2023). Either delete the amputation figure or source it to a BLS amputation-specific table with the correct unit."
+ },
+ {
+  "claim": "In plastics product manufacturing, inspectors/testers are 5.17% of industry employment - 'the second-highest concentration of any industry'",
+  "problem": "On the cited BLS page, plastics is 2nd by employment level (31,320) but 4th by concentration: Apparel Knitting Mills 6.44%, Fabric Mills 5.96%, Foundries 5.67%, Plastics 5.17%. The two rankings were conflated.",
+  "fix": "Say 'second-largest block of inspectors (31,320 jobs) and fourth-highest concentration (5.17%) of any industry', or cite only the employment-level rank."
+ },
+ {
+  "claim": "New Jersey courts have recognized intrusion-upon-seclusion claims over hidden cameras in restrooms and a locker room",
+  "problem": "The cited RCFP New Jersey page states N.J.S.A. 2C:14-9 (hidden camera law) and the criminal penalties, but contains no reference to intrusion upon seclusion or to any restroom/locker-room case. The case-law element is unsupported by the cited source.",
+  "fix": "Delete the case-law sentence, or cite the specific New Jersey decisions; the statutory point (2C:14-9, third-degree crime) is fully supported and sufficient."
+ },
+ {
+  "claim": "Amazon Lookout for Vision: new customers lost access 10 Oct 2024 and the service shut down 31 Oct 2025",
+  "problem": "The cited AWS page confirms only 'Amazon Lookout for Vision - October 31, 2025' as the end-of-support date. The 10 Oct 2024 new-customer cut-off is not on that page.",
+  "fix": "Keep the 31 Oct 2025 date with this citation; source the 10 Oct 2024 cut-off to the AWS announcement post or drop it."
+ },
+ {
+  "claim": "Qwen2.5-VL 'report lists CC-OCR 74.5 for 3B, 77.8 for 7B'",
+  "problem": "The cited Hugging Face collection page lists model cards and links the technical report; it shows no CC-OCR benchmark table, so the two figures could not be verified there. I could only open the arXiv abstract (2502.13923), which does not carry the table either.",
+  "fix": "Cite the technical report page/table that prints CC-OCR 74.5 and 77.8, or remove the two numbers and describe the VLM role qualitatively."
+ },
+ {
+  "claim": "Basler ace 2 5 MP GigE camera '~$599-$689 list (some 5 MP variants listed around $364 at distributors)'",
+  "problem": "The cited URL is a Basler 'learning' article about high-sensitivity cameras, not a price list; it returned HTTP 406 and could not be opened. Independent listings I did see for Basler 5 MP cameras range from about $347 (ace 2 GigE a2A2590-22gcBAS, distributor listing) to $819-$1,010 (ace U acA2440-20gm), so the $599-$689 band is not anchored to any source in the brief.",
+  "fix": "Point the citation at a specific distributor/model listing (e.g. a named ace 2 5 MP GigE part number) with the price you actually saw, or change to a range and label it as an estimate."
+ },
+ {
+  "claim": "Cognex reseller listings 'from ~$2,295 (legacy In-Sight 3000, MSRP $3,900) to ~$14,999 for an In-Sight 2800 AI camera'",
+  "problem": "The cited visionex product page returned HTTP 403 for me. I could confirm the $14,999 figure only indirectly (visionex collection listing for IS2802M-24520-SA, with other IS2802M configurations at $4,999-$5,999). The $2,295 / MSRP $3,900 In-Sight 3000 figure was not found anywhere.",
+  "fix": "Keep $14,999 with the collection-page citation; delete the $2,295/$3,900 item or replace it with a listing you can link and date."
+ },
+ {
+  "claim": "'About 27,599 sites were certified to the 9100 series worldwide as of April 2024' (buyers, aerospace segment)",
+  "problem": "No source_url is attached to this number anywhere in the brief. The figure is plausible and appears in secondary reporting (simpleQuE summary of IAQG OASIS, April 2024: 27,599 sites, US 11,268), but as presented it is an uncited statistic.",
+  "fix": "Add the source URL (e.g. the simpleQuE summary of IAQG OASIS, April 2024) next to the number, and label it as third-party aggregation of OASIS data."
+ },
+ {
+  "claim": "Total quality costs ... in a survey of 63 manufacturing and quality professionals",
+  "problem": "The figures (2.6-4% of sales, 8-10% of manufacturing expense, failure costs 70-80%) check out, but the underlying study (Rodchua 2009) is described in the secondary literature as a study of 63 manufacturing organizations, not 63 individuals.",
+  "fix": "Change to '63 manufacturing organizations (Rodchua, 2009)'."
+ },
+ {
+  "claim": "EfficientAD ... '2.2 ms latency, 614 images/s ... proof that this class of model runs on modest edge hardware'",
+  "problem": "The 2.2 ms / 614 img/s numbers are correct, but they were measured on an NVIDIA RTX A6000 (data-centre GPU), not edge hardware. Calling this 'proof' for modest edge hardware is an unlabeled inference that the source does not support.",
+  "fix": "Label it as an inference ('vendor-independent GPUs are shown in Fig. 6; Jetson-class timing is not measured here') or cite an actual Jetson benchmark."
+ },
+ {
+  "claim": "PatchCore (99.1% AUROC) and EfficientAD (98.8%) measured outcomes rated strength 'High'",
+  "problem": "Both are single peer-reviewed benchmark papers on the curated MVTec AD dataset with no field deployment, i.e. lab reproducibility, not observed shop-floor outcomes. Under the rating rule (a single study is not High for an outcome claim) these should not be High.",
+  "fix": "Downgrade to 'Medium' and note 'benchmark-only, no field deployment'; the caveats section already concedes real floors perform worse."
+ }
+]

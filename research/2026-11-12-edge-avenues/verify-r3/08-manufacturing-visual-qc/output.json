@@ -1,0 +1,243 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "KEYENCE row pricing/spec entry: '20-megapixel sensor, up to 300 features per placement, optional rotary fixture'",
+      "problem": "Numbers are correct but the cited source_url is the IM-8000 get-pricing page, which is a registration wall and contains no specifications. The specs live on the product page.",
+      "fix": "Add https://www.keyence.com/products/measure-sys/image-measure/im-8000/ as the spec source and keep the get-pricing URL only as evidence of the sign-in wall."
+    },
+    {
+      "claim": "Cognex In-Sight 2800 '...configured in the EasyBuilder interface and typically set up by an integrator'",
+      "problem": "'Typically set up by an integrator' is not stated in the datasheet; it is an unsourced inference presented inside a vendor-description field.",
+      "fix": "Mark it '(inference)' or delete the clause; EasyBuilder, 1.6 MP and the five-to-ten-image training claim are supported."
+    },
+    {
+      "claim": "MVTec HALCON row: 'calibrated metrology, blob/shape matching, plus deep-learning anomaly detection and classification operators'",
+      "problem": "The cited page (editions/licensing) covers only editions, evaluation length and the absence of published prices; it does not document the listed capabilities.",
+      "fix": "Cite a HALCON product/feature page for the capability description, or trim the description to what the licensing page supports."
+    },
+    {
+      "claim": "Landing AI row: 'downloadable ONNX models deployed on edge devices'",
+      "problem": "The LandingLens plans page documents LandingEdge, a Docker app and model download limits, but does not mention ONNX export.",
+      "fix": "Say 'downloaded models deployed with LandingEdge' or cite a LandingEdge/export doc that names ONNX."
+    },
+    {
+      "claim": "Problem summary: 'an inspector ... costs roughly $46-51k a year in this region'",
+      "problem": "The $51,160 figure is the New York-Newark-Jersey City metro mean; the ~$46k lower bound is the national median ($45,850), not a regional figure. The two numbers come from different geographies.",
+      "fix": "State 'about $51k mean in the NY-Newark-Jersey City metro, against a $45.9k national median' so the geography of each number is explicit."
+    },
+    {
+      "claim": "fit_score legal_risk_low = 13",
+      "problem": "Arithmetically consistent (13+8+13+10+15+8 = 67) and defensible because the design is video-only, bench-scoped and non-biometric, but 13 of a plausible 15-point weight is generous given the section records a state wiretap statute, a criminal hidden-camera provision and an unconfirmed notice duty.",
+      "fix": "Keep the score but add one sentence to the rationale noting that the score assumes the written design constraints (no audio, no face recognition, bench-only placement) are contractually enforced."
+    },
+    {
+      "claim": "gap_for_local_installer: 'national integrators chase $100k+ lines'",
+      "problem": "Unsourced assertion; the only cost source cited (Relling Systems) supports $15k-$60k single-camera stations and $150k+ multi-camera/3D builds, not integrator deal-size preference.",
+      "fix": "Label as inference, or anchor to the Relling figure ('stations above $60k are multi-camera/3D work')."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Inspectors/testers/sorters: 584,630 employed nationally, mean $23.68/hr ($49,260/yr), median $45,850/yr (2023)",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes519061.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New York-Newark-Jersey City metro: 17,640 employed, mean $24.60/hr, $51,160/yr (2023)",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes519061.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Plastics product manufacturing: 31,320 inspector jobs, 5.17% of industry employment, $20.49/hr, $42,620; second by employment and fourth by concentration behind knitting mills 6.44%, fabric mills 5.96%, foundries 5.67%",
+      "source_url": "https://www.bls.gov/oes/2023/may/oes519061.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County NJ 2023: NAICS 332710 = 33 establishments, employment suppressed; 3327 = 34 establishments and 177 employees; 326199 = 18 establishments, 2,288 employees, average annual pay $65,098",
+      "source_url": "https://data.bls.gov/cew/data/api/2023/a/area/34023.csv",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Human inspection error rates of 20%-30% are 'frequently quoted' (Drury & Fox, 1975); minimum error about 1 in 1,000 for simple accept/reject (Swain & Guttmann, 1983); 100% inspection still misses defects",
+      "source_url": "https://www.osti.gov/servlets/purl/1055636/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Review covers 212 documents written between 1958 and 2012",
+      "source_url": "https://www.osti.gov/servlets/purl/1055636/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2023 injury rates: machine shops 33271 = 2.6 total recordable, 1.2 DART; group 3327 = 2.8 total recordable, 1.4 DART",
+      "source_url": "https://www.bls.gov/iif/nonfatal-injuries-and-illnesses-tables/table-1-injury-and-illness-rates-by-industry-2023-national.htm",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cost of quality 2.6%-4% of sales, 8%-10% of expenses, failure costs 70%-80% of total, from a study of 63 manufacturing organizations (Rodchua, 2009)",
+      "source_url": "https://www.homeinnovation.com/documents/Insights/Reports/2010/BA-Appendix-A-Economics-of-Quality.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey has roughly 11,000 manufacturers, many under-75-employee businesses NJMEP supports",
+      "source_url": "https://www.roi-nj.com/2024/11/27/industry/manufacturing-drive-meps-connolly-talks-supply-chain-tariffs-re-shoring-and-what-it-all-means-for-sector-in-the-state/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "AS9100 clause 8.5.1.3 (production process validation) adds FAI; ISO 9001 does not specifically require first-article inspection",
+      "source_url": "https://advisera.com/9100academy/blog/2020/10/28/first-article-inspection/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ISO 9001:2015 clause 8.6 requires retained documented information on release showing evidence of conformity with acceptance criteria and traceability to the person(s) authorizing release",
+      "source_url": "https://ipc11.dip.go.th/files/article/attachments/ipc11/2a5458cc6b38553834457b0f88607459.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "AS9102 uses three forms (Form 1 part number, Form 2 product, Form 3 characteristic accountability) with ballooned drawings, defined re-accomplishment triggers, first-pass FAIR acceptance rate and findings-per-submission as process measures; AS9102C dated June 2023",
+      "source_url": "https://sp-i.org/downloads/spi-09.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "PatchCore: 99.1% image AUROC on MVTec AD, 42 of 1,725 test images misclassified at F1-optimal threshold, 98.1% pixel AUROC, dataset of 5,354 images (1,725 test)",
+      "source_url": "https://openaccess.thecvf.com/content/CVPR2022/papers/Roth_Towards_Total_Recall_in_Industrial_Anomaly_Detection_CVPR_2022_paper.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "EfficientAD-S 98.8% / EfficientAD-M 99.1% image AUROC on MVTec AD; 95.4% mean across MVTec AD, VisA, MVTec LOCO; 2.2 ms and 614 images/s on an RTX A6000; 32 scenarios, five runs",
+      "source_url": "https://www.mvtec.com/fileadmin/Redaktion/mvtec.com/05_research_teaching/Batzner_EfficientAD_Accurate_Visual_Anomaly_Detection_at_Millisecond-Level_Latencies_WACV_2024_paper.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Zero-shot WinCLIP: 91.8% image-level and 85.1% pixel-level AUROC on MVTec-AD (CVPR 2023)",
+      "source_url": "https://arxiv.org/abs/2303.14814",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Cognex In-Sight 2800: 1.6 MP (1440x1080), ViDi EL tools trained on as few as five to ten images per class, EasyBuilder interface",
+      "source_url": "https://partner.cognex.com/FileLibrary/5a534a2e0341458bb41f5df6ede81031/IS2800_Datasheet.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Overview.ai OV10i: classification only, 1.6 MP SONY IMX296 at 1408x1080, NVIDIA Xavier NX, 21 TOPS INT8, no software key or subscription, OV80i/OV20i add localization; 60-120 parts/minute and '10x faster' are vendor claims",
+      "source_url": "https://www.overview.ai/products/ov10i/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Overview.ai OV80i public price $13,450.00 per unit",
+      "source_url": "https://www.overview.ai/shop/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "KEYENCE IM-8000: 20-megapixel CMOS, up to 300 features, optional automated rotary fixture; get-pricing URL resolves to a registration/sign-in wall with no price",
+      "source_url": "https://www.keyence.com/products/measure-sys/image-measure/im-8000/get-pricing/?model=im-8020",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LandingLens Free = $0, 1,000 credits/month, 3 users, model download limited to one noncommercial download; Enterprise quote-only",
+      "source_url": "https://landinglens.docs.landing.ai/plans",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Roboflow: Free $0 with 10 credits/month; Core from $39/mo (20 credits in total) up to $1,399/mo (500 credits); Enterprise custom; self-hosted inference included; some self-hosted models (e.g. RF-DETR 2XL) and Ultralytics weights need extra commercial licences",
+      "source_url": "https://roboflow.com/pricing",
+      "result": "confirmed"
+    },
+    {
+      "claim": "MVTec HALCON: no published fixed prices, Progress vs Steady editions, 30-day evaluation",
+      "source_url": "https://www.mvtec.com/products/halcon/editions-licensing/get-a-license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Anomalib is Apache-2.0 licensed",
+      "source_url": "https://raw.githubusercontent.com/open-edge-platform/anomalib/main/LICENSE",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Amazon Lookout for Vision shut down 31 October 2025",
+      "source_url": "https://docs.aws.amazon.com/general/latest/gr/full_shutdown_services.html",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Basler a2A2590-22gcBAS at $319.00, 2592 x 1944, 22 fps, colour, at Wilco Imaging",
+      "source_url": "https://wilcoimaging.com/collections/basler/products/a2a2590-22gcbas",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NVIDIA Jetson Orin Nano Super Developer Kit at $249",
+      "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Integrator commentary: single-camera inspection stations land between $15,000 and $60,000 installed, with lighting, mounting and engineering more than half (camera usually less than half)",
+      "source_url": "https://rellingsystems.com/resources/blog/machine-vision-system-cost",
+      "result": "confirmed"
+    },
+    {
+      "claim": "27,599 AS9100/9110/9120 certified sites worldwide as of 16 April 2024, United States 11,268, per IAQG OASIS aggregation",
+      "source_url": "https://www.simpleque.com/as9100-as9110-and-as9120-aerospace-certifications-worldwide-as-of-april-2024/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey requires consent of at least one party to record an in-person conversation (N.J.S.A. 2A:156A-2, -3, -4); criminal/tortious-purpose exception; third-degree crime; civil recovery of the greater of actual damages, $100/day or $1,000",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.S.A. 2C:14-9 makes recording intimate parts/sexual acts where privacy is reasonably expected a third-degree crime; no confirmed NJ statute requiring private-employer notice for video-only cameras",
+      "source_url": "https://www.rcfp.org/reporters-recording-guide/new-jersey/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Bill A3929 would make it an unlawful practice to run a biometric surveillance system on consumers without clear and conspicuous notice, with a 30-day cure and a bar on profiting from the data (bill text only; enactment not confirmed)",
+      "source_url": "https://pub.njleg.state.nj.us/Bills/2026/A4000/3929_T1.HTM",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NLRB GC 23-02 (31 Oct 2022) set out an enforcement theory that electronic monitoring can interfere with Section 7 rights, as guidance not a Board ruling",
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/nlrb-general-counsel-issues-memo-on-unlawful-electronic-surveillance-and",
+      "result": "confirmed"
+    },
+    {
+      "claim": "GC 25-05 issued 14 February 2025 rescinds GC 23-02 on electronic monitoring",
+      "source_url": "https://www.nlrb.gov/news-outreach/news-story/gc-25-05-rescission-of-certain-general-counsel-memoranda",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FTC 'Operation AI Comply' (September 2024) sweep: AI claims get no exemption from consumer-protection law",
+      "source_url": "https://search.ftc.gov/news-events/news/press-releases/2024/09/ftc-announces-crackdown-deceptive-ai-claims-schemes",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Mitutoyo SPC output cables 959149 (1 m) and 959150 (2 m) with data switch are the Digimatic read-out accessory",
+      "source_url": "https://www.mitutoyo.com/webfoo/wp-content/uploads/D_section.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Qwen2.5-VL 3B listed as 4B and 7B listed as 8B total parameters on the vendor collection page, with no benchmark table",
+      "source_url": "https://huggingface.co/collections/Qwen/qwen25-vl",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Ultralytics YOLO is AGPL-3.0 and commercial/closed deployment generally requires an Enterprise licence",
+      "source_url": "https://www.ultralytics.com/license",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LFM2-VL 450M and 1.6B models exist with GGUF checkpoints compatible with llama.cpp",
+      "source_url": "https://huggingface.co/collections/LiquidAI/lfm2-vl",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Small-manufacturer machine-vision barriers: high cost, shortage of qualified staff, high-mix/low-volume production, insufficient data",
+      "source_url": "https://link.springer.com/article/10.1007/s42452-025-06923-4",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fit_score sub-scores 15+10+8+13+13+8 sum to the stated total of 67",
+      "source_url": "avenue.json (arithmetic)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

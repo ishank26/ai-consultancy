@@ -1,0 +1,136 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "FYZICAL Therapy & Balance Center, 333 Forsgate Dr Suite 106",
+      "problem": "FYZICAL is a franchised brand (FYZICAL Therapy & Balance Centers sells franchises; the Jamesburg location is owned through a separate LLC per NPI record). The mapper's own rule excludes chains and franchises, yet the entry was kept with a 'confirm independence' note instead of being excluded.",
+      "fix": "Remove, or re-file as 'franchise' and drop from the outreach list."
+    },
+    {
+      "claim": "Bin There Dump That Middlesex County, 258 Gatzmer Ave",
+      "problem": "Nationally franchised dumpster-rental brand; the entry itself notes 'franchise-branded ... may be locally owned'. That is an excluded type under the chains/franchises rule.",
+      "fix": "Remove from the eligible list."
+    },
+    {
+      "claim": "Mozarts & Einsteins Preschool, Kindergarten and Music Academy, 175 Gatzmer Ave",
+      "problem": "Licensed preschool/kindergarten and daycare (NJ childcare license, greatschools listing). Schools are an excluded type under the mapper's rules, so this is an excluded business that remains on the list.",
+      "fix": "Remove, or explicitly reclassify if the team decides daycares are in-scope (would need a rule change, not a one-off exception)."
+    },
+    {
+      "claim": "M. David DeMarco Funeral Home, 205 Rhode Hall Rd, town = Jamesburg",
+      "problem": "The firm's own directions page gives 205 Rhode Hall Road, Monroe Township, NJ 08831, not Jamesburg borough. Wrong town for this zone; the phone is also listed as Unknown but is (732) 521-0555.",
+      "fix": "Move to the Monroe Township zone (or delete); fill in phone."
+    },
+    {
+      "claim": "Monroe French Cleaners, 399 Spotswood Englishtown Rd, town = Jamesburg",
+      "problem": "Listed by directory sources as 399 Spotswood-Englishtown Road, Suite D, Monroe Township, NJ 08831 (the business name itself says Monroe). Outside the borough.",
+      "fix": "Move to Monroe zone or delete."
+    },
+    {
+      "claim": "Dubin Orthodontics, 29 E Railroad Ave",
+      "problem": "The practice's own website lists offices in Monroe Township (1600 Perrineville Rd) and Highland Park; no Jamesburg office appears there. Only a WebMD directory carries the Jamesburg address, and 29 E Railroad Ave is also Archer Law Office's address. Likely a stale or false record.",
+      "fix": "Drop or mark 'unverified - probably no longer in borough' before any outreach."
+    },
+    {
+      "claim": "Jamesburg Hearing Specialists / Audibel (333 Forsgate Dr Ste 105) and Penta Hearing Care (241 Forsgate Dr Ste 112)",
+      "problem": "The Audibel Jamesburg site is titled 'Jamesburg Penta Hearing', so the two entries appear to be the same practice; the addresses differ between the two entries and the live site. Probable duplicate plus an address mismatch.",
+      "fix": "Merge into one entry and use the address confirmed on audibeljamesburg.com / by phone."
+    },
+    {
+      "claim": "Audibel (hearing-aid brand) at 333 Forsgate Dr",
+      "problem": "Audibel is a manufacturer's branded retail network; whether this is an independent dispenser or a branded/franchised outlet was left unresolved in the entry notes.",
+      "fix": "Confirm ownership before counting it as an independent; if branded-only, treat as excluded."
+    },
+    {
+      "claim": "Alert Sprinkler Co, 1085 Cranbury - South River Rd, Suite 1",
+      "problem": "The entry cites njbusinessdirectory.org, but that page lists Alert Sprinkler at 300 Buckelew Ave. The 1085 Cranbury S River Rd Suite 1 address is correct per the NJ DFS fire-protection contractor permit list, so the cited source does not support the address.",
+      "fix": "Swap the citation to the NJ DFS permitted-business list (or a second address source) and keep the Cranbury-South River Rd address."
+    },
+    {
+      "claim": "Hope Yoga, 241 Forsgate Dr, Suite 114",
+      "problem": "NJTGO lists Hope Yoga at 241 Forsgate Dr Suite 102, while Suite 114 is the NPI address for Keep Moving Physical Therapy & Rehab. Suite number is likely transposed.",
+      "fix": "Verify suite by phone; correct to 102 if the directory is right."
+    },
+    {
+      "claim": "Complete Dental Care of Jamesburg, website blank",
+      "problem": "The practice has an active own website (jamesburgdentist.com) that was not captured, so the entry looks weaker than it is for an outreach/site-audit use case.",
+      "fix": "Add https://www.jamesburgdentist.com/ as the website."
+    },
+    {
+      "claim": "Stage Door Studio (300 Buckelew Ave) and Axles Sneakers (71 E Railroad Ave)",
+      "problem": "Both rest on single, aging directory records (wellness.com/WhereOrg; cataloxy) with no map listing, website or recent review evidence. May be defunct.",
+      "fix": "Verify by phone or drop; do not spend outreach time without confirmation."
+    },
+    {
+      "claim": "Coverage gaps: local law/health/landscape practices in the borough are missing",
+      "problem": "Independent searches surfaced at least five Jamesburg-address businesses absent from the list (Callinan, Kostbar, Apuzzo law offices; Dr. DeMarco DC; Keep Moving Physical Therapy), plus Damian Landscape on Nextdoor.",
+      "fix": "Add the missing entries listed under coverage.missing; re-scan yellowpages/martindale/NPI sources for the law and health categories."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "Levinson Axelrod, P.A. has a Jamesburg office at 220 Forsgate Dr", "source_url": "https://www.njlawyers.com/contact-us", "result": "confirmed"},
+    {"claim": "Archer Law Office, 29 E Railroad Ave, Jamesburg, (609) 842-9200", "source_url": "https://archerelderlaw.com/", "result": "confirmed"},
+    {"claim": "Conrad & Vincent at 300 Buckelew Ave Suite 103, Jamesburg", "source_url": "https://lawyers.findlaw.com/new-jersey/jamesburg/1925169_1/", "result": "confirmed"},
+    {"claim": "Law Office of Leonard & Major at 30 W Railroad Ave, Jamesburg", "source_url": "https://www.superpages.com/jamesburg-nj/attorneys", "result": "confirmed"},
+    {"claim": "Oliver L.E. Soden Agency main office in Jamesburg, 60 W Railroad Ave", "source_url": "https://sodeninsurance.com/jamesburg-office/", "result": "confirmed"},
+    {"claim": "New Horizon Abstract, Inc. at 31 East Railroad Ave, Jamesburg", "source_url": "https://nhabstract.com/join-our-team/", "result": "confirmed"},
+    {"claim": "Star Mortgage & Finance, LLC at 241 Forsgate Dr Suite 101, Jamesburg", "source_url": "https://www.bbb.org/us/nj/jamesburg/profile/mortgage-broker/star-mortgage-finance-llc-0221-90153943", "result": "confirmed"},
+    {"claim": "HMY Agency at 241 Forsgate Dr Suite 113, Jamesburg", "source_url": "https://agent.travelers.com/nj/jamesburg/241-forsgate-dr-58272-1", "result": "confirmed"},
+    {"claim": "Warhaftig & Associates CPA at 64 Hickory Ct, Jamesburg", "source_url": "https://www.bbb.org/us/nj/jamesburg/category/cpa", "result": "confirmed"},
+    {"claim": "Jamesburg Dental Care, 3 Harrison St, (732) 521-0294", "source_url": "https://www.jamesburgdentalcare.com/", "result": "confirmed"},
+    {"claim": "Jamesburg Family Dentistry, 190 Buckelew Ave, (732) 521-0550", "source_url": "https://www.jamesburgfamilydentistry.com/contact-us", "result": "confirmed"},
+    {"claim": "Complete Dental Care of Jamesburg at 6 Half Acre Rd", "source_url": "https://www.jamesburgdentist.com/", "result": "confirmed"},
+    {"claim": "Innovative Wellness Center, 15 E Railroad Ave, chiropractic (same phone as Dr. Bryan Berger DC)", "source_url": "https://www.njtgo.com/towns/I%20-%20K/Jamesburg/Business%20and%20Shopping/Jamesburg_Business_and_Shopping.html", "result": "confirmed"},
+    {"claim": "FYZICAL at 333 Forsgate Dr Suite 106, Jamesburg", "source_url": "https://www.njtgo.com/towns/I%20-%20K/Jamesburg/Business%20and%20Shopping/Jamesburg_Business_and_Shopping.html", "result": "confirmed"},
+    {"claim": "Dubin Orthodontics has a Jamesburg office at 29 E Railroad Ave", "source_url": "https://www.dubinorthodontics.com/", "result": "contradicted"},
+    {"claim": "Jamesburg Hearing Specialists/Audibel at 333 Forsgate Dr Suite 105", "source_url": "https://www.audibeljamesburg.com/", "result": "confirmed"},
+    {"claim": "Root & Restore at 241 Forsgate Dr, Jamesburg", "source_url": "https://www.root-restore.com/", "result": "confirmed"},
+    {"claim": "Dr. Hanna Gebre-Medhin, MD at 10A W Railroad Ave, Jamesburg", "source_url": "https://www.saintpetershcs.com/physician/hanna-gebre-medhin", "result": "confirmed"},
+    {"claim": "Dr. Robert Spierer, MD at 78 W Railroad Ave, Jamesburg (Monroe Medical Group)", "source_url": "https://www.getcare.hackensackmeridianhealth.org/provider/robert-spierer/1500637", "result": "confirmed"},
+    {"claim": "Jamesburg Veterinary Hospital, 3 Stockton Ave, (732) 656-0039", "source_url": "https://www.jamesburgvets.com/contact", "result": "confirmed"},
+    {"claim": "Barbara's Unique Antique Boutique, 35 East Railroad Ave", "source_url": "https://www.barbarasantiques.com/home.html", "result": "confirmed"},
+    {"claim": "The Contemporary Consignor at 31A East Railroad Avenue, Jamesburg", "source_url": "https://www.thecontemporaryconsignor.com/", "result": "confirmed"},
+    {"claim": "Inkonatee at 198 D Buckelew Avenue, Jamesburg", "source_url": "https://www.inkonatee.com/", "result": "confirmed"},
+    {"claim": "Thompson Bark pet grooming at 33 E Railroad Ave, Jamesburg", "source_url": "https://www.vetlookup.org/business/thompson-bark-jamesburg-nj", "result": "confirmed"},
+    {"claim": "Lester Memorial Home, 16 W Church St, Jamesburg", "source_url": "https://lestermemorialhome.com/", "result": "confirmed"},
+    {"claim": "Green Light Realty, 31A East Railroad Ave, Jamesburg", "source_url": "https://www.kellysellsthecoast.com/contact", "result": "confirmed"},
+    {"claim": "Jersey Lawn & Landscape is based in Jamesburg NJ", "source_url": "https://www.jerseylawnlandscape.com/", "result": "confirmed"},
+    {"claim": "Alert Sprinkler Co at 1085 Cranbury South River Rd Suite 1, Jamesburg", "source_url": "https://www.nj.gov/dca/dfs/pdf/Cont%20Cert%20Lists/Fire%20Protection%20Equipment%20Contractor%20-%20Permitted%20Business.pdf", "result": "confirmed"},
+    {"claim": "Kiryoku Training Center at 1989 Englishtown Road, Jamesburg", "source_url": "https://www.bestprosintown.com/nj/jamesburg/kiryoku-training-center-/", "result": "confirmed"},
+    {"claim": "Quadrant Design Architecture at 6 James Barton Rd, Jamesburg (NJ architect authorization expired 2022)", "source_url": "https://www.buildzoom.com/contractor/quadrant-design-architecture-llc", "result": "confirmed"},
+    {"claim": "M. David DeMarco Funeral Home is in Jamesburg", "source_url": "https://demarcofuneralhome.funeraltechweb.com/10/Map---Directions.html", "result": "contradicted"},
+    {"claim": "Monroe French Cleaners, 399 Spotswood Englishtown Rd, is in Jamesburg", "source_url": "https://www.yellowpages.com/spotswood-nj/dry-cleaners-laundries", "result": "contradicted"},
+    {"claim": "Mozarts & Einsteins Preschool is at 175 Gatzmer Ave, Jamesburg (school/daycare)", "source_url": "https://www.monroenjpreschool.com/preschool.html", "result": "confirmed"},
+    {"claim": "Bin There Dump That (franchise) at 258 Gatzmer Ave, Jamesburg", "source_url": "https://www.bintheredumpthat.com/central-new-jersey-dumpster-rentals/contact/", "result": "confirmed"}
+  ],
+  "coverage": {
+    "searches": [
+      "dentist Jamesburg NJ",
+      "roofing contractor Jamesburg NJ",
+      "hair salon Jamesburg NJ 08831",
+      "Jamesburg NJ CPA accountant office",
+      "chiropractor Jamesburg NJ",
+      "law office Jamesburg NJ attorney",
+      "plumber Jamesburg NJ 08831",
+      "HVAC heating cooling contractor Jamesburg NJ",
+      "auto repair shop Jamesburg NJ Buckelew",
+      "physical therapy clinic Jamesburg NJ",
+      "insurance agency Jamesburg NJ Railroad Ave",
+      "landscaping company Jamesburg NJ",
+      "funeral home Jamesburg NJ Church Street",
+      "veterinarian Jamesburg NJ Stockton Ave",
+      "real estate agency office Jamesburg NJ Railroad Avenue"
+    ],
+    "eligible_found": 41,
+    "already_listed": 35,
+    "missing": [
+      {"name": "Law Offices of John W. Callinan", "town": "Jamesburg", "source_url": "https://www.martindale.com/organization/law-offices-of-john-w-callinan-28301325/jamesburg-new-jersey-45837607-f/"},
+      {"name": "Law Offices of Otto James Kostbar", "town": "Jamesburg", "source_url": "https://www.yellowpages.com/jamesburg-nj/general-practice-attorneys"},
+      {"name": "Mario Apuzzo Law Office", "town": "Jamesburg", "source_url": "https://www.morelaw.com/lawyers/119150/mario-apuzzo/"},
+      {"name": "Dr. Debra DeMarco, DC (chiropractor)", "town": "Jamesburg", "source_url": "https://npino.com/chiropractors/nj/jamesburg/"},
+      {"name": "Keep Moving Physical Therapy & Rehab LLC (241 Forsgate Dr Ste 114)", "town": "Jamesburg", "source_url": "https://npiprofile.com/npi/1871153791"},
+      {"name": "Damian Landscape & Hardscape LLC", "town": "Jamesburg", "source_url": "https://nextdoor.com/pages/damian-landscape-hardscape-llc-jamesburg-nj/"}
+    ]
+  },
+  "confidence": "Medium"
+}

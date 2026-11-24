@@ -1,0 +1,356 @@
+{
+ "avenue": "auto-service-intake",
+ "one_line": "A locally installed, camera-plus-small-model intake layer for independent shops in Middlesex County: timed vehicle-condition packets at drop-off, plate-based check-in, and bay occupancy/cycle-time measurement, sold as a fixed-fee install with local service rather than a $1,900-$3,300/month enterprise scan subscription.",
+ "problem": {
+  "summary": "At drop-off, an independent shop has to do three things at once and does all three by hand: photograph and record the vehicle's existing condition (so a customer cannot later blame the shop for a scratch), capture a legally valid authorization with an odometer reading and a written estimate, and start a clock on how long the car sits in a bay. NJ's auto-repair rules make the second item legally load-bearing, and the state's Consumer Fraud Act makes paperwork errors expensive (treble damages plus mandatory fee awards). Meanwhile the industry's own data shows that supplement work, not the initial estimate, drives delay: more than two-thirds of repairs in CCC's collision data (67% in 2024) carry at least one supplement, and repairs with a supplement averaged 13.2 days in 2024 versus 7.7 days for those without - a 5.5-day gap - while the with-supplement average was 8.8 days in 2020. Shops almost never measure bay occupancy or per-vehicle dwell time, because doing so means a person with a clipboard.",
+  "evidence": [
+   {
+    "fact": "NJ auto-repair rules require, before work starts, either signed written authorization stating the nature of the repair and the vehicle's odometer reading, or (for after-hours/third-party drop-off) oral authorization documented with date, time, name and call-back number; plus a written estimate in one of five forms (not-to-exceed, itemized parts and labor, exact price for a specific repair, a signed dollar cap, or a signed waiver plus documented oral approval). Shops must also post a customer-rights sign and itemize parts and labor on the invoice.",
+    "year": "current as retrieved 2026 (amendment history not confirmed)",
+    "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-45A-26C-2"
+   },
+   {
+    "fact": "67% of all repairs include at least one supplement (up from 57% in 2019), and supplements now account for about 22.5% of total repair cost (18% in 2019, 10% in 2009), per CCC Intelligent Solutions industrywide repair data.",
+    "year": "2025",
+    "source_url": "https://df9fd9b6ab64495ad759-f14ba961ae89374e6d5a8ee602c09059.ssl.cf5.rackcdn.com/2001.pdf"
+   },
+   {
+    "fact": "Repairs with a supplement averaged 13.2 days in 2024 versus 7.7 days for repairs without one (a 5.5-day gap); the with-supplement average was 8.8 days in 2020 (5.4 days without, a 3.4-day gap); repairs over $10,000 with a supplement averaged 29.3 days, 13.3 days longer than those without (CCC data).",
+    "year": "2025 (2024 data)",
+    "source_url": "https://df9fd9b6ab64495ad759-f14ba961ae89374e6d5a8ee602c09059.ssl.cf5.rackcdn.com/2001.pdf"
+   },
+   {
+    "fact": "US keys-to-keys cycle time averaged 16.5 days for ICE vehicles and 19.5 days for BEVs, year to date.",
+    "year": "2024",
+    "source_url": "https://www.mitchell.com/print/pdf/node/28526"
+   },
+   {
+    "fact": "New Jersey's Division of Consumer Affairs received 1,244 'Motor Vehicle' complaints in 2014, the state's number-two complaint category; an estimated 24% dealt with auto repair, and the Division issued notices of violation to nine auto repair shops seeking $20,797 in penalties and costs.",
+    "year": "2015 (2014 data)",
+    "source_url": "https://www.nj.gov/oag/newsreleases15/pr20150304a.html"
+   },
+   {
+    "fact": "In a survey of 500 US independent repair shops, 56% named finding qualified/responsible technicians as a 2024 challenge, and 27.2% named retaining them; for shops with eight or more bays, retention was the second-largest concern at 43.2%.",
+    "year": "2024 (survey fielded December 2023)",
+    "source_url": "https://www.automotivebenefits.org/industry-education-articles/2024/7/19/top-5-challenges-for-independent-repair-shops-in-2024"
+   },
+   {
+    "fact": "Middlesex County private-sector establishment counts (2024 annual averages): NAICS 8111 automotive repair and maintenance 386 establishments / 2,358 employees / $58,380 average annual pay; 811111 general automotive repair 233 / 1,114 / $58,096; 811121 auto body, paint and interior 58 / 479 / $68,235; 811192 car washes 46 / 416 / $41,811; 811191 oil change and lubrication 12 / 108 / $46,636.",
+    "year": "2024",
+    "source_url": "https://data.bls.gov/cew/data/api/2024/a/area/34023.csv"
+   }
+  ]
+ },
+ "buyers": [
+  {
+   "business_type": "Independent general automotive repair shop",
+   "naics": "811111",
+   "size_where_it_matters": "Roughly 4-12 bays and 2 or more service advisors; county average is about 5 employees per establishment, so this is the top decile of local shops",
+   "why": "Highest volume of drop-offs and the most legally exposed intake paperwork (estimate, authorization, odometer, invoice). No plate or photo capture today; the RO packet is the product."
+  },
+  {
+   "business_type": "Independent collision / auto body and paint shop",
+   "naics": "811121",
+   "size_where_it_matters": "From roughly 100 vehicles per month upward; 58 such shops in the county, average about 8 employees",
+   "why": "Supplements and cycle time are the operating metrics (67% of repairs get a supplement). Condition-at-drop-off evidence is exactly what insurers and customers argue about, and body shops must hold an NJ MVC auto body license per location."
+  },
+  {
+   "business_type": "Car wash (conveyor or self-serve with attendant)",
+   "naics": "811192",
+   "size_where_it_matters": "High-volume conveyor washes and multi-location independents; 46 county establishments, average about 9 employees",
+   "why": "Every wash is a condition dispute waiting to happen (pre-existing scratches, antenna, mirror). A time-stamped entry photo set is cheap insurance and a claims-defence record."
+  },
+  {
+   "business_type": "Tire and wheel retailer/service",
+   "naics": "441340 (tire dealers) or 811198 when classified as repair",
+   "size_where_it_matters": "3+ bays with a drive-in lane and a queue that spills outside",
+   "why": "Plate-based check-in matches a returning customer to their prior tire/wheel record in seconds; wheel and rim condition at drop-off is the classic dispute. Local establishment count not confirmed in this pass."
+  },
+  {
+   "business_type": "Fast oil-change / preventive maintenance shop",
+   "naics": "811191",
+   "size_where_it_matters": "Single-site high-throughput shops (12 county establishments, about 9 employees each)",
+   "why": "Volume business where 60 seconds of advisor time per car matters; plate read plus condition frames replace typing. Smallest budgets of the group."
+  }
+ ],
+ "existing_solutions": [
+  {
+   "vendor": "UVeye",
+   "product": "Drive-through multi-camera inspection system (exterior, underbody, tires)",
+   "what_it_does": "Vehicle drives through a scanning lane under 14 feet in any direction; cameras collect exterior, tire and underbody images and deep-learning models flag defects (PDR-level dents, wheel anomalies, undercarriage leaks), producing a time-stamped condition report within seconds. Vendor also states the arch uses more than 20 high-resolution, high-speed cameras and that images are processed on cloud servers.",
+   "pricing": "Not published. Trade press quotes a UVeye marketing director at mid-to-high four-figure installation 'with similar monthly costs for SaaS use', and says about 100 cars/month 'isn't enough' volume for its economics.",
+   "source_url": "https://www.autobodynews.com/regional/midwest-regional-news/promise-potential-ai-pre-scan-products-finally-starting-to-show-up-in-body-shops"
+  },
+  {
+   "vendor": "BayWatch Technologies",
+   "product": "Infrared drive-through scan hardware",
+   "what_it_does": "Small-footprint IR scan (about 3 feet) that the vendor says detects dents to roughly 3 mm (vendor claim), exports to CCC/Tractable or any format; does not see under the vehicle. Claimed 250 dealership sites plus a rental company.",
+   "pricing": "Public via trade press: installation free; $1,900/month entry level, $3,300/month 'fully loaded'.",
+   "source_url": "https://www.autobodynews.com/regional/midwest-regional-news/promise-potential-ai-pre-scan-products-finally-starting-to-show-up-in-body-shops"
+  },
+  {
+   "vendor": "Tractable",
+   "product": "Photo-based damage appraisal software (phone camera, no dedicated hardware)",
+   "what_it_does": "Advisor photographs the vehicle; the vendor says the model proposes damage line items and a repair estimate in about 30 seconds; can be white-labeled to the shop and used as a lead-capture link.",
+   "pricing": "Public via trade press: $299/month entry interface, $499/month 'workhorse' tier; a 15-employee Ontario shop reported paying $500/month.",
+   "source_url": "https://www.autobodynews.com/regional/midwest-regional-news/promise-potential-ai-pre-scan-products-finally-starting-to-show-up-in-body-shops"
+  },
+  {
+   "vendor": "Shopmonkey",
+   "product": "Shop management system with Digital Vehicle Inspections",
+   "what_it_does": "Estimates, invoicing, e-signature, payments and photo-based digital vehicle inspections on the advisor's or tech's phone; 2-way texting; QuickBooks integration.",
+   "pricing": "Public: $239, $399 and $499 per month for the three published tiers (annual pricing slightly lower); enterprise custom.",
+   "source_url": "https://shopmonkey.io/pricing"
+  },
+  {
+   "vendor": "Plate Recognizer (ParkPow)",
+   "product": "ALPR cloud API / on-premise SDK and Stream",
+   "what_it_does": "Reads plates from camera streams or stills, optional make/model/color/direction/dwell-time, dashboard with lookups and lists; on-prem option keeps images local.",
+   "pricing": "Public: Stream listed at $45 per camera per month (with a lower $35 tier for a 3-camera trial), Snapshot lookup plans from $50/month, one-off professional-services sessions $500.",
+   "source_url": "https://platerecognizer.com/pricing/"
+  },
+  {
+   "vendor": "Frigate (open source)",
+   "product": "Local NVR with real-time object detection and built-in license plate recognition",
+   "what_it_does": "Runs on a small x86 box or Jetson, ingests RTSP cameras, detects and tracks objects locally, reads plates and attaches the result to the tracked vehicle; LPR is off by default and switched on in settings, and after a one-time model download it runs fully offline.",
+   "pricing": "No licence fee for the software; cost is hardware (see technical_approach).",
+   "source_url": "https://docs.frigate.video/configuration/license_plate_recognition/"
+  }
+ ],
+ "gap_for_local_installer": "The market splits into enterprise hardware (BayWatch at $1,900-$3,300/month with free installation; UVeye at a mid-to-high four-figure installation plus a similar monthly SaaS fee, aimed at dealers and fleets), software-only appraisal (Tractable, still requires a human to shoot and upload photos), and DIY open source (Frigate, Plate Recognizer). Nobody sells a Middlesex County independent a $3,000-$6,000 installed package with local same-week service that (a) attaches a timed 8-12 image condition packet plus odometer and plate to the RO the shop already uses, (b) keeps video on-premise or in a shop-controlled box, (c) computes bay occupancy and per-vehicle dwell from the same cameras, and (d) does not require the shop to switch its management system. UVeye itself says a ~100-car/month shop is not a fit, which is most of the 233 general repair shops in the county. The defensible position is integration labour, camera placement, calibration, Spanish-language handoff and monthly service, not the model. (inference)",
+ "technical_approach": {
+  "established_pattern": "Two tiers. Tier 1 is deterministic and cheap: RTSP PoE cameras at the drive-in lane and over each bay, a YOLO-family detector plus a tracker, plate OCR, and explicit zone/line-crossing rules that emit events (arrived, bay_entered, bay_exited, departed) with timestamps. Everything is event-based; nothing is decided by a language model. Tier 2 is a small vision-language model used only on exceptions and on the drop-off frame set: to caption what is visible panel-by-panel, to check that all required angles and the odometer are present, and to draft the plain-English condition note that gets pasted into the RO. Human confirmation is mandatory before anything reaches a customer, and the model output is stored next to the images as a suggestion, not as a finding.",
+  "models_and_tools": [
+   {
+    "name": "Frigate NVR (with its LPR feature)",
+    "role": "Local object detection, tracking, zone events and plate reads from RTSP cameras; MIT-licensed open source (see the repository LICENSE file), runs fully offline once its OCR and detection models are cached; LPR documentation lives at docs.frigate.video/configuration/license_plate_recognition",
+    "source_url": "https://github.com/blakeblackshear/frigate"
+   },
+   {
+    "name": "Ultralytics YOLO family",
+    "role": "Detector for vehicles, people and damage candidate regions; note AGPL-3.0 by default, so a commercial embedded/SaaS deployment requires an Ultralytics enterprise licence",
+    "source_url": "https://www.ultralytics.com/license"
+   },
+   {
+    "name": "Plate Recognizer (Stream / Snapshot)",
+    "role": "Drop-in ALPR alternative to Frigate's LPR if the shop wants turnkey plate reads with make/model/color or dwell time, cloud or on-prem",
+    "source_url": "https://platerecognizer.com/pricing/"
+   },
+   {
+    "name": "LFM2-VL-450M and LFM2-VL-1.6B (Liquid AI)",
+    "role": "Very small vision-language models for on-device captioning of the drop-off frames; 450M is the tier for highly constrained devices, 1.6B the more capable tier; LFM Open License v1.0; English-only; the vendor states they are not intended for safety-critical decisions and recommends fine-tuning them on narrow use cases",
+    "source_url": "https://huggingface.co/LiquidAI/LFM2-VL-450M"
+   },
+   {
+    "name": "Qwen2.5-VL-3B-Instruct",
+    "role": "Larger fallback VLM for structured output (JSON panel-by-panel condition notes, document/invoice reads); the model card states it can localise objects as bounding boxes or points and produce stable JSON for coordinates, which is what you want for 'where on the panel' answers",
+    "source_url": "https://huggingface.co/Qwen/Qwen2.5-VL-3B-Instruct"
+   },
+   {
+    "name": "Shopmonkey / existing AMS as the system of record",
+    "role": "Where the finished packet lands (photos, estimate, e-signature); the installer should write into the shop's current tool rather than replace it",
+    "source_url": "https://shopmonkey.io/pricing"
+   }
+  ],
+  "hardware": [
+   {
+    "item": "Amcrest 5MP PoE bullet camera (IP5M-B1186EW, white)",
+    "approx_cost": "$79.99 each (listed price; was out of stock at time of research)",
+    "source_url": "https://www.amcrest.com/products/5mp-poe-camera-bullet-ip5m-b1186ew-28mm.js"
+   },
+   {
+    "item": "NVIDIA Jetson Orin Nano Super Developer Kit (edge inference, 67 TOPS)",
+    "approx_cost": "$249 at NVIDIA's announced price (down from $499; some resellers list higher)",
+    "source_url": "https://blogs.nvidia.com/blog/jetson-generative-ai-supercomputer/"
+   },
+   {
+    "item": "Accelerator options for the Frigate box",
+    "approx_cost": "Cost not confirmed; Frigate docs recommend Hailo-8/Hailo-8L m.2 modules or an Intel iGPU with OpenVINO, and state the Google Coral is no longer recommended for new installs",
+    "source_url": "https://docs.frigate.video/frigate/hardware/"
+   },
+   {
+    "item": "PoE switch, mounting hardware, 2 TB SSD, small UPS",
+    "approx_cost": "Unknown (not sourced); budget item in the pilot cost range",
+    "source_url": "https://docs.frigate.video/frigate/hardware/"
+   }
+  ],
+  "fine_tuning_needed": "Yes, but narrowly. The detector needs light fine-tuning on local frames (camera angle, lighting, bay layout, plate style) - a few hundred to a couple of thousand labeled frames. The VLM does not need fine-tuning for the first product: a fixed prompt plus a JSON schema plus human confirmation is enough for 'photo set complete' and 'note what is visible'. Liquid AI itself recommends fine-tuning LFM2-VL for narrow use cases, so a second-phase fine-tune on the shop's own accept/edit history is the obvious improvement path. Do not fine-tune anything to adjudicate cosmetic severity: published benchmarks show tiny-object damage classes remain weak.",
+  "data_needed": "Per site: 8-12 fixed drop-off poses (front, rear, both sides, four corners, roof if relevant, odometer, plate close-up), 200-500 vehicles of frames for calibration; panel-level 'damage present/absent' labels from the shop's own advisor for the fine-tune set; bay polygons and lane crossing lines; and 2-4 weeks of the shop's RO export (arrival, in-bay, completed timestamps) to validate occupancy and dwell against ground truth. Plate crops labeled for the local state/format mix. All of it stays on the shop's box.",
+  "difficulty": "Medium"
+ },
+ "measured_outcomes": [
+  {
+   "finding": "Supplements are the norm, not the exception: 67% of repairs carry at least one, and repairs with a supplement averaged 13.2 days in 2024 against 7.7 days for repairs without one (a 5.5-day gap; the with-supplement average was 8.8 days in 2020).",
+   "year": "2025 (2024 data)",
+   "sample": "CCC Intelligent Solutions industrywide repair data, reported in Auto Insurance Report, July 28, 2025 (not a controlled study)",
+   "study_type": "industry",
+   "strength": "Medium",
+   "source_url": "https://df9fd9b6ab64495ad759-f14ba961ae89374e6d5a8ee602c09059.ssl.cf5.rackcdn.com/2001.pdf"
+  },
+  {
+   "finding": "US keys-to-keys cycle time averaged 16.5 days for ICE and 19.5 days for BEVs year to date.",
+   "year": "2024",
+   "sample": "Mitchell claims-transaction data, Q3 2024 Plugged-In report (sample size not disclosed)",
+   "study_type": "industry",
+   "strength": "Medium",
+   "source_url": "https://www.mitchell.com/print/pdf/node/28526"
+  },
+  {
+   "finding": "Best published damage detector on the CarDD benchmark reaches 57.0 mask AP / 60.6 box AP overall (77.7 / 78.8 at IoU 0.50), but per-class box AP is only 39.2 for dents, 36.6 for scratches and 30.6 for cracks, versus 91.2 for glass shatter and 86.4 for flat tires.",
+   "year": "2023",
+   "sample": "CarDD: 4,000 high-resolution images, 9,000+ annotations, six damage classes, IEEE T-ITS; DCN+ with ResNet-101 backbone",
+   "study_type": "peer-reviewed",
+   "strength": "High",
+   "source_url": "https://cardd-ustc.github.io/docs/CarDD.pdf"
+  },
+  {
+   "finding": "Even a purpose-built ALPR system on the UFPR-ALPR benchmark read only 64.89% of plates exactly correct in a single frame, rising to 78.33% with temporal redundancy; commercial systems scored 47.39% and 50.94%.",
+   "year": "2018",
+   "sample": "UFPR-ALPR: 150 videos, 4,500 frames, camera and vehicle both moving; comparison against two commercial systems",
+   "study_type": "peer-reviewed",
+   "strength": "Medium",
+   "source_url": "https://web.inf.ufpr.br/vri/wp-content/uploads/sites/7/2019/08/laroca2018robust.pdf"
+  },
+  {
+   "finding": "In one California town, 71% of the alerts Flock Safety's AI plate readers sent to police over two years were misreads, incorrectly flagging vehicles as stolen or felony-linked.",
+   "year": "2026",
+   "sample": "Business Insider investigation of Roseville, CA alerts over two years, summarized by Forrester",
+   "study_type": "industry",
+   "strength": "Medium",
+   "source_url": "https://www.forrester.com/blogs/rules-of-the-road-what-flocks-71-misread-rate-teaches-us-about-third-party-ai-risk/"
+  },
+  {
+   "finding": "UVeye says its system identifies 96% of vehicle defects versus 24% in manual inspections; the same vendor Q&A says the arch uses more than 20 high-resolution, high-speed cameras and that images are processed on cloud servers.",
+   "year": "2025 (undated vendor figures in a trade Q&A)",
+   "sample": "Not disclosed; vendor statement in an interview",
+   "study_type": "vendor",
+   "strength": "Low",
+   "source_url": "https://www.vision-systems.com/cameras-accessories/news/55306984/from-clipboards-to-cameras-hertz-deploys-ai-powered-inspection-system-for-rental-vehicles"
+  },
+  {
+   "finding": "One dealership group reported that 29.3% of vehicles passing through its scan lane had something the owner did not know about.",
+   "year": "2024",
+   "sample": "Single dealership group (Tom Wood Group) one-month snapshot as described to a trade publication",
+   "study_type": "industry",
+   "strength": "Low",
+   "source_url": "https://www.autobodynews.com/regional/midwest-regional-news/promise-potential-ai-pre-scan-products-finally-starting-to-show-up-in-body-shops"
+  }
+ ],
+ "legal_privacy": [
+  {
+   "issue": "Intake documentation is legally prescribed in New Jersey, so the product's output fields are not a design choice",
+   "rule_or_precedent": "N.J.A.C. 13:45A-26C.2: signed authorization stating the nature of the repair and the odometer reading (or documented oral authorization with date, time, name and phone for after-hours drop-off); a written estimate in one of five permitted forms; consent before exceeding the estimate; itemized invoice; posted customer-rights sign. This is the regulation that a drop-off module should be built around.",
+   "confirmed": true,
+   "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-13-45A-26C-2"
+  },
+  {
+   "issue": "Paperwork failures are expensive: private CFA suits carry treble damages and a mandatory fee award, so bad intake records create real legal exposure for the shop (and reputational exposure for the installer)",
+   "rule_or_precedent": "N.J.S.A. 56:8-19 per Sylince v. Thrift Auto Sales (App. Div. 2015): once unlawful conduct and an ascertainable loss are proven, 'treble damages and counsel fees under N.J.S.A. 56:8-19 are mandatory'; the court noted the trial judge had 'no discretion' to deny them.",
+   "confirmed": true,
+   "source_url": "https://www.njcourts.gov/system/files/court-opinions/2015/a5891-13.pdf"
+  },
+  {
+   "issue": "License plate reading on a shop's own lot is not governed by NJ's police ALPR rules, which apply to law enforcement agencies only",
+   "rule_or_precedent": "AG Law Enforcement Directive 2022-12 (eff. Jan 23, 2023) binds law enforcement: plates may only be scanned where visible from a public road or place the public may access, retention is capped at three years, access to stored non-alert data is limited to three purposes, and 'private entities may provide ALPR data to New Jersey agencies but cannot receive law enforcement-owned ALPR data.'",
+   "confirmed": true,
+   "source_url": "https://www.nj.gov/oag/dcj/agguide/directives/ag-Directive-2022-12_Updated-Directive-Regulating-Use-of-Automated-License-Plate-Recognition-%28ALPR%29-Technology.pdf"
+  },
+  {
+   "issue": "New Jersey's 2026 ALPR disclosure law constrains government entities, not a private shop running cameras on its own property",
+   "rule_or_precedent": "P.L. 2026, c.4 (C.52:4CC-1 et al.) bars a 'government entity' from selling, sharing or transferring ALPR information except to another government entity, by judicial order/warrant, or to another jurisdiction's law enforcement for a criminal investigation; violations expose the entity to injunctive relief and civil damages. No section of it addresses private-sector cameras on private property (that reading is my inference from the text).",
+   "confirmed": true,
+   "source_url": "https://pub.njleg.state.nj.us/Bills/2026/PL26/4_.HTM"
+  },
+  {
+   "issue": "Audio is the sharp edge, not video - a camera that records conversations can capture a third party's conversation without consent",
+   "rule_or_precedent": "New Jersey is a one-party-consent state under N.J.S.A. 2A:156A-3 and -4; recording a conversation you are not a party to, absent one party's consent, risks criminal and civil liability. Practical rule for this avenue: disable audio on every camera, and never record advisor-customer conversations without consent.",
+   "confirmed": true,
+   "source_url": "https://www.dmlp.org/legal-guide/new-jersey/new-jersey-recording-law"
+  },
+  {
+   "issue": "Plate-to-person lookups are restricted; the 'normal course of business' exception is narrow",
+   "rule_or_precedent": "18 U.S.C. 2721(b)(3) allows a legitimate business to use DMV personal information only to verify the accuracy of information the individual submitted, and then to correct it only to prevent fraud, pursue legal remedies, or recover a debt or security interest. So a plate read may be used to match an existing customer record; it may not be used to pull an owner's identity for marketing or curiosity.",
+   "confirmed": true,
+   "source_url": "https://www.govinfo.gov/content/pkg/USCODE-2021-title18/html/USCODE-2021-title18-partI-chap123-sec2721.htm"
+  },
+  {
+   "issue": "NJ's consumer privacy law does not reach a typical 5-200 employee shop, but it sets the tone for retention and vendor terms",
+   "rule_or_precedent": "New Jersey's consumer privacy law took effect January 15, 2025; it applies to controllers processing data of 100,000+ consumers annually (or 25,000+ plus revenue from selling data), with penalties up to $10,000 per violation and $20,000 for repeats, and a 30-day cure period ending July 15, 2026. A single-location repair shop is far below the threshold (inference), so contractual data-minimization and retention terms - not the statute - are the binding constraint.",
+   "confirmed": true,
+   "source_url": "https://www.dataguidance.com/sites/default/files/DG-new-jersey-consumer-privacy-act-act-infographic.pdf"
+  },
+  {
+   "issue": "Facial recognition of employees or customers has no dedicated New Jersey statute, and NJ's privacy law excludes employment data - which makes it a contractual and reputational risk rather than a clear statutory one",
+   "rule_or_precedent": "I found no enacted New Jersey biometric-specific statute in this pass; a biometric-surveillance bill (A1494, 2024-25 session) was introduced. The NJ consumer privacy framework treats biometric identifiers as sensitive data for consumers, and its FAQ states that consumer protections do not cover people acting in an employment context. Because this is unsettled, the safe product decision is to not do face recognition at all. (Partly inference; the FAQ page itself was bot-blocked on retrieval.)",
+   "confirmed": false,
+   "source_url": "https://www.njconsumeraffairs.gov/ocp/Pages/NJ-Data-Privacy-Law-FAQ.aspx"
+  },
+  {
+   "issue": "Cosmetic-damage false positives create a specific, foreseeable harm: telling a customer they caused damage the model only thought it saw",
+   "rule_or_precedent": "Published benchmarks show the weak classes are exactly the disputed ones (CarDD box AP 39.2 dent, 36.6 scratch, 30.6 crack) and plate reads are demonstrably fallible (71% of one department's alerts were misreads). Design consequence: AI output must be advisory, attributed to a human advisor who confirms, and never used to assert fault or price a repair on its own. This is an engineering-ethics control, not a statute.",
+   "confirmed": false,
+   "source_url": "https://cardd-ustc.github.io/docs/CarDD.pdf"
+  }
+ ],
+ "prospecting_signals": {
+  "public": [
+   "Google/Yelp reviews that mention a specific intake failure: 'they said it needed more once it was on the lift', 'scratch wasn't there before', 'estimate went up without asking', 'waited two hours to drop off', 'nobody could find my keys'.",
+   "NJ Division of Consumer Affairs complaint history - the Division itself tells consumers to call and ask whether a shop has been the subject of complaints, so complaint volume is a public, usable signal (verified in the 2015 OAG release).",
+   "Auto body shops: whether the location appears in NJ MVC's per-location auto body licensing framework, and the $300,000 garage liability / $50,000 garage-keepers' limits that come with it - a proxy for how much a damage dispute costs them. (Note: I confirmed those figures only via search summary of the MVC page, not by reading the page.)",
+   "Job postings for service advisors, 'bilingual service writer', or front-desk staff who 'handle photo estimates' - the intake bottleneck is being staffed around.",
+   "Website language: 'free estimates', 'text us a photo for an estimate', 'insurance approved', number of bays, DRP/certification logos, whether they advertise pickup/drop-off lockers (after-hours drop-off is exactly the case NJ's rules treat specially).",
+   "County-level density for prioritisation: 233 general repair, 58 body/paint, 46 car wash, 12 oil-change establishments in Middlesex County (BLS QCEW 2024).",
+   "Satellite/street view: a visible drive-in lane with no scan arch, cars parked in the aisle, and a lot that fills by 8am."
+  ],
+  "walk_in": [
+   "Watch a drop-off: clipboard or a tablet, whether the advisor walks the car with the customer, and whether photos go into a phone's camera roll rather than the RO.",
+   "Ask to see the paperwork a customer leaves with - a condition report with timestamps, or nothing.",
+   "Count how many times the odometer is written down twice (once on the RO, once somewhere else) - duplicate typing is the automation case.",
+   "Look for keys on a pegboard with paper tags; no plate capture at the lane means keys and cars get matched by memory.",
+   "Ask the owner three questions: 'who pays when a customer says the scratch was already there?', 'how many supplement phone calls a week?', 'do you know your average keys-to-keys right now?' - a long pause on the third is the sale.",
+   "Check for a wall-mounted camera that exists only for security and points at the wrong angle for condition photos.",
+   "Note the language mix at the counter; a Spanish-first advisor workflow is a differentiator most vendor tools ignore.",
+   "Look at whether bays are double-stacked with no board showing who is in which bay."
+  ]
+ },
+ "pilot": {
+  "scope": "One location, 4-8 bays, 4 weeks of live capture plus 1 week of installation and tuning (2-6 week envelope). Deliverables: (1) a drop-off condition packet - 8-12 timed images plus plate plus transcribed odometer - auto-attached to the RO and e-mailed/texted to the customer with the estimate; (2) a bay board that shows which bay is occupied and for how long, with a daily dwell-time report; (3) plate-based recognition of repeat customers matched to the shop's existing customer list. Explicitly out of scope: face recognition, audio capture, any automated fault attribution, any pricing decision, and any change to the shop's management system.",
+  "hardware": "3-4 PoE cameras (one at the drop-in lane, two covering bays, one at key drop), a small x86 mini-PC or Jetson Orin Nano Super running Frigate locally, a PoE switch, 2 TB SSD, UPS, cabling and mounts. Software: Frigate (open source) for detection/tracking/LPR, with Plate Recognizer as a paid fallback if local LPR accuracy is not good enough on the shop's plate mix. If cosmetic captioning is included, LFM2-VL-1.6B or Qwen2.5-VL-3B running on the same box.",
+  "success_metric": "Primary: at least 95% of drop-offs in weeks 3-4 produce a complete, timestamped packet attached to an RO (all required angles + readable odometer + plate). Secondary: plate-to-existing-customer match rate at or above 90% on repeat visits; bay-occupancy events within 10% of a one-day manual audit; at least 10 minutes of advisor time saved per vehicle (timed before/after); and a tracked count of 'pre-existing damage' disputes during the pilot, with the target of zero disputes lost for lack of a drop-off photo.",
+  "cost_range": "$4,000-$9,000 for hardware, installation and calibration at one site, plus $0-$150/month in software (zero if using Frigate's local LPR only; about $45 per camera per month if using Plate Recognizer Stream) and a service retainer. Assumptions: the shop already has internet and a managed PoE switch location; no electrician or trenching needed; the shop exports or shares RO timestamps for validation; installation is one technician for 1.5-2 days; cameras are the ~$80 5MP PoE units above, not specialty hardware; the VLM runs on the same box so there is no per-image cloud bill. The $1,900-$3,300/month BayWatch subscription and the mid-four-figure-plus-monthly UVeye quote are the comparison anchors, so a $4-9k install plus a small retainer lands well under them (inference, based on those trade-press quotes).",
+  "assumptions": "Pricing assumes a single site and a willing owner-operator who can decide without a committee; that the shop's insurance carrier or DRP does not mandate a specific scanning vendor; and that the shop accepts a human-in-the-loop workflow. If the shop wants insurer-grade line-item estimates, this pilot is the wrong product - Tractable or UVeye territory."
+ },
+ "fit_score": {
+  "demand": 15,
+  "local_buyers": 11,
+  "ability_to_pay": 8,
+  "technical_feasibility": 16,
+  "legal_risk_low": 10,
+  "defensibility": 7,
+  "total": 67,
+  "rationale": "Sub-scores: demand 15/20, local buyers 11/15, ability to pay 8/15, technical feasibility 16/20, legal risk 10/15, defensibility 7/15 = 67/100. Demand is real and legally reinforced: NJ prescribes the intake paperwork, CCC's 2024 data puts supplemented repairs at 13.2 days against 7.7 without (a 5.5-day gap), and no local shop measures bay dwell. Supply of buyers is decent (233 general repair shops, 58 body shops, 46 car washes in Middlesex County alone) but they are small - county averages of 5-9 employees - so the addressable set is the larger independents, and ability to pay is the weak link: $58k average annual pay in general repair and published quotes of $1,900-$3,300/month for hardware systems explain why the trade press describes shops as 'wait and see'. Technical feasibility is the strongest dimension: Frigate, Plate Recognizer and open small VLMs make the first version a system-integration job, not a research job, and everything can run on a $249 Jetson or a used mini-PC. Legal risk is manageable but not trivial: the product must stay video-only, on-premise and human-confirmed, DPPA limits how plate reads may be used, cosmetic false positives carry real harm, and I could not confirm any NJ notice requirement for ordinary CCTV, so 10/15 rather than higher. Defensibility is the weakness: the same stack is downloadable, so the moat has to be installation quality, integrations, Spanish-language workflow and local service."
+ },
+ "risks": [
+  "Commoditisation: a motivated shop can stand up Frigate plus Plate Recognizer for a few hundred dollars, so the paid value must be integration, calibration and service, not software.",
+  "Licensing trap: Ultralytics YOLO is AGPL-3.0; shipping it inside a shop-facing product without an enterprise licence is a real exposure.",
+  "False accusation risk: plate misreads and weak small-damage detection can put a wrong claim in front of a customer, which is worse than no photo at all.",
+  "Willingness to pay: published enterprise pricing ($1,900-$3,300/month for BayWatch; a mid-to-high four-figure install plus similar monthly for UVeye) has trained owners to think this category is unaffordable; a $4-9k install must be sold on dispute avoidance and advisor time, not on 'AI'.",
+  "Employee relations: bay-occupancy tracking is functionally productivity monitoring; framing and notice matter, and audio must stay off.",
+  "Carrier/DRP requirements: insurers and direct-repair programs increasingly specify tooling, which can strand a custom build.",
+  "Seasonality and weather: snow, salt and low winter light degrade outdoor photo quality exactly when volume spikes.",
+  "Hardware supply and tariffs: the trade press reports BayWatch had 500 units on order before tariff turmoil, so scan-hardware lead times are exposed.",
+  "Scope creep into estimating: the moment a shop expects insurer-grade line items, the product competes with Tractable and loses."
+ ],
+ "caveats": "Vendor accuracy claims (UVeye's 96% vs 24%, BayWatch's 3 mm dent detection, Tractable's 30-second estimate) are marketing statements, not audited results, and Tractable in particular publishes no measured accuracy rate; the same trade article reports that an AI system at Tom Wood Group did not at the time find some ADAS sensor damage. The strongest numbers here are the CCC supplement/cycle-time data, the Mitchell cycle-time figures and the CarDD/UFPR-ALPR benchmarks, and even those are not about independent shops in Middlesex County. No peer-reviewed study of camera-based bay-occupancy or cycle-time measurement inside a repair shop was found; the nearest evidence is damage-detection and plate-recognition literature. Pricing is as published at retrieval and changes; the BayWatch $1,900/$3,300 figures, the UVeye mid-to-high four-figure installation estimate and the Tractable tiers all come from a single trade article. QCEW figures are 2024 annual averages of private-sector establishments and may be suppressed for small cells. Nothing here is legal advice; the employment-surveillance and biometric points are the least settled.",
+ "data_gaps": [
+  "No public current list price from UVeye, Wenn or Solera; the UVeye figures are a single trade-press quote from its marketing director, and I could not find a published dealer report with per-gate pricing.",
+  "NJ Division of Consumer Affairs' 2013 press release (with the 'unnecessary work' and 'charged for work not performed' breakdown) and its privacy FAQ were blocked by bot protection on retrieval; the 2015 OAG release was readable and is what I cited.",
+  "Could not confirm any New Jersey statute that specifically regulates a private business's use of license plate cameras on its own property; the AG directive and P.L. 2026 c.4 are law-enforcement/government-facing. Treat 'private ALPR is largely unregulated in NJ' as an inference, not a confirmed finding.",
+  "Could not confirm a New Jersey requirement to post notice of workplace or customer video surveillance for ordinary CCTV; the NJ Department of Labor page I fetched did not yield usable text on the point.",
+  "No New Jersey-specific data on the frequency or cost of pre-existing-damage disputes at shops or car washes; the car-wash 'share of reviews mentioning damage' figure I found came from a vendor analysis and was not usable as a confirmation.",
+  "No peer-reviewed evaluation of LFM2-VL or Qwen-VL on vehicle-damage or shop-intake tasks; model fit is extrapolated from general capability plus the CarDD detector results.",
+  "No public pricing or audited accuracy data for Frigate's built-in LPR on US plates; the docs note it needs a one-time model download and at least 4GB of RAM, but accuracy must be measured on site during the pilot.",
+  "County-level establishment counts for tire dealers (NAICS 441340) were not retrieved in this pass.",
+  "Car wash and tire-shop cycle-time or queue data was not found in government or association sources; those buyer segments are supported by establishment counts and dispute logic only."
+ ]
+}

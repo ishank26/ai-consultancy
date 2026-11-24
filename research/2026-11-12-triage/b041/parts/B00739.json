@@ -1,0 +1,47 @@
+{
+  "name": "Araceli E. Ziemba, DMD",
+  "town": "North Brunswick",
+  "ref": "B00739",
+  "status": "operating",
+  "website": "https://www.drziemba.com/",
+  "what_they_do": "Solo-practitioner general and cosmetic family dental practice at 1861 Route 130, with a patient-education library, online patient forms, insurance and financial-policy pages, and an appointment-request form.",
+  "customers": "Local families and adults; insured patients (dedicated dental-insurance and 'patients without dental insurance' pages) plus online bill-pay users.",
+  "size_signals": [
+    {"signal": "Practice branded under the dentist's own name with a 'Meet The Team' page - inference: single dentist with hygienist/front-desk staff", "source_url": "https://www.drziemba.com/"},
+    {"signal": "Open late two nights a week (Mon and Wed 9am-8pm), 9-5 Tue/Thu, closed Fri-Sun", "source_url": "https://www.drziemba.com/appointment"},
+    {"signal": "Listed in 2025/2026 Cigna and Medicare Advantage provider directories and the ADA Find-a-Dentist directory", "source_url": "https://www.drziemba.com/our-locations"}
+  ],
+  "listing": {"platform": "WebMD / Healthgrades / RateMDs (no Google listing captured)", "rating": "5.0 WebMD, 5.0 Healthgrades, 4.5 RateMDs", "reviews": "116 (WebMD ratings), 9 (Healthgrades), 8 (RateMDs)", "source_url": "https://www.healthgrades.com/dentist/dr-araceli-ziemba-4y65z"},
+  "website_review": {
+    "loads": false,
+    "https": true,
+    "phone_layout": "unknown",
+    "clear_offer": true,
+    "primary_cta": "Appointment Request form plus phone (732) 297-0588 as a tel: link in the header",
+    "click_to_call": true,
+    "contact_form": true,
+    "online_booking_or_quote": "Appointment request form ('Create an Appointment' - scheduling coordinator calls back to confirm); no live calendar",
+    "trust_signals": "Patient testimonials page, patient-education library, insurance and financial-policy pages, practice policies (cancellation, minors), online bill pay",
+    "out_of_date_signs": "Legacy template design; the appointment form is a third-party lead-form script (smbleads.ibsmb.com) and the page source loads a reCAPTCHA key, i.e. a bot check in front of the form",
+    "search_basics": "Page titles include the town and service (e.g. 'Make An Appointment|North Brunswick, NJ-Araceli E. Ziemba, DMD') and there is a proper meta description plus canonical URLs; services have their own section pages",
+    "top_issues": [
+      "The site returned '403 Unauthorized' to a standard Chrome session (tried www and non-www) - it only loaded through a reader proxy, so real visitors and some AI crawlers may be blocked even though robots.txt is fully permissive",
+      "Appointment request form appears protected by reCAPTCHA, which blocks an agent from booking end-to-end",
+      "No schema.org JSON-LD found in the page source of the pages fetched",
+      "Old-school template: no online calendar, no visible reviews, hours only on the appointment/office page"
+    ]
+  },
+  "agent_readiness": {"findable": 1, "answerable": 2, "bookable": 1, "notes": "robots.txt is unusually AI-friendly - explicit Allow rules for OAI-SearchBot, PerplexityBot, Googlebot, GPTBot, ClaudeBot and others, with only Yandex/Baidu/Bytespider blocked. Hours, services and policies are real text. However the server answered 403 Unauthorized to a normal browser twice, which undercuts 'findable', and no JSON-LD was present in the source checked. Booking is a request form with a reCAPTCHA key loaded, so no agent can complete it."},
+  "operations_signals": [
+    {"signal": "Appointment requests are manually confirmed ('Our scheduling coordinator will contact you'), so every web request creates a callback task", "source_url": "https://www.drziemba.com/appointment"},
+    {"signal": "Dedicated pages for cancellation/broken-appointment policy and minors - inference: broken appointments are enough of a problem to need written policy, a good target for automated reminders", "source_url": "https://www.drziemba.com/cancelled-and-broken-appointment-policy"},
+    {"signal": "Online bill pay runs through a separate ident.ws portal - inference: payment questions still route to staff", "source_url": "https://www.drziemba.com/"}
+  ],
+  "top_opportunities": [
+    {"opportunity": "Fix the 403 blocking so the site loads for all normal visitors and crawlers, then keep the AI-friendly robots.txt working as intended", "type": "website", "evidence": "Two browser loads of https://www.drziemba.com/ and https://drziemba.com/ both returned '403 Unauthorized'; content only loaded through a proxy reader", "effort": "S"},
+    {"opportunity": "Add Dentist/LocalBusiness JSON-LD (address, hours, phone, services) and replace the request form with real-time booking so agents can answer and book", "type": "agent readiness", "evidence": "No ld+json found in page source; appointment page requires a form submission and loads reCAPTCHA, with staff confirming afterwards", "effort": "M"},
+    {"opportunity": "Automated recall and no-show reminders tied to the existing cancellation policy, plus a review-request flow (visible ratings today live on Healthgrades/RateMDs, not on the site)", "type": "operations", "evidence": "Practice publishes a cancelled/broken appointment policy page; no review content or rating badge appears on the site", "effort": "S"}
+  ],
+  "scores": {"gap_size": 4, "ability_to_pay": 3, "ease": 4, "evidence": 3, "reasons": "Site architecture and crawl directives are decent but a 403 block, no schema and a CAPTCHA'd request form leave real gaps; solo practice means limited budget; fixes are small and well-scoped; evidence partly indirect because the browser could not render the site for a mobile check."},
+  "sources": ["https://www.drziemba.com/", "https://www.drziemba.com/appointment", "https://www.drziemba.com/robots.txt", "https://www.drziemba.com/our-locations", "https://www.healthgrades.com/dentist/dr-araceli-ziemba-4y65z"]
+}

@@ -1,0 +1,37 @@
+[
+ {
+  "claim": "suggested_pricing.reasoning: \"year-one cost (pilot credited + setup + 12 months = about $6,600)\" and feasibility.reasoning: \"$6,600 first-year price\"",
+  "problem": "Arithmetic is wrong by $1,200. Setup $2,400 minus the $1,200 pilot credit leaves $1,200, plus 12 x $450 = $5,400, plus the $1,200 the client actually paid for the pilot = $7,800. The plan subtracted the credit without counting the pilot payment, so it understates first-year cash. The derived \"4-7x below\" benefit ratio is affected too (27,297/7,800 = 3.5x; 47,771/7,800 = 6.1x).",
+  "fix": "Restate first-year cost as $7,800 (pilot $1,200 + net setup $1,200 + 12 x $450) and change the ratio to ~3.5x-6x below the audit's low end; or, if the pilot fee is meant to be fully absorbed by the setup fee, say so explicitly and use $7,800 = $2,400 setup + $5,400 fees."
+ },
+ {
+  "claim": "suggested_pricing.reasoning: monthly fee of $450 is \"at or below the closest AI competitor (Sameday at $449/month for 500 minutes)\"",
+  "problem": "$450 is $1 above Sameday's verified $449 Launch price for the same 500 included minutes, so \"at or below\" is false for the closest AI competitor. Sameday's Launch tier also includes 3 locations and Spanish, which the plan does not match on price.",
+  "fix": "Say the fee is \"within $1 of Sameday Launch ($449/mo, 500 min)\" and drop the \"at or below\" framing, or reprice to $439-$449 to make the price-lead claim true."
+ },
+ {
+  "claim": "components/integrations: Vapi Transfer Call \"warm-transfer mode so the tech hears a summary before connecting\", costed at \"$0\" Vapi telephony/SIP transport",
+  "problem": "The docs restrict the spoken warm-transfer modes (warm-transfer-say-summary / say-message / TwiML / wait-for-operator) to Twilio; on Vapi numbers and BYO SIP trunks the summary is not spoken (only a blind transfer with an X-Transfer-Summary SIP header, or the separate `warm-transfer-experimental` mode). The plan's design leans on the tech hearing a spoken summary while assuming $0 Vapi-provided transport, which are not compatible as written.",
+  "fix": "State the dependency: spoken-summary warm transfer requires either Twilio as the telephony provider (new cost/registration) or `warm-transfer-experimental` on Vapi numbers/SIP. Add the chosen path plus its transport cost to the running-cost model, and confirm it in a live test call before scoring technical feasibility 4."
+ },
+ {
+  "claim": "problem.current_tools: \"No live chat, SMS bot or online scheduler anywhere on the site\" and problem summary \"no scheduler, chat or slot picker\"",
+  "problem": "Partly contradicted by the vendor's own emergency page, which states \"Online scheduling is available for service requests, but homeowners facing an active emergency should call us directly.\" The plan's own evidence entry quotes this, so the claim that no online scheduling exists anywhere is unsupported; what is absent is a real-time slot picker/booking engine.",
+  "fix": "Reword to \"no real-time booking engine or slot picker - only a two-step request form the site calls 'online scheduling' for service requests\" and keep the emergency-page quote as the evidence."
+ },
+ {
+  "claim": "risks_compliance: FCC Declaratory Ruling FCC 24-17 (Feb 8, 2024) - marked confirmed - citing https://docs.fcc.gov/public/attachments/DOC-404036A1.pdf",
+  "problem": "The cited document is the FCC's July 17, 2024 fact sheet for the Notice of Proposed Rulemaking (CG Docket 23-362), not FCC 24-17. The ruling itself (adopted Feb 2, released Feb 8, 2024) is real and says exactly what the plan claims, so the rule is supported - but the citation does not support it.",
+  "fix": "Cite https://docs.fcc.gov/public/attachments/FCC-24-17A2.pdf (or FCC-24-17A3.pdf) as the source for the declaratory ruling, and optionally keep the NPRM fact sheet as separate context for the proposed AI-disclosure rules."
+ },
+ {
+  "claim": "build_plan founder effort: \"~15 founder-days\" (setup_fee basis) and \"about 3 weeks of build at ~15 founder-days\"",
+  "problem": "The phase table sums to 16 founder-days (2+2+4+2+2+4), not 15, so the stated effort does not reconcile with the plan's own build plan.",
+  "fix": "Use 16 days consistently (which is still ~3 weeks of build) and adjust the implied day rate to $150/day, or trim a phase step to justify 15."
+ },
+ {
+  "claim": "running_costs: \"Vapi's own calculator shows $82-$129/month total at 1,000 minutes\" presented alongside the recommended Core package",
+  "problem": "The $82-$129 figure is the calculator's total with \"No Success Package\" ($0), which the page shows explicitly. With the Core package the plan actually recommends, the same 1,000-minute configuration is $111-$158. Not an error in the quote, but the headline understates the proposed configuration by $29/month.",
+  "fix": "Quote it as \"$82-$129 with no success package; $111-$158 at 1,000 minutes on Core\" so the comparison matches the plan's own recommendation."
+ }
+]

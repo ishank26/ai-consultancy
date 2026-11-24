@@ -1,0 +1,183 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "Middlesex County's Office of Health Services states its goal is that every food establishment be inspected at least twice a year, by NJ-licensed Registered Environmental Health Specialists.",
+      "problem": "The cited county URL (and every variant path I tried on middlesexcountynj.gov) returned HTTP 403 Forbidden, so I could not read the statement firsthand. Search results returning that page do quote 'at least twice a year' and 'New Jersey-licensed Registered Environmental Health Specialists', so the claim appears accurate but is not independently verified from an opened page.",
+      "fix": "Either cite a mirror/PDF of the county inspection page, or downgrade to 'county states a twice-yearly inspection goal (per search snippet; county page blocked to our crawler)' and note it in data_gaps."
+    },
+    {
+      "claim": "DeltaTrak: 'Reusable BLE loggers roughly $199-$209 retail; single-use in-transit loggers about $6-$18 (reseller listing)' cited to https://solutionsprime.com/delivery-and-transportation/data-loggers",
+      "problem": "The cited category URL renders an empty catalogue ('0 products') with no prices in either readable or raw mode, so that URL does not support the figures. I did confirm $199.00 for the FlashLink 40902 BLE logger and $6.00/each for a 10-pack of FlashLink Mini in-transit loggers on other pages I opened at the same reseller; the upper ends ($209 and $18) were not individually seen.",
+      "fix": "Point the citation at the product pages actually showing the prices (40902 BLE detail page at $199.00; Mini in-transit 10-pack at $60.00 = $6.00 each) and drop or mark the unverified upper bounds, or record the range as 'about $199 and about $6 each, low end verified'."
+    },
+    {
+      "claim": "measured_outcomes: low-cost open-hardware IoT node paper, sample = 'Single retail refrigerated cabinet deployment (proof of concept)'",
+      "problem": "The cited paper (Sensors 2020;20:846, PMC7038712) deployed four ESP8266 relay boards and ten DS18B20 probes across the refrigerated cabinets of one medium-sized store, not a single cabinet. The finding text is fine; only the sample description is imprecise.",
+      "fix": "Change sample to 'one medium-sized retail store, 4 ESP8266 nodes and 10 DS18B20 probes'."
+    },
+    {
+      "claim": "measured_outcomes: 'Hotel group reports HACCP deviations falling from about one per week to about one per month' (Sensire case example, 2021)",
+      "problem": "The source is a single-property case study (Hotel Arthur, Finland), not a hotel group, and the page does not display a 2021 date (only the file name '11-21' suggests November 2021). The deviation numbers themselves are stated verbatim in the source.",
+      "fix": "Change 'Hotel group reports' to 'One hotel (Hotel Arthur) reports' and note the year as 'undated case study, file dated 11-2021'."
+    },
+    {
+      "claim": "Two secondary-detail items in existing_solutions: Monnit 'iMonnit Basic free, Premiere paid annual' and Sensaphone 'WEB600 (6-zone)'.",
+      "problem": "Neither detail appears on the pages cited (the Monnit sensor page and the Absolute Automation SCD-1200 page). No price or outcome depends on them, but they are unsourced as written.",
+      "fix": "Cite the Monnit subscription page and the Sensaphone WEB600 page, or drop the plan names and the WEB600 zone count."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "FDA observed 397 retail deli departments in 2015-2016; 70.0% out of compliance on data item 5, 62.9% on data item 7 (cooling), 91.2% on improper holding/time-temperature overall",
+      "source_url": "https://www.fda.gov/media/148247/download",
+      "result": "confirmed"
+    },
+    {
+      "claim": "FDA 10-year trend study: in 2008 only 45% of full-service restaurants and 49% of delis were in compliance with improper holding/time-temperature; roughly 850 establishments observed per phase across nine facility types",
+      "source_url": "https://www.fda.gov/food/retail-food-protection/retail-food-risk-factor-study",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ defines 'refrigeration temperatures' as 41 F or less, with a 45 F allowance only for equipment in use as of Jan 2, 2007, to be upgraded or replaced by Jan 2, 2012; potentially hazardous food must be held at refrigeration temperatures except during prep/cooking/cooling or approved time-as-control",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-1-5",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-3.5(d)1 cooling is two-stage: within two hours from 135 F to 70 F, and within four hours from 70 F to refrigeration temperatures (i.e. sequential, up to six hours total)",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-5",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Time as a public health control and specialized processes such as reduced-oxygen packaging require written procedures submitted to the health authority for approval and maintained on site (8:24-3.5(g)(4) and (h))",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-3-5",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24-2.1(b) requires at least one person in charge in Risk Type 3 establishments to be a certified food protection manager, and the person in charge must demonstrate HACCP knowledge at inspection",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-2-1",
+      "result": "confirmed"
+    },
+    {
+      "claim": "N.J.A.C. 8:24 was readopted effective November 17, 2021, and NJDOH's notice says rulemaking to conform to the newer federal Model Food Code is still in development",
+      "source_url": "https://www.nj.gov/health/legal/documents/adoption/%28F%29%20DOH%208_24%20Notice%20of%20Readoption.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County's Office of Health Services states a goal of inspecting every food establishment at least twice a year, by NJ-licensed Registered Environmental Health Specialists",
+      "source_url": "https://www.middlesexcountynj.gov/government/departments/department-of-public-safety-and-health/office-of-health-services/health-inspections",
+      "result": "could not open"
+    },
+    {
+      "claim": "USDA ERS 2005-06 supermarket loss averaged 11.4% fresh fruit, 9.7% fresh vegetables, 4.5% fresh meat/poultry/seafood; sample of six large national/regional retailers excluding convenience stores, megastores, club stores and mom-and-pop grocers; EIB-44, March 2009",
+      "source_url": "https://ers.usda.gov/sites/default/files/_laserfiche/publications/44306/10894_eib44_reportsummary.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ERS chart: loss rates for 24 fresh fruits from 4.1% (bananas) to 43.1% (papayas), from 2,900 US supermarkets in 2011-12; page attributes loss to culling misshapen/overstocked/spoiled product and does not mention refrigeration failure",
+      "source_url": "https://ers.usda.gov/data-products/charts-of-note/chart-detail?chartId=92910",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A Lincoln, NE drive-through restaurant discarded about $1,800 of refrigerated product after an August 2024 storm outage and closed for a few days",
+      "source_url": "https://www.klkntv.com/lincoln-restaurant-throws-out-1800-of-spoiled-food-after-power-outage/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Some commercial property policies include only a small amount of spoilage coverage; most carriers require a spoilage or utility service interruption endorsement; equipment breakdown coverage 'will pay to repair or replace the equipment that malfunctioned, but it will not cover the cost of spoiled inventory'",
+      "source_url": "https://www.insureon.com/small-business-insurance/commercial-property/spoilage-insurance",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Middlesex County had 1,752 Accommodation and Food Services establishments employing 24,124 people in 2024 (7.0% of county establishments); Food Preparation and Serving Related employment projected 22,250 (2022) to 24,700 (2032)",
+      "source_url": "https://nj.gov/labor/labormarketinformation/assets/PDFs/pub/County%20Reports/Middlesex%20County.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "TempGenius: a small install with fewer than five sensors costs approximately $2,000, and about 20 sensors about $5,000",
+      "source_url": "https://tempgenius.com/temperature-monitoring/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Monnit ALTA temperature sensor MNS2-9-W2-TS-ST is $116.00; probe add-ons +$11 (3 ft) to +$117 (100 ft); 25-month NIST +$71 (8-point +$203); line power with battery backup +$50",
+      "source_url": "https://www.monnit.com/products/sensors/temperature/standard-temperature/MNS2-9-W2-TS-ST/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "ThermoWorks ThermaData WiFi Type K two-channel logger is $289.00 ($274 at 5+, $264 at 10+), meter only with probes sold separately, includes a 2-point NIST-traceable calibration certificate, stores 18,000 readings onboard",
+      "source_url": "https://www.thermoworks.com/products/thermadata-wifi-type-k",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Adafruit pre-wired waterproof DS18B20 is $9.95 at 1-9 qty ($8.96 at 10-99) and includes the required 4.7k pull-up resistor",
+      "source_url": "https://www.adafruit.com/product/381",
+      "result": "confirmed"
+    },
+    {
+      "claim": "DeltaTrak FlashLink BLE reusable loggers about $199 retail and single-use in-transit loggers about $6 each, per the cited reseller listing",
+      "source_url": "https://solutionsprime.com/delivery-and-transportation/data-loggers/deltatrak-flashlink-40902-ble-bluetooth-low-energy-reusable-temperature-data-logger-with-external-sharp-probe-detail",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sensaphone Sentinel SCD-1200 is a 12-zone panel, monitors its own power supply for failure, has 8-hour battery backup, and gates text and phone-call notifications behind a paid subscription; its price could not be read off any page opened (recorded as Unknown)",
+      "source_url": "https://www.absoluteautomation.com/products/sensaphone-sentinel-scd-1200-web-based-monitoring",
+      "result": "confirmed"
+    },
+    {
+      "claim": "SmartSense's food-service page names Cafe Rio (155 locations), Wegmans, honeygrow, Sweetgreen and Lowes Foods",
+      "source_url": "https://www.smartsense.co/food-service",
+      "result": "confirmed"
+    },
+    {
+      "claim": "YOLO11s is 9.4M parameters, 47.0 mAP at 640px, 90.0 ms CPU ONNX and 2.5 ms on a T4",
+      "source_url": "https://github.com/ultralytics/ultralytics/blob/main/docs/en/models/yolo11.md",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Liquid AI LFM2.5-VL ships in 450M, 1.6B and 3B variants, with the 450M positioned for edge deployment",
+      "source_url": "https://docs.liquid.ai/lfm/models/lfm25-vl-450m",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Sensire case example: HACCP deviations down from about one per week to about one per month",
+      "source_url": "https://www.sensire.com/hubfs/Website/Linked%20Documents/Case%20Examples%203.19/ENG/Sensire%20Oy_CaseHotel-Arthur%2011-21-eng.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Kelsius/Hastings Hotels: six hotels plus a gastro pub, each property saving about three hours per day for all food staff, and the same page states stock was lost 'due to no notifications of faulty appliances'",
+      "source_url": "https://kelsius.com/hastings-hotel/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey is a one-party-consent state; intercepting an oral communication without a participant's consent is a third-degree crime under N.J.S.A. 2A:156A-3, with the one-party exception in 2A:156A-4(d); no NJ statute requires workplace camera signage; recording in restrooms/locker rooms is criminal under N.J.S.A. 2C:14-9",
+      "source_url": "https://www.recordinglaw.com/us-laws/surveillance-camera-laws/new-jersey-surveillance-camera-laws/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New Jersey Data Privacy Act effective January 15, 2025, applies to controllers processing 100,000+ consumers (25,000 if selling data), and treats biometric data as sensitive data requiring consent; FAQ page itself rendered only a bot-block interstitial",
+      "source_url": "https://www.njconsumeraffairs.gov/ocp/Pages/NJ-Data-Privacy-Law-FAQ.aspx",
+      "result": "could not open"
+    },
+    {
+      "claim": "NJ requires the most recent inspection report on premises for public review for at least two years (8:24-8.13) and the evaluation placard posted near the public entrance (8:24-8.12)",
+      "source_url": "https://www.law.cornell.edu/regulations/new-jersey/N-J-A-C-8-24-8-13",
+      "result": "confirmed"
+    },
+    {
+      "claim": "2023 peer-reviewed cold-chain transport anomaly-detection study (Gillespie et al., Sustainability 15(3):2255) was a small trial on instrumented delivery vehicles, so transfer to a static walk-in is an inference",
+      "source_url": "https://pureadmin.qub.ac.uk/ws/portalfiles/portal/632071193/sustainability-15-02255-v2.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Low-cost open-source ESP-based IoT node gives continuous temperature visibility in retail refrigerated cabinets at parts cost far below commercial loggers, without demonstrating spoilage reduction",
+      "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7038712/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "fit_score sub-scores are within their stated ranges (demand 15/20, local_buyers 13/15, ability_to_pay 9/15, technical_feasibility 18/20, legal_risk_low 12/15, defensibility 7/15) and sum to the stated total of 74",
+      "source_url": "avenue.json (internal arithmetic against the rationale's own scale)",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

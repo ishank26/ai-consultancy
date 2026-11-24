@@ -1,0 +1,93 @@
+{
+  "verdict": "PASS",
+  "issues": [
+    {
+      "claim": "audit_md body length",
+      "problem": "The client-facing body (bullets, paragraphs and steps, excluding the H1) is about 315-320 words, roughly 15-20 over the 300-word limit. Nothing in it is wrong, it is just long.",
+      "fix": "Trim about 20 words: e.g. shorten bullet 2 ('an unrelated gambling domain that itself shows a Cloudflare 522 timeout (screenshots at desktop and 390 px)') and the 'What it means' paragraph. No facts need to change."
+    },
+    {
+      "claim": "Screenshots falcodesign_desktop.png, falcodesign_mobile390.png, gmaps_place.png, instagram_profile.png are cited as evidence",
+      "problem": "None of these files are present in the handoff folder I received, so I could not confirm they exist. founder_md promises the owner 'screenshots from 13 November at desktop and phone width', so they must actually exist before that email is sent. Every claim they support is independently verifiable from the cited URLs, so this is a delivery issue, not a factual error.",
+      "fix": "Confirm the four PNGs exist and are attached to the package before the owner or the outreach email uses them; if any is missing, re-capture it in Chrome (desktop and 390 px) so the evidence matches what is promised."
+    },
+    {
+      "claim": "Maps 'shows no street address'",
+      "problem": "True in the signed-out limited view I saw (no address in the panel), but that view can suppress fields, and other directories list B2 Brier Hill Ct, East Brunswick. audit_md states it plainly while founder_md caveats the limited view.",
+      "fix": "Soften to 'Maps shows no street address' -> keep as is but add 'in the signed-out view we could see' in audit_md, or move the point to the After-the-fix paragraph as a suggestion to confirm the address in the owner's own Business Profile."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Google Business Profile website field points to http://www.falcodesign.com/",
+      "source_url": "https://www.google.com/maps/place/Falco+Design/@40.4070959,-74.5390155,11z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Maps place panel shows name Falco Design, category 'Website designer', rating 3.7, 'Open - Closes 5 PM', phone (732) 390-0099, 'Add missing information', 'Add a photo', 'Suggest an edit', no street address",
+      "source_url": "https://www.google.com/maps/place/Falco+Design/@40.4070959,-74.5390155,11z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Maps showed 'You're seeing a limited view of Google Maps' without sign-in, so review text and dates were unreadable",
+      "source_url": "https://www.google.com/maps/place/Falco+Design/@40.4070959,-74.5390155,11z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Chrome navigation from falcodesign.com lands on https://tr.l-bahiscasino-l.cam/index.php showing a Cloudflare 522 'Connection timed out' page",
+      "source_url": "https://falcodesign.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "A direct request with browser-like headers returns HTTP 500 with the WordPress 'There has been a critical error on this website.' page, and a plain fetch returns the same page",
+      "source_url": "https://falcodesign.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP: registered 1997-02-15, expires 2028-02-16, last changed 2025-12-18, registrar Network Solutions, LLC, status client transfer prohibited, nameservers HGNS1.HOSTGATOR.COM / HGNS2.HOSTGATOR.COM",
+      "source_url": "https://rdap.org/domain/falcodesign.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback capture 2025-09-26 094258 is a normal business homepage titled 'Home - Falco Design' with canonical https://falcodesign.com/ and no casino or redirect strings, and is the latest capture of the domain",
+      "source_url": "https://web.archive.org/web/20250926094258/https://falcodesign.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Wayback CDX index shows no capture of falcodesign.com after 26 Sep 2025, so that is the last archived copy of the real homepage",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=falcodesign.com&output=json&from=20240101",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Instagram profile @falco_design ('Falco Design', Graphic Design For Print & Web) has a bio link to falcodesign.com",
+      "source_url": "https://www.instagram.com/falco_design/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "about.me profile 'Falco Design' has a 'View my portfolio' link to http://falcodesign.com/web-design/",
+      "source_url": "https://about.me/falcodesign",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Identity: Falco Design, East Brunswick NJ, phone (732) 390-0099, independent studio, still trading (open, not closed)",
+      "source_url": "https://www.google.com/maps/place/Falco+Design/@40.4070959,-74.5390155,11z",
+      "result": "confirmed"
+    },
+    {
+      "claim": "LinkedIn company page could not be opened (Cloudflare / HTTP 403), so no website link confirmed there",
+      "source_url": "https://www.linkedin.com/company/falco-design-inc-",
+      "result": "could not open"
+    },
+    {
+      "claim": "Cause: likely a compromised WordPress install injecting a gambling redirect, labelled an inference, no accused party",
+      "source_url": "https://rdap.org/domain/falcodesign.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No prices quoted; effort hours described as rough estimates only",
+      "source_url": "https://falcodesign.com/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

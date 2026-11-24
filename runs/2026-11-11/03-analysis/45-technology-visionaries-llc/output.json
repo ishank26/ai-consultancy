@@ -1,0 +1,85 @@
+{
+  "business": "Technology Visionaries LLC",
+  "industry": "software-it (managed IT services / MSP)",
+  "town": "Woodbridge, NJ",
+  "opportunities": [
+    {
+      "title": "After-hours and overflow intake agent that turns calls, chats and emails into triaged, dispatched tickets",
+      "capability": "A",
+      "problem": "The firm sells 24/7 support and 'unlimited remote and on-site support' on a fixed fee, but the only documented intake paths are a phone line, a web form and a site chat widget, with the last published roster showing one owner, two technicians and a marketing coordinator and no dispatcher, receptionist or scheduler. Monitoring alerts are triaged by email - the client's designated contact replies to the alert email and an engineer takes over - so after-hours and overflow demand lands on technicians who are also doing billable on-site work across roughly two dozen towns.",
+      "evidence": [
+        "24/7 technical support and unlimited remote/on-site support sold under fixed-price agreements; typical client 8-75 workstations per location (https://www.technologyvisionaries.com/about-us/)",
+        "Contact is phone 732-587-5960, web form or on-site chat widget; no online booking, quote flow or client portal published (https://www.technologyvisionaries.com/contact-us/)",
+        "NetCare monitoring agent watches 100+ conditions and emails a designated contact, who replies to the alert email to have an engineer resolve it (https://www.technologyvisionaries.com/services-solutions/free-monitoring/)",
+        "Last published roster (2018) is owner/president, two network technicians and one marketing coordinator - no dispatch or scheduling role (https://web.archive.org/web/20180105153230/http://www.technologyvisionaries.com/about-us/staff/)",
+        "Service area spans ~24 Union and Middlesex county towns, implying technician travel/dispatch coordination from one Woodbridge office (https://www.technologyvisionaries.com/services-solutions/voip/)",
+        "O*NET task statements for Computer User Support Specialists: answering user inquiries to resolve problems, and maintaining records of transactions, problems and remedial actions (https://www.onetonline.org/link/summary/15-1232.00)",
+        "Contact-center RCT (5,179 agents, NBER working paper w31161, later published in QJE per the brief's label): access to a generative-AI assist raised issues resolved per hour 14% on average and 34% for novice/low-skilled agents (https://www.nber.org/papers/w31161)"
+      ],
+      "agent_design": "Event-driven agent listening on four channels: RingCentral/3CX call metadata and voicemail transcripts, the WordPress chat widget, the contact form, and the monitoring/alert-mailbox. It normalizes each contact into one queue record, identifies the client, site and asset from the phone number or email domain, classifies severity and category, checks the firm's known-issue notes and recent RMM state for that device, drafts a first response with likely resolution steps, and proposes an assignment (technician by skill and town, or on-call rotation). Ticket notes, time entries and status updates are written to the PSA/RMM through its API. Hard human gates: anything that requires write access to a client system, any security incident, any pricing or SLA commitment, and any dispatch decision the agent rates below its confidence threshold - those page a human with a one-click approve/edit. Full transcript and decision log retained per client for audit.",
+      "why_not_DIY": "Requires simultaneous integration with telephony (RingCentral or 3CX), the website chat widget, the alert mailbox and the PSA/RMM console, plus per-client data separation and an audit trail - a chatbot subscription cannot answer a ringing phone, read RMM device state, or open and close a ticket. Autonomy is bounded by approval gates and confidence thresholds, which is engineering, not prompting.",
+      "impact_estimate": {
+        "range": "120-250 technician hours per year, worth roughly $5,000-$10,000 at the NJ help-desk median, plus reduced missed after-hours contacts (retention value not quantified)",
+        "assumptions": "Inference: 3-4 technical staff at ~2,080 hours each; ~20-25% of their time goes to intake, triage dialogue and ticket/note writing (O*NET task mix, not measured at this firm); the agent removes 10-15% of that time because it drafts and routes rather than resolves; loaded hourly cost ~$40 based on the NJ median of $64,470 for Computer User Support Specialists (15-1232) with a ~1.3x burden. The 14%/34% uplift in the NBER working paper is from retail/telecom customer support with 5,179 agents, so it is used only as directional support for the low-teens percentage, not transferred directly.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/15-1232.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "3 weeks: one unified intake queue on top of the existing phone, chat, form and alert mailbox for two consenting clients; auto-classification and severity tagging; drafted first responses and resolution suggestions with technician accept/edit tracking; drafted ticket notes written back to the PSA/RMM after human approval; end-of-pilot report on contact volume, categories, after-hours coverage, draft acceptance rate and time-to-first-response."
+    },
+    {
+      "title": "Per-client knowledge agent and self-service portal grounded in each client's own runbooks and ticket history",
+      "capability": "C",
+      "problem": "Every client question ('how do I get to the VPN', 'who do I call for payroll software', 'what is our backup schedule') is answered live by a technician because there is no client portal, knowledge base or self-service surface on the firm's site, and the same repeat questions recur across 8-75-workstation accounts. The owner is also the named technical authority and writes the firm's AI commentary, so the escalation path funnels to the same few people.",
+      "evidence": [
+        "No client portal, helpdesk or self-service knowledge surface is visible on the site; contact is 'fill out the form or click the chat icon' (https://www.technologyvisionaries.com/contact-us/)",
+        "Testimonials emphasise that 'a human answers the phone' and that responses are fast - a service model that scales only by adding people (https://www.technologyvisionaries.com/)",
+        "Firm publishes its own AI guidance for SMBs while running no AI chat, AI phone answering or automated booking of its own - receptive buyer, unsolved internal gap (https://www.technologyvisionaries.com/should-businesses-use-an-ai-voice-assistant/)",
+        "Support work is documented as answering user inquiries and maintaining problem/action records (https://www.onetonline.org/link/summary/15-1232.00)",
+        "~80% of US workers could have at least 10% of tasks affected by LLMs and 19% at least half (academic working paper, Eloundou et al., arXiv 2303.10130) - exposure estimate, not a measured saving (https://arxiv.org/abs/2303.10130)",
+        "Prototype on real telecom technical-incident data found GPT-4 could automate lower-level cognitive service tasks but needed retrieval augmentation or fine-tuning for higher-level reasoning (conference paper, arXiv 2405.09161) (https://arxiv.org/abs/2405.09161)"
+      ],
+      "agent_design": "Ingests each client's SOPs, runbooks, onboarding pack, vendor instructions, warranty/licence notes and the last N resolved tickets into a per-client index; answers questions in a branded portal (or via the existing chat widget and a Teams tab) with a citation to the source document and a 'still stuck' button that opens a pre-filled ticket carrying the conversation and asset context. Confidence gating: below threshold it refuses and escalates rather than guessing. Nightly re-index of changed documents; a technician review queue for wrong or outdated answers; strict per-client retrieval isolation so one client's documents can never surface in another's session.",
+      "why_not_DIY": "The hard parts are tenancy and permissions (many clients, one system, regulated verticals among them), ingestion of messy document formats, confidence-based refusal, citation-level traceability for client security questionnaires, and ticket creation in the PSA. Off-the-shelf chatbot tiers do not enforce per-client retrieval boundaries or produce an auditable answer trail.",
+      "impact_estimate": {
+        "range": "10-18% of inbound level-1 contacts deflected, roughly 100-250 technician hours per year (~$4,000-$10,000), plus faster new-client onboarding and a portal the firm can resell",
+        "assumptions": "Inference: 1,000-1,800 support contacts per year across the client base (not published; derived from 8-75-workstation accounts and typical 1-1.5 contacts per seat per month); 10-15 minutes of technician time per level-1 contact; 60-75% of contacts are level-1 and 20-30% of those are answerable from documents. Priced at the ~$40 loaded hourly rate implied by the NJ median of $64,470 (15-1232). Deflection is capped low because the first months are dominated by knowledge-base gaps.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/15-1232.00?st=NJ"
+      },
+      "complexity": "Medium",
+      "pilot_scope": "3-4 weeks: ingest 40-80 documents plus the last 12 months of resolved tickets for two volunteer clients; launch a read-only portal behind the existing WordPress site with citation-backed answers and a 'create ticket' hand-off; technician grading of a 50-question test set; measured deflection, answer accuracy and the list of missing documents to close in phase two."
+    },
+    {
+      "title": "Assessment-and-onboarding document agent: security assessment reports, client onboarding packs and renewal summaries",
+      "capability": "D",
+      "problem": "The free security assessment is sold as a fully written report with executive summary, scope, methods and tools, findings, recommendations and a risk assessment - hand-produced per engagement by a team with no analyst or technical writer. New paid monitoring clients separately require staff to collect a credit card authorization form before work begins, and the site still advertises Exchange 2007/2010 and BlackBerry add-ons, so templates and documents are maintained by hand and drift.",
+      "evidence": [
+        "Security assessment is a repeatable methodology ending in a structured written report with exec summary, scope, methods/tools, findings, recommendations and risk assessment (https://www.technologyvisionaries.com/services-solutions/security-assessment/)",
+        "New clients must submit a credit card authorization form, collected by staff, before monitoring work is done (https://www.technologyvisionaries.com/services-solutions/free-monitoring/)",
+        "Last published roster had no analyst, dispatcher or billing role; process work is described as ad hoc by existing staff (https://web.archive.org/web/20180105153230/http://www.technologyvisionaries.com/about-us/staff/)",
+        "Site copy is only partly maintained - cloud page still sells hosted Exchange 2010/2007, BlackBerry and Windows Mobile (https://www.technologyvisionaries.com/services-solutions/cloud-services/)",
+        "O*NET: Computer Systems Analysts and Software Developers list requirements gathering, documentation and design coordination among core tasks (https://www.onetonline.org/link/summary/15-1211.00)"
+      ],
+      "agent_design": "Pipeline agent started when an assessment is booked: pulls scan/audit exports and technician field notes, drafts each report section against the firm's template, maps each finding to a risk rating and a remediation recommendation with evidence links, and emits a client-ready document plus a one-page remediation summary. A sibling flow generates the onboarding pack (contacts, assets, licence inventory, e-sign card authorization through a PCI-scoped provider, welcome letter) and quarterly review summaries from PSA data. The owner reviews and edits in a tracked-changes view and is the only approver before anything is sent; templates are versioned so stale copy cannot silently propagate.",
+      "why_not_DIY": "Value depends on grounding in the firm's own methodology and toolset, ingesting raw scan exports, keeping client security data inside an approved processing boundary, and feeding e-sign and CRM systems. A generic document chatbot cannot hold a per-engagement evidence trail, enforce that nothing leaves the building unreviewed, or keep output consistent enough to reuse as a sales artefact.",
+      "impact_estimate": {
+        "range": "4-6 hours saved per assessment and 1-2 hours per new-client onboarding pack; roughly 100-250 hours per year (~$6,000-$16,000) and faster turnaround from assessment to quote",
+        "assumptions": "Inference: 2-4 assessments per month at 6-10 hours of drafting each, with 55-70% of drafting time removed but senior review retained; 1-3 new client onboardings per month; valued at ~$60/hour, below the NJ median of $122,890 for Computer Systems Analysts (15-1211) but above help-desk rates because review is done by senior staff. Shorter turnaround improving close rate is an inference and is excluded from the dollar range.",
+        "benchmark_source_url": "https://www.onetonline.org/link/localwages/15-1211.00?st=NJ"
+      },
+      "complexity": "Low",
+      "pilot_scope": "2-3 weeks: digitise the assessment template into a structured schema, generate drafts for the next three live assessments and one onboarding pack, measure drafting and edit time versus the previous three reports, and hand over a versioned template library the firm owns."
+    }
+  ],
+  "lead_score": {
+    "pain": 18,
+    "fit": 18,
+    "ability_to_pay": 11,
+    "ease": 11,
+    "strategic": 13,
+    "total": 71,
+    "rationale": "Pain (18/30): four primary-source operational signals line up - 24/7 and unlimited support sold by a ~9-person firm, email-reply alert triage, form-and-chat-only intake, and a manually produced structured assessment report - but pain is inferred from published process descriptions, not from complaints, ticket volumes or verified third-party reviews, and current headcount/revenue are unverified. Fit (18/20): an MSP is the exact buyer for event-driven intake/triage (A), document-grounded knowledge agents (C) and internal tooling/integration (D); the firm already publishes on AI and will judge on engineering quality, so scope must be tight. Ability to pay (11/20): small single-office practice, no published pricing, revenue unknown, but it already buys RingCentral/3CX, a monitoring platform and paid marketing, and could resell the portal to clients. Ease of pilot (11/15): owner is the clear decision maker and technical evaluator, one office, data is in-house - offset by unknown PSA/RMM stack, regulated client data and a buyer who can partly build in-house. Strategic (13/15): the MSP intake/triage/knowledge pattern repeats across thousands of MSPs, and a satisfied owner is a plausible referral and reseller channel across Union and Middlesex counties."
+  },
+  "best_evidence_signal": "Monitoring alerts are triaged by email - the client's designated contact replies to the alert email and an engineer takes over - while the firm sells 24/7 unlimited support with no visible dispatcher or portal (https://www.technologyvisionaries.com/services-solutions/free-monitoring/)",
+  "suggested_channel": "email",
+  "evidence_thin": false
+}

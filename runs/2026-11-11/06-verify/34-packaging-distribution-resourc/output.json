@@ -1,0 +1,188 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "Audit body length (intro through the 'Prepared from publicly available information' line)",
+      "problem": "The body is approximately 580 words (title, three opportunity sections, 'Why this works', 'Suggested first step', disclaimer), well over the ~450-word ceiling. Measured by counting the body text excluding the 'For the founder' section.",
+      "fix": "Cut roughly 130 words: shorten each 'What the assistant would do' block to one sentence, drop one bullet from 'Why this works', and compress the intro to a single sentence. Keep the inference notes and the pilot descriptions intact."
+    },
+    {
+      "claim": "'independent research on support assistants found 8–34% more issues resolved per hour'",
+      "problem": "Not supported by the cited study. NBER WP 31161 (published QJE 140(2), 2025) reports a 14% average increase in issues resolved per hour, a 34% gain for novice/low-skilled agents, and no measurable gain for experienced/high-skilled agents. No 8% figure appears; the stated range puts an unsupported number in front of the prospect as a study finding.",
+      "fix": "Replace with 'found 14% more issues resolved per hour on average, and 34% for new or less-experienced staff, with no measurable gain for experienced staff' and keep the existing 'we assume only 8–15%' caveat, or simply cite 14% and note we assume under half of it."
+    },
+    {
+      "claim": "'Orders flow from 30+ platforms through Order Desk into Dynamics'",
+      "problem": "Neither source states this chain. The technology page says PDR integrates over 30 front-end platforms and uses Microsoft Dynamics ERP; the e-commerce page says PDR uses Order Desk for multi-channel order management. That all 30+ integrations route through Order Desk into Dynamics is the audit's synthesis, presented as fact.",
+      "fix": "Soften to 'Orders arrive from 30+ front-end platforms into Dynamics, with Order Desk handling multi-channel order edits' or add '(our read of the two pages)'."
+    },
+    {
+      "claim": "'Toronto multiplies the exception surface without adding corporate headcount'",
+      "problem": "Inference stated as fact. The September 2026 release says Toronto runs the same systems and workflows as the U.S. network; it says nothing about headcount at Edison or any corporate roles added or not added. The audit's own profile lists headcount as undisclosed/conflicting.",
+      "fix": "Add the qualifier, e.g. 'and no new corporate roles are published, so the same team appears to absorb the extra exception volume'."
+    },
+    {
+      "claim": "Intro: 'how much of that four-region network still runs through a shared inbox and a spreadsheet'",
+      "problem": "Presented as an observation in the first paragraph the prospect reads, but it is an inference. What the sources support is a spreadsheet questionnaire emailed to info@ for pricing, plus no visible ticketing/portal; they do not show that network operations run through a shared inbox and a spreadsheet.",
+      "fix": "Rewrite as: 'what stands out is that new business still arrives as a spreadsheet emailed to a general inbox — with no form logic, quote calculator or client portal in sight.' Keeps it source-true."
+    },
+    {
+      "claim": "'100+ brand clients, several shifts and four regions reach you through one phone number and one generic inbox'",
+      "problem": "Two small overstatements: the About page says 'over 100 clients' (not 'brand clients'), and the only shift evidence is a Night Shift Manager title on the staff page, which supports at least two shifts but not 'several'. The single phone number and generic form are confirmed.",
+      "fix": "Write '100+ clients across four regions and at least a day and night shift reach you through one phone number and one generic inbox'."
+    },
+    {
+      "claim": "'20+ assembly lines' and '600,000+ sq ft' for six Edison buildings",
+      "problem": "The About page states '20 assembly lines' flatly, not 20+. The 600,000+ sq ft figure refers to PDR's NJ facilities, which the page pairs with six Edison sites, so the audit's phrasing is close but rounds the first number up.",
+      "fix": "Use '20 assembly lines' and 'six Edison sites covering 600,000+ sq ft of New Jersey space'."
+    },
+    {
+      "claim": "Section 3 premise that client questions depend on individuals' memory, and 'no client login'",
+      "problem": "The technology page says clients 'have full visibility of our system' for order-process clarification. The audit's claim about the public site having no client login is accurate, but as written the section can read as 'PDR gives clients no visibility', which a founder will push back on.",
+      "fix": "Add one clause acknowledging the client visibility PDR advertises ('even with the visibility you give clients in Dynamics...') so the gap described is internal staff knowledge, not client access."
+    },
+    {
+      "claim": "Minor tone: 'exception surface', 'fewer chargebacks from slow corrections'",
+      "problem": "'Exception surface' is consultancy jargon a 3PL founder may not use; the chargeback improvement is asserted without a basis and sits inside a number range that excludes revenue effects per the underlying analysis.",
+      "fix": "Say 'more orders to fix by hand' instead of 'exception surface' and move chargebacks to a plain 'we have not priced this' aside."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "Founded in 2003 with a few assembly lines; now 100+ clients, 20 assembly lines, six Edison sites, 600,000+ sq ft, 300+ full-time staff",
+      "source_url": "https://www.pdrnj.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Toronto, 150,000 sq ft, fully operational September 2026 on the same order systems and workflows as Edison",
+      "source_url": "https://www.pdrnj.com/pdr-expands-operations-into-canada-with-fully-operational-toronto-fulfillment-facility/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "New business enters as a downloaded Excel 'New Customer Questionnaire' emailed to info@ for pricing",
+      "source_url": "https://www.pdrnj.com/pricing/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "No form logic, quote calculator or client login on the site",
+      "source_url": "https://www.pdrnj.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "One phone number (732.316.2757) and one generic free-text contact form, corporate email info@pdrnj.com, Edison NJ address",
+      "source_url": "https://www.pdrnj.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Over 30 front-end platform integrations, Microsoft Dynamics ERP per client, in-house programming and EDI experts",
+      "source_url": "https://www.pdrnj.com/pdr-technology/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Order Desk used for multi-channel order management, order edits and bundles",
+      "source_url": "https://www.pdrnj.com/services/e-commerce-fulfillment/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Orders flow from 30+ platforms THROUGH Order Desk INTO Dynamics",
+      "source_url": "https://www.pdrnj.com/services/e-commerce-fulfillment/",
+      "result": "not found"
+    },
+    {
+      "claim": "Org chart carries the load with one EDI Analyst plus order processing and inventory roles",
+      "source_url": "https://www.pdrnj.com/our-people/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jack Sandbach is CEO (and described elsewhere as Founder & CEO)",
+      "source_url": "https://www.pdrnj.com/our-people/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Jack Sandbach described as Founder & CEO, 2020 Edison expansion 114,000 sq ft / 18 lines",
+      "source_url": "https://njbmagazine.com/njb-news-now/packaging-distribution-resources-expands-operations/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'Dock to Stock in 48 Hours' commitment",
+      "source_url": "https://www.pdrnj.com/automation/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Back-office services page exists and lists AR/AP/payroll/GL etc.",
+      "source_url": "https://www.pdrnj.com/services/back-office-solutions/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'found 8–34% more issues resolved per hour'",
+      "source_url": "https://www.nber.org/papers/w31161",
+      "result": "contradicted"
+    },
+    {
+      "claim": "Same study: 14% average, 34% novice/low-skilled, no effect for experienced agents",
+      "source_url": "https://www.nber.org/system/files/working_papers/w31161/w31161.pdf",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ median wage $22.95/hr for customer service reps (BLS 2025 via O*NET)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "NJ median wage $30.15/hr for production, planning and expediting clerks (BLS 2025 via O*NET)",
+      "source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 1 impact: 500–800 hrs and $12,000–$25,000/yr",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 2 impact: 900–2,200 hrs and $25,000–$60,000/yr",
+      "source_url": "https://www.onetonline.org/link/localwages/43-5061.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Section 3 impact: 500–1,850 hrs and $12,000–$40,000/yr",
+      "source_url": "https://www.onetonline.org/link/localwages/43-4051.00?st=NJ",
+      "result": "confirmed"
+    },
+    {
+      "claim": "'Several shifts' (day/night)",
+      "source_url": "https://www.pdrnj.com/our-people/",
+      "result": "not found"
+    },
+    {
+      "claim": "'100+ brand clients'",
+      "source_url": "https://www.pdrnj.com/about-us/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Edison is in Middlesex County, as used in the walk-in opener",
+      "source_url": "https://www.pdrnj.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Business name, town, services and contact details anywhere in the audit ('Packaging & Distribution Resources (PDR)', Edison NJ, info@ inbox, no phone quoted)",
+      "source_url": "https://www.pdrnj.com/contact/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Email opener: questionnaire emailed to info@; Toronto live in September on the same systems as Edison; asks for 20 minutes",
+      "source_url": "https://www.pdrnj.com/pdr-expands-operations-into-canada-with-fully-operational-toronto-fulfillment-facility/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Opener claim about the sender's own client base ('I work with 3PLs in Middlesex County')",
+      "source_url": "",
+      "result": "not found"
+    },
+    {
+      "claim": "Audit body length within ~450 words",
+      "source_url": "",
+      "result": "contradicted"
+    }
+  ],
+  "confidence": "High"
+}

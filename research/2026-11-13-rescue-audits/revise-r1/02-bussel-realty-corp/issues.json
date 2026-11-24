@@ -1,0 +1,27 @@
+[
+ {
+  "claim": "audit_md: \"bussel.com is registered through GoDaddy in the company's own account ... so it has not lapsed or changed hands\" (also likely_cause: \"still registered through the business's own registrar account\").",
+  "problem": "Unsupported by the cited source. rdap.org/domain/bussel.com shows the registrar (GoDaddy.com, LLC, IANA 146), the expiry, the client locks and the nameservers, but it shows nothing about who holds the GoDaddy account, and no registrant details are published. I re-opened the RDAP record today and it does not contain that fact. Account ownership cannot be established from outside, and it is the claim that justifies fix step 1 (\"leave the domain registration alone\").",
+  "fix": "Either drop the phrase or hedge it, e.g. \"registered through GoDaddy, paid until 1 August 2028, with registrar locks on, so it has not lapsed.\" Then add one line: \"We could not see from outside whose GoDaddy login holds the domain - worth confirming.\""
+ },
+ {
+  "claim": "audit_md: \"Search engines can still read it [the injected text]\".",
+  "problem": "Stated as fact with no source, and it is not demonstrated. When I requested the page with a Googlebot user agent and JavaScript disabled, the horse emoji was in the title but the hidden block and its outbound links were not present at all. Whether crawlers receive the block is unknown from outside.",
+  "fix": "Hedge it: \"Search engines may still pick it up\", or \"if a search engine is served the same version a browser gets, it can read it\", and note that a crawler was not tested."
+ },
+ {
+  "claim": "fix_steps step 2: \"hunt the injected hidden block and emoji title tag through every .asp template, include file and shared footer\".",
+  "problem": "Plausible but likely incomplete, and it reads as if the vector were already known. In my tests the hidden block was absent from the page with JavaScript disabled and appeared only after the page's scripts ran, while the emoji title was in the served HTML; the site's own /js files and its FontAwesome kit contain no spam strings, and the page also loads third-party tags (app.agencysonar.com tracker, googletagmanager/GA, FontAwesome kit). Sending a developer only to the ASP templates and includes may miss it. (Inference on my part - the vector is not visible from outside, which the audit correctly says.)",
+  "fix": "Widen the instruction: search the templates, includes, the /js directory and any third-party tags or analytics accounts (the audit already asks for weekly monitoring); say \"start with the templates\" rather than implying that is the whole job."
+ },
+ {
+  "claim": "links_to_broken_domain: \"The site's own pages and templates (header, footer, property search, news) link to bussel.com throughout.\"",
+  "problem": "Imprecise. The internal navigation and footer links are relative paths (/news.asp, /default/commercial-real-estate/...), not absolute bussel.com URLs; the only absolute bussel.com reference I found on the page is mailto:info@bussel.com. Minor, and it does not affect the finding.",
+  "fix": "Say \"the site and its internal links all resolve to bussel.com, and info@bussel.com is the published email\"."
+ },
+ {
+  "claim": "likely_cause reasoning: \"with its own nameserver pair\".",
+  "problem": "NS49/NS50.DOMAINCONTROL.COM are GoDaddy's shared nameservers, not nameservers the business owns or controls uniquely. Small, but it is used as evidence that the domain was not moved, so the wording overstates it.",
+  "fix": "Say \"on GoDaddy's standard nameservers (ns49/ns50.domaincontrol.com)\" and keep the conclusion as an inference."
+ }
+]

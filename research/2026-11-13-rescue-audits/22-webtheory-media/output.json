@@ -1,0 +1,137 @@
+{
+  "ref": "B00721",
+  "name": "WebTheory Media",
+  "town": "North Brunswick, NJ",
+  "category": "PPC / digital advertising agency",
+  "status": "operating",
+  "domains": [
+    {
+      "domain": "webtheoryppc.com",
+      "role": "listed on Google",
+      "final_url": "https://webtheoryppc.com/",
+      "result": "HTTP 200 (Cloudflare); shows an unrelated Indonesian lottery/gambling page titled 'OLI4D ** Link Login Pengguna Toto Macau...' with a full-screen pop-up reading 'PENTING - UPDATE 2026' and buttons 'LOGIN OLI4D' / 'DAFTAR SEKARANG'. No agency name, services or contact anywhere on the page. A once-indexed agency URL (/google-ads-audit/) now returns 404. No certificate warning shown in the browser.",
+      "screenshot_files": ["webtheoryppc-desktop.png", "webtheoryppc-mobile390.png"],
+      "checked_at": "2026-11-13",
+      "source_url": "https://webtheoryppc.com/"
+    },
+    {
+      "domain": "webtheorymedia.com",
+      "role": "old site",
+      "final_url": "http://webtheorymedia.com/ (no page rendered)",
+      "result": "Resolves (A record 192.64.119.69, a Namecheap/registrar parking address) but the browser rendered a blank white page with no text and plain fetch failed; no agency content and no redirect to webtheoryppc.com any more. Archived copies show it 301-redirected to webtheoryppc.com from Nov 2023 to Jul 2025.",
+      "screenshot_files": ["webtheorymedia-com-check.png"],
+      "checked_at": "2026-11-13",
+      "source_url": "https://dns.google/resolve?name=webtheorymedia.com&type=A"
+    }
+  ],
+  "links_to_broken_domain": [
+    {
+      "place": "Google Business Profile - 'WebTheory PPC', Advertising agency, 14 Old Bridge Tpke Ste 203, (732) 655-9038, rated 5.0 - 'Website' button points to webtheoryppc.com",
+      "url": "https://webtheoryppc.com/?utm_campaign=gmb"
+    },
+    {
+      "place": "Google Business Profile - 'WebTheory PPC', Internet marketing service, 607 Lake Ave, (732) 800-9867, rated 5.0 - 'Website' button points to webtheoryppc.com",
+      "url": "http://webtheoryppc.com/?utm_campaign=GMB"
+    },
+    {
+      "place": "Old own domain webtheorymedia.com redirected to webtheoryppc.com until at least Jul 2025 (Wayback); today it no longer redirects",
+      "url": "https://web.archive.org/web/20250416180519id_/http://webtheorymedia.com/"
+    }
+  ],
+  "rdap": [
+    {
+      "domain": "webtheoryppc.com",
+      "registered": "2019-09-06",
+      "expires": "2027-09-06",
+      "last_changed": "2026-10-19",
+      "registrar": "NameCheap, Inc. (nameservers cosmin.ns.cloudflare.com / susan.ns.cloudflare.com)",
+      "source_url": "https://rdap.org/domain/webtheoryppc.com"
+    },
+    {
+      "domain": "webtheorymedia.com",
+      "registered": "2018-04-08",
+      "expires": "2027-04-08",
+      "last_changed": "2026-05-06",
+      "registrar": "NameCheap, Inc. (nameservers dns1.registrar-servers.com / dns2.registrar-servers.com)",
+      "source_url": "https://rdap.org/domain/webtheorymedia.com"
+    }
+  ],
+  "likely_cause": {
+    "cause": "hacked",
+    "reasoning": "Public records rule out a lapse: webtheoryppc.com has been registered continuously since 2019-09-06 and does not expire until 2027-09-06, so it was not re-registered by a new owner. Archived copies show the agency's own WordPress blog on the domain as late as 2026-05-19, and no snapshot exists after that; the current sitemap.xml is a bare one-URL file made by a third-party generator, dated 2026-10-19 - the same day the registrar record was last changed. So between May and October 2026 the site was replaced with a static Indonesian gambling page served through Cloudflare. That pattern points to someone with access to the site/hosting or the DNS account replacing the content, not to expiry. Registrant details are redacted, so who holds the Namecheap account today cannot be confirmed from outside, and a deliberate sale or transfer by the owner cannot be excluded.",
+    "inference": true
+  },
+  "fix_steps": [
+    {
+      "step": "Log in to the Namecheap registrar account and the Cloudflare DNS account, change both passwords, enable two-factor authentication, and review recent changes: nameservers, registrant/contact email and transfer-lock status.",
+      "who": "Owner (with whoever holds the accounts)",
+      "effort_hours": "1-3",
+      "source_url": "https://rdap.org/domain/webtheoryppc.com"
+    },
+    {
+      "step": "Check the hosting account and WordPress admin logins for the old site for unknown users, plugins or files added after May 2026; if unsure, take the site offline and restore a backup made before that date.",
+      "who": "Developer / host support",
+      "effort_hours": "2-6",
+      "source_url": "https://web.archive.org/web/20260519070856/https://webtheoryppc.com/"
+    },
+    {
+      "step": "Decide the path: rebuild on webtheoryppc.com if it is still in the business's accounts; if it is not, stop promoting it, register a new domain, and keep webtheoryppc.com only as a redirect if control is recovered.",
+      "who": "Owner decides, developer executes",
+      "effort_hours": "2-6",
+      "source_url": "https://rdap.org/domain/webtheoryppc.com"
+    },
+    {
+      "step": "Replace the 'Website' link on both Google Business Profile listings and resolve the duplicate (two listings, two addresses) so no customer is sent to the gambling page.",
+      "who": "Owner or whoever has profile access",
+      "effort_hours": "0.5-1.5",
+      "source_url": "https://www.google.com/maps/search/WebTheory+PPC+New+Jersey"
+    },
+    {
+      "step": "Rebuild a small site: home, services (Google Ads and Meta ads management), proof (reviews), about, and a contact page with a quote form and tap-to-call phone number.",
+      "who": "Developer plus copywriter",
+      "effort_hours": "10-25",
+      "source_url": "https://web.archive.org/web/20260519070856/https://webtheoryppc.com/"
+    },
+    {
+      "step": "Update the website field on directory and profile listings that carry the old domain (Clutch, WP Engine partner directory, Yellow Pages/Superpages) once the new site is live.",
+      "who": "Owner or marketing assistant",
+      "effort_hours": "1-3",
+      "source_url": "https://wpengine.com/agency-directory/webtheory-media-llc/"
+    },
+    {
+      "step": "In Google Search Console, request removal of the spam URLs and submit the new sitemap; confirm the old indexed agency URLs are gone or redirected.",
+      "who": "Developer",
+      "effort_hours": "1-3",
+      "source_url": "https://webtheoryppc.com/sitemap.xml"
+    },
+    {
+      "step": "Set up monitoring: uptime alert on the home page, domain-expiry and DNS-change alerts, weekly backups, and 2FA on hosting, DNS and registrar.",
+      "who": "Developer",
+      "effort_hours": "1-2",
+      "source_url": "https://rdap.org/domain/webtheoryppc.com"
+    }
+  ],
+  "after_fix": {
+    "opportunity": "Repoint and consolidate the Google Business Profile listings, then add tap-to-call and a short quote-request path, because the profiles are the only place customers currently find the business.",
+    "evidence": "A Google Maps search on 13 Nov 2026 returned two 'WebTheory PPC' listings, both showing 5.0 and 'Open - Closes 5 PM' (Advertising agency, 14 Old Bridge Tpke Ste 203, (732) 655-9038; Internet marketing service, 607 Lake Ave, (732) 800-9867). Both 'Website' buttons point at webtheoryppc.com, and neither listing offers any route beyond a phone number.",
+    "source_url": "https://www.google.com/maps/search/WebTheory+PPC+New+Jersey"
+  },
+  "severity": "High",
+  "severity_reason": "The domain that both Google Business Profile listings send customers to serves unrelated Indonesian gambling content under the business's own name, and there is no page anywhere a customer or an AI assistant can read for services, hours or a way to request a quote. The business itself appears active (both listings open with 5.0 ratings; WP Engine partner page still live), so the loss is to new enquiries rather than to the business existing.",
+  "audit_md": "# Website Health Check: WebTheory Media (WebTheory PPC)\n\n## What we saw on 13 November 2026\n- **webtheoryppc.com** loads (HTTP 200) but shows an Indonesian lottery page (\"OLI4D ... Toto Macau\") with a pop-up offering login and sign-up buttons. No agency name, service or contact appears; a formerly indexed agency page now returns 404.\n- Both Google listings named \"WebTheory PPC\" (5.0; 14 Old Bridge Tpke Ste 203, (732) 655-9038, and 607 Lake Ave, (732) 800-9867) send visitors to that domain from their \"Website\" buttons.\n- Archived copies show the agency's Google Ads blog on the domain until 19 May 2026; the domain record shows registration since 2019 and expiry in 2027, so it has not lapsed.\n- The older domain webtheorymedia.com, which used to redirect here, now shows a blank page.\n\n## What it means for customers\nA customer tapping \"Website\" on Google lands on gambling content instead of the business, so they cannot see the services or ask for a quote. The business still looks open (both listings show 5.0 and business hours), but nothing online confirms that.\n\n## How to fix it\n1. Secure the Namecheap and Cloudflare accounts: new passwords, 2FA, review of nameserver and contact changes (owner, 1-3 hours).\n2. Decide whether to rebuild on this domain or move to a new one (owner, 2-6 hours).\n3. Repoint the \"Website\" link on both Google listings and fix the duplicate listing (owner, 0.5-1.5 hours).\n4. Rebuild a five-page site with services, proof and a quote form, then update Clutch, WP Engine and directory listings (developer and copywriter, 10-25 hours).\n5. Ask Google to drop the spam URLs in Search Console and set uptime, DNS and expiry alerts (developer, 1-3 hours).\n\n## After the fix\nThe Google listings already carry 5.0 ratings and hours and are how most people find the business; once they point at a working site, add tap-to-call and a short quote form so visitors can act.\n\nPrepared from publicly available information on 13 November 2026. We did not log in to or change anything.",
+  "founder_md": "# Founder notes - WebTheory Media (ref B00721)\n\n**Outreach email draft (3 sentences)**\nHi - I was checking how WebTheory PPC looks to a new client and noticed that the website linked from both of your Google listings, webtheoryppc.com, currently shows an Indonesian lottery page rather than your agency site. I have screenshots from a desktop and a phone-sized screen taken on 13 November 2026 and am happy to send them so you can see exactly what a customer sees. If it is useful, I can also go through the order in which the domain, Google listings and directory entries would normally be checked and fixed - no obligation either way.\n\n**Walk-in / phone opener (1 sentence)**\nHi, I am local and was looking up WebTheory PPC online - the website on your Google listing is showing a lottery page instead of your agency, and I have screenshots if you would like to see them.\n\n## Sources\n- https://webtheoryppc.com/ - live page: Indonesian 'OLI4D' lottery content (screenshots: webtheoryppc-desktop.png, webtheoryppc-mobile390.png)\n- https://webtheoryppc.com/robots.txt and https://webtheoryppc.com/sitemap.xml - single-URL sitemap with lastmod 2026-10-19\n- https://webtheoryppc.com/google-ads-audit/ - previously indexed agency page, now HTTP 404\n- https://www.google.com/maps/search/WebTheory+PPC+New+Jersey - two 'WebTheory PPC' listings, both 5.0, both 'Website' buttons to webtheoryppc.com (screenshot: google-maps-search.png)\n- https://rdap.org/domain/webtheoryppc.com - registered 2019-09-06, expires 2027-09-06, last changed 2026-10-19, NameCheap, Cloudflare nameservers\n- https://rdap.org/domain/webtheorymedia.com - registered 2018-04-08, expires 2027-04-08, last changed 2026-05-06, NameCheap\n- https://web.archive.org/web/20260519070856/https://webtheoryppc.com/ - agency Google Ads blog live on the domain on 19 May 2026\n- https://web.archive.org/web/20250416180519id_/http://webtheorymedia.com/ - old domain 301-redirecting to webtheoryppc.com in April 2025\n- https://dns.google/resolve?name=webtheorymedia.com&type=A - 192.64.119.69 (registrar parking address)\n- https://wpengine.com/agency-directory/webtheory-media-llc/ - 'WebTheory Media LLC' partner page still live (dateModified 2026-11-12)\n- https://clutch.co/profile/webtheory-ppc - profile exists per search results (2 verified reviews, 5.0); the page itself is behind a bot check\n\n## Open questions\n- Who holds the Namecheap registrar account and the Cloudflare DNS account today, and did anyone change them around 19 October 2026?\n- Is webtheoryppc.com still yours, and was the old WordPress site on your own hosting or an agency host?\n- Which Google listing (14 Old Bridge Tpke, South River, or 607 Lake Ave) is the current address, and is 330 Constitution Cir, North Brunswick on the directory listings still used?\n- Did anyone receive unusual login, domain or hosting emails in the last six months?\n\n## Caveats\n- The Clutch profile and the Yellow Pages/Superpages listings could not be read directly (bot checks), so whether their website fields still point at webtheoryppc.com is unconfirmed.\n- Registrant details are redacted; nothing here accuses any person or company of wrongdoing.",
+  "caveats": [
+    "Clutch, Yellow Pages, Superpages, The Manifest and virtualvalley.io all returned 403 or bot-check pages, so their website fields could not be verified; only the two Google listings were confirmed to link to webtheoryppc.com.",
+    "Registrant identity behind webtheoryppc.com is redacted in RDAP, so continuous ownership since 2019 is inferred from the registration record, not confirmed.",
+    "The content swap happened somewhere between the last Wayback snapshot (2026-05-19) and the sitemap/registrar date (2026-10-19); the exact date and method are not publicly visible.",
+    "The two Google listings carry different addresses and phone numbers from the directory NAP (330 Constitution Cir, North Brunswick; (732) 858-6291); whether they are the same legal entity could not be confirmed."
+  ],
+  "data_gaps": [
+    "Clutch profile page blocked by a Cloudflare 'Just a moment...' check - website link not verified.",
+    "Yellow Pages and Superpages blocked ('you have been blocked'; HTTP 403) - listing details and website link not verified.",
+    "Facebook page (facebook.com/WebTheoryPPC, referenced in the archived site's structured data) is JavaScript/login-gated - not readable.",
+    "webtheorymedia.com resolved to a registrar parking IP but rendered a blank page in the browser and failed plain fetch; its current state (parked, for sale or misconfigured) is unconfirmed.",
+    "Google profile details (review counts, claim status, full categories) were not fully readable because Google served a limited Maps view; ratings, hours, addresses, phones and website links were read from the result cards.",
+    "No hosting panel, DNS history or Search Console access, so the exact intrusion or removal path cannot be stated."
+  ]
+}

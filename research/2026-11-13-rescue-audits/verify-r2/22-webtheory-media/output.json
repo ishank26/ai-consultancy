@@ -1,0 +1,128 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "\"/google-ads-audit/ ... archived with HTTP 200 up to 2025-09-05 and titled 'Google Ads Audit - Expert PPC Agency for Better ROI'\" (repeated in founder_md sources as \"archived with HTTP 200 up to 2025-09-05\").",
+      "problem": "Wrong date, contradicted by the auditor's own cited CDX query. The Wayback CDX index for webtheoryppc.com/google-ads-audit/ lists eight HTTP 200 captures, the last at 20260422200001 (22 Apr 2026), not 5 Sep 2025. Worse, the 20250905174020 capture of that URL is not the agency page at all: it is a host bot-verification screen ('One moment, please... / Please wait while your request is being verified'). The real agency audit page is confirmed at 20250115211734 and again at 20260422200001. So the agency's own page was live on the domain until at least late April 2026, roughly seven months later than the report says. This is the report's timeline evidence in both documents and it understates how recent the agency content was.",
+      "fix": "Replace both occurrences with: \"/google-ads-audit/ now returns 404; it is archived with HTTP 200 up to 22 Apr 2026 (the 5 Sep 2025 capture is only a bot-check screen), titled 'Google Ads Audit - Expert PPC Agency for Better ROI'.\" If the 19 May 2026 capture is used to date the swap, keep the window as 'between 22 Apr/19 May and 19 Oct 2026' and cite https://web.archive.org/cdx/search/cdx?url=webtheoryppc.com/google-ads-audit/ for it."
+    },
+    {
+      "claim": "audit_md body length (\"body at most 300 words\").",
+      "problem": "Marginal. The body runs to roughly 320 words including headings and the section labels (about 290 if headings are excluded), so it only just breaches the 300-word limit for the customer-facing document.",
+      "fix": "Trim about 25-30 words: e.g. shorten the first bullet and the 'After the fix' paragraph, and drop the parenthetical phone numbers from the second bullet (the phone numbers already appear on the Google listings)."
+    },
+    {
+      "claim": "evidence: \"both showing hours ('Closes soon - 5 PM')\" (rescue.json after_fix.evidence only).",
+      "problem": "Time-bound and no longer literally true. Re-opening the same Maps search today shows 'Closed - Opens 9 AM Mon' on both cards. The auditor's own screenshot (google-maps-search.png) does show 'Closes soon - 5 PM', so this was accurate at check time; it should not be presented as a stable fact. The customer-facing audit_md is safe because it only says the listings 'show business hours', which is still true.",
+      "fix": "Change the evidence line to 'both showing business hours on the listing cards (at the time of checking: \"Closes soon - 5 PM\")' or simply 'both showing business hours', and keep the screenshot as the citation."
+    },
+    {
+      "claim": "Identity: town 'North Brunswick, NJ' (rescue.json metadata) for a business whose only verified web carriers are two Google listings at '14 Old Bridge Tpke Ste 203' and '607 Lake Ave'.",
+      "problem": "Name match is solid (WebTheory PPC / WebTheory Media LLC, PPC agency, Middlesex County NJ, small independent - not a chain) and the business looks open (both listings show hours and 5.0; WP Engine partner page is live). But neither listing address nor any page I could open states 'North Brunswick' for this business; the North Brunswick attribution rests on a directory snippet I could not open (Yellow Pages returned 403 for the auditor). Nothing in audit_md or founder_md asserts a town or a street address to the business, so no customer-facing statement is wrong - this is a verification gap, not a misstatement.",
+      "fix": "Either drop the town from the record or mark it unverified, and add one line to caveats that the only confirmed addresses are the two Google listing addresses (South River / Lake Ave), confirmed by the owner before any walk-in or mail is addressed."
+    }
+  ],
+  "claims_checked": [
+    {
+      "claim": "webtheoryppc.com still loads today and shows an Indonesian lottery page ('OLI4D ... Toto Macau') with a full-screen log-in / sign-up pop-up ('PENTING - UPDATE 2026', 'LOGIN OLI4D', 'DAFTAR SEKARANG') and no agency name or contact in the visible text.",
+      "source_url": "https://webtheoryppc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Page title is exactly 'OLI4D ** Link Login Pengguna Toto Macau Dengan Resul Pengeluaran Terupdate.' and the only 'webtheory' references in the HTML are the canonical/hreflang links.",
+      "source_url": "https://webtheoryppc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The old agency page /google-ads-audit/ on the domain now returns HTTP 404.",
+      "source_url": "https://webtheoryppc.com/google-ads-audit/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The same URL is 'archived with HTTP 200 up to 2025-09-05'.",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=webtheoryppc.com/google-ads-audit/",
+      "result": "contradicted"
+    },
+    {
+      "claim": "The archived page is titled 'Google Ads Audit - Expert PPC Agency for Better ROI' and is the agency's own audit page.",
+      "source_url": "https://web.archive.org/web/20250115211734id_/https://webtheoryppc.com/google-ads-audit/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Archived captures of webtheoryppc.com run through 2026-05-19 with none later in 2026.",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=webtheoryppc.com&output=json&from=2026",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The agency's Google Ads blog was live on the domain on 19 May 2026.",
+      "source_url": "https://web.archive.org/web/20260519070856/https://webtheoryppc.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "sitemap.xml is a single-URL file from a third-party generator with lastmod 2026-10-19.",
+      "source_url": "https://webtheoryppc.com/sitemap.xml",
+      "result": "confirmed"
+    },
+    {
+      "claim": "robots.txt allows crawling.",
+      "source_url": "https://webtheoryppc.com/robots.txt",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP webtheoryppc.com: registered 2019-09-06, expires 2027-09-06, last changed 2026-10-19, registrar NameCheap, Inc., nameservers cosmin.ns.cloudflare.com / susan.ns.cloudflare.com.",
+      "source_url": "https://rdap.org/domain/webtheoryppc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "RDAP webtheorymedia.com: registered 2018-04-08, expires 2027-04-08, last changed 2026-05-06, registrar NameCheap, Inc., nameservers dns1/dns2.registrar-servers.com.",
+      "source_url": "https://rdap.org/domain/webtheorymedia.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "webtheorymedia.com serves a Namecheap parking page ('has been recently registered with namecheap.com', 'Want a domain name like this?', 'See all auctions') and does not redirect to webtheoryppc.com.",
+      "source_url": "http://webtheorymedia.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The same URL renders as a blank white page in the browser (text readable only from page source).",
+      "source_url": "http://webtheorymedia.com/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "webtheorymedia.com was recorded as HTTP 301 from April 2024 to July 2025 and served WebTheory PPC's homepage with canonical https://webtheoryppc.com/.",
+      "source_url": "http://web.archive.org/cdx/search/cdx?url=webtheorymedia.com&from=2024&output=json",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Two 'WebTheory PPC' Google listings, both 5.0, Advertising agency at 14 Old Bridge Tpke Ste 203 / (732) 655-9038 and Internet marketing service at 607 Lake Ave / (732) 800-9867, each with a 'Website' button pointing to webtheoryppc.com (utm_campaign=gmb and utm_campaign=GMB).",
+      "source_url": "https://www.google.com/maps/search/WebTheory+PPC+New+Jersey",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Both listings show business hours (i.e. the business looks open).",
+      "source_url": "https://www.google.com/maps/search/WebTheory+PPC+New+Jersey",
+      "result": "confirmed"
+    },
+    {
+      "claim": "At the time of checking the listings said 'Closes soon - 5 PM'.",
+      "source_url": "https://www.google.com/maps/search/WebTheory+PPC+New+Jersey",
+      "result": "not found"
+    },
+    {
+      "claim": "The WP Engine partner directory page for 'WebTheory Media LLC' is live.",
+      "source_url": "https://wpengine.com/agency-directory/webtheory-media-llc/",
+      "result": "confirmed"
+    },
+    {
+      "claim": "Likely cause is presented as an inference, not a fact, and no person or company is accused.",
+      "source_url": "https://rdap.org/domain/webtheoryppc.com",
+      "result": "confirmed"
+    },
+    {
+      "claim": "The business is a small independent PPC agency, not a chain or franchise, and is still trading (no closure notice found).",
+      "source_url": "https://wpengine.com/agency-directory/webtheory-media-llc/",
+      "result": "confirmed"
+    }
+  ],
+  "confidence": "High"
+}

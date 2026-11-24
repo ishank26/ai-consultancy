@@ -1,0 +1,497 @@
+{
+  "business": "Wiley Lavender Maknoor (216 Amboy Ave, Metuchen, NJ)",
+  "opportunity": "24/7 intake-to-consultation agent with conflict screen and partner-approved booking (audit.md opportunity #1)",
+  "problem": {
+    "summary": "The firm has exactly two ways in: a phone line staffed Monday-Friday 9-5 and a native Webflow contact form whose only routing is to the two partners' own inboxes. The site says consultations are booked by calling or submitting the form, and no calendar, booking widget, CRM or answering service appears anywhere in the live tech footprint (only Webflow, Google Tag Manager, GA4 and Cloudflare Turnstile). For a two-attorney practice self-reporting 200+ matters a year, every inquiry that arrives while a partner is in court or after 5pm waits until the next business day before a human even triages it, and the inquiry never becomes a structured record: no matter type, county, key dates, opposing party or urgency field exists beyond a seven-item service dropdown and a free-text box.",
+    "current_tools": [
+      {
+        "tool": "Phone line (732) 494-6099, Mon-Fri 9AM-5PM, no after-hours or 24/7 line",
+        "evidence": "Contact page lists weekday-only phone hours and no answering service, emergency line or after-hours coverage.",
+        "source_url": "https://www.wileylavender.com/contact-us"
+      },
+      {
+        "tool": "Native Webflow contact form (required practice-area dropdown, message box, Cloudflare Turnstile, redirect to /thank-you)",
+        "evidence": "Form is Webflow-native; site explicitly says consultations are scheduled by calling or filling out the form, with no self-scheduling tool.",
+        "source_url": "https://www.wileylavender.com/our-attorneys"
+      },
+      {
+        "tool": "Partner email inboxes (larry@, Pankaj@wileylavender.com) as the de facto intake queue",
+        "evidence": "Attorney bios publish individual partner email addresses, so inquiries are triaged by partners rather than a central desk.",
+        "source_url": "https://www.wileylavender.com/attorney-details/pankaj-maknoor"
+      },
+      {
+        "tool": "Google Tag Manager (GTM-ML8VXZ7C) and GA4 (G-8WYZ2PDNST) on every page",
+        "evidence": "Analytics is installed but no lead-routing, booking or CRM script is loaded on the reviewed pages.",
+        "source_url": "https://www.wileylavender.com/"
+      },
+      {
+        "tool": "No case management, CRM, portal or e-payment tool visible",
+        "evidence": "No Clio, Lawmatics, HubSpot, Calendly or booking widget loaded; no portal/upload/payment link advertised on the contact page.",
+        "source_url": "https://www.wileylavender.com/contact-us"
+      }
+    ]
+  },
+  "solution": {
+    "approach": "build-on-platform",
+    "design": "Two front doors, one record. (1) Web: the existing Webflow form keeps its role as the front door but its submission fires a Webflow form-submission webhook into a small self-hosted intake service, which emails/texts the prospect a one-time guided-intake link; the guided flow asks the firm's own seven practice areas, county/venue, key dates and any limitation-period or return-date flag, opposing-party names for a conflict screen, urgency and referral source, then offers real open slots. (2) Phone: after business hours the firm's existing main number forwards to a Retell AI voice agent that captures the same structured fields, states it is an automated assistant and that no attorney-client relationship exists, and warm-transfers urgent or exception calls to a partner's mobile. Both channels write one structured lead into a Postgres record with an append-only audit log. A deterministic name-match runs the supplied party list and raises a conflict flag; the agent never clears a conflict. A booking is created only when (a) no conflict flag and (b) either a pre-approved default rule or a partner taps an approval link. Exceptions - conflict hit, limitation date inside 30 days, personal injury, out-of-scope work, existing client - page a partner with a one-tap approve/decline link. Retell's native Cal.com integration handles availability and booking against the two partners' connected calendars, so no custom calendar sync is built. Everything is configured in a dedicated workspace per client, under a self-signed Retell DPA, with per-agent data retention set to the shortest workable window; the intake service runs on the consultancy's own droplet with encrypted backups and no model training on firm data.",
+    "components": [
+      {
+        "component": "After-hours voice agent",
+        "tool": "Retell AI (single-prompt agent with function tools; warm transfer; buy a number or bring the firm's own telephony over SIP)",
+        "why": "Runs telephony, speech-to-text, LLM and TTS as one configured agent, supports warm transfer to a partner, exposes webhooks/API/SDKs and has a native Cal.com tool set (check availability, book, reschedule, cancel).",
+        "source_url": "https://docs.retellai.com/integrations/overview.md"
+      },
+      {
+        "component": "Voice/LLM/TTS cost basis",
+        "tool": "Retell pay-as-you-go: $0.055/min platform + $0.015/min platform voice + $0.064/min LLM (recommended tier) + $0.015/min telephony",
+        "why": "Prices the running cost of the voice channel with published per-minute rates rather than a guess.",
+        "source_url": "https://www.retellai.com/pricing"
+      },
+      {
+        "component": "Scheduling and booking",
+        "tool": "Cal.com Teams (managed), 2 seats, connected to both partners' calendars",
+        "why": "Gives round-robin/shared availability and a documented API v2 for the intake service; Cal.com is no longer free to self-host for commercial use, so managed is the honest route.",
+        "source_url": "https://site.cal.com/pricing"
+      },
+      {
+        "component": "System of record (the firm has none)",
+        "tool": "Small self-hosted Next.js + Postgres intake service on a $6/month droplet, with admin queue, approval links and audit log",
+        "why": "Two-channel persistent state, conflict list, approvals and logging cannot live in a form tool; a small owned service is cheaper and more auditable than a legal CRM licence at this size, and can later hand off to Clio if the firm adopts one.",
+        "source_url": "https://www.digitalocean.com/pricing/droplets"
+      },
+      {
+        "component": "Web front door hookup",
+        "tool": "Webflow form-submission webhook (POST with form data, schema and submittedAt)",
+        "why": "Lets the firm keep its Dec-2025 Webflow site and form design while routing every submission into the intake record instead of a partner's inbox.",
+        "source_url": "https://developers.webflow.com/data/reference/webhooks/events/form-submission"
+      },
+      {
+        "component": "Human approval and escalation",
+        "tool": "Signed one-tap approve/decline links emailed to a named partner (SMS optional), plus a daily approval queue",
+        "why": "Keeps substantive decisions and every conflict decision with a lawyer, which is what RPC 1.6/5.3 supervision and the New Jersey AI guidelines require.",
+        "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf"
+      },
+      {
+        "component": "Measurement",
+        "tool": "GA4 events on the intake page + server-side timestamps for first response, qualification completeness and booking",
+        "why": "GA4 is already installed on the site, so baseline and pilot metrics can be measured in the firm's own analytics rather than a vendor dashboard.",
+        "source_url": "https://www.wileylavender.com/"
+      }
+    ],
+    "integrations": [
+      {
+        "system": "Retell AI -> Cal.com (availability, book, reschedule, cancel)",
+        "method": "Native integration connected once in the Retell dashboard; agent function tools bound to the connection; OAuth or Cal.com API key",
+        "confirmed_in_docs": true,
+        "cost": "Included in Retell pay-as-you-go; Cal.com seat cost separate",
+        "source_url": "https://docs.retellai.com/integrations/overview.md"
+      },
+      {
+        "system": "Retell AI -> intake service (call events, transcripts, extracted fields)",
+        "method": "Webhooks for real-time call events plus REST API and Node/Python SDKs",
+        "confirmed_in_docs": true,
+        "cost": "Included in platform per-minute rate",
+        "source_url": "https://docs.retellai.com/"
+      },
+      {
+        "system": "Cal.com API v2",
+        "method": "REST with API key or OAuth; 120 requests/minute default rate limit; bookings, event types, schedules endpoints",
+        "confirmed_in_docs": true,
+        "cost": "Included in Cal.com plan",
+        "source_url": "https://cal.com/docs/api-reference/v2/introduction"
+      },
+      {
+        "system": "Google Calendar",
+        "method": "Google Calendar API v3 REST (events, calendars, ACL) for reading free/busy if the firm uses Google Workspace",
+        "confirmed_in_docs": true,
+        "cost": "No per-call price is stated on the API overview page; standard quota limits apply",
+        "source_url": "https://developers.google.com/calendar/api/guides/overview"
+      },
+      {
+        "system": "Microsoft 365 / Outlook calendars",
+        "method": "Microsoft Graph calendar resource (v1.0) if the firm runs M365 rather than Google",
+        "confirmed_in_docs": true,
+        "cost": "No separate API price stated; requires the firm's existing M365 licence",
+        "source_url": "https://learn.microsoft.com/en-us/graph/api/resources/calendar?view=graph-rest-1.0"
+      },
+      {
+        "system": "Webflow contact form",
+        "method": "Form-submission webhook containing form name, siteId, submitted field data and schema",
+        "confirmed_in_docs": true,
+        "cost": "No extra Webflow charge stated; webhook availability by site plan not confirmed",
+        "source_url": "https://developers.webflow.com/data/reference/webhooks/events/form-submission"
+      },
+      {
+        "system": "Existing phone line / carrier",
+        "method": "Carrier-level scheduled call forwarding to the Retell number after hours (or SIP trunk via Retell custom telephony)",
+        "confirmed_in_docs": false,
+        "cost": "Unknown - depends on the firm's carrier and plan",
+        "source_url": "https://docs.retellai.com/"
+      }
+    ],
+    "human_in_the_loop": "A partner approves every consultation booking except those matching a pre-written default rule (e.g. existing client, routine matrimonial first consult in an open slot), and approves every conflict-flagged or urgent inquiry before anything is sent. The agent never gives legal advice, never quotes fees, never states a deadline as settled law, and always says it is an automated assistant and that contacting the firm creates no attorney-client relationship. All outbound messages and every booking are logged with who approved what and when."
+  },
+  "build_plan": {
+    "phases": [
+      {
+        "phase": "0. Discovery and rules capture",
+        "steps": [
+          "Confirm the firm's calendars (Google Workspace vs Microsoft 365), phone carrier and whether scheduled forwarding is available",
+          "Collect the firm's conflict party list (clients, adverse parties, 3-5 years) and the seven practice-area taxonomy",
+          "Write the escalation matrix with the partners: what the agent may book, what it must escalate, who is on call",
+          "Agree retention (e.g. transcripts 30-90 days), DPA signature, and who reviews the approval queue daily",
+          "Draft the intake script and disclaimers with a partner's sign-off"
+        ],
+        "founder_days": "2 (inference)",
+        "client_provides": "Calendar access, carrier details, conflict party list, practice-area definitions, escalation preferences, sign-off on script and disclaimers"
+      },
+      {
+        "phase": "1. Intake core (record, conflict screen, approvals)",
+        "steps": [
+          "Stand up the Postgres schema: leads, parties, consents, bookings, approvals, audit events",
+          "Build the guided web intake flow covering all seven practice areas plus county, dates, opposing parties",
+          "Implement deterministic conflict name-matching (exact + normalized + fuzzy threshold) that only flags, never clears",
+          "Build the partner approval queue with signed one-tap links and an append-only audit log",
+          "Encrypt at rest, restrict access by role, add backups and a retention job"
+        ],
+        "founder_days": "5 (inference)",
+        "client_provides": "Party list refresh cadence, approval recipients, retention decision"
+      },
+      {
+        "phase": "2. Scheduling",
+        "steps": [
+          "Create Cal.com event types per partner with buffers, minimum notice and consult length",
+          "Connect both partners' calendars; test double-booking and timezone edges",
+          "Wire the intake service to Cal.com API v2 for availability and booking; keep a manual fallback",
+          "Test reschedule/cancel paths and no-show reminders"
+        ],
+        "founder_days": "2 (inference)",
+        "client_provides": "Consult lengths, availability windows, buffer and blackout rules, who takes which matter type"
+      },
+      {
+        "phase": "3. After-hours voice agent",
+        "steps": [
+          "Configure the Retell agent: greeting, recording disclosure, qualification questions, no-advice guardrails",
+          "Bind Cal.com tools and a transfer-to-partner function with warm transfer briefing",
+          "Set post-call extraction fields and the webhook into the intake service",
+          "Simulation-test 20 scripted scenarios (conflict, urgency, out-of-scope, silence, hostile caller, Spanish speaker)",
+          "Arrange carrier forwarding and a rollback path to voicemail"
+        ],
+        "founder_days": "3 (inference)",
+        "client_provides": "After-hours policy, on-call mobile numbers, approved wording, a partner hour for simulation review"
+      },
+      {
+        "phase": "4. Web hookup and analytics",
+        "steps": [
+          "Create the Webflow form-submission webhook and a fallback email parser",
+          "Send the guided-intake link on submission with a response-time promise",
+          "Add GA4 events (intake_start, qualification_complete, slot_offered, booked) and server-side timing",
+          "Build the weekly dashboard: volume, response time, qualification rate, booked-consult rate, after-hours capture"
+        ],
+        "founder_days": "1.5 (inference)",
+        "client_provides": "Permission to edit Webflow site settings and the form, GA4 access"
+      },
+      {
+        "phase": "5. Shadow pilot and tuning",
+        "steps": [
+          "Run 20 real inquiries in shadow mode: agent drafts, a human sends, transcripts reviewed weekly",
+          "Score each inquiry against the success metrics; fix prompt and field gaps",
+          "Go live on after-hours calls with partner override, then on web intake",
+          "Weekly 30-minute review with a partner; log every correction as a test case"
+        ],
+        "founder_days": "3 spread over the pilot (inference)",
+        "client_provides": "One partner for 30 minutes a week, feedback on wording and escalation calls"
+      },
+      {
+        "phase": "6. Handover and runbook",
+        "steps": [
+          "Write a one-page runbook: what the agent does, what to do when it fails, how to pause it, how to change the script",
+          "Train the partners on the approval queue and the dashboard; record a 10-minute screen walkthrough",
+          "Hand over credentials and the DPA; agree the monthly care scope and response time"
+        ],
+        "founder_days": "1 (inference)",
+        "client_provides": "Named owner for the tool, confirmation of who can pause it"
+      }
+    ],
+    "pilot": {
+      "scope": "Replace the Webflow form with a guided intake that feeds one lead record, connect after-hours calls to the voice agent, book consultations into both partners' calendars with partner approval on exceptions, and run 20 live inquiries in shadow mode before switching on. Conflicts stay human-decided; no legal advice, no fee quotes, no drafting, no client portal in this pilot.",
+      "weeks": "4 (2 weeks build, 3 weeks shadow/live overlap; inference for a one-founder side business)",
+      "success_metrics": [
+        "After-hours capture: 100% of calls forwarded to the agent answered, with a structured record created (target: all)",
+        "Median first response to a web inquiry under 5 minutes during business hours and under 15 minutes after hours",
+        "Qualification completeness: at least 80% of inquiries carrying matter type, county, key dates and opposing parties",
+        "Booked-consult rate vs pre-pilot baseline (target: directional increase, measured, not promised)",
+        "Zero conflicts cleared by the agent; zero advice or fee-quote incidents in reviewed transcripts",
+        "Partner approval turnaround under 4 business hours for flagged matters"
+      ],
+      "baseline_method": "Pull the four weeks before launch: Webflow form-submission count from the site's own form logs/GA4 (submission + thank-you page events), phone volume and timing from the carrier's call detail records, and a manual tally by the partners of inquiries handled, time spent per inquiry, and consultations booked. If the firm cannot export call detail, the baseline is a two-week manual log kept by the partners (inference: this is the most likely gap).",
+      "exit_criteria": "Stop or roll back if any of: a conflict is booked without human approval; the agent gives advice, a fee quote or a deadline as settled; fewer than 60% of shadow inquiries produce a usable structured record; the partners find the approval queue adds more work than it removes after two weeks. In those cases the pilot fee is credited against the setup fee only if the build is sound and the failure is configuration, not scope."
+    }
+  },
+  "competitors": [
+    {
+      "vendor": "Smith.ai",
+      "product": "AI Receptionist (24/7 AI call answering, recording/transcripts, AI scheduling, Clio/Zapier integrations)",
+      "fit_for_this_business": "Closest off-the-shelf substitute for the after-hours and in-court call gap; answers and qualifies calls and can schedule, but it does not screen conflicts against a party list, does not write into a firm-owned record, and does not gate bookings on partner approval by default.",
+      "price": "Free: $0/mo for 25 calls/mo ($3.00/call after); Pro: $150/mo for 75 calls ($2.00/call, extra calls $2.50); Enterprise: $500/mo for 300 calls ($1.67/call). Month-to-month, no contract, 30 days' notice to cancel.",
+      "source_type": "vendor pricing page",
+      "source_url": "https://smith.ai/pricing/ai-receptionist"
+    },
+    {
+      "vendor": "Ruby",
+      "product": "Virtual receptionist (24/7 live answering, intake, scheduling, bilingual, optional AI enhancements)",
+      "fit_for_this_business": "Human backup for the phone, which a two-partner firm may trust faster than an AI; but priced by live minutes, so a 4-6 minute intake call at volume gets expensive, and there is still no conflict screen or firm-owned record.",
+      "price": "$250/mo for 50 minutes; $395/mo for 100 minutes; $720/mo for 200 minutes; $1,725/mo for 500 minutes. Chat bundles: $143/mo for 10 chats, $335/mo for 30, $520/mo for 50.",
+      "source_type": "vendor pricing page",
+      "source_url": "https://www.ruby.com/pricing/"
+    },
+    {
+      "vendor": "LEX Reception",
+      "product": "Legal-only answering service",
+      "fit_for_this_business": "Legal-specific live answering with intake scripting; same structural limits as Ruby (no conflict automation, no owned record, per-minute economics) but staff trained on legal callers.",
+      "price": "About $425/month for 150 minutes as reported by a third party; LEX's own pricing is not public",
+      "source_type": "third-party",
+      "source_url": "https://www.mycase.com/blog/client-management/law-firm-answering-service/"
+    },
+    {
+      "vendor": "Lawmatics",
+      "product": "Legal intake CRM + marketing automation (intake forms, lead management, calendaring, e-signature, AI lead qualification, advanced conflict checking on Premium)",
+      "fit_for_this_business": "The 'buy the whole front office' alternative and the only listed product that advertises conflict checking plus intake in one system; heavier than a two-partner firm may adopt, requires a 3-user minimum, and centres on its own portal rather than the firm's site and inboxes.",
+      "price": "Not public - custom quote; published minimums are 3 users on Essential and Premium, 5 on Enterprise; Essential includes 500 contacts",
+      "source_type": "vendor pricing page",
+      "source_url": "https://www.lawmatics.com/pricing"
+    },
+    {
+      "vendor": "Intaker",
+      "product": "AI client intake chatbot for law firms (website chat, lead qualification, scheduling)",
+      "fit_for_this_business": "Website-side conversational intake with legal templates; overlaps the web half of this build but not after-hours voice, conflict screening against the firm's own list, or a firm-owned audit trail.",
+      "price": "Not public - pricing page routes to a demo/quote",
+      "source_type": "vendor pricing page",
+      "source_url": "https://intaker.com/pricing/"
+    },
+    {
+      "vendor": "Calendly",
+      "product": "Self-scheduling (Standard / Teams)",
+      "fit_for_this_business": "Cheapest way to stop phone-tag: a booking link on the site. It fixes self-scheduling only - no qualification, no conflict screen, no after-hours call capture - so it is the 'do the minimum' option the firm could buy today.",
+      "price": "Free: one event type, one calendar; Standard: $10/seat/mo billed yearly; Teams: $16/seat/mo billed yearly; Enterprise from $15k/yr (50-seat minimum)",
+      "source_type": "vendor pricing page",
+      "source_url": "https://calendly.com/pricing"
+    },
+    {
+      "vendor": "Cal.com",
+      "product": "Scheduling platform (Free individual / Teams / Organizations)",
+      "fit_for_this_business": "The scheduling layer used inside this design, and also a standalone buy: two partners can share availability and round-robin consults for a low per-seat fee, but it is booking only.",
+      "price": "Free: $0, 1 user, unlimited links and calendars; Teams: $12/user/month (save 25% yearly); Organizations: $28/user/month",
+      "source_type": "vendor pricing page",
+      "source_url": "https://site.cal.com/pricing"
+    },
+    {
+      "vendor": "Hire a person (market wage)",
+      "product": "Part-time legal secretary / intake coordinator",
+      "fit_for_this_business": "The realistic human alternative for 9-5 intake, phones and scheduling, and the only option that answers a live caller with judgment. Does not cover nights and weekends unless hours are added, and a part-time hire at NJ median wages costs more per year than any software option here.",
+      "price": "New Jersey legal secretaries and administrative assistants: median $63,080/year, $30.33/hour (BLS 2025 wage data). Adding 25% for benefits (inference) gives about $78,850/year or about $6,571/month for a full-time hire.",
+      "source_type": "government data",
+      "source_url": "https://www.onetonline.org/link/localwages/43-6012.00?st=NJ"
+    }
+  ],
+  "running_costs": [
+    {
+      "item": "Retell AI voice minutes",
+      "cost": "About $22/month at 150 minutes (≈$0.149/minute)",
+      "basis": "$0.055/min platform + $0.015/min platform voice + $0.064/min LLM + $0.015/min telephony, per the published rate table; 150 min/month is an inference from roughly 400-700 inquiries/year with a minority handled by voice",
+      "source_url": "https://www.retellai.com/pricing"
+    },
+    {
+      "item": "Retell phone number",
+      "cost": "$2.00/month",
+      "basis": "Published monthly subscription item for a Retell phone number (custom numbers are no charge if the firm's own telephony is used)",
+      "source_url": "https://www.retellai.com/pricing"
+    },
+    {
+      "item": "Web chat agent messages",
+      "cost": "About $6/month at 300 AI messages",
+      "basis": "Retell chat agent priced per AI message, $0.0208/message on the recommended tier; message volume is an inference",
+      "source_url": "https://www.retellai.com/pricing"
+    },
+    {
+      "item": "Cal.com Teams seats",
+      "cost": "$24/month (2 users × $12/user/month)",
+      "basis": "Published Teams price of $12 per user per month (25% saving if billed yearly)",
+      "source_url": "https://site.cal.com/pricing"
+    },
+    {
+      "item": "Application hosting (intake service + Postgres)",
+      "cost": "$6/month",
+      "basis": "DigitalOcean Basic Droplet, 1 GiB RAM / 1 vCPU / 25 GiB SSD / 1,000 GiB transfer",
+      "source_url": "https://www.digitalocean.com/pricing/droplets"
+    },
+    {
+      "item": "Domain, TLS, transactional email, backups",
+      "cost": "$0 incremental",
+      "basis": "Runs on the firm's existing domain and the droplet; backups stored on the same plan (inference - a paid backup add-on is optional if the firm wants off-site retention)",
+      "source_url": "https://www.digitalocean.com/pricing/droplets"
+    },
+    {
+      "item": "Retell knowledge base (optional)",
+      "cost": "$8/month per knowledge base",
+      "basis": "Published add-on price; only needed if the agent must answer from firm documents",
+      "source_url": "https://www.retellai.com/pricing"
+    },
+    {
+      "item": "Data processing agreement",
+      "cost": "$0",
+      "basis": "Retell's DPA and BAA are self-signing at no additional fee",
+      "source_url": "https://docs.retellai.com/general/compliance.md"
+    }
+  ],
+  "suggested_pricing": {
+    "pilot_fee": "$750 (inference) - 4-week pilot, 20 shadowed inquiries, credited in full against the setup fee if the firm proceeds",
+    "setup_fee": "$2,200 (inference) - about 11 founder-days of the 17.5-day build at roughly $200/day, discounted because this is the consultancy's first legal reference and the core is reusable",
+    "monthly_fee": "$275/month (inference) - hosting, voice minutes, Cal.com seats, transcript review, monthly tuning, a 2-business-day support response and quarterly script updates",
+    "reasoning": "Inference, not published pricing. The monthly fee sits deliberately mid-market: above Smith.ai's AI Receptionist Pro ($150/mo for 75 calls) and its ~$2.00-2.50 per-call overage, roughly at Ruby's entry plan ($250/mo for 50 live minutes), and far under a full-time NJ legal secretary at about $6,571/month including benefits - while delivering what none of those do (conflict flagging, partner approval, one record across phone and web, firm-owned audit log). Against the audit's own impact estimate of $2,500-$9,287/year in recovered staff time, a $275/month fee is about $3,300/year, which is defensible only at the middle of that range and only if the booked-consult uplift shows up; that is why the pilot is priced low and the setup fee is the main commitment. The build cost is kept to ~$2,200 rather than a market $8,000-12,000 because Retell's native Cal.com integration removes the custom calendar sync and because the intake core is designed to be reused on the next firm."
+  },
+  "leverage": [
+    {
+      "point": "Retell ships a native Cal.com integration (check availability, book, reschedule, cancel, look up appointments), so the scheduling half of this build is configuration rather than custom calendar engineering.",
+      "source_url": "https://docs.retellai.com/integrations/overview.md"
+    },
+    {
+      "point": "Retell exposes webhooks, REST API, Node/Python SDKs and an MCP server, so the same agent configuration and the same intake-core codebase can be cloned to the next small firm with only prompt, taxonomy and conflict-list changes.",
+      "source_url": "https://docs.retellai.com/"
+    },
+    {
+      "point": "Cal.com's API v2 (120 requests/minute default) is a documented, stable booking layer that can be swapped for a custom Google Calendar implementation later without rewriting the intake service.",
+      "source_url": "https://cal.com/docs/api-reference/v2/introduction"
+    },
+    {
+      "point": "Webflow form-submission webhooks mean the firm's existing December-2025 site and form design survive untouched - no redesign, no migration, one setting plus a redirect.",
+      "source_url": "https://developers.webflow.com/data/reference/webhooks/events/form-submission"
+    },
+    {
+      "point": "Retell's compliance posture is reusable across every legal client: self-signing DPA/BAA, SOC 2 Type 1 and 2, per-agent data retention from 1 day to 2 years, PII exclusion settings and zero-data-retention agreements with its LLM/STT/TTS subprocessors.",
+      "source_url": "https://docs.retellai.com/general/compliance.md"
+    },
+    {
+      "point": "Cal.com can no longer be self-hosted free for commercial use (Cal.diy is MIT-licensed but recommended for personal, non-production use only), so the consultancy should not promise a free open-source scheduling stack - the honest leverage is managed Cal.com at $12/user/month plus a reusable intake core.",
+      "source_url": "https://cal.com/blog/self-hosted-scheduling-platforms-benefits-and-challenges"
+    },
+    {
+      "point": "The firm already runs GA4 and Google Tag Manager on every page, so measurement and reporting can be built on the client's own analytics rather than a new tool (inference: event names must be added, which is part of the build).",
+      "source_url": "https://www.wileylavender.com/"
+    }
+  ],
+  "edge_vs_competitors": "Where the consultancy has an edge: (1) it is local - Milltown to Metuchen is a short drive, so a partner can get a person in the room for the ethics conversation, the script review and the go-live, which national answering services and SaaS intake tools cannot; (2) it can build the one thing none of the listed products sells - a partner-approval queue and audit trail layered over the firm's own conflict list, with the agent allowed to flag but never clear a conflict; (3) it can run the whole thing under a signed DPA with short retention and no model training, and explain that in the language of RPC 1.6 and the New Jersey AI guidelines, which is what a two-partner firm will actually ask about; (4) price sits between a booking link and a live receptionist, with no per-call meter. Where it has no edge: no brand, no published case studies, no legal-sector references, no 24/7 human fallback, no SOC 2 report of its own (it relies on Retell's), and no ability to match Smith.ai's or Ruby's human escalation bench. Any claim of 'AI receptionist plus paralegal-level judgment' would be false and must not be made.",
+  "risks_compliance": [
+    {
+      "issue": "Confidentiality of client and prospective-client information entered into an AI system (RPC 1.6)",
+      "rule_or_source": "New Jersey Supreme Court preliminary guidelines on lawyers' use of AI (Jan 24, 2024): RPC 1.6 requires reasonable efforts to prevent inadvertent or unauthorized disclosure, and 'a lawyer is responsible to ensure the security of an AI system before entering any non-public client information'.",
+      "confirmed": true,
+      "mitigation": "Signed DPA, per-agent retention set to the shortest workable period, PII-exclusion settings where possible, tenant-isolated workspace, encrypted storage, access limited to the two partners and the consultancy, and a written security summary the partners can keep in their file.",
+      "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf"
+    },
+    {
+      "issue": "Supervision of the agent as nonlawyer assistance (RPC 5.1 and 5.3)",
+      "rule_or_source": "Same New Jersey guidelines: the oversight duty over nonlawyer staff 'extends to ensuring the ethical use of AI by other lawyers and nonlawyer staff', citing RPC 5.1 and 5.3.",
+      "confirmed": true,
+      "mitigation": "Every booking and every conflict decision routed to a named partner; append-only audit log of agent output, approver and timestamp; weekly transcript review during the pilot; a documented pause switch the firm controls.",
+      "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf"
+    },
+    {
+      "issue": "Unauthorized practice of law: the agent must not give legal advice, quote fees, or tell a caller what their deadline is",
+      "rule_or_source": "RPC 5.5 (unauthorized practice) - rule text not retrieved in this session, so treated as unconfirmed",
+      "confirmed": false,
+      "mitigation": "Hard script boundaries: informational questions only, no advice, no fee quotes, explicit 'I am an automated assistant and this does not create an attorney-client relationship', and immediate transfer for anyone asking for legal advice.",
+      "source_url": "https://www.njcourts.gov/sites/default/files/rpc.pdf"
+    },
+    {
+      "issue": "Fee-sharing with a nonlawyer if the consultancy is paid out of legal fees or on a per-matter basis",
+      "rule_or_source": "RPC 5.4 - rule text not retrieved in this session, so treated as unconfirmed",
+      "confirmed": false,
+      "mitigation": "Price strictly as a flat software-and-service subscription plus setup, invoiced to the firm, never contingent on settlements, fees collected or matters signed. Get this confirmed by the firm's own ethics read before signing.",
+      "source_url": "https://www.njcourts.gov/sites/default/files/rpc.pdf"
+    },
+    {
+      "issue": "Recording and transcription of inbound calls",
+      "rule_or_source": "N.J.S.A. 2A:156A-4(d): a party to a communication, or a person with prior consent of one party, may intercept it (New Jersey is one-party consent), except where used to commit a crime, tort or other injurious act.",
+      "confirmed": true,
+      "mitigation": "Announce recording and transcription at the start of every call and offer a non-recorded path (message only); store recordings with signed, expiring URLs; delete on the agreed retention clock.",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239"
+    },
+    {
+      "issue": "Callers located in all-party-consent states (e.g. Pennsylvania) calling a New Jersey number",
+      "rule_or_source": "Cross-state recording consent rules - not verified in this session",
+      "confirmed": false,
+      "mitigation": "Because the announcement is played to every caller regardless of location, the design is consent-first by default; have the firm's counsel confirm before enabling recording of calls from out of state.",
+      "source_url": "https://lis.njleg.state.nj.us/nxt/gateway.dll/statutes/1/112/2239"
+    },
+    {
+      "issue": "SMS and outbound automated voice under the TCPA",
+      "rule_or_source": "47 CFR 64.1200: artificial or prerecorded voice calls and texts to wireless numbers require prior express consent, with revocation by STOP/QUIT/END/etc. honoured within a reasonable time; autodialed or prerecorded telemarketing needs prior express written consent.",
+      "confirmed": true,
+      "mitigation": "No outbound AI voice calls at all in phase one; reminders by email by default and SMS only with a captured consent checkbox, sender identification on every message and working STOP handling. Inbound-call answering is not an outbound call.",
+      "source_url": "https://www.law.cornell.edu/cfr/text/47/64.1200"
+    },
+    {
+      "issue": "Advertising and claim accuracy (RPC 7.1/7.2) - e.g. marketing '24/7 legal advice' or promising faster case outcomes",
+      "rule_or_source": "RPC 7.1 prohibits false or misleading communications, including unjustified expectations about results; the New Jersey AI guidelines note that AI use 'likely will affect lawyer billing practices and advertising' (RPC 1.5, 7.2)",
+      "confirmed": true,
+      "mitigation": "Only factual claims: 'calls answered after hours by an automated intake assistant', never 'legal advice 24/7'. The firm approves every public sentence. Case-count claims already on the site (1K+ vs 5K+ clients) are the firm's to fix, not the consultancy's to repeat.",
+      "source_url": "https://www.njcourts.gov/sites/default/files/notices/2024/01/n240125a.pdf"
+    },
+    {
+      "issue": "Conflict screening errors - a missed conflict is a malpractice exposure, not a software bug",
+      "rule_or_source": "RPC 1.7/1.9 conflict rules - text not retrieved in this session, treated as unconfirmed; the design assumption is that no automation can clear a conflict",
+      "confirmed": false,
+      "mitigation": "The agent only raises flags. Party lists come from the firm and are refreshed on a schedule the partners own. Every booking shows the conflict status and the human who approved it. Run a parallel manual check for the first 20 matters.",
+      "source_url": "https://www.njcourts.gov/sites/default/files/rpc.pdf"
+    },
+    {
+      "issue": "Vendor data handling and subprocessors",
+      "rule_or_source": "Retell documentation: HIPAA and GDPR compliant, SOC 2 Type 1 and 2, self-signing DPA/BAA at no fee, per-agent retention 1 day-2 years, zero-data-retention agreements with LLM/STT/TTS subprocessors; data used for training only not at all for enterprise MSA customers.",
+      "confirmed": true,
+      "mitigation": "Sign the DPA before any client data flows, use a dedicated workspace per client, set retention explicitly, and record the subprocessor position in the firm's file so the partners can answer a client question.",
+      "source_url": "https://docs.retellai.com/general/compliance.md"
+    }
+  ],
+  "feasibility": {
+    "technical_1_5": 4,
+    "commercial_1_5": 3,
+    "weeks_to_pilot": "4 weeks to a shadow-mode pilot with live after-hours calls; 6-8 weeks to steady state including tuning (inference)",
+    "verdict": "Go with conditions",
+    "reasoning": "Technically this is a known shape: voice agent platform + native calendar integration + a small owned record store, with every integration verified in vendor documentation and no hardware, no telephony build and no custom calendar sync. The two hard parts are not code - they are the ethics review (DPA, retention, supervision, advertising wording) and the fact that the firm has no case-management system, so the pilot must also supply the system of record and the partners must own a conflict party list. Commercially it is a modest first deal: the audit's own value range is $2,500-$9,287/year of staff time, which a $275/month fee plus $2,200 setup consumes most of unless the booked-consult uplift is real, and there is no published evidence of the firm's inquiry volume, budget or current tooling. Conditions before build: written confirmation of calendar platform and carrier forwarding, a signed DPA and retention decision, the conflict party list, and a partner who will spend 30 minutes a week in the pilot. If those are not available, this should wait rather than be built on assumptions."
+  },
+  "discovery_questions": [
+    "Which calendar do the partners actually live in - Google Workspace or Microsoft 365 - and can we connect read/write access for both?",
+    "Who is the phone carrier, and can the line forward on a schedule (after 5pm, weekends) to another number without losing the main line's identity?",
+    "How many inquiries come in per month, split between calls and the web form, and roughly how many become consultations?",
+    "What happens today to a call that arrives at 6pm or while both partners are in court - voicemail, missed, or called back next day?",
+    "Where does a conflict check live right now: a spreadsheet, a practice-management system, or memory? Who updates it and how often?",
+    "Which practice areas should the agent be allowed to book directly, and which must always go to a partner first?",
+    "Is there a consultation fee, a free 30-minute consult, or a fee quoted only after intake? The agent must never guess.",
+    "What is the firm's position on recording calls, and what retention period do the partners want for transcripts?",
+    "Does the firm use SMS with clients today, and does it want text reminders?",
+    "Who besides the two partners touches intake (paralegal, bookkeeper, answering service), and who will own the approval queue day to day?",
+    "What is the monthly budget range for intake tooling, and has the firm bought or trialled Clio, Lawmatics, Smith.ai or an answering service before?",
+    "Which partner signs off on client-facing wording, and what malpractice or cyber-insurance notice does the carrier require for third-party vendors?"
+  ],
+  "caveats": [
+    "Everything in suggested_pricing, founder_days, running-cost volumes, benefit loading and consult-uplift is labeled inference; no vendor or client data supports those specific numbers.",
+    "Inquiry volume (400-700/year), current handling time (25-35 minutes) and the 40-60% automation assumption come from the analyst's estimates in analysis.json, not from the firm's records; the pilot's baseline step exists to replace them with measured numbers.",
+    "Running costs assume ~150 voice minutes and ~300 chat messages per month; at the high end of the inquiry estimate the voice line roughly doubles but stays under $50/month.",
+    "Several sources could only be read through search-index extracts rather than a direct fetch: the New Jersey RPC PDF (njcourts.gov returns 404 to this crawler) and the N.J.S.A. 2A:156A-4 statute page. Rule numbers and quoted language come from those indexed extracts; the rules should be re-read in full before anything is signed.",
+    "Clio's own pricing pages returned HTTP 403, so Clio Grow/Manage is deliberately left out of the competitor set rather than priced from a secondary source.",
+    "Vendor pricing pages in this market change monthly (Retell and Vapi both now list model tiers that did not exist a year ago); re-check every rate at proposal time.",
+    "The design assumes the firm will accept a consultancy-owned system of record for the pilot; if it buys a case-management system mid-build, the intake service should write into that instead and phase 1 changes."
+  ],
+  "data_gaps": [
+    "No confirmed case-management, billing or document system: the public footprint shows none, but the firm may run something off-site. The pilot design supplies a system of record only if nothing exists.",
+    "No call volume, call-detail records, form-submission counts or booking counts are public, so the baseline cannot be computed from research - it must be pulled with the firm.",
+    "The firm's phone carrier, plan and whether scheduled forwarding is available are unknown, and no source documents Retell's forwarding setup for a specific carrier.",
+    "Whether Webflow form-submission webhooks are enabled on the firm's current Webflow site plan is not confirmed; a fallback (form redirect to the hosted intake page, or email parsing) is required if they are not.",
+    "Whether the firm uses Google Workspace or Microsoft 365 is not public; both calendar APIs exist and the choice changes only the connection step.",
+    "Lawmatics, Intaker and Clio do not publish prices; LEX Reception's price is third-party reported only. No quote was requested because that would require a sales contact.",
+    "No independent review, complaint or satisfaction data could be verified, and the firm's own 200+ cases / 1K+ vs 5K+ client claims are unverified marketing figures.",
+    "Malpractice carrier requirements, cyber-insurance terms and any vendor-review checklist the firm's insurer imposes are unknown.",
+    "RPC 5.4 (fee sharing) and RPC 5.5 (unauthorized practice) texts were not retrievable in this session; the design avoids both risks by structure, but the rule text should be read before contracting."
+  ]
+}

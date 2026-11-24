@@ -1,0 +1,67 @@
+[
+ {
+  "claim": "Coverage - the trades are almost entirely absent from the list",
+  "problem": "Six of my eleven category searches (roofing, plumbing, HVAC, electrical, landscaping, general contracting) returned multiple Middlesex Borough independents with 08846 street addresses, and none of them are in businesses.json. Only 11 of the 44 eligible businesses my searches surfaced are listed (~25%, well under the 70% bar). The list concentrates on law, accounting, health and personal care.",
+  "fix": "Add the trades businesses in coverage.missing and run a dedicated contractor sweep (roofing, plumbing, HVAC, electrical, landscaping, general contracting) before this zone is assigned to outreach."
+ },
+ {
+  "claim": "Coverage - auto repair is missing entirely",
+  "problem": "Four established Middlesex Borough shops with their own websites (Auto Shop of Middlesex, Stoms Automotive, Divine Autoworks, JEM Service Center) are absent, and the auto-repair category appears nowhere in the list.",
+  "fix": "Add the four shops; all four have live sites, so they are high-confidence entries."
+ },
+ {
+  "claim": "Allison Roy - State Farm Insurance (1316 Bound Brook Rd, Suite 2A)",
+  "problem": "Address and phone verify, but the office page presents it as a State Farm agent ('independent contractor agent who solicits applications for State Farm products') - a branded carrier agency, which the zone rules exclude as a franchise/brand location. The mapper flagged the risk and listed it anyway.",
+  "fix": "Remove, or get an explicit client decision that branded carrier-agency storefronts are in scope."
+ },
+ {
+  "claim": "David Basile - Allstate Insurance (540 Bound Brook Rd)",
+  "problem": "Same branded-carrier problem (Allstate agent storefront), and it rests on a single aggregator page (locationsnear.me) with no Allstate or licensing source I could open.",
+  "fix": "Drop as a branded franchise agency; if kept, re-verify against an Allstate agent page."
+ },
+ {
+  "claim": "Evenly Orthodontics (495 Union Ave)",
+  "problem": "Multi-location NJ brand - my search found Evenly offices in Red Bank, Cherry Hill, Collingswood, Saddle Brook, Mullica Hill and elsewhere. That is a regional chain, not a one-site independent; the mapper flagged it and kept it.",
+  "fix": "Remove as a multi-site brand (or confirm the client's chain threshold)."
+ },
+ {
+  "claim": "Erica J. Mandell, Attorney at Law - cited website https://www.ejmandellattorney.com/about_us",
+  "problem": "The cited URL returns HTTP 404. The site root loads and is the right person, but shows no office address, and a Martindale listing places her in New Brunswick while an older SSA list gives 601 Bound Brook Rd, Middlesex.",
+  "fix": "Replace the dead citation with the working homepage and confirm the current Middlesex office before outreach."
+ },
+ {
+  "claim": "Curcio Louis J - listed as 'Accounting and tax'",
+  "problem": "Could not confirm him as an accountant at all; only source is a single MerchantCircle stub, the mapper's own note says he may be an attorney, and my searches found no accounting practice by that name in Middlesex.",
+  "fix": "Verify occupation and current activity, or remove."
+ },
+ {
+  "claim": "C G Bookkeeping Services - address 'Unknown'",
+  "problem": "Single MerchantCircle stub with no street address and no second source; not demonstrably a Middlesex Borough business.",
+  "fix": "Verify address and activity, or remove."
+ },
+ {
+  "claim": "MedStop NJ (138 Bound Brook Rd) - category 'Urgent care / medical clinic'",
+  "problem": "The only listing is a Birdeye 'wellness' profile with one review; nothing confirms it is an urgent care or even currently operating as a clinic. The one-source category label overstates what was verified.",
+  "fix": "Re-verify or downgrade/remove."
+ },
+ {
+  "claim": "BEST Physical Therapy - phone 'Unknown'",
+  "problem": "The practice's own site (bestptnj.com) lists the Middlesex clinic at 601 Bound Brook Rd Suite 201 with 732-968-4422, so a phone that was recorded as unknown is actually available. Two NJ locations, PT-owned private practice - it is not a chain.",
+  "fix": "Fill in 732-968-4422 and remove the chain flag."
+ },
+ {
+  "claim": "Amaltas Dental & Implant Center and The Don's Barbershop - listed with 'own website' evidence",
+  "problem": "Neither site would render for me (amaltasdental.com fetch failed twice; thedonsbsxsp.com is JavaScript-only). Amaltas's address does surface in search results, but The Don's has no independently opened page confirming the Middlesex address.",
+  "fix": "Re-check both in a real browser before outreach."
+ },
+ {
+  "claim": "Coverage - accounting: Joseph R. Petracca, CPA (435 Union Ave)",
+  "problem": "Found in my own CPA search and missing from the list, while the accounting category was otherwise well covered.",
+  "fix": "Add after verifying."
+ },
+ {
+  "claim": "Shared-address duplicates",
+  "problem": "CrownCutz and Braids Fades and Weaves (547 Bound Brook Rd), East Horizon Acupuncture and Healing Art of Acupuncture (601 Bound Brook Rd Suite 102), and Viva Insurance / O'Donnell Agency (568 Union Ave) are each listed twice at the same address. Some are probably the same business under two names, which will double-count in outreach.",
+  "fix": "Resolve each pair to a single current business before outreach."
+ }
+]

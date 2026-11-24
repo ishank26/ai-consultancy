@@ -1,0 +1,126 @@
+{
+  "verdict": "FAIL",
+  "issues": [
+    {
+      "claim": "NJ Pipe Doctor, 234 Main St, Perth Amboy, (732) 631-3534, website njpipedr.com",
+      "problem": "Wrong town and wrong phone. The company's own contact page lists 234 Main St, Woodbridge Township, NJ 07095 and 40 Amboy Rd, Matawan, with the main number 732-838-3424; a Waze place record ties the recorded 732-631-3534 number to the same 234 Main St, Woodbridge Township address. 234 Main St in Perth Amboy was a mis-pin.",
+      "fix": "Remove the entry from the Perth Amboy zone (or move it to the Woodbridge zone), and correct the phone to 732-838-3424 if it is kept anywhere."
+    },
+    {
+      "claim": "Arias Machine Tool & Die Co, 645 Atlantic Ave #2505, Perth Amboy, website http://www.ariasmachine.com/",
+      "problem": "Website is dead: the domain ariasmachine.com does not resolve (DNS failure via both fetch and a direct HTTP GET), so the recorded site is not that business's live site. A Yellow Pages listing for the same company gives phone (732) 442-2398, not the recorded (908) 930-3023, and the '#2505' suite suggests a mailbox address rather than a plant.",
+      "fix": "Blank the website field, re-check the phone against a trades directory, and re-confirm that 645 Atlantic Ave is a real shop address before including it."
+    },
+    {
+      "claim": "Amboy's Auto Repair, 511 Convery Blvd, website https://www.amboyautorepair.com/index.html",
+      "problem": "The domain now serves a one-line redirect to /lander, which loads a third-party spam/parking page ('Access Denied' at dot-services.org). It is no longer the shop's site, although the business itself is real at 511 Convery Blvd per Yellow Pages/Loc8NearMe listings.",
+      "fix": "Blank the website field for now and note that no working web presence was found; the address/phone are still good."
+    },
+    {
+      "claim": "Koyen Funeral Chapel, Perth Amboy, (732) 442-0075, address Unknown",
+      "problem": "Could not confirm an in-town location. The only records opened are phone-only directory entries, and one funeral-home listing assigns the identical number (732) 442-0075 to Koyen Funeral Chapel at 399 Avenel St, Avenel NJ 07001; a parish bulletin also shows a 'Flynn and Son/Koyen Funeral Home' in Metuchen. The Perth Amboy attribution may be a duplicate of an out-of-town chapel.",
+      "fix": "Drop unless a Perth Amboy street address or state licence record is found; do not treat it as a separate local prospect alongside Flynn and Son."
+    },
+    {
+      "claim": "Airsuccess Mold Removal, 260 High St, Perth Amboy, website airsuccessmoldremoval.xyz",
+      "problem": "The site is a single-town SEO/lead-generation page (no address, no named people, template copy naming only Perth Amboy) and no independent directory record ties the 862-626-2328 number to a Perth Amboy premises. It resembles the keyword lead-gen listings the mapper already culled elsewhere in the file.",
+      "fix": "Downgrade to unverified (or drop) until a premises or licence record is found; keep the .xyz domain out of any website field."
+    },
+    {
+      "claim": "I Excel Child Care, 160 Jefferson St, website http://www.iexcelchildcare.com/",
+      "problem": "The domain opens but the page is titled 'WAG & PAWS' (child-care content: before/after school, summer camp), so it cannot be confirmed as I Excel's own site.",
+      "fix": "Blank the website or verify the domain ownership; the business itself is fine to keep on map-listing evidence."
+    },
+    {
+      "claim": "Little Bright Stars LLC, 313 State St, website https://littlebrightstarsnj.com/",
+      "problem": "Domain no longer resolves (DNS failure), so the recorded site is dead.",
+      "fix": "Blank the website field and re-check the business by phone."
+    },
+    {
+      "claim": "Teo's Landscaping LLC, 150 Pulaski Ave, Perth Amboy",
+      "problem": "Own site brands itself for Woodbridge and Edison and publishes no Perth Amboy address; the 150 Pulaski Ave address exists only on aggregator profiles. Town membership is unconfirmed.",
+      "fix": "Keep only with an explicit 'address unconfirmed' flag, or confirm 150 Pulaski Ave is inside the Perth Amboy boundary."
+    },
+    {
+      "claim": "Corr Electrical Services, 284 Grace St, (609) 379-3672",
+      "problem": "The address is corroborated, but the recorded 609 area-code number does not match directory numbers for the same firm (732-423-8253 and 732-709-0180 appear on two directories).",
+      "fix": "Treat the phone as unverified and re-check before any outreach."
+    },
+    {
+      "claim": "Group D child care, preschool, tutoring and driving-school entries (11-12 businesses, e.g. Glenis Daycare, I Excel, Vida Academy, Belonging Child Care Center, St Mina Driving School)",
+      "problem": "These sit close to the 'schools' exclusion in the checker brief. Belonging Child Care Center's own site describes itself as 'this ministry', so it may be a religiously affiliated centre (worship exclusion adjacent). The mapper documents its reasoning, but the judgement is not confirmed against the owner's rules.",
+      "fix": "Get the owner to rule explicitly on private day care/preschool/tutoring/driving instruction, and check whether Belonging is church-run before including it."
+    },
+    {
+      "claim": "Whole-list exclusion scan (food, delivery-app shops, chains/franchises, government, schools, hospitals, worship, banks)",
+      "problem": "No food, bank, government, hospital, worship-organisation or obvious national-chain entry found in the list; 'Simple Mobile Solutions' echoes a prepaid-carrier brand but its BBB profile is a cell-phone-supplies shop, i.e. independent, and 'Juanoj Botanica' is a retail religious-goods store rather than a place of worship. Nothing here is a FAIL driver.",
+      "fix": "No action beyond the child-care ruling above."
+    },
+    {
+      "claim": "Coverage gaps in the zone",
+      "problem": "Several eligible in-town businesses that my own searches surfaced are absent: Best Electric (71 W Pond Rd), East Side Dry Cleaners (87 Smith St), M2 Renovation LLC, DEB Construction & Roofing Co, A. Bailey Plumbing & Heating. Coverage is still ~79%, above the 70% bar, but the electrician and roofing categories are visibly thin (2 and 3 in-town entries respectively).",
+      "fix": "Add Best Electric and East Side Dry Cleaners (both address-verified); check DEB Construction and M2 Renovation on a second source before adding."
+    },
+    {
+      "claim": "Minor data-quality items that are not FAIL drivers",
+      "problem": "Vollmann's Florist has no website recorded although vollmannflorist.com is its own site at 630 S Florida Grove Rd; Emilio Pool Installations is marked address 'Unknown' although directories list 374 Fayette St; Mann's Heating has the toll-free number only, while BBB shows the local 732-826-8655 at 522 Smith St; Carter & Sons' Perth Amboy page is a templated town landing page.",
+      "fix": "Fill in the website/address/phone fields from the sources above during the next pass."
+    }
+  ],
+  "claims_checked": [
+    {"claim": "NJ Pipe Doctor operates at 234 Main St, Perth Amboy and can be reached on (732) 631-3534", "source_url": "https://njpipedr.com/contact/", "result": "contradicted"},
+    {"claim": "Gursky Plumbing is a Perth Amboy plumbing/heating contractor at (732) 442-4500", "source_url": "https://www.gurskyplumbingnj.com/", "result": "confirmed"},
+    {"claim": "Mann's Heating and Air Conditioning serves Perth Amboy and uses 800-930-6266", "source_url": "https://www.mannsheating-ac.com/", "result": "confirmed"},
+    {"claim": "Carter & Sons Roofing at 456 Smith St, Perth Amboy, (848) 222-2090", "source_url": "https://cartersonsroofing.com/perth-amboy-nj/", "result": "confirmed"},
+    {"claim": "Northeast Roof Maintenance Inc is at 649 Catherine St, Perth Amboy, (732) 442-2020", "source_url": "https://www.njsda.gov/SDA_BUSINESS/vendor/info?vendorCode=22332876400", "result": "confirmed"},
+    {"claim": "Flooring Central is at 420 Park Ave, Perth Amboy, (732) 324-0885", "source_url": "https://flooringcentral.com/contact/", "result": "confirmed"},
+    {"claim": "Hek Machine Inc is at 785 State St, Perth Amboy, (732) 442-8672", "source_url": "https://hekmachine.com/", "result": "confirmed"},
+    {"claim": "Dekoff's Perth Amboy Lock Co is an operating Perth Amboy locksmith", "source_url": "https://www.dekoffslocksmith.com/", "result": "confirmed"},
+    {"claim": "Minor's Auto Club is a Perth Amboy auto shop on (732) 986-1015", "source_url": "https://www.minorsautoclub.com/", "result": "confirmed"},
+    {"claim": "O & R Landscaping is a Perth Amboy landscaping contractor on (732) 277-3714", "source_url": "https://orlandscapingnj.com/", "result": "confirmed"},
+    {"claim": "Amboy Window Outlet is a family-owned window/door supplier in Perth Amboy", "source_url": "https://amboywindowoutlet.com/", "result": "confirmed"},
+    {"claim": "Paw Shapers pet grooming is at 316 Goodwin St, Perth Amboy", "source_url": "https://www.dogdog.org/pet-groomer/paw-shapers-perth-amboy", "result": "confirmed"},
+    {"claim": "Right Electrician LLC is at 258 Barclay St, Perth Amboy", "source_url": "https://www.bestprosintown.com/nj/perth-amboy/electricians/", "result": "confirmed"},
+    {"claim": "Glenis Daycare is a Perth Amboy child-care centre (own site)", "source_url": "http://www.glenisdaycare.com/", "result": "confirmed"},
+    {"claim": "Belonging Child Care Center is at 774 Pfeiffer Blvd, Perth Amboy", "source_url": "https://www.belongingchildcarecenter.com/", "result": "confirmed"},
+    {"claim": "Vollmann's Florist is at 630 S Florida Grove Rd, Perth Amboy", "source_url": "https://www.vollmannflorist.com/", "result": "confirmed"},
+    {"claim": "D. Cohen & Sons hardware is at 711 State St, Perth Amboy", "source_url": "https://www.yellowpages.com/perth-amboy-nj/hardware-stores?sort=name", "result": "confirmed"},
+    {"claim": "Amboy's Auto Repair is at 511 Convery Blvd, Perth Amboy, (732) 826-8580", "source_url": "https://www.yellowpages.com/perth-amboy-nj/mip/amboy-auto-repair-8499857", "result": "confirmed"},
+    {"claim": "Arias Machine Tool & Die's own website is ariasmachine.com", "source_url": "http://www.ariasmachine.com/", "result": "not found"},
+    {"claim": "Amboy's Auto Repair's own website is amboyautorepair.com", "source_url": "https://www.amboyautorepair.com/", "result": "contradicted"},
+    {"claim": "I Excel Child Care's own website is iexcelchildcare.com", "source_url": "http://www.iexcelchildcare.com/", "result": "not found"},
+    {"claim": "Little Bright Stars' own website is littlebrightstarsnj.com", "source_url": "https://littlebrightstarsnj.com/", "result": "not found"},
+    {"claim": "Airsuccess Mold Removal is a Perth Amboy mold-remediation firm at 260 High St", "source_url": "https://airsuccessmoldremoval.xyz/", "result": "could not open"},
+    {"claim": "Teo's Landscaping is a Perth Amboy business at 150 Pulaski Ave", "source_url": "https://www.teoslandscaping.com/", "result": "not found"},
+    {"claim": "Piri's Home Improvement is a Perth Amboy-area remodeling contractor", "source_url": "https://pirishomeimprovement.com/", "result": "confirmed"},
+    {"claim": "AIRLIFE HVAC is a Perth Amboy HVAC contractor at 46 Commerce St", "source_url": "https://airlife-hvac.com/", "result": "could not open"},
+    {"claim": "Emilio Pool Installations' own site loads", "source_url": "https://emiliopoolinstallations.com/", "result": "could not open"},
+    {"claim": "Quality Cooling & Heating is at 313 State St, Perth Amboy, (732) 629-8020", "source_url": "https://www.whosmypro.com/hvac/laurence-harbor-nj/", "result": "confirmed"},
+    {"claim": "Koyen Funeral Chapel is an operating Perth Amboy funeral home", "source_url": "https://www.allbiz.com/business/koyen-funeral-chapel_57-732-442-0075", "result": "not found"},
+    {"claim": "Corr Electrical Services is at 284 Grace St, Perth Amboy", "source_url": "https://www.homeyou.com/corr-electrical-services-perth-amboy-nj", "result": "confirmed"}
+  ],
+  "coverage": {
+    "searches": [
+      "Perth Amboy NJ roofing contractor",
+      "Perth Amboy NJ electrician contractor",
+      "Perth Amboy NJ landscaper",
+      "HVAC contractor Perth Amboy NJ heating",
+      "auto body shop Perth Amboy NJ collision",
+      "dry cleaners Perth Amboy NJ Smith Street",
+      "furniture store Perth Amboy NJ Smith Street",
+      "jewelry store Perth Amboy NJ",
+      "Plumber / heating Perth Amboy NJ (directory confirmations: allpages, BBB, Waze)",
+      "Machinist / machine shop Perth Amboy NJ (directory confirmations: Yellow Pages, machinist.com)"
+    ],
+    "eligible_found": 24,
+    "already_listed": 19,
+    "missing": [
+      {"name": "Best Electric", "town": "Perth Amboy", "source_url": "https://reviews.birdeye.com/best-electric-148923309610661"},
+      {"name": "East Side Dry Cleaners", "town": "Perth Amboy", "source_url": "https://www.yellowpages.com/perth-amboy-nj/dry-cleaners-laundries"},
+      {"name": "M2 Renovation LLC", "town": "Perth Amboy", "source_url": "https://www.bestprosintown.com/nj/perth-amboy/m2-renovation-llc-/"},
+      {"name": "DEB Construction & Roofing Co.", "town": "Perth Amboy", "source_url": "https://www.bbb.org/us/nj/perth-amboy/profile/roofing-contractors/deb-construction-roofing-co-0221-28000206"},
+      {"name": "A. Bailey Plumbing & Heating", "town": "Perth Amboy", "source_url": "https://nj.allpages.com/perth-amboy/construction/builders-contractors-1-of-2/heating-air-conditioning-contractors/"}
+    ]
+  },
+  "confidence": "High"
+}

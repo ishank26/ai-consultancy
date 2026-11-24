@@ -1,0 +1,37 @@
+[
+ {
+  "claim": "The placeholder's \"Related Searches\" ad links are \"(e.g. 'Payroll Software Solutions', 'Payroll & Tax Software')\" (audit_md) and auto-generated payroll/tax ad links.",
+  "problem": "Could not reproduce. Three fresh loads of the live page (500 px and 1280 px wide) showed five links, all tax-filing ads: 'Online Federal Tax Preparation Discounts', 'Low Cost 1040 Tax Filing', 'IRS Tax Debt Relief for Seniors', 'Car Tax Calculator', 'New Tax Rules For 2026'. No payroll-related link appeared. The underlying point (auto-generated ad links) is true, but the two named examples are not on the page today and may be wrong.",
+  "fix": "Replace the two sample titles with ones currently visible, keep the count/date, or write 'auto-generated tax-ad links' with no examples."
+ },
+ {
+  "claim": "1040taxless.com is \"the domain tied to this business in directory listings\" (audit_md opening bullet).",
+  "problem": "No directory page I could open shows 1040taxless.com for this business, and the auditor's own data_gaps say every such directory (Manta, PTIN Directory, LocalityBiz, Cylex, YellowPages, BBB) was blocked by bot checks. The claim is stated flatly in the customer-facing text while the file itself treats it as unverified. The domain's tie to the business is documented by the business's own archived site, not by a directory.",
+  "fix": "Reword to \"the firm's former website address, live until at least March 2025\", or cite one directory page that actually displays the domain."
+ },
+ {
+  "claim": "Likely cause is \"hosting or certificate\".",
+  "problem": "The certificate half is unsupported: the page loads over HTTPS with no warning on both apex and www, and the reasoning text never mentions a certificate. The evidence only supports an unpublished or unpaid hosting site.",
+  "fix": "Change the cause label to \"hosting / unpublished site\" so the label matches the reasoning."
+ },
+ {
+  "claim": "\"Calendly booking\" is listed among what the 31 March 2025 archive capture shows.",
+  "problem": "The 31 March 2025 capture has an appointments form, a 'Video Call' link and a 'Client Portal Login', but I found no Calendly link in its markup. Calendly appears in the October 2023 capture. The customer text says only 'booking', so this is an internal-record precision error.",
+  "fix": "Attribute Calendly to the 2023 capture, or describe the 2025 capture as having appointment forms and a client portal."
+ },
+ {
+  "claim": "BestProsInTown \"still lists the long East Brunswick LLC name at the Freehold address\".",
+  "problem": "The page shows the long LLC name at '98 Village Center Drive, Bayonne, NJ 07728' - the Freehold street address and ZIP, but the city field reads Bayonne. As written the sentence misdescribes what that listing displays.",
+  "fix": "Say 'at 98 Village Center Dr with the city shown as Bayonne', which also strengthens the point about mixed data."
+ },
+ {
+  "claim": "Fix step 4 is sourced to BestProsInTown for the detail that directory data mixes 10 Auer Ct, an older 177 Main St entry and Freehold.",
+  "problem": "The 177 Main St entry is not on the cited page. I did confirm it independently on Yahoo Local ('US Eagle Financial Center LLC, 177 Main St, East Brunswick, NJ 08816, (201) 515-0600'). The 10 Auer Ct address I could only see in search snippets because Manta, FindOpen and LocalityBiz returned 403/bot checks.",
+  "fix": "Cite https://local.yahoo.com/financial-services/nj/east-brunswick/ for the 177 Main St entry and keep the caveat that 10 Auer Ct is snippet-only."
+ },
+ {
+  "claim": "audit_md body length.",
+  "problem": "The customer-facing text is about 329 words including the closing 'Prepared from publicly available information' line (about 311 without it), over the 300-word cap in the brief. It also uses 'nameservers', which is jargon for a business owner.",
+  "fix": "Cut roughly 30-40 words (the ads sentence and the footer can shrink) and replace 'nameservers at iPage' with 'DNS/hosting at iPage' or drop it."
+ }
+]

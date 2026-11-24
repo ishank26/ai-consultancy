@@ -1,0 +1,388 @@
+{
+  "batch": "b022",
+  "businesses": [
+    {
+      "name": "Alliance Orthopedics",
+      "town": "East Brunswick",
+      "ref": "B00275",
+      "status": "operating",
+      "website": "https://allianceortho.com/location/nj/east-brunswick/",
+      "what_they_do": "Multi-specialty orthopedic group whose East Brunswick clinic offers chiropractic care, physical therapy, pain management, occupational therapy, spine-surgery consultations and foot/ankle and joint treatment under one roof. Marketing targets people with acute or chronic musculoskeletal pain, including active adults and student-athletes.",
+      "customers": "Adults and athletes with back, joint and sports injuries; likely workers-comp and auto-injury patients (inference from service mix and 'second opinion' page).",
+      "size_signals": [
+        {"signal": "Nine NJ locations listed in its own appointment form (East Brunswick, Freehold, Old Bridge, Bloomfield, Fair Lawn, Randolph, Middletown, Union, Toms River)", "source_url": "https://allianceortho.com/request-appointment/"},
+        {"signal": "About 1,232 reviews aggregated at 4.9 stars", "source_url": "https://birdeye.com/alliance-orthopedics-169955092730881"},
+        {"signal": "East Brunswick hours Mon-Fri 9am-7pm, closed weekends", "source_url": "https://allianceortho.com/location/nj/east-brunswick/"}
+      ],
+      "listing": {"platform": "Birdeye (aggregated reviews)", "rating": "4.9", "reviews": "~1,232", "source_url": "https://birdeye.com/alliance-orthopedics-169955092730881"},
+      "website_review": {
+        "loads": true, "https": true, "phone_layout": "good", "clear_offer": true,
+        "primary_cta": "Request Appointment (all links go to one request form) plus click-to-call",
+        "click_to_call": true, "contact_form": true,
+        "online_booking_or_quote": "Appointment request form only (posts to Salesforce WebToLead); no calendar or self-scheduling",
+        "trust_signals": "Embedded review widget, provider team page, 9 locations, condition library, FAQ block",
+        "out_of_date_signs": "None obvious; title tag carries a stray horse emoji (template glitch shared with other clinics)",
+        "search_basics": "Title and description name the service and town; separate location, condition and service pages exist",
+        "top_issues": ["No self-serve scheduling - every 'book' path becomes a manual staff callback", "Request form sits behind reCAPTCHA, so an AI agent cannot complete an intake", "Location page phone differs from the number in local directories, which can confuse callers and citations"]
+      },
+      "agent_readiness": {"findable": 2, "answerable": 3, "bookable": 1, "notes": "robots.txt allows all crawlers; hours, address, services and FAQs are real text; MedicalBusiness JSON-LD present but keyed to the parent brand URL rather than this clinic; Google Business Profile completeness not directly verified; booking is a CAPTCHA-protected lead form, not a scheduler."},
+      "operations_signals": [
+        {"signal": "1,200+ reviews at 4.9 indicates high patient volume and an active review-collection tool (Birdeye widget embedded)", "source_url": "https://allianceortho.com/location/nj/east-brunswick/"},
+        {"signal": "Appointment intake is a long multi-field lead form routed to Salesforce, implying staff triage and callback for every request", "source_url": "https://allianceortho.com/request-appointment/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Add real online self-scheduling, or an agent-completable request path without CAPTCHA, per location so bookings do not require a callback", "type": "agent readiness", "evidence": "Every CTA funnels to /request-appointment/, a Salesforce lead form protected by reCAPTCHA with no calendar", "effort": "M"},
+        {"opportunity": "Multi-location AI phone/web intake that answers service, insurance and hours questions and routes to the right clinic", "type": "AI agent", "evidence": "Nine locations, one shared 866 number, hours/services documented as text", "effort": "M"},
+        {"opportunity": "Per-location LocalBusiness schema and consistent NAP across the nine clinics", "type": "search", "evidence": "JSON-LD is a single MedicalBusiness block tied to the brand URL; the East Brunswick page shows (732) 795-5585 while the batch/directory number is (908) 364-8061", "effort": "S"}
+      ],
+      "scores": {"gap_size": 3, "ability_to_pay": 4, "ease": 3, "evidence": 3, "reasons": "Solid site and heavy review volume, but booking is manual and CAPTCHA-gated; a nine-location ortho group has budget; fixes are mostly form/scheduler and schema work."},
+      "sources": ["https://allianceortho.com/location/nj/east-brunswick/", "https://allianceortho.com/request-appointment/", "https://allianceortho.com/robots.txt", "https://birdeye.com/alliance-orthopedics-169955092730881"]
+    },
+    {
+      "name": "New Jersey Health & Performance Institute (Toto Chiropractic & Total Rehabilitation)",
+      "town": "East Brunswick",
+      "ref": "B00276",
+      "status": "operating",
+      "website": "https://njhealthperformance.com/",
+      "what_they_do": "Chiropractic, physical therapy and acupuncture clinic at 317 Rues Lane, formerly/also branded Toto Chiropractic & Total Rehabilitation. Sells a $99 new-patient special and condition-specific care plans (back pain, disc injury, car accident, neuropathy).",
+      "customers": "Local pain patients, including car-accident and disc-injury cases; largely insurance and self-pay consumers.",
+      "size_signals": [
+        {"signal": "Single East Brunswick location; hours Mon-Wed and Fri 9-6, Sat 9-12, Thu/Sun closed", "source_url": "https://njhealthperformance.com/"},
+        {"signal": "Site badge claims 5.0 stars from 300 Google reviews; review aggregator shows 4.9 from 431", "source_url": "https://njhealthperformance.com/"},
+        {"signal": "'Meet The Doctors' section plus chiropractor and acupuncturist roles named in reviews (inference: small multi-provider team)", "source_url": "https://njhealthperformance.com/"}
+      ],
+      "listing": {"platform": "Google (badge on own site) / Birdeye aggregate", "rating": "5.0 on site badge; 4.9 on Birdeye", "reviews": "300 Google (site badge); 431 Birdeye", "source_url": "https://reviews.birdeye.com/toto-chiropractic-total-rehabilitation-155727047748553"},
+      "website_review": {
+        "loads": true, "https": true, "phone_layout": "usable", "clear_offer": true,
+        "primary_cta": "New Patient Special / Schedule Your Appointment",
+        "click_to_call": false, "contact_form": false,
+        "online_booking_or_quote": "Real three-step booking widget on /schedule-appointment/ (Services, Patient Info, Date & Time) powered by a ReviewWave-style embed that renders in-page",
+        "trust_signals": "300+ Google review badge, patient testimonial quotes, intro video, doctor bios, condition pages",
+        "out_of_date_signs": "None obvious; footer copyright 2026; some empty template sections and a stray horse emoji in the page title",
+        "search_basics": "Title and meta description name chiropractor and East Brunswick; condition pages exist; no LocalBusiness schema",
+        "top_issues": ["On phone there is no visible call button near the top - the first real tel: link sits ~18,000 px down the page", "No contact or quote form on the home page, so a visitor with a quick question has only a chat widget", "Schema is Place/WebSite only - no Chiropractor or LocalBusiness markup, so hours and services are not machine-structured"]
+      },
+      "agent_readiness": {"findable": 2, "answerable": 2, "bookable": 2, "notes": "robots.txt open to all bots; hours, address and services are readable text; booking is a genuine 3-step online scheduler (good), but it is a third-party widget with no agent-facing path and JSON-LD lacks a local-business type; GBP completeness not verified."},
+      "operations_signals": [
+        {"signal": "Footer links an 'Adult Intake Form' rather than an online form flow, suggesting paperwork still handled as a document", "source_url": "https://njhealthperformance.com/schedule-appointment/"},
+        {"signal": "Chat widget ('Let's Chat?') on the booking page implies they already field web inquiries they want to deflect", "source_url": "https://njhealthperformance.com/schedule-appointment/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Put click-to-call and a short contact form in the mobile header/hero, wired to missed-call text-back", "type": "operations", "evidence": "Phone link on the phone layout is only far down the page; no form on the home page", "effort": "S"},
+        {"opportunity": "Add Chiropractor/LocalBusiness JSON-LD with hours, services and geo so AI assistants can answer basic questions", "type": "agent readiness", "evidence": "Only Place and WebSite nodes in the home-page JSON-LD", "effort": "S"},
+        {"opportunity": "Front-desk AI agent for new-patient intake and insurance questions ahead of the existing scheduler", "type": "AI agent", "evidence": "300+ reviews and a $99 new-patient promotion indicate steady new-patient flow; intake still starts with a form or phone link", "effort": "M"}
+      ],
+      "scores": {"gap_size": 3, "ability_to_pay": 3, "ease": 4, "evidence": 3, "reasons": "Small single-location clinic with a good review base; missing pieces (call CTA, schema, intake) are quick wins, though budget is smaller than a multi-site group."},
+      "sources": ["https://njhealthperformance.com/", "https://njhealthperformance.com/schedule-appointment/", "https://njhealthperformance.com/robots.txt", "https://reviews.birdeye.com/toto-chiropractic-total-rehabilitation-155727047748553"]
+    },
+    {
+      "name": "Campbell Chiropractic Center",
+      "town": "East Brunswick",
+      "ref": "B00278",
+      "status": "operating",
+      "website": "https://www.campbellchiro.com/",
+      "what_they_do": "Single-doctor chiropractic office run by Dr. James Campbell, offering spinal adjustment and drug-free care for all ages, with an FAQ and team page on the site. Positioning is 'results you can feel' rather than a condition funnel.",
+      "customers": "Local families and adults seeking drug-free pain relief; the appointment form explicitly segments new, current and returning patients.",
+      "size_signals": [
+        {"signal": "Team photo shows Dr. Campbell plus four support staff", "source_url": "https://www.campbellchiro.com/"},
+        {"signal": "Hours Mon-Thu 9am-6pm (one doctor, one suite)", "source_url": "https://www.campbellchiro.com/about-us/"},
+        {"signal": "4.8 from 23-25 reviews on a local directory", "source_url": "https://www.bestprosintown.com/nj/east-brunswick/campbell-chiropractic-center-/"}
+      ],
+      "listing": {"platform": "BestProsInTown (Google-derived)", "rating": "4.8", "reviews": "23-25", "source_url": "https://www.bestprosintown.com/nj/east-brunswick/campbell-chiropractic-center-/"},
+      "website_review": {
+        "loads": true, "https": true, "phone_layout": "good", "clear_offer": true,
+        "primary_cta": "Request Appointment (top bar + hero button) and click-to-call",
+        "click_to_call": true, "contact_form": true,
+        "online_booking_or_quote": "Appointment-request form with preferred date, hour and AM/PM; no live availability - staff confirm by phone or email",
+        "trust_signals": "Real team photo, FAQ block with FAQPage schema, patient reviews page, doctor bio",
+        "out_of_date_signs": "None seen (copyright current, HTTPS, no broken links found); design is plain but functional",
+        "search_basics": "Title and description name chiropractor and East Brunswick; pages for chiropractic care, new patients and contact; no LocalBusiness JSON-LD",
+        "top_issues": ["No LocalBusiness/Chiropractor schema - only an FAQPage block, so hours and address are unstructured", "Appointment request is a preferred-date form, not real availability, so every booking still needs a callback", "'REQUEST APPOINTMENT' in the top bar links to '#' on the home page instead of the form"]
+      },
+      "agent_readiness": {"findable": 2, "answerable": 2, "bookable": 2, "notes": "robots.txt blocks only admin paths, so Googlebot and AI crawlers are fine; hours, team and FAQ are text; no LocalBusiness JSON-LD; request form has proper labels and no CAPTCHA, but no real-time availability."},
+      "operations_signals": [
+        {"signal": "SMS-consent language on the form ('appointment reminders and care-related communications') suggests reminders are already partly automated", "source_url": "https://www.campbellchiro.com/contact-us/"},
+        {"signal": "Front desk of about four staff handling a single doctor's schedule; every appointment request is manually confirmed", "source_url": "https://www.campbellchiro.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Replace the preferred-date form with real online scheduling, or an AI front-desk agent that holds the slot, cutting callbacks", "type": "agent readiness", "evidence": "Form captures Date/Hour/AM-PM with no availability check; no calendar widget anywhere on site", "effort": "M"},
+        {"opportunity": "Add LocalBusiness/Chiropractor JSON-LD plus per-service pages so assistants can answer 'do they treat X, what are hours'", "type": "search", "evidence": "Only FAQPage schema found; service content lives on a single chiropractic-care page", "effort": "S"},
+        {"opportunity": "Automated review requests to grow past ~23 reviews, thin next to East Brunswick peers with 200-1,200", "type": "operations", "evidence": "Review pages exist but count is low relative to local competitors (Alliance 1,232; Mana 212)", "effort": "S"}
+      ],
+      "scores": {"gap_size": 3, "ability_to_pay": 3, "ease": 4, "evidence": 4, "reasons": "One-doctor practice with healthy but modest budget; the site works and the gaps are concrete and quick to fix; I saw the actual forms, schema and mobile layout."},
+      "sources": ["https://www.campbellchiro.com/", "https://www.campbellchiro.com/contact-us/", "https://www.campbellchiro.com/robots.txt", "https://www.bestprosintown.com/nj/east-brunswick/campbell-chiropractic-center-/", "https://www.campbellchiro.com/about-us/"]
+    },
+    {
+      "name": "Dr. Shawn Morris, DC",
+      "town": "East Brunswick",
+      "ref": "B00283",
+      "status": "operating",
+      "website": "https://encompassdoc.com/",
+      "what_they_do": "Dr. Morris is one of two chiropractors at Encompass Spinal and Integrated Wellness, which pairs chiropractic adjustment with an on-staff certified physical therapist and 'integrated wellness' services. The practice's own copy pitches 'lifestyle physicians' and whole-body care rather than a named condition list.",
+      "customers": "Local pain and wellness patients of all ages seeking drug-free chiropractic and PT care.",
+      "size_signals": [
+        {"signal": "Three providers on the team page: Dr. Shawn Morris DC, Dr. Michael Pollard DC, and certified PT Guillerma Florentino", "source_url": "https://encompassdoc.com/our-team"},
+        {"signal": "Dr. Morris has practiced in the East Brunswick area for over 17 years", "source_url": "https://encompassdoc.com/our-team"},
+        {"signal": "Open six days: Mon/Wed/Fri 9am-7pm, Tue 9-11am, Thu 3-6pm, Sat 9am-12pm", "source_url": "https://encompassdoc.com/contact-us"}
+      ],
+      "listing": {"platform": "Healthgrades (provider profile)", "rating": "5.0", "reviews": "55 ratings (5 written)", "source_url": "https://www.healthgrades.com/providers/shawn-morris-xklkp"},
+      "website_review": {
+        "loads": true, "https": true, "phone_layout": "usable", "clear_offer": true,
+        "primary_cta": "GET STARTED (jumps to contact page) plus phone number under the hero",
+        "click_to_call": true, "contact_form": true,
+        "online_booking_or_quote": "None - contact form with an 'Appointment Time Requested' free-text field and file upload, behind reCAPTCHA",
+        "trust_signals": "Provider bios with credentials and years, TrustedSite badge, hours published, Facebook page",
+        "out_of_date_signs": "Yes - a COVID-19 mask-policy notice still runs on the home page in 2026; browser title is just 'Encompassdoc'; no service pages",
+        "search_basics": "Weak: title and meta do not name chiropractic or East Brunswick, there are no service pages, no schema.org markup, and the site address (6 Brier Hill Ct) differs from directory listings (465 Cranbury Rd)",
+        "top_issues": ["Title is the brand only ('Encompassdoc') - nothing on the page says chiropractic in East Brunswick to a searcher or crawler", "No schema, no service pages, no reviews shown; hours and services only partly structured", "Address and phone on the site do not match the directories customers find (6 Brier Hill Ct vs 465 Cranbury Rd)", "Booking is a CAPTCHA'd message form with no availability"]
+      },
+      "agent_readiness": {"findable": 1, "answerable": 1, "bookable": 1, "notes": "robots.txt not blocking (Wix default); hours are readable text but the address conflicts across sources; zero JSON-LD on home, team and contact pages; contact form is reCAPTCHA-protected with no booking or availability; Google Business Profile not verified and NAP inconsistent."},
+      "operations_signals": [
+        {"signal": "Contact goes to a personal-looking gmail address (encompassdoc247@gmail.com) and one phone line, so scheduling runs through whoever is at the desk", "source_url": "https://encompassdoc.com/contact-us"},
+        {"signal": "Stale COVID-era front-desk policy still published suggests the site has no owner or maintenance routine", "source_url": "https://encompassdoc.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Rebuild the home page around 'chiropractor and physical therapy in East Brunswick' with service pages, LocalBusiness/MedicalClinic schema and one consistent NAP", "type": "search", "evidence": "Title 'Encompassdoc', no service pages, no JSON-LD, address mismatch vs Healthgrades", "effort": "M"},
+        {"opportunity": "Add online self-scheduling or an AI receptionist that answers hours/insurance and books into the three providers' calendars", "type": "agent readiness", "evidence": "Only a CAPTCHA'd contact form with a free-text 'Appointment Time Requested' field", "effort": "M"},
+        {"opportunity": "Remove the COVID-19 notice and refresh trust content with the 55 Healthgrades ratings and provider credentials", "type": "website", "evidence": "Home page still states masks are required; no reviews or ratings appear anywhere on the site", "effort": "S"}
+      ],
+      "scores": {"gap_size": 4, "ability_to_pay": 2, "ease": 4, "evidence": 3, "reasons": "Website is visibly neglected (COVID banner, brand-only title, no schema, NAP conflict) so the needs are obvious, but a three-provider clinic has a small budget and the listed 'business' is really one provider."},
+      "sources": ["https://encompassdoc.com/", "https://encompassdoc.com/our-team", "https://encompassdoc.com/contact-us", "https://www.healthgrades.com/providers/shawn-morris-xklkp"]
+    },
+    {
+      "name": "Spineck Physical Therapy",
+      "town": "East Brunswick",
+      "ref": "B00284",
+      "status": "operating",
+      "website": "https://www.spineckpt.com/",
+      "what_they_do": "Physical therapy clinic on Route 18 North offering one-on-one, McKenzie-certified care (cert. MDT) for neck/back pain, post-surgical and orthopedic rehab, sports injuries, prenatal/postpartum and neurological rehab. Differentiates on 'no aides, no double-booking, same therapist every visit'.",
+      "customers": "East Brunswick-area adults with back/neck pain, post-op patients, runners and athletes, prenatal/postpartum patients, seniors (blog posts cover senior-center talks).",
+      "size_signals": [
+        {"signal": "Named therapist Devanshi Modi, 15+ years experience, McKenzie certified", "source_url": "https://www.spineckpt.com/location/east-brunswick/"},
+        {"signal": "Multiple locations listed (East Brunswick, New Brunswick, North Brunswick)", "source_url": "https://www.spineckpt.com/location/"},
+        {"signal": "Google rating widget shows 5.0 from 128 reviews", "source_url": "https://www.spineckpt.com/"},
+        {"signal": "Hours Mon-Fri 8:30am-8pm, by appointment only", "source_url": "https://www.spineckpt.com/contact/"}
+      ],
+      "listing": {"platform": "Google (site widget)", "rating": "5.0", "reviews": "128", "source_url": "https://www.spineckpt.com/"},
+      "website_review": {
+        "loads": true, "https": true, "phone_layout": "good", "clear_offer": true,
+        "primary_cta": "Book Appointment (header button) and Call (551) 208-3234",
+        "click_to_call": true, "contact_form": true,
+        "online_booking_or_quote": "Request form only - name, email, phone, condition, 'preferred day/time' free text; reCAPTCHA-protected; no calendar",
+        "trust_signals": "5.0/128 Google reviews shown on page, named certified therapist, insurance statement, community-event blog posts (senior center, kids running series)",
+        "out_of_date_signs": "None seen; modern Next.js site, content current",
+        "search_basics": "Strong: town-specific location pages, condition pages, service pages, FAQPage + MedicalClinic schema with hours and aggregate rating",
+        "top_issues": ["'Book' buttons all lead to a request form, not real availability - staff must confirm every appointment", "Invisible reCAPTCHA blocks an AI agent from submitting the intake", "No visible phone in the mobile header; call link sits far down the page"]
+      },
+      "agent_readiness": {"findable": 3, "answerable": 3, "bookable": 2, "notes": "robots.txt allows everything except /api/ and /_next/; MedicalClinic + OpeningHoursSpecification + AggregateRating + Person schema match the page; services and insurance written as text; booking is a captcha-protected request form, so an agent can find and understand but not complete."},
+      "operations_signals": [
+        {"signal": "Request form promises a reply 'within 24 hours', implying manual follow-up on every web lead", "source_url": "https://www.spineckpt.com/contact/"},
+        {"signal": "Single-therapist scheduling model with 8:30am-8pm hours leaves little front-desk slack (inference)", "source_url": "https://www.spineckpt.com/contact/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Put a real self-scheduler (or an AI booking agent with calendar access) behind the 'Book' buttons and drop CAPTCHA from the happy path", "type": "agent readiness", "evidence": "Five 'Book' links all resolve to /contact/ and its reCAPTCHA-protected request form", "effort": "M"},
+        {"opportunity": "AI intake that answers insurance, McKenzie-method and 'do you treat X' questions, then books - the site already has the content", "type": "AI agent", "evidence": "Rich FAQ/condition text and schema; 128 reviews at 5.0 means steady demand", "effort": "M"},
+        {"opportunity": "Add click-to-call to the mobile header", "type": "website", "evidence": "Mobile screenshot shows only Book and menu; tel link is thousands of pixels down", "effort": "S"}
+      ],
+      "scores": {"gap_size": 2, "ability_to_pay": 3, "ease": 3, "evidence": 4, "reasons": "Best technical foundation in the batch (schema, pages, reviews, HTTPS); the gap is booking friction, not marketing, so the sale is narrower but easy to justify."},
+      "sources": ["https://www.spineckpt.com/", "https://www.spineckpt.com/location/east-brunswick/", "https://www.spineckpt.com/contact/", "https://www.spineckpt.com/robots.txt"]
+    },
+    {
+      "name": "East Brunswick Physical Therapy",
+      "town": "East Brunswick",
+      "ref": "B00285",
+      "status": "operating",
+      "website": "https://www.eastbrunswickpt.com/",
+      "what_they_do": "Physical therapy and occupational therapy clinic at 3 Auer Court that also lists an acupuncturist on staff. Content targets everyone from adolescent athletes to post-surgical seniors, with emphasis on assessment first and personalized plans.",
+      "customers": "Local patients of all ages - sports injuries, post-surgical recovery, seniors; physician-referred and self-referred (inference: PT is referral-driven).",
+      "size_signals": [
+        {"signal": "Named therapist (Brielle Scheid) plus an acupuncturist; one suite at 3 Auer Court", "source_url": "https://www.eastbrunswickpt.com/meet-the-team/"},
+        {"signal": "Hours Mon-Thu 8:30am-6pm", "source_url": "https://www.eastbrunswickpt.com/contact-us/"},
+        {"signal": "5.0 average but only ~10 public reviews", "source_url": "https://localitybiz.com/new-jersey/physical-therapy-exercises-in-new-brunswick"}
+      ],
+      "listing": {"platform": "LocalityBiz (attributed to Google reviews)", "rating": "5.0", "reviews": "~10", "source_url": "https://localitybiz.com/new-jersey/physical-therapy-exercises-in-new-brunswick"},
+      "website_review": {
+        "loads": true, "https": true, "phone_layout": "good", "clear_offer": true,
+        "primary_cta": "Request Appointment (top bar) + click-to-call",
+        "click_to_call": true, "contact_form": true,
+        "online_booking_or_quote": "Appointment-request form with preferred date/hour plus a general contact form; no live calendar",
+        "trust_signals": "Real treatment photo, named therapist, service pages for PT and OT, 'can I choose my therapist' FAQ",
+        "out_of_date_signs": "Cookie-consent banner covers the hero on phone until dismissed; otherwise current",
+        "search_basics": "Title and description name physical therapy and East Brunswick; dedicated PT, OT, new-patient and team pages; zero JSON-LD found",
+        "top_issues": ["No structured data at all (the ld+json script is empty), so nothing machine-readable about the clinic", "Appointment requests need manual confirmation; no online availability", "Only about 10 public reviews, which undersells a 5.0 practice and weakens local ranking"]
+      },
+      "agent_readiness": {"findable": 2, "answerable": 2, "bookable": 2, "notes": "robots.txt only blocks admin paths; hours, services and team names are text; no JSON-LD of any type; request form is labelled and un-CAPTCHA'd but is not a scheduler."},
+      "operations_signals": [
+        {"signal": "Two separate forms (general contact and appointment request) on one page means staff read and route both", "source_url": "https://www.eastbrunswickpt.com/contact-us/"},
+        {"signal": "Small team (one named PT plus acupuncturist) doing front-desk work between patients (inference from size)", "source_url": "https://www.eastbrunswickpt.com/meet-the-team/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Add LocalBusiness/MedicalClinic schema with hours, services and insurance so AI answers stop at 'call them'", "type": "search", "evidence": "Empty JSON-LD script and no local-business markup on home or contact pages", "effort": "S"},
+        {"opportunity": "Missed-call text-back and AI intake that captures referral, insurance and availability before a callback", "type": "operations", "evidence": "Appointment request is a preferred-date form; no live availability on site", "effort": "S"},
+        {"opportunity": "Automated review requests to build from ~10 reviews toward local competitors' 100-200", "type": "operations", "evidence": "5.0 rating with only ~10 reviews on the directory listing", "effort": "S"}
+      ],
+      "scores": {"gap_size": 3, "ability_to_pay": 2, "ease": 4, "evidence": 3, "reasons": "Tiny practice with a working site but zero schema, thin reviews and manual booking; easy to deliver, but budget and ticket size are limited."},
+      "sources": ["https://www.eastbrunswickpt.com/", "https://www.eastbrunswickpt.com/contact-us/", "https://www.eastbrunswickpt.com/robots.txt", "https://localitybiz.com/new-jersey/physical-therapy-exercises-in-new-brunswick"]
+    },
+    {
+      "name": "Elevate Physical Therapy and Rehab",
+      "town": "East Brunswick",
+      "ref": "B00286",
+      "status": "operating",
+      "website": "https://www.elevateptr.com/",
+      "what_they_do": "Solo-practitioner physical therapy clinic inside CrossFit Barbending, offering one-on-one in-person and telehealth rehab, sports/orthopedic recovery and a la carte services, with free initial consultations and cash-pay or insurance options.",
+      "customers": "Athletes, CrossFitters and active adults with sports injuries; also remote/virtual patients anywhere in NJ.",
+      "size_signals": [
+        {"signal": "Owner-therapist Danielle Mendez works alone out of a private room in a gym lobby", "source_url": "https://www.elevateptr.com/"},
+        {"signal": "5.0 from 29 Google reviews (aggregated listing)", "source_url": "https://reviews.birdeye.com/elevate-physical-therapy-and-rehabilitation-168680319691595"},
+        {"signal": "Hours Mon-Fri 7am-9pm, weekends by appointment", "source_url": "https://www.elevateptr.com/contact"}
+      ],
+      "listing": {"platform": "Birdeye (aggregating Google reviews)", "rating": "5.0", "reviews": "29", "source_url": "https://reviews.birdeye.com/elevate-physical-therapy-and-rehabilitation-168680319691595"},
+      "website_review": {
+        "loads": true, "https": true, "phone_layout": "broken", "clear_offer": true,
+        "primary_cta": "Start now (to Calendly) / CONSULTATION page",
+        "click_to_call": true, "contact_form": false,
+        "online_booking_or_quote": "Calendly link exists (calendly.com/elevateptr) but is hard-coded to ?month=2020-10; the CONSULTATION page has no form or booking at all",
+        "trust_signals": "Named therapist biography, patient testimonials, 5.0 Google rating elsewhere, real photos of work in a gym setting",
+        "out_of_date_signs": "Yes - 'Start now' points to a Calendly URL frozen at month=2020-10, and the mobile hero renders as a large blank block before the headline",
+        "search_basics": "Title and description name the service and town; no service-specific pages, pricing is vague ('an investment in yourself'), LocalBusiness JSON-LD is present but thin",
+        "top_issues": ["Mobile layout has a big empty hero area - the page looks broken above the fold", "Primary booking CTA points at a Calendly link pinned to October 2020", "No contact form anywhere; the consultation page only offers phone/email", "No published price ranges or packages, which blocks self-qualifying buyers"]
+      },
+      "agent_readiness": {"findable": 2, "answerable": 2, "bookable": 1, "notes": "Squarespace robots.txt does not block Googlebot and lists AI crawlers with no disallow rules; LocalBusiness and Organization JSON-LD present; hours, services and address are text; but booking runs through a stale Calendly deeplink and there is no form, so an agent cannot reliably book."},
+      "operations_signals": [
+        {"signal": "Every inquiry routes to one person's phone and inbox (danielle@elevateptr.com), so intake competes with treatment time", "source_url": "https://www.elevateptr.com/"},
+        {"signal": "Free, flexible initial consultations advertised - high consult volume for a solo operator (inference)", "source_url": "https://www.elevateptr.com/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Repair the booking path: a working Calendly embed (no stale month param) plus a short intake form, so consults self-book", "type": "agent readiness", "evidence": "'Start now' -> calendly.com/elevateptr?month=2020-10; /consult has zero forms", "effort": "S"},
+        {"opportunity": "Fix the mobile hero layout and add a clear one-line offer with price/packages", "type": "website", "evidence": "Phone screenshot shows a large blank band where the hero should be; pricing text is deliberately vague", "effort": "S"},
+        {"opportunity": "AI agent that screens consult requests (insurance vs cash, injury type, location) and books into open Calendly slots", "type": "AI agent", "evidence": "Solo practitioner advertising free consults and email/phone-only contact", "effort": "M"}
+      ],
+      "scores": {"gap_size": 4, "ability_to_pay": 2, "ease": 4, "evidence": 4, "reasons": "Clear broken/neglected assets (stale Calendly, blank mobile hero) that are cheap to fix, but a one-person cash/insurance practice has limited budget."},
+      "sources": ["https://www.elevateptr.com/", "https://www.elevateptr.com/consult", "https://calendly.com/elevateptr?month=2020-10", "https://www.elevateptr.com/robots.txt", "https://reviews.birdeye.com/elevate-physical-therapy-and-rehabilitation-168680319691595"]
+    },
+    {
+      "name": "Mana Physical Therapy",
+      "town": "East Brunswick",
+      "ref": "B00287",
+      "status": "operating",
+      "website": "https://manaphysicaltherapynj.com/physical-therapy-clinic/east-brunswick-nj/",
+      "what_they_do": "Performance-oriented physical therapy in a 2,800 sq ft gym, with 60-minute one-on-one sessions, sports return-to-play (force-plate testing, turf runway), post-surgical rehab and active-adult rehab. Also markets free consultations and ebooks as lead magnets.",
+      "customers": "Athletes, post-op patients and active adults who want to get back to sport or lifting; also Manhattan clients via a Chelsea location.",
+      "size_signals": [
+        {"signal": "Page stats: 2,800 sq ft performance gym, 4 Doctors of Physical Therapy, 3 CSCS-certified clinicians, 60-minute one-on-one sessions", "source_url": "https://manaphysicaltherapynj.com/physical-therapy-clinic/east-brunswick-nj/"},
+        {"signal": "Four locations in the appointment form: East Brunswick, Lake Como and Little Silver NJ, plus Manhattan (Chelsea)", "source_url": "https://manaphysicaltherapynj.com/physical-therapist-appointment/"},
+        {"signal": "4.9 from 212 reviews (188 attributed to Google)", "source_url": "https://reviews.birdeye.com/mana-physical-therapy-157267098841688"}
+      ],
+      "listing": {"platform": "Birdeye (aggregating Google reviews)", "rating": "4.9", "reviews": "212 (188 Google)", "source_url": "https://reviews.birdeye.com/mana-physical-therapy-157267098841688"},
+      "website_review": {
+        "loads": true, "https": true, "phone_layout": "good", "clear_offer": true,
+        "primary_cta": "Tell Us What's Going On (to request form) and Call Us",
+        "click_to_call": true, "contact_form": true,
+        "online_booking_or_quote": "Request-appointment form with date, preferred time, location and appointment type (incl. free consultation); reCAPTCHA; no live availability",
+        "trust_signals": "Facility stats, clinician counts, review/rating schema, ebook lead magnets, location and treatment-technique pages",
+        "out_of_date_signs": "Page title and meta description say 'East Brunswick NY' instead of NJ - a copy error that also harms local search",
+        "search_basics": "Location pages and service pages exist with MedicalBusiness + Review/Rating schema; but the title/description state error undermines the East Brunswick page",
+        "top_issues": ["Title and meta description say 'East Brunswick NY' - wrong state on the main local landing page", "No real-time scheduling; every request is a CAPTCHA'd form staff must work through", "Phone number appears mainly as a header icon and 'Call Us' button rather than written text a crawler can read"]
+      },
+      "agent_readiness": {"findable": 3, "answerable": 2, "bookable": 2, "notes": "robots.txt is wide open; MedicalBusiness, OpeningHoursSpecification, Review and Rating schema are present; but the page contradicts itself on state (NY vs NJ) and the phone is mostly a tel: link, so an assistant may mis-answer location questions; booking is a captcha form with no availability feed."},
+      "operations_signals": [
+        {"signal": "One request form spans four locations including Manhattan, so staff must route and confirm each inquiry by hand", "source_url": "https://manaphysicaltherapynj.com/physical-therapist-appointment/"},
+        {"signal": "Free consultation option plus ebook downloads imply a lead-nurturing workload beyond booked patients (inference)", "source_url": "https://manaphysicaltherapynj.com/physical-therapist-appointment/"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Correct the NY/NJ error in titles and descriptions across location pages, then add written address and phone text", "type": "search", "evidence": "Title reads 'Physical Therapy East Brunswick NY'; description repeats NY", "effort": "S"},
+        {"opportunity": "Multi-location scheduling: real availability per clinic, or an AI booking agent that knows each site's slots", "type": "agent readiness", "evidence": "Four-location dropdown on a form with no calendar and a reCAPTCHA gate", "effort": "M"},
+        {"opportunity": "AI front desk to triage new inquiries (insurance, sport/injury, which location) and push qualified consults into the calendar", "type": "AI agent", "evidence": "Free-consultation offer plus a growing multi-site footprint and 212 reviews", "effort": "M"}
+      ],
+      "scores": {"gap_size": 3, "ability_to_pay": 4, "ease": 4, "evidence": 4, "reasons": "Four-site group with a premium facility and 212 reviews; the errors are specific and fixable fast, and there is real budget behind it."},
+      "sources": ["https://manaphysicaltherapynj.com/physical-therapy-clinic/east-brunswick-nj/", "https://manaphysicaltherapynj.com/physical-therapist-appointment/", "https://manaphysicaltherapynj.com/robots.txt", "https://reviews.birdeye.com/mana-physical-therapy-157267098841688"]
+    },
+    {
+      "name": "Connect to Communicate",
+      "town": "East Brunswick",
+      "ref": "B00290",
+      "status": "operating",
+      "website": "https://www.connect2communicateslp.com/",
+      "what_they_do": "Pediatric speech-language therapy practice offering play-based evaluations and therapy for expressive/receptive language, articulation, stuttering and social communication, plus AAC support. Run by a bilingual (English/Portuguese) SLP and explicitly accepting new clients.",
+      "customers": "Parents of young children with speech, language or social-communication needs in East Brunswick and nearby towns; in-network with Aetna and Horizon BCBS, private pay, no Medicaid.",
+      "size_signals": [
+        {"signal": "One therapist listed - Diana Corticeiro, MS, CCC-SLP - at a single suite on Cornwall Drive", "source_url": "https://www.connect2communicateslp.com/about"},
+        {"signal": "Hours Monday-Saturday 8am-8pm", "source_url": "https://www.connect2communicateslp.com/contact"},
+        {"signal": "In-network with Aetna and Horizon BCBS; Medicaid not accepted", "source_url": "https://www.connect2communicateslp.com/helpful-information"}
+      ],
+      "listing": {"platform": "None found", "rating": "Unknown", "reviews": "No public Google rating found", "source_url": "https://www.connect2communicateslp.com/"},
+      "website_review": {
+        "loads": true, "https": true, "phone_layout": "usable", "clear_offer": true,
+        "primary_cta": "Get Started Today (goes to a contact page with no form)",
+        "click_to_call": false, "contact_form": false,
+        "online_booking_or_quote": "None - contact page lists a gmail address and a phone number as plain text, no form, no booking, no tel: link",
+        "trust_signals": "Therapist bio with credentials and bilingual note, insurance list, hours; stock photos rather than photos of the clinic",
+        "out_of_date_signs": "No meta description; image-heavy hero with no text CTA; phone number present but not tappable; no reviews or testimonials anywhere",
+        "search_basics": "Title names speech therapy and East Brunswick, but there is no meta description and no structured data beyond a WebSite node",
+        "top_issues": ["No contact form and no click-to-call - the only path is copying a gmail address or dialling a ten-digit number", "Mobile first screen is two large stock photos with no phone, no CTA, no address", "No reviews or testimonials, so parents have no social proof at the decision moment", "Single WebSite schema node; no LocalBusiness or MedicalBusiness data"]
+      },
+      "agent_readiness": {"findable": 1, "answerable": 2, "bookable": 1, "notes": "Squarespace robots.txt does not block crawling; services, hours and insurance are readable text; but there is no LocalBusiness schema, no Google review footprint found, and no booking or form an agent could use - only a gmail address."},
+      "operations_signals": [
+        {"signal": "Business inquiries route to a personal gmail inbox, so intake, scheduling and follow-up all sit with the therapist between sessions", "source_url": "https://www.connect2communicateslp.com/contact"},
+        {"signal": "Explicitly 'accepting new clients' with no self-serve intake means every new family starts with a phone call or email", "source_url": "https://www.connect2communicateslp.com/about"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Add a labelled intake form (child age, concern, insurance, availability) and a click-to-call button in the mobile hero", "type": "website", "evidence": "Contact page has zero forms and zero tel: links; mobile hero shows only photos", "effort": "S"},
+        {"opportunity": "LocalBusiness schema, meta description and review collection so parents and AI assistants can verify the practice", "type": "search", "evidence": "Only a WebSite JSON-LD node; no meta description; no reviews found on any platform", "effort": "S"},
+        {"opportunity": "AI intake agent that answers insurance and scheduling questions and books evaluation slots", "type": "AI agent", "evidence": "Solo SLP with 8am-8pm, six-day hours and gmail-based inquiries", "effort": "M"}
+      ],
+      "scores": {"gap_size": 5, "ability_to_pay": 2, "ease": 5, "evidence": 3, "reasons": "Barely any customer-acquisition plumbing exists, so fixes are cheap and fast; but it is a one-person practice with limited budget and modest ticket size."},
+      "sources": ["https://www.connect2communicateslp.com/", "https://www.connect2communicateslp.com/contact", "https://www.connect2communicateslp.com/about", "https://www.connect2communicateslp.com/helpful-information", "https://www.connect2communicateslp.com/robots.txt"]
+    },
+    {
+      "name": "Schultz Speech Therapy",
+      "town": "East Brunswick",
+      "ref": "B00291",
+      "status": "operating",
+      "website": "https://www.schultzspeechtherapy.com/",
+      "what_they_do": "Pediatric speech therapy private practice using a neurodiversity-affirming, DIRFloortime-based approach; offers comprehensive and DIRFloortime evaluations, Independent Education Evaluations (IEEs), therapy and parent consultations. Runs out of a home-based clinic in East Brunswick and publishes an $85 fee on its services page.",
+      "customers": "Parents of children of all ages with speech, language, AAC, dyslexia, executive-function and social-communication needs, including families pursuing school IEEs.",
+      "size_signals": [
+        {"signal": "Solo clinician Nicole Schultz, M.S., CCC-SLP; describes itself as a 'small private practice' with a home-based clinic", "source_url": "https://www.schultzspeechtherapy.com/services"},
+        {"signal": "Named service lines: evaluations, DIRFloortime evaluations, IEEs, therapy, parent consults", "source_url": "https://www.schultzspeechtherapy.com/services"},
+        {"signal": "An $85 price appears on the services page", "source_url": "https://www.schultzspeechtherapy.com/services"}
+      ],
+      "listing": {"platform": "Birdeye directory", "rating": "Unknown", "reviews": "No reviews listed", "source_url": "https://reviews.birdeye.com/d/other/east-brunswick-nj/?page=6"},
+      "website_review": {
+        "loads": true, "https": true, "phone_layout": "broken", "clear_offer": true,
+        "primary_cta": "Contact Us (scrolls to the on-page form)",
+        "click_to_call": true, "contact_form": true,
+        "online_booking_or_quote": "No booking; home-page form collects name, child's name, email, phone, message and consent (no CAPTCHA)",
+        "trust_signals": "Clinician credentials, DIRFloortime framework explained, distinct service descriptions, FAQ page, published fee",
+        "out_of_date_signs": "Yes - the site is not responsive: it renders at a fixed 980px width, so on a 390px phone the logo, menu and headline are clipped; the meta description also misspells the therapist as 'Nicole Shultz'",
+        "search_basics": "Title and meta description name speech therapy and East Brunswick; service pages and FAQ exist; LocalBusiness JSON-LD present but minimal (address only)",
+        "top_issues": ["Phone layout is broken - content is wider than the screen and clipped", "No online booking or even a preferred-time field; every inquiry is an email round-trip", "No reviews anywhere, which is a big trust gap for private-pay pediatric services", "LocalBusiness schema lacks hours, phone, geo and service types"]
+      },
+      "agent_readiness": {"findable": 2, "answerable": 2, "bookable": 1, "notes": "Wix robots.txt allows all crawlers except a few SEO bots; services, fees and approach are readable text; minimal LocalBusiness JSON-LD (address only, no hours/phone); no availability or booking system, only a contact form, and the broken mobile layout limits usability."},
+      "operations_signals": [
+        {"signal": "Home-page form asks for child's name plus a consent checkbox, showing intake is a manual email conversation", "source_url": "https://www.schultzspeechtherapy.com/"},
+        {"signal": "Parent consultations and IEE work are sold alongside therapy, so scheduling involves longer, document-heavy engagements (inference from service list)", "source_url": "https://www.schultzspeechtherapy.com/services"}
+      ],
+      "top_opportunities": [
+        {"opportunity": "Fix responsiveness so the site works on phones, then add click-to-call and an availability-aware inquiry form", "type": "website", "evidence": "Page renders at 980px width on a 390px screen and clips the logo and headline", "effort": "S"},
+        {"opportunity": "Google Business Profile plus automated review requests - there is currently no public review footprint", "type": "search", "evidence": "Birdeye directory shows no reviews for the practice", "effort": "S"},
+        {"opportunity": "Scheduling and intake automation for evaluations and IEEs, including document collection from parents and schools", "type": "operations", "evidence": "IEE and evaluation services imply records exchange; site offers only a message form", "effort": "M"}
+      ],
+      "scores": {"gap_size": 4, "ability_to_pay": 2, "ease": 5, "evidence": 3, "reasons": "Broken mobile layout and no booking or reviews are obvious, cheap fixes; but a single private-pay clinician has a small budget and the practice looks early-stage."},
+      "sources": ["https://www.schultzspeechtherapy.com/", "https://www.schultzspeechtherapy.com/services", "https://www.schultzspeechtherapy.com/robots.txt", "https://reviews.birdeye.com/d/other/east-brunswick-nj/?page=6"]
+    }
+  ],
+  "caveats": [
+    "Rating and review counts come from Birdeye, BestProsInTown, LocalityBiz and on-site widgets, not from Google Maps directly; several of these aggregate Google reviews and can lag the live listing.",
+    "Agent-readiness 'findable' scores are partly inference: I checked robots.txt and on-page markup but did not open a Google Business Profile management view for each business.",
+    "Where the batch's phone or address differs from the business's own site (Alliance Orthopedics, Dr. Shawn Morris/Encompass), I reported both rather than picking one."
+  ],
+  "data_gaps": [
+    "Google Business Profile completeness (categories, services, photos, claimed status) not verified for any of the ten businesses.",
+    "B00276 'Adult Intake Form' destination not confirmed (likely a PDF or external form).",
+    "B00283: site address (6 Brier Hill Ct, Building E) conflicts with the Healthgrades address in the batch (465 Cranbury Rd, Suite 102); current location unconfirmed.",
+    "B00283 and B00290: no Google rating found, so listing fields are 'Unknown' rather than estimated.",
+    "B00291: only one price ($85) seen; full fee schedule and insurance participation not published."
+  ]
+}
